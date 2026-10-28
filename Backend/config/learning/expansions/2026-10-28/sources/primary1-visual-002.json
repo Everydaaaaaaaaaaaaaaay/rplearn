@@ -1,0 +1,656 @@
+{
+  "createdAt": "2026-10-29T00:26:19.666756+08:00",
+  "reviewBoundary": "明确逐词创作的原创四图配词任务，只借用已核来源的四图四回应形式；作者逐图检查可辨识性、唯一答案和其他三图的排除理由。基础词汇会在新视觉辨识任务中复现，不将复现当成新教学词汇；不声称独立教师、儿童识图或学生难度标定。",
+  "imageAssets": [
+    {
+      "id": "image.2ff01aabf4d41ac6b9dd68141b491ab931ea6c0729c53455e170b2028d970134",
+      "sha256": "2ff01aabf4d41ac6b9dd68141b491ab931ea6c0729c53455e170b2028d970134",
+      "byteSize": 23423,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "文具图卡：铅笔、尺子、橡皮与书；A至D依次为a pencil, a ruler, an eraser, a book",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-school-002.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "在768×512原图与缩略联系表中检查四图和字母。无英文词汇或答案标记；同一张图卡只作一组四回应，不通过改名、重排或数量变化重复计组。"
+    },
+    {
+      "id": "image.9293c75e0b52d19c043b4d0d46f2d0e11c7727ee7830cf6b0a7505a2092adeb2",
+      "sha256": "9293c75e0b52d19c043b4d0d46f2d0e11c7727ee7830cf6b0a7505a2092adeb2",
+      "byteSize": 39702,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "动物图卡：猫、狗、鱼与鸟；A至D依次为a cat, a dog, a fish, a bird",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-pets-002.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "在768×512原图与缩略联系表中检查四图和字母。无英文词汇或答案标记；同一张图卡只作一组四回应，不通过改名、重排或数量变化重复计组。"
+    },
+    {
+      "id": "image.e0a49719a4d28acdf243c74f81f5cbd3cc1e5a4ee9b1af00b9ef73454341b5c7",
+      "sha256": "e0a49719a4d28acdf243c74f81f5cbd3cc1e5a4ee9b1af00b9ef73454341b5c7",
+      "byteSize": 36599,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "水果图卡：苹果、香蕉、梨与橙子；A至D依次为an apple, a banana, a pear, an orange",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-fruit-002.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "在768×512原图与缩略联系表中检查四图和字母。无英文词汇或答案标记；同一张图卡只作一组四回应，不通过改名、重排或数量变化重复计组。"
+    },
+    {
+      "id": "image.c8306875c810d23c55205bc3130a50bf3ab7dce28fc3417fabb8d2377362169a",
+      "sha256": "c8306875c810d23c55205bc3130a50bf3ab7dce28fc3417fabb8d2377362169a",
+      "byteSize": 34636,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "身体图卡：眼睛、耳朵、手与鼻子；A至D依次为an eye, an ear, a hand, a nose",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-body-002.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "在768×512原图与缩略联系表中检查四图和字母。无英文词汇或答案标记；同一张图卡只作一组四回应，不通过改名、重排或数量变化重复计组。初稿的脚形与手掌相似，未入题库；改为可明确识别的鼻子后重新看图审核。"
+    },
+    {
+      "id": "image.59c3fd5ab2bacb21ce907dd61235eceb27f4f63bd5953a53c83e5f00ca9bbc83",
+      "sha256": "59c3fd5ab2bacb21ce907dd61235eceb27f4f63bd5953a53c83e5f00ca9bbc83",
+      "byteSize": 32731,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "游戏用品图卡：球、风筝、跳绳与滑板；A至D依次为a ball, a kite, a jump rope, a skateboard",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-play-002.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "在768×512原图与缩略联系表中检查四图和字母。无英文词汇或答案标记；同一张图卡只作一组四回应，不通过改名、重排或数量变化重复计组。"
+    },
+    {
+      "id": "image.33da52dea22f9011b21273c06f37ca8be490c0783fc0a1f7e3e44fdca1ecc597",
+      "sha256": "33da52dea22f9011b21273c06f37ca8be490c0783fc0a1f7e3e44fdca1ecc597",
+      "byteSize": 17875,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "房间图卡：椅子、桌子、门与窗；A至D依次为a chair, a table, a door, a window",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-room-002.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "在768×512原图与缩略联系表中检查四图和字母。无英文词汇或答案标记；同一张图卡只作一组四回应，不通过改名、重排或数量变化重复计组。"
+    },
+    {
+      "id": "image.ba899156c801efb8303c015bc5a77281772a0cb0af57dca793fe42e8766d72af",
+      "sha256": "ba899156c801efb8303c015bc5a77281772a0cb0af57dca793fe42e8766d72af",
+      "byteSize": 31754,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "卧室图卡：床、枕头、台灯与钟；A至D依次为a bed, a pillow, a lamp, a clock",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-bedside-002.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "在768×512原图与缩略联系表中检查四图和字母。无英文词汇或答案标记；同一张图卡只作一组四回应，不通过改名、重排或数量变化重复计组。床图去除枕头，避免a pillow同时可匹配床图和独立枕头图。"
+    },
+    {
+      "id": "image.1512ed9b0a4036582d3464374bcd7741e887168c7690770b83c5471ca207b532",
+      "sha256": "1512ed9b0a4036582d3464374bcd7741e887168c7690770b83c5471ca207b532",
+      "byteSize": 19895,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "形状图卡：圆形、三角形、正方形与长方形；A至D依次为a circle, a triangle, a square, a long rectangle",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-shapes-002.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "在768×512原图与缩略联系表中检查四图和字母。无英文词汇或答案标记；同一张图卡只作一组四回应，不通过改名、重排或数量变化重复计组。长方形题面明确long rectangle，避免把正方形也按广义矩形理解。"
+    }
+  ],
+  "units": [
+    {
+      "id": "primary1.school-picture-cards-002",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "文具图卡：铅笔、尺子、橡皮与书",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "School Tools",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.2ff01aabf4d41ac6b9dd68141b491ab931ea6c0729c53455e170b2028d970134",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "an eraser",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图为带石墨笔尖、木杆和顶端橡皮的铅笔；B图为有等距刻度的直尺；C图为独立的双色块状橡皮；D图为摊开后有左右书页的书。题面an eraser唯一对应C，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a pencil",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图为带石墨笔尖、木杆和顶端橡皮的铅笔；B图为有等距刻度的直尺；C图为独立的双色块状橡皮；D图为摊开后有左右书页的书。题面a pencil唯一对应A，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a book",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图为带石墨笔尖、木杆和顶端橡皮的铅笔；B图为有等距刻度的直尺；C图为独立的双色块状橡皮；D图为摊开后有左右书页的书。题面a book唯一对应D，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a ruler",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图为带石墨笔尖、木杆和顶端橡皮的铅笔；B图为有等距刻度的直尺；C图为独立的双色块状橡皮；D图为摊开后有左右书页的书。题面a ruler唯一对应B，另外三图不具备该词所指的对象或特征。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.pets-picture-cards-002",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "动物图卡：猫、狗、鱼与鸟",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Four Animals",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.9293c75e0b52d19c043b4d0d46f2d0e11c7727ee7830cf6b0a7505a2092adeb2",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a fish",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图为有尖耳、胡须和猫鼻的猫脸；B图为有垂耳和突出鼻口部的狗脸；C图为有鳍、尾巴并横向游动的鱼；D图为有喙、翅膀和两只脚的鸟。题面a fish唯一对应C，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a cat",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图为有尖耳、胡须和猫鼻的猫脸；B图为有垂耳和突出鼻口部的狗脸；C图为有鳍、尾巴并横向游动的鱼；D图为有喙、翅膀和两只脚的鸟。题面a cat唯一对应A，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a bird",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图为有尖耳、胡须和猫鼻的猫脸；B图为有垂耳和突出鼻口部的狗脸；C图为有鳍、尾巴并横向游动的鱼；D图为有喙、翅膀和两只脚的鸟。题面a bird唯一对应D，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a dog",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图为有尖耳、胡须和猫鼻的猫脸；B图为有垂耳和突出鼻口部的狗脸；C图为有鳍、尾巴并横向游动的鱼；D图为有喙、翅膀和两只脚的鸟。题面a dog唯一对应B，另外三图不具备该词所指的对象或特征。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.fruit-picture-cards-002",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "水果图卡：苹果、香蕉、梨与橙子",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Fruit Cards",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.e0a49719a4d28acdf243c74f81f5cbd3cc1e5a4ee9b1af00b9ef73454341b5c7",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a pear",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图为顶端凹入、带果梗的红苹果；B图为细长弯曲、两头有果梗的香蕉；C图为上窄下宽的绿色梨；D图为圆形且表面有小斑点的橙子。题面a pear唯一对应C，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "an apple",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图为顶端凹入、带果梗的红苹果；B图为细长弯曲、两头有果梗的香蕉；C图为上窄下宽的绿色梨；D图为圆形且表面有小斑点的橙子。题面an apple唯一对应A，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "an orange",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图为顶端凹入、带果梗的红苹果；B图为细长弯曲、两头有果梗的香蕉；C图为上窄下宽的绿色梨；D图为圆形且表面有小斑点的橙子。题面an orange唯一对应D，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a banana",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图为顶端凹入、带果梗的红苹果；B图为细长弯曲、两头有果梗的香蕉；C图为上窄下宽的绿色梨；D图为圆形且表面有小斑点的橙子。题面a banana唯一对应B，另外三图不具备该词所指的对象或特征。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.body-picture-cards-002",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "身体图卡：眼睛、耳朵、手与鼻子",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Body Parts",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.c8306875c810d23c55205bc3130a50bf3ab7dce28fc3417fabb8d2377362169a",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a hand",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图为中间有瞳孔和虹膜的眼睛；B图为带耳廓和内部弯曲轮廓的耳朵；C图为有五根手指和手掌纹的手；D图为有鼻梁和两个鼻孔的鼻子。题面a hand唯一对应C，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "an eye",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图为中间有瞳孔和虹膜的眼睛；B图为带耳廓和内部弯曲轮廓的耳朵；C图为有五根手指和手掌纹的手；D图为有鼻梁和两个鼻孔的鼻子。题面an eye唯一对应A，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a nose",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图为中间有瞳孔和虹膜的眼睛；B图为带耳廓和内部弯曲轮廓的耳朵；C图为有五根手指和手掌纹的手；D图为有鼻梁和两个鼻孔的鼻子。题面a nose唯一对应D，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "an ear",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图为中间有瞳孔和虹膜的眼睛；B图为带耳廓和内部弯曲轮廓的耳朵；C图为有五根手指和手掌纹的手；D图为有鼻梁和两个鼻孔的鼻子。题面an ear唯一对应B，另外三图不具备该词所指的对象或特征。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.play-picture-cards-002",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "游戏用品图卡：球、风筝、跳绳与滑板",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Things for Play",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.59c3fd5ab2bacb21ce907dd61235eceb27f4f63bd5953a53c83e5f00ca9bbc83",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a jump rope",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图为有黑白拼块的圆球；B图为有十字骨架和尾巴的菱形风筝；C图为两端有握柄的弯曲跳绳；D图为下方装轮子的长形滑板。题面a jump rope唯一对应C，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a ball",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图为有黑白拼块的圆球；B图为有十字骨架和尾巴的菱形风筝；C图为两端有握柄的弯曲跳绳；D图为下方装轮子的长形滑板。题面a ball唯一对应A，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a skateboard",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图为有黑白拼块的圆球；B图为有十字骨架和尾巴的菱形风筝；C图为两端有握柄的弯曲跳绳；D图为下方装轮子的长形滑板。题面a skateboard唯一对应D，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a kite",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图为有黑白拼块的圆球；B图为有十字骨架和尾巴的菱形风筝；C图为两端有握柄的弯曲跳绳；D图为下方装轮子的长形滑板。题面a kite唯一对应B，另外三图不具备该词所指的对象或特征。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.room-picture-cards-002",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "房间图卡：椅子、桌子、门与窗",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "In a Room",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.33da52dea22f9011b21273c06f37ca8be490c0783fc0a1f7e3e44fdca1ecc597",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a door",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图为有靠背、座面和椅腿的椅子；B图为有宽桌面和四条桌腿的桌子；C图为有门框和把手的门；D图为有交叉窗框和玻璃反光的窗户。题面a door唯一对应C，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a chair",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图为有靠背、座面和椅腿的椅子；B图为有宽桌面和四条桌腿的桌子；C图为有门框和把手的门；D图为有交叉窗框和玻璃反光的窗户。题面a chair唯一对应A，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a window",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图为有靠背、座面和椅腿的椅子；B图为有宽桌面和四条桌腿的桌子；C图为有门框和把手的门；D图为有交叉窗框和玻璃反光的窗户。题面a window唯一对应D，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a table",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图为有靠背、座面和椅腿的椅子；B图为有宽桌面和四条桌腿的桌子；C图为有门框和把手的门；D图为有交叉窗框和玻璃反光的窗户。题面a table唯一对应B，另外三图不具备该词所指的对象或特征。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.bedside-picture-cards-002",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "卧室图卡：床、枕头、台灯与钟",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Beside the Bed",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.ba899156c801efb8303c015bc5a77281772a0cb0af57dca793fe42e8766d72af",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a lamp",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图为有两端床架和条纹床垫的床，未画出枕头；B图为带缝边、四周柔软凹曲的独立枕头；C图为有灯罩、灯杆和底座的台灯；D图为有圆形表盘和指针的钟。题面a lamp唯一对应C，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a bed",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图为有两端床架和条纹床垫的床，未画出枕头；B图为带缝边、四周柔软凹曲的独立枕头；C图为有灯罩、灯杆和底座的台灯；D图为有圆形表盘和指针的钟。题面a bed唯一对应A，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a clock",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图为有两端床架和条纹床垫的床，未画出枕头；B图为带缝边、四周柔软凹曲的独立枕头；C图为有灯罩、灯杆和底座的台灯；D图为有圆形表盘和指针的钟。题面a clock唯一对应D，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a pillow",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图为有两端床架和条纹床垫的床，未画出枕头；B图为带缝边、四周柔软凹曲的独立枕头；C图为有灯罩、灯杆和底座的台灯；D图为有圆形表盘和指针的钟。题面a pillow唯一对应B，另外三图不具备该词所指的对象或特征。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.shapes-picture-cards-002",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "形状图卡：圆形、三角形、正方形与长方形",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Shape Cards",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.1512ed9b0a4036582d3464374bcd7741e887168c7690770b83c5471ca207b532",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a square",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图为没有角的圆形；B图为有三条边和三个角的三角形；C图为四条边一样长的正方形；D图为明显宽于高度、不是正方形的长方形。题面a square唯一对应C，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a circle",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图为没有角的圆形；B图为有三条边和三个角的三角形；C图为四条边一样长的正方形；D图为明显宽于高度、不是正方形的长方形。题面a circle唯一对应A，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a long rectangle",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图为没有角的圆形；B图为有三条边和三个角的三角形；C图为四条边一样长的正方形；D图为明显宽于高度、不是正方形的长方形。题面a long rectangle唯一对应D，另外三图不具备该词所指的对象或特征。"
+            },
+            {
+              "prompt": "a triangle",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图为没有角的圆形；B图为有三条边和三个角的三角形；C图为四条边一样长的正方形；D图为明显宽于高度、不是正方形的长方形。题面a triangle唯一对应B，另外三图不具备该词所指的对象或特征。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

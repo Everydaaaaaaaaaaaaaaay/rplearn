@@ -1,0 +1,332 @@
+{
+  "createdAt": "2026-10-29T00:32:29.485659+08:00",
+  "reviewBoundary": "原创完整四图短语匹配练习；作者按新动作场景明确绘制并检查主体动作、工具和对象，再逐题核四个选项。复现基础语言不等于新增词汇；不以重排、改名或数量变化重复计组，不声称独立教师、儿童识图或学习者标定。",
+  "imageAssets": [
+    {
+      "id": "image.a0e341fa2942f5ae9bd335eb9a46459f1c02d2dc80997b145187331f984b86ac",
+      "sha256": "a0e341fa2942f5ae9bd335eb9a46459f1c02d2dc80997b145187331f984b86ac",
+      "byteSize": 30986,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "课堂动作图卡：读书、写字、画画与剪纸；A至D依次为reading a book, writing, painting a picture, cutting paper",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-school-actions-003.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看完整图和384×256联系图。字母与主体不重叠；逐项用动作工具与对象区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。"
+    },
+    {
+      "id": "image.5b279d8582f4f3e3febb0b6f48d306fcb9dcef57f1378f254848b47f2956a56f",
+      "sha256": "5b279d8582f4f3e3febb0b6f48d306fcb9dcef57f1378f254848b47f2956a56f",
+      "byteSize": 35354,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "自理动作图卡：刷牙、洗手、梳头与擦手；A至D依次为brushing teeth, washing hands, combing hair, drying hands",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-care-actions-003.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看完整图和384×256联系图。字母与主体不重叠；逐项用动作工具与对象区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。洗手图有水龙头流水和泡沫，擦手图只有毛巾；梳齿接触头发，刷毛接触牙齿。"
+    },
+    {
+      "id": "image.2770d9b1fcd02867dcc35de20c2b6a7ec8968b7272df1efcb54e3458278c5ff3",
+      "sha256": "2770d9b1fcd02867dcc35de20c2b6a7ec8968b7272df1efcb54e3458278c5ff3",
+      "byteSize": 38331,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "家务动作图卡：扫地、浇花、洗盘子与放书；A至D依次为sweeping the floor, watering a plant, washing a plate, putting books on a shelf",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-home-actions-003.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看完整图和384×256联系图。字母与主体不重叠；逐项用动作工具与对象区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。"
+    },
+    {
+      "id": "image.a8b996dbff78bbe3819ba9c8a359dc6307bc531f28f8a5df7f97d4e37e3c723c",
+      "sha256": "a8b996dbff78bbe3819ba9c8a359dc6307bc531f28f8a5df7f97d4e37e3c723c",
+      "byteSize": 29994,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "表情图卡：开心、难过、生气与困倦；A至D依次为happy, sad, angry, sleepy",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-feelings-003.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看完整图和384×256联系图。字母与主体不重叠；逐项用动作工具与对象区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。sad以眼泪和上挑内眉表示，angry以内压眉表示；sleepy使用闭眼张口哈欠和惯用睡意符号。作者判断这些线索可区分，尚无儿童盲测。"
+    }
+  ],
+  "units": [
+    {
+      "id": "primary1.school-actions-picture-cards-003",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "课堂动作图卡：读书、写字、画画与剪纸",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "At School",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.a0e341fa2942f5ae9bd335eb9a46459f1c02d2dc80997b145187331f984b86ac",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "writing",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图是双手拿着摊开的书、看向书页；B图是坐在桌边用铅笔在线条纸上写字；C图是用画笔在画架上的房屋图旁涂画；D图是拿剪刀剪开纸张。writing对应B图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "cutting paper",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图是双手拿着摊开的书、看向书页；B图是坐在桌边用铅笔在线条纸上写字；C图是用画笔在画架上的房屋图旁涂画；D图是拿剪刀剪开纸张。cutting paper对应D图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "reading a book",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图是双手拿着摊开的书、看向书页；B图是坐在桌边用铅笔在线条纸上写字；C图是用画笔在画架上的房屋图旁涂画；D图是拿剪刀剪开纸张。reading a book对应A图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "painting a picture",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图是双手拿着摊开的书、看向书页；B图是坐在桌边用铅笔在线条纸上写字；C图是用画笔在画架上的房屋图旁涂画；D图是拿剪刀剪开纸张。painting a picture对应C图，其他图的动作或表情与题面不相符。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.care-actions-picture-cards-003",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "自理动作图卡：刷牙、洗手、梳头与擦手",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Getting Ready",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.5b279d8582f4f3e3febb0b6f48d306fcb9dcef57f1378f254848b47f2956a56f",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "washing hands",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图是将带刷毛的牙刷放在露出的牙齿前；B图是水龙头流水下的手，旁有水盆和泡沫；C图是手拿有梳齿的梳子在头发上梳理；D图是双手正在毛巾两侧擦拭，没有流水。washing hands对应B图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "drying hands",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图是将带刷毛的牙刷放在露出的牙齿前；B图是水龙头流水下的手，旁有水盆和泡沫；C图是手拿有梳齿的梳子在头发上梳理；D图是双手正在毛巾两侧擦拭，没有流水。drying hands对应D图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "brushing teeth",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图是将带刷毛的牙刷放在露出的牙齿前；B图是水龙头流水下的手，旁有水盆和泡沫；C图是手拿有梳齿的梳子在头发上梳理；D图是双手正在毛巾两侧擦拭，没有流水。brushing teeth对应A图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "combing hair",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图是将带刷毛的牙刷放在露出的牙齿前；B图是水龙头流水下的手，旁有水盆和泡沫；C图是手拿有梳齿的梳子在头发上梳理；D图是双手正在毛巾两侧擦拭，没有流水。combing hair对应C图，其他图的动作或表情与题面不相符。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.home-actions-picture-cards-003",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "家务动作图卡：扫地、浇花、洗盘子与放书",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Helping at Home",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.2770d9b1fcd02867dcc35de20c2b6a7ec8968b7272df1efcb54e3458278c5ff3",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "watering a plant",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图是用长柄扫帚清扫脚边的地面；B图是将壶中的水洒向花盆中的植物；C图是在水槽边用海绵擦有泡沫的盘子；D图是将手里的两本书放向多层书架。watering a plant对应B图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "putting books on a shelf",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图是用长柄扫帚清扫脚边的地面；B图是将壶中的水洒向花盆中的植物；C图是在水槽边用海绵擦有泡沫的盘子；D图是将手里的两本书放向多层书架。putting books on a shelf对应D图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "sweeping the floor",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图是用长柄扫帚清扫脚边的地面；B图是将壶中的水洒向花盆中的植物；C图是在水槽边用海绵擦有泡沫的盘子；D图是将手里的两本书放向多层书架。sweeping the floor对应A图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "washing a plate",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图是用长柄扫帚清扫脚边的地面；B图是将壶中的水洒向花盆中的植物；C图是在水槽边用海绵擦有泡沫的盘子；D图是将手里的两本书放向多层书架。washing a plate对应C图，其他图的动作或表情与题面不相符。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.feelings-picture-cards-003",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "表情图卡：开心、难过、生气与困倦",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "How Do They Feel?",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.a8b996dbff78bbe3819ba9c8a359dc6307bc531f28f8a5df7f97d4e37e3c723c",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "sad",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图是眼角弯起并露齿大笑的开心表情；B图是嘴角下垂并流泪的难过表情；C图是眉毛明显向内压低、嘴角下压的生气表情；D图是闭着眼睛打哈欠，旁有惯用睡意符号的困倦表情。sad对应B图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "sleepy",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图是眼角弯起并露齿大笑的开心表情；B图是嘴角下垂并流泪的难过表情；C图是眉毛明显向内压低、嘴角下压的生气表情；D图是闭着眼睛打哈欠，旁有惯用睡意符号的困倦表情。sleepy对应D图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "happy",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图是眼角弯起并露齿大笑的开心表情；B图是嘴角下垂并流泪的难过表情；C图是眉毛明显向内压低、嘴角下压的生气表情；D图是闭着眼睛打哈欠，旁有惯用睡意符号的困倦表情。happy对应A图，其他图的动作或表情与题面不相符。"
+            },
+            {
+              "prompt": "angry",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图是眼角弯起并露齿大笑的开心表情；B图是嘴角下垂并流泪的难过表情；C图是眉毛明显向内压低、嘴角下压的生气表情；D图是闭着眼睛打哈欠，旁有惯用睡意符号的困倦表情。angry对应C图，其他图的动作或表情与题面不相符。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

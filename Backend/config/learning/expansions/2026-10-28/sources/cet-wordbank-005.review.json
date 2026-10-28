@@ -1,0 +1,799 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "cet-wordbank-005.json",
+  "sourceSHA256": "4563d72f430e1ae6d1ead302327a111aed61d378f22dd928bb93143c39c0317d",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex author of cet-wordbank-005; same author, not independent teacher or learner panel",
+  "reviewedAt": "2026-10-29",
+  "status": "approved",
+  "approvalScope": "Same-author lexical/semantic/full-bank audit only; not release approval.",
+  "checks": {
+    "practices": 8,
+    "scoreableResponses": 80,
+    "undergraduatePractices": 4,
+    "postgraduatePractices": 4,
+    "candidatesPerBank": 15,
+    "gapsPerPassage": 10,
+    "distinctAnswerWordsPerPassage": 10,
+    "unusedCandidatesPerPassage": 5,
+    "allGapMarkersAppearExactlyOnce": true,
+    "allQuestionOptionsUseIdenticalSharedBank": true,
+    "matchingFrozenOriginalLevelsAndFamilies": true,
+    "missingMediaDependencies": 0
+  },
+  "units": [
+    {
+      "id": "undergraduate.wind-streamers-bank-005",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "attached",
+        "airflow",
+        "steady",
+        "horizontal",
+        "flutter",
+        "observe",
+        "leeward",
+        "gusts",
+        "direction",
+        "indirectly"
+      ],
+      "unusedWords": [
+        "continuous",
+        "instruments",
+        "pressure",
+        "slack",
+        "transparent"
+      ],
+      "findings": [
+        "All terms are defined within a shore-based model lesson; no sailing knowledge or video is required.",
+        "Steady concerns even strength, horizontal spatial alignment, leeward the side away from wind and gusts short bursts; these labels cannot be swapped.",
+        "Indirect observation through thread movement is explicitly separated from a complete account of real-water forces.",
+        "Unused continuous, instruments, pressure, slack and transparent were checked against every slot, including continuous versus steady at gap3."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/full-passage unique-key review only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 274,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 1,
+          "answerWord": "attached",
+          "finding": "fastened at selected points解释attached固定在表面。slack为松弛、steady为稳定，transparent透明不说明连接；其他候选不构成该过去分词连接关系。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 0,
+          "answerWord": "airflow",
+          "finding": "movement of air across sail直接定义airflow气流。pressure为压强不等于空气运动，direction只方向、instruments为仪器，其他名词不指该流动过程。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 13,
+          "answerWord": "steady",
+          "finding": "even strength rather than changing解释steady稳定的。continuous仅不断不保证强度均匀，transparent透明、slack松弛、horizontal水平、leeward背风均不定义强度稳定。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 6,
+          "answerWord": "horizontal",
+          "finding": "parallel to table而非垂下定义horizontal水平。steady表稳定不表角度，slack松弛不等于平行；leeward是背风侧，transparent透明不表空间方向。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 4,
+          "answerWord": "flutter",
+          "finding": "moving rapidly irregularly定义flutter飘动。observe观察以学习者为主体，非线条自身动作；其他词不作began to后的这种快速摆动动词。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 10,
+          "answerWord": "observe",
+          "finding": "before describing及looking at both sides要求observe观察。flutter指飘动不能以both sides为观察宾语；其余候选非该查看动作原形动词。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 9,
+          "answerWord": "leeward",
+          "finding": "side facing away from wind直接定义leeward背风侧。direction为方向，horizontal水平不指背风，pressure压强与steady稳定不定义相对风的一侧。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 5,
+          "answerWord": "gusts",
+          "finding": "brief bursts stronger wind定义gusts阵风。instruments仪器、airflow泛指流动、pressure压强均非复数短促强风；其他词词性或含义不符。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 3,
+          "answerWord": "direction",
+          "finding": "in which thread pointed要求direction指向。pressure为压强，airflow空气流不自然作线头指向in which结构，instruments为器具；其他词非该方向名词。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 7,
+          "answerWord": "indirectly",
+          "finding": "through effect on small object说明indirectly间接显示。其余候选没有表示借助可见后果认识不可见气流的方式副词；continuous等形容词不能直接修饰revealed。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.refrigerator-heat-bank-005",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "interior",
+        "circulates",
+        "evaporates",
+        "absorbed",
+        "compressor",
+        "condenses",
+        "insulation",
+        "thermostat",
+        "temperature",
+        "ventilation"
+      ],
+      "unusedWords": [
+        "efficient",
+        "moderately",
+        "releases",
+        "sealed",
+        "uniform"
+      ],
+      "findings": [
+        "The simplified cycle explicitly defines evaporation as liquid-to-gas and condensation as gas-to-liquid; each gap tests the supplied relation.",
+        "Compressor and thermostat have distinct pressure versus control functions. Insulation limits wall heat transfer; ventilation helps remove exterior heat.",
+        "The explanation does not claim all appliances have one detailed design or that insulation prevents every transfer.",
+        "Unused efficient, moderately, releases, sealed and uniform were checked against every grammar/meaning slot."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/full-passage unique-key review only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 288,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 7,
+          "answerWord": "interior",
+          "finding": "space inside cabinet直接定义interior内部。insulation为隔热层、ventilation通风、compressor压缩机、thermostat温控器都不是柜内空间本身。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 1,
+          "answerWord": "circulates",
+          "finding": "repeatedly travelling closed system为circulates循环。releases释放需合适宾语，evaporates蒸发和condenses凝结是局部相变非整个管路周回；其他项非该单数主语动词。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 5,
+          "answerWord": "evaporates",
+          "finding": "liquid into gas定义evaporates蒸发。condenses方向相反，circulates循环不保证相变，releases需宾语而非into gas表示自己变气；其他词不作该相变谓语。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 0,
+          "answerWord": "absorbed",
+          "finding": "heat from cabinet into working fluid为absorbed吸收。sealed为密封不是热被接收，releases为主动单数词形不能作is后被动，其他候选非该过去分词。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 2,
+          "answerWord": "compressor",
+          "finding": "increasing gas pressure定义compressor压缩机。thermostat监测控制开停，不是压气部件；interior空间、insulation隔热层、ventilation通风均非该机械。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 3,
+          "answerWord": "condenses",
+          "finding": "gas back into liquid定义condenses凝结。evaporates是反向蒸发、circulates泛循环、releases为放出不是自身变液；其他词词性不合。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 6,
+          "answerWord": "insulation",
+          "finding": "walls protective layer slows heat transfer定义insulation隔热。ventilation空气流通反而非墙内阻热层，interior为空间，thermostat控制器、compressor机械均非此材料层。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 12,
+          "answerWord": "thermostat",
+          "finding": "monitors condition、controls when runs according setting定义thermostat温控器。compressor执行压缩非监测设定装置；temperature是被监测量而非控制装置；其他候选非该器件。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 11,
+          "answerWord": "temperature",
+          "finding": "measure how hot cold直接定义temperature温度。interior空间，ventilation空气流动，insulation隔热材料均非冷热程度量；其他候选不符合定义。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 14,
+          "answerWord": "ventilation",
+          "finding": "space and air movement allow heat away定义ventilation通风。insulation阻热与外侧散热需求不同，interior为柜内空间；其他名词非外部空气交换条件。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.braille-cell-bank-005",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "columns",
+        "positions",
+        "embossed",
+        "fingertips",
+        "tactile",
+        "arrangement",
+        "context",
+        "abbreviations",
+        "sequence",
+        "transcribe"
+      ],
+      "unusedWords": [
+        "adjacent",
+        "fluent",
+        "identical",
+        "isolated",
+        "rotated"
+      ],
+      "findings": [
+        "The cell layout is two columns of three possible positions, and tactile raised patterns are distinguished from a printed introductory diagram.",
+        "Arrangement is within-cell spatial position; sequence is the ordered progression across cells; context affects interpretation in a specified code.",
+        "The text avoids treating introductory alphabet patterns as every braille convention or claiming one afternoon creates fluency.",
+        "Unused adjacent, fluent, identical, isolated and rotated were checked across all ten gaps. No unseen braille image is needed to answer."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/full-passage unique-key review only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 299,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 3,
+          "answerWord": "columns",
+          "finding": "two vertical且three top to bottom直接指columns列。positions为位置非两垂直列名，sequence顺序、arrangement布局、context语境均非所定义两列。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 10,
+          "answerWord": "positions",
+          "finding": "possible dot positions为单元内各可能点位。columns只有两列但点位六个，abbreviations缩写、fingertips指尖均不是点可占的格位；其他候选不合定义。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 5,
+          "answerWord": "embossed",
+          "finding": "pushed outward stand above surface为embossed压凸。isolated为隔离、rotated为旋转，都不说明纸面变凸，identical/adjacent等形容词也不表造凸点动作。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 6,
+          "answerWord": "fingertips",
+          "finding": "sensitive ends fingers直接定义fingertips指尖。positions位置、columns列、abbreviations缩写是符号或抽象位置，不是身体触摸部位；其他项含义不符。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 13,
+          "answerWord": "tactile",
+          "finding": "read through touch rather than ink sight直接定义tactile触觉的。fluent流利、identical相同、adjacent邻接、isolated独立都不说明感知通道。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 2,
+          "answerWord": "arrangement",
+          "finding": "same number but different places说明arrangement排列重要。sequence后文指定跨单元的先后，这里为一格内部空间排布；context周边解释条件不是点位布局，其他名词不合。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 4,
+          "answerWord": "context",
+          "finding": "surrounding signs and writing system解释context语境。arrangement指格内点位布局，sequence只是先后而非完整解释环境；其他候选不命名所述上下文条件。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 0,
+          "answerWord": "abbreviations",
+          "finding": "shortened forms representing words letters定义abbreviations缩略。columns列、positions点位、fingertips指尖都不是简写形式，sequence为顺序，其他词词性不合。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 12,
+          "answerWord": "sequence",
+          "finding": "ordered series one cell next定义sequence序列。arrangement可泛布局但这里强调先后顺序且第6空定义格内布局；context周边语境不等于ordered series；其他名词不指序列。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 14,
+          "answerWord": "transcribe",
+          "finding": "approved material into braille version指transcribe转写。rotated/embossed是过去式不能接staff此处一般现在及into version的转写义，其他项非适合的动词原形。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.ant-trail-branch-bank-005",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "colony",
+        "route",
+        "scent",
+        "chemical",
+        "shorter",
+        "reinforced",
+        "evaporated",
+        "barrier",
+        "detour",
+        "individual"
+      ],
+      "unusedWords": [
+        "dispersed",
+        "decay",
+        "departures",
+        "randomly",
+        "traces"
+      ],
+      "findings": [
+        "The text is explicitly a simplified fictional model; it does not state a universal rule for all ant species or every route choice.",
+        "Colony versus individual and route versus detour have separate definitions; the latter also respects the once-only rule.",
+        "Reinforcement adds signal, evaporation removes material, and a barrier introduces a new path condition.",
+        "Unused dispersed, decay, departures, randomly and traces were checked against all slots. The close unused concentrated was replaced before publication so strengthened versus dispersed has an explicit directional contrast."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/full-passage unique-key review only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 290,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 2,
+          "answerWord": "colony",
+          "finding": "group ants living together定义colony蚁群。individual是单体非群体，departures离开、traces痕迹均非共同生活群落，其他名词不合。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 10,
+          "answerWord": "route",
+          "finding": "one route was shorter指两路径之一。detour为绕行但此时未有障碍绕路，scent气味、barrier障碍、decay衰减均不是最初路径名。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 11,
+          "answerWord": "scent",
+          "finding": "an odour others detect定义scent气味。traces为复数不能接a，chemical作物质名也非此处嗅觉线索定义；route路径、barrier障碍不指气味。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 1,
+          "answerWord": "chemical",
+          "finding": "carried by substances rather than spoken drawing定义chemical化学信号。dispersed是分散不说明信号媒介，shorter长度、individual个体均不定义物质传递的性质。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 13,
+          "answerWord": "shorter",
+          "finding": "earlier return before long-branch ants锁定shorter较短。dispersed分散、individual单独、chemical化学均不表示路径更短；其他候选词性不合。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 9,
+          "answerWord": "reinforced",
+          "finding": "strengthening rather than weakening定义reinforced加强。evaporated蒸发为损失并不增强，dispersed是分散，与strengthening signal的增强方向不符；其余非合适过去式。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 7,
+          "answerWord": "evaporated",
+          "finding": "into the air及material loss定义evaporated挥发。reinforced强化与损失相反，decay原形词形不合且不等于进入空气，其他项不作该过去时过程。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 0,
+          "answerWord": "barrier",
+          "finding": "obstruction cannot pass directly定义barrier障碍。detour是绕行路径，route普通路径、scent气味、colony蚁群都不是堵住熟路的障碍物。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 6,
+          "answerWord": "detour",
+          "finding": "different way around it、diversion定义detour绕路。route泛路径但第2空占用且此处专指偏离原线绕障；barrier为物体、departures复数不接a，其他项无此专义。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 8,
+          "answerWord": "individual",
+          "finding": "one organism acting locally定义individual单个的。chemical只表化学性质、dispersed分散、shorter较短均不表达一只而非群体；其他候选不适合an后定语。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.tree-ring-proxy-bank-005",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "proxy",
+        "annual",
+        "chronology",
+        "calibration",
+        "correlation",
+        "confounded",
+        "replicate",
+        "extrapolate",
+        "variability",
+        "instrumentally"
+      ],
+      "unusedWords": [
+        "dormant",
+        "indices",
+        "lagged",
+        "residual",
+        "synchronous"
+      ],
+      "findings": [
+        "Proxy measurement and reconstructed target are distinct; annual ring formation is an explicitly given condition of this exercise, not asserted for every tree.",
+        "Chronology assigns years, calibration relates ring properties to known values, correlation describes co-variation and confounding concerns alternative influences.",
+        "Replicate repeats within an appropriate sample design; extrapolate extends beyond the tested range. The explanations do not conflate them.",
+        "Unused dormant, indices, lagged, residual and synchronous were tested against every slot; no actual climate dataset or calibration success is claimed."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/full-passage unique-key review only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 319,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 10,
+          "answerWord": "proxy",
+          "finding": "indirect indicator infer unrecorded variable直接定义proxy代用指标。indices泛指标为复数且不接a，chronology为时序，calibration为校准，correlation为相关，均非所定义间接替代物。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 0,
+          "answerWord": "annual",
+          "finding": "once each year直接定义annual年度的。synchronous为同步、lagged为滞后、dormant为休眠、residual为残余，均不指一年一次的形成周期。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 2,
+          "answerWord": "chronology",
+          "finding": "ordered sequence tied years定义chronology年代序列。calibration为关系标定、correlation为共变，proxy代用指标，variability变异性，均不命名具体历年排列。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 1,
+          "answerWord": "calibration",
+          "finding": "relating ring property known observations定义calibration校准。correlation只是其后报告的相关关系，chronology是已建立时序；其他名词不指用已知观测标定关系的过程。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 4,
+          "answerWord": "correlation",
+          "finding": "statistical及how two varied together定义correlation相关。calibration是标定过程不直接等于共同变化指标，variability是单个量变化程度，chronology为时间排序，均非此关系名。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 3,
+          "answerWord": "confounded",
+          "finding": "effect mixed another undistinguished influence定义confounded混杂。lagged为滞后、synchronous同步、dormant休眠、residual残留都不表示混入未区分因素；其他候选词形或含义不符。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 11,
+          "answerWord": "replicate",
+          "finding": "repeating analysis additional samples明确定义replicate重复验证。extrapolate是延伸到未试范围，非再取适当样本重复；其余候选不作to后的该原形动作。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 6,
+          "answerWord": "extrapolate",
+          "finding": "beyond range tested直接定义extrapolate外推。replicate重复不等于跨范围延伸，其他词非该动作原形；不能把证据范围外延伸说成已有重复。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 14,
+          "answerWord": "variability",
+          "finding": "changes time rather perfect constancy定义variability变异。correlation两量共变、chronology序列、calibration标定、proxy代用物均不直接指时间变化性质。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 8,
+          "answerWord": "instrumentally",
+          "finding": "with instruments直接解释instrumentally通过仪器地。其余候选无表示仪器直接测量方式的副词；annual等形容词不能修饰measured，且与重建来源区别不符。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.interpreted-testimony-bank-005",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "interpreter",
+        "consecutive",
+        "omission",
+        "pragmatic",
+        "register",
+        "explicit",
+        "ambiguity",
+        "attribution",
+        "witness",
+        "verbatim"
+      ],
+      "unusedWords": [
+        "contemporaneous",
+        "deference",
+        "paraphrase",
+        "sequentially",
+        "visibility"
+      ],
+      "findings": [
+        "The exercise is fictional language training, not a claim about one jurisdiction’s legal duties.",
+        "Witness and interpreter are different sources. Consecutive describes turn timing, register social style and pragmatic situation-dependent function.",
+        "Omission changes commitment, ambiguity remains an issue for clarification, and attribution preserves who contributed each statement.",
+        "Unused contemporaneous, deference, paraphrase, sequentially and visibility were checked against all gaps; verbatim is explicitly a source-language transcript, not an impossible demand for identical words across languages."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/full-passage unique-key review only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 329,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 6,
+          "answerWord": "interpreter",
+          "finding": "person carries speech between languages定义interpreter口译员。witness为事件叙述者，与该角色明确不同；attribution归属、paraphrase释述、visibility可见性非这个人。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 2,
+          "answerWord": "consecutive",
+          "finding": "speaker completes segment then translation rather at once定义consecutive交替传译。contemporaneous表同时期不表示分段后译，explicit明确、pragmatic语用、verbatim逐字均不是这种轮次形式名称。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 7,
+          "answerWord": "omission",
+          "finding": "left out qualification、removed original part定义omission遗漏。paraphrase为换述通常仍传意，attribution归属、ambiguity歧义、deference敬让不等于删去限定语。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 9,
+          "answerWord": "pragmatic",
+          "finding": "utterance does in situation rather dictionary alone定义pragmatic语用。explicit明确、contemporaneous同一时期、consecutive交替、verbatim逐字均不表示语境中的行为功能。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 10,
+          "answerWord": "register",
+          "finding": "level style language relationship定义register语域。deference只是尊让态度不是全部语言层级风格，paraphrase换述、ambiguity歧义、visibility可见性均非该定义。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 5,
+          "answerWord": "explicit",
+          "finding": "as though speaker stated directly说明make explicit明说。verbatim逐字不意味着把未确定理解变成明说，pragmatic为语用不表表达显性；其他词不作此对应directly stated的补语。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 0,
+          "answerWord": "ambiguity",
+          "finding": "possibility more one meaning直接定义ambiguity歧义。omission遗漏不等于多个释义，paraphrase换述、attribution归属、deference敬让均非多义可能性。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 1,
+          "answerWord": "attribution",
+          "finding": "identifying who said what定义attribution归属。register语域、visibility可见性、paraphrase释述均不直接标明说话人；ambiguity多义与清晰说话归属不同。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 14,
+          "answerWord": "witness",
+          "finding": "who described an event且与language professional分开，witness证人。interpreter为语言转换者已占第1空且此句正区分，其他候选不命名这一事件陈述人。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 12,
+          "answerWord": "verbatim",
+          "finding": "word for word instead summary定义verbatim逐字。sequentially依次只说次序不保证不改词，contemporaneous形容同时期而不表逐字方式；其他候选没有此准确复制原话的义。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.colour-film-reference-bank-005",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "negative",
+        "emulsion",
+        "deteriorated",
+        "reference",
+        "saturation",
+        "contrast",
+        "exposure",
+        "selectively",
+        "splice",
+        "conjecture"
+      ],
+      "unusedWords": [
+        "chromatic",
+        "composite",
+        "duplicate",
+        "frame",
+        "uniformity"
+      ],
+      "findings": [
+        "Negative and emulsion are defined as film element and coated layer. Physical deterioration is not equated with a scanner fault.",
+        "The costume photograph is explicitly a reference, not a duplicate film; its support is limited to relevant decisions.",
+        "Saturation, contrast and original exposure are separately defined. Selective treatment does not claim one universal increase restores authenticity.",
+        "Splice records material history; conjecture labels unsupported reconstruction. Unused chromatic, composite, duplicate, frame and uniformity were checked against all slots."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/full-passage unique-key review only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 304,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 9,
+          "answerWord": "negative",
+          "finding": "first sentence explicitly defines negative film element, contrasting direct ordinary positive viewing。frame是一帧、duplicate副本、composite合成均不说明这里特定反像元素；其他候选不符合该介质名称。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 6,
+          "answerWord": "emulsion",
+          "finding": "light-sensitive coated layer on base直接定义emulsion乳剂层。splice为接片，frame为单帧，negative是整个元素而不是其感光层；其他词不指该涂层。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 4,
+          "answerWord": "deteriorated",
+          "finding": "condition worsened直接定义deteriorated劣化。duplicate为副本、composite合成均非此恶化过去分词，其他候选词性不合且不表状态变坏。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 10,
+          "answerWord": "reference",
+          "finding": "point of comparison explicitly reference参照，且明说rather than newly copied film排除duplicate。conjecture为推测非实存比较源，frame单帧不能指这张服装照在论证中的参照功能。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 12,
+          "answerWord": "saturation",
+          "finding": "intensity colour定义saturation饱和度。contrast后定义明暗差，exposure为拍摄入光量、uniformity均一性都不是颜色强度指标。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 3,
+          "answerWord": "contrast",
+          "finding": "difference lighter darker定义contrast对比度。saturation色强、exposure拍摄受光、uniformity均匀均不等于明暗差异；其他候选非该控制参数。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 7,
+          "answerWord": "exposure",
+          "finding": "amount light reaching film shooting定义exposure曝光。saturation和contrast是影像属性而不是此次定义的受光量，reference参照、conjecture推测均非拍摄参数。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 11,
+          "answerWord": "selectively",
+          "finding": "regions where evidence different rather identical everywhere定义selectively有选择地。其余候选无此方式副词，uniformity为名词不能代替区域差别处理的副词。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 13,
+          "answerWord": "splice",
+          "finding": "join between pieces film定义splice接片。frame单帧不是两片接点，emulsion涂层、negative元素、composite合成并不具体指物理拼接处。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 2,
+          "answerWord": "conjecture",
+          "finding": "inference beyond securely established说明conjecture推测。reference为证据参照、uniformity均一、exposure曝光、contrast对比均不指证据不足时推断的认识性质。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.software-license-chain-bank-005",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "dependency",
+        "transitive",
+        "license",
+        "obligations",
+        "redistribution",
+        "modification",
+        "attribution",
+        "compatible",
+        "disclose",
+        "explicitly"
+      ],
+      "unusedWords": [
+        "fork",
+        "inherited",
+        "proprietary",
+        "repository",
+        "warranty"
+      ],
+      "findings": [
+        "The software terms are explicitly imagined; no real license’s obligations are invented or generalised.",
+        "Direct dependency versus transitive relation is defined. License permissions and obligations are distinct from download availability.",
+        "Redistribution and modification are separate actions; attribution does not transfer authorship of every change, and compatible concerns jointly satisfiable conditions.",
+        "Unused fork, inherited, proprietary, repository and warranty were checked against all slots; no generic rule that every public library requires disclosure is asserted."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/full-passage unique-key review only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 323,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 2,
+          "answerWord": "dependency",
+          "finding": "component needed another to work定义dependency依赖项。repository是代码存储库，fork为分支副本，license许可、warranty保证均不是此所需组件角色。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 13,
+          "answerWord": "transitive",
+          "finding": "through intermediate rather direct selection定义transitive传递性的。inherited泛继承、proprietary专有均不精确表达经中间依赖关系，compatible为可兼容、explicitly为副词也不合。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 7,
+          "answerWord": "license",
+          "finding": "grant permissions with conditions定义license许可。warranty为保证不等于授权，repository存储地点、fork副本不命名允许使用的条款文书。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 9,
+          "answerWord": "obligations",
+          "finding": "duties accompanied permission直接定义obligations义务。attribution是可能的一项署名要求而非此处复数义务总称，modification修改、redistribution再分发是行为非责任总类。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 11,
+          "answerWord": "redistribution",
+          "finding": "passing copies other people定义redistribution再分发。modification改代码不等于给人副本，fork分支副本、dependency依赖不命名传递复制品的动作。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 8,
+          "answerWord": "modification",
+          "finding": "change to code直接定义modification修改。redistribution复制分发可不改，attribution署名不等于改变源代码，fork副本可能含或不含修改，其他项不直接等于此定义。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 0,
+          "answerWord": "attribution",
+          "finding": "credit identifying original contributors直接定义attribution署名。warranty为保证、license授权总条款、repository仓库均不指贡献者致谢身份；其他候选不合。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 1,
+          "answerWord": "compatible",
+          "finding": "able complied with together定义compatible兼容。proprietary专有不表示两组条件能否同履，inherited继承、transitive传递不定义相容，其他词词性或意思不符。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 3,
+          "answerWord": "disclose",
+          "finding": "making specified information available recipients直接定义disclose披露。fork作动词建立分叉不表示公开指定信息；其他候选无该会使信息可获得的原形动词。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 4,
+          "answerWord": "explicitly",
+          "finding": "directly unambiguously rather implied直接定义explicitly明确地。其余候选没有此表达显性方式副词，inherited等分词不能直接修饰stated表清楚说明。"
+        }
+      ]
+    }
+  ],
+  "unresolvedConcerns": [
+    "No independent teacher or learner difficulty/discrimination calibration; authored level alignment remains provisional.",
+    "Cases are original simplified educational contexts, not claims of actual scientific or legal outcomes.",
+    "No compiled manifests/index changes, publication or deployment performed by this author-source task."
+  ]
+}

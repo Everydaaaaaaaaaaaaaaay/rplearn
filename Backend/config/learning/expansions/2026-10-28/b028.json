@@ -1,0 +1,2042 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b028",
+  "createdAt": "2026-10-29T00:28:58.554192+08:00",
+  "sourceSHA256": "d28ef26eb05287246950d8a3051a20f4ed35f3cbdbe696132d32a6b844b871b9",
+  "reviewSHA256": "031185a59cd740d8e484cb87d071a49dfe9e0580e8d577f626b97b37fc33c9cc",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.cafe-order-correction-018",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "小咖啡馆里纠正点单",
+        "summary": "小咖啡馆里纠正点单，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.cafe-order-correction-018",
+          "family": "function_choice",
+          "label": "小咖啡馆里纠正点单",
+          "candidateSHA256": "a437e4716edf43e36b0d9af89691e609b8449f050631f49d1b1f175652dd3e85",
+          "authorCheckSHA256": "88c510fd8740691ddc560ab6b4918e0bbb7699ab125c20b4c21ee613ded65a15",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.cafe-order-correction-018.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b028；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Cafe Order Correction 018\n\nA child is at a café with Dad. Read each need and choose what the child should say."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.cafe-order-correction-018.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You asked for water, but the helper brings milk. What do you say?",
+            "material": "Cafe Order Correction 018\n\nA child is at a café with Dad. Read each need and choose what the child should say.",
+            "explanation": "A礼貌指出误给并说所点水；B牛奶非颜色；C把杯给地面不能纠正点单。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Thank you, but I asked for water."
+              },
+              {
+                "id": "o1",
+                "text": "Milk is a colour."
+              },
+              {
+                "id": "o2",
+                "text": "Give my cup to the floor."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.cafe-order-correction-018.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your soup is too hot to eat. You want to wait. What do you say?",
+            "material": "Cafe Order Correction 018\n\nA child is at a café with Dad. Read each need and choose what the child should say.",
+            "explanation": "B先冷却符合太热需等；A快吃、C更热均不满足当前需要。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I will eat it very fast now."
+              },
+              {
+                "id": "o1",
+                "text": "I will let it cool first."
+              },
+              {
+                "id": "o2",
+                "text": "Please make it even hotter."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.cafe-order-correction-018.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You want bread without butter. What do you say?",
+            "material": "Cafe Order Correction 018\n\nA child is at a café with Dad. Read each need and choose what the child should say.",
+            "explanation": "C明确要无黄油面包；A反向加黄油；B不要全部面包不等于想吃无黄油。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Please put butter on every piece."
+              },
+              {
+                "id": "o1",
+                "text": "Please take all the bread away."
+              },
+              {
+                "id": "o2",
+                "text": "May I have bread without butter?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.cafe-order-correction-018.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You have dropped your spoon and need a clean one. What do you say?",
+            "material": "Cafe Order Correction 018\n\nA child is at a café with Dad. Read each need and choose what the child should say.",
+            "explanation": "A索取净勺解决落地；B窗、C云数无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "May I have a clean spoon, please?"
+              },
+              {
+                "id": "o1",
+                "text": "I need a bigger window."
+              },
+              {
+                "id": "o2",
+                "text": "There are three clouds."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.cafe-order-correction-018.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The helper asks if you want more food. You have had enough. What do you say?",
+            "material": "Cafe Order Correction 018\n\nA child is at a café with Dad. Read each need and choose what the child should say.",
+            "explanation": "B礼貌谢绝并说明吃饱；A全要与足量相反；C鞋位不回答加餐。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, give me everything."
+              },
+              {
+                "id": "o1",
+                "text": "No, thank you. I am full."
+              },
+              {
+                "id": "o2",
+                "text": "My shoe is under the chair."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "73c156bfd235e18c37c21dc4472c7f0823178845cef08176ac1122181b2bfee6",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.cafe-order-correction-018.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.cafe-order-correction-018.reading.q1",
+            "expansion.20261028.primary2.cafe-order-correction-018.reading.q2",
+            "expansion.20261028.primary2.cafe-order-correction-018.reading.q3",
+            "expansion.20261028.primary2.cafe-order-correction-018.reading.q4",
+            "expansion.20261028.primary2.cafe-order-correction-018.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.basketball-turn-cards-018",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "投篮游戏的轮次卡",
+        "summary": "投篮游戏的轮次卡，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.basketball-turn-cards-018",
+          "family": "function_choice",
+          "label": "投篮游戏的轮次卡",
+          "candidateSHA256": "853987e85df5052d18523c8f5dc1c35f038c1f038dda70b4351cc99ac6c8a77f",
+          "authorCheckSHA256": "88c510fd8740691ddc560ab6b4918e0bbb7699ab125c20b4c21ee613ded65a15",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.basketball-turn-cards-018.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b028；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Basketball Turn Cards 018\n\nAt the basketball game, each child gets three throws. Wait behind the cone until your name is called. Give the ball back to the helper after your turn. A child may use the lower basket if the high one is too hard. Put your turn card in the box when you finish."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.basketball-turn-cards-018.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend has used three throws and wants a fourth. You say, \"____\"",
+            "material": "Basketball Turn Cards 018\n\nAt the basketball game, each child gets three throws. Wait behind the cone until your name is called. Give the ball back to the helper after your turn. A child may use the lower basket if the high one is too hard. Put your turn card in the box when you finish.",
+            "explanation": "B每人三投已完成；A加十、C占球均违轮次。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Take ten more throws."
+              },
+              {
+                "id": "o1",
+                "text": "Your turn is over now."
+              },
+              {
+                "id": "o2",
+                "text": "Keep the ball all day."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.basketball-turn-cards-018.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend runs past the cone before being called. You say, \"____\"",
+            "material": "Basketball Turn Cards 018\n\nAt the basketball game, each child gets three throws. Wait behind the cone until your name is called. Give the ball back to the helper after your turn. A child may use the lower basket if the high one is too hard. Put your turn card in the box when you finish.",
+            "explanation": "C叫名前锥后等；A继续前跑、B乱叫均不合等待。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Run under the basket."
+              },
+              {
+                "id": "o1",
+                "text": "Call every name at once."
+              },
+              {
+                "id": "o2",
+                "text": "Wait behind the cone for your name."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.basketball-turn-cards-018.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A small child cannot reach the high basket. You say, \"____\"",
+            "material": "Basketball Turn Cards 018\n\nAt the basketball game, each child gets three throws. Wait behind the cone until your name is called. Give the ball back to the helper after your turn. A child may use the lower basket if the high one is too hard. Put your turn card in the box when you finish.",
+            "explanation": "A允许较低篮；B回家、C无球投非适应办法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "You may use the lower basket."
+              },
+              {
+                "id": "o1",
+                "text": "You must go home."
+              },
+              {
+                "id": "o2",
+                "text": "You must throw with no ball."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.basketball-turn-cards-018.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend finishes and holds the ball away from the helper. You say, \"____\"",
+            "material": "Basketball Turn Cards 018\n\nAt the basketball game, each child gets three throws. Wait behind the cone until your name is called. Give the ball back to the helper after your turn. A child may use the lower basket if the high one is too hard. Put your turn card in the box when you finish.",
+            "explanation": "B轮后归帮手；A藏、C送别班非回收。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Hide the ball in a bag."
+              },
+              {
+                "id": "o1",
+                "text": "Give the ball back to the helper."
+              },
+              {
+                "id": "o2",
+                "text": "Take it to the next classroom."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.basketball-turn-cards-018.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend finishes but keeps the turn card. You say, \"____\"",
+            "material": "Basketball Turn Cards 018\n\nAt the basketball game, each child gets three throws. Wait behind the cone until your name is called. Give the ball back to the helper after your turn. A child may use the lower basket if the high one is too hard. Put your turn card in the box when you finish.",
+            "explanation": "C完成卡入盒；A重复轮次无许可；B球内非卡存处。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Use it for another full turn now."
+              },
+              {
+                "id": "o1",
+                "text": "Put it inside the ball."
+              },
+              {
+                "id": "o2",
+                "text": "Put your card in the box."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "52e29c7862d28a6c3112fe3b2f5d5bff6a824a39ebae6145c519f74a995d206b",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.basketball-turn-cards-018.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.basketball-turn-cards-018.reading.q1",
+            "expansion.20261028.primary2.basketball-turn-cards-018.reading.q2",
+            "expansion.20261028.primary2.basketball-turn-cards-018.reading.q3",
+            "expansion.20261028.primary2.basketball-turn-cards-018.reading.q4",
+            "expansion.20261028.primary2.basketball-turn-cards-018.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.dripping-tap-cup-018",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "小杯接住的滴水声",
+        "summary": "小杯接住的滴水声，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.dripping-tap-cup-018",
+          "family": "reading_tf",
+          "label": "小杯接住的滴水声",
+          "candidateSHA256": "23ef56aa03836e71a133d825715e801596e1f0069e15d40e3817a288b3d1face",
+          "authorCheckSHA256": "88c510fd8740691ddc560ab6b4918e0bbb7699ab125c20b4c21ee613ded65a15",
+          "sourceGroupIds": [
+            "original.bens-bag-reading#primary3.dripping-tap-cup-018.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b028；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Dripping Tap Cup 018\n\nAt night, I hear drops in the bathroom. Dad checks the tap. It is closed, but water still drips. He puts a cup below it so we can see how much water is lost. In the morning, the cup is half full. Mum calls a repair worker. I use the collected clean water on our flowerpot. The worker fixes the tap that afternoon. The next night is quiet."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.dripping-tap-cup-018.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The tap is open when Dad first checks it.",
+            "material": "Dripping Tap Cup 018\n\nAt night, I hear drops in the bathroom. Dad checks the tap. It is closed, but water still drips. He puts a cup below it so we can see how much water is lost. In the morning, the cup is half full. Mum calls a repair worker. I use the collected clean water on our flowerpot. The worker fixes the tap that afternoon. The next night is quiet.",
+            "explanation": "B正确：closed but still drips；A把故障滴水当开着。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.dripping-tap-cup-018.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad puts a cup below the tap.",
+            "material": "Dripping Tap Cup 018\n\nAt night, I hear drops in the bathroom. Dad checks the tap. It is closed, but water still drips. He puts a cup below it so we can see how much water is lost. In the morning, the cup is half full. Mum calls a repair worker. I use the collected clean water on our flowerpot. The worker fixes the tap that afternoon. The next night is quiet.",
+            "explanation": "A正确：cup below it；B否认检查记录方法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.dripping-tap-cup-018.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The cup is half full the next morning.",
+            "material": "Dripping Tap Cup 018\n\nAt night, I hear drops in the bathroom. Dad checks the tap. It is closed, but water still drips. He puts a cup below it so we can see how much water is lost. In the morning, the cup is half full. Mum calls a repair worker. I use the collected clean water on our flowerpot. The worker fixes the tap that afternoon. The next night is quiet.",
+            "explanation": "A正确：morning half full；B否认观察量。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.dripping-tap-cup-018.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer pours the collected water into a flowerpot.",
+            "material": "Dripping Tap Cup 018\n\nAt night, I hear drops in the bathroom. Dad checks the tap. It is closed, but water still drips. He puts a cup below it so we can see how much water is lost. In the morning, the cup is half full. Mum calls a repair worker. I use the collected clean water on our flowerpot. The worker fixes the tap that afternoon. The next night is quiet.",
+            "explanation": "A正确：use collected clean water on flowerpot；B否认再利用动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.dripping-tap-cup-018.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The tap is still dripping the next night.",
+            "material": "Dripping Tap Cup 018\n\nAt night, I hear drops in the bathroom. Dad checks the tap. It is closed, but water still drips. He puts a cup below it so we can see how much water is lost. In the morning, the cup is half full. Mum calls a repair worker. I use the collected clean water on our flowerpot. The worker fixes the tap that afternoon. The next night is quiet.",
+            "explanation": "B正确：afternoon修好，next night quiet；A忽略修复结果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "966518f8f49d935b32c7b540c0b3ed3270358efcd9eb287422e723d3b20d5fc5",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.bens-bag-reading#primary3.dripping-tap-cup-018.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.dripping-tap-cup-018.reading.q1",
+            "expansion.20261028.primary3.dripping-tap-cup-018.reading.q2",
+            "expansion.20261028.primary3.dripping-tap-cup-018.reading.q3",
+            "expansion.20261028.primary3.dripping-tap-cup-018.reading.q4",
+            "expansion.20261028.primary3.dripping-tap-cup-018.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.bens-bag-reading",
+          "sourceContentHash": "e1594f6d2c2c96de673832f2efe0847d6e8f968d3ed2c4833705aeba378b5517"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.hidden-garden-seat-018",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "花丛后的阅读座位",
+        "summary": "花丛后的阅读座位，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.hidden-garden-seat-018",
+          "family": "reading_tf",
+          "label": "花丛后的阅读座位",
+          "candidateSHA256": "c8df20a845827aab93353de58ce84e31e36eaf7f39b6199072afabf018b3dcc1",
+          "authorCheckSHA256": "88c510fd8740691ddc560ab6b4918e0bbb7699ab125c20b4c21ee613ded65a15",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.hidden-garden-seat-018.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b028；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Hidden Garden Seat 018\n\nMy aunt has a small seat behind her tall flowers. From the path, it is hard to see. I think she has lost her chair. She takes my hand and leads me around the flowers. There it is, beside a little table. On the table is my favourite book. Aunt says it is our quiet reading place. We sit there until it starts to rain, then take the book inside."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.hidden-garden-seat-018.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The seat is behind tall flowers.",
+            "material": "Hidden Garden Seat 018\n\nMy aunt has a small seat behind her tall flowers. From the path, it is hard to see. I think she has lost her chair. She takes my hand and leads me around the flowers. There it is, beside a little table. On the table is my favourite book. Aunt says it is our quiet reading place. We sit there until it starts to rain, then take the book inside.",
+            "explanation": "A正确：seat behind tall flowers；B否认藏处。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.hidden-garden-seat-018.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer can see the seat easily from the path.",
+            "material": "Hidden Garden Seat 018\n\nMy aunt has a small seat behind her tall flowers. From the path, it is hard to see. I think she has lost her chair. She takes my hand and leads me around the flowers. There it is, beside a little table. On the table is my favourite book. Aunt says it is our quiet reading place. We sit there until it starts to rain, then take the book inside.",
+            "explanation": "B正确：hard to see；A易见与难见相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.hidden-garden-seat-018.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Aunt shows the writer where the seat is.",
+            "material": "Hidden Garden Seat 018\n\nMy aunt has a small seat behind her tall flowers. From the path, it is hard to see. I think she has lost her chair. She takes my hand and leads me around the flowers. There it is, beside a little table. On the table is my favourite book. Aunt says it is our quiet reading place. We sit there until it starts to rain, then take the book inside.",
+            "explanation": "A正确：牵手领绕花丛到座；B否认引导。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.hidden-garden-seat-018.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A favourite book is on the little table.",
+            "material": "Hidden Garden Seat 018\n\nMy aunt has a small seat behind her tall flowers. From the path, it is hard to see. I think she has lost her chair. She takes my hand and leads me around the flowers. There it is, beside a little table. On the table is my favourite book. Aunt says it is our quiet reading place. We sit there until it starts to rain, then take the book inside.",
+            "explanation": "A正确：table favourite book；B否认准备物。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.hidden-garden-seat-018.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "They leave the book outside in the rain.",
+            "material": "Hidden Garden Seat 018\n\nMy aunt has a small seat behind her tall flowers. From the path, it is hard to see. I think she has lost her chair. She takes my hand and leads me around the flowers. There it is, beside a little table. On the table is my favourite book. Aunt says it is our quiet reading place. We sit there until it starts to rain, then take the book inside.",
+            "explanation": "B正确：雨起take book inside；A与保护书动作相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "dafdaa00f9f936e5c2afb51a60df9557127b9c33490aad49fdcf549c906557b3",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.hidden-garden-seat-018.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.hidden-garden-seat-018.reading.q1",
+            "expansion.20261028.primary3.hidden-garden-seat-018.reading.q2",
+            "expansion.20261028.primary3.hidden-garden-seat-018.reading.q3",
+            "expansion.20261028.primary3.hidden-garden-seat-018.reading.q4",
+            "expansion.20261028.primary3.hidden-garden-seat-018.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.bookmark-little-lighthouse-018",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "书里的小灯塔书签",
+        "summary": "书里的小灯塔书签，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.bookmark-little-lighthouse-018",
+          "family": "reading_choice",
+          "label": "书里的小灯塔书签",
+          "candidateSHA256": "7cf6e7f9d1c92ad9eebe2333076d5c68c3cd1956bca4e181c4ada1199c9eb3a2",
+          "authorCheckSHA256": "88c510fd8740691ddc560ab6b4918e0bbb7699ab125c20b4c21ee613ded65a15",
+          "sourceGroupIds": [
+            "original.primary4-book-bus-call#primary4.bookmark-little-lighthouse-018.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b028；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Bookmark Little Lighthouse 018\n\nNina makes a bookmark shaped like a lighthouse. She gives it to her grandpa, who reads every evening. A week later, she visits and sees the bookmark on a shelf, not in his book. She feels sad and thinks he does not like it. Grandpa opens a small box. Inside are other paper gifts from Nina. \"I keep your things here when I am not reading,\" he says. Then he puts the lighthouse in the chapter he has just finished. Nina realises that a gift can be out of sight and still be cared for."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.bookmark-little-lighthouse-018.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What shape is Nina’s bookmark?",
+            "material": "Bookmark Little Lighthouse 018\n\nNina makes a bookmark shaped like a lighthouse. She gives it to her grandpa, who reads every evening. A week later, she visits and sees the bookmark on a shelf, not in his book. She feels sad and thinks he does not like it. Grandpa opens a small box. Inside are other paper gifts from Nina. \"I keep your things here when I am not reading,\" he says. Then he puts the lighthouse in the chapter he has just finished. Nina realises that a gift can be out of sight and still be cared for.",
+            "explanation": "A灯塔形书签；B鞋、C公交均非形状。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A lighthouse."
+              },
+              {
+                "id": "o1",
+                "text": "A pair of shoes."
+              },
+              {
+                "id": "o2",
+                "text": "A bus."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.bookmark-little-lighthouse-018.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Nina feel sad at first?",
+            "material": "Bookmark Little Lighthouse 018\n\nNina makes a bookmark shaped like a lighthouse. She gives it to her grandpa, who reads every evening. A week later, she visits and sees the bookmark on a shelf, not in his book. She feels sad and thinks he does not like it. Grandpa opens a small box. Inside are other paper gifts from Nina. \"I keep your things here when I am not reading,\" he says. Then he puts the lighthouse in the chapter he has just finished. Nina realises that a gift can be out of sight and still be cared for.",
+            "explanation": "B未在书中而误以为不喜欢；A书有章节；C未要求离开。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The book has no pages."
+              },
+              {
+                "id": "o1",
+                "text": "She thinks Grandpa does not like her gift."
+              },
+              {
+                "id": "o2",
+                "text": "Grandpa asks her to leave."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.bookmark-little-lighthouse-018.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is in Grandpa’s small box?",
+            "material": "Bookmark Little Lighthouse 018\n\nNina makes a bookmark shaped like a lighthouse. She gives it to her grandpa, who reads every evening. A week later, she visits and sees the bookmark on a shelf, not in his book. She feels sad and thinks he does not like it. Grandpa opens a small box. Inside are other paper gifts from Nina. \"I keep your things here when I am not reading,\" he says. Then he puts the lighthouse in the chapter he has just finished. Nina realises that a gift can be out of sight and still be cared for.",
+            "explanation": "C她以前纸礼物；A钱、B破眼镜均未提。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only money."
+              },
+              {
+                "id": "o1",
+                "text": "Broken glasses."
+              },
+              {
+                "id": "o2",
+                "text": "Other paper gifts from Nina."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.bookmark-little-lighthouse-018.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Grandpa do with the bookmark?",
+            "material": "Bookmark Little Lighthouse 018\n\nNina makes a bookmark shaped like a lighthouse. She gives it to her grandpa, who reads every evening. A week later, she visits and sees the bookmark on a shelf, not in his book. She feels sad and thinks he does not like it. Grandpa opens a small box. Inside are other paper gifts from Nina. \"I keep your things here when I am not reading,\" he says. Then he puts the lighthouse in the chapter he has just finished. Nina realises that a gift can be out of sight and still be cared for.",
+            "explanation": "A放刚读完章节处；B丢弃、C转陌客均非动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put it in his current book."
+              },
+              {
+                "id": "o1",
+                "text": "Throw it away."
+              },
+              {
+                "id": "o2",
+                "text": "Give it to an unknown visitor."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.bookmark-little-lighthouse-018.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Nina learn?",
+            "material": "Bookmark Little Lighthouse 018\n\nNina makes a bookmark shaped like a lighthouse. She gives it to her grandpa, who reads every evening. A week later, she visits and sees the bookmark on a shelf, not in his book. She feels sad and thinks he does not like it. Grandpa opens a small box. Inside are other paper gifts from Nina. \"I keep your things here when I am not reading,\" he says. Then he puts the lighthouse in the chapter he has just finished. Nina realises that a gift can be out of sight and still be cared for.",
+            "explanation": "B结尾明示不显眼仍珍惜；A全天展示要求与理解相反；C书签已作礼物。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every gift must stay visible all day."
+              },
+              {
+                "id": "o1",
+                "text": "Something out of sight may still be valued."
+              },
+              {
+                "id": "o2",
+                "text": "Bookmarks cannot be gifts."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "558f88d9c544391931537f2603351c921372bcf36a757800113c3794ff840b65",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-book-bus-call#primary4.bookmark-little-lighthouse-018.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.bookmark-little-lighthouse-018.reading.q1",
+            "expansion.20261028.primary4.bookmark-little-lighthouse-018.reading.q2",
+            "expansion.20261028.primary4.bookmark-little-lighthouse-018.reading.q3",
+            "expansion.20261028.primary4.bookmark-little-lighthouse-018.reading.q4",
+            "expansion.20261028.primary4.bookmark-little-lighthouse-018.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-book-bus-call",
+          "sourceContentHash": "5237c2b519c0bea74c51656808b22df9c776e14bf36f397fcbd54a9367ed2198"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.shy-stage-helper-018",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "不想站到台前的同学",
+        "summary": "不想站到台前的同学，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小四历史公开转载的完整文字组：一篇五判断／五独立句五共享词或短语／六中文情境六共享表达，分别绑定，不拼组合。上册正文2012—13与网页2021、下册未署年分开；学校施测与现行难度未认证。原读答F把未提当假的缺陷保留，原创F均明示反证；不添加未印的一次规则。图片/音频缺失任务未恢复。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.shy-stage-helper-018",
+          "family": "reading_tf",
+          "label": "不想站到台前的同学",
+          "candidateSHA256": "c336d54adf8572e5b412478a53a6e99ae7c0d626da2093dc1207d1f02f95b20c",
+          "authorCheckSHA256": "88c510fd8740691ddc560ab6b4918e0bbb7699ab125c20b4c21ee613ded65a15",
+          "sourceGroupIds": [
+            "original.primary4-music-room-tf#primary4.shy-stage-helper-018.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b028；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Shy Stage Helper 018\n\nOur class prepares a puppet show. Robin does not want to speak on stage. At first, he thinks there is no job for him. The teacher asks him to manage the curtain and hand props to the speakers. He practises when to open the curtain after the music starts. On show day, one puppet loses its paper hat. Robin finds the spare hat and passes it over quietly. The audience does not see him, but the class thanks him after the show."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.shy-stage-helper-018.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Robin wants to give a long speech on stage.",
+            "material": "Shy Stage Helper 018\n\nOur class prepares a puppet show. Robin does not want to speak on stage. At first, he thinks there is no job for him. The teacher asks him to manage the curtain and hand props to the speakers. He practises when to open the curtain after the music starts. On show day, one puppet loses its paper hat. Robin finds the spare hat and passes it over quietly. The audience does not see him, but the class thanks him after the show.",
+            "explanation": "B正确：does not want speak stage；A意愿反向。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.shy-stage-helper-018.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The teacher finds backstage jobs for Robin.",
+            "material": "Shy Stage Helper 018\n\nOur class prepares a puppet show. Robin does not want to speak on stage. At first, he thinks there is no job for him. The teacher asks him to manage the curtain and hand props to the speakers. He practises when to open the curtain after the music starts. On show day, one puppet loses its paper hat. Robin finds the spare hat and passes it over quietly. The audience does not see him, but the class thanks him after the show.",
+            "explanation": "A正确：管幕递道具；B否认安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.shy-stage-helper-018.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Robin opens the curtain before the music starts.",
+            "material": "Shy Stage Helper 018\n\nOur class prepares a puppet show. Robin does not want to speak on stage. At first, he thinks there is no job for him. The teacher asks him to manage the curtain and hand props to the speakers. He practises when to open the curtain after the music starts. On show day, one puppet loses its paper hat. Robin finds the spare hat and passes it over quietly. The audience does not see him, but the class thanks him after the show.",
+            "explanation": "B正确：after music starts；A先后颠倒。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.shy-stage-helper-018.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Robin helps when a puppet loses its hat.",
+            "material": "Shy Stage Helper 018\n\nOur class prepares a puppet show. Robin does not want to speak on stage. At first, he thinks there is no job for him. The teacher asks him to manage the curtain and hand props to the speakers. He practises when to open the curtain after the music starts. On show day, one puppet loses its paper hat. Robin finds the spare hat and passes it over quietly. The audience does not see him, but the class thanks him after the show.",
+            "explanation": "A正确：找备用帽悄递；B否认临场帮助。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.shy-stage-helper-018.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class thanks Robin even though the audience does not see him.",
+            "material": "Shy Stage Helper 018\n\nOur class prepares a puppet show. Robin does not want to speak on stage. At first, he thinks there is no job for him. The teacher asks him to manage the curtain and hand props to the speakers. He practises when to open the curtain after the music starts. On show day, one puppet loses its paper hat. Robin finds the spare hat and passes it over quietly. The audience does not see him, but the class thanks him after the show.",
+            "explanation": "A正确：观众未见但班级谢；B否认幕后贡献被认可。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "c419879e99c38e25b34f60cf791d308e260546ef2bdbd3c52c50c08572335e05",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-music-room-tf#primary4.shy-stage-helper-018.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.shy-stage-helper-018.reading.q1",
+            "expansion.20261028.primary4.shy-stage-helper-018.reading.q2",
+            "expansion.20261028.primary4.shy-stage-helper-018.reading.q3",
+            "expansion.20261028.primary4.shy-stage-helper-018.reading.q4",
+            "expansion.20261028.primary4.shy-stage-helper-018.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-music-room-tf",
+          "sourceContentHash": "f1fee43e3dd39c59b58df78eb86665625366c64000c969bcafe8fe99d7bc1f2c"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.wrong-garden-gate-story-018",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "小提琴声从另一扇门传来",
+        "summary": "小提琴声从另一扇门传来，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 来源形式为公开模拟题，尚缺普通学校样本复现；不计真实考试认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.wrong-garden-gate-story-018",
+          "family": "reading_choice",
+          "label": "小提琴声从另一扇门传来",
+          "candidateSHA256": "1bc0ac410c9705be192a35e4cdf650010fb8ec83634ece4acc3ab88937294d7a",
+          "authorCheckSHA256": "88c510fd8740691ddc560ab6b4918e0bbb7699ab125c20b4c21ee613ded65a15",
+          "sourceGroupIds": [
+            "original.inside-the-book-reading#primary5.wrong-garden-gate-story-018.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b028；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Wrong Garden Gate Story 018\n\nOn her first day at the music club, Esme followed a violin sound down a narrow lane. She found a green gate and waited. No one opened it. She was about to go home when an old man came out carrying gardening gloves. He had been listening to a radio. The violin she had followed was not a lesson.\nEsme showed him the club message on paper. It said \"Garden Hall, east gate.\" She had remembered only the word \"garden.\" The man pointed to a building beyond the lane. Its east gate faced the next street. Esme thanked him and arrived ten minutes late. The teacher welcomed her and asked her to read the whole direction next time. At the end of the lesson, she wrote a small arrow on her copy of the message. She kept the friendly mistake as a reminder that a familiar word was not the whole instruction."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.wrong-garden-gate-story-018.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Esme first wait at the green gate?",
+            "material": "Wrong Garden Gate Story 018\n\nOn her first day at the music club, Esme followed a violin sound down a narrow lane. She found a green gate and waited. No one opened it. She was about to go home when an old man came out carrying gardening gloves. He had been listening to a radio. The violin she had followed was not a lesson.\nEsme showed him the club message on paper. It said \"Garden Hall, east gate.\" She had remembered only the word \"garden.\" The man pointed to a building beyond the lane. Its east gate faced the next street. Esme thanked him and arrived ten minutes late. The teacher welcomed her and asked her to read the whole direction next time. At the end of the lesson, she wrote a small arrow on her copy of the message. She kept the friendly mistake as a reminder that a familiar word was not the whole instruction.",
+            "explanation": "B跟琴声误认音乐社；A园丁无约；C教师未指定绿门；D手套非目的。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She has arranged to meet the gardener."
+              },
+              {
+                "id": "o1",
+                "text": "She follows a violin sound and assumes it is the club."
+              },
+              {
+                "id": "o2",
+                "text": "Her teacher tells her to use that gate."
+              },
+              {
+                "id": "o3",
+                "text": "She wants to buy gloves."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.wrong-garden-gate-story-018.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where does the violin sound actually come from?",
+            "material": "Wrong Garden Gate Story 018\n\nOn her first day at the music club, Esme followed a violin sound down a narrow lane. She found a green gate and waited. No one opened it. She was about to go home when an old man came out carrying gardening gloves. He had been listening to a radio. The violin she had followed was not a lesson.\nEsme showed him the club message on paper. It said \"Garden Hall, east gate.\" She had remembered only the word \"garden.\" The man pointed to a building beyond the lane. Its east gate faced the next street. Esme thanked him and arrived ten minutes late. The teacher welcomed her and asked her to read the whole direction next time. At the end of the lesson, she wrote a small arrow on her copy of the message. She kept the friendly mistake as a reminder that a familiar word was not the whole instruction.",
+            "explanation": "C老人听广播；A正被否定；B车、D本人琴无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A lesson behind the green gate."
+              },
+              {
+                "id": "o1",
+                "text": "A passing bus."
+              },
+              {
+                "id": "o2",
+                "text": "The old man’s radio."
+              },
+              {
+                "id": "o3",
+                "text": "Esme’s own violin."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.wrong-garden-gate-story-018.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What detail in the message did Esme miss?",
+            "material": "Wrong Garden Gate Story 018\n\nOn her first day at the music club, Esme followed a violin sound down a narrow lane. She found a green gate and waited. No one opened it. She was about to go home when an old man came out carrying gardening gloves. He had been listening to a radio. The violin she had followed was not a lesson.\nEsme showed him the club message on paper. It said \"Garden Hall, east gate.\" She had remembered only the word \"garden.\" The man pointed to a building beyond the lane. Its east gate faced the next street. Esme thanked him and arrived ten minutes late. The teacher welcomed her and asked her to read the whole direction next time. At the end of the lesson, she wrote a small arrow on her copy of the message. She kept the friendly mistake as a reminder that a familiar word was not the whole instruction.",
+            "explanation": "A只记garden遗漏Hall和east gate；B/C/D不在路线指令。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The east gate of Garden Hall."
+              },
+              {
+                "id": "o1",
+                "text": "The colour of her shoes."
+              },
+              {
+                "id": "o2",
+                "text": "The gardener’s full name."
+              },
+              {
+                "id": "o3",
+                "text": "The price of gloves."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.wrong-garden-gate-story-018.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does the teacher respond to Esme’s late arrival?",
+            "material": "Wrong Garden Gate Story 018\n\nOn her first day at the music club, Esme followed a violin sound down a narrow lane. She found a green gate and waited. No one opened it. She was about to go home when an old man came out carrying gardening gloves. He had been listening to a radio. The violin she had followed was not a lesson.\nEsme showed him the club message on paper. It said \"Garden Hall, east gate.\" She had remembered only the word \"garden.\" The man pointed to a building beyond the lane. Its east gate faced the next street. Esme thanked him and arrived ten minutes late. The teacher welcomed her and asked her to read the whole direction next time. At the end of the lesson, she wrote a small arrow on her copy of the message. She kept the friendly mistake as a reminder that a familiar word was not the whole instruction.",
+            "explanation": "D欢迎并提醒读全；A/B/C均不合原文。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She cancels every lesson."
+              },
+              {
+                "id": "o1",
+                "text": "She tells her never to return."
+              },
+              {
+                "id": "o2",
+                "text": "She sends her to the gardener."
+              },
+              {
+                "id": "o3",
+                "text": "She welcomes her and asks her to read directions fully."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.wrong-garden-gate-story-018.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Esme’s added arrow represent?",
+            "material": "Wrong Garden Gate Story 018\n\nOn her first day at the music club, Esme followed a violin sound down a narrow lane. She found a green gate and waited. No one opened it. She was about to go home when an old man came out carrying gardening gloves. He had been listening to a radio. The violin she had followed was not a lesson.\nEsme showed him the club message on paper. It said \"Garden Hall, east gate.\" She had remembered only the word \"garden.\" The man pointed to a building beyond the lane. Its east gate faced the next street. Esme thanked him and arrived ten minutes late. The teacher welcomed her and asked her to read the whole direction next time. At the end of the lesson, she wrote a small arrow on her copy of the message. She kept the friendly mistake as a reminder that a familiar word was not the whole instruction.",
+            "explanation": "B她在路线纸上添箭头帮助记正确入口；A没换社；C没买门；D故事说明声和熟词不足定位。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A plan to find a different club."
+              },
+              {
+                "id": "o1",
+                "text": "A reminder of the correct approach."
+              },
+              {
+                "id": "o2",
+                "text": "A request to buy the green gate."
+              },
+              {
+                "id": "o3",
+                "text": "A claim that sound always gives exact directions."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "aabf6a4553b8a5176b818d3b4f28cb90d2119af09332a45f40f3e745538b444b",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.inside-the-book-reading#primary5.wrong-garden-gate-story-018.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.wrong-garden-gate-story-018.reading.q1",
+            "expansion.20261028.primary5.wrong-garden-gate-story-018.reading.q2",
+            "expansion.20261028.primary5.wrong-garden-gate-story-018.reading.q3",
+            "expansion.20261028.primary5.wrong-garden-gate-story-018.reading.q4",
+            "expansion.20261028.primary5.wrong-garden-gate-story-018.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.inside-the-book-reading",
+          "sourceContentHash": "46e509e87efeb15b94ac01cde6c90574c6c6a8d27bfcfc776298ff93969b0c6a"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.club-room-helpful-lines-018",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "社团整理时怎样把话说清楚",
+        "summary": "社团整理时怎样把话说清楚，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.dialogue",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.club-room-helpful-lines-018",
+          "family": "dialogue_matching",
+          "label": "社团整理时怎样把话说清楚",
+          "candidateSHA256": "941eccb73ceda2aabf618ff503320fdc749215ec79294ccd3884a84eea4757ce",
+          "authorCheckSHA256": "88c510fd8740691ddc560ab6b4918e0bbb7699ab125c20b4c21ee613ded65a15",
+          "sourceGroupIds": [
+            "original.primary5-dialogue5-cat-helper#primary5.club-room-helpful-lines-018.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b028；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Club Room Helpful Lines 018\n\nMatch each situation with the sentence that fits it best. Use each sentence once.\nA. I can carry the lighter box while you take the heavy one.\nB. Could we move it away from the doorway?\nC. Please put my name on the waiting list.\nD. I will return it before the club closes.\nE. Could you show me the safe way to fold it?"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.club-room-helpful-lines-018.reading.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend cannot carry both boxes, and you want to share the work.",
+            "material": "Club Room Helpful Lines 018\n\nMatch each situation with the sentence that fits it best. Use each sentence once.\nA. I can carry the lighter box while you take the heavy one.\nB. Could we move it away from the doorway?\nC. Please put my name on the waiting list.\nD. I will return it before the club closes.\nE. Could you show me the safe way to fold it?",
+            "explanation": "A分担轻箱，另一人重箱，回应负担；B门口、C候补、D归还、E折叠求教不直接分箱搬。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I can carry the lighter box while you take the heavy one."
+              },
+              {
+                "id": "o1",
+                "text": "Could we move it away from the doorway?"
+              },
+              {
+                "id": "o2",
+                "text": "Please put my name on the waiting list."
+              },
+              {
+                "id": "o3",
+                "text": "I will return it before the club closes."
+              },
+              {
+                "id": "o4",
+                "text": "Could you show me the safe way to fold it?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.club-room-helpful-lines-018.reading.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A table blocks the entrance, and you suggest a better position.",
+            "material": "Club Room Helpful Lines 018\n\nMatch each situation with the sentence that fits it best. Use each sentence once.\nA. I can carry the lighter box while you take the heavy one.\nB. Could we move it away from the doorway?\nC. Please put my name on the waiting list.\nD. I will return it before the club closes.\nE. Could you show me the safe way to fold it?",
+            "explanation": "B移开门口直接解决阻道；A搬箱分工、C候补、D归还时间、E折叠方法均不问桌位。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I can carry the lighter box while you take the heavy one."
+              },
+              {
+                "id": "o1",
+                "text": "Could we move it away from the doorway?"
+              },
+              {
+                "id": "o2",
+                "text": "Please put my name on the waiting list."
+              },
+              {
+                "id": "o3",
+                "text": "I will return it before the club closes."
+              },
+              {
+                "id": "o4",
+                "text": "Could you show me the safe way to fold it?"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.club-room-helpful-lines-018.reading.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A workshop is full, but you would like a place if someone cancels.",
+            "material": "Club Room Helpful Lines 018\n\nMatch each situation with the sentence that fits it best. Use each sentence once.\nA. I can carry the lighter box while you take the heavy one.\nB. Could we move it away from the doorway?\nC. Please put my name on the waiting list.\nD. I will return it before the club closes.\nE. Could you show me the safe way to fold it?",
+            "explanation": "C请求候补名单；A搬箱、B移桌、D归还、E折叠均不表达补位意愿。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I can carry the lighter box while you take the heavy one."
+              },
+              {
+                "id": "o1",
+                "text": "Could we move it away from the doorway?"
+              },
+              {
+                "id": "o2",
+                "text": "Please put my name on the waiting list."
+              },
+              {
+                "id": "o3",
+                "text": "I will return it before the club closes."
+              },
+              {
+                "id": "o4",
+                "text": "Could you show me the safe way to fold it?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.club-room-helpful-lines-018.reading.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You borrow the club’s ruler and promise when it will come back.",
+            "material": "Club Room Helpful Lines 018\n\nMatch each situation with the sentence that fits it best. Use each sentence once.\nA. I can carry the lighter box while you take the heavy one.\nB. Could we move it away from the doorway?\nC. Please put my name on the waiting list.\nD. I will return it before the club closes.\nE. Could you show me the safe way to fold it?",
+            "explanation": "D承诺关社前归还；A分工、B位置、C候补、E方法均未承诺时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I can carry the lighter box while you take the heavy one."
+              },
+              {
+                "id": "o1",
+                "text": "Could we move it away from the doorway?"
+              },
+              {
+                "id": "o2",
+                "text": "Please put my name on the waiting list."
+              },
+              {
+                "id": "o3",
+                "text": "I will return it before the club closes."
+              },
+              {
+                "id": "o4",
+                "text": "Could you show me the safe way to fold it?"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.club-room-helpful-lines-018.reading.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You have a folding stool but do not know how to close it safely.",
+            "material": "Club Room Helpful Lines 018\n\nMatch each situation with the sentence that fits it best. Use each sentence once.\nA. I can carry the lighter box while you take the heavy one.\nB. Could we move it away from the doorway?\nC. Please put my name on the waiting list.\nD. I will return it before the club closes.\nE. Could you show me the safe way to fold it?",
+            "explanation": "E请求演示安全折叠；A箱分工、B桌位置、C候补、D归还时间不能回答操作困难。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I can carry the lighter box while you take the heavy one."
+              },
+              {
+                "id": "o1",
+                "text": "Could we move it away from the doorway?"
+              },
+              {
+                "id": "o2",
+                "text": "Please put my name on the waiting list."
+              },
+              {
+                "id": "o3",
+                "text": "I will return it before the club closes."
+              },
+              {
+                "id": "o4",
+                "text": "Could you show me the safe way to fold it?"
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "d5054b511d9b828598f893427fcc5ee456d57068013dd8d66575f85169f627dd",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-dialogue5-cat-helper#primary5.club-room-helpful-lines-018.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.club-room-helpful-lines-018.reading.q1",
+            "expansion.20261028.primary5.club-room-helpful-lines-018.reading.q2",
+            "expansion.20261028.primary5.club-room-helpful-lines-018.reading.q3",
+            "expansion.20261028.primary5.club-room-helpful-lines-018.reading.q4",
+            "expansion.20261028.primary5.club-room-helpful-lines-018.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-dialogue5-cat-helper",
+          "sourceContentHash": "a560dbf60e2171fe6b0a3e943036c29e21c7a5bc3eb6a189f1fa75c16838ca15"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.bicycle-coat-rain-story-018",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "雨中自行车座上的旧外套",
+        "summary": "雨中自行车座上的旧外套，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.prose5x4",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.bicycle-coat-rain-story-018",
+          "family": "reading_choice",
+          "label": "雨中自行车座上的旧外套",
+          "candidateSHA256": "9110f4a7140339fa198e5a41fb02ce77228422bec84e013859b5ac700026b210",
+          "authorCheckSHA256": "88c510fd8740691ddc560ab6b4918e0bbb7699ab125c20b4c21ee613ded65a15",
+          "sourceGroupIds": [
+            "original.primary6-reading5joint-route#primary6.bicycle-coat-rain-story-018.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b028；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Bicycle Coat Rain Story 018\n\nNoah left his bicycle outside the evening class. When the lesson ended, rain was falling hard. Someone had wrapped an old coat around his seat. He felt grateful and searched for the owner, but the street was nearly empty. A woman at the next doorway said that an elderly man had passed by with a cart.\nNoah cycled after the man and offered the coat back. The man looked surprised. He had covered the seat because a small cloth bag was hanging below it, open to the rain. Noah had not noticed that his bag zip was undone. The coat had protected his sketchbook as well as the seat.\nNoah asked how to repay him. The man said the coat had been in his cart on its way to a repair shop; it was not rubbish. He gladly took it back and accepted Noah’s help pushing the cart over a rough patch. Noah rode home with dry drawings and a changed idea of the small favour he had received."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.bicycle-coat-rain-story-018.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Noah first notice after class?",
+            "material": "Bicycle Coat Rain Story 018\n\nNoah left his bicycle outside the evening class. When the lesson ended, rain was falling hard. Someone had wrapped an old coat around his seat. He felt grateful and searched for the owner, but the street was nearly empty. A woman at the next doorway said that an elderly man had passed by with a cart.\nNoah cycled after the man and offered the coat back. The man looked surprised. He had covered the seat because a small cloth bag was hanging below it, open to the rain. Noah had not noticed that his bag zip was undone. The coat had protected his sketchbook as well as the seat.\nNoah asked how to repay him. The man said the coat had been in his cart on its way to a repair shop; it was not rubbish. He gladly took it back and accepted Noah’s help pushing the cart over a rough patch. Noah rode home with dry drawings and a changed idea of the small favour he had received.",
+            "explanation": "B看到旧外套裹车座；A车仍在；C画受保护；D教师未穿。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "His bicycle has disappeared."
+              },
+              {
+                "id": "o1",
+                "text": "An old coat covers his wet-weather bicycle seat."
+              },
+              {
+                "id": "o2",
+                "text": "Every drawing is ruined."
+              },
+              {
+                "id": "o3",
+                "text": "His teacher is wearing his coat."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.bicycle-coat-rain-story-018.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why had the man covered that part of the bicycle?",
+            "material": "Bicycle Coat Rain Story 018\n\nNoah left his bicycle outside the evening class. When the lesson ended, rain was falling hard. Someone had wrapped an old coat around his seat. He felt grateful and searched for the owner, but the street was nearly empty. A woman at the next doorway said that an elderly man had passed by with a cart.\nNoah cycled after the man and offered the coat back. The man looked surprised. He had covered the seat because a small cloth bag was hanging below it, open to the rain. Noah had not noticed that his bag zip was undone. The coat had protected his sketchbook as well as the seat.\nNoah asked how to repay him. The man said the coat had been in his cart on its way to a repair shop; it was not rubbish. He gladly took it back and accepted Noah’s help pushing the cart over a rough patch. Noah rode home with dry drawings and a changed idea of the small favour he had received.",
+            "explanation": "C注意挂袋开着，保护袋；A占车、B告示、D丢弃均非目的。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To claim the bicycle as his own."
+              },
+              {
+                "id": "o1",
+                "text": "To hide a sale notice."
+              },
+              {
+                "id": "o2",
+                "text": "To protect an open bag from the rain."
+              },
+              {
+                "id": "o3",
+                "text": "To throw away the coat without being seen."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.bicycle-coat-rain-story-018.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What had Noah failed to notice?",
+            "material": "Bicycle Coat Rain Story 018\n\nNoah left his bicycle outside the evening class. When the lesson ended, rain was falling hard. Someone had wrapped an old coat around his seat. He felt grateful and searched for the owner, but the street was nearly empty. A woman at the next doorway said that an elderly man had passed by with a cart.\nNoah cycled after the man and offered the coat back. The man looked surprised. He had covered the seat because a small cloth bag was hanging below it, open to the rain. Noah had not noticed that his bag zip was undone. The coat had protected his sketchbook as well as the seat.\nNoah asked how to repay him. The man said the coat had been in his cart on its way to a repair shop; it was not rubbish. He gladly took it back and accepted Noah’s help pushing the cart over a rough patch. Noah rode home with dry drawings and a changed idea of the small favour he had received.",
+            "explanation": "A没留意袋拉链未合；B/C不符叙事；D只旧 coat不知昂贵。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "His bag zip was open."
+              },
+              {
+                "id": "o1",
+                "text": "The class had never begun."
+              },
+              {
+                "id": "o2",
+                "text": "His bicycle had no wheels."
+              },
+              {
+                "id": "o3",
+                "text": "The coat was new and expensive."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.bicycle-coat-rain-story-018.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the man say about the coat?",
+            "material": "Bicycle Coat Rain Story 018\n\nNoah left his bicycle outside the evening class. When the lesson ended, rain was falling hard. Someone had wrapped an old coat around his seat. He felt grateful and searched for the owner, but the street was nearly empty. A woman at the next doorway said that an elderly man had passed by with a cart.\nNoah cycled after the man and offered the coat back. The man looked surprised. He had covered the seat because a small cloth bag was hanging below it, open to the rain. Noah had not noticed that his bag zip was undone. The coat had protected his sketchbook as well as the seat.\nNoah asked how to repay him. The man said the coat had been in his cart on its way to a repair shop; it was not rubbish. He gladly took it back and accepted Noah’s help pushing the cart over a rough patch. Noah rode home with dry drawings and a changed idea of the small favour he had received.",
+            "explanation": "D要送修，不是废物；A与not rubbish矛盾；B无教师归属；C愿收回。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is rubbish for anyone to take."
+              },
+              {
+                "id": "o1",
+                "text": "It belongs to the teacher."
+              },
+              {
+                "id": "o2",
+                "text": "It must remain on the bicycle forever."
+              },
+              {
+                "id": "o3",
+                "text": "He is taking it to be repaired."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.bicycle-coat-rain-story-018.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does Noah help in return?",
+            "material": "Bicycle Coat Rain Story 018\n\nNoah left his bicycle outside the evening class. When the lesson ended, rain was falling hard. Someone had wrapped an old coat around his seat. He felt grateful and searched for the owner, but the street was nearly empty. A woman at the next doorway said that an elderly man had passed by with a cart.\nNoah cycled after the man and offered the coat back. The man looked surprised. He had covered the seat because a small cloth bag was hanging below it, open to the rain. Noah had not noticed that his bag zip was undone. The coat had protected his sketchbook as well as the seat.\nNoah asked how to repay him. The man said the coat had been in his cart on its way to a repair shop; it was not rubbish. He gladly took it back and accepted Noah’s help pushing the cart over a rough patch. Noah rode home with dry drawings and a changed idea of the small favour he had received.",
+            "explanation": "B推车过崎岖处；A买车、C弃衣、D送全画均非行动。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He buys the whole cart."
+              },
+              {
+                "id": "o1",
+                "text": "He helps push the cart over rough ground."
+              },
+              {
+                "id": "o2",
+                "text": "He leaves the coat in the rain."
+              },
+              {
+                "id": "o3",
+                "text": "He gives away every drawing."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "a2d8765e1a4fbb721cf6fa239fe506b25efab363d623c58bdad3b20b9d60aeb4",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-reading5joint-route#primary6.bicycle-coat-rain-story-018.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.bicycle-coat-rain-story-018.reading.q1",
+            "expansion.20261028.primary6.bicycle-coat-rain-story-018.reading.q2",
+            "expansion.20261028.primary6.bicycle-coat-rain-story-018.reading.q3",
+            "expansion.20261028.primary6.bicycle-coat-rain-story-018.reading.q4",
+            "expansion.20261028.primary6.bicycle-coat-rain-story-018.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-reading5joint-route",
+          "sourceContentHash": "bf55c679f24c162c9dc66b20e0457e2063cb0562604ceed78992a872d580b806"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.missing-comic-page-letter-018",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "借来的漫画少了一页",
+        "summary": "借来的漫画少了一页，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.missing-comic-page-letter-018",
+          "family": "reading_tf",
+          "label": "借来的漫画少了一页",
+          "candidateSHA256": "ac47070d5b4d068c7c4c78b6c0b3af90cbca625d9d82b6099a1f04397800a1f1",
+          "authorCheckSHA256": "88c510fd8740691ddc560ab6b4918e0bbb7699ab125c20b4c21ee613ded65a15",
+          "sourceGroupIds": [
+            "original.primary6-bicycle-letter-tf#primary6.missing-comic-page-letter-018.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b028；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Missing Comic Page Letter 018\n\nDear Hana,\nI thought I had damaged your comic when I found a missing page. I was ready to buy a new copy before telling you. Then I checked the photo you had sent when you lent it to me. The page edge in that photo already looked torn. I still could not be certain from the small picture, so I wrote to ask rather than deciding for myself. You explained that the page had fallen out last year and was kept safely in a folder. I was relieved. We agreed to store the loose page with the book before lending it again. Next time, I will check a borrowed item’s condition at the start and tell its owner promptly about a concern, instead of quietly assuming either blame or innocence.\nBest,\nAri"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.missing-comic-page-letter-018.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Ari first considers buying a replacement before explaining the concern.",
+            "material": "Missing Comic Page Letter 018\n\nDear Hana,\nI thought I had damaged your comic when I found a missing page. I was ready to buy a new copy before telling you. Then I checked the photo you had sent when you lent it to me. The page edge in that photo already looked torn. I still could not be certain from the small picture, so I wrote to ask rather than deciding for myself. You explained that the page had fallen out last year and was kept safely in a folder. I was relieved. We agreed to store the loose page with the book before lending it again. Next time, I will check a borrowed item’s condition at the start and tell its owner promptly about a concern, instead of quietly assuming either blame or innocence.\nBest,\nAri",
+            "explanation": "A正确：ready buy new before telling；B否认初始想法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.missing-comic-page-letter-018.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The small photo proves every detail with complete certainty.",
+            "material": "Missing Comic Page Letter 018\n\nDear Hana,\nI thought I had damaged your comic when I found a missing page. I was ready to buy a new copy before telling you. Then I checked the photo you had sent when you lent it to me. The page edge in that photo already looked torn. I still could not be certain from the small picture, so I wrote to ask rather than deciding for myself. You explained that the page had fallen out last year and was kept safely in a folder. I was relieved. We agreed to store the loose page with the book before lending it again. Next time, I will check a borrowed item’s condition at the start and tell its owner promptly about a concern, instead of quietly assuming either blame or innocence.\nBest,\nAri",
+            "explanation": "B正确：still could not be certain；A把线索夸为完全证据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.missing-comic-page-letter-018.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Hana says the page fell out last year.",
+            "material": "Missing Comic Page Letter 018\n\nDear Hana,\nI thought I had damaged your comic when I found a missing page. I was ready to buy a new copy before telling you. Then I checked the photo you had sent when you lent it to me. The page edge in that photo already looked torn. I still could not be certain from the small picture, so I wrote to ask rather than deciding for myself. You explained that the page had fallen out last year and was kept safely in a folder. I was relieved. We agreed to store the loose page with the book before lending it again. Next time, I will check a borrowed item’s condition at the start and tell its owner promptly about a concern, instead of quietly assuming either blame or innocence.\nBest,\nAri",
+            "explanation": "A正确：page fallen out last year；B否认已知历史。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.missing-comic-page-letter-018.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The missing page has been destroyed and cannot be found.",
+            "material": "Missing Comic Page Letter 018\n\nDear Hana,\nI thought I had damaged your comic when I found a missing page. I was ready to buy a new copy before telling you. Then I checked the photo you had sent when you lent it to me. The page edge in that photo already looked torn. I still could not be certain from the small picture, so I wrote to ask rather than deciding for myself. You explained that the page had fallen out last year and was kept safely in a folder. I was relieved. We agreed to store the loose page with the book before lending it again. Next time, I will check a borrowed item’s condition at the start and tell its owner promptly about a concern, instead of quietly assuming either blame or innocence.\nBest,\nAri",
+            "explanation": "B正确：safe in folder；A捏造销毁遗失。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.missing-comic-page-letter-018.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "They agree to keep the loose page with the book before lending again.",
+            "material": "Missing Comic Page Letter 018\n\nDear Hana,\nI thought I had damaged your comic when I found a missing page. I was ready to buy a new copy before telling you. Then I checked the photo you had sent when you lent it to me. The page edge in that photo already looked torn. I still could not be certain from the small picture, so I wrote to ask rather than deciding for myself. You explained that the page had fallen out last year and was kept safely in a folder. I was relieved. We agreed to store the loose page with the book before lending it again. Next time, I will check a borrowed item’s condition at the start and tell its owner promptly about a concern, instead of quietly assuming either blame or innocence.\nBest,\nAri",
+            "explanation": "A正确：agreed store loose page with book；B否认改进安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "0506cd1e31641ee12fb28de0f70002e743ee1c88e6341be6ca87b0b0c6f7256e",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-bicycle-letter-tf#primary6.missing-comic-page-letter-018.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.missing-comic-page-letter-018.reading.q1",
+            "expansion.20261028.primary6.missing-comic-page-letter-018.reading.q2",
+            "expansion.20261028.primary6.missing-comic-page-letter-018.reading.q3",
+            "expansion.20261028.primary6.missing-comic-page-letter-018.reading.q4",
+            "expansion.20261028.primary6.missing-comic-page-letter-018.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-bicycle-letter-tf",
+          "sourceContentHash": "506763bf9b8c813d9687e7a4a50a113ac760d167525861858c32488766c97532"
+        }
+      ]
+    }
+  ]
+}

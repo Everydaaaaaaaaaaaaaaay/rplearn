@@ -1,0 +1,2408 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b019",
+  "createdAt": "2026-10-29T00:14:59.508998+08:00",
+  "sourceSHA256": "1e9520db75e09cb003e8401190efa8dfb28214354fa39aaa859a570dc449d014",
+  "reviewSHA256": "5fa8074046231183fa1ccc58b7198e5e2cbbc032aac70082f19d6ca2cd158b8c",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.rain-stick-workshop-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "雨声筒手工课的封口",
+        "summary": "雨声筒手工课的封口，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.rain-stick-workshop-014",
+          "family": "function_choice",
+          "label": "雨声筒手工课的封口",
+          "candidateSHA256": "4c97e90937e00df2c3e85318dc90d5a79c27c394a6d004df6dbc46bc33b4ac3b",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.rain-stick-workshop-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Rain Stick Workshop 014\n\nWe make rain sticks with paper tubes. Put dry beans inside. Cover one end before you add beans. Leave space so the beans can move. Tape the second end shut before turning the tube over. Use paper scraps to decorate it. Do not use wet paint today."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.rain-stick-workshop-014.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend adds beans before covering either end. You say, \"____\"",
+            "material": "Rain Stick Workshop 014\n\nWe make rain sticks with paper tubes. Put dry beans inside. Cover one end before you add beans. Leave space so the beans can move. Tape the second end shut before turning the tube over. Use paper scraps to decorate it. Do not use wet paint today.",
+            "explanation": "A先封一端防漏；B翻开筒会漏且非顺序；C要求干豆无加水。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Cover one end first."
+              },
+              {
+                "id": "o1",
+                "text": "Turn the open tube over."
+              },
+              {
+                "id": "o2",
+                "text": "Add water first."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.rain-stick-workshop-014.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend fills the tube right to the top. You say, \"____\"",
+            "material": "Rain Stick Workshop 014\n\nWe make rain sticks with paper tubes. Put dry beans inside. Cover one end before you add beans. Leave space so the beans can move. Tape the second end shut before turning the tube over. Use paper scraps to decorate it. Do not use wet paint today.",
+            "explanation": "B留活动空间；A塞更多相反；C浸水非步骤。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Pack in more beans."
+              },
+              {
+                "id": "o1",
+                "text": "Leave space for the beans to move."
+              },
+              {
+                "id": "o2",
+                "text": "Put the tube in a cup of water."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.rain-stick-workshop-014.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend turns the tube before sealing the second end. You say, \"____\"",
+            "material": "Rain Stick Workshop 014\n\nWe make rain sticks with paper tubes. Put dry beans inside. Cover one end before you add beans. Leave space so the beans can move. Tape the second end shut before turning the tube over. Use paper scraps to decorate it. Do not use wet paint today.",
+            "explanation": "C翻前封另一端；A先摇、B全开都会违封口步骤。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Shake it hard now."
+              },
+              {
+                "id": "o1",
+                "text": "Leave both ends open."
+              },
+              {
+                "id": "o2",
+                "text": "Tape the second end shut first."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.rain-stick-workshop-014.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend wants a wet paint pot for decoration. You say, \"____\"",
+            "material": "Rain Stick Workshop 014\n\nWe make rain sticks with paper tubes. Put dry beans inside. Cover one end before you add beans. Leave space so the beans can move. Tape the second end shut before turning the tube over. Use paper scraps to decorate it. Do not use wet paint today.",
+            "explanation": "A今日纸屑装饰禁湿漆；B用湿漆违要求；C豆漆混非装饰方案。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Use paper scraps today."
+              },
+              {
+                "id": "o1",
+                "text": "Use wet paint all over it."
+              },
+              {
+                "id": "o2",
+                "text": "Put the beans in the paint."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.rain-stick-workshop-014.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend asks what goes inside. You say, \"____\"",
+            "material": "Rain Stick Workshop 014\n\nWe make rain sticks with paper tubes. Put dry beans inside. Cover one end before you add beans. Leave space so the beans can move. Tape the second end shut before turning the tube over. Use paper scraps to decorate it. Do not use wet paint today.",
+            "explanation": "B干豆指定填料；A湿沙、C冰块不是本课材料。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Wet sand."
+              },
+              {
+                "id": "o1",
+                "text": "Dry beans."
+              },
+              {
+                "id": "o2",
+                "text": "Pieces of ice."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "4d0c6487bf8c9c29c6f9122651bd0aeb7856d0958a41a839387ce33899d04686",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.rain-stick-workshop-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.rain-stick-workshop-014.reading.q1",
+            "expansion.20261028.primary2.rain-stick-workshop-014.reading.q2",
+            "expansion.20261028.primary2.rain-stick-workshop-014.reading.q3",
+            "expansion.20261028.primary2.rain-stick-workshop-014.reading.q4",
+            "expansion.20261028.primary2.rain-stick-workshop-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.lunch-tray-return-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "午餐托盘的回收路线",
+        "summary": "午餐托盘的回收路线，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.lunch-tray-return-014",
+          "family": "function_choice",
+          "label": "午餐托盘的回收路线",
+          "candidateSHA256": "66e4f5807e215f44f5a29cecaed11c0027f606230f28561d1c623f84896f52bc",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.lunch-tray-return-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lunch Tray Return 014\n\nAfter lunch, take your cup off the tray first. Cups go in the round tub. Put spoons in the small tray. Empty food scraps into the brown bin. Then stack the empty food tray on the low shelf. Carry one tray at a time. Leave glass cups for an adult."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.lunch-tray-return-014.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend puts a cup into the spoon tray. You say, \"____\"",
+            "material": "Lunch Tray Return 014\n\nAfter lunch, take your cup off the tray first. Cups go in the round tub. Put spoons in the small tray. Empty food scraps into the brown bin. Then stack the empty food tray on the low shelf. Carry one tray at a time. Leave glass cups for an adult.",
+            "explanation": "B杯入圆盆；A棕桶放食物残渣；C未按杯勺分流。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put the cup in the brown bin."
+              },
+              {
+                "id": "o1",
+                "text": "Put the cup in the round tub."
+              },
+              {
+                "id": "o2",
+                "text": "Put the spoon in the cup and leave."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.lunch-tray-return-014.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend stacks a tray with food still on it. You say, \"____\"",
+            "material": "Lunch Tray Return 014\n\nAfter lunch, take your cup off the tray first. Cups go in the round tub. Put spoons in the small tray. Empty food scraps into the brown bin. Then stack the empty food tray on the low shelf. Carry one tray at a time. Leave glass cups for an adult.",
+            "explanation": "C先残渣入棕桶再叠空盘；A未清先叠；B圆盆收杯非食物。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Stack it higher now."
+              },
+              {
+                "id": "o1",
+                "text": "Put the food in the round tub."
+              },
+              {
+                "id": "o2",
+                "text": "Empty the food into the brown bin first."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.lunch-tray-return-014.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend carries three food trays together. You say, \"____\"",
+            "material": "Lunch Tray Return 014\n\nAfter lunch, take your cup off the tray first. Cups go in the round tub. Put spoons in the small tray. Empty food scraps into the brown bin. Then stack the empty food tray on the low shelf. Carry one tray at a time. Leave glass cups for an adult.",
+            "explanation": "A一次一盘；B五盘更多违规则；C头顶非要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Carry one at a time."
+              },
+              {
+                "id": "o1",
+                "text": "Carry five instead."
+              },
+              {
+                "id": "o2",
+                "text": "Carry them on your head."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.lunch-tray-return-014.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend asks where empty food trays go. You say, \"____\"",
+            "material": "Lunch Tray Return 014\n\nAfter lunch, take your cup off the tray first. Cups go in the round tub. Put spoons in the small tray. Empty food scraps into the brown bin. Then stack the empty food tray on the low shelf. Carry one tray at a time. Leave glass cups for an adult.",
+            "explanation": "B空托盘低架；A勺盘、C杯盆用途不同。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In the spoon tray."
+              },
+              {
+                "id": "o1",
+                "text": "On the low shelf."
+              },
+              {
+                "id": "o2",
+                "text": "In the round cup tub."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.lunch-tray-return-014.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend starts to collect glass cups. You say, \"____\"",
+            "material": "Lunch Tray Return 014\n\nAfter lunch, take your cup off the tray first. Cups go in the round tub. Put spoons in the small tray. Empty food scraps into the brown bin. Then stack the empty food tray on the low shelf. Carry one tray at a time. Leave glass cups for an adult.",
+            "explanation": "C玻璃杯成人处理；A叠搬、B食物桶均不合例外规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Carry them in a food tray stack."
+              },
+              {
+                "id": "o1",
+                "text": "Put them in the food bin."
+              },
+              {
+                "id": "o2",
+                "text": "Leave the glass cups for an adult."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "927df0567fee393c74d61b5dedec6bf59a4adbaed219a311c7281862820a2b3b",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.lunch-tray-return-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.lunch-tray-return-014.reading.q1",
+            "expansion.20261028.primary2.lunch-tray-return-014.reading.q2",
+            "expansion.20261028.primary2.lunch-tray-return-014.reading.q3",
+            "expansion.20261028.primary2.lunch-tray-return-014.reading.q4",
+            "expansion.20261028.primary2.lunch-tray-return-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.ice-cube-bowls-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "两只碗里的小冰块",
+        "summary": "两只碗里的小冰块，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.ice-cube-bowls-014",
+          "family": "reading_tf",
+          "label": "两只碗里的小冰块",
+          "candidateSHA256": "bdcd371d8d673fa9e23839b90e314f7ff04717c4b0ac1b456b8061ab4a12ceaa",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.bens-bag-reading#primary3.ice-cube-bowls-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Ice Cube Bowls 014\n\nMum gives us two ice cubes of the same size. We put one in a metal bowl and one in a plastic bowl. Both bowls stand on the kitchen table. We look after five minutes. The cube in the metal bowl is smaller. We draw both cubes. My brother wants to add warm water, but Mum says to keep both bowls dry for this test."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.ice-cube-bowls-014.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The ice cubes start at the same size.",
+            "material": "Ice Cube Bowls 014\n\nMum gives us two ice cubes of the same size. We put one in a metal bowl and one in a plastic bowl. Both bowls stand on the kitchen table. We look after five minutes. The cube in the metal bowl is smaller. We draw both cubes. My brother wants to add warm water, but Mum says to keep both bowls dry for this test.",
+            "explanation": "A正确：same size明确起始条件；B否认相同。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.ice-cube-bowls-014.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "One bowl stands outside in the garden.",
+            "material": "Ice Cube Bowls 014\n\nMum gives us two ice cubes of the same size. We put one in a metal bowl and one in a plastic bowl. Both bowls stand on the kitchen table. We look after five minutes. The cube in the metal bowl is smaller. We draw both cubes. My brother wants to add warm water, but Mum says to keep both bowls dry for this test.",
+            "explanation": "B正确：both on kitchen table；A把一碗移到园外。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.ice-cube-bowls-014.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class checks the cubes after an hour.",
+            "material": "Ice Cube Bowls 014\n\nMum gives us two ice cubes of the same size. We put one in a metal bowl and one in a plastic bowl. Both bowls stand on the kitchen table. We look after five minutes. The cube in the metal bowl is smaller. We draw both cubes. My brother wants to add warm water, but Mum says to keep both bowls dry for this test.",
+            "explanation": "B正确：we look after five minutes，非一小时；A时间不符且材料不是班级。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.ice-cube-bowls-014.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The ice cube in the metal bowl looks smaller after five minutes.",
+            "material": "Ice Cube Bowls 014\n\nMum gives us two ice cubes of the same size. We put one in a metal bowl and one in a plastic bowl. Both bowls stand on the kitchen table. We look after five minutes. The cube in the metal bowl is smaller. We draw both cubes. My brother wants to add warm water, but Mum says to keep both bowls dry for this test.",
+            "explanation": "A正确：metal bowl cube smaller；B否认观察结果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.ice-cube-bowls-014.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mum lets the brother add warm water during this test.",
+            "material": "Ice Cube Bowls 014\n\nMum gives us two ice cubes of the same size. We put one in a metal bowl and one in a plastic bowl. Both bowls stand on the kitchen table. We look after five minutes. The cube in the metal bowl is smaller. We draw both cubes. My brother wants to add warm water, but Mum says to keep both bowls dry for this test.",
+            "explanation": "B正确：母亲要求本次两碗保持干；A把未获同意提议当许可。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "910c395629f5f6a314af7d0ff691227ce6528c7c4d634d9ead96c63d40493836",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.bens-bag-reading#primary3.ice-cube-bowls-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.ice-cube-bowls-014.reading.q1",
+            "expansion.20261028.primary3.ice-cube-bowls-014.reading.q2",
+            "expansion.20261028.primary3.ice-cube-bowls-014.reading.q3",
+            "expansion.20261028.primary3.ice-cube-bowls-014.reading.q4",
+            "expansion.20261028.primary3.ice-cube-bowls-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.bens-bag-reading",
+          "sourceContentHash": "e1594f6d2c2c96de673832f2efe0847d6e8f968d3ed2c4833705aeba378b5517"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.balloon-loose-ribbon-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "飘到树上的气球",
+        "summary": "飘到树上的气球，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.balloon-loose-ribbon-014",
+          "family": "reading_tf",
+          "label": "飘到树上的气球",
+          "candidateSHA256": "b587b67c6edc02c960d43613192ae71b23a265e53e08898c2d01e897d7a1b317",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.balloon-loose-ribbon-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Balloon Loose Ribbon 014\n\nAt a party, I tie my balloon to a chair. Its ribbon comes loose when the chair moves. The balloon flies into a small tree. I want to climb up, but Dad says no. He reaches it with a long stick. The balloon is safe, but it is not as round as before. I draw a face on it and leave it indoors for the rest of the party."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.balloon-loose-ribbon-014.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer first ties the balloon to a chair.",
+            "material": "Balloon Loose Ribbon 014\n\nAt a party, I tie my balloon to a chair. Its ribbon comes loose when the chair moves. The balloon flies into a small tree. I want to climb up, but Dad says no. He reaches it with a long stick. The balloon is safe, but it is not as round as before. I draw a face on it and leave it indoors for the rest of the party.",
+            "explanation": "A正确：tie balloon to chair；B否认最初固定方式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.balloon-loose-ribbon-014.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The balloon flies away because the ribbon comes loose.",
+            "material": "Balloon Loose Ribbon 014\n\nAt a party, I tie my balloon to a chair. Its ribbon comes loose when the chair moves. The balloon flies into a small tree. I want to climb up, but Dad says no. He reaches it with a long stick. The balloon is safe, but it is not as round as before. I draw a face on it and leave it indoors for the rest of the party.",
+            "explanation": "A正确：ribbon loose后飞到树上；B否认因果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.balloon-loose-ribbon-014.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad lets the writer climb the tree.",
+            "material": "Balloon Loose Ribbon 014\n\nAt a party, I tie my balloon to a chair. Its ribbon comes loose when the chair moves. The balloon flies into a small tree. I want to climb up, but Dad says no. He reaches it with a long stick. The balloon is safe, but it is not as round as before. I draw a face on it and leave it indoors for the rest of the party.",
+            "explanation": "B正确：Dad says no；A把阻止说成允许。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.balloon-loose-ribbon-014.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad gets the balloon with a long stick.",
+            "material": "Balloon Loose Ribbon 014\n\nAt a party, I tie my balloon to a chair. Its ribbon comes loose when the chair moves. The balloon flies into a small tree. I want to climb up, but Dad says no. He reaches it with a long stick. The balloon is safe, but it is not as round as before. I draw a face on it and leave it indoors for the rest of the party.",
+            "explanation": "A正确：reaches with long stick；B否认方法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.balloon-loose-ribbon-014.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer leaves the balloon outside for the rest of the party.",
+            "material": "Balloon Loose Ribbon 014\n\nAt a party, I tie my balloon to a chair. Its ribbon comes loose when the chair moves. The balloon flies into a small tree. I want to climb up, but Dad says no. He reaches it with a long stick. The balloon is safe, but it is not as round as before. I draw a face on it and leave it indoors for the rest of the party.",
+            "explanation": "B正确：leave it indoors；A内外颠倒。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "4e960ea8c321530da6622eadbd6eff194681a0edc2c1a89b09b5791ad9d653fa",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.balloon-loose-ribbon-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.balloon-loose-ribbon-014.reading.q1",
+            "expansion.20261028.primary3.balloon-loose-ribbon-014.reading.q2",
+            "expansion.20261028.primary3.balloon-loose-ribbon-014.reading.q3",
+            "expansion.20261028.primary3.balloon-loose-ribbon-014.reading.q4",
+            "expansion.20261028.primary3.balloon-loose-ribbon-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.bell-on-cat-toy-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "猫玩具里的小铃铛",
+        "summary": "猫玩具里的小铃铛，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.bell-on-cat-toy-014",
+          "family": "reading_tf",
+          "label": "猫玩具里的小铃铛",
+          "candidateSHA256": "d754e30992b8da2313c94b0773f5abd7615b1cf97cee6652ad9c186f437bac6c",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary3-picnic-bags-tf#primary3.bell-on-cat-toy-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Bell On Cat Toy 014\n\nOur cat likes a cloth mouse. There is a little bell inside it. One day, the cat bites a hole in the cloth. Mum sees the bell through the hole and takes the toy away. She makes a new mouse with no bell. The old bell goes into her sewing box, where the cat cannot reach it. The cat likes the new mouse too."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.bell-on-cat-toy-014.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The cat’s old mouse is made of cloth.",
+            "material": "Bell On Cat Toy 014\n\nOur cat likes a cloth mouse. There is a little bell inside it. One day, the cat bites a hole in the cloth. Mum sees the bell through the hole and takes the toy away. She makes a new mouse with no bell. The old bell goes into her sewing box, where the cat cannot reach it. The cat likes the new mouse too.",
+            "explanation": "A正确：cloth mouse；B否认材质。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.bell-on-cat-toy-014.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The bell is outside the old toy from the beginning.",
+            "material": "Bell On Cat Toy 014\n\nOur cat likes a cloth mouse. There is a little bell inside it. One day, the cat bites a hole in the cloth. Mum sees the bell through the hole and takes the toy away. She makes a new mouse with no bell. The old bell goes into her sewing box, where the cat cannot reach it. The cat likes the new mouse too.",
+            "explanation": "B正确：初始inside，破洞后可见；A把后续可见当一开始外置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.bell-on-cat-toy-014.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mum takes the damaged toy away.",
+            "material": "Bell On Cat Toy 014\n\nOur cat likes a cloth mouse. There is a little bell inside it. One day, the cat bites a hole in the cloth. Mum sees the bell through the hole and takes the toy away. She makes a new mouse with no bell. The old bell goes into her sewing box, where the cat cannot reach it. The cat likes the new mouse too.",
+            "explanation": "A正确：sees bell through hole and takes away；B否认动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.bell-on-cat-toy-014.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The new toy has two bells.",
+            "material": "Bell On Cat Toy 014\n\nOur cat likes a cloth mouse. There is a little bell inside it. One day, the cat bites a hole in the cloth. Mum sees the bell through the hole and takes the toy away. She makes a new mouse with no bell. The old bell goes into her sewing box, where the cat cannot reach it. The cat likes the new mouse too.",
+            "explanation": "B正确：new mouse with no bell；A捏造两铃。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.bell-on-cat-toy-014.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The old bell is kept where the cat cannot reach it.",
+            "material": "Bell On Cat Toy 014\n\nOur cat likes a cloth mouse. There is a little bell inside it. One day, the cat bites a hole in the cloth. Mum sees the bell through the hole and takes the toy away. She makes a new mouse with no bell. The old bell goes into her sewing box, where the cat cannot reach it. The cat likes the new mouse too.",
+            "explanation": "A正确：sewing box cat cannot reach；B否认存放限制。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "28b12e4175e3419cee4b9c3a962f98437db85c53199dcf949f3f2bdcb8bd912b",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-picnic-bags-tf#primary3.bell-on-cat-toy-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.bell-on-cat-toy-014.reading.q1",
+            "expansion.20261028.primary3.bell-on-cat-toy-014.reading.q2",
+            "expansion.20261028.primary3.bell-on-cat-toy-014.reading.q3",
+            "expansion.20261028.primary3.bell-on-cat-toy-014.reading.q4",
+            "expansion.20261028.primary3.bell-on-cat-toy-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-picnic-bags-tf",
+          "sourceContentHash": "67f56ff4e81139dae433ca5cda205636f40e4e50b4d446edbb81ed2fff56a980"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.craft-invitation-time-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "邀请卡上漏写的时间",
+        "summary": "邀请卡上漏写的时间，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.craft-invitation-time-014",
+          "family": "reading_choice",
+          "label": "邀请卡上漏写的时间",
+          "candidateSHA256": "60474d2131b0db0fe71c71a9ead8f1b4e145d37b598574bcb8e0d7da8a874870",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary4-book-bus-call#primary4.craft-invitation-time-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Craft Invitation Time 014\n\nOur class makes cards for a craft show. The first card says, \"Come on Saturday in the art room.\" It has no time. Lina says her grandma may arrive too early or too late. We add \"Open from 2:00 to 4:00 in the afternoon.\" Then we notice that the school gate is on a different street from the art room. We add a small written direction: \"Use the north gate and follow the blue arrows.\" Before printing more cards, two pupils read the whole card and check every detail with the teacher."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.craft-invitation-time-014.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What important detail is missing from the first card?",
+            "material": "Craft Invitation Time 014\n\nOur class makes cards for a craft show. The first card says, \"Come on Saturday in the art room.\" It has no time. Lina says her grandma may arrive too early or too late. We add \"Open from 2:00 to 4:00 in the afternoon.\" Then we notice that the school gate is on a different street from the art room. We add a small written direction: \"Use the north gate and follow the blue arrows.\" Before printing more cards, two pupils read the whole card and check every detail with the teacher.",
+            "explanation": "C有周六和美术室但无时间；A地点已给；B星期已给。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The room."
+              },
+              {
+                "id": "o1",
+                "text": "The day."
+              },
+              {
+                "id": "o2",
+                "text": "The time."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.craft-invitation-time-014.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who might arrive at the wrong time?",
+            "material": "Craft Invitation Time 014\n\nOur class makes cards for a craft show. The first card says, \"Come on Saturday in the art room.\" It has no time. Lina says her grandma may arrive too early or too late. We add \"Open from 2:00 to 4:00 in the afternoon.\" Then we notice that the school gate is on a different street from the art room. We add a small written direction: \"Use the north gate and follow the blue arrows.\" Before printing more cards, two pupils read the whole card and check every detail with the teacher.",
+            "explanation": "A提出祖母可能早晚到；B司机未提；C首卡没印时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Lina’s grandma."
+              },
+              {
+                "id": "o1",
+                "text": "A train driver only."
+              },
+              {
+                "id": "o2",
+                "text": "Nobody, because the time is printed."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.craft-invitation-time-014.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How long is the craft show open?",
+            "material": "Craft Invitation Time 014\n\nOur class makes cards for a craft show. The first card says, \"Come on Saturday in the art room.\" It has no time. Lina says her grandma may arrive too early or too late. We add \"Open from 2:00 to 4:00 in the afternoon.\" Then we notice that the school gate is on a different street from the art room. We add a small written direction: \"Use the north gate and follow the blue arrows.\" Before printing more cards, two pupils read the whole card and check every detail with the teacher.",
+            "explanation": "B下午2至4共两小时；A四、C一均不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Four hours."
+              },
+              {
+                "id": "o1",
+                "text": "Two hours."
+              },
+              {
+                "id": "o2",
+                "text": "One hour."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.craft-invitation-time-014.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which gate should visitors use?",
+            "material": "Craft Invitation Time 014\n\nOur class makes cards for a craft show. The first card says, \"Come on Saturday in the art room.\" It has no time. Lina says her grandma may arrive too early or too late. We add \"Open from 2:00 to 4:00 in the afternoon.\" Then we notice that the school gate is on a different street from the art room. We add a small written direction: \"Use the north gate and follow the blue arrows.\" Before printing more cards, two pupils read the whole card and check every detail with the teacher.",
+            "explanation": "C北门后蓝箭头；A南门、B闭门无依据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The south gate."
+              },
+              {
+                "id": "o1",
+                "text": "Any closed gate."
+              },
+              {
+                "id": "o2",
+                "text": "The north gate."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.craft-invitation-time-014.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens before more cards are printed?",
+            "material": "Craft Invitation Time 014\n\nOur class makes cards for a craft show. The first card says, \"Come on Saturday in the art room.\" It has no time. Lina says her grandma may arrive too early or too late. We add \"Open from 2:00 to 4:00 in the afternoon.\" Then we notice that the school gate is on a different street from the art room. We add a small written direction: \"Use the north gate and follow the blue arrows.\" Before printing more cards, two pupils read the whole card and check every detail with the teacher.",
+            "explanation": "A印前双人通读核教师；B不删时间；C祖母不承担印制。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Two pupils check all details with the teacher."
+              },
+              {
+                "id": "o1",
+                "text": "The time is erased again."
+              },
+              {
+                "id": "o2",
+                "text": "Grandma prints every card alone."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "404d25e032cee56b7edbecf04df2da291494a57a808eb6f55a3039f507bad32f",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-book-bus-call#primary4.craft-invitation-time-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.craft-invitation-time-014.reading.q1",
+            "expansion.20261028.primary4.craft-invitation-time-014.reading.q2",
+            "expansion.20261028.primary4.craft-invitation-time-014.reading.q3",
+            "expansion.20261028.primary4.craft-invitation-time-014.reading.q4",
+            "expansion.20261028.primary4.craft-invitation-time-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-book-bus-call",
+          "sourceContentHash": "5237c2b519c0bea74c51656808b22df9c776e14bf36f397fcbd54a9367ed2198"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.piano-key-stickers-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "钢琴键上的可移贴纸",
+        "summary": "钢琴键上的可移贴纸，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小四历史公开转载的完整文字组：一篇五判断／五独立句五共享词或短语／六中文情境六共享表达，分别绑定，不拼组合。上册正文2012—13与网页2021、下册未署年分开；学校施测与现行难度未认证。原读答F把未提当假的缺陷保留，原创F均明示反证；不添加未印的一次规则。图片/音频缺失任务未恢复。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.piano-key-stickers-014",
+          "family": "reading_tf",
+          "label": "钢琴键上的可移贴纸",
+          "candidateSHA256": "a746087d06a08bd821ff6ee66c2bd66cd3fe422b07fbd894bc4af04594bd6add",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary4-music-room-tf#primary4.piano-key-stickers-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Piano Key Stickers 014\n\nFor beginners, the music teacher puts removable letter stickers on some piano keys. The stickers are small and do not cover the spaces between keys. One pupil wants to use strong glue so they stay longer. The teacher says the keys must be easy to clean. She uses removable stickers instead. After the short course, the class takes the stickers off carefully. They keep a paper keyboard chart beside the piano for pupils who still need a reminder."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.piano-key-stickers-014.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Every key is completely covered by a large sticker.",
+            "material": "Piano Key Stickers 014\n\nFor beginners, the music teacher puts removable letter stickers on some piano keys. The stickers are small and do not cover the spaces between keys. One pupil wants to use strong glue so they stay longer. The teacher says the keys must be easy to clean. She uses removable stickers instead. After the short course, the class takes the stickers off carefully. They keep a paper keyboard chart beside the piano for pupils who still need a reminder.",
+            "explanation": "B正确：some keys，小贴且不盖键缝；A扩大成全部完全盖大贴。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.piano-key-stickers-014.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "One pupil suggests strong glue.",
+            "material": "Piano Key Stickers 014\n\nFor beginners, the music teacher puts removable letter stickers on some piano keys. The stickers are small and do not cover the spaces between keys. One pupil wants to use strong glue so they stay longer. The teacher says the keys must be easy to clean. She uses removable stickers instead. After the short course, the class takes the stickers off carefully. They keep a paper keyboard chart beside the piano for pupils who still need a reminder.",
+            "explanation": "A正确：wants strong glue；B否认建议。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.piano-key-stickers-014.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The teacher chooses removable stickers to keep cleaning easy.",
+            "material": "Piano Key Stickers 014\n\nFor beginners, the music teacher puts removable letter stickers on some piano keys. The stickers are small and do not cover the spaces between keys. One pupil wants to use strong glue so they stay longer. The teacher says the keys must be easy to clean. She uses removable stickers instead. After the short course, the class takes the stickers off carefully. They keep a paper keyboard chart beside the piano for pupils who still need a reminder.",
+            "explanation": "A正确：must easy clean，uses removable；B否认选择理由。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.piano-key-stickers-014.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The stickers stay on forever after the course.",
+            "material": "Piano Key Stickers 014\n\nFor beginners, the music teacher puts removable letter stickers on some piano keys. The stickers are small and do not cover the spaces between keys. One pupil wants to use strong glue so they stay longer. The teacher says the keys must be easy to clean. She uses removable stickers instead. After the short course, the class takes the stickers off carefully. They keep a paper keyboard chart beside the piano for pupils who still need a reminder.",
+            "explanation": "B正确：课后carefully take off；A永久保留相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.piano-key-stickers-014.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A paper chart remains for pupils needing help.",
+            "material": "Piano Key Stickers 014\n\nFor beginners, the music teacher puts removable letter stickers on some piano keys. The stickers are small and do not cover the spaces between keys. One pupil wants to use strong glue so they stay longer. The teacher says the keys must be easy to clean. She uses removable stickers instead. After the short course, the class takes the stickers off carefully. They keep a paper keyboard chart beside the piano for pupils who still need a reminder.",
+            "explanation": "A正确：keep paper keyboard chart；B否认替代提醒。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "ed9236300065c2ca165f727c12123f30ada7c3bb5d77a6de169cebc155e5353f",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-music-room-tf#primary4.piano-key-stickers-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.piano-key-stickers-014.reading.q1",
+            "expansion.20261028.primary4.piano-key-stickers-014.reading.q2",
+            "expansion.20261028.primary4.piano-key-stickers-014.reading.q3",
+            "expansion.20261028.primary4.piano-key-stickers-014.reading.q4",
+            "expansion.20261028.primary4.piano-key-stickers-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-music-room-tf",
+          "sourceContentHash": "f1fee43e3dd39c59b58df78eb86665625366c64000c969bcafe8fe99d7bc1f2c"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.playground-water-count-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "饮水点旁的杯数记录",
+        "summary": "饮水点旁的杯数记录，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.dongcheng2025.fourcards",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照2024-2025学年北京区卷公开原版任务；题面身份已核，发布方非原考试机构，原键/事实与学生难度仍分别待独立验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.playground-water-count-014",
+          "family": "reading_tf",
+          "label": "饮水点旁的杯数记录",
+          "candidateSHA256": "a41f1bd3f8f3cdfa63e70866b60374654aa6dea33580eb1f0d0f00441e3e14ca",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary5-four-club-cards-tf#primary5.playground-water-count-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Playground Water Count 014\n\nThe eco club put a counter beside the playground water tap. Each time a pupil filled a bottle, a helper pressed the button once. At the end of the week, the counter showed 180. The club first planned a poster saying, \"We saved 180 plastic bottles.\" A teacher asked how they knew every refill replaced a new plastic bottle. Some pupils had always brought reusable bottles, and a few filled the same bottle twice in one day. The club changed the poster to \"180 bottle refills recorded.\" They still wanted to encourage refilling, but they chose a statement that matched what they had actually counted."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.playground-water-count-014.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The counter recorded each bottle refill.",
+            "material": "Playground Water Count 014\n\nThe eco club put a counter beside the playground water tap. Each time a pupil filled a bottle, a helper pressed the button once. At the end of the week, the counter showed 180. The club first planned a poster saying, \"We saved 180 plastic bottles.\" A teacher asked how they knew every refill replaced a new plastic bottle. Some pupils had always brought reusable bottles, and a few filled the same bottle twice in one day. The club changed the poster to \"180 bottle refills recorded.\" They still wanted to encourage refilling, but they chose a statement that matched what they had actually counted.",
+            "explanation": "A正确：每装一瓶按一次；B否认统计单位。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.playground-water-count-014.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The number 180 proved that 180 different pupils used the tap.",
+            "material": "Playground Water Count 014\n\nThe eco club put a counter beside the playground water tap. Each time a pupil filled a bottle, a helper pressed the button once. At the end of the week, the counter showed 180. The club first planned a poster saying, \"We saved 180 plastic bottles.\" A teacher asked how they knew every refill replaced a new plastic bottle. Some pupils had always brought reusable bottles, and a few filled the same bottle twice in one day. The club changed the poster to \"180 bottle refills recorded.\" They still wanted to encourage refilling, but they chose a statement that matched what they had actually counted.",
+            "explanation": "B正确：同瓶同人可多次，计的是refills；A把次数当不同人数。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.playground-water-count-014.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The teacher questioned the claim about plastic bottles saved.",
+            "material": "Playground Water Count 014\n\nThe eco club put a counter beside the playground water tap. Each time a pupil filled a bottle, a helper pressed the button once. At the end of the week, the counter showed 180. The club first planned a poster saying, \"We saved 180 plastic bottles.\" A teacher asked how they knew every refill replaced a new plastic bottle. Some pupils had always brought reusable bottles, and a few filled the same bottle twice in one day. The club changed the poster to \"180 bottle refills recorded.\" They still wanted to encourage refilling, but they chose a statement that matched what they had actually counted.",
+            "explanation": "A正确：问如何知每次替代新塑料瓶；B否认质疑。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.playground-water-count-014.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The club removed all encouragement to refill bottles.",
+            "material": "Playground Water Count 014\n\nThe eco club put a counter beside the playground water tap. Each time a pupil filled a bottle, a helper pressed the button once. At the end of the week, the counter showed 180. The club first planned a poster saying, \"We saved 180 plastic bottles.\" A teacher asked how they knew every refill replaced a new plastic bottle. Some pupils had always brought reusable bottles, and a few filled the same bottle twice in one day. The club changed the poster to \"180 bottle refills recorded.\" They still wanted to encourage refilling, but they chose a statement that matched what they had actually counted.",
+            "explanation": "B正确：still wanted encourage；A把谨慎改表述说成放弃鼓励。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.playground-water-count-014.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The final poster used the measure the club had directly counted.",
+            "material": "Playground Water Count 014\n\nThe eco club put a counter beside the playground water tap. Each time a pupil filled a bottle, a helper pressed the button once. At the end of the week, the counter showed 180. The club first planned a poster saying, \"We saved 180 plastic bottles.\" A teacher asked how they knew every refill replaced a new plastic bottle. Some pupils had always brought reusable bottles, and a few filled the same bottle twice in one day. The club changed the poster to \"180 bottle refills recorded.\" They still wanted to encourage refilling, but they chose a statement that matched what they had actually counted.",
+            "explanation": "A正确：改称180 refills对应按钮计数；B否认最终证据匹配。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "02f24d22dd1bed3cbd73fe21ff3db8bc0e2acd1a06f7f6776e3a1ed875f0285d",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-four-club-cards-tf#primary5.playground-water-count-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.playground-water-count-014.reading.q1",
+            "expansion.20261028.primary5.playground-water-count-014.reading.q2",
+            "expansion.20261028.primary5.playground-water-count-014.reading.q3",
+            "expansion.20261028.primary5.playground-water-count-014.reading.q4",
+            "expansion.20261028.primary5.playground-water-count-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-four-club-cards-tf",
+          "sourceContentHash": "deec4eacce2111387e3dcf6fe049981e6ddfed77715d6df9fd944beb49bf2b92"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.library-reopening-phases-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "图书馆分区重开的公告",
+        "summary": "图书馆分区重开的公告，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.dongcheng2025.closedmixed",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照东城2024-2025五上区卷完整闭集混合任务：2句空/3共享句＋3个三选阅读题。所有响应均为字母选择，不含需AI评分的开放表达；原卷开放摘录＋写作整组仍暂停。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.library-reopening-phases-014",
+          "family": "reading_choice",
+          "label": "图书馆分区重开的公告",
+          "candidateSHA256": "afbdbf8fdd20bfb5b998c25a629571d96261bb457b7a1bf1804c68f2db9d67e3",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary5-repair-time-closed-mixed#primary5.library-reopening-phases-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Library Reopening Phases 014\n\nLibrary reopening notice\nFrom Monday, the ground-floor reading room will reopen after repairs. The upstairs shelves remain closed until the safety check is complete. Books already requested from upstairs can be collected at the ground-floor desk if you receive a collection message. Please do not go upstairs to look for them. The return slot beside the main door is available all day. Study tables may be used without booking, but the small group room must be reserved. Opening hours are 10:00–17:00 this week, one hour shorter than usual. We will post another notice when the whole library is ready."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.library-reopening-phases-014.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which area reopens on Monday?",
+            "material": "Library Reopening Phases 014\n\nLibrary reopening notice\nFrom Monday, the ground-floor reading room will reopen after repairs. The upstairs shelves remain closed until the safety check is complete. Books already requested from upstairs can be collected at the ground-floor desk if you receive a collection message. Please do not go upstairs to look for them. The return slot beside the main door is available all day. Study tables may be used without booking, but the small group room must be reserved. Opening hours are 10:00–17:00 this week, one hour shorter than usual. We will post another notice when the whole library is ready.",
+            "explanation": "B一楼阅览室重开；A楼上仍闭；C屋顶无开放信息；D不是全馆。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All upstairs shelves."
+              },
+              {
+                "id": "o1",
+                "text": "The ground-floor reading room."
+              },
+              {
+                "id": "o2",
+                "text": "Only the roof."
+              },
+              {
+                "id": "o3",
+                "text": "The entire building without limits."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.library-reopening-phases-014.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How may a reader collect a requested upstairs book?",
+            "material": "Library Reopening Phases 014\n\nLibrary reopening notice\nFrom Monday, the ground-floor reading room will reopen after repairs. The upstairs shelves remain closed until the safety check is complete. Books already requested from upstairs can be collected at the ground-floor desk if you receive a collection message. Please do not go upstairs to look for them. The return slot beside the main door is available all day. Study tables may be used without booking, but the small group room must be reserved. Opening hours are 10:00–17:00 this week, one hour shorter than usual. We will post another notice when the whole library is ready.",
+            "explanation": "C收取书通知后一楼台领；A明禁上楼；B屋顶、D工人私取无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Go upstairs alone."
+              },
+              {
+                "id": "o1",
+                "text": "Wait outside the roof door."
+              },
+              {
+                "id": "o2",
+                "text": "Use the ground-floor desk after a collection message."
+              },
+              {
+                "id": "o3",
+                "text": "Take any book from a repair worker."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.library-reopening-phases-014.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is available all day?",
+            "material": "Library Reopening Phases 014\n\nLibrary reopening notice\nFrom Monday, the ground-floor reading room will reopen after repairs. The upstairs shelves remain closed until the safety check is complete. Books already requested from upstairs can be collected at the ground-floor desk if you receive a collection message. Please do not go upstairs to look for them. The return slot beside the main door is available all day. Study tables may be used without booking, but the small group room must be reserved. Opening hours are 10:00–17:00 this week, one hour shorter than usual. We will post another notice when the whole library is ready.",
+            "explanation": "A门旁还书槽全天；B需预约且无全天；C仍闭；D导览未提供。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The return slot."
+              },
+              {
+                "id": "o1",
+                "text": "The group room."
+              },
+              {
+                "id": "o2",
+                "text": "The upstairs shelves."
+              },
+              {
+                "id": "o3",
+                "text": "Staff-led tours."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.library-reopening-phases-014.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which space requires a reservation?",
+            "material": "Library Reopening Phases 014\n\nLibrary reopening notice\nFrom Monday, the ground-floor reading room will reopen after repairs. The upstairs shelves remain closed until the safety check is complete. Books already requested from upstairs can be collected at the ground-floor desk if you receive a collection message. Please do not go upstairs to look for them. The return slot beside the main door is available all day. Study tables may be used without booking, but the small group room must be reserved. Opening hours are 10:00–17:00 this week, one hour shorter than usual. We will post another notice when the whole library is ready.",
+            "explanation": "D小组室须约；A学习桌不用约；B槽、C门不属预约空间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every study table."
+              },
+              {
+                "id": "o1",
+                "text": "The return slot."
+              },
+              {
+                "id": "o2",
+                "text": "The main doorway."
+              },
+              {
+                "id": "o3",
+                "text": "The small group room."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.library-reopening-phases-014.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What are this week’s opening hours?",
+            "material": "Library Reopening Phases 014\n\nLibrary reopening notice\nFrom Monday, the ground-floor reading room will reopen after repairs. The upstairs shelves remain closed until the safety check is complete. Books already requested from upstairs can be collected at the ground-floor desk if you receive a collection message. Please do not go upstairs to look for them. The return slot beside the main door is available all day. Study tables may be used without booking, but the small group room must be reserved. Opening hours are 10:00–17:00 this week, one hour shorter than usual. We will post another notice when the whole library is ready.",
+            "explanation": "B本周10至17；A/C均多一小时；D无通宵。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "9:00–17:00."
+              },
+              {
+                "id": "o1",
+                "text": "10:00–17:00."
+              },
+              {
+                "id": "o2",
+                "text": "10:00–18:00."
+              },
+              {
+                "id": "o3",
+                "text": "Open all night."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "a4322562a045c968d39887a23c421d689d911f29f0999b4c391d781baa3189d6",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-repair-time-closed-mixed#primary5.library-reopening-phases-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.library-reopening-phases-014.reading.q1",
+            "expansion.20261028.primary5.library-reopening-phases-014.reading.q2",
+            "expansion.20261028.primary5.library-reopening-phases-014.reading.q3",
+            "expansion.20261028.primary5.library-reopening-phases-014.reading.q4",
+            "expansion.20261028.primary5.library-reopening-phases-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-repair-time-closed-mixed",
+          "sourceContentHash": "81f5361835981e058b3f6557c4f5d5f69d4524fb9c91cc831ccc53a3672356f9"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.library-headset-covers-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "语言角耳机套的更换",
+        "summary": "语言角耳机套的更换，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.taizhou2025.storybank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.library-headset-covers-014",
+          "family": "shared_bank",
+          "label": "语言角耳机套的更换",
+          "candidateSHA256": "f59d9b791e0f4ad389fc509bc2f26285eeb47cb74bb6070f0bce3bf39f886f8b",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary5-bank6-window-bird#primary5.library-headset-covers-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Library Headset Covers 014\n\nChoose from the bank and complete every gap. Use each word once. Bank: A. beside B. record C. clean D. before E. replace\nThe language corner has a box of fresh headset covers ____1____ the computer. Helpers check each pair ____2____ a new pupil uses it. They ____3____ any torn cover with a fresh one. Pupils must keep their hands ____4____ when fitting the covers. At closing time, helpers ____5____ how many new covers were used, so the teacher knows when to order more."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.library-headset-covers-014.reading.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Library Headset Covers 014\n\nChoose from the bank and complete every gap. Use each word once. Bank: A. beside B. record C. clean D. before E. replace\nThe language corner has a box of fresh headset covers ____1____ the computer. Helpers check each pair ____2____ a new pupil uses it. They ____3____ any torn cover with a fresh one. Pupils must keep their hands ____4____ when fitting the covers. At closing time, helpers ____5____ how many new covers were used, so the teacher knows when to order more.",
+            "explanation": "A beside表电脑旁；B record记录、E replace更换是动作；C clean形容词，D before时间连接词均不表此处位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "beside"
+              },
+              {
+                "id": "o1",
+                "text": "record"
+              },
+              {
+                "id": "o2",
+                "text": "clean"
+              },
+              {
+                "id": "o3",
+                "text": "before"
+              },
+              {
+                "id": "o4",
+                "text": "replace"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.library-headset-covers-014.reading.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Library Headset Covers 014\n\nChoose from the bank and complete every gap. Use each word once. Bank: A. beside B. record C. clean D. before E. replace\nThe language corner has a box of fresh headset covers ____1____ the computer. Helpers check each pair ____2____ a new pupil uses it. They ____3____ any torn cover with a fresh one. Pupils must keep their hands ____4____ when fitting the covers. At closing time, helpers ____5____ how many new covers were used, so the teacher knows when to order more.",
+            "explanation": "D before在下一人用前检查；A beside不接完整时间句；B record、C clean、E replace均不能连接该句表先后。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "beside"
+              },
+              {
+                "id": "o1",
+                "text": "record"
+              },
+              {
+                "id": "o2",
+                "text": "clean"
+              },
+              {
+                "id": "o3",
+                "text": "before"
+              },
+              {
+                "id": "o4",
+                "text": "replace"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.library-headset-covers-014.reading.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Library Headset Covers 014\n\nChoose from the bank and complete every gap. Use each word once. Bank: A. beside B. record C. clean D. before E. replace\nThe language corner has a box of fresh headset covers ____1____ the computer. Helpers check each pair ____2____ a new pupil uses it. They ____3____ any torn cover with a fresh one. Pupils must keep their hands ____4____ when fitting the covers. At closing time, helpers ____5____ how many new covers were used, so the teacher knows when to order more.",
+            "explanation": "E replace...with以新换破；B record记录不合with fresh one更替结构；A beside、C clean、D before均不表该谓语动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "beside"
+              },
+              {
+                "id": "o1",
+                "text": "record"
+              },
+              {
+                "id": "o2",
+                "text": "clean"
+              },
+              {
+                "id": "o3",
+                "text": "before"
+              },
+              {
+                "id": "o4",
+                "text": "replace"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261028.primary5.library-headset-covers-014.reading.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Library Headset Covers 014\n\nChoose from the bank and complete every gap. Use each word once. Bank: A. beside B. record C. clean D. before E. replace\nThe language corner has a box of fresh headset covers ____1____ the computer. Helpers check each pair ____2____ a new pupil uses it. They ____3____ any torn cover with a fresh one. Pupils must keep their hands ____4____ when fitting the covers. At closing time, helpers ____5____ how many new covers were used, so the teacher knows when to order more.",
+            "explanation": "C clean作keep hands表语，手保持干净；A beside、D before缺所需结构；B record和E replace均不描述手的状态。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "beside"
+              },
+              {
+                "id": "o1",
+                "text": "record"
+              },
+              {
+                "id": "o2",
+                "text": "clean"
+              },
+              {
+                "id": "o3",
+                "text": "before"
+              },
+              {
+                "id": "o4",
+                "text": "replace"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.library-headset-covers-014.reading.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Library Headset Covers 014\n\nChoose from the bank and complete every gap. Use each word once. Bank: A. beside B. record C. clean D. before E. replace\nThe language corner has a box of fresh headset covers ____1____ the computer. Helpers check each pair ____2____ a new pupil uses it. They ____3____ any torn cover with a fresh one. Pupils must keep their hands ____4____ when fitting the covers. At closing time, helpers ____5____ how many new covers were used, so the teacher knows when to order more.",
+            "explanation": "B record记录用量供补货；E replace不能接how many从句表达记录；A beside、C clean、D before均不作所需统计谓语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "beside"
+              },
+              {
+                "id": "o1",
+                "text": "record"
+              },
+              {
+                "id": "o2",
+                "text": "clean"
+              },
+              {
+                "id": "o3",
+                "text": "before"
+              },
+              {
+                "id": "o4",
+                "text": "replace"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "db3c3080539560c304703898315e5ad9681b0d8e0824d1f5d6b1e47c78ca66ca",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-bank6-window-bird#primary5.library-headset-covers-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.library-headset-covers-014.reading.q1",
+            "expansion.20261028.primary5.library-headset-covers-014.reading.q2",
+            "expansion.20261028.primary5.library-headset-covers-014.reading.q3",
+            "expansion.20261028.primary5.library-headset-covers-014.reading.q4",
+            "expansion.20261028.primary5.library-headset-covers-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-bank6-window-bird",
+          "sourceContentHash": "8425a18e0225ac29fe3e33d8bd9c642a6eb1f68404aa017c8b8054497b29efca"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.school-gate-traffic-route-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "校门交通观察中的改道",
+        "summary": "校门交通观察中的改道，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.prose5x4",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.school-gate-traffic-route-014",
+          "family": "reading_choice",
+          "label": "校门交通观察中的改道",
+          "candidateSHA256": "e2bf42adc3b5ff178ca24ec85a759fdf1d4b0c10a5e086e47538b6af5214de04",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary6-reading5joint-route#primary6.school-gate-traffic-route-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "School Gate Traffic Route 014\n\nThe safety club observed traffic outside school for one week. It counted bicycles, cars and delivery vans from 7:30 to 8:00 each morning. On Thursday, the number of cars fell sharply. A pupil thought the school’s new walking poster had worked at once. Another member checked the town noticeboard and found that roadworks had diverted cars away from the gate that day.\nThe club added the diversion to its log. It did not remove Thursday’s figures, but it did not compare them with other days as if the conditions were unchanged. For the poster’s longer-term effect, members planned another observation after the road reopened. They also asked families whether their usual journey had changed. The report separated counted traffic from reported travel choices. The teacher praised the group for looking for another explanation before announcing success."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.school-gate-traffic-route-014.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the club count each morning?",
+            "material": "School Gate Traffic Route 014\n\nThe safety club observed traffic outside school for one week. It counted bicycles, cars and delivery vans from 7:30 to 8:00 each morning. On Thursday, the number of cars fell sharply. A pupil thought the school’s new walking poster had worked at once. Another member checked the town noticeboard and found that roadworks had diverted cars away from the gate that day.\nThe club added the diversion to its log. It did not remove Thursday’s figures, but it did not compare them with other days as if the conditions were unchanged. For the poster’s longer-term effect, members planned another observation after the road reopened. They also asked families whether their usual journey had changed. The report separated counted traffic from reported travel choices. The teacher praised the group for looking for another explanation before announcing success.",
+            "explanation": "B三类校外交通；A非海报阅读者；C范围非全城；D不限教师自行车。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only people reading the poster."
+              },
+              {
+                "id": "o1",
+                "text": "Bicycles, cars and delivery vans."
+              },
+              {
+                "id": "o2",
+                "text": "All vehicles in the whole town."
+              },
+              {
+                "id": "o3",
+                "text": "Only the teachers’ bicycles."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-gate-traffic-route-014.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What alternative explanation was found for Thursday’s fewer cars?",
+            "material": "School Gate Traffic Route 014\n\nThe safety club observed traffic outside school for one week. It counted bicycles, cars and delivery vans from 7:30 to 8:00 each morning. On Thursday, the number of cars fell sharply. A pupil thought the school’s new walking poster had worked at once. Another member checked the town noticeboard and found that roadworks had diverted cars away from the gate that day.\nThe club added the diversion to its log. It did not remove Thursday’s figures, but it did not compare them with other days as if the conditions were unchanged. For the poster’s longer-term effect, members planned another observation after the road reopened. They also asked families whether their usual journey had changed. The report separated counted traffic from reported travel choices. The teacher praised the group for looking for another explanation before announcing success.",
+            "explanation": "C施工改道；A永久关校、B全卖车、D一分钟均无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The school had closed forever."
+              },
+              {
+                "id": "o1",
+                "text": "All parents sold their cars."
+              },
+              {
+                "id": "o2",
+                "text": "Roadworks diverted traffic."
+              },
+              {
+                "id": "o3",
+                "text": "The counting period lasted one minute."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-gate-traffic-route-014.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did the club handle Thursday’s data?",
+            "material": "School Gate Traffic Route 014\n\nThe safety club observed traffic outside school for one week. It counted bicycles, cars and delivery vans from 7:30 to 8:00 each morning. On Thursday, the number of cars fell sharply. A pupil thought the school’s new walking poster had worked at once. Another member checked the town noticeboard and found that roadworks had diverted cars away from the gate that day.\nThe club added the diversion to its log. It did not remove Thursday’s figures, but it did not compare them with other days as if the conditions were unchanged. For the poster’s longer-term effect, members planned another observation after the road reopened. They also asked families whether their usual journey had changed. The report separated counted traffic from reported travel choices. The teacher praised the group for looking for another explanation before announcing success.",
+            "explanation": "A留数加改道说明；B未删除；C未造数据；D不当单独证明。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Keep it with a note about the changed conditions."
+              },
+              {
+                "id": "o1",
+                "text": "Delete it without mentioning why."
+              },
+              {
+                "id": "o2",
+                "text": "Multiply it until it matched Monday."
+              },
+              {
+                "id": "o3",
+                "text": "Call it proof of the poster’s effect."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-gate-traffic-route-014.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When was another observation planned?",
+            "material": "School Gate Traffic Route 014\n\nThe safety club observed traffic outside school for one week. It counted bicycles, cars and delivery vans from 7:30 to 8:00 each morning. On Thursday, the number of cars fell sharply. A pupil thought the school’s new walking poster had worked at once. Another member checked the town noticeboard and found that roadworks had diverted cars away from the gate that day.\nThe club added the diversion to its log. It did not remove Thursday’s figures, but it did not compare them with other days as if the conditions were unchanged. For the poster’s longer-term effect, members planned another observation after the road reopened. They also asked families whether their usual journey had changed. The report separated counted traffic from reported travel choices. The teacher praised the group for looking for another explanation before announcing success.",
+            "explanation": "D道路重开后复观；A相反；B午夜不符早高峰；C已有计划。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Before any road reopened."
+              },
+              {
+                "id": "o1",
+                "text": "Only at midnight."
+              },
+              {
+                "id": "o2",
+                "text": "Never again."
+              },
+              {
+                "id": "o3",
+                "text": "After the road reopened."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-gate-traffic-route-014.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why were counted traffic and family reports separated?",
+            "material": "School Gate Traffic Route 014\n\nThe safety club observed traffic outside school for one week. It counted bicycles, cars and delivery vans from 7:30 to 8:00 each morning. On Thursday, the number of cars fell sharply. A pupil thought the school’s new walking poster had worked at once. Another member checked the town noticeboard and found that roadworks had diverted cars away from the gate that day.\nThe club added the diversion to its log. It did not remove Thursday’s figures, but it did not compare them with other days as if the conditions were unchanged. For the poster’s longer-term effect, members planned another observation after the road reopened. They also asked families whether their usual journey had changed. The report separated counted traffic from reported travel choices. The teacher praised the group for looking for another explanation before announcing success.",
+            "explanation": "B观察数与自述选择为不同证据；A均未编造；C无禁步行；D未自动互替。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "One had to be invented."
+              },
+              {
+                "id": "o1",
+                "text": "They were different kinds of evidence."
+              },
+              {
+                "id": "o2",
+                "text": "Families were forbidden to walk."
+              },
+              {
+                "id": "o3",
+                "text": "Reports could replace every observation automatically."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "434cb8c00e71c2bf1b416b142abceedd640a142b8d5679d930a51a1827edf8c2",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-reading5joint-route#primary6.school-gate-traffic-route-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.school-gate-traffic-route-014.reading.q1",
+            "expansion.20261028.primary6.school-gate-traffic-route-014.reading.q2",
+            "expansion.20261028.primary6.school-gate-traffic-route-014.reading.q3",
+            "expansion.20261028.primary6.school-gate-traffic-route-014.reading.q4",
+            "expansion.20261028.primary6.school-gate-traffic-route-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-reading5joint-route",
+          "sourceContentHash": "bf55c679f24c162c9dc66b20e0457e2063cb0562604ceed78992a872d580b806"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.group-story-credit-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "班级故事册的署名讨论",
+        "summary": "班级故事册的署名讨论，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.group-story-credit-014",
+          "family": "reading_tf",
+          "label": "班级故事册的署名讨论",
+          "candidateSHA256": "12b0046e4f083dbac99c5fe2d509e104047ea8934741d29163884cb0406231d1",
+          "authorCheckSHA256": "81badf6d2137dc74873b715a970e99765a17044b35f3c6790f2f09013066d414",
+          "sourceGroupIds": [
+            "original.primary6-bakery-letter-tf#primary6.group-story-credit-014.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b019；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Group Story Credit 014\n\nFour pupils made a class storybook. Mei wrote the first version, Omar changed the ending, Liv drew the pictures, and Ben checked spelling and arranged the pages. The cover first named only Mei because she had written the longest part. Ben said that word count did not show every kind of work.\nThe group discussed the contributions before printing. They kept Mei’s role as first writer but added a page naming each pupil’s work. They also checked with a younger pupil whose spoken idea had inspired one scene. With his permission, they thanked him without claiming he had written the whole story. The final book did not pretend that every contribution was identical. It made the different roles visible and avoided giving credit only to the work that was easiest to count."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.group-story-credit-014.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mei wrote the first version of the story.",
+            "material": "Group Story Credit 014\n\nFour pupils made a class storybook. Mei wrote the first version, Omar changed the ending, Liv drew the pictures, and Ben checked spelling and arranged the pages. The cover first named only Mei because she had written the longest part. Ben said that word count did not show every kind of work.\nThe group discussed the contributions before printing. They kept Mei’s role as first writer but added a page naming each pupil’s work. They also checked with a younger pupil whose spoken idea had inspired one scene. With his permission, they thanked him without claiming he had written the whole story. The final book did not pretend that every contribution was identical. It made the different roles visible and avoided giving credit only to the work that was easiest to count.",
+            "explanation": "A正确：首段明确Mei初稿；B否认角色。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.group-story-credit-014.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Ben only drew pictures and did no other work.",
+            "material": "Group Story Credit 014\n\nFour pupils made a class storybook. Mei wrote the first version, Omar changed the ending, Liv drew the pictures, and Ben checked spelling and arranged the pages. The cover first named only Mei because she had written the longest part. Ben said that word count did not show every kind of work.\nThe group discussed the contributions before printing. They kept Mei’s role as first writer but added a page naming each pupil’s work. They also checked with a younger pupil whose spoken idea had inspired one scene. With his permission, they thanked him without claiming he had written the whole story. The final book did not pretend that every contribution was identical. It made the different roles visible and avoided giving credit only to the work that was easiest to count.",
+            "explanation": "B正确：Ben校拼写排版，Liv画图；A角色交换且否认实际工作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.group-story-credit-014.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The first cover credited only the pupil with the longest written part.",
+            "material": "Group Story Credit 014\n\nFour pupils made a class storybook. Mei wrote the first version, Omar changed the ending, Liv drew the pictures, and Ben checked spelling and arranged the pages. The cover first named only Mei because she had written the longest part. Ben said that word count did not show every kind of work.\nThe group discussed the contributions before printing. They kept Mei’s role as first writer but added a page naming each pupil’s work. They also checked with a younger pupil whose spoken idea had inspired one scene. With his permission, they thanked him without claiming he had written the whole story. The final book did not pretend that every contribution was identical. It made the different roles visible and avoided giving credit only to the work that was easiest to count.",
+            "explanation": "A正确：只Mei因写最多；B否认初稿署名依据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.group-story-credit-014.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The final book claimed that everyone had done exactly the same work.",
+            "material": "Group Story Credit 014\n\nFour pupils made a class storybook. Mei wrote the first version, Omar changed the ending, Liv drew the pictures, and Ben checked spelling and arranged the pages. The cover first named only Mei because she had written the longest part. Ben said that word count did not show every kind of work.\nThe group discussed the contributions before printing. They kept Mei’s role as first writer but added a page naming each pupil’s work. They also checked with a younger pupil whose spoken idea had inspired one scene. With his permission, they thanked him without claiming he had written the whole story. The final book did not pretend that every contribution was identical. It made the different roles visible and avoided giving credit only to the work that was easiest to count.",
+            "explanation": "B正确：明确different roles而非identical；A把平等看见贡献误作相同任务。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.group-story-credit-014.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The younger pupil was thanked with permission for an idea that inspired a scene.",
+            "material": "Group Story Credit 014\n\nFour pupils made a class storybook. Mei wrote the first version, Omar changed the ending, Liv drew the pictures, and Ben checked spelling and arranged the pages. The cover first named only Mei because she had written the longest part. Ben said that word count did not show every kind of work.\nThe group discussed the contributions before printing. They kept Mei’s role as first writer but added a page naming each pupil’s work. They also checked with a younger pupil whose spoken idea had inspired one scene. With his permission, they thanked him without claiming he had written the whole story. The final book did not pretend that every contribution was identical. It made the different roles visible and avoided giving credit only to the work that was easiest to count.",
+            "explanation": "A正确：问许可后感谢启发场景想法；B否认来源与许可。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "5689f99505ef63e6703e340b68b766be713491aa3301f7cc91c527e579483df4",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-bakery-letter-tf#primary6.group-story-credit-014.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.group-story-credit-014.reading.q1",
+            "expansion.20261028.primary6.group-story-credit-014.reading.q2",
+            "expansion.20261028.primary6.group-story-credit-014.reading.q3",
+            "expansion.20261028.primary6.group-story-credit-014.reading.q4",
+            "expansion.20261028.primary6.group-story-credit-014.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-bakery-letter-tf",
+          "sourceContentHash": "e6db6f0f813ef882c13784f454aeffa61d10fad9edf6884f6a8b839b2e7ca67a"
+        }
+      ]
+    }
+  ]
+}

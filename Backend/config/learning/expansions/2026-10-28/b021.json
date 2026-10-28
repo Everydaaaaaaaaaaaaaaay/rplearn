@@ -1,0 +1,1982 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b021",
+  "createdAt": "2026-10-29T00:21:25.546944+08:00",
+  "sourceSHA256": "ae0853deacfd7d2ab964d1729125c1943d8c163802db265cdaed55359b27a7e7",
+  "reviewSHA256": "96364ee9c09dceb897ffd676f6e536d06c26196840874c08e803673cee77a14e",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.farm-trip-missing-details-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "农场通知里还要问什么",
+        "summary": "农场通知里还要问什么，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.farm-trip-missing-details-016",
+          "family": "function_choice",
+          "label": "农场通知里还要问什么",
+          "candidateSHA256": "17ccc75807511e46a0918212c8c75861958794796c7ca6a5fe35401881264402",
+          "authorCheckSHA256": "b16c9333decd7f6fd732a10daaa964e8a56d044e30699150de447779356acfb6",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.farm-trip-missing-details-016.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b021；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Farm Trip Missing Details 016\n\nOur class will visit a farm on Saturday. The short note does not give every detail. Choose the question that asks for the information each child needs."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.farm-trip-missing-details-016.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You need to know when the bus leaves. What do you ask?",
+            "material": "Farm Trip Missing Details 016\n\nOur class will visit a farm on Saturday. The short note does not give every detail. Choose the question that asks for the information each child needs.",
+            "explanation": "B直接问发车时刻；A问帽位置，C问苹果喜好，都未获取时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Where is my hat?"
+              },
+              {
+                "id": "o1",
+                "text": "What time does the bus leave?"
+              },
+              {
+                "id": "o2",
+                "text": "Who likes apples?"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.farm-trip-missing-details-016.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You need to know the meeting place. What do you ask?",
+            "material": "Farm Trip Missing Details 016\n\nOur class will visit a farm on Saturday. The short note does not give every detail. Choose the question that asks for the information each child needs.",
+            "explanation": "C问集合地点；A牛龄、B唱歌许可不解决集合地点未知。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How old is the cow?"
+              },
+              {
+                "id": "o1",
+                "text": "Can I sing a song?"
+              },
+              {
+                "id": "o2",
+                "text": "Where do we meet?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.farm-trip-missing-details-016.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You want to know if you should take lunch. What do you ask?",
+            "material": "Farm Trip Missing Details 016\n\nOur class will visit a farm on Saturday. The short note does not give every detail. Choose the question that asks for the information each child needs.",
+            "explanation": "A问需否带午餐盒；B车色、C笔长与午餐准备无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Do I need a lunch box?"
+              },
+              {
+                "id": "o1",
+                "text": "What colour is the bus?"
+              },
+              {
+                "id": "o2",
+                "text": "Is your pencil short?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.farm-trip-missing-details-016.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You do not know which shoes to wear. What do you ask?",
+            "material": "Farm Trip Missing Details 016\n\nOur class will visit a farm on Saturday. The short note does not give every detail. Choose the question that asks for the information each child needs.",
+            "explanation": "B问应穿鞋；A书位、C鸭色不解决穿鞋准备。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Where is my storybook?"
+              },
+              {
+                "id": "o1",
+                "text": "Which shoes should I wear?"
+              },
+              {
+                "id": "o2",
+                "text": "Are the ducks yellow?"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.farm-trip-missing-details-016.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You need to know when to come home. What do you ask?",
+            "material": "Farm Trip Missing Details 016\n\nOur class will visit a farm on Saturday. The short note does not give every detail. Choose the question that asks for the information each child needs.",
+            "explanation": "C问回程时刻；A河内物、B农夫跳跃能力均非返回时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "What is in the river?"
+              },
+              {
+                "id": "o1",
+                "text": "Can the farmer jump?"
+              },
+              {
+                "id": "o2",
+                "text": "What time do we come back?"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "5a5f7a01c2fedad5c12ed0c51a4d43e557e25cacabd8043ce2111856d3d307db",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.farm-trip-missing-details-016.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.farm-trip-missing-details-016.reading.q1",
+            "expansion.20261028.primary2.farm-trip-missing-details-016.reading.q2",
+            "expansion.20261028.primary2.farm-trip-missing-details-016.reading.q3",
+            "expansion.20261028.primary2.farm-trip-missing-details-016.reading.q4",
+            "expansion.20261028.primary2.farm-trip-missing-details-016.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.borrowed-craft-tools-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "手工课借工具时怎样说",
+        "summary": "手工课借工具时怎样说，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.borrowed-craft-tools-016",
+          "family": "function_choice",
+          "label": "手工课借工具时怎样说",
+          "candidateSHA256": "72936ace32ac118368e4a3fbea0a80f9952d9ccc9cc54625970e01da8ebc9ef1",
+          "authorCheckSHA256": "b16c9333decd7f6fd732a10daaa964e8a56d044e30699150de447779356acfb6",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.borrowed-craft-tools-016.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b021；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Borrowed Craft Tools 016\n\nAt craft club, children share tools. Read what each child needs and choose the useful sentence."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.borrowed-craft-tools-016.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your glue stick is empty. You want to use the spare one. What do you say?",
+            "material": "Borrowed Craft Tools 016\n\nAt craft club, children share tools. Read what each child needs and choose the useful sentence.",
+            "explanation": "A为胶棒空而请求备用；B剪刀色、C袜子色不能完成借胶需要。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "May I use the spare glue stick?"
+              },
+              {
+                "id": "o1",
+                "text": "The scissors are green."
+              },
+              {
+                "id": "o2",
+                "text": "I have a red sock."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.borrowed-craft-tools-016.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend has the only ruler. You need it after the friend finishes. What do you say?",
+            "material": "Borrowed Craft Tools 016\n\nAt craft club, children share tools. Read what each child needs and choose the useful sentence.",
+            "explanation": "B尊重先后请求用尺；A索取铅笔非尺且未尊先后；C窗况无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Give me every pencil now."
+              },
+              {
+                "id": "o1",
+                "text": "May I use the ruler after you?"
+              },
+              {
+                "id": "o2",
+                "text": "Why is the window open?"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.borrowed-craft-tools-016.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend gives you scissors, but you need tape. What do you say?",
+            "material": "Borrowed Craft Tools 016\n\nAt craft club, children share tools. Read what each child needs and choose the useful sentence.",
+            "explanation": "C感谢后纠正所需物；A剪刀不是餐具；B藏物不澄清错给。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "These scissors are for eating."
+              },
+              {
+                "id": "o1",
+                "text": "I will hide your scissors."
+              },
+              {
+                "id": "o2",
+                "text": "Thank you, but may I have tape instead?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.borrowed-craft-tools-016.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You have finished with the class brush and want to find its place. What do you ask?",
+            "material": "Borrowed Craft Tools 016\n\nAt craft club, children share tools. Read what each child needs and choose the useful sentence.",
+            "explanation": "A问画笔归处；B鸟数、C足球喜好不解决归还工具位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Where should I put this brush?"
+              },
+              {
+                "id": "o1",
+                "text": "How many birds can you see?"
+              },
+              {
+                "id": "o2",
+                "text": "Do you like football?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.borrowed-craft-tools-016.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your friend cannot reach a paper box. You want to help. What do you say?",
+            "material": "Borrowed Craft Tools 016\n\nAt craft club, children share tools. Read what each child needs and choose the useful sentence.",
+            "explanation": "B主动帮取够不着盒；A月位、C禁纸与需求无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Where is the moon?"
+              },
+              {
+                "id": "o1",
+                "text": "Shall I get the box for you?"
+              },
+              {
+                "id": "o2",
+                "text": "Do not use any paper again."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "7fd0e24617a22a789f3b6eaa46034f1b8ec05c56b9f463a53f987bcf199eb1e0",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.borrowed-craft-tools-016.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.borrowed-craft-tools-016.reading.q1",
+            "expansion.20261028.primary2.borrowed-craft-tools-016.reading.q2",
+            "expansion.20261028.primary2.borrowed-craft-tools-016.reading.q3",
+            "expansion.20261028.primary2.borrowed-craft-tools-016.reading.q4",
+            "expansion.20261028.primary2.borrowed-craft-tools-016.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.missing-library-stamp-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "图书卡上没有印章",
+        "summary": "图书卡上没有印章，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.missing-library-stamp-016",
+          "family": "reading_tf",
+          "label": "图书卡上没有印章",
+          "candidateSHA256": "94280bfa3d5c4d3309c8d4b982d8effa6e5bec5441e702cfce3610e9693cacf5",
+          "authorCheckSHA256": "b16c9333decd7f6fd732a10daaa964e8a56d044e30699150de447779356acfb6",
+          "sourceGroupIds": [
+            "original.bens-bag-reading#primary3.missing-library-stamp-016.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b021；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Missing Library Stamp 016\n\nI borrow a library book on Tuesday. The helper writes the return day on a card. She forgets to stamp the book. At home, I see the empty stamp space and think I cannot read it yet. Dad reads the card. It says I can keep the book until next Tuesday. I take the book back the next morning and ask the helper. She adds the stamp and says I may start reading now."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.missing-library-stamp-016.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer borrows the book on Tuesday.",
+            "material": "Missing Library Stamp 016\n\nI borrow a library book on Tuesday. The helper writes the return day on a card. She forgets to stamp the book. At home, I see the empty stamp space and think I cannot read it yet. Dad reads the card. It says I can keep the book until next Tuesday. I take the book back the next morning and ask the helper. She adds the stamp and says I may start reading now.",
+            "explanation": "A正确：on Tuesday借书；B否认日期。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.missing-library-stamp-016.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The helper forgets to write a return day.",
+            "material": "Missing Library Stamp 016\n\nI borrow a library book on Tuesday. The helper writes the return day on a card. She forgets to stamp the book. At home, I see the empty stamp space and think I cannot read it yet. Dad reads the card. It says I can keep the book until next Tuesday. I take the book back the next morning and ask the helper. She adds the stamp and says I may start reading now.",
+            "explanation": "B正确：写了归还日，忘的是印章；A混淆两种登记。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.missing-library-stamp-016.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The card says the book must be returned the same afternoon.",
+            "material": "Missing Library Stamp 016\n\nI borrow a library book on Tuesday. The helper writes the return day on a card. She forgets to stamp the book. At home, I see the empty stamp space and think I cannot read it yet. Dad reads the card. It says I can keep the book until next Tuesday. I take the book back the next morning and ask the helper. She adds the stamp and says I may start reading now.",
+            "explanation": "B正确：until next Tuesday；A把一周后改当天下午。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.missing-library-stamp-016.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad reads the card at home.",
+            "material": "Missing Library Stamp 016\n\nI borrow a library book on Tuesday. The helper writes the return day on a card. She forgets to stamp the book. At home, I see the empty stamp space and think I cannot read it yet. Dad reads the card. It says I can keep the book until next Tuesday. I take the book back the next morning and ask the helper. She adds the stamp and says I may start reading now.",
+            "explanation": "A正确：At home Dad reads card；B否认行为。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.missing-library-stamp-016.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The helper adds the missing stamp the next morning.",
+            "material": "Missing Library Stamp 016\n\nI borrow a library book on Tuesday. The helper writes the return day on a card. She forgets to stamp the book. At home, I see the empty stamp space and think I cannot read it yet. Dad reads the card. It says I can keep the book until next Tuesday. I take the book back the next morning and ask the helper. She adds the stamp and says I may start reading now.",
+            "explanation": "A正确：次晨回问后adds stamp；B否认补盖流程。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "6e715da458429f6751bd25f351dad2c6659b97d9dfa295de3cdce7e9dd5661fd",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.bens-bag-reading#primary3.missing-library-stamp-016.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.missing-library-stamp-016.reading.q1",
+            "expansion.20261028.primary3.missing-library-stamp-016.reading.q2",
+            "expansion.20261028.primary3.missing-library-stamp-016.reading.q3",
+            "expansion.20261028.primary3.missing-library-stamp-016.reading.q4",
+            "expansion.20261028.primary3.missing-library-stamp-016.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.bens-bag-reading",
+          "sourceContentHash": "e1594f6d2c2c96de673832f2efe0847d6e8f968d3ed2c4833705aeba378b5517"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.paper-fan-direction-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "纸扇吹动小船",
+        "summary": "纸扇吹动小船，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.paper-fan-direction-016",
+          "family": "reading_tf",
+          "label": "纸扇吹动小船",
+          "candidateSHA256": "4661ab200732c5631b9065ea7a9cbefa0ce02643f8b32b8c4fe5a547d5a2b70e",
+          "authorCheckSHA256": "b16c9333decd7f6fd732a10daaa964e8a56d044e30699150de447779356acfb6",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.paper-fan-direction-016.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b021；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Paper Fan Direction 016\n\nWe put a little paper boat in a tray of water. My brother blows on it, and it moves away from him. I use a paper fan. The boat moves faster, but it hits the side of the tray. We try smaller waves of air. Now it moves slowly through the middle. Mum asks us to wipe the water from the table before we put the game away."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.paper-fan-direction-016.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The paper boat floats in a tray of water.",
+            "material": "Paper Fan Direction 016\n\nWe put a little paper boat in a tray of water. My brother blows on it, and it moves away from him. I use a paper fan. The boat moves faster, but it hits the side of the tray. We try smaller waves of air. Now it moves slowly through the middle. Mum asks us to wipe the water from the table before we put the game away.",
+            "explanation": "A正确：boat in tray of water；B否认场景。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.paper-fan-direction-016.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The boat first moves towards the brother when he blows.",
+            "material": "Paper Fan Direction 016\n\nWe put a little paper boat in a tray of water. My brother blows on it, and it moves away from him. I use a paper fan. The boat moves faster, but it hits the side of the tray. We try smaller waves of air. Now it moves slowly through the middle. Mum asks us to wipe the water from the table before we put the game away.",
+            "explanation": "B正确：away from him；A方向颠倒。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.paper-fan-direction-016.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The first use of the fan makes the boat hit the tray side.",
+            "material": "Paper Fan Direction 016\n\nWe put a little paper boat in a tray of water. My brother blows on it, and it moves away from him. I use a paper fan. The boat moves faster, but it hits the side of the tray. We try smaller waves of air. Now it moves slowly through the middle. Mum asks us to wipe the water from the table before we put the game away.",
+            "explanation": "A正确：faster but hits side；B否认首次结果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.paper-fan-direction-016.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Smaller waves of air help the boat move through the middle.",
+            "material": "Paper Fan Direction 016\n\nWe put a little paper boat in a tray of water. My brother blows on it, and it moves away from him. I use a paper fan. The boat moves faster, but it hits the side of the tray. We try smaller waves of air. Now it moves slowly through the middle. Mum asks us to wipe the water from the table before we put the game away.",
+            "explanation": "A正确：try smaller后moves slowly through middle；B否认调整效果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.paper-fan-direction-016.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mum asks the children to leave water on the table.",
+            "material": "Paper Fan Direction 016\n\nWe put a little paper boat in a tray of water. My brother blows on it, and it moves away from him. I use a paper fan. The boat moves faster, but it hits the side of the tray. We try smaller waves of air. Now it moves slowly through the middle. Mum asks us to wipe the water from the table before we put the game away.",
+            "explanation": "B正确：asks wipe water；A把擦净说成保留。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "b7e578cf84289787a8de3fd8bc232873838c53880564feeb1cd5cc10f75bdaab",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.paper-fan-direction-016.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.paper-fan-direction-016.reading.q1",
+            "expansion.20261028.primary3.paper-fan-direction-016.reading.q2",
+            "expansion.20261028.primary3.paper-fan-direction-016.reading.q3",
+            "expansion.20261028.primary3.paper-fan-direction-016.reading.q4",
+            "expansion.20261028.primary3.paper-fan-direction-016.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.bus-stop-number-change-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "公园公交站的两个编号",
+        "summary": "公园公交站的两个编号，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.bus-stop-number-change-016",
+          "family": "reading_choice",
+          "label": "公园公交站的两个编号",
+          "candidateSHA256": "05c35b4a16f5b58a782a441954484f11aee1a16fab908e0a7f5eb989c9dfbf1e",
+          "authorCheckSHA256": "b16c9333decd7f6fd732a10daaa964e8a56d044e30699150de447779356acfb6",
+          "sourceGroupIds": [
+            "original.primary4-wet-sports-day#primary4.bus-stop-number-change-016.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b021；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Bus Stop Number Change 016\n\nThe bus stop near the park has two signs. The old sign says Stop 6, but the new city map calls it Stop 16. A small note says both numbers name the same place this month. From next month, only Stop 16 will be used. Grandma sees the old number on her route card and worries that she is at the wrong stop. I show her the note. We wait together for Bus 8. The stop number is not the bus number. Bus 8 arrives at ten twenty, and we get on."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.bus-stop-number-change-016.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the stop’s new number?",
+            "material": "Bus Stop Number Change 016\n\nThe bus stop near the park has two signs. The old sign says Stop 6, but the new city map calls it Stop 16. A small note says both numbers name the same place this month. From next month, only Stop 16 will be used. Grandma sees the old number on her route card and worries that she is at the wrong stop. I show her the note. We wait together for Bus 8. The stop number is not the bus number. Bus 8 arrives at ten twenty, and we get on.",
+            "explanation": "C新站编号16；B旧6；A为乘车线路8不是站号。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "8."
+              },
+              {
+                "id": "o1",
+                "text": "6."
+              },
+              {
+                "id": "o2",
+                "text": "16."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.bus-stop-number-change-016.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the note say about the two stop numbers this month?",
+            "material": "Bus Stop Number Change 016\n\nThe bus stop near the park has two signs. The old sign says Stop 6, but the new city map calls it Stop 16. A small note says both numbers name the same place this month. From next month, only Stop 16 will be used. Grandma sees the old number on her route card and worries that she is at the wrong stop. I show her the note. We wait together for Bus 8. The stop number is not the bus number. Bus 8 arrives at ten twenty, and we get on.",
+            "explanation": "A本月同站并行号；B异地、C票价均误读。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They name the same place."
+              },
+              {
+                "id": "o1",
+                "text": "They are two different towns."
+              },
+              {
+                "id": "o2",
+                "text": "Both are bus ticket prices."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.bus-stop-number-change-016.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is Grandma worried?",
+            "material": "Bus Stop Number Change 016\n\nThe bus stop near the park has two signs. The old sign says Stop 6, but the new city map calls it Stop 16. A small note says both numbers name the same place this month. From next month, only Stop 16 will be used. Grandma sees the old number on her route card and worries that she is at the wrong stop. I show her the note. We wait together for Bus 8. The stop number is not the bus number. Bus 8 arrives at ten twenty, and we get on.",
+            "explanation": "B旧路线卡与新号不一致；A司机、C关园无依据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Her bus has no driver."
+              },
+              {
+                "id": "o1",
+                "text": "Her route card uses the old number."
+              },
+              {
+                "id": "o2",
+                "text": "The park is closed."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.bus-stop-number-change-016.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which bus do they take?",
+            "material": "Bus Stop Number Change 016\n\nThe bus stop near the park has two signs. The old sign says Stop 6, but the new city map calls it Stop 16. A small note says both numbers name the same place this month. From next month, only Stop 16 will be used. Grandma sees the old number on her route card and worries that she is at the wrong stop. I show her the note. We wait together for Bus 8. The stop number is not the bus number. Bus 8 arrives at ten twenty, and we get on.",
+            "explanation": "C等上8路；A/B站号不等于线路。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Bus 16."
+              },
+              {
+                "id": "o1",
+                "text": "Bus 6."
+              },
+              {
+                "id": "o2",
+                "text": "Bus 8."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.bus-stop-number-change-016.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What number will be used for the stop next month?",
+            "material": "Bus Stop Number Change 016\n\nThe bus stop near the park has two signs. The old sign says Stop 6, but the new city map calls it Stop 16. A small note says both numbers name the same place this month. From next month, only Stop 16 will be used. Grandma sees the old number on her route card and worries that she is at the wrong stop. I show her the note. We wait together for Bus 8. The stop number is not the bus number. Bus 8 arrives at ten twenty, and we get on.",
+            "explanation": "A下月仅16；B旧号停用；C线路8不是站号。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only 16."
+              },
+              {
+                "id": "o1",
+                "text": "Only 6."
+              },
+              {
+                "id": "o2",
+                "text": "Only 8."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "ba5c56c32599d80e2c05e8ca45b0db698f1b659c616365e383f02bfcbf560be5",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-wet-sports-day#primary4.bus-stop-number-change-016.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.bus-stop-number-change-016.reading.q1",
+            "expansion.20261028.primary4.bus-stop-number-change-016.reading.q2",
+            "expansion.20261028.primary4.bus-stop-number-change-016.reading.q3",
+            "expansion.20261028.primary4.bus-stop-number-change-016.reading.q4",
+            "expansion.20261028.primary4.bus-stop-number-change-016.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-wet-sports-day",
+          "sourceContentHash": "6a3bc43dea046e6228e357c717c6052673f70030358c1c546dcc2172196699bb"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.school-flag-rope-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "升旗绳旁的新记号",
+        "summary": "升旗绳旁的新记号，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.school-flag-rope-016",
+          "family": "reading_tf",
+          "label": "升旗绳旁的新记号",
+          "candidateSHA256": "708c34687af8ee5cb1faf68a4747fc96a0883fe9ec4f65bf6933e6844e634712",
+          "authorCheckSHA256": "b16c9333decd7f6fd732a10daaa964e8a56d044e30699150de447779356acfb6",
+          "sourceGroupIds": [
+            "original.class-garden-reading#primary4.school-flag-rope-016.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b021；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "School Flag Rope 016\n\nA flag rope at school has a faded mark. The caretaker uses the mark to know when the flag is high enough. He does not ask pupils to climb the pole. Instead, he lowers the rope and adds a clear new mark while standing on the ground. Before the next ceremony, he checks that the rope moves freely. Pupils stand behind the white line during the check. The flag is raised only after everyone has moved to the assembly area."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.school-flag-rope-016.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The old rope mark is difficult to see.",
+            "material": "School Flag Rope 016\n\nA flag rope at school has a faded mark. The caretaker uses the mark to know when the flag is high enough. He does not ask pupils to climb the pole. Instead, he lowers the rope and adds a clear new mark while standing on the ground. Before the next ceremony, he checks that the rope moves freely. Pupils stand behind the white line during the check. The flag is raised only after everyone has moved to the assembly area.",
+            "explanation": "A正确：faded mark变淡；B否认待修原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.school-flag-rope-016.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Pupils climb the pole to add the new mark.",
+            "material": "School Flag Rope 016\n\nA flag rope at school has a faded mark. The caretaker uses the mark to know when the flag is high enough. He does not ask pupils to climb the pole. Instead, he lowers the rope and adds a clear new mark while standing on the ground. Before the next ceremony, he checks that the rope moves freely. Pupils stand behind the white line during the check. The flag is raised only after everyone has moved to the assembly area.",
+            "explanation": "B正确：管理员地面放绳加记号，不让学生爬；A错人错动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.school-flag-rope-016.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The caretaker checks that the rope moves freely.",
+            "material": "School Flag Rope 016\n\nA flag rope at school has a faded mark. The caretaker uses the mark to know when the flag is high enough. He does not ask pupils to climb the pole. Instead, he lowers the rope and adds a clear new mark while standing on the ground. Before the next ceremony, he checks that the rope moves freely. Pupils stand behind the white line during the check. The flag is raised only after everyone has moved to the assembly area.",
+            "explanation": "A正确：before next ceremony检查；B否认步骤。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.school-flag-rope-016.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Pupils stand in front of the white line during the check.",
+            "material": "School Flag Rope 016\n\nA flag rope at school has a faded mark. The caretaker uses the mark to know when the flag is high enough. He does not ask pupils to climb the pole. Instead, he lowers the rope and adds a clear new mark while standing on the ground. Before the next ceremony, he checks that the rope moves freely. Pupils stand behind the white line during the check. The flag is raised only after everyone has moved to the assembly area.",
+            "explanation": "B正确：behind white line；A前后反转。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.school-flag-rope-016.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The flag is raised after people have moved to the assembly area.",
+            "material": "School Flag Rope 016\n\nA flag rope at school has a faded mark. The caretaker uses the mark to know when the flag is high enough. He does not ask pupils to climb the pole. Instead, he lowers the rope and adds a clear new mark while standing on the ground. Before the next ceremony, he checks that the rope moves freely. Pupils stand behind the white line during the check. The flag is raised only after everyone has moved to the assembly area.",
+            "explanation": "A正确：only after移到集合区；B否认先后。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "4beca5e4bc299041bcd02e949b8efe144a56157555ce3f956d0aebd2edbe198e",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.class-garden-reading#primary4.school-flag-rope-016.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.school-flag-rope-016.reading.q1",
+            "expansion.20261028.primary4.school-flag-rope-016.reading.q2",
+            "expansion.20261028.primary4.school-flag-rope-016.reading.q3",
+            "expansion.20261028.primary4.school-flag-rope-016.reading.q4",
+            "expansion.20261028.primary4.school-flag-rope-016.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.class-garden-reading",
+          "sourceContentHash": "c48d0add74ac202b6eee2f6cafe95556edd3c7176f1da3b56f14a6e7036dfdab"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.community-print-size-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "社区活动通知的大字版本",
+        "summary": "社区活动通知的大字版本，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.dongcheng2025.closedmixed",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照已核北京区卷公开转载的相应完整具体模式：一短文五判断／四完整信息卡五判断／两共享句空加三道三选，分别绑定，不截成单一子组。源原键非独立gold，东城两型尚无原键；节日日期等事实不沿用。原创虚构，独立教研、目标学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.community-print-size-016",
+          "family": "reading_choice",
+          "label": "社区活动通知的大字版本",
+          "candidateSHA256": "be36947a4a634d51868db93eafa51a81b8a91df0014a77884c7b1a31f3fafb63",
+          "authorCheckSHA256": "b16c9333decd7f6fd732a10daaa964e8a56d044e30699150de447779356acfb6",
+          "sourceGroupIds": [
+            "original.primary5-message-walk-mixed#primary5.community-print-size-016.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b021；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Community Print Size 016\n\nMessage from the community centre\nA large-print version of the winter programme is now available at the front desk. It contains the same activities and dates as the standard leaflet. Because the text is larger, it uses more pages. Please do not assume that extra pages mean extra events. Staff can also read the programme aloud if requested. Bookings must still be made through the usual phone number or at the desk. The large-print leaflet is not a booking form. If you notice a difference between the two versions, tell staff so they can check both. Recycled copies of the old programme should not be used for current dates."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.community-print-size-016.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is different in the large-print leaflet?",
+            "material": "Community Print Size 016\n\nMessage from the community centre\nA large-print version of the winter programme is now available at the front desk. It contains the same activities and dates as the standard leaflet. Because the text is larger, it uses more pages. Please do not assume that extra pages mean extra events. Staff can also read the programme aloud if requested. Bookings must still be made through the usual phone number or at the desk. The large-print leaflet is not a booking form. If you notice a difference between the two versions, tell staff so they can check both. Recycled copies of the old programme should not be used for current dates.",
+            "explanation": "C字较大页更多；A/B/D同活动日期与通常预约渠道，没有费用变更。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every activity date."
+              },
+              {
+                "id": "o1",
+                "text": "The booking phone number."
+              },
+              {
+                "id": "o2",
+                "text": "The size of the text."
+              },
+              {
+                "id": "o3",
+                "text": "The cost of all events."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.community-print-size-016.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the new version have more pages?",
+            "material": "Community Print Size 016\n\nMessage from the community centre\nA large-print version of the winter programme is now available at the front desk. It contains the same activities and dates as the standard leaflet. Because the text is larger, it uses more pages. Please do not assume that extra pages mean extra events. Staff can also read the programme aloud if requested. Bookings must still be made through the usual phone number or at the desk. The large-print leaflet is not a booking form. If you notice a difference between the two versions, tell staff so they can check both. Recycled copies of the old programme should not be used for current dates.",
+            "explanation": "A大字多占空间；B额外活动明说不应推定；C仍有日期；D非预约表。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The larger text needs more space."
+              },
+              {
+                "id": "o1",
+                "text": "It adds many secret events."
+              },
+              {
+                "id": "o2",
+                "text": "It removes all dates."
+              },
+              {
+                "id": "o3",
+                "text": "It is a separate booking form."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.community-print-size-016.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How can someone book?",
+            "material": "Community Print Size 016\n\nMessage from the community centre\nA large-print version of the winter programme is now available at the front desk. It contains the same activities and dates as the standard leaflet. Because the text is larger, it uses more pages. Please do not assume that extra pages mean extra events. Staff can also read the programme aloud if requested. Bookings must still be made through the usual phone number or at the desk. The large-print leaflet is not a booking form. If you notice a difference between the two versions, tell staff so they can check both. Recycled copies of the old programme should not be used for current dates.",
+            "explanation": "B原电话或前台；A页数、C保留手册、D旧节目纸都不构成预约。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "By counting the pages."
+              },
+              {
+                "id": "o1",
+                "text": "Through the usual phone number or front desk."
+              },
+              {
+                "id": "o2",
+                "text": "By keeping the large-print copy at home."
+              },
+              {
+                "id": "o3",
+                "text": "By writing only on an old programme."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.community-print-size-016.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should readers do if versions disagree?",
+            "material": "Community Print Size 016\n\nMessage from the community centre\nA large-print version of the winter programme is now available at the front desk. It contains the same activities and dates as the standard leaflet. Because the text is larger, it uses more pages. Please do not assume that extra pages mean extra events. Staff can also read the programme aloud if requested. Bookings must still be made through the usual phone number or at the desk. The large-print leaflet is not a booking form. If you notice a difference between the two versions, tell staff so they can check both. Recycled copies of the old programme should not be used for current dates.",
+            "explanation": "D报告员工核对；A猜、B忽略、C自动用旧均非规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Guess which date looks nicer."
+              },
+              {
+                "id": "o1",
+                "text": "Ignore the difference."
+              },
+              {
+                "id": "o2",
+                "text": "Use the old programme automatically."
+              },
+              {
+                "id": "o3",
+                "text": "Tell staff to check both."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.community-print-size-016.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What other help is offered?",
+            "material": "Community Print Size 016\n\nMessage from the community centre\nA large-print version of the winter programme is now available at the front desk. It contains the same activities and dates as the standard leaflet. Because the text is larger, it uses more pages. Please do not assume that extra pages mean extra events. Staff can also read the programme aloud if requested. Bookings must still be made through the usual phone number or at the desk. The large-print leaflet is not a booking form. If you notice a difference between the two versions, tell staff so they can check both. Recycled copies of the old programme should not be used for current dates.",
+            "explanation": "A可请求朗读；B出租车、C免约票、D每页新日程均未提供。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Staff reading the programme aloud."
+              },
+              {
+                "id": "o1",
+                "text": "A private taxi for every visitor."
+              },
+              {
+                "id": "o2",
+                "text": "Free tickets without booking."
+              },
+              {
+                "id": "o3",
+                "text": "New dates on every page."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "4f04ef5b0b7746acc7db83b4c2d43c6c76d1efba87a87726818e4b5c6634843a",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-message-walk-mixed#primary5.community-print-size-016.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.community-print-size-016.reading.q1",
+            "expansion.20261028.primary5.community-print-size-016.reading.q2",
+            "expansion.20261028.primary5.community-print-size-016.reading.q3",
+            "expansion.20261028.primary5.community-print-size-016.reading.q4",
+            "expansion.20261028.primary5.community-print-size-016.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-message-walk-mixed",
+          "sourceContentHash": "a2c156a9dbaa50b2cd52d023337d6cbf97c9b2f99995cb3224befeee34240702"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.soap-project-measure-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "洗手液用量的小调查",
+        "summary": "洗手液用量的小调查，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照已核北京区卷公开转载的相应完整具体模式：一短文五判断／四完整信息卡五判断／两共享句空加三道三选，分别绑定，不截成单一子组。源原键非独立gold，东城两型尚无原键；节日日期等事实不沿用。原创虚构，独立教研、目标学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.soap-project-measure-016",
+          "family": "reading_tf",
+          "label": "洗手液用量的小调查",
+          "candidateSHA256": "bea0cd901dae9ba491a3264f96639f3251934a7e0c08f5debc29fca0f4edee2c",
+          "authorCheckSHA256": "b16c9333decd7f6fd732a10daaa964e8a56d044e30699150de447779356acfb6",
+          "sourceGroupIds": [
+            "original.primary5-story-voices-tf#primary5.soap-project-measure-016.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b021；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Soap Project Measure 016\n\nOur class checked soap use beside the washbasins. We marked the level in each bottle every afternoon for a week. The bottle near the playground emptied fastest. One pupil said children there must wash their hands more carefully. The caretaker showed us that its pump released more soap with each press. Another bottle had a small leak. We added these details to our notes. The levels told us how much soap had left the bottles, but they did not prove how well anyone washed. For the next week, the caretaker fitted matching pumps and fixed the leak before we compared the bottles again."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.soap-project-measure-016.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class recorded bottle levels every afternoon.",
+            "material": "Soap Project Measure 016\n\nOur class checked soap use beside the washbasins. We marked the level in each bottle every afternoon for a week. The bottle near the playground emptied fastest. One pupil said children there must wash their hands more carefully. The caretaker showed us that its pump released more soap with each press. Another bottle had a small leak. We added these details to our notes. The levels told us how much soap had left the bottles, but they did not prove how well anyone washed. For the next week, the caretaker fitted matching pumps and fixed the leak before we compared the bottles again.",
+            "explanation": "A正确：every afternoon for a week；B否认记录频率。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.soap-project-measure-016.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The fastest-emptying bottle proved the best handwashing.",
+            "material": "Soap Project Measure 016\n\nOur class checked soap use beside the washbasins. We marked the level in each bottle every afternoon for a week. The bottle near the playground emptied fastest. One pupil said children there must wash their hands more carefully. The caretaker showed us that its pump released more soap with each press. Another bottle had a small leak. We added these details to our notes. The levels told us how much soap had left the bottles, but they did not prove how well anyone washed. For the next week, the caretaker fitted matching pumps and fixed the leak before we compared the bottles again.",
+            "explanation": "B正确：泵量和漏液影响用量，不证明质量；A把耗量当洗手好坏。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.soap-project-measure-016.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The playground pump released more soap per press.",
+            "material": "Soap Project Measure 016\n\nOur class checked soap use beside the washbasins. We marked the level in each bottle every afternoon for a week. The bottle near the playground emptied fastest. One pupil said children there must wash their hands more carefully. The caretaker showed us that its pump released more soap with each press. Another bottle had a small leak. We added these details to our notes. The levels told us how much soap had left the bottles, but they did not prove how well anyone washed. For the next week, the caretaker fitted matching pumps and fixed the leak before we compared the bottles again.",
+            "explanation": "A正确：more each press；B否认设备差异。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.soap-project-measure-016.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class ignored the leaking bottle.",
+            "material": "Soap Project Measure 016\n\nOur class checked soap use beside the washbasins. We marked the level in each bottle every afternoon for a week. The bottle near the playground emptied fastest. One pupil said children there must wash their hands more carefully. The caretaker showed us that its pump released more soap with each press. Another bottle had a small leak. We added these details to our notes. The levels told us how much soap had left the bottles, but they did not prove how well anyone washed. For the next week, the caretaker fitted matching pumps and fixed the leak before we compared the bottles again.",
+            "explanation": "B正确：记录并下周修漏；A说忽略不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.soap-project-measure-016.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Matching pumps and repairing the leak were part of the next comparison.",
+            "material": "Soap Project Measure 016\n\nOur class checked soap use beside the washbasins. We marked the level in each bottle every afternoon for a week. The bottle near the playground emptied fastest. One pupil said children there must wash their hands more carefully. The caretaker showed us that its pump released more soap with each press. Another bottle had a small leak. We added these details to our notes. The levels told us how much soap had left the bottles, but they did not prove how well anyone washed. For the next week, the caretaker fitted matching pumps and fixed the leak before we compared the bottles again.",
+            "explanation": "A正确：fitted matching pumps fixed leak before compare；B否认控制改进。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "3e473a35a0ee61d7ec57fb45ec1b73a4f79edbeab6c69cbf9d1d9a191e0a84a5",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-story-voices-tf#primary5.soap-project-measure-016.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.soap-project-measure-016.reading.q1",
+            "expansion.20261028.primary5.soap-project-measure-016.reading.q2",
+            "expansion.20261028.primary5.soap-project-measure-016.reading.q3",
+            "expansion.20261028.primary5.soap-project-measure-016.reading.q4",
+            "expansion.20261028.primary5.soap-project-measure-016.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-story-voices-tf",
+          "sourceContentHash": "a4f0870aefe1f20fc8d875af831008e42eade8b2add01b9a839678f758d44bde"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.heritage-name-pronunciation-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "街道旧名的读音核对",
+        "summary": "街道旧名的读音核对，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.closedmixed",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.heritage-name-pronunciation-016",
+          "family": "reading_choice",
+          "label": "街道旧名的读音核对",
+          "candidateSHA256": "8ba527c7ddfd401c4d0461b242171987effecbd4deb888983982ca627f8a98a9",
+          "authorCheckSHA256": "b16c9333decd7f6fd732a10daaa964e8a56d044e30699150de447779356acfb6",
+          "sourceGroupIds": [
+            "original.primary6-radio-room-full-mixed#primary6.heritage-name-pronunciation-016.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b021；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Heritage Name Pronunciation 016\n\nThe language club prepared a walking guide to old street names. A map listed a name in writing, but the pupils did not know how local residents pronounced it. A computer voice gave one reading. Two long-term residents used another. The group first thought it had to choose one and call the other wrong.\nTheir teacher suggested asking where each form was used. The map office said its guide followed the official written form. Residents explained that an older local form was still common in conversation. The pupils recorded both, with the speakers’ permission, and labelled the contexts. They did not claim that two interviews represented every resident. On the final guide, visitors could hear the official guide form and a local spoken form. A note invited further information from the neighbourhood archive."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.heritage-name-pronunciation-016.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What problem did the pupils face?",
+            "material": "Heritage Name Pronunciation 016\n\nThe language club prepared a walking guide to old street names. A map listed a name in writing, but the pupils did not know how local residents pronounced it. A computer voice gave one reading. Two long-term residents used another. The group first thought it had to choose one and call the other wrong.\nTheir teacher suggested asking where each form was used. The map office said its guide followed the official written form. Residents explained that an older local form was still common in conversation. The pupils recorded both, with the speakers’ permission, and labelled the contexts. They did not claim that two interviews represented every resident. On the final guide, visitors could hear the official guide form and a local spoken form. A note invited further information from the neighbourhood archive.",
+            "explanation": "B文字计算机读法与居民读法不同；A图有名；C居民有话；D可获许可录。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The map had no street names."
+              },
+              {
+                "id": "o1",
+                "text": "Written and locally spoken versions were read differently."
+              },
+              {
+                "id": "o2",
+                "text": "Nobody in the town spoke."
+              },
+              {
+                "id": "o3",
+                "text": "All recordings were forbidden."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.heritage-name-pronunciation-016.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the teacher suggest checking?",
+            "material": "Heritage Name Pronunciation 016\n\nThe language club prepared a walking guide to old street names. A map listed a name in writing, but the pupils did not know how local residents pronounced it. A computer voice gave one reading. Two long-term residents used another. The group first thought it had to choose one and call the other wrong.\nTheir teacher suggested asking where each form was used. The map office said its guide followed the official written form. Residents explained that an older local form was still common in conversation. The pupils recorded both, with the speakers’ permission, and labelled the contexts. They did not claim that two interviews represented every resident. On the final guide, visitors could hear the official guide form and a local spoken form. A note invited further information from the neighbourhood archive.",
+            "explanation": "C问各形式使用场景；A音量、B删旧词、D价格非方法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Which voice was loudest."
+              },
+              {
+                "id": "o1",
+                "text": "How to remove every old word."
+              },
+              {
+                "id": "o2",
+                "text": "The contexts in which the forms were used."
+              },
+              {
+                "id": "o3",
+                "text": "The price of the computer."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.heritage-name-pronunciation-016.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did the pupils present the two forms?",
+            "material": "Heritage Name Pronunciation 016\n\nThe language club prepared a walking guide to old street names. A map listed a name in writing, but the pupils did not know how local residents pronounced it. A computer voice gave one reading. Two long-term residents used another. The group first thought it had to choose one and call the other wrong.\nTheir teacher suggested asking where each form was used. The map office said its guide followed the official written form. Residents explained that an older local form was still common in conversation. The pupils recorded both, with the speakers’ permission, and labelled the contexts. They did not claim that two interviews represented every resident. On the final guide, visitors could hear the official guide form and a local spoken form. A note invited further information from the neighbourhood archive.",
+            "explanation": "A区分官方导览与本地口语；B不是不解释同一；C可听；D未全判居民错。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "With labels explaining their contexts."
+              },
+              {
+                "id": "o1",
+                "text": "As identical spellings without explanation."
+              },
+              {
+                "id": "o2",
+                "text": "By hiding both from visitors."
+              },
+              {
+                "id": "o3",
+                "text": "By calling all residents mistaken."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.heritage-name-pronunciation-016.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What limit did the pupils acknowledge?",
+            "material": "Heritage Name Pronunciation 016\n\nThe language club prepared a walking guide to old street names. A map listed a name in writing, but the pupils did not know how local residents pronounced it. A computer voice gave one reading. Two long-term residents used another. The group first thought it had to choose one and call the other wrong.\nTheir teacher suggested asking where each form was used. The map office said its guide followed the official written form. Residents explained that an older local form was still common in conversation. The pupils recorded both, with the speakers’ permission, and labelled the contexts. They did not claim that two interviews represented every resident. On the final guide, visitors could hear the official guide form and a local spoken form. A note invited further information from the neighbourhood archive.",
+            "explanation": "D明确不夸两访谈代表全体；A地图有用；B无永不变；C未认计算机全代表。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Maps could never have any use."
+              },
+              {
+                "id": "o1",
+                "text": "Local speech never changes."
+              },
+              {
+                "id": "o2",
+                "text": "One computer represents everyone."
+              },
+              {
+                "id": "o3",
+                "text": "Two interviews did not represent all residents."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.heritage-name-pronunciation-016.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What condition applied to recording the speakers?",
+            "material": "Heritage Name Pronunciation 016\n\nThe language club prepared a walking guide to old street names. A map listed a name in writing, but the pupils did not know how local residents pronounced it. A computer voice gave one reading. Two long-term residents used another. The group first thought it had to choose one and call the other wrong.\nTheir teacher suggested asking where each form was used. The map office said its guide followed the official written form. Residents explained that an older local form was still common in conversation. The pupils recorded both, with the speakers’ permission, and labelled the contexts. They did not claim that two interviews represented every resident. On the final guide, visitors could hear the official guide form and a local spoken form. A note invited further information from the neighbourhood archive.",
+            "explanation": "B：with speakers permission；A无条件错误；C买导览、D改名均未要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No condition at all."
+              },
+              {
+                "id": "o1",
+                "text": "Their permission was obtained."
+              },
+              {
+                "id": "o2",
+                "text": "They had to buy the guide."
+              },
+              {
+                "id": "o3",
+                "text": "They had to change their names."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "cbec260adaecc73507b5c8a3f69ece4dd21bae9df0645501142099725cf037c1",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-radio-room-full-mixed#primary6.heritage-name-pronunciation-016.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.heritage-name-pronunciation-016.reading.q1",
+            "expansion.20261028.primary6.heritage-name-pronunciation-016.reading.q2",
+            "expansion.20261028.primary6.heritage-name-pronunciation-016.reading.q3",
+            "expansion.20261028.primary6.heritage-name-pronunciation-016.reading.q4",
+            "expansion.20261028.primary6.heritage-name-pronunciation-016.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-radio-room-full-mixed",
+          "sourceContentHash": "c092bba003b1fdada51612cc5107a924d7af88c52928ba812f1345377726775a"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.canteen-choice-board-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "食堂选择牌上的售罄信息",
+        "summary": "食堂选择牌上的售罄信息，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.canteen-choice-board-016",
+          "family": "reading_tf",
+          "label": "食堂选择牌上的售罄信息",
+          "candidateSHA256": "4ff1fc08b613743ad07b2b5a90d621807f9721a82f8637035eac667c1698f820",
+          "authorCheckSHA256": "b16c9333decd7f6fd732a10daaa964e8a56d044e30699150de447779356acfb6",
+          "sourceGroupIds": [
+            "original.primary6-bakery-letter-tf#primary6.canteen-choice-board-016.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b021；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Canteen Choice Board 016\n\nThe canteen displayed three lunch choices on a board. Pupils placed a coloured counter beside their chosen meal before morning lessons. The kitchen used the counts to plan portions. On Tuesday, one ingredient delivery was late. Meal B could not be made. Staff removed its picture at the serving counter, but the morning board still showed it. Several pupils queued expecting that meal.\nThe manager apologised and updated both boards. She also introduced a check: whenever a meal changed, one worker would update the serving sign and another would check the morning board. The counters remained useful for planning, but they could not guarantee that every planned ingredient would arrive. Pupils who needed an individually checked meal continued to receive that service separately."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.canteen-choice-board-016.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The counters helped the kitchen estimate planned meal choices.",
+            "material": "Canteen Choice Board 016\n\nThe canteen displayed three lunch choices on a board. Pupils placed a coloured counter beside their chosen meal before morning lessons. The kitchen used the counts to plan portions. On Tuesday, one ingredient delivery was late. Meal B could not be made. Staff removed its picture at the serving counter, but the morning board still showed it. Several pupils queued expecting that meal.\nThe manager apologised and updated both boards. She also introduced a check: whenever a meal changed, one worker would update the serving sign and another would check the morning board. The counters remained useful for planning, but they could not guarantee that every planned ingredient would arrive. Pupils who needed an individually checked meal continued to receive that service separately.",
+            "explanation": "A正确：早晨选择计数用于plan portions；B否认规划用途。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.canteen-choice-board-016.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Meal B was unavailable because no pupil had chosen it.",
+            "material": "Canteen Choice Board 016\n\nThe canteen displayed three lunch choices on a board. Pupils placed a coloured counter beside their chosen meal before morning lessons. The kitchen used the counts to plan portions. On Tuesday, one ingredient delivery was late. Meal B could not be made. Staff removed its picture at the serving counter, but the morning board still showed it. Several pupils queued expecting that meal.\nThe manager apologised and updated both boards. She also introduced a check: whenever a meal changed, one worker would update the serving sign and another would check the morning board. The counters remained useful for planning, but they could not guarantee that every planned ingredient would arrive. Pupils who needed an individually checked meal continued to receive that service separately.",
+            "explanation": "B正确：原料配送晚，不是无人选；A错置缺餐原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.canteen-choice-board-016.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Only the serving-counter sign was updated at first.",
+            "material": "Canteen Choice Board 016\n\nThe canteen displayed three lunch choices on a board. Pupils placed a coloured counter beside their chosen meal before morning lessons. The kitchen used the counts to plan portions. On Tuesday, one ingredient delivery was late. Meal B could not be made. Staff removed its picture at the serving counter, but the morning board still showed it. Several pupils queued expecting that meal.\nThe manager apologised and updated both boards. She also introduced a check: whenever a meal changed, one worker would update the serving sign and another would check the morning board. The counters remained useful for planning, but they could not guarantee that every planned ingredient would arrive. Pupils who needed an individually checked meal continued to receive that service separately.",
+            "explanation": "A正确：最初移餐台图，早晨板仍旧；B否认信息不同步。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.canteen-choice-board-016.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The new check required both information points to be reviewed after a change.",
+            "material": "Canteen Choice Board 016\n\nThe canteen displayed three lunch choices on a board. Pupils placed a coloured counter beside their chosen meal before morning lessons. The kitchen used the counts to plan portions. On Tuesday, one ingredient delivery was late. Meal B could not be made. Staff removed its picture at the serving counter, but the morning board still showed it. Several pupils queued expecting that meal.\nThe manager apologised and updated both boards. She also introduced a check: whenever a meal changed, one worker would update the serving sign and another would check the morning board. The counters remained useful for planning, but they could not guarantee that every planned ingredient would arrive. Pupils who needed an individually checked meal continued to receive that service separately.",
+            "explanation": "A正确：一更新餐台，另一核早晨板；B否认双点程序。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.canteen-choice-board-016.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The manager claimed that counters could guarantee every delivery.",
+            "material": "Canteen Choice Board 016\n\nThe canteen displayed three lunch choices on a board. Pupils placed a coloured counter beside their chosen meal before morning lessons. The kitchen used the counts to plan portions. On Tuesday, one ingredient delivery was late. Meal B could not be made. Staff removed its picture at the serving counter, but the morning board still showed it. Several pupils queued expecting that meal.\nThe manager apologised and updated both boards. She also introduced a check: whenever a meal changed, one worker would update the serving sign and another would check the morning board. The counters remained useful for planning, but they could not guarantee that every planned ingredient would arrive. Pupils who needed an individually checked meal continued to receive that service separately.",
+            "explanation": "B正确：计数不能保证原料到达；A将规划工具夸为配送保证。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "82ef1345b8ec297d649aafdadcfe6a2b657b2f88758e8126650180f1cebf4bfc",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-bakery-letter-tf#primary6.canteen-choice-board-016.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.canteen-choice-board-016.reading.q1",
+            "expansion.20261028.primary6.canteen-choice-board-016.reading.q2",
+            "expansion.20261028.primary6.canteen-choice-board-016.reading.q3",
+            "expansion.20261028.primary6.canteen-choice-board-016.reading.q4",
+            "expansion.20261028.primary6.canteen-choice-board-016.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-bakery-letter-tf",
+          "sourceContentHash": "e6db6f0f813ef882c13784f454aeffa61d10fad9edf6884f6a8b839b2e7ca67a"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2388 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b025",
+  "createdAt": "2026-10-29T00:25:07.256902+08:00",
+  "sourceSHA256": "deff25033e8e116ae51f3518f0aa3039e6b1ac690fa5b82cfb5121492beaad82",
+  "reviewSHA256": "06ce055da6bacd93cd2282540f4bfdce20d2a4f57c5ab334e638d731339ecca6",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.nature-table-leaves-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "自然角可以收集什么",
+        "summary": "自然角可以收集什么，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.nature-table-leaves-017",
+          "family": "function_choice",
+          "label": "自然角可以收集什么",
+          "candidateSHA256": "0c7b7cb6318693ef662340916385ded817b3139a8da8cda797b0e3e4a0b88fb4",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.nature-table-leaves-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Nature Table Leaves 017\n\nFor the nature table, collect only fallen leaves. Do not pick leaves from plants. Leave insects outside. Dry leaves go in the flat box. Wet leaves go on newspaper first. Write the place you found each leaf on a small card. Wash your hands when you finish."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.nature-table-leaves-017.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend starts picking a leaf from a plant. You say, \"____\"",
+            "material": "Nature Table Leaves 017\n\nFor the nature table, collect only fallen leaves. Do not pick leaves from plants. Leave insects outside. Dry leaves go in the flat box. Wet leaves go on newspaper first. Write the place you found each leaf on a small card. Wash your hands when you finish.",
+            "explanation": "A只捡落叶；B摘光、C整株带走均不合限制。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Collect only fallen leaves."
+              },
+              {
+                "id": "o1",
+                "text": "Pick every leaf."
+              },
+              {
+                "id": "o2",
+                "text": "Take the whole plant home."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.nature-table-leaves-017.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend finds a beetle and wants it for the table. You say, \"____\"",
+            "material": "Nature Table Leaves 017\n\nFor the nature table, collect only fallen leaves. Do not pick leaves from plants. Leave insects outside. Dry leaves go in the flat box. Wet leaves go on newspaper first. Write the place you found each leaf on a small card. Wash your hands when you finish.",
+            "explanation": "B昆虫留外；A装叶盒、C粘卡均非采集要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put it in the flat leaf box."
+              },
+              {
+                "id": "o1",
+                "text": "Leave the insect outside."
+              },
+              {
+                "id": "o2",
+                "text": "Glue it to a card."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.nature-table-leaves-017.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend has a very wet leaf. You say, \"____\"",
+            "material": "Nature Table Leaves 017\n\nFor the nature table, collect only fallen leaves. Do not pick leaves from plants. Leave insects outside. Dry leaves go in the flat box. Wet leaves go on newspaper first. Write the place you found each leaf on a small card. Wash your hands when you finish.",
+            "explanation": "C湿叶先报纸；A枕下非位置；B立即入干叶盒不合分流。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put it under your pillow."
+              },
+              {
+                "id": "o1",
+                "text": "Close it in the dry-leaf box now."
+              },
+              {
+                "id": "o2",
+                "text": "Put it on newspaper first."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.nature-table-leaves-017.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend writes only a name on the leaf card. You say, \"____\"",
+            "material": "Nature Table Leaves 017\n\nFor the nature table, collect only fallen leaves. Do not pick leaves from plants. Leave insects outside. Dry leaves go in the flat box. Wet leaves go on newspaper first. Write the place you found each leaf on a small card. Wash your hands when you finish.",
+            "explanation": "A卡记发现地点；B午餐、C藏卡均不满足来源记录。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Write where you found the leaf."
+              },
+              {
+                "id": "o1",
+                "text": "Write your lunch order."
+              },
+              {
+                "id": "o2",
+                "text": "Draw a door and hide the card."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.nature-table-leaves-017.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend finishes sorting and reaches for a snack. You say, \"____\"",
+            "material": "Nature Table Leaves 017\n\nFor the nature table, collect only fallen leaves. Do not pick leaves from plants. Leave insects outside. Dry leaves go in the flat box. Wet leaves go on newspaper first. Write the place you found each leaf on a small card. Wash your hands when you finish.",
+            "explanation": "B完成后洗手再吃；A叶当食物、C食物入标本盒均非要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Eat with the leaves."
+              },
+              {
+                "id": "o1",
+                "text": "Wash your hands first."
+              },
+              {
+                "id": "o2",
+                "text": "Put the snack in the leaf box."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "6614fce1027e5ddf95b8dc5b68199595c80067e054220d3dda38bf42af0e13e4",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.nature-table-leaves-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.nature-table-leaves-017.reading.q1",
+            "expansion.20261028.primary2.nature-table-leaves-017.reading.q2",
+            "expansion.20261028.primary2.nature-table-leaves-017.reading.q3",
+            "expansion.20261028.primary2.nature-table-leaves-017.reading.q4",
+            "expansion.20261028.primary2.nature-table-leaves-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.class-newspaper-delivery-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "班级小报怎样送达",
+        "summary": "班级小报怎样送达，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.class-newspaper-delivery-017",
+          "family": "function_choice",
+          "label": "班级小报怎样送达",
+          "candidateSHA256": "5220afab0468702f2c1f78c4aee58cf7f46d4fe85bcfbf78c40117c25a2e56d9",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.class-newspaper-delivery-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Class Newspaper Delivery 017\n\nOur class makes a school paper. Give one copy to each classroom. The office gets two copies. Keep the last copy on our reading shelf. Do not leave papers on the stairs. If a room is locked, give its copy to the office helper. Write a tick on the list after delivery."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.class-newspaper-delivery-017.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend takes three copies to one classroom. You say, \"____\"",
+            "material": "Class Newspaper Delivery 017\n\nOur class makes a school paper. Give one copy to each classroom. The office gets two copies. Keep the last copy on our reading shelf. Do not leave papers on the stairs. If a room is locked, give its copy to the office helper. Write a tick on the list after delivery.",
+            "explanation": "B每教室一份；A五更超；C全班不给违任务。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Take five instead."
+              },
+              {
+                "id": "o1",
+                "text": "Give that classroom one copy."
+              },
+              {
+                "id": "o2",
+                "text": "Give no class any paper."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.class-newspaper-delivery-017.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend takes only one copy to the office. You say, \"____\"",
+            "material": "Class Newspaper Delivery 017\n\nOur class makes a school paper. Give one copy to each classroom. The office gets two copies. Keep the last copy on our reading shelf. Do not leave papers on the stairs. If a room is locked, give its copy to the office helper. Write a tick on the list after delivery.",
+            "explanation": "C办公室两份；A零、B十均不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The office needs no copies."
+              },
+              {
+                "id": "o1",
+                "text": "The office needs ten."
+              },
+              {
+                "id": "o2",
+                "text": "The office needs two copies."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.class-newspaper-delivery-017.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend puts the last copy in a bag to take home. You say, \"____\"",
+            "material": "Class Newspaper Delivery 017\n\nOur class makes a school paper. Give one copy to each classroom. The office gets two copies. Keep the last copy on our reading shelf. Do not leave papers on the stairs. If a room is locked, give its copy to the office helper. Write a tick on the list after delivery.",
+            "explanation": "A最后一份班级阅读架；B楼梯明禁放；C剪标签非保留用途。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Keep it on our reading shelf."
+              },
+              {
+                "id": "o1",
+                "text": "Hide it on the stairs."
+              },
+              {
+                "id": "o2",
+                "text": "Cut it into labels."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.class-newspaper-delivery-017.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A classroom is locked. Your friend asks what to do. You say, \"____\"",
+            "material": "Class Newspaper Delivery 017\n\nOur class makes a school paper. Give one copy to each classroom. The office gets two copies. Keep the last copy on our reading shelf. Do not leave papers on the stairs. If a room is locked, give its copy to the office helper. Write a tick on the list after delivery.",
+            "explanation": "B锁门转办公室帮手；A楼梯禁放；C爬窗未许可。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Push the paper under any stair."
+              },
+              {
+                "id": "o1",
+                "text": "Give that copy to the office helper."
+              },
+              {
+                "id": "o2",
+                "text": "Climb in through a window."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.class-newspaper-delivery-017.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend marks a tick before taking the paper anywhere. You say, \"____\"",
+            "material": "Class Newspaper Delivery 017\n\nOur class makes a school paper. Give one copy to each classroom. The office gets two copies. Keep the last copy on our reading shelf. Do not leave papers on the stairs. If a room is locked, give its copy to the office helper. Write a tick on the list after delivery.",
+            "explanation": "C送达后勾；A提前全勾失真；B删单不能记进度。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Tick every room now."
+              },
+              {
+                "id": "o1",
+                "text": "Erase the whole list."
+              },
+              {
+                "id": "o2",
+                "text": "Tick after you deliver the copy."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "a25f151f8e0f0ff15eee5df2f10dfd9290efa025d6214d82aa67e5f5d4d04958",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.class-newspaper-delivery-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.class-newspaper-delivery-017.reading.q1",
+            "expansion.20261028.primary2.class-newspaper-delivery-017.reading.q2",
+            "expansion.20261028.primary2.class-newspaper-delivery-017.reading.q3",
+            "expansion.20261028.primary2.class-newspaper-delivery-017.reading.q4",
+            "expansion.20261028.primary2.class-newspaper-delivery-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.marble-track-test-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "玻璃球轨道的起点线",
+        "summary": "玻璃球轨道的起点线，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整具体形式参照公开来源；原校/年级难度未独立认证，作者自审不等独立教师或学生验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.marble-track-test-017",
+          "family": "function_choice",
+          "label": "玻璃球轨道的起点线",
+          "candidateSHA256": "8c3bdaa8ca94825c3f5c1684af88b36d9989aaee0c0e8b8576ad2b75350c937a",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.primary2-five-small-functions#primary2.marble-track-test-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Marble Track Test 017\n\nWe test a marble track on a tray. Put the marble at the white start line. Let it roll; do not flick it. Catch it in the small cup at the end. Test one marble at a time. The cracked marble stays in the red pot for the teacher. Count all good marbles back into the box."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.marble-track-test-017.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend puts a marble halfway down the track. You say, \"____\"",
+            "material": "Marble Track Test 017\n\nWe test a marble track on a tray. Put the marble at the white start line. Let it roll; do not flick it. Catch it in the small cup at the end. Test one marble at a time. The cracked marble stays in the red pot for the teacher. Count all good marbles back into the box.",
+            "explanation": "A规定白线起点；B终杯、C盘外非起点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Start at the white line."
+              },
+              {
+                "id": "o1",
+                "text": "Start in the catch cup."
+              },
+              {
+                "id": "o2",
+                "text": "Start outside the tray."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.marble-track-test-017.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend flicks the marble hard. You say, \"____\"",
+            "material": "Marble Track Test 017\n\nWe test a marble track on a tray. Put the marble at the white start line. Let it roll; do not flick it. Catch it in the small cup at the end. Test one marble at a time. The cracked marble stays in the red pot for the teacher. Count all good marbles back into the box.",
+            "explanation": "B自由滚不弹；A更用力、C扔越盘均违测试方式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Flick it harder."
+              },
+              {
+                "id": "o1",
+                "text": "Let it roll without flicking."
+              },
+              {
+                "id": "o2",
+                "text": "Throw it over the tray."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.marble-track-test-017.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend puts two marbles on the track together. You say, \"____\"",
+            "material": "Marble Track Test 017\n\nWe test a marble track on a tray. Put the marble at the white start line. Let it roll; do not flick it. Catch it in the small cup at the end. Test one marble at a time. The cracked marble stays in the red pot for the teacher. Count all good marbles back into the box.",
+            "explanation": "C每次一球；A/B同时更多相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Add a third."
+              },
+              {
+                "id": "o1",
+                "text": "Put all marbles on now."
+              },
+              {
+                "id": "o2",
+                "text": "Test one at a time."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.marble-track-test-017.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend finds a cracked marble. You say, \"____\"",
+            "material": "Marble Track Test 017\n\nWe test a marble track on a tray. Put the marble at the white start line. Let it roll; do not flick it. Catch it in the small cup at the end. Test one marble at a time. The cracked marble stays in the red pot for the teacher. Count all good marbles back into the box.",
+            "explanation": "A裂球红罐教师处理；B再测、C混好球均不合分流。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put it in the red pot for the teacher."
+              },
+              {
+                "id": "o1",
+                "text": "Use it in the next test."
+              },
+              {
+                "id": "o2",
+                "text": "Put it with the good marbles."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.marble-track-test-017.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The test ends, and a friend starts to leave. You say, \"____\"",
+            "material": "Marble Track Test 017\n\nWe test a marble track on a tray. Put the marble at the white start line. Let it roll; do not flick it. Catch it in the small cup at the end. Test one marble at a time. The cracked marble stays in the red pot for the teacher. Count all good marbles back into the box.",
+            "explanation": "B结束好球点数回盒；A散置、C私带裂球非收尾。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Leave every marble loose."
+              },
+              {
+                "id": "o1",
+                "text": "Count the good marbles into the box."
+              },
+              {
+                "id": "o2",
+                "text": "Put the cup in your pocket with the cracked ball."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "8ef6c804ec240ab348eb1c56f68dbbd6dce0b232eb42466a5e1c8e6ba0f485b4",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-five-small-functions#primary2.marble-track-test-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.marble-track-test-017.reading.q1",
+            "expansion.20261028.primary2.marble-track-test-017.reading.q2",
+            "expansion.20261028.primary2.marble-track-test-017.reading.q3",
+            "expansion.20261028.primary2.marble-track-test-017.reading.q4",
+            "expansion.20261028.primary2.marble-track-test-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-five-small-functions",
+          "sourceContentHash": "8aec4fa4f4448a713602248fecd4163e48c664bfbe02fe1de910736fd964f324"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.wax-line-picture-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "水彩下出现的白线",
+        "summary": "水彩下出现的白线，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.wax-line-picture-017",
+          "family": "reading_tf",
+          "label": "水彩下出现的白线",
+          "candidateSHA256": "5dc5c3b7e8ebeb5ecaeca9f29c6241339d7c23d147091f48b40356d2093dda0f",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.bens-bag-reading#primary3.wax-line-picture-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Wax Line Picture 017\n\nIn art class, we draw on white paper with a white wax crayon. I think my page is empty because I can hardly see the lines. The teacher gives us blue watercolour. I brush it over the page. A white fish appears in the blue sea. The paint does not cover the wax lines. I add no more crayon. I wait for the paint to dry and show my fish to Dad."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.wax-line-picture-017.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class uses a white wax crayon on white paper.",
+            "material": "Wax Line Picture 017\n\nIn art class, we draw on white paper with a white wax crayon. I think my page is empty because I can hardly see the lines. The teacher gives us blue watercolour. I brush it over the page. A white fish appears in the blue sea. The paint does not cover the wax lines. I add no more crayon. I wait for the paint to dry and show my fish to Dad.",
+            "explanation": "A正确：white crayon加white paper；B否认材料配色。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.wax-line-picture-017.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer can see every white line clearly at first.",
+            "material": "Wax Line Picture 017\n\nIn art class, we draw on white paper with a white wax crayon. I think my page is empty because I can hardly see the lines. The teacher gives us blue watercolour. I brush it over the page. A white fish appears in the blue sea. The paint does not cover the wax lines. I add no more crayon. I wait for the paint to dry and show my fish to Dad.",
+            "explanation": "B正确：can hardly see初难见；A把难见改全清楚。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.wax-line-picture-017.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Blue paint helps the fish picture appear.",
+            "material": "Wax Line Picture 017\n\nIn art class, we draw on white paper with a white wax crayon. I think my page is empty because I can hardly see the lines. The teacher gives us blue watercolour. I brush it over the page. A white fish appears in the blue sea. The paint does not cover the wax lines. I add no more crayon. I wait for the paint to dry and show my fish to Dad.",
+            "explanation": "A正确：刷蓝水彩后white fish appears；B否认显现过程。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.wax-line-picture-017.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The paint covers all the wax lines blue.",
+            "material": "Wax Line Picture 017\n\nIn art class, we draw on white paper with a white wax crayon. I think my page is empty because I can hardly see the lines. The teacher gives us blue watercolour. I brush it over the page. A white fish appears in the blue sea. The paint does not cover the wax lines. I add no more crayon. I wait for the paint to dry and show my fish to Dad.",
+            "explanation": "B正确：does not cover wax lines；A忽略否定。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.wax-line-picture-017.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer waits for the paint to dry before showing Dad.",
+            "material": "Wax Line Picture 017\n\nIn art class, we draw on white paper with a white wax crayon. I think my page is empty because I can hardly see the lines. The teacher gives us blue watercolour. I brush it over the page. A white fish appears in the blue sea. The paint does not cover the wax lines. I add no more crayon. I wait for the paint to dry and show my fish to Dad.",
+            "explanation": "A正确：wait dry and show Dad；B否认操作先后。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "a06d34f7e8fe4410880b6b5a66c50b2dffb2fbdc6c20aa39c4da2e3aa7777f6a",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.bens-bag-reading#primary3.wax-line-picture-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.wax-line-picture-017.reading.q1",
+            "expansion.20261028.primary3.wax-line-picture-017.reading.q2",
+            "expansion.20261028.primary3.wax-line-picture-017.reading.q3",
+            "expansion.20261028.primary3.wax-line-picture-017.reading.q4",
+            "expansion.20261028.primary3.wax-line-picture-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.bens-bag-reading",
+          "sourceContentHash": "e1594f6d2c2c96de673832f2efe0847d6e8f968d3ed2c4833705aeba378b5517"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.sock-puppet-voice-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "袜子木偶换了声音",
+        "summary": "袜子木偶换了声音，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.sock-puppet-voice-017",
+          "family": "reading_tf",
+          "label": "袜子木偶换了声音",
+          "candidateSHA256": "f325840079ad5b0bff96843a934cdcba4f08e59bff8f5ad01a3558a32625ff2b",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.sock-puppet-voice-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Sock Puppet Voice 017\n\nMy brother makes a puppet from a clean green sock. He gives it two paper eyes. He speaks in a deep voice for it. Our little cousin is afraid at first. My brother changes to a soft funny voice and makes the puppet wave. Our cousin laughs and waves back. Later, one paper eye falls off. We put it back with glue after the game."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.sock-puppet-voice-017.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The puppet is made from a green sock.",
+            "material": "Sock Puppet Voice 017\n\nMy brother makes a puppet from a clean green sock. He gives it two paper eyes. He speaks in a deep voice for it. Our little cousin is afraid at first. My brother changes to a soft funny voice and makes the puppet wave. Our cousin laughs and waves back. Later, one paper eye falls off. We put it back with glue after the game.",
+            "explanation": "A正确：clean green sock；B否认材料。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.sock-puppet-voice-017.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The puppet has three paper eyes.",
+            "material": "Sock Puppet Voice 017\n\nMy brother makes a puppet from a clean green sock. He gives it two paper eyes. He speaks in a deep voice for it. Our little cousin is afraid at first. My brother changes to a soft funny voice and makes the puppet wave. Our cousin laughs and waves back. Later, one paper eye falls off. We put it back with glue after the game.",
+            "explanation": "B正确：two paper eyes；A把二改三。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.sock-puppet-voice-017.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The cousin laughs from the very beginning.",
+            "material": "Sock Puppet Voice 017\n\nMy brother makes a puppet from a clean green sock. He gives it two paper eyes. He speaks in a deep voice for it. Our little cousin is afraid at first. My brother changes to a soft funny voice and makes the puppet wave. Our cousin laughs and waves back. Later, one paper eye falls off. We put it back with glue after the game.",
+            "explanation": "B正确：起初afraid，后才笑；A把后情绪提前。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.sock-puppet-voice-017.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The brother changes the puppet’s voice.",
+            "material": "Sock Puppet Voice 017\n\nMy brother makes a puppet from a clean green sock. He gives it two paper eyes. He speaks in a deep voice for it. Our little cousin is afraid at first. My brother changes to a soft funny voice and makes the puppet wave. Our cousin laughs and waves back. Later, one paper eye falls off. We put it back with glue after the game.",
+            "explanation": "A正确：deep改soft funny；B否认调整。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.sock-puppet-voice-017.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "They fix the fallen eye after the game.",
+            "material": "Sock Puppet Voice 017\n\nMy brother makes a puppet from a clean green sock. He gives it two paper eyes. He speaks in a deep voice for it. Our little cousin is afraid at first. My brother changes to a soft funny voice and makes the puppet wave. Our cousin laughs and waves back. Later, one paper eye falls off. We put it back with glue after the game.",
+            "explanation": "A正确：after game glue back；B否认修复时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "a33c551a01751531dae7c50c2e3e579cbaacb5f504d0ebd7f5330c92dc374dea",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.sock-puppet-voice-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.sock-puppet-voice-017.reading.q1",
+            "expansion.20261028.primary3.sock-puppet-voice-017.reading.q2",
+            "expansion.20261028.primary3.sock-puppet-voice-017.reading.q3",
+            "expansion.20261028.primary3.sock-puppet-voice-017.reading.q4",
+            "expansion.20261028.primary3.sock-puppet-voice-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.everyday-word-families-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "天气、时间与工具的词群",
+        "summary": "天气、时间与工具的词群，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.word_category_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.repost.odd",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 复用历史已核公开源的完整具体模式，本批没有新增源卷。原校施测、年份或转载身份的既有未知保留；作者稿不等独立教研、学生或商用验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.everyday-word-families-017",
+          "family": "word_category_choice",
+          "label": "天气、时间与工具的词群",
+          "candidateSHA256": "189dc2d60ab811f060167ac854ff957375c9e7645b6873b42fe5337054187480",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.primary4-word-categories-everyday#primary4.everyday-word-families-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Everyday Word Families 017\n\nChoose the word that fits the stated group. Each question has one correct answer, and the other words belong to different groups."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.everyday-word-families-017.reading.q1",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word describes weather?",
+            "material": "Everyday Word Families 017\n\nChoose the word that fits the stated group. Each question has one correct answer, and the other words belong to different groups.",
+            "explanation": "B foggy有雾的是天气；A枕头、C镜子均为物品。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Pillow."
+              },
+              {
+                "id": "o1",
+                "text": "Foggy."
+              },
+              {
+                "id": "o2",
+                "text": "Mirror."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.everyday-word-families-017.reading.q2",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word names a part of a tree?",
+            "material": "Everyday Word Families 017\n\nChoose the word that fits the stated group. Each question has one correct answer, and the other words belong to different groups.",
+            "explanation": "A branch树枝是树的一部分；B篮、C饼干非树部位。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Branch."
+              },
+              {
+                "id": "o1",
+                "text": "Basket."
+              },
+              {
+                "id": "o2",
+                "text": "Biscuit."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.everyday-word-families-017.reading.q3",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word tells a time of day?",
+            "material": "Everyday Word Families 017\n\nChoose the word that fits the stated group. Each question has one correct answer, and the other words belong to different groups.",
+            "explanation": "C afternoon下午是时段；A信封、B山非时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Envelope."
+              },
+              {
+                "id": "o1",
+                "text": "Mountain."
+              },
+              {
+                "id": "o2",
+                "text": "Afternoon."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.everyday-word-families-017.reading.q4",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word names a tool for measuring length?",
+            "material": "Everyday Word Families 017\n\nChoose the word that fits the stated group. Each question has one correct answer, and the other words belong to different groups.",
+            "explanation": "B ruler尺测长度；A毯、C灯笼无此测量用途。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Blanket."
+              },
+              {
+                "id": "o1",
+                "text": "Ruler."
+              },
+              {
+                "id": "o2",
+                "text": "Lantern."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.everyday-word-families-017.reading.q5",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word describes how something tastes?",
+            "material": "Everyday Word Families 017\n\nChoose the word that fits the stated group. Each question has one correct answer, and the other words belong to different groups.",
+            "explanation": "A sour酸描述味道；B圆形、C安静分别形状和声况。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Sour."
+              },
+              {
+                "id": "o1",
+                "text": "Round."
+              },
+              {
+                "id": "o2",
+                "text": "Quiet."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "15331aa0b49a1d211b20ad73c6ed8488f198e7265b41bb36294c05f554b6b7a9",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-word-categories-everyday#primary4.everyday-word-families-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.everyday-word-families-017.reading.q1",
+            "expansion.20261028.primary4.everyday-word-families-017.reading.q2",
+            "expansion.20261028.primary4.everyday-word-families-017.reading.q3",
+            "expansion.20261028.primary4.everyday-word-families-017.reading.q4",
+            "expansion.20261028.primary4.everyday-word-families-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-word-categories-everyday",
+          "sourceContentHash": "ab7c1729d2fd9f56d79aac8da5c83b0b855382e007d4dffb93628d7a9f8d1d18"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.lift-out-of-service-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "图书馆电梯暂停时的安排",
+        "summary": "图书馆电梯暂停时的安排，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.lift-out-of-service-017",
+          "family": "reading_choice",
+          "label": "图书馆电梯暂停时的安排",
+          "candidateSHA256": "b690b7798f247159d7bf85ce605fab4a936a9bef16ad08b88178668a2c1f2d8c",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.primary4-pet-room-plan#primary4.lift-out-of-service-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lift Out Of Service 017\n\nThe library lift is not working this morning. A notice asks visitors who can use stairs to take the wide staircase on the left. Visitors who need step-free access should speak to staff at the entrance. Staff can bring requested books downstairs and offer a ground-floor reading table. The upstairs group meeting is moved to Room 2 downstairs. A worker will check the lift after lunch. The notice does not promise that it will be ready today."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.lift-out-of-service-017.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is not working?",
+            "material": "Lift Out Of Service 017\n\nThe library lift is not working this morning. A notice asks visitors who can use stairs to take the wide staircase on the left. Visitors who need step-free access should speak to staff at the entrance. Staff can bring requested books downstairs and offer a ground-floor reading table. The upstairs group meeting is moved to Room 2 downstairs. A worker will check the lift after lunch. The notice does not promise that it will be ready today.",
+            "explanation": "A电梯故障；B全馆灯、C前门未提故障。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The library lift."
+              },
+              {
+                "id": "o1",
+                "text": "Every library light."
+              },
+              {
+                "id": "o2",
+                "text": "The front door."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.lift-out-of-service-017.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which stairs are mentioned for visitors who can use them?",
+            "material": "Lift Out Of Service 017\n\nThe library lift is not working this morning. A notice asks visitors who can use stairs to take the wide staircase on the left. Visitors who need step-free access should speak to staff at the entrance. Staff can bring requested books downstairs and offer a ground-floor reading table. The upstairs group meeting is moved to Room 2 downstairs. A worker will check the lift after lunch. The notice does not promise that it will be ready today.",
+            "explanation": "B左侧宽梯；A方向宽度错；C镇外无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A narrow stair on the right."
+              },
+              {
+                "id": "o1",
+                "text": "The wide staircase on the left."
+              },
+              {
+                "id": "o2",
+                "text": "Stairs outside the town."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.lift-out-of-service-017.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What can staff do for someone needing step-free access?",
+            "material": "Lift Out Of Service 017\n\nThe library lift is not working this morning. A notice asks visitors who can use stairs to take the wide staircase on the left. Visitors who need step-free access should speak to staff at the entrance. Staff can bring requested books downstairs and offer a ground-floor reading table. The upstairs group meeting is moved to Room 2 downstairs. A worker will check the lift after lunch. The notice does not promise that it will be ready today.",
+            "explanation": "C下楼送书加一楼桌；A强爬、B闭全馆非安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Tell them to climb anyway."
+              },
+              {
+                "id": "o1",
+                "text": "Close the whole library."
+              },
+              {
+                "id": "o2",
+                "text": "Bring books downstairs and offer a table."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.lift-out-of-service-017.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where is the group meeting moved?",
+            "material": "Lift Out Of Service 017\n\nThe library lift is not working this morning. A notice asks visitors who can use stairs to take the wide staircase on the left. Visitors who need step-free access should speak to staff at the entrance. Staff can bring requested books downstairs and offer a ground-floor reading table. The upstairs group meeting is moved to Room 2 downstairs. A worker will check the lift after lunch. The notice does not promise that it will be ready today.",
+            "explanation": "A楼下2室；B坏梯、C屋顶未安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To Room 2 downstairs."
+              },
+              {
+                "id": "o1",
+                "text": "Inside the broken lift."
+              },
+              {
+                "id": "o2",
+                "text": "To the roof."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.lift-out-of-service-017.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is certain about the lift repair?",
+            "material": "Lift Out Of Service 017\n\nThe library lift is not working this morning. A notice asks visitors who can use stairs to take the wide staircase on the left. Visitors who need step-free access should speak to staff at the entrance. Staff can bring requested books downstairs and offer a ground-floor reading table. The upstairs group meeting is moved to Room 2 downstairs. A worker will check the lift after lunch. The notice does not promise that it will be ready today.",
+            "explanation": "B午后检查明确；A未承诺当天可用更非午前；C永不修复无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It will definitely finish before noon."
+              },
+              {
+                "id": "o1",
+                "text": "A worker will check after lunch."
+              },
+              {
+                "id": "o2",
+                "text": "It will never work again."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "6d0fe1c29eda0b782a9d53dad2f4026fc737441e735500a0c16c6f39ef3e714c",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-pet-room-plan#primary4.lift-out-of-service-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.lift-out-of-service-017.reading.q1",
+            "expansion.20261028.primary4.lift-out-of-service-017.reading.q2",
+            "expansion.20261028.primary4.lift-out-of-service-017.reading.q3",
+            "expansion.20261028.primary4.lift-out-of-service-017.reading.q4",
+            "expansion.20261028.primary4.lift-out-of-service-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-pet-room-plan",
+          "sourceContentHash": "d4c50ff73603e79f79b25070c5f89af32381378a0173a8bb5818893baf110b76"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.flower-press-paper-change-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "压叶本里的吸水纸",
+        "summary": "压叶本里的吸水纸，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.flower-press-paper-change-017",
+          "family": "reading_tf",
+          "label": "压叶本里的吸水纸",
+          "candidateSHA256": "7066ba95a302da1e1142123476c9fe8e6f42547b3d382186ef2951c967a09d1b",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.class-garden-reading#primary4.flower-press-paper-change-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Flower Press Paper Change 017\n\nWe press fallen leaves between paper sheets. The sheets go inside two flat boards. We put a book on top to keep them flat. After one day, the paper feels damp. The teacher asks us to change it for dry paper, keeping each leaf’s name card with it. One child mixes up two cards. We do not guess which leaf is which. We leave those two names blank until we can check the collection notes."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.flower-press-paper-change-017.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class presses leaves that have fallen.",
+            "material": "Flower Press Paper Change 017\n\nWe press fallen leaves between paper sheets. The sheets go inside two flat boards. We put a book on top to keep them flat. After one day, the paper feels damp. The teacher asks us to change it for dry paper, keeping each leaf’s name card with it. One child mixes up two cards. We do not guess which leaf is which. We leave those two names blank until we can check the collection notes.",
+            "explanation": "A正确：fallen leaves；B否认采集范围。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.flower-press-paper-change-017.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The paper stays dry after the first day.",
+            "material": "Flower Press Paper Change 017\n\nWe press fallen leaves between paper sheets. The sheets go inside two flat boards. We put a book on top to keep them flat. After one day, the paper feels damp. The teacher asks us to change it for dry paper, keeping each leaf’s name card with it. One child mixes up two cards. We do not guess which leaf is which. We leave those two names blank until we can check the collection notes.",
+            "explanation": "B正确：after one day damp；A将湿改干。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.flower-press-paper-change-017.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Name cards should stay with their leaves when paper is changed.",
+            "material": "Flower Press Paper Change 017\n\nWe press fallen leaves between paper sheets. The sheets go inside two flat boards. We put a book on top to keep them flat. After one day, the paper feels damp. The teacher asks us to change it for dry paper, keeping each leaf’s name card with it. One child mixes up two cards. We do not guess which leaf is which. We leave those two names blank until we can check the collection notes.",
+            "explanation": "A正确：keeping each card with it；B否认配对要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.flower-press-paper-change-017.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class guesses the names of the two mixed-up leaves immediately.",
+            "material": "Flower Press Paper Change 017\n\nWe press fallen leaves between paper sheets. The sheets go inside two flat boards. We put a book on top to keep them flat. After one day, the paper feels damp. The teacher asks us to change it for dry paper, keeping each leaf’s name card with it. One child mixes up two cards. We do not guess which leaf is which. We leave those two names blank until we can check the collection notes.",
+            "explanation": "B正确：do not guess，待核记录；A把暂缓核对改立即猜。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.flower-press-paper-change-017.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The two uncertain names are left blank for now.",
+            "material": "Flower Press Paper Change 017\n\nWe press fallen leaves between paper sheets. The sheets go inside two flat boards. We put a book on top to keep them flat. After one day, the paper feels damp. The teacher asks us to change it for dry paper, keeping each leaf’s name card with it. One child mixes up two cards. We do not guess which leaf is which. We leave those two names blank until we can check the collection notes.",
+            "explanation": "A正确：leave two names blank until check；B否认暂空处理。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "163dddc5bdfd6db96356d4a4729b97f2ffd62fb00db4d296c4eaca18c3fe20c8",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.class-garden-reading#primary4.flower-press-paper-change-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.flower-press-paper-change-017.reading.q1",
+            "expansion.20261028.primary4.flower-press-paper-change-017.reading.q2",
+            "expansion.20261028.primary4.flower-press-paper-change-017.reading.q3",
+            "expansion.20261028.primary4.flower-press-paper-change-017.reading.q4",
+            "expansion.20261028.primary4.flower-press-paper-change-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.class-garden-reading",
+          "sourceContentHash": "c48d0add74ac202b6eee2f6cafe95556edd3c7176f1da3b56f14a6e7036dfdab"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.theatre-prop-flower-story-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "舞台上最后一朵纸花",
+        "summary": "舞台上最后一朵纸花，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 来源形式为公开模拟题，尚缺普通学校样本复现；不计真实考试认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.theatre-prop-flower-story-017",
+          "family": "reading_choice",
+          "label": "舞台上最后一朵纸花",
+          "candidateSHA256": "aa3cda34b7aedc6f75f0ee114d6922240a4f40b8cfd3ced788c27ba54e964f2d",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.inside-the-book-reading#primary5.theatre-prop-flower-story-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Theatre Prop Flower Story 017\n\nDuring the school play, Lila had to give a paper flower to the old gardener. The flower was missing from the prop table when her scene began. She could not stop the whole play to look for it. She stepped onto the stage with empty hands and said, \"I brought you something that cannot be held: a promise to return in spring.\" The pupil playing the gardener understood and replied, \"Then I will keep a place for you.\"\nThe scene continued. Backstage, a helper found the flower under a folded cloth. Lila wanted to blame him, but then remembered she had moved the cloth before the show. After the performance, the group made a simple prop list and checked each object before its scene. Their teacher praised the quick response on stage, while reminding them that a good recovery did not remove the need to prepare."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.theatre-prop-flower-story-017.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What problem does Lila face?",
+            "material": "Theatre Prop Flower Story 017\n\nDuring the school play, Lila had to give a paper flower to the old gardener. The flower was missing from the prop table when her scene began. She could not stop the whole play to look for it. She stepped onto the stage with empty hands and said, \"I brought you something that cannot be held: a promise to return in spring.\" The pupil playing the gardener understood and replied, \"Then I will keep a place for you.\"\nThe scene continued. Backstage, a helper found the flower under a folded cloth. Lila wanted to blame him, but then remembered she had moved the cloth before the show. After the performance, the group made a simple prop list and checked each object before its scene. Their teacher praised the quick response on stage, while reminding them that a good recovery did not remove the need to prepare.",
+            "explanation": "B出场前找不到花；A服装、C演员离校、D观众禁入均无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Her costume is too long."
+              },
+              {
+                "id": "o1",
+                "text": "The paper flower is missing."
+              },
+              {
+                "id": "o2",
+                "text": "The gardener has left school."
+              },
+              {
+                "id": "o3",
+                "text": "The audience cannot enter."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.theatre-prop-flower-story-017.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does Lila keep the scene going?",
+            "material": "Theatre Prop Flower Story 017\n\nDuring the school play, Lila had to give a paper flower to the old gardener. The flower was missing from the prop table when her scene began. She could not stop the whole play to look for it. She stepped onto the stage with empty hands and said, \"I brought you something that cannot be held: a promise to return in spring.\" The pupil playing the gardener understood and replied, \"Then I will keep a place for you.\"\nThe scene continued. Backstage, a helper found the flower under a folded cloth. Lila wanted to blame him, but then remembered she had moved the cloth before the show. After the performance, the group made a simple prop list and checked each object before its scene. Their teacher praised the quick response on stage, while reminding them that a good recovery did not remove the need to prepare.",
+            "explanation": "C改成带来不能握的承诺；A喊观众、B沉默走、D搬树非行动。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She shouts at the audience."
+              },
+              {
+                "id": "o1",
+                "text": "She leaves the stage without speaking."
+              },
+              {
+                "id": "o2",
+                "text": "She replaces the flower with a spoken promise."
+              },
+              {
+                "id": "o3",
+                "text": "She brings a real tree on stage."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.theatre-prop-flower-story-017.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does the gardener’s actor respond?",
+            "material": "Theatre Prop Flower Story 017\n\nDuring the school play, Lila had to give a paper flower to the old gardener. The flower was missing from the prop table when her scene began. She could not stop the whole play to look for it. She stepped onto the stage with empty hands and said, \"I brought you something that cannot be held: a promise to return in spring.\" The pupil playing the gardener understood and replied, \"Then I will keep a place for you.\"\nThe scene continued. Backstage, a helper found the flower under a folded cloth. Lila wanted to blame him, but then remembered she had moved the cloth before the show. After the performance, the group made a simple prop list and checked each object before its scene. Their teacher praised the quick response on stage, while reminding them that a good recovery did not remove the need to prepare.",
+            "explanation": "A理解并接会留位置话；B/C/D均与scene continued不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He follows her new line naturally."
+              },
+              {
+                "id": "o1",
+                "text": "He refuses to say anything."
+              },
+              {
+                "id": "o2",
+                "text": "He asks the audience to find the flower."
+              },
+              {
+                "id": "o3",
+                "text": "He stops every later scene."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.theatre-prop-flower-story-017.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Lila pause before blaming the helper?",
+            "material": "Theatre Prop Flower Story 017\n\nDuring the school play, Lila had to give a paper flower to the old gardener. The flower was missing from the prop table when her scene began. She could not stop the whole play to look for it. She stepped onto the stage with empty hands and said, \"I brought you something that cannot be held: a promise to return in spring.\" The pupil playing the gardener understood and replied, \"Then I will keep a place for you.\"\nThe scene continued. Backstage, a helper found the flower under a folded cloth. Lila wanted to blame him, but then remembered she had moved the cloth before the show. After the performance, the group made a simple prop list and checked each object before its scene. Their teacher praised the quick response on stage, while reminding them that a good recovery did not remove the need to prepare.",
+            "explanation": "D自己移动布盖住花；A忘全剧、B帮手离开、C处罚要求均未提。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She has forgotten the whole play."
+              },
+              {
+                "id": "o1",
+                "text": "The helper has gone home."
+              },
+              {
+                "id": "o2",
+                "text": "The teacher demands a punishment."
+              },
+              {
+                "id": "o3",
+                "text": "She remembers moving the cloth herself."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.theatre-prop-flower-story-017.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the teacher’s comment suggest?",
+            "material": "Theatre Prop Flower Story 017\n\nDuring the school play, Lila had to give a paper flower to the old gardener. The flower was missing from the prop table when her scene began. She could not stop the whole play to look for it. She stepped onto the stage with empty hands and said, \"I brought you something that cannot be held: a promise to return in spring.\" The pupil playing the gardener understood and replied, \"Then I will keep a place for you.\"\nThe scene continued. Backstage, a helper found the flower under a folded cloth. Lila wanted to blame him, but then remembered she had moved the cloth before the show. After the performance, the group made a simple prop list and checked each object before its scene. Their teacher praised the quick response on stage, while reminding them that a good recovery did not remove the need to prepare.",
+            "explanation": "B赞应变仍需准备；A把补救当免准备；C每次丢失都好夸大；D没禁布。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Preparation never matters if actors can invent lines."
+              },
+              {
+                "id": "o1",
+                "text": "A useful recovery and careful preparation are both valuable."
+              },
+              {
+                "id": "o2",
+                "text": "Every lost prop improves a show."
+              },
+              {
+                "id": "o3",
+                "text": "Helpers should never use cloth."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "491876bd983723daa5d3db3e4698b10e2ad165147af4ec4b7a1a9699eef1b3ea",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.inside-the-book-reading#primary5.theatre-prop-flower-story-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.theatre-prop-flower-story-017.reading.q1",
+            "expansion.20261028.primary5.theatre-prop-flower-story-017.reading.q2",
+            "expansion.20261028.primary5.theatre-prop-flower-story-017.reading.q3",
+            "expansion.20261028.primary5.theatre-prop-flower-story-017.reading.q4",
+            "expansion.20261028.primary5.theatre-prop-flower-story-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.inside-the-book-reading",
+          "sourceContentHash": "46e509e87efeb15b94ac01cde6c90574c6c6a8d27bfcfc776298ff93969b0c6a"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.roof-garden-noise-note-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "屋顶花园的安静时段",
+        "summary": "屋顶花园的安静时段，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 五题二选判断另获已核房山2024-2025五上区卷完整形式参照；前版模拟参照与作者稿均保留，正文/题目/键未改；新来源不是独立学生认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.roof-garden-noise-note-017",
+          "family": "reading_tf",
+          "label": "屋顶花园的安静时段",
+          "candidateSHA256": "2caf6a7ea95ec12cc405830f5b062e212bbf348bdcff47051bf5088c88f0d1e6",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.primary5-postcards-reading-tf#primary5.roof-garden-noise-note-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Roof Garden Noise Note 017\n\nDear Jun,\nOur block has opened a roof garden. Residents can visit from eight in the morning until seven in the evening. The benches are popular after dinner, but the flats below can hear chairs scraping. The garden team has added soft pads to the chair legs and asked visitors to lift chairs rather than drag them. The new sign also says \"Quiet time after six.\" This does not close the garden at six. It asks people to keep voices low for the final hour. I went yesterday and read on a bench. A neighbour wanted music, so he used his own headphones.\nSee you soon,\nAda"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.roof-garden-noise-note-017.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The roof garden closes at six in the evening.",
+            "material": "Roof Garden Noise Note 017\n\nDear Jun,\nOur block has opened a roof garden. Residents can visit from eight in the morning until seven in the evening. The benches are popular after dinner, but the flats below can hear chairs scraping. The garden team has added soft pads to the chair legs and asked visitors to lift chairs rather than drag them. The new sign also says \"Quiet time after six.\" This does not close the garden at six. It asks people to keep voices low for the final hour. I went yesterday and read on a bench. A neighbour wanted music, so he used his own headphones.\nSee you soon,\nAda",
+            "explanation": "B正确：七点闭，六点后安静；A把quiet time当close。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.roof-garden-noise-note-017.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Flats below could hear chairs scraping.",
+            "material": "Roof Garden Noise Note 017\n\nDear Jun,\nOur block has opened a roof garden. Residents can visit from eight in the morning until seven in the evening. The benches are popular after dinner, but the flats below can hear chairs scraping. The garden team has added soft pads to the chair legs and asked visitors to lift chairs rather than drag them. The new sign also says \"Quiet time after six.\" This does not close the garden at six. It asks people to keep voices low for the final hour. I went yesterday and read on a bench. A neighbour wanted music, so he used his own headphones.\nSee you soon,\nAda",
+            "explanation": "A正确：flats below hear scraping；B否认噪声来源。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.roof-garden-noise-note-017.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Visitors are asked to lift rather than drag chairs.",
+            "material": "Roof Garden Noise Note 017\n\nDear Jun,\nOur block has opened a roof garden. Residents can visit from eight in the morning until seven in the evening. The benches are popular after dinner, but the flats below can hear chairs scraping. The garden team has added soft pads to the chair legs and asked visitors to lift chairs rather than drag them. The new sign also says \"Quiet time after six.\" This does not close the garden at six. It asks people to keep voices low for the final hour. I went yesterday and read on a bench. A neighbour wanted music, so he used his own headphones.\nSee you soon,\nAda",
+            "explanation": "A正确：lift not drag；B否认新行为要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.roof-garden-noise-note-017.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Quiet time lasts for the final hour of opening.",
+            "material": "Roof Garden Noise Note 017\n\nDear Jun,\nOur block has opened a roof garden. Residents can visit from eight in the morning until seven in the evening. The benches are popular after dinner, but the flats below can hear chairs scraping. The garden team has added soft pads to the chair legs and asked visitors to lift chairs rather than drag them. The new sign also says \"Quiet time after six.\" This does not close the garden at six. It asks people to keep voices low for the final hour. I went yesterday and read on a bench. A neighbour wanted music, so he used his own headphones.\nSee you soon,\nAda",
+            "explanation": "A正确：18至19为最后一小时；B否认时间关系。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.roof-garden-noise-note-017.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The neighbour played music loudly for everyone.",
+            "material": "Roof Garden Noise Note 017\n\nDear Jun,\nOur block has opened a roof garden. Residents can visit from eight in the morning until seven in the evening. The benches are popular after dinner, but the flats below can hear chairs scraping. The garden team has added soft pads to the chair legs and asked visitors to lift chairs rather than drag them. The new sign also says \"Quiet time after six.\" This does not close the garden at six. It asks people to keep voices low for the final hour. I went yesterday and read on a bench. A neighbour wanted music, so he used his own headphones.\nSee you soon,\nAda",
+            "explanation": "B正确：用本人headphones；A把私人听变公开大音量。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "d1627d56435c298b9c1c06e74f0d4be2326487e7fcc80a2d54468e6099c48c57",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-postcards-reading-tf#primary5.roof-garden-noise-note-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.roof-garden-noise-note-017.reading.q1",
+            "expansion.20261028.primary5.roof-garden-noise-note-017.reading.q2",
+            "expansion.20261028.primary5.roof-garden-noise-note-017.reading.q3",
+            "expansion.20261028.primary5.roof-garden-noise-note-017.reading.q4",
+            "expansion.20261028.primary5.roof-garden-noise-note-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-postcards-reading-tf",
+          "sourceContentHash": "abbfa743243bd1553f8334a108e543753efba41c4ae8397f63cb09b02653b32e"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.clockmaker-window-story-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "钟表匠窗前的一盏灯",
+        "summary": "钟表匠窗前的一盏灯，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.prose5x4",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.clockmaker-window-story-017",
+          "family": "reading_choice",
+          "label": "钟表匠窗前的一盏灯",
+          "candidateSHA256": "66ba152d5c3b6e03f2168edb81f01048bc55459ca1f5ac595943ee4ddb9c92ac",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.primary6-reading5joint-models#primary6.clockmaker-window-story-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Clockmaker Window Story 017\n\nEvery evening, a clockmaker placed a lamp in his shop window before closing. Theo thought it advertised late opening, so one winter evening he knocked after the door had been locked. The clockmaker opened it and smiled. \"The lamp is not for customers,\" he said.\nAcross the lane, an elderly neighbour walked home from the community hall. The street light at the corner had failed. The lamp showed the narrow step outside her gate. Theo offered to repair every clock in the shop in return for the explanation. The clockmaker laughed and asked instead whether Theo could report the street light to the town office.\nA week later, the street light worked again. The shop lamp disappeared from the window. Theo felt a little disappointed; he had liked the warm glow. Then he saw the neighbour cross the lane without slowing to search for the step. He understood that the lamp had been useful because it answered a particular need. It did not have to become a permanent tradition once that need was met."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.clockmaker-window-story-017.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Theo first think the shop lamp means?",
+            "material": "Clockmaker Window Story 017\n\nEvery evening, a clockmaker placed a lamp in his shop window before closing. Theo thought it advertised late opening, so one winter evening he knocked after the door had been locked. The clockmaker opened it and smiled. \"The lamp is not for customers,\" he said.\nAcross the lane, an elderly neighbour walked home from the community hall. The street light at the corner had failed. The lamp showed the narrow step outside her gate. Theo offered to repair every clock in the shop in return for the explanation. The clockmaker laughed and asked instead whether Theo could report the street light to the town office.\nA week later, the street light worked again. The shop lamp disappeared from the window. Theo felt a little disappointed; he had liked the warm glow. Then he saw the neighbour cross the lane without slowing to search for the step. He understood that the lamp had been useful because it answered a particular need. It did not have to become a permanent tradition once that need was met.",
+            "explanation": "B误认晚营业广告；A某钟坏、C邻居卖灯、D会堂关门非初想。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A clock is broken."
+              },
+              {
+                "id": "o1",
+                "text": "The shop is open late."
+              },
+              {
+                "id": "o2",
+                "text": "The neighbour is selling lamps."
+              },
+              {
+                "id": "o3",
+                "text": "The community hall has closed."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.clockmaker-window-story-017.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the lamp actually placed in the window?",
+            "material": "Clockmaker Window Story 017\n\nEvery evening, a clockmaker placed a lamp in his shop window before closing. Theo thought it advertised late opening, so one winter evening he knocked after the door had been locked. The clockmaker opened it and smiled. \"The lamp is not for customers,\" he said.\nAcross the lane, an elderly neighbour walked home from the community hall. The street light at the corner had failed. The lamp showed the narrow step outside her gate. Theo offered to repair every clock in the shop in return for the explanation. The clockmaker laughed and asked instead whether Theo could report the street light to the town office.\nA week later, the street light worked again. The shop lamp disappeared from the window. Theo felt a little disappointed; he had liked the warm glow. Then he saw the neighbour cross the lane without slowing to search for the step. He understood that the lamp had been useful because it answered a particular need. It did not have to become a permanent tradition once that need was met.",
+            "explanation": "C街灯故障需照窄台阶；A藏钟、B吸客、D全镇替灯均不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To hide the clocks."
+              },
+              {
+                "id": "o1",
+                "text": "To attract a larger crowd."
+              },
+              {
+                "id": "o2",
+                "text": "To light a step near the neighbour’s gate."
+              },
+              {
+                "id": "o3",
+                "text": "To replace every light in town."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.clockmaker-window-story-017.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What useful action does the clockmaker ask Theo to take?",
+            "material": "Clockmaker Window Story 017\n\nEvery evening, a clockmaker placed a lamp in his shop window before closing. Theo thought it advertised late opening, so one winter evening he knocked after the door had been locked. The clockmaker opened it and smiled. \"The lamp is not for customers,\" he said.\nAcross the lane, an elderly neighbour walked home from the community hall. The street light at the corner had failed. The lamp showed the narrow step outside her gate. Theo offered to repair every clock in the shop in return for the explanation. The clockmaker laughed and asked instead whether Theo could report the street light to the town office.\nA week later, the street light worked again. The shop lamp disappeared from the window. Theo felt a little disappointed; he had liked the warm glow. Then he saw the neighbour cross the lane without slowing to search for the step. He understood that the lamp had been useful because it answered a particular need. It did not have to become a permanent tradition once that need was met.",
+            "explanation": "A报修街灯；B是Theo主动提出未采纳；C购灯、D关邻门非要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Report the failed street light."
+              },
+              {
+                "id": "o1",
+                "text": "Repair all shop clocks."
+              },
+              {
+                "id": "o2",
+                "text": "Buy the lamp immediately."
+              },
+              {
+                "id": "o3",
+                "text": "Close the neighbour’s gate."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.clockmaker-window-story-017.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the lamp later disappear?",
+            "material": "Clockmaker Window Story 017\n\nEvery evening, a clockmaker placed a lamp in his shop window before closing. Theo thought it advertised late opening, so one winter evening he knocked after the door had been locked. The clockmaker opened it and smiled. \"The lamp is not for customers,\" he said.\nAcross the lane, an elderly neighbour walked home from the community hall. The street light at the corner had failed. The lamp showed the narrow step outside her gate. Theo offered to repair every clock in the shop in return for the explanation. The clockmaker laughed and asked instead whether Theo could report the street light to the town office.\nA week later, the street light worked again. The shop lamp disappeared from the window. Theo felt a little disappointed; he had liked the warm glow. Then he saw the neighbour cross the lane without slowing to search for the step. He understood that the lamp had been useful because it answered a particular need. It did not have to become a permanent tradition once that need was met.",
+            "explanation": "D街灯修复无需店灯；A偷盗、B搬镇、C不来均无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The neighbour has stolen it."
+              },
+              {
+                "id": "o1",
+                "text": "The shop has moved towns."
+              },
+              {
+                "id": "o2",
+                "text": "Theo has stopped visiting."
+              },
+              {
+                "id": "o3",
+                "text": "The street light has been repaired."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.clockmaker-window-story-017.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Theo finally understand?",
+            "material": "Clockmaker Window Story 017\n\nEvery evening, a clockmaker placed a lamp in his shop window before closing. Theo thought it advertised late opening, so one winter evening he knocked after the door had been locked. The clockmaker opened it and smiled. \"The lamp is not for customers,\" he said.\nAcross the lane, an elderly neighbour walked home from the community hall. The street light at the corner had failed. The lamp showed the narrow step outside her gate. Theo offered to repair every clock in the shop in return for the explanation. The clockmaker laughed and asked instead whether Theo could report the street light to the town office.\nA week later, the street light worked again. The shop lamp disappeared from the window. Theo felt a little disappointed; he had liked the warm glow. Then he saw the neighbour cross the lane without slowing to search for the step. He understood that the lamp had been useful because it answered a particular need. It did not have to become a permanent tradition once that need was met.",
+            "explanation": "B末段明示需要已满足可结束临措；A与不必永久相反；C/D非故事结论。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every useful action must become permanent."
+              },
+              {
+                "id": "o1",
+                "text": "A temporary response can end when its purpose is fulfilled."
+              },
+              {
+                "id": "o2",
+                "text": "Customers should ignore all shop signs."
+              },
+              {
+                "id": "o3",
+                "text": "Tradition matters more than a neighbour’s needs."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "a7f3e5959c4258657d1534a9d5a52475fc1aaf2210de84139b90905d2a062be9",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-reading5joint-models#primary6.clockmaker-window-story-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.clockmaker-window-story-017.reading.q1",
+            "expansion.20261028.primary6.clockmaker-window-story-017.reading.q2",
+            "expansion.20261028.primary6.clockmaker-window-story-017.reading.q3",
+            "expansion.20261028.primary6.clockmaker-window-story-017.reading.q4",
+            "expansion.20261028.primary6.clockmaker-window-story-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-reading5joint-models",
+          "sourceContentHash": "5aa5fe33548304917f000925a15ce9829eb3f5adede5cee6522684b292e75d4a"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.school-fair-ticket-bundle-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "义卖游戏券的捆数记录",
+        "summary": "义卖游戏券的捆数记录，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.school-fair-ticket-bundle-017",
+          "family": "reading_tf",
+          "label": "义卖游戏券的捆数记录",
+          "candidateSHA256": "699614b68e988a6a48fb211ee8d6828138c05196274f7669c4ab1c64f9a1c11e",
+          "authorCheckSHA256": "81c6bc9e0600e4b64efd5f5736c73ef02891ee81050cae060475ddfc0886f3a6",
+          "sourceGroupIds": [
+            "original.primary6-train-letter-tf#primary6.school-fair-ticket-bundle-017.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b025；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "School Fair Ticket Bundle 017\n\nAt the school fair, each game ticket sold separately for two yuan. To speed up sales, volunteers also prepared bundles of five tickets for ten yuan. The price per ticket did not change. One volunteer recorded \"20 sales\" without saying whether these were single tickets or bundles. The money box held more than forty yuan, which seemed impossible if every sale meant one ticket.\nThe team checked the remaining bundles and the written cash entries. They reconstructed how many tickets had been sold and added units to the record. For later shifts, the sheet had separate columns for single tickets, bundles and yuan received. The volunteers still counted the cash at each handover; a clearer sheet reduced confusion but did not replace checking the money itself."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.school-fair-ticket-bundle-017.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A bundle made each ticket cheaper than buying singly.",
+            "material": "School Fair Ticket Bundle 017\n\nAt the school fair, each game ticket sold separately for two yuan. To speed up sales, volunteers also prepared bundles of five tickets for ten yuan. The price per ticket did not change. One volunteer recorded \"20 sales\" without saying whether these were single tickets or bundles. The money box held more than forty yuan, which seemed impossible if every sale meant one ticket.\nThe team checked the remaining bundles and the written cash entries. They reconstructed how many tickets had been sold and added units to the record. For later shifts, the sheet had separate columns for single tickets, bundles and yuan received. The volunteers still counted the cash at each handover; a clearer sheet reduced confusion but did not replace checking the money itself.",
+            "explanation": "B正确：五张十元每张二元，与单张相同；A把打包当折扣。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-fair-ticket-bundle-017.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The phrase \"20 sales\" was unclear about the unit counted.",
+            "material": "School Fair Ticket Bundle 017\n\nAt the school fair, each game ticket sold separately for two yuan. To speed up sales, volunteers also prepared bundles of five tickets for ten yuan. The price per ticket did not change. One volunteer recorded \"20 sales\" without saying whether these were single tickets or bundles. The money box held more than forty yuan, which seemed impossible if every sale meant one ticket.\nThe team checked the remaining bundles and the written cash entries. They reconstructed how many tickets had been sold and added units to the record. For later shifts, the sheet had separate columns for single tickets, bundles and yuan received. The volunteers still counted the cash at each handover; a clearer sheet reduced confusion but did not replace checking the money itself.",
+            "explanation": "A正确：未说明单票或捆；B否认记录歧义。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-fair-ticket-bundle-017.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "More than forty yuan proved someone had stolen money.",
+            "material": "School Fair Ticket Bundle 017\n\nAt the school fair, each game ticket sold separately for two yuan. To speed up sales, volunteers also prepared bundles of five tickets for ten yuan. The price per ticket did not change. One volunteer recorded \"20 sales\" without saying whether these were single tickets or bundles. The money box held more than forty yuan, which seemed impossible if every sale meant one ticket.\nThe team checked the remaining bundles and the written cash entries. They reconstructed how many tickets had been sold and added units to the record. For later shifts, the sheet had separate columns for single tickets, bundles and yuan received. The volunteers still counted the cash at each handover; a clearer sheet reduced confusion but did not replace checking the money itself.",
+            "explanation": "B正确：可能含捆销售，需核数量，并未证明盗窃；A无证定责。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-fair-ticket-bundle-017.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The revised sheet separated singles, bundles and cash received.",
+            "material": "School Fair Ticket Bundle 017\n\nAt the school fair, each game ticket sold separately for two yuan. To speed up sales, volunteers also prepared bundles of five tickets for ten yuan. The price per ticket did not change. One volunteer recorded \"20 sales\" without saying whether these were single tickets or bundles. The money box held more than forty yuan, which seemed impossible if every sale meant one ticket.\nThe team checked the remaining bundles and the written cash entries. They reconstructed how many tickets had been sold and added units to the record. For later shifts, the sheet had separate columns for single tickets, bundles and yuan received. The volunteers still counted the cash at each handover; a clearer sheet reduced confusion but did not replace checking the money itself.",
+            "explanation": "A正确：三列明确；B否认改进结构。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-fair-ticket-bundle-017.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Cash was still counted when volunteers changed shifts.",
+            "material": "School Fair Ticket Bundle 017\n\nAt the school fair, each game ticket sold separately for two yuan. To speed up sales, volunteers also prepared bundles of five tickets for ten yuan. The price per ticket did not change. One volunteer recorded \"20 sales\" without saying whether these were single tickets or bundles. The money box held more than forty yuan, which seemed impossible if every sale meant one ticket.\nThe team checked the remaining bundles and the written cash entries. They reconstructed how many tickets had been sold and added units to the record. For later shifts, the sheet had separate columns for single tickets, bundles and yuan received. The volunteers still counted the cash at each handover; a clearer sheet reduced confusion but did not replace checking the money itself.",
+            "explanation": "A正确：still counted each handover；B把清表当免点款。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "c863d052d93b5c8edb2ec1ae003b643b4f289d30fd721710309a4627787990b1",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-train-letter-tf#primary6.school-fair-ticket-bundle-017.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.school-fair-ticket-bundle-017.reading.q1",
+            "expansion.20261028.primary6.school-fair-ticket-bundle-017.reading.q2",
+            "expansion.20261028.primary6.school-fair-ticket-bundle-017.reading.q3",
+            "expansion.20261028.primary6.school-fair-ticket-bundle-017.reading.q4",
+            "expansion.20261028.primary6.school-fair-ticket-bundle-017.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-train-letter-tf",
+          "sourceContentHash": "0aa9b6a3d172a400efc8cc3c785b092bbdf7d9dbb0f195850cf1167bbad992a8"
+        }
+      ]
+    }
+  ]
+}
