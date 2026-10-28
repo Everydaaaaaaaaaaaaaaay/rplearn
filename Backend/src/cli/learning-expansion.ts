@@ -7,6 +7,7 @@ import {
   loadExpansionImages,
   expansionNamespace,
   expansionRun,
+  verifyExpansionAudio,
 } from "../modules/learning/expansion-catalog.js";
 import { createMediaObjectStore } from "../modules/media/object-store.js";
 import { uploadLearningImages } from "../modules/learning/images.js";
@@ -51,8 +52,10 @@ async function main() {
   }
   const catalog = loadExpansionCatalog(selected, false, run);
   if (action === "validate") {
-    for (const manifest of catalog.manifests)
+    for (const manifest of catalog.manifests) {
       await loadExpansionImages(manifest.batch, run);
+      await verifyExpansionAudio(manifest.batch, run);
+    }
     console.log(
       JSON.stringify({
         action,

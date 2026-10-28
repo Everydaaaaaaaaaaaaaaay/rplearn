@@ -2,9 +2,16 @@ import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { z } from "zod";
-import { contentHash, unitSchema, type LearningUnit } from "./content.js";
+import {
+  contentHash,
+  questionAudios,
+  questionImageIds,
+  unitSchema,
+  type LearningUnit,
+} from "./content.js";
 import { gradeAnswer } from "./grading.js";
 import { learningImageSchema, verifyLearningImage } from "./images.js";
+import { learningAudioSchema, verifyLearningAudioFile } from "./audio.js";
 
 export const expansionRun = "2026-10-24";
 export const expansionRuns = [expansionRun, "2026-10-28"] as const;
@@ -38,6 +45,7 @@ const manifestSchema = z.strictObject({
   createdAt: z.string(),
   entries: z.array(entry).min(1).max(30),
   imageAssets: z.array(learningImageSchema).optional(),
+  audioAssets: z.array(learningAudioSchema).optional(),
   sourceSHA256: z
     .string()
     .regex(/^[a-f0-9]{64}$/)
@@ -100,6 +108,9 @@ export function loadExpansionCatalog(
       return manifest;
     });
   const entries = manifests.flatMap((m) => m.entries);
+  const manifestByUnit = new Map(
+    manifests.flatMap((m) => m.entries.map((e) => [e.unit.id, m] as const)),
+  );
   const ids = new Set<string>();
   for (const e of entries) {
     const u = e.unit;
@@ -117,6 +128,22 @@ export function loadExpansionCatalog(
     ids.add(u.id);
     for (const q of u.questions) {
       if (!q.material) throw new Error(`Incomplete expansion input: ${u.id}/${q.id}`);
+      if (run === "2026-10-28") {
+        const manifest = manifestByUnit.get(u.id);
+        for (const audio of questionAudios(q))
+          if (
+            !manifest?.audioAssets?.some(
+              (a) =>
+                a.id === audio.assetId &&
+                a.transcript === audio.text &&
+                a.voice === audio.voice,
+            )
+          )
+            throw new Error(`Expansion audio binding mismatch: ${u.id}/${q.id}`);
+        for (const imageId of questionImageIds(q))
+          if (!manifest?.imageAssets?.some((a) => a.id === imageId))
+            throw new Error(`Expansion image binding mismatch: ${u.id}/${q.id}`);
+      }
       if (q.type === "choice") {
         if (/[一-鿿]/u.test(q.prompt + q.options.map((o) => o.text).join("")))
           throw new Error(`Expansion choice language mismatch: ${u.id}/${q.id}`);
@@ -188,4 +215,21 @@ export async function loadExpansionImages(batch: string, run: string = expansion
       return { metadata: asset, loadBytes: () => Promise.resolve(bytes) };
     }),
   );
+}
+
+/** Only selected, explicitly declared clips are checked; publishing reuses archived metadata. */
+export async function verifyExpansionAudio(batch: string, run: string = expansionRun) {
+  const catalog = loadExpansionCatalog(batch, false, run);
+  for (const asset of catalog.manifests.flatMap((m) => m.audioAssets ?? [])) {
+    const path =
+      process.env.NODE_ENV === "production"
+        ? `/opt/lingotrip/shared/learning-originals-media/${asset.id}.wav`
+        : fileURLToPath(
+            new URL(
+              `../../../config/learning/originals/media/${asset.id}.wav`,
+              import.meta.url,
+            ),
+          );
+    await verifyLearningAudioFile(asset, path);
+  }
 }

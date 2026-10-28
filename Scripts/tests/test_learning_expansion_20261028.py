@@ -80,6 +80,73 @@ class ExpansionCompilerTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'Frozen'):
                 self.compiler.write_manifest(changed, directory)
 
+    def test_explicit_reviewed_picture_assets_are_copied_after_byte_checks(self):
+        catalog = json.loads((ROOT / 'Backend/config/learning/originals/catalog.json').read_text())
+        image = catalog['imageAssets'][0]
+        source = copy.deepcopy(self.source)
+        original = next(u for u in self.originals.values() if u['level'] == 'primary1' and u['originalGroup']['family'] == 'word_picture_matching')
+        source['units'][0].update(sourceUnitId=original['id'], level='primary1', family='word_picture_matching')
+        source['imageAssets'] = [image]
+        for question in source['units'][0]['materials'][0]['questions']:
+            question['materialImages'] = [{'assetId': image['id'], 'label': 'Reviewed whole picture sheet'}]
+            question['optionImages'] = [image['id']] * len(question['options'])
+        manifest = self.compile(source)
+        self.assertEqual(manifest['imageAssets'], [image])
+        question = manifest['entries'][0]['unit']['questions'][0]
+        self.assertEqual(question['materialImages'][0]['assetId'], image['id'])
+        self.assertEqual(question['options'][0]['imageAssetId'], image['id'])
+        source['imageAssets'][0]['width'] += 1
+        with self.assertRaisesRegex(ValueError, 'PNG|image'):
+            self.compile(source)
+
+    def test_owned_explicit_audio_is_bound_to_exact_transcript_voice_and_verified_bytes(self):
+        catalog = json.loads((ROOT / 'Backend/config/learning/originals/catalog.json').read_text())
+        audio = catalog['audioAssets'][0]
+        source = copy.deepcopy(self.source)
+        original = next(u for u in self.originals.values() if u['level'] == 'primary2' and u['originalGroup']['family'] == 'listening_word_phrase_choice')
+        source['units'][0].update(sourceUnitId=original['id'], level=original['level'], family=original['originalGroup']['family'])
+        source['audioAssets'] = [audio]
+        for question in source['units'][0]['materials'][0]['questions']:
+            question['audio'] = {'assetId': audio['id'], 'text': audio['transcript'], 'voice': audio['voice']}
+        manifest = self.compile(source)
+        self.assertEqual(manifest['audioAssets'], [audio])
+        self.assertEqual(manifest['entries'][0]['unit']['questions'][0]['type'], 'listeningChoice')
+        source['units'][0]['materials'][0]['questions'][0]['audio']['text'] = 'Invented different transcript'
+        with self.assertRaisesRegex(ValueError, 'audio|transcript'):
+            self.compile(source)
+
+    def test_missing_declared_media_and_missing_audio_fail_closed(self):
+        source = copy.deepcopy(self.source)
+        source['units'][0]['materials'][0]['questions'][0]['materialImages'] = [{'assetId': 'image.' + '0' * 64, 'label': 'Missing image'}]
+        with self.assertRaisesRegex(ValueError, 'image|media'):
+            self.compile(source)
+        source = copy.deepcopy(self.source)
+        original = next(u for u in self.originals.values() if u['level'] == 'primary1' and u['originalGroup']['family'].startswith('listening'))
+        source['units'][0].update(sourceUnitId=original['id'], level='primary1', family=original['originalGroup']['family'])
+        with self.assertRaisesRegex(ValueError, 'audio|media'):
+            self.compile(source)
+
+    def test_long_reviewer_is_preserved_in_provenance_and_bounded_for_unit_display(self):
+        reviewer = 'Same author review with a detailed declaration of limitations. ' * 3
+        manifest = self.compile(review_change={'reviewer': reviewer})
+        self.assertEqual(manifest['reviewer'], reviewer)
+        self.assertLessEqual(len(manifest['entries'][0]['unit']['authorship']['reviewedBy']), 100)
+
+    def test_native_schema_validation_happens_before_freezing_a_manifest(self):
+        manifest = self.compile()
+        self.compiler.validate_manifest(manifest)
+        manifest['entries'][0]['unit']['authorship']['reviewedBy'] = 'x' * 101
+        with self.assertRaisesRegex(ValueError, 'schema'):
+            self.compiler.validate_manifest(manifest)
+
+    def test_native_validation_decodes_large_chinese_text_without_chunk_corruption(self):
+        manifest = self.compile()
+        unit = manifest['entries'][0]['unit']
+        for question in unit['questions']:
+            question['material'] = '完整材料中的中文字符用于隔离编码验证。' * 700
+        manifest['entries'][0]['contentHash'] = self.compiler.digest(unit)
+        self.compiler.validate_manifest(manifest)
+
 
 if __name__ == '__main__':
     unittest.main()

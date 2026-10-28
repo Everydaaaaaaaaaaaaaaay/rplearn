@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-"""Freeze explicitly authored, SHA-bound author-reviewed text tasks for the 2026-10-28 run."""
+"""Freeze explicit SHA-bound author-reviewed tasks and selected verified media for 2026-10-28."""
 import argparse
 import copy
 import hashlib
 import json
 from pathlib import Path
 import re
+import struct
+import subprocess
+import wave
+import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 RUN = '2026-10-28'
@@ -38,6 +42,77 @@ def english(value):
     return value
 
 
+def verify_declared_media(source):
+    """Only declared selected-batch assets are read; never scan the old media corpus."""
+    media = ROOT / 'Backend/config/learning/originals/media'
+    images, audios = {}, {}
+    for asset in source.get('imageAssets', []):
+        key = asset.get('id', '')
+        if not re.fullmatch(r'image\.[a-f0-9]{64}', key) or key != 'image.' + asset.get('sha256', '') or key in images:
+            raise ValueError('Invalid or duplicate image metadata identity')
+        path = media / (key + '.png')
+        if not path.is_file() or not 64 <= path.stat().st_size <= 2_000_000:
+            raise ValueError('Declared image file is missing or outside byte bounds')
+        data = path.read_bytes()
+        if len(data) != asset.get('byteSize') or hashlib.sha256(data).hexdigest() != asset['sha256'] or data[:8] != b'\x89PNG\r\n\x1a\n':
+            raise ValueError('Declared image PNG bytes/hash mismatch')
+        width, height = asset.get('width', 0), asset.get('height', 0)
+        if not 128 <= width <= 1024 or not 128 <= height <= 1024 or asset.get('contentType') != 'image/png':
+            raise ValueError('Declared image PNG metadata bounds mismatch')
+        position, channels, compressed, ended = 8, 0, [], False
+        while position + 12 <= len(data):
+            length = struct.unpack('>I', data[position:position + 4])[0]
+            kind = data[position + 4:position + 8]
+            payload = data[position + 8:position + 8 + length]
+            end = position + 8 + length
+            if end + 4 > len(data) or zlib.crc32(kind + payload) != struct.unpack('>I', data[end:end + 4])[0]:
+                raise ValueError('Declared image PNG chunk/CRC mismatch')
+            if position == 8 and kind != b'IHDR':
+                raise ValueError('Declared image PNG header missing')
+            if kind == b'IHDR':
+                if position != 8 or length != 13:
+                    raise ValueError('Declared image PNG header malformed')
+                actual_width, actual_height, depth, color, compression, filtering, interlace = struct.unpack('>IIBBBBB', payload)
+                if (actual_width, actual_height) != (width, height) or depth != 8 or color not in (2, 6) or (compression, filtering, interlace) != (0, 0, 0):
+                    raise ValueError('Declared image PNG dimensions/format mismatch')
+                channels = 4 if color == 6 else 3
+            elif kind == b'IDAT':
+                compressed.append(payload)
+            elif kind == b'IEND':
+                if length or end + 4 != len(data):
+                    raise ValueError('Declared image PNG end mismatch')
+                ended = True
+            elif kind in (b'acTL', b'fcTL', b'fdAT') or not re.fullmatch(b'[a-z][A-Za-z]{3}', kind):
+                raise ValueError('Declared image PNG animation/unknown chunk is not permitted')
+            position = end + 4
+        if not ended or position != len(data) or not channels or not compressed:
+            raise ValueError('Declared image PNG is incomplete')
+        expected = height * (1 + width * channels)
+        decoder = zlib.decompressobj()
+        pixels = decoder.decompress(b''.join(compressed), expected + 1)
+        if len(pixels) != expected or not decoder.eof or decoder.unused_data or any(pixels[row * (1 + width * channels)] > 4 for row in range(height)):
+            raise ValueError('Declared image PNG scanline mismatch')
+        for field, minimum in [('description', 5), ('source', 8), ('reviewedBy', 1), ('reviewNotes', 20)]:
+            if len(asset.get(field, '').strip()) < minimum:
+                raise ValueError('Declared image review metadata is incomplete')
+        images[key] = asset
+    if source.get('audioAssets'):
+        catalog = json.loads((ROOT / 'Backend/config/learning/originals/catalog.json').read_text())
+        owned = {asset['id']: asset for asset in catalog['audioAssets']}
+        for asset in source['audioAssets']:
+            key = asset.get('id', '')
+            if key in audios or owned.get(key) != asset:
+                raise ValueError('Declared audio must exactly reuse owned reviewed audio metadata')
+            path = media / (key + '.wav')
+            if not path.is_file() or path.stat().st_size != asset['byteSize'] or hashlib.sha256(path.read_bytes()).hexdigest() != asset['sha256']:
+                raise ValueError('Declared audio bytes/hash mismatch')
+            with wave.open(str(path), 'rb') as audio:
+                if audio.getnchannels() != 1 or audio.getsampwidth() != 2 or audio.getframerate() != 24000 or abs(round(audio.getnframes() / 24) - asset['durationMs']) > 1:
+                    raise ValueError('Declared audio PCM format/duration mismatch')
+            audios[key] = asset
+    return images, audios
+
+
 def compile_manifest(source_bytes, review_bytes, originals, batch):
     if not re.fullmatch(r'b[0-9]{3}', batch):
         raise ValueError('Expected b000-style batch')
@@ -57,6 +132,8 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
     boundary = nonempty(source['reviewBoundary'], 'review boundary')
     if len(boundary) < 30:
         raise ValueError('Review boundary must disclose the limits of author review')
+    images, audios = verify_declared_media(source)
+    used_images, used_audios = set(), set()
     entries = []
     for draft in drafts:
         if not re.fullmatch(r'[a-z][a-z0-9_.-]{0,74}', draft['id']):
@@ -70,8 +147,6 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
             raise ValueError('Concrete Chinese topic title required')
         if not isinstance(draft['minutes'], int) or not 2 <= draft['minutes'] <= 20:
             raise ValueError('Explicit practice duration outside 2 to 20 minutes')
-        if source.get('imageAssets') or any('optionImages' in q or 'audio' in q for p in materials for q in p['questions']) or family.startswith('listening'):
-            raise ValueError('This text-only compiler cannot admit unverified image/listening assets')
         first_family = materials[0].get('family', family)
         original = bind_source(originals, draft['sourceUnitId'], level, first_family)
         questions, components = [], []
@@ -92,6 +167,22 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
                 instruction = item.get('instruction') or part.get('instruction') or draft.get('instruction') or ('Read the complete material and complete each gap.' if part_family in TEXT_FAMILIES else 'Read the complete material and choose the best answer.')
                 question = dict(id=question_id, goalId='original.' + part_family, instruction=english(instruction), prompt=nonempty(item['prompt'], 'question prompt'), material=material,
                     explanation=nonempty(item['explanation'], 'answer rationale'), hint='Use the complete material and the question together.', difficultyReason='New provisional original for this level; no independent learner calibration claimed.')
+                material_images = item.get('materialImages', part.get('materialImages'))
+                if material_images is not None:
+                    if not isinstance(material_images, list) or any(i.get('assetId') not in images or not i.get('label') for i in material_images):
+                        raise ValueError('Question material image needs explicit declared reviewed media')
+                    question['materialImages'] = copy.deepcopy(material_images)
+                    used_images.update(i['assetId'] for i in material_images)
+                audio = item.get('audio')
+                if audio is not None:
+                    metadata = audios.get(audio.get('assetId'))
+                    if not metadata or audio.get('text') != metadata['transcript'] or audio.get('voice') != metadata['voice']:
+                        raise ValueError('Question audio transcript/voice must match declared owned metadata')
+                    used_audios.add(audio['assetId'])
+                if part_family.startswith('listening') and audio is None:
+                    raise ValueError('Listening question requires explicit verified audio media')
+                if 'picture' in part_family and not material_images and not item.get('optionImages'):
+                    raise ValueError('Picture task requires explicit verified image media')
                 if part_family in TEXT_FAMILIES:
                     answers, marking = item.get('acceptedAnswers'), item.get('marking')
                     if not answers or not marking or not isinstance(marking.get('maxWords'), int) or marking['maxWords'] < 1 or marking.get('unlisted') != 'review' or not marking.get('rejectedAnswers'):
@@ -112,7 +203,14 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
                     for i in range(len(options)):
                         if not re.search(r'(?<![A-Za-z])' + chr(65 + i) + r'(?![A-Za-z])', item['explanation']):
                             raise ValueError('Every option, including each distractor, needs an explicit letter-bound rationale')
-                    question.update(type='choice', options=[dict(id=f'o{i}', text=text) for i, text in enumerate(options)], answer=f'o{answer}')
+                    option_images = item.get('optionImages')
+                    if option_images is not None:
+                        if not isinstance(option_images, list) or len(option_images) != len(options) or any(key not in images for key in option_images):
+                            raise ValueError('Every option image must match declared reviewed media and candidate count')
+                        used_images.update(option_images)
+                    question.update(type='listeningChoice' if audio else 'choice', options=[dict(id=f'o{i}', text=text, **({'imageAssetId': option_images[i]} if option_images is not None else {})) for i, text in enumerate(options)], answer=f'o{answer}')
+                    if audio:
+                        question['audio'] = copy.deepcopy(audio)
                 questions.append(question)
             component_family = part_family if part_family in {'choice_cloze', 'shared_insertion', 'passage_form'} else 'reading_choice'
             components.append(dict(id=f"{part_source['id']}#{draft['id']}.{part['id']}", family=component_family, questionIds=question_ids, sourceNumbers=list(range(1, len(question_ids) + 1)), sourceUnitId=part_source['id'], sourceContentHash=digest(part_source)))
@@ -140,11 +238,40 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
         unit = dict(id=unit_id, version=1, schemaVersion=1, scoringVersion=1, roleKey='companion', roleVersion=1, level=level,
             title=('高考题型原创 · ' if senior else '') + draft['title'], summary=draft['title'] + f'，共{len(questions)}题。', scene='先阅读完整材料，再按题目要求作答。', estimatedMinutes=draft['minutes'],
             goalIds=list(dict.fromkeys(q['goalId'] for q in questions)), prerequisiteGoalIds=[], references=references,
-            authorship=dict(kind='authored', author='Codex 2026-10-28 explicit authoring', reviewedBy=review['reviewer'] + ' (author self-review only)', reviewedAt=RUN, reviewNotes=boundary), beats=[],
+            authorship=dict(kind='authored', author='Codex 2026-10-28 explicit authoring', reviewedBy=review['reviewer'][:70] + ' (author self-review only)', reviewedAt=RUN, reviewNotes=boundary), beats=[],
             originalGroup=dict(id=unit_id, family=family, label=draft['title'], candidateSHA256=digest(draft), authorCheckSHA256=digest(dict(sourceSHA256=source_sha, review=review)), sourceGroupIds=[c['id'] for c in components], sourceNotice=notice, material=material), questions=questions)
         entry = dict(unit=unit, contentHash=digest(unit), reviewNotes=boundary, components=components)
         entries.append(entry)
-    return dict(version=1, run=RUN, batch=batch, createdAt=source['createdAt'], sourceSHA256=source_sha, reviewSHA256=hashlib.sha256(review_bytes).hexdigest(), reviewKind=review['reviewKind'], reviewer=review['reviewer'], entries=entries)
+    if set(images) != used_images or set(audios) != used_audios:
+        raise ValueError('Declared media must be exactly referenced by authored questions')
+    manifest = dict(version=1, run=RUN, batch=batch, createdAt=source['createdAt'], sourceSHA256=source_sha, reviewSHA256=hashlib.sha256(review_bytes).hexdigest(), reviewKind=review['reviewKind'], reviewer=review['reviewer'], entries=entries)
+    if images:
+        manifest['imageAssets'] = source['imageAssets']
+    if audios:
+        manifest['audioAssets'] = source['audioAssets']
+    return manifest
+
+
+def validate_manifest(manifest):
+    """Use the app's real schemas before any batch/index bytes can be frozen."""
+    script = """
+import {unitSchema, contentHash} from './src/modules/learning/content.ts';
+import {learningImageSchema, verifyLearningImage} from './src/modules/learning/images.ts';
+import {readFile} from 'node:fs/promises';
+import {learningAudioSchema, verifyLearningAudioFile} from './src/modules/learning/audio.ts';
+process.stdin.setEncoding('utf8');
+let input = ''; for await (const chunk of process.stdin) input += chunk;
+const manifest = JSON.parse(input);
+for (const entry of manifest.entries) {
+  unitSchema.parse(entry.unit);
+  if (contentHash(entry.unit) !== entry.contentHash) throw new Error('Digest mismatch');
+}
+for (const asset of manifest.imageAssets ?? []) { learningImageSchema.parse(asset); verifyLearningImage(asset, await readFile('./config/learning/originals/media/' + asset.id + '.png')); }
+for (const asset of manifest.audioAssets ?? []) { learningAudioSchema.parse(asset); await verifyLearningAudioFile(asset, './config/learning/originals/media/' + asset.id + '.wav'); }
+"""
+    result = subprocess.run(['node', '--import', 'tsx', '--input-type=module', '-e', script], cwd=ROOT / 'Backend', input=json.dumps(manifest, ensure_ascii=False), text=True, capture_output=True)
+    if result.returncode:
+        raise ValueError('Native learning schema validation failed before freezing: ' + result.stderr[-2500:])
 
 
 def write_manifest(manifest, directory=DIRECTORY):
@@ -182,6 +309,7 @@ def main():
     review_path = args.review or args.source.with_suffix('.review.json')
     originals = {e['unit']['id']: e['unit'] for e in json.loads((ROOT / 'Backend/config/learning/originals/catalog.json').read_text())['units']}
     manifest = compile_manifest(args.source.read_bytes(), review_path.read_bytes(), originals, args.batch)
+    validate_manifest(manifest)
     write_manifest(manifest)
     print(json.dumps(dict(run=RUN, batch=args.batch, units=len(manifest['entries']), questions=sum(len(e['unit']['questions']) for e in manifest['entries']), hash=digest([manifest]))))
 
