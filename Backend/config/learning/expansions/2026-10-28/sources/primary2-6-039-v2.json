@@ -1,0 +1,1306 @@
+{
+  "createdAt": "2026-10-29T03:46:36.649240+08:00",
+  "reviewBoundary": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+  "units": [
+    {
+      "id": "primary2.seed-table-039a",
+      "sourceUnitId": "original.primary2-functions-1",
+      "level": "primary2",
+      "family": "function_choice",
+      "title": "种子桌上的纸袋和标签",
+      "minutes": 6,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Seed Table 039A",
+          "text": "At the seed table, take one paper bag. Write your name on it. Ask Ms Park for seeds. Keep the seeds dry. Put the full bag in your school bag.",
+          "questions": [
+            {
+              "prompt": "You need a bag. Say: ____",
+              "options": [
+                "May I take one paper bag?",
+                "May I wash the seeds?",
+                "May I take two paper bags?"
+              ],
+              "answer": 0,
+              "explanation": "A请求一只纸袋；B洗种子违背干燥要求；C两只超出每人一只。"
+            },
+            {
+              "prompt": "Your bag has no name. Say: ____",
+              "options": [
+                "I will count the tables.",
+                "I will write my name on it.",
+                "I will fill it with water."
+              ],
+              "answer": 1,
+              "explanation": "B补写姓名；A数桌无关；C装水违背干燥要求。"
+            },
+            {
+              "prompt": "You are ready for seeds. Say: ____",
+              "options": [
+                "Where is my coat?",
+                "Is this a wet towel?",
+                "Ms Park, may I have some seeds?"
+              ],
+              "answer": 2,
+              "explanation": "C向指定老师要种子；A问衣物、B问毛巾都不完成请求。"
+            },
+            {
+              "prompt": "A friend wants to put seeds in water now. Say: ____",
+              "options": [
+                "Keep them dry, please.",
+                "Put them in a wet cloth, please.",
+                "Take two bags, please."
+              ],
+              "answer": 0,
+              "explanation": "A符合保持干燥；B湿布与干燥要求冲突；C两袋超出一袋且不解决浸水意图。"
+            },
+            {
+              "prompt": "Your bag is full. Say: ____",
+              "options": [
+                "I will leave it in the sink.",
+                "I will leave it on the seed table.",
+                "I will put it in my school bag."
+              ],
+              "answer": 2,
+              "explanation": "C按材料收进书包；A水槽不符合干燥保存；B留桌不完成装好带走。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary2.rainy-door-039b",
+      "sourceUnitId": "original.primary2-functions-2",
+      "level": "primary2",
+      "family": "function_choice",
+      "title": "雨天进门的伞架和脚垫",
+      "minutes": 6,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Rainy Door 039B",
+          "text": "It is raining. Leave wet umbrellas in the stand by the door. Wipe your shoes on the mat. Hang coats on hooks. Walk to your seat. Ask the teacher for a towel if your desk is wet.",
+          "questions": [
+            {
+              "prompt": "Your umbrella is wet. Say: ____",
+              "options": [
+                "I will put it on my desk.",
+                "I will put it in the stand.",
+                "I will put it on my seat."
+              ],
+              "answer": 1,
+              "explanation": "B湿伞放伞架；A桌面、C座位均非指定位置。"
+            },
+            {
+              "prompt": "There is mud on your shoes. Say: ____",
+              "options": [
+                "I will wipe them on the mat.",
+                "I will wash my coat.",
+                "I will open my umbrella inside."
+              ],
+              "answer": 0,
+              "explanation": "A脚垫擦鞋；B洗外套、C室内开伞不处理鞋泥。"
+            },
+            {
+              "prompt": "You want to hang your coat. Ask: ____",
+              "options": [
+                "May I put my coat on the mat?",
+                "Can I run to my seat?",
+                "May I use this hook?"
+              ],
+              "answer": 2,
+              "explanation": "C问使用挂钩符合挂衣；A脚垫不作衣架；B奔跑违背步行要求。"
+            },
+            {
+              "prompt": "Your desk is wet. Say: ____",
+              "options": [
+                "I will sit on the floor.",
+                "May I have a towel, please?",
+                "May I move the umbrella stand outside?"
+              ],
+              "answer": 1,
+              "explanation": "B向老师要毛巾；A坐地、C移伞架均不擦桌。"
+            },
+            {
+              "prompt": "A friend starts to run to a seat. Say: ____",
+              "options": [
+                "Please leave your coat on the mat.",
+                "Please put your coat on your seat.",
+                "Please walk."
+              ],
+              "answer": 2,
+              "explanation": "C提醒步行，回应奔跑问题；A脚垫和B座位均不是衣物要求位置，也不纠正跑动。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary3.shell-tray-039c",
+      "sourceUnitId": "original.bens-bag-reading",
+      "level": "primary3",
+      "family": "reading_tf",
+      "title": "贝壳托盘上的姓名卡",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Shell Tray 039C",
+          "text": "Mia has a white tray. There are four shells on it. Two are small and two are big. A name card is under the tray. Mia puts the small shells in a jar. She leaves the big shells on the tray. The jar is on her shelf.",
+          "questions": [
+            {
+              "prompt": "The tray is white.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True与白色托盘一致；B False否定明示颜色。"
+            },
+            {
+              "prompt": "There are five shells at the start.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，起初四枚不是五枚；A True与数量冲突。"
+            },
+            {
+              "prompt": "The name card is under the tray.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True对应under；B False否定明确位置。"
+            },
+            {
+              "prompt": "Mia puts the big shells in the jar.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，小贝壳入罐，大贝壳留盘；A True混淆大小。"
+            },
+            {
+              "prompt": "The jar is under her bed.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，罐在架上；A True误把shelf换成bed。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary3.lunch-questions-039d",
+      "sourceUnitId": "original.five-everyday-responses",
+      "level": "primary3",
+      "family": "dialogue_matching",
+      "title": "午餐盒前的五个问答",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Lunch Questions 039D",
+          "text": "At lunch, choose the best reply to each question. Each question has its own three choices.",
+          "questions": [
+            {
+              "prompt": "What is in your lunch box?",
+              "options": [
+                "At twelve.",
+                "Rice and peas.",
+                "In the lunch room."
+              ],
+              "answer": 1,
+              "explanation": "B回答盒内食物；A时间、C地点均非内容。"
+            },
+            {
+              "prompt": "Who made your sandwich?",
+              "options": [
+                "My dad did.",
+                "It is on the plate.",
+                "I have two."
+              ],
+              "answer": 0,
+              "explanation": "A回答制作者；B位置、C数量不答who。"
+            },
+            {
+              "prompt": "Would you like a pear?",
+              "options": [
+                "It is green.",
+                "It is my box.",
+                "Yes, please."
+              ],
+              "answer": 2,
+              "explanation": "C礼貌接受食物；A颜色、B物品归属不答邀请。"
+            },
+            {
+              "prompt": "Where can I wash my hands?",
+              "options": [
+                "At half past one.",
+                "At the sink by the door.",
+                "With my sister."
+              ],
+              "answer": 1,
+              "explanation": "B水池地点；A时间、C同行人不答where。"
+            },
+            {
+              "prompt": "How many spoons do we need?",
+              "options": [
+                "They are clean.",
+                "In the drawer.",
+                "Three, one for each bowl."
+              ],
+              "answer": 2,
+              "explanation": "C回答所需数量；A状态、B位置不答how many。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary4.repair-desk-039e",
+      "sourceUnitId": "original.primary4-book-bus-call",
+      "level": "primary4",
+      "family": "reading_choice",
+      "title": "修补桌的预约与领取",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Repair Desk 039E",
+          "text": "The school repair desk opens on Wednesday, from 2:00 to 4:00. Students may bring torn paper books, but not broken toys. Leave each book with a card showing your name and class. Repairs are free. Collect books on Friday after lunch. If a book is too badly damaged, staff will return it without repairing it.",
+          "questions": [
+            {
+              "prompt": "When is the repair desk open?",
+              "options": [
+                "Friday morning.",
+                "Every afternoon.",
+                "Wednesday from 2:00 to 4:00."
+              ],
+              "answer": 2,
+              "explanation": "C对应开放时间；A是错误日期时段；B把每周一次扩大为每天。"
+            },
+            {
+              "prompt": "Which item may a student bring?",
+              "options": [
+                "A torn storybook.",
+                "A toy with a broken wheel.",
+                "A wet coat."
+              ],
+              "answer": 0,
+              "explanation": "A纸质破书在范围内；B玩具被排除；C衣服不属书籍。"
+            },
+            {
+              "prompt": "What must be on the card?",
+              "options": [
+                "A price and a colour.",
+                "A name and class.",
+                "A toy number and age."
+              ],
+              "answer": 1,
+              "explanation": "B姓名班级；A价格颜色、C玩具号年龄均非要求。"
+            },
+            {
+              "prompt": "How much do repairs cost?",
+              "options": [
+                "Two pounds each.",
+                "Nothing.",
+                "One pound per page."
+              ],
+              "answer": 1,
+              "explanation": "B free即免费；A、C均擅添收费。"
+            },
+            {
+              "prompt": "What happens to a book that is too badly damaged?",
+              "options": [
+                "It is returned without repair.",
+                "It is sold on Friday.",
+                "It is repaired on Friday anyway."
+              ],
+              "answer": 0,
+              "explanation": "A明示损坏太严重则退回不修；B售出无依据；C仍会修与例外处理相反。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary4.garden-clock-039f",
+      "sourceUnitId": "original.class-garden-reading",
+      "level": "primary4",
+      "family": "reading_tf",
+      "title": "花园小钟与两次浇水",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Garden Clock 039F",
+          "text": "Our class keeps a garden clock near the gate. It is a paper chart, not a real clock. At nine, the blue group waters the beans. At three, the yellow group checks the soil and waters it only if it is dry. On rainy days, both groups check the plants but do not add water. Tom writes the date on the chart every morning.",
+          "questions": [
+            {
+              "prompt": "The garden clock is made of paper.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True对应纸图表；B False否定材质。"
+            },
+            {
+              "prompt": "The yellow group always adds water at three.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，只有土干才浇；A True忽略条件。"
+            },
+            {
+              "prompt": "The blue group waters the beans at nine on a dry day.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True与九点安排及雨天例外一致；B False否定正常安排。"
+            },
+            {
+              "prompt": "On rainy days, the groups do not check the plants.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，雨天仍检查，只不加水；A True混淆检查与浇水。"
+            },
+            {
+              "prompt": "Tom writes the date in the morning.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True对应every morning；B False否定时段。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary5.chalk-trail-039g",
+      "sourceUnitId": "original.inside-the-book-reading",
+      "level": "primary5",
+      "family": "reading_choice",
+      "title": "粉笔路线为何改用路标",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Chalk Trail 039G",
+          "text": "A class planned a trail for visitors. On Monday, they drew blue chalk arrows on the playground. By Tuesday morning, rain had washed most arrows away. Their teacher suggested putting arrows on boards. The pupils chose old wooden boards from the store room and painted them yellow. They did not put nails in trees; they tied the boards to short posts. On Friday, visitors followed the boards without asking for directions. The class kept the boards for another event.",
+          "questions": [
+            {
+              "prompt": "Why did the first arrows disappear?",
+              "options": [
+                "Visitors rubbed them out.",
+                "Rain washed them away.",
+                "The teacher painted over them."
+              ],
+              "answer": 1,
+              "explanation": "B明确雨冲掉粉笔；A游客擦、C老师盖漆与原因冲突。"
+            },
+            {
+              "prompt": "What did the pupils use for the new signs?",
+              "options": [
+                "Old wooden boards.",
+                "New paper books.",
+                "Blue playground stones."
+              ],
+              "answer": 0,
+              "explanation": "A储藏室旧木板；B书、C石头均非材料。"
+            },
+            {
+              "prompt": "How were the signs fixed in place?",
+              "options": [
+                "They were nailed to trees.",
+                "They were placed inside bags.",
+                "They were tied to posts."
+              ],
+              "answer": 2,
+              "explanation": "C绑矮柱；A明确未钉树；B袋中不能对应放置方式。"
+            },
+            {
+              "prompt": "What showed that the new signs worked?",
+              "options": [
+                "They were all blue.",
+                "Visitors followed them without asking.",
+                "The store room was full."
+              ],
+              "answer": 1,
+              "explanation": "B游客无需问路说明导向有效；A颜色错，C储藏状态不证明效果。"
+            },
+            {
+              "prompt": "Why did the class keep the boards?",
+              "options": [
+                "To burn them after lunch.",
+                "To return them to the visitors.",
+                "To use them at another event."
+              ],
+              "answer": 2,
+              "explanation": "C留给下次活动；A烧毁、B送游客均违背保留用途。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary5.three-help-cards-039h",
+      "sourceUnitId": "original.primary5-four-club-cards-tf",
+      "level": "primary5",
+      "family": "reading_tf",
+      "title": "三个帮忙岗位与换班说明",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Three Help Cards 039H",
+          "text": "Help cards for Saturday: Door team, 9:00–10:00, welcome visitors; bring a warm coat because the door stays open. Cup team, 10:00–11:00, carry empty cups to the kitchen; adults carry hot drinks. Book team, 11:00–12:00, sort books by title, not by colour. Volunteers choose one team. Anyone who needs to change teams must tell Ms Cole before Friday lunchtime.",
+          "questions": [
+            {
+              "prompt": "The door team starts at nine.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True与九点一致；B False否定起始时间。"
+            },
+            {
+              "prompt": "Children in the cup team carry hot drinks.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，热饮由成人拿，儿童拿空杯；A True混淆分工。"
+            },
+            {
+              "prompt": "The book team sorts by colour.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，按书名且明确不按颜色；A True违反说明。"
+            },
+            {
+              "prompt": "Each volunteer chooses one team.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True与one team一致；B False否定名额安排。"
+            },
+            {
+              "prompt": "A volunteer may report a change on Saturday instead of before Friday lunchtime.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，必须周五午餐前告知；A True把截止时间推迟。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary6.archive-letter-039i",
+      "sourceUnitId": "original.primary6-bicycle-letter-tf",
+      "level": "primary6",
+      "family": "reading_tf",
+      "title": "旧照片档案室的一封信",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Archive Letter 039I",
+          "text": "Dear Leo,\nI am helping my grandmother sort the village photo archive this week. We first thought that every photograph needed a new label. After checking the backs, we found that many already had dates and names, so we copied those details into a list instead. We wear clean gloves when we touch the photographs. Yesterday I found a picture of the old bridge. Grandmother recognised the bridge but could not name the people in the picture. We will ask her neighbour tomorrow. The exhibition opens next month; none of the original photographs will be sold.\nLove,\nNina",
+          "questions": [
+            {
+              "prompt": "Nina is helping to sort a photo archive.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True首句明确；B False否定工作对象。"
+            },
+            {
+              "prompt": "Every photograph received a new label.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，许多已有信息，改抄清单；A True把最初想法当完成结果。"
+            },
+            {
+              "prompt": "They wear gloves when handling the photographs.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True对应clean gloves；B False否定保护措施。"
+            },
+            {
+              "prompt": "Grandmother could name everyone in the bridge photograph.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，她认桥但叫不出人名；A True混淆地点识别与人物识别。"
+            },
+            {
+              "prompt": "The original photographs will be sold at the exhibition.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，明确none will be sold；A True与展品处理冲突。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary6.meeting-access-039j",
+      "sourceUnitId": "original.primary6-help-and-information-functions",
+      "level": "primary6",
+      "family": "sentence_choice",
+      "title": "为听不清的同学调整会议",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Meeting Access 039J",
+          "text": "A class meeting will be held in a noisy hall. Sam cannot hear the discussion well. The organiser can move a small group to a quiet side room, provide written questions, or repeat a point. Choose the most useful reply in each situation.",
+          "questions": [
+            {
+              "prompt": "Sam says, \"I missed the last question.\" You say: ____",
+              "options": [
+                "You should already know it.",
+                "The hall is very large.",
+                "I can repeat it and show you the written question."
+              ],
+              "answer": 2,
+              "explanation": "C提供重复和文字帮助；A责备无帮助；B描述场地不补问题。"
+            },
+            {
+              "prompt": "You want the group to move somewhere quieter. Ask: ____",
+              "options": [
+                "Could we use the side room for our discussion?",
+                "Could we make the music louder?",
+                "Could we remove the written questions?"
+              ],
+              "answer": 0,
+              "explanation": "A礼貌请求安静房间；B加大噪声、C去文字均妨碍参与。"
+            },
+            {
+              "prompt": "Sam thanks you for writing the question down. Reply: ____",
+              "options": [
+                "The room opens at nine.",
+                "You are welcome. Tell me if you need anything else.",
+                "I have not chosen a team."
+              ],
+              "answer": 1,
+              "explanation": "B恰当回应感谢并继续支持；A时间、C选队均不答感谢。"
+            },
+            {
+              "prompt": "Someone says, \"There is no need to repeat it.\" You respond: ____",
+              "options": [
+                "Everyone must leave now.",
+                "Repeating it will help Sam join the discussion.",
+                "Let us cancel every question."
+              ],
+              "answer": 1,
+              "explanation": "B说明重复的参与价值；A离场、C全取消过度且不解决理解。"
+            },
+            {
+              "prompt": "You are unsure which support Sam prefers. Ask: ____",
+              "options": [
+                "Would you prefer a written question or a repeat?",
+                "Should we remove the written questions?",
+                "Would you like the background music turned up?"
+              ],
+              "answer": 0,
+              "explanation": "A直接询问本人需要的两种有效支持；B移走文字、C加大背景音乐均不解决听清问题。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary2.snack-orders-039k",
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "level": "primary2",
+      "family": "function_choice",
+      "title": "点心台上的香蕉和酸奶",
+      "minutes": 6,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Snack Orders 039K",
+          "text": "At the snack table, choose a banana or a cup of plain yogurt. Tell the helper your choice. Use a spoon for yogurt. Sit down to eat. Put banana skins in the food bin and empty cups in the cup box.",
+          "questions": [
+            {
+              "prompt": "You choose yogurt. Say: ____",
+              "options": [
+                "A cup of plain yogurt, please.",
+                "A banana, please.",
+                "A cup of juice, please."
+              ],
+              "answer": 0,
+              "explanation": "A清楚点所选酸奶；B改成香蕉不是本人所选；C果汁不在本桌可选点心中。"
+            },
+            {
+              "prompt": "You have yogurt but no spoon. Say: ____",
+              "options": [
+                "May I have a fork instead?",
+                "May I have a spoon?",
+                "May I take a second cup?"
+              ],
+              "answer": 1,
+              "explanation": "B要指定勺子解决缺物；A叉不是要求餐具；C第二杯不解决无勺问题。"
+            },
+            {
+              "prompt": "A friend eats while running. Say: ____",
+              "options": [
+                "Please carry your cup to the door.",
+                "Please stand while you eat.",
+                "Please sit down to eat."
+              ],
+              "answer": 2,
+              "explanation": "C按要求坐着吃并停止跑动；A拿杯走门口仍未坐下；B站吃与规定相反。"
+            },
+            {
+              "prompt": "You finish your banana. Ask: ____",
+              "options": [
+                "Can I put the skin in the yogurt?",
+                "Is this the food bin for the skin?",
+                "Can I put the skin on a chair?"
+              ],
+              "answer": 1,
+              "explanation": "B确认厨余桶；A酸奶、C椅子不合处理位置。"
+            },
+            {
+              "prompt": "Your yogurt cup is empty. Say: ____",
+              "options": [
+                "I will put it in the food bin.",
+                "I will put it in the cup box.",
+                "I will put it on the floor."
+              ],
+              "answer": 1,
+              "explanation": "B空杯入杯盒；A蕉皮桶、C地面均不符分类。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary2.toy-bridge-039l",
+      "sourceUnitId": "original.primary2-functions-2",
+      "level": "primary2",
+      "family": "function_choice",
+      "title": "积木桥的轮流试车",
+      "minutes": 6,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Toy Bridge 039L",
+          "text": "Two children build a block bridge. Only one toy car can cross at a time. Wait behind the red line. Pick up a fallen block before another car crosses. Ask your partner before changing the bridge.",
+          "questions": [
+            {
+              "prompt": "Your partner is using the bridge. Say: ____",
+              "options": [
+                "I will push my car onto it now.",
+                "I will stand on the bridge.",
+                "I will wait behind the red line."
+              ],
+              "answer": 2,
+              "explanation": "C等待线后轮流；A同时推车、B站桥均不合规则。"
+            },
+            {
+              "prompt": "A block falls. Say: ____",
+              "options": [
+                "Let us pick it up before the next car goes.",
+                "Let us add more cars at once.",
+                "Let us hide the red line."
+              ],
+              "answer": 0,
+              "explanation": "A先捡再过车；B多车违反一次一辆；C藏线不处理积木。"
+            },
+            {
+              "prompt": "You want to make the bridge taller. Ask: ____",
+              "options": [
+                "Can I put my car across now?",
+                "Can we add a block here?",
+                "Can we move the red line instead?"
+              ],
+              "answer": 1,
+              "explanation": "B先问搭档加积木，回应加高桥；A只问过车时机、C移动等候线均不完成所需桥体改动。"
+            },
+            {
+              "prompt": "A friend asks how many cars can cross at once. Say: ____",
+              "options": [
+                "All our cars.",
+                "Two big cars.",
+                "Only one car."
+              ],
+              "answer": 2,
+              "explanation": "C一次一辆；A全部、B两辆均超出限制。"
+            },
+            {
+              "prompt": "Your partner lets you have a turn. Say: ____",
+              "options": [
+                "I will keep every turn.",
+                "Thank you.",
+                "You must wait for the rest of the day."
+              ],
+              "answer": 1,
+              "explanation": "B回应搭档让轮次的善意；A独占轮次、C要求长时间等待不属礼貌致谢。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary3.map-folder-039m",
+      "sourceUnitId": "original.primary3-toy-shelf-tf",
+      "level": "primary3",
+      "family": "reading_tf",
+      "title": "地图文件夹与借出的铅笔",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Map Folder 039M",
+          "text": "Owen keeps three maps in a green folder. One map is of the park. Two are of the town. His blue pencil is on the folder. His sister borrows the pencil, but she does not take any maps. Owen puts the folder in a drawer after lunch.",
+          "questions": [
+            {
+              "prompt": "The folder is green.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True对应绿色；B False否定明示颜色。"
+            },
+            {
+              "prompt": "All three maps are of the town.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，一张公园两张城镇；A True混淆部分与全部。"
+            },
+            {
+              "prompt": "His sister borrows the pencil.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True明示借铅笔；B False否定动作。"
+            },
+            {
+              "prompt": "His sister takes one park map.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，明确未拿任何地图；A True违背范围。"
+            },
+            {
+              "prompt": "Owen puts the folder in a drawer before lunch.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，after lunch不是before；A True颠倒时间。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary3.pet-visit-replies-039n",
+      "sourceUnitId": "original.primary3-name-age-location-responses",
+      "level": "primary3",
+      "family": "dialogue_matching",
+      "title": "探望小猫时的五个问答",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Pet Visit Replies 039N",
+          "text": "Choose the reply that answers each question about a kitten.",
+          "questions": [
+            {
+              "prompt": "What is the kitten called?",
+              "options": [
+                "It is under the chair.",
+                "Its name is Dot.",
+                "It has white feet."
+              ],
+              "answer": 1,
+              "explanation": "B回答名字；A位置、C外形不答叫什么。"
+            },
+            {
+              "prompt": "How old is Dot?",
+              "options": [
+                "She is three months old.",
+                "She is in the basket.",
+                "She is sleeping."
+              ],
+              "answer": 0,
+              "explanation": "A回答年龄；B地点、C动作不答how old。"
+            },
+            {
+              "prompt": "Where is her water bowl?",
+              "options": [
+                "It is small.",
+                "She drinks water.",
+                "It is beside the door."
+              ],
+              "answer": 2,
+              "explanation": "C位置beside；A大小、B习惯不答where。"
+            },
+            {
+              "prompt": "Can I touch her now?",
+              "options": [
+                "She has two ears.",
+                "Please wait; she is asleep.",
+                "Her name is on the box."
+              ],
+              "answer": 1,
+              "explanation": "B对是否可摸给出暂缓回应；A身体数量、C标签位置均不答许可。"
+            },
+            {
+              "prompt": "What colour are her feet?",
+              "options": [
+                "There are four.",
+                "They are white.",
+                "She is three months old."
+              ],
+              "answer": 1,
+              "explanation": "B颜色；A数量、C年龄均非what colour。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary4.rain-check-list-039o",
+      "sourceUnitId": "original.primary4-pet-room-plan",
+      "level": "primary4",
+      "family": "reading_choice",
+      "title": "雨后操场检查表",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Rain Check List 039O",
+          "text": "Before games, Mr Hill checks the playground. Today the centre is dry, but there is a puddle beside the climbing frame. He puts a cone by the puddle. Ball games can take place in the centre. Children must not use the climbing frame until the puddle is gone. Ms Sun will check again after lunch.",
+          "questions": [
+            {
+              "prompt": "Which area is dry?",
+              "options": [
+                "Beside the climbing frame.",
+                "Inside the puddle.",
+                "The centre of the playground."
+              ],
+              "answer": 2,
+              "explanation": "C中心干燥；A攀爬架旁有水；B水坑不可能是所述干区。"
+            },
+            {
+              "prompt": "Why does Mr Hill put out a cone?",
+              "options": [
+                "To mark the puddle.",
+                "To hold the balls.",
+                "To show the lunch menu."
+              ],
+              "answer": 0,
+              "explanation": "A标示水坑；B装球、C菜单均非用途。"
+            },
+            {
+              "prompt": "Where may ball games take place?",
+              "options": [
+                "On the climbing frame.",
+                "In the centre.",
+                "In the puddle."
+              ],
+              "answer": 1,
+              "explanation": "B中心准许球类；A攀爬架禁用；C水坑非活动区。"
+            },
+            {
+              "prompt": "When can the climbing frame be used again?",
+              "options": [
+                "As soon as the bell rings.",
+                "When the puddle is gone.",
+                "Only next month."
+              ],
+              "answer": 1,
+              "explanation": "B明示条件；A铃响、C下月均非解除条件。"
+            },
+            {
+              "prompt": "Who will check after lunch?",
+              "options": [
+                "Ms Sun.",
+                "The ball team.",
+                "Every parent."
+              ],
+              "answer": 0,
+              "explanation": "A指定老师；B球队、C家长均非检查人。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary4.costume-labels-039p",
+      "sourceUnitId": "original.primary4-music-room-tf",
+      "level": "primary4",
+      "family": "reading_tf",
+      "title": "戏服标签与借用记录",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Costume Labels 039P",
+          "text": "The drama club has twelve hats. Every hat has a number inside it. Red labels are for small hats, and blue labels are for large hats. A pupil writes the hat number on a loan sheet before taking a hat home. Hats must come back on Monday. They must be returned dry, not packed in a wet bag.",
+          "questions": [
+            {
+              "prompt": "There are twelve hats.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True与十二顶一致；B False否定数量。"
+            },
+            {
+              "prompt": "The hat number is on the outside.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，号码在inside；A True颠倒内外。"
+            },
+            {
+              "prompt": "Blue labels are for large hats.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True与大号标签对应；B False否定配对。"
+            },
+            {
+              "prompt": "Pupils record the number only after taking a hat home.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，before taking不是after；A True改变登记顺序。"
+            },
+            {
+              "prompt": "A wet bag is a suitable way to return a hat.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，明确不能湿袋装；A True违背干燥归还。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary5.quiet-display-039q",
+      "sourceUnitId": "original.inside-the-book-reading",
+      "level": "primary5",
+      "family": "reading_choice",
+      "title": "展览室里不用录音的决定",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Quiet Display 039Q",
+          "text": "The history club wanted visitors to hear stories about old kitchen tools. At first, pupils planned to play recordings from loudspeakers. During a trial, two stories played at the same time, and visitors could not follow either one. Headphones were too expensive for the club. The pupils printed short story cards instead. Each card stood beside the tool it described. Large letters helped visitors read from a short distance. The recordings were kept for the school website.",
+          "questions": [
+            {
+              "prompt": "What went wrong in the trial?",
+              "options": [
+                "The tools were missing.",
+                "Two recordings overlapped.",
+                "The cards were too small."
+              ],
+              "answer": 1,
+              "explanation": "B两个故事同时播放难听清；A工具丢失、C卡小均非试验问题。"
+            },
+            {
+              "prompt": "Why did the club not buy headphones?",
+              "options": [
+                "They cost too much.",
+                "Visitors could not read them.",
+                "They were kitchen tools."
+              ],
+              "answer": 0,
+              "explanation": "A too expensive为原因；B阅读耳机、C物品分类均不合。"
+            },
+            {
+              "prompt": "Where were story cards placed?",
+              "options": [
+                "At the school gate only.",
+                "Inside the loudspeakers.",
+                "Beside the relevant tools."
+              ],
+              "answer": 2,
+              "explanation": "C卡与所述工具相邻；A校门、B音箱内部均非位置。"
+            },
+            {
+              "prompt": "Why were large letters useful?",
+              "options": [
+                "They made the tools lighter.",
+                "Visitors could read without standing very close.",
+                "They stopped recordings automatically."
+              ],
+              "answer": 1,
+              "explanation": "B短距离易读；A减重、C自动停录无因果。"
+            },
+            {
+              "prompt": "What happened to the recordings?",
+              "options": [
+                "They were all deleted.",
+                "They were kept for the website.",
+                "They were immediately played through loudspeakers again."
+              ],
+              "answer": 1,
+              "explanation": "B保留供网站；A删除与kept冲突；C立即再外放并非所述后续处理。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary5.ferry-notice-039r",
+      "sourceUnitId": "original.primary5-colourful-window-tf",
+      "level": "primary5",
+      "family": "reading_tf",
+      "title": "渡船两条航线的通知",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Ferry Notice 039R",
+          "text": "Harbour notice: The island ferry leaves at 10:00 and 14:00. The river ferry leaves every hour from 9:00 to 15:00. Today, strong winds have cancelled the 14:00 island trip only. The 10:00 island trip and all river trips will run. Island tickets cost £6; river tickets cost £3. Children under five travel free with an adult. Keep your ticket until you leave the boat.",
+          "questions": [
+            {
+              "prompt": "Both island trips are cancelled today.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，仅14点岛线取消；A True扩大取消范围。"
+            },
+            {
+              "prompt": "River trips will run today.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True与all river trips will run一致；B False否定明示运行。"
+            },
+            {
+              "prompt": "A river ticket costs six pounds.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，河线三镑，岛线六镑；A True串票价。"
+            },
+            {
+              "prompt": "A four-year-old with an adult travels free.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True，四岁属于under five且有成人；B False否定符合条件者。"
+            },
+            {
+              "prompt": "Passengers should keep tickets until they leave the boat.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True对应保票截止；B False否定规定。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary6.cafe-letter-039s",
+      "sourceUnitId": "original.primary6-bakery-letter-tf",
+      "level": "primary6",
+      "family": "reading_tf",
+      "title": "社区咖啡馆的杯子试验",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Cafe Letter 039S",
+          "text": "Dear Arun,\nOur community cafe is testing reusable cups. Last week, people paid a small deposit when they borrowed a cup. They got the deposit back when they returned it. We thought most cups would come back the same day, but many arrived two or three days later. The cups were washed at the cafe; customers were not asked to wash them at home. We counted returned cups each evening. So far, only two are missing. The trial will continue for another month before we decide whether to buy more cups.\nBest,\nElla",
+          "questions": [
+            {
+              "prompt": "Borrowers paid a deposit for a reusable cup.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True明示借杯押金；B False否定借用条件。"
+            },
+            {
+              "prompt": "The cafe kept the deposit after a cup was returned.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，归还退押金；A True把退还说成扣留。"
+            },
+            {
+              "prompt": "Many cups were returned later than the cafe expected.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "A True，预期当天，许多两三天后；B False忽略预期差。"
+            },
+            {
+              "prompt": "Customers had to wash the cups at home.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，咖啡馆清洗且未要求顾客洗；A True颠倒责任。"
+            },
+            {
+              "prompt": "The cafe has already decided to buy more cups.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "B False，再试一个月才决定；A True把未来决定说成已定。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary6.evidence-talk-039t",
+      "sourceUnitId": "original.primary6-five-functional-choices",
+      "level": "primary6",
+      "family": "sentence_choice",
+      "title": "讨论结果前先核对数据",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "reading",
+          "title": "Evidence Talk 039T",
+          "text": "A group is comparing how quickly paper dries in different places. One sheet was accidentally thicker than the others. Choose the response that helps the group communicate clearly and fairly.",
+          "questions": [
+            {
+              "prompt": "A teammate says the thicker sheet proves the room is colder. Reply: ____",
+              "options": [
+                "We should remove every result.",
+                "We should write the same answer twice.",
+                "The sheet thickness differed, so we should test again with matching paper."
+              ],
+              "answer": 2,
+              "explanation": "C指出控制条件不一致并提复测；A删全部、B重复答案不解决比较。"
+            },
+            {
+              "prompt": "You did not understand a number in the report. Ask: ____",
+              "options": [
+                "Could you explain what this number measures?",
+                "Could you hide the report?",
+                "Could you say that all our guesses are right?"
+              ],
+              "answer": 0,
+              "explanation": "A请求指标解释；B藏报告、C全判对回避理解。"
+            },
+            {
+              "prompt": "A teammate spots your copying error. Reply: ____",
+              "options": [
+                "The table is on the wall.",
+                "Thanks for checking. I will correct that entry.",
+                "You must stop reading it."
+              ],
+              "answer": 1,
+              "explanation": "B接受核查并改错；A地点无关；C阻止检查不处理错误。"
+            },
+            {
+              "prompt": "The group wants to claim the result works in every room. Say: ____",
+              "options": [
+                "We have only tested two places, so our conclusion should be limited to those tests.",
+                "A longer title will prove it.",
+                "Every room must have the same temperature."
+              ],
+              "answer": 0,
+              "explanation": "A结论范围匹配证据；B标题不能证明；C无根据断言。"
+            },
+            {
+              "prompt": "You want another group to check the method. Ask: ____",
+              "options": [
+                "Could you rewrite our conclusion without reading the method?",
+                "Could you check only the spelling in our title?",
+                "Could you read our method and tell us if any step is unclear?"
+              ],
+              "answer": 2,
+              "explanation": "C具体邀请方法审阅；A不看方法改结论、B只查标题拼字均不完成方法清晰度核查。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
