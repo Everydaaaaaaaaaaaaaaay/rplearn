@@ -31,7 +31,7 @@ export class LearningExpansionRepository {
     if (audioDigest(selectedAudio) !== audioDigest(audios))
       throw new Error("Expansion selected new audio metadata mismatch");
     // Only explicitly selected new clips may be archived. Reused clips must already exist.
-    const publication = expansionPublication(catalog.units);
+    const publication = expansionPublication(catalog.units, catalog.entries);
     await new LearningEngineRepository(this.database).publishBatch(
       publication.units,
       audios,
@@ -51,8 +51,9 @@ export class LearningExpansionRepository {
     const namespace = expansionNamespace(run);
     // The full-run emergency switch reads IDs from PostgreSQL, not every new
     // payload. It remains bounded if the new catalog is huge, absent or broken.
-    const units: LearningUnit[] = batch
-      ? expansionPublication(loadExpansionCatalog(batch, false, run).units).units
+    const selected = batch ? loadExpansionCatalog(batch, false, run) : undefined;
+    const units: LearningUnit[] = selected
+      ? expansionPublication(selected.units, selected.entries).units
       : [];
     const ids = units.map((u) => u.id);
     return this.database.sql.begin(async (sql) => {

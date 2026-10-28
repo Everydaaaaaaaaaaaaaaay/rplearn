@@ -7,10 +7,8 @@ import { expansionCatalogOriginMarker } from "./expansion-origin.js";
 type Practice = ReturnType<typeof gaokaoCatalog>["practices"][number];
 let cached: { practices: Practice[]; historicalPractices: Practice[] } | undefined;
 
-/** Independent practices reuse complete reviewed components and stable answer identities. */
-export function seniorPracticeCatalog() {
-  if (cached) return cached;
-  const historicalPractices = gaokaoCatalog().practices;
+/** Derive only the supplied reviewed parents without loading other catalogs. */
+export function independentSeniorPractices(historicalPractices: readonly Practice[]) {
   const practices: Practice[] = [];
   const seen = new Set<string>();
   for (const p of historicalPractices) {
@@ -78,6 +76,14 @@ export function seniorPracticeCatalog() {
       });
     }
   }
+  return practices;
+}
+
+/** Independent practices reuse complete reviewed components and stable answer identities. */
+export function seniorPracticeCatalog() {
+  if (cached) return cached;
+  const historicalPractices = gaokaoCatalog().practices;
+  const practices = independentSeniorPractices(historicalPractices);
   const singles = z
     .object({
       version: z.literal(1),

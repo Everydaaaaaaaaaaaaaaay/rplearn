@@ -1,0 +1,155 @@
+{
+  "checkedAt": "2026-10-28T21:47:40.141572+00:00",
+  "issue": "Selected senior expansion publication initialized the entire historical senior catalog, causing sustained cgroup MemoryHigh reclaim and600s pair timeout.",
+  "observed": {
+    "batchPair": [
+      "b128",
+      "b130"
+    ],
+    "timeoutSeconds": 600,
+    "peakMaintenanceMiB": 241,
+    "observedHighEvents": 28735,
+    "observedMaxEvents": 0,
+    "observedOOMEvents": 0,
+    "apiReady": true,
+    "firstBatchReceipt": "b128 admitted14; b130 interrupted by unchanged systemd runtime cap"
+  },
+  "change": "Reuse pure existing senior admission/derivation for selected SHA-validated entries. Publish and batch withdrawal pass scoped entries; default full catalog remains unchanged.",
+  "invariants": "All old admission/complete-workload/hash/component checks reused; no catalog, answers, identities, historical data or policy changes.",
+  "tdd": {
+    "red": [
+      "Scoped publication attempted whole-catalog load",
+      "Unchanged supplied digest hid changed reviewed payload",
+      "Hash-consistent parent bypassed senior workload boundary"
+    ],
+    "green": "29focused tests passed; typecheck, scopedESLint/format and architecture278modules/826dependencies passed"
+  },
+  "equivalence": {
+    "checkedAt": "2026-10-28T21:45:55.013Z",
+    "batches": [
+      {
+        "batch": "b116",
+        "units": 7,
+        "admitted": 7
+      },
+      {
+        "batch": "b117",
+        "units": 7,
+        "admitted": 7
+      },
+      {
+        "batch": "b118",
+        "units": 8,
+        "admitted": 8
+      },
+      {
+        "batch": "b119",
+        "units": 8,
+        "admitted": 8
+      },
+      {
+        "batch": "b120",
+        "units": 8,
+        "admitted": 8
+      },
+      {
+        "batch": "b121",
+        "units": 8,
+        "admitted": 8
+      },
+      {
+        "batch": "b122",
+        "units": 8,
+        "admitted": 8
+      },
+      {
+        "batch": "b123",
+        "units": 1,
+        "admitted": 1
+      },
+      {
+        "batch": "b124",
+        "units": 8,
+        "admitted": 8
+      },
+      {
+        "batch": "b125",
+        "units": 12,
+        "admitted": 12
+      },
+      {
+        "batch": "b126",
+        "units": 8,
+        "admitted": 8
+      },
+      {
+        "batch": "b127",
+        "units": 12,
+        "admitted": 12
+      },
+      {
+        "batch": "b128",
+        "units": 21,
+        "admitted": 14
+      },
+      {
+        "batch": "b130",
+        "units": 21,
+        "admitted": 14
+      },
+      {
+        "batch": "b131",
+        "units": 21,
+        "admitted": 14
+      },
+      {
+        "batch": "b132",
+        "units": 9,
+        "admitted": 9
+      },
+      {
+        "batch": "b133",
+        "units": 7,
+        "admitted": 7
+      },
+      {
+        "batch": "b135",
+        "units": 7,
+        "admitted": 7
+      },
+      {
+        "batch": "b136",
+        "units": 21,
+        "admitted": 14
+      },
+      {
+        "batch": "b137",
+        "units": 21,
+        "admitted": 14
+      },
+      {
+        "batch": "b138",
+        "units": 21,
+        "admitted": 14
+      },
+      {
+        "batch": "b139",
+        "units": 21,
+        "admitted": 14
+      },
+      {
+        "batch": "b140",
+        "units": 3,
+        "admitted": 2
+      }
+    ],
+    "selectedBatchesUnchanged": 23,
+    "incrementalPracticeHashesUnchanged": 218,
+    "allSelectedRegisteredPayloadsUnchanged": true,
+    "contract": "Identical ID/version/content hashes against global old path plus pre-fix frozen expectations. No database or media work."
+  },
+  "sameAICodeReview": "NoCritical/Importantfindings; independent b128/b140 full-output hash comparison and6focusedtests passed.",
+  "deployment": "Pending guarded deployment and original-budget production verification",
+  "budgets": "Unchanged MemoryHigh224M,MemoryMax256M,Nodeheap128M,RuntimeMax600s; no user/app/database processes terminated",
+  "scheduler": "Own local next-batch scheduler paused withSIGSTOP while its already-running remote maintenance reached existing timer normally; resume withSIGCONT after deployment."
+}

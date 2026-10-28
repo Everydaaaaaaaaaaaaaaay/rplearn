@@ -78,8 +78,16 @@ export function gaokaoCatalog() {
     throw new Error("原创题不得冒充高考真题。");
   parsed.practices.push(...authored.practices);
   parsed.practices.push(...expansionGaokaoPractices());
+  validateGaokaoPractices(parsed.practices);
+  catalog = parsed;
+  return parsed;
+}
+/** Apply the same admission contract to a bounded reviewed parent set. */
+export function validateGaokaoPractices(
+  practices: readonly z.infer<typeof catalogSchema>["practices"][number][],
+) {
   const ids = new Set<string>();
-  for (const p of parsed.practices) {
+  for (const p of practices) {
     const u = p.unit;
     const families = p.components.map((c) => c.family).join("+");
     const count = u.questions.length;
@@ -138,8 +146,6 @@ export function gaokaoCatalog() {
       throw new Error(`高考题型准入审核或完整组卷边界不符：${u.id}`);
     ids.add(u.id);
   }
-  catalog = parsed;
-  return parsed;
 }
 export function gaokaoUnitIds() {
   return gaokaoCatalog().practices.map((p) => p.unit.id);
