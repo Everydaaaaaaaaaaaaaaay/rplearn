@@ -1,22 +1,22 @@
 {
   "version": 1,
   "reviewedAt": "2026-10-29",
-  "reviewNotes": "Exact-content author-reviewed correction for the published primary6 walk slow/slowly item. Both are legitimate adverb forms in this sentence. This projection preserves frozen question bytes, stored answers and request receipts; it does not relax other flat-adverb questions.",
+  "reviewNotes": "Exact-content author-reviewed correction for the published primary6 walk slow/slowly item. Both are legitimate adverb forms. Because the original prompt does not explicitly exclude an implicit comparison, slower/slowest remain unlisted review. Only reviewed invalid forms are rejected. Frozen question bytes, stored answers, receipts and rewards stay unchanged.",
   "entries": [
     {
       "sourceHash": "1504daa6609f228446012c07f5a514a33ceb28789be6934df848fb1789f434a9",
       "sourceUnitId": "expansion.20261028.primary6.courtesy-grammar-workshop-005",
       "sourceQuestionId": "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q4",
-      "reviewedSourceSHA256": "e4de325401efbdf26ac1d174564da94dbc4e3f9c04ea21acce1e532702a88f73",
+      "reviewedSourceSHA256": "c250e0f8e670481569ddc9b865996fc18d3da7f0cd93414a453fb47b94a30387",
       "acceptedAnswers": [
         "slowly",
         "slow"
       ],
       "rejectedAnswers": [
-        "slower",
-        "slowest"
+        "slowlyer",
+        "slowliest"
       ],
-      "explanation": "接受slowly及常见平义副词slow：两者在walk slow/slowly中均可表示慢走。slower为比较级、slowest为最高级，本句无对应比较条件。"
+      "explanation": "接受slowly及常见平义副词slow，二者均可表达慢走。原题未明确排除隐含比较，因此slower/slowest不再自动列错，按未列形式复核。slowlyer/slowliest不是对应的标准词形。保持已发布题面不变，不回改历史任务要求。"
     }
   ]
 }

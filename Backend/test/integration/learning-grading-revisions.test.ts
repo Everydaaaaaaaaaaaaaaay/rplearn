@@ -118,7 +118,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         );
       const first = await submit();
       expect(first.result.outcome).toBe("correct");
-      expect(first.result.explanation).toContain("walk slow/slowly");
+      expect(first.result.explanation).toContain("平义副词slow");
       expect(first.awardedPoints).toBe(1);
       expect(first.currentLevel).toBe("primary6");
       expect(await submit()).toEqual(first);

@@ -47,12 +47,14 @@ describe("reviewed frozen answer correction", () => {
       before = contentHash(question);
     expect(gradeAnswer(question, text("slow")).outcome).toBe("correct");
     expect(gradeAnswer(question, text("slowly")).outcome).toBe("correct");
-    expect(gradeAnswer(question, text("slower")).outcome).toBe("incorrect");
-    expect(gradeAnswer(question, text("slowest")).outcome).toBe("incorrect");
+    for (const variant of ["slower", "slowest"])
+      expect(() => gradeAnswer(question, text(variant))).toThrow(
+        expect.objectContaining({ code: "LEARNING_ANSWER_REVIEW_REQUIRED" }),
+      );
+    for (const invalid of ["slowlyer", "slowliest"])
+      expect(gradeAnswer(question, text(invalid)).outcome).toBe("incorrect");
     expect(gradeAnswer(question, text("slow")).solution).toEqual(text("slowly"));
-    expect(gradeAnswer(question, text("slow")).explanation).toContain(
-      "walk slow/slowly",
-    );
+    expect(gradeAnswer(question, text("slow")).explanation).toContain("平义副词slow");
     publicQuestion(question);
     expect(question).toEqual(snapshot);
     expect(contentHash(question)).toBe(before);
