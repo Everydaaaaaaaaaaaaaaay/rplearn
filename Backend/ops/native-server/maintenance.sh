@@ -16,6 +16,9 @@ case "${action}" in
   originals-publish-many)
     [[ "$#" = 2 ]] || exit 2
     command=(/usr/bin/python3 "${script_dir}/publish-original-batches.py" "$(realpath "$2")") ;;
+  expansion-publish-many)
+    [[ "$#" = 2 ]] || exit 2
+    command=(/usr/bin/python3 "${script_dir}/publish-expansion-batches.py" "$(realpath "$2")") ;;
   originals-media)
     [[ "$#" = 3 && "$3" =~ ^[a-f0-9]{64}$ ]] || exit 2
     command=("${script_dir}/install-original-media.sh" "$(realpath "$2")" "$3") ;;
