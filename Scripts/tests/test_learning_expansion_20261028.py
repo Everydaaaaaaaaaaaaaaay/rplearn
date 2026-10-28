@@ -115,6 +115,14 @@ class ExpansionCompilerTests(unittest.TestCase):
         self.assertEqual(a['entries'][0]['unit']['originalGroup']['family'], 'reading_choice')
         self.assertTrue(question['instruction'].isascii())
 
+    def test_native_gate_rejects_incomplete_manifest_components(self):
+        manifest = self.compile()
+        self.compiler.validate_manifest(manifest)
+        # The unit itself remains valid; its release envelope violates the runtime contract.
+        manifest['entries'][0]['components'][0]['questionIds'] = manifest['entries'][0]['components'][0]['questionIds'][:1]
+        with self.assertRaisesRegex(ValueError, 'Native learning schema validation failed'):
+            self.compiler.validate_manifest(manifest)
+
     def test_review_date_uses_actual_review_day_and_rejects_invalid_dates(self):
         manifest = self.compile(review_change={'reviewedAt': '2026-10-29'})
         self.assertEqual(manifest['entries'][0]['unit']['authorship']['reviewedAt'], '2026-10-29')

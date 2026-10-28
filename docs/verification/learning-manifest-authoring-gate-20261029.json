@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-29",
+  "problem": "The Python authoring gate validated LearningUnit/media schemas but did not parse the release-envelope component schema. Six singleton material components passed authoring validation then failed the existing runtime minimum3-question component rule.",
+  "change": "Compiler and runtime call the same strict manifest parser before freezing. No schema relaxation, no rewrite of old content, no DB transaction or grading change. Root draft corrected to one complete6itemworksheet before publication.",
+  "verification": {
+    "red": "build/learning-supply-audit-20261028/manifest-native-guard-red.log: ValueError not raised with a validunit/malformedcomponent",
+    "pythonTests": 19,
+    "unitTests": 23,
+    "green": "build/learning-supply-audit-20261028/manifest-native-guard-green.log",
+    "backendUnit": "build/learning-supply-audit-20261028/manifest-native-guard-unit.log",
+    "typecheck": "passed",
+    "focusedESLint": "passed",
+    "architecture": "278modules/824dependencies;0violations"
+  },
+  "deployment": "Pending next guarded content release; invalid singleton draft was never published."
+}

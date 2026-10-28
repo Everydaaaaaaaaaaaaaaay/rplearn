@@ -365,12 +365,13 @@ def validate_manifest(manifest):
     """Use the app's real schemas before any batch/index bytes can be frozen."""
     script = """
 import {unitSchema, contentHash} from './src/modules/learning/content.ts';
+import {parseExpansionManifest} from './src/modules/learning/expansion-catalog.ts';
 import {learningImageSchema, verifyLearningImage} from './src/modules/learning/images.ts';
 import {readFile} from 'node:fs/promises';
 import {learningAudioSchema, verifyLearningAudioFile} from './src/modules/learning/audio.ts';
 process.stdin.setEncoding('utf8');
 let input = ''; for await (const chunk of process.stdin) input += chunk;
-const manifest = JSON.parse(input);
+const manifest = parseExpansionManifest(JSON.parse(input));
 for (const entry of manifest.entries) {
   unitSchema.parse(entry.unit);
   if (contentHash(entry.unit) !== entry.contentHash) throw new Error('Digest mismatch');

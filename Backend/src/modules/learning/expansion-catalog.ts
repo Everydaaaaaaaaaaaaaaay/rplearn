@@ -77,6 +77,11 @@ const indexSchema = z.strictObject({
   gaokaoBatches: z.array(z.string().regex(/^b[0-9]{3}$/)).optional(),
 });
 
+/** The authoring gate and runtime must validate the same complete release envelope. */
+export function parseExpansionManifest(value: unknown) {
+  return manifestSchema.parse(value);
+}
+
 /** New content is separate from the frozen old catalogs and has a withdrawable run identity. */
 export function loadExpansionCatalog(
   batch?: string,
@@ -104,7 +109,7 @@ export function loadExpansionCatalog(
   const allManifests = index.batches
     .filter((id) => run === "2026-10-28" || selectedBatch(id))
     .map((id) => {
-      const manifest = manifestSchema.parse(
+      const manifest = parseExpansionManifest(
         JSON.parse(readFileSync(new URL(`${id}.json`, directory), "utf8")),
       );
       if (manifest.batch !== id || manifest.run !== run)
