@@ -1,0 +1,2376 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b064",
+  "createdAt": "2026-10-29T01:59:17.928574+08:00",
+  "sourceSHA256": "378c807720e36a405698ffc6eb1ce9f137f212143908bc35ea1d4ac48c0027ba",
+  "reviewSHA256": "515e586e2db95b8e5c7fad325b841e8bdcdd4d13d94d713935b2d761b64331ce",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.cinema-family-rules-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "和家人看电影的具体需要",
+        "summary": "和家人看电影的具体需要，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.cinema-family-rules-032",
+          "family": "function_choice",
+          "label": "和家人看电影的具体需要",
+          "candidateSHA256": "d4b8ac15c09ca4e173e7c118dfd78d5be316f78839646248281cb670170c317e",
+          "authorCheckSHA256": "77034b68cda74f69f7097b52350adc73c0161d68239acc0a15afa87ba41a3b49",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.cinema-family-rules-032.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b064；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Cinema Family Rules 032\n\nAt the cinema, wait in the lobby until the helper opens the hall. Remove tall hats so people behind can see. Keep phones dark during the film. Ask the helper for a booster seat if a child cannot see. Return borrowed booster seats after the film."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.cinema-family-rules-032.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend pushes at the closed hall door. You say, \"____\"",
+            "material": "Cinema Family Rules 032\n\nAt the cinema, wait in the lobby until the helper opens the hall. Remove tall hats so people behind can see. Keep phones dark during the film. Ask the helper for a booster seat if a child cannot see. Return borrowed booster seats after the film.",
+            "explanation": "A帮手开厅前大堂等；B硬推、C爬票窗不是许可入场。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Wait in the lobby for the helper."
+              },
+              {
+                "id": "o1",
+                "text": "Push harder now."
+              },
+              {
+                "id": "o2",
+                "text": "Climb through the ticket window."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.cinema-family-rules-032.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your friend’s tall hat blocks the person behind. You say, \"____\"",
+            "material": "Cinema Family Rules 032\n\nAt the cinema, wait in the lobby until the helper opens the hall. Remove tall hats so people behind can see. Keep phones dark during the film. Ask the helper for a booster seat if a child cannot see. Return borrowed booster seats after the film.",
+            "explanation": "B取高帽使后人可见；A更高、C移后座仍占用他人视线空间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put on a taller hat."
+              },
+              {
+                "id": "o1",
+                "text": "Please take the tall hat off."
+              },
+              {
+                "id": "o2",
+                "text": "Put the hat on the seat behind."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.cinema-family-rules-032.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A child cannot see over the seat ahead. You say, \"____\"",
+            "material": "Cinema Family Rules 032\n\nAt the cinema, wait in the lobby until the helper opens the hall. Remove tall hats so people behind can see. Keep phones dark during the film. Ask the helper for a booster seat if a child cannot see. Return borrowed booster seats after the film.",
+            "explanation": "C向帮手求增高座是提供的安排；A站他人、B不求助放弃非解决。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Stand on another person."
+              },
+              {
+                "id": "o1",
+                "text": "Give up before asking."
+              },
+              {
+                "id": "o2",
+                "text": "Ask the helper for a booster seat."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.cinema-family-rules-032.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend turns on a bright phone during the film. You say, \"____\"",
+            "material": "Cinema Family Rules 032\n\nAt the cinema, wait in the lobby until the helper opens the hall. Remove tall hats so people behind can see. Keep phones dark during the film. Ask the helper for a booster seat if a child cannot see. Return borrowed booster seats after the film.",
+            "explanation": "A影片时手机保持暗；B更亮、C举全席均违规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Keep the phone dark during the film."
+              },
+              {
+                "id": "o1",
+                "text": "Make it brighter for everyone."
+              },
+              {
+                "id": "o2",
+                "text": "Hold it over every seat."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.cinema-family-rules-032.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The film ends, and a friend wants to take the borrowed booster seat away. You say, \"____\"",
+            "material": "Cinema Family Rules 032\n\nAt the cinema, wait in the lobby until the helper opens the hall. Remove tall hats so people behind can see. Keep phones dark during the film. Ask the helper for a booster seat if a child cannot see. Return borrowed booster seats after the film.",
+            "explanation": "B借座结束归还；A藏带走、C丢食物桶不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Hide it under your coat."
+              },
+              {
+                "id": "o1",
+                "text": "Return the borrowed seat."
+              },
+              {
+                "id": "o2",
+                "text": "Throw it in the food bin."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "9db409faf6f00734f6e44a1bc478bfe8596b8f8940b2e4f07f9bb0631e4b2f20",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.cinema-family-rules-032.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.cinema-family-rules-032.reading.q1",
+            "expansion.20261028.primary2.cinema-family-rules-032.reading.q2",
+            "expansion.20261028.primary2.cinema-family-rules-032.reading.q3",
+            "expansion.20261028.primary2.cinema-family-rules-032.reading.q4",
+            "expansion.20261028.primary2.cinema-family-rules-032.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.icecream-shop-speaking-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "买冰淇淋时问清楚",
+        "summary": "买冰淇淋时问清楚，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.icecream-shop-speaking-032",
+          "family": "function_choice",
+          "label": "买冰淇淋时问清楚",
+          "candidateSHA256": "fb67e3a6d341a052b0c151c8e265971dec06acf6a5e71652d8577e114d6efee4",
+          "authorCheckSHA256": "77034b68cda74f69f7097b52350adc73c0161d68239acc0a15afa87ba41a3b49",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.icecream-shop-speaking-032.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b064；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Icecream Shop Speaking 032\n\nA child is buying ice cream with family. Choose the sentence that meets each clearly stated need."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.icecream-shop-speaking-032.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You want ice cream in a cup, not a cone. What do you say?",
+            "material": "Icecream Shop Speaking 032\n\nA child is buying ice cream with family. Choose the sentence that meets each clearly stated need.",
+            "explanation": "A明确要杯不蛋筒；B鞋不作容器；C只筒与需求相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In a cup, please."
+              },
+              {
+                "id": "o1",
+                "text": "Please put it in my shoe."
+              },
+              {
+                "id": "o2",
+                "text": "Please give me only a cone."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.icecream-shop-speaking-032.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You did not hear the flavours the seller named. What do you ask?",
+            "material": "Icecream Shop Speaking 032\n\nA child is buying ice cream with family. Choose the sentence that meets each clearly stated need.",
+            "explanation": "B请求再说口味以便选择；A改全部口味非听漏澄清；C冰柜走路无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Can you change every flavour?"
+              },
+              {
+                "id": "o1",
+                "text": "Could you tell me the flavours again?"
+              },
+              {
+                "id": "o2",
+                "text": "Can the freezer walk?"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.icecream-shop-speaking-032.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Ice cream drips on your hand. You need a napkin. What do you say?",
+            "material": "Icecream Shop Speaking 032\n\nA child is buying ice cream with family. Choose the sentence that meets each clearly stated need.",
+            "explanation": "C索纸巾处理滴手；A更多滴、B藏纸巾反需要。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Please make it drip more."
+              },
+              {
+                "id": "o1",
+                "text": "Please hide the napkins."
+              },
+              {
+                "id": "o2",
+                "text": "May I have a napkin, please?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.icecream-shop-speaking-032.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You receive a straw but need a spoon for the cup. What do you say?",
+            "material": "Icecream Shop Speaking 032\n\nA child is buying ice cream with family. Choose the sentence that meets each clearly stated need.",
+            "explanation": "A纠餐具为勺；B大路、C带冰柜不解决吃杯装冰淇淋。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "May I have a spoon instead of a straw?"
+              },
+              {
+                "id": "o1",
+                "text": "May I have a bigger road?"
+              },
+              {
+                "id": "o2",
+                "text": "May I take the freezer home?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.icecream-shop-speaking-032.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The seller asks if you want another scoop. You want only the one already in the cup. What do you say?",
+            "material": "Icecream Shop Speaking 032\n\nA child is buying ice cream with family. Choose the sentence that meets each clearly stated need.",
+            "explanation": "B明确一勺够，谢绝添加；A全桶超需；C地上丢不回应所需量。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Give me the whole tub."
+              },
+              {
+                "id": "o1",
+                "text": "No, thank you. One scoop is enough."
+              },
+              {
+                "id": "o2",
+                "text": "Put every scoop on the floor."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "43fe973e8ec8d202fe4bd952a0b77397637f8346e8f939f4480c167cd601e975",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.icecream-shop-speaking-032.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.icecream-shop-speaking-032.reading.q1",
+            "expansion.20261028.primary2.icecream-shop-speaking-032.reading.q2",
+            "expansion.20261028.primary2.icecream-shop-speaking-032.reading.q3",
+            "expansion.20261028.primary2.icecream-shop-speaking-032.reading.q4",
+            "expansion.20261028.primary2.icecream-shop-speaking-032.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "玩具店参观的十段句子",
+        "summary": "玩具店参观的十段句子，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3-yancheng2025.sentencechoice10",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照公开转载的盐城标签2025春三年级完整十题三选节；按完整独立句/短对话与原联选位置编写，不冒称全国统一卷型。公开原生文字完整，不等于原校/实际施测/原版视觉认证；原键未取。源歧义保留研究记录，原创另写明确语境，逐项给出依据，不复制问题原键。自有题目与人物均为作者编写，未作独立教研、学生难度/区分度或商用/生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032",
+          "family": "sentence_choice",
+          "label": "玩具店参观的十段句子",
+          "candidateSHA256": "2be9779931a8990a7d9691b1ff28ae62572869d94050ac98588a50fcf56a7cc2",
+          "authorCheckSHA256": "77034b68cda74f69f7097b52350adc73c0161d68239acc0a15afa87ba41a3b49",
+          "sourceGroupIds": [
+            "original.primary3-commonchoices10-art#primary3.toy-shop-ten-sentences-032.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b064；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "This toy robot ____ when I press the large button.",
+            "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation.",
+            "explanation": "A robot单三谓语moves；B原形不配单三；C分词缺be。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "moves"
+              },
+              {
+                "id": "o1",
+                "text": "move"
+              },
+              {
+                "id": "o2",
+                "text": "moving"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The little cars belong to us. They are ____ cars.",
+            "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation.",
+            "explanation": "B belongs to us对应our；A他们、C他的非本句物主。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "their"
+              },
+              {
+                "id": "o1",
+                "text": "our"
+              },
+              {
+                "id": "o2",
+                "text": "his"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "There are two toy ____ in the pond display.",
+            "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation.",
+            "explanation": "C fish本义常见同形复数；A fishs错，B fishes再加es错。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "fishs"
+              },
+              {
+                "id": "o1",
+                "text": "fisheses"
+              },
+              {
+                "id": "o2",
+                "text": "fish"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Please ____ the toy on its stand after trying it.",
+            "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation.",
+            "explanation": "A祈使原形put；B单三、C分词均不独立构成指令。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "put"
+              },
+              {
+                "id": "o1",
+                "text": "puts"
+              },
+              {
+                "id": "o2",
+                "text": "putting"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The train is behind the glass. We can look, but we must not ____.",
+            "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation.",
+            "explanation": "B must not后touch原形且不触展品；A looking分词、C单三不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "looking"
+              },
+              {
+                "id": "o1",
+                "text": "touch"
+              },
+              {
+                "id": "o2",
+                "text": "touches"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How much is this small bear? It is ____ yuan.",
+            "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation.",
+            "explanation": "C yuan前数词ten答价格；A柔软、B棕色非金额。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "soft"
+              },
+              {
+                "id": "o1",
+                "text": "brown"
+              },
+              {
+                "id": "o2",
+                "text": "ten"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The helper speaks to me. I listen to ____ carefully. She explains the game.",
+            "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation.",
+            "explanation": "A listen to后宾格her，后She明确；B主格、C物主不作该人物宾语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "her"
+              },
+              {
+                "id": "o1",
+                "text": "she"
+              },
+              {
+                "id": "o2",
+                "text": "hers"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "____ toy is for a baby? The soft one in the basket.",
+            "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation.",
+            "explanation": "B Which toy问哪件；A何时、C何地不限定toy作所问对象。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "When"
+              },
+              {
+                "id": "o1",
+                "text": "Which"
+              },
+              {
+                "id": "o2",
+                "text": "Where"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The box is empty now. There are ____ blocks inside.",
+            "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation.",
+            "explanation": "C no与empty一致；A肯定句any非无块表达，B a不接复数blocks。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "any"
+              },
+              {
+                "id": "o1",
+                "text": "a"
+              },
+              {
+                "id": "o2",
+                "text": "no"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "We want to leave the path clear. Put the bag ____ the chair, where it will not block our feet.",
+            "material": "Toy Shop Ten Sentences 032\n\nChoose the correct word or reply for each complete toy-shop visit situation.",
+            "explanation": "A under chair收包不占路；B横跨椅不表安全收处；C高悬above没有支撑且非给定收纳位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "under"
+              },
+              {
+                "id": "o1",
+                "text": "across"
+              },
+              {
+                "id": "o2",
+                "text": "above"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "4baa1ad246cc0e1cb7a525869470c3a9555c60ddc8a8f067e220650a0832d547",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-commonchoices10-art#primary3.toy-shop-ten-sentences-032.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q1",
+            "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q2",
+            "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q3",
+            "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q4",
+            "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q5",
+            "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q6",
+            "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q7",
+            "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q8",
+            "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q9",
+            "expansion.20261028.primary3.toy-shop-ten-sentences-032.reading.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "original.primary3-commonchoices10-art",
+          "sourceContentHash": "4f3991e54ee58e6cb06a859a4712d56107c5a68cb4645fc2a29456cb25e633b8"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.centre-visit-replies-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "活动中心参观时的应答",
+        "summary": "活动中心参观时的应答，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.responses",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.centre-visit-replies-032",
+          "family": "dialogue_matching",
+          "label": "活动中心参观时的应答",
+          "candidateSHA256": "63621e97524d26605cee5d3f2b89ed2a523aa6703332ceab0a8d8a860dc8d092",
+          "authorCheckSHA256": "77034b68cda74f69f7097b52350adc73c0161d68239acc0a15afa87ba41a3b49",
+          "sourceGroupIds": [
+            "original.primary3-name-age-location-responses#primary3.centre-visit-replies-032.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b064；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Centre Visit Replies 032\n\nMatch each question with its best reply. Use every answer once.\nA. Because the floor has just been cleaned.\nB. The adult at the information desk.\nC. After the guide finishes the short talk.\nD. Yes, if you leave enough space for others.\nE. In the folder with our group label."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.centre-visit-replies-032.reading.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why should we avoid the wet corner?",
+            "material": "Centre Visit Replies 032\n\nMatch each question with its best reply. Use every answer once.\nA. Because the floor has just been cleaned.\nB. The adult at the information desk.\nC. After the guide finishes the short talk.\nD. Yes, if you leave enough space for others.\nE. In the folder with our group label.",
+            "explanation": "A刚清洁地湿解释绕开；B人员、C时机、D空间许可、E夹位非原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Because the floor has just been cleaned."
+              },
+              {
+                "id": "o1",
+                "text": "The adult at the information desk."
+              },
+              {
+                "id": "o2",
+                "text": "After the guide finishes the short talk."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, if you leave enough space for others."
+              },
+              {
+                "id": "o4",
+                "text": "In the folder with our group label."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.centre-visit-replies-032.reading.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who can help if we lose a name badge?",
+            "material": "Centre Visit Replies 032\n\nMatch each question with its best reply. Use every answer once.\nA. Because the floor has just been cleaned.\nB. The adult at the information desk.\nC. After the guide finishes the short talk.\nD. Yes, if you leave enough space for others.\nE. In the folder with our group label.",
+            "explanation": "B信息台成人答Who求助；A清洁原因、C导览后、D条件、E夹位均非人员。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Because the floor has just been cleaned."
+              },
+              {
+                "id": "o1",
+                "text": "The adult at the information desk."
+              },
+              {
+                "id": "o2",
+                "text": "After the guide finishes the short talk."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, if you leave enough space for others."
+              },
+              {
+                "id": "o4",
+                "text": "In the folder with our group label."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.centre-visit-replies-032.reading.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When may we ask our questions?",
+            "material": "Centre Visit Replies 032\n\nMatch each question with its best reply. Use every answer once.\nA. Because the floor has just been cleaned.\nB. The adult at the information desk.\nC. After the guide finishes the short talk.\nD. Yes, if you leave enough space for others.\nE. In the folder with our group label.",
+            "explanation": "C导游短讲后答时机；A湿角原因、B人员、D可坐条件、E夹位不答When。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Because the floor has just been cleaned."
+              },
+              {
+                "id": "o1",
+                "text": "The adult at the information desk."
+              },
+              {
+                "id": "o2",
+                "text": "After the guide finishes the short talk."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, if you leave enough space for others."
+              },
+              {
+                "id": "o4",
+                "text": "In the folder with our group label."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.centre-visit-replies-032.reading.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "May we sit together on this long bench?",
+            "material": "Centre Visit Replies 032\n\nMatch each question with its best reply. Use every answer once.\nA. Because the floor has just been cleaned.\nB. The adult at the information desk.\nC. After the guide finishes the short talk.\nD. Yes, if you leave enough space for others.\nE. In the folder with our group label.",
+            "explanation": "D可以但给别人留空间，答同坐许可；A原因、B人、C讲后、E夹位均非座位条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Because the floor has just been cleaned."
+              },
+              {
+                "id": "o1",
+                "text": "The adult at the information desk."
+              },
+              {
+                "id": "o2",
+                "text": "After the guide finishes the short talk."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, if you leave enough space for others."
+              },
+              {
+                "id": "o4",
+                "text": "In the folder with our group label."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary3.centre-visit-replies-032.reading.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where do we keep our drawing sheets during the visit?",
+            "material": "Centre Visit Replies 032\n\nMatch each question with its best reply. Use every answer once.\nA. Because the floor has just been cleaned.\nB. The adult at the information desk.\nC. After the guide finishes the short talk.\nD. Yes, if you leave enough space for others.\nE. In the folder with our group label.",
+            "explanation": "E本组标签夹答纸张存处；A原因、B人员、C时间、D座位许可均不答Where。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Because the floor has just been cleaned."
+              },
+              {
+                "id": "o1",
+                "text": "The adult at the information desk."
+              },
+              {
+                "id": "o2",
+                "text": "After the guide finishes the short talk."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, if you leave enough space for others."
+              },
+              {
+                "id": "o4",
+                "text": "In the folder with our group label."
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "e8def6494806eb36d06286eb2cdd9382771f39ae32b56a1d89cc029edbcaa93c",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-name-age-location-responses#primary3.centre-visit-replies-032.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.centre-visit-replies-032.reading.q1",
+            "expansion.20261028.primary3.centre-visit-replies-032.reading.q2",
+            "expansion.20261028.primary3.centre-visit-replies-032.reading.q3",
+            "expansion.20261028.primary3.centre-visit-replies-032.reading.q4",
+            "expansion.20261028.primary3.centre-visit-replies-032.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-name-age-location-responses",
+          "sourceContentHash": "c830eb727749967be66d98b90c2b40122dd7dfc76ee181211bdf323fd29e76d9"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.theatre-trip-bank-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "去小剧院的路线词库",
+        "summary": "去小剧院的路线词库，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.theatre-trip-bank-032",
+          "family": "shared_bank",
+          "label": "去小剧院的路线词库",
+          "candidateSHA256": "90c0f2806f5d801aa16613d4e13ef50fde424d68de76b0807461474e9f6a2766",
+          "authorCheckSHA256": "77034b68cda74f69f7097b52350adc73c0161d68239acc0a15afa87ba41a3b49",
+          "sourceGroupIds": [
+            "original.primary4-school-day-shared-bank#primary4.theatre-trip-bank-032.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b064；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Theatre Trip Bank 032\n\nRead the whole passage and choose one bank word for each gap. Use each word once. Bank: A. along B. tickets C. arrive D. ready E. before\nWe walk ____1____ River Street until we reach the theatre. We ____2____ at nine thirty, half an hour before the show. The teacher gives us our ____3____ at the entrance. We put bags away ____4____ taking our seats. When everyone is seated, we are ____5____ for the first scene."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.theatre-trip-bank-032.reading.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Theatre Trip Bank 032\n\nRead the whole passage and choose one bank word for each gap. Use each word once. Bank: A. along B. tickets C. arrive D. ready E. before\nWe walk ____1____ River Street until we reach the theatre. We ____2____ at nine thirty, half an hour before the show. The teacher gives us our ____3____ at the entrance. We put bags away ____4____ taking our seats. When everyone is seated, we are ____5____ for the first scene.",
+            "explanation": "A along沿河街走；B tickets物、C arrive到达、D ready状态、E before时间均不作该沿街路径介词。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "along"
+              },
+              {
+                "id": "o1",
+                "text": "tickets"
+              },
+              {
+                "id": "o2",
+                "text": "arrive"
+              },
+              {
+                "id": "o3",
+                "text": "ready"
+              },
+              {
+                "id": "o4",
+                "text": "before"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.theatre-trip-bank-032.reading.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Theatre Trip Bank 032\n\nRead the whole passage and choose one bank word for each gap. Use each word once. Bank: A. along B. tickets C. arrive D. ready E. before\nWe walk ____1____ River Street until we reach the theatre. We ____2____ at nine thirty, half an hour before the show. The teacher gives us our ____3____ at the entrance. We put bags away ____4____ taking our seats. When everyone is seated, we are ____5____ for the first scene.",
+            "explanation": "C arrive at时间表到达；A along介词、B tickets名词、D ready形容词、E before连接词不作到达谓语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "along"
+              },
+              {
+                "id": "o1",
+                "text": "tickets"
+              },
+              {
+                "id": "o2",
+                "text": "arrive"
+              },
+              {
+                "id": "o3",
+                "text": "ready"
+              },
+              {
+                "id": "o4",
+                "text": "before"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.theatre-trip-bank-032.reading.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Theatre Trip Bank 032\n\nRead the whole passage and choose one bank word for each gap. Use each word once. Bank: A. along B. tickets C. arrive D. ready E. before\nWe walk ____1____ River Street until we reach the theatre. We ____2____ at nine thirty, half an hour before the show. The teacher gives us our ____3____ at the entrance. We put bags away ____4____ taking our seats. When everyone is seated, we are ____5____ for the first scene.",
+            "explanation": "B入口领tickets票；A along、C arrive、D ready、E before均不是发给学生的物品名词。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "along"
+              },
+              {
+                "id": "o1",
+                "text": "tickets"
+              },
+              {
+                "id": "o2",
+                "text": "arrive"
+              },
+              {
+                "id": "o3",
+                "text": "ready"
+              },
+              {
+                "id": "o4",
+                "text": "before"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.theatre-trip-bank-032.reading.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Theatre Trip Bank 032\n\nRead the whole passage and choose one bank word for each gap. Use each word once. Bank: A. along B. tickets C. arrive D. ready E. before\nWe walk ____1____ River Street until we reach the theatre. We ____2____ at nine thirty, half an hour before the show. The teacher gives us our ____3____ at the entrance. We put bags away ____4____ taking our seats. When everyone is seated, we are ____5____ for the first scene.",
+            "explanation": "E before taking seats先收包后坐；A along不接动名词表达此时间，B tickets、C arrive、D ready均不连接该先后。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "along"
+              },
+              {
+                "id": "o1",
+                "text": "tickets"
+              },
+              {
+                "id": "o2",
+                "text": "arrive"
+              },
+              {
+                "id": "o3",
+                "text": "ready"
+              },
+              {
+                "id": "o4",
+                "text": "before"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261028.primary4.theatre-trip-bank-032.reading.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Theatre Trip Bank 032\n\nRead the whole passage and choose one bank word for each gap. Use each word once. Bank: A. along B. tickets C. arrive D. ready E. before\nWe walk ____1____ River Street until we reach the theatre. We ____2____ at nine thirty, half an hour before the show. The teacher gives us our ____3____ at the entrance. We put bags away ____4____ taking our seats. When everyone is seated, we are ____5____ for the first scene.",
+            "explanation": "D be ready for首幕准备好；A along、B tickets、C arrive、E before均不作所需状态表语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "along"
+              },
+              {
+                "id": "o1",
+                "text": "tickets"
+              },
+              {
+                "id": "o2",
+                "text": "arrive"
+              },
+              {
+                "id": "o3",
+                "text": "ready"
+              },
+              {
+                "id": "o4",
+                "text": "before"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "68d567469595ca2c38e54ffc8f2997b0e632fd8f4936fc5d1a49c61b9073b034",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-school-day-shared-bank#primary4.theatre-trip-bank-032.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.theatre-trip-bank-032.reading.q1",
+            "expansion.20261028.primary4.theatre-trip-bank-032.reading.q2",
+            "expansion.20261028.primary4.theatre-trip-bank-032.reading.q3",
+            "expansion.20261028.primary4.theatre-trip-bank-032.reading.q4",
+            "expansion.20261028.primary4.theatre-trip-bank-032.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-school-day-shared-bank",
+          "sourceContentHash": "f5930d7c5f67553e061fde7ba847cb960afdc1a6bb778a0e147aa6d1c1232eb5"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.creative-fair-replies-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "创作展准备时的五个问题",
+        "summary": "创作展准备时的五个问题，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.repost.qa",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整具体形式参照公开来源；原校/年级难度未独立认证，作者自审不等独立教师或学生验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.creative-fair-replies-032",
+          "family": "dialogue_matching",
+          "label": "创作展准备时的五个问题",
+          "candidateSHA256": "cb3b27115619fd02422325cc83da3575f33a38a22a501dd07f2d2748643533e1",
+          "authorCheckSHA256": "77034b68cda74f69f7097b52350adc73c0161d68239acc0a15afa87ba41a3b49",
+          "sourceGroupIds": [
+            "original.primary4-five-questions-responses#primary4.creative-fair-replies-032.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b064；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Creative Fair Replies 032\n\nMatch each question to its best reply. Use each bank reply once.\nA. The room named on the newest booking note.\nB. Because the paint needs longer to dry.\nC. The volunteer carrying the materials list.\nD. After all the pieces have been counted.\nE. Yes, but keep the sample inside its tray."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.creative-fair-replies-032.reading.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which room should we use if two old messages disagree?",
+            "material": "Creative Fair Replies 032\n\nMatch each question to its best reply. Use each bank reply once.\nA. The room named on the newest booking note.\nB. Because the paint needs longer to dry.\nC. The volunteer carrying the materials list.\nD. After all the pieces have been counted.\nE. Yes, but keep the sample inside its tray.",
+            "explanation": "A最新预约单室名答冲突信息取据；B干漆原因、C人、D点数时机、E样本许可均不辨房间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The room named on the newest booking note."
+              },
+              {
+                "id": "o1",
+                "text": "Because the paint needs longer to dry."
+              },
+              {
+                "id": "o2",
+                "text": "The volunteer carrying the materials list."
+              },
+              {
+                "id": "o3",
+                "text": "After all the pieces have been counted."
+              },
+              {
+                "id": "o4",
+                "text": "Yes, but keep the sample inside its tray."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.creative-fair-replies-032.reading.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is our display still covered?",
+            "material": "Creative Fair Replies 032\n\nMatch each question to its best reply. Use each bank reply once.\nA. The room named on the newest booking note.\nB. Because the paint needs longer to dry.\nC. The volunteer carrying the materials list.\nD. After all the pieces have been counted.\nE. Yes, but keep the sample inside its tray.",
+            "explanation": "B漆需更多干燥时间解释盖护；A新单室名、C人、D点数、E样本条件不答Why。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The room named on the newest booking note."
+              },
+              {
+                "id": "o1",
+                "text": "Because the paint needs longer to dry."
+              },
+              {
+                "id": "o2",
+                "text": "The volunteer carrying the materials list."
+              },
+              {
+                "id": "o3",
+                "text": "After all the pieces have been counted."
+              },
+              {
+                "id": "o4",
+                "text": "Yes, but keep the sample inside its tray."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.creative-fair-replies-032.reading.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who can tell us whether more paper is available?",
+            "material": "Creative Fair Replies 032\n\nMatch each question to its best reply. Use each bank reply once.\nA. The room named on the newest booking note.\nB. Because the paint needs longer to dry.\nC. The volunteer carrying the materials list.\nD. After all the pieces have been counted.\nE. Yes, but keep the sample inside its tray.",
+            "explanation": "C拿材料表志愿者答资源核对人员；A室名、B原因、D时间、E许可非Who。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The room named on the newest booking note."
+              },
+              {
+                "id": "o1",
+                "text": "Because the paint needs longer to dry."
+              },
+              {
+                "id": "o2",
+                "text": "The volunteer carrying the materials list."
+              },
+              {
+                "id": "o3",
+                "text": "After all the pieces have been counted."
+              },
+              {
+                "id": "o4",
+                "text": "Yes, but keep the sample inside its tray."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.creative-fair-replies-032.reading.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When may we close the box of model parts?",
+            "material": "Creative Fair Replies 032\n\nMatch each question to its best reply. Use each bank reply once.\nA. The room named on the newest booking note.\nB. Because the paint needs longer to dry.\nC. The volunteer carrying the materials list.\nD. After all the pieces have been counted.\nE. Yes, but keep the sample inside its tray.",
+            "explanation": "D数齐后答合盒时机；A室、B漆因、C人、E样本许可不答When。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The room named on the newest booking note."
+              },
+              {
+                "id": "o1",
+                "text": "Because the paint needs longer to dry."
+              },
+              {
+                "id": "o2",
+                "text": "The volunteer carrying the materials list."
+              },
+              {
+                "id": "o3",
+                "text": "After all the pieces have been counted."
+              },
+              {
+                "id": "o4",
+                "text": "Yes, but keep the sample inside its tray."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary4.creative-fair-replies-032.reading.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "May I examine this small sample?",
+            "material": "Creative Fair Replies 032\n\nMatch each question to its best reply. Use each bank reply once.\nA. The room named on the newest booking note.\nB. Because the paint needs longer to dry.\nC. The volunteer carrying the materials list.\nD. After all the pieces have been counted.\nE. Yes, but keep the sample inside its tray.",
+            "explanation": "E可以但留盘内答查看许可；A室名、B原因、C人、D点数时机均不答此条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The room named on the newest booking note."
+              },
+              {
+                "id": "o1",
+                "text": "Because the paint needs longer to dry."
+              },
+              {
+                "id": "o2",
+                "text": "The volunteer carrying the materials list."
+              },
+              {
+                "id": "o3",
+                "text": "After all the pieces have been counted."
+              },
+              {
+                "id": "o4",
+                "text": "Yes, but keep the sample inside its tray."
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "37a8e58159f00c0707ebb494fdf3260d56efcb446b62579cd051cd9778cd36e0",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-five-questions-responses#primary4.creative-fair-replies-032.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.creative-fair-replies-032.reading.q1",
+            "expansion.20261028.primary4.creative-fair-replies-032.reading.q2",
+            "expansion.20261028.primary4.creative-fair-replies-032.reading.q3",
+            "expansion.20261028.primary4.creative-fair-replies-032.reading.q4",
+            "expansion.20261028.primary4.creative-fair-replies-032.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-five-questions-responses",
+          "sourceContentHash": "7ff6f94c91fa8e00bb8777fc9b6d4f985503facf556fc2278990c6393e7a35b6"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.fun-run-stone-eight-cloze-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "步行跑里那颗小石子",
+        "summary": "步行跑里那颗小石子，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 11,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.gcyls2024.attributed.yangzhou2022.monkey8",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照已核教辅中的完整例题：一篇、每空3个独立候选；六空例含多词候选，八空例为单词候选。原书标注2022普通期末卷来源，但原校卷及原整节范围未认证，原参考键有歧义，不当gold。本稿完整原创，逐候选回填为作者自审；独立教研、学生难度、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.fun-run-stone-eight-cloze-032",
+          "family": "choice_cloze",
+          "label": "步行跑里那颗小石子",
+          "candidateSHA256": "fd0054e71f56c2d38891a087d9a7bbc3211fe840545ff655ce8c30f02aaddd30",
+          "authorCheckSHA256": "77034b68cda74f69f7097b52350adc73c0161d68239acc0a15afa87ba41a3b49",
+          "sourceGroupIds": [
+            "original.primary5-cloze8-paper-dragon#primary5.fun-run-stone-eight-cloze-032.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b064；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Fun Run Stone Eight Cloze 032\n\nRead the complete story and choose the best word for every numbered gap.\nDuring the school fun run, Hana suddenly ____1____ while other children kept moving. She pointed to her ____2____ and said something hard was hurting near her toes. Rohan ____3____ to sit with her on a bench. He had first thought she simply needed a rest. When she took the shoe off, a small ____4____ fell out. Hana smiled ____5____ her foot no longer hurt. The event was not a timed race, so they continued ____6____ instead of trying to catch the fastest group. They finished as a ____7____. Rohan felt ____8____ of helping, even though his name was not among the earliest arrivals."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Fun Run Stone Eight Cloze 032\n\nRead the complete story and choose the best word for every numbered gap.\nDuring the school fun run, Hana suddenly ____1____ while other children kept moving. She pointed to her ____2____ and said something hard was hurting near her toes. Rohan ____3____ to sit with her on a bench. He had first thought she simply needed a rest. When she took the shoe off, a small ____4____ fell out. Hana smiled ____5____ her foot no longer hurt. The event was not a timed race, so they continued ____6____ instead of trying to catch the fastest group. They finished as a ____7____. Rohan felt ____8____ of helping, even though his name was not among the earliest arrivals.",
+            "explanation": "A stopped与others kept moving对比且脚疼需停；B煮、C印不合沿路跑情境。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "stopped"
+              },
+              {
+                "id": "o1",
+                "text": "cooked"
+              },
+              {
+                "id": "o2",
+                "text": "printed"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Fun Run Stone Eight Cloze 032\n\nRead the complete story and choose the best word for every numbered gap.\nDuring the school fun run, Hana suddenly ____1____ while other children kept moving. She pointed to her ____2____ and said something hard was hurting near her toes. Rohan ____3____ to sit with her on a bench. He had first thought she simply needed a rest. When she took the shoe off, a small ____4____ fell out. Hana smiled ____5____ her foot no longer hurt. The event was not a timed race, so they continued ____6____ instead of trying to catch the fastest group. They finished as a ____7____. Rohan felt ____8____ of helping, even though his name was not among the earliest arrivals.",
+            "explanation": "B痛近脚趾且后文脱shoe；A帽、C围巾不包含脚趾。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "hat"
+              },
+              {
+                "id": "o1",
+                "text": "shoe"
+              },
+              {
+                "id": "o2",
+                "text": "scarf"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Fun Run Stone Eight Cloze 032\n\nRead the complete story and choose the best word for every numbered gap.\nDuring the school fun run, Hana suddenly ____1____ while other children kept moving. She pointed to her ____2____ and said something hard was hurting near her toes. Rohan ____3____ to sit with her on a bench. He had first thought she simply needed a rest. When she took the shoe off, a small ____4____ fell out. Hana smiled ____5____ her foot no longer hurt. The event was not a timed race, so they continued ____6____ instead of trying to catch the fastest group. They finished as a ____7____. Rohan felt ____8____ of helping, even though his name was not among the earliest arrivals.",
+            "explanation": "C offered to sit主动陪坐；A画、B借均不接此提议不定式义。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "painted"
+              },
+              {
+                "id": "o1",
+                "text": "borrowed"
+              },
+              {
+                "id": "o2",
+                "text": "offered"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Fun Run Stone Eight Cloze 032\n\nRead the complete story and choose the best word for every numbered gap.\nDuring the school fun run, Hana suddenly ____1____ while other children kept moving. She pointed to her ____2____ and said something hard was hurting near her toes. Rohan ____3____ to sit with her on a bench. He had first thought she simply needed a rest. When she took the shoe off, a small ____4____ fell out. Hana smiled ____5____ her foot no longer hurt. The event was not a timed race, so they continued ____6____ instead of trying to catch the fastest group. They finished as a ____7____. Rohan felt ____8____ of helping, even though his name was not among the earliest arrivals.",
+            "explanation": "A小石可鞋内硌脚并落出；B椅、C窗不可能按本叙事大小在鞋内。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "stone"
+              },
+              {
+                "id": "o1",
+                "text": "chair"
+              },
+              {
+                "id": "o2",
+                "text": "window"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Fun Run Stone Eight Cloze 032\n\nRead the complete story and choose the best word for every numbered gap.\nDuring the school fun run, Hana suddenly ____1____ while other children kept moving. She pointed to her ____2____ and said something hard was hurting near her toes. Rohan ____3____ to sit with her on a bench. He had first thought she simply needed a rest. When she took the shoe off, a small ____4____ fell out. Hana smiled ____5____ her foot no longer hurt. The event was not a timed race, so they continued ____6____ instead of trying to catch the fastest group. They finished as a ____7____. Rohan felt ____8____ of helping, even though his name was not among the earliest arrivals.",
+            "explanation": "B脚不疼是笑原因；A选择、C除非条件不合已发生因果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "or"
+              },
+              {
+                "id": "o1",
+                "text": "because"
+              },
+              {
+                "id": "o2",
+                "text": "unless"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 6?",
+            "material": "Fun Run Stone Eight Cloze 032\n\nRead the complete story and choose the best word for every numbered gap.\nDuring the school fun run, Hana suddenly ____1____ while other children kept moving. She pointed to her ____2____ and said something hard was hurting near her toes. Rohan ____3____ to sit with her on a bench. He had first thought she simply needed a rest. When she took the shoe off, a small ____4____ fell out. Hana smiled ____5____ her foot no longer hurt. The event was not a timed race, so they continued ____6____ instead of trying to catch the fastest group. They finished as a ____7____. Rohan felt ____8____ of helping, even though his name was not among the earliest arrivals.",
+            "explanation": "C非竞速且不追最快，slowly慢行；A愤怒无因；B square不表行进方式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "angrily"
+              },
+              {
+                "id": "o1",
+                "text": "square"
+              },
+              {
+                "id": "o2",
+                "text": "slowly"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 7?",
+            "material": "Fun Run Stone Eight Cloze 032\n\nRead the complete story and choose the best word for every numbered gap.\nDuring the school fun run, Hana suddenly ____1____ while other children kept moving. She pointed to her ____2____ and said something hard was hurting near her toes. Rohan ____3____ to sit with her on a bench. He had first thought she simply needed a rest. When she took the shoe off, a small ____4____ fell out. Hana smiled ____5____ her foot no longer hurt. The event was not a timed race, so they continued ____6____ instead of trying to catch the fastest group. They finished as a ____7____. Rohan felt ____8____ of helping, even though his name was not among the earliest arrivals.",
+            "explanation": "A互助一起以team队伍完成；B云、C勺非两人结伴角色。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "team"
+              },
+              {
+                "id": "o1",
+                "text": "cloud"
+              },
+              {
+                "id": "o2",
+                "text": "spoon"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 8?",
+            "material": "Fun Run Stone Eight Cloze 032\n\nRead the complete story and choose the best word for every numbered gap.\nDuring the school fun run, Hana suddenly ____1____ while other children kept moving. She pointed to her ____2____ and said something hard was hurting near her toes. Rohan ____3____ to sit with her on a bench. He had first thought she simply needed a rest. When she took the shoe off, a small ____4____ fell out. Hana smiled ____5____ her foot no longer hurt. The event was not a timed race, so they continued ____6____ instead of trying to catch the fastest group. They finished as a ____7____. Rohan felt ____8____ of helping, even though his name was not among the earliest arrivals.",
+            "explanation": "B felt proud of helping为搭配与情绪；A空、C木制不表达帮助带来自豪。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "empty"
+              },
+              {
+                "id": "o1",
+                "text": "proud"
+              },
+              {
+                "id": "o2",
+                "text": "wooden"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "c1ff09cd411bea7e479eba679f246fa94d9e5dcf9f1120c000f3473be78500be",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-cloze8-paper-dragon#primary5.fun-run-stone-eight-cloze-032.reading",
+          "family": "choice_cloze",
+          "questionIds": [
+            "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q1",
+            "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q2",
+            "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q3",
+            "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q4",
+            "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q5",
+            "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q6",
+            "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q7",
+            "expansion.20261028.primary5.fun-run-stone-eight-cloze-032.reading.q8"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "sourceUnitId": "original.primary5-cloze8-paper-dragon",
+          "sourceContentHash": "0f1bb108e79bc4b1fdd9601649afff1fc6556bf8849b9c2ae58af70da83f3a30"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.new-teacher-name-story-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "新老师的名字应该怎么念",
+        "summary": "新老师的名字应该怎么念，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照已核北京区卷公开转载的相应完整具体模式：一短文五判断／四完整信息卡五判断／两共享句空加三道三选，分别绑定，不截成单一子组。源原键非独立gold，东城两型尚无原键；节日日期等事实不沿用。原创虚构，独立教研、目标学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.new-teacher-name-story-032",
+          "family": "reading_tf",
+          "label": "新老师的名字应该怎么念",
+          "candidateSHA256": "c6172afe95ae9f7ccd3caf51a8e40ee1c665663318ee9ae57925a0c48af92b81",
+          "authorCheckSHA256": "77034b68cda74f69f7097b52350adc73c0161d68239acc0a15afa87ba41a3b49",
+          "sourceGroupIds": [
+            "original.primary5-story-voices-tf#primary5.new-teacher-name-story-032.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b064；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "New Teacher Name Story 032\n\nOur new teacher’s name was unfamiliar to us. We copied a pronunciation from an old school video, assuming it must be right. When she introduced herself, the sound was different. One pupil wanted to correct her using the video. Our class captain suggested asking politely instead. The teacher explained that the video caption had linked her name to another person by mistake. She showed us the correct written name and said it slowly. We practised with her permission. Later, the school corrected the caption. I learned that an older recording could be useful evidence without being stronger than the person’s own clear introduction."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.new-teacher-name-story-032.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class first uses an old video to guess the pronunciation.",
+            "material": "New Teacher Name Story 032\n\nOur new teacher’s name was unfamiliar to us. We copied a pronunciation from an old school video, assuming it must be right. When she introduced herself, the sound was different. One pupil wanted to correct her using the video. Our class captain suggested asking politely instead. The teacher explained that the video caption had linked her name to another person by mistake. She showed us the correct written name and said it slowly. We practised with her permission. Later, the school corrected the caption. I learned that an older recording could be useful evidence without being stronger than the person’s own clear introduction.",
+            "explanation": "A正确：copied pronunciation old video；B否认初取来源。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.new-teacher-name-story-032.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The teacher’s introduction matches the class’s first guess exactly.",
+            "material": "New Teacher Name Story 032\n\nOur new teacher’s name was unfamiliar to us. We copied a pronunciation from an old school video, assuming it must be right. When she introduced herself, the sound was different. One pupil wanted to correct her using the video. Our class captain suggested asking politely instead. The teacher explained that the video caption had linked her name to another person by mistake. She showed us the correct written name and said it slowly. We practised with her permission. Later, the school corrected the caption. I learned that an older recording could be useful evidence without being stronger than the person’s own clear introduction.",
+            "explanation": "B正确：sound different；A把不一致说完全一致。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.new-teacher-name-story-032.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The captain suggests a polite question rather than an accusation.",
+            "material": "New Teacher Name Story 032\n\nOur new teacher’s name was unfamiliar to us. We copied a pronunciation from an old school video, assuming it must be right. When she introduced herself, the sound was different. One pupil wanted to correct her using the video. Our class captain suggested asking politely instead. The teacher explained that the video caption had linked her name to another person by mistake. She showed us the correct written name and said it slowly. We practised with her permission. Later, the school corrected the caption. I learned that an older recording could be useful evidence without being stronger than the person’s own clear introduction.",
+            "explanation": "A正确：suggested asking politely，不直接按视频纠人；B否认沟通选择。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.new-teacher-name-story-032.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The caption had mixed the teacher’s name with another person.",
+            "material": "New Teacher Name Story 032\n\nOur new teacher’s name was unfamiliar to us. We copied a pronunciation from an old school video, assuming it must be right. When she introduced herself, the sound was different. One pupil wanted to correct her using the video. Our class captain suggested asking politely instead. The teacher explained that the video caption had linked her name to another person by mistake. She showed us the correct written name and said it slowly. We practised with her permission. Later, the school corrected the caption. I learned that an older recording could be useful evidence without being stronger than the person’s own clear introduction.",
+            "explanation": "A正确：linked name another person mistake；B否认出错原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.new-teacher-name-story-032.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The school leaves the known caption mistake uncorrected.",
+            "material": "New Teacher Name Story 032\n\nOur new teacher’s name was unfamiliar to us. We copied a pronunciation from an old school video, assuming it must be right. When she introduced herself, the sound was different. One pupil wanted to correct her using the video. Our class captain suggested asking politely instead. The teacher explained that the video caption had linked her name to another person by mistake. She showed us the correct written name and said it slowly. We practised with her permission. Later, the school corrected the caption. I learned that an older recording could be useful evidence without being stronger than the person’s own clear introduction.",
+            "explanation": "B正确：later corrected；A把后续修正说不改。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "3d879f157484d05cb8efde403c27cd9733f1e91f3317008e3ef46dd47590c2b8",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-story-voices-tf#primary5.new-teacher-name-story-032.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.new-teacher-name-story-032.reading.q1",
+            "expansion.20261028.primary5.new-teacher-name-story-032.reading.q2",
+            "expansion.20261028.primary5.new-teacher-name-story-032.reading.q3",
+            "expansion.20261028.primary5.new-teacher-name-story-032.reading.q4",
+            "expansion.20261028.primary5.new-teacher-name-story-032.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-story-voices-tf",
+          "sourceContentHash": "a4f0870aefe1f20fc8d875af831008e42eade8b2add01b9a839678f758d44bde"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.club-exhibition-word-forms-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "社团展示记录的词形",
+        "summary": "社团展示记录的词形，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.sentence_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.givenforms5",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照同一公开历史教辅导出卷的五题给词填空，保留五独立句、逐空给词、明确不限一词。该卷标题自署2016–17深圳实验学校六下，原校与实际施测未认证、原键缺；原He is is重印及walk多时态风险保留。自有句框独立重写，部分给出助动词缩小形态歧义，不复制源错句或声称精确能力等值。已核常用变体同等接受，合法表达未穷尽，未列形式待复核。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.club-exhibition-word-forms-032",
+          "family": "sentence_form",
+          "label": "社团展示记录的词形",
+          "candidateSHA256": "f0cadad8eb040c682ff50fb00aec1c05dcb4ecf475882839fe7ab7114f4e1875",
+          "authorCheckSHA256": "77034b68cda74f69f7097b52350adc73c0161d68239acc0a15afa87ba41a3b49",
+          "sourceGroupIds": [
+            "original.primary6-givenforms5-workshop#primary6.club-exhibition-word-forms-032.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b064；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Club Exhibition Word Forms 032\n\nUse the correct one-word form of every given word to complete all five gaps.\n1. Last month, our class ____1____ (bring) several models to the town hall.\n2. The story on the safety display described how quick help saved three ____2____ (life).\n3. The cleaned window is ____3____ (clean) than it was before the work.\n4. Look! The goalkeeper is ____4____ (stop) a slow ball with both hands.\n5. The organiser answered our question ____5____ (honest; use the conventional adverb ending in -ly) about the missing materials."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.club-exhibition-word-forms-032.reading.q1",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 1: use BRING.",
+            "material": "Club Exhibition Word Forms 032\n\nUse the correct one-word form of every given word to complete all five gaps.\n1. Last month, our class ____1____ (bring) several models to the town hall.\n2. The story on the safety display described how quick help saved three ____2____ (life).\n3. The cleaned window is ____3____ (clean) than it was before the work.\n4. Look! The goalkeeper is ____4____ (stop) a slow ball with both hands.\n5. The organiser answered our question ____5____ (honest; use the conventional adverb ending in -ly) about the missing materials.",
+            "explanation": "接受brought：Last month过去，bring不规则；bring原形、bringed错误、bringing分词均不作过去谓语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "brought"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "bring",
+                "bringed",
+                "bringing"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.club-exhibition-word-forms-032.reading.q2",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 2: use LIFE.",
+            "material": "Club Exhibition Word Forms 032\n\nUse the correct one-word form of every given word to complete all five gaps.\n1. Last month, our class ____1____ (bring) several models to the town hall.\n2. The story on the safety display described how quick help saved three ____2____ (life).\n3. The cleaned window is ____3____ (clean) than it was before the work.\n4. Look! The goalkeeper is ____4____ (stop) a slow ball with both hands.\n5. The organiser answered our question ____5____ (honest; use the conventional adverb ending in -ly) about the missing materials.",
+            "explanation": "接受lives：three明确要求生命的复数，life变lives；life单数与three不合，lifes错误拼写，liveses重复加复数错误。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "lives"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "life",
+                "lifes",
+                "liveses"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.club-exhibition-word-forms-032.reading.q3",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 3: use CLEAN.",
+            "material": "Club Exhibition Word Forms 032\n\nUse the correct one-word form of every given word to complete all five gaps.\n1. Last month, our class ____1____ (bring) several models to the town hall.\n2. The story on the safety display described how quick help saved three ____2____ (life).\n3. The cleaned window is ____3____ (clean) than it was before the work.\n4. Look! The goalkeeper is ____4____ (stop) a slow ball with both hands.\n5. The organiser answered our question ____5____ (honest; use the conventional adverb ending in -ly) about the missing materials.",
+            "explanation": "接受cleaner：than比较清洁程度；clean原级、cleanest最高级、cleanliness名词不合比较表语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "cleaner"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "clean",
+                "cleanest",
+                "cleanliness"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.club-exhibition-word-forms-032.reading.q4",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 4: use STOP.",
+            "material": "Club Exhibition Word Forms 032\n\nUse the correct one-word form of every given word to complete all five gaps.\n1. Last month, our class ____1____ (bring) several models to the town hall.\n2. The story on the safety display described how quick help saved three ____2____ (life).\n3. The cleaned window is ____3____ (clean) than it was before the work.\n4. Look! The goalkeeper is ____4____ (stop) a slow ball with both hands.\n5. The organiser answered our question ____5____ (honest; use the conventional adverb ending in -ly) about the missing materials.",
+            "explanation": "接受stopping：is进行，stop双写p加ing；stop原形、stoping错拼、stopped过去式不表正在拦球。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "stopping"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "stop",
+                "stoping",
+                "stopped"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.club-exhibition-word-forms-032.reading.q5",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 5: write the conventional adverb ending in -ly from HONEST.",
+            "material": "Club Exhibition Word Forms 032\n\nUse the correct one-word form of every given word to complete all five gaps.\n1. Last month, our class ____1____ (bring) several models to the town hall.\n2. The story on the safety display described how quick help saved three ____2____ (life).\n3. The cleaned window is ____3____ (clean) than it was before the work.\n4. Look! The goalkeeper is ____4____ (stop) a slow ball with both hands.\n5. The organiser answered our question ____5____ (honest; use the conventional adverb ending in -ly) about the missing materials.",
+            "explanation": "接受honestly：本空明确要求HONEST派生的常规-ly副词。列出的其他形态不满足本题-ly任务约束；这并不声称其在所有英语语境中不合法，也不因缺少明示比较就否定可能的隐含比较。未列形式仍进入复核。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "honestly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "honest",
+                "honester",
+                "honesty"
+              ]
+            }
+          }
+        ]
+      },
+      "contentHash": "b6880fd92a728d9cf9e2e529e76908a851c6e898ceb3fb01f24dada966efed61",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-givenforms5-workshop#primary6.club-exhibition-word-forms-032.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.club-exhibition-word-forms-032.reading.q1",
+            "expansion.20261028.primary6.club-exhibition-word-forms-032.reading.q2",
+            "expansion.20261028.primary6.club-exhibition-word-forms-032.reading.q3",
+            "expansion.20261028.primary6.club-exhibition-word-forms-032.reading.q4",
+            "expansion.20261028.primary6.club-exhibition-word-forms-032.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-givenforms5-workshop",
+          "sourceContentHash": "32f18576ad0fa4890f1e2b9ef04d1614e6c679765c80ed02b7f97d3921df965d"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.learning-help-functions-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "学习时请求真正有用的帮助",
+        "summary": "学习时请求真正有用的帮助，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.minzhi2016-17.contexts",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 本组仅参照旧转载小六五个中文情境、每题三候选的可见结构。原四页PDF第14题跨物理第2—3页，参考键在第4页；14.2.B原版面仅有未完表达，原输入未完整核清，14.2与14.5另有回应功能重叠，不能将旧全输入标志或参考键当完整/唯一正确的质量准入。原件及原键保留；本稿五题的情境、全部候选和逐项依据为完整原创，未沿用截断或功能重叠题。原校/实际施测、难度、独立教研、学生、商用及生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.learning-help-functions-032",
+          "family": "sentence_choice",
+          "label": "学习时请求真正有用的帮助",
+          "candidateSHA256": "a5b26d2e8b4e0ae01d5b2b90859eebfadaeb0c7754f36da65ebff2dbe4fae4f5",
+          "authorCheckSHA256": "77034b68cda74f69f7097b52350adc73c0161d68239acc0a15afa87ba41a3b49",
+          "sourceGroupIds": [
+            "original.primary6-help-and-information-functions#primary6.learning-help-functions-032.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b064；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Learning Help Functions 032\n\nChoose the sentence that directly achieves each learner’s stated purpose."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.learning-help-functions-032.reading.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You are stuck on a maths problem and want the method explained rather than only the answer. What should you say?",
+            "material": "Learning Help Functions 032\n\nChoose the sentence that directly achieves each learner’s stated purpose.",
+            "explanation": "A请求起步方法实现理解目标；B只要答案相反；C取消数学非学习求助。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Could you explain how to start this problem?"
+              },
+              {
+                "id": "o1",
+                "text": "Please give me the answer and no explanation."
+              },
+              {
+                "id": "o2",
+                "text": "Could you remove every maths lesson?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.learning-help-functions-032.reading.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A teacher writes \"unclear\" on your paragraph, and you need to know which part. What should you ask?",
+            "material": "Learning Help Functions 032\n\nChoose the sentence that directly achieves each learner’s stated purpose.",
+            "explanation": "B定位具体不清句；A泛化、C丢本不产生改进信息。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Why are all paragraphs bad?"
+              },
+              {
+                "id": "o1",
+                "text": "Could you show me which sentence needs clarification?"
+              },
+              {
+                "id": "o2",
+                "text": "Can you throw away my whole notebook?"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.learning-help-functions-032.reading.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You have two different due dates in your notes and want the current deadline confirmed. What should you ask?",
+            "material": "Learning Help Functions 032\n\nChoose the sentence that directly achieves each learner’s stated purpose.",
+            "explanation": "C核当前任务期限；A自择晚日、B混同日期不求证。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "May I choose whichever is later?"
+              },
+              {
+                "id": "o1",
+                "text": "Does every date mean the same thing?"
+              },
+              {
+                "id": "o2",
+                "text": "Could you confirm the current deadline for this task?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.learning-help-functions-032.reading.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You want to hear how an unfamiliar word is pronounced. What should you say?",
+            "material": "Learning Help Functions 032\n\nChoose the sentence that directly achieves each learner’s stated purpose.",
+            "explanation": "A请求慢念供练习；B隐藏、C加长考试不提供发音示范。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Could you say this word slowly so I can practise it?"
+              },
+              {
+                "id": "o1",
+                "text": "Could you hide the word from me?"
+              },
+              {
+                "id": "o2",
+                "text": "Could you write a longer exam?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.learning-help-functions-032.reading.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You will miss a workshop and want to know how to catch up. What should you ask?",
+            "material": "Learning Help Functions 032\n\nChoose the sentence that directly achieves each learner’s stated purpose.",
+            "explanation": "B询补学材料步骤；A停全体、C虚称出席不弥补学习。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Can everyone stop learning until I return?"
+              },
+              {
+                "id": "o1",
+                "text": "What materials or steps should I use to catch up after missing the workshop?"
+              },
+              {
+                "id": "o2",
+                "text": "May I claim that I attended?"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "146f53f76ddb32204b48e78505a0e365742c3f9b31dda6a65216fe46070c2564",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-help-and-information-functions#primary6.learning-help-functions-032.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.learning-help-functions-032.reading.q1",
+            "expansion.20261028.primary6.learning-help-functions-032.reading.q2",
+            "expansion.20261028.primary6.learning-help-functions-032.reading.q3",
+            "expansion.20261028.primary6.learning-help-functions-032.reading.q4",
+            "expansion.20261028.primary6.learning-help-functions-032.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-help-and-information-functions",
+          "sourceContentHash": "cdbf6b2b17b0e64d782f9cde7aa4b388c5805c3dc52b4124194c3713ad6e8771"
+        }
+      ]
+    }
+  ]
+}

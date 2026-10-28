@@ -1,0 +1,2658 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b059",
+  "createdAt": "2026-10-29T01:59:16.776148+08:00",
+  "sourceSHA256": "658194315b1d6288371787ab46f767b11e4170c715a3da985fc6159c96e06243",
+  "reviewSHA256": "4cc09b9733f233f567c69dcee54908210479ef881eb8db60a9cc6be706cbc9b6",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.ask-missing-plan-details-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "活动计划不够清楚时怎么问",
+        "summary": "活动计划不够清楚时怎么问，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.ask-missing-plan-details-025",
+          "family": "function_choice",
+          "label": "活动计划不够清楚时怎么问",
+          "candidateSHA256": "850185d3f2a7fb22ad903c05b567eecae99b657111791fbc1b125bb7a891ca18",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.ask-missing-plan-details-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Ask Missing Plan Details 025\n\nEach short plan is missing one detail. Choose the question that asks for that detail."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.ask-missing-plan-details-025.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The note says, \"Meet at the gate.\" Your school has two gates. What do you ask?",
+            "material": "Ask Missing Plan Details 025\n\nEach short plan is missing one detail. Choose the question that asks for that detail.",
+            "explanation": "A两个门需明确哪门；B树龄、C门喜好不补集合地点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Which gate do we meet at?"
+              },
+              {
+                "id": "o1",
+                "text": "How old is the tree?"
+              },
+              {
+                "id": "o2",
+                "text": "Do you like gates?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.ask-missing-plan-details-025.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The note says, \"Come after lunch.\" You need an exact time. What do you ask?",
+            "material": "Ask Missing Plan Details 025\n\nEach short plan is missing one detail. Choose the question that asks for that detail.",
+            "explanation": "B问具体到达时刻；A餐食、C勺主不解决时间模糊。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "What is for lunch?"
+              },
+              {
+                "id": "o1",
+                "text": "What time should I come?"
+              },
+              {
+                "id": "o2",
+                "text": "Who has a spoon?"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.ask-missing-plan-details-025.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class needs cans for a craft. You do not know if they should be empty. What do you ask?",
+            "material": "Ask Missing Plan Details 025\n\nEach short plan is missing one detail. Choose the question that asks for that detail.",
+            "explanation": "C确认罐是否空；A云大、B鸟飞与材料状态无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Are the clouds big?"
+              },
+              {
+                "id": "o1",
+                "text": "Can birds fly?"
+              },
+              {
+                "id": "o2",
+                "text": "Should the cans be empty?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.ask-missing-plan-details-025.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A meeting is outdoors, and rain is possible. You want to know the rain plan. What do you ask?",
+            "material": "Ask Missing Plan Details 025\n\nEach short plan is missing one detail. Choose the question that asks for that detail.",
+            "explanation": "A问下雨时是否室内，补备用地点；B衣色、C星数不问雨案。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Will we meet inside if it rains?"
+              },
+              {
+                "id": "o1",
+                "text": "Is my coat blue?"
+              },
+              {
+                "id": "o2",
+                "text": "How many stars are there?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.ask-missing-plan-details-025.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The poster says, \"Bring a game.\" You want to know what kind. What do you ask?",
+            "material": "Ask Missing Plan Details 025\n\nEach short plan is missing one detail. Choose the question that asks for that detail.",
+            "explanation": "B问游戏种类；A有园、C海报纸材不解决携带要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Do you have a garden?"
+              },
+              {
+                "id": "o1",
+                "text": "What kind of game should I bring?"
+              },
+              {
+                "id": "o2",
+                "text": "Is the poster made of paper?"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "3c95485e7ba1e1071f200d9c35eb665d4f554ab6975fc9d935c4748506191c78",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.ask-missing-plan-details-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.ask-missing-plan-details-025.reading.q1",
+            "expansion.20261028.primary2.ask-missing-plan-details-025.reading.q2",
+            "expansion.20261028.primary2.ask-missing-plan-details-025.reading.q3",
+            "expansion.20261028.primary2.ask-missing-plan-details-025.reading.q4",
+            "expansion.20261028.primary2.ask-missing-plan-details-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.home-help-specific-needs-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "在家说清楚需要的帮助",
+        "summary": "在家说清楚需要的帮助，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.home-help-specific-needs-025",
+          "family": "function_choice",
+          "label": "在家说清楚需要的帮助",
+          "candidateSHA256": "96bf5095b7aa2ec0299c52975646372a2902a634b0b730248135daa9ec0e2be4",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.home-help-specific-needs-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Home Help Specific Needs 025\n\nChoose the useful sentence for each clearly stated need at home."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.home-help-specific-needs-025.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The room is too dark for your book. You ask Dad for more light. What do you say?",
+            "material": "Home Help Specific Needs 025\n\nChoose the useful sentence for each clearly stated need at home.",
+            "explanation": "B开灯改善读书照明；A藏书、C闭眼不能增加光。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Please hide the book."
+              },
+              {
+                "id": "o1",
+                "text": "Could you turn on the lamp?"
+              },
+              {
+                "id": "o2",
+                "text": "Could you close both eyes?"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.home-help-specific-needs-025.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your chair is wet. You want a cloth to dry it. What do you say?",
+            "material": "Home Help Specific Needs 025\n\nChoose the useful sentence for each clearly stated need at home.",
+            "explanation": "C索干布擦湿座；A窗、B鱼玩具不达清干目的。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "May I have a bigger window?"
+              },
+              {
+                "id": "o1",
+                "text": "May I have a toy fish?"
+              },
+              {
+                "id": "o2",
+                "text": "May I have a dry cloth?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.home-help-specific-needs-025.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You cannot reach a book on a high shelf. You ask an adult. What do you say?",
+            "material": "Home Help Specific Needs 025\n\nChoose the useful sentence for each clearly stated need at home.",
+            "explanation": "A请求成人取高书；B浇架无关；C都放更高加剧困难。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Could you get that book for me?"
+              },
+              {
+                "id": "o1",
+                "text": "Could you water the shelf?"
+              },
+              {
+                "id": "o2",
+                "text": "Could you put every book higher?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.home-help-specific-needs-025.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Both your hands hold a large box. You want Mum to open the door. What do you say?",
+            "material": "Home Help Specific Needs 025\n\nChoose the useful sentence for each clearly stated need at home.",
+            "explanation": "B求开门解决双手占用；A拆门过度非需求；C再加箱不帮助。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Please take the door away forever."
+              },
+              {
+                "id": "o1",
+                "text": "Could you open the door for me?"
+              },
+              {
+                "id": "o2",
+                "text": "Please give me another heavy box."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.home-help-specific-needs-025.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your brother is asleep. You want a friend to lower their voice. What do you say?",
+            "material": "Home Help Specific Needs 025\n\nChoose the useful sentence for each clearly stated need at home.",
+            "explanation": "C低声并说明熟睡条件；A喊、B持续拍均会打扰，与目的相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Please shout near his bed."
+              },
+              {
+                "id": "o1",
+                "text": "Please clap all the time."
+              },
+              {
+                "id": "o2",
+                "text": "Please speak quietly; he is asleep."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "aa021c6a2c3a60fc9a4b6eef630de3c5112bf7074848c908b5a211e047fc237c",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.home-help-specific-needs-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.home-help-specific-needs-025.reading.q1",
+            "expansion.20261028.primary2.home-help-specific-needs-025.reading.q2",
+            "expansion.20261028.primary2.home-help-specific-needs-025.reading.q3",
+            "expansion.20261028.primary2.home-help-specific-needs-025.reading.q4",
+            "expansion.20261028.primary2.home-help-specific-needs-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.correct-small-misunderstandings-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "把小误会礼貌说清楚",
+        "summary": "把小误会礼貌说清楚，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整具体形式参照公开来源；原校/年级难度未独立认证，作者自审不等独立教师或学生验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.correct-small-misunderstandings-025",
+          "family": "function_choice",
+          "label": "把小误会礼貌说清楚",
+          "candidateSHA256": "e0c391da6ce1c46aaa14b89209dd2b5640169e929e43f9e4807911c7bdf84875",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary2-five-small-functions#primary2.correct-small-misunderstandings-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Correct Small Misunderstandings 025\n\nRead each misunderstanding and choose the sentence that corrects the stated problem politely."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.correct-small-misunderstandings-025.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You asked for plain paper, but a friend gives you lined paper. What do you say?",
+            "material": "Correct Small Misunderstandings 025\n\nRead each misunderstanding and choose the sentence that corrects the stated problem politely.",
+            "explanation": "A感谢后明确空白纸；B要更多线与原需相反；C食纸不纠偏。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Thank you, but I need plain paper."
+              },
+              {
+                "id": "o1",
+                "text": "Thank you, I need more lines."
+              },
+              {
+                "id": "o2",
+                "text": "I will eat this paper."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.correct-small-misunderstandings-025.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend thinks your cardboard model is rubbish and starts to bin it. What do you say?",
+            "material": "Correct Small Misunderstandings 025\n\nRead each misunderstanding and choose the sentence that corrects the stated problem politely.",
+            "explanation": "B说明模型身份阻误丢；A鼓励丢反目的；C桶形不能纠正物品用途误认。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Throw it away quickly."
+              },
+              {
+                "id": "o1",
+                "text": "Please keep that; it is my model."
+              },
+              {
+                "id": "o2",
+                "text": "The bin is round."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.correct-small-misunderstandings-025.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The helper gives you a ticket for tomorrow, but you need today. What do you say?",
+            "material": "Correct Small Misunderstandings 025\n\nRead each misunderstanding and choose the sentence that corrects the stated problem politely.",
+            "explanation": "C明确今日票，礼貌纠时间；A混同日期；B不需票与实际目标相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Tomorrow is always today."
+              },
+              {
+                "id": "o1",
+                "text": "I need no ticket at all."
+              },
+              {
+                "id": "o2",
+                "text": "Sorry, I need a ticket for today."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.correct-small-misunderstandings-025.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your friend brings an indoor ball to a muddy field. You need the outdoor one. What do you say?",
+            "material": "Correct Small Misunderstandings 025\n\nRead each misunderstanding and choose the sentence that corrects the stated problem politely.",
+            "explanation": "A场地需户外球，纠器材选择；B灌泥、C永久禁球非目标。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Let us use the outdoor ball here."
+              },
+              {
+                "id": "o1",
+                "text": "Let us fill the indoor ball with mud."
+              },
+              {
+                "id": "o2",
+                "text": "Let us stop using all balls forever."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.correct-small-misunderstandings-025.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend thinks you have finished eating and takes your plate. You are still eating. What do you say?",
+            "material": "Correct Small Misunderstandings 025\n\nRead each misunderstanding and choose the sentence that corrects the stated problem politely.",
+            "explanation": "B澄清未吃完请留盘；A让拿走反目标；C无关类比不纠进度误解。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Take my food away now."
+              },
+              {
+                "id": "o1",
+                "text": "Please leave it; I have not finished yet."
+              },
+              {
+                "id": "o2",
+                "text": "The plate is not a tree."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "b58601aeed9bd4b8109ef1b92667a8156410e418e7c5083e460ba4015f9e5791",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-five-small-functions#primary2.correct-small-misunderstandings-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.correct-small-misunderstandings-025.reading.q1",
+            "expansion.20261028.primary2.correct-small-misunderstandings-025.reading.q2",
+            "expansion.20261028.primary2.correct-small-misunderstandings-025.reading.q3",
+            "expansion.20261028.primary2.correct-small-misunderstandings-025.reading.q4",
+            "expansion.20261028.primary2.correct-small-misunderstandings-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-five-small-functions",
+          "sourceContentHash": "8aec4fa4f4448a713602248fecd4163e48c664bfbe02fe1de910736fd964f324"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.garden-day-ten-sentences-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "花园日的十段完整语境",
+        "summary": "花园日的十段完整语境，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3-yancheng2025.sentencechoice10",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照公开转载的盐城标签2025春三年级完整十题三选节；按完整独立句/短对话与原联选位置编写，不冒称全国统一卷型。公开原生文字完整，不等于原校/实际施测/原版视觉认证；原键未取。源歧义保留研究记录，原创另写明确语境，逐项给出依据，不复制问题原键。自有题目与人物均为作者编写，未作独立教研、学生难度/区分度或商用/生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.garden-day-ten-sentences-025",
+          "family": "sentence_choice",
+          "label": "花园日的十段完整语境",
+          "candidateSHA256": "4030536da4a899fa58793f337a365b779f3a2f02fb396f0158a164e0539b6e99",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary3-commonchoices10-art#primary3.garden-day-ten-sentences-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "We are thirsty. ____ drink some clean water.",
+            "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply.",
+            "explanation": "B Let us后接drink表示一起喝；A单独Let缺宾语；C Lets无撇号也不构成本句祈使建议。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Let"
+              },
+              {
+                "id": "o1",
+                "text": "Let us"
+              },
+              {
+                "id": "o2",
+                "text": "Lets"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The sun is hot. My little brother ____ a hat now.",
+            "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply.",
+            "explanation": "C is wearing构成现在进行；A原形不配单三且不表now进行；B单分词缺is。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "wear"
+              },
+              {
+                "id": "o1",
+                "text": "wearing"
+              },
+              {
+                "id": "o2",
+                "text": "is wearing"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "These flowers belong to Mum. They are ____ flowers.",
+            "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply.",
+            "explanation": "A Mum物主her；B his不符；C our为我们的，与明确母亲归属不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "her"
+              },
+              {
+                "id": "o1",
+                "text": "his"
+              },
+              {
+                "id": "o2",
+                "text": "our"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The snail moves very ____. It takes a long time to cross the leaf.",
+            "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply.",
+            "explanation": "B slowly与takes long time一致；A快速相反；C大声不解释移动费时。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "quickly"
+              },
+              {
+                "id": "o1",
+                "text": "slowly"
+              },
+              {
+                "id": "o2",
+                "text": "loudly"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "There is ____ old bucket beside the shed.",
+            "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply.",
+            "explanation": "C old元音开头单数an；A不合元音冠词；B two后bucket应复数。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "a"
+              },
+              {
+                "id": "o1",
+                "text": "two"
+              },
+              {
+                "id": "o2",
+                "text": "an"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "My friend cannot find ____ gloves. They belong to him.",
+            "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply.",
+            "explanation": "A him男性物主his；B her不配him；C its不用于本句男孩物主。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "his"
+              },
+              {
+                "id": "o1",
+                "text": "her"
+              },
+              {
+                "id": "o2",
+                "text": "its"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The beans are tall. ____ need long sticks to stand up.",
+            "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply.",
+            "explanation": "B beans复数用They；A It单数；C He人物单数不指豆株。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It"
+              },
+              {
+                "id": "o1",
+                "text": "They"
+              },
+              {
+                "id": "o2",
+                "text": "He"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Can you carry this small pot? Yes, ____.",
+            "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply.",
+            "explanation": "C回答Can用can；A be、B do不对应该情态能力问句。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I am"
+              },
+              {
+                "id": "o1",
+                "text": "I do"
+              },
+              {
+                "id": "o2",
+                "text": "I can"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Please ____ the gate gently. The baby is asleep nearby.",
+            "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply.",
+            "explanation": "A祈使句动词原形close；B单三、C分词不独立构成指令。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "close"
+              },
+              {
+                "id": "o1",
+                "text": "closes"
+              },
+              {
+                "id": "o2",
+                "text": "closing"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How ____ pots are on the tray? Three.",
+            "material": "Garden Day Ten Sentences 025\n\nRead each complete garden-day situation and choose the best word or reply.",
+            "explanation": "B many问可数复数pots数量；A much问不可数；C old问年龄不接pots此结构。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "much"
+              },
+              {
+                "id": "o1",
+                "text": "many"
+              },
+              {
+                "id": "o2",
+                "text": "old"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "a56c8d2edbcfaf138c8e5de537a46af6caf40cdc16c31a3a03a55ce49fabd0f1",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-commonchoices10-art#primary3.garden-day-ten-sentences-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q1",
+            "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q2",
+            "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q3",
+            "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q4",
+            "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q5",
+            "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q6",
+            "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q7",
+            "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q8",
+            "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q9",
+            "expansion.20261028.primary3.garden-day-ten-sentences-025.reading.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "original.primary3-commonchoices10-art",
+          "sourceContentHash": "4f3991e54ee58e6cb06a859a4712d56107c5a68cb4645fc2a29456cb25e633b8"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.nature-club-matching-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "自然社出发前的五个应答",
+        "summary": "自然社出发前的五个应答，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.responses",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.nature-club-matching-025",
+          "family": "dialogue_matching",
+          "label": "自然社出发前的五个应答",
+          "candidateSHA256": "11928d2152b3bc4fa7ee80327be20839664197d88992d92a83788fd71805a242",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary3-colours-people-responses#primary3.nature-club-matching-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Nature Club Matching 025\n\nMatch each question with the best reply. Use each reply once.\nA. A small notebook and a pencil.\nB. Because the path is muddy after rain.\nC. The helper by the wooden gate.\nD. Only after you have washed your hands.\nE. In the tray labelled with your class."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.nature-club-matching-025.reading.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What do we need for drawing leaves?",
+            "material": "Nature Club Matching 025\n\nMatch each question with the best reply. Use each reply once.\nA. A small notebook and a pencil.\nB. Because the path is muddy after rain.\nC. The helper by the wooden gate.\nD. Only after you have washed your hands.\nE. In the tray labelled with your class.",
+            "explanation": "A本和铅笔是画叶工具；B原因、C人员、D进食条件、E存放处均非用品。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A small notebook and a pencil."
+              },
+              {
+                "id": "o1",
+                "text": "Because the path is muddy after rain."
+              },
+              {
+                "id": "o2",
+                "text": "The helper by the wooden gate."
+              },
+              {
+                "id": "o3",
+                "text": "Only after you have washed your hands."
+              },
+              {
+                "id": "o4",
+                "text": "In the tray labelled with your class."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.nature-club-matching-025.reading.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why should we wear boots today?",
+            "material": "Nature Club Matching 025\n\nMatch each question with the best reply. Use each reply once.\nA. A small notebook and a pencil.\nB. Because the path is muddy after rain.\nC. The helper by the wooden gate.\nD. Only after you have washed your hands.\nE. In the tray labelled with your class.",
+            "explanation": "B雨后路泥解释靴用途；A文具、C帮手、D洗手条件、E盘位不答原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A small notebook and a pencil."
+              },
+              {
+                "id": "o1",
+                "text": "Because the path is muddy after rain."
+              },
+              {
+                "id": "o2",
+                "text": "The helper by the wooden gate."
+              },
+              {
+                "id": "o3",
+                "text": "Only after you have washed your hands."
+              },
+              {
+                "id": "o4",
+                "text": "In the tray labelled with your class."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.nature-club-matching-025.reading.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who can check our group cards?",
+            "material": "Nature Club Matching 025\n\nMatch each question with the best reply. Use each reply once.\nA. A small notebook and a pencil.\nB. Because the path is muddy after rain.\nC. The helper by the wooden gate.\nD. Only after you have washed your hands.\nE. In the tray labelled with your class.",
+            "explanation": "C木门旁帮手答Who；A用品、B原因、D时机、E盘位均非人员。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A small notebook and a pencil."
+              },
+              {
+                "id": "o1",
+                "text": "Because the path is muddy after rain."
+              },
+              {
+                "id": "o2",
+                "text": "The helper by the wooden gate."
+              },
+              {
+                "id": "o3",
+                "text": "Only after you have washed your hands."
+              },
+              {
+                "id": "o4",
+                "text": "In the tray labelled with your class."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.nature-club-matching-025.reading.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "May we eat our snacks after working in the soil?",
+            "material": "Nature Club Matching 025\n\nMatch each question with the best reply. Use each reply once.\nA. A small notebook and a pencil.\nB. Because the path is muddy after rain.\nC. The helper by the wooden gate.\nD. Only after you have washed your hands.\nE. In the tray labelled with your class.",
+            "explanation": "D洗手后方可回应带条件许可；A画具、B路泥、C人员、E盘位不答食前要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A small notebook and a pencil."
+              },
+              {
+                "id": "o1",
+                "text": "Because the path is muddy after rain."
+              },
+              {
+                "id": "o2",
+                "text": "The helper by the wooden gate."
+              },
+              {
+                "id": "o3",
+                "text": "Only after you have washed your hands."
+              },
+              {
+                "id": "o4",
+                "text": "In the tray labelled with your class."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary3.nature-club-matching-025.reading.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where should we leave our finished leaf drawings?",
+            "material": "Nature Club Matching 025\n\nMatch each question with the best reply. Use each reply once.\nA. A small notebook and a pencil.\nB. Because the path is muddy after rain.\nC. The helper by the wooden gate.\nD. Only after you have washed your hands.\nE. In the tray labelled with your class.",
+            "explanation": "E班名盘为作品放处；A用品、B原因、C人员、D洗手进食条件不答作品位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A small notebook and a pencil."
+              },
+              {
+                "id": "o1",
+                "text": "Because the path is muddy after rain."
+              },
+              {
+                "id": "o2",
+                "text": "The helper by the wooden gate."
+              },
+              {
+                "id": "o3",
+                "text": "Only after you have washed your hands."
+              },
+              {
+                "id": "o4",
+                "text": "In the tray labelled with your class."
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "7c34ed38f2a500e0bd984ade87893128b029d8bc5c325ff7e1903019ff8a7ecc",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-colours-people-responses#primary3.nature-club-matching-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.nature-club-matching-025.reading.q1",
+            "expansion.20261028.primary3.nature-club-matching-025.reading.q2",
+            "expansion.20261028.primary3.nature-club-matching-025.reading.q3",
+            "expansion.20261028.primary3.nature-club-matching-025.reading.q4",
+            "expansion.20261028.primary3.nature-club-matching-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-colours-people-responses",
+          "sourceContentHash": "a4694c083157289d3f8c0a9d61da7d33a35e5bf8c95a39c9780812ab16e3ed57"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.stage-box-bank-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "舞台布置前的箱子词库",
+        "summary": "舞台布置前的箱子词库，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小四历史公开转载的完整文字组：一篇五判断／五独立句五共享词或短语／六中文情境六共享表达，分别绑定，不拼组合。上册正文2012—13与网页2021、下册未署年分开；学校施测与现行难度未认证。原读答F把未提当假的缺陷保留，原创F均明示反证；不添加未印的一次规则。图片/音频缺失任务未恢复。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.stage-box-bank-025",
+          "family": "shared_bank",
+          "label": "舞台布置前的箱子词库",
+          "candidateSHA256": "67189e9b40f5697d36070f0ad101653f7bb44bc1feb3901920ca0756adcc95fd",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary4-who-age-fixed-bank#primary4.stage-box-bank-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Stage Box Bank 025\n\nChoose the word for every gap. Use each word once. Bank: A. carefully B. before C. heavy D. beside E. help\nWe set up the stage ____1____ the audience arrives. A large box is too ____2____ for one child to lift. We ask an adult for ____3____. The adult puts it ____4____ the wall, not in the doorway. We open it ____5____ so the paper decorations inside do not tear."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.stage-box-bank-025.reading.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Stage Box Bank 025\n\nChoose the word for every gap. Use each word once. Bank: A. carefully B. before C. heavy D. beside E. help\nWe set up the stage ____1____ the audience arrives. A large box is too ____2____ for one child to lift. We ask an adult for ____3____. The adult puts it ____4____ the wall, not in the doorway. We open it ____5____ so the paper decorations inside do not tear.",
+            "explanation": "B before观众来前布台；A carefully副词不连接完整句；C heavy形容词、D beside位置、E help名动词均不接此时间从句。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "carefully"
+              },
+              {
+                "id": "o1",
+                "text": "before"
+              },
+              {
+                "id": "o2",
+                "text": "heavy"
+              },
+              {
+                "id": "o3",
+                "text": "beside"
+              },
+              {
+                "id": "o4",
+                "text": "help"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.stage-box-bank-025.reading.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Stage Box Bank 025\n\nChoose the word for every gap. Use each word once. Bank: A. carefully B. before C. heavy D. beside E. help\nWe set up the stage ____1____ the audience arrives. A large box is too ____2____ for one child to lift. We ask an adult for ____3____. The adult puts it ____4____ the wall, not in the doorway. We open it ____5____ so the paper decorations inside do not tear.",
+            "explanation": "C heavy与一人抬不动相应；A carefully副词、B before、D beside介词、E help名动词均非形容箱重。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "carefully"
+              },
+              {
+                "id": "o1",
+                "text": "before"
+              },
+              {
+                "id": "o2",
+                "text": "heavy"
+              },
+              {
+                "id": "o3",
+                "text": "beside"
+              },
+              {
+                "id": "o4",
+                "text": "help"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.stage-box-bank-025.reading.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Stage Box Bank 025\n\nChoose the word for every gap. Use each word once. Bank: A. carefully B. before C. heavy D. beside E. help\nWe set up the stage ____1____ the audience arrives. A large box is too ____2____ for one child to lift. We ask an adult for ____3____. The adult puts it ____4____ the wall, not in the doorway. We open it ____5____ so the paper decorations inside do not tear.",
+            "explanation": "E ask for help求助；A carefully副词、B before、D beside介词、C heavy形容词不能独作所求帮助名词。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "carefully"
+              },
+              {
+                "id": "o1",
+                "text": "before"
+              },
+              {
+                "id": "o2",
+                "text": "heavy"
+              },
+              {
+                "id": "o3",
+                "text": "beside"
+              },
+              {
+                "id": "o4",
+                "text": "help"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261028.primary4.stage-box-bank-025.reading.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Stage Box Bank 025\n\nChoose the word for every gap. Use each word once. Bank: A. carefully B. before C. heavy D. beside E. help\nWe set up the stage ____1____ the audience arrives. A large box is too ____2____ for one child to lift. We ask an adult for ____3____. The adult puts it ____4____ the wall, not in the doorway. We open it ____5____ so the paper decorations inside do not tear.",
+            "explanation": "D beside wall与not doorway对应；A carefully方式、B before时间、C heavy状态、E help动作均不表达墙旁位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "carefully"
+              },
+              {
+                "id": "o1",
+                "text": "before"
+              },
+              {
+                "id": "o2",
+                "text": "heavy"
+              },
+              {
+                "id": "o3",
+                "text": "beside"
+              },
+              {
+                "id": "o4",
+                "text": "help"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary4.stage-box-bank-025.reading.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Stage Box Bank 025\n\nChoose the word for every gap. Use each word once. Bank: A. carefully B. before C. heavy D. beside E. help\nWe set up the stage ____1____ the audience arrives. A large box is too ____2____ for one child to lift. We ask an adult for ____3____. The adult puts it ____4____ the wall, not in the doorway. We open it ____5____ so the paper decorations inside do not tear.",
+            "explanation": "A carefully小心开以免纸饰破；B before、C heavy、D beside、E help均非修饰open的所需方式副词。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "carefully"
+              },
+              {
+                "id": "o1",
+                "text": "before"
+              },
+              {
+                "id": "o2",
+                "text": "heavy"
+              },
+              {
+                "id": "o3",
+                "text": "beside"
+              },
+              {
+                "id": "o4",
+                "text": "help"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "8462a43da78245da40a51d3beb969f6b9504660de9e06dbea5ccfcd49111f855",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-who-age-fixed-bank#primary4.stage-box-bank-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.stage-box-bank-025.reading.q1",
+            "expansion.20261028.primary4.stage-box-bank-025.reading.q2",
+            "expansion.20261028.primary4.stage-box-bank-025.reading.q3",
+            "expansion.20261028.primary4.stage-box-bank-025.reading.q4",
+            "expansion.20261028.primary4.stage-box-bank-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-who-age-fixed-bank",
+          "sourceContentHash": "35f5e0a95722fffe0670c669fa48ba4738c97cd171a7d4b3c93c874e928f5bfd"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.dropped-coin-story-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "长椅下面的硬币",
+        "summary": "长椅下面的硬币，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.dropped-coin-story-025",
+          "family": "reading_choice",
+          "label": "长椅下面的硬币",
+          "candidateSHA256": "f12a9a6266cf60085738992df9201dfdede84c8b6809c24de212c5b44762f7eb",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary4-book-bus-call#primary4.dropped-coin-story-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Dropped Coin Story 025\n\nA coin rolls under a park bench. It belongs to a little child buying a postcard. Sara sees it but cannot reach it with her fingers. She does not move the heavy bench. She asks the park helper for a long broom. The helper uses it gently to move the coin out. Sara hands the coin to the child, who buys the postcard for his grandpa. He draws a small thank-you star on the back before writing the address."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.dropped-coin-story-025.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who owns the coin?",
+            "material": "Dropped Coin Story 025\n\nA coin rolls under a park bench. It belongs to a little child buying a postcard. Sara sees it but cannot reach it with her fingers. She does not move the heavy bench. She asks the park helper for a long broom. The helper uses it gently to move the coin out. Sara hands the coin to the child, who buys the postcard for his grandpa. He draws a small thank-you star on the back before writing the address.",
+            "explanation": "A小孩买明信片的钱；B教师、C帮手非物主。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A little child."
+              },
+              {
+                "id": "o1",
+                "text": "Sara’s teacher."
+              },
+              {
+                "id": "o2",
+                "text": "The park helper."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.dropped-coin-story-025.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Sara need help?",
+            "material": "Dropped Coin Story 025\n\nA coin rolls under a park bench. It belongs to a little child buying a postcard. Sara sees it but cannot reach it with her fingers. She does not move the heavy bench. She asks the park helper for a long broom. The helper uses it gently to move the coin out. Sara hands the coin to the child, who buys the postcard for his grandpa. He draws a small thank-you star on the back before writing the address.",
+            "explanation": "B手指够不到；A太热、C买椅无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The coin is too hot."
+              },
+              {
+                "id": "o1",
+                "text": "She cannot reach it under the bench."
+              },
+              {
+                "id": "o2",
+                "text": "She wants to buy the bench."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.dropped-coin-story-025.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What tool does the helper use?",
+            "material": "Dropped Coin Story 025\n\nA coin rolls under a park bench. It belongs to a little child buying a postcard. Sara sees it but cannot reach it with her fingers. She does not move the heavy bench. She asks the park helper for a long broom. The helper uses it gently to move the coin out. Sara hands the coin to the child, who buys the postcard for his grandpa. He draws a small thank-you star on the back before writing the address.",
+            "explanation": "C长扫帚轻移硬币；A锯、B漆罐未用。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A saw."
+              },
+              {
+                "id": "o1",
+                "text": "A paint pot."
+              },
+              {
+                "id": "o2",
+                "text": "A long broom."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.dropped-coin-story-025.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Sara do with the coin?",
+            "material": "Dropped Coin Story 025\n\nA coin rolls under a park bench. It belongs to a little child buying a postcard. Sara sees it but cannot reach it with her fingers. She does not move the heavy bench. She asks the park helper for a long broom. The helper uses it gently to move the coin out. Sara hands the coin to the child, who buys the postcard for his grandpa. He draws a small thank-you star on the back before writing the address.",
+            "explanation": "A还孩子；B留奖励、C扔池均非行为。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Return it to the child."
+              },
+              {
+                "id": "o1",
+                "text": "Keep it as a prize."
+              },
+              {
+                "id": "o2",
+                "text": "Throw it into the pond."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.dropped-coin-story-025.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who is the postcard for?",
+            "material": "Dropped Coin Story 025\n\nA coin rolls under a park bench. It belongs to a little child buying a postcard. Sara sees it but cannot reach it with her fingers. She does not move the heavy bench. She asks the park helper for a long broom. The helper uses it gently to move the coin out. Sara hands the coin to the child, who buys the postcard for his grandpa. He draws a small thank-you star on the back before writing the address.",
+            "explanation": "B送孩子爷爷；A Sara、C清洁工狗都非收件人。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Sara only."
+              },
+              {
+                "id": "o1",
+                "text": "The child’s grandpa."
+              },
+              {
+                "id": "o2",
+                "text": "The park cleaner’s dog."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "533a92698a7571c6396e06cdaa038fce5b66d290d58db9e853828abaa4132280",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-book-bus-call#primary4.dropped-coin-story-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.dropped-coin-story-025.reading.q1",
+            "expansion.20261028.primary4.dropped-coin-story-025.reading.q2",
+            "expansion.20261028.primary4.dropped-coin-story-025.reading.q3",
+            "expansion.20261028.primary4.dropped-coin-story-025.reading.q4",
+            "expansion.20261028.primary4.dropped-coin-story-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-book-bus-call",
+          "sourceContentHash": "5237c2b519c0bea74c51656808b22df9c776e14bf36f397fcbd54a9367ed2198"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.classroom-sleeping-seed-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "还没有发芽的那一格",
+        "summary": "还没有发芽的那一格，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.classroom-sleeping-seed-025",
+          "family": "reading_tf",
+          "label": "还没有发芽的那一格",
+          "candidateSHA256": "a909b696935caea1ebfd7677b7e091cfa45c7ccdfc3bca4ccf1b072c364485d9",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.class-garden-reading#primary4.classroom-sleeping-seed-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Classroom Sleeping Seed 025\n\nWe plant seeds in a classroom tray. Each row has a label. After one week, green shoots appear in two rows, but the third row looks empty. A pupil wants to throw its soil away. The teacher asks us to read the seed packet. Those seeds usually take longer to start growing. We keep the row and continue the same careful watering. Four days later, one shoot appears. We write its date on the label instead of changing the earlier observation."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.classroom-sleeping-seed-025.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Shoots appear in all three rows after one week.",
+            "material": "Classroom Sleeping Seed 025\n\nWe plant seeds in a classroom tray. Each row has a label. After one week, green shoots appear in two rows, but the third row looks empty. A pupil wants to throw its soil away. The teacher asks us to read the seed packet. Those seeds usually take longer to start growing. We keep the row and continue the same careful watering. Four days later, one shoot appears. We write its date on the label instead of changing the earlier observation.",
+            "explanation": "B正确：两行有芽，第三未见；A把两行扩大三行。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.classroom-sleeping-seed-025.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The seed packet says the third kind takes longer.",
+            "material": "Classroom Sleeping Seed 025\n\nWe plant seeds in a classroom tray. Each row has a label. After one week, green shoots appear in two rows, but the third row looks empty. A pupil wants to throw its soil away. The teacher asks us to read the seed packet. Those seeds usually take longer to start growing. We keep the row and continue the same careful watering. Four days later, one shoot appears. We write its date on the label instead of changing the earlier observation.",
+            "explanation": "A正确：those seeds usually longer；B否认保留原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.classroom-sleeping-seed-025.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class throws the third row’s soil away immediately.",
+            "material": "Classroom Sleeping Seed 025\n\nWe plant seeds in a classroom tray. Each row has a label. After one week, green shoots appear in two rows, but the third row looks empty. A pupil wants to throw its soil away. The teacher asks us to read the seed packet. Those seeds usually take longer to start growing. We keep the row and continue the same careful watering. Four days later, one shoot appears. We write its date on the label instead of changing the earlier observation.",
+            "explanation": "B正确：keep row继续照料；A把未采纳提议当执行。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.classroom-sleeping-seed-025.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "One shoot appears in the third row four days later.",
+            "material": "Classroom Sleeping Seed 025\n\nWe plant seeds in a classroom tray. Each row has a label. After one week, green shoots appear in two rows, but the third row looks empty. A pupil wants to throw its soil away. The teacher asks us to read the seed packet. Those seeds usually take longer to start growing. We keep the row and continue the same careful watering. Four days later, one shoot appears. We write its date on the label instead of changing the earlier observation.",
+            "explanation": "A正确：four days later one shoot；B否认后来观察。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.classroom-sleeping-seed-025.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class records the new date without rewriting what was seen earlier.",
+            "material": "Classroom Sleeping Seed 025\n\nWe plant seeds in a classroom tray. Each row has a label. After one week, green shoots appear in two rows, but the third row looks empty. A pupil wants to throw its soil away. The teacher asks us to read the seed packet. Those seeds usually take longer to start growing. We keep the row and continue the same careful watering. Four days later, one shoot appears. We write its date on the label instead of changing the earlier observation.",
+            "explanation": "A正确：write date instead changing earlier observation；B否认时间记录边界。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "bb3d8ce124c905961942e1f1f6bd8ef532d78a2f945550522b9a139e8025f46f",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.class-garden-reading#primary4.classroom-sleeping-seed-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.classroom-sleeping-seed-025.reading.q1",
+            "expansion.20261028.primary4.classroom-sleeping-seed-025.reading.q2",
+            "expansion.20261028.primary4.classroom-sleeping-seed-025.reading.q3",
+            "expansion.20261028.primary4.classroom-sleeping-seed-025.reading.q4",
+            "expansion.20261028.primary4.classroom-sleeping-seed-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.class-garden-reading",
+          "sourceContentHash": "c48d0add74ac202b6eee2f6cafe95556edd3c7176f1da3b56f14a6e7036dfdab"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.umbrella-repair-schedule-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "雨伞维修台的预约表",
+        "summary": "雨伞维修台的预约表，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.timetable_bonus",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式分层参照：小五五响应四选整表仍仅有既存模拟附加题，不冒称普通真题补足；高二一完整项目含资格/申请/三行课时表/福利三题四选，源网页身份标题/正文未独立确认且资格题原键不足仍保留；初一四活动卡三人物/一多余含时间地点，源未印一次限制，新题不加，历史首稿自设once另记。原创全部说明/表头/行/候选保留；教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.umbrella-repair-schedule-025",
+          "family": "reading_choice",
+          "label": "雨伞维修台的预约表",
+          "candidateSHA256": "a4bca8405d2e541bc5e40544d0bb7cea242d4b22b798bd2f4d9c81c54d2ecdc0",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary5-weekend-centre-table#primary5.umbrella-repair-schedule-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Umbrella Repair Schedule 025\n\nSaturday umbrella repair desk\n9:00–10:00: simple fabric patches, bring a dry umbrella.\n10:00–11:00: handle checks, adult repair volunteer only.\n11:30–12:30: collection of finished items.\nEach visitor may bring one umbrella. Volunteers cannot promise every item can be fixed. Broken metal ribs need specialist equipment and will be returned with advice. Attach your booking number to the handle; do not put your home address on the public label. If your repair is not ready by collection time, staff will contact you using the private booking record. Please do not queue before 8:50 because the building entrance must remain clear."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.umbrella-repair-schedule-025.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which session is for fabric patches?",
+            "material": "Umbrella Repair Schedule 025\n\nSaturday umbrella repair desk\n9:00–10:00: simple fabric patches, bring a dry umbrella.\n10:00–11:00: handle checks, adult repair volunteer only.\n11:30–12:30: collection of finished items.\nEach visitor may bring one umbrella. Volunteers cannot promise every item can be fixed. Broken metal ribs need specialist equipment and will be returned with advice. Attach your booking number to the handle; do not put your home address on the public label. If your repair is not ready by collection time, staff will contact you using the private booking record. Please do not queue before 8:50 because the building entrance must remain clear.",
+            "explanation": "C九至十补布；A把手检查；B领取；D无下午场。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "10:00–11:00."
+              },
+              {
+                "id": "o1",
+                "text": "11:30–12:30."
+              },
+              {
+                "id": "o2",
+                "text": "9:00–10:00."
+              },
+              {
+                "id": "o3",
+                "text": "All afternoon."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.umbrella-repair-schedule-025.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a visitor bring for patching?",
+            "material": "Umbrella Repair Schedule 025\n\nSaturday umbrella repair desk\n9:00–10:00: simple fabric patches, bring a dry umbrella.\n10:00–11:00: handle checks, adult repair volunteer only.\n11:30–12:30: collection of finished items.\nEach visitor may bring one umbrella. Volunteers cannot promise every item can be fixed. Broken metal ribs need specialist equipment and will be returned with advice. Attach your booking number to the handle; do not put your home address on the public label. If your repair is not ready by collection time, staff will contact you using the private booking record. Please do not queue before 8:50 because the building entrance must remain clear.",
+            "explanation": "A干伞且每人一把；B多把且湿；C公共标不可家址；D访客无需金属设备。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A dry umbrella."
+              },
+              {
+                "id": "o1",
+                "text": "Five wet umbrellas."
+              },
+              {
+                "id": "o2",
+                "text": "A home-address sign."
+              },
+              {
+                "id": "o3",
+                "text": "Specialist metal-cutting equipment."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.umbrella-repair-schedule-025.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens to broken metal ribs?",
+            "material": "Umbrella Repair Schedule 025\n\nSaturday umbrella repair desk\n9:00–10:00: simple fabric patches, bring a dry umbrella.\n10:00–11:00: handle checks, adult repair volunteer only.\n11:30–12:30: collection of finished items.\nEach visitor may bring one umbrella. Volunteers cannot promise every item can be fixed. Broken metal ribs need specialist equipment and will be returned with advice. Attach your booking number to the handle; do not put your home address on the public label. If your repair is not ready by collection time, staff will contact you using the private booking record. Please do not queue before 8:50 because the building entrance must remain clear.",
+            "explanation": "B需专门设备故返并建议；A儿童单修、C保证、D隐藏均无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Children repair them alone."
+              },
+              {
+                "id": "o1",
+                "text": "They are returned with specialist advice."
+              },
+              {
+                "id": "o2",
+                "text": "They are guaranteed fixed by nine."
+              },
+              {
+                "id": "o3",
+                "text": "They are hidden in finished umbrellas."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.umbrella-repair-schedule-025.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should be written on the public item label?",
+            "material": "Umbrella Repair Schedule 025\n\nSaturday umbrella repair desk\n9:00–10:00: simple fabric patches, bring a dry umbrella.\n10:00–11:00: handle checks, adult repair volunteer only.\n11:30–12:30: collection of finished items.\nEach visitor may bring one umbrella. Volunteers cannot promise every item can be fixed. Broken metal ribs need specialist equipment and will be returned with advice. Attach your booking number to the handle; do not put your home address on the public label. If your repair is not ready by collection time, staff will contact you using the private booking record. Please do not queue before 8:50 because the building entrance must remain clear.",
+            "explanation": "D预约号标签贴柄；A家址明禁；B邻号、C风暴记录非内容。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The visitor’s full home address."
+              },
+              {
+                "id": "o1",
+                "text": "A neighbour’s phone number."
+              },
+              {
+                "id": "o2",
+                "text": "Only the date of every storm."
+              },
+              {
+                "id": "o3",
+                "text": "The booking number."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.umbrella-repair-schedule-025.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How will someone hear about an unfinished repair?",
+            "material": "Umbrella Repair Schedule 025\n\nSaturday umbrella repair desk\n9:00–10:00: simple fabric patches, bring a dry umbrella.\n10:00–11:00: handle checks, adult repair volunteer only.\n11:30–12:30: collection of finished items.\nEach visitor may bring one umbrella. Volunteers cannot promise every item can be fixed. Broken metal ribs need specialist equipment and will be returned with advice. Attach your booking number to the handle; do not put your home address on the public label. If your repair is not ready by collection time, staff will contact you using the private booking record. Please do not queue before 8:50 because the building entrance must remain clear.",
+            "explanation": "A员工用私预约记录联系；B公示家址不允许；C/D不是通知方式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Through the private booking contact record."
+              },
+              {
+                "id": "o1",
+                "text": "By reading every public home address."
+              },
+              {
+                "id": "o2",
+                "text": "By collecting a different umbrella."
+              },
+              {
+                "id": "o3",
+                "text": "By waiting at the entrance all night."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "d99ed4e3015371e66c835bbeeb5865eaadc52f1169bf0e31f5fd812fe0859105",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-weekend-centre-table#primary5.umbrella-repair-schedule-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.umbrella-repair-schedule-025.reading.q1",
+            "expansion.20261028.primary5.umbrella-repair-schedule-025.reading.q2",
+            "expansion.20261028.primary5.umbrella-repair-schedule-025.reading.q3",
+            "expansion.20261028.primary5.umbrella-repair-schedule-025.reading.q4",
+            "expansion.20261028.primary5.umbrella-repair-schedule-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-weekend-centre-table",
+          "sourceContentHash": "2e22aca4bb15cfc85ffb95798e9ce839cb677536aa9294861c3a89abbd2d8000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.garden-bench-note-story-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "长椅上那张请勿搬走的便条",
+        "summary": "长椅上那张请勿搬走的便条，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 五题二选判断另获已核房山2024-2025五上区卷完整形式参照；前版模拟参照与作者稿均保留，正文/题目/键未改；新来源不是独立学生认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.garden-bench-note-story-025",
+          "family": "reading_tf",
+          "label": "长椅上那张请勿搬走的便条",
+          "candidateSHA256": "8ee34e5c73e9269e3450253c9ed61ce6d79174c9392d1cf1167d78b5770ad602",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary5-postcards-reading-tf#primary5.garden-bench-note-story-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Garden Bench Note Story 025\n\nA new bench appeared beside our block’s garden. Someone attached a note saying, \"Please leave this space clear on Tuesdays.\" I thought the bench was reserved for one person every week. Later, I saw a delivery worker push a trolley through the gap next to it. The note was about the path, not the seat. The garden team moved the note to a small post beside the gap and added the words \"Delivery access.\" People could still sit on the bench while keeping their bags out of the route. I was glad the new sign explained the purpose instead of making us guess."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.garden-bench-note-story-025.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer first thinks the bench itself is reserved every Tuesday.",
+            "material": "Garden Bench Note Story 025\n\nA new bench appeared beside our block’s garden. Someone attached a note saying, \"Please leave this space clear on Tuesdays.\" I thought the bench was reserved for one person every week. Later, I saw a delivery worker push a trolley through the gap next to it. The note was about the path, not the seat. The garden team moved the note to a small post beside the gap and added the words \"Delivery access.\" People could still sit on the bench while keeping their bags out of the route. I was glad the new sign explained the purpose instead of making us guess.",
+            "explanation": "A正确：初以为每周一人专座；B否认初始理解。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.garden-bench-note-story-025.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The gap is used for delivery access.",
+            "material": "Garden Bench Note Story 025\n\nA new bench appeared beside our block’s garden. Someone attached a note saying, \"Please leave this space clear on Tuesdays.\" I thought the bench was reserved for one person every week. Later, I saw a delivery worker push a trolley through the gap next to it. The note was about the path, not the seat. The garden team moved the note to a small post beside the gap and added the words \"Delivery access.\" People could still sit on the bench while keeping their bags out of the route. I was glad the new sign explained the purpose instead of making us guess.",
+            "explanation": "A正确：工人推车，后牌Delivery access；B否认目的。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.garden-bench-note-story-025.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The final rule forbids everyone from sitting on the bench.",
+            "material": "Garden Bench Note Story 025\n\nA new bench appeared beside our block’s garden. Someone attached a note saying, \"Please leave this space clear on Tuesdays.\" I thought the bench was reserved for one person every week. Later, I saw a delivery worker push a trolley through the gap next to it. The note was about the path, not the seat. The garden team moved the note to a small post beside the gap and added the words \"Delivery access.\" People could still sit on the bench while keeping their bags out of the route. I was glad the new sign explained the purpose instead of making us guess.",
+            "explanation": "B正确：仍可坐，只包不挡路；A把通道限制扩大禁座。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.garden-bench-note-story-025.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The sign is moved closer to the relevant gap.",
+            "material": "Garden Bench Note Story 025\n\nA new bench appeared beside our block’s garden. Someone attached a note saying, \"Please leave this space clear on Tuesdays.\" I thought the bench was reserved for one person every week. Later, I saw a delivery worker push a trolley through the gap next to it. The note was about the path, not the seat. The garden team moved the note to a small post beside the gap and added the words \"Delivery access.\" People could still sit on the bench while keeping their bags out of the route. I was glad the new sign explained the purpose instead of making us guess.",
+            "explanation": "A正确：移到gap旁小柱；B否认位置改进。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.garden-bench-note-story-025.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The revised sign gives no reason for keeping the space clear.",
+            "material": "Garden Bench Note Story 025\n\nA new bench appeared beside our block’s garden. Someone attached a note saying, \"Please leave this space clear on Tuesdays.\" I thought the bench was reserved for one person every week. Later, I saw a delivery worker push a trolley through the gap next to it. The note was about the path, not the seat. The garden team moved the note to a small post beside the gap and added the words \"Delivery access.\" People could still sit on the bench while keeping their bags out of the route. I was glad the new sign explained the purpose instead of making us guess.",
+            "explanation": "B正确：补Delivery access明确理由；A否认解释。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "92ef24cd59123e6515f9e1e7e6e1db9ffd2f4f586e751b1c2981594783055b11",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-postcards-reading-tf#primary5.garden-bench-note-story-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.garden-bench-note-story-025.reading.q1",
+            "expansion.20261028.primary5.garden-bench-note-story-025.reading.q2",
+            "expansion.20261028.primary5.garden-bench-note-story-025.reading.q3",
+            "expansion.20261028.primary5.garden-bench-note-story-025.reading.q4",
+            "expansion.20261028.primary5.garden-bench-note-story-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-postcards-reading-tf",
+          "sourceContentHash": "abbfa743243bd1553f8334a108e543753efba41c4ae8397f63cb09b02653b32e"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.book-club-note-forms-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "读书社交流后的词形笔记",
+        "summary": "读书社交流后的词形笔记，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.sentence_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.givenforms5",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照同一公开历史教辅导出卷的五题给词填空，保留五独立句、逐空给词、明确不限一词。该卷标题自署2016–17深圳实验学校六下，原校与实际施测未认证、原键缺；原He is is重印及walk多时态风险保留。自有句框独立重写，部分给出助动词缩小形态歧义，不复制源错句或声称精确能力等值。已核常用变体同等接受，合法表达未穷尽，未列形式待复核。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.book-club-note-forms-025",
+          "family": "sentence_form",
+          "label": "读书社交流后的词形笔记",
+          "candidateSHA256": "6509b66dcea7bdb3255dce0c11d578e41c51701155076251e8a942de8a56314d",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary6-givenforms5-courtesy#primary6.book-club-note-forms-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Book Club Note Forms 025\n\nUse the correct one-word form of each word to complete all five sentences.\n1. Yesterday, Liv ____1____ (write) the discussion questions on a card.\n2. The two ____2____ (woman) from the village library joined our meeting.\n3. This story is ____3____ (short) than the one we read last week.\n4. Please listen ____4____ (patient; use the conventional adverb ending in -ly) while another member explains an idea.\n5. The blue notebooks are ____5____ (they); the pupils put their names inside."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.book-club-note-forms-025.reading.q1",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 1: use WRITE.",
+            "material": "Book Club Note Forms 025\n\nUse the correct one-word form of each word to complete all five sentences.\n1. Yesterday, Liv ____1____ (write) the discussion questions on a card.\n2. The two ____2____ (woman) from the village library joined our meeting.\n3. This story is ____3____ (short) than the one we read last week.\n4. Please listen ____4____ (patient; use the conventional adverb ending in -ly) while another member explains an idea.\n5. The blue notebooks are ____5____ (they); the pupils put their names inside.",
+            "explanation": "接受wrote：Yesterday过去时，write不规则变wrote；write原形、writed错误、writing分词不作独立过去谓语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "wrote"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "write",
+                "writed",
+                "writing"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.book-club-note-forms-025.reading.q2",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 2: use WOMAN.",
+            "material": "Book Club Note Forms 025\n\nUse the correct one-word form of each word to complete all five sentences.\n1. Yesterday, Liv ____1____ (write) the discussion questions on a card.\n2. The two ____2____ (woman) from the village library joined our meeting.\n3. This story is ____3____ (short) than the one we read last week.\n4. Please listen ____4____ (patient; use the conventional adverb ending in -ly) while another member explains an idea.\n5. The blue notebooks are ____5____ (they); the pupils put their names inside.",
+            "explanation": "接受women：two明确复数，woman不规则变women；woman单数、womans错误、womens重复加s均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "women"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "woman",
+                "womans",
+                "womens"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.book-club-note-forms-025.reading.q3",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 3: use SHORT.",
+            "material": "Book Club Note Forms 025\n\nUse the correct one-word form of each word to complete all five sentences.\n1. Yesterday, Liv ____1____ (write) the discussion questions on a card.\n2. The two ____2____ (woman) from the village library joined our meeting.\n3. This story is ____3____ (short) than the one we read last week.\n4. Please listen ____4____ (patient; use the conventional adverb ending in -ly) while another member explains an idea.\n5. The blue notebooks are ____5____ (they); the pupils put their names inside.",
+            "explanation": "接受shorter：than比较两故事长度；short原级、shortest最高级、shortly副词均非该比较表语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "shorter"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "short",
+                "shortest",
+                "shortly"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.book-club-note-forms-025.reading.q4",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 4: write the conventional adverb ending in -ly from PATIENT.",
+            "material": "Book Club Note Forms 025\n\nUse the correct one-word form of each word to complete all five sentences.\n1. Yesterday, Liv ____1____ (write) the discussion questions on a card.\n2. The two ____2____ (woman) from the village library joined our meeting.\n3. This story is ____3____ (short) than the one we read last week.\n4. Please listen ____4____ (patient; use the conventional adverb ending in -ly) while another member explains an idea.\n5. The blue notebooks are ____5____ (they); the pupils put their names inside.",
+            "explanation": "接受patiently：本空明确要求PATIENT派生的常规-ly副词。列出的其他形态不满足本题-ly任务约束；这并不声称其在所有英语语境中不合法，也不因缺少明示比较就否定可能的隐含比较。未列形式仍进入复核。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "patiently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "patient",
+                "patients",
+                "patience"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.book-club-note-forms-025.reading.q5",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 5: use THEY.",
+            "material": "Book Club Note Forms 025\n\nUse the correct one-word form of each word to complete all five sentences.\n1. Yesterday, Liv ____1____ (write) the discussion questions on a card.\n2. The two ____2____ (woman) from the village library joined our meeting.\n3. This story is ____3____ (short) than the one we read last week.\n4. Please listen ____4____ (patient; use the conventional adverb ending in -ly) while another member explains an idea.\n5. The blue notebooks are ____5____ (they); the pupils put their names inside.",
+            "explanation": "接受theirs：are后独立物主表语，后无名词；they主格、their需接名词、them宾格不合所有关系。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "theirs"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "they",
+                "their",
+                "them"
+              ]
+            }
+          }
+        ]
+      },
+      "contentHash": "0f50c18352f918933a7374e52b64c2d68ad3aebb140fbab98702ab290e69612d",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-givenforms5-courtesy#primary6.book-club-note-forms-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.book-club-note-forms-025.reading.q1",
+            "expansion.20261028.primary6.book-club-note-forms-025.reading.q2",
+            "expansion.20261028.primary6.book-club-note-forms-025.reading.q3",
+            "expansion.20261028.primary6.book-club-note-forms-025.reading.q4",
+            "expansion.20261028.primary6.book-club-note-forms-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-givenforms5-courtesy",
+          "sourceContentHash": "f9dad4922e04cafe16a6964586d267abc0c7f83b8ce5a8f10b7768174f7d8ba6"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.exhibition-help-functions-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "展览参观中的具体交际",
+        "summary": "展览参观中的具体交际，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.minzhi2016-17.contexts",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 本组仅参照旧转载小六五个中文情境、每题三候选的可见结构。原四页PDF第14题跨物理第2—3页，参考键在第4页；14.2.B原版面仅有未完表达，原输入未完整核清，14.2与14.5另有回应功能重叠，不能将旧全输入标志或参考键当完整/唯一正确的质量准入。原件及原键保留；本稿五题的情境、全部候选和逐项依据为完整原创，未沿用截断或功能重叠题。原校/实际施测、难度、独立教研、学生、商用及生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.exhibition-help-functions-025",
+          "family": "sentence_choice",
+          "label": "展览参观中的具体交际",
+          "candidateSHA256": "42ecdcf690d709bf25a36aeadd7cc1f57a9515f46acd02cb28f9481ff63f39ca",
+          "authorCheckSHA256": "fd7cce115b635430700ca11fcb0f84c453d2991ce57e6960676385d01f535f06",
+          "sourceGroupIds": [
+            "original.primary6-permission-and-people-functions#primary6.exhibition-help-functions-025.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b059；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Exhibition Help Functions 025\n\nChoose the best sentence for each visitor’s stated purpose."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.exhibition-help-functions-025.reading.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You are asked to keep a doorway clear and want to check where your bag can go. What should you ask?",
+            "material": "Exhibition Help Functions 025\n\nChoose the best sentence for each visitor’s stated purpose.",
+            "explanation": "A问不堵门的存包点；B几何泛问、C关展不达存包需求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Where may I leave my bag without blocking the doorway?"
+              },
+              {
+                "id": "o1",
+                "text": "Why is every doorway a square?"
+              },
+              {
+                "id": "o2",
+                "text": "Can I close the whole exhibition?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.exhibition-help-functions-025.reading.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A label is too small for you to read. You want another format. What should you say?",
+            "material": "Exhibition Help Functions 025\n\nChoose the best sentence for each visitor’s stated purpose.",
+            "explanation": "B具体请求大字形式；A否定价值、C全撤说明不帮助阅读。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "This exhibition has no value."
+              },
+              {
+                "id": "o1",
+                "text": "Is a larger-print version of this label available?"
+              },
+              {
+                "id": "o2",
+                "text": "Please remove every label."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.exhibition-help-functions-025.reading.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You have accidentally stepped ahead of a waiting visitor. You want to correct it politely. What should you say?",
+            "material": "Exhibition Help Functions 025\n\nChoose the best sentence for each visitor’s stated purpose.",
+            "explanation": "C承认先后并礼让；A抢先、B否排队不纠失礼。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I am always first."
+              },
+              {
+                "id": "o1",
+                "text": "You should never queue."
+              },
+              {
+                "id": "o2",
+                "text": "I am sorry; you were waiting before me. Please go ahead."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.exhibition-help-functions-025.reading.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You want to know whether a displayed model may be touched. What should you ask?",
+            "material": "Exhibition Help Functions 025\n\nChoose the best sentence for each visitor’s stated purpose.",
+            "explanation": "A明确触摸许可边界；B星数、C买楼均无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "May visitors touch this model, or should we only look?"
+              },
+              {
+                "id": "o1",
+                "text": "How many stars are in the sky?"
+              },
+              {
+                "id": "o2",
+                "text": "Could you sell me the building?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.exhibition-help-functions-025.reading.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A guide has answered your question, and you want to confirm your understanding. What should you say?",
+            "material": "Exhibition Help Functions 025\n\nChoose the best sentence for each visitor’s stated purpose.",
+            "explanation": "B复述两个具体点并求确认；A假装理解、C鞋尺无关澄清。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I will pretend I heard everything."
+              },
+              {
+                "id": "o1",
+                "text": "So the workshop starts at two, and we meet here. Is that right?"
+              },
+              {
+                "id": "o2",
+                "text": "Your shoes are not my size."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "c6e403f4a598f3df2aaf30ef569be1304c7a70c300a9cfef9e6eef3ffcc07393",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-permission-and-people-functions#primary6.exhibition-help-functions-025.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.exhibition-help-functions-025.reading.q1",
+            "expansion.20261028.primary6.exhibition-help-functions-025.reading.q2",
+            "expansion.20261028.primary6.exhibition-help-functions-025.reading.q3",
+            "expansion.20261028.primary6.exhibition-help-functions-025.reading.q4",
+            "expansion.20261028.primary6.exhibition-help-functions-025.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-permission-and-people-functions",
+          "sourceContentHash": "b583d54b43c6897313af67bb380d49f9313bbbb3315818c8ff76454f2a4854f5"
+        }
+      ]
+    }
+  ]
+}

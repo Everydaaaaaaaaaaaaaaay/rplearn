@@ -5,8 +5,8 @@
   "correction": {
     "sourceBatch": "b005",
     "question": "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q4",
-    "behavior": "slow and slowly accepted; canonical solution slowly; slower/slowest remain rejected. Exact full-question hash excludes only remapped local/bank ID, so unrelated wording/material cannot inherit the correction.",
-    "authorEvidence": "Backend/config/learning/expansions/2026-10-28/sources/primary2-6-005-v3.json",
+    "behavior": "slow and slowly accepted, canonical slowly; unconstrained slower/slowest require review instead of automatic rejection; only clearly malformed slowlyer/slowliest rejected.",
+    "authorEvidence": "Backend/config/learning/expansions/2026-10-28/sources/primary2-6-005-v4.json",
     "preservation": "Old source/manifests, unit version/hash, stored answers/results/receipts and earned points unchanged. Later valid retry earns at most the previously-unearned point.",
     "supply": "Correction evidence is not an additional practice or publication batch."
   },
@@ -20,5 +20,12 @@
     "architecture": "passed",
     "isolatedDatabase": "Reused existing cluster; stopped normally and preserved."
   },
-  "deployment": "Pending combined guarded release; author self-review is not independent teacher calibration."
+  "deployment": "Pending combined guarded release; author self-review is not independent teacher calibration.",
+  "followupCommit": "b1d52dce",
+  "followupChecks": {
+    "focusedTestsPassed": 26,
+    "revisionTestsAfterLintFix": 8,
+    "evidence": "build/learning-supply-audit-20261028/grading-revisions-v4-unit.log",
+    "databaseRerun": "No implementation change; prior historical receipt/reward preservation proof retained."
+  }
 }
