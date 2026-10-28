@@ -98,6 +98,11 @@ actor LearningAchievementPreviewService: LearningServing, LearningDirectionServi
     private let level: String
     private let cycleID = UUID()
     private var points = 3 * 60 + 59
+    private var currentLevel: String {
+        let levels = DifficultyLevel.allCases.map(\.rawValue)
+        guard points >= 540, let index = levels.firstIndex(of: level), index + 1 < levels.count else { return level }
+        return levels[index + 1]
+    }
     init(character: CharacterDTO, level: String) {
         characterID = character.id; self.level = level
         role = character.card.name.components(separatedBy: " ").first?.lowercased() ?? "oliver"
@@ -108,13 +113,18 @@ actor LearningAchievementPreviewService: LearningServing, LearningDirectionServi
     }
     func learningCharacter(_ id: UUID) throws -> BackendLearningCharacter {
         try decode(["characterId": characterID.uuidString, "roleKey": role, "cycleId": cycleID.uuidString,
-                    "characters": 500, "threshold": 500, "revision": 1, "level": level, "availableUnits": 1])
+                    "characters": 500, "threshold": 500, "revision": 1, "level": currentLevel, "availableUnits": 1])
     }
     func learningJourney() throws -> LearningJourney {
-        try decode(["currentLevel": level,
+        var levels: [[String: Any]] = [["level": level, "points": points, "displayPoints": points, "targetPoints": 540,
+                                      "stars": points / 60, "currentStarPoints": points == 540 ? 60 : points % 60, "pointsPerStar": 60]]
+        if currentLevel != level {
+            levels.append(["level": currentLevel, "points": 0, "displayPoints": 0, "targetPoints": 540,
+                           "stars": 0, "currentStarPoints": 0, "pointsPerStar": 60])
+        }
+        return try decode(["currentLevel": currentLevel,
             "policy": ["version": 1, "characterThreshold": 500, "pointsPerQuestion": 1, "pointsPerStar": 60, "starsPerLevel": 9],
-            "levels": [["level": level, "points": points, "displayPoints": points, "targetPoints": 540,
-                        "stars": points / 60, "currentStarPoints": points == 540 ? 60 : points % 60, "pointsPerStar": 60]]])
+            "levels": levels])
     }
     func learningHistory(_ id: UUID, cursor: String?) throws -> LearningHistory {
         try decode(["items": [["id": "20000000-0000-4000-8000-000000000001", "title": "综合练习 · 在书店挑选一本新书",

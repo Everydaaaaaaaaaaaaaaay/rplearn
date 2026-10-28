@@ -41,8 +41,10 @@ final class LearningAchievementUITests: XCTestCase {
         selectStartingStars(0, in: app)
         play.tap(); waitForReplay(play); waitForValue("1/9", element: stars)
         selectStartingStars(8, in: app)
-        play.tap(); waitForReplay(play); waitForValue("9/9", element: stars)
-        capture(app, "第九颗星完成")
+        play.tap()
+        let automaticJourney = app.buttons["learning.promotion.begin-journey"]
+        XCTAssertTrue(automaticJourney.waitForExistence(timeout: 8))
+        automaticJourney.tap()
         for index in 0..<2 {
             app.buttons["learning.achievement.play-promotion"].tap()
             let next = app.buttons["learning.promotion.begin-journey"]
@@ -55,6 +57,36 @@ final class LearningAchievementUITests: XCTestCase {
             next.tap()
             XCTAssertTrue(play.waitForExistence(timeout: 5))
         }
+    }
+
+    func testNineStarsAutomaticallyAdvanceBeforeAcknowledgement() {
+        let app = launch(tab: "achievement-preview")
+        let play = app.buttons["learning.achievement.play-star"]
+        XCTAssertTrue(play.waitForExistence(timeout: 12))
+        selectStartingStars(8, in: app)
+        let stars = app.descendants(matching: .any)["learning.achievement.stars"].firstMatch
+        waitForValue("8/9", element: stars)
+        capture(app, "自动晋升第九星之前")
+        play.tap()
+        let next = app.buttons["learning.promotion.begin-journey"]
+        XCTAssertTrue(next.waitForExistence(timeout: 8))
+        XCTAssertFalse(app.alerts.firstMatch.exists)
+        XCTAssertFalse(app.buttons["learning.promotion.confirm"].exists)
+        XCTAssertTrue(app.staticTexts["大学英语四级"].waitForExistence(timeout: 5))
+        XCTAssertTrue(next.isHittable)
+        XCTAssertTrue(app.buttons["learning.promotion.skip"].waitForNonExistence(timeout: 5))
+        capture(app, "九星后自动晋升无需确认")
+        next.tap()
+        XCTAssertTrue(play.waitForExistence(timeout: 5))
+        waitForValue("0/9", element: stars)
+        XCTAssertTrue(app.staticTexts["大学英语四级"].exists)
+        XCTAssertEqual(app.otherElements["learning.next-star.progress"].value as? String, "0/60 积分")
+        app.buttons["learning.history.toggle"].tap()
+        let history = app.buttons["learning.history.20000000-0000-4000-8000-000000000001"]
+        XCTAssertTrue(history.label.contains("高中三年级"), "原水平的学习记录应继续保留")
+        XCTAssertTrue(history.label.contains("获得 6 积分"))
+        XCTAssertFalse(app.buttons["learning.promotion.open"].exists)
+        capture(app, "自动晋升后新水平与旧记录")
     }
 
     func testLargeTextPromotionAndStarControlsRemainAccessible() {

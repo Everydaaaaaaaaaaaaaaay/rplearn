@@ -34,7 +34,7 @@ public struct CharacterLearningView: View {
         self.audioSession = audioSession; self.beforePlayback = beforePlayback
         self.currentRegionID = currentRegionID; self.promotionCompleted = promotionCompleted
         _model = State(initialValue: CharacterLearningModel(characterID: character.id, service: service,
-                                                           cycleChanged: cycleChanged))
+                                                           cycleChanged: cycleChanged, profileChanged: promotionCompleted))
     }
     #if DEBUG
     init(character: CharacterDTO, previewModel: CharacterLearningModel,
@@ -103,6 +103,12 @@ public struct CharacterLearningView: View {
                 }
             }
         }
+        .fullScreenCover(item: $model.presentedAutomaticPromotion) { promotion in
+            LearningPromotionCelebration(fromLevel: promotion.fromLevel, toLevel: promotion.toLevel,
+                message: "九颗星已点亮，新的旅程已经开启。",
+                close: { model.presentedAutomaticPromotion = nil },
+                continueJourney: { model.presentedAutomaticPromotion = nil })
+        }
         .onChange(of: isVisible) { _, visible in if !visible { model.consumeStarAward() } }
         .accessibilityIdentifier("learning.character")
     }
@@ -144,13 +150,6 @@ public struct CharacterLearningView: View {
                 Text(challengeStatus(state)).font(.subheadline).foregroundStyle(.secondary)
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
                 if unlocked { challengeAction(state) }
-                if model.canOpenPromotion {
-                    Button { Task { await model.openPromotion() } } label: {
-                        Label(model.journey?.promotion?.activePromotionId != nil ? "继续晋升仪式" : "开启晋升仪式", systemImage: "sparkles")
-                            .font(.subheadline.weight(.semibold)).frame(maxWidth: .infinity, minHeight: 44)
-                    }.buttonStyle(LearningPressStyle()).disabled(model.isBusy)
-                        .accessibilityIdentifier("learning.promotion.open")
-                }
             }
         }
         .padding(.vertical, compact ? 0 : 8)
@@ -184,11 +183,13 @@ public struct CharacterLearningView: View {
         state.activeAttemptId != nil || state.characters >= state.threshold ? "单元练习已解锁" : "单元练习尚未解锁"
     }
     private func levelProgress(_ journey: LearningJourney) -> some View {
-        VStack(spacing: 12) {
-            Text(generalProgressTitle(journey)).font(.headline)
+        // Keep the completed level visible until its ninth star has landed.
+        let progress = journey.levels.first { $0.level == (model.starAward?.level ?? journey.currentLevel) }
+        return VStack(spacing: 12) {
+            Text(learningLevelName(progress?.level ?? journey.currentLevel)).font(.headline)
                 .fixedSize(horizontal: false, vertical: true)
             journeyStars(journey)
-            nextStar(journey.current)
+            nextStar(progress)
         }
         .multilineTextAlignment(.center)
         .frame(maxWidth: .infinity, minHeight: 44)
@@ -199,10 +200,6 @@ public struct CharacterLearningView: View {
     }
     private func journeyStars(_ journey: LearningJourney) -> some View {
         LearningAchievementStars(earned: model.starAward?.from ?? journey.current?.stars ?? 0, award: displayedStarAward) { model.consumeStarAward($0) }
-    }
-    private func generalProgressTitle(_ journey: LearningJourney) -> String {
-        let level = learningLevelName(journey.currentLevel)
-        return level
     }
     private func nextStar(_ current: LearningLevelProgress?) -> some View {
         let complete = (current?.stars ?? 0) >= 9

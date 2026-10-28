@@ -1,5 +1,6 @@
 import BackendKit
 import Foundation
+import PersistenceKit
 import SwiftUI
 
 /// A display receipt, created only after a locally rewarded challenge returns to the page.
@@ -10,8 +11,8 @@ struct LearningStarAward: Identifiable, Equatable, Sendable {
     let to: Int
     init?(before: LearningJourney?, after: LearningJourney?, rewardedLevel: String, didEarnPoints: Bool) {
         guard didEarnPoints, let before, let after,
-              before.currentLevel == rewardedLevel, after.currentLevel == rewardedLevel,
-              let old = before.current, let new = after.current else { return nil }
+              before.currentLevel == rewardedLevel,
+              let old = before.current, let new = after.levels.first(where: { $0.level == rewardedLevel }) else { return nil }
         let from = min(9, max(0, old.stars)), to = min(9, max(0, new.stars))
         guard to > from else { return nil }
         self.init(level: rewardedLevel, from: from, to: to)
@@ -27,6 +28,20 @@ struct LearningStarAward: Identifiable, Equatable, Sendable {
     func flightDuration(_ offset: Int) -> Double { offset == 0 ? 1.4 : 0.36 }
     func landed(at time: Double) -> Int {
         (0..<count).filter { time >= start($0) + flightDuration($0) * 0.84 }.count
+    }
+}
+
+/// Acknowledges an already-saved level change; presenting it never advances a profile.
+struct LearningAutomaticPromotion: Identifiable, Equatable, Sendable {
+    let id = UUID()
+    let fromLevel: String
+    let toLevel: String
+    init?(before: LearningJourney?, after: LearningJourney, rewardedLevel: String, didEarnPoints: Bool) {
+        guard didEarnPoints, let before, before.currentLevel == rewardedLevel,
+              let from = DifficultyLevel(rawValue: rewardedLevel),
+              let to = DifficultyLevel(rawValue: after.currentLevel), to.placementOrdinal > from.placementOrdinal,
+              let completed = after.levels.first(where: { $0.level == rewardedLevel }), completed.stars >= 9 else { return nil }
+        fromLevel = rewardedLevel; toLevel = after.currentLevel
     }
 }
 

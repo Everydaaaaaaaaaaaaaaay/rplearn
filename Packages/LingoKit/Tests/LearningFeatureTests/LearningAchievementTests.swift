@@ -12,25 +12,36 @@ private func achievementJourney(stars: Int, level: String = "primary3", ready: B
         "levels": [["level": level, "points": stars * 60, "displayPoints": stars * 60, "targetPoints": 540, "stars": stars, "currentStarPoints": 0, "pointsPerStar": 60]],
         "promotion": ["level": level, "nextLevel": "primary4", "points": stars * 60, "targetPoints": 540, "goals": [], "transferCompleted": ready, "ready": ready, "blockers": []]])
 }
+private func advancedJourney() throws -> LearningJourney {
+    var object = try JSONSerialization.jsonObject(with: JSONEncoder().encode(achievementJourney(stars: 0, level: "primary4"))) as! [String: Any]
+    var levels = object["levels"] as! [[String: Any]]
+    levels += [["level": "primary3", "points": 540, "displayPoints": 540, "targetPoints": 540, "stars": 9, "currentStarPoints": 60, "pointsPerStar": 60]]
+    object["levels"] = levels
+    return try achievementDecode(object)
+}
 private actor AchievementService: LearningServing, LearningDirectionServing, LearningPromotionServing {
     let characterID = UUID(), attemptID = UUID(), roundID = UUID()
     var stars = 0
     var ready = false
     var failJourney = false
     var promotionStarts = 0
+    var advanced = false
+    var level = "primary3"
+    func advance() { advanced = true; stars = 9 }
+    func setLevel(_ value: String) { level = value }
     func set(stars: Int, ready: Bool = false, fail: Bool = false) { self.stars = stars; self.ready = ready; failJourney = fail }
     func learningJourney() throws -> LearningJourney {
         if failJourney { throw BackendClientError.invalidResponse }
-        return try achievementJourney(stars: stars, ready: ready)
+        return try advanced ? advancedJourney() : achievementJourney(stars: stars, level: level, ready: ready)
     }
     func learningCharacter(_ id: UUID) throws -> BackendLearningCharacter {
-        try achievementDecode(["characterId": id.uuidString, "roleKey": "oliver", "cycleId": roundID.uuidString, "characters": 1000, "threshold": 1000, "revision": 1, "activeAttemptId": attemptID.uuidString, "level": "primary3", "availableUnits": 1])
+        try achievementDecode(["characterId": id.uuidString, "roleKey": "oliver", "cycleId": roundID.uuidString, "characters": 1000, "threshold": 1000, "revision": 1, "activeAttemptId": attemptID.uuidString, "level": level, "availableUnits": 1])
     }
     func learningHistory(_ id: UUID, cursor: String?) throws -> LearningHistory { try achievementDecode(["items": []]) }
     func learningDirections() -> LearningDirections { .init(selectedDirection: "general", revision: 1, directions: [.init(id: "general", title: "通用英语", status: "available")]) }
     func selectLearningDirection(_ direction: String, requestID: UUID, expectedRevision: Int) -> LearningDirections { learningDirections() }
     func learningAttempt(_ id: UUID) throws -> LearningAttempt {
-        try achievementDecode(["id": attemptID.uuidString, "characterId": characterID.uuidString, "level": "primary3", "revision": 1, "startedAt": "2026-10-27T00:00:00Z", "correctQuestionIds": [],
+        try achievementDecode(["id": attemptID.uuidString, "characterId": characterID.uuidString, "level": level, "revision": 1, "startedAt": "2026-10-27T00:00:00Z", "correctQuestionIds": [],
             "round": ["id": roundID.uuidString, "ordinal": 0, "questionIds": ["q1"], "answers": [], "completed": false],
             "unit": ["id": "achievement.test", "version": 1, "schemaVersion": 1, "roleKey": "oliver", "level": "primary3", "title": "Test", "summary": "Test", "scene": "Test", "estimatedMinutes": 1, "goalIds": ["test"], "beats": [],
                 "questions": [["id": "q1", "type": "choice", "goalId": "test", "instruction": "Choose.", "prompt": "Choose.", "hint": "Test", "options": [["id": "a", "text": "A"], ["id": "b", "text": "B"]]]]]])
@@ -48,8 +59,93 @@ private actor AchievementService: LearningServing, LearningDirectionServing, Lea
     func completeLearningPromotion(_ id: UUID, command: LearningPromotionCommand) throws -> LearningPromotion { throw BackendClientError.invalidResponse }
 }
 
+@MainActor private final class AchievementProfileSync {
+    var calls = 0
+    var fails = false
+    func refresh() throws {
+        calls += 1
+        if fails { throw BackendClientError.invalidResponse }
+    }
+}
+
 @Suite("Learning achievement presentation") @MainActor
 struct LearningAchievementTests {
+    @Test("Authoritative advancement synchronizes the profile before acknowledgement, after the ninth-star flight")
+    func automaticPromotionAfterLanding() async throws {
+        let service = AchievementService(), sync = AchievementProfileSync()
+        let model = CharacterLearningModel(characterID: service.characterID, service: service, profileChanged: { try sync.refresh() })
+        await service.set(stars: 8); await model.load(); await model.open()
+        model.recordReward(level: "primary3", points: 1)
+        await service.advance(); await model.challengeClosed()
+        #expect(model.journey?.currentLevel == "primary4")
+        #expect(sync.calls == 2)
+        #expect(model.presentedAutomaticPromotion == nil)
+        let award = try #require(model.starAward)
+        #expect(award.from == 8 && award.to == 9)
+        model.consumeStarAward(award.id)
+        #expect(model.presentedAutomaticPromotion?.toLevel == "primary4")
+        model.presentedAutomaticPromotion = nil
+        await model.load()
+        #expect(model.presentedAutomaticPromotion == nil)
+        #expect(sync.calls == 2)
+    }
+    @Test("Profile refresh failure keeps authoritative advancement and retries without replaying its star")
+    func failedProfileSyncCanRecover() async throws {
+        let service = AchievementService(), sync = AchievementProfileSync()
+        let model = CharacterLearningModel(characterID: service.characterID, service: service, profileChanged: { try sync.refresh() })
+        await service.set(stars: 8); await model.load(); await model.open()
+        model.recordReward(level: "primary3", points: 1)
+        sync.fails = true
+        await service.advance(); await model.challengeClosed()
+        #expect(model.journey?.currentLevel == "primary4")
+        #expect(model.error != nil)
+        model.consumeStarAward(try #require(model.starAward).id)
+        #expect(model.presentedAutomaticPromotion == nil)
+        sync.fails = false; await model.load()
+        #expect(model.error == nil)
+        #expect(model.starAward == nil)
+        #expect(model.presentedAutomaticPromotion?.toLevel == "primary4")
+        #expect(sync.calls == 3)
+    }
+    @Test("Failed journey refresh preserves an automatic advancement for recovery")
+    func failedAdvancementReadCanRecover() async throws {
+        let service = AchievementService()
+        let model = CharacterLearningModel(characterID: service.characterID, service: service)
+        await service.set(stars: 8); await model.load(); await model.open()
+        model.recordReward(level: "primary3", points: 1)
+        await service.advance(); await service.set(stars: 9, fail: true); await model.challengeClosed()
+        #expect(model.journey?.currentLevel == "primary3")
+        await service.set(stars: 9); await model.load()
+        model.consumeStarAward(try #require(model.starAward).id)
+        #expect(model.presentedAutomaticPromotion?.toLevel == "primary4")
+    }
+    @Test("Unrelated reloads synchronize changed difficulty without replaying a local ceremony")
+    func unrelatedReloadHasNoCeremony() async {
+        let service = AchievementService(), sync = AchievementProfileSync()
+        let model = CharacterLearningModel(characterID: service.characterID, service: service, profileChanged: { try sync.refresh() })
+        await model.load(); await service.advance(); await model.load(); await model.load()
+        #expect(sync.calls == 2)
+        #expect(model.starAward == nil)
+        #expect(model.presentedAutomaticPromotion == nil)
+    }
+    @Test("The highest level still receives its ninth star without another promotion")
+    func highestLevelCompletes() async throws {
+        let service = AchievementService()
+        await service.setLevel("advanced"); await service.set(stars: 8)
+        let model = CharacterLearningModel(characterID: service.characterID, service: service)
+        await model.load(); await model.open(); model.recordReward(level: "advanced", points: 1)
+        await service.set(stars: 9); await model.challengeClosed()
+        #expect(model.journey?.currentLevel == "advanced")
+        model.consumeStarAward(try #require(model.starAward).id)
+        #expect(model.presentedAutomaticPromotion == nil)
+    }
+    @Test("Automatic advancement preserves the ninth star earned on the previous level")
+    func ninthStarSurvivesLevelChange() throws {
+        let award = LearningStarAward(before: try achievementJourney(stars: 8), after: try advancedJourney(), rewardedLevel: "primary3", didEarnPoints: true)
+        #expect(award?.level == "primary3")
+        #expect(award?.from == 8)
+        #expect(award?.to == 9)
+    }
     @Test("Replay commands cannot synthesize rewards on a normal learning service")
     func previewCannotChangeNormalProgress() async {
         let service = AchievementService()
@@ -121,16 +217,16 @@ struct LearningAchievementTests {
         await service.set(stars: 1); await model.load()
         #expect(try #require(model.starAward).to == 1)
     }
-    @Test("Promotion starts only after eligibility and presents the server snapshot")
+    @Test("Nine stars do not start a special course or require manual promotion")
     func promotionEligibility() async {
         let service = AchievementService()
         let model = CharacterLearningModel(characterID: service.characterID, service: service)
         await model.load(); await model.openPromotion()
         #expect(await service.promotionStarts == 0)
         await service.set(stars: 9, ready: true); await model.load()
-        #expect(model.canOpenPromotion)
+        #expect(!model.canOpenPromotion)
         await model.openPromotion()
-        #expect(await service.promotionStarts == 1)
-        #expect(model.presentedPromotion?.toLevel == "primary4")
+        #expect(await service.promotionStarts == 0)
+        #expect(model.presentedPromotion == nil)
     }
 }

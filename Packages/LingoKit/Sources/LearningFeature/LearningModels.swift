@@ -20,6 +20,9 @@ public final class CharacterLearningModel {
     public var presentedAttempt: LearningAttempt?
     public var presentedPromotion: LearningPromotion?
     private(set) var starAward: LearningStarAward?
+    var presentedAutomaticPromotion: LearningAutomaticPromotion?
+    private var pendingAutomaticPromotion: LearningAutomaticPromotion?
+    private var synchronizedLevel: String?
     private struct RewardSession {
         let level: String
         let before: LearningJourney?
@@ -32,11 +35,12 @@ public final class CharacterLearningModel {
     var canOpenPromotion: Bool {
         guard service is any LearningPromotionServing, let eligibility = journey?.promotion,
               eligibility.level == journey?.currentLevel else { return false }
-        return eligibility.ready || eligibility.activePromotionId != nil
+        return eligibility.activePromotionId != nil
     }
     public let characterID: UUID
     let service: any LearningServing & LearningDirectionServing
     private let cycleChanged: @Sendable () async -> Void
+    private let profileChanged: @MainActor () async throws -> Void
     private var startRequestID = UUID()
     private var directionRequest: (id: UUID, revision: Int)?
 
@@ -48,9 +52,11 @@ public final class CharacterLearningModel {
     }
 
     public init(characterID: UUID, service: any LearningServing & LearningDirectionServing,
-                cycleChanged: @escaping @Sendable () async -> Void = {}) {
+                cycleChanged: @escaping @Sendable () async -> Void = {},
+                profileChanged: @escaping @MainActor () async throws -> Void = {}) {
         self.characterID = characterID; self.service = service
         self.cycleChanged = cycleChanged
+        self.profileChanged = profileChanged
     }
     public func load() async {
         guard !isBusy, !isChangingDirection else {
@@ -75,9 +81,19 @@ public final class CharacterLearningModel {
             }
             if let session = rewardSession, session.returned {
                 starAward = LearningStarAward(before: session.before, after: values.1, rewardedLevel: session.level, didEarnPoints: session.didEarnPoints)
+                pendingAutomaticPromotion = LearningAutomaticPromotion(before: session.before, after: values.1, rewardedLevel: session.level, didEarnPoints: session.didEarnPoints)
                 rewardSession = nil
             }
             isPreparing = ["pending", "running", "review"].contains(state?.generationStatus ?? "")
+            if synchronizedLevel != values.1.currentLevel {
+                do {
+                    try await profileChanged()
+                    guard !Task.isCancelled else { return }
+                    synchronizedLevel = values.1.currentLevel
+                } catch is CancellationError { return }
+                catch { self.error = "学习进度已保存，档案暂未同步完成。请联网后重试。" }
+            }
+            presentAutomaticPromotionIfReady()
         } catch is CancellationError {} catch { self.error = error.localizedDescription }
         do {
             let current = try await service.learningDirections()
@@ -173,6 +189,13 @@ public final class CharacterLearningModel {
     }
     func consumeStarAward(_ id: UUID? = nil) {
         if id == nil || starAward?.id == id { starAward = nil }
+        presentAutomaticPromotionIfReady()
+    }
+    private func presentAutomaticPromotionIfReady() {
+        guard starAward == nil, let promotion = pendingAutomaticPromotion,
+              synchronizedLevel == promotion.toLevel else { return }
+        presentedAutomaticPromotion = promotion
+        pendingAutomaticPromotion = nil
     }
     #if DEBUG
     /// Only the isolated in-memory replay service can synthesize this return receipt.

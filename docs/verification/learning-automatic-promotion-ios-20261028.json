@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-28",
+  "scope": "Automatically acknowledge the authoritative nine-star level advancement on the real character learning page",
+  "behavior": {
+    "authority": "Journey currentLevel and its retained per-level points are authoritative. The model synchronizes the account profile on the first successful journey and whenever the level changes.",
+    "celebration": "A locally rewarded challenge return queues the existing celebration after its completed-level ninth-star flight. Closing or continuing only dismisses the acknowledgement; no course or confirmation advances the level.",
+    "recovery": "Failed journey reads retain the local reward baseline. Failed profile synchronization retains the saved journey and retries on a later load without replaying an already-consumed star. Unrelated reloads do not create ceremonies.",
+    "history": "Old-level history and earned points remain visible. The next level starts at its authoritative zero stars and 下一星 0/60分, retaining the 136×5pt meter.",
+    "legacy": "Existing manual-promotion DTOs, snapshot reads and their legacy presentation remain available. The normal learning page no longer opens the special course."
+  },
+  "hostedModelTests": {
+    "passed": 13,
+    "failed": 0,
+    "evidence": "build/DerivedData/VerificationResults/20261028T151124Z-3466.xcresult",
+    "coverage": [
+      "Ninth-star display receipt survives a changed current level",
+      "Profile synchronization precedes acknowledgement, while the ninth-star flight precedes its presentation",
+      "Journey and profile-refresh failures recover without duplicate ceremonies",
+      "Unrelated reloads synchronize difficulty without a ceremony",
+      "Highest-level ninth-star completion does not invent another level",
+      "Nine stars do not start a special course or manual promotion"
+    ],
+    "redEvidence": "build/DerivedData/VerificationResults/20261028T150817Z-1320.xcresult: expected failures on the missing ninth-star receipt and old manual promotion behavior"
+  },
+  "uiTests": {
+    "standard": {
+      "passed": 1,
+      "failed": 0,
+      "evidence": "build/DerivedData/VerificationResults/20261028T151526Z-5165.xcresult",
+      "attachments": "build/automatic-promotion-ios-20261028/standard"
+    },
+    "compact": {
+      "passed": 1,
+      "failed": 0,
+      "evidence": "build/DerivedData/VerificationResults/20261028T151641Z-5687.xcresult",
+      "attachments": "build/automatic-promotion-ios-20261028/compact"
+    },
+    "coverage": "Eight stars at 59/60 points, automatic celebration without a confirmation dialog, dismissal into the new level at zero stars/0/60, retained old-level history and six earned points, no manual promotion button.",
+    "firstRunNote": "The first standard run reached and dismissed the ceremony, then failed only a test lookup for standalone history level text. The history correctly combines that level in its button accessibility label; the corrected assertion and earned-point assertion pass."
+  },
+  "visualReview": {
+    "method": "Independent inspection of native simulator screenshots; Computer Use unavailable.",
+    "result": "Passed inspection of standard and compact eight-star page, automatic celebration and acknowledged new-level page with old-level history. New title, progress fraction, celebration message and primary action are readable without overlap; compact history continues in the existing scroll view.",
+    "unchangedEvidence": [
+      "Assets/LearningCityScenes/Review-2026-10-27/acceptance-v2.md",
+      "docs/verification/learning-next-star-points-20261028.json",
+      "docs/verification/learning-achievement-real-page-preview-20261028.json"
+    ],
+    "limits": "Simulator model and interaction verification; no physical-device haptic or frame-rate measurement. Photo assets and legacy ceremony layout unchanged. Preview rewards use only the isolated in-memory service."
+  },
+  "preview": {
+    "result": "Installed the latest tested build with Scripts/preview.sh preview achievement-preview and left it open on iPhone 18 Pro.",
+    "log": "build/automatic-promotion-ios-20261028/final-preview.log",
+    "screenshot": "build/automatic-promotion-ios-20261028/final-preview.png",
+    "replay": "In preview settings, choose 8 stars, then play one star to see the automatic transition. This isolated replay does not alter an account."
+  }
+}
