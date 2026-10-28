@@ -1,0 +1,416 @@
+{
+  "createdAt": "2026-10-28T15:50:00.000Z",
+  "reviewBoundary": "本批为明确逐词编写的原创四图配词任务；只借用已核来源的四图四回应形式。图卡为本批自绘SVG并确定性导出PNG；作者检查图义、选项和全部干扰图，不声称独立教师或学生难度标定。",
+  "imageAssets": [
+    {
+      "id": "image.6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+      "sha256": "6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+      "byteSize": 30895,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "天气图卡：太阳、月亮、雨与雪；A至D图卡顺序为rain, sun, snow, moon",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-weather-001.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-28",
+      "reviewNotes": "已在768×512原图及手机缩略图中检查四张图的形体、字母和语义；图卡无题面单词或答案标记。天气图中雨滴与雪花不叠加云朵，避免多个图都可被称作cloud；不把同一幅图更换字母作为另一道新题。"
+    },
+    {
+      "id": "image.ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+      "sha256": "ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+      "byteSize": 24950,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "交通图卡：自行车、火车、巴士与小汽车；A至D图卡顺序为bicycle, train, bus, car",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-road-001.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-28",
+      "reviewNotes": "已在768×512原图及手机缩略图中检查四张图的形体、字母和语义；图卡无题面单词或答案标记。天气图中雨滴与雪花不叠加云朵，避免多个图都可被称作cloud；不把同一幅图更换字母作为另一道新题。"
+    },
+    {
+      "id": "image.580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+      "sha256": "580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+      "byteSize": 33410,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "餐桌图卡：碗、勺子、盘子与杯子；A至D图卡顺序为bowl, spoon, plate, cup",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-table-001.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-28",
+      "reviewNotes": "已在768×512原图及手机缩略图中检查四张图的形体、字母和语义；图卡无题面单词或答案标记。天气图中雨滴与雪花不叠加云朵，避免多个图都可被称作cloud；不把同一幅图更换字母作为另一道新题。"
+    },
+    {
+      "id": "image.22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+      "sha256": "22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+      "byteSize": 27845,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "衣物图卡：帽子、外套、靴子与短袖上衣；A至D图卡顺序为cap, coat, shoes, shirt",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-clothes-001.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-28",
+      "reviewNotes": "已在768×512原图及手机缩略图中检查四张图的形体、字母和语义；图卡无题面单词或答案标记。天气图中雨滴与雪花不叠加云朵，避免多个图都可被称作cloud；不把同一幅图更换字母作为另一道新题。"
+    }
+  ],
+  "units": [
+    {
+      "id": "primary1.weather-picture-cards-001",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "天气图卡：太阳、月亮、雨与雪",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "picture-cards",
+          "title": "Four picture cards",
+          "text": "Look at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+          "questions": [
+            {
+              "prompt": "the sun",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 1,
+              "explanation": "B是带有光芒的太阳，sun为太阳；A是雨滴、C是雪花、D是月亮，均不符合sun。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "the moon",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 3,
+              "explanation": "D是弯月，moon为月亮；A雨、B太阳、C雪花与月亮不同。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "rain",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 0,
+              "explanation": "A画的是落下的水滴，rain为雨；B是太阳、C是雪花、D是月亮，均不是雨。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "snow",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 2,
+              "explanation": "C是两朵雪花，snow为雪；A为液态雨滴，B太阳，D月亮，不能与snow对应。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.road-vehicle-cards-001",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "交通图卡：自行车、火车、巴士与小汽车",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "picture-cards",
+          "title": "Four picture cards",
+          "text": "Look at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+          "questions": [
+            {
+              "prompt": "a bus",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 2,
+              "explanation": "C车身较长，有多扇乘客窗，是bus；A自行车没有封闭车身，B有轨道及相连车厢为火车，D短车身为小汽车。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "a train",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 1,
+              "explanation": "B有机车、相连车厢和轨道，为train；A自行车、C巴士、D小汽车均没有这组轨道车厢特征。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "a bicycle",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 0,
+              "explanation": "A有两个细轮、车架、脚踏和车把，是bicycle；B火车、C巴士、D小汽车均非自行车。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "a car",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 3,
+              "explanation": "D为短车身、有车顶和四轮的小汽车car；A自行车、B火车、C多窗巴士与之不同。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.tableware-picture-cards-001",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "餐桌图卡：碗、勺子、盘子与杯子",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "picture-cards",
+          "title": "Four picture cards",
+          "text": "Look at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+          "questions": [
+            {
+              "prompt": "a cup",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 3,
+              "explanation": "D为有侧把手的杯子cup；A无把手且较宽深的碗、B长柄勺子、C平盘都不是此杯。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "a spoon",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 1,
+              "explanation": "B有长柄和椭圆勺头，是spoon；A碗、C盘、D杯均没有长柄勺头。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "a bowl",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 0,
+              "explanation": "A画的是有深度的碗bowl；B是勺子，C为从上方看的平盘，D有把手是杯子。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "a plate",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 2,
+              "explanation": "C为圆形平盘plate；A深碗、B勺子和D有把手杯子均不是平盘。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.clothes-picture-cards-001",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "衣物图卡：帽子、外套、靴子与短袖上衣",
+      "minutes": 8,
+      "materials": [
+        {
+          "id": "picture-cards",
+          "title": "Four picture cards",
+          "text": "Look at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+          "questions": [
+            {
+              "prompt": "a hat",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 0,
+              "explanation": "A是戴在头上的帽子hat；B有袖和纽扣是外套，C为脚上的靴子，D为短袖上衣，均不是帽子。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "a coat",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 1,
+              "explanation": "B为长袖、前面有纽扣的外套coat；A帽子、C靴子、D短袖上衣不符合该词。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "boots",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 2,
+              "explanation": "C是两只高帮靴子boots；A帽子、B外套、D短袖上衣都不是足部穿着的靴子。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            },
+            {
+              "prompt": "a T-shirt",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "answer": 3,
+              "explanation": "D为圆领短袖T恤T-shirt；A帽子、B前排扣长袖外套、C靴子与短袖T恤不同。",
+              "instruction": "Look at the four picture cards. Choose the matching letter.",
+              "materialImages": [
+                {
+                  "assetId": "image.22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+                  "label": "Picture cards A, B, C and D"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

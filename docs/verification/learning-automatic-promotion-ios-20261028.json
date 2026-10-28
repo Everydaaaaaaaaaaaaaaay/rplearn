@@ -53,5 +53,13 @@
     "log": "build/automatic-promotion-ios-20261028/final-preview.log",
     "screenshot": "build/automatic-promotion-ios-20261028/final-preview.png",
     "replay": "In preview settings, choose 8 stars, then play one star to see the automatic transition. This isolated replay does not alter an account."
+  },
+  "visibilityFollowup": {
+    "commit": "f30f37e0",
+    "behavior": "A hidden learning page queues the same automatic-promotion acknowledgement until visible; swiping back to chat cannot present the ceremony, and consumed acknowledgements do not replay.",
+    "hostedTestsPassed": 14,
+    "evidence": "build/DerivedData/VerificationResults/20261028T155749Z-14577.xcresult",
+    "redEvidence": "build/DerivedData/VerificationResults/20261028T155701Z-14213.xcresult: 13 passed, 1 failed before visibility fix",
+    "preview": "Latest tested build installed via Scripts/preview.sh and retained on the existing standard simulator."
   }
 }

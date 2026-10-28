@@ -1,0 +1,1616 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b013",
+  "createdAt": "2026-10-28T16:01:43.808938+00:00",
+  "sourceSHA256": "6aa688a0a6ea607e1a00af29594f1fc1eacc1e17fe5083eebc79af0709707623",
+  "reviewSHA256": "5262fb59cec4dd3025e1d63cdf82d1335fa5da0683ff03de61a70fc71179fe6d",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.lost-water-bottles-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "门口三只水瓶的辨认",
+        "summary": "门口三只水瓶的辨认，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.lost-water-bottles-010",
+          "family": "function_choice",
+          "label": "门口三只水瓶的辨认",
+          "candidateSHA256": "d8513fccf461812063002f3c6e1515f739ea3fb45029ac3862eb2e42bd9189f0",
+          "authorCheckSHA256": "7a9c3c4f39fe6ef020a92c2dda97dd1c487bb3d7d10124757be0f722d3914312",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.lost-water-bottles-010.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b013；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lost Water Bottles 010\n\nThree water bottles are by the door. The tall green bottle is Joe’s. The short green bottle is Eve’s. The blue bottle has no name. Joe is in the hall. Eve is in class. Give the blue bottle to the lost-and-found desk. Do not drink from it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.lost-water-bottles-010.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend takes the tall green bottle to Eve. You say, \"____\"",
+            "material": "Lost Water Bottles 010\n\nThree water bottles are by the door. The tall green bottle is Joe’s. The short green bottle is Eve’s. The blue bottle has no name. Joe is in the hall. Eve is in class. Give the blue bottle to the lost-and-found desk. Do not drink from it.",
+            "explanation": "A高绿瓶属Joe；B两个绿瓶全属Eve错误；C蓝瓶无名不是已知Joe物。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "That is Joe’s bottle."
+              },
+              {
+                "id": "o1",
+                "text": "Both green bottles are Eve’s."
+              },
+              {
+                "id": "o2",
+                "text": "Joe has the blue bottle."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-water-bottles-010.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend wants Eve’s bottle. You say, \"____\"",
+            "material": "Lost Water Bottles 010\n\nThree water bottles are by the door. The tall green bottle is Joe’s. The short green bottle is Eve’s. The blue bottle has no name. Joe is in the hall. Eve is in class. Give the blue bottle to the lost-and-found desk. Do not drink from it.",
+            "explanation": "B矮绿瓶属Eve；A高绿属Joe；C蓝无名。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Take the tall green one."
+              },
+              {
+                "id": "o1",
+                "text": "Take the short green one."
+              },
+              {
+                "id": "o2",
+                "text": "Take the blue one."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-water-bottles-010.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend wants to return Joe’s bottle now. You say, \"____\"",
+            "material": "Lost Water Bottles 010\n\nThree water bottles are by the door. The tall green bottle is Joe’s. The short green bottle is Eve’s. The blue bottle has no name. Joe is in the hall. Eve is in class. Give the blue bottle to the lost-and-found desk. Do not drink from it.",
+            "explanation": "C：Joe在礼堂可送还；A家中、B教室均非已知位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Joe is at home."
+              },
+              {
+                "id": "o1",
+                "text": "Joe is in our class now."
+              },
+              {
+                "id": "o2",
+                "text": "Take it to Joe in the hall."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-water-bottles-010.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend asks what to do with the blue bottle. You say, \"____\"",
+            "material": "Lost Water Bottles 010\n\nThree water bottles are by the door. The tall green bottle is Joe’s. The short green bottle is Eve’s. The blue bottle has no name. Joe is in the hall. Eve is in class. Give the blue bottle to the lost-and-found desk. Do not drink from it.",
+            "explanation": "A无名蓝瓶交失物处；B擅写Eve名、C当礼物取走均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Give it to the lost-and-found desk."
+              },
+              {
+                "id": "o1",
+                "text": "Put Eve’s name on it."
+              },
+              {
+                "id": "o2",
+                "text": "Take it home as a gift."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-water-bottles-010.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A thirsty friend opens the blue bottle. You say, \"____\"",
+            "material": "Lost Water Bottles 010\n\nThree water bottles are by the door. The tall green bottle is Joe’s. The short green bottle is Eve’s. The blue bottle has no name. Joe is in the hall. Eve is in class. Give the blue bottle to the lost-and-found desk. Do not drink from it.",
+            "explanation": "B无名瓶明确不能饮用；A喝完、C全班分享均违规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Drink it all."
+              },
+              {
+                "id": "o1",
+                "text": "Do not drink from that bottle."
+              },
+              {
+                "id": "o2",
+                "text": "Share it with the whole class."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "06641b27511b72c2117c6bb636ac3de615b32b5961ef572d2c49a96dc00bfbaf",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.lost-water-bottles-010.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.lost-water-bottles-010.reading.q1",
+            "expansion.20261028.primary2.lost-water-bottles-010.reading.q2",
+            "expansion.20261028.primary2.lost-water-bottles-010.reading.q3",
+            "expansion.20261028.primary2.lost-water-bottles-010.reading.q4",
+            "expansion.20261028.primary2.lost-water-bottles-010.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.bus-seat-buddy-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "郊游大巴的同伴座位",
+        "summary": "郊游大巴的同伴座位，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.bus-seat-buddy-010",
+          "family": "function_choice",
+          "label": "郊游大巴的同伴座位",
+          "candidateSHA256": "edbc43edbe72cdc05e79b306cde1795d19a6f6aabac1b83ce767bfb8d529792a",
+          "authorCheckSHA256": "7a9c3c4f39fe6ef020a92c2dda97dd1c487bb3d7d10124757be0f722d3914312",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.bus-seat-buddy-010.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b013；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Bus Seat Buddy 010\n\nOur bus seats have number cards. Sit with your partner, not alone. A bag stays under your own seat. Keep the middle path clear. The bus moves only after everyone sits down. At the park, wait until the teacher says to get off."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.bus-seat-buddy-010.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend sits alone away from a partner. You say, \"____\"",
+            "material": "Bus Seat Buddy 010\n\nOur bus seats have number cards. Sit with your partner, not alone. A bag stays under your own seat. Keep the middle path clear. The bus moves only after everyone sits down. At the park, wait until the teacher says to get off.",
+            "explanation": "A要求与同伴同坐；B坐包不是安排；C站通道妨碍通行。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Sit with your partner."
+              },
+              {
+                "id": "o1",
+                "text": "Sit on your bag."
+              },
+              {
+                "id": "o2",
+                "text": "Stand in the middle path."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.bus-seat-buddy-010.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend leaves a bag in the middle path. You say, \"____\"",
+            "material": "Bus Seat Buddy 010\n\nOur bus seats have number cards. Sit with your partner, not alone. A bag stays under your own seat. Keep the middle path clear. The bus moves only after everyone sits down. At the park, wait until the teacher says to get off.",
+            "explanation": "B包收自己座下并清通道；A司机身上、C车外均非位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put it on the driver."
+              },
+              {
+                "id": "o1",
+                "text": "Put it under your seat."
+              },
+              {
+                "id": "o2",
+                "text": "Put it outside the moving bus."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.bus-seat-buddy-010.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The driver is ready, but a child is standing. You say, \"____\"",
+            "material": "Bus Seat Buddy 010\n\nOur bus seats have number cards. Sit with your partner, not alone. A bag stays under your own seat. Keep the middle path clear. The bus moves only after everyone sits down. At the park, wait until the teacher says to get off.",
+            "explanation": "C全员坐好才能动；A忽略站立者；B跳不能满足坐下条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Drive away now."
+              },
+              {
+                "id": "o1",
+                "text": "Ask the child to jump."
+              },
+              {
+                "id": "o2",
+                "text": "Please sit down first."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.bus-seat-buddy-010.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend wants to change seats while the bus moves. You say, \"____\"",
+            "material": "Bus Seat Buddy 010\n\nOur bus seats have number cards. Sit with your partner, not alone. A bag stays under your own seat. Keep the middle path clear. The bus moves only after everyone sits down. At the park, wait until the teacher says to get off.",
+            "explanation": "A遵守坐好且同伴同坐；B跑、C站门均违坐下要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Stay seated with your partner."
+              },
+              {
+                "id": "o1",
+                "text": "Run to the back."
+              },
+              {
+                "id": "o2",
+                "text": "Stand by the door."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.bus-seat-buddy-010.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The bus reaches the park. A friend starts to get off before the teacher speaks. You say, \"____\"",
+            "material": "Bus Seat Buddy 010\n\nOur bus seats have number cards. Sit with your partner, not alone. A bag stays under your own seat. Keep the middle path clear. The bus moves only after everyone sits down. At the park, wait until the teacher says to get off.",
+            "explanation": "B到站等教师许可；A抢挤未许可；C家中睡觉非现场下一步。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Push past everyone."
+              },
+              {
+                "id": "o1",
+                "text": "Wait for the teacher."
+              },
+              {
+                "id": "o2",
+                "text": "Go back to sleep at home."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "33f6fa142a339010eced9479c076b6f3fceedcb672b8a82b37d0d95f7f1bdadb",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.bus-seat-buddy-010.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.bus-seat-buddy-010.reading.q1",
+            "expansion.20261028.primary2.bus-seat-buddy-010.reading.q2",
+            "expansion.20261028.primary2.bus-seat-buddy-010.reading.q3",
+            "expansion.20261028.primary2.bus-seat-buddy-010.reading.q4",
+            "expansion.20261028.primary2.bus-seat-buddy-010.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.missing-shoe-laundry-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "消失的一只运动鞋",
+        "summary": "消失的一只运动鞋，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.missing-shoe-laundry-010",
+          "family": "reading_tf",
+          "label": "消失的一只运动鞋",
+          "candidateSHA256": "202a03e801d187793e97eac4c3d694d1a0c693f6914577e2f929d719529c9e7c",
+          "authorCheckSHA256": "7a9c3c4f39fe6ef020a92c2dda97dd1c487bb3d7d10124757be0f722d3914312",
+          "sourceGroupIds": [
+            "original.bens-bag-reading#primary3.missing-shoe-laundry-010.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b013；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Missing Shoe Laundry 010\n\nI cannot find one of my trainers. I look under the bed, but it is not there. Mum asks me to look in the laundry basket. I find a red sock, not my trainer. Then our puppy runs past with something white. It is my shoe! The puppy drops it beside the sofa. The shoe is wet, so I wear my other pair to school."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.missing-shoe-laundry-010.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The trainer is under the bed.",
+            "material": "Missing Shoe Laundry 010\n\nI cannot find one of my trainers. I look under the bed, but it is not there. Mum asks me to look in the laundry basket. I find a red sock, not my trainer. Then our puppy runs past with something white. It is my shoe! The puppy drops it beside the sofa. The shoe is wet, so I wear my other pair to school.",
+            "explanation": "B正确：look under bed但not there；A把寻找地点当找到地点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.missing-shoe-laundry-010.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer finds a red sock in the laundry basket.",
+            "material": "Missing Shoe Laundry 010\n\nI cannot find one of my trainers. I look under the bed, but it is not there. Mum asks me to look in the laundry basket. I find a red sock, not my trainer. Then our puppy runs past with something white. It is my shoe! The puppy drops it beside the sofa. The shoe is wet, so I wear my other pair to school.",
+            "explanation": "A正确：篮中发现red sock；B否认具体物品。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.missing-shoe-laundry-010.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The puppy has the missing shoe.",
+            "material": "Missing Shoe Laundry 010\n\nI cannot find one of my trainers. I look under the bed, but it is not there. Mum asks me to look in the laundry basket. I find a red sock, not my trainer. Then our puppy runs past with something white. It is my shoe! The puppy drops it beside the sofa. The shoe is wet, so I wear my other pair to school.",
+            "explanation": "A正确：小狗叼白物即my shoe；B否认找到原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.missing-shoe-laundry-010.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The puppy leaves the shoe beside the sofa.",
+            "material": "Missing Shoe Laundry 010\n\nI cannot find one of my trainers. I look under the bed, but it is not there. Mum asks me to look in the laundry basket. I find a red sock, not my trainer. Then our puppy runs past with something white. It is my shoe! The puppy drops it beside the sofa. The shoe is wet, so I wear my other pair to school.",
+            "explanation": "A正确：drops beside sofa；B与落下地点相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.missing-shoe-laundry-010.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer wears the wet shoe to school.",
+            "material": "Missing Shoe Laundry 010\n\nI cannot find one of my trainers. I look under the bed, but it is not there. Mum asks me to look in the laundry basket. I find a red sock, not my trainer. Then our puppy runs past with something white. It is my shoe! The puppy drops it beside the sofa. The shoe is wet, so I wear my other pair to school.",
+            "explanation": "B正确：鞋湿改穿other pair；A把找到的湿鞋当出门穿鞋。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "b53e7d05d309b12dc53fdfd961e3986444bdd0ddee0ecd78ccffd8cb484cee35",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.bens-bag-reading#primary3.missing-shoe-laundry-010.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.missing-shoe-laundry-010.reading.q1",
+            "expansion.20261028.primary3.missing-shoe-laundry-010.reading.q2",
+            "expansion.20261028.primary3.missing-shoe-laundry-010.reading.q3",
+            "expansion.20261028.primary3.missing-shoe-laundry-010.reading.q4",
+            "expansion.20261028.primary3.missing-shoe-laundry-010.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.bens-bag-reading",
+          "sourceContentHash": "e1594f6d2c2c96de673832f2efe0847d6e8f968d3ed2c4833705aeba378b5517"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.two-kitchen-clocks-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "厨房里的两只钟",
+        "summary": "厨房里的两只钟，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.two-kitchen-clocks-010",
+          "family": "reading_tf",
+          "label": "厨房里的两只钟",
+          "candidateSHA256": "9851eb4f3a0477e8f96d4d87a256c9f100acddf34a5f8d64d891d754a1c0c05d",
+          "authorCheckSHA256": "7a9c3c4f39fe6ef020a92c2dda97dd1c487bb3d7d10124757be0f722d3914312",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.two-kitchen-clocks-010.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b013；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Two Kitchen Clocks 010\n\nThere are two clocks in our kitchen. The big wall clock has a loud tick. The little clock on the shelf is quiet. Dad takes the battery out of the wall clock to clean it. It stops at eight. The shelf clock still works. I look at the wrong clock and think I am early. Mum points to the shelf. It is half past eight, and we must leave now."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.two-kitchen-clocks-010.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The wall clock has a loud tick.",
+            "material": "Two Kitchen Clocks 010\n\nThere are two clocks in our kitchen. The big wall clock has a loud tick. The little clock on the shelf is quiet. Dad takes the battery out of the wall clock to clean it. It stops at eight. The shelf clock still works. I look at the wrong clock and think I am early. Mum points to the shelf. It is half past eight, and we must leave now.",
+            "explanation": "A正确：big wall clock loud tick；B否认特点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.two-kitchen-clocks-010.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad removes the wall clock’s battery to clean the clock.",
+            "material": "Two Kitchen Clocks 010\n\nThere are two clocks in our kitchen. The big wall clock has a loud tick. The little clock on the shelf is quiet. Dad takes the battery out of the wall clock to clean it. It stops at eight. The shelf clock still works. I look at the wrong clock and think I am early. Mum points to the shelf. It is half past eight, and we must leave now.",
+            "explanation": "A正确：takes battery out to clean it；B否认目的。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.two-kitchen-clocks-010.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Both kitchen clocks stop at eight.",
+            "material": "Two Kitchen Clocks 010\n\nThere are two clocks in our kitchen. The big wall clock has a loud tick. The little clock on the shelf is quiet. Dad takes the battery out of the wall clock to clean it. It stops at eight. The shelf clock still works. I look at the wrong clock and think I am early. Mum points to the shelf. It is half past eight, and we must leave now.",
+            "explanation": "B正确：仅墙钟停，架钟still works；A把一个扩大两者。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.two-kitchen-clocks-010.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer first checks the shelf clock.",
+            "material": "Two Kitchen Clocks 010\n\nThere are two clocks in our kitchen. The big wall clock has a loud tick. The little clock on the shelf is quiet. Dad takes the battery out of the wall clock to clean it. It stops at eight. The shelf clock still works. I look at the wrong clock and think I am early. Mum points to the shelf. It is half past eight, and we must leave now.",
+            "explanation": "B正确：先看错墙钟才以为早；A架钟是妈妈指示后的来源。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.two-kitchen-clocks-010.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The working clock shows half past eight.",
+            "material": "Two Kitchen Clocks 010\n\nThere are two clocks in our kitchen. The big wall clock has a loud tick. The little clock on the shelf is quiet. Dad takes the battery out of the wall clock to clean it. It stops at eight. The shelf clock still works. I look at the wrong clock and think I am early. Mum points to the shelf. It is half past eight, and we must leave now.",
+            "explanation": "A正确：架钟有效且8:30；B与实际时间相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "43c0851ca096535d2bbda3c890e20bab1c04ef6d985b0b277ddfa073a48f922f",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.two-kitchen-clocks-010.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.two-kitchen-clocks-010.reading.q1",
+            "expansion.20261028.primary3.two-kitchen-clocks-010.reading.q2",
+            "expansion.20261028.primary3.two-kitchen-clocks-010.reading.q3",
+            "expansion.20261028.primary3.two-kitchen-clocks-010.reading.q4",
+            "expansion.20261028.primary3.two-kitchen-clocks-010.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.school-post-desk-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "校园邮递角的姓名核对",
+        "summary": "校园邮递角的姓名核对，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.school-post-desk-010",
+          "family": "reading_choice",
+          "label": "校园邮递角的姓名核对",
+          "candidateSHA256": "8cd6f337e00df12c417b941d74476a177ab50d7c7ff46ba6fa00d8c83003111a",
+          "authorCheckSHA256": "7a9c3c4f39fe6ef020a92c2dda97dd1c487bb3d7d10124757be0f722d3914312",
+          "sourceGroupIds": [
+            "original.primary4-pet-room-plan#primary4.school-post-desk-010.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b013；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "School Post Desk 010\n\nThe school post desk receives letters for pupils. Helpers sort them by class, then by first name. Two pupils in Class Four are called Alex. One is Alex Wu, and the other is Alex Green. A letter arrives with only \"Alex, Class Four\" on it. The helper does not open it. She asks the school office to contact the sender. The sender says it is for Alex Green and gives the full name for the record. The helper adds the surname to the outside of the envelope and gives it to the right pupil."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.school-post-desk-010.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How are letters sorted first?",
+            "material": "School Post Desk 010\n\nThe school post desk receives letters for pupils. Helpers sort them by class, then by first name. Two pupils in Class Four are called Alex. One is Alex Wu, and the other is Alex Green. A letter arrives with only \"Alex, Class Four\" on it. The helper does not open it. She asks the school office to contact the sender. The sender says it is for Alex Green and gives the full name for the record. The helper adds the surname to the outside of the envelope and gives it to the right pupil.",
+            "explanation": "A先按班再名；B颜色、C大小不是分拣标准。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "By class."
+              },
+              {
+                "id": "o1",
+                "text": "By colour."
+              },
+              {
+                "id": "o2",
+                "text": "By size."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.school-post-desk-010.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is one letter difficult to deliver?",
+            "material": "School Post Desk 010\n\nThe school post desk receives letters for pupils. Helpers sort them by class, then by first name. Two pupils in Class Four are called Alex. One is Alex Wu, and the other is Alex Green. A letter arrives with only \"Alex, Class Four\" on it. The helper does not open it. She asks the school office to contact the sender. The sender says it is for Alex Green and gives the full name for the record. The helper adds the surname to the outside of the envelope and gives it to the right pupil.",
+            "explanation": "B同班两Alex仅名不足；A有信封；C没有全班缺席信息。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It has no envelope."
+              },
+              {
+                "id": "o1",
+                "text": "Two pupils in the class share the first name."
+              },
+              {
+                "id": "o2",
+                "text": "Every pupil is away."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.school-post-desk-010.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the helper avoid doing?",
+            "material": "School Post Desk 010\n\nThe school post desk receives letters for pupils. Helpers sort them by class, then by first name. Two pupils in Class Four are called Alex. One is Alex Wu, and the other is Alex Green. A letter arrives with only \"Alex, Class Four\" on it. The helper does not open it. She asks the school office to contact the sender. The sender says it is for Alex Green and gives the full name for the record. The helper adds the surname to the outside of the envelope and gives it to the right pupil.",
+            "explanation": "C不拆信；A请办公室联系；B核实全名有执行。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Contacting the office."
+              },
+              {
+                "id": "o1",
+                "text": "Checking the full name."
+              },
+              {
+                "id": "o2",
+                "text": "Opening the letter."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.school-post-desk-010.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who confirms the intended pupil?",
+            "material": "School Post Desk 010\n\nThe school post desk receives letters for pupils. Helpers sort them by class, then by first name. Two pupils in Class Four are called Alex. One is Alex Wu, and the other is Alex Green. A letter arrives with only \"Alex, Class Four\" on it. The helper does not open it. She asks the school office to contact the sender. The sender says it is for Alex Green and gives the full name for the record. The helper adds the surname to the outside of the envelope and gives it to the right pupil.",
+            "explanation": "A寄件者明确Alex Green；B司机、C另一Alex未确认。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The sender."
+              },
+              {
+                "id": "o1",
+                "text": "A bus driver."
+              },
+              {
+                "id": "o2",
+                "text": "The other Alex."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.school-post-desk-010.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is added to the envelope?",
+            "material": "School Post Desk 010\n\nThe school post desk receives letters for pupils. Helpers sort them by class, then by first name. Two pupils in Class Four are called Alex. One is Alex Wu, and the other is Alex Green. A letter arrives with only \"Alex, Class Four\" on it. The helper does not open it. She asks the school office to contact the sender. The sender says it is for Alex Green and gives the full name for the record. The helper adds the surname to the outside of the envelope and gives it to the right pupil.",
+            "explanation": "B加姓区分；A身高无关；C未拆读内容。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The pupil’s height."
+              },
+              {
+                "id": "o1",
+                "text": "The surname."
+              },
+              {
+                "id": "o2",
+                "text": "The contents of the letter."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "98c1cfb51c33b59028aff8071bb8bfe5985bd984c295678e2b760dda9a3dfbc4",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-pet-room-plan#primary4.school-post-desk-010.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.school-post-desk-010.reading.q1",
+            "expansion.20261028.primary4.school-post-desk-010.reading.q2",
+            "expansion.20261028.primary4.school-post-desk-010.reading.q3",
+            "expansion.20261028.primary4.school-post-desk-010.reading.q4",
+            "expansion.20261028.primary4.school-post-desk-010.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-pet-room-plan",
+          "sourceContentHash": "d4c50ff73603e79f79b25070c5f89af32381378a0173a8bb5818893baf110b76"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.playground-chalk-calendar-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "操场上的粉笔日历",
+        "summary": "操场上的粉笔日历，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小四历史公开转载的完整文字组：一篇五判断／五独立句五共享词或短语／六中文情境六共享表达，分别绑定，不拼组合。上册正文2012—13与网页2021、下册未署年分开；学校施测与现行难度未认证。原读答F把未提当假的缺陷保留，原创F均明示反证；不添加未印的一次规则。图片/音频缺失任务未恢复。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.playground-chalk-calendar-010",
+          "family": "reading_tf",
+          "label": "操场上的粉笔日历",
+          "candidateSHA256": "832a614b3b59ae62f671a6da98ecc37991232ac775889d75b7188068773ed41a",
+          "authorCheckSHA256": "7a9c3c4f39fe6ef020a92c2dda97dd1c487bb3d7d10124757be0f722d3914312",
+          "sourceGroupIds": [
+            "original.primary4-music-room-tf#primary4.playground-chalk-calendar-010.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b013；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Playground Chalk Calendar 010\n\nOur class draws a big calendar on the covered playground. Each square is one day. We use white chalk for dates and yellow chalk for club times. On Tuesday, the chess club changes from Friday to Thursday. We rub out only its yellow words, not the date. Then we write the new time in Thursday’s square. The teacher asks us to copy the change onto the class noticeboard too. Children who do not pass the playground still need to know about it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.playground-chalk-calendar-010.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Each calendar square stands for one day.",
+            "material": "Playground Chalk Calendar 010\n\nOur class draws a big calendar on the covered playground. Each square is one day. We use white chalk for dates and yellow chalk for club times. On Tuesday, the chess club changes from Friday to Thursday. We rub out only its yellow words, not the date. Then we write the new time in Thursday’s square. The teacher asks us to copy the change onto the class noticeboard too. Children who do not pass the playground still need to know about it.",
+            "explanation": "A正确：each square one day；B否认结构。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.playground-chalk-calendar-010.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "White chalk is used for club times.",
+            "material": "Playground Chalk Calendar 010\n\nOur class draws a big calendar on the covered playground. Each square is one day. We use white chalk for dates and yellow chalk for club times. On Tuesday, the chess club changes from Friday to Thursday. We rub out only its yellow words, not the date. Then we write the new time in Thursday’s square. The teacher asks us to copy the change onto the class noticeboard too. Children who do not pass the playground still need to know about it.",
+            "explanation": "B正确：white日期、yellow社团时间；A互换颜色用途。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.playground-chalk-calendar-010.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The chess club moves from Friday to Thursday.",
+            "material": "Playground Chalk Calendar 010\n\nOur class draws a big calendar on the covered playground. Each square is one day. We use white chalk for dates and yellow chalk for club times. On Tuesday, the chess club changes from Friday to Thursday. We rub out only its yellow words, not the date. Then we write the new time in Thursday’s square. The teacher asks us to copy the change onto the class noticeboard too. Children who do not pass the playground still need to know about it.",
+            "explanation": "A正确：Friday to Thursday明确；B否认变更方向。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.playground-chalk-calendar-010.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class erases Thursday’s date when changing the club time.",
+            "material": "Playground Chalk Calendar 010\n\nOur class draws a big calendar on the covered playground. Each square is one day. We use white chalk for dates and yellow chalk for club times. On Tuesday, the chess club changes from Friday to Thursday. We rub out only its yellow words, not the date. Then we write the new time in Thursday’s square. The teacher asks us to copy the change onto the class noticeboard too. Children who do not pass the playground still need to know about it.",
+            "explanation": "B正确：仅擦社团黄字不擦日期；A混淆擦除对象。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.playground-chalk-calendar-010.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The change is also copied to the class noticeboard.",
+            "material": "Playground Chalk Calendar 010\n\nOur class draws a big calendar on the covered playground. Each square is one day. We use white chalk for dates and yellow chalk for club times. On Tuesday, the chess club changes from Friday to Thursday. We rub out only its yellow words, not the date. Then we write the new time in Thursday’s square. The teacher asks us to copy the change onto the class noticeboard too. Children who do not pass the playground still need to know about it.",
+            "explanation": "A正确：teacher asks copy change there too；B否认补充传播渠道。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "4b0f0f9ea6b35165a995af779b369b1ff324e14a5c7be7a6f4cd3858580a27ac",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-music-room-tf#primary4.playground-chalk-calendar-010.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.playground-chalk-calendar-010.reading.q1",
+            "expansion.20261028.primary4.playground-chalk-calendar-010.reading.q2",
+            "expansion.20261028.primary4.playground-chalk-calendar-010.reading.q3",
+            "expansion.20261028.primary4.playground-chalk-calendar-010.reading.q4",
+            "expansion.20261028.primary4.playground-chalk-calendar-010.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-music-room-tf",
+          "sourceContentHash": "f1fee43e3dd39c59b58df78eb86665625366c64000c969bcafe8fe99d7bc1f2c"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.food-drive-item-list-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "食品募集活动的清单边界",
+        "summary": "食品募集活动的清单边界，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.dongcheng2025.closedmixed",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照东城2024-2025五上区卷完整闭集混合任务：2句空/3共享句＋3个三选阅读题。所有响应均为字母选择，不含需AI评分的开放表达；原卷开放摘录＋写作整组仍暂停。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.food-drive-item-list-010",
+          "family": "reading_choice",
+          "label": "食品募集活动的清单边界",
+          "candidateSHA256": "e918c9a717e4c2816225e6d81cb59013ae39812ec06570a93574a89ded0ecff9",
+          "authorCheckSHA256": "7a9c3c4f39fe6ef020a92c2dda97dd1c487bb3d7d10124757be0f722d3914312",
+          "sourceGroupIds": [
+            "original.primary5-repair-time-closed-mixed#primary5.food-drive-item-list-010.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b013；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Food Drive Item List 010\n\nClass notice: Food collection for the community pantry\nPlease bring unopened, labelled food that can be stored without a fridge. Rice, dried beans and sealed tins are welcome. Do not bring home-cooked meals, opened packets or glass jars. Volunteers cannot check how these have been stored, and glass can break during transport. Check the date before donating. The collection closes on Thursday at noon. Put food on the table outside Room 8, not in the school office. If you are unsure about an item, ask Ms Cole before bringing it. Families may also help by carrying boxes after school; donating food is not the only way to take part."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.food-drive-item-list-010.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which item meets the stated rules?",
+            "material": "Food Drive Item List 010\n\nClass notice: Food collection for the community pantry\nPlease bring unopened, labelled food that can be stored without a fridge. Rice, dried beans and sealed tins are welcome. Do not bring home-cooked meals, opened packets or glass jars. Volunteers cannot check how these have been stored, and glass can break during transport. Check the date before donating. The collection closes on Thursday at noon. Put food on the table outside Room 8, not in the school office. If you are unsure about an item, ask Ms Cole before bringing it. Families may also help by carrying boxes after school; donating food is not the only way to take part.",
+            "explanation": "B密封有标签罐装豆且无需冷藏；A开封、C自制餐、D玻璃瓶均明禁。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "An opened packet of biscuits."
+              },
+              {
+                "id": "o1",
+                "text": "An unopened labelled tin of beans."
+              },
+              {
+                "id": "o2",
+                "text": "A home-cooked hot meal."
+              },
+              {
+                "id": "o3",
+                "text": "A glass jar of sauce."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.food-drive-item-list-010.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why are home-cooked meals not accepted?",
+            "material": "Food Drive Item List 010\n\nClass notice: Food collection for the community pantry\nPlease bring unopened, labelled food that can be stored without a fridge. Rice, dried beans and sealed tins are welcome. Do not bring home-cooked meals, opened packets or glass jars. Volunteers cannot check how these have been stored, and glass can break during transport. Check the date before donating. The collection closes on Thursday at noon. Put food on the table outside Room 8, not in the school office. If you are unsure about an item, ask Ms Cole before bringing it. Families may also help by carrying boxes after school; donating food is not the only way to take part.",
+            "explanation": "C无法核查保存；A价格、B所有人讨厌、D颜色均非原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They are always too cheap."
+              },
+              {
+                "id": "o1",
+                "text": "Pupils dislike all cooking."
+              },
+              {
+                "id": "o2",
+                "text": "Volunteers cannot check their storage history."
+              },
+              {
+                "id": "o3",
+                "text": "They have no colour."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.food-drive-item-list-010.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When does collection end?",
+            "material": "Food Drive Item List 010\n\nClass notice: Food collection for the community pantry\nPlease bring unopened, labelled food that can be stored without a fridge. Rice, dried beans and sealed tins are welcome. Do not bring home-cooked meals, opened packets or glass jars. Volunteers cannot check how these have been stored, and glass can break during transport. Check the date before donating. The collection closes on Thursday at noon. Put food on the table outside Room 8, not in the school office. If you are unsure about an item, ask Ms Cole before bringing it. Families may also help by carrying boxes after school; donating food is not the only way to take part.",
+            "explanation": "A周四中午；B周四放学后已晚；C周五、D周三均不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Thursday at noon."
+              },
+              {
+                "id": "o1",
+                "text": "Thursday after school."
+              },
+              {
+                "id": "o2",
+                "text": "Friday at noon."
+              },
+              {
+                "id": "o3",
+                "text": "Wednesday morning."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.food-drive-item-list-010.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where should donations be placed?",
+            "material": "Food Drive Item List 010\n\nClass notice: Food collection for the community pantry\nPlease bring unopened, labelled food that can be stored without a fridge. Rice, dried beans and sealed tins are welcome. Do not bring home-cooked meals, opened packets or glass jars. Volunteers cannot check how these have been stored, and glass can break during transport. Check the date before donating. The collection closes on Thursday at noon. Put food on the table outside Room 8, not in the school office. If you are unsure about an item, ask Ms Cole before bringing it. Families may also help by carrying boxes after school; donating food is not the only way to take part.",
+            "explanation": "D8室外桌；A明确非办公室；B沙地、C司机旁未安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Inside the school office."
+              },
+              {
+                "id": "o1",
+                "text": "In the playground sand."
+              },
+              {
+                "id": "o2",
+                "text": "Beside the bus driver."
+              },
+              {
+                "id": "o3",
+                "text": "Outside Room 8."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.food-drive-item-list-010.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How can a family help without giving food?",
+            "material": "Food Drive Item List 010\n\nClass notice: Food collection for the community pantry\nPlease bring unopened, labelled food that can be stored without a fridge. Rice, dried beans and sealed tins are welcome. Do not bring home-cooked meals, opened packets or glass jars. Volunteers cannot check how these have been stored, and glass can break during transport. Check the date before donating. The collection closes on Thursday at noon. Put food on the table outside Room 8, not in the school office. If you are unsure about an item, ask Ms Cole before bringing it. Families may also help by carrying boxes after school; donating food is not the only way to take part.",
+            "explanation": "B放学后搬箱亦参与；A开封、D玻璃瓶违规则；C忽视规则非帮助。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Bring opened food instead."
+              },
+              {
+                "id": "o1",
+                "text": "Help carry boxes after school."
+              },
+              {
+                "id": "o2",
+                "text": "Ignore the item rules."
+              },
+              {
+                "id": "o3",
+                "text": "Leave glass jars by the gate."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "ecfb51d6a40b3cea6d4bbe2d56c46822963d750fd72f37f260e48cfbf54a4692",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-repair-time-closed-mixed#primary5.food-drive-item-list-010.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.food-drive-item-list-010.reading.q1",
+            "expansion.20261028.primary5.food-drive-item-list-010.reading.q2",
+            "expansion.20261028.primary5.food-drive-item-list-010.reading.q3",
+            "expansion.20261028.primary5.food-drive-item-list-010.reading.q4",
+            "expansion.20261028.primary5.food-drive-item-list-010.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-repair-time-closed-mixed",
+          "sourceContentHash": "81f5361835981e058b3f6557c4f5d5f69d4524fb9c91cc831ccc53a3672356f9"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.swimming-results-timing-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "游泳成绩表上的计时说明",
+        "summary": "游泳成绩表上的计时说明，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.prose5x4",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.swimming-results-timing-010",
+          "family": "reading_choice",
+          "label": "游泳成绩表上的计时说明",
+          "candidateSHA256": "db756e2cc1eae46eeb2d8d0500152de74baa6c677d9d53f99b868b8b404b4829",
+          "authorCheckSHA256": "7a9c3c4f39fe6ef020a92c2dda97dd1c487bb3d7d10124757be0f722d3914312",
+          "sourceGroupIds": [
+            "original.primary6-reading5joint-route#primary6.swimming-results-timing-010.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b013；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Swimming Results Timing 010\n\nAt sports day, pupils swam the same short distance in two groups. The morning group used an electronic timer. After lunch, the device failed, so two teachers used hand-held stopwatches. The afternoon times appeared slightly slower. A pupil wanted to rank everyone in one list immediately.\nThe sports teacher explained that the distance had stayed the same but the timing method had changed. Small differences might come from how the stopwatches were started and stopped. It would be unfair to treat every tiny difference as certain proof of a faster swimmer.\nThe school displayed results in two sections and stated which method each used. Pupils with close times could join another supervised swim on a later day if they wanted a common comparison. Nobody had to repeat the swim to receive a participation certificate. The teacher said a result sheet should show both the measured numbers and enough information to understand them."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.swimming-results-timing-010.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What changed between the two groups?",
+            "material": "Swimming Results Timing 010\n\nAt sports day, pupils swam the same short distance in two groups. The morning group used an electronic timer. After lunch, the device failed, so two teachers used hand-held stopwatches. The afternoon times appeared slightly slower. A pupil wanted to rank everyone in one list immediately.\nThe sports teacher explained that the distance had stayed the same but the timing method had changed. Small differences might come from how the stopwatches were started and stopped. It would be unfair to treat every tiny difference as certain proof of a faster swimmer.\nThe school displayed results in two sections and stated which method each used. Pupils with close times could join another supervised swim on a later day if they wanted a common comparison. Nobody had to repeat the swim to receive a participation certificate. The teacher said a result sheet should show both the measured numbers and enough information to understand them.",
+            "explanation": "B电子计时改手持秒表；C距离相同；A臂长、D证书类型无变化信息。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The length of every swimmer’s arm."
+              },
+              {
+                "id": "o1",
+                "text": "The timing method."
+              },
+              {
+                "id": "o2",
+                "text": "The swimming distance."
+              },
+              {
+                "id": "o3",
+                "text": "The type of participation certificate."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.swimming-results-timing-010.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the teacher oppose immediate ranking by tiny differences?",
+            "material": "Swimming Results Timing 010\n\nAt sports day, pupils swam the same short distance in two groups. The morning group used an electronic timer. After lunch, the device failed, so two teachers used hand-held stopwatches. The afternoon times appeared slightly slower. A pupil wanted to rank everyone in one list immediately.\nThe sports teacher explained that the distance had stayed the same but the timing method had changed. Small differences might come from how the stopwatches were started and stopped. It would be unfair to treat every tiny difference as certain proof of a faster swimmer.\nThe school displayed results in two sections and stated which method each used. Pupils with close times could join another supervised swim on a later day if they wanted a common comparison. Nobody had to repeat the swim to receive a participation certificate. The teacher said a result sheet should show both the measured numbers and enough information to understand them.",
+            "explanation": "C手动启停可带来误差；A秒表功能错误；B已完成；D未一概否定电子计时。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All stopwatches measure only hours."
+              },
+              {
+                "id": "o1",
+                "text": "No pupil had finished the swim."
+              },
+              {
+                "id": "o2",
+                "text": "Timing methods could introduce small differences."
+              },
+              {
+                "id": "o3",
+                "text": "Electronic timers are always unfair."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.swimming-results-timing-010.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How were the results displayed?",
+            "material": "Swimming Results Timing 010\n\nAt sports day, pupils swam the same short distance in two groups. The morning group used an electronic timer. After lunch, the device failed, so two teachers used hand-held stopwatches. The afternoon times appeared slightly slower. A pupil wanted to rank everyone in one list immediately.\nThe sports teacher explained that the distance had stayed the same but the timing method had changed. Small differences might come from how the stopwatches were started and stopped. It would be unfair to treat every tiny difference as certain proof of a faster swimmer.\nThe school displayed results in two sections and stated which method each used. Pupils with close times could join another supervised swim on a later day if they wanted a common comparison. Nobody had to repeat the swim to receive a participation certificate. The teacher said a result sheet should show both the measured numbers and enough information to understand them.",
+            "explanation": "A分两区注明方法；B无说明反原文；C早晚都有；D保留数字。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In two sections with timing methods stated."
+              },
+              {
+                "id": "o1",
+                "text": "As a single list without notes."
+              },
+              {
+                "id": "o2",
+                "text": "Only for afternoon pupils."
+              },
+              {
+                "id": "o3",
+                "text": "Without any measured numbers."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.swimming-results-timing-010.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What could pupils with close times choose to do?",
+            "material": "Swimming Results Timing 010\n\nAt sports day, pupils swam the same short distance in two groups. The morning group used an electronic timer. After lunch, the device failed, so two teachers used hand-held stopwatches. The afternoon times appeared slightly slower. A pupil wanted to rank everyone in one list immediately.\nThe sports teacher explained that the distance had stayed the same but the timing method had changed. Small differences might come from how the stopwatches were started and stopped. It would be unfair to treat every tiny difference as certain proof of a faster swimmer.\nThe school displayed results in two sections and stated which method each used. Pupils with close times could join another supervised swim on a later day if they wanted a common comparison. Nobody had to repeat the swim to receive a participation certificate. The teacher said a result sheet should show both the measured numbers and enough information to understand them.",
+            "explanation": "D可自愿重游统一比较；A秘密改、B逃课、C他校证无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Change their old results secretly."
+              },
+              {
+                "id": "o1",
+                "text": "Skip all future lessons."
+              },
+              {
+                "id": "o2",
+                "text": "Demand a certificate from another school."
+              },
+              {
+                "id": "o3",
+                "text": "Swim again under a common method."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.swimming-results-timing-010.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who had to repeat the swim to get a participation certificate?",
+            "material": "Swimming Results Timing 010\n\nAt sports day, pupils swam the same short distance in two groups. The morning group used an electronic timer. After lunch, the device failed, so two teachers used hand-held stopwatches. The afternoon times appeared slightly slower. A pupil wanted to rank everyone in one list immediately.\nThe sports teacher explained that the distance had stayed the same but the timing method had changed. Small differences might come from how the stopwatches were started and stopped. It would be unfair to treat every tiny difference as certain proof of a faster swimmer.\nThe school displayed results in two sections and stated which method each used. Pupils with close times could join another supervised swim on a later day if they wanted a common comparison. Nobody had to repeat the swim to receive a participation certificate. The teacher said a result sheet should show both the measured numbers and enough information to understand them.",
+            "explanation": "B明确nobody had to repeat；A和D整组强制、C最快者强制均无要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every morning swimmer."
+              },
+              {
+                "id": "o1",
+                "text": "Nobody."
+              },
+              {
+                "id": "o2",
+                "text": "Only the fastest pupil."
+              },
+              {
+                "id": "o3",
+                "text": "Every afternoon swimmer."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "726b7e0fe201383b8f651ec7435b04473fcc57582c5b2310bdd417de21fae869",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-reading5joint-route#primary6.swimming-results-timing-010.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.swimming-results-timing-010.reading.q1",
+            "expansion.20261028.primary6.swimming-results-timing-010.reading.q2",
+            "expansion.20261028.primary6.swimming-results-timing-010.reading.q3",
+            "expansion.20261028.primary6.swimming-results-timing-010.reading.q4",
+            "expansion.20261028.primary6.swimming-results-timing-010.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-reading5joint-route",
+          "sourceContentHash": "bf55c679f24c162c9dc66b20e0457e2063cb0562604ceed78992a872d580b806"
+        }
+      ]
+    }
+  ]
+}

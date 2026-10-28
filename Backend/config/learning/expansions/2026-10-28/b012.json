@@ -1,0 +1,926 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b012",
+  "createdAt": "2026-10-28T15:50:00.000Z",
+  "sourceSHA256": "4a2b2d586b3183b3912d06bdd914adc3201fcb16d7c9ec286c19e3b9f4924a2b",
+  "reviewSHA256": "030d9a050adcd62dd9388b5849681930eb3ce3b15c784cf5ad85bd9079c6265b",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary1 visual author",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary1.weather-picture-cards-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "天气图卡：太阳、月亮、雨与雪",
+        "summary": "天气图卡：太阳、月亮、雨与雪，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary1 visual author (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "本批为明确逐词编写的原创四图配词任务；只借用已核来源的四图四回应形式。图卡为本批自绘SVG并确定性导出PNG；作者检查图义、选项和全部干扰图，不声称独立教师或学生难度标定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary1.weather-picture-cards-001",
+          "family": "word_picture_matching",
+          "label": "天气图卡：太阳、月亮、雨与雪",
+          "candidateSHA256": "d2935fe838f30d7b858f6969169560e7175c9715d72b145f736a0fe73b4e1c55",
+          "authorCheckSHA256": "adca3073766ba5748006a9f82ebd9b2299c5d39015475a21119435c4d540a1b6",
+          "sourceGroupIds": [
+            "original.primary1-four-picture-matches#primary1.weather-picture-cards-001.picture-cards"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b012；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary1.weather-picture-cards-001.picture-cards.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "the sun",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "B是带有光芒的太阳，sun为太阳；A是雨滴、C是雪花、D是月亮，均不符合sun。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary1.weather-picture-cards-001.picture-cards.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "the moon",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "D是弯月，moon为月亮；A雨、B太阳、C雪花与月亮不同。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary1.weather-picture-cards-001.picture-cards.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "rain",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "A画的是落下的水滴，rain为雨；B是太阳、C是雪花、D是月亮，均不是雨。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary1.weather-picture-cards-001.picture-cards.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "snow",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "C是两朵雪花，snow为雪；A为液态雨滴，B太阳，D月亮，不能与snow对应。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "50928c56c335d3ea77232662fcf471ee47aaaa82d535c9ceada618113d136717",
+      "reviewNotes": "本批为明确逐词编写的原创四图配词任务；只借用已核来源的四图四回应形式。图卡为本批自绘SVG并确定性导出PNG；作者检查图义、选项和全部干扰图，不声称独立教师或学生难度标定。",
+      "components": [
+        {
+          "id": "original.primary1-four-picture-matches#primary1.weather-picture-cards-001.picture-cards",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary1.weather-picture-cards-001.picture-cards.q1",
+            "expansion.20261028.primary1.weather-picture-cards-001.picture-cards.q2",
+            "expansion.20261028.primary1.weather-picture-cards-001.picture-cards.q3",
+            "expansion.20261028.primary1.weather-picture-cards-001.picture-cards.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "original.primary1-four-picture-matches",
+          "sourceContentHash": "9c1473b77736266a4e69a056c30a13662552db6e76df3233bbcb3130c167b171"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary1.road-vehicle-cards-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "交通图卡：自行车、火车、巴士与小汽车",
+        "summary": "交通图卡：自行车、火车、巴士与小汽车，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary1 visual author (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "本批为明确逐词编写的原创四图配词任务；只借用已核来源的四图四回应形式。图卡为本批自绘SVG并确定性导出PNG；作者检查图义、选项和全部干扰图，不声称独立教师或学生难度标定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary1.road-vehicle-cards-001",
+          "family": "word_picture_matching",
+          "label": "交通图卡：自行车、火车、巴士与小汽车",
+          "candidateSHA256": "018eee0954fb81893b8d801be49492c487841be26d653fd5ca55a68e0dabbcd3",
+          "authorCheckSHA256": "adca3073766ba5748006a9f82ebd9b2299c5d39015475a21119435c4d540a1b6",
+          "sourceGroupIds": [
+            "original.primary1-four-picture-matches#primary1.road-vehicle-cards-001.picture-cards"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b012；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary1.road-vehicle-cards-001.picture-cards.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a bus",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "C车身较长，有多扇乘客窗，是bus；A自行车没有封闭车身，B有轨道及相连车厢为火车，D短车身为小汽车。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary1.road-vehicle-cards-001.picture-cards.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a train",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "B有机车、相连车厢和轨道，为train；A自行车、C巴士、D小汽车均没有这组轨道车厢特征。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary1.road-vehicle-cards-001.picture-cards.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a bicycle",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "A有两个细轮、车架、脚踏和车把，是bicycle；B火车、C巴士、D小汽车均非自行车。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary1.road-vehicle-cards-001.picture-cards.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a car",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "D为短车身、有车顶和四轮的小汽车car；A自行车、B火车、C多窗巴士与之不同。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "78c58773b7654c08a1ffb5cc205c3fdfc954e63014b32ce7f04270abd45b7115",
+      "reviewNotes": "本批为明确逐词编写的原创四图配词任务；只借用已核来源的四图四回应形式。图卡为本批自绘SVG并确定性导出PNG；作者检查图义、选项和全部干扰图，不声称独立教师或学生难度标定。",
+      "components": [
+        {
+          "id": "original.primary1-four-picture-matches#primary1.road-vehicle-cards-001.picture-cards",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary1.road-vehicle-cards-001.picture-cards.q1",
+            "expansion.20261028.primary1.road-vehicle-cards-001.picture-cards.q2",
+            "expansion.20261028.primary1.road-vehicle-cards-001.picture-cards.q3",
+            "expansion.20261028.primary1.road-vehicle-cards-001.picture-cards.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "original.primary1-four-picture-matches",
+          "sourceContentHash": "9c1473b77736266a4e69a056c30a13662552db6e76df3233bbcb3130c167b171"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary1.tableware-picture-cards-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "餐桌图卡：碗、勺子、盘子与杯子",
+        "summary": "餐桌图卡：碗、勺子、盘子与杯子，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary1 visual author (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "本批为明确逐词编写的原创四图配词任务；只借用已核来源的四图四回应形式。图卡为本批自绘SVG并确定性导出PNG；作者检查图义、选项和全部干扰图，不声称独立教师或学生难度标定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary1.tableware-picture-cards-001",
+          "family": "word_picture_matching",
+          "label": "餐桌图卡：碗、勺子、盘子与杯子",
+          "candidateSHA256": "397d4b674cd3ec43f49cfa7c9b87882ba3a928a9525d5e232449281d483ead7a",
+          "authorCheckSHA256": "adca3073766ba5748006a9f82ebd9b2299c5d39015475a21119435c4d540a1b6",
+          "sourceGroupIds": [
+            "original.primary1-four-picture-matches#primary1.tableware-picture-cards-001.picture-cards"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b012；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary1.tableware-picture-cards-001.picture-cards.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a cup",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "D为有侧把手的杯子cup；A无把手且较宽深的碗、B长柄勺子、C平盘都不是此杯。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary1.tableware-picture-cards-001.picture-cards.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a spoon",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "B有长柄和椭圆勺头，是spoon；A碗、C盘、D杯均没有长柄勺头。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary1.tableware-picture-cards-001.picture-cards.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a bowl",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "A画的是有深度的碗bowl；B是勺子，C为从上方看的平盘，D有把手是杯子。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary1.tableware-picture-cards-001.picture-cards.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a plate",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "C为圆形平盘plate；A深碗、B勺子和D有把手杯子均不是平盘。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "15a751655b4b96020116d13a898b112f5049f70e08ea33c1a990682d8c22d187",
+      "reviewNotes": "本批为明确逐词编写的原创四图配词任务；只借用已核来源的四图四回应形式。图卡为本批自绘SVG并确定性导出PNG；作者检查图义、选项和全部干扰图，不声称独立教师或学生难度标定。",
+      "components": [
+        {
+          "id": "original.primary1-four-picture-matches#primary1.tableware-picture-cards-001.picture-cards",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary1.tableware-picture-cards-001.picture-cards.q1",
+            "expansion.20261028.primary1.tableware-picture-cards-001.picture-cards.q2",
+            "expansion.20261028.primary1.tableware-picture-cards-001.picture-cards.q3",
+            "expansion.20261028.primary1.tableware-picture-cards-001.picture-cards.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "original.primary1-four-picture-matches",
+          "sourceContentHash": "9c1473b77736266a4e69a056c30a13662552db6e76df3233bbcb3130c167b171"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary1.clothes-picture-cards-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "衣物图卡：帽子、外套、靴子与短袖上衣",
+        "summary": "衣物图卡：帽子、外套、靴子与短袖上衣，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary1 visual author (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "本批为明确逐词编写的原创四图配词任务；只借用已核来源的四图四回应形式。图卡为本批自绘SVG并确定性导出PNG；作者检查图义、选项和全部干扰图，不声称独立教师或学生难度标定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary1.clothes-picture-cards-001",
+          "family": "word_picture_matching",
+          "label": "衣物图卡：帽子、外套、靴子与短袖上衣",
+          "candidateSHA256": "1a7a01b5844cbcf997ccd65425e023129a77d851d9877802a12a0e4e72e8b2b1",
+          "authorCheckSHA256": "adca3073766ba5748006a9f82ebd9b2299c5d39015475a21119435c4d540a1b6",
+          "sourceGroupIds": [
+            "original.primary1-four-picture-matches#primary1.clothes-picture-cards-001.picture-cards"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b012；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary1.clothes-picture-cards-001.picture-cards.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a hat",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "A是戴在头上的帽子hat；B有袖和纽扣是外套，C为脚上的靴子，D为短袖上衣，均不是帽子。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary1.clothes-picture-cards-001.picture-cards.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a coat",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "B为长袖、前面有纽扣的外套coat；A帽子、C靴子、D短袖上衣不符合该词。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary1.clothes-picture-cards-001.picture-cards.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "boots",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "C是两只高帮靴子boots；A帽子、B外套、D短袖上衣都不是足部穿着的靴子。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary1.clothes-picture-cards-001.picture-cards.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Choose the matching letter.",
+            "prompt": "a T-shirt",
+            "material": "Four picture cards\n\nLook at picture cards A, B, C and D. Match each English word or phrase to one picture. Use every letter once.",
+            "explanation": "D为圆领短袖T恤T-shirt；A帽子、B前排扣长袖外套、C靴子与短袖T恤不同。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+                "label": "Picture cards A, B, C and D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A"
+              },
+              {
+                "id": "o1",
+                "text": "B"
+              },
+              {
+                "id": "o2",
+                "text": "C"
+              },
+              {
+                "id": "o3",
+                "text": "D"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "a2348bb51813e2b54a99fd8ee7f33c0a270204c83d59f5c81504c6ab5adecbe2",
+      "reviewNotes": "本批为明确逐词编写的原创四图配词任务；只借用已核来源的四图四回应形式。图卡为本批自绘SVG并确定性导出PNG；作者检查图义、选项和全部干扰图，不声称独立教师或学生难度标定。",
+      "components": [
+        {
+          "id": "original.primary1-four-picture-matches#primary1.clothes-picture-cards-001.picture-cards",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary1.clothes-picture-cards-001.picture-cards.q1",
+            "expansion.20261028.primary1.clothes-picture-cards-001.picture-cards.q2",
+            "expansion.20261028.primary1.clothes-picture-cards-001.picture-cards.q3",
+            "expansion.20261028.primary1.clothes-picture-cards-001.picture-cards.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "original.primary1-four-picture-matches",
+          "sourceContentHash": "9c1473b77736266a4e69a056c30a13662552db6e76df3233bbcb3130c167b171"
+        }
+      ]
+    }
+  ],
+  "imageAssets": [
+    {
+      "id": "image.6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+      "sha256": "6653d2a783110bc76b47c329ede8a58d716c3e1d4c54a2bae7bbe0951f88f05a",
+      "byteSize": 30895,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "天气图卡：太阳、月亮、雨与雪；A至D图卡顺序为rain, sun, snow, moon",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-weather-001.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-28",
+      "reviewNotes": "已在768×512原图及手机缩略图中检查四张图的形体、字母和语义；图卡无题面单词或答案标记。天气图中雨滴与雪花不叠加云朵，避免多个图都可被称作cloud；不把同一幅图更换字母作为另一道新题。"
+    },
+    {
+      "id": "image.ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+      "sha256": "ef924f1cece8a57650770b05e1389437e837f1985a19936ef97c740731910057",
+      "byteSize": 24950,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "交通图卡：自行车、火车、巴士与小汽车；A至D图卡顺序为bicycle, train, bus, car",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-road-001.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-28",
+      "reviewNotes": "已在768×512原图及手机缩略图中检查四张图的形体、字母和语义；图卡无题面单词或答案标记。天气图中雨滴与雪花不叠加云朵，避免多个图都可被称作cloud；不把同一幅图更换字母作为另一道新题。"
+    },
+    {
+      "id": "image.580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+      "sha256": "580ead7620587b98c40423ae3a182355943b1cc73a3ab36af56406e688f17e42",
+      "byteSize": 33410,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "餐桌图卡：碗、勺子、盘子与杯子；A至D图卡顺序为bowl, spoon, plate, cup",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-table-001.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-28",
+      "reviewNotes": "已在768×512原图及手机缩略图中检查四张图的形体、字母和语义；图卡无题面单词或答案标记。天气图中雨滴与雪花不叠加云朵，避免多个图都可被称作cloud；不把同一幅图更换字母作为另一道新题。"
+    },
+    {
+      "id": "image.22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+      "sha256": "22129623e1643771c1569a607ca35154600924cb4477ea2667cbe4cb5ede4310",
+      "byteSize": 27845,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "衣物图卡：帽子、外套、靴子与短袖上衣；A至D图卡顺序为cap, coat, shoes, shirt",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-clothes-001.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-28",
+      "reviewNotes": "已在768×512原图及手机缩略图中检查四张图的形体、字母和语义；图卡无题面单词或答案标记。天气图中雨滴与雪花不叠加云朵，避免多个图都可被称作cloud；不把同一幅图更换字母作为另一道新题。"
+    }
+  ]
+}

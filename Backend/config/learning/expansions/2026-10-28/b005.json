@@ -1,0 +1,2092 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b005",
+  "createdAt": "2026-10-29T00:04:50.411044+08:00",
+  "sourceSHA256": "478bd067719919a0d2c695b3c0e0f0387ddd1d656bcf63734ce751c0ca6c0c0c",
+  "reviewSHA256": "f458826d28df71b892c28bff0e313d4bfdc55d418cc6ef5330ef8c0caa180883",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.toy-car-ramp-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "小汽车斜坡测试",
+        "summary": "小汽车斜坡测试，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整具体形式参照公开来源；原校/年级难度未独立认证，作者自审不等独立教师或学生验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.toy-car-ramp-005",
+          "family": "function_choice",
+          "label": "小汽车斜坡测试",
+          "candidateSHA256": "cc162df75510b7d6cd3263d903479052f72eef25e56ccafc65c803071c228164",
+          "authorCheckSHA256": "d63bda58c4b4e29c6092be1418298590c6253ee8847839d0b8a7a1ad675b49dd",
+          "sourceGroupIds": [
+            "original.primary2-five-small-functions#primary2.toy-car-ramp-005.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b005；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Toy Car Ramp 005\n\nWe test toy cars. The red car is fast. The blue car has a loose wheel. Put the cars at the top of the ramp. Let go when the teacher says, \"Go!\" Do not push them. After the test, put the red car in the box. Give the blue car to the teacher."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.toy-car-ramp-005.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your friend wants to use the blue car now. You say, \"____\"",
+            "material": "Toy Car Ramp 005\n\nWe test toy cars. The red car is fast. The blue car has a loose wheel. Put the cars at the top of the ramp. Let go when the teacher says, \"Go!\" Do not push them. After the test, put the red car in the box. Give the blue car to the teacher.",
+            "explanation": "A蓝车轮松应等处理；B与loose矛盾；C蓝车存在。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Wait. Its wheel is loose."
+              },
+              {
+                "id": "o1",
+                "text": "Its wheel is new and strong."
+              },
+              {
+                "id": "o2",
+                "text": "There is no blue car."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.toy-car-ramp-005.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your friend puts a car at the bottom. You say, \"____\"",
+            "material": "Toy Car Ramp 005\n\nWe test toy cars. The red car is fast. The blue car has a loose wheel. Put the cars at the top of the ramp. Let go when the teacher says, \"Go!\" Do not push them. After the test, put the red car in the box. Give the blue car to the teacher.",
+            "explanation": "B从坡顶出发；A保持坡底违反测试安排；C鞋内不是起点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Leave it at the bottom."
+              },
+              {
+                "id": "o1",
+                "text": "Put it at the top."
+              },
+              {
+                "id": "o2",
+                "text": "Put it in your shoe."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.toy-car-ramp-005.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The teacher has not said \"Go!\" Your friend is ready. You say, \"____\"",
+            "material": "Toy Car Ramp 005\n\nWe test toy cars. The red car is fast. The blue car has a loose wheel. Put the cars at the top of the ramp. Let go when the teacher says, \"Go!\" Do not push them. After the test, put the red car in the box. Give the blue car to the teacher.",
+            "explanation": "C等口令；A禁止推车；B提前放手不符规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Push it hard."
+              },
+              {
+                "id": "o1",
+                "text": "Let go now."
+              },
+              {
+                "id": "o2",
+                "text": "Wait for \"Go!\""
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.toy-car-ramp-005.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The test is over. Your friend holds the red car. You say, \"____\"",
+            "material": "Toy Car Ramp 005\n\nWe test toy cars. The red car is fast. The blue car has a loose wheel. Put the cars at the top of the ramp. Let go when the teacher says, \"Go!\" Do not push them. After the test, put the red car in the box. Give the blue car to the teacher.",
+            "explanation": "A红车测后放盒；B校门未安排；C轮子不是接收者。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put it in the box."
+              },
+              {
+                "id": "o1",
+                "text": "Put it at the school gate."
+              },
+              {
+                "id": "o2",
+                "text": "Give it to the blue wheel."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.toy-car-ramp-005.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your friend puts the blue car with the red car. You say, \"____\"",
+            "material": "Toy Car Ramp 005\n\nWe test toy cars. The red car is fast. The blue car has a loose wheel. Put the cars at the top of the ramp. Let go when the teacher says, \"Go!\" Do not push them. After the test, put the red car in the box. Give the blue car to the teacher.",
+            "explanation": "B蓝车交老师；A隐藏、C丢弃都不是收尾安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Hide the blue car."
+              },
+              {
+                "id": "o1",
+                "text": "Give the blue car to the teacher."
+              },
+              {
+                "id": "o2",
+                "text": "Throw both cars away."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "d0d1f8a79ce2b22dc3173e60ba463fa5447a1c2394cb8435f77b2ea45838d2d7",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-five-small-functions#primary2.toy-car-ramp-005.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.toy-car-ramp-005.reading.q1",
+            "expansion.20261028.primary2.toy-car-ramp-005.reading.q2",
+            "expansion.20261028.primary2.toy-car-ramp-005.reading.q3",
+            "expansion.20261028.primary2.toy-car-ramp-005.reading.q4",
+            "expansion.20261028.primary2.toy-car-ramp-005.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-five-small-functions",
+          "sourceContentHash": "8aec4fa4f4448a713602248fecd4163e48c664bfbe02fe1de910736fd964f324"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.animal-feed-trays-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "小动物喂食盘",
+        "summary": "小动物喂食盘，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.animal-feed-trays-005",
+          "family": "function_choice",
+          "label": "小动物喂食盘",
+          "candidateSHA256": "9be31f4f979d13d0513097c4658b8128d56b33a0ff5af3bf457cf73d32ad097b",
+          "authorCheckSHA256": "d63bda58c4b4e29c6092be1418298590c6253ee8847839d0b8a7a1ad675b49dd",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.animal-feed-trays-005.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b005；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Animal Feed Trays 005\n\nAt the farm, the teacher gives us two trays. Carrots are for the rabbits. Corn is for the hens. The rabbit gate stays shut. We give food through the small hole. Wash the empty trays at the tap. Then put them on the shelf to dry."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.animal-feed-trays-005.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend takes corn to the rabbits. You say, \"____\"",
+            "material": "Animal Feed Trays 005\n\nAt the farm, the teacher gives us two trays. Carrots are for the rabbits. Corn is for the hens. The rabbit gate stays shut. We give food through the small hole. Wash the empty trays at the tap. Then put them on the shelf to dry.",
+            "explanation": "A兔子吃胡萝卜盘；B空盘无食物；C玉米给鸡不为兔。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Give the rabbits carrots."
+              },
+              {
+                "id": "o1",
+                "text": "Give the rabbits an empty tray."
+              },
+              {
+                "id": "o2",
+                "text": "The corn is for rabbits."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.animal-feed-trays-005.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend asks, \"Who gets the corn?\" You say, \"____\"",
+            "material": "Animal Feed Trays 005\n\nAt the farm, the teacher gives us two trays. Carrots are for the rabbits. Corn is for the hens. The rabbit gate stays shut. We give food through the small hole. Wash the empty trays at the tap. Then put them on the shelf to dry.",
+            "explanation": "B玉米给hens；A兔子对应胡萝卜；C架子不是动物。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The rabbits."
+              },
+              {
+                "id": "o1",
+                "text": "The hens."
+              },
+              {
+                "id": "o2",
+                "text": "The teacher’s shelf."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.animal-feed-trays-005.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend starts to open the rabbit gate. You say, \"____\"",
+            "material": "Animal Feed Trays 005\n\nAt the farm, the teacher gives us two trays. Carrots are for the rabbits. Corn is for the hens. The rabbit gate stays shut. We give food through the small hole. Wash the empty trays at the tap. Then put them on the shelf to dry.",
+            "explanation": "C兔门保持关；A敞开相反；B拿门回家不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Open it wide."
+              },
+              {
+                "id": "o1",
+                "text": "Take the gate home."
+              },
+              {
+                "id": "o2",
+                "text": "Keep it shut."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.animal-feed-trays-005.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend wants to throw food over the high gate. You say, \"____\"",
+            "material": "Animal Feed Trays 005\n\nAt the farm, the teacher gives us two trays. Carrots are for the rabbits. Corn is for the hens. The rabbit gate stays shut. We give food through the small hole. Wash the empty trays at the tap. Then put them on the shelf to dry.",
+            "explanation": "A从小孔喂；B屋顶、C水龙头均不是给兔食物方式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Use the small hole."
+              },
+              {
+                "id": "o1",
+                "text": "Put food on the roof."
+              },
+              {
+                "id": "o2",
+                "text": "Give food to the tap."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.animal-feed-trays-005.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The trays are clean and wet. You say, \"____\"",
+            "material": "Animal Feed Trays 005\n\nAt the farm, the teacher gives us two trays. Carrots are for the rabbits. Corn is for the hens. The rabbit gate stays shut. We give food through the small hole. Wash the empty trays at the tap. Then put them on the shelf to dry.",
+            "explanation": "B洗后放架晾干；A装湿盘入包、C再装玉米均非指定下一步。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put them in your bag now."
+              },
+              {
+                "id": "o1",
+                "text": "Put them on the shelf to dry."
+              },
+              {
+                "id": "o2",
+                "text": "Fill them with corn again."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "179e82a30254431c97688c8a366dab9c5a4c00b37dd8edc4d6432a1a10b7e78b",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.animal-feed-trays-005.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.animal-feed-trays-005.reading.q1",
+            "expansion.20261028.primary2.animal-feed-trays-005.reading.q2",
+            "expansion.20261028.primary2.animal-feed-trays-005.reading.q3",
+            "expansion.20261028.primary2.animal-feed-trays-005.reading.q4",
+            "expansion.20261028.primary2.animal-feed-trays-005.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.library-borrowing-order-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "第一次借鸟类图书",
+        "summary": "第一次借鸟类图书，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_ordering"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3.panshi2023.dialogue-ordering",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照公开转载2022—2023三上卷文本：六句一对话，首句已给1，其余五个名次；网页标题磐石、原页仅核年级学期，未取得排序页原图或源键，不当原校/全国年级或学生难度认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.library-borrowing-order-005",
+          "family": "dialogue_ordering",
+          "label": "第一次借鸟类图书",
+          "candidateSHA256": "c7e0cc81d376eb83ceaa6056452cc8e84bfdf1ed0a088232452f43128f640104",
+          "authorCheckSHA256": "d63bda58c4b4e29c6092be1418298590c6253ee8847839d0b8a7a1ad675b49dd",
+          "sourceGroupIds": [
+            "original.primary3-dialogue-ordering-paper-bird#primary3.library-borrowing-order-005.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b005；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Library Borrowing Order 005\n\nPut the dialogue in order. The first line is fixed: 1. I would like to borrow a book.\nA. Here is one about garden birds.\nB. Next Friday.\nC. What kind would you like?\nD. Thank you. When must I bring it back?\nE. A book about birds, please.\nChoose a position from 2 to 6 for each line."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.library-borrowing-order-005.reading.q1",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What position does line A take?",
+            "material": "Library Borrowing Order 005\n\nPut the dialogue in order. The first line is fixed: 1. I would like to borrow a book.\nA. Here is one about garden birds.\nB. Next Friday.\nC. What kind would you like?\nD. Thank you. When must I bring it back?\nE. A book about birds, please.\nChoose a position from 2 to 6 for each line.",
+            "explanation": "C第4步给出鸟书，接第3步选鸟书；A第2步应问类别；B第3步应答类别；D第5步致谢问还期；E第6步答日期。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.library-borrowing-order-005.reading.q2",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What position does line B take?",
+            "material": "Library Borrowing Order 005\n\nPut the dialogue in order. The first line is fixed: 1. I would like to borrow a book.\nA. Here is one about garden birds.\nB. Next Friday.\nC. What kind would you like?\nD. Thank you. When must I bring it back?\nE. A book about birds, please.\nChoose a position from 2 to 6 for each line.",
+            "explanation": "E第6步回答还书日期，接问还期；A第2步问类别；B第3步选类别；C第4步递书；D第5步才问还期。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261028.primary3.library-borrowing-order-005.reading.q3",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What position does line C take?",
+            "material": "Library Borrowing Order 005\n\nPut the dialogue in order. The first line is fixed: 1. I would like to borrow a book.\nA. Here is one about garden birds.\nB. Next Friday.\nC. What kind would you like?\nD. Thank you. When must I bring it back?\nE. A book about birds, please.\nChoose a position from 2 to 6 for each line.",
+            "explanation": "A第2步先问想借何种书；B第3步应答鸟类；C第4步递书；D第5步问归还；E第6步给日期，都不应放本句。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.library-borrowing-order-005.reading.q4",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What position does line D take?",
+            "material": "Library Borrowing Order 005\n\nPut the dialogue in order. The first line is fixed: 1. I would like to borrow a book.\nA. Here is one about garden birds.\nB. Next Friday.\nC. What kind would you like?\nD. Thank you. When must I bring it back?\nE. A book about birds, please.\nChoose a position from 2 to 6 for each line.",
+            "explanation": "D第5步收到书后致谢并问还期；A第2步尚未选种类；B第3步应选鸟类；C第4步递书；E第6步应答日期。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary3.library-borrowing-order-005.reading.q5",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What position does line E take?",
+            "material": "Library Borrowing Order 005\n\nPut the dialogue in order. The first line is fixed: 1. I would like to borrow a book.\nA. Here is one about garden birds.\nB. Next Friday.\nC. What kind would you like?\nD. Thank you. When must I bring it back?\nE. A book about birds, please.\nChoose a position from 2 to 6 for each line.",
+            "explanation": "B第3步回答What kind；A第2步应先问类别；C第4步才递合适书；D第5步问还期；E第6步答日期。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "0a99cf9770e25cd0008a764828a5f5ea7e112e4374882605736a846066e890d4",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-dialogue-ordering-paper-bird#primary3.library-borrowing-order-005.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.library-borrowing-order-005.reading.q1",
+            "expansion.20261028.primary3.library-borrowing-order-005.reading.q2",
+            "expansion.20261028.primary3.library-borrowing-order-005.reading.q3",
+            "expansion.20261028.primary3.library-borrowing-order-005.reading.q4",
+            "expansion.20261028.primary3.library-borrowing-order-005.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-dialogue-ordering-paper-bird",
+          "sourceContentHash": "360d77ac51fe95d2badeb0e2c826027ab23f3fc7c69c22f1c84c9405d01fa19e"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.backpack-zip-note-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "书包拉链旁的小夹子",
+        "summary": "书包拉链旁的小夹子，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.backpack-zip-note-005",
+          "family": "reading_tf",
+          "label": "书包拉链旁的小夹子",
+          "candidateSHA256": "31671f2f6175fc5d7de8fab30de61c32c57f910d67b1a3d4f8200d97173479e5",
+          "authorCheckSHA256": "d63bda58c4b4e29c6092be1418298590c6253ee8847839d0b8a7a1ad675b49dd",
+          "sourceGroupIds": [
+            "original.bens-bag-reading#primary3.backpack-zip-note-005.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b005；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Backpack Zip Note 005\n\nMy schoolbag has a broken zip. Dad cannot fix it before school. He puts my books in a cloth bag. My pencil case stays in the schoolbag because it fits in a small pocket. I carry both bags. At school, my teacher gives me a big clip. It keeps the cloth bag closed. I take the clip home and return it the next morning."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.backpack-zip-note-005.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad fixes the zip before school.",
+            "material": "Backpack Zip Note 005\n\nMy schoolbag has a broken zip. Dad cannot fix it before school. He puts my books in a cloth bag. My pencil case stays in the schoolbag because it fits in a small pocket. I carry both bags. At school, my teacher gives me a big clip. It keeps the cloth bag closed. I take the clip home and return it the next morning.",
+            "explanation": "B正确：cannot fix before school；A忽略不能及时修好。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.backpack-zip-note-005.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The books go into a cloth bag.",
+            "material": "Backpack Zip Note 005\n\nMy schoolbag has a broken zip. Dad cannot fix it before school. He puts my books in a cloth bag. My pencil case stays in the schoolbag because it fits in a small pocket. I carry both bags. At school, my teacher gives me a big clip. It keeps the cloth bag closed. I take the clip home and return it the next morning.",
+            "explanation": "A正确：Dad puts books in a cloth bag；B与物品转移相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.backpack-zip-note-005.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The pencil case is in the cloth bag.",
+            "material": "Backpack Zip Note 005\n\nMy schoolbag has a broken zip. Dad cannot fix it before school. He puts my books in a cloth bag. My pencil case stays in the schoolbag because it fits in a small pocket. I carry both bags. At school, my teacher gives me a big clip. It keeps the cloth bag closed. I take the clip home and return it the next morning.",
+            "explanation": "B正确：笔袋留在schoolbag小袋；A混淆两袋。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.backpack-zip-note-005.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The teacher gives the writer a clip.",
+            "material": "Backpack Zip Note 005\n\nMy schoolbag has a broken zip. Dad cannot fix it before school. He puts my books in a cloth bag. My pencil case stays in the schoolbag because it fits in a small pocket. I carry both bags. At school, my teacher gives me a big clip. It keeps the cloth bag closed. I take the clip home and return it the next morning.",
+            "explanation": "A正确：教师提供大夹；B否认给定帮助。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.backpack-zip-note-005.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer returns the clip the next morning.",
+            "material": "Backpack Zip Note 005\n\nMy schoolbag has a broken zip. Dad cannot fix it before school. He puts my books in a cloth bag. My pencil case stays in the schoolbag because it fits in a small pocket. I carry both bags. At school, my teacher gives me a big clip. It keeps the cloth bag closed. I take the clip home and return it the next morning.",
+            "explanation": "A正确：末句明确归还时间；B与后续行动相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "2d9d550245176f3cbfac0e135cbff0400a88d3f750eb27f0381401f1666c9ec5",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.bens-bag-reading#primary3.backpack-zip-note-005.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.backpack-zip-note-005.reading.q1",
+            "expansion.20261028.primary3.backpack-zip-note-005.reading.q2",
+            "expansion.20261028.primary3.backpack-zip-note-005.reading.q3",
+            "expansion.20261028.primary3.backpack-zip-note-005.reading.q4",
+            "expansion.20261028.primary3.backpack-zip-note-005.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.bens-bag-reading",
+          "sourceContentHash": "e1594f6d2c2c96de673832f2efe0847d6e8f968d3ed2c4833705aeba378b5517"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.helpful-word-categories-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "校园小帮手的词语分类",
+        "summary": "校园小帮手的词语分类，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.word_category_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.repost.odd",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 五组三选形式继承既有四年级转载，新增公开2025四下同型作交叉结构参照；原校身份仍未知。原源clothes/dress等类别层级有歧义，本原创明确指定类别再选例外，不冒称原键已认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.helpful-word-categories-005",
+          "family": "word_category_choice",
+          "label": "校园小帮手的词语分类",
+          "candidateSHA256": "0d1c3a24410acb7e9a5323f2352be618e0aa7558e0ba7a8002df45280c3c05a9",
+          "authorCheckSHA256": "d63bda58c4b4e29c6092be1418298590c6253ee8847839d0b8a7a1ad675b49dd",
+          "sourceGroupIds": [
+            "original.primary4-five-word-categories#primary4.helpful-word-categories-005.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b005；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Helpful Word Categories 005\n\nThe class is making labels for a help desk. Choose the word that belongs to the named group in each question. There is one answer per group."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.helpful-word-categories-005.reading.q1",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word names a tool for cutting paper?",
+            "material": "Helpful Word Categories 005\n\nThe class is making labels for a help desk. Choose the word that belongs to the named group in each question. There is one answer per group.",
+            "explanation": "A scissors剪刀用于剪纸；B carrot胡萝卜是蔬菜；C cloud云是自然物。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Scissors."
+              },
+              {
+                "id": "o1",
+                "text": "Carrot."
+              },
+              {
+                "id": "o2",
+                "text": "Cloud."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.helpful-word-categories-005.reading.q2",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word names a place for borrowing books?",
+            "material": "Helpful Word Categories 005\n\nThe class is making labels for a help desk. Choose the word that belongs to the named group in each question. There is one answer per group.",
+            "explanation": "B library图书馆借书；A厨房做饭；C河流不是借书场所。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Kitchen."
+              },
+              {
+                "id": "o1",
+                "text": "Library."
+              },
+              {
+                "id": "o2",
+                "text": "River."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.helpful-word-categories-005.reading.q3",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word names something you wear on your head?",
+            "material": "Helpful Word Categories 005\n\nThe class is making labels for a help desk. Choose the word that belongs to the named group in each question. There is one answer per group.",
+            "explanation": "C helmet头盔戴头上；A勺子是餐具；B袜子穿脚上。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Spoon."
+              },
+              {
+                "id": "o1",
+                "text": "Sock."
+              },
+              {
+                "id": "o2",
+                "text": "Helmet."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.helpful-word-categories-005.reading.q4",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word names a person who can help sick people?",
+            "material": "Helpful Word Categories 005\n\nThe class is making labels for a help desk. Choose the word that belongs to the named group in each question. There is one answer per group.",
+            "explanation": "A doctor医生是帮助病人的人；B票、C铅笔均非人。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Doctor."
+              },
+              {
+                "id": "o1",
+                "text": "Ticket."
+              },
+              {
+                "id": "o2",
+                "text": "Pencil."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.helpful-word-categories-005.reading.q5",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word names a vehicle?",
+            "material": "Helpful Word Categories 005\n\nThe class is making labels for a help desk. Choose the word that belongs to the named group in each question. There is one answer per group.",
+            "explanation": "B bicycle自行车是交通工具；A山是地形；C毯子是生活用品。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Mountain."
+              },
+              {
+                "id": "o1",
+                "text": "Bicycle."
+              },
+              {
+                "id": "o2",
+                "text": "Blanket."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "d6ec24d0e7fcb828fc4e27644aeb26dd4b33cddf833f39d6983a6862df5a238f",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-five-word-categories#primary4.helpful-word-categories-005.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.helpful-word-categories-005.reading.q1",
+            "expansion.20261028.primary4.helpful-word-categories-005.reading.q2",
+            "expansion.20261028.primary4.helpful-word-categories-005.reading.q3",
+            "expansion.20261028.primary4.helpful-word-categories-005.reading.q4",
+            "expansion.20261028.primary4.helpful-word-categories-005.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-five-word-categories",
+          "sourceContentHash": "8f3d9fa0ef18902a4fa272327d81985674a9ef71daedb722785d6b1df3cf2cbf"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.class-window-message-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "教室窗台上的豆苗",
+        "summary": "教室窗台上的豆苗，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.class-window-message-005",
+          "family": "reading_choice",
+          "label": "教室窗台上的豆苗",
+          "candidateSHA256": "21afbb6c4d3337f8d0915954572a7301730ced50a83f92512f8e644cf0e892ad",
+          "authorCheckSHA256": "d63bda58c4b4e29c6092be1418298590c6253ee8847839d0b8a7a1ad675b49dd",
+          "sourceGroupIds": [
+            "original.primary4-pet-room-plan#primary4.class-window-message-005.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b005；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Class Window Message 005\n\nThe bean plants on our classroom windowsill lean towards the light. Mia wants to turn all the pots around every hour. Our teacher says we should first keep a simple record. We draw each plant on Monday and mark which side faces the window. We turn only the pot with a blue label. The pot with a white label stays in the same place. On Friday, we will draw both plants again. The teacher asks us to give both plants the same amount of water. We must not put either pot in the dark cupboard."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.class-window-message-005.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which way do the plants lean?",
+            "material": "Class Window Message 005\n\nThe bean plants on our classroom windowsill lean towards the light. Mia wants to turn all the pots around every hour. Our teacher says we should first keep a simple record. We draw each plant on Monday and mark which side faces the window. We turn only the pot with a blue label. The pot with a white label stays in the same place. On Friday, we will draw both plants again. The teacher asks us to give both plants the same amount of water. We must not put either pot in the dark cupboard.",
+            "explanation": "A首句向光；B柜子、C地面非倾向。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Towards the light."
+              },
+              {
+                "id": "o1",
+                "text": "Towards the cupboard."
+              },
+              {
+                "id": "o2",
+                "text": "Towards the floor."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.class-window-message-005.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the teacher ask the class to do first?",
+            "material": "Class Window Message 005\n\nThe bean plants on our classroom windowsill lean towards the light. Mia wants to turn all the pots around every hour. Our teacher says we should first keep a simple record. We draw each plant on Monday and mark which side faces the window. We turn only the pot with a blue label. The pot with a white label stays in the same place. On Friday, we will draw both plants again. The teacher asks us to give both plants the same amount of water. We must not put either pot in the dark cupboard.",
+            "explanation": "B先记录；A只是Mia想法；C标签用于区分应保留。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Turn every pot hourly."
+              },
+              {
+                "id": "o1",
+                "text": "Keep a record."
+              },
+              {
+                "id": "o2",
+                "text": "Throw away the labels."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.class-window-message-005.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which pot is turned?",
+            "material": "Class Window Message 005\n\nThe bean plants on our classroom windowsill lean towards the light. Mia wants to turn all the pots around every hour. Our teacher says we should first keep a simple record. We draw each plant on Monday and mark which side faces the window. We turn only the pot with a blue label. The pot with a white label stays in the same place. On Friday, we will draw both plants again. The teacher asks us to give both plants the same amount of water. We must not put either pot in the dark cupboard.",
+            "explanation": "C仅转蓝签盆；A两盆都转、B转白签均违安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Both pots."
+              },
+              {
+                "id": "o1",
+                "text": "The white-label pot."
+              },
+              {
+                "id": "o2",
+                "text": "The blue-label pot."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.class-window-message-005.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When will the class draw the plants again?",
+            "material": "Class Window Message 005\n\nThe bean plants on our classroom windowsill lean towards the light. Mia wants to turn all the pots around every hour. Our teacher says we should first keep a simple record. We draw each plant on Monday and mark which side faces the window. We turn only the pot with a blue label. The pot with a white label stays in the same place. On Friday, we will draw both plants again. The teacher asks us to give both plants the same amount of water. We must not put either pot in the dark cupboard.",
+            "explanation": "A周五再画；B每小时是未采纳想法；C时间未提。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "On Friday."
+              },
+              {
+                "id": "o1",
+                "text": "Every hour."
+              },
+              {
+                "id": "o2",
+                "text": "Next Monday night."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.class-window-message-005.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should stay the same for both plants?",
+            "material": "Class Window Message 005\n\nThe bean plants on our classroom windowsill lean towards the light. Mia wants to turn all the pots around every hour. Our teacher says we should first keep a simple record. We draw each plant on Monday and mark which side faces the window. We turn only the pot with a blue label. The pot with a white label stays in the same place. On Friday, we will draw both plants again. The teacher asks us to give both plants the same amount of water. We must not put either pot in the dark cupboard.",
+            "explanation": "B浇同样水；A两签颜色不同；C纸上画位无要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The label colour."
+              },
+              {
+                "id": "o1",
+                "text": "The amount of water."
+              },
+              {
+                "id": "o2",
+                "text": "The drawing position on paper."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "f02f34a4aa1826c08898299781ffacc0b0eed5072613c5c1711b70a3eff7a0cc",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-pet-room-plan#primary4.class-window-message-005.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.class-window-message-005.reading.q1",
+            "expansion.20261028.primary4.class-window-message-005.reading.q2",
+            "expansion.20261028.primary4.class-window-message-005.reading.q3",
+            "expansion.20261028.primary4.class-window-message-005.reading.q4",
+            "expansion.20261028.primary4.class-window-message-005.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-pet-room-plan",
+          "sourceContentHash": "d4c50ff73603e79f79b25070c5f89af32381378a0173a8bb5818893baf110b76"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.storm-window-letter-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "暴雨前后的窗边记录",
+        "summary": "暴雨前后的窗边记录，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照已核北京区卷公开转载的相应完整具体模式：一短文五判断／四完整信息卡五判断／两共享句空加三道三选，分别绑定，不截成单一子组。源原键非独立gold，东城两型尚无原键；节日日期等事实不沿用。原创虚构，独立教研、目标学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.storm-window-letter-005",
+          "family": "reading_tf",
+          "label": "暴雨前后的窗边记录",
+          "candidateSHA256": "b4476edeb36edc88a8d2424e0baba65004b41e36bde0678101bf694419c5f2ff",
+          "authorCheckSHA256": "d63bda58c4b4e29c6092be1418298590c6253ee8847839d0b8a7a1ad675b49dd",
+          "sourceGroupIds": [
+            "original.primary5-colourful-window-tf#primary5.storm-window-letter-005.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b005；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Storm Window Letter 005\n\nOur art group had displayed paper fish on the classroom windows. We used washable paint, so the windows could be cleaned later. On Thursday, a storm was forecast. We closed the windows and moved the paper fish away from the glass. Some pupils thought the fish would be safe because they were indoors. But water sometimes came through the old frames. The next morning, the windowsill was wet. Our fish were dry on the back shelf. We took photos of the wet frames for the caretaker instead of trying to fix them ourselves. After repairs, we put the fish back. We also kept one photo to explain why we had moved the display."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.storm-window-letter-005.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The art group chose paint that could be washed off.",
+            "material": "Storm Window Letter 005\n\nOur art group had displayed paper fish on the classroom windows. We used washable paint, so the windows could be cleaned later. On Thursday, a storm was forecast. We closed the windows and moved the paper fish away from the glass. Some pupils thought the fish would be safe because they were indoors. But water sometimes came through the old frames. The next morning, the windowsill was wet. Our fish were dry on the back shelf. We took photos of the wet frames for the caretaker instead of trying to fix them ourselves. After repairs, we put the fish back. We also kept one photo to explain why we had moved the display.",
+            "explanation": "A正确：washable paint便于以后清洗；B否认材料特性。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.storm-window-letter-005.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "All pupils immediately agreed that the fish needed moving.",
+            "material": "Storm Window Letter 005\n\nOur art group had displayed paper fish on the classroom windows. We used washable paint, so the windows could be cleaned later. On Thursday, a storm was forecast. We closed the windows and moved the paper fish away from the glass. Some pupils thought the fish would be safe because they were indoors. But water sometimes came through the old frames. The next morning, the windowsill was wet. Our fish were dry on the back shelf. We took photos of the wet frames for the caretaker instead of trying to fix them ourselves. After repairs, we put the fish back. We also kept one photo to explain why we had moved the display.",
+            "explanation": "B正确：some pupils认为在室内安全；A把有异议夸为全同意。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.storm-window-letter-005.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Water reached the windowsill during the storm.",
+            "material": "Storm Window Letter 005\n\nOur art group had displayed paper fish on the classroom windows. We used washable paint, so the windows could be cleaned later. On Thursday, a storm was forecast. We closed the windows and moved the paper fish away from the glass. Some pupils thought the fish would be safe because they were indoors. But water sometimes came through the old frames. The next morning, the windowsill was wet. Our fish were dry on the back shelf. We took photos of the wet frames for the caretaker instead of trying to fix them ourselves. After repairs, we put the fish back. We also kept one photo to explain why we had moved the display.",
+            "explanation": "A正确：次晨windowsill was wet，前文说明旧框渗水；B否认观察。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.storm-window-letter-005.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The pupils repaired the window frames themselves.",
+            "material": "Storm Window Letter 005\n\nOur art group had displayed paper fish on the classroom windows. We used washable paint, so the windows could be cleaned later. On Thursday, a storm was forecast. We closed the windows and moved the paper fish away from the glass. Some pupils thought the fish would be safe because they were indoors. But water sometimes came through the old frames. The next morning, the windowsill was wet. Our fish were dry on the back shelf. We took photos of the wet frames for the caretaker instead of trying to fix them ourselves. After repairs, we put the fish back. We also kept one photo to explain why we had moved the display.",
+            "explanation": "B正确：拍给caretaker而非自行修；A与instead of相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.storm-window-letter-005.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The fish were put back after the repairs.",
+            "material": "Storm Window Letter 005\n\nOur art group had displayed paper fish on the classroom windows. We used washable paint, so the windows could be cleaned later. On Thursday, a storm was forecast. We closed the windows and moved the paper fish away from the glass. Some pupils thought the fish would be safe because they were indoors. But water sometimes came through the old frames. The next morning, the windowsill was wet. Our fish were dry on the back shelf. We took photos of the wet frames for the caretaker instead of trying to fix them ourselves. After repairs, we put the fish back. We also kept one photo to explain why we had moved the display.",
+            "explanation": "A正确：After repairs put back；B与最终动作相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "cbbdd1c89be889d03f46b89df825ed7b6dcb4e3a80b5fbafc83347a6cc3bf7de",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-colourful-window-tf#primary5.storm-window-letter-005.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.storm-window-letter-005.reading.q1",
+            "expansion.20261028.primary5.storm-window-letter-005.reading.q2",
+            "expansion.20261028.primary5.storm-window-letter-005.reading.q3",
+            "expansion.20261028.primary5.storm-window-letter-005.reading.q4",
+            "expansion.20261028.primary5.storm-window-letter-005.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-colourful-window-tf",
+          "sourceContentHash": "fbeee88e9bb4e8278f8efa33f16c8036a9d69d0340d0490dba145b8b9c053b06"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.station-water-fountain-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "车站饮水点的新指示",
+        "summary": "车站饮水点的新指示，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.guilinxiangshan2025.notice5",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照桂林象山标签公开转载的完整第十三节五题三选通知阅读，正文仅明确2024—2025下学期小学五年级，地区来自网页标题；原校/施测未认证。材料以字段文字取得，未取得原扫描布局，不当表格网格。原公布键前三项与题面冲突，保留而不沿用；本稿逐项核对地点/日历/时长/规则。历史首稿为模拟来源的其他阅读配置，家族三稿不等三份同配置真卷。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.station-water-fountain-005",
+          "family": "reading_choice",
+          "label": "车站饮水点的新指示",
+          "candidateSHA256": "d3f74149297a6cd95d64f63478f876a723864fddfb4efc2d182e9b80c6eea496",
+          "authorCheckSHA256": "d63bda58c4b4e29c6092be1418298590c6253ee8847839d0b8a7a1ad675b49dd",
+          "sourceGroupIds": [
+            "original.primary5-bird-walk-notice#primary5.station-water-fountain-005.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b005；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Station Water Fountain 005\n\nNotice: Water fountain by the north waiting area\nThe fountain is working again after cleaning. Please refill only drinking bottles. Do not wash lunch boxes here. Press the lower button for a small cup and the upper button for a tall bottle. There are no free cups at this fountain. If you do not have a container, staff at the information desk can direct you to the café. The water may stop for five minutes at two o’clock for a daily check. During that time, use the fountain near Platform Two. Please tell station staff if water keeps flowing after you release a button. Do not pull the metal cover open yourself."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.station-water-fountain-005.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What may passengers refill here?",
+            "material": "Station Water Fountain 005\n\nNotice: Water fountain by the north waiting area\nThe fountain is working again after cleaning. Please refill only drinking bottles. Do not wash lunch boxes here. Press the lower button for a small cup and the upper button for a tall bottle. There are no free cups at this fountain. If you do not have a container, staff at the information desk can direct you to the café. The water may stop for five minutes at two o’clock for a daily check. During that time, use the fountain near Platform Two. Please tell station staff if water keeps flowing after you release a button. Do not pull the metal cover open yourself.",
+            "explanation": "B允许饮水瓶；A明禁洗饭盒；C花盆、D清洁桶不属于许可容器。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Lunch boxes."
+              },
+              {
+                "id": "o1",
+                "text": "Drinking bottles."
+              },
+              {
+                "id": "o2",
+                "text": "Flower pots."
+              },
+              {
+                "id": "o3",
+                "text": "Cleaning buckets."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.station-water-fountain-005.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which button is for a tall bottle?",
+            "material": "Station Water Fountain 005\n\nNotice: Water fountain by the north waiting area\nThe fountain is working again after cleaning. Please refill only drinking bottles. Do not wash lunch boxes here. Press the lower button for a small cup and the upper button for a tall bottle. There are no free cups at this fountain. If you do not have a container, staff at the information desk can direct you to the café. The water may stop for five minutes at two o’clock for a daily check. During that time, use the fountain near Platform Two. Please tell station staff if water keeps flowing after you release a button. Do not pull the metal cover open yourself.",
+            "explanation": "C高瓶上按钮；B下按钮给小杯；A无同时按要求；D咖啡馆按钮非本机。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Both buttons together."
+              },
+              {
+                "id": "o1",
+                "text": "The lower button."
+              },
+              {
+                "id": "o2",
+                "text": "The upper button."
+              },
+              {
+                "id": "o3",
+                "text": "A button at the café."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.station-water-fountain-005.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a passenger without a container know?",
+            "material": "Station Water Fountain 005\n\nNotice: Water fountain by the north waiting area\nThe fountain is working again after cleaning. Please refill only drinking bottles. Do not wash lunch boxes here. Press the lower button for a small cup and the upper button for a tall bottle. There are no free cups at this fountain. If you do not have a container, staff at the information desk can direct you to the café. The water may stop for five minutes at two o’clock for a daily check. During that time, use the fountain near Platform Two. Please tell station staff if water keeps flowing after you release a button. Do not pull the metal cover open yourself.",
+            "explanation": "A明确无免费杯；B盖内无杯说明；C不借饭盒；D下钮亦供小杯。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No free cups are supplied at this fountain."
+              },
+              {
+                "id": "o1",
+                "text": "The metal cover contains free cups."
+              },
+              {
+                "id": "o2",
+                "text": "Staff will lend a lunch box."
+              },
+              {
+                "id": "o3",
+                "text": "A tall bottle is required for all water."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.station-water-fountain-005.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where can passengers get water during the daily check?",
+            "material": "Station Water Fountain 005\n\nNotice: Water fountain by the north waiting area\nThe fountain is working again after cleaning. Please refill only drinking bottles. Do not wash lunch boxes here. Press the lower button for a small cup and the upper button for a tall bottle. There are no free cups at this fountain. If you do not have a container, staff at the information desk can direct you to the café. The water may stop for five minutes at two o’clock for a daily check. During that time, use the fountain near Platform Two. Please tell station staff if water keeps flowing after you release a button. Do not pull the metal cover open yourself.",
+            "explanation": "D两点检查时用二站台附近饮水点；A开盖禁止；B清洁室、C只出站无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Inside the metal cover."
+              },
+              {
+                "id": "o1",
+                "text": "At the closed cleaning room."
+              },
+              {
+                "id": "o2",
+                "text": "Only outside the station."
+              },
+              {
+                "id": "o3",
+                "text": "Near Platform Two."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.station-water-fountain-005.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should someone do if water will not stop?",
+            "material": "Station Water Fountain 005\n\nNotice: Water fountain by the north waiting area\nThe fountain is working again after cleaning. Please refill only drinking bottles. Do not wash lunch boxes here. Press the lower button for a small cup and the upper button for a tall bottle. There are no free cups at this fountain. If you do not have a container, staff at the information desk can direct you to the café. The water may stop for five minutes at two o’clock for a daily check. During that time, use the fountain near Platform Two. Please tell station staff if water keeps flowing after you release a button. Do not pull the metal cover open yourself.",
+            "explanation": "B报告持续流水；A明确禁开盖；C禁止洗饭盒；D无此处理办法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Pull the cover open."
+              },
+              {
+                "id": "o1",
+                "text": "Report it to station staff."
+              },
+              {
+                "id": "o2",
+                "text": "Wash a lunch box under it."
+              },
+              {
+                "id": "o3",
+                "text": "Hold both buttons for an hour."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "7c54bdf8bb26d159a84a26437704100ee1feaa67b8693f10e492e9996546c42d",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-bird-walk-notice#primary5.station-water-fountain-005.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.station-water-fountain-005.reading.q1",
+            "expansion.20261028.primary5.station-water-fountain-005.reading.q2",
+            "expansion.20261028.primary5.station-water-fountain-005.reading.q3",
+            "expansion.20261028.primary5.station-water-fountain-005.reading.q4",
+            "expansion.20261028.primary5.station-water-fountain-005.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-bird-walk-notice",
+          "sourceContentHash": "0bc28155bfd087f85b31762abdb733c1193a364fa8a2b5e8d3adf860d13c98b8"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.courtesy-grammar-workshop-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "修理课上的动词形式",
+        "summary": "修理课上的动词形式，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.sentence_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.givenforms5",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照同一公开历史教辅导出卷的五题给词填空，保留五独立句、逐空给词、明确不限一词。该卷标题自署2016–17深圳实验学校六下，原校与实际施测未认证、原键缺；原He is is重印及walk多时态风险保留。自有句框独立重写，部分给出助动词缩小形态歧义，不复制源错句或声称精确能力等值。已核常用变体同等接受，合法表达未穷尽，未列形式待复核。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.courtesy-grammar-workshop-005",
+          "family": "sentence_form",
+          "label": "修理课上的动词形式",
+          "candidateSHA256": "e67959bfd2998297c0b6e03af7a0824019049f4e3a98d262cea82a4f2ca4b89b",
+          "authorCheckSHA256": "d63bda58c4b4e29c6092be1418298590c6253ee8847839d0b8a7a1ad675b49dd",
+          "sourceGroupIds": [
+            "original.primary6-givenforms5-courtesy#primary6.courtesy-grammar-workshop-005.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b005；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Courtesy Grammar Workshop 005\n\nComplete each numbered gap using the correct form of the word in brackets. Write one word per gap.\n1. Yesterday, our group ____1____ (make) a wooden sign for the repair desk.\n2. Look! The volunteer is ____2____ (show) May how to hold the tool.\n3. There are three ____3____ (box) under the table, not one.\n4. Please walk ____4____ (slow) while you carry the glass jar.\n5. This ruler is ____5____ (long) than the one in my pencil case."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q1",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 1: use MAKE.",
+            "material": "Courtesy Grammar Workshop 005\n\nComplete each numbered gap using the correct form of the word in brackets. Write one word per gap.\n1. Yesterday, our group ____1____ (make) a wooden sign for the repair desk.\n2. Look! The volunteer is ____2____ (show) May how to hold the tool.\n3. There are three ____3____ (box) under the table, not one.\n4. Please walk ____4____ (slow) while you carry the glass jar.\n5. This ruler is ____5____ (long) than the one in my pencil case.",
+            "explanation": "接受made：Yesterday要求一般过去时，make过去式不规则；make原形、makes现在单三、making分词均不构成此处过去谓语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "made"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "make",
+                "makes",
+                "making"
+              ],
+              "protocol": "english_phrase_v1"
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q2",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 2: use SHOW.",
+            "material": "Courtesy Grammar Workshop 005\n\nComplete each numbered gap using the correct form of the word in brackets. Write one word per gap.\n1. Yesterday, our group ____1____ (make) a wooden sign for the repair desk.\n2. Look! The volunteer is ____2____ (show) May how to hold the tool.\n3. There are three ____3____ (box) under the table, not one.\n4. Please walk ____4____ (slow) while you carry the glass jar.\n5. This ruler is ____5____ (long) than the one in my pencil case.",
+            "explanation": "接受showing：Look与is构成正在展示的进行时；show原形、showed过去式、shows单三不能接此处is形成进行时。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "showing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "show",
+                "showed",
+                "shows"
+              ],
+              "protocol": "english_phrase_v1"
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q3",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 3: use BOX.",
+            "material": "Courtesy Grammar Workshop 005\n\nComplete each numbered gap using the correct form of the word in brackets. Write one word per gap.\n1. Yesterday, our group ____1____ (make) a wooden sign for the repair desk.\n2. Look! The volunteer is ____2____ (show) May how to hold the tool.\n3. There are three ____3____ (box) under the table, not one.\n4. Please walk ____4____ (slow) while you carry the glass jar.\n5. This ruler is ____5____ (long) than the one in my pencil case.",
+            "explanation": "接受boxes：three要求复数，box加es；box单数、boxs拼写错误、boxed非这里的名词复数。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "boxes"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "box",
+                "boxs",
+                "boxed"
+              ],
+              "protocol": "english_phrase_v1"
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q4",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 4: use SLOW.",
+            "material": "Courtesy Grammar Workshop 005\n\nComplete each numbered gap using the correct form of the word in brackets. Write one word per gap.\n1. Yesterday, our group ____1____ (make) a wooden sign for the repair desk.\n2. Look! The volunteer is ____2____ (show) May how to hold the tool.\n3. There are three ____3____ (box) under the table, not one.\n4. Please walk ____4____ (slow) while you carry the glass jar.\n5. This ruler is ____5____ (long) than the one in my pencil case.",
+            "explanation": "接受slowly：修饰walk用所教学规范副词；slow形容词不作本题目标副词，slower和slowest比较等级无比较或最高级条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "slowly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "slow",
+                "slower",
+                "slowest"
+              ],
+              "protocol": "english_phrase_v1"
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q5",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 5: use LONG.",
+            "material": "Courtesy Grammar Workshop 005\n\nComplete each numbered gap using the correct form of the word in brackets. Write one word per gap.\n1. Yesterday, our group ____1____ (make) a wooden sign for the repair desk.\n2. Look! The volunteer is ____2____ (show) May how to hold the tool.\n3. There are three ____3____ (box) under the table, not one.\n4. Please walk ____4____ (slow) while you carry the glass jar.\n5. This ruler is ____5____ (long) than the one in my pencil case.",
+            "explanation": "接受longer：than提示两尺比较；long无比较级，longest最高级条件不符，length名词不能作此处比较表语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "longer"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "long",
+                "longest",
+                "length"
+              ],
+              "protocol": "english_phrase_v1"
+            }
+          }
+        ]
+      },
+      "contentHash": "f8e299de2885836c5ce380abbd481b0792cf94c65466d7f6e3b8c4cb9cb6388f",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-givenforms5-courtesy#primary6.courtesy-grammar-workshop-005.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q1",
+            "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q2",
+            "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q3",
+            "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q4",
+            "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-givenforms5-courtesy",
+          "sourceContentHash": "f9dad4922e04cafe16a6964586d267abc0c7f83b8ce5a8f10b7768174f7d8ba6"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.school-radio-correction-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "校园广播里的一次更正",
+        "summary": "校园广播里的一次更正，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.closedmixed",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.school-radio-correction-005",
+          "family": "reading_choice",
+          "label": "校园广播里的一次更正",
+          "candidateSHA256": "8d7b8e23b4169f606231f9dfbd1665310d2a92d74084593c2385d92bc8a86449",
+          "authorCheckSHA256": "d63bda58c4b4e29c6092be1418298590c6253ee8847839d0b8a7a1ad675b49dd",
+          "sourceGroupIds": [
+            "original.primary6-lost-found-full-mixed#primary6.school-radio-correction-005.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b005；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "School Radio Correction 005\n\nThe school radio reported that the winter fair had raised 3,000 yuan for new library books. After the programme, a pupil noticed that the figure included money from an earlier cake sale. The fair itself had raised 2,400 yuan. The rest came from the cake sale, which had already been reported.\nThe young presenters wanted to correct the number, but they disagreed about how. One suggested deleting the old recording without explanation. Another wanted to wait until nobody remembered it. Their teacher asked what a listener would need in order to understand the change.\nIn the next programme, the presenters stated the original number, explained the mix-up and gave the correct figure for the fair. They also added a note beside the earlier recording rather than hiding the error. A parent thanked them for making the correction easy to find. The team then added a check: whenever several events appeared on one total sheet, a second pupil would confirm which lines belonged to the story being reported."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.school-radio-correction-005.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What was wrong with the first report?",
+            "material": "School Radio Correction 005\n\nThe school radio reported that the winter fair had raised 3,000 yuan for new library books. After the programme, a pupil noticed that the figure included money from an earlier cake sale. The fair itself had raised 2,400 yuan. The rest came from the cake sale, which had already been reported.\nThe young presenters wanted to correct the number, but they disagreed about how. One suggested deleting the old recording without explanation. Another wanted to wait until nobody remembered it. Their teacher asked what a listener would need in order to understand the change.\nIn the next programme, the presenters stated the original number, explained the mix-up and gave the correct figure for the fair. They also added a note beside the earlier recording rather than hiding the error. A parent thanked them for making the correction easy to find. The team then added a check: whenever several events appeared on one total sheet, a second pupil would confirm which lines belonged to the story being reported.",
+            "explanation": "B把早前蛋糕义卖款加进本次fair；A仍有2400；C图书馆未关闭；D非他校数据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The fair raised no money."
+              },
+              {
+                "id": "o1",
+                "text": "It included money from a different event."
+              },
+              {
+                "id": "o2",
+                "text": "The library had already closed."
+              },
+              {
+                "id": "o3",
+                "text": "It used a number from another school."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-radio-correction-005.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How much did the fair itself raise?",
+            "material": "School Radio Correction 005\n\nThe school radio reported that the winter fair had raised 3,000 yuan for new library books. After the programme, a pupil noticed that the figure included money from an earlier cake sale. The fair itself had raised 2,400 yuan. The rest came from the cake sale, which had already been reported.\nThe young presenters wanted to correct the number, but they disagreed about how. One suggested deleting the old recording without explanation. Another wanted to wait until nobody remembered it. Their teacher asked what a listener would need in order to understand the change.\nIn the next programme, the presenters stated the original number, explained the mix-up and gave the correct figure for the fair. They also added a note beside the earlier recording rather than hiding the error. A parent thanked them for making the correction easy to find. The team then added a check: whenever several events appeared on one total sheet, a second pupil would confirm which lines belonged to the story being reported.",
+            "explanation": "C明确fair为2400；A为差额；B混合总额；D错误再相加。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "600 yuan."
+              },
+              {
+                "id": "o1",
+                "text": "3,000 yuan."
+              },
+              {
+                "id": "o2",
+                "text": "2,400 yuan."
+              },
+              {
+                "id": "o3",
+                "text": "5,400 yuan."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-radio-correction-005.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the presenters do in the next programme?",
+            "material": "School Radio Correction 005\n\nThe school radio reported that the winter fair had raised 3,000 yuan for new library books. After the programme, a pupil noticed that the figure included money from an earlier cake sale. The fair itself had raised 2,400 yuan. The rest came from the cake sale, which had already been reported.\nThe young presenters wanted to correct the number, but they disagreed about how. One suggested deleting the old recording without explanation. Another wanted to wait until nobody remembered it. Their teacher asked what a listener would need in order to understand the change.\nIn the next programme, the presenters stated the original number, explained the mix-up and gave the correct figure for the fair. They also added a note beside the earlier recording rather than hiding the error. A parent thanked them for making the correction easy to find. The team then added a check: whenever several events appeared on one total sheet, a second pupil would confirm which lines belonged to the story being reported.",
+            "explanation": "A更正含原数、原因与正确数；B未避数；C没有指责家长；D没宣布新集市。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Explain the error and state the correct figure."
+              },
+              {
+                "id": "o1",
+                "text": "Avoid mentioning any numbers."
+              },
+              {
+                "id": "o2",
+                "text": "Blame the parent who wrote in."
+              },
+              {
+                "id": "o3",
+                "text": "Announce a second fair immediately."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-radio-correction-005.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happened to the earlier recording?",
+            "material": "School Radio Correction 005\n\nThe school radio reported that the winter fair had raised 3,000 yuan for new library books. After the programme, a pupil noticed that the figure included money from an earlier cake sale. The fair itself had raised 2,400 yuan. The rest came from the cake sale, which had already been reported.\nThe young presenters wanted to correct the number, but they disagreed about how. One suggested deleting the old recording without explanation. Another wanted to wait until nobody remembered it. Their teacher asked what a listener would need in order to understand the change.\nIn the next programme, the presenters stated the original number, explained the mix-up and gave the correct figure for the fair. They also added a note beside the earlier recording rather than hiding the error. A parent thanked them for making the correction easy to find. The team then added a check: whenever several events appeared on one total sheet, a second pupil would confirm which lines belonged to the story being reported.",
+            "explanation": "D附更正说明保留记录；A为未采纳提议；B出售、C换音乐均无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It was secretly deleted."
+              },
+              {
+                "id": "o1",
+                "text": "It was sold to another school."
+              },
+              {
+                "id": "o2",
+                "text": "It was replaced with music."
+              },
+              {
+                "id": "o3",
+                "text": "A correction note was placed beside it."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.school-radio-correction-005.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What new check did the team adopt?",
+            "material": "School Radio Correction 005\n\nThe school radio reported that the winter fair had raised 3,000 yuan for new library books. After the programme, a pupil noticed that the figure included money from an earlier cake sale. The fair itself had raised 2,400 yuan. The rest came from the cake sale, which had already been reported.\nThe young presenters wanted to correct the number, but they disagreed about how. One suggested deleting the old recording without explanation. Another wanted to wait until nobody remembered it. Their teacher asked what a listener would need in order to understand the change.\nIn the next programme, the presenters stated the original number, explained the mix-up and gave the correct figure for the fair. They also added a note beside the earlier recording rather than hiding the error. A parent thanked them for making the correction easy to find. The team then added a check: whenever several events appeared on one total sheet, a second pupil would confirm which lines belonged to the story being reported.",
+            "explanation": "B第二学生确认总表条目归属；A未禁学生播音；C未停报道；D会再造错误。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Let only teachers speak on air."
+              },
+              {
+                "id": "o1",
+                "text": "Have another pupil check which event each total includes."
+              },
+              {
+                "id": "o2",
+                "text": "Stop reporting all fundraising."
+              },
+              {
+                "id": "o3",
+                "text": "Use the largest number on every sheet."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "9fe9c72c469abf94321ec9967d0c8326774c9834649f6ab4961da78a3cdd34fd",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-lost-found-full-mixed#primary6.school-radio-correction-005.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.school-radio-correction-005.reading.q1",
+            "expansion.20261028.primary6.school-radio-correction-005.reading.q2",
+            "expansion.20261028.primary6.school-radio-correction-005.reading.q3",
+            "expansion.20261028.primary6.school-radio-correction-005.reading.q4",
+            "expansion.20261028.primary6.school-radio-correction-005.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-lost-found-full-mixed",
+          "sourceContentHash": "0ccacc5729eeaa6e10f334416c655baa66c0996a88f4933102f6084d5565f80c"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1942 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b002",
+  "createdAt": "2026-10-28T15:31:18.467102+00:00",
+  "sourceSHA256": "f04786803e2070f6d7992a637e3e626356c016aa36f41a14bf1fb08e9a1904dc",
+  "reviewSHA256": "9eb7ed2392e5b0c160b3b6e1665a82dc99f8d6616ecd54a01d2d134661fc1c88",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.park-gate-talks-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "公园门口的五个问答",
+        "summary": "公园门口的五个问答，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 5,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.park-gate-talks-002",
+          "family": "function_choice",
+          "label": "公园门口的五个问答",
+          "candidateSHA256": "2a111f2613e1bf4e31609a203c23957b518980a52f65277a373d224bce3845d9",
+          "authorCheckSHA256": "da7212259d63790783013dfca967014594ad756939b32ccfe7e0d485cf6a7784",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.park-gate-talks-002.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b002；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Park Gate Talks 002\n\nA family is at the park gate. Choose the best reply in each short talk."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.park-gate-talks-002.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad: Are you ready? Child: ____",
+            "material": "Park Gate Talks 002\n\nA family is at the park gate. Choose the best reply in each short talk.",
+            "explanation": "A回答是否准备好；B说树，C说食物喜好，未答ready。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, I am."
+              },
+              {
+                "id": "o1",
+                "text": "It is a tree."
+              },
+              {
+                "id": "o2",
+                "text": "I like rice."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.park-gate-talks-002.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Child: What is that? Dad: ____",
+            "material": "Park Gate Talks 002\n\nA family is at the park gate. Choose the best reply in each short talk.",
+            "explanation": "B给出动物名称，回答What；A状态、C感谢均不答物品。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I am fine."
+              },
+              {
+                "id": "o1",
+                "text": "It is a duck."
+              },
+              {
+                "id": "o2",
+                "text": "Thank you."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.park-gate-talks-002.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad: Do not run here. Child: ____",
+            "material": "Park Gate Talks 002\n\nA family is at the park gate. Choose the best reply in each short talk.",
+            "explanation": "C接受不要跑的指令；A颜色、B名字均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is yellow."
+              },
+              {
+                "id": "o1",
+                "text": "My name is Ann."
+              },
+              {
+                "id": "o2",
+                "text": "OK, Dad."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.park-gate-talks-002.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Child: Can you swim? Dad: ____",
+            "material": "Park Gate Talks 002\n\nA family is at the park gate. Choose the best reply in each short talk.",
+            "explanation": "A回答能力can；B人物关系、C位置不答能力。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, I can."
+              },
+              {
+                "id": "o1",
+                "text": "She is my mum."
+              },
+              {
+                "id": "o2",
+                "text": "It is in the bag."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.park-gate-talks-002.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad: Let us go home. Child: ____",
+            "material": "Park Gate Talks 002\n\nA family is at the park gate. Choose the best reply in each short talk.",
+            "explanation": "B接受回家建议；A年龄、C物品名称不回应建议。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I am six."
+              },
+              {
+                "id": "o1",
+                "text": "OK, let us go."
+              },
+              {
+                "id": "o2",
+                "text": "It is a ball."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "caf7af331615c434636b75ddc72b45dc5dc99908279de2f4965cc995ae8d3d91",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.park-gate-talks-002.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.park-gate-talks-002.reading.q1",
+            "expansion.20261028.primary2.park-gate-talks-002.reading.q2",
+            "expansion.20261028.primary2.park-gate-talks-002.reading.q3",
+            "expansion.20261028.primary2.park-gate-talks-002.reading.q4",
+            "expansion.20261028.primary2.park-gate-talks-002.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.dress-up-corner-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "装扮角里的衣服问答",
+        "summary": "装扮角里的衣服问答，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary2.bzxz.upper.questionmatching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.dress-up-corner-002",
+          "family": "dialogue_matching",
+          "label": "装扮角里的衣服问答",
+          "candidateSHA256": "47048b984b350168a44fa7122834278c062206f247086550c7845c5d3ffaa290",
+          "authorCheckSHA256": "da7212259d63790783013dfca967014594ad756939b32ccfe7e0d485cf6a7784",
+          "sourceGroupIds": [
+            "original.primary2-question-matches-1#primary2.dress-up-corner-002.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b002；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Dress Up Corner 002\n\nAt the dress-up corner, choose a different answer for each question. Answers: A. It is blue. B. They are shoes. C. It is on the chair. D. Yes, I do. E. She is my sister."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.dress-up-corner-002.reading.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What colour is the hat?",
+            "material": "Dress Up Corner 002\n\nAt the dress-up corner, choose a different answer for each question. Answers: A. It is blue. B. They are shoes. C. It is on the chair. D. Yes, I do. E. She is my sister.",
+            "explanation": "A答帽子颜色；B物品复数、C位置、D是否喜欢、E身份都未答颜色。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is blue."
+              },
+              {
+                "id": "o1",
+                "text": "They are shoes."
+              },
+              {
+                "id": "o2",
+                "text": "It is on the chair."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, I do."
+              },
+              {
+                "id": "o4",
+                "text": "She is my sister."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.dress-up-corner-002.reading.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What are these?",
+            "material": "Dress Up Corner 002\n\nAt the dress-up corner, choose a different answer for each question. Answers: A. It is blue. B. They are shoes. C. It is on the chair. D. Yes, I do. E. She is my sister.",
+            "explanation": "B答复数物品是什么；A颜色、C位置、D是非、E人物身份均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is blue."
+              },
+              {
+                "id": "o1",
+                "text": "They are shoes."
+              },
+              {
+                "id": "o2",
+                "text": "It is on the chair."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, I do."
+              },
+              {
+                "id": "o4",
+                "text": "She is my sister."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.dress-up-corner-002.reading.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where is my coat?",
+            "material": "Dress Up Corner 002\n\nAt the dress-up corner, choose a different answer for each question. Answers: A. It is blue. B. They are shoes. C. It is on the chair. D. Yes, I do. E. She is my sister.",
+            "explanation": "C答外套位置；A颜色、B鞋子、D是否、E姐妹关系都未答Where。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is blue."
+              },
+              {
+                "id": "o1",
+                "text": "They are shoes."
+              },
+              {
+                "id": "o2",
+                "text": "It is on the chair."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, I do."
+              },
+              {
+                "id": "o4",
+                "text": "She is my sister."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.dress-up-corner-002.reading.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Do you like this dress?",
+            "material": "Dress Up Corner 002\n\nAt the dress-up corner, choose a different answer for each question. Answers: A. It is blue. B. They are shoes. C. It is on the chair. D. Yes, I do. E. She is my sister.",
+            "explanation": "D答是否喜欢裙子；A颜色、B鞋子、C位置、E身份不回答喜好问句。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is blue."
+              },
+              {
+                "id": "o1",
+                "text": "They are shoes."
+              },
+              {
+                "id": "o2",
+                "text": "It is on the chair."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, I do."
+              },
+              {
+                "id": "o4",
+                "text": "She is my sister."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary2.dress-up-corner-002.reading.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who is the girl in the red dress?",
+            "material": "Dress Up Corner 002\n\nAt the dress-up corner, choose a different answer for each question. Answers: A. It is blue. B. They are shoes. C. It is on the chair. D. Yes, I do. E. She is my sister.",
+            "explanation": "E说明女孩身份；A颜色、B鞋子、C位置、D是非不答Who。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is blue."
+              },
+              {
+                "id": "o1",
+                "text": "They are shoes."
+              },
+              {
+                "id": "o2",
+                "text": "It is on the chair."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, I do."
+              },
+              {
+                "id": "o4",
+                "text": "She is my sister."
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "accf559e71d380540868f7a9c0d399fec4903fd3d61c7e8332c08202986bb629",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-question-matches-1#primary2.dress-up-corner-002.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.dress-up-corner-002.reading.q1",
+            "expansion.20261028.primary2.dress-up-corner-002.reading.q2",
+            "expansion.20261028.primary2.dress-up-corner-002.reading.q3",
+            "expansion.20261028.primary2.dress-up-corner-002.reading.q4",
+            "expansion.20261028.primary2.dress-up-corner-002.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-question-matches-1",
+          "sourceContentHash": "8b423fd6ab8633ca96b099356a122579923e07ed54d9047623f7041c0a09af9e"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.baby-rabbit-care-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "小兔的午后照料",
+        "summary": "小兔的午后照料，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.baby-rabbit-care-002",
+          "family": "reading_tf",
+          "label": "小兔的午后照料",
+          "candidateSHA256": "eeecf808ca2de8dd97ec4362977513cf5a7def45fc75ed0de39228abb6398143",
+          "authorCheckSHA256": "da7212259d63790783013dfca967014594ad756939b32ccfe7e0d485cf6a7784",
+          "sourceGroupIds": [
+            "original.bens-bag-reading#primary3.baby-rabbit-care-002.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b002；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Baby Rabbit Care 002\n\nWe have a baby rabbit. Its name is Snow. It is white, but its ears are grey. Every afternoon, I give it water. My brother gives it some grass. Snow sleeps in a box near the kitchen. We do not put the box in the sun. Snow likes a cool place."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.baby-rabbit-care-002.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Snow is a baby rabbit.",
+            "material": "Baby Rabbit Care 002\n\nWe have a baby rabbit. Its name is Snow. It is white, but its ears are grey. Every afternoon, I give it water. My brother gives it some grass. Snow sleeps in a box near the kitchen. We do not put the box in the sun. Snow likes a cool place.",
+            "explanation": "A正确：首句baby rabbit及名字Snow相连；B否认身份。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.baby-rabbit-care-002.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Snow has white ears.",
+            "material": "Baby Rabbit Care 002\n\nWe have a baby rabbit. Its name is Snow. It is white, but its ears are grey. Every afternoon, I give it water. My brother gives it some grass. Snow sleeps in a box near the kitchen. We do not put the box in the sun. Snow likes a cool place.",
+            "explanation": "B正确：耳朵是grey；A将身体白色套到耳朵。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.baby-rabbit-care-002.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer gives Snow water in the afternoon.",
+            "material": "Baby Rabbit Care 002\n\nWe have a baby rabbit. Its name is Snow. It is white, but its ears are grey. Every afternoon, I give it water. My brother gives it some grass. Snow sleeps in a box near the kitchen. We do not put the box in the sun. Snow likes a cool place.",
+            "explanation": "A正确：Every afternoon给水；B与时间和行为矛盾。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.baby-rabbit-care-002.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer’s brother gives Snow bread.",
+            "material": "Baby Rabbit Care 002\n\nWe have a baby rabbit. Its name is Snow. It is white, but its ears are grey. Every afternoon, I give it water. My brother gives it some grass. Snow sleeps in a box near the kitchen. We do not put the box in the sun. Snow likes a cool place.",
+            "explanation": "B正确：哥哥给grass；A把草换成面包。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.baby-rabbit-care-002.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The box is in the sun.",
+            "material": "Baby Rabbit Care 002\n\nWe have a baby rabbit. Its name is Snow. It is white, but its ears are grey. Every afternoon, I give it water. My brother gives it some grass. Snow sleeps in a box near the kitchen. We do not put the box in the sun. Snow likes a cool place.",
+            "explanation": "B正确：原文不把盒放太阳下；A忽略do not。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "f2e9feef04b8f6b25a2bcd2bffcf4a2291db0b9564d132a2ccbae404e3a9a6b1",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.bens-bag-reading#primary3.baby-rabbit-care-002.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.baby-rabbit-care-002.reading.q1",
+            "expansion.20261028.primary3.baby-rabbit-care-002.reading.q2",
+            "expansion.20261028.primary3.baby-rabbit-care-002.reading.q3",
+            "expansion.20261028.primary3.baby-rabbit-care-002.reading.q4",
+            "expansion.20261028.primary3.baby-rabbit-care-002.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.bens-bag-reading",
+          "sourceContentHash": "e1594f6d2c2c96de673832f2efe0847d6e8f968d3ed2c4833705aeba378b5517"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.reading-under-table-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "桌子下面的阅读小屋",
+        "summary": "桌子下面的阅读小屋，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.reading-under-table-002",
+          "family": "reading_tf",
+          "label": "桌子下面的阅读小屋",
+          "candidateSHA256": "e0cddf9ca12742877f0044e8a6b6d265b27bd80d4a655d767eee5dc4e6a90ee5",
+          "authorCheckSHA256": "da7212259d63790783013dfca967014594ad756939b32ccfe7e0d485cf6a7784",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.reading-under-table-002.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b002；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Reading Under Table 002\n\nToday is a hot day. Dad makes a little house for us with a table and a sheet. The sheet is over the table. My sister takes a storybook into the house. I take a small fan. We sit on a mat and read. Mum puts two cups of water outside our house. We can see her feet under the sheet."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.reading-under-table-002.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad makes a house with a table and a sheet.",
+            "material": "Reading Under Table 002\n\nToday is a hot day. Dad makes a little house for us with a table and a sheet. The sheet is over the table. My sister takes a storybook into the house. I take a small fan. We sit on a mat and read. Mum puts two cups of water outside our house. We can see her feet under the sheet.",
+            "explanation": "A正确：材料直接说明搭建物品；B与原文相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.reading-under-table-002.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The sheet is under the table.",
+            "material": "Reading Under Table 002\n\nToday is a hot day. Dad makes a little house for us with a table and a sheet. The sheet is over the table. My sister takes a storybook into the house. I take a small fan. We sit on a mat and read. Mum puts two cups of water outside our house. We can see her feet under the sheet.",
+            "explanation": "B正确：sheet在over the table；A把上下颠倒。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.reading-under-table-002.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer takes a storybook.",
+            "material": "Reading Under Table 002\n\nToday is a hot day. Dad makes a little house for us with a table and a sheet. The sheet is over the table. My sister takes a storybook into the house. I take a small fan. We sit on a mat and read. Mum puts two cups of water outside our house. We can see her feet under the sheet.",
+            "explanation": "B正确：姐姐拿故事书，作者拿扇子；A混淆人物分工。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.reading-under-table-002.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The children sit on a mat.",
+            "material": "Reading Under Table 002\n\nToday is a hot day. Dad makes a little house for us with a table and a sheet. The sheet is over the table. My sister takes a storybook into the house. I take a small fan. We sit on a mat and read. Mum puts two cups of water outside our house. We can see her feet under the sheet.",
+            "explanation": "A正确：sit on a mat明确位置；B否认给定动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.reading-under-table-002.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mum puts water inside the little house.",
+            "material": "Reading Under Table 002\n\nToday is a hot day. Dad makes a little house for us with a table and a sheet. The sheet is over the table. My sister takes a storybook into the house. I take a small fan. We sit on a mat and read. Mum puts two cups of water outside our house. We can see her feet under the sheet.",
+            "explanation": "B正确：水放outside；A将外面换成里面。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "865003e1c656dc733466f815d21de4c469daf48169d71c2e1d2a02a96e2f3789",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.reading-under-table-002.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.reading-under-table-002.reading.q1",
+            "expansion.20261028.primary3.reading-under-table-002.reading.q2",
+            "expansion.20261028.primary3.reading-under-table-002.reading.q3",
+            "expansion.20261028.primary3.reading-under-table-002.reading.q4",
+            "expansion.20261028.primary3.reading-under-table-002.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.seed-library-desk-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "种子借阅台的三个盒子",
+        "summary": "种子借阅台的三个盒子，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.seed-library-desk-002",
+          "family": "reading_choice",
+          "label": "种子借阅台的三个盒子",
+          "candidateSHA256": "a8bebd97a7ed5b33d0c4499817c450916889e06268d3459fcb36aab06932ca14",
+          "authorCheckSHA256": "da7212259d63790783013dfca967014594ad756939b32ccfe7e0d485cf6a7784",
+          "sourceGroupIds": [
+            "original.primary4-pet-room-plan#primary4.seed-library-desk-002.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b002；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Seed Library Desk 002\n\nThere is a seed desk in our school library. Three boxes stand on it. The small box has bean seeds, the round box has flower seeds, and the long box has empty paper bags. Children may take one bag of seeds on Friday. They must write their names in a book first. They do not need to pay. Miss Zhou asks them to draw their plants after four weeks. The pictures will go on the library wall. Children do not have to bring the plants back."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.seed-library-desk-002.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where is the seed desk?",
+            "material": "Seed Library Desk 002\n\nThere is a seed desk in our school library. Three boxes stand on it. The small box has bean seeds, the round box has flower seeds, and the long box has empty paper bags. Children may take one bag of seeds on Friday. They must write their names in a book first. They do not need to pay. Miss Zhou asks them to draw their plants after four weeks. The pictures will go on the library wall. Children do not have to bring the plants back.",
+            "explanation": "A首句学校图书馆；B花店、C车站均未提。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In the school library."
+              },
+              {
+                "id": "o1",
+                "text": "In a flower shop."
+              },
+              {
+                "id": "o2",
+                "text": "At the bus station."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.seed-library-desk-002.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is in the long box?",
+            "material": "Seed Library Desk 002\n\nThere is a seed desk in our school library. Three boxes stand on it. The small box has bean seeds, the round box has flower seeds, and the long box has empty paper bags. Children may take one bag of seeds on Friday. They must write their names in a book first. They do not need to pay. Miss Zhou asks them to draw their plants after four weeks. The pictures will go on the library wall. Children do not have to bring the plants back.",
+            "explanation": "B长盒装空纸袋；A在小盒；C是将来展示作品。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Bean seeds."
+              },
+              {
+                "id": "o1",
+                "text": "Empty paper bags."
+              },
+              {
+                "id": "o2",
+                "text": "Plant pictures."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.seed-library-desk-002.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must children do before taking seeds?",
+            "material": "Seed Library Desk 002\n\nThere is a seed desk in our school library. Three boxes stand on it. The small box has bean seeds, the round box has flower seeds, and the long box has empty paper bags. Children may take one bag of seeds on Friday. They must write their names in a book first. They do not need to pay. Miss Zhou asks them to draw their plants after four weeks. The pictures will go on the library wall. Children do not have to bring the plants back.",
+            "explanation": "C先在本上写名；A画植物在四周后；B不需付款。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Draw a flower."
+              },
+              {
+                "id": "o1",
+                "text": "Pay for a bag."
+              },
+              {
+                "id": "o2",
+                "text": "Write their names."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.seed-library-desk-002.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When will children draw their plants?",
+            "material": "Seed Library Desk 002\n\nThere is a seed desk in our school library. Three boxes stand on it. The small box has bean seeds, the round box has flower seeds, and the long box has empty paper bags. Children may take one bag of seeds on Friday. They must write their names in a book first. They do not need to pay. Miss Zhou asks them to draw their plants after four weeks. The pictures will go on the library wall. Children do not have to bring the plants back.",
+            "explanation": "A材料明确四周后；B取种前时间、C一天后均不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "After four weeks."
+              },
+              {
+                "id": "o1",
+                "text": "Before Friday morning."
+              },
+              {
+                "id": "o2",
+                "text": "After one day."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.seed-library-desk-002.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should children bring back?",
+            "material": "Seed Library Desk 002\n\nThere is a seed desk in our school library. Three boxes stand on it. The small box has bean seeds, the round box has flower seeds, and the long box has empty paper bags. Children may take one bag of seeds on Friday. They must write their names in a book first. They do not need to pay. Miss Zhou asks them to draw their plants after four weeks. The pictures will go on the library wall. Children do not have to bring the plants back.",
+            "explanation": "B作品将贴图书馆墙上；A明确不用带植物回来；C长盒留借阅台。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All the plants."
+              },
+              {
+                "id": "o1",
+                "text": "Pictures of their plants."
+              },
+              {
+                "id": "o2",
+                "text": "The long box."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "8216ff8a17d8c38c2a2a31520111cf9977da9b5a3aa2e5e337b8b1a6d52683f7",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-pet-room-plan#primary4.seed-library-desk-002.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.seed-library-desk-002.reading.q1",
+            "expansion.20261028.primary4.seed-library-desk-002.reading.q2",
+            "expansion.20261028.primary4.seed-library-desk-002.reading.q3",
+            "expansion.20261028.primary4.seed-library-desk-002.reading.q4",
+            "expansion.20261028.primary4.seed-library-desk-002.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-pet-room-plan",
+          "sourceContentHash": "d4c50ff73603e79f79b25070c5f89af32381378a0173a8bb5818893baf110b76"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.swimming-bus-change-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "游泳课的临时车站",
+        "summary": "游泳课的临时车站，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.swimming-bus-change-002",
+          "family": "reading_tf",
+          "label": "游泳课的临时车站",
+          "candidateSHA256": "b8053689fb880242f010b99731c5fc2fe26cc9d1aaf92e6a27195747e9bff66f",
+          "authorCheckSHA256": "da7212259d63790783013dfca967014594ad756939b32ccfe7e0d485cf6a7784",
+          "sourceGroupIds": [
+            "original.class-garden-reading#primary4.swimming-bus-change-002.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b002；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Swimming Bus Change 002\n\nOur class has a swimming lesson every Wednesday. We usually catch the school bus outside the music room. This week, workers are painting that wall. The bus will wait by the big tree instead. We must arrive at nine ten. The driver leaves at nine fifteen. We need a towel and a swimming cap. The pool has spare towels, but it has no spare caps. We can eat our snacks after the lesson, not on the bus."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.swimming-bus-change-002.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class swims every Wednesday.",
+            "material": "Swimming Bus Change 002\n\nOur class has a swimming lesson every Wednesday. We usually catch the school bus outside the music room. This week, workers are painting that wall. The bus will wait by the big tree instead. We must arrive at nine ten. The driver leaves at nine fifteen. We need a towel and a swimming cap. The pool has spare towels, but it has no spare caps. We can eat our snacks after the lesson, not on the bus.",
+            "explanation": "A正确：every Wednesday直接给出；B与频率信息冲突。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.swimming-bus-change-002.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "This week the bus waits outside the music room.",
+            "material": "Swimming Bus Change 002\n\nOur class has a swimming lesson every Wednesday. We usually catch the school bus outside the music room. This week, workers are painting that wall. The bus will wait by the big tree instead. We must arrive at nine ten. The driver leaves at nine fifteen. We need a towel and a swimming cap. The pool has spare towels, but it has no spare caps. We can eat our snacks after the lesson, not on the bus.",
+            "explanation": "B正确：本周改在big tree旁；A沿用通常地点，忽略临时变化。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.swimming-bus-change-002.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Children must arrive five minutes before the bus leaves.",
+            "material": "Swimming Bus Change 002\n\nOur class has a swimming lesson every Wednesday. We usually catch the school bus outside the music room. This week, workers are painting that wall. The bus will wait by the big tree instead. We must arrive at nine ten. The driver leaves at nine fifteen. We need a towel and a swimming cap. The pool has spare towels, but it has no spare caps. We can eat our snacks after the lesson, not on the bus.",
+            "explanation": "A正确：9:10到、9:15开，相差五分钟；B否认这个时间关系。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.swimming-bus-change-002.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Children can borrow a swimming cap at the pool.",
+            "material": "Swimming Bus Change 002\n\nOur class has a swimming lesson every Wednesday. We usually catch the school bus outside the music room. This week, workers are painting that wall. The bus will wait by the big tree instead. We must arrive at nine ten. The driver leaves at nine fifteen. We need a towel and a swimming cap. The pool has spare towels, but it has no spare caps. We can eat our snacks after the lesson, not on the bus.",
+            "explanation": "B正确：泳池没有备用帽；A把备用毛巾当备用帽。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.swimming-bus-change-002.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Children may eat snacks on the bus.",
+            "material": "Swimming Bus Change 002\n\nOur class has a swimming lesson every Wednesday. We usually catch the school bus outside the music room. This week, workers are painting that wall. The bus will wait by the big tree instead. We must arrive at nine ten. The driver leaves at nine fifteen. We need a towel and a swimming cap. The pool has spare towels, but it has no spare caps. We can eat our snacks after the lesson, not on the bus.",
+            "explanation": "B正确：只能课后吃，不能车上吃；A忽略not on the bus。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "634afccd1cea44aae6e92f9794c57c4ce76f9c5779cf0abbcec0e750ee33651e",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.class-garden-reading#primary4.swimming-bus-change-002.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.swimming-bus-change-002.reading.q1",
+            "expansion.20261028.primary4.swimming-bus-change-002.reading.q2",
+            "expansion.20261028.primary4.swimming-bus-change-002.reading.q3",
+            "expansion.20261028.primary4.swimming-bus-change-002.reading.q4",
+            "expansion.20261028.primary4.swimming-bus-change-002.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.class-garden-reading",
+          "sourceContentHash": "c48d0add74ac202b6eee2f6cafe95556edd3c7176f1da3b56f14a6e7036dfdab"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.rock-pool-postcard-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "海边石潭寄来的明信片",
+        "summary": "海边石潭寄来的明信片，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 五题二选判断另获已核房山2024-2025五上区卷完整形式参照；前版模拟参照与作者稿均保留，正文/题目/键未改；新来源不是独立学生认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.rock-pool-postcard-002",
+          "family": "reading_tf",
+          "label": "海边石潭寄来的明信片",
+          "candidateSHA256": "bda13871a985f6cbc82eeb844a0610f484e54166cd3f42e06b13779ff51922f7",
+          "authorCheckSHA256": "da7212259d63790783013dfca967014594ad756939b32ccfe7e0d485cf6a7784",
+          "sourceGroupIds": [
+            "original.primary5-postcards-reading-tf#primary5.rock-pool-postcard-002.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b002；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Rock Pool Postcard 002\n\nDear Leo,\nWe visited the beach this morning. The sea was far from the rocks because the tide was low. Our guide showed us little pools between the rocks. My cousin wanted to put a small crab in her bucket. The guide asked her to leave it in its home. We watched it move under a stone instead. I took a picture without touching it. Then we collected three plastic bags from the sand and put them in a bin. We washed our hands before lunch. We did not collect shells because some small animals might still be living in them.\nLove,\nAmy"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.rock-pool-postcard-002.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Amy visited the beach in the morning.",
+            "material": "Rock Pool Postcard 002\n\nDear Leo,\nWe visited the beach this morning. The sea was far from the rocks because the tide was low. Our guide showed us little pools between the rocks. My cousin wanted to put a small crab in her bucket. The guide asked her to leave it in its home. We watched it move under a stone instead. I took a picture without touching it. Then we collected three plastic bags from the sand and put them in a bin. We washed our hands before lunch. We did not collect shells because some small animals might still be living in them.\nLove,\nAmy",
+            "explanation": "A正确：this morning明确时间；B与来信信息相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.rock-pool-postcard-002.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The guide asked Amy’s cousin to keep a crab in her bucket.",
+            "material": "Rock Pool Postcard 002\n\nDear Leo,\nWe visited the beach this morning. The sea was far from the rocks because the tide was low. Our guide showed us little pools between the rocks. My cousin wanted to put a small crab in her bucket. The guide asked her to leave it in its home. We watched it move under a stone instead. I took a picture without touching it. Then we collected three plastic bags from the sand and put them in a bin. We washed our hands before lunch. We did not collect shells because some small animals might still be living in them.\nLove,\nAmy",
+            "explanation": "B正确：向导要求leave it in its home；A把阻止带走变成要求带走。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.rock-pool-postcard-002.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Amy touched the crab before taking its picture.",
+            "material": "Rock Pool Postcard 002\n\nDear Leo,\nWe visited the beach this morning. The sea was far from the rocks because the tide was low. Our guide showed us little pools between the rocks. My cousin wanted to put a small crab in her bucket. The guide asked her to leave it in its home. We watched it move under a stone instead. I took a picture without touching it. Then we collected three plastic bags from the sand and put them in a bin. We washed our hands before lunch. We did not collect shells because some small animals might still be living in them.\nLove,\nAmy",
+            "explanation": "B正确：without touching明确未碰；A捏造拍前触碰。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.rock-pool-postcard-002.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "They picked up plastic rubbish from the sand.",
+            "material": "Rock Pool Postcard 002\n\nDear Leo,\nWe visited the beach this morning. The sea was far from the rocks because the tide was low. Our guide showed us little pools between the rocks. My cousin wanted to put a small crab in her bucket. The guide asked her to leave it in its home. We watched it move under a stone instead. I took a picture without touching it. Then we collected three plastic bags from the sand and put them in a bin. We washed our hands before lunch. We did not collect shells because some small animals might still be living in them.\nLove,\nAmy",
+            "explanation": "A正确：收集三个塑料袋丢进桶；B否认已做的清理。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.rock-pool-postcard-002.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "They left the shells because animals might be inside.",
+            "material": "Rock Pool Postcard 002\n\nDear Leo,\nWe visited the beach this morning. The sea was far from the rocks because the tide was low. Our guide showed us little pools between the rocks. My cousin wanted to put a small crab in her bucket. The guide asked her to leave it in its home. We watched it move under a stone instead. I took a picture without touching it. Then we collected three plastic bags from the sand and put them in a bin. We washed our hands before lunch. We did not collect shells because some small animals might still be living in them.\nLove,\nAmy",
+            "explanation": "A正确：末句给出可能仍有动物的原因；B否认原文因果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "a103ed4d5de2db5cbbd1140cab815a1a35b371fce2646f00e9a5fb85587c2fa3",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-postcards-reading-tf#primary5.rock-pool-postcard-002.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.rock-pool-postcard-002.reading.q1",
+            "expansion.20261028.primary5.rock-pool-postcard-002.reading.q2",
+            "expansion.20261028.primary5.rock-pool-postcard-002.reading.q3",
+            "expansion.20261028.primary5.rock-pool-postcard-002.reading.q4",
+            "expansion.20261028.primary5.rock-pool-postcard-002.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-postcards-reading-tf",
+          "sourceContentHash": "abbfa743243bd1553f8334a108e543753efba41c4ae8397f63cb09b02653b32e"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.theatre-shadow-test-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "影子戏排练的小发现",
+        "summary": "影子戏排练的小发现，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照已核北京区卷公开转载的相应完整具体模式：一短文五判断／四完整信息卡五判断／两共享句空加三道三选，分别绑定，不截成单一子组。源原键非独立gold，东城两型尚无原键；节日日期等事实不沿用。原创虚构，独立教研、目标学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.theatre-shadow-test-002",
+          "family": "reading_tf",
+          "label": "影子戏排练的小发现",
+          "candidateSHA256": "adf574ea5043bcf8c757f349350c4b5554d746a1681d0b984a32488279bb181e",
+          "authorCheckSHA256": "da7212259d63790783013dfca967014594ad756939b32ccfe7e0d485cf6a7784",
+          "sourceGroupIds": [
+            "original.primary5-story-voices-tf#primary5.theatre-shadow-test-002.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b002；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Theatre Shadow Test 002\n\nOur class is making a shadow play about a bird. We put a white sheet across a frame and a lamp behind it. At first, the bird looked much larger than the paper tree. Jay thought we needed a bigger tree. Ms Lin asked us to try moving the bird away from the lamp and closer to the sheet. Its shadow became smaller. We kept the old tree. Later, one wing bent and made a strange shadow. We used a thin stick to hold it straight. On show day, everyone will stay behind the sheet. The audience will see the shadows, not the paper bird or our hands."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.theatre-shadow-test-002.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class is making a play about a bird.",
+            "material": "Theatre Shadow Test 002\n\nOur class is making a shadow play about a bird. We put a white sheet across a frame and a lamp behind it. At first, the bird looked much larger than the paper tree. Jay thought we needed a bigger tree. Ms Lin asked us to try moving the bird away from the lamp and closer to the sheet. Its shadow became smaller. We kept the old tree. Later, one wing bent and made a strange shadow. We used a thin stick to hold it straight. On show day, everyone will stay behind the sheet. The audience will see the shadows, not the paper bird or our hands.",
+            "explanation": "A正确：开篇about a bird；B与主题矛盾。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.theatre-shadow-test-002.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Moving the bird closer to the sheet made its shadow larger.",
+            "material": "Theatre Shadow Test 002\n\nOur class is making a shadow play about a bird. We put a white sheet across a frame and a lamp behind it. At first, the bird looked much larger than the paper tree. Jay thought we needed a bigger tree. Ms Lin asked us to try moving the bird away from the lamp and closer to the sheet. Its shadow became smaller. We kept the old tree. Later, one wing bent and made a strange shadow. We used a thin stick to hold it straight. On show day, everyone will stay behind the sheet. The audience will see the shadows, not the paper bird or our hands.",
+            "explanation": "B正确：影子became smaller；A将结果反向。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.theatre-shadow-test-002.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class made a bigger tree after the test.",
+            "material": "Theatre Shadow Test 002\n\nOur class is making a shadow play about a bird. We put a white sheet across a frame and a lamp behind it. At first, the bird looked much larger than the paper tree. Jay thought we needed a bigger tree. Ms Lin asked us to try moving the bird away from the lamp and closer to the sheet. Its shadow became smaller. We kept the old tree. Later, one wing bent and made a strange shadow. We used a thin stick to hold it straight. On show day, everyone will stay behind the sheet. The audience will see the shadows, not the paper bird or our hands.",
+            "explanation": "B正确：保留old tree；A把Jay初始想法当成最终行动。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.theatre-shadow-test-002.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A thin stick helped keep the wing straight.",
+            "material": "Theatre Shadow Test 002\n\nOur class is making a shadow play about a bird. We put a white sheet across a frame and a lamp behind it. At first, the bird looked much larger than the paper tree. Jay thought we needed a bigger tree. Ms Lin asked us to try moving the bird away from the lamp and closer to the sheet. Its shadow became smaller. We kept the old tree. Later, one wing bent and made a strange shadow. We used a thin stick to hold it straight. On show day, everyone will stay behind the sheet. The audience will see the shadows, not the paper bird or our hands.",
+            "explanation": "A正确：细棍支撑翅膀；B否认明确修正方法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.theatre-shadow-test-002.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The audience will watch the children’s hands in front of the sheet.",
+            "material": "Theatre Shadow Test 002\n\nOur class is making a shadow play about a bird. We put a white sheet across a frame and a lamp behind it. At first, the bird looked much larger than the paper tree. Jay thought we needed a bigger tree. Ms Lin asked us to try moving the bird away from the lamp and closer to the sheet. Its shadow became smaller. We kept the old tree. Later, one wing bent and made a strange shadow. We used a thin stick to hold it straight. On show day, everyone will stay behind the sheet. The audience will see the shadows, not the paper bird or our hands.",
+            "explanation": "B正确：人在幕后，观众只看影子；A同时弄错位置与观看对象。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "8ca79c952408d035f4b79e0d3b8957e88aa145e3a3fa7fdfc0c443845424fe7a",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-story-voices-tf#primary5.theatre-shadow-test-002.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.theatre-shadow-test-002.reading.q1",
+            "expansion.20261028.primary5.theatre-shadow-test-002.reading.q2",
+            "expansion.20261028.primary5.theatre-shadow-test-002.reading.q3",
+            "expansion.20261028.primary5.theatre-shadow-test-002.reading.q4",
+            "expansion.20261028.primary5.theatre-shadow-test-002.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-story-voices-tf",
+          "sourceContentHash": "a4f0870aefe1f20fc8d875af831008e42eade8b2add01b9a839678f758d44bde"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.station-clock-letter-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "车站时钟的来信",
+        "summary": "车站时钟的来信，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.station-clock-letter-002",
+          "family": "reading_tf",
+          "label": "车站时钟的来信",
+          "candidateSHA256": "0d061367e7aaf9445e135ebeec31a28542ca379f43d88facdd11513ddf90d594",
+          "authorCheckSHA256": "da7212259d63790783013dfca967014594ad756939b32ccfe7e0d485cf6a7784",
+          "sourceGroupIds": [
+            "original.primary6-train-letter-tf#primary6.station-clock-letter-002.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b002；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Station Clock Letter 002\n\nDear Grandpa,\nWe almost missed our train yesterday. The clock above the waiting-room door stopped at ten twenty. Dad looked at it and said that we still had forty minutes. I checked the time on the station screen. It was already ten fifty. Our train was due at eleven. We asked a member of staff before running to a platform, because the platform number on our old ticket had changed. She directed us to Platform Four and called ahead for us. We arrived before boarding closed. Dad later reported the broken clock. He said a useful sign should be checked as carefully as a train. I was glad I looked at a second source instead of arguing about whose watch was right.\nLove,\nBen"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.station-clock-letter-002.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The waiting-room clock showed ten twenty because it had stopped.",
+            "material": "Station Clock Letter 002\n\nDear Grandpa,\nWe almost missed our train yesterday. The clock above the waiting-room door stopped at ten twenty. Dad looked at it and said that we still had forty minutes. I checked the time on the station screen. It was already ten fifty. Our train was due at eleven. We asked a member of staff before running to a platform, because the platform number on our old ticket had changed. She directed us to Platform Four and called ahead for us. We arrived before boarding closed. Dad later reported the broken clock. He said a useful sign should be checked as carefully as a train. I was glad I looked at a second source instead of arguing about whose watch was right.\nLove,\nBen",
+            "explanation": "A正确：钟停在10:20；B否认停钟原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.station-clock-letter-002.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The station screen showed that the train would leave in forty minutes.",
+            "material": "Station Clock Letter 002\n\nDear Grandpa,\nWe almost missed our train yesterday. The clock above the waiting-room door stopped at ten twenty. Dad looked at it and said that we still had forty minutes. I checked the time on the station screen. It was already ten fifty. Our train was due at eleven. We asked a member of staff before running to a platform, because the platform number on our old ticket had changed. She directed us to Platform Four and called ahead for us. We arrived before boarding closed. Dad later reported the broken clock. He said a useful sign should be checked as carefully as a train. I was glad I looked at a second source instead of arguing about whose watch was right.\nLove,\nBen",
+            "explanation": "B正确：屏幕10:50、火车11:00，剩十分钟；A沿用爸爸误判四十分钟。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.station-clock-letter-002.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The family checked the platform with a member of staff.",
+            "material": "Station Clock Letter 002\n\nDear Grandpa,\nWe almost missed our train yesterday. The clock above the waiting-room door stopped at ten twenty. Dad looked at it and said that we still had forty minutes. I checked the time on the station screen. It was already ten fifty. Our train was due at eleven. We asked a member of staff before running to a platform, because the platform number on our old ticket had changed. She directed us to Platform Four and called ahead for us. We arrived before boarding closed. Dad later reported the broken clock. He said a useful sign should be checked as carefully as a train. I was glad I looked at a second source instead of arguing about whose watch was right.\nLove,\nBen",
+            "explanation": "A正确：先问员工因旧票站台变更；B与求助行为相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.station-clock-letter-002.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "They boarded after the boarding gate had closed.",
+            "material": "Station Clock Letter 002\n\nDear Grandpa,\nWe almost missed our train yesterday. The clock above the waiting-room door stopped at ten twenty. Dad looked at it and said that we still had forty minutes. I checked the time on the station screen. It was already ten fifty. Our train was due at eleven. We asked a member of staff before running to a platform, because the platform number on our old ticket had changed. She directed us to Platform Four and called ahead for us. We arrived before boarding closed. Dad later reported the broken clock. He said a useful sign should be checked as carefully as a train. I was glad I looked at a second source instead of arguing about whose watch was right.\nLove,\nBen",
+            "explanation": "B正确：before boarding closed已到；A将before颠倒为after。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.station-clock-letter-002.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Ben found it helpful to check another source of time.",
+            "material": "Station Clock Letter 002\n\nDear Grandpa,\nWe almost missed our train yesterday. The clock above the waiting-room door stopped at ten twenty. Dad looked at it and said that we still had forty minutes. I checked the time on the station screen. It was already ten fifty. Our train was due at eleven. We asked a member of staff before running to a platform, because the platform number on our old ticket had changed. She directed us to Platform Four and called ahead for us. We arrived before boarding closed. Dad later reported the broken clock. He said a useful sign should be checked as carefully as a train. I was glad I looked at a second source instead of arguing about whose watch was right.\nLove,\nBen",
+            "explanation": "A正确：末句庆幸核对第二来源；B与自述收获相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "ff7f6bfbbe66832b4bb3c4e087835aa6ddee84746df5ab018d11bfd91ebeb26b",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-train-letter-tf#primary6.station-clock-letter-002.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.station-clock-letter-002.reading.q1",
+            "expansion.20261028.primary6.station-clock-letter-002.reading.q2",
+            "expansion.20261028.primary6.station-clock-letter-002.reading.q3",
+            "expansion.20261028.primary6.station-clock-letter-002.reading.q4",
+            "expansion.20261028.primary6.station-clock-letter-002.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-train-letter-tf",
+          "sourceContentHash": "0aa9b6a3d172a400efc8cc3c785b092bbdf7d9dbb0f195850cf1167bbad992a8"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.community-oven-letter-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "社区烤箱的预约记录",
+        "summary": "社区烤箱的预约记录，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.community-oven-letter-002",
+          "family": "reading_tf",
+          "label": "社区烤箱的预约记录",
+          "candidateSHA256": "3becf2bc67ed8dd18d29bbf2ee6ded05ff2625008af9be3aa2f4deb050b14d09",
+          "authorCheckSHA256": "da7212259d63790783013dfca967014594ad756939b32ccfe7e0d485cf6a7784",
+          "sourceGroupIds": [
+            "original.primary6-bakery-letter-tf#primary6.community-oven-letter-002.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b002；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Community Oven Letter 002\n\nDear Sara,\nOur community kitchen has one large oven. Last month, two cooking groups arrived at the same time because one used a paper diary and the other used a phone calendar. Each thought its own booking was the only one. We now keep one booking board beside the kitchen door. A volunteer writes confirmed times on it after checking both groups’ requests. People can still ask by phone, so nobody needs a phone app. The board also includes ten minutes between groups for cleaning. Last Saturday, our bread took longer than expected. We told the next group early and helped clean the tables while it prepared its ingredients. The board cannot prevent every delay, but it makes the plan and the contact person clear.\nBest wishes,\nNina"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.community-oven-letter-002.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The two groups originally used different booking records.",
+            "material": "Community Oven Letter 002\n\nDear Sara,\nOur community kitchen has one large oven. Last month, two cooking groups arrived at the same time because one used a paper diary and the other used a phone calendar. Each thought its own booking was the only one. We now keep one booking board beside the kitchen door. A volunteer writes confirmed times on it after checking both groups’ requests. People can still ask by phone, so nobody needs a phone app. The board also includes ten minutes between groups for cleaning. Last Saturday, our bread took longer than expected. We told the next group early and helped clean the tables while it prepared its ingredients. The board cannot prevent every delay, but it makes the plan and the contact person clear.\nBest wishes,\nNina",
+            "explanation": "A正确：一方纸日记、一方手机日历；B否认分散记录。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.community-oven-letter-002.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "People must now use a phone app to request the oven.",
+            "material": "Community Oven Letter 002\n\nDear Sara,\nOur community kitchen has one large oven. Last month, two cooking groups arrived at the same time because one used a paper diary and the other used a phone calendar. Each thought its own booking was the only one. We now keep one booking board beside the kitchen door. A volunteer writes confirmed times on it after checking both groups’ requests. People can still ask by phone, so nobody needs a phone app. The board also includes ten minutes between groups for cleaning. Last Saturday, our bread took longer than expected. We told the next group early and helped clean the tables while it prepared its ingredients. The board cannot prevent every delay, but it makes the plan and the contact person clear.\nBest wishes,\nNina",
+            "explanation": "B正确：仍可电话申请，无需应用；A与nobody needs a phone app矛盾。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.community-oven-letter-002.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The board includes time for cleaning between groups.",
+            "material": "Community Oven Letter 002\n\nDear Sara,\nOur community kitchen has one large oven. Last month, two cooking groups arrived at the same time because one used a paper diary and the other used a phone calendar. Each thought its own booking was the only one. We now keep one booking board beside the kitchen door. A volunteer writes confirmed times on it after checking both groups’ requests. People can still ask by phone, so nobody needs a phone app. The board also includes ten minutes between groups for cleaning. Last Saturday, our bread took longer than expected. We told the next group early and helped clean the tables while it prepared its ingredients. The board cannot prevent every delay, but it makes the plan and the contact person clear.\nBest wishes,\nNina",
+            "explanation": "A正确：组间十分钟清洁；B与明确安排相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.community-oven-letter-002.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Nina’s group hid its delay from the next group.",
+            "material": "Community Oven Letter 002\n\nDear Sara,\nOur community kitchen has one large oven. Last month, two cooking groups arrived at the same time because one used a paper diary and the other used a phone calendar. Each thought its own booking was the only one. We now keep one booking board beside the kitchen door. A volunteer writes confirmed times on it after checking both groups’ requests. People can still ask by phone, so nobody needs a phone app. The board also includes ten minutes between groups for cleaning. Last Saturday, our bread took longer than expected. We told the next group early and helped clean the tables while it prepared its ingredients. The board cannot prevent every delay, but it makes the plan and the contact person clear.\nBest wishes,\nNina",
+            "explanation": "B正确：提前通知下一组；A将told early说成隐瞒。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.community-oven-letter-002.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The board guarantees that no cooking session will run late.",
+            "material": "Community Oven Letter 002\n\nDear Sara,\nOur community kitchen has one large oven. Last month, two cooking groups arrived at the same time because one used a paper diary and the other used a phone calendar. Each thought its own booking was the only one. We now keep one booking board beside the kitchen door. A volunteer writes confirmed times on it after checking both groups’ requests. People can still ask by phone, so nobody needs a phone app. The board also includes ten minutes between groups for cleaning. Last Saturday, our bread took longer than expected. We told the next group early and helped clean the tables while it prepared its ingredients. The board cannot prevent every delay, but it makes the plan and the contact person clear.\nBest wishes,\nNina",
+            "explanation": "B正确：末句不能防止每次延误；A将明确有限作用夸为保证。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "d7e9bd4d23defd87832ec68a0fd676497d6f6471325e6c0adee3341f96064327",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-bakery-letter-tf#primary6.community-oven-letter-002.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.community-oven-letter-002.reading.q1",
+            "expansion.20261028.primary6.community-oven-letter-002.reading.q2",
+            "expansion.20261028.primary6.community-oven-letter-002.reading.q3",
+            "expansion.20261028.primary6.community-oven-letter-002.reading.q4",
+            "expansion.20261028.primary6.community-oven-letter-002.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-bakery-letter-tf",
+          "sourceContentHash": "e6db6f0f813ef882c13784f454aeffa61d10fad9edf6884f6a8b839b2e7ca67a"
+        }
+      ]
+    }
+  ]
+}

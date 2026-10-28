@@ -1,0 +1,647 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "cet-reading-001.json",
+  "sourceSHA256": "4ba947de740863f84d5c4a7d14cb54a9026310bccd9a8c4bca9fac899ee5d6c6",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex author of cet-reading-001; same author, not an independent teacher or learner panel",
+  "reviewedAt": "2026-10-28",
+  "status": "approved",
+  "approvalScope": "Author passage-entailment, unique-key and all-distractor review of eight unpublished candidate practices. Does not assert publication, production deployment, independent review, official CET provenance or psychometric calibration.",
+  "audienceModel": "CET4/CET6 learners need readable, concrete original cases and a uniquely passage-supported best answer. Chinese explanations identify why each competing option is unsupported, contradicted, too broad or a different claim.",
+  "authoringMethod": "Eight distinct passages and all eighty prompts, four-option sets, keys and Chinese explanations were explicitly authored. Code serializes authored content, checks format and reorders answer positions; it does not invent or template passages/questions.",
+  "caseBoundary": "The institute, care service, planning district, museum collaboration and other named local cases are invented educational scenarios. Passage-supported interpretation is tested; no external factual knowledge or inaccessible media is required.",
+  "wordCountMethod": "English alphabetic words; internal apostrophes or hyphens form one word; titles excluded. Regex: \\b[A-Za-z]+(?:['’-][A-Za-z]+)*\\b",
+  "checks": {
+    "practices": 8,
+    "scoreableResponses": 80,
+    "undergraduatePractices": 4,
+    "postgraduatePractices": 4,
+    "fourOptionsPerQuestion": true,
+    "allOptionStringsDistinct": true,
+    "answerBoundsChecked": true,
+    "letterExplanationsMatchKeys": true,
+    "allEvidenceAnchorsFoundVerbatim": true,
+    "uniqueUnitIds": true,
+    "uniqueQuestionPrompts": true,
+    "matchingFrozenOriginalLevelAndReadingFamily": true,
+    "missingMediaDependencies": 0,
+    "answerPositionCounts": {
+      "B": 19,
+      "D": 19,
+      "A": 21,
+      "C": 21
+    },
+    "allFourOptionsAddressedInExplanations": true
+  },
+  "units": [
+    {
+      "id": "undergraduate.bakery-surplus-counter-001",
+      "sourceUnitId": "original.cet4-evening-bus-bookings",
+      "status": "approved",
+      "approvalScope": "Same-author semantic/content review of this candidate only; not release approval.",
+      "wordCount": 467,
+      "questionCount": 10,
+      "questionReasoningCoverage": [
+        "explicit detail",
+        "contextual vocabulary or phrase",
+        "inference",
+        "purpose or organisation",
+        "whole-passage synthesis"
+      ],
+      "findings": [
+        "Q3 separates surplus disposal from extra production: releasing bag counts only after stock count supports the key; the new service never promises unrestricted selection.",
+        "Q5 concerns collection permission, not delivery: no driver is available, so the proxy-collection answer is the only action adopted.",
+        "Q8 and Q9 preserve the distinction between aggregate waste reduction and the unobserved alternative purchase of each shopper; publicity does not claim individual causal impact."
+      ],
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 1,
+          "passageEvidence": "staff could not tell how many people would come"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 3,
+          "passageEvidence": "customers could not select its contents"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 0,
+          "passageEvidence": "first counted the bread that was actually left"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 2,
+          "passageEvidence": "its waste project had become an ordinary sales promotion"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 0,
+          "passageEvidence": "one student could collect bags for several classmates"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 1,
+          "passageEvidence": "the list was too general to identify every item"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 3,
+          "passageEvidence": "check the exact contents before paying"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 2,
+          "passageEvidence": "could not reveal what each shopper would otherwise have done"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 1,
+          "passageEvidence": "discounted remaining bread, rather than a guaranteed environmental benefit"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 0,
+          "passageEvidence": "A useful service did not need a larger story than the evidence could support"
+        }
+      ],
+      "unresolvedConcerns": [
+        "No independent teacher review or learner difficulty/discrimination calibration; suitability for the assigned CET level remains provisional."
+      ]
+    },
+    {
+      "id": "undergraduate.tennis-court-lines-001",
+      "sourceUnitId": "original.cet4-seed-packets-and-credit-reading",
+      "status": "approved",
+      "approvalScope": "Same-author semantic/content review of this candidate only; not release approval.",
+      "wordCount": 468,
+      "questionCount": 10,
+      "questionReasoningCoverage": [
+        "explicit detail",
+        "contextual vocabulary or phrase",
+        "inference",
+        "purpose or organisation",
+        "whole-passage synthesis"
+      ],
+      "findings": [
+        "Q3 timing distractor was tightened to “single afternoon time” because the original broad wording might also describe samples visited together; the passage explicitly says several times of day.",
+        "Q5 does not infer preferences from unequal email counts: one coach represents twenty children, while adults email individually.",
+        "Q8 reports easier visual tracking only; injuries and rain performance were not measured. Q9 and Q10 require synthesis of rejected glossy paint and practical trials."
+      ],
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 2,
+          "passageEvidence": "pale court lines were difficult to see against the faded green surface"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 0,
+          "passageEvidence": "Sunlight reflected from the glossy paint directly towards the players"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 1,
+          "passageEvidence": "All used the same white colour"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 3,
+          "passageEvidence": "leaving the other court unchanged until players had tried both"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 1,
+          "passageEvidence": "one message on behalf of twenty children"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 2,
+          "passageEvidence": "did not settle the matter by counting the two groups’ emails"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 0,
+          "passageEvidence": "one crossing line distracted even some children"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 1,
+          "passageEvidence": "Players reported that the lines were easier to follow"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 3,
+          "passageEvidence": "published the final design beside a short account of the rejected ideas"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 2,
+          "passageEvidence": "people performing the actual activity in the actual place"
+        }
+      ],
+      "unresolvedConcerns": [
+        "No independent teacher review or learner difficulty/discrimination calibration; suitability for the assigned CET level remains provisional."
+      ]
+    },
+    {
+      "id": "undergraduate.moth-garden-hours-001",
+      "sourceUnitId": "original.cet4-scoreboard-and-umbrellas-reading",
+      "status": "approved",
+      "approvalScope": "Same-author semantic/content review of this candidate only; not release approval.",
+      "wordCount": 463,
+      "questionCount": 10,
+      "questionReasoningCoverage": [
+        "explicit detail",
+        "contextual vocabulary or phrase",
+        "inference",
+        "purpose or organisation",
+        "whole-passage synthesis"
+      ],
+      "findings": [
+        "Q2 motive is broader observation, not competition between moths and bees; the passage explicitly preserves bee records.",
+        "Q5 weather is a covariate added to records, not a general law that moths never visit in wind. Q6 gives uncertainty-preserving identification rather than false species precision.",
+        "Q8 keeps a limited patch and daytime favourites together. Q9 rejects population estimation from short observations of selected plants; the final report shows scope and limits."
+      ],
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 0,
+          "passageEvidence": "annual report listed daytime insect sightings"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 2,
+          "passageEvidence": "to discover who else used the garden"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 3,
+          "passageEvidence": "insurance covered supervised activities only"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 1,
+          "passageEvidence": "a shielded lamp lit the path rather than the flowers"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 2,
+          "passageEvidence": "added weather notes to its record sheet"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 3,
+          "passageEvidence": "a less specific record could be more useful than an exact name attached to the wrong insect"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 0,
+          "passageEvidence": "It also retained popular daytime flowers"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 2,
+          "passageEvidence": "keep a small patch for another season"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 1,
+          "passageEvidence": "watched only selected plants for short periods"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 0,
+          "passageEvidence": "exposing a gap in the garden’s usual routine"
+        }
+      ],
+      "unresolvedConcerns": [
+        "No independent teacher review or learner difficulty/discrimination calibration; suitability for the assigned CET level remains provisional."
+      ]
+    },
+    {
+      "id": "undergraduate.fabric-colour-display-001",
+      "sourceUnitId": "original.cet4-section-museum-and-crates",
+      "status": "approved",
+      "approvalScope": "Same-author semantic/content review of this candidate only; not release approval.",
+      "wordCount": 478,
+      "questionCount": 10,
+      "questionReasoningCoverage": [
+        "explicit detail",
+        "contextual vocabulary or phrase",
+        "inference",
+        "purpose or organisation",
+        "whole-passage synthesis"
+      ],
+      "findings": [
+        "Q2 keeps present appearance distinct from the cloth’s earlier history, so neither a single blue nor a single grey label suffices.",
+        "Q5 distinguishes a supported estimate from a guaranteed uniform original colour. Q6 and Q7 distinguish a changing screen image from an unchanged physical object.",
+        "Q8 uses weave in a textile context. Q9 permits tactile analogy but rejects an exact historical-feel claim because fibres and manufacturing differ."
+      ],
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 3,
+          "passageEvidence": "protected by the window frame"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 1,
+          "passageEvidence": "Calling it “grey cloth” would erase evidence of its earlier life"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 2,
+          "passageEvidence": "made it harder to examine the worn threads"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 0,
+          "passageEvidence": "switch between a photograph of the cloth today and an estimated version"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 3,
+          "passageEvidence": "might not have been perfectly uniform when it was new"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 0,
+          "passageEvidence": "believing that museum staff had physically dyed the cloth blue again"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 2,
+          "passageEvidence": "This image changes; the cloth in the case does not"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 1,
+          "passageEvidence": "helped visitors feel a woven surface"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 0,
+          "passageEvidence": "Its fibres and production process differed"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 3,
+          "passageEvidence": "Each offered something useful, and each had a clear limit"
+        }
+      ],
+      "unresolvedConcerns": [
+        "No independent teacher review or learner difficulty/discrimination calibration; suitability for the assigned CET level remains provisional."
+      ]
+    },
+    {
+      "id": "postgraduate.null-results-register-001",
+      "sourceUnitId": "original.cet6-recording-restoration",
+      "status": "approved",
+      "approvalScope": "Same-author semantic/content review of this candidate only; not release approval.",
+      "wordCount": 563,
+      "questionCount": 10,
+      "questionReasoningCoverage": [
+        "explicit detail",
+        "contextual vocabulary or phrase",
+        "inference",
+        "purpose or organisation",
+        "whole-passage synthesis"
+      ],
+      "findings": [
+        "Q1 and Q2 distinguish selective circulation from absent recordkeeping, and a bounded test record from a sustained journal argument.",
+        "Q3 distinguishes lack of efficacy, equipment damage despite removal, and no valid measurement. None justifies treating all trials as the same failed design.",
+        "Q4’s release delay is finite and permits checking without permanent concealment; Q6 and Q7 separate attention-dependent ranking from condition-sensitive later evidence.",
+        "Q8 explicitly checks selective success reports and missing counterfactual project coverage; Q9 and Q10 require carefully bounded contributions rather than automatic value for every failed result."
+      ],
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 2,
+          "passageEvidence": "readers encounter only the successful attempts"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 1,
+          "passageEvidence": "an entry in the register described a particular test, its conditions and its outcome"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 3,
+          "passageEvidence": "an ambiguity in the expression “did not work”"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 0,
+          "passageEvidence": "time to check technical details and prepare related papers"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 1,
+          "passageEvidence": "competitors would use the entries to judge their competence"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 0,
+          "passageEvidence": "That score would reflect attention as well as reliability"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 2,
+          "passageEvidence": "examine how the conditions compared"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 3,
+          "passageEvidence": "Teams that found an entry useless had little reason to report"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 0,
+          "passageEvidence": "publication of limited outcomes required unusually careful descriptions of limits"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 2,
+          "passageEvidence": "grounds for judgement rather than a simple label of success or failure"
+        }
+      ],
+      "unresolvedConcerns": [
+        "No independent teacher review or learner difficulty/discrimination calibration; suitability for the assigned CET level remains provisional."
+      ]
+    },
+    {
+      "id": "postgraduate.home-care-scheduling-001",
+      "sourceUnitId": "original.cet6-route-model-and-recipes-reading",
+      "status": "approved",
+      "approvalScope": "Same-author semantic/content review of this candidate only; not release approval.",
+      "wordCount": 570,
+      "questionCount": 10,
+      "questionReasoningCoverage": [
+        "explicit detail",
+        "contextual vocabulary or phrase",
+        "inference",
+        "purpose or organisation",
+        "whole-passage synthesis"
+      ],
+      "findings": [
+        "Q2 isolates the changed district-wide nearest-worker allocation; it does not infer changes in vehicle type or a switch away from home visits.",
+        "Q3 uses the gesture example to identify repeated teaching work omitted by completed-visit counts. Q4 and Q5 concern the embedded priority for distance, rather than numerical calculation accuracy.",
+        "Q6 and Q7 distinguish average time from tail delays, and a targeted buffer from identical district-wide padding.",
+        "Q8 checks concurrent bus-service and client-mix changes. Q9 recognises willingness to complain as a reporting limitation; Q10 concerns continuing challenge, with paid discussion time described to qualify who can participate."
+      ],
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 1,
+          "passageEvidence": "more efficient by one measure while making the service less dependable by another"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 3,
+          "passageEvidence": "assigning whichever available worker was nearest to a client"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 0,
+          "passageEvidence": "repeated changes meant repeatedly teaching it"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 2,
+          "passageEvidence": "The original calculation had already embodied a judgement"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 3,
+          "passageEvidence": "It altered the balance between values that had been there from the start"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 2,
+          "passageEvidence": "average journey times, which concealed large variation"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 1,
+          "passageEvidence": "reserved more flexible time around the unreliable connection"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 0,
+          "passageEvidence": "one difficult route acquired a more frequent bus service"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 2,
+          "passageEvidence": "clients differed in how comfortable they felt raising concerns"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 3,
+          "passageEvidence": "those affected could question why it allocated their time as it did"
+        }
+      ],
+      "unresolvedConcerns": [
+        "No independent teacher review or learner difficulty/discrimination calibration; suitability for the assigned CET level remains provisional."
+      ]
+    },
+    {
+      "id": "postgraduate.marsh-carbon-boundary-001",
+      "sourceUnitId": "original.cet6-bird-records-and-coins-reading",
+      "status": "approved",
+      "approvalScope": "Same-author semantic/content review of this candidate only; not release approval.",
+      "wordCount": 564,
+      "questionCount": 10,
+      "questionReasoningCoverage": [
+        "explicit detail",
+        "contextual vocabulary or phrase",
+        "inference",
+        "purpose or organisation",
+        "whole-passage synthesis"
+      ],
+      "findings": [
+        "Q1 and Q2 require a stated no-project baseline; energy savings from independently planned pump closure cannot all be attributed to restoration.",
+        "Q3 does not assign new crop removal to fields already idle. Q4’s displaced production is conditional, not a claim that every marsh project necessarily shifts emissions.",
+        "Q5 scenarios expose alternative assumptions and are not measurements to average. Q6 and Q7 preserve immediate construction costs and long-term expected accumulation.",
+        "Q8 requires temporal and causal boundaries. Q9 recognises habitat benefits separately rather than converting them into carbon. Q10 distinguishes conditional approval from verified future outcomes."
+      ],
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 3,
+          "passageEvidence": "compare what happens after restoration with a plausible description of what would have happened without it"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 2,
+          "passageEvidence": "already scheduled to stop for another reason"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 1,
+          "passageEvidence": "the fields had produced no crop for several years"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 0,
+          "passageEvidence": "did not guarantee that all relevant environmental changes occurred inside it"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 2,
+          "passageEvidence": "showed why it existed"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 1,
+          "passageEvidence": "Reporting only the eventual accumulation would obscure the immediate cost"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 3,
+          "passageEvidence": "indicating early emissions and later expected gains"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 0,
+          "passageEvidence": "positive over what period, compared with which alternative, and including which effects"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 1,
+          "passageEvidence": "nor used to inflate the carbon figure"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 2,
+          "passageEvidence": "considered the expected benefits sufficient under stated conditions"
+        }
+      ],
+      "unresolvedConcerns": [
+        "No independent teacher review or learner difficulty/discrimination calibration; suitability for the assigned CET level remains provisional."
+      ]
+    },
+    {
+      "id": "postgraduate.digital-heritage-control-001",
+      "sourceUnitId": "original.cet6-single-place-name-translation",
+      "status": "approved",
+      "approvalScope": "Same-author semantic/content review of this candidate only; not release approval.",
+      "wordCount": 563,
+      "questionCount": 10,
+      "questionReasoningCoverage": [
+        "explicit detail",
+        "contextual vocabulary or phrase",
+        "inference",
+        "purpose or organisation",
+        "whole-passage synthesis"
+      ],
+      "findings": [
+        "Q1 to Q3 distinguish availability from practical authority, and interest in educational use from consent to unrestricted online viewing; the community is not portrayed as rejecting technology.",
+        "Q4 preserves the exact three-level access arrangement. Q5 keeps historical collector labels as provenance while prioritising the community’s account.",
+        "Q6 and Q7 distinguish holding data from being able to use and maintain it; documented exports reduce platform dependency but do not guarantee permanence.",
+        "Q8 records attributed disagreement rather than erasing it. Q9 expressly leaves physical ownership unresolved. Q10 assesses authority rather than file size or an initial upload."
+      ],
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 0,
+          "passageEvidence": "decisions in the hands of the institution that sent it"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 3,
+          "passageEvidence": "details visible in ways that an ordinary encounter with the object never did"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 2,
+          "passageEvidence": "What they disputed was the assumption"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 1,
+          "passageEvidence": "a detailed model available through a community-managed process"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 0,
+          "passageEvidence": "document how the museum had acquired and classified the object"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 3,
+          "passageEvidence": "only through the museum’s paid viewing platform"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 1,
+          "passageEvidence": "instructions for exporting and maintaining it"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 2,
+          "passageEvidence": "who made a statement, when a permission changed, and which uses were authorised"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 3,
+          "passageEvidence": "not treated as a substitute for resolving ownership"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 0,
+          "passageEvidence": "distribution of practical authority after a transfer"
+        }
+      ],
+      "unresolvedConcerns": [
+        "No independent teacher review or learner difficulty/discrimination calibration; suitability for the assigned CET level remains provisional."
+      ]
+    }
+  ],
+  "unresolvedConcerns": [
+    "No independent teacher or learner calibration; authored level alignment is provisional.",
+    "This requested batch uses one full passage and ten questions per practice. It is a training grouping and does not claim exact official CET paper grouping.",
+    "No catalog publication, online deployment or runtime/media verification is performed by this author-source task."
+  ]
+}

@@ -1,0 +1,2182 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b003",
+  "createdAt": "2026-10-28T15:34:11.685149+00:00",
+  "sourceSHA256": "ae91e84843b5b59fbcb96dc22e2c686c5a0fefdf0557565bb7171a70c49d7299",
+  "reviewSHA256": "d030ebf6d0764cda2515aaee700c00373aae1f60807d7f469cfa8e149edaf4ca",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.lost-mitten-office-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "失物台前找手套",
+        "summary": "失物台前找手套，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 5,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整具体形式参照公开来源；原校/年级难度未独立认证，作者自审不等独立教师或学生验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.lost-mitten-office-003",
+          "family": "function_choice",
+          "label": "失物台前找手套",
+          "candidateSHA256": "965e5df721370cc77992ed66731a3a96f25484d505ebe52b93f49d6f0ad0aadc",
+          "authorCheckSHA256": "773ecff7d49f4ee85fd005da0be842264ac95a4f2f50745809ba90b0f2f4393b",
+          "sourceGroupIds": [
+            "original.primary2-five-small-functions#primary2.lost-mitten-office-003.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b003；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lost Mitten Office 003\n\nAt the lost-and-found desk, a child asks about a mitten. Choose the reply that fits each short talk."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.lost-mitten-office-003.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Child: Excuse me. Helper: ____",
+            "material": "Lost Mitten Office 003\n\nAt the lost-and-found desk, a child asks about a mitten. Choose the reply that fits each short talk.",
+            "explanation": "A回应打扰并提供帮助；B晚安、C喜好均不合场景。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes? Can I help you?"
+              },
+              {
+                "id": "o1",
+                "text": "Good night."
+              },
+              {
+                "id": "o2",
+                "text": "I like apples."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-mitten-office-003.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Helper: Is this your mitten? Child: ____",
+            "material": "Lost Mitten Office 003\n\nAt the lost-and-found desk, a child asks about a mitten. Choose the reply that fits each short talk.",
+            "explanation": "B确认物品归属；A星期、C心情不回答Is this。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is Monday."
+              },
+              {
+                "id": "o1",
+                "text": "Yes, it is."
+              },
+              {
+                "id": "o2",
+                "text": "I am happy."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-mitten-office-003.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Helper: What colour is your other mitten? Child: ____",
+            "material": "Lost Mitten Office 003\n\nAt the lost-and-found desk, a child asks about a mitten. Choose the reply that fits each short talk.",
+            "explanation": "C答颜色；A位置、B动物不答What colour。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is in my bag."
+              },
+              {
+                "id": "o1",
+                "text": "They are cats."
+              },
+              {
+                "id": "o2",
+                "text": "It is brown."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-mitten-office-003.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Child: Thank you for your help. Helper: ____",
+            "material": "Lost Mitten Office 003\n\nAt the lost-and-found desk, a child asks about a mitten. Choose the reply that fits each short talk.",
+            "explanation": "A回应感谢；B能力、C物品名称均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "You are welcome."
+              },
+              {
+                "id": "o1",
+                "text": "I can run."
+              },
+              {
+                "id": "o2",
+                "text": "It is a desk."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-mitten-office-003.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Helper: Please write your name here. Child: ____",
+            "material": "Lost Mitten Office 003\n\nAt the lost-and-found desk, a child asks about a mitten. Choose the reply that fits each short talk.",
+            "explanation": "B接受写名指令；A天气、C人物关系不能回应要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is cold."
+              },
+              {
+                "id": "o1",
+                "text": "OK."
+              },
+              {
+                "id": "o2",
+                "text": "She is my mum."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "f4d946d8efa10e42ef207ae8d71245ba17296be6ea3fc970a9e16063c2a41105",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-five-small-functions#primary2.lost-mitten-office-003.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.lost-mitten-office-003.reading.q1",
+            "expansion.20261028.primary2.lost-mitten-office-003.reading.q2",
+            "expansion.20261028.primary2.lost-mitten-office-003.reading.q3",
+            "expansion.20261028.primary2.lost-mitten-office-003.reading.q4",
+            "expansion.20261028.primary2.lost-mitten-office-003.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-five-small-functions",
+          "sourceContentHash": "8aec4fa4f4448a713602248fecd4163e48c664bfbe02fe1de910736fd964f324"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.birthday-card-talk-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "送生日卡片时的问答",
+        "summary": "送生日卡片时的问答，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 5,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.birthday-card-talk-003",
+          "family": "function_choice",
+          "label": "送生日卡片时的问答",
+          "candidateSHA256": "c14c793b7bcfff472def90c09cf69968fa12458bd8eedc4dcec633b22229931e",
+          "authorCheckSHA256": "773ecff7d49f4ee85fd005da0be842264ac95a4f2f50745809ba90b0f2f4393b",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.birthday-card-talk-003.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b003；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Birthday Card Talk 003\n\nFriends give a birthday card to Kim. Choose a suitable reply in each small talk."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.birthday-card-talk-003.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Friend: Happy birthday, Kim! Kim: ____",
+            "material": "Birthday Card Talk 003\n\nFriends give a birthday card to Kim. Choose a suitable reply in each small talk.",
+            "explanation": "A接受生日祝福并感谢；B告别不合；C自称铅笔不合理。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Thank you."
+              },
+              {
+                "id": "o1",
+                "text": "Goodbye forever."
+              },
+              {
+                "id": "o2",
+                "text": "I am a pencil."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.birthday-card-talk-003.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Kim: What is in the box? Friend: ____",
+            "material": "Birthday Card Talk 003\n\nFriends give a birthday card to Kim. Choose a suitable reply in each small talk.",
+            "explanation": "B回答盒中物品；A天气、C状态未答What。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is sunny."
+              },
+              {
+                "id": "o1",
+                "text": "A toy bear."
+              },
+              {
+                "id": "o2",
+                "text": "I am fine."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.birthday-card-talk-003.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Friend: How old are you today? Kim: ____",
+            "material": "Birthday Card Talk 003\n\nFriends give a birthday card to Kim. Choose a suitable reply in each small talk.",
+            "explanation": "C答年龄；A地点、B喜好不答How old。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is on the desk."
+              },
+              {
+                "id": "o1",
+                "text": "I like blue."
+              },
+              {
+                "id": "o2",
+                "text": "I am seven."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.birthday-card-talk-003.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Kim: Let us sing a song. Friend: ____",
+            "material": "Birthday Card Talk 003\n\nFriends give a birthday card to Kim. Choose a suitable reply in each small talk.",
+            "explanation": "A赞同唱歌建议；B物品、C身高均不回应建议。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Good idea!"
+              },
+              {
+                "id": "o1",
+                "text": "It is a ruler."
+              },
+              {
+                "id": "o2",
+                "text": "I am tall."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.birthday-card-talk-003.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Friend: This card is for you. Kim: ____",
+            "material": "Birthday Card Talk 003\n\nFriends give a birthday card to Kim. Choose a suitable reply in each small talk.",
+            "explanation": "B感谢并称赞卡片；A关门指令、C找鞋均与收到卡片无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Close the door."
+              },
+              {
+                "id": "o1",
+                "text": "Thank you. It is lovely."
+              },
+              {
+                "id": "o2",
+                "text": "I cannot find my shoe."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "b20d630bbde81636c19328a15663cf0b8eb3efef16f4d47066c17dfc31f30472",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.birthday-card-talk-003.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.birthday-card-talk-003.reading.q1",
+            "expansion.20261028.primary2.birthday-card-talk-003.reading.q2",
+            "expansion.20261028.primary2.birthday-card-talk-003.reading.q3",
+            "expansion.20261028.primary2.birthday-card-talk-003.reading.q4",
+            "expansion.20261028.primary2.birthday-card-talk-003.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.vowel-pet-room-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "宠物房里的长元音词",
+        "summary": "宠物房里的长元音词，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3.daoli2025.phonicsbank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.vowel-pet-room-003",
+          "family": "shared_bank",
+          "label": "宠物房里的长元音词",
+          "candidateSHA256": "9a4854ff2dcc7f5f0f37443ec0f5ec1604469edc5084f1deccc0dbf28fbfe191",
+          "authorCheckSHA256": "773ecff7d49f4ee85fd005da0be842264ac95a4f2f50745809ba90b0f2f4393b",
+          "sourceGroupIds": [
+            "original.primary3-marked-vowels-small-room#primary3.vowel-pet-room-003.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b003；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Vowel Pet Room 003\n\nChoose from the shared word bank. Match the vowel sound in the word in capitals and complete each sentence. Use each word once. Bank: A. cake B. bike C. nose D. cube E. five\n1. Kate (KATE) puts a birthday ____1____ on the plate.\n2. Mike (MIKE) can ride his ____2____ to the park.\n3. Rose (ROSE) draws a face with a small ____3____.\n4. A cute (CUTE) block with six square faces is a ____4____.\n5. I like (LIKE) the number after four. It is ____5____."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.vowel-pet-room-003.reading.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Vowel Pet Room 003\n\nChoose from the shared word bank. Match the vowel sound in the word in capitals and complete each sentence. Use each word once. Bank: A. cake B. bike C. nose D. cube E. five\n1. Kate (KATE) puts a birthday ____1____ on the plate.\n2. Mike (MIKE) can ride his ____2____ to the park.\n3. Rose (ROSE) draws a face with a small ____3____.\n4. A cute (CUTE) block with six square faces is a ____4____.\n5. I like (LIKE) the number after four. It is ____5____.",
+            "explanation": "A cake与KATE均/eɪ/且生日蛋糕合义；B bike、E five为/aɪ/；C nose为/əʊ/；D cube为/juː/，均不合目标音与句义。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cake"
+              },
+              {
+                "id": "o1",
+                "text": "bike"
+              },
+              {
+                "id": "o2",
+                "text": "nose"
+              },
+              {
+                "id": "o3",
+                "text": "cube"
+              },
+              {
+                "id": "o4",
+                "text": "five"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.vowel-pet-room-003.reading.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Vowel Pet Room 003\n\nChoose from the shared word bank. Match the vowel sound in the word in capitals and complete each sentence. Use each word once. Bank: A. cake B. bike C. nose D. cube E. five\n1. Kate (KATE) puts a birthday ____1____ on the plate.\n2. Mike (MIKE) can ride his ____2____ to the park.\n3. Rose (ROSE) draws a face with a small ____3____.\n4. A cute (CUTE) block with six square faces is a ____4____.\n5. I like (LIKE) the number after four. It is ____5____.",
+            "explanation": "B bike与MIKE均/aɪ/且可骑；A cake /eɪ/、C nose /əʊ/、D cube /juː/不同音；E five同音但数字不能被ride。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cake"
+              },
+              {
+                "id": "o1",
+                "text": "bike"
+              },
+              {
+                "id": "o2",
+                "text": "nose"
+              },
+              {
+                "id": "o3",
+                "text": "cube"
+              },
+              {
+                "id": "o4",
+                "text": "five"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.vowel-pet-room-003.reading.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Vowel Pet Room 003\n\nChoose from the shared word bank. Match the vowel sound in the word in capitals and complete each sentence. Use each word once. Bank: A. cake B. bike C. nose D. cube E. five\n1. Kate (KATE) puts a birthday ____1____ on the plate.\n2. Mike (MIKE) can ride his ____2____ to the park.\n3. Rose (ROSE) draws a face with a small ____3____.\n4. A cute (CUTE) block with six square faces is a ____4____.\n5. I like (LIKE) the number after four. It is ____5____.",
+            "explanation": "C nose与ROSE均/əʊ/且是脸部；A cake /eɪ/、B bike和E five /aɪ/、D cube /juː/均不合读音与脸部语义。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cake"
+              },
+              {
+                "id": "o1",
+                "text": "bike"
+              },
+              {
+                "id": "o2",
+                "text": "nose"
+              },
+              {
+                "id": "o3",
+                "text": "cube"
+              },
+              {
+                "id": "o4",
+                "text": "five"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.vowel-pet-room-003.reading.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Vowel Pet Room 003\n\nChoose from the shared word bank. Match the vowel sound in the word in capitals and complete each sentence. Use each word once. Bank: A. cake B. bike C. nose D. cube E. five\n1. Kate (KATE) puts a birthday ____1____ on the plate.\n2. Mike (MIKE) can ride his ____2____ to the park.\n3. Rose (ROSE) draws a face with a small ____3____.\n4. A cute (CUTE) block with six square faces is a ____4____.\n5. I like (LIKE) the number after four. It is ____5____.",
+            "explanation": "D cube与CUTE均含/juː/，六面正方形物块是立方体；A cake /eɪ/、B bike和E five /aɪ/、C nose /əʊ/，均不合读音和物块定义。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cake"
+              },
+              {
+                "id": "o1",
+                "text": "bike"
+              },
+              {
+                "id": "o2",
+                "text": "nose"
+              },
+              {
+                "id": "o3",
+                "text": "cube"
+              },
+              {
+                "id": "o4",
+                "text": "five"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary3.vowel-pet-room-003.reading.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Vowel Pet Room 003\n\nChoose from the shared word bank. Match the vowel sound in the word in capitals and complete each sentence. Use each word once. Bank: A. cake B. bike C. nose D. cube E. five\n1. Kate (KATE) puts a birthday ____1____ on the plate.\n2. Mike (MIKE) can ride his ____2____ to the park.\n3. Rose (ROSE) draws a face with a small ____3____.\n4. A cute (CUTE) block with six square faces is a ____4____.\n5. I like (LIKE) the number after four. It is ____5____.",
+            "explanation": "E five与LIKE均/aɪ/且四之后是五；B bike虽同音不是数字；A cake /eɪ/、C nose /əʊ/、D cube /juː/不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cake"
+              },
+              {
+                "id": "o1",
+                "text": "bike"
+              },
+              {
+                "id": "o2",
+                "text": "nose"
+              },
+              {
+                "id": "o3",
+                "text": "cube"
+              },
+              {
+                "id": "o4",
+                "text": "five"
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "78301edb587c3101e76ec313797614e3fe557313a5f5e5894612019a875372c8",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-marked-vowels-small-room#primary3.vowel-pet-room-003.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.vowel-pet-room-003.reading.q1",
+            "expansion.20261028.primary3.vowel-pet-room-003.reading.q2",
+            "expansion.20261028.primary3.vowel-pet-room-003.reading.q3",
+            "expansion.20261028.primary3.vowel-pet-room-003.reading.q4",
+            "expansion.20261028.primary3.vowel-pet-room-003.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-marked-vowels-small-room",
+          "sourceContentHash": "e23425fc826ca01b32044443a31ebb835564442cdca82dc69d5bb80fa35647c3"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.duck-pond-rules-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "池塘边的新规则",
+        "summary": "池塘边的新规则，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.duck-pond-rules-003",
+          "family": "reading_tf",
+          "label": "池塘边的新规则",
+          "candidateSHA256": "d1ab40085245cef301c41d22a3c697c412ffd9bb2bb0613d5ba8de2f879d586d",
+          "authorCheckSHA256": "773ecff7d49f4ee85fd005da0be842264ac95a4f2f50745809ba90b0f2f4393b",
+          "sourceGroupIds": [
+            "original.primary3-picnic-bags-tf#primary3.duck-pond-rules-003.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b003；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Duck Pond Rules 003\n\nThere is a pond in our park. Six ducks live there. A sign says, \"Do not give bread to the ducks.\" I have some bread in my bag, but I keep it there. A park worker gives the ducks their food. I sit on a bench with Grandma. We watch a little duck follow its mother. We do not go into the water."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.duck-pond-rules-003.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Six ducks live in the pond.",
+            "material": "Duck Pond Rules 003\n\nThere is a pond in our park. Six ducks live there. A sign says, \"Do not give bread to the ducks.\" I have some bread in my bag, but I keep it there. A park worker gives the ducks their food. I sit on a bench with Grandma. We watch a little duck follow its mother. We do not go into the water.",
+            "explanation": "A正确：six ducks直接给数量；B与明确数量事实相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.duck-pond-rules-003.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The sign asks people to give bread to the ducks.",
+            "material": "Duck Pond Rules 003\n\nThere is a pond in our park. Six ducks live there. A sign says, \"Do not give bread to the ducks.\" I have some bread in my bag, but I keep it there. A park worker gives the ducks their food. I sit on a bench with Grandma. We watch a little duck follow its mother. We do not go into the water.",
+            "explanation": "B正确：标牌Do not give bread；A漏读否定。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.duck-pond-rules-003.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer keeps the bread in the bag.",
+            "material": "Duck Pond Rules 003\n\nThere is a pond in our park. Six ducks live there. A sign says, \"Do not give bread to the ducks.\" I have some bread in my bag, but I keep it there. A park worker gives the ducks their food. I sit on a bench with Grandma. We watch a little duck follow its mother. We do not go into the water.",
+            "explanation": "A正确：I keep it there指留包里；B否认作者行为。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.duck-pond-rules-003.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Grandma sits in the water.",
+            "material": "Duck Pond Rules 003\n\nThere is a pond in our park. Six ducks live there. A sign says, \"Do not give bread to the ducks.\" I have some bread in my bag, but I keep it there. A park worker gives the ducks their food. I sit on a bench with Grandma. We watch a little duck follow its mother. We do not go into the water.",
+            "explanation": "B正确：与作者坐bench上；A把长椅改成水中。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.duck-pond-rules-003.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A little duck follows its mother.",
+            "material": "Duck Pond Rules 003\n\nThere is a pond in our park. Six ducks live there. A sign says, \"Do not give bread to the ducks.\" I have some bread in my bag, but I keep it there. A park worker gives the ducks their food. I sit on a bench with Grandma. We watch a little duck follow its mother. We do not go into the water.",
+            "explanation": "A正确：末段给出跟随动作；B与观察内容不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "58a2430c9014436b84219472361d398d8865bd926435178d90ccaa7c20b17904",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-picnic-bags-tf#primary3.duck-pond-rules-003.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.duck-pond-rules-003.reading.q1",
+            "expansion.20261028.primary3.duck-pond-rules-003.reading.q2",
+            "expansion.20261028.primary3.duck-pond-rules-003.reading.q3",
+            "expansion.20261028.primary3.duck-pond-rules-003.reading.q4",
+            "expansion.20261028.primary3.duck-pond-rules-003.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-picnic-bags-tf",
+          "sourceContentHash": "67f56ff4e81139dae433ca5cda205636f40e4e50b4d446edbb81ed2fff56a980"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.garden-water-bank-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "班级花园里的工具词库",
+        "summary": "班级花园里的工具词库，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.garden-water-bank-003",
+          "family": "shared_bank",
+          "label": "班级花园里的工具词库",
+          "candidateSHA256": "73143f880417bfd0ac9057cafa0c3d1b02923abe019f22277c6bdcaf09977104",
+          "authorCheckSHA256": "773ecff7d49f4ee85fd005da0be842264ac95a4f2f50745809ba90b0f2f4393b",
+          "sourceGroupIds": [
+            "original.primary4-school-day-shared-bank#primary4.garden-water-bank-003.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b003；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Garden Water Bank 003\n\nRead the whole passage and choose a word from the bank for each gap. Use each word once. Bank: A. empty B. gloves C. under D. water E. Friday\nOur class works in the garden every ____1____, the day after Thursday. We wear ____2____ to keep our hands clean. The soil is dry, so we ____3____ the young plants. Then we put the tools ____4____ the bench, not on top of it. The watering can has no water left. It is ____5____."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.garden-water-bank-003.reading.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Garden Water Bank 003\n\nRead the whole passage and choose a word from the bank for each gap. Use each word once. Bank: A. empty B. gloves C. under D. water E. Friday\nOur class works in the garden every ____1____, the day after Thursday. We wear ____2____ to keep our hands clean. The soil is dry, so we ____3____ the young plants. Then we put the tools ____4____ the bench, not on top of it. The watering can has no water left. It is ____5____.",
+            "explanation": "E Friday是周四后一天；A空的、B手套、C下面、D浇水均不是星期名。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "empty"
+              },
+              {
+                "id": "o1",
+                "text": "gloves"
+              },
+              {
+                "id": "o2",
+                "text": "under"
+              },
+              {
+                "id": "o3",
+                "text": "water"
+              },
+              {
+                "id": "o4",
+                "text": "Friday"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261028.primary4.garden-water-bank-003.reading.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Garden Water Bank 003\n\nRead the whole passage and choose a word from the bank for each gap. Use each word once. Bank: A. empty B. gloves C. under D. water E. Friday\nOur class works in the garden every ____1____, the day after Thursday. We wear ____2____ to keep our hands clean. The soil is dry, so we ____3____ the young plants. Then we put the tools ____4____ the bench, not on top of it. The watering can has no water left. It is ____5____.",
+            "explanation": "B gloves可穿戴保护手；A形容空、C介词、D水或浇水、E星期均不是手部用品。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "empty"
+              },
+              {
+                "id": "o1",
+                "text": "gloves"
+              },
+              {
+                "id": "o2",
+                "text": "under"
+              },
+              {
+                "id": "o3",
+                "text": "water"
+              },
+              {
+                "id": "o4",
+                "text": "Friday"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.garden-water-bank-003.reading.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Garden Water Bank 003\n\nRead the whole passage and choose a word from the bank for each gap. Use each word once. Bank: A. empty B. gloves C. under D. water E. Friday\nOur class works in the garden every ____1____, the day after Thursday. We wear ____2____ to keep our hands clean. The soil is dry, so we ____3____ the young plants. Then we put the tools ____4____ the bench, not on top of it. The watering can has no water left. It is ____5____.",
+            "explanation": "D water作动词浇植物；A空的、B手套、C下面、E星期不能构成所需动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "empty"
+              },
+              {
+                "id": "o1",
+                "text": "gloves"
+              },
+              {
+                "id": "o2",
+                "text": "under"
+              },
+              {
+                "id": "o3",
+                "text": "water"
+              },
+              {
+                "id": "o4",
+                "text": "Friday"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary4.garden-water-bank-003.reading.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Garden Water Bank 003\n\nRead the whole passage and choose a word from the bank for each gap. Use each word once. Bank: A. empty B. gloves C. under D. water E. Friday\nOur class works in the garden every ____1____, the day after Thursday. We wear ____2____ to keep our hands clean. The soil is dry, so we ____3____ the young plants. Then we put the tools ____4____ the bench, not on top of it. The watering can has no water left. It is ____5____.",
+            "explanation": "C under与not on top构成位置对比；A形容词、B物品、D水或浇水、E星期均不接the bench表达所需位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "empty"
+              },
+              {
+                "id": "o1",
+                "text": "gloves"
+              },
+              {
+                "id": "o2",
+                "text": "under"
+              },
+              {
+                "id": "o3",
+                "text": "water"
+              },
+              {
+                "id": "o4",
+                "text": "Friday"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.garden-water-bank-003.reading.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Garden Water Bank 003\n\nRead the whole passage and choose a word from the bank for each gap. Use each word once. Bank: A. empty B. gloves C. under D. water E. Friday\nOur class works in the garden every ____1____, the day after Thursday. We wear ____2____ to keep our hands clean. The soil is dry, so we ____3____ the young plants. Then we put the tools ____4____ the bench, not on top of it. The watering can has no water left. It is ____5____.",
+            "explanation": "A empty与没有剩水对应；B手套、C下面、D水、E星期不描述壶空了。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "empty"
+              },
+              {
+                "id": "o1",
+                "text": "gloves"
+              },
+              {
+                "id": "o2",
+                "text": "under"
+              },
+              {
+                "id": "o3",
+                "text": "water"
+              },
+              {
+                "id": "o4",
+                "text": "Friday"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "373fce5039569e8104c392db40b725196e660dc840bd6158fe513b2c93298d88",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-school-day-shared-bank#primary4.garden-water-bank-003.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.garden-water-bank-003.reading.q1",
+            "expansion.20261028.primary4.garden-water-bank-003.reading.q2",
+            "expansion.20261028.primary4.garden-water-bank-003.reading.q3",
+            "expansion.20261028.primary4.garden-water-bank-003.reading.q4",
+            "expansion.20261028.primary4.garden-water-bank-003.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-school-day-shared-bank",
+          "sourceContentHash": "f5930d7c5f67553e061fde7ba847cb960afdc1a6bb778a0e147aa6d1c1232eb5"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.museum-coat-ticket-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "博物馆寄存外套的小票",
+        "summary": "博物馆寄存外套的小票，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.museum-coat-ticket-003",
+          "family": "reading_choice",
+          "label": "博物馆寄存外套的小票",
+          "candidateSHA256": "77518ab093b9afe02fd5e2162c7c98920fa02c93959118d991e0d0ea9be32ba6",
+          "authorCheckSHA256": "773ecff7d49f4ee85fd005da0be842264ac95a4f2f50745809ba90b0f2f4393b",
+          "sourceGroupIds": [
+            "original.primary4-wet-sports-day#primary4.museum-coat-ticket-003.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b003；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Museum Coat Ticket 003\n\nAt the town museum, children leave their wet coats at a desk. The worker gives each child a numbered ticket. The same number is on the coat hook. \"Keep the ticket,\" she says. \"You need it to get your coat back.\" Dan puts his ticket in his shoe because his trousers have no pockets. After the visit, he forgets where it is. His friend asks him to think about the morning. Dan remembers and finds the ticket. The worker checks it and gives him the right coat."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.museum-coat-ticket-003.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why do the children leave their coats?",
+            "material": "Museum Coat Ticket 003\n\nAt the town museum, children leave their wet coats at a desk. The worker gives each child a numbered ticket. The same number is on the coat hook. \"Keep the ticket,\" she says. \"You need it to get your coat back.\" Dan puts his ticket in his shoe because his trousers have no pockets. After the visit, he forgets where it is. His friend asks him to think about the morning. Dan remembers and finds the ticket. The worker checks it and gives him the right coat.",
+            "explanation": "A首句wet coats；B无出售计划；C无尺寸问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The coats are wet."
+              },
+              {
+                "id": "o1",
+                "text": "They want to sell them."
+              },
+              {
+                "id": "o2",
+                "text": "The coats are too small."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.museum-coat-ticket-003.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What matches the number on a ticket?",
+            "material": "Museum Coat Ticket 003\n\nAt the town museum, children leave their wet coats at a desk. The worker gives each child a numbered ticket. The same number is on the coat hook. \"Keep the ticket,\" she says. \"You need it to get your coat back.\" Dan puts his ticket in his shoe because his trousers have no pockets. After the visit, he forgets where it is. His friend asks him to think about the morning. Dan remembers and finds the ticket. The worker checks it and gives him the right coat.",
+            "explanation": "B同编号在衣钩上；A公交、C饭盒未涉及。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A museum bus."
+              },
+              {
+                "id": "o1",
+                "text": "A coat hook."
+              },
+              {
+                "id": "o2",
+                "text": "A lunch box."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.museum-coat-ticket-003.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where does Dan put his ticket?",
+            "material": "Museum Coat Ticket 003\n\nAt the town museum, children leave their wet coats at a desk. The worker gives each child a numbered ticket. The same number is on the coat hook. \"Keep the ticket,\" she says. \"You need it to get your coat back.\" Dan puts his ticket in his shoe because his trousers have no pockets. After the visit, he forgets where it is. His friend asks him to think about the morning. Dan remembers and finds the ticket. The worker checks it and gives him the right coat.",
+            "explanation": "C原文放鞋内；A裤子无口袋且没说放外套；B未提书下。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In his coat pocket."
+              },
+              {
+                "id": "o1",
+                "text": "Under a museum book."
+              },
+              {
+                "id": "o2",
+                "text": "In his shoe."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.museum-coat-ticket-003.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does Dan find the ticket?",
+            "material": "Museum Coat Ticket 003\n\nAt the town museum, children leave their wet coats at a desk. The worker gives each child a numbered ticket. The same number is on the coat hook. \"Keep the ticket,\" she says. \"You need it to get your coat back.\" Dan puts his ticket in his shoe because his trousers have no pockets. After the visit, he forgets where it is. His friend asks him to think about the morning. Dan remembers and finds the ticket. The worker checks it and gives him the right coat.",
+            "explanation": "A朋友让回想早上，他记起位置；B没买新票；C没拿朋友票。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He thinks about what he did earlier."
+              },
+              {
+                "id": "o1",
+                "text": "He buys a second ticket."
+              },
+              {
+                "id": "o2",
+                "text": "He takes his friend’s ticket."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.museum-coat-ticket-003.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the worker do before giving back the coat?",
+            "material": "Museum Coat Ticket 003\n\nAt the town museum, children leave their wet coats at a desk. The worker gives each child a numbered ticket. The same number is on the coat hook. \"Keep the ticket,\" she says. \"You need it to get your coat back.\" Dan puts his ticket in his shoe because his trousers have no pockets. After the visit, he forgets where it is. His friend asks him to think about the morning. Dan remembers and finds the ticket. The worker checks it and gives him the right coat.",
+            "explanation": "B核对票后还衣；A刷钩、C找老师均未发生。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She paints the hook."
+              },
+              {
+                "id": "o1",
+                "text": "She checks the ticket."
+              },
+              {
+                "id": "o2",
+                "text": "She calls Dan’s teacher."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "7d5fe2f9c190936bc011a95c0d187fefb7c2556c05f54efbfdb99c8a3fd58cb0",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-wet-sports-day#primary4.museum-coat-ticket-003.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.museum-coat-ticket-003.reading.q1",
+            "expansion.20261028.primary4.museum-coat-ticket-003.reading.q2",
+            "expansion.20261028.primary4.museum-coat-ticket-003.reading.q3",
+            "expansion.20261028.primary4.museum-coat-ticket-003.reading.q4",
+            "expansion.20261028.primary4.museum-coat-ticket-003.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-wet-sports-day",
+          "sourceContentHash": "6a3bc43dea046e6228e357c717c6052673f70030358c1c546dcc2172196699bb"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.bird-box-builder-talk-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "做鸟巢箱前的五个问题",
+        "summary": "做鸟巢箱前的五个问题，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.taizhou2025.dialoguebank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.bird-box-builder-talk-003",
+          "family": "dialogue_matching",
+          "label": "做鸟巢箱前的五个问题",
+          "candidateSHA256": "91605e084f3f7487473f6407cbbb9021ee06ab8d8c4125c3aa372fcd84c72fda",
+          "authorCheckSHA256": "773ecff7d49f4ee85fd005da0be842264ac95a4f2f50745809ba90b0f2f4393b",
+          "sourceGroupIds": [
+            "original.primary5-drawing-workshop-dialogue#primary5.bird-box-builder-talk-003.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b003；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Bird Box Builder Talk 003\n\nA pupil asks the workshop leader about making a bird box. Match each question with the best answer. Bank: A. Soft wood, because it is easy to cut. B. On the high wall near the trees. C. To keep the rain outside. D. Next Saturday morning. E. An adult will help us with the sharp tools."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.bird-box-builder-talk-003.reading.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What material will we use for the box?",
+            "material": "Bird Box Builder Talk 003\n\nA pupil asks the workshop leader about making a bird box. Match each question with the best answer. Bank: A. Soft wood, because it is easy to cut. B. On the high wall near the trees. C. To keep the rain outside. D. Next Saturday morning. E. An adult will help us with the sharp tools.",
+            "explanation": "A回答材料木头；B位置、C目的、D时间、E工具协助者均不答材料。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Soft wood, because it is easy to cut."
+              },
+              {
+                "id": "o1",
+                "text": "On the high wall near the trees."
+              },
+              {
+                "id": "o2",
+                "text": "To keep the rain outside."
+              },
+              {
+                "id": "o3",
+                "text": "Next Saturday morning."
+              },
+              {
+                "id": "o4",
+                "text": "An adult will help us with the sharp tools."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.bird-box-builder-talk-003.reading.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where will we put the finished box?",
+            "material": "Bird Box Builder Talk 003\n\nA pupil asks the workshop leader about making a bird box. Match each question with the best answer. Bank: A. Soft wood, because it is easy to cut. B. On the high wall near the trees. C. To keep the rain outside. D. Next Saturday morning. E. An adult will help us with the sharp tools.",
+            "explanation": "B回答安装位置；A材料、C目的、D时间、E成人帮助不答Where。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Soft wood, because it is easy to cut."
+              },
+              {
+                "id": "o1",
+                "text": "On the high wall near the trees."
+              },
+              {
+                "id": "o2",
+                "text": "To keep the rain outside."
+              },
+              {
+                "id": "o3",
+                "text": "Next Saturday morning."
+              },
+              {
+                "id": "o4",
+                "text": "An adult will help us with the sharp tools."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.bird-box-builder-talk-003.reading.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the box need a roof?",
+            "material": "Bird Box Builder Talk 003\n\nA pupil asks the workshop leader about making a bird box. Match each question with the best answer. Bank: A. Soft wood, because it is easy to cut. B. On the high wall near the trees. C. To keep the rain outside. D. Next Saturday morning. E. An adult will help us with the sharp tools.",
+            "explanation": "C说明屋顶挡雨目的；A选材理由不答屋顶用途；B位置、D时间、E协助均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Soft wood, because it is easy to cut."
+              },
+              {
+                "id": "o1",
+                "text": "On the high wall near the trees."
+              },
+              {
+                "id": "o2",
+                "text": "To keep the rain outside."
+              },
+              {
+                "id": "o3",
+                "text": "Next Saturday morning."
+              },
+              {
+                "id": "o4",
+                "text": "An adult will help us with the sharp tools."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.bird-box-builder-talk-003.reading.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When will the workshop begin?",
+            "material": "Bird Box Builder Talk 003\n\nA pupil asks the workshop leader about making a bird box. Match each question with the best answer. Bank: A. Soft wood, because it is easy to cut. B. On the high wall near the trees. C. To keep the rain outside. D. Next Saturday morning. E. An adult will help us with the sharp tools.",
+            "explanation": "D回答开课时间；A材料、B地点、C目的、E协助不答When。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Soft wood, because it is easy to cut."
+              },
+              {
+                "id": "o1",
+                "text": "On the high wall near the trees."
+              },
+              {
+                "id": "o2",
+                "text": "To keep the rain outside."
+              },
+              {
+                "id": "o3",
+                "text": "Next Saturday morning."
+              },
+              {
+                "id": "o4",
+                "text": "An adult will help us with the sharp tools."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.bird-box-builder-talk-003.reading.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who will help us use the sharp tools?",
+            "material": "Bird Box Builder Talk 003\n\nA pupil asks the workshop leader about making a bird box. Match each question with the best answer. Bank: A. Soft wood, because it is easy to cut. B. On the high wall near the trees. C. To keep the rain outside. D. Next Saturday morning. E. An adult will help us with the sharp tools.",
+            "explanation": "E明确成人协助尖锐工具；A材料、B地点、C目的、D时间都未答Who。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Soft wood, because it is easy to cut."
+              },
+              {
+                "id": "o1",
+                "text": "On the high wall near the trees."
+              },
+              {
+                "id": "o2",
+                "text": "To keep the rain outside."
+              },
+              {
+                "id": "o3",
+                "text": "Next Saturday morning."
+              },
+              {
+                "id": "o4",
+                "text": "An adult will help us with the sharp tools."
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "08377c8c8016fa86310cc3b504cc715aada797431fd37b0ac0082ef67ed4817b",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-drawing-workshop-dialogue#primary5.bird-box-builder-talk-003.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.bird-box-builder-talk-003.reading.q1",
+            "expansion.20261028.primary5.bird-box-builder-talk-003.reading.q2",
+            "expansion.20261028.primary5.bird-box-builder-talk-003.reading.q3",
+            "expansion.20261028.primary5.bird-box-builder-talk-003.reading.q4",
+            "expansion.20261028.primary5.bird-box-builder-talk-003.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-drawing-workshop-dialogue",
+          "sourceContentHash": "49e1e2abd3a032f2fa8539f2ab126edd442b986a4e9c62f42556b33a85a454a7"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.piano-practice-message-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "钢琴教室门上的留言",
+        "summary": "钢琴教室门上的留言，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.dongcheng2025.closedmixed",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照已核北京区卷公开转载的相应完整具体模式：一短文五判断／四完整信息卡五判断／两共享句空加三道三选，分别绑定，不截成单一子组。源原键非独立gold，东城两型尚无原键；节日日期等事实不沿用。原创虚构，独立教研、目标学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.piano-practice-message-003",
+          "family": "reading_choice",
+          "label": "钢琴教室门上的留言",
+          "candidateSHA256": "2d91cdcc6f186404ee1079223bde3ecd46584d1d7dda826277f643adf07be483",
+          "authorCheckSHA256": "773ecff7d49f4ee85fd005da0be842264ac95a4f2f50745809ba90b0f2f4393b",
+          "sourceGroupIds": [
+            "original.primary5-message-walk-mixed#primary5.piano-practice-message-003.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b003；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Piano Practice Message 003\n\nMessage for Tuesday’s piano club:\nThe music room floor is wet after a pipe broke. Today’s club will meet in Room 12 beside the art room. The piano cannot be moved, so we will practise rhythm with small drums instead. Bring your music book, but leave your piano folder at home. The club still starts at four o’clock and finishes at four forty. Please wait inside Room 12 for the teacher. Do not wait by the music room door. Parents should collect children from the side gate because workers are using the main entrance. Next week’s room will be confirmed on Monday.\nMs Ford"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.piano-practice-message-003.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the club moving rooms today?",
+            "material": "Piano Practice Message 003\n\nMessage for Tuesday’s piano club:\nThe music room floor is wet after a pipe broke. Today’s club will meet in Room 12 beside the art room. The piano cannot be moved, so we will practise rhythm with small drums instead. Bring your music book, but leave your piano folder at home. The club still starts at four o’clock and finishes at four forty. Please wait inside Room 12 for the teacher. Do not wait by the music room door. Parents should collect children from the side gate because workers are using the main entrance. Next week’s room will be confirmed on Monday.\nMs Ford",
+            "explanation": "B管道破裂地面湿；A没说美术室需钢琴；C非空间问题；D家长无此要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The art room needs a piano."
+              },
+              {
+                "id": "o1",
+                "text": "A broken pipe has made the music room floor wet."
+              },
+              {
+                "id": "o2",
+                "text": "The music room is too small."
+              },
+              {
+                "id": "o3",
+                "text": "Parents want a new gate."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.piano-practice-message-003.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What will children practise today?",
+            "material": "Piano Practice Message 003\n\nMessage for Tuesday’s piano club:\nThe music room floor is wet after a pipe broke. Today’s club will meet in Room 12 beside the art room. The piano cannot be moved, so we will practise rhythm with small drums instead. Bring your music book, but leave your piano folder at home. The club still starts at four o’clock and finishes at four forty. Please wait inside Room 12 for the teacher. Do not wait by the music room door. Parents should collect children from the side gate because workers are using the main entrance. Next week’s room will be confirmed on Monday.\nMs Ford",
+            "explanation": "C原文改小鼓练节奏；A刷墙、B户外唱歌无据；D明确钢琴不能挪。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Painting walls."
+              },
+              {
+                "id": "o1",
+                "text": "Singing outdoors."
+              },
+              {
+                "id": "o2",
+                "text": "Rhythm with small drums."
+              },
+              {
+                "id": "o3",
+                "text": "Moving the piano."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.piano-practice-message-003.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should children bring?",
+            "material": "Piano Practice Message 003\n\nMessage for Tuesday’s piano club:\nThe music room floor is wet after a pipe broke. Today’s club will meet in Room 12 beside the art room. The piano cannot be moved, so we will practise rhythm with small drums instead. Bring your music book, but leave your piano folder at home. The club still starts at four o’clock and finishes at four forty. Please wait inside Room 12 for the teacher. Do not wait by the music room door. Parents should collect children from the side gate because workers are using the main entrance. Next week’s room will be confirmed on Monday.\nMs Ford",
+            "explanation": "A带music book；B要求留家；C修理管道不是学生准备；D没有要求自带整套鼓。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A music book."
+              },
+              {
+                "id": "o1",
+                "text": "A piano folder."
+              },
+              {
+                "id": "o2",
+                "text": "A pipe."
+              },
+              {
+                "id": "o3",
+                "text": "A new drum kit."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.piano-practice-message-003.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where should parents collect children?",
+            "material": "Piano Practice Message 003\n\nMessage for Tuesday’s piano club:\nThe music room floor is wet after a pipe broke. Today’s club will meet in Room 12 beside the art room. The piano cannot be moved, so we will practise rhythm with small drums instead. Bring your music book, but leave your piano folder at home. The club still starts at four o’clock and finishes at four forty. Please wait inside Room 12 for the teacher. Do not wait by the music room door. Parents should collect children from the side gate because workers are using the main entrance. Next week’s room will be confirmed on Monday.\nMs Ford",
+            "explanation": "D家长侧门接；B大门工人使用；A窗边、C美术商店均未提。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At the music room window."
+              },
+              {
+                "id": "o1",
+                "text": "At the main entrance."
+              },
+              {
+                "id": "o2",
+                "text": "At the art shop."
+              },
+              {
+                "id": "o3",
+                "text": "At the side gate."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.piano-practice-message-003.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the message say about next week?",
+            "material": "Piano Practice Message 003\n\nMessage for Tuesday’s piano club:\nThe music room floor is wet after a pipe broke. Today’s club will meet in Room 12 beside the art room. The piano cannot be moved, so we will practise rhythm with small drums instead. Bring your music book, but leave your piano folder at home. The club still starts at four o’clock and finishes at four forty. Please wait inside Room 12 for the teacher. Do not wait by the music room door. Parents should collect children from the side gate because workers are using the main entrance. Next week’s room will be confirmed on Monday.\nMs Ford",
+            "explanation": "B下周教室周一确认；A把今天安排当永久；C时间仍4:40；D未要求修钢琴。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The club will definitely be in Room 12."
+              },
+              {
+                "id": "o1",
+                "text": "The room will be confirmed on Monday."
+              },
+              {
+                "id": "o2",
+                "text": "The club will end at five."
+              },
+              {
+                "id": "o3",
+                "text": "Parents must repair the piano."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "087756c625ed54e91e3b4d8ec4c61de9aa0edbc9f2f3227d14577e2bf183d119",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-message-walk-mixed#primary5.piano-practice-message-003.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.piano-practice-message-003.reading.q1",
+            "expansion.20261028.primary5.piano-practice-message-003.reading.q2",
+            "expansion.20261028.primary5.piano-practice-message-003.reading.q3",
+            "expansion.20261028.primary5.piano-practice-message-003.reading.q4",
+            "expansion.20261028.primary5.piano-practice-message-003.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-message-walk-mixed",
+          "sourceContentHash": "a2c156a9dbaa50b2cd52d023337d6cbf97c9b2f99995cb3224befeee34240702"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.asking-at-cycle-centre-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "自行车服务站的礼貌表达",
+        "summary": "自行车服务站的礼貌表达，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 9,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.minzhi2016-17.contexts",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 本组仅参照旧转载小六五个中文情境、每题三候选的可见结构。原四页PDF第14题跨物理第2—3页，参考键在第4页；14.2.B原版面仅有未完表达，原输入未完整核清，14.2与14.5另有回应功能重叠，不能将旧全输入标志或参考键当完整/唯一正确的质量准入。原件及原键保留；本稿五题的情境、全部候选和逐项依据为完整原创，未沿用截断或功能重叠题。原校/实际施测、难度、独立教研、学生、商用及生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.asking-at-cycle-centre-003",
+          "family": "sentence_choice",
+          "label": "自行车服务站的礼貌表达",
+          "candidateSHA256": "a50b43f3bf3b9e476779efe98a451b1bf518973fd8400b75eee65ee1143879d6",
+          "authorCheckSHA256": "773ecff7d49f4ee85fd005da0be842264ac95a4f2f50745809ba90b0f2f4393b",
+          "sourceGroupIds": [
+            "original.primary6-help-and-information-functions#primary6.asking-at-cycle-centre-003.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b003；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Asking At Cycle Centre 003\n\nAt a cycle centre, choose the sentence that best achieves the speaker’s purpose in each situation."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.asking-at-cycle-centre-003.reading.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You want a staff member to show you how to lower the seat. What should you ask?",
+            "material": "Asking At Cycle Centre 003\n\nAt a cycle centre, choose the sentence that best achieves the speaker’s purpose in each situation.",
+            "explanation": "A请求示范调低车座；B问头盔价、C问昨天来程，均不实现操作求助。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Could you show me how to lower the seat?"
+              },
+              {
+                "id": "o1",
+                "text": "How much is the red helmet?"
+              },
+              {
+                "id": "o2",
+                "text": "Did you ride here yesterday?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.asking-at-cycle-centre-003.reading.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You did not hear the safety rule clearly. What should you say?",
+            "material": "Asking At Cycle Centre 003\n\nAt a cycle centre, choose the sentence that best achieves the speaker’s purpose in each situation.",
+            "explanation": "B礼貌请求重说规则；A说拥有经历、C陈述比赛时间，均不澄清听漏内容。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I have never owned this bicycle."
+              },
+              {
+                "id": "o1",
+                "text": "Could you say that rule again, please?"
+              },
+              {
+                "id": "o2",
+                "text": "The race finished at noon."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.asking-at-cycle-centre-003.reading.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A smaller child cannot reach the water tap. You offer help. What should you say?",
+            "material": "Asking At Cycle Centre 003\n\nAt a cycle centre, choose the sentence that best achieves the speaker’s purpose in each situation.",
+            "explanation": "C主动提出帮开水龙头；A购买原因、B地址无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Why did you buy a tap?"
+              },
+              {
+                "id": "o1",
+                "text": "Do you know my address?"
+              },
+              {
+                "id": "o2",
+                "text": "Would you like me to turn it on for you?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.asking-at-cycle-centre-003.reading.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You need permission to leave your bicycle by the desk for ten minutes. What should you ask?",
+            "material": "Asking At Cycle Centre 003\n\nAt a cycle centre, choose the sentence that best achieves the speaker’s purpose in each situation.",
+            "explanation": "A明确请求临停许可及时间；B材质、C速度比较不答需求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "May I leave my bicycle here for ten minutes?"
+              },
+              {
+                "id": "o1",
+                "text": "Is this desk made of wood?"
+              },
+              {
+                "id": "o2",
+                "text": "Can you ride faster than me?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.asking-at-cycle-centre-003.reading.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You return a borrowed pump and want to thank the worker. What should you say?",
+            "material": "Asking At Cycle Centre 003\n\nAt a cycle centre, choose the sentence that best achieves the speaker’s purpose in each situation.",
+            "explanation": "B感谢借泵；A历史信息、C买新车要求不表达归还感谢。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The pump was invented long ago."
+              },
+              {
+                "id": "o1",
+                "text": "Thank you for lending me the pump."
+              },
+              {
+                "id": "o2",
+                "text": "Please buy me a new bicycle."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "b1db75a9a5b8fa30ed719a10ed9dd948fd147fd6ed3d1bef15bf3ba96d8e6b0c",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-help-and-information-functions#primary6.asking-at-cycle-centre-003.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.asking-at-cycle-centre-003.reading.q1",
+            "expansion.20261028.primary6.asking-at-cycle-centre-003.reading.q2",
+            "expansion.20261028.primary6.asking-at-cycle-centre-003.reading.q3",
+            "expansion.20261028.primary6.asking-at-cycle-centre-003.reading.q4",
+            "expansion.20261028.primary6.asking-at-cycle-centre-003.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-help-and-information-functions",
+          "sourceContentHash": "cdbf6b2b17b0e64d782f9cde7aa4b388c5805c3dc52b4124194c3713ad6e8771"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.library-night-signals-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "晚间阅读活动的信号约定",
+        "summary": "晚间阅读活动的信号约定，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.prose5x4",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.library-night-signals-003",
+          "family": "reading_choice",
+          "label": "晚间阅读活动的信号约定",
+          "candidateSHA256": "afa40768e7a7d73e6b1a92281bdf68708b57a9c563aaf655afbe67e4583bed48",
+          "authorCheckSHA256": "773ecff7d49f4ee85fd005da0be842264ac95a4f2f50745809ba90b0f2f4393b",
+          "sourceGroupIds": [
+            "original.primary6-reading5joint-route#primary6.library-night-signals-003.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b003；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Library Night Signals 003\n\nFor the library’s evening reading event, teams had to move between three rooms. The organisers first planned to ring a bell whenever it was time to change rooms. During a trial, they found that the bell disturbed a quiet reading session next door. They also realised that a sound alone would not help every visitor.\n\nThe team replaced the bell with a simple system. A helper in each room held up a yellow card two minutes before a change. A green card meant the next room was ready. Visitors who wanted a spoken reminder could ask the helper. The cards did not tell people which room to visit; a printed route on each team’s sheet did that.\n\nOn the evening itself, one green card went up too early while chairs were still being moved. The helper lowered it immediately and explained the mistake. Nobody was asked to walk through the crowded doorway. In the review, organisers added a rule: check with the next room’s helper before showing green. They kept the yellow warning because it gave readers time to finish a page."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.library-night-signals-003.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was the bell plan changed?",
+            "material": "Library Night Signals 003\n\nFor the library’s evening reading event, teams had to move between three rooms. The organisers first planned to ring a bell whenever it was time to change rooms. During a trial, they found that the bell disturbed a quiet reading session next door. They also realised that a sound alone would not help every visitor.\n\nThe team replaced the bell with a simple system. A helper in each room held up a yellow card two minutes before a change. A green card meant the next room was ready. Visitors who wanted a spoken reminder could ask the helper. The cards did not tell people which room to visit; a printed route on each team’s sheet did that.\n\nOn the evening itself, one green card went up too early while chairs were still being moved. The helper lowered it immediately and explained the mistake. Nobody was asked to walk through the crowded doorway. In the review, organisers added a rule: check with the next room’s helper before showing green. They kept the yellow warning because it gave readers time to finish a page.",
+            "explanation": "B两项明确原因：打扰和单靠声音不足；A没卖铃；C无音乐请求；D已有路线单。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The library had sold every bell."
+              },
+              {
+                "id": "o1",
+                "text": "It disturbed another session and was not useful to every visitor."
+              },
+              {
+                "id": "o2",
+                "text": "Visitors wanted louder music."
+              },
+              {
+                "id": "o3",
+                "text": "The teams had no route sheets."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.library-night-signals-003.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did a yellow card mean?",
+            "material": "Library Night Signals 003\n\nFor the library’s evening reading event, teams had to move between three rooms. The organisers first planned to ring a bell whenever it was time to change rooms. During a trial, they found that the bell disturbed a quiet reading session next door. They also realised that a sound alone would not help every visitor.\n\nThe team replaced the bell with a simple system. A helper in each room held up a yellow card two minutes before a change. A green card meant the next room was ready. Visitors who wanted a spoken reminder could ask the helper. The cards did not tell people which room to visit; a printed route on each team’s sheet did that.\n\nOn the evening itself, one green card went up too early while chairs were still being moved. The helper lowered it immediately and explained the mistake. Nobody was asked to walk through the crowded doorway. In the review, organisers added a rule: check with the next room’s helper before showing green. They kept the yellow warning because it gave readers time to finish a page.",
+            "explanation": "C黄卡提前两分钟提示；A取消、B拥堵、D错楼不是规定含义。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The event was cancelled."
+              },
+              {
+                "id": "o1",
+                "text": "The doorway was crowded."
+              },
+              {
+                "id": "o2",
+                "text": "A room change was coming in two minutes."
+              },
+              {
+                "id": "o3",
+                "text": "Visitors had arrived at the wrong building."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.library-night-signals-003.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did visitors know which room to visit next?",
+            "material": "Library Night Signals 003\n\nFor the library’s evening reading event, teams had to move between three rooms. The organisers first planned to ring a bell whenever it was time to change rooms. During a trial, they found that the bell disturbed a quiet reading session next door. They also realised that a sound alone would not help every visitor.\n\nThe team replaced the bell with a simple system. A helper in each room held up a yellow card two minutes before a change. A green card meant the next room was ready. Visitors who wanted a spoken reminder could ask the helper. The cards did not tell people which room to visit; a printed route on each team’s sheet did that.\n\nOn the evening itself, one green card went up too early while chairs were still being moved. The helper lowered it immediately and explained the mistake. Nobody was asked to walk through the crowded doorway. In the review, organisers added a rule: check with the next room’s helper before showing green. They kept the yellow warning because it gave readers time to finish a page.",
+            "explanation": "A路线单确定房间；B衣色无关；C铃已替换；D无任意选择规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "From their printed route."
+              },
+              {
+                "id": "o1",
+                "text": "From the colour of their coats."
+              },
+              {
+                "id": "o2",
+                "text": "By following the bell."
+              },
+              {
+                "id": "o3",
+                "text": "By choosing any empty room."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.library-night-signals-003.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happened when a green card was shown too soon?",
+            "material": "Library Night Signals 003\n\nFor the library’s evening reading event, teams had to move between three rooms. The organisers first planned to ring a bell whenever it was time to change rooms. During a trial, they found that the bell disturbed a quiet reading session next door. They also realised that a sound alone would not help every visitor.\n\nThe team replaced the bell with a simple system. A helper in each room held up a yellow card two minutes before a change. A green card meant the next room was ready. Visitors who wanted a spoken reminder could ask the helper. The cards did not tell people which room to visit; a printed route on each team’s sheet did that.\n\nOn the evening itself, one green card went up too early while chairs were still being moved. The helper lowered it immediately and explained the mistake. Nobody was asked to walk through the crowded doorway. In the review, organisers added a rule: check with the next room’s helper before showing green. They kept the yellow warning because it gave readers time to finish a page.",
+            "explanation": "D立刻放下并解释；A明确没要求穿拥堵门；B未结束；C没有忽略。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Visitors were made to push through."
+              },
+              {
+                "id": "o1",
+                "text": "The event ended immediately."
+              },
+              {
+                "id": "o2",
+                "text": "The helper ignored the problem."
+              },
+              {
+                "id": "o3",
+                "text": "The helper withdrew it and explained."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.library-night-signals-003.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What new check was added?",
+            "material": "Library Night Signals 003\n\nFor the library’s evening reading event, teams had to move between three rooms. The organisers first planned to ring a bell whenever it was time to change rooms. During a trial, they found that the bell disturbed a quiet reading session next door. They also realised that a sound alone would not help every visitor.\n\nThe team replaced the bell with a simple system. A helper in each room held up a yellow card two minutes before a change. A green card meant the next room was ready. Visitors who wanted a spoken reminder could ask the helper. The cards did not tell people which room to visit; a printed route on each team’s sheet did that.\n\nOn the evening itself, one green card went up too early while chairs were still being moved. The helper lowered it immediately and explained the mistake. Nobody was asked to walk through the crowded doorway. In the review, organisers added a rule: check with the next room’s helper before showing green. They kept the yellow warning because it gave readers time to finish a page.",
+            "explanation": "B复盘增加跨房确认；A非规则；C没让带铃；D仍允许口头提醒。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Count every book before yellow."
+              },
+              {
+                "id": "o1",
+                "text": "Confirm readiness with the next room’s helper before green."
+              },
+              {
+                "id": "o2",
+                "text": "Ask visitors to bring bells."
+              },
+              {
+                "id": "o3",
+                "text": "Remove all spoken reminders."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "ecf3fa194d1e6a97ffe0b7e656f593eb886065a8a9c2f939dd717c19ca1b3704",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-reading5joint-route#primary6.library-night-signals-003.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.library-night-signals-003.reading.q1",
+            "expansion.20261028.primary6.library-night-signals-003.reading.q2",
+            "expansion.20261028.primary6.library-night-signals-003.reading.q3",
+            "expansion.20261028.primary6.library-night-signals-003.reading.q4",
+            "expansion.20261028.primary6.library-night-signals-003.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-reading5joint-route",
+          "sourceContentHash": "bf55c679f24c162c9dc66b20e0457e2063cb0562604ceed78992a872d580b806"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2102 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b008",
+  "createdAt": "2026-10-28T15:52:43.317659+00:00",
+  "sourceSHA256": "c1e28cfc7b8239805479374dce42061fedcf8cce7f6fdb4465cb5875fb020553",
+  "reviewSHA256": "20fd245805dac7b68ab72796b593008bb3dee5cf236f0fd3bd571cf4f79717cc",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.museum-headphones-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "博物馆耳机的使用",
+        "summary": "博物馆耳机的使用，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.museum-headphones-008",
+          "family": "function_choice",
+          "label": "博物馆耳机的使用",
+          "candidateSHA256": "9cdcba8ecb254f5e61ca26d41feaeffffdbd459ef42baafb43b5519984c26829",
+          "authorCheckSHA256": "58c458bd92d3c31afc084a06351ef07ca08a47cb43f3e6e6f20294a2a4ee4998",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.museum-headphones-008.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b008；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Museum Headphones 008\n\nAt the museum, use the small headphones with a blue dot. The big ones are for adults. Turn the sound down before you put them on. Do not share your pair while you wear it. If you hear nothing, ask the helper. Return your pair to the blue tray."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.museum-headphones-008.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend chooses the big headphones. You say, \"____\"",
+            "material": "Museum Headphones 008\n\nAt the museum, use the small headphones with a blue dot. The big ones are for adults. Turn the sound down before you put them on. Do not share your pair while you wear it. If you hear nothing, ask the helper. Return your pair to the blue tray.",
+            "explanation": "A儿童按蓝点小耳机；B成人大耳机不合分配；C杯子不是耳机。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Use the small pair with a blue dot."
+              },
+              {
+                "id": "o1",
+                "text": "Use the adult pair."
+              },
+              {
+                "id": "o2",
+                "text": "Use a toy cup instead."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.museum-headphones-008.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend is about to put on loud headphones. You say, \"____\"",
+            "material": "Museum Headphones 008\n\nAt the museum, use the small headphones with a blue dot. The big ones are for adults. Turn the sound down before you put them on. Do not share your pair while you wear it. If you hear nothing, ask the helper. Return your pair to the blue tray.",
+            "explanation": "B先调低音量；A提高与要求相反；C饭袋非使用步骤。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Turn the sound up first."
+              },
+              {
+                "id": "o1",
+                "text": "Turn the sound down first."
+              },
+              {
+                "id": "o2",
+                "text": "Put them in your lunch bag."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.museum-headphones-008.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend wants to wear one side of your pair while you wear the other. You say, \"____\"",
+            "material": "Museum Headphones 008\n\nAt the museum, use the small headphones with a blue dot. The big ones are for adults. Turn the sound down before you put them on. Do not share your pair while you wear it. If you hear nothing, ask the helper. Return your pair to the blue tray.",
+            "explanation": "C不共戴一副，另用本人耳机；A违共戴规则；B拉线无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, let us share this way."
+              },
+              {
+                "id": "o1",
+                "text": "Pull the wire hard."
+              },
+              {
+                "id": "o2",
+                "text": "Please use your own pair."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.museum-headphones-008.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend hears nothing. You say, \"____\"",
+            "material": "Museum Headphones 008\n\nAt the museum, use the small headphones with a blue dot. The big ones are for adults. Turn the sound down before you put them on. Do not share your pair while you wear it. If you hear nothing, ask the helper. Return your pair to the blue tray.",
+            "explanation": "A无声求助；B拆开、C丢弃均非规定处理。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Ask the helper."
+              },
+              {
+                "id": "o1",
+                "text": "Open the headphones."
+              },
+              {
+                "id": "o2",
+                "text": "Throw them away."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.museum-headphones-008.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The visit is over. A friend asks where the headphones go. You say, \"____\"",
+            "material": "Museum Headphones 008\n\nAt the museum, use the small headphones with a blue dot. The big ones are for adults. Turn the sound down before you put them on. Do not share your pair while you wear it. If you hear nothing, ask the helper. Return your pair to the blue tray.",
+            "explanation": "B归蓝盘；A成人袋、C雨中都非回收处。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In the adult bag."
+              },
+              {
+                "id": "o1",
+                "text": "On the blue tray."
+              },
+              {
+                "id": "o2",
+                "text": "Outside in the rain."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "0846b778e7285a94f8d5195c3f00dfb967961cf13ea1010208ff5f24012f2f11",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.museum-headphones-008.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.museum-headphones-008.reading.q1",
+            "expansion.20261028.primary2.museum-headphones-008.reading.q2",
+            "expansion.20261028.primary2.museum-headphones-008.reading.q3",
+            "expansion.20261028.primary2.museum-headphones-008.reading.q4",
+            "expansion.20261028.primary2.museum-headphones-008.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.egg-carton-farm-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "农场鸡蛋的装盒",
+        "summary": "农场鸡蛋的装盒，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.egg-carton-farm-008",
+          "family": "function_choice",
+          "label": "农场鸡蛋的装盒",
+          "candidateSHA256": "3b9c6d4ea1437f40560748dc9c444a13065c96bc91f1cca380d977afbbef5272",
+          "authorCheckSHA256": "58c458bd92d3c31afc084a06351ef07ca08a47cb43f3e6e6f20294a2a4ee4998",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.egg-carton-farm-008.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b008；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Egg Carton Farm 008\n\nWe help pack eggs at the farm. Use clean, dry cartons. Put one egg in each hole. A cracked egg goes on the red plate for the farmer to check. Keep full cartons flat. Write today’s date on the lid, not on the eggs."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.egg-carton-farm-008.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend finds a wet carton. You say, \"____\"",
+            "material": "Egg Carton Farm 008\n\nWe help pack eggs at the farm. Use clean, dry cartons. Put one egg in each hole. A cracked egg goes on the red plate for the farmer to check. Keep full cartons flat. Write today’s date on the lid, not on the eggs.",
+            "explanation": "A要求干净干盒；B湿盒不符；C水里不是装盒位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Use a dry one."
+              },
+              {
+                "id": "o1",
+                "text": "Fill the wet one."
+              },
+              {
+                "id": "o2",
+                "text": "Put the eggs in water."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.egg-carton-farm-008.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend puts two eggs in one hole. You say, \"____\"",
+            "material": "Egg Carton Farm 008\n\nWe help pack eggs at the farm. Use clean, dry cartons. Put one egg in each hole. A cracked egg goes on the red plate for the farmer to check. Keep full cartons flat. Write today’s date on the lid, not on the eggs.",
+            "explanation": "B每孔一枚；A再加更违规则；C空盒关闭不能完成包装。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Add one more egg."
+              },
+              {
+                "id": "o1",
+                "text": "Put one egg in each hole."
+              },
+              {
+                "id": "o2",
+                "text": "Close the carton with no eggs."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.egg-carton-farm-008.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend finds a cracked egg. You say, \"____\"",
+            "material": "Egg Carton Farm 008\n\nWe help pack eggs at the farm. Use clean, dry cartons. Put one egg in each hole. A cracked egg goes on the red plate for the farmer to check. Keep full cartons flat. Write today’s date on the lid, not on the eggs.",
+            "explanation": "C裂蛋红盘待农户检查；A隐藏、B衣袋均不合分流。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Hide it under good eggs."
+              },
+              {
+                "id": "o1",
+                "text": "Put it in your pocket."
+              },
+              {
+                "id": "o2",
+                "text": "Put it on the red plate."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.egg-carton-farm-008.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend tips a full carton on its side. You say, \"____\"",
+            "material": "Egg Carton Farm 008\n\nWe help pack eggs at the farm. Use clean, dry cartons. Put one egg in each hole. A cracked egg goes on the red plate for the farmer to check. Keep full cartons flat. Write today’s date on the lid, not on the eggs.",
+            "explanation": "A满盒平放；B摇、C倒置均不符合要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Keep it flat."
+              },
+              {
+                "id": "o1",
+                "text": "Shake it harder."
+              },
+              {
+                "id": "o2",
+                "text": "Turn it upside down."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.egg-carton-farm-008.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend writes the date on an egg. You say, \"____\"",
+            "material": "Egg Carton Farm 008\n\nWe help pack eggs at the farm. Use clean, dry cartons. Put one egg in each hole. A cracked egg goes on the red plate for the farmer to check. Keep full cartons flat. Write today’s date on the lid, not on the eggs.",
+            "explanation": "B日期写盖不写蛋；A重复错误；C衣服非标记位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Write on every egg."
+              },
+              {
+                "id": "o1",
+                "text": "Write it on the lid."
+              },
+              {
+                "id": "o2",
+                "text": "Write it on the farmer’s shirt."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "a07d5bee8c89793044eed290956224650862f00f9e7e6b8281d40b9ef489da64",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.egg-carton-farm-008.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.egg-carton-farm-008.reading.q1",
+            "expansion.20261028.primary2.egg-carton-farm-008.reading.q2",
+            "expansion.20261028.primary2.egg-carton-farm-008.reading.q3",
+            "expansion.20261028.primary2.egg-carton-farm-008.reading.q4",
+            "expansion.20261028.primary2.egg-carton-farm-008.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.long-vowels-playground-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "游乐场的长元音词",
+        "summary": "游乐场的长元音词，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3.daoli2025.phonicsbank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.long-vowels-playground-008",
+          "family": "shared_bank",
+          "label": "游乐场的长元音词",
+          "candidateSHA256": "a35b6d4c77850b286d6a94fb617707e227280bbe991a1452cfe1ee3024989e72",
+          "authorCheckSHA256": "58c458bd92d3c31afc084a06351ef07ca08a47cb43f3e6e6f20294a2a4ee4998",
+          "sourceGroupIds": [
+            "original.primary3-marked-vowels-day#primary3.long-vowels-playground-008.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b008；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Long Vowels Playground 008\n\nMatch the vowel sound in each word in capitals and choose a word to complete the sentence. Use each bank word once. Bank: A. plate B. home C. slide D. huge E. nine\n1. Jane (JANE) puts her cake on a ____1____.\n2. Joe (JOE) says, \"School is over. Let us go ____2____.\"\n3. The white (WHITE) playground has a long ____3____ to go down.\n4. The cute (CUTE) toy elephant is very big. It is ____4____.\n5. I like (LIKE) the number after eight. It is ____5____."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.long-vowels-playground-008.reading.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Long Vowels Playground 008\n\nMatch the vowel sound in each word in capitals and choose a word to complete the sentence. Use each bank word once. Bank: A. plate B. home C. slide D. huge E. nine\n1. Jane (JANE) puts her cake on a ____1____.\n2. Joe (JOE) says, \"School is over. Let us go ____2____.\"\n3. The white (WHITE) playground has a long ____3____ to go down.\n4. The cute (CUTE) toy elephant is very big. It is ____4____.\n5. I like (LIKE) the number after eight. It is ____5____.",
+            "explanation": "A plate与JANE均/eɪ/且可放蛋糕；B home /əʊ/、C slide和E nine /aɪ/、D huge /juː/均不合目标元音与餐具义。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "plate"
+              },
+              {
+                "id": "o1",
+                "text": "home"
+              },
+              {
+                "id": "o2",
+                "text": "slide"
+              },
+              {
+                "id": "o3",
+                "text": "huge"
+              },
+              {
+                "id": "o4",
+                "text": "nine"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.long-vowels-playground-008.reading.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Long Vowels Playground 008\n\nMatch the vowel sound in each word in capitals and choose a word to complete the sentence. Use each bank word once. Bank: A. plate B. home C. slide D. huge E. nine\n1. Jane (JANE) puts her cake on a ____1____.\n2. Joe (JOE) says, \"School is over. Let us go ____2____.\"\n3. The white (WHITE) playground has a long ____3____ to go down.\n4. The cute (CUTE) toy elephant is very big. It is ____4____.\n5. I like (LIKE) the number after eight. It is ____5____.",
+            "explanation": "B home与JOE均/əʊ/且go home放学回家合义；A plate /eɪ/、C slide和E nine /aɪ/、D huge /juː/不合元音及搭配。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "plate"
+              },
+              {
+                "id": "o1",
+                "text": "home"
+              },
+              {
+                "id": "o2",
+                "text": "slide"
+              },
+              {
+                "id": "o3",
+                "text": "huge"
+              },
+              {
+                "id": "o4",
+                "text": "nine"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.long-vowels-playground-008.reading.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Long Vowels Playground 008\n\nMatch the vowel sound in each word in capitals and choose a word to complete the sentence. Use each bank word once. Bank: A. plate B. home C. slide D. huge E. nine\n1. Jane (JANE) puts her cake on a ____1____.\n2. Joe (JOE) says, \"School is over. Let us go ____2____.\"\n3. The white (WHITE) playground has a long ____3____ to go down.\n4. The cute (CUTE) toy elephant is very big. It is ____4____.\n5. I like (LIKE) the number after eight. It is ____5____.",
+            "explanation": "C slide与WHITE均/aɪ/且可滑下；E nine同音却是数字不能是可滑设施；A plate /eɪ/、B home /əʊ/、D huge /juː/均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "plate"
+              },
+              {
+                "id": "o1",
+                "text": "home"
+              },
+              {
+                "id": "o2",
+                "text": "slide"
+              },
+              {
+                "id": "o3",
+                "text": "huge"
+              },
+              {
+                "id": "o4",
+                "text": "nine"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.long-vowels-playground-008.reading.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Long Vowels Playground 008\n\nMatch the vowel sound in each word in capitals and choose a word to complete the sentence. Use each bank word once. Bank: A. plate B. home C. slide D. huge E. nine\n1. Jane (JANE) puts her cake on a ____1____.\n2. Joe (JOE) says, \"School is over. Let us go ____2____.\"\n3. The white (WHITE) playground has a long ____3____ to go down.\n4. The cute (CUTE) toy elephant is very big. It is ____4____.\n5. I like (LIKE) the number after eight. It is ____5____.",
+            "explanation": "D huge与CUTE均/juː/且意为巨大的；A plate /eɪ/、B home /əʊ/、C slide和E nine /aɪ/均不合读音与形容体积的语法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "plate"
+              },
+              {
+                "id": "o1",
+                "text": "home"
+              },
+              {
+                "id": "o2",
+                "text": "slide"
+              },
+              {
+                "id": "o3",
+                "text": "huge"
+              },
+              {
+                "id": "o4",
+                "text": "nine"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary3.long-vowels-playground-008.reading.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Long Vowels Playground 008\n\nMatch the vowel sound in each word in capitals and choose a word to complete the sentence. Use each bank word once. Bank: A. plate B. home C. slide D. huge E. nine\n1. Jane (JANE) puts her cake on a ____1____.\n2. Joe (JOE) says, \"School is over. Let us go ____2____.\"\n3. The white (WHITE) playground has a long ____3____ to go down.\n4. The cute (CUTE) toy elephant is very big. It is ____4____.\n5. I like (LIKE) the number after eight. It is ____5____.",
+            "explanation": "E nine与LIKE均/aɪ/且八后是九；C slide同音非数字；A plate /eɪ/、B home /əʊ/、D huge /juː/均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "plate"
+              },
+              {
+                "id": "o1",
+                "text": "home"
+              },
+              {
+                "id": "o2",
+                "text": "slide"
+              },
+              {
+                "id": "o3",
+                "text": "huge"
+              },
+              {
+                "id": "o4",
+                "text": "nine"
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "f8395da06683fb48bac1ff7cbb5e281a961c2265d00790408b544c3f45588f34",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-marked-vowels-day#primary3.long-vowels-playground-008.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.long-vowels-playground-008.reading.q1",
+            "expansion.20261028.primary3.long-vowels-playground-008.reading.q2",
+            "expansion.20261028.primary3.long-vowels-playground-008.reading.q3",
+            "expansion.20261028.primary3.long-vowels-playground-008.reading.q4",
+            "expansion.20261028.primary3.long-vowels-playground-008.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-marked-vowels-day",
+          "sourceContentHash": "1dd700315f0ce7ce95ad59b984e89d6ee01cc96b0a56cc05f8871fbd80d8d7f4"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.toast-and-timer-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "早餐计时器响了",
+        "summary": "早餐计时器响了，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.toast-and-timer-008",
+          "family": "reading_tf",
+          "label": "早餐计时器响了",
+          "candidateSHA256": "a1bf4bd92d88ad87a1f967525c110b532d645c494d85fc8fe4ad362345331047",
+          "authorCheckSHA256": "58c458bd92d3c31afc084a06351ef07ca08a47cb43f3e6e6f20294a2a4ee4998",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.toast-and-timer-008.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b008；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Toast And Timer 008\n\nDad makes toast for breakfast. I put plates on the table. My sister gets two cups. We do not touch the hot toaster. Dad sets a timer for the eggs in the pot. When it rings, he takes the eggs out. I think the sound is the doorbell and run to the door. There is no one there. Dad laughs and shows me the little timer."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.toast-and-timer-008.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer puts plates on the table.",
+            "material": "Toast And Timer 008\n\nDad makes toast for breakfast. I put plates on the table. My sister gets two cups. We do not touch the hot toaster. Dad sets a timer for the eggs in the pot. When it rings, he takes the eggs out. I think the sound is the doorbell and run to the door. There is no one there. Dad laughs and shows me the little timer.",
+            "explanation": "A正确：I put plates on table；B否认分工。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.toast-and-timer-008.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The sister gets three cups.",
+            "material": "Toast And Timer 008\n\nDad makes toast for breakfast. I put plates on the table. My sister gets two cups. We do not touch the hot toaster. Dad sets a timer for the eggs in the pot. When it rings, he takes the eggs out. I think the sound is the doorbell and run to the door. There is no one there. Dad laughs and shows me the little timer.",
+            "explanation": "B正确：two cups；A把二改为三。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.toast-and-timer-008.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The children touch the hot toaster.",
+            "material": "Toast And Timer 008\n\nDad makes toast for breakfast. I put plates on the table. My sister gets two cups. We do not touch the hot toaster. Dad sets a timer for the eggs in the pot. When it rings, he takes the eggs out. I think the sound is the doorbell and run to the door. There is no one there. Dad laughs and shows me the little timer.",
+            "explanation": "B正确：do not touch；A忽略禁止与否定。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.toast-and-timer-008.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad uses a timer for the eggs.",
+            "material": "Toast And Timer 008\n\nDad makes toast for breakfast. I put plates on the table. My sister gets two cups. We do not touch the hot toaster. Dad sets a timer for the eggs in the pot. When it rings, he takes the eggs out. I think the sound is the doorbell and run to the door. There is no one there. Dad laughs and shows me the little timer.",
+            "explanation": "A正确：sets timer for eggs；B否认计时用途。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.toast-and-timer-008.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Someone is waiting outside when the writer opens the door.",
+            "material": "Toast And Timer 008\n\nDad makes toast for breakfast. I put plates on the table. My sister gets two cups. We do not touch the hot toaster. Dad sets a timer for the eggs in the pot. When it rings, he takes the eggs out. I think the sound is the doorbell and run to the door. There is no one there. Dad laughs and shows me the little timer.",
+            "explanation": "B正确：no one there，声音来自计时器；A把误认当事实。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "b5d4bb8513316c5225ad5e9bf2a782db1357a602009b0e12e2ff15c1e3e3c13a",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.toast-and-timer-008.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.toast-and-timer-008.reading.q1",
+            "expansion.20261028.primary3.toast-and-timer-008.reading.q2",
+            "expansion.20261028.primary3.toast-and-timer-008.reading.q3",
+            "expansion.20261028.primary3.toast-and-timer-008.reading.q4",
+            "expansion.20261028.primary3.toast-and-timer-008.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.city-map-raised-lines-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "有凸起线条的校园地图",
+        "summary": "有凸起线条的校园地图，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.city-map-raised-lines-008",
+          "family": "reading_tf",
+          "label": "有凸起线条的校园地图",
+          "candidateSHA256": "f0e12a72fe2a06faecc2becaf5fb08ce4d13fe938d38ed6debb734912f08ec8e",
+          "authorCheckSHA256": "58c458bd92d3c31afc084a06351ef07ca08a47cb43f3e6e6f20294a2a4ee4998",
+          "sourceGroupIds": [
+            "original.class-garden-reading#primary4.city-map-raised-lines-008.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b008；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "City Map Raised Lines 008\n\nOur school makes a map with raised lines. Visitors can feel the lines with their fingers. A smooth circle marks the main hall, and a rough square marks the library. The maker first puts both shapes too close together. Some visitors cannot tell them apart. She moves them farther apart and adds a key beside the map. A pupil reads the key aloud for visitors who want help. The school keeps the old paper map too, so people can choose the kind that works for them."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.city-map-raised-lines-008.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Visitors can feel the raised lines with their fingers.",
+            "material": "City Map Raised Lines 008\n\nOur school makes a map with raised lines. Visitors can feel the lines with their fingers. A smooth circle marks the main hall, and a rough square marks the library. The maker first puts both shapes too close together. Some visitors cannot tell them apart. She moves them farther apart and adds a key beside the map. A pupil reads the key aloud for visitors who want help. The school keeps the old paper map too, so people can choose the kind that works for them.",
+            "explanation": "A正确：feel lines with fingers；B否认触摸使用方式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.city-map-raised-lines-008.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A rough square marks the main hall.",
+            "material": "City Map Raised Lines 008\n\nOur school makes a map with raised lines. Visitors can feel the lines with their fingers. A smooth circle marks the main hall, and a rough square marks the library. The maker first puts both shapes too close together. Some visitors cannot tell them apart. She moves them farther apart and adds a key beside the map. A pupil reads the key aloud for visitors who want help. The school keeps the old paper map too, so people can choose the kind that works for them.",
+            "explanation": "B正确：粗方块标图书馆，光滑圆标大厅；A交换形状地点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.city-map-raised-lines-008.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The first two shapes are too close together.",
+            "material": "City Map Raised Lines 008\n\nOur school makes a map with raised lines. Visitors can feel the lines with their fingers. A smooth circle marks the main hall, and a rough square marks the library. The maker first puts both shapes too close together. Some visitors cannot tell them apart. She moves them farther apart and adds a key beside the map. A pupil reads the key aloud for visitors who want help. The school keeps the old paper map too, so people can choose the kind that works for them.",
+            "explanation": "A正确：too close导致难区分；B否认初始问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.city-map-raised-lines-008.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The maker removes the key from the new map.",
+            "material": "City Map Raised Lines 008\n\nOur school makes a map with raised lines. Visitors can feel the lines with their fingers. A smooth circle marks the main hall, and a rough square marks the library. The maker first puts both shapes too close together. Some visitors cannot tell them apart. She moves them farther apart and adds a key beside the map. A pupil reads the key aloud for visitors who want help. The school keeps the old paper map too, so people can choose the kind that works for them.",
+            "explanation": "B正确：adds a key是增添；A把添加说成移除。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.city-map-raised-lines-008.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The school keeps the old paper map available.",
+            "material": "City Map Raised Lines 008\n\nOur school makes a map with raised lines. Visitors can feel the lines with their fingers. A smooth circle marks the main hall, and a rough square marks the library. The maker first puts both shapes too close together. Some visitors cannot tell them apart. She moves them farther apart and adds a key beside the map. A pupil reads the key aloud for visitors who want help. The school keeps the old paper map too, so people can choose the kind that works for them.",
+            "explanation": "A正确：keeps old paper map too；B与提供选择相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "6b5675405190552bf7f720ee3e732273be7757ec3d2a2261ec0ad27b06746d76",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.class-garden-reading#primary4.city-map-raised-lines-008.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.city-map-raised-lines-008.reading.q1",
+            "expansion.20261028.primary4.city-map-raised-lines-008.reading.q2",
+            "expansion.20261028.primary4.city-map-raised-lines-008.reading.q3",
+            "expansion.20261028.primary4.city-map-raised-lines-008.reading.q4",
+            "expansion.20261028.primary4.city-map-raised-lines-008.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.class-garden-reading",
+          "sourceContentHash": "c48d0add74ac202b6eee2f6cafe95556edd3c7176f1da3b56f14a6e7036dfdab"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.film-club-bank-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "电影社的观影准备",
+        "summary": "电影社的观影准备，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小四历史公开转载的完整文字组：一篇五判断／五独立句五共享词或短语／六中文情境六共享表达，分别绑定，不拼组合。上册正文2012—13与网页2021、下册未署年分开；学校施测与现行难度未认证。原读答F把未提当假的缺陷保留，原创F均明示反证；不添加未印的一次规则。图片/音频缺失任务未恢复。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.film-club-bank-008",
+          "family": "shared_bank",
+          "label": "电影社的观影准备",
+          "candidateSHA256": "0ed59658c3cac0e746dcf3a6225b046a83f68ec8ca8d6a93c636fe3fd4c86d3c",
+          "authorCheckSHA256": "58c458bd92d3c31afc084a06351ef07ca08a47cb43f3e6e6f20294a2a4ee4998",
+          "sourceGroupIds": [
+            "original.primary4-day-price-fixed-bank#primary4.film-club-bank-008.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b008；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Film Club Bank 008\n\nChoose from the shared bank. Use each word once. Bank: A. quietly B. before C. borrow D. screen E. Friday\nOur film club meets every ____1____, the day before Saturday. We check the room ____2____ the film starts, not after it ends. We close the curtains so the picture on the ____3____ is clear. Pupils may ____4____ a cushion from the basket if their chair feels hard. During the film, everyone speaks ____5____ so others can hear the story."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.film-club-bank-008.reading.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Film Club Bank 008\n\nChoose from the shared bank. Use each word once. Bank: A. quietly B. before C. borrow D. screen E. Friday\nOur film club meets every ____1____, the day before Saturday. We check the room ____2____ the film starts, not after it ends. We close the curtains so the picture on the ____3____ is clear. Pupils may ____4____ a cushion from the basket if their chair feels hard. During the film, everyone speaks ____5____ so others can hear the story.",
+            "explanation": "E Friday为周六前一天；A安静地、B之前、C借、D屏幕均非星期名。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "quietly"
+              },
+              {
+                "id": "o1",
+                "text": "before"
+              },
+              {
+                "id": "o2",
+                "text": "borrow"
+              },
+              {
+                "id": "o3",
+                "text": "screen"
+              },
+              {
+                "id": "o4",
+                "text": "Friday"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261028.primary4.film-club-bank-008.reading.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Film Club Bank 008\n\nChoose from the shared bank. Use each word once. Bank: A. quietly B. before C. borrow D. screen E. Friday\nOur film club meets every ____1____, the day before Saturday. We check the room ____2____ the film starts, not after it ends. We close the curtains so the picture on the ____3____ is clear. Pupils may ____4____ a cushion from the basket if their chair feels hard. During the film, everyone speaks ____5____ so others can hear the story.",
+            "explanation": "B before与not after对应；A方式副词、C借、D屏幕、E星期均不能连接film starts表达先后。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "quietly"
+              },
+              {
+                "id": "o1",
+                "text": "before"
+              },
+              {
+                "id": "o2",
+                "text": "borrow"
+              },
+              {
+                "id": "o3",
+                "text": "screen"
+              },
+              {
+                "id": "o4",
+                "text": "Friday"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.film-club-bank-008.reading.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Film Club Bank 008\n\nChoose from the shared bank. Use each word once. Bank: A. quietly B. before C. borrow D. screen E. Friday\nOur film club meets every ____1____, the day before Saturday. We check the room ____2____ the film starts, not after it ends. We close the curtains so the picture on the ____3____ is clear. Pupils may ____4____ a cushion from the basket if their chair feels hard. During the film, everyone speaks ____5____ so others can hear the story.",
+            "explanation": "D screen显示影片画面；A副词、B介词、C动词、E星期不表示显示画面的物体。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "quietly"
+              },
+              {
+                "id": "o1",
+                "text": "before"
+              },
+              {
+                "id": "o2",
+                "text": "borrow"
+              },
+              {
+                "id": "o3",
+                "text": "screen"
+              },
+              {
+                "id": "o4",
+                "text": "Friday"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary4.film-club-bank-008.reading.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Film Club Bank 008\n\nChoose from the shared bank. Use each word once. Bank: A. quietly B. before C. borrow D. screen E. Friday\nOur film club meets every ____1____, the day before Saturday. We check the room ____2____ the film starts, not after it ends. We close the curtains so the picture on the ____3____ is clear. Pupils may ____4____ a cushion from the basket if their chair feels hard. During the film, everyone speaks ____5____ so others can hear the story.",
+            "explanation": "C borrow可借靠垫；A quietly、B before、D screen、E Friday均不作may后所需借用动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "quietly"
+              },
+              {
+                "id": "o1",
+                "text": "before"
+              },
+              {
+                "id": "o2",
+                "text": "borrow"
+              },
+              {
+                "id": "o3",
+                "text": "screen"
+              },
+              {
+                "id": "o4",
+                "text": "Friday"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.film-club-bank-008.reading.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Film Club Bank 008\n\nChoose from the shared bank. Use each word once. Bank: A. quietly B. before C. borrow D. screen E. Friday\nOur film club meets every ____1____, the day before Saturday. We check the room ____2____ the film starts, not after it ends. We close the curtains so the picture on the ____3____ is clear. Pupils may ____4____ a cushion from the basket if their chair feels hard. During the film, everyone speaks ____5____ so others can hear the story.",
+            "explanation": "A quietly修饰speaks且不影响他人听；B before、C borrow、D screen、E Friday均不表示说话方式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "quietly"
+              },
+              {
+                "id": "o1",
+                "text": "before"
+              },
+              {
+                "id": "o2",
+                "text": "borrow"
+              },
+              {
+                "id": "o3",
+                "text": "screen"
+              },
+              {
+                "id": "o4",
+                "text": "Friday"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "e219caa7f00a3b3914633bd0bbb13435eb792513271b724af9c1ec0618b23003",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-day-price-fixed-bank#primary4.film-club-bank-008.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.film-club-bank-008.reading.q1",
+            "expansion.20261028.primary4.film-club-bank-008.reading.q2",
+            "expansion.20261028.primary4.film-club-bank-008.reading.q3",
+            "expansion.20261028.primary4.film-club-bank-008.reading.q4",
+            "expansion.20261028.primary4.film-club-bank-008.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-day-price-fixed-bank",
+          "sourceContentHash": "4a677ac1088d785f8a705a5e0915bd40683583316a2720e916df66ec664f4829"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.paper-boat-race-test-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "纸船比赛前的两次测试",
+        "summary": "纸船比赛前的两次测试，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照已核北京区卷公开转载的相应完整具体模式：一短文五判断／四完整信息卡五判断／两共享句空加三道三选，分别绑定，不截成单一子组。源原键非独立gold，东城两型尚无原键；节日日期等事实不沿用。原创虚构，独立教研、目标学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.paper-boat-race-test-008",
+          "family": "reading_tf",
+          "label": "纸船比赛前的两次测试",
+          "candidateSHA256": "735a59a1593039f3b6dd3dfb2a5813c3f01e4e4b3336758efdbbc1534223ae2e",
+          "authorCheckSHA256": "58c458bd92d3c31afc084a06351ef07ca08a47cb43f3e6e6f20294a2a4ee4998",
+          "sourceGroupIds": [
+            "original.primary5-story-voices-tf#primary5.paper-boat-race-test-008.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b008；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Paper Boat Race Test 008\n\nFor a paper-boat race, our group first chose the widest boat because it looked strong. During a test in the sink, it carried six small counters without sinking. A narrow boat carried only four. We thought the choice was easy. Then our teacher reminded us that the race would be along a shallow channel with moving water. In the channel, the wide boat kept touching the sides and stopped. The narrow boat moved farther even with a lighter load. We changed our plan. We kept the sink results in our notes, but we chose the narrow boat for the race. We did not claim that it could carry more weight; it was simply more useful for this course."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.paper-boat-race-test-008.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The group first preferred the widest boat.",
+            "material": "Paper Boat Race Test 008\n\nFor a paper-boat race, our group first chose the widest boat because it looked strong. During a test in the sink, it carried six small counters without sinking. A narrow boat carried only four. We thought the choice was easy. Then our teacher reminded us that the race would be along a shallow channel with moving water. In the channel, the wide boat kept touching the sides and stopped. The narrow boat moved farther even with a lighter load. We changed our plan. We kept the sink results in our notes, but we chose the narrow boat for the race. We did not claim that it could carry more weight; it was simply more useful for this course.",
+            "explanation": "A正确：first chose widest；B否认最初偏好。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.paper-boat-race-test-008.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The narrow boat carried more counters in the sink test.",
+            "material": "Paper Boat Race Test 008\n\nFor a paper-boat race, our group first chose the widest boat because it looked strong. During a test in the sink, it carried six small counters without sinking. A narrow boat carried only four. We thought the choice was easy. Then our teacher reminded us that the race would be along a shallow channel with moving water. In the channel, the wide boat kept touching the sides and stopped. The narrow boat moved farther even with a lighter load. We changed our plan. We kept the sink results in our notes, but we chose the narrow boat for the race. We did not claim that it could carry more weight; it was simply more useful for this course.",
+            "explanation": "B正确：宽船六、窄船四；A把载重优势交换。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.paper-boat-race-test-008.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The race course had moving water.",
+            "material": "Paper Boat Race Test 008\n\nFor a paper-boat race, our group first chose the widest boat because it looked strong. During a test in the sink, it carried six small counters without sinking. A narrow boat carried only four. We thought the choice was easy. Then our teacher reminded us that the race would be along a shallow channel with moving water. In the channel, the wide boat kept touching the sides and stopped. The narrow boat moved farther even with a lighter load. We changed our plan. We kept the sink results in our notes, but we chose the narrow boat for the race. We did not claim that it could carry more weight; it was simply more useful for this course.",
+            "explanation": "A正确：shallow channel with moving water；B否认比赛条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.paper-boat-race-test-008.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The wide boat moved freely without touching the sides.",
+            "material": "Paper Boat Race Test 008\n\nFor a paper-boat race, our group first chose the widest boat because it looked strong. During a test in the sink, it carried six small counters without sinking. A narrow boat carried only four. We thought the choice was easy. Then our teacher reminded us that the race would be along a shallow channel with moving water. In the channel, the wide boat kept touching the sides and stopped. The narrow boat moved farther even with a lighter load. We changed our plan. We kept the sink results in our notes, but we chose the narrow boat for the race. We did not claim that it could carry more weight; it was simply more useful for this course.",
+            "explanation": "B正确：宽船kept touching sides and stopped；A与实测相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.paper-boat-race-test-008.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The group chose the narrow boat because it suited the course better.",
+            "material": "Paper Boat Race Test 008\n\nFor a paper-boat race, our group first chose the widest boat because it looked strong. During a test in the sink, it carried six small counters without sinking. A narrow boat carried only four. We thought the choice was easy. Then our teacher reminded us that the race would be along a shallow channel with moving water. In the channel, the wide boat kept touching the sides and stopped. The narrow boat moved farther even with a lighter load. We changed our plan. We kept the sink results in our notes, but we chose the narrow boat for the race. We did not claim that it could carry more weight; it was simply more useful for this course.",
+            "explanation": "A正确：窄船走更远，结尾更适用本赛道；B否认改选理由。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "ad65a1d3096d180fb1852704b4e363a084daff1bb9605250230d0248faa39213",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-story-voices-tf#primary5.paper-boat-race-test-008.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.paper-boat-race-test-008.reading.q1",
+            "expansion.20261028.primary5.paper-boat-race-test-008.reading.q2",
+            "expansion.20261028.primary5.paper-boat-race-test-008.reading.q3",
+            "expansion.20261028.primary5.paper-boat-race-test-008.reading.q4",
+            "expansion.20261028.primary5.paper-boat-race-test-008.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-story-voices-tf",
+          "sourceContentHash": "a4f0870aefe1f20fc8d875af831008e42eade8b2add01b9a839678f758d44bde"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.weekend-club-cards-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "周末社团的三张活动卡",
+        "summary": "周末社团的三张活动卡，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.timetable_bonus",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式分层参照：小五五响应四选整表仍仅有既存模拟附加题，不冒称普通真题补足；高二一完整项目含资格/申请/三行课时表/福利三题四选，源网页身份标题/正文未独立确认且资格题原键不足仍保留；初一四活动卡三人物/一多余含时间地点，源未印一次限制，新题不加，历史首稿自设once另记。原创全部说明/表头/行/候选保留；教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.weekend-club-cards-008",
+          "family": "reading_choice",
+          "label": "周末社团的三张活动卡",
+          "candidateSHA256": "a5734a0b2098d58293fc49ad464ae9c8a9ec3c77a350d709025b6af3a493a329",
+          "authorCheckSHA256": "58c458bd92d3c31afc084a06351ef07ca08a47cb43f3e6e6f20294a2a4ee4998",
+          "sourceGroupIds": [
+            "original.primary5-club-fair-table#primary5.weekend-club-cards-008.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b008；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Weekend Club Cards 008\n\nWeekend activity cards\nA. Map Makers: Saturday 9:00–10:30, Room 5. Draw a walking map of the school. Bring a pencil. Suitable for pupils who enjoy careful measuring. No computers needed.\nB. Story Voices: Saturday 10:00–11:00, music room. Read a short story aloud in pairs. Bring a water bottle. You do not have to sing.\nC. Mini Gardens: Sunday 9:30–11:00, covered yard. Plant herbs in reused containers. Bring an empty, clean food tub. Soil and seeds are provided.\nAll activities are free. Book one place at the office by Thursday. A parent may collect a booking form, but the pupil must choose the activity."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.weekend-club-cards-008.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which activity involves measuring?",
+            "material": "Weekend Club Cards 008\n\nWeekend activity cards\nA. Map Makers: Saturday 9:00–10:30, Room 5. Draw a walking map of the school. Bring a pencil. Suitable for pupils who enjoy careful measuring. No computers needed.\nB. Story Voices: Saturday 10:00–11:00, music room. Read a short story aloud in pairs. Bring a water bottle. You do not have to sing.\nC. Mini Gardens: Sunday 9:30–11:00, covered yard. Plant herbs in reused containers. Bring an empty, clean food tub. Soil and seeds are provided.\nAll activities are free. Book one place at the office by Thursday. A parent may collect a booking form, but the pupil must choose the activity.",
+            "explanation": "B地图社适合精细测量；A朗读无测量要求；C种植未提测量；D无三者同等测量依据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Story Voices."
+              },
+              {
+                "id": "o1",
+                "text": "Map Makers."
+              },
+              {
+                "id": "o2",
+                "text": "Mini Gardens."
+              },
+              {
+                "id": "o3",
+                "text": "All three equally."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.weekend-club-cards-008.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must a pupil bring to Mini Gardens?",
+            "material": "Weekend Club Cards 008\n\nWeekend activity cards\nA. Map Makers: Saturday 9:00–10:30, Room 5. Draw a walking map of the school. Bring a pencil. Suitable for pupils who enjoy careful measuring. No computers needed.\nB. Story Voices: Saturday 10:00–11:00, music room. Read a short story aloud in pairs. Bring a water bottle. You do not have to sing.\nC. Mini Gardens: Sunday 9:30–11:00, covered yard. Plant herbs in reused containers. Bring an empty, clean food tub. Soil and seeds are provided.\nAll activities are free. Book one place at the office by Thursday. A parent may collect a booking form, but the pupil must choose the activity.",
+            "explanation": "C自带净空食物容器；A土种已供；B电脑非需；D乐器无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Soil and seeds."
+              },
+              {
+                "id": "o1",
+                "text": "A computer."
+              },
+              {
+                "id": "o2",
+                "text": "A clean empty food tub."
+              },
+              {
+                "id": "o3",
+                "text": "A musical instrument."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.weekend-club-cards-008.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which two activities overlap in time?",
+            "material": "Weekend Club Cards 008\n\nWeekend activity cards\nA. Map Makers: Saturday 9:00–10:30, Room 5. Draw a walking map of the school. Bring a pencil. Suitable for pupils who enjoy careful measuring. No computers needed.\nB. Story Voices: Saturday 10:00–11:00, music room. Read a short story aloud in pairs. Bring a water bottle. You do not have to sing.\nC. Mini Gardens: Sunday 9:30–11:00, covered yard. Plant herbs in reused containers. Bring an empty, clean food tub. Soil and seeds are provided.\nAll activities are free. Book one place at the office by Thursday. A parent may collect a booking form, but the pupil must choose the activity.",
+            "explanation": "A周六10至10:30重叠；B和C跨周六周日不重叠；D否认明确重叠。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Map Makers and Story Voices."
+              },
+              {
+                "id": "o1",
+                "text": "Story Voices and Mini Gardens."
+              },
+              {
+                "id": "o2",
+                "text": "Map Makers and Mini Gardens."
+              },
+              {
+                "id": "o3",
+                "text": "None of the activities."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.weekend-club-cards-008.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When must places be booked?",
+            "material": "Weekend Club Cards 008\n\nWeekend activity cards\nA. Map Makers: Saturday 9:00–10:30, Room 5. Draw a walking map of the school. Bring a pencil. Suitable for pupils who enjoy careful measuring. No computers needed.\nB. Story Voices: Saturday 10:00–11:00, music room. Read a short story aloud in pairs. Bring a water bottle. You do not have to sing.\nC. Mini Gardens: Sunday 9:30–11:00, covered yard. Plant herbs in reused containers. Bring an empty, clean food tub. Soil and seeds are provided.\nAll activities are free. Book one place at the office by Thursday. A parent may collect a booking form, but the pupil must choose the activity.",
+            "explanation": "D周四前办公室预约；A周日、B周六后、C活动中均超过要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "By Sunday."
+              },
+              {
+                "id": "o1",
+                "text": "After Saturday morning."
+              },
+              {
+                "id": "o2",
+                "text": "Only during the activity."
+              },
+              {
+                "id": "o3",
+                "text": "By Thursday."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.weekend-club-cards-008.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What may a parent do?",
+            "material": "Weekend Club Cards 008\n\nWeekend activity cards\nA. Map Makers: Saturday 9:00–10:30, Room 5. Draw a walking map of the school. Bring a pencil. Suitable for pupils who enjoy careful measuring. No computers needed.\nB. Story Voices: Saturday 10:00–11:00, music room. Read a short story aloud in pairs. Bring a water bottle. You do not have to sing.\nC. Mini Gardens: Sunday 9:30–11:00, covered yard. Plant herbs in reused containers. Bring an empty, clean food tub. Soil and seeds are provided.\nAll activities are free. Book one place at the office by Thursday. A parent may collect a booking form, but the pupil must choose the activity.",
+            "explanation": "B家长可取表；A活动须学生选；C全部免费且种子提供；D无改期权限。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Choose an activity without the pupil."
+              },
+              {
+                "id": "o1",
+                "text": "Collect a booking form."
+              },
+              {
+                "id": "o2",
+                "text": "Charge pupils for seeds."
+              },
+              {
+                "id": "o3",
+                "text": "Move every session to Sunday."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "4fed41d54960d6cc036d3664ab2a65672093780c0a4376b244d1223e8002acf2",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-club-fair-table#primary5.weekend-club-cards-008.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.weekend-club-cards-008.reading.q1",
+            "expansion.20261028.primary5.weekend-club-cards-008.reading.q2",
+            "expansion.20261028.primary5.weekend-club-cards-008.reading.q3",
+            "expansion.20261028.primary5.weekend-club-cards-008.reading.q4",
+            "expansion.20261028.primary5.weekend-club-cards-008.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-club-fair-table",
+          "sourceContentHash": "8b987c04bd785a0f0af96a7e78d9b974a2fd06cd7d6e71aa9b35ca1ab5f847d7"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.botanic-trip-questions-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "植物园出发前的五个确认",
+        "summary": "植物园出发前的五个确认，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 11,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.dialogue3clauses",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照同一历史公开教辅卷的完整五空对话：二人七轮、五共享候选，含两完整问句和三and/but起始并列续接分句；原槽2/4前句号、槽5前逗号。原卷C/D猫狗描述存在互换风险，无原键，不认证源唯一答案。自有稿以具体前后指代和矛盾逐项核对，句号后And按自有标点规范大写。原指令未明示每项一次，不加一次限制。原校/实际施测、独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.botanic-trip-questions-008",
+          "family": "dialogue_matching",
+          "label": "植物园出发前的五个确认",
+          "candidateSHA256": "3d5ccfbc6e568c3389c364768cef1d415aba979ccd3f013ade2f91dfebd4cd37",
+          "authorCheckSHA256": "58c458bd92d3c31afc084a06351ef07ca08a47cb43f3e6e6f20294a2a4ee4998",
+          "sourceGroupIds": [
+            "original.primary6-dialogueclauses5-picnic#primary6.botanic-trip-questions-008.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b008；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Botanic Trip Questions 008\n\nBefore a visit to the botanic garden, pupils ask the trip leader five practical questions. Match each question with the best answer. Each bank answer is used once.\nA. Yes, but only on the marked path.\nB. Because the glasshouse is warmer than outside.\nC. At the visitor desk beside the gate.\nD. Please bring a notebook and a pencil.\nE. It leaves at half past two."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.botanic-trip-questions-008.reading.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Are we allowed to walk around the pond?",
+            "material": "Botanic Trip Questions 008\n\nBefore a visit to the botanic garden, pupils ask the trip leader five practical questions. Match each question with the best answer. Each bank answer is used once.\nA. Yes, but only on the marked path.\nB. Because the glasshouse is warmer than outside.\nC. At the visitor desk beside the gate.\nD. Please bring a notebook and a pencil.\nE. It leaves at half past two.",
+            "explanation": "A允许但限标记路，回应许可；B原因、C位置、D携带物、E发车时间都不直接回答是否可绕池走。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, but only on the marked path."
+              },
+              {
+                "id": "o1",
+                "text": "Because the glasshouse is warmer than outside."
+              },
+              {
+                "id": "o2",
+                "text": "At the visitor desk beside the gate."
+              },
+              {
+                "id": "o3",
+                "text": "Please bring a notebook and a pencil."
+              },
+              {
+                "id": "o4",
+                "text": "It leaves at half past two."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.botanic-trip-questions-008.reading.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why should we take our coats off inside the glasshouse?",
+            "material": "Botanic Trip Questions 008\n\nBefore a visit to the botanic garden, pupils ask the trip leader five practical questions. Match each question with the best answer. Each bank answer is used once.\nA. Yes, but only on the marked path.\nB. Because the glasshouse is warmer than outside.\nC. At the visitor desk beside the gate.\nD. Please bring a notebook and a pencil.\nE. It leaves at half past two.",
+            "explanation": "B室内较暖解释脱外套原因；A步道许可、C问讯台、D物品、E时间均不答Why。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, but only on the marked path."
+              },
+              {
+                "id": "o1",
+                "text": "Because the glasshouse is warmer than outside."
+              },
+              {
+                "id": "o2",
+                "text": "At the visitor desk beside the gate."
+              },
+              {
+                "id": "o3",
+                "text": "Please bring a notebook and a pencil."
+              },
+              {
+                "id": "o4",
+                "text": "It leaves at half past two."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.botanic-trip-questions-008.reading.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where can we get a printed garden map?",
+            "material": "Botanic Trip Questions 008\n\nBefore a visit to the botanic garden, pupils ask the trip leader five practical questions. Match each question with the best answer. Each bank answer is used once.\nA. Yes, but only on the marked path.\nB. Because the glasshouse is warmer than outside.\nC. At the visitor desk beside the gate.\nD. Please bring a notebook and a pencil.\nE. It leaves at half past two.",
+            "explanation": "C大门旁服务台答领图地点；A行走限制、B温度原因、D所带工具、E发车时间都不答Where。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, but only on the marked path."
+              },
+              {
+                "id": "o1",
+                "text": "Because the glasshouse is warmer than outside."
+              },
+              {
+                "id": "o2",
+                "text": "At the visitor desk beside the gate."
+              },
+              {
+                "id": "o3",
+                "text": "Please bring a notebook and a pencil."
+              },
+              {
+                "id": "o4",
+                "text": "It leaves at half past two."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.botanic-trip-questions-008.reading.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What do we need for recording the plants?",
+            "material": "Botanic Trip Questions 008\n\nBefore a visit to the botanic garden, pupils ask the trip leader five practical questions. Match each question with the best answer. Each bank answer is used once.\nA. Yes, but only on the marked path.\nB. Because the glasshouse is warmer than outside.\nC. At the visitor desk beside the gate.\nD. Please bring a notebook and a pencil.\nE. It leaves at half past two.",
+            "explanation": "D笔记本与铅笔适合记录；A许可、B温度、C位置、E时间不能回答记录用品。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, but only on the marked path."
+              },
+              {
+                "id": "o1",
+                "text": "Because the glasshouse is warmer than outside."
+              },
+              {
+                "id": "o2",
+                "text": "At the visitor desk beside the gate."
+              },
+              {
+                "id": "o3",
+                "text": "Please bring a notebook and a pencil."
+              },
+              {
+                "id": "o4",
+                "text": "It leaves at half past two."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.botanic-trip-questions-008.reading.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What time does our return bus leave?",
+            "material": "Botanic Trip Questions 008\n\nBefore a visit to the botanic garden, pupils ask the trip leader five practical questions. Match each question with the best answer. Each bank answer is used once.\nA. Yes, but only on the marked path.\nB. Because the glasshouse is warmer than outside.\nC. At the visitor desk beside the gate.\nD. Please bring a notebook and a pencil.\nE. It leaves at half past two.",
+            "explanation": "E两点半发车回答时间；A路径、B原因、C服务台位置、D用品都不答What time。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, but only on the marked path."
+              },
+              {
+                "id": "o1",
+                "text": "Because the glasshouse is warmer than outside."
+              },
+              {
+                "id": "o2",
+                "text": "At the visitor desk beside the gate."
+              },
+              {
+                "id": "o3",
+                "text": "Please bring a notebook and a pencil."
+              },
+              {
+                "id": "o4",
+                "text": "It leaves at half past two."
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "8c775be6646d1ef098f795f8eabea6797b157c91c2f7523ae232230bc3f36fdd",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-dialogueclauses5-picnic#primary6.botanic-trip-questions-008.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.botanic-trip-questions-008.reading.q1",
+            "expansion.20261028.primary6.botanic-trip-questions-008.reading.q2",
+            "expansion.20261028.primary6.botanic-trip-questions-008.reading.q3",
+            "expansion.20261028.primary6.botanic-trip-questions-008.reading.q4",
+            "expansion.20261028.primary6.botanic-trip-questions-008.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-dialogueclauses5-picnic",
+          "sourceContentHash": "360edeaf80ef883b265784c166a983d252fcadab0b5565b2fc0f1c2e59b00200"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.uniform-swap-tags-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "校服交换日的尺寸标签",
+        "summary": "校服交换日的尺寸标签，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.uniform-swap-tags-008",
+          "family": "reading_tf",
+          "label": "校服交换日的尺寸标签",
+          "candidateSHA256": "7572cee6ed592358133be6202bb1f83e29dbce4f96644db19a916bf5e15e0278",
+          "authorCheckSHA256": "58c458bd92d3c31afc084a06351ef07ca08a47cb43f3e6e6f20294a2a4ee4998",
+          "sourceGroupIds": [
+            "original.primary6-bakery-letter-tf#primary6.uniform-swap-tags-008.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b008；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Uniform Swap Tags 008\n\nAt the school uniform swap, families donated clean clothes they no longer needed. Volunteers checked each item and wrote its size on a plain tag. They removed old name labels before displaying the clothes. The event was free, and families could take an item even if they had nothing to donate.\nThe first layout grouped clothes by colour. It looked tidy, but parents had to search through several tables for one size. After an hour, volunteers regrouped them by size and added a small colour marker to each tag. This kept colour information without making it the main sorting rule. A sign said that sizes on old labels could vary, so pupils should try items on in the screened area. Volunteers counted the clothes taken, but they did not record which family needed which size."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.uniform-swap-tags-008.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A family had to donate an item before taking one.",
+            "material": "Uniform Swap Tags 008\n\nAt the school uniform swap, families donated clean clothes they no longer needed. Volunteers checked each item and wrote its size on a plain tag. They removed old name labels before displaying the clothes. The event was free, and families could take an item even if they had nothing to donate.\nThe first layout grouped clothes by colour. It looked tidy, but parents had to search through several tables for one size. After an hour, volunteers regrouped them by size and added a small colour marker to each tag. This kept colour information without making it the main sorting rule. A sign said that sizes on old labels could vary, so pupils should try items on in the screened area. Volunteers counted the clothes taken, but they did not record which family needed which size.",
+            "explanation": "B正确：没有可捐物也可领取；A把免费交换加上捐赠前置条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.uniform-swap-tags-008.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Old name labels were removed before the clothes were displayed.",
+            "material": "Uniform Swap Tags 008\n\nAt the school uniform swap, families donated clean clothes they no longer needed. Volunteers checked each item and wrote its size on a plain tag. They removed old name labels before displaying the clothes. The event was free, and families could take an item even if they had nothing to donate.\nThe first layout grouped clothes by colour. It looked tidy, but parents had to search through several tables for one size. After an hour, volunteers regrouped them by size and added a small colour marker to each tag. This kept colour information without making it the main sorting rule. A sign said that sizes on old labels could vary, so pupils should try items on in the screened area. Volunteers counted the clothes taken, but they did not record which family needed which size.",
+            "explanation": "A正确：移除旧姓名后展示；B否认隐私处理。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.uniform-swap-tags-008.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The original colour-based layout made finding one size difficult.",
+            "material": "Uniform Swap Tags 008\n\nAt the school uniform swap, families donated clean clothes they no longer needed. Volunteers checked each item and wrote its size on a plain tag. They removed old name labels before displaying the clothes. The event was free, and families could take an item even if they had nothing to donate.\nThe first layout grouped clothes by colour. It looked tidy, but parents had to search through several tables for one size. After an hour, volunteers regrouped them by size and added a small colour marker to each tag. This kept colour information without making it the main sorting rule. A sign said that sizes on old labels could vary, so pupils should try items on in the screened area. Volunteers counted the clothes taken, but they did not record which family needed which size.",
+            "explanation": "A正确：需多桌搜索同尺码；B否认更改布局的原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.uniform-swap-tags-008.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "After regrouping, the tags no longer showed any colour information.",
+            "material": "Uniform Swap Tags 008\n\nAt the school uniform swap, families donated clean clothes they no longer needed. Volunteers checked each item and wrote its size on a plain tag. They removed old name labels before displaying the clothes. The event was free, and families could take an item even if they had nothing to donate.\nThe first layout grouped clothes by colour. It looked tidy, but parents had to search through several tables for one size. After an hour, volunteers regrouped them by size and added a small colour marker to each tag. This kept colour information without making it the main sorting rule. A sign said that sizes on old labels could vary, so pupils should try items on in the screened area. Volunteers counted the clothes taken, but they did not record which family needed which size.",
+            "explanation": "B正确：保留小颜色标记；A把主排序改尺码误作删除颜色信息。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.uniform-swap-tags-008.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The organisers counted items taken without recording each family’s size needs.",
+            "material": "Uniform Swap Tags 008\n\nAt the school uniform swap, families donated clean clothes they no longer needed. Volunteers checked each item and wrote its size on a plain tag. They removed old name labels before displaying the clothes. The event was free, and families could take an item even if they had nothing to donate.\nThe first layout grouped clothes by colour. It looked tidy, but parents had to search through several tables for one size. After an hour, volunteers regrouped them by size and added a small colour marker to each tag. This kept colour information without making it the main sorting rule. A sign said that sizes on old labels could vary, so pupils should try items on in the screened area. Volunteers counted the clothes taken, but they did not record which family needed which size.",
+            "explanation": "A正确：计件但不录哪家何尺码；B混淆数量统计与个人需求记录。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "2f0ea6f2048a5883ba8e1d2b5b34f00f96acc9d757c3d8722c6238181cb447c8",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-bakery-letter-tf#primary6.uniform-swap-tags-008.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.uniform-swap-tags-008.reading.q1",
+            "expansion.20261028.primary6.uniform-swap-tags-008.reading.q2",
+            "expansion.20261028.primary6.uniform-swap-tags-008.reading.q3",
+            "expansion.20261028.primary6.uniform-swap-tags-008.reading.q4",
+            "expansion.20261028.primary6.uniform-swap-tags-008.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-bakery-letter-tf",
+          "sourceContentHash": "e6db6f0f813ef882c13784f454aeffa61d10fad9edf6884f6a8b839b2e7ca67a"
+        }
+      ]
+    }
+  ]
+}

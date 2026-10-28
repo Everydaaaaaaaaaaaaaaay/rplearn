@@ -1,0 +1,1962 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b009",
+  "createdAt": "2026-10-28T15:55:41.522498+00:00",
+  "sourceSHA256": "3f9b998a7a7169043c331bb28356c210741f21be7633e8a7687fe5cad636c6ef",
+  "reviewSHA256": "c64808c97853f64daba041f7c669ed425421bb24bce816692a3df7d770ad8755",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.shared-paintbrush-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "两把画笔的借用顺序",
+        "summary": "两把画笔的借用顺序，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.shared-paintbrush-009",
+          "family": "function_choice",
+          "label": "两把画笔的借用顺序",
+          "candidateSHA256": "b387005b55fcfe7d87da0c80091db9928bce98bd3b6aad30eb6edae9848cfcf2",
+          "authorCheckSHA256": "b258e47bf88b7e2f13aa2416bfdb6ead8c3a0772c93be84151d08bfd395ef458",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.shared-paintbrush-009.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b009；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Shared Paintbrush 009\n\nWe have two paintbrushes. The wide brush is for the wall sign. The thin brush is for names. Kim uses the wide one first, then Sam. Wash a brush before changing colours. Leave clean brushes lying flat on the towel. Do not put them in the pencil box."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.shared-paintbrush-009.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend needs to paint a small name. You say, \"____\"",
+            "material": "Shared Paintbrush 009\n\nWe have two paintbrushes. The wide brush is for the wall sign. The thin brush is for names. Kim uses the wide one first, then Sam. Wash a brush before changing colours. Leave clean brushes lying flat on the towel. Do not put them in the pencil box.",
+            "explanation": "A姓名用细笔；B宽笔指定画墙面标牌；C尺不是材料中用于写名的画笔。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Use the thin brush."
+              },
+              {
+                "id": "o1",
+                "text": "Use the wide brush."
+              },
+              {
+                "id": "o2",
+                "text": "Use a ruler to paint it."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.shared-paintbrush-009.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Sam asks for the wide brush while Kim is using it. You say, \"____\"",
+            "material": "Shared Paintbrush 009\n\nWe have two paintbrushes. The wide brush is for the wall sign. The thin brush is for names. Kim uses the wide one first, then Sam. Wash a brush before changing colours. Leave clean brushes lying flat on the towel. Do not put them in the pencil box.",
+            "explanation": "B顺序Kim后Sam；A夺取违先后；C两人均可用非全禁。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Take it from Kim now."
+              },
+              {
+                "id": "o1",
+                "text": "You can use it after Kim."
+              },
+              {
+                "id": "o2",
+                "text": "No one may use it today."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.shared-paintbrush-009.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend changes from red paint to blue. You say, \"____\"",
+            "material": "Shared Paintbrush 009\n\nWe have two paintbrushes. The wide brush is for the wall sign. The thin brush is for names. Kim uses the wide one first, then Sam. Wash a brush before changing colours. Leave clean brushes lying flat on the towel. Do not put them in the pencil box.",
+            "explanation": "C换色前洗；A直接混色违规则；B衣袋非清洗。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put the red brush in the blue paint now."
+              },
+              {
+                "id": "o1",
+                "text": "Put the brush in your pocket."
+              },
+              {
+                "id": "o2",
+                "text": "Wash the brush first."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.shared-paintbrush-009.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend stands a clean brush on its tip. You say, \"____\"",
+            "material": "Shared Paintbrush 009\n\nWe have two paintbrushes. The wide brush is for the wall sign. The thin brush is for names. Kim uses the wide one first, then Sam. Wash a brush before changing colours. Leave clean brushes lying flat on the towel. Do not put them in the pencil box.",
+            "explanation": "A干净笔平放毛巾；B铅笔盒明确禁放；C丢毛巾无要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Lay it flat on the towel."
+              },
+              {
+                "id": "o1",
+                "text": "Stand it in the pencil box."
+              },
+              {
+                "id": "o2",
+                "text": "Throw the towel away."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.shared-paintbrush-009.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend opens the pencil box to store the brushes. You say, \"____\"",
+            "material": "Shared Paintbrush 009\n\nWe have two paintbrushes. The wide brush is for the wall sign. The thin brush is for names. Kim uses the wide one first, then Sam. Wash a brush before changing colours. Leave clean brushes lying flat on the towel. Do not put them in the pencil box.",
+            "explanation": "B刷子留毛巾；A入铅笔盒违规则；C藏标牌下无依据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put them in with the pencils."
+              },
+              {
+                "id": "o1",
+                "text": "They stay on the towel."
+              },
+              {
+                "id": "o2",
+                "text": "Hide them under the wall sign."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "d9a234c72c8ac5a1e6d92b77399f34835075123ec80331e28b1389d0fb144244",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.shared-paintbrush-009.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.shared-paintbrush-009.reading.q1",
+            "expansion.20261028.primary2.shared-paintbrush-009.reading.q2",
+            "expansion.20261028.primary2.shared-paintbrush-009.reading.q3",
+            "expansion.20261028.primary2.shared-paintbrush-009.reading.q4",
+            "expansion.20261028.primary2.shared-paintbrush-009.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.night-walk-torches-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "夜间自然观察的手电筒",
+        "summary": "夜间自然观察的手电筒，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.night-walk-torches-009",
+          "family": "function_choice",
+          "label": "夜间自然观察的手电筒",
+          "candidateSHA256": "d719a3c9b2813b1145dda1c2e2df3ee2905cbf9e97b9e6e701eae94cdf2c9b54",
+          "authorCheckSHA256": "b258e47bf88b7e2f13aa2416bfdb6ead8c3a0772c93be84151d08bfd395ef458",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.night-walk-torches-009.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b009；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Night Walk Torches 009\n\nWe take a short night walk with the teacher. Stay with your partner. Point your torch at the path, not at faces. The teacher walks first. Do not touch little animals. At the wooden bridge, stop and wait for the teacher’s hand sign. Then cross one pair at a time."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.night-walk-torches-009.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your partner walks away alone. You say, \"____\"",
+            "material": "Night Walk Torches 009\n\nWe take a short night walk with the teacher. Stay with your partner. Point your torch at the path, not at faces. The teacher walks first. Do not touch little animals. At the wooden bridge, stop and wait for the teacher’s hand sign. Then cross one pair at a time.",
+            "explanation": "A夜行应结伴不单走；B更远离同伴与规则相反；C独自在家等待不是当前步行中与同伴同行。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Stay with me."
+              },
+              {
+                "id": "o1",
+                "text": "Go far away."
+              },
+              {
+                "id": "o2",
+                "text": "Wait at home alone."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.night-walk-torches-009.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend shines a torch in your eyes. You say, \"____\"",
+            "material": "Night Walk Torches 009\n\nWe take a short night walk with the teacher. Stay with your partner. Point your torch at the path, not at faces. The teacher walks first. Do not touch little animals. At the wooden bridge, stop and wait for the teacher’s hand sign. Then cross one pair at a time.",
+            "explanation": "B灯照路非脸；A违禁；C鞋内不能照路线。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Point it at every face."
+              },
+              {
+                "id": "o1",
+                "text": "Point it at the path."
+              },
+              {
+                "id": "o2",
+                "text": "Point it inside your shoe."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.night-walk-torches-009.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend wants to walk ahead of the teacher. You say, \"____\"",
+            "material": "Night Walk Torches 009\n\nWe take a short night walk with the teacher. Stay with your partner. Point your torch at the path, not at faces. The teacher walks first. Do not touch little animals. At the wooden bridge, stop and wait for the teacher’s hand sign. Then cross one pair at a time.",
+            "explanation": "C教师先行；A抢前相反；B攀人非安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Run in front."
+              },
+              {
+                "id": "o1",
+                "text": "Climb on the teacher."
+              },
+              {
+                "id": "o2",
+                "text": "Let the teacher go first."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.night-walk-torches-009.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend reaches for a small frog. You say, \"____\"",
+            "material": "Night Walk Torches 009\n\nWe take a short night walk with the teacher. Stay with your partner. Point your torch at the path, not at faces. The teacher walks first. Do not touch little animals. At the wooden bridge, stop and wait for the teacher’s hand sign. Then cross one pair at a time.",
+            "explanation": "A只看不碰；B装袋需触碰且干扰动物；C用手电触碰也违反不触碰要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Look, but do not touch."
+              },
+              {
+                "id": "o1",
+                "text": "Put it in your bag."
+              },
+              {
+                "id": "o2",
+                "text": "Touch it with your torch."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.night-walk-torches-009.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your pair reaches the bridge before the hand sign. You say, \"____\"",
+            "material": "Night Walk Torches 009\n\nWe take a short night walk with the teacher. Stay with your partner. Point your torch at the path, not at faces. The teacher walks first. Do not touch little animals. At the wooden bridge, stop and wait for the teacher’s hand sign. Then cross one pair at a time.",
+            "explanation": "B桥前待信号且逐对过；A提前全体过违两条；C下水非路线。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Cross with every pair now."
+              },
+              {
+                "id": "o1",
+                "text": "Wait here for the teacher’s sign."
+              },
+              {
+                "id": "o2",
+                "text": "Jump into the water."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "4e55caab1193aa61ec77af8c05d6569dee30f2deab407aa0d635b7ef2c86eab8",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.night-walk-torches-009.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.night-walk-torches-009.reading.q1",
+            "expansion.20261028.primary2.night-walk-torches-009.reading.q2",
+            "expansion.20261028.primary2.night-walk-torches-009.reading.q3",
+            "expansion.20261028.primary2.night-walk-torches-009.reading.q4",
+            "expansion.20261028.primary2.night-walk-torches-009.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.silent-film-evening-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "没有对白的短电影",
+        "summary": "没有对白的短电影，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.silent-film-evening-009",
+          "family": "reading_tf",
+          "label": "没有对白的短电影",
+          "candidateSHA256": "6b77db4783db02c4d8c129774b232f65d1cb3e7daa61f8b9ea1598e6699d4c9b",
+          "authorCheckSHA256": "b258e47bf88b7e2f13aa2416bfdb6ead8c3a0772c93be84151d08bfd395ef458",
+          "sourceGroupIds": [
+            "original.bens-bag-reading#primary3.silent-film-evening-009.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b009；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Silent Film Evening 009\n\nOur family watches a short film. There are no spoken words. A man looks for his hat. His dog has the hat under a chair. My brother laughs because he sees it first. Mum puts music on, but Dad turns it off. He wants to hear the music in the film. At the end, the dog brings the hat to the man. We all clap."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.silent-film-evening-009.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "People speak in the film.",
+            "material": "Silent Film Evening 009\n\nOur family watches a short film. There are no spoken words. A man looks for his hat. His dog has the hat under a chair. My brother laughs because he sees it first. Mum puts music on, but Dad turns it off. He wants to hear the music in the film. At the end, the dog brings the hat to the man. We all clap.",
+            "explanation": "B正确：no spoken words；A漏读否定。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.silent-film-evening-009.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The man is looking for his hat.",
+            "material": "Silent Film Evening 009\n\nOur family watches a short film. There are no spoken words. A man looks for his hat. His dog has the hat under a chair. My brother laughs because he sees it first. Mum puts music on, but Dad turns it off. He wants to hear the music in the film. At the end, the dog brings the hat to the man. We all clap.",
+            "explanation": "A正确：looks for hat；B否认主线动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.silent-film-evening-009.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The hat is under a chair with the dog.",
+            "material": "Silent Film Evening 009\n\nOur family watches a short film. There are no spoken words. A man looks for his hat. His dog has the hat under a chair. My brother laughs because he sees it first. Mum puts music on, but Dad turns it off. He wants to hear the music in the film. At the end, the dog brings the hat to the man. We all clap.",
+            "explanation": "A正确：dog has hat under chair；B与藏处相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.silent-film-evening-009.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Dad turns off the film because he dislikes it.",
+            "material": "Silent Film Evening 009\n\nOur family watches a short film. There are no spoken words. A man looks for his hat. His dog has the hat under a chair. My brother laughs because he sees it first. Mum puts music on, but Dad turns it off. He wants to hear the music in the film. At the end, the dog brings the hat to the man. We all clap.",
+            "explanation": "B正确：关的是妈妈放的音乐，为听影片音乐；A错对象和原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.silent-film-evening-009.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The dog gives the hat back at the end.",
+            "material": "Silent Film Evening 009\n\nOur family watches a short film. There are no spoken words. A man looks for his hat. His dog has the hat under a chair. My brother laughs because he sees it first. Mum puts music on, but Dad turns it off. He wants to hear the music in the film. At the end, the dog brings the hat to the man. We all clap.",
+            "explanation": "A正确：末尾狗把帽带给男子；B否认结局。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "c3e588ed128f190a7e33ff3e602f4ad58ece922307a52e05a24b1aeae05b59d9",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.bens-bag-reading#primary3.silent-film-evening-009.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.silent-film-evening-009.reading.q1",
+            "expansion.20261028.primary3.silent-film-evening-009.reading.q2",
+            "expansion.20261028.primary3.silent-film-evening-009.reading.q3",
+            "expansion.20261028.primary3.silent-film-evening-009.reading.q4",
+            "expansion.20261028.primary3.silent-film-evening-009.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.bens-bag-reading",
+          "sourceContentHash": "e1594f6d2c2c96de673832f2efe0847d6e8f968d3ed2c4833705aeba378b5517"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.treasure-map-arrow-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "寻宝图上的箭头",
+        "summary": "寻宝图上的箭头，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.treasure-map-arrow-009",
+          "family": "reading_tf",
+          "label": "寻宝图上的箭头",
+          "candidateSHA256": "8673ff0e1cf467c1cc22659f4d1a449e6bad72e03d2c678755d4611b50d7a167",
+          "authorCheckSHA256": "b258e47bf88b7e2f13aa2416bfdb6ead8c3a0772c93be84151d08bfd395ef458",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.treasure-map-arrow-009.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b009；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Treasure Map Arrow 009\n\nMy cousin makes a treasure map for me. The first arrow points to the sofa. I find a note under a cushion. It says, \"Look beside the shoes.\" I go to the door. There is a second note in a small boot. It says, \"Your treasure is where we keep cold food.\" I open the fridge. A little box of strawberries is waiting for me."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.treasure-map-arrow-009.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The first arrow points to the fridge.",
+            "material": "Treasure Map Arrow 009\n\nMy cousin makes a treasure map for me. The first arrow points to the sofa. I find a note under a cushion. It says, \"Look beside the shoes.\" I go to the door. There is a second note in a small boot. It says, \"Your treasure is where we keep cold food.\" I open the fridge. A little box of strawberries is waiting for me.",
+            "explanation": "B正确：第一箭头指sofa；A将最终地点当首站。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.treasure-map-arrow-009.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The first note is under a cushion.",
+            "material": "Treasure Map Arrow 009\n\nMy cousin makes a treasure map for me. The first arrow points to the sofa. I find a note under a cushion. It says, \"Look beside the shoes.\" I go to the door. There is a second note in a small boot. It says, \"Your treasure is where we keep cold food.\" I open the fridge. A little box of strawberries is waiting for me.",
+            "explanation": "A正确：under cushion明确；B否认位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.treasure-map-arrow-009.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The second note is in a large coat.",
+            "material": "Treasure Map Arrow 009\n\nMy cousin makes a treasure map for me. The first arrow points to the sofa. I find a note under a cushion. It says, \"Look beside the shoes.\" I go to the door. There is a second note in a small boot. It says, \"Your treasure is where we keep cold food.\" I open the fridge. A little box of strawberries is waiting for me.",
+            "explanation": "B正确：small boot里；A把靴子改外套且大变小。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.treasure-map-arrow-009.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The final clue sends the writer to the fridge.",
+            "material": "Treasure Map Arrow 009\n\nMy cousin makes a treasure map for me. The first arrow points to the sofa. I find a note under a cushion. It says, \"Look beside the shoes.\" I go to the door. There is a second note in a small boot. It says, \"Your treasure is where we keep cold food.\" I open the fridge. A little box of strawberries is waiting for me.",
+            "explanation": "A正确：冷藏食物处，作者打开fridge；B否认文本中的线索结果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.treasure-map-arrow-009.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The treasure is a box of strawberries.",
+            "material": "Treasure Map Arrow 009\n\nMy cousin makes a treasure map for me. The first arrow points to the sofa. I find a note under a cushion. It says, \"Look beside the shoes.\" I go to the door. There is a second note in a small boot. It says, \"Your treasure is where we keep cold food.\" I open the fridge. A little box of strawberries is waiting for me.",
+            "explanation": "A正确：little box strawberries为最终奖品；B与结局相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "9de32020695a50d7c61f973b78b2719b2ebe9e23d4200e6f96427c68d6311ed1",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.treasure-map-arrow-009.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.treasure-map-arrow-009.reading.q1",
+            "expansion.20261028.primary3.treasure-map-arrow-009.reading.q2",
+            "expansion.20261028.primary3.treasure-map-arrow-009.reading.q3",
+            "expansion.20261028.primary3.treasure-map-arrow-009.reading.q4",
+            "expansion.20261028.primary3.treasure-map-arrow-009.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.robot-battery-box-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "机器人社的电池盒",
+        "summary": "机器人社的电池盒，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.robot-battery-box-009",
+          "family": "reading_choice",
+          "label": "机器人社的电池盒",
+          "candidateSHA256": "cd40b2c83f28764feeca9eab4c411ceedca0342681d81d954f96b695b44495a1",
+          "authorCheckSHA256": "b258e47bf88b7e2f13aa2416bfdb6ead8c3a0772c93be84151d08bfd395ef458",
+          "sourceGroupIds": [
+            "original.primary4-book-bus-call#primary4.robot-battery-box-009.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b009；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Robot Battery Box 009\n\nThe robot club has a box for used batteries. A red sticker means a battery is empty. A blue sticker means it still has some power. Before the lesson, Noah finds a battery with no sticker. He does not guess. He gives it to the teacher to check. The teacher tests it and puts a blue sticker on it. Pupils never mix old and new batteries in one robot. At the end, empty batteries go into a special collection container. They do not go into the classroom paper bin."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.robot-battery-box-009.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does a red sticker mean?",
+            "material": "Robot Battery Box 009\n\nThe robot club has a box for used batteries. A red sticker means a battery is empty. A blue sticker means it still has some power. Before the lesson, Noah finds a battery with no sticker. He does not guess. He gives it to the teacher to check. The teacher tests it and puts a blue sticker on it. Pupils never mix old and new batteries in one robot. At the end, empty batteries go into a special collection container. They do not go into the classroom paper bin.",
+            "explanation": "A红签电池没电；B新旧非红签含义；C与机器人颜色无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The battery is empty."
+              },
+              {
+                "id": "o1",
+                "text": "The battery is new."
+              },
+              {
+                "id": "o2",
+                "text": "The robot is red."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.robot-battery-box-009.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Noah do with the unmarked battery?",
+            "material": "Robot Battery Box 009\n\nThe robot club has a box for used batteries. A red sticker means a battery is empty. A blue sticker means it still has some power. Before the lesson, Noah finds a battery with no sticker. He does not guess. He gives it to the teacher to check. The teacher tests it and puts a blue sticker on it. Pupils never mix old and new batteries in one robot. At the end, empty batteries go into a special collection container. They do not go into the classroom paper bin.",
+            "explanation": "B不猜而交教师；A废纸桶不许可；C未检测即用非动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Throw it in the paper bin."
+              },
+              {
+                "id": "o1",
+                "text": "Ask the teacher to check it."
+              },
+              {
+                "id": "o2",
+                "text": "Put it in a robot without checking."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.robot-battery-box-009.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What sticker does the teacher add after testing?",
+            "material": "Robot Battery Box 009\n\nThe robot club has a box for used batteries. A red sticker means a battery is empty. A blue sticker means it still has some power. Before the lesson, Noah finds a battery with no sticker. He does not guess. He gives it to the teacher to check. The teacher tests it and puts a blue sticker on it. Pupils never mix old and new batteries in one robot. At the end, empty batteries go into a special collection container. They do not go into the classroom paper bin.",
+            "explanation": "C实测后蓝签；A确有贴签；B非本次结果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No sticker."
+              },
+              {
+                "id": "o1",
+                "text": "A red sticker."
+              },
+              {
+                "id": "o2",
+                "text": "A blue sticker."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.robot-battery-box-009.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which batteries should not be mixed in one robot?",
+            "material": "Robot Battery Box 009\n\nThe robot club has a box for used batteries. A red sticker means a battery is empty. A blue sticker means it still has some power. Before the lesson, Noah finds a battery with no sticker. He does not guess. He gives it to the teacher to check. The teacher tests it and puts a blue sticker on it. Pupils never mix old and new batteries in one robot. At the end, empty batteries go into a special collection container. They do not go into the classroom paper bin.",
+            "explanation": "A明确不混新旧电池；B两个新电池没有被该规则禁止；C同为检测后蓝签不是原文明确禁止的组合，蓝签本身不说明新旧。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Old and new ones."
+              },
+              {
+                "id": "o1",
+                "text": "Two new ones."
+              },
+              {
+                "id": "o2",
+                "text": "Two tested batteries with blue stickers."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.robot-battery-box-009.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where do empty batteries go?",
+            "material": "Robot Battery Box 009\n\nThe robot club has a box for used batteries. A red sticker means a battery is empty. A blue sticker means it still has some power. Before the lesson, Noah finds a battery with no sticker. He does not guess. He gives it to the teacher to check. The teacher tests it and puts a blue sticker on it. Pupils never mix old and new batteries in one robot. At the end, empty batteries go into a special collection container. They do not go into the classroom paper bin.",
+            "explanation": "B专用收集容器；A明禁废纸桶；C沙下无安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In a paper bin."
+              },
+              {
+                "id": "o1",
+                "text": "In a special collection container."
+              },
+              {
+                "id": "o2",
+                "text": "Under the playground sand."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "eaefe701d6e2f793981a1684a26bb1a6c36db31b5a2c7f378d0f74321d4ea7cd",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-book-bus-call#primary4.robot-battery-box-009.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.robot-battery-box-009.reading.q1",
+            "expansion.20261028.primary4.robot-battery-box-009.reading.q2",
+            "expansion.20261028.primary4.robot-battery-box-009.reading.q3",
+            "expansion.20261028.primary4.robot-battery-box-009.reading.q4",
+            "expansion.20261028.primary4.robot-battery-box-009.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-book-bus-call",
+          "sourceContentHash": "5237c2b519c0bea74c51656808b22df9c776e14bf36f397fcbd54a9367ed2198"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.garden-picnic-rain-cover-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "花园聚餐的防雨布",
+        "summary": "花园聚餐的防雨布，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小四历史公开转载的完整文字组：一篇五判断／五独立句五共享词或短语／六中文情境六共享表达，分别绑定，不拼组合。上册正文2012—13与网页2021、下册未署年分开；学校施测与现行难度未认证。原读答F把未提当假的缺陷保留，原创F均明示反证；不添加未印的一次规则。图片/音频缺失任务未恢复。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.garden-picnic-rain-cover-009",
+          "family": "reading_tf",
+          "label": "花园聚餐的防雨布",
+          "candidateSHA256": "9a6a9f4235b41c16dbf77d953813927dc4f35e75fd51526ec07b7101113fdba8",
+          "authorCheckSHA256": "b258e47bf88b7e2f13aa2416bfdb6ead8c3a0772c93be84151d08bfd395ef458",
+          "sourceGroupIds": [
+            "original.primary4-fruit-shop-tf#primary4.garden-picnic-rain-cover-009.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b009；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Garden Picnic Rain Cover 009\n\nThe class plans to eat lunch in the garden. Rain is possible, so the caretaker puts a cover over two tables. One corner hangs too low. Water gathers there. A pupil wants to push it up with a chair. The caretaker asks everyone to stand back and uses a long pole to empty the water safely. Then he raises the corner and checks the ropes. We eat in the hall while he works. After lunch, the tables are dry, but we do not move back because the meal is over."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.garden-picnic-rain-cover-009.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The caretaker covers two garden tables.",
+            "material": "Garden Picnic Rain Cover 009\n\nThe class plans to eat lunch in the garden. Rain is possible, so the caretaker puts a cover over two tables. One corner hangs too low. Water gathers there. A pupil wants to push it up with a chair. The caretaker asks everyone to stand back and uses a long pole to empty the water safely. Then he raises the corner and checks the ropes. We eat in the hall while he works. After lunch, the tables are dry, but we do not move back because the meal is over.",
+            "explanation": "A正确：cover over two tables；B否认数量和准备。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.garden-picnic-rain-cover-009.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Water gathers at a low corner of the cover.",
+            "material": "Garden Picnic Rain Cover 009\n\nThe class plans to eat lunch in the garden. Rain is possible, so the caretaker puts a cover over two tables. One corner hangs too low. Water gathers there. A pupil wants to push it up with a chair. The caretaker asks everyone to stand back and uses a long pole to empty the water safely. Then he raises the corner and checks the ropes. We eat in the hall while he works. After lunch, the tables are dry, but we do not move back because the meal is over.",
+            "explanation": "A正确：corner too low，water gathers there；B否认问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.garden-picnic-rain-cover-009.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The pupil uses a chair to push the cover up.",
+            "material": "Garden Picnic Rain Cover 009\n\nThe class plans to eat lunch in the garden. Rain is possible, so the caretaker puts a cover over two tables. One corner hangs too low. Water gathers there. A pupil wants to push it up with a chair. The caretaker asks everyone to stand back and uses a long pole to empty the water safely. Then he raises the corner and checks the ropes. We eat in the hall while he works. After lunch, the tables are dry, but we do not move back because the meal is over.",
+            "explanation": "B正确：只是想法，管理员让退开并用长杆处理；A把未采纳想法当执行。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.garden-picnic-rain-cover-009.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class eats in the garden while the caretaker works.",
+            "material": "Garden Picnic Rain Cover 009\n\nThe class plans to eat lunch in the garden. Rain is possible, so the caretaker puts a cover over two tables. One corner hangs too low. Water gathers there. A pupil wants to push it up with a chair. The caretaker asks everyone to stand back and uses a long pole to empty the water safely. Then he raises the corner and checks the ropes. We eat in the hall while he works. After lunch, the tables are dry, but we do not move back because the meal is over.",
+            "explanation": "B正确：吃在hall；A把原计划当临时实际安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.garden-picnic-rain-cover-009.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class stays in the hall until the meal is over.",
+            "material": "Garden Picnic Rain Cover 009\n\nThe class plans to eat lunch in the garden. Rain is possible, so the caretaker puts a cover over two tables. One corner hangs too low. Water gathers there. A pupil wants to push it up with a chair. The caretaker asks everyone to stand back and uses a long pole to empty the water safely. Then he raises the corner and checks the ropes. We eat in the hall while he works. After lunch, the tables are dry, but we do not move back because the meal is over.",
+            "explanation": "A正确：午餐在厅完成，之后不搬回；B与完成进餐地点冲突。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "31364459ca7097bcdcee5f099fc1ec95ea51fa3aa8b5af85f989cef52fb34b25",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-fruit-shop-tf#primary4.garden-picnic-rain-cover-009.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.garden-picnic-rain-cover-009.reading.q1",
+            "expansion.20261028.primary4.garden-picnic-rain-cover-009.reading.q2",
+            "expansion.20261028.primary4.garden-picnic-rain-cover-009.reading.q3",
+            "expansion.20261028.primary4.garden-picnic-rain-cover-009.reading.q4",
+            "expansion.20261028.primary4.garden-picnic-rain-cover-009.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-fruit-shop-tf",
+          "sourceContentHash": "e5aea54fd4e4c721453aaafdcc6ac21130d1baf871f067d4132a01e471e39993"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.market-cup-reuse-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "市集茶杯的回收循环",
+        "summary": "市集茶杯的回收循环，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.dongcheng2025.fourcards",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照2024-2025学年北京区卷公开原版任务；题面身份已核，发布方非原考试机构，原键/事实与学生难度仍分别待独立验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.market-cup-reuse-009",
+          "family": "reading_tf",
+          "label": "市集茶杯的回收循环",
+          "candidateSHA256": "1a09d4ed1e4ab06b723076ff8bf8ae70531204ef040aa6148e3883a2c0fe0466",
+          "authorCheckSHA256": "b258e47bf88b7e2f13aa2416bfdb6ead8c3a0772c93be84151d08bfd395ef458",
+          "sourceGroupIds": [
+            "original.primary5-four-club-cards-tf#primary5.market-cup-reuse-009.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b009；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Market Cup Reuse 009\n\nAt the school market, the tea stall used washable cups. Visitors paid ten yuan for tea and another five yuan as a cup deposit. The five yuan was returned when the cup came back. A sign explained the two amounts separately. At first, the return tray stood behind the stall and was hard to find. Some visitors left cups on benches. The organisers moved the tray beside the main exit and added an arrow sign. More cups came back after that, but the team did not say the sign alone caused the change. A volunteer had also begun collecting cups from tables. The final report described both changes."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.market-cup-reuse-009.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Visitors paid a total of fifteen yuan at first for tea and a cup deposit.",
+            "material": "Market Cup Reuse 009\n\nAt the school market, the tea stall used washable cups. Visitors paid ten yuan for tea and another five yuan as a cup deposit. The five yuan was returned when the cup came back. A sign explained the two amounts separately. At first, the return tray stood behind the stall and was hard to find. Some visitors left cups on benches. The organisers moved the tray beside the main exit and added an arrow sign. More cups came back after that, but the team did not say the sign alone caused the change. A volunteer had also begun collecting cups from tables. The final report described both changes.",
+            "explanation": "A正确：茶十加押金五，共十五；B否认明确金额组合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.market-cup-reuse-009.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The cup deposit was kept even when a visitor returned the cup.",
+            "material": "Market Cup Reuse 009\n\nAt the school market, the tea stall used washable cups. Visitors paid ten yuan for tea and another five yuan as a cup deposit. The five yuan was returned when the cup came back. A sign explained the two amounts separately. At first, the return tray stood behind the stall and was hard to find. Some visitors left cups on benches. The organisers moved the tray beside the main exit and added an arrow sign. More cups came back after that, but the team did not say the sign alone caused the change. A volunteer had also begun collecting cups from tables. The final report described both changes.",
+            "explanation": "B正确：杯回押金返；A将可退押金当永久收费。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.market-cup-reuse-009.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The first return tray was easy for all visitors to see.",
+            "material": "Market Cup Reuse 009\n\nAt the school market, the tea stall used washable cups. Visitors paid ten yuan for tea and another five yuan as a cup deposit. The five yuan was returned when the cup came back. A sign explained the two amounts separately. At first, the return tray stood behind the stall and was hard to find. Some visitors left cups on benches. The organisers moved the tray beside the main exit and added an arrow sign. More cups came back after that, but the team did not say the sign alone caused the change. A volunteer had also begun collecting cups from tables. The final report described both changes.",
+            "explanation": "B正确：behind stall hard to find；A夸为所有人易见。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.market-cup-reuse-009.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The tray was moved beside the main exit.",
+            "material": "Market Cup Reuse 009\n\nAt the school market, the tea stall used washable cups. Visitors paid ten yuan for tea and another five yuan as a cup deposit. The five yuan was returned when the cup came back. A sign explained the two amounts separately. At first, the return tray stood behind the stall and was hard to find. Some visitors left cups on benches. The organisers moved the tray beside the main exit and added an arrow sign. More cups came back after that, but the team did not say the sign alone caused the change. A volunteer had also begun collecting cups from tables. The final report described both changes.",
+            "explanation": "A正确：move beside main exit；B否认位置改进。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.market-cup-reuse-009.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The report recognised more than one possible reason for increased returns.",
+            "material": "Market Cup Reuse 009\n\nAt the school market, the tea stall used washable cups. Visitors paid ten yuan for tea and another five yuan as a cup deposit. The five yuan was returned when the cup came back. A sign explained the two amounts separately. At first, the return tray stood behind the stall and was hard to find. Some visitors left cups on benches. The organisers moved the tray beside the main exit and added an arrow sign. More cups came back after that, but the team did not say the sign alone caused the change. A volunteer had also begun collecting cups from tables. The final report described both changes.",
+            "explanation": "A正确：箭头和志愿者收桌杯同时改变，报告两者；B与审慎说明相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "d44f30fd5f9859f9ca24dbaad657edaf33e606a88e999adf367104350af7be3c",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-four-club-cards-tf#primary5.market-cup-reuse-009.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.market-cup-reuse-009.reading.q1",
+            "expansion.20261028.primary5.market-cup-reuse-009.reading.q2",
+            "expansion.20261028.primary5.market-cup-reuse-009.reading.q3",
+            "expansion.20261028.primary5.market-cup-reuse-009.reading.q4",
+            "expansion.20261028.primary5.market-cup-reuse-009.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-four-club-cards-tf",
+          "sourceContentHash": "deec4eacce2111387e3dcf6fe049981e6ddfed77715d6df9fd944beb49bf2b92"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.walking-tour-route-note-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "老街步行导览的替代路线",
+        "summary": "老街步行导览的替代路线，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.dongcheng2025.closedmixed",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照已核北京区卷公开转载的相应完整具体模式：一短文五判断／四完整信息卡五判断／两共享句空加三道三选，分别绑定，不截成单一子组。源原键非独立gold，东城两型尚无原键；节日日期等事实不沿用。原创虚构，独立教研、目标学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.walking-tour-route-note-009",
+          "family": "reading_choice",
+          "label": "老街步行导览的替代路线",
+          "candidateSHA256": "5baba330c90aa0eebacd9e59cec234fa36414d2e6d3f9bdc4a5275b65daf8066",
+          "authorCheckSHA256": "b258e47bf88b7e2f13aa2416bfdb6ead8c3a0772c93be84151d08bfd395ef458",
+          "sourceGroupIds": [
+            "original.primary5-message-walk-mixed#primary5.walking-tour-route-note-009.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b009；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Walking Tour Route Note 009\n\nMessage for families joining Saturday’s old-street walk:\nThe narrow lane beside the clock shop is closed for building work. Our meeting point remains the library steps at 10:00. The guide will lead the group along River Road instead. The walk is still one hour long, but it now ends at the bridge, not at the market square. There are no public toilets on River Road, so use the library toilets before we leave. Children must stay with an adult. Bring a hat and water; the riverside has little shade. If heavy rain is forecast on Friday evening, we will send a cancellation message. A cloudy sky alone does not cancel the walk."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.walking-tour-route-note-009.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where should families meet?",
+            "material": "Walking Tour Route Note 009\n\nMessage for families joining Saturday’s old-street walk:\nThe narrow lane beside the clock shop is closed for building work. Our meeting point remains the library steps at 10:00. The guide will lead the group along River Road instead. The walk is still one hour long, but it now ends at the bridge, not at the market square. There are no public toilets on River Road, so use the library toilets before we leave. Children must stay with an adult. Bring a hat and water; the riverside has little shade. If heavy rain is forecast on Friday evening, we will send a cancellation message. A cloudy sky alone does not cancel the walk.",
+            "explanation": "B集合点仍图书馆台阶；A原终点、D新终点不作起点；C钟店非集合点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At the market square."
+              },
+              {
+                "id": "o1",
+                "text": "On the library steps."
+              },
+              {
+                "id": "o2",
+                "text": "Inside the clock shop."
+              },
+              {
+                "id": "o3",
+                "text": "At the bridge."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.walking-tour-route-note-009.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the route changing?",
+            "material": "Walking Tour Route Note 009\n\nMessage for families joining Saturday’s old-street walk:\nThe narrow lane beside the clock shop is closed for building work. Our meeting point remains the library steps at 10:00. The guide will lead the group along River Road instead. The walk is still one hour long, but it now ends at the bridge, not at the market square. There are no public toilets on River Road, so use the library toilets before we leave. Children must stay with an adult. Bring a hat and water; the riverside has little shade. If heavy rain is forecast on Friday evening, we will send a cancellation message. A cloudy sky alone does not cancel the walk.",
+            "explanation": "C窄巷施工关闭；A桥仍终点；B图书馆仍可用厕；D时长未增。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The bridge has disappeared."
+              },
+              {
+                "id": "o1",
+                "text": "The library is closed."
+              },
+              {
+                "id": "o2",
+                "text": "The narrow lane has building work."
+              },
+              {
+                "id": "o3",
+                "text": "Families have asked for a longer walk."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.walking-tour-route-note-009.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where will the walk now finish?",
+            "material": "Walking Tour Route Note 009\n\nMessage for families joining Saturday’s old-street walk:\nThe narrow lane beside the clock shop is closed for building work. Our meeting point remains the library steps at 10:00. The guide will lead the group along River Road instead. The walk is still one hour long, but it now ends at the bridge, not at the market square. There are no public toilets on River Road, so use the library toilets before we leave. Children must stay with an adult. Bring a hat and water; the riverside has little shade. If heavy rain is forecast on Friday evening, we will send a cancellation message. A cloudy sky alone does not cancel the walk.",
+            "explanation": "A新终点bridge；B原终点取消；C馆内台、D厕所非终点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At the bridge."
+              },
+              {
+                "id": "o1",
+                "text": "At the market square."
+              },
+              {
+                "id": "o2",
+                "text": "At the library desk."
+              },
+              {
+                "id": "o3",
+                "text": "Inside a public toilet."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.walking-tour-route-note-009.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why should families use the library toilets first?",
+            "material": "Walking Tour Route Note 009\n\nMessage for families joining Saturday’s old-street walk:\nThe narrow lane beside the clock shop is closed for building work. Our meeting point remains the library steps at 10:00. The guide will lead the group along River Road instead. The walk is still one hour long, but it now ends at the bridge, not at the market square. There are no public toilets on River Road, so use the library toilets before we leave. Children must stay with an adult. Bring a hat and water; the riverside has little shade. If heavy rain is forecast on Friday evening, we will send a cancellation message. A cloudy sky alone does not cancel the walk.",
+            "explanation": "D替代路无公厕；A售厕票、C颜色均无据；B仍一小时非整日。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The guide sells toilet tickets."
+              },
+              {
+                "id": "o1",
+                "text": "The walk lasts all day."
+              },
+              {
+                "id": "o2",
+                "text": "The market toilets are too colourful."
+              },
+              {
+                "id": "o3",
+                "text": "There are no public toilets along River Road."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.walking-tour-route-note-009.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which weather condition may lead to cancellation?",
+            "material": "Walking Tour Route Note 009\n\nMessage for families joining Saturday’s old-street walk:\nThe narrow lane beside the clock shop is closed for building work. Our meeting point remains the library steps at 10:00. The guide will lead the group along River Road instead. The walk is still one hour long, but it now ends at the bridge, not at the market square. There are no public toilets on River Road, so use the library toilets before we leave. Children must stay with an adult. Bring a hat and water; the riverside has little shade. If heavy rain is forecast on Friday evening, we will send a cancellation message. A cloudy sky alone does not cancel the walk.",
+            "explanation": "B周五预报暴雨才发取消消息；A云明确不够；C晴天、D凉风非条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Any cloud."
+              },
+              {
+                "id": "o1",
+                "text": "Heavy rain forecast."
+              },
+              {
+                "id": "o2",
+                "text": "A sunny morning."
+              },
+              {
+                "id": "o3",
+                "text": "A cool breeze."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "346955e813218aefeb4e106dc6e6d3b44c41e7ff82d853ae043f27536c44c14e",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-message-walk-mixed#primary5.walking-tour-route-note-009.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.walking-tour-route-note-009.reading.q1",
+            "expansion.20261028.primary5.walking-tour-route-note-009.reading.q2",
+            "expansion.20261028.primary5.walking-tour-route-note-009.reading.q3",
+            "expansion.20261028.primary5.walking-tour-route-note-009.reading.q4",
+            "expansion.20261028.primary5.walking-tour-route-note-009.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-message-walk-mixed",
+          "sourceContentHash": "a2c156a9dbaa50b2cd52d023337d6cbf97c9b2f99995cb3224befeee34240702"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.useful-words-classification-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "学习工具与信息词的分类",
+        "summary": "学习工具与信息词的分类，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.word_category_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.dianjiang2026.spring.categories5",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照自署2026春期小六英语检测试题公开原预览第2页第五节，整节五组三选。地区只见网站标题，原校与实际施测未知；原答案PDF未取，参考键来自公开文字层且不当gold。另一个情境节5B在公开原预览也有字距/拼写异常，未将其当可靠五情境补件。三词辨类原创组合及逐项依据为本稿作者自审，独立教研/学生/商用/生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.useful-words-classification-009",
+          "family": "word_category_choice",
+          "label": "学习工具与信息词的分类",
+          "candidateSHA256": "53ac58e1464d9aae7d4a9b44d25d77044208b1103a2f026daa62e63f5dbd80e3",
+          "authorCheckSHA256": "b258e47bf88b7e2f13aa2416bfdb6ead8c3a0772c93be84151d08bfd395ef458",
+          "sourceGroupIds": [
+            "original.primary6-categories5-b#primary6.useful-words-classification-009.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b009；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Useful Words Classification 009\n\nChoose the word that fits the precise description. Each question has one correct answer. Think about the word’s meaning in the stated setting."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.useful-words-classification-009.reading.q1",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word names a record showing what was paid for a purchase?",
+            "material": "Useful Words Classification 009\n\nChoose the word that fits the precise description. Each question has one correct answer. Think about the word’s meaning in the stated setting.",
+            "explanation": "A receipt收据记录购买付款；B forecast预测，C recipe食谱，均非付款记录。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Receipt."
+              },
+              {
+                "id": "o1",
+                "text": "Forecast."
+              },
+              {
+                "id": "o2",
+                "text": "Recipe."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.useful-words-classification-009.reading.q2",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word names a person trained to care for books and help readers find them?",
+            "material": "Useful Words Classification 009\n\nChoose the word that fits the precise description. Each question has one correct answer. Think about the word’s meaning in the stated setting.",
+            "explanation": "B librarian图书管理员；A机械师修机器；C飞行员操纵飞机。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Mechanic."
+              },
+              {
+                "id": "o1",
+                "text": "Librarian."
+              },
+              {
+                "id": "o2",
+                "text": "Pilot."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.useful-words-classification-009.reading.q3",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word describes something that can be used again many times?",
+            "material": "Useful Words Classification 009\n\nChoose the word that fits the precise description. Each question has one correct answer. Think about the word’s meaning in the stated setting.",
+            "explanation": "C reusable可重复使用；A missing丢失，B silent无声均不表示可重复用。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Missing."
+              },
+              {
+                "id": "o1",
+                "text": "Silent."
+              },
+              {
+                "id": "o2",
+                "text": "Reusable."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.useful-words-classification-009.reading.q4",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word names information that tells how to do a task?",
+            "material": "Useful Words Classification 009\n\nChoose the word that fits the precise description. Each question has one correct answer. Think about the word’s meaning in the stated setting.",
+            "explanation": "A instructions操作说明；B decorations装饰，C destinations目的地不提供做事步骤。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Instructions."
+              },
+              {
+                "id": "o1",
+                "text": "Decorations."
+              },
+              {
+                "id": "o2",
+                "text": "Destinations."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.useful-words-classification-009.reading.q5",
+            "goalId": "original.word_category_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word describes a route that avoids an obstacle by going another way?",
+            "material": "Useful Words Classification 009\n\nChoose the word that fits the precise description. Each question has one correct answer. Think about the word’s meaning in the stated setting.",
+            "explanation": "B detour绕行路线；A收据和C日记均非绕开障碍的路线。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A receipt."
+              },
+              {
+                "id": "o1",
+                "text": "A detour."
+              },
+              {
+                "id": "o2",
+                "text": "A diary."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "64b7197e42739bbf1a163440a830bf85d3cb6fd26e069142fbc1a71576969401",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-categories5-b#primary6.useful-words-classification-009.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.useful-words-classification-009.reading.q1",
+            "expansion.20261028.primary6.useful-words-classification-009.reading.q2",
+            "expansion.20261028.primary6.useful-words-classification-009.reading.q3",
+            "expansion.20261028.primary6.useful-words-classification-009.reading.q4",
+            "expansion.20261028.primary6.useful-words-classification-009.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-categories5-b",
+          "sourceContentHash": "17733f251ed0929f75c3c68bdfbc37400104918e0b59b8bd2845ad48707cac5b"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.family-recipe-record-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "把外婆的食谱写下来",
+        "summary": "把外婆的食谱写下来，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.family-recipe-record-009",
+          "family": "reading_tf",
+          "label": "把外婆的食谱写下来",
+          "candidateSHA256": "5df6839af0981e30c4c8d9f2140a4168bbd7be77b1fd80c3d6d6e3cd11ac01d6",
+          "authorCheckSHA256": "b258e47bf88b7e2f13aa2416bfdb6ead8c3a0772c93be84151d08bfd395ef458",
+          "sourceGroupIds": [
+            "original.primary6-bakery-letter-tf#primary6.family-recipe-record-009.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b009；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Family Recipe Record 009\n\nFor a family project, I asked Grandma how she made her soup. She usually judged amounts by looking, so her first instructions said \"a little salt\" and \"enough water.\" I wrote them down, then realised my cousin could not follow them confidently. We cooked a second pot together and measured the ingredients before adding them. The written recipe became clearer, but Grandma warned that vegetables could contain different amounts of water.\nWe added a note telling readers to check the soup near the end and adjust it with an adult’s help. I also recorded that Grandma sometimes used beans when pumpkins were unavailable. We kept that as an alternative, not as an ingredient to add to every pot. Our final page showed one tested version and explained where choices were still needed."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.family-recipe-record-009.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Grandma’s first instructions gave an exact measurement for every ingredient.",
+            "material": "Family Recipe Record 009\n\nFor a family project, I asked Grandma how she made her soup. She usually judged amounts by looking, so her first instructions said \"a little salt\" and \"enough water.\" I wrote them down, then realised my cousin could not follow them confidently. We cooked a second pot together and measured the ingredients before adding them. The written recipe became clearer, but Grandma warned that vegetables could contain different amounts of water.\nWe added a note telling readers to check the soup near the end and adjust it with an adult’s help. I also recorded that Grandma sometimes used beans when pumpkins were unavailable. We kept that as an alternative, not as an ingredient to add to every pot. Our final page showed one tested version and explained where choices were still needed.",
+            "explanation": "B正确：a little与enough非精确量；A把原先模糊说明说成全精确。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.family-recipe-record-009.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer measured ingredients while cooking a second pot with Grandma.",
+            "material": "Family Recipe Record 009\n\nFor a family project, I asked Grandma how she made her soup. She usually judged amounts by looking, so her first instructions said \"a little salt\" and \"enough water.\" I wrote them down, then realised my cousin could not follow them confidently. We cooked a second pot together and measured the ingredients before adding them. The written recipe became clearer, but Grandma warned that vegetables could contain different amounts of water.\nWe added a note telling readers to check the soup near the end and adjust it with an adult’s help. I also recorded that Grandma sometimes used beans when pumpkins were unavailable. We kept that as an alternative, not as an ingredient to add to every pot. Our final page showed one tested version and explained where choices were still needed.",
+            "explanation": "A正确：second pot together并测量；B否认改进过程。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.family-recipe-record-009.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The clearer recipe removed every need for judgement.",
+            "material": "Family Recipe Record 009\n\nFor a family project, I asked Grandma how she made her soup. She usually judged amounts by looking, so her first instructions said \"a little salt\" and \"enough water.\" I wrote them down, then realised my cousin could not follow them confidently. We cooked a second pot together and measured the ingredients before adding them. The written recipe became clearer, but Grandma warned that vegetables could contain different amounts of water.\nWe added a note telling readers to check the soup near the end and adjust it with an adult’s help. I also recorded that Grandma sometimes used beans when pumpkins were unavailable. We kept that as an alternative, not as an ingredient to add to every pot. Our final page showed one tested version and explained where choices were still needed.",
+            "explanation": "B正确：蔬菜水量不同仍需末尾检查；A把更清楚夸为无需判断。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.family-recipe-record-009.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Beans were recorded as an alternative when pumpkins were unavailable.",
+            "material": "Family Recipe Record 009\n\nFor a family project, I asked Grandma how she made her soup. She usually judged amounts by looking, so her first instructions said \"a little salt\" and \"enough water.\" I wrote them down, then realised my cousin could not follow them confidently. We cooked a second pot together and measured the ingredients before adding them. The written recipe became clearer, but Grandma warned that vegetables could contain different amounts of water.\nWe added a note telling readers to check the soup near the end and adjust it with an adult’s help. I also recorded that Grandma sometimes used beans when pumpkins were unavailable. We kept that as an alternative, not as an ingredient to add to every pot. Our final page showed one tested version and explained where choices were still needed.",
+            "explanation": "A正确：缺南瓜时豆类替代；B否认替代条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.family-recipe-record-009.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The final recipe required beans and pumpkins in every pot.",
+            "material": "Family Recipe Record 009\n\nFor a family project, I asked Grandma how she made her soup. She usually judged amounts by looking, so her first instructions said \"a little salt\" and \"enough water.\" I wrote them down, then realised my cousin could not follow them confidently. We cooked a second pot together and measured the ingredients before adding them. The written recipe became clearer, but Grandma warned that vegetables could contain different amounts of water.\nWe added a note telling readers to check the soup near the end and adjust it with an adult’s help. I also recorded that Grandma sometimes used beans when pumpkins were unavailable. We kept that as an alternative, not as an ingredient to add to every pot. Our final page showed one tested version and explained where choices were still needed.",
+            "explanation": "B正确：替代并非每锅都加；A把可选关系变成必加两者。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "0e7e94a2ccc3e65be4833957d9ed70fdf0a919a704c8a959333fafd1c3091191",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-bakery-letter-tf#primary6.family-recipe-record-009.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.family-recipe-record-009.reading.q1",
+            "expansion.20261028.primary6.family-recipe-record-009.reading.q2",
+            "expansion.20261028.primary6.family-recipe-record-009.reading.q3",
+            "expansion.20261028.primary6.family-recipe-record-009.reading.q4",
+            "expansion.20261028.primary6.family-recipe-record-009.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-bakery-letter-tf",
+          "sourceContentHash": "e6db6f0f813ef882c13784f454aeffa61d10fad9edf6884f6a8b839b2e7ca67a"
+        }
+      ]
+    }
+  ]
+}

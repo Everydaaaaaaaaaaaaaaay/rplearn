@@ -1,0 +1,1616 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b001",
+  "createdAt": "2026-10-28T15:49:48.128186+00:00",
+  "sourceSHA256": "cb31223d055ac0c82f2350801785fc114c30b0edc5555b920d473c1c6940f8c5",
+  "reviewSHA256": "52d9c78ef1272a678c77feb97a5928421e108f2fc7a7ede23b17d93ca28fa2e9",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.class-door-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "教室门口的五次交流",
+        "summary": "教室门口的五次交流，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 5,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整具体形式参照公开来源；原校/年级难度未独立认证，作者自审不等独立教师或学生验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.class-door-001",
+          "family": "function_choice",
+          "label": "教室门口的五次交流",
+          "candidateSHA256": "2c41ee0f53d4d4a80221cd9d9a7f3cb4da4adc56162b1b19cab30790e3a74a8c",
+          "authorCheckSHA256": "fb06fc038447bbc6310ad5e7a4918007703c3f47f26a81e0e4acfbb9911bbbca",
+          "sourceGroupIds": [
+            "original.primary2-five-small-functions#primary2.class-door-001.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b001；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Class Door 001\n\nAt the classroom door, children talk to their teacher. Choose a useful reply for each little talk."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.class-door-001.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Teacher: Good morning, Lily. Lily: ____",
+            "material": "Class Door 001\n\nAt the classroom door, children talk to their teacher. Choose a useful reply for each little talk.",
+            "explanation": "B回应早安；A晚安用于睡前，C告别。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Good night."
+              },
+              {
+                "id": "o1",
+                "text": "Good morning."
+              },
+              {
+                "id": "o2",
+                "text": "Goodbye."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.class-door-001.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Lily has wet hands. The class towel is beside the door. Lily wants to dry her hands. Lily: ____",
+            "material": "Class Door 001\n\nAt the classroom door, children talk to their teacher. Choose a useful reply for each little talk.",
+            "explanation": "A向教师请求使用眼前毛巾，符合湿手需擦干的具体需要；B开饭盒不能擦手；C借尺不能解决湿手问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "May I use the towel?"
+              },
+              {
+                "id": "o1",
+                "text": "May I open my lunch box?"
+              },
+              {
+                "id": "o2",
+                "text": "May I borrow a ruler?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.class-door-001.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Teacher: Please close the door. Lily: ____",
+            "material": "Class Door 001\n\nAt the classroom door, children talk to their teacher. Choose a useful reply for each little talk.",
+            "explanation": "C接受关门指令；A称呼爸爸，B说动物，均不合此交流。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Hello, Dad."
+              },
+              {
+                "id": "o1",
+                "text": "It is a dog."
+              },
+              {
+                "id": "o2",
+                "text": "OK."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.class-door-001.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Teacher: How are you today? Lily: ____",
+            "material": "Class Door 001\n\nAt the classroom door, children talk to their teacher. Choose a useful reply for each little talk.",
+            "explanation": "A回答身体状态并致谢；B物品名称，C地点，不答问候。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I am fine, thank you."
+              },
+              {
+                "id": "o1",
+                "text": "It is a pencil."
+              },
+              {
+                "id": "o2",
+                "text": "Under the desk."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.class-door-001.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Lily: Goodbye, teacher. Teacher: ____",
+            "material": "Class Door 001\n\nAt the classroom door, children talk to their teacher. Choose a useful reply for each little talk.",
+            "explanation": "B回应告别；A说喜好，C下指令，都不是相应告别。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I like milk."
+              },
+              {
+                "id": "o1",
+                "text": "Goodbye, Lily."
+              },
+              {
+                "id": "o2",
+                "text": "Open your book."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "fe29cda22ad2da67428d9c92717a2f47ac6d58af675cf9f0d7781c1d9ce716ff",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-five-small-functions#primary2.class-door-001.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.class-door-001.reading.q1",
+            "expansion.20261028.primary2.class-door-001.reading.q2",
+            "expansion.20261028.primary2.class-door-001.reading.q3",
+            "expansion.20261028.primary2.class-door-001.reading.q4",
+            "expansion.20261028.primary2.class-door-001.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-five-small-functions",
+          "sourceContentHash": "8aec4fa4f4448a713602248fecd4163e48c664bfbe02fe1de910736fd964f324"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.snack-table-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "点心桌旁的礼貌用语",
+        "summary": "点心桌旁的礼貌用语，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 5,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.snack-table-001",
+          "family": "function_choice",
+          "label": "点心桌旁的礼貌用语",
+          "candidateSHA256": "3b81e9f254d5352dbdc332909e640658600970995bf980b763f853722ac89604",
+          "authorCheckSHA256": "fb06fc038447bbc6310ad5e7a4918007703c3f47f26a81e0e4acfbb9911bbbca",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.snack-table-001.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b001；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Snack Table 001\n\nSam and Mia are at the snack table. Read each short talk and choose the best reply."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.snack-table-001.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mia: Would you like some milk? Sam: ____",
+            "material": "Snack Table 001\n\nSam and Mia are at the snack table. Read each short talk and choose the best reply.",
+            "explanation": "A接受牛奶邀请；B自我介绍，C说颜色，均未回应邀请。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, please."
+              },
+              {
+                "id": "o1",
+                "text": "I am Sam."
+              },
+              {
+                "id": "o2",
+                "text": "It is blue."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.snack-table-001.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Sam: Here is your apple. Mia: ____",
+            "material": "Snack Table 001\n\nSam and Mia are at the snack table. Read each short talk and choose the best reply.",
+            "explanation": "B收到苹果后致谢；A说能力，C早晨问候，均不表达感谢。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I can jump."
+              },
+              {
+                "id": "o1",
+                "text": "Thank you."
+              },
+              {
+                "id": "o2",
+                "text": "Good morning."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.snack-table-001.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mia: Thank you, Sam. Sam: ____",
+            "material": "Snack Table 001\n\nSam and Mia are at the snack table. Read each short talk and choose the best reply.",
+            "explanation": "C回应感谢；A说杯子，B说年龄，都不合礼貌应答。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is a cup."
+              },
+              {
+                "id": "o1",
+                "text": "I am eight."
+              },
+              {
+                "id": "o2",
+                "text": "You are welcome."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.snack-table-001.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Sam: Can I have a spoon, please? Mia: ____",
+            "material": "Snack Table 001\n\nSam and Mia are at the snack table. Read each short talk and choose the best reply.",
+            "explanation": "A递给勺子；B喜好，C天气，均不回应索取。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Here you are."
+              },
+              {
+                "id": "o1",
+                "text": "I like cats."
+              },
+              {
+                "id": "o2",
+                "text": "It is sunny."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.snack-table-001.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mia: Do you like bananas? Sam: ____",
+            "material": "Snack Table 001\n\nSam and Mia are at the snack table. Read each short talk and choose the best reply.",
+            "explanation": "B回答是否喜欢；A位置，C名字，均不答一般疑问句。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Under the chair."
+              },
+              {
+                "id": "o1",
+                "text": "Yes, I do."
+              },
+              {
+                "id": "o2",
+                "text": "My name is Sam."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "8d1e5762060fc70ef9ae796e98f0bd77526644ae9605dc70d54285a20dec9b47",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.snack-table-001.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.snack-table-001.reading.q1",
+            "expansion.20261028.primary2.snack-table-001.reading.q2",
+            "expansion.20261028.primary2.snack-table-001.reading.q3",
+            "expansion.20261028.primary2.snack-table-001.reading.q4",
+            "expansion.20261028.primary2.snack-table-001.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.rainy-play-box-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "雨天的玩具盒",
+        "summary": "雨天的玩具盒，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.rainy-play-box-001",
+          "family": "reading_tf",
+          "label": "雨天的玩具盒",
+          "candidateSHA256": "5c25d4f2bd7f14fca3ef80a4e3a6970a196c5a2dd416c775ca4c302cc0024e01",
+          "authorCheckSHA256": "fb06fc038447bbc6310ad5e7a4918007703c3f47f26a81e0e4acfbb9911bbbca",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.rainy-play-box-001.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b001；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Rainy Play Box 001\n\nIt is raining. Ben and May play at home. Ben has a toy boat. It is yellow. May has two red cars. The cars are in a small box. Ben puts his boat on the table. They do not play in the garden."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.rainy-play-box-001.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Ben and May play at home.",
+            "material": "Rainy Play Box 001\n\nIt is raining. Ben and May play at home. Ben has a toy boat. It is yellow. May has two red cars. The cars are in a small box. Ben puts his boat on the table. They do not play in the garden.",
+            "explanation": "A正确：原文在家玩；B否定与at home相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.rainy-play-box-001.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The toy boat is red.",
+            "material": "Rainy Play Box 001\n\nIt is raining. Ben and May play at home. Ben has a toy boat. It is yellow. May has two red cars. The cars are in a small box. Ben puts his boat on the table. They do not play in the garden.",
+            "explanation": "B正确：船是yellow；A把汽车的红色用到船上。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.rainy-play-box-001.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "May has two cars.",
+            "material": "Rainy Play Box 001\n\nIt is raining. Ben and May play at home. Ben has a toy boat. It is yellow. May has two red cars. The cars are in a small box. Ben puts his boat on the table. They do not play in the garden.",
+            "explanation": "A正确：two red cars明确数量；B与two矛盾。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.rainy-play-box-001.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The boat is in the box.",
+            "material": "Rainy Play Box 001\n\nIt is raining. Ben and May play at home. Ben has a toy boat. It is yellow. May has two red cars. The cars are in a small box. Ben puts his boat on the table. They do not play in the garden.",
+            "explanation": "B正确：船在桌上，盒内是汽车；A混淆位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.rainy-play-box-001.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Ben and May play in the garden.",
+            "material": "Rainy Play Box 001\n\nIt is raining. Ben and May play at home. Ben has a toy boat. It is yellow. May has two red cars. The cars are in a small box. Ben puts his boat on the table. They do not play in the garden.",
+            "explanation": "B正确：末句说不在花园玩；A与否定句相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "2694830c37a1289de2b289753b58cda22045bf0c3ecf3cea8ee8e9f4f0562d05",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.rainy-play-box-001.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.rainy-play-box-001.reading.q1",
+            "expansion.20261028.primary3.rainy-play-box-001.reading.q2",
+            "expansion.20261028.primary3.rainy-play-box-001.reading.q3",
+            "expansion.20261028.primary3.rainy-play-box-001.reading.q4",
+            "expansion.20261028.primary3.rainy-play-box-001.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.lunch-bag-note-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "午餐袋上的小纸条",
+        "summary": "午餐袋上的小纸条，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.lunch-bag-note-001",
+          "family": "reading_tf",
+          "label": "午餐袋上的小纸条",
+          "candidateSHA256": "1bdec3e54369b299ad04b5592dd3f05d13d3d728b93b5934f60f94ddee404391",
+          "authorCheckSHA256": "fb06fc038447bbc6310ad5e7a4918007703c3f47f26a81e0e4acfbb9911bbbca",
+          "sourceGroupIds": [
+            "original.primary3-picnic-bags-tf#primary3.lunch-bag-note-001.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b001；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lunch Bag Note 001\n\nMy name is Lucy. This is my lunch bag. It is green. There are two eggs and a sandwich in it. My water bottle is not in the bag. It is on my desk. I eat lunch with Tom. Tom has an orange, but I do not."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.lunch-bag-note-001.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Lucy has a green lunch bag.",
+            "material": "Lunch Bag Note 001\n\nMy name is Lucy. This is my lunch bag. It is green. There are two eggs and a sandwich in it. My water bottle is not in the bag. It is on my desk. I eat lunch with Tom. Tom has an orange, but I do not.",
+            "explanation": "A正确：午餐袋是green；B与颜色信息矛盾。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.lunch-bag-note-001.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "There are three eggs in the bag.",
+            "material": "Lunch Bag Note 001\n\nMy name is Lucy. This is my lunch bag. It is green. There are two eggs and a sandwich in it. My water bottle is not in the bag. It is on my desk. I eat lunch with Tom. Tom has an orange, but I do not.",
+            "explanation": "B正确：原文two eggs；A把二误读为三。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.lunch-bag-note-001.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The water bottle is on the desk.",
+            "material": "Lunch Bag Note 001\n\nMy name is Lucy. This is my lunch bag. It is green. There are two eggs and a sandwich in it. My water bottle is not in the bag. It is on my desk. I eat lunch with Tom. Tom has an orange, but I do not.",
+            "explanation": "A正确：水瓶在desk上；B与明确位置不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.lunch-bag-note-001.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Lucy eats lunch alone.",
+            "material": "Lunch Bag Note 001\n\nMy name is Lucy. This is my lunch bag. It is green. There are two eggs and a sandwich in it. My water bottle is not in the bag. It is on my desk. I eat lunch with Tom. Tom has an orange, but I do not.",
+            "explanation": "B正确：她与Tom一起吃；A的alone与with Tom相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.lunch-bag-note-001.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Tom has an orange.",
+            "material": "Lunch Bag Note 001\n\nMy name is Lucy. This is my lunch bag. It is green. There are two eggs and a sandwich in it. My water bottle is not in the bag. It is on my desk. I eat lunch with Tom. Tom has an orange, but I do not.",
+            "explanation": "A正确：末句说Tom has an orange；B将Lucy没有橙子误套给Tom。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "d65c851ea4e834b7d0427e78fdcc9e20a2d526ff94529a559433be87b7b90ace",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-picnic-bags-tf#primary3.lunch-bag-note-001.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.lunch-bag-note-001.reading.q1",
+            "expansion.20261028.primary3.lunch-bag-note-001.reading.q2",
+            "expansion.20261028.primary3.lunch-bag-note-001.reading.q3",
+            "expansion.20261028.primary3.lunch-bag-note-001.reading.q4",
+            "expansion.20261028.primary3.lunch-bag-note-001.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-picnic-bags-tf",
+          "sourceContentHash": "67f56ff4e81139dae433ca5cda205636f40e4e50b4d446edbb81ed2fff56a980"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.library-chair-note-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "图书角的新座位",
+        "summary": "图书角的新座位，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.library-chair-note-001",
+          "family": "reading_choice",
+          "label": "图书角的新座位",
+          "candidateSHA256": "01e73bf450225e9ada9b153f64a61a9dff436cd017ba9c2834baeca3d0a3865d",
+          "authorCheckSHA256": "fb06fc038447bbc6310ad5e7a4918007703c3f47f26a81e0e4acfbb9911bbbca",
+          "sourceGroupIds": [
+            "original.primary4-book-bus-call#primary4.library-chair-note-001.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b001；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Library Chair Note 001\n\nOur class has a small book corner. There are six chairs beside the window. On Monday, one chair has a broken leg. Mr Lee puts a red card on it. The card says, \"Please do not sit here.\" After lunch, he takes the chair to the school office. A worker will fix it. The children can use the other five chairs. They leave the space near the door empty so everyone can walk into the corner easily."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.library-chair-note-001.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where are the chairs?",
+            "material": "Library Chair Note 001\n\nOur class has a small book corner. There are six chairs beside the window. On Monday, one chair has a broken leg. Mr Lee puts a red card on it. The card says, \"Please do not sit here.\" After lunch, he takes the chair to the school office. A worker will fix it. The children can use the other five chairs. They leave the space near the door empty so everyone can walk into the corner easily.",
+            "explanation": "A原文beside the window；B把维修地点误作椅子原位置；C无校外信息。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Beside the window."
+              },
+              {
+                "id": "o1",
+                "text": "Behind the office."
+              },
+              {
+                "id": "o2",
+                "text": "Outside the school."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.library-chair-note-001.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is wrong with one chair?",
+            "material": "Library Chair Note 001\n\nOur class has a small book corner. There are six chairs beside the window. On Monday, one chair has a broken leg. Mr Lee puts a red card on it. The card says, \"Please do not sit here.\" After lunch, he takes the chair to the school office. A worker will fix it. The children can use the other five chairs. They leave the space near the door empty so everyone can walk into the corner easily.",
+            "explanation": "B对应broken leg；A椅上有红卡；C没有尺寸问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It has no card."
+              },
+              {
+                "id": "o1",
+                "text": "One leg is broken."
+              },
+              {
+                "id": "o2",
+                "text": "It is too small."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.library-chair-note-001.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the red card ask children to do?",
+            "material": "Library Chair Note 001\n\nOur class has a small book corner. There are six chairs beside the window. On Monday, one chair has a broken leg. Mr Lee puts a red card on it. The card says, \"Please do not sit here.\" After lunch, he takes the chair to the school office. A worker will fix it. The children can use the other five chairs. They leave the space near the door empty so everyone can walk into the corner easily.",
+            "explanation": "C对应Please do not sit here；A没要求刷漆；B没要求带回家。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Paint the chair."
+              },
+              {
+                "id": "o1",
+                "text": "Take the chair home."
+              },
+              {
+                "id": "o2",
+                "text": "Not sit on the chair."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.library-chair-note-001.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How many chairs can the children use now?",
+            "material": "Library Chair Note 001\n\nOur class has a small book corner. There are six chairs beside the window. On Monday, one chair has a broken leg. Mr Lee puts a red card on it. The card says, \"Please do not sit here.\" After lunch, he takes the chair to the school office. A worker will fix it. The children can use the other five chairs. They leave the space near the door empty so everyone can walk into the corner easily.",
+            "explanation": "A其余五把可以用；B包含坏椅；C把坏椅数量当可用数量。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Five."
+              },
+              {
+                "id": "o1",
+                "text": "Six."
+              },
+              {
+                "id": "o2",
+                "text": "One."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.library-chair-note-001.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the space near the door empty?",
+            "material": "Library Chair Note 001\n\nOur class has a small book corner. There are six chairs beside the window. On Monday, one chair has a broken leg. Mr Lee puts a red card on it. The card says, \"Please do not sit here.\" After lunch, he takes the chair to the school office. A worker will fix it. The children can use the other five chairs. They leave the space near the door empty so everyone can walk into the corner easily.",
+            "explanation": "B末句说明方便进入；A与卡片无关；C没有放食物计划。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To hide the red card."
+              },
+              {
+                "id": "o1",
+                "text": "To let people walk in easily."
+              },
+              {
+                "id": "o2",
+                "text": "To put food there."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "fc90488f4e9817bbb8cf60f23a00f7bd651b24d089db2c2b31c0fd17972d5082",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-book-bus-call#primary4.library-chair-note-001.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.library-chair-note-001.reading.q1",
+            "expansion.20261028.primary4.library-chair-note-001.reading.q2",
+            "expansion.20261028.primary4.library-chair-note-001.reading.q3",
+            "expansion.20261028.primary4.library-chair-note-001.reading.q4",
+            "expansion.20261028.primary4.library-chair-note-001.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-book-bus-call",
+          "sourceContentHash": "5237c2b519c0bea74c51656808b22df9c776e14bf36f397fcbd54a9367ed2198"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.market-leaf-sign-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "菜摊上的叶子标牌",
+        "summary": "菜摊上的叶子标牌，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小四历史公开转载的完整文字组：一篇五判断／五独立句五共享词或短语／六中文情境六共享表达，分别绑定，不拼组合。上册正文2012—13与网页2021、下册未署年分开；学校施测与现行难度未认证。原读答F把未提当假的缺陷保留，原创F均明示反证；不添加未印的一次规则。图片/音频缺失任务未恢复。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.market-leaf-sign-001",
+          "family": "reading_tf",
+          "label": "菜摊上的叶子标牌",
+          "candidateSHA256": "64e5b674c47e04e4cc889e85e01ceb53ea984eaad4d32065f079d788180cf480",
+          "authorCheckSHA256": "fb06fc038447bbc6310ad5e7a4918007703c3f47f26a81e0e4acfbb9911bbbca",
+          "sourceGroupIds": [
+            "original.primary4-fruit-shop-tf#primary4.market-leaf-sign-001.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b001；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Market Leaf Sign 001\n\nOn Saturday, Nora helps her grandpa at his vegetable stall. Grandpa grows carrots and beans. A green leaf sign stands beside the beans. It says, \"Pick this morning.\" Nora changes it to \"Picked this morning\" because the beans are already in baskets. A customer asks for two bags of beans. Nora weighs them and puts them in paper bags. At noon, she takes the sign inside because the wind is getting strong."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.market-leaf-sign-001.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Nora helps at the stall on Sunday.",
+            "material": "Market Leaf Sign 001\n\nOn Saturday, Nora helps her grandpa at his vegetable stall. Grandpa grows carrots and beans. A green leaf sign stands beside the beans. It says, \"Pick this morning.\" Nora changes it to \"Picked this morning\" because the beans are already in baskets. A customer asks for two bags of beans. Nora weighs them and puts them in paper bags. At noon, she takes the sign inside because the wind is getting strong.",
+            "explanation": "B正确：时间是Saturday；A把星期六改为星期日。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.market-leaf-sign-001.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The green sign is beside the beans.",
+            "material": "Market Leaf Sign 001\n\nOn Saturday, Nora helps her grandpa at his vegetable stall. Grandpa grows carrots and beans. A green leaf sign stands beside the beans. It says, \"Pick this morning.\" Nora changes it to \"Picked this morning\" because the beans are already in baskets. A customer asks for two bags of beans. Nora weighs them and puts them in paper bags. At noon, she takes the sign inside because the wind is getting strong.",
+            "explanation": "A正确：原文明确标牌在豆旁；B与beside the beans相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.market-leaf-sign-001.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Nora changes the sign because the beans are already picked.",
+            "material": "Market Leaf Sign 001\n\nOn Saturday, Nora helps her grandpa at his vegetable stall. Grandpa grows carrots and beans. A green leaf sign stands beside the beans. It says, \"Pick this morning.\" Nora changes it to \"Picked this morning\" because the beans are already in baskets. A customer asks for two bags of beans. Nora weighs them and puts them in paper bags. At noon, she takes the sign inside because the wind is getting strong.",
+            "explanation": "A正确：豆已在篮里，所以改为Picked；B否认原文给出的原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.market-leaf-sign-001.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The customer wants two bags of carrots.",
+            "material": "Market Leaf Sign 001\n\nOn Saturday, Nora helps her grandpa at his vegetable stall. Grandpa grows carrots and beans. A green leaf sign stands beside the beans. It says, \"Pick this morning.\" Nora changes it to \"Picked this morning\" because the beans are already in baskets. A customer asks for two bags of beans. Nora weighs them and puts them in paper bags. At noon, she takes the sign inside because the wind is getting strong.",
+            "explanation": "B正确：顾客要两袋beans；A把豆换成胡萝卜。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.market-leaf-sign-001.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Nora takes the sign inside because of the wind.",
+            "material": "Market Leaf Sign 001\n\nOn Saturday, Nora helps her grandpa at his vegetable stall. Grandpa grows carrots and beans. A green leaf sign stands beside the beans. It says, \"Pick this morning.\" Nora changes it to \"Picked this morning\" because the beans are already in baskets. A customer asks for two bags of beans. Nora weighs them and puts them in paper bags. At noon, she takes the sign inside because the wind is getting strong.",
+            "explanation": "A正确：末句说明风变大；B不符合明确原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "9a9f15bb2da628c4130e5ec32329e916e213a1f143d326f3c5fd331131f9c9e8",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-fruit-shop-tf#primary4.market-leaf-sign-001.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.market-leaf-sign-001.reading.q1",
+            "expansion.20261028.primary4.market-leaf-sign-001.reading.q2",
+            "expansion.20261028.primary4.market-leaf-sign-001.reading.q3",
+            "expansion.20261028.primary4.market-leaf-sign-001.reading.q4",
+            "expansion.20261028.primary4.market-leaf-sign-001.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-fruit-shop-tf",
+          "sourceContentHash": "e5aea54fd4e4c721453aaafdcc6ac21130d1baf871f067d4132a01e471e39993"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.school-map-stickers-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "校园地图上的贴纸",
+        "summary": "校园地图上的贴纸，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.guilinxiangshan2025.notice5",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照桂林象山标签公开转载的完整第十三节五题三选通知阅读，正文仅明确2024—2025下学期小学五年级，地区来自网页标题；原校/施测未认证。材料以字段文字取得，未取得原扫描布局，不当表格网格。原公布键前三项与题面冲突，保留而不沿用；本稿逐项核对地点/日历/时长/规则。历史首稿为模拟来源的其他阅读配置，家族三稿不等三份同配置真卷。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.school-map-stickers-001",
+          "family": "reading_choice",
+          "label": "校园地图上的贴纸",
+          "candidateSHA256": "deed13d3214a83e64af2892330610bfc8bbb223544056c3c25fc075c69942848",
+          "authorCheckSHA256": "fb06fc038447bbc6310ad5e7a4918007703c3f47f26a81e0e4acfbb9911bbbca",
+          "sourceGroupIds": [
+            "original.primary5-toy-repair-notice#primary5.school-map-stickers-001.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b001；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "School Map Stickers 001\n\nThe school office gives the new pupils a map. On the map, a blue star shows the library and a green circle shows the garden. The sports hall has no sticker because it is closed for repairs this week. On Tuesday, Amir notices that the library star is on the wrong building. He walks to the office instead of moving it himself. A teacher checks the map, thanks him and prints corrected copies. Pupils who already have a map can exchange it at the office before Friday. There is no charge. The teacher also puts a correct map on the noticeboard near the main gate."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.school-map-stickers-001.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the green circle show?",
+            "material": "School Map Stickers 001\n\nThe school office gives the new pupils a map. On the map, a blue star shows the library and a green circle shows the garden. The sports hall has no sticker because it is closed for repairs this week. On Tuesday, Amir notices that the library star is on the wrong building. He walks to the office instead of moving it himself. A teacher checks the map, thanks him and prints corrected copies. Pupils who already have a map can exchange it at the office before Friday. There is no charge. The teacher also puts a correct map on the noticeboard near the main gate.",
+            "explanation": "B绿圈表示garden；A图书馆用蓝星；C体育馆没贴纸；D大门是公告板位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The library."
+              },
+              {
+                "id": "o1",
+                "text": "The garden."
+              },
+              {
+                "id": "o2",
+                "text": "The sports hall."
+              },
+              {
+                "id": "o3",
+                "text": "The main gate."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.school-map-stickers-001.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the sports hall have no sticker?",
+            "material": "School Map Stickers 001\n\nThe school office gives the new pupils a map. On the map, a blue star shows the library and a green circle shows the garden. The sports hall has no sticker because it is closed for repairs this week. On Tuesday, Amir notices that the library star is on the wrong building. He walks to the office instead of moving it himself. A teacher checks the map, thanks him and prints corrected copies. Pupils who already have a map can exchange it at the office before Friday. There is no charge. The teacher also puts a correct map on the noticeboard near the main gate.",
+            "explanation": "C原文关闭维修；A没说校外；B不是新图书馆；D没有名称丢失。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is outside the school."
+              },
+              {
+                "id": "o1",
+                "text": "It is a new library."
+              },
+              {
+                "id": "o2",
+                "text": "It is closed for repairs."
+              },
+              {
+                "id": "o3",
+                "text": "It has lost its name."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.school-map-stickers-001.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Amir do when he finds the mistake?",
+            "material": "School Map Stickers 001\n\nThe school office gives the new pupils a map. On the map, a blue star shows the library and a green circle shows the garden. The sports hall has no sticker because it is closed for repairs this week. On Tuesday, Amir notices that the library star is on the wrong building. He walks to the office instead of moving it himself. A teacher checks the map, thanks him and prints corrected copies. Pupils who already have a map can exchange it at the office before Friday. There is no charge. The teacher also puts a correct map on the noticeboard near the main gate.",
+            "explanation": "A他走到办公室反映；B并未自行挪贴纸；C没有卖地图；D周二即行动。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He tells the office."
+              },
+              {
+                "id": "o1",
+                "text": "He removes every sticker."
+              },
+              {
+                "id": "o2",
+                "text": "He sells the map."
+              },
+              {
+                "id": "o3",
+                "text": "He waits until Friday."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.school-map-stickers-001.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How can pupils get a corrected copy?",
+            "material": "School Map Stickers 001\n\nThe school office gives the new pupils a map. On the map, a blue star shows the library and a green circle shows the garden. The sports hall has no sticker because it is closed for repairs this week. On Tuesday, Amir notices that the library star is on the wrong building. He walks to the office instead of moving it himself. A teacher checks the map, thanks him and prints corrected copies. Pupils who already have a map can exchange it at the office before Friday. There is no charge. The teacher also puts a correct map on the noticeboard near the main gate.",
+            "explanation": "D周五前在办公室免费换；A购买地点错误；B人物与时间无依据；C收费与no charge相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Buy it at the gate."
+              },
+              {
+                "id": "o1",
+                "text": "Ask the sports coach next week."
+              },
+              {
+                "id": "o2",
+                "text": "Print it at home for a fee."
+              },
+              {
+                "id": "o3",
+                "text": "Exchange the old map at the office."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.school-map-stickers-001.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where can pupils see a correct map without exchanging a copy?",
+            "material": "School Map Stickers 001\n\nThe school office gives the new pupils a map. On the map, a blue star shows the library and a green circle shows the garden. The sports hall has no sticker because it is closed for repairs this week. On Tuesday, Amir notices that the library star is on the wrong building. He walks to the office instead of moving it himself. A teacher checks the map, thanks him and prints corrected copies. Pupils who already have a map can exchange it at the office before Friday. There is no charge. The teacher also puts a correct map on the noticeboard near the main gate.",
+            "explanation": "B末句明确公告板在大门附近；A关闭场馆内无此信息；C公交站、D花园墙均未提。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Inside the closed sports hall."
+              },
+              {
+                "id": "o1",
+                "text": "On the noticeboard near the main gate."
+              },
+              {
+                "id": "o2",
+                "text": "At the bus stop."
+              },
+              {
+                "id": "o3",
+                "text": "On the garden wall."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "0ac9ab268d70ea8bbf6f87ed923d48548110360118e68d2b26962833f457e870",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-toy-repair-notice#primary5.school-map-stickers-001.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.school-map-stickers-001.reading.q1",
+            "expansion.20261028.primary5.school-map-stickers-001.reading.q2",
+            "expansion.20261028.primary5.school-map-stickers-001.reading.q3",
+            "expansion.20261028.primary5.school-map-stickers-001.reading.q4",
+            "expansion.20261028.primary5.school-map-stickers-001.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-toy-repair-notice",
+          "sourceContentHash": "9537bd4e99ad6e90e52d80b0fd9ac0b966c8b2a2a32616adfbde84b4869e53fa"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.repair-cafe-labels-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "修理活动中的物品标签",
+        "summary": "修理活动中的物品标签，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.prose5x4",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-28",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.repair-cafe-labels-001",
+          "family": "reading_choice",
+          "label": "修理活动中的物品标签",
+          "candidateSHA256": "a08a52d7e7b7bd225c0b2658d2e7711a717df9f93dc0f2694ae1925f2d2de54c",
+          "authorCheckSHA256": "fb06fc038447bbc6310ad5e7a4918007703c3f47f26a81e0e4acfbb9911bbbca",
+          "sourceGroupIds": [
+            "original.primary6-reading5joint-models#primary6.repair-cafe-labels-001.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b001；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Repair Cafe Labels 001\n\nThe community centre held a repair afternoon for children. Families brought small toys, lamps and bags. Volunteers did not promise to repair everything, but they explained what they could safely check. Each item received a paper label with its owner’s first name and a number. The label stayed with the item while it moved between tables.\n\nElla brought a toy train that stopped on curves. A volunteer found that one wheel was loose. Ella watched him tighten it and then tested the train on a short track. Her brother wanted to remove its label as soon as it moved again. Ella kept it on until the collection desk checked their number. Two other children had brought the same kind of train, so the label still mattered after the repair.\n\nAt the end, families could take home a simple care card. It explained how to keep items clean and when to ask an adult for help. The organiser counted repaired items and items that needed a specialist separately. She said that learning the limit of a safe repair was also a useful result."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.repair-cafe-labels-001.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why were labels attached to the items?",
+            "material": "Repair Cafe Labels 001\n\nThe community centre held a repair afternoon for children. Families brought small toys, lamps and bags. Volunteers did not promise to repair everything, but they explained what they could safely check. Each item received a paper label with its owner’s first name and a number. The label stayed with the item while it moved between tables.\n\nElla brought a toy train that stopped on curves. A volunteer found that one wheel was loose. Ella watched him tighten it and then tested the train on a short track. Her brother wanted to remove its label as soon as it moved again. Ella kept it on until the collection desk checked their number. Two other children had brought the same kind of train, so the label still mattered after the repair.\n\nAt the end, families could take home a simple care card. It explained how to keep items clean and when to ask an adult for help. The organiser counted repaired items and items that needed a specialist separately. She said that learning the limit of a safe repair was also a useful result.",
+            "explanation": "B标签含主人名和编号用于识别；A不改变外观；C没有价格；D不用于遮损坏。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To make all toys look new."
+              },
+              {
+                "id": "o1",
+                "text": "To identify the owners and items."
+              },
+              {
+                "id": "o2",
+                "text": "To show the price of a repair."
+              },
+              {
+                "id": "o3",
+                "text": "To hide damaged parts."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.repair-cafe-labels-001.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What made Ella’s train stop on curves?",
+            "material": "Repair Cafe Labels 001\n\nThe community centre held a repair afternoon for children. Families brought small toys, lamps and bags. Volunteers did not promise to repair everything, but they explained what they could safely check. Each item received a paper label with its owner’s first name and a number. The label stayed with the item while it moved between tables.\n\nElla brought a toy train that stopped on curves. A volunteer found that one wheel was loose. Ella watched him tighten it and then tested the train on a short track. Her brother wanted to remove its label as soon as it moved again. Ella kept it on until the collection desk checked their number. Two other children had brought the same kind of train, so the label still mattered after the repair.\n\nAt the end, families could take home a simple care card. It explained how to keep items clean and when to ask an adult for help. The organiser counted repaired items and items that needed a specialist separately. She said that learning the limit of a safe repair was also a useful result.",
+            "explanation": "C志愿者找到松动轮子；A灯不是火车问题；B护理卡不影响运行；D标签编号非故障原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "An empty lamp."
+              },
+              {
+                "id": "o1",
+                "text": "A missing care card."
+              },
+              {
+                "id": "o2",
+                "text": "A loose wheel."
+              },
+              {
+                "id": "o3",
+                "text": "A number on its label."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.repair-cafe-labels-001.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did Ella keep the label after testing?",
+            "material": "Repair Cafe Labels 001\n\nThe community centre held a repair afternoon for children. Families brought small toys, lamps and bags. Volunteers did not promise to repair everything, but they explained what they could safely check. Each item received a paper label with its owner’s first name and a number. The label stayed with the item while it moved between tables.\n\nElla brought a toy train that stopped on curves. A volunteer found that one wheel was loose. Ella watched him tighten it and then tested the train on a short track. Her brother wanted to remove its label as soon as it moved again. Ella kept it on until the collection desk checked their number. Two other children had brought the same kind of train, so the label still mattered after the repair.\n\nAt the end, families could take home a simple care card. It explained how to keep items clean and when to ask an adult for help. The organiser counted repaired items and items that needed a specialist separately. She said that learning the limit of a safe repair was also a useful result.",
+            "explanation": "A同款火车存在，领取仍需核对；B无出售；C已找到并拧紧轮子；D无轨道归属信息。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Other children had similar trains."
+              },
+              {
+                "id": "o1",
+                "text": "She wanted to sell the train."
+              },
+              {
+                "id": "o2",
+                "text": "The volunteer could not find a wheel."
+              },
+              {
+                "id": "o3",
+                "text": "The track belonged to her brother."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.repair-cafe-labels-001.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What was the care card for?",
+            "material": "Repair Cafe Labels 001\n\nThe community centre held a repair afternoon for children. Families brought small toys, lamps and bags. Volunteers did not promise to repair everything, but they explained what they could safely check. Each item received a paper label with its owner’s first name and a number. The label stayed with the item while it moved between tables.\n\nElla brought a toy train that stopped on curves. A volunteer found that one wheel was loose. Ella watched him tighten it and then tested the train on a short track. Her brother wanted to remove its label as soon as it moved again. Ella kept it on until the collection desk checked their number. Two other children had brought the same kind of train, so the label still mattered after the repair.\n\nAt the end, families could take home a simple care card. It explained how to keep items clean and when to ask an adult for help. The organiser counted repaired items and items that needed a specialist separately. She said that learning the limit of a safe repair was also a useful result.",
+            "explanation": "D说明清洁及何时找成人帮助；A车票、B订灯、C选名字均非卡片内容。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Booking a train ticket."
+              },
+              {
+                "id": "o1",
+                "text": "Ordering replacement lamps."
+              },
+              {
+                "id": "o2",
+                "text": "Choosing a volunteer’s name."
+              },
+              {
+                "id": "o3",
+                "text": "Giving cleaning and help-seeking advice."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.repair-cafe-labels-001.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the organiser count specialist cases separately?",
+            "material": "Repair Cafe Labels 001\n\nThe community centre held a repair afternoon for children. Families brought small toys, lamps and bags. Volunteers did not promise to repair everything, but they explained what they could safely check. Each item received a paper label with its owner’s first name and a number. The label stayed with the item while it moved between tables.\n\nElla brought a toy train that stopped on curves. A volunteer found that one wheel was loose. Ella watched him tighten it and then tested the train on a short track. Her brother wanted to remove its label as soon as it moved again. Ella kept it on until the collection desk checked their number. Two other children had brought the same kind of train, so the label still mattered after the repair.\n\nAt the end, families could take home a simple care card. It explained how to keep items clean and when to ask an adult for help. The organiser counted repaired items and items that needed a specialist separately. She said that learning the limit of a safe repair was also a useful result.",
+            "explanation": "B强调安全维修有界限；A分别记录避免全修好错觉；C没有扣留物品；D未用价签替换。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To pretend every item was repaired."
+              },
+              {
+                "id": "o1",
+                "text": "To recognise that some repairs needed other help."
+              },
+              {
+                "id": "o2",
+                "text": "To prevent families from taking items home."
+              },
+              {
+                "id": "o3",
+                "text": "To replace the paper labels with prices."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "91a3630cdb62bf5a8593190d751c5f3b15584c39a45a9479b25e58262344c578",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-reading5joint-models#primary6.repair-cafe-labels-001.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.repair-cafe-labels-001.reading.q1",
+            "expansion.20261028.primary6.repair-cafe-labels-001.reading.q2",
+            "expansion.20261028.primary6.repair-cafe-labels-001.reading.q3",
+            "expansion.20261028.primary6.repair-cafe-labels-001.reading.q4",
+            "expansion.20261028.primary6.repair-cafe-labels-001.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-reading5joint-models",
+          "sourceContentHash": "5aa5fe33548304917f000925a15ce9829eb3f5adede5cee6522684b292e75d4a"
+        }
+      ]
+    }
+  ]
+}
