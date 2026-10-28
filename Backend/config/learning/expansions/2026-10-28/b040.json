@@ -1,0 +1,2514 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b040",
+  "createdAt": "2026-10-29T01:20:56.529968+08:00",
+  "sourceSHA256": "07bb60c6b30a520ec6704bf8ef3923540d64a112fc5a9de584f15c8a80b3d1e8",
+  "reviewSHA256": "2cb68a8a146b4fa67b962ea551a2168a5b5dfc51875abd085efeff44d992d50c",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.board-game-turn-rules-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "桌游轮到谁的时候",
+        "summary": "桌游轮到谁的时候，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.board-game-turn-rules-024",
+          "family": "function_choice",
+          "label": "桌游轮到谁的时候",
+          "candidateSHA256": "8ee4beede7e69dca34551087324d0f829a3a7e3d9d496d9a8aa94187b3f414c5",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.board-game-turn-rules-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Board Game Turn Rules 024\n\nOur board game uses one die. Roll it in the small tray. Move only your own piece. If the die falls on the floor, roll again in the tray. Wait until the next player finishes counting. At the end, put pieces in the cloth bag and the die in its little box."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.board-game-turn-rules-024.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend rolls the die across the big table. You say, \"____\"",
+            "material": "Board Game Turn Rules 024\n\nOur board game uses one die. Roll it in the small tray. Move only your own piece. If the die falls on the floor, roll again in the tray. Wait until the next player finishes counting. At the end, put pieces in the cloth bag and the die in its little box.",
+            "explanation": "A骰子小盘内掷；B桌下、C水里非规则位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Roll it in the small tray."
+              },
+              {
+                "id": "o1",
+                "text": "Throw it under the table."
+              },
+              {
+                "id": "o2",
+                "text": "Put it in your water."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.board-game-turn-rules-024.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend moves your piece for their turn. You say, \"____\"",
+            "material": "Board Game Turn Rules 024\n\nOur board game uses one die. Roll it in the small tray. Move only your own piece. If the die falls on the floor, roll again in the tray. Wait until the next player finishes counting. At the end, put pieces in the cloth bag and the die in its little box.",
+            "explanation": "B轮次只动本人棋子；A全动、C带走均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Move every piece."
+              },
+              {
+                "id": "o1",
+                "text": "Move only your own piece."
+              },
+              {
+                "id": "o2",
+                "text": "Take my piece home."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.board-game-turn-rules-024.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The die falls on the floor. Your friend starts counting it. You say, \"____\"",
+            "material": "Board Game Turn Rules 024\n\nOur board game uses one die. Roll it in the small tray. Move only your own piece. If the die falls on the floor, roll again in the tray. Wait until the next player finishes counting. At the end, put pieces in the cloth bag and the die in its little box.",
+            "explanation": "C落地重掷；A取落地数、B藏骰均违规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Keep the floor number."
+              },
+              {
+                "id": "o1",
+                "text": "Hide the die now."
+              },
+              {
+                "id": "o2",
+                "text": "Roll again in the tray."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.board-game-turn-rules-024.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend rolls while the next player is still counting. You say, \"____\"",
+            "material": "Board Game Turn Rules 024\n\nOur board game uses one die. Roll it in the small tray. Move only your own piece. If the die falls on the floor, roll again in the tray. Wait until the next player finishes counting. At the end, put pieces in the cloth bag and the die in its little box.",
+            "explanation": "A等前人计完；B干扰数、C撤盘非解决轮次。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Wait until the counting is finished."
+              },
+              {
+                "id": "o1",
+                "text": "Shout more numbers."
+              },
+              {
+                "id": "o2",
+                "text": "Take away the board."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.board-game-turn-rules-024.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend puts the die in the cloth bag after play. You say, \"____\"",
+            "material": "Board Game Turn Rules 024\n\nOur board game uses one die. Roll it in the small tray. Move only your own piece. If the die falls on the floor, roll again in the tray. Wait until the next player finishes counting. At the end, put pieces in the cloth bag and the die in its little box.",
+            "explanation": "B骰子专盒；A棋子布袋不是小骰盒；C地上非收纳处。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put all pieces in the little die box."
+              },
+              {
+                "id": "o1",
+                "text": "The die goes in its little box."
+              },
+              {
+                "id": "o2",
+                "text": "Leave the die on the floor."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "3d6a33526b542e49145d71f2e0152f0977c7bdca9a6ca1ba9ba933d2735948d8",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.board-game-turn-rules-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.board-game-turn-rules-024.reading.q1",
+            "expansion.20261028.primary2.board-game-turn-rules-024.reading.q2",
+            "expansion.20261028.primary2.board-game-turn-rules-024.reading.q3",
+            "expansion.20261028.primary2.board-game-turn-rules-024.reading.q4",
+            "expansion.20261028.primary2.board-game-turn-rules-024.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.letter-writing-help-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "写一封信需要怎样求助",
+        "summary": "写一封信需要怎样求助，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.letter-writing-help-024",
+          "family": "function_choice",
+          "label": "写一封信需要怎样求助",
+          "candidateSHA256": "0db5bf8fa704a749279d96d84d8a52e3f0cb47abc332a6005b998d112ba60caf",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.letter-writing-help-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Letter Writing Help 024\n\nA child is writing a real letter in class. Choose the sentence that asks for the needed help or information in each situation."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.letter-writing-help-024.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You do not know your aunt’s address. What do you ask Dad?",
+            "material": "Letter Writing Help 024\n\nA child is writing a real letter in class. Choose the sentence that asks for the needed help or information in each situation.",
+            "explanation": "A问寄件所需收件地址；B球位、C信游泳均不获取地址。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "What is Aunt May’s address?"
+              },
+              {
+                "id": "o1",
+                "text": "Where is my red ball?"
+              },
+              {
+                "id": "o2",
+                "text": "Can the letter swim?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.letter-writing-help-024.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your pen has no ink. You want to borrow another. What do you say?",
+            "material": "Letter Writing Help 024\n\nA child is writing a real letter in class. Choose the sentence that asks for the needed help or information in each situation.",
+            "explanation": "B缺墨借笔直接求助；A整桌、C安静偏好不补笔。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Give me the whole desk."
+              },
+              {
+                "id": "o1",
+                "text": "May I borrow a pen, please?"
+              },
+              {
+                "id": "o2",
+                "text": "I like quiet rooms."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.letter-writing-help-024.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You do not know how to spell a word. What do you ask the teacher?",
+            "material": "Letter Writing Help 024\n\nA child is writing a real letter in class. Choose the sentence that asks for the needed help or information in each situation.",
+            "explanation": "C问拼写；A帽暖、B吃信封不解决字词。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Is your hat warm?"
+              },
+              {
+                "id": "o1",
+                "text": "Can I eat this envelope?"
+              },
+              {
+                "id": "o2",
+                "text": "How do I spell this word?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.letter-writing-help-024.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You have finished and want the teacher to check the address. What do you say?",
+            "material": "Letter Writing Help 024\n\nA child is writing a real letter in class. Choose the sentence that asks for the needed help or information in each situation.",
+            "explanation": "A请求核地址；B关窗、C浇花与邮寄核对无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Could you check the address, please?"
+              },
+              {
+                "id": "o1",
+                "text": "Could you close every window?"
+              },
+              {
+                "id": "o2",
+                "text": "Could you water my plant?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.letter-writing-help-024.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your friend gives you a stamp. You want to thank them. What do you say?",
+            "material": "Letter Writing Help 024\n\nA child is writing a real letter in class. Choose the sentence that asks for the needed help or information in each situation.",
+            "explanation": "B就邮票明确感谢；A索更多不感谢；C鞋归属无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "You must give me ten more now."
+              },
+              {
+                "id": "o1",
+                "text": "Thank you for the stamp."
+              },
+              {
+                "id": "o2",
+                "text": "That is not my shoe."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "0d801d0321307d26e9339c7a82cbbbbdf1e8889b986e85eb2379d7b9afcacf68",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.letter-writing-help-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.letter-writing-help-024.reading.q1",
+            "expansion.20261028.primary2.letter-writing-help-024.reading.q2",
+            "expansion.20261028.primary2.letter-writing-help-024.reading.q3",
+            "expansion.20261028.primary2.letter-writing-help-024.reading.q4",
+            "expansion.20261028.primary2.letter-writing-help-024.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.pet-day-ten-sentences-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "宠物日的十段句内信息",
+        "summary": "宠物日的十段句内信息，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3-yancheng2025.sentencechoice10",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照公开转载的盐城标签2025春三年级完整十题三选节；按完整独立句/短对话与原联选位置编写，不冒称全国统一卷型。公开原生文字完整，不等于原校/实际施测/原版视觉认证；原键未取。源歧义保留研究记录，原创另写明确语境，逐项给出依据，不复制问题原键。自有题目与人物均为作者编写，未作独立教研、学生难度/区分度或商用/生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.pet-day-ten-sentences-024",
+          "family": "sentence_choice",
+          "label": "宠物日的十段句内信息",
+          "candidateSHA256": "91967de11a22e5a0fb09f13468c7d02af777d54a31626330e123dafce075d576",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.primary3-commonchoices10-farm#primary3.pet-day-ten-sentences-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "My toy cat ____ a black tail. I made it with paper.",
+            "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it.",
+            "explanation": "B toy cat单数第三人称用has；A have不配单三；C having缺be不能独立谓语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "have"
+              },
+              {
+                "id": "o1",
+                "text": "has"
+              },
+              {
+                "id": "o2",
+                "text": "having"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Is your dog big? No, ____. It is very small.",
+            "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it.",
+            "explanation": "C No后it is not且下句small；A/B肯定与No冲突，B还误复数。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "it is"
+              },
+              {
+                "id": "o1",
+                "text": "they are"
+              },
+              {
+                "id": "o2",
+                "text": "it is not"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Grandma does not ____ the fish at night. She feeds them in the morning.",
+            "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it.",
+            "explanation": "A does not后动词原形；B单三重复变形；C分词不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "feed"
+              },
+              {
+                "id": "o1",
+                "text": "feeds"
+              },
+              {
+                "id": "o2",
+                "text": "feeding"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "These two ____ are sleeping beside their mother dog.",
+            "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it.",
+            "explanation": "B puppies标准复数，辅音y变ies；A单数；C拼写不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "puppy"
+              },
+              {
+                "id": "o1",
+                "text": "puppies"
+              },
+              {
+                "id": "o2",
+                "text": "puppys"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The rabbit is hungry. Let us give ____ some grass.",
+            "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it.",
+            "explanation": "C give it作宾语；A its物主不能独立宾格；B自身反身结构无所需主宾同一。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "its"
+              },
+              {
+                "id": "o1",
+                "text": "itself"
+              },
+              {
+                "id": "o2",
+                "text": "it"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Please show ____ your drawing of the bird. I want to see it.",
+            "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it.",
+            "explanation": "A show me宾格；B my需名词；C I主格不作show宾语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "me"
+              },
+              {
+                "id": "o1",
+                "text": "my"
+              },
+              {
+                "id": "o2",
+                "text": "I"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The bowl is empty. There is not ____ water in it.",
+            "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it.",
+            "explanation": "B not any water正确，water不可数；A many修可数复数；C a不能直接修不可数water。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "many"
+              },
+              {
+                "id": "o1",
+                "text": "any"
+              },
+              {
+                "id": "o2",
+                "text": "a"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "____ is holding the kitten? My uncle is.",
+            "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it.",
+            "explanation": "C My uncle答人物Who；A地点、B时间均不对应。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Where"
+              },
+              {
+                "id": "o1",
+                "text": "When"
+              },
+              {
+                "id": "o2",
+                "text": "Who"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The pet show starts at ten. We arrive ____ nine fifty.",
+            "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it.",
+            "explanation": "A具体时刻at；B on用于日，C in不接此具体钟点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "at"
+              },
+              {
+                "id": "o1",
+                "text": "on"
+              },
+              {
+                "id": "o2",
+                "text": "in"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Please be ____. The little birds are sleeping.",
+            "material": "Pet Day Ten Sentences 024\n\nRead each full pet-day situation and choose the word or reply that completes it.",
+            "explanation": "B小鸟睡需安静；A吵与目的相反；C饥饿不实现不扰鸟的要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "noisy"
+              },
+              {
+                "id": "o1",
+                "text": "quiet"
+              },
+              {
+                "id": "o2",
+                "text": "hungry"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "2a7b7b17ab482a42d5ee15a98816ee901cac25a8e079207fa2828e18152c1fc8",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-commonchoices10-farm#primary3.pet-day-ten-sentences-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q1",
+            "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q2",
+            "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q3",
+            "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q4",
+            "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q5",
+            "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q6",
+            "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q7",
+            "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q8",
+            "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q9",
+            "expansion.20261028.primary3.pet-day-ten-sentences-024.reading.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "original.primary3-commonchoices10-farm",
+          "sourceContentHash": "af6951a0e96953cecabcf62d9348f1e3dac9b194dcb100524bece1f444b20544"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.sports-club-responses-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "运动社里的借用与辨认",
+        "summary": "运动社里的借用与辨认，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.responses",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.sports-club-responses-024",
+          "family": "dialogue_matching",
+          "label": "运动社里的借用与辨认",
+          "candidateSHA256": "4b2886dcda5d11bad3239a02280e93baa88db43259b5cb71e225730b8019db98",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.primary3-name-age-location-responses#primary3.sports-club-responses-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Sports Club Responses 024\n\nMatch the questions with the replies. Use every bank answer once.\nA. Yes, if you bring it back after the game.\nB. No, we need to wash them first.\nC. At the small desk near the entrance.\nD. Because the grass is too wet.\nE. The one marked with your team’s name."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.sports-club-responses-024.reading.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "May I borrow this ball for our game?",
+            "material": "Sports Club Responses 024\n\nMatch the questions with the replies. Use every bank answer once.\nA. Yes, if you bring it back after the game.\nB. No, we need to wash them first.\nC. At the small desk near the entrance.\nD. Because the grass is too wet.\nE. The one marked with your team’s name.",
+            "explanation": "A借球可但赛后归还，答许可；B洗手、C领取点、D草湿原因、E队名辨认不回答借球条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, if you bring it back after the game."
+              },
+              {
+                "id": "o1",
+                "text": "No, we need to wash them first."
+              },
+              {
+                "id": "o2",
+                "text": "At the small desk near the entrance."
+              },
+              {
+                "id": "o3",
+                "text": "Because the grass is too wet."
+              },
+              {
+                "id": "o4",
+                "text": "The one marked with your team’s name."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.sports-club-responses-024.reading.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Can we eat with these dirty hands?",
+            "material": "Sports Club Responses 024\n\nMatch the questions with the replies. Use every bank answer once.\nA. Yes, if you bring it back after the game.\nB. No, we need to wash them first.\nC. At the small desk near the entrance.\nD. Because the grass is too wet.\nE. The one marked with your team’s name.",
+            "explanation": "B先洗不脏手吃；A归球许可、C桌位、D草湿、E队名不答卫生许可。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, if you bring it back after the game."
+              },
+              {
+                "id": "o1",
+                "text": "No, we need to wash them first."
+              },
+              {
+                "id": "o2",
+                "text": "At the small desk near the entrance."
+              },
+              {
+                "id": "o3",
+                "text": "Because the grass is too wet."
+              },
+              {
+                "id": "o4",
+                "text": "The one marked with your team’s name."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.sports-club-responses-024.reading.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where do we collect our score cards?",
+            "material": "Sports Club Responses 024\n\nMatch the questions with the replies. Use every bank answer once.\nA. Yes, if you bring it back after the game.\nB. No, we need to wash them first.\nC. At the small desk near the entrance.\nD. Because the grass is too wet.\nE. The one marked with your team’s name.",
+            "explanation": "C入口附近小桌为领取地点；A/B许可答、D原因、E哪件都不答Where。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, if you bring it back after the game."
+              },
+              {
+                "id": "o1",
+                "text": "No, we need to wash them first."
+              },
+              {
+                "id": "o2",
+                "text": "At the small desk near the entrance."
+              },
+              {
+                "id": "o3",
+                "text": "Because the grass is too wet."
+              },
+              {
+                "id": "o4",
+                "text": "The one marked with your team’s name."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.sports-club-responses-024.reading.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why are we playing in the hall today?",
+            "material": "Sports Club Responses 024\n\nMatch the questions with the replies. Use every bank answer once.\nA. Yes, if you bring it back after the game.\nB. No, we need to wash them first.\nC. At the small desk near the entrance.\nD. Because the grass is too wet.\nE. The one marked with your team’s name.",
+            "explanation": "D草湿解释改室内；A还球、B洗手、C桌位置、E队名标记均非改场原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, if you bring it back after the game."
+              },
+              {
+                "id": "o1",
+                "text": "No, we need to wash them first."
+              },
+              {
+                "id": "o2",
+                "text": "At the small desk near the entrance."
+              },
+              {
+                "id": "o3",
+                "text": "Because the grass is too wet."
+              },
+              {
+                "id": "o4",
+                "text": "The one marked with your team’s name."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary3.sports-club-responses-024.reading.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which bag of cones belongs to our team?",
+            "material": "Sports Club Responses 024\n\nMatch the questions with the replies. Use every bank answer once.\nA. Yes, if you bring it back after the game.\nB. No, we need to wash them first.\nC. At the small desk near the entrance.\nD. Because the grass is too wet.\nE. The one marked with your team’s name.",
+            "explanation": "E本队名袋子答辨认；A归还许可、B洗手、C地点、D草湿不辨袋主。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, if you bring it back after the game."
+              },
+              {
+                "id": "o1",
+                "text": "No, we need to wash them first."
+              },
+              {
+                "id": "o2",
+                "text": "At the small desk near the entrance."
+              },
+              {
+                "id": "o3",
+                "text": "Because the grass is too wet."
+              },
+              {
+                "id": "o4",
+                "text": "The one marked with your team’s name."
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "153adff77dfdbbec1328a551d13c139a28fbeb201db8fc3270b74e40f63d144c",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-name-age-location-responses#primary3.sports-club-responses-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.sports-club-responses-024.reading.q1",
+            "expansion.20261028.primary3.sports-club-responses-024.reading.q2",
+            "expansion.20261028.primary3.sports-club-responses-024.reading.q3",
+            "expansion.20261028.primary3.sports-club-responses-024.reading.q4",
+            "expansion.20261028.primary3.sports-club-responses-024.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-name-age-location-responses",
+          "sourceContentHash": "c830eb727749967be66d98b90c2b40122dd7dfc76ee181211bdf323fd29e76d9"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.winter-walk-bank-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "冬日出发前的衣物词库",
+        "summary": "冬日出发前的衣物词库，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.winter-walk-bank-024",
+          "family": "shared_bank",
+          "label": "冬日出发前的衣物词库",
+          "candidateSHA256": "e6b0c93e8f3a6c67d4bf74067a933bad18d8c3d3eed8c196354e9927cb7a3e4d",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.primary4-school-day-shared-bank#primary4.winter-walk-bank-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Winter Walk Bank 024\n\nChoose from the shared bank. Use each word once. Bank: A. early B. beside C. warm D. gloves E. when\nOur walk starts at nine, but we arrive ____1____ at eight thirty to help. We put the bags ____2____ the bench, not on it. The teacher asks us to wear ____3____ on our hands. They keep our fingers ____4____ in the cold wind. We begin walking ____5____ everyone is ready, not before."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.winter-walk-bank-024.reading.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Winter Walk Bank 024\n\nChoose from the shared bank. Use each word once. Bank: A. early B. beside C. warm D. gloves E. when\nOur walk starts at nine, but we arrive ____1____ at eight thirty to help. We put the bags ____2____ the bench, not on it. The teacher asks us to wear ____3____ on our hands. They keep our fingers ____4____ in the cold wind. We begin walking ____5____ everyone is ready, not before.",
+            "explanation": "A early因8:30早于九点；B beside位置、C warm状态、D gloves物品、E when连接词不表提前到。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "early"
+              },
+              {
+                "id": "o1",
+                "text": "beside"
+              },
+              {
+                "id": "o2",
+                "text": "warm"
+              },
+              {
+                "id": "o3",
+                "text": "gloves"
+              },
+              {
+                "id": "o4",
+                "text": "when"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.winter-walk-bank-024.reading.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Winter Walk Bank 024\n\nChoose from the shared bank. Use each word once. Bank: A. early B. beside C. warm D. gloves E. when\nOur walk starts at nine, but we arrive ____1____ at eight thirty to help. We put the bags ____2____ the bench, not on it. The teacher asks us to wear ____3____ on our hands. They keep our fingers ____4____ in the cold wind. We begin walking ____5____ everyone is ready, not before.",
+            "explanation": "B beside与not on对比表凳旁；A early副词、C warm形容词、D gloves名词、E when时间连接词均不接the bench表此位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "early"
+              },
+              {
+                "id": "o1",
+                "text": "beside"
+              },
+              {
+                "id": "o2",
+                "text": "warm"
+              },
+              {
+                "id": "o3",
+                "text": "gloves"
+              },
+              {
+                "id": "o4",
+                "text": "when"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.winter-walk-bank-024.reading.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Winter Walk Bank 024\n\nChoose from the shared bank. Use each word once. Bank: A. early B. beside C. warm D. gloves E. when\nOur walk starts at nine, but we arrive ____1____ at eight thirty to help. We put the bags ____2____ the bench, not on it. The teacher asks us to wear ____3____ on our hands. They keep our fingers ____4____ in the cold wind. We begin walking ____5____ everyone is ready, not before.",
+            "explanation": "D gloves手套穿手上；A early、B beside、C warm、E when均非手部衣物。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "early"
+              },
+              {
+                "id": "o1",
+                "text": "beside"
+              },
+              {
+                "id": "o2",
+                "text": "warm"
+              },
+              {
+                "id": "o3",
+                "text": "gloves"
+              },
+              {
+                "id": "o4",
+                "text": "when"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary4.winter-walk-bank-024.reading.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Winter Walk Bank 024\n\nChoose from the shared bank. Use each word once. Bank: A. early B. beside C. warm D. gloves E. when\nOur walk starts at nine, but we arrive ____1____ at eight thirty to help. We put the bags ____2____ the bench, not on it. The teacher asks us to wear ____3____ on our hands. They keep our fingers ____4____ in the cold wind. We begin walking ____5____ everyone is ready, not before.",
+            "explanation": "C warm作keep fingers表语对应冷风；A early早、B beside旁、D gloves手套、E when何时均不表手指温暖。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "early"
+              },
+              {
+                "id": "o1",
+                "text": "beside"
+              },
+              {
+                "id": "o2",
+                "text": "warm"
+              },
+              {
+                "id": "o3",
+                "text": "gloves"
+              },
+              {
+                "id": "o4",
+                "text": "when"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.winter-walk-bank-024.reading.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Winter Walk Bank 024\n\nChoose from the shared bank. Use each word once. Bank: A. early B. beside C. warm D. gloves E. when\nOur walk starts at nine, but we arrive ____1____ at eight thirty to help. We put the bags ____2____ the bench, not on it. The teacher asks us to wear ____3____ on our hands. They keep our fingers ____4____ in the cold wind. We begin walking ____5____ everyone is ready, not before.",
+            "explanation": "E when连接everyone ready表出发条件时机；A early、B beside、C warm、D gloves均不能连接完整句表达该关系。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "early"
+              },
+              {
+                "id": "o1",
+                "text": "beside"
+              },
+              {
+                "id": "o2",
+                "text": "warm"
+              },
+              {
+                "id": "o3",
+                "text": "gloves"
+              },
+              {
+                "id": "o4",
+                "text": "when"
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "93aacd4354d15e58f80c31718972ed547ab0dd26ec4165ddd7105412abd05365",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-school-day-shared-bank#primary4.winter-walk-bank-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.winter-walk-bank-024.reading.q1",
+            "expansion.20261028.primary4.winter-walk-bank-024.reading.q2",
+            "expansion.20261028.primary4.winter-walk-bank-024.reading.q3",
+            "expansion.20261028.primary4.winter-walk-bank-024.reading.q4",
+            "expansion.20261028.primary4.winter-walk-bank-024.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-school-day-shared-bank",
+          "sourceContentHash": "f5930d7c5f67553e061fde7ba847cb960afdc1a6bb778a0e147aa6d1c1232eb5"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.paper-building-dialogue-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "纸建筑活动的工具安排",
+        "summary": "纸建筑活动的工具安排，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.repost.qa",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 复用历史已核公开源的完整具体模式，本批没有新增源卷。原校施测、年份或转载身份的既有未知保留；作者稿不等独立教研、学生或商用验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.paper-building-dialogue-024",
+          "family": "dialogue_matching",
+          "label": "纸建筑活动的工具安排",
+          "candidateSHA256": "825aa35d285cab97dd41da44946df2bb947a5fae7f47d7f0b3c9b0a305a7ff2b",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.primary4-questions-school-day#primary4.paper-building-dialogue-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Paper Building Dialogue 024\n\nMatch each question to the reply that fits it best. Use each reply once.\nA. It is waiting on the teacher’s desk.\nB. We need it for measuring the long paper.\nC. After the first group has finished.\nD. Yes, but please keep the pieces together.\nE. The box with the triangle label."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.paper-building-dialogue-024.reading.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where is the extra ruler now?",
+            "material": "Paper Building Dialogue 024\n\nMatch each question to the reply that fits it best. Use each reply once.\nA. It is waiting on the teacher’s desk.\nB. We need it for measuring the long paper.\nC. After the first group has finished.\nD. Yes, but please keep the pieces together.\nE. The box with the triangle label.",
+            "explanation": "A教师桌上回答尺位置；B用途、C时间、D借用条件、E哪盒不答Where尺现位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is waiting on the teacher’s desk."
+              },
+              {
+                "id": "o1",
+                "text": "We need it for measuring the long paper."
+              },
+              {
+                "id": "o2",
+                "text": "After the first group has finished."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, but please keep the pieces together."
+              },
+              {
+                "id": "o4",
+                "text": "The box with the triangle label."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.paper-building-dialogue-024.reading.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why do we need the long ruler?",
+            "material": "Paper Building Dialogue 024\n\nMatch each question to the reply that fits it best. Use each reply once.\nA. It is waiting on the teacher’s desk.\nB. We need it for measuring the long paper.\nC. After the first group has finished.\nD. Yes, but please keep the pieces together.\nE. The box with the triangle label.",
+            "explanation": "B量长纸解释需要长尺；A位置、C时机、D许可、E辨盒均不答Why。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is waiting on the teacher’s desk."
+              },
+              {
+                "id": "o1",
+                "text": "We need it for measuring the long paper."
+              },
+              {
+                "id": "o2",
+                "text": "After the first group has finished."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, but please keep the pieces together."
+              },
+              {
+                "id": "o4",
+                "text": "The box with the triangle label."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.paper-building-dialogue-024.reading.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When can our group use the large table?",
+            "material": "Paper Building Dialogue 024\n\nMatch each question to the reply that fits it best. Use each reply once.\nA. It is waiting on the teacher’s desk.\nB. We need it for measuring the long paper.\nC. After the first group has finished.\nD. Yes, but please keep the pieces together.\nE. The box with the triangle label.",
+            "explanation": "C第一组用完后答时机；A尺位置、B量纸目的、D借物许可、E箱标均不答When。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is waiting on the teacher’s desk."
+              },
+              {
+                "id": "o1",
+                "text": "We need it for measuring the long paper."
+              },
+              {
+                "id": "o2",
+                "text": "After the first group has finished."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, but please keep the pieces together."
+              },
+              {
+                "id": "o4",
+                "text": "The box with the triangle label."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.paper-building-dialogue-024.reading.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "May we borrow the model pieces for a test?",
+            "material": "Paper Building Dialogue 024\n\nMatch each question to the reply that fits it best. Use each reply once.\nA. It is waiting on the teacher’s desk.\nB. We need it for measuring the long paper.\nC. After the first group has finished.\nD. Yes, but please keep the pieces together.\nE. The box with the triangle label.",
+            "explanation": "D可以但各件保持在一起，答借用许可条件；A尺位置、B目的、C桌时机、E箱标签都不答该许可。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is waiting on the teacher’s desk."
+              },
+              {
+                "id": "o1",
+                "text": "We need it for measuring the long paper."
+              },
+              {
+                "id": "o2",
+                "text": "After the first group has finished."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, but please keep the pieces together."
+              },
+              {
+                "id": "o4",
+                "text": "The box with the triangle label."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary4.paper-building-dialogue-024.reading.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which box holds the roof shapes?",
+            "material": "Paper Building Dialogue 024\n\nMatch each question to the reply that fits it best. Use each reply once.\nA. It is waiting on the teacher’s desk.\nB. We need it for measuring the long paper.\nC. After the first group has finished.\nD. Yes, but please keep the pieces together.\nE. The box with the triangle label.",
+            "explanation": "E三角标签盒回答哪盒；A单个尺位置、B量纸理由、C时间、D借物许可均不提供盒标识。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is waiting on the teacher’s desk."
+              },
+              {
+                "id": "o1",
+                "text": "We need it for measuring the long paper."
+              },
+              {
+                "id": "o2",
+                "text": "After the first group has finished."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, but please keep the pieces together."
+              },
+              {
+                "id": "o4",
+                "text": "The box with the triangle label."
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "5c81534dbfc1dab74ff470c6ab7ff3d1780d323fa350b3914beaec09c5a37cc3",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-questions-school-day#primary4.paper-building-dialogue-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.paper-building-dialogue-024.reading.q1",
+            "expansion.20261028.primary4.paper-building-dialogue-024.reading.q2",
+            "expansion.20261028.primary4.paper-building-dialogue-024.reading.q3",
+            "expansion.20261028.primary4.paper-building-dialogue-024.reading.q4",
+            "expansion.20261028.primary4.paper-building-dialogue-024.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-questions-school-day",
+          "sourceContentHash": "fcc597fd771450a2e930b49503ced4a6a119d5752576297213928d374bf91fad"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.small-map-big-walk-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "把地图拿倒以后",
+        "summary": "把地图拿倒以后，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.small-map-big-walk-024",
+          "family": "reading_choice",
+          "label": "把地图拿倒以后",
+          "candidateSHA256": "22883c1a4ddf093730c907b67a9c76a955745d81d76c524849b97607a696eb6b",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.primary4-pet-room-plan#primary4.small-map-big-walk-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Small Map Big Walk 024\n\nTomas takes a small map on a walk with his dad. He says the pond is on their left. Dad can see it on their right. They do not argue. Dad asks Tomas to find the school name on the map. The letters are upside down. Tomas turns the map around and checks the gate beside them. Now the pond and gate match what they see. He laughs and keeps the map the right way up for the rest of the walk."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.small-map-big-walk-024.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What do Tomas and Dad first disagree about?",
+            "material": "Small Map Big Walk 024\n\nTomas takes a small map on a walk with his dad. He says the pond is on their left. Dad can see it on their right. They do not argue. Dad asks Tomas to find the school name on the map. The letters are upside down. Tomas turns the map around and checks the gate beside them. Now the pond and gate match what they see. He laughs and keeps the map the right way up for the rest of the walk.",
+            "explanation": "A池塘左右不同；B天空色、C晚饭时均未提。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The pond’s side."
+              },
+              {
+                "id": "o1",
+                "text": "The colour of the sky."
+              },
+              {
+                "id": "o2",
+                "text": "The time for dinner."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.small-map-big-walk-024.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What clue shows the map is upside down?",
+            "material": "Small Map Big Walk 024\n\nTomas takes a small map on a walk with his dad. He says the pond is on their left. Dad can see it on their right. They do not argue. Dad asks Tomas to find the school name on the map. The letters are upside down. Tomas turns the map around and checks the gate beside them. Now the pond and gate match what they see. He laughs and keeps the map the right way up for the rest of the walk.",
+            "explanation": "B校名字倒置；A缺页、C猫图无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A missing page."
+              },
+              {
+                "id": "o1",
+                "text": "The school letters are upside down."
+              },
+              {
+                "id": "o2",
+                "text": "A picture of a cat."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.small-map-big-walk-024.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Tomas do to fix the problem?",
+            "material": "Small Map Big Walk 024\n\nTomas takes a small map on a walk with his dad. He says the pond is on their left. Dad can see it on their right. They do not argue. Dad asks Tomas to find the school name on the map. The letters are upside down. Tomas turns the map around and checks the gate beside them. Now the pond and gate match what they see. He laughs and keeps the map the right way up for the rest of the walk.",
+            "explanation": "C旋转地图；A画池、B弃图均非行动。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Draw a new pond."
+              },
+              {
+                "id": "o1",
+                "text": "Throw the map away."
+              },
+              {
+                "id": "o2",
+                "text": "Turn the map around."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.small-map-big-walk-024.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What do they use beside them to check the map?",
+            "material": "Small Map Big Walk 024\n\nTomas takes a small map on a walk with his dad. He says the pond is on their left. Dad can see it on their right. They do not argue. Dad asks Tomas to find the school name on the map. The letters are upside down. Tomas turns the map around and checks the gate beside them. Now the pond and gate match what they see. He laughs and keeps the map the right way up for the rest of the walk.",
+            "explanation": "A旁边gate配池一起核；B火车、C蛋糕摊无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A gate."
+              },
+              {
+                "id": "o1",
+                "text": "A train."
+              },
+              {
+                "id": "o2",
+                "text": "A cake stall."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.small-map-big-walk-024.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How do they handle the disagreement?",
+            "material": "Small Map Big Walk 024\n\nTomas takes a small map on a walk with his dad. He says the pond is on their left. Dad can see it on their right. They do not argue. Dad asks Tomas to find the school name on the map. The letters are upside down. Tomas turns the map around and checks the gate beside them. Now the pond and gate match what they see. He laughs and keeps the map the right way up for the rest of the walk.",
+            "explanation": "B查文字方向与地标；A没争吵；C仍继续。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "By shouting without checking."
+              },
+              {
+                "id": "o1",
+                "text": "By looking for evidence on the map and around them."
+              },
+              {
+                "id": "o2",
+                "text": "By ending the walk at once."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "0c3efbfb91cd634ca7351842353f79c691b1e13f9449e38535c904a20dd01473",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-pet-room-plan#primary4.small-map-big-walk-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.small-map-big-walk-024.reading.q1",
+            "expansion.20261028.primary4.small-map-big-walk-024.reading.q2",
+            "expansion.20261028.primary4.small-map-big-walk-024.reading.q3",
+            "expansion.20261028.primary4.small-map-big-walk-024.reading.q4",
+            "expansion.20261028.primary4.small-map-big-walk-024.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-pet-room-plan",
+          "sourceContentHash": "d4c50ff73603e79f79b25070c5f89af32381378a0173a8bb5818893baf110b76"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.piano-recital-page-turn-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "翻谱员最后一页的等待",
+        "summary": "翻谱员最后一页的等待，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 来源形式为公开模拟题，尚缺普通学校样本复现；不计真实考试认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.piano-recital-page-turn-024",
+          "family": "reading_choice",
+          "label": "翻谱员最后一页的等待",
+          "candidateSHA256": "7d6877c9122bf2a96bf844276514a07b8be7a3b72f5138f9c6806d7e9e8a9cb0",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.inside-the-book-reading#primary5.piano-recital-page-turn-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Piano Recital Page Turn 024\n\nFor the school recital, Finn turned pages for his friend Rosa at the piano. In rehearsal, he always turned after the same line. During the performance, Rosa repeated a short section to recover from a mistake. Finn nearly turned too soon. He stopped when he saw her finger return to the start of the line.\nInstead of counting the usual seconds, he followed the notes she was actually playing. The page turn happened later than planned, but Rosa continued smoothly. After the recital, Finn said he had worried that waiting meant he was doing his job badly. Rosa thanked him for watching her rather than the clock. For the next rehearsal, they agreed on a small nod to signal a turn if the music changed unexpectedly."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.piano-recital-page-turn-024.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is Finn’s role?",
+            "material": "Piano Recital Page Turn 024\n\nFor the school recital, Finn turned pages for his friend Rosa at the piano. In rehearsal, he always turned after the same line. During the performance, Rosa repeated a short section to recover from a mistake. Finn nearly turned too soon. He stopped when he saw her finger return to the start of the line.\nInstead of counting the usual seconds, he followed the notes she was actually playing. The page turn happened later than planned, but Rosa continued smoothly. After the recital, Finn said he had worried that waiting meant he was doing his job badly. Rosa thanked him for watching her rather than the clock. For the next rehearsal, they agreed on a small nod to signal a turn if the music changed unexpectedly.",
+            "explanation": "B帮翻谱；A选全曲、C修琴、D售票无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Choosing all the songs."
+              },
+              {
+                "id": "o1",
+                "text": "Turning Rosa’s music pages."
+              },
+              {
+                "id": "o2",
+                "text": "Repairing the piano."
+              },
+              {
+                "id": "o3",
+                "text": "Selling recital tickets."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.piano-recital-page-turn-024.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the usual turning time change?",
+            "material": "Piano Recital Page Turn 024\n\nFor the school recital, Finn turned pages for his friend Rosa at the piano. In rehearsal, he always turned after the same line. During the performance, Rosa repeated a short section to recover from a mistake. Finn nearly turned too soon. He stopped when he saw her finger return to the start of the line.\nInstead of counting the usual seconds, he followed the notes she was actually playing. The page turn happened later than planned, but Rosa continued smoothly. After the recital, Finn said he had worried that waiting meant he was doing his job badly. Rosa thanked him for watching her rather than the clock. For the next rehearsal, they agreed on a small nod to signal a turn if the music changed unexpectedly.",
+            "explanation": "C重复小段延后进度；A/B/D非原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The piano disappears."
+              },
+              {
+                "id": "o1",
+                "text": "Finn loses his watch."
+              },
+              {
+                "id": "o2",
+                "text": "Rosa repeats a section after a mistake."
+              },
+              {
+                "id": "o3",
+                "text": "The audience asks for silence."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.piano-recital-page-turn-024.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What makes Finn stop before turning?",
+            "material": "Piano Recital Page Turn 024\n\nFor the school recital, Finn turned pages for his friend Rosa at the piano. In rehearsal, he always turned after the same line. During the performance, Rosa repeated a short section to recover from a mistake. Finn nearly turned too soon. He stopped when he saw her finger return to the start of the line.\nInstead of counting the usual seconds, he followed the notes she was actually playing. The page turn happened later than planned, but Rosa continued smoothly. After the recital, Finn said he had worried that waiting meant he was doing his job badly. Rosa thanked him for watching her rather than the clock. For the next rehearsal, they agreed on a small nod to signal a turn if the music changed unexpectedly.",
+            "explanation": "A手指回行首提示仍在此页；B午饭铃、C拿谱、D空白无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He sees Rosa return to the line’s start."
+              },
+              {
+                "id": "o1",
+                "text": "He hears a lunch bell."
+              },
+              {
+                "id": "o2",
+                "text": "A teacher takes the page."
+              },
+              {
+                "id": "o3",
+                "text": "The page is blank."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.piano-recital-page-turn-024.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Rosa value about Finn’s response?",
+            "material": "Piano Recital Page Turn 024\n\nFor the school recital, Finn turned pages for his friend Rosa at the piano. In rehearsal, he always turned after the same line. During the performance, Rosa repeated a short section to recover from a mistake. Finn nearly turned too soon. He stopped when he saw her finger return to the start of the line.\nInstead of counting the usual seconds, he followed the notes she was actually playing. The page turn happened later than planned, but Rosa continued smoothly. After the recital, Finn said he had worried that waiting meant he was doing his job badly. Rosa thanked him for watching her rather than the clock. For the next rehearsal, they agreed on a small nod to signal a turn if the music changed unexpectedly.",
+            "explanation": "D观察实际演奏；A正被替代；B/C非行为。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He follows only the planned seconds."
+              },
+              {
+                "id": "o1",
+                "text": "He leaves before the ending."
+              },
+              {
+                "id": "o2",
+                "text": "He changes every note for her."
+              },
+              {
+                "id": "o3",
+                "text": "He follows the music she is actually playing."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.piano-recital-page-turn-024.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What do they plan for the future?",
+            "material": "Piano Recital Page Turn 024\n\nFor the school recital, Finn turned pages for his friend Rosa at the piano. In rehearsal, he always turned after the same line. During the performance, Rosa repeated a short section to recover from a mistake. Finn nearly turned too soon. He stopped when he saw her finger return to the start of the line.\nInstead of counting the usual seconds, he followed the notes she was actually playing. The page turn happened later than planned, but Rosa continued smoothly. After the recital, Finn said he had worried that waiting meant he was doing his job badly. Rosa thanked him for watching her rather than the clock. For the next rehearsal, they agreed on a small nod to signal a turn if the music changed unexpectedly.",
+            "explanation": "B小点头信号应变；A停练、C提前全翻、D观众翻均非约定。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Stop rehearsing."
+              },
+              {
+                "id": "o1",
+                "text": "Use a small nod for unexpected changes."
+              },
+              {
+                "id": "o2",
+                "text": "Turn every page before the music starts."
+              },
+              {
+                "id": "o3",
+                "text": "Ask the audience to turn pages."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "6fef2586bb0f8c2fc5c39124af2f8a251eb0d0ddb83f1ecac1220cc30c04ed26",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.inside-the-book-reading#primary5.piano-recital-page-turn-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.piano-recital-page-turn-024.reading.q1",
+            "expansion.20261028.primary5.piano-recital-page-turn-024.reading.q2",
+            "expansion.20261028.primary5.piano-recital-page-turn-024.reading.q3",
+            "expansion.20261028.primary5.piano-recital-page-turn-024.reading.q4",
+            "expansion.20261028.primary5.piano-recital-page-turn-024.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.inside-the-book-reading",
+          "sourceContentHash": "46e509e87efeb15b94ac01cde6c90574c6c6a8d27bfcfc776298ff93969b0c6a"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.camp-firefly-notice-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "萤火虫观察活动的无闪光规则",
+        "summary": "萤火虫观察活动的无闪光规则，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 五题二选判断另获已核房山2024-2025五上区卷完整形式参照；前版模拟参照与作者稿均保留，正文/题目/键未改；新来源不是独立学生认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.camp-firefly-notice-024",
+          "family": "reading_tf",
+          "label": "萤火虫观察活动的无闪光规则",
+          "candidateSHA256": "97f711f6d02e3cff2b2ded2c6ac16b421e20a3f100334ae6bf0b5486f57aa77a",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.primary5-postcards-reading-tf#primary5.camp-firefly-notice-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Camp Firefly Notice 024\n\nAt the camp, our guide planned a short firefly walk. The note asked us to use the marked path, keep voices low and leave phone flashes off. It did not promise that we would see fireflies. Their activity depended on weather and other conditions. On the first night, strong wind led the guide to cancel the walk before we left camp. We watched a recorded talk indoors instead. The next evening was calm, and the walk went ahead. We saw only a few lights. The guide asked us to record what we actually saw, not copy a large number from another group’s report."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.camp-firefly-notice-024.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The note guaranteed that every walk would show many fireflies.",
+            "material": "Camp Firefly Notice 024\n\nAt the camp, our guide planned a short firefly walk. The note asked us to use the marked path, keep voices low and leave phone flashes off. It did not promise that we would see fireflies. Their activity depended on weather and other conditions. On the first night, strong wind led the guide to cancel the walk before we left camp. We watched a recorded talk indoors instead. The next evening was calm, and the walk went ahead. We saw only a few lights. The guide asked us to record what we actually saw, not copy a large number from another group’s report.",
+            "explanation": "B正确：did not promise see且视条件；A把观察机会当保证。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.camp-firefly-notice-024.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Phone flashes were to remain off.",
+            "material": "Camp Firefly Notice 024\n\nAt the camp, our guide planned a short firefly walk. The note asked us to use the marked path, keep voices low and leave phone flashes off. It did not promise that we would see fireflies. Their activity depended on weather and other conditions. On the first night, strong wind led the guide to cancel the walk before we left camp. We watched a recorded talk indoors instead. The next evening was calm, and the walk went ahead. We saw only a few lights. The guide asked us to record what we actually saw, not copy a large number from another group’s report.",
+            "explanation": "A正确：leave phone flashes off；B否认照明限制。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.camp-firefly-notice-024.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The first night’s walk was cancelled before departure.",
+            "material": "Camp Firefly Notice 024\n\nAt the camp, our guide planned a short firefly walk. The note asked us to use the marked path, keep voices low and leave phone flashes off. It did not promise that we would see fireflies. Their activity depended on weather and other conditions. On the first night, strong wind led the guide to cancel the walk before we left camp. We watched a recorded talk indoors instead. The next evening was calm, and the walk went ahead. We saw only a few lights. The guide asked us to record what we actually saw, not copy a large number from another group’s report.",
+            "explanation": "A正确：strong wind cancel before left；B否认取消时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.camp-firefly-notice-024.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The group stayed outdoors in strong wind to finish the walk.",
+            "material": "Camp Firefly Notice 024\n\nAt the camp, our guide planned a short firefly walk. The note asked us to use the marked path, keep voices low and leave phone flashes off. It did not promise that we would see fireflies. Their activity depended on weather and other conditions. On the first night, strong wind led the guide to cancel the walk before we left camp. We watched a recorded talk indoors instead. The next evening was calm, and the walk went ahead. We saw only a few lights. The guide asked us to record what we actually saw, not copy a large number from another group’s report.",
+            "explanation": "B正确：室内看录制讲座；A把替代活动改强行外走。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.camp-firefly-notice-024.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The guide wanted an honest record of the few lights seen.",
+            "material": "Camp Firefly Notice 024\n\nAt the camp, our guide planned a short firefly walk. The note asked us to use the marked path, keep voices low and leave phone flashes off. It did not promise that we would see fireflies. Their activity depended on weather and other conditions. On the first night, strong wind led the guide to cancel the walk before we left camp. We watched a recorded talk indoors instead. The next evening was calm, and the walk went ahead. We saw only a few lights. The guide asked us to record what we actually saw, not copy a large number from another group’s report.",
+            "explanation": "A正确：record actually saw非抄他组大数；B否认记录要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "76a39bdf6a13e0d0b8c6a34c9de8367e790439fd9f5a4a1efdef377f63c26d36",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-postcards-reading-tf#primary5.camp-firefly-notice-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.camp-firefly-notice-024.reading.q1",
+            "expansion.20261028.primary5.camp-firefly-notice-024.reading.q2",
+            "expansion.20261028.primary5.camp-firefly-notice-024.reading.q3",
+            "expansion.20261028.primary5.camp-firefly-notice-024.reading.q4",
+            "expansion.20261028.primary5.camp-firefly-notice-024.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-postcards-reading-tf",
+          "sourceContentHash": "abbfa743243bd1553f8334a108e543753efba41c4ae8397f63cb09b02653b32e"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.bridge-club-word-forms-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "桥梁社展示日的词形记录",
+        "summary": "桥梁社展示日的词形记录，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.sentence_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.givenforms5",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照同一公开历史教辅导出卷的五题给词填空，保留五独立句、逐空给词、明确不限一词。该卷标题自署2016–17深圳实验学校六下，原校与实际施测未认证、原键缺；原He is is重印及walk多时态风险保留。自有句框独立重写，部分给出助动词缩小形态歧义，不复制源错句或声称精确能力等值。已核常用变体同等接受，合法表达未穷尽，未列形式待复核。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.bridge-club-word-forms-024",
+          "family": "sentence_form",
+          "label": "桥梁社展示日的词形记录",
+          "candidateSHA256": "83d017618a44908e09aa03780d46e002088624aff2eb0c30e8fbb4bd55508bd8",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.primary6-givenforms5-workshop#primary6.bridge-club-word-forms-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Bridge Club Word Forms 024\n\nComplete every gap with the correct one-word form of the given word.\n1. Last Friday, our group ____1____ (build) a paper bridge for the display.\n2. The two ____2____ (child) from Class Six explained the test to visitors.\n3. Our folded bridge was ____3____ (strong) than the flat one in this test.\n4. Look at the helper. She is ____4____ (carry) the model with both hands.\n5. We spoke ____5____ (clear) so everyone could hear the explanation."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.bridge-club-word-forms-024.reading.q1",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 1: use BUILD.",
+            "material": "Bridge Club Word Forms 024\n\nComplete every gap with the correct one-word form of the given word.\n1. Last Friday, our group ____1____ (build) a paper bridge for the display.\n2. The two ____2____ (child) from Class Six explained the test to visitors.\n3. Our folded bridge was ____3____ (strong) than the flat one in this test.\n4. Look at the helper. She is ____4____ (carry) the model with both hands.\n5. We spoke ____5____ (clear) so everyone could hear the explanation.",
+            "explanation": "接受built：Last Friday提示过去，不规则build变built；build原形、builded错误过去式、building分词均不作所需过去谓语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "built"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "build",
+                "builded",
+                "building"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.bridge-club-word-forms-024.reading.q2",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 2: use CHILD.",
+            "material": "Bridge Club Word Forms 024\n\nComplete every gap with the correct one-word form of the given word.\n1. Last Friday, our group ____1____ (build) a paper bridge for the display.\n2. The two ____2____ (child) from Class Six explained the test to visitors.\n3. Our folded bridge was ____3____ (strong) than the flat one in this test.\n4. Look at the helper. She is ____4____ (carry) the model with both hands.\n5. We spoke ____5____ (clear) so everyone could hear the explanation.",
+            "explanation": "接受children：two要求child不规则复数；child单数，childs错误，childrens在复数再加s均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "children"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "child",
+                "childs",
+                "childrens"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.bridge-club-word-forms-024.reading.q3",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 3: use STRONG.",
+            "material": "Bridge Club Word Forms 024\n\nComplete every gap with the correct one-word form of the given word.\n1. Last Friday, our group ____1____ (build) a paper bridge for the display.\n2. The two ____2____ (child) from Class Six explained the test to visitors.\n3. Our folded bridge was ____3____ (strong) than the flat one in this test.\n4. Look at the helper. She is ____4____ (carry) the model with both hands.\n5. We spoke ____5____ (clear) so everyone could hear the explanation.",
+            "explanation": "接受stronger：than明确比较；strong原级，strongest最高级，strongly副词均非所需比较表语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "stronger"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "strong",
+                "strongest",
+                "strongly"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.bridge-club-word-forms-024.reading.q4",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 4: use CARRY.",
+            "material": "Bridge Club Word Forms 024\n\nComplete every gap with the correct one-word form of the given word.\n1. Last Friday, our group ____1____ (build) a paper bridge for the display.\n2. The two ____2____ (child) from Class Six explained the test to visitors.\n3. Our folded bridge was ____3____ (strong) than the flat one in this test.\n4. Look at the helper. She is ____4____ (carry) the model with both hands.\n5. We spoke ____5____ (clear) so everyone could hear the explanation.",
+            "explanation": "接受carrying：is和Look构成正在搬模型；carry原形、carried过去、carrys错误拼写均不成此处进行时。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carrying"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "carry",
+                "carried",
+                "carrys"
+              ]
+            }
+          },
+          {
+            "id": "expansion.20261028.primary6.bridge-club-word-forms-024.reading.q5",
+            "goalId": "original.sentence_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 5: use CLEAR.",
+            "material": "Bridge Club Word Forms 024\n\nComplete every gap with the correct one-word form of the given word.\n1. Last Friday, our group ____1____ (build) a paper bridge for the display.\n2. The two ____2____ (child) from Class Six explained the test to visitors.\n3. Our folded bridge was ____3____ (strong) than the flat one in this test.\n4. Look at the helper. She is ____4____ (carry) the model with both hands.\n5. We spoke ____5____ (clear) so everyone could hear the explanation.",
+            "explanation": "明确接受clearly：修饰spoke的常规副词。clearer和clearest要求比较或最高级条件，本句不具备。clear的可能平义副词用法不再预列为错，未列形式进入复核。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "maxWords": 1,
+              "unlisted": "review",
+              "rejectedAnswers": [
+                "clearer",
+                "clearest"
+              ]
+            }
+          }
+        ]
+      },
+      "contentHash": "192cd980b133d675b0d3e5daa48820da0726058ce872ee9c7d5ef780dda6e2f8",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-givenforms5-workshop#primary6.bridge-club-word-forms-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.bridge-club-word-forms-024.reading.q1",
+            "expansion.20261028.primary6.bridge-club-word-forms-024.reading.q2",
+            "expansion.20261028.primary6.bridge-club-word-forms-024.reading.q3",
+            "expansion.20261028.primary6.bridge-club-word-forms-024.reading.q4",
+            "expansion.20261028.primary6.bridge-club-word-forms-024.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-givenforms5-workshop",
+          "sourceContentHash": "32f18576ad0fa4890f1e2b9ef04d1614e6c679765c80ed02b7f97d3921df965d"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.trip-information-functions-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "出游途中澄清信息的五句话",
+        "summary": "出游途中澄清信息的五句话，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.minzhi.functions",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 本组仅参照旧转载小六五个中文情境、每题三候选的可见结构。原四页PDF第14题跨物理第2—3页，参考键在第4页；14.2.B原版面仅有未完表达，原输入未完整核清，14.2与14.5另有回应功能重叠，不能将旧全输入标志或参考键当完整/唯一正确的质量准入。原件及原键保留；本稿五题的情境、全部候选和逐项依据为完整原创，未沿用截断或功能重叠题。原校/实际施测、难度、独立教研、学生、商用及生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.trip-information-functions-024",
+          "family": "sentence_choice",
+          "label": "出游途中澄清信息的五句话",
+          "candidateSHA256": "c760e6ac43b422608be80355527bf7e7b6cacc49b6ac5d410728d0bdc65a6514",
+          "authorCheckSHA256": "e9ba76933132154d365242fa1c4d878347eab153c62ba306bef0f49993c903c6",
+          "sourceGroupIds": [
+            "original.primary6-five-functional-choices#primary6.trip-information-functions-024.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b040；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Trip Information Functions 024\n\nChoose the sentence that best achieves the stated purpose. Each question describes the whole communication need."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.trip-information-functions-024.reading.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The guide speaks too quickly, and you want the next instruction more slowly. What should you say?",
+            "material": "Trip Information Functions 024\n\nChoose the sentence that best achieves the stated purpose. Each question describes the whole communication need.",
+            "explanation": "B礼貌请求放慢下一步说明；A衣色无关；C放弃听指令不达澄清目标。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Your coat is very bright."
+              },
+              {
+                "id": "o1",
+                "text": "Could you give the next instruction more slowly, please?"
+              },
+              {
+                "id": "o2",
+                "text": "I will ignore the whole visit."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.trip-information-functions-024.reading.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your ticket shows a different entrance from the sign. You want staff to check. What should you say?",
+            "material": "Trip Information Functions 024\n\nChoose the sentence that best achieves the stated purpose. Each question describes the whole communication need.",
+            "explanation": "C请员工核票入口以解冲突；A武断判错、B擅走闭门都非核实。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every sign must be wrong."
+              },
+              {
+                "id": "o1",
+                "text": "I will use a closed door."
+              },
+              {
+                "id": "o2",
+                "text": "Could you check which entrance this ticket is for?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.trip-information-functions-024.reading.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A visitor has dropped a map, and you want to return it. What should you ask?",
+            "material": "Trip Information Functions 024\n\nChoose the sentence that best achieves the stated purpose. Each question describes the whole communication need.",
+            "explanation": "A确认失物物主再归还；B鞋价、C买饭无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Excuse me, is this your map?"
+              },
+              {
+                "id": "o1",
+                "text": "How expensive are your shoes?"
+              },
+              {
+                "id": "o2",
+                "text": "Can you buy my lunch?"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.trip-information-functions-024.reading.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You cannot join the optional walk and need to ask for the waiting place. What should you say?",
+            "material": "Trip Information Functions 024\n\nChoose the sentence that best achieves the stated purpose. Each question describes the whole communication need.",
+            "explanation": "B询替代等候点；A不告而走、C地图颜色不解决行程安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I will disappear without telling anyone."
+              },
+              {
+                "id": "o1",
+                "text": "Where should I wait while the group walks?"
+              },
+              {
+                "id": "o2",
+                "text": "Why do all maps have colours?"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.trip-information-functions-024.reading.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You gave the wrong meeting time to a friend and now want to correct it. What should you say?",
+            "material": "Trip Information Functions 024\n\nChoose the sentence that best achieves the stated purpose. Each question describes the whole communication need.",
+            "explanation": "C承认错误并给10:30正确时间；A固守先说信息、B让猜不纠正误导。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The old time is right because I said it first."
+              },
+              {
+                "id": "o1",
+                "text": "You should guess the time yourself."
+              },
+              {
+                "id": "o2",
+                "text": "I am sorry; I said ten, but the meeting is at ten thirty."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "ba62e880a7d07a4b913ed6b028dfea706de9f6fc9f395cf59ad9b919d6c6b82a",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-five-functional-choices#primary6.trip-information-functions-024.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.trip-information-functions-024.reading.q1",
+            "expansion.20261028.primary6.trip-information-functions-024.reading.q2",
+            "expansion.20261028.primary6.trip-information-functions-024.reading.q3",
+            "expansion.20261028.primary6.trip-information-functions-024.reading.q4",
+            "expansion.20261028.primary6.trip-information-functions-024.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-five-functional-choices",
+          "sourceContentHash": "e62e92cb948eec8e6a6ccdfc5cf86a86418af1c6ebbe9acf9f1a99a85b4e70b8"
+        }
+      ]
+    }
+  ]
+}

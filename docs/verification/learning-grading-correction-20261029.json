@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-29",
+  "commit": "b671f29d",
+  "scope": "Exact frozen-question grading correction and visible completion bounds",
+  "correction": {
+    "sourceBatch": "b005",
+    "question": "expansion.20261028.primary6.courtesy-grammar-workshop-005.reading.q4",
+    "behavior": "slow and slowly accepted; canonical solution slowly; slower/slowest remain rejected. Exact full-question hash excludes only remapped local/bank ID, so unrelated wording/material cannot inherit the correction.",
+    "authorEvidence": "Backend/config/learning/expansions/2026-10-28/sources/primary2-6-005-v3.json",
+    "preservation": "Old source/manifests, unit version/hash, stored answers/results/receipts and earned points unchanged. Later valid retry earns at most the previously-unearned point.",
+    "supply": "Correction evidence is not an additional practice or publication batch."
+  },
+  "presentation": "Show authoritative English min/max completion word bounds when no equivalent authored English bound is already visible; source and keys remain frozen.",
+  "checks": {
+    "passed": 27,
+    "evidence": "build/verification/automatic-promotion-final-auth/grading-revisions.log",
+    "coverage": "Exact and changed content bindings, unrelated variants, public bounds and duplicate suppression, raw payload immutability, real isolated engine historical wrong-result/receipt replay and valid retry reward once.",
+    "typecheck": "passed",
+    "changedPathESLint": "passed",
+    "architecture": "passed",
+    "isolatedDatabase": "Reused existing cluster; stopped normally and preserved."
+  },
+  "deployment": "Pending combined guarded release; author self-review is not independent teacher calibration."
+}

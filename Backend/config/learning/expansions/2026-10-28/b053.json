@@ -1,0 +1,926 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b053",
+  "createdAt": "2026-10-29T01:42:56.536379+08:00",
+  "sourceSHA256": "dab361f9f3c7da22d1a99251fa1bcf77c9f434dd595c4ecd00bcb7debed113f8",
+  "reviewSHA256": "880885bed5a237e1d16a64a7fc8639ca17d681a96f93c9f392e40b7ff6df3c44",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex same author, no independent teacher or child-panel calibration",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary1.winter-clothes-picture-cards-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "衣物图卡：围巾、手套、袜子与连衣裙",
+        "summary": "衣物图卡：围巾、手套、袜子与连衣裙，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 4,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex same author, no independent teacher or child-panel calibration (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "原创完整四图短语匹配练习；作者按新动作场景明确绘制并检查主体形体、工具和特征，再逐题核四个选项。复现基础语言不等于新增词汇；不以重排、改名或数量变化重复计组，不声称独立教师、儿童识图或学习者标定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary1.winter-clothes-picture-cards-005",
+          "family": "word_picture_matching",
+          "label": "衣物图卡：围巾、手套、袜子与连衣裙",
+          "candidateSHA256": "12a97868272cfad8b76dba0e4ce8e81ce2316e1baca7a86eea85bc6c2da8d68e",
+          "authorCheckSHA256": "2dbb7d4f39cd59a98d2d4ab0ba5817f4c967a06635e40e2cecbcd134a16e3ebb",
+          "sourceGroupIds": [
+            "original.primary1-four-picture-matches#primary1.winter-clothes-picture-cards-005.cards"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b053；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Clothes and Accessories\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary1.winter-clothes-picture-cards-005.cards.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "gloves",
+            "material": "Clothes and Accessories\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是围在颈部、末端带穗边的长围巾；B图是有手指套和腕口的两只手套；C图是有罗纹袜口和脚跟、脚尖轮廓的两只袜子；D图是上衣与下摆连成一体的连衣裙。gloves对应B图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.b61f989cb43f1ce106e199f188b390a84b7453c38eabee8bb0e48fc97910c718",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary1.winter-clothes-picture-cards-005.cards.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a dress",
+            "material": "Clothes and Accessories\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是围在颈部、末端带穗边的长围巾；B图是有手指套和腕口的两只手套；C图是有罗纹袜口和脚跟、脚尖轮廓的两只袜子；D图是上衣与下摆连成一体的连衣裙。a dress对应D图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.b61f989cb43f1ce106e199f188b390a84b7453c38eabee8bb0e48fc97910c718",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary1.winter-clothes-picture-cards-005.cards.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a scarf",
+            "material": "Clothes and Accessories\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是围在颈部、末端带穗边的长围巾；B图是有手指套和腕口的两只手套；C图是有罗纹袜口和脚跟、脚尖轮廓的两只袜子；D图是上衣与下摆连成一体的连衣裙。a scarf对应A图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.b61f989cb43f1ce106e199f188b390a84b7453c38eabee8bb0e48fc97910c718",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary1.winter-clothes-picture-cards-005.cards.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "socks",
+            "material": "Clothes and Accessories\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是围在颈部、末端带穗边的长围巾；B图是有手指套和腕口的两只手套；C图是有罗纹袜口和脚跟、脚尖轮廓的两只袜子；D图是上衣与下摆连成一体的连衣裙。socks对应C图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.b61f989cb43f1ce106e199f188b390a84b7453c38eabee8bb0e48fc97910c718",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "7ac3dee68757b8d31e388573119041423e802b2d392c847b507abf75430b6259",
+      "reviewNotes": "原创完整四图短语匹配练习；作者按新动作场景明确绘制并检查主体形体、工具和特征，再逐题核四个选项。复现基础语言不等于新增词汇；不以重排、改名或数量变化重复计组，不声称独立教师、儿童识图或学习者标定。",
+      "components": [
+        {
+          "id": "original.primary1-four-picture-matches#primary1.winter-clothes-picture-cards-005.cards",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary1.winter-clothes-picture-cards-005.cards.q1",
+            "expansion.20261028.primary1.winter-clothes-picture-cards-005.cards.q2",
+            "expansion.20261028.primary1.winter-clothes-picture-cards-005.cards.q3",
+            "expansion.20261028.primary1.winter-clothes-picture-cards-005.cards.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "original.primary1-four-picture-matches",
+          "sourceContentHash": "9c1473b77736266a4e69a056c30a13662552db6e76df3233bbcb3130c167b171"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary1.toys-picture-cards-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "玩具图卡：泰迪熊、机器人、娃娃与积木",
+        "summary": "玩具图卡：泰迪熊、机器人、娃娃与积木，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 4,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex same author, no independent teacher or child-panel calibration (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "原创完整四图短语匹配练习；作者按新动作场景明确绘制并检查主体形体、工具和特征，再逐题核四个选项。复现基础语言不等于新增词汇；不以重排、改名或数量变化重复计组，不声称独立教师、儿童识图或学习者标定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary1.toys-picture-cards-005",
+          "family": "word_picture_matching",
+          "label": "玩具图卡：泰迪熊、机器人、娃娃与积木",
+          "candidateSHA256": "d5080074b4057dfc0338d3bb6fbad8d076b16ce5d9449acaf86564ce18f2e620",
+          "authorCheckSHA256": "2dbb7d4f39cd59a98d2d4ab0ba5817f4c967a06635e40e2cecbcd134a16e3ebb",
+          "sourceGroupIds": [
+            "original.primary1-four-picture-matches#primary1.toys-picture-cards-005.cards"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b053；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Toy Shelf\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary1.toys-picture-cards-005.cards.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a toy robot",
+            "material": "Toy Shelf\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是有圆耳、熊鼻、填充肚子和缝线的玩具熊；B图是有天线、方形头、控制按钮与关节的机器人玩具；C图是有头发、脸、衣服和四肢的人形玩偶；D图是有立方体棱边、叠放在一起的积木。a toy robot对应B图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.95396186158681e7692109b875024b7f297db8b7f8033d6aa30e3dda6eea0db7",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary1.toys-picture-cards-005.cards.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "building blocks",
+            "material": "Toy Shelf\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是有圆耳、熊鼻、填充肚子和缝线的玩具熊；B图是有天线、方形头、控制按钮与关节的机器人玩具；C图是有头发、脸、衣服和四肢的人形玩偶；D图是有立方体棱边、叠放在一起的积木。building blocks对应D图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.95396186158681e7692109b875024b7f297db8b7f8033d6aa30e3dda6eea0db7",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary1.toys-picture-cards-005.cards.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a teddy bear",
+            "material": "Toy Shelf\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是有圆耳、熊鼻、填充肚子和缝线的玩具熊；B图是有天线、方形头、控制按钮与关节的机器人玩具；C图是有头发、脸、衣服和四肢的人形玩偶；D图是有立方体棱边、叠放在一起的积木。a teddy bear对应A图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.95396186158681e7692109b875024b7f297db8b7f8033d6aa30e3dda6eea0db7",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary1.toys-picture-cards-005.cards.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a doll",
+            "material": "Toy Shelf\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是有圆耳、熊鼻、填充肚子和缝线的玩具熊；B图是有天线、方形头、控制按钮与关节的机器人玩具；C图是有头发、脸、衣服和四肢的人形玩偶；D图是有立方体棱边、叠放在一起的积木。a doll对应C图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.95396186158681e7692109b875024b7f297db8b7f8033d6aa30e3dda6eea0db7",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "5331e4ece880628289d6323119e816b0f511fad76375629c2d4f5b894461c1c4",
+      "reviewNotes": "原创完整四图短语匹配练习；作者按新动作场景明确绘制并检查主体形体、工具和特征，再逐题核四个选项。复现基础语言不等于新增词汇；不以重排、改名或数量变化重复计组，不声称独立教师、儿童识图或学习者标定。",
+      "components": [
+        {
+          "id": "original.primary1-four-picture-matches#primary1.toys-picture-cards-005.cards",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary1.toys-picture-cards-005.cards.q1",
+            "expansion.20261028.primary1.toys-picture-cards-005.cards.q2",
+            "expansion.20261028.primary1.toys-picture-cards-005.cards.q3",
+            "expansion.20261028.primary1.toys-picture-cards-005.cards.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "original.primary1-four-picture-matches",
+          "sourceContentHash": "9c1473b77736266a4e69a056c30a13662552db6e76df3233bbcb3130c167b171"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary1.outdoors-picture-cards-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "户外图卡：帐篷、梯子、桥与围栏",
+        "summary": "户外图卡：帐篷、梯子、桥与围栏，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 4,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex same author, no independent teacher or child-panel calibration (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "原创完整四图短语匹配练习；作者按新动作场景明确绘制并检查主体形体、工具和特征，再逐题核四个选项。复现基础语言不等于新增词汇；不以重排、改名或数量变化重复计组，不声称独立教师、儿童识图或学习者标定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary1.outdoors-picture-cards-005",
+          "family": "word_picture_matching",
+          "label": "户外图卡：帐篷、梯子、桥与围栏",
+          "candidateSHA256": "c21c41cbe55d75526f20be296e1b8c7eeb5c444e8b45f038f6216459f456b286",
+          "authorCheckSHA256": "2dbb7d4f39cd59a98d2d4ab0ba5817f4c967a06635e40e2cecbcd134a16e3ebb",
+          "sourceGroupIds": [
+            "original.primary1-four-picture-matches#primary1.outdoors-picture-cards-005.cards"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b053；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Things Outdoors\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary1.outdoors-picture-cards-005.cards.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a ladder",
+            "material": "Things Outdoors\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是撑开后有三角入口、支杆和固定绳的帐篷；B图是两根长侧杆间装有横档的梯子；C图是有桥面和两侧栏杆、跨过水流的拱桥；D图是由尖顶木桩和横向连接条构成的围栏。a ladder对应B图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.aa7d31b561a12eba855a39f76f618cdae6cd891563eb4a1f2ebd5412182ae95d",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary1.outdoors-picture-cards-005.cards.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a fence",
+            "material": "Things Outdoors\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是撑开后有三角入口、支杆和固定绳的帐篷；B图是两根长侧杆间装有横档的梯子；C图是有桥面和两侧栏杆、跨过水流的拱桥；D图是由尖顶木桩和横向连接条构成的围栏。a fence对应D图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.aa7d31b561a12eba855a39f76f618cdae6cd891563eb4a1f2ebd5412182ae95d",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary1.outdoors-picture-cards-005.cards.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a tent",
+            "material": "Things Outdoors\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是撑开后有三角入口、支杆和固定绳的帐篷；B图是两根长侧杆间装有横档的梯子；C图是有桥面和两侧栏杆、跨过水流的拱桥；D图是由尖顶木桩和横向连接条构成的围栏。a tent对应A图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.aa7d31b561a12eba855a39f76f618cdae6cd891563eb4a1f2ebd5412182ae95d",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary1.outdoors-picture-cards-005.cards.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a bridge",
+            "material": "Things Outdoors\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是撑开后有三角入口、支杆和固定绳的帐篷；B图是两根长侧杆间装有横档的梯子；C图是有桥面和两侧栏杆、跨过水流的拱桥；D图是由尖顶木桩和横向连接条构成的围栏。a bridge对应C图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.aa7d31b561a12eba855a39f76f618cdae6cd891563eb4a1f2ebd5412182ae95d",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "372d90a4da465b1a2e5e53966b826514ab728610d9e19e7e073b1703eca84286",
+      "reviewNotes": "原创完整四图短语匹配练习；作者按新动作场景明确绘制并检查主体形体、工具和特征，再逐题核四个选项。复现基础语言不等于新增词汇；不以重排、改名或数量变化重复计组，不声称独立教师、儿童识图或学习者标定。",
+      "components": [
+        {
+          "id": "original.primary1-four-picture-matches#primary1.outdoors-picture-cards-005.cards",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary1.outdoors-picture-cards-005.cards.q1",
+            "expansion.20261028.primary1.outdoors-picture-cards-005.cards.q2",
+            "expansion.20261028.primary1.outdoors-picture-cards-005.cards.q3",
+            "expansion.20261028.primary1.outdoors-picture-cards-005.cards.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "original.primary1-four-picture-matches",
+          "sourceContentHash": "9c1473b77736266a4e69a056c30a13662552db6e76df3233bbcb3130c167b171"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary1.kitchen-picture-cards-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "厨房图卡：叉子、刀、茶壶与瓶子",
+        "summary": "厨房图卡：叉子、刀、茶壶与瓶子，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 4,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex same author, no independent teacher or child-panel calibration (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "原创完整四图短语匹配练习；作者按新动作场景明确绘制并检查主体形体、工具和特征，再逐题核四个选项。复现基础语言不等于新增词汇；不以重排、改名或数量变化重复计组，不声称独立教师、儿童识图或学习者标定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary1.kitchen-picture-cards-005",
+          "family": "word_picture_matching",
+          "label": "厨房图卡：叉子、刀、茶壶与瓶子",
+          "candidateSHA256": "7f5a0f0972b0b10a4c4cbfae56217399ef6a373d12bc619dd44df8c0392e7fd4",
+          "authorCheckSHA256": "2dbb7d4f39cd59a98d2d4ab0ba5817f4c967a06635e40e2cecbcd134a16e3ebb",
+          "sourceGroupIds": [
+            "original.primary1-four-picture-matches#primary1.kitchen-picture-cards-005.cards"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b053；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Kitchen Things\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary1.kitchen-picture-cards-005.cards.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a knife",
+            "material": "Kitchen Things\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是前端有多根叉齿、后面接长柄的餐叉；B图是有金属刀刃与固定握柄的厨房刀；C图是带壶盖、壶嘴和环形把手的茶壶；D图是有窄瓶口、瓶盖和宽瓶身的瓶子。a knife对应B图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.97f1fdcef897f102a938c3d4a63c618f171f20534852f57d359c131bf9db76c3",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary1.kitchen-picture-cards-005.cards.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a bottle",
+            "material": "Kitchen Things\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是前端有多根叉齿、后面接长柄的餐叉；B图是有金属刀刃与固定握柄的厨房刀；C图是带壶盖、壶嘴和环形把手的茶壶；D图是有窄瓶口、瓶盖和宽瓶身的瓶子。a bottle对应D图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.97f1fdcef897f102a938c3d4a63c618f171f20534852f57d359c131bf9db76c3",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary1.kitchen-picture-cards-005.cards.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a fork",
+            "material": "Kitchen Things\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是前端有多根叉齿、后面接长柄的餐叉；B图是有金属刀刃与固定握柄的厨房刀；C图是带壶盖、壶嘴和环形把手的茶壶；D图是有窄瓶口、瓶盖和宽瓶身的瓶子。a fork对应A图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.97f1fdcef897f102a938c3d4a63c618f171f20534852f57d359c131bf9db76c3",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary1.kitchen-picture-cards-005.cards.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+            "prompt": "a teapot",
+            "material": "Kitchen Things\n\nLook at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+            "explanation": "A图是前端有多根叉齿、后面接长柄的餐叉；B图是有金属刀刃与固定握柄的厨房刀；C图是带壶盖、壶嘴和环形把手的茶壶；D图是有窄瓶口、瓶盖和宽瓶身的瓶子。a teapot对应C图，其他图的物体或特征与题面不相符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "materialImages": [
+              {
+                "assetId": "image.97f1fdcef897f102a938c3d4a63c618f171f20534852f57d359c131bf9db76c3",
+                "label": "Picture cards A to D"
+              }
+            ],
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "0bd403417a8830570dbfecd5cbd79f51b5e2e8ea879393da4ddace4ba70c424d",
+      "reviewNotes": "原创完整四图短语匹配练习；作者按新动作场景明确绘制并检查主体形体、工具和特征，再逐题核四个选项。复现基础语言不等于新增词汇；不以重排、改名或数量变化重复计组，不声称独立教师、儿童识图或学习者标定。",
+      "components": [
+        {
+          "id": "original.primary1-four-picture-matches#primary1.kitchen-picture-cards-005.cards",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary1.kitchen-picture-cards-005.cards.q1",
+            "expansion.20261028.primary1.kitchen-picture-cards-005.cards.q2",
+            "expansion.20261028.primary1.kitchen-picture-cards-005.cards.q3",
+            "expansion.20261028.primary1.kitchen-picture-cards-005.cards.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "original.primary1-four-picture-matches",
+          "sourceContentHash": "9c1473b77736266a4e69a056c30a13662552db6e76df3233bbcb3130c167b171"
+        }
+      ]
+    }
+  ],
+  "imageAssets": [
+    {
+      "id": "image.b61f989cb43f1ce106e199f188b390a84b7453c38eabee8bb0e48fc97910c718",
+      "sha256": "b61f989cb43f1ce106e199f188b390a84b7453c38eabee8bb0e48fc97910c718",
+      "byteSize": 30980,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "衣物图卡：围巾、手套、袜子与连衣裙；A至D依次为a scarf, gloves, socks, a dress",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-winter-clothes-005.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看完整图和384×256联系图。字母与主体不重叠；逐项用物体特征和用途区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。"
+    },
+    {
+      "id": "image.95396186158681e7692109b875024b7f297db8b7f8033d6aa30e3dda6eea0db7",
+      "sha256": "95396186158681e7692109b875024b7f297db8b7f8033d6aa30e3dda6eea0db7",
+      "byteSize": 39554,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "玩具图卡：泰迪熊、机器人、娃娃与积木；A至D依次为a teddy bear, a toy robot, a doll, building blocks",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-toys-005.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看完整图和384×256联系图。字母与主体不重叠；逐项用物体特征和用途区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。"
+    },
+    {
+      "id": "image.aa7d31b561a12eba855a39f76f618cdae6cd891563eb4a1f2ebd5412182ae95d",
+      "sha256": "aa7d31b561a12eba855a39f76f618cdae6cd891563eb4a1f2ebd5412182ae95d",
+      "byteSize": 32192,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "户外图卡：帐篷、梯子、桥与围栏；A至D依次为a tent, a ladder, a bridge, a fence",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-outdoors-005.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看完整图和384×256联系图。字母与主体不重叠；逐项用物体特征和用途区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。"
+    },
+    {
+      "id": "image.97f1fdcef897f102a938c3d4a63c618f171f20534852f57d359c131bf9db76c3",
+      "sha256": "97f1fdcef897f102a938c3d4a63c618f171f20534852f57d359c131bf9db76c3",
+      "byteSize": 25107,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "厨房图卡：叉子、刀、茶壶与瓶子；A至D依次为a fork, a knife, a teapot, a bottle",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-kitchen-005.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看完整图和384×256联系图。字母与主体不重叠；逐项用物体特征和用途区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。"
+    }
+  ]
+}
