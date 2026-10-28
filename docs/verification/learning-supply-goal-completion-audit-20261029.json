@@ -1,0 +1,288 @@
+{
+  "checkedAt": "2026-10-28T22:18:54.168244+00:00",
+  "audit": "Fulloriginalgoal;previousgoalturnclassifiedasprogressbecauseitcompletedcontentpublication,backendmemoryfixandcurrentproductionverification. Thisauditadds currentinstalledpreviewandnativeintegrationevidence.",
+  "requirements": [
+    {
+      "requirement": "Use verified2026-10-28baseline;15supported levels eachatleast180actuallyadmittedcompletepractices",
+      "status": "proven",
+      "evidence": [
+        "build/learning-supply-audit-20261028/production.json",
+        "build/learning-supply-audit-20261028/goal-final-online-acceptance.json"
+      ],
+      "result": "1418baseline+1282new=2700;each15levels180;20529totalresponsepoints"
+    },
+    {
+      "requirement": "Complete anddeduplicatednewpractice/responseidentities; no inflated revision counts",
+      "status": "proven",
+      "evidence": [
+        "build/learning-supply-audit-20261028/final-quota-acceptance.json",
+        "build/learning-supply-audit-20261028/seventh-wave-novelty-screen.json",
+        "build/learning-supply-audit-20261028/final-tail-novelty-screen.json",
+        "docs/verification/learning-supply-campaign-20261028.json"
+      ],
+      "result": "1282unique actualpractices/8658unique newresponseIDs;selectedincrementaltextoverlapscreenandpeerreview;revisionsadd0supply"
+    },
+    {
+      "requirement": "Retain original authoring andper-questionanswer/rejectionrationales; batchreviewandpublication",
+      "status": "proven",
+      "evidence": [
+        "Backend/config/learning/expansions/2026-10-28/sources",
+        "Backend/config/learning/expansions/2026-10-28/index.json",
+        "docs/verification/learning-supply-final-acceptance-20261029.json"
+      ],
+      "result": "SHA-bound authoredsources/reviewsandimmutablefrozenmanifests inGit; rejected drafts retained; realnativegradingchecks andguardedpublicationreceipts recorded"
+    },
+    {
+      "requirement": "Automaticnine-star promotion withnospecialexam onbackend",
+      "status": "proven",
+      "evidence": [
+        "Backend/src/modules/learning/automatic-promotion-repository.ts",
+        "Backend/test/integration/learning-promotion.test.ts",
+        "build/verification/automatic-promotion-final-auth/integration.json",
+        "build/learning-supply-audit-20261028/production-auto-promotion-probe.log"
+      ],
+      "result": "10isolatedintegrationassertions+rolledbackrealdomainproductionprobe;539retains/540advances;promotionCourses=[];nomanualexamrequired"
+    },
+    {
+      "requirement": "iOSauthoritativelevelacknowledgement andrealpageeffects",
+      "status": "proven",
+      "evidence": [
+        "Packages/LingoKit/Sources/LearningFeature/LearningModels.swift",
+        "Packages/LingoKit/Sources/LearningFeature/CharacterLearningView.swift",
+        "docs/verification/learning-automatic-promotion-ios-20261028.json"
+      ],
+      "result": "14hostedmodeltests;1standard+1compactUItest;visible9thstarbeforeacknowledgement;hiddenpagedefer;0/60newlevel;oldhistoryremains;nativeceremony/screenshotsinspected"
+    },
+    {
+      "requirement": "Preserve history, snapshots, answers, points; idempotent/concurrent/rollbackbehavior",
+      "status": "proven",
+      "evidence": [
+        "Backend/test/integration/learning-promotion.test.ts",
+        "build/verification/automatic-promotion-final-auth/integration.json",
+        "Backend/test/integration/learning-expansion-versions.test.ts",
+        "build/verification/automatic-promotion-final-auth/expansion-versions.log",
+        "build/learning-supply-audit-20261028/production-final-forward-revision-acceptance.json"
+      ],
+      "result": "Passedexplicitretry/concurrency/rollback/oldchallengeandlegacysnapshottests;19currentv2/11priorv1hashesmatchedonline;no destructive DBcleanup"
+    },
+    {
+      "requirement": "Deploybackendandverifyonline supplyandbehavior",
+      "status": "proven",
+      "evidence": [
+        "build/learning-supply-audit-20261028/final-health-acceptance.json",
+        "build/learning-supply-audit-20261028/goal-final-online-acceptance.json",
+        "docs/verification/scoped-learning-publication-memory-20261029.json"
+      ],
+      "result": "originals-2865af945b5factive;api/workerready;nopendingtransaction;218selectedcurrentversion/hashbindingsmatched;budgetlimitsretained"
+    },
+    {
+      "requirement": "Installlatesttestedsimulatorpreview andleaveitavailable",
+      "status": "proven",
+      "evidence": [
+        "build/learning-supply-audit-20261028/goal-current-preview-acceptance.json",
+        "build/learning-supply-audit-20261028/goal-final-preview.log",
+        "build/learning-supply-audit-20261028/goal-final-preview.png"
+      ],
+      "result": "Scripts/preview.shsuccesswithavailableexistingiPhone18Prooverride;installed2binarySHA256smatchtestedartifact;no newertrackednative source;realpageopeninDeviceHub"
+    },
+    {
+      "requirement": "Owner-requested safecompilationcachecleanup andfocusedcommits",
+      "status": "proven",
+      "evidence": [
+        "docs/verification/compilation-cache-cleanup-20261029.json",
+        "docs/verification/idle-cache-followup-20261029.json",
+        "docs/verification/completed-packaging-cleanup-20261029.json"
+      ],
+      "result": "Onlyprovenidle/generatedcachesandverifiedduplicatepackagestagesremoved;currentapps/activecache/device/simdata/models/research/DB/recoveryretained;no businesschangesforcleanup"
+    }
+  ],
+  "remainingRequiredWork": [],
+  "nativeTestResultsReinspected": {
+    "iosModel": {
+      "path": "build/DerivedData/VerificationResults/20261028T155749Z-14577.xcresult",
+      "passed": 14,
+      "failed": 0,
+      "result": "Passed"
+    },
+    "standardUI": {
+      "path": "build/DerivedData/VerificationResults/20261028T151526Z-5165.xcresult",
+      "passed": 1,
+      "failed": 0,
+      "result": "Passed"
+    },
+    "compactUI": {
+      "path": "build/DerivedData/VerificationResults/20261028T151641Z-5687.xcresult",
+      "passed": 1,
+      "failed": 0,
+      "result": "Passed"
+    }
+  },
+  "backendIntegrationAssertions": [
+    {
+      "name": "539点保留原等级，资格不再要求课程、专项题或下一档供给",
+      "status": "passed"
+    },
+    {
+      "name": "第540个已获点立即进阶，重复和并发收据只写一次档案与同步事件",
+      "status": "passed"
+    },
+    {
+      "name": "已满档案在打开旅程时补进阶，只有已经各自满540的等级才可连续前进",
+      "status": "passed"
+    },
+    {
+      "name": "开始新挑战也补进阶，显式只读仓库从不修改已满档案",
+      "status": "passed"
+    },
+    {
+      "name": "晋级后未完旧挑战继续判题，答案与新增积分都留在冻结原等级",
+      "status": "passed"
+    },
+    {
+      "name": "最高等级九星后保留余额并继续练习，不反复改档",
+      "status": "passed"
+    },
+    {
+      "name": "并发答题与自选水平使用同一档案版本边界，冻结旧题仍只奖励一次",
+      "status": "passed"
+    },
+    {
+      "name": "旅程权限保持原有登录边界，匿名账号不会绕过领域晋级限制",
+      "status": "passed"
+    },
+    {
+      "name": "档案写入后故障回滚答案、奖励、余额和同步，原请求可安全重试",
+      "status": "passed"
+    },
+    {
+      "name": "历史手动进阶的冻结剧情仍可读取，自动晋级不改写旧快照",
+      "status": "passed"
+    }
+  ],
+  "online": {
+    "checkedAt": "2026-10-28T22:17:48.924Z",
+    "readOnly": true,
+    "complete": [
+      {
+        "level_key": "primary1",
+        "groups": 180,
+        "responses": 744
+      },
+      {
+        "level_key": "primary2",
+        "groups": 180,
+        "responses": 927
+      },
+      {
+        "level_key": "primary3",
+        "groups": 180,
+        "responses": 1035
+      },
+      {
+        "level_key": "primary4",
+        "groups": 180,
+        "responses": 933
+      },
+      {
+        "level_key": "primary5",
+        "groups": 180,
+        "responses": 1005
+      },
+      {
+        "level_key": "primary6",
+        "groups": 180,
+        "responses": 987
+      },
+      {
+        "level_key": "junior1",
+        "groups": 180,
+        "responses": 1638
+      },
+      {
+        "level_key": "junior2",
+        "groups": 180,
+        "responses": 1722
+      },
+      {
+        "level_key": "junior3",
+        "groups": 180,
+        "responses": 1708
+      },
+      {
+        "level_key": "senior1",
+        "groups": 180,
+        "responses": 1677
+      },
+      {
+        "level_key": "senior2",
+        "groups": 180,
+        "responses": 1672
+      },
+      {
+        "level_key": "senior3",
+        "groups": 180,
+        "responses": 1663
+      },
+      {
+        "level_key": "undergraduate",
+        "groups": 180,
+        "responses": 1770
+      },
+      {
+        "level_key": "postgraduate",
+        "groups": 180,
+        "responses": 1770
+      },
+      {
+        "level_key": "advanced",
+        "groups": 180,
+        "responses": 1278
+      }
+    ],
+    "completePractices": 2700,
+    "completeResponses": 20529,
+    "newPractices": 1282,
+    "newResponses": 8658,
+    "newResponseIdentitiesUnique": true,
+    "incrementalCurrentHashesMatched": 218,
+    "revisionSupply": 0,
+    "scope": "All-level SQL count aggregates plus218final-wave practice metadata only. No real-user records or old-media checksum; no database writes."
+  },
+  "versionHistory": {
+    "checkedAt": "2026-10-28T22:06:34.159Z",
+    "readOnly": true,
+    "selectedUnits": 19,
+    "currentVersion2HashesMatched": 19,
+    "historicalVersion1HashesPreserved": 11,
+    "unpublished015Version1Rows": 0,
+    "newSupplyFromRevisions": 0,
+    "scope": "Only19 selected unit identities and their version metadata; no real-user data or full-library checksum."
+  },
+  "currentPreview": {
+    "checkedAt": "2026-10-28T22:14:41.259114+00:00",
+    "simulatorUDID": "659893A7-0822-43F4-8DA1-4A92E9C78814",
+    "device": "iPhone18Pro iOS27.0 existingbooteddevice",
+    "source": "build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app",
+    "installed": "/Users/tiantian/Library/Developer/CoreSimulator/Devices/659893A7-0822-43F4-8DA1-4A92E9C78814/data/Containers/Bundle/Application/6AF894B6-6CEB-4457-811B-D62BA92F9098/LingoTrip.app",
+    "binaryBindings": [
+      {
+        "file": "LingoTrip",
+        "sha256": "553d6571a8039227202b1b55e6433824f58adfb3b252d4b72869a8c0779bdfba",
+        "installedMatchesTestedArtifact": true
+      },
+      {
+        "file": "LingoTrip.debug.dylib",
+        "sha256": "e63839972d718b32631acafc6c6a594f4f38743714054218c8ee6a12d1d58c26",
+        "installedMatchesTestedArtifact": true
+      }
+    ],
+    "previewCommand": "LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh preview achievement-preview",
+    "result": "Installed and launched; realCharacterLearningView withisolatedmemorypreview controls visible; no rebuildnecessary becausealltrackednativesources predate retained testedbinary",
+    "screenshot": "build/learning-supply-audit-20261028/goal-final-preview.png",
+    "visualInspection": "Avatar/name,thickchatprogress,thin nextstar59/60meter,9starrow,unitunlockCTAandcollapsedhistory readable overcityphoto; nooverlay orclipping detected.",
+    "deviceBinding": "Existing worktree-local defaultpoints tounavailable47DDdevice; explicitavailableUDID used withoutchanging configuration,creating/erasingdevices,orclearingdata."
+  },
+  "visualEvidenceReuse": "Foregroundlayoutandstar/promotionimplementationunchangedbyf30visibilityhook;14newerhostedmodeltestsverifyhiddenpagebehavior. Reusedpassedstandard/compactnativeUIcapturesandinspecteddirectly. Currentpreviewbinaryverifiedagain.",
+  "bounds": "Program/schema/actualgrading/selectedsame-AIpeerreview complete; no independentteacher/learnercalibration orphysicaldevicehaptic/frame-rateclaim. No freshprovider/AIrequests,realuserwrites,or wholeoldmediachecks.",
+  "documentation": "Updateddocs/development.mdto remove obsolete manual-confirmationdescription while retaininglegacyengineeringpreview."
+}

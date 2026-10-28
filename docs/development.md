@@ -72,7 +72,7 @@ Scripts/preview.sh preview achievement-preview # 复用已构建产物
 Scripts/preview.sh preview promotion-preview   # 内存夹具：剧情、取消/确认、成功揭晓
 ```
 
-实际升星仅在本次挑战获得正积分回执、关闭挑战后成功读取同档位星数增长时播放；普通刷新、历史查看和切换档位不触发。晋升继续使用服务端资格、剧情修订号及最终确认，保存成功后才揭晓新档位。
+实际升星仅在本次挑战获得正积分回执、关闭挑战后成功读取同档位星数增长时播放；普通刷新、历史查看和切换档位不触发。正式学习由服务端在九星满档时自动晋升，不需要专门晋升题或确认；真实学习页先播放原档位第九星，再展示晋升结果，关闭结果页只收起展示。`promotion-preview` 保留为历史手动课程的兼容预览，不是正式学习的晋升入口。
 
 参考 ClassMind 的 `run-classmind` 驱动：固定构建目录、复用模拟器、读取产物 Bundle ID、
 重启 App 使启动参数生效。LingoTrip 使用现有 Debug 内存账号，不复制 ClassMind 的 onboarding defaults。

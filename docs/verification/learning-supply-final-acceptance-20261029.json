@@ -271,5 +271,30 @@
   "remainingRequiredWork": [],
   "codeMemoryFixEvidence": "docs/verification/scoped-learning-publication-memory-20261029.json",
   "testsAfterMemoryFix": "29focusedbackend tests; typecheck/scopedESLint/format/architecture278modules826dependencies passed. Existing19Python authoring tests passed; no Swiftchanges in this final content wave.",
-  "reviewBoundary": "Original authored content with author/self-review, selected same-AI peer review, native schemas and actual grading probes. No independent teacher or learner calibration claimed."
+  "reviewBoundary": "Original authored content with author/self-review, selected same-AI peer review, native schemas and actual grading probes. No independent teacher or learner calibration claimed.",
+  "fullGoalCompletionAudit": "docs/verification/learning-supply-goal-completion-audit-20261029.json",
+  "currentSimulatorPreviewAcceptance": {
+    "checkedAt": "2026-10-28T22:14:41.259114+00:00",
+    "simulatorUDID": "659893A7-0822-43F4-8DA1-4A92E9C78814",
+    "device": "iPhone18Pro iOS27.0 existingbooteddevice",
+    "source": "build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app",
+    "installed": "/Users/tiantian/Library/Developer/CoreSimulator/Devices/659893A7-0822-43F4-8DA1-4A92E9C78814/data/Containers/Bundle/Application/6AF894B6-6CEB-4457-811B-D62BA92F9098/LingoTrip.app",
+    "binaryBindings": [
+      {
+        "file": "LingoTrip",
+        "sha256": "553d6571a8039227202b1b55e6433824f58adfb3b252d4b72869a8c0779bdfba",
+        "installedMatchesTestedArtifact": true
+      },
+      {
+        "file": "LingoTrip.debug.dylib",
+        "sha256": "e63839972d718b32631acafc6c6a594f4f38743714054218c8ee6a12d1d58c26",
+        "installedMatchesTestedArtifact": true
+      }
+    ],
+    "previewCommand": "LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh preview achievement-preview",
+    "result": "Installed and launched; realCharacterLearningView withisolatedmemorypreview controls visible; no rebuildnecessary becausealltrackednativesources predate retained testedbinary",
+    "screenshot": "build/learning-supply-audit-20261028/goal-final-preview.png",
+    "visualInspection": "Avatar/name,thickchatprogress,thin nextstar59/60meter,9starrow,unitunlockCTAandcollapsedhistory readable overcityphoto; nooverlay orclipping detected.",
+    "deviceBinding": "Existing worktree-local defaultpoints tounavailable47DDdevice; explicitavailableUDID used withoutchanging configuration,creating/erasingdevices,orclearingdata."
+  }
 }
