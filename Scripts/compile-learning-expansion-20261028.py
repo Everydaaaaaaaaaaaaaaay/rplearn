@@ -45,7 +45,7 @@ def english(value):
 def verify_declared_media(source):
     """Only declared selected-batch assets are read; never scan the old media corpus."""
     media = ROOT / 'Backend/config/learning/originals/media'
-    images, audios = {}, {}
+    images, audios, new_audio_ids = {}, {}, []
     for asset in source.get('imageAssets', []):
         key = asset.get('id', '')
         if not re.fullmatch(r'image\.[a-f0-9]{64}', key) or key != 'image.' + asset.get('sha256', '') or key in images:
@@ -101,8 +101,12 @@ def verify_declared_media(source):
         owned = {asset['id']: asset for asset in catalog['audioAssets']}
         for asset in source['audioAssets']:
             key = asset.get('id', '')
-            if key in audios or owned.get(key) != asset:
-                raise ValueError('Declared audio must exactly reuse owned reviewed audio metadata')
+            if not re.fullmatch(r'audio\.[a-f0-9]{64}', key) or key != 'audio.' + asset.get('sha256', '') or key in audios:
+                raise ValueError('Invalid or duplicate declared audio metadata identity')
+            if key in owned and owned[key] != asset:
+                raise ValueError('Existing owned audio metadata is immutable')
+            if key not in owned:
+                new_audio_ids.append(key)
             path = media / (key + '.wav')
             if not path.is_file() or path.stat().st_size != asset['byteSize'] or hashlib.sha256(path.read_bytes()).hexdigest() != asset['sha256']:
                 raise ValueError('Declared audio bytes/hash mismatch')
@@ -110,7 +114,7 @@ def verify_declared_media(source):
                 if audio.getnchannels() != 1 or audio.getsampwidth() != 2 or audio.getframerate() != 24000 or abs(round(audio.getnframes() / 24) - asset['durationMs']) > 1:
                     raise ValueError('Declared audio PCM format/duration mismatch')
             audios[key] = asset
-    return images, audios
+    return images, audios, new_audio_ids
 
 
 def compile_manifest(source_bytes, review_bytes, originals, batch):
@@ -132,7 +136,7 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
     boundary = nonempty(source['reviewBoundary'], 'review boundary')
     if len(boundary) < 30:
         raise ValueError('Review boundary must disclose the limits of author review')
-    images, audios = verify_declared_media(source)
+    images, audios, new_audio_ids = verify_declared_media(source)
     used_images, used_audios = set(), set()
     entries = []
     for draft in drafts:
@@ -249,6 +253,8 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
         manifest['imageAssets'] = source['imageAssets']
     if audios:
         manifest['audioAssets'] = source['audioAssets']
+    if new_audio_ids:
+        manifest['newAudioAssetIds'] = new_audio_ids
     return manifest
 
 

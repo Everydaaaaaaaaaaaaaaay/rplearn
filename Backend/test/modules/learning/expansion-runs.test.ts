@@ -9,6 +9,7 @@ import {
   isExpansionUnit,
   loadExpansionCatalog,
   loadExpansionImages,
+  loadExpansionAudio,
   verifyExpansionAudio,
 } from "../../../src/modules/learning/expansion-catalog.js";
 import type { LearningAudioAsset } from "../../../src/modules/learning/audio.js";
@@ -123,6 +124,17 @@ describe("explicit expansion runs", () => {
       entries.length,
     );
     await verifyExpansionAudio("b000", "2026-10-28");
+    expect(await loadExpansionAudio("b000", "2026-10-28")).toHaveLength(0);
+    files.set(
+      String(new URL("b000.json", base)),
+      JSON.stringify({
+        ...manifest,
+        audioAssets: [audio],
+        newAudioAssetIds: [audio.id],
+      }),
+    );
+    const selected = await loadExpansionAudio("b000", "2026-10-28");
+    expect(selected.map((asset) => asset.metadata.id)).toEqual([audio.id]);
     files.set(
       String(new URL("b000.json", base)),
       JSON.stringify({

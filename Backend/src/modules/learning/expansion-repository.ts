@@ -7,6 +7,7 @@ import {
 } from "./expansion-catalog.js";
 import { LearningEngineRepository } from "./engine-repository.js";
 import type { LearningImageAsset } from "./images.js";
+import type { LearningAudioAsset } from "./audio.js";
 
 export class LearningExpansionRepository {
   constructor(private readonly database: DatabaseResource) {}
@@ -16,13 +17,21 @@ export class LearningExpansionRepository {
     batch: string,
     images: readonly LearningImageAsset[] = [],
     run: string = expansionRun,
+    audios: readonly LearningAudioAsset[] = [],
   ) {
     const catalog = loadExpansionCatalog(batch, false, run);
     if (catalog.hash !== expectedHash) throw new Error("Expansion hash mismatch");
-    // [] verifies all referenced audio against already archived server metadata.
+    const selectedAudio = catalog.manifests.flatMap((m) =>
+      (m.audioAssets ?? []).filter((a) => m.newAudioAssetIds?.includes(a.id)),
+    );
+    const audioDigest = (assets: readonly LearningAudioAsset[]) =>
+      contentHash([...assets].sort((a, b) => a.id.localeCompare(b.id)));
+    if (audioDigest(selectedAudio) !== audioDigest(audios))
+      throw new Error("Expansion selected new audio metadata mismatch");
+    // Only explicitly selected new clips may be archived. Reused clips must already exist.
     await new LearningEngineRepository(this.database).publishBatch(
       catalog.units,
-      [],
+      audios,
       images,
     );
     return { run, batch, units: catalog.units.length, hash: catalog.hash };

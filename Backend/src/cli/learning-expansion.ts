@@ -8,9 +8,11 @@ import {
   expansionNamespace,
   expansionRun,
   verifyExpansionAudio,
+  loadExpansionAudio,
 } from "../modules/learning/expansion-catalog.js";
 import { createMediaObjectStore } from "../modules/media/object-store.js";
 import { uploadLearningImages } from "../modules/learning/images.js";
+import { uploadLearningAudio } from "../modules/learning/audio.js";
 import { LearningExpansionRepository } from "../modules/learning/expansion-repository.js";
 
 async function main() {
@@ -76,10 +78,13 @@ async function main() {
       if (!hash || !selected) throw new Error("Missing expansion batch/hash");
       if (hash !== catalog.hash) throw new Error("Expansion hash mismatch");
       const images = await loadExpansionImages(selected, run);
-      if (images.length) {
+      const audios = await loadExpansionAudio(selected, run);
+      if (images.length || audios.length) {
         if (!config.mediaStorageEnabled)
-          throw new Error("New images need object storage");
-        await uploadLearningImages(images, createMediaObjectStore(config));
+          throw new Error("New expansion media needs object storage");
+        const store = createMediaObjectStore(config);
+        await uploadLearningImages(images, store);
+        await uploadLearningAudio(audios, store);
       }
       console.log(
         JSON.stringify(
@@ -88,6 +93,7 @@ async function main() {
             selected,
             images.map((a) => a.metadata),
             run,
+            audios.map((a) => a.metadata),
           ),
         ),
       );

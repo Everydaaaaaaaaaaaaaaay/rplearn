@@ -11,7 +11,11 @@ import {
 } from "./content.js";
 import { gradeAnswer } from "./grading.js";
 import { learningImageSchema, verifyLearningImage } from "./images.js";
-import { learningAudioSchema, verifyLearningAudioFile } from "./audio.js";
+import {
+  learningAudioSchema,
+  verifyLearningAudioFile,
+  type DeferredLearningAudio,
+} from "./audio.js";
 
 export const expansionRun = "2026-10-24";
 export const expansionRuns = [expansionRun, "2026-10-28"] as const;
@@ -46,6 +50,7 @@ const manifestSchema = z.strictObject({
   entries: z.array(entry).min(1).max(30),
   imageAssets: z.array(learningImageSchema).optional(),
   audioAssets: z.array(learningAudioSchema).optional(),
+  newAudioAssetIds: z.array(z.string().regex(/^audio\.[a-f0-9]{64}$/)).optional(),
   sourceSHA256: z
     .string()
     .regex(/^[a-f0-9]{64}$/)
@@ -105,6 +110,13 @@ export function loadExpansionCatalog(
           !manifest.reviewer)
       )
         throw new Error("Expansion author review binding missing");
+      const newAudio = manifest.newAudioAssetIds ?? [];
+      if (
+        new Set(newAudio).size !== newAudio.length ||
+        newAudio.some((id) => !manifest.audioAssets?.some((a) => a.id === id)) ||
+        (run !== "2026-10-28" && newAudio.length > 0)
+      )
+        throw new Error("Expansion selected new audio identity mismatch");
       return manifest;
     });
   const entries = manifests.flatMap((m) => m.entries);
@@ -218,18 +230,35 @@ export async function loadExpansionImages(batch: string, run: string = expansion
 }
 
 /** Only selected, explicitly declared clips are checked; publishing reuses archived metadata. */
+function expansionAudioPath(id: string) {
+  return process.env.NODE_ENV === "production"
+    ? `/opt/lingotrip/shared/learning-originals-media/${id}.wav`
+    : fileURLToPath(
+        new URL(`../../../config/learning/originals/media/${id}.wav`, import.meta.url),
+      );
+}
+
 export async function verifyExpansionAudio(batch: string, run: string = expansionRun) {
   const catalog = loadExpansionCatalog(batch, false, run);
   for (const asset of catalog.manifests.flatMap((m) => m.audioAssets ?? [])) {
-    const path =
-      process.env.NODE_ENV === "production"
-        ? `/opt/lingotrip/shared/learning-originals-media/${asset.id}.wav`
-        : fileURLToPath(
-            new URL(
-              `../../../config/learning/originals/media/${asset.id}.wav`,
-              import.meta.url,
-            ),
-          );
-    await verifyLearningAudioFile(asset, path);
+    await verifyLearningAudioFile(asset, expansionAudioPath(asset.id));
   }
+}
+
+/** Upload only selected new clips; existing original clips stay in their current archive. */
+export async function loadExpansionAudio(
+  batch: string,
+  run: string = expansionRun,
+): Promise<DeferredLearningAudio[]> {
+  const catalog = loadExpansionCatalog(batch, false, run);
+  const assets = catalog.manifests.flatMap((m) =>
+    (m.audioAssets ?? []).filter((a) => m.newAudioAssetIds?.includes(a.id)),
+  );
+  return Promise.all(
+    assets.map(async (metadata) => {
+      const filePath = expansionAudioPath(metadata.id);
+      await verifyLearningAudioFile(metadata, filePath);
+      return { metadata, filePath, loadBytes: () => readFile(filePath) };
+    }),
+  );
 }

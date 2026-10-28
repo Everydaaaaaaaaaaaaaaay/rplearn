@@ -5,6 +5,8 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import struct
+import wave
 
 ROOT = Path(__file__).resolve().parents[2]
 COMPILER = ROOT / 'Scripts/compile-learning-expansion-20261028.py'
@@ -146,6 +148,36 @@ class ExpansionCompilerTests(unittest.TestCase):
             question['material'] = '完整材料中的中文字符用于隔离编码验证。' * 700
         manifest['entries'][0]['contentHash'] = self.compiler.digest(unit)
         self.compiler.validate_manifest(manifest)
+
+    def test_new_explicit_pcm_is_sha_bound_and_marked_for_selected_upload(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            media = root / 'Backend/config/learning/originals/media'
+            media.mkdir(parents=True)
+            (media.parent / 'catalog.json').write_text(json.dumps({'audioAssets': []}))
+            draft = media / 'fixture.wav'
+            with wave.open(str(draft), 'wb') as output:
+                output.setnchannels(1)
+                output.setsampwidth(2)
+                output.setframerate(24000)
+                output.writeframes(struct.pack('<h', 1000) * 24000)
+            raw = draft.read_bytes()
+            sha = hashlib.sha256(raw).hexdigest()
+            audio = {'id': 'audio.' + sha, 'sha256': sha, 'byteSize': len(raw), 'durationMs': 1000, 'contentType': 'audio/wav', 'transcript': 'Engineering fixture clip only.', 'voice': 'research.local', 'reviewedAt': '2026-10-28', 'reviewNotes': 'Isolated PCM fixture, never production teaching content.'}
+            draft.rename(media / (audio['id'] + '.wav'))
+            self.compiler.ROOT = root
+            source = copy.deepcopy(self.source)
+            original = next(u for u in self.originals.values() if u['level'] == 'primary2' and u['originalGroup']['family'] == 'listening_word_phrase_choice')
+            source['units'][0].update(sourceUnitId=original['id'], level=original['level'], family=original['originalGroup']['family'])
+            source['audioAssets'] = [audio]
+            for question in source['units'][0]['materials'][0]['questions']:
+                question['audio'] = {'assetId': audio['id'], 'text': audio['transcript'], 'voice': audio['voice']}
+            manifest = self.compile(source)
+            self.assertEqual(manifest['newAudioAssetIds'], [audio['id']])
+            self.assertEqual(manifest['audioAssets'], [audio])
+            source['audioAssets'][0]['sha256'] = '0' * 64
+            with self.assertRaisesRegex(ValueError, 'audio'):
+                self.compile(source)
 
 
 if __name__ == '__main__':

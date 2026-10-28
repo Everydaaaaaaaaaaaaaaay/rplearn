@@ -69,6 +69,21 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         true,
       );
       expect(() => loadExpansionCatalog("b999")).toThrow("Unknown");
+      await expect(
+        expansion.publish(catalog.hash, "b000", [], "2026-10-24", [
+          {
+            id: `audio.${"a".repeat(64)}`,
+            sha256: "a".repeat(64),
+            byteSize: 48044,
+            durationMs: 1000,
+            contentType: "audio/wav",
+            transcript: "Unselected clip fixture.",
+            voice: "research.local",
+            reviewedAt: "2026-10-28",
+            reviewNotes: "Isolated unselected asset fixture, never teaching content.",
+          },
+        ]),
+      ).rejects.toThrow("selected");
     });
 
     it("显式新轮次撤回只触及对应命名空间，默认旧轮次不碰新题", async () => {
