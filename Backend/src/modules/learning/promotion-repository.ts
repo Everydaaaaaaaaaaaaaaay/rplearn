@@ -85,35 +85,15 @@ export class LearningPromotionSession {
       requiredUnits: course?.minimumNextUnitsPerRole ?? 3,
     }));
     const blockers: { code: string; message: string }[] = [];
-    if (!course)
-      blockers.push({
-        code: "course_unpublished",
-        message: "本级完整课程与进阶标准尚在准备，现有学习进度会保留。",
-      });
     if (points < targetPoints)
       blockers.push({
         code: "points_remaining",
         message: `还需积累 ${String(targetPoints - points)} 点，点亮本级九颗星。`,
       });
-    if (goals.some((g) => !g.complete))
-      blockers.push({
-        code: "goals_remaining",
-        message: "还有学习主题需要在不同单元中练习，详情见主题进度。",
-      });
-    if (course && !transferCompleted)
-      blockers.push({
-        code: "transfer_remaining",
-        message: "请完成本级综合迁移单元；遗漏题目可以补答。",
-      });
     if (!nextLevel)
       blockers.push({
         code: "highest_level",
         message: "已到当前课程的最高档位，可以继续练习。",
-      });
-    else if (course && nextLevelContent.some((r) => r.availableUnits < r.requiredUnits))
-      blockers.push({
-        code: "next_level_unavailable",
-        message: "下一档的合格题库尚未准备完整，已获进度会保留。",
       });
     const [active] = await this.sql<
       { id: string }[]

@@ -276,7 +276,7 @@ describe("字符与成长策略", () => {
       displayPoints: 540,
     });
   });
-  it("没有内容覆盖、迁移单元或下一档题库时不能假晋级", () => {
+  it("九星自动晋级不要求内容覆盖、迁移题或下一档题库", () => {
     const input = {
       level: "primary3" as const,
       points: 540,
@@ -286,13 +286,13 @@ describe("字符与成长策略", () => {
       nextLevelAvailable: true,
     };
     expect(promotionEligibility(input).ready).toBe(true);
-    expect(promotionEligibility({ ...input, requiredGoalIds: [] }).ready).toBe(false);
-    expect(promotionEligibility({ ...input, coveredGoalIds: [] }).ready).toBe(false);
+    expect(promotionEligibility({ ...input, points: 539 }).ready).toBe(false);
+    expect(promotionEligibility({ ...input, level: "advanced" }).ready).toBe(false);
+    expect(promotionEligibility({ ...input, requiredGoalIds: [] }).ready).toBe(true);
+    expect(promotionEligibility({ ...input, coveredGoalIds: [] }).ready).toBe(true);
     expect(promotionEligibility({ ...input, nextLevelAvailable: false }).ready).toBe(
-      false,
+      true,
     );
-    expect(promotionEligibility({ ...input, hasTransferUnit: false }).ready).toBe(
-      false,
-    );
+    expect(promotionEligibility({ ...input, hasTransferUnit: false }).ready).toBe(true);
   });
 });

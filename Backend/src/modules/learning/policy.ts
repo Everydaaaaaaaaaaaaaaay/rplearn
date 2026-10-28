@@ -39,6 +39,7 @@ export function nextLearningLevel(level: LearningLevel): LearningLevel | null {
   return levelKeys[levelKeys.indexOf(level) + 1] ?? null;
 }
 
+/** Legacy course metadata stays readable; only nine earned stars gate advancement. */
 export function promotionEligibility(input: {
   level: LearningLevel;
   points: number;
@@ -54,11 +55,7 @@ export function promotionEligibility(input: {
     nextLevel: nextLearningLevel(input.level),
     missingGoalIds,
     ready:
-      input.requiredGoalIds.length > 0 &&
-      missingGoalIds.length === 0 &&
-      input.hasTransferUnit &&
       input.points >= learningPolicy.pointsPerStar * learningPolicy.starsPerLevel &&
-      input.nextLevelAvailable &&
       nextLearningLevel(input.level) !== null,
   };
 }

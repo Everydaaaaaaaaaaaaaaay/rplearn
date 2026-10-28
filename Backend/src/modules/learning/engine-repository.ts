@@ -11,6 +11,7 @@ import { questionListeningScript } from "./listening-speech.js";
 import { LearningBankSession } from "./bank-repository.js";
 import { LearningDirectionSession } from "./direction-repository.js";
 import { LearningPromotionSession } from "./promotion-repository.js";
+import { automaticallyPromote } from "./automatic-promotion-repository.js";
 import type { PromotionCourse } from "./promotion-content.js";
 import type { LearningContextReader } from "./context.js";
 import { randomUUID } from "node:crypto";
@@ -90,7 +91,9 @@ export class LearningEngineRepository {
           reject("LEARNING_REQUEST_CONFLICT", "这个请求标识已用于其他操作。");
         return existing.response;
       }
-      const response = await execute(new LearningSession(sql, userId, this.context));
+      const response = await execute(
+        new LearningSession(sql, userId, this.context, true),
+      );
       await sql`insert into app.learning_receipts(user_id, request_id, operation, request_hash, response)
         values(${userId}, ${requestId}, ${operation}, ${hash}, ${JSON.stringify(response)}::jsonb)`;
       return response;
@@ -105,7 +108,7 @@ export class LearningEngineRepository {
   ): Promise<T> {
     const result = await this.database.sql.begin(async (sql) => {
       await sql`select pg_advisory_xact_lock(hashtextextended(${`learning:${userId}`}, 0))`;
-      return query(new LearningSession(sql, userId, this.context));
+      return query(new LearningSession(sql, userId, this.context, true));
     });
     return result as T;
   }
@@ -230,6 +233,7 @@ export class LearningSession {
     private readonly sql: TransactionSql,
     private readonly userId: string,
     private readonly context?: LearningContextReader,
+    private readonly writable = false,
   ) {}
 
   directions() {
@@ -296,6 +300,10 @@ export class LearningSession {
 
   async currentLevel() {
     if (!this.context) throw new Error("未配置学习档案读取服务。");
+    if (this.writable) {
+      const result = await automaticallyPromote(this.sql, this.userId, this.context);
+      if (result) return result.profile.difficulty;
+    }
     return this.context.profile(this.sql, this.userId);
   }
 
@@ -789,9 +797,14 @@ export class LearningSession {
         .sql`update app.learning_rounds set completed_at=now() where id=${input.roundId}
         and cardinality(question_ids)=(select count(*) from app.learning_answers where round_id=${input.roundId})`;
     }
+    const promotion = this.writable
+      ? await automaticallyPromote(this.sql, this.userId, this.context)
+      : null;
     return {
       result,
       awardedPoints,
+      currentLevel: promotion?.profile.difficulty ?? attempt.level_key,
+      automaticPromotion: promotion?.promotion ?? null,
       attempt: await this.attempt(input.attemptId),
       progress: await this.progress(),
     };
