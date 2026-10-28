@@ -10,6 +10,8 @@ public final class CharacterLearningModel {
     public private(set) var nextCursor: String?
     public private(set) var isBusy = false
     public private(set) var error: String?
+    public private(set) var historyError: String?
+    private var historyRetryIsPagination = false
     public private(set) var isPreparing = false
     public private(set) var directions: LearningDirections?
     public private(set) var directionError: String?
@@ -52,23 +54,25 @@ public final class CharacterLearningModel {
     }
     public func load() async {
         guard !isBusy, !isChangingDirection else {
-            if rewardSession?.returned == true { reloadAfterBusy = true }
+            reloadAfterBusy = true
             return
         }
-        isBusy = true; error = nil
+        isBusy = true; error = nil; historyError = nil; historyRetryIsPagination = false
         directions = nil
         directionError = pendingDirection == nil ? nil : "上次方向切换尚未确认，请重试。"
-        defer {
-            isBusy = false
-            if reloadAfterBusy { reloadAfterBusy = false; Task { await load() } }
-        }
+        defer { finishBusyOperation() }
         do {
             async let character = service.learningCharacter(characterID)
             async let global = service.learningJourney()
-            async let page = service.learningHistory(characterID, cursor: nil)
+            async let page = readHistory()
             let values = try await (character, global, page)
             guard !Task.isCancelled else { return }
-            state = values.0; journey = values.1; history = values.2.items; nextCursor = values.2.nextCursor
+            state = values.0; journey = values.1
+            switch values.2 {
+            case .success(let page): history = page.items; nextCursor = page.nextCursor
+            case .failure(let failure):
+                if !(failure is CancellationError) { historyError = failure.localizedDescription }
+            }
             if let session = rewardSession, session.returned {
                 starAward = LearningStarAward(before: session.before, after: values.1, rewardedLevel: session.level, didEarnPoints: session.didEarnPoints)
                 rewardSession = nil
@@ -93,7 +97,7 @@ public final class CharacterLearningModel {
         }
         guard let request = directionRequest else { return }
         isChangingDirection = true; directionError = nil; directions = nil
-        defer { isChangingDirection = false }
+        defer { isChangingDirection = false; reloadIfNeeded() }
         do {
             _ = try await service.selectLearningDirection(direction, requestID: request.id, expectedRevision: request.revision)
             pendingDirection = nil; directionRequest = nil
@@ -109,21 +113,39 @@ public final class CharacterLearningModel {
         }
     }
     public func loadMore() async {
-        guard !isBusy, let nextCursor else { return }
-        isBusy = true; error = nil
-        defer { isBusy = false }
+        guard !isBusy, !isChangingDirection, let nextCursor else { return }
+        isBusy = true; historyError = nil; historyRetryIsPagination = false
+        defer { finishBusyOperation() }
         do {
             let page = try await service.learningHistory(characterID, cursor: nextCursor)
             history += page.items.filter { item in !history.contains(where: { $0.id == item.id }) }
             self.nextCursor = page.nextCursor
-        } catch { self.error = error.localizedDescription }
+        } catch is CancellationError {} catch {
+            historyError = error.localizedDescription; historyRetryIsPagination = true
+        }
+    }
+    public func retryHistory() async {
+        if historyRetryIsPagination { await loadMore() }
+        else { await load() }
+    }
+    private func readHistory() async -> Result<LearningHistory, Error> {
+        do { return .success(try await service.learningHistory(characterID, cursor: nil)) }
+        catch { return .failure(error) }
+    }
+    private func finishBusyOperation() {
+        isBusy = false; reloadIfNeeded()
+    }
+    private func reloadIfNeeded() {
+        guard reloadAfterBusy, !isBusy, !isChangingDirection else { return }
+        reloadAfterBusy = false
+        Task { await load() }
     }
     public func open(_ id: UUID? = nil) async {
         guard !isBusy, !isChangingDirection else { return }
         // 方向不可用只阻止新开；历史和进行中的挑战按原快照继续。
         guard id != nil || state?.activeAttemptId != nil || canStartNewChallenge else { return }
         isBusy = true; error = nil
-        defer { isBusy = false }
+        defer { finishBusyOperation() }
         do {
             let opened: LearningAttempt?
             if let id = id ?? state?.activeAttemptId {
@@ -166,7 +188,7 @@ public final class CharacterLearningModel {
         guard !isBusy, canOpenPromotion, let service = service as? any LearningPromotionServing,
               let eligibility = journey?.promotion else { return }
         isBusy = true; error = nil
-        defer { isBusy = false }
+        defer { finishBusyOperation() }
         do {
             let promotion: LearningPromotion
             if let id = eligibility.activePromotionId { promotion = try await service.learningPromotion(id) }

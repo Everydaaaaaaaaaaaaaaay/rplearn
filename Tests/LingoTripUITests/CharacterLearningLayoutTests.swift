@@ -2,6 +2,21 @@ import XCTest
 
 @MainActor
 final class CharacterLearningLayoutTests: XCTestCase {
+    func testHistoryFailureDoesNotBlockTheChallengeCard() {
+        let app = launch(state: "ready", historyFailure: true)
+        XCTAssertTrue(app.buttons["learning.start"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["learning.start"].isEnabled)
+        XCTAssertTrue(app.otherElements["learning.level.progress"].exists)
+        expandHistory(in: app)
+        let error = app.descendants(matching: .any)["learning.history.error"].firstMatch
+        reveal(error, in: app)
+        XCTAssertTrue(app.buttons["重新载入"].isHittable)
+        XCTAssertFalse(app.staticTexts["完成挑战后，在这里回顾。"].exists)
+        capture(app, name: "记录失败时仍保留解锁与星级并可重试")
+        app.buttons["learning.history.toggle"].tap()
+        XCTAssertTrue(app.buttons["learning.start"].isHittable)
+    }
+
     func testLevelAndStarsDoNotOpenAProgressSheet() {
         let app = launch(state: "ready")
         let stars = app.descendants(matching: .any)["learning.achievement.stars"].firstMatch
@@ -210,13 +225,14 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertTrue(element.isHittable)
     }
 
-    private func launch(state: String, large: Bool = false, city: String = "london") -> XCUIApplication {
+    private func launch(state: String, large: Bool = false, city: String = "london", historyFailure: Bool = false) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
             "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9", "UI_TEST_TAB": "role-learning",
             "UI_TEST_LEARNING_PAGE_STATE": state, "UI_TEST_REGION": city]
         app.launchArguments = ["--learning-preview-state", state]
+        if historyFailure { app.launchArguments.append("--learning-history-failure") }
         if large {
             app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
             app.launchEnvironment["UI_TEST_CAPTURE_APPEARANCE"] = "dark"

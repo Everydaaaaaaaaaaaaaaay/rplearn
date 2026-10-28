@@ -79,6 +79,9 @@ struct DebugLearningPreviewService: LearningServing, LearningDirectionServing, M
         }])
     }
     func learningHistory(_ characterID: UUID, cursor: String?) async throws -> LearningHistory {
+        if ProcessInfo.processInfo.arguments.contains("--learning-history-failure") {
+            throw BackendClientError.transport("挑战记录暂时无法载入")
+        }
         guard ["records", "ready", "active", "preparing"].contains(pageState) else {
             return try decode(["items": [], "nextCursor": NSNull()])
         }

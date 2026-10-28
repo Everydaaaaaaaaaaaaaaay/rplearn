@@ -1196,7 +1196,7 @@ struct RootView: View {
             .safeAreaInset(edge: .top, spacing: 0) {
                 Text("界面预览 · 示例进度，不计入账号")
                     .font(.caption).foregroundStyle(.secondary).padding(8).frame(maxWidth: .infinity)
-                    .background(.ultraThinMaterial)
+                    .background(.ultraThinMaterial, ignoresSafeAreaEdges: [])
             }
     }
     #endif

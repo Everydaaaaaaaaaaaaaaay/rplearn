@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-28",
+  "scope": "Learning page full-screen city backdrop and resilient learning-state refresh",
+  "fixes": [
+    {
+      "issue": "Header and home-indicator area used different brightness/cropping from the learning viewport.",
+      "cause": "ChatView painted one scene while the clipped learning child painted another scene with an extra wash.",
+      "change": "Share DSLearningSceneBackdrop across navigation, content and bottom safe area; embedded learning skips its own scene. Standalone learning uses the same component. Preload city in chat and drive scene reveal and pager position from the same GestureState, including keyboard dismissal. The Debug sample banner confines its material to its own bounds instead of extending into navigation safe areas."
+    },
+    {
+      "issue": "A refresh arriving during an in-flight operation could be lost, leaving stale chat unlock progress.",
+      "change": "Coalesce refresh requests and drain one deferred reload after busy learning operations and direction changes."
+    },
+    {
+      "issue": "History failure could discard healthy character and journey responses and blank the learning page.",
+      "change": "Separate history errors from core page errors; retain confirmed records/cursor, keep challenge and star progress available, and show a scoped retry only when history is expanded. Pagination retry uses the failed cursor."
+    }
+  ],
+  "regression": {
+    "backgroundBaseline": "build/learning-audit-20261028/visual-before.xcresult",
+    "unitRed": {
+      "evidence": "build/learning-audit-20261028/unit-red.xcresult",
+      "passed": 22,
+      "failed": 2,
+      "reproduced": [
+        "History failure leaves state and journey nil.",
+        "Refresh during a held read remains at 720 instead of the newer 1000."
+      ]
+    },
+    "gestureReview": "A mirrored reveal-state prototype lost its final opacity when a swipe dismissed the keyboard. Native screenshots exposed this despite passing navigation assertions. The final implementation shares GestureState directly; final light/dark screenshots and sampled recorded transitions were reviewed."
+  },
+  "verification": {
+    "unit": {
+      "passed": 58,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "build/learning-audit-20261028/unit-final.xcresult",
+      "suites": [
+        "LearningChallengeTests",
+        "LearningAchievementTests",
+        "LearningPracticeLiveTests",
+        "LearningAudioTests",
+        "LearningImageTests",
+        "LearningHistoryPresentationTests"
+      ]
+    },
+    "standardUI": {
+      "passed": 7,
+      "failed": 0,
+      "evidence": "build/learning-audit-20261028/ui-standard.xcresult",
+      "coverage": [
+        "Embedded dark Melbourne safe areas",
+        "Chat draft, keyboard dismissal and both horizontal directions",
+        "Ready-card layout and collapse",
+        "Pending/accuracy/combined filters",
+        "Maximum accessibility text in dark history",
+        "History failure with usable challenge card and scoped retry",
+        "Star replay in the real learning page"
+      ]
+    },
+    "compactUI": {
+      "passed": 3,
+      "failed": 0,
+      "evidence": "build/learning-audit-20261028/ui-compact.xcresult",
+      "coverage": [
+        "Embedded dark Melbourne backdrop",
+        "Ready-card controls and collapse",
+        "History failure and retry accessibility"
+      ]
+    },
+    "finalSharedGestureStandard": {
+      "passed": 2,
+      "failed": 0,
+      "evidence": "build/learning-audit-20261028/ui-pager-shared-gesture.xcresult"
+    },
+    "notes": [
+      "Tests used Scripts/test.sh and Scripts/test-ui.sh, explicit simulator IDs, no parallel testing and -collect-test-diagnostics never.",
+      "An earlier Swift method filter ran zero tests and an initial UI call used the scheme name as its target filter; these calls are excluded from passing evidence."
+    ],
+    "finalSharedGestureCompact": {
+      "passed": 2,
+      "failed": 0,
+      "evidence": "build/learning-audit-20261028/ui-compact-final.xcresult"
+    },
+    "previewBanner": {
+      "passed": 1,
+      "failed": 0,
+      "evidence": "build/learning-audit-20261028/ui-preview-banner.xcresult"
+    }
+  },
+  "visualReview": {
+    "method": "Xcode-hosted interactions and native simulator screenshots; Computer Use unavailable. Sampled recorded gesture frames supplement the final screenshots; no physical-device frame-rate measurement.",
+    "devices": [
+      "iPhone 18 Pro / iOS 27.0, 402×874pt",
+      "iPhone SE 3 / iOS 27.0, 375×667pt"
+    ],
+    "inspected": [
+      "Embedded Melbourne dark header/content/bottom at standard and compact sizes",
+      "Light learning page entered with a chat draft and keyboard",
+      "Light history-error retry on standard and compact screens",
+      "Maximum accessibility text in dark challenge/history",
+      "Star-flight screenshot on the real learning card"
+    ],
+    "evidence": [
+      "build/learning-audit-20261028/standard-attachments",
+      "build/learning-audit-20261028/compact-attachments",
+      "build/learning-audit-20261028/shared-gesture-attachments",
+      "build/learning-audit-20261028/pager-transition-final.mov",
+      "build/learning-audit-20261028/transition-final-reveal.jpg",
+      "build/learning-audit-20261028/compact-final-attachments"
+    ],
+    "conclusion": "Header, content and home area now share one uninterrupted photo and wash; no rectangular brightness seam remains in reviewed scenes. Text and controls retain contrast and usable hit targets. The labeled Debug-only sample-data banner remains intentionally visible.",
+    "unchangedEvidence": [
+      "Assets/LearningCityScenes/Review-2026-10-27/acceptance-v2.md",
+      "docs/verification/learning-layout-independent-cities-20261027.json"
+    ],
+    "boundaries": "No photo assets changed; reused the existing fifteen-city source/permission/detail review. This pass reviews affected standard/compact compositions, not a new full fifteen-city asset acceptance. No backend, production scoring or physical-device network test."
+  },
+  "dataSafety": "No backend, scoring policy, account storage, database, photo assets or unrelated source changed. New failure injection is confined to the Debug preview service.",
+  "preview": {
+    "command": "SIMCTL_CHILD_UI_TEST_REGION=melbourne SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=ready SIMCTL_CHILD_UI_TEST_CAPTURE_APPEARANCE=dark LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh preview role-learning",
+    "result": "Reused the latest successful Xcode test build, installed and launched the role-learning preview on the existing iPhone 18 Pro.",
+    "log": "build/learning-audit-20261028/final-preview.log",
+    "screenshot": "build/learning-audit-20261028/final-preview.png"
+  }
+}

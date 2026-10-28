@@ -17,6 +17,7 @@ public struct CharacterLearningView: View {
     private let currentRegionID: @Sendable () async -> String?
     @State private var sceneRegionID: String?
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.dsLearningBackdropProvided) private var backdropProvided
     @State private var displayedStarAward: LearningStarAward?
     @State private var historyExpanded = false
     @State private var historyFilter = LearningHistoryFilter()
@@ -78,7 +79,9 @@ public struct CharacterLearningView: View {
             }
             }
         }
-        .background { LearningCityBackdrop(regionID: sceneRegionID) }
+        .background {
+            if !backdropProvided { DSLearningSceneBackdrop(regionID: sceneRegionID) }
+        }
         .tint(theme.tint)
         .refreshable { await reloadPage() }
         .task(id: isVisible) { if isVisible { await reloadPage() } }
@@ -105,7 +108,7 @@ public struct CharacterLearningView: View {
     }
     private func reloadPage() async {
         async let load: Void = model.load()
-        if let regionID = await currentRegionID(), !Task.isCancelled { sceneRegionID = regionID }
+        if !backdropProvided, let regionID = await currentRegionID(), !Task.isCancelled { sceneRegionID = regionID }
         await load
     }
     private func challengeCard(_ state: BackendLearningCharacter, compact: Bool) -> some View {
@@ -234,12 +237,19 @@ public struct CharacterLearningView: View {
                 }
             }.frame(minHeight: 44)
             if historyExpanded {
+                if let error = model.historyError {
+                    LearningPageError(message: error) { Task { await model.retryHistory() } }
+                        .padding(.top, 12).disabled(model.isBusy)
+                        .accessibilityIdentifier("learning.history.error")
+                }
                 if items.isEmpty {
-                    Text(historyFilter.isActive
-                         ? (model.nextCursor == nil ? "暂无符合筛选的记录" : "已载入的记录中暂无匹配项，可载入更多记录。")
-                         : "完成挑战后，在这里回顾。")
-                        .font(.subheadline).foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 20)
+                    if model.historyError == nil {
+                        Text(historyFilter.isActive
+                             ? (model.nextCursor == nil ? "暂无符合筛选的记录" : "已载入的记录中暂无匹配项，可载入更多记录。")
+                             : "完成挑战后，在这里回顾。")
+                            .font(.subheadline).foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 20)
+                    }
                 } else {
                     LazyVStack(spacing: 0) {
                         ForEach(items) { item in

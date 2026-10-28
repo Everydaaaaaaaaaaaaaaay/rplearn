@@ -65,6 +65,20 @@ private actor ChallengeService: LearningServing, LearningDirectionServing {
     func startLearning(_ characterID: UUID, requestID: UUID) async throws -> LearningStart { starts += 1; throw BackendClientError.invalidResponse }
     var pageReads: Set<String> = []
     var pageError: (any Error)?
+    var historyFails = false
+    var historyCursors: [String?] = []
+    var characters = 720
+    var characterReads = 0
+    var holdCharacter = false
+    var pendingCharacter: CheckedContinuation<BackendLearningCharacter, Never>?
+    var heldCharacter: BackendLearningCharacter?
+    func configureHistoryFailure(_ value: Bool) { historyFails = value }
+    func holdNextCharacterRead() { holdCharacter = true }
+    func updateCharacters(_ value: Int) { characters = value }
+    func releaseCharacterRead() {
+        if let heldCharacter { pendingCharacter?.resume(returning: heldCharacter) }
+        pendingCharacter = nil; heldCharacter = nil
+    }
     func setPageError(_ error: any Error) { pageError = error }
     private func readPage<T: Decodable>(_ path: String, json: String) throws -> T {
         pageReads.insert(path)
@@ -72,10 +86,16 @@ private actor ChallengeService: LearningServing, LearningDirectionServing {
         return try JSONDecoder().decode(T.self, from: Data(json.utf8))
     }
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter {
-        try readPage("character", json: """
+        characterReads += 1
+        let snapshot: BackendLearningCharacter = try readPage("character", json: """
         {"characterId":"\(characterID)","roleKey":"oliver","cycleId":"\(roundID)",
-         "characters":720,"threshold":1000,"revision":7,"level":"primary3","availableUnits":3}
+         "characters":\(characters),"threshold":1000,"revision":7,"level":"primary3","availableUnits":3}
         """)
+        if holdCharacter {
+            holdCharacter = false; heldCharacter = snapshot
+            return await withCheckedContinuation { pendingCharacter = $0 }
+        }
+        return snapshot
     }
     func learningJourney() async throws -> LearningJourney {
         try readPage("journey", json: """
@@ -86,9 +106,13 @@ private actor ChallengeService: LearningServing, LearningDirectionServing {
         """)
     }
     func learningHistory(_ characterID: UUID, cursor: String?) async throws -> LearningHistory {
-        try readPage("history", json: """
-        {"items":[{"id":"\(attemptID)","title":"工程夹具","level":"primary3",
-         "startedAt":"2026-09-26T00:00:00Z","correctCount":1,"questionCount":6}],"nextCursor":"page2"}
+        historyCursors.append(cursor)
+        if historyFails { throw BackendClientError.transport("记录暂时无法载入") }
+        let id = cursor == nil ? attemptID : roundID
+        let next = cursor == nil ? "\"page2\"" : "null"
+        return try readPage("history", json: """
+        {"items":[{"id":"\(id)","title":"工程夹具","level":"primary3",
+         "startedAt":"2026-09-26T00:00:00Z","correctCount":1,"questionCount":6}],"nextCursor":\(next)}
         """)
     }
     func learningAttempt(_ id: UUID) async throws -> LearningAttempt { attempt }
@@ -110,6 +134,72 @@ private actor ChallengeService: LearningServing, LearningDirectionServing {
 
 @Suite("单元挑战恢复与交互状态") @MainActor
 struct LearningChallengeTests {
+    @Test("History failure must not hide the current challenge and star progress")
+    func historyFailureKeepsLearningAvailable() async throws {
+        let service = try ChallengeService()
+        await service.configureHistoryFailure(true)
+        let model = CharacterLearningModel(characterID: characterID, service: service)
+        await model.load()
+        #expect(model.state?.characters == 720)
+        #expect(model.journey?.current?.points == 61)
+        #expect(model.error == nil)
+        #expect(model.historyError != nil)
+        #expect(model.canStartNewChallenge)
+        await service.configureHistoryFailure(false)
+        await model.retryHistory()
+        #expect(model.historyError == nil)
+        #expect(model.history.count == 1)
+        await service.configureHistoryFailure(true)
+        await service.updateCharacters(1000)
+        await model.load()
+        #expect(model.state?.characters == 1000)
+        #expect(model.history.count == 1)
+        #expect(model.error == nil)
+        #expect(model.historyError != nil)
+    }
+
+    @Test("History pagination failure preserves rows and retries the same cursor")
+    func paginationFailureRetriesTheFailedPage() async throws {
+        let service = try ChallengeService()
+        let model = CharacterLearningModel(characterID: characterID, service: service)
+        await model.load()
+        await service.configureHistoryFailure(true)
+        await model.loadMore()
+        #expect(model.history.map(\.id) == [attemptID])
+        #expect(model.nextCursor == "page2")
+        #expect(model.error == nil)
+        #expect(model.historyError != nil)
+        await service.configureHistoryFailure(false)
+        await model.retryHistory()
+        #expect(model.history.map(\.id) == [attemptID, roundID])
+        #expect(model.nextCursor == nil)
+        #expect(model.historyError == nil)
+        #expect(await service.historyCursors == [nil, "page2", "page2"])
+    }
+
+    @Test("Refreshes arriving during a slow read coalesce and fetch the newer unlock progress")
+    func refreshDuringLoadIsNotLost() async throws {
+        let service = try ChallengeService()
+        await service.holdNextCharacterRead()
+        let model = CharacterLearningModel(characterID: characterID, service: service)
+        let loading = Task { await model.load() }
+        for _ in 0..<100 {
+            if await service.pendingCharacter != nil { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        #expect(await service.pendingCharacter != nil)
+        await service.updateCharacters(1000)
+        for _ in 0..<3 { await model.load() }
+        await service.releaseCharacterRead()
+        await loading.value
+        for _ in 0..<100 {
+            if model.state?.characters == 1000 && !model.isBusy { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        #expect(model.state?.characters == 1000)
+        #expect(await service.characterReads == 2)
+    }
+
     @Test("声音配图保留多余候选，未完整配对不可提交，逐项结果可以解码")
     func audioMatchingContract() throws {
         let question: [String: Any] = ["id":"q1","type":"audioMatching","goalId":"test.goal","instruction":"配图","prompt":"工程检查","hint":"工程提示",

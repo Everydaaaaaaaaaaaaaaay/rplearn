@@ -102,6 +102,37 @@ public struct DSSceneBackdrop: View {
     }
 }
 
+private struct DSLearningBackdropProvidedKey: EnvironmentKey {
+    static let defaultValue = false
+}
+
+public extension EnvironmentValues {
+    /// A containing chat pager paints the learning scene across its full safe areas.
+    var dsLearningBackdropProvided: Bool {
+        get { self[DSLearningBackdropProvidedKey.self] }
+        set { self[DSLearningBackdropProvidedKey.self] = newValue }
+    }
+}
+
+/// One full-screen scene and wash for learning content, navigation chrome and the home area.
+public struct DSLearningSceneBackdrop: View {
+    private let regionID: String?
+    public init(regionID: String?) { self.regionID = regionID }
+    public var body: some View {
+        DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .learning, regionID: regionID), tone: .cool)
+            .overlay {
+                LinearGradient(stops: [
+                    .init(color: Color.dsBackground.opacity(0.24), location: 0),
+                    .init(color: Color.dsBackground.opacity(0.12), location: 0.3),
+                    .init(color: Color.dsBackground.opacity(0.08), location: 0.75),
+                    .init(color: Color.dsBackground.opacity(0.36), location: 1)
+                ], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
+            }
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
+    }
+}
+
 /// 以整张场景为一个平面，避免入口和背景在透视变化时错位。
 struct DSSceneDragPose {
     let offset: CGSize

@@ -39,26 +39,6 @@ struct LearningPaper: ViewModifier {
     }
 }
 
-private struct LearningCityWash: View {
-    var body: some View {
-        LinearGradient(stops: [
-            .init(color: Color.dsBackground.opacity(0.24), location: 0),
-            .init(color: Color.dsBackground.opacity(0.12), location: 0.3),
-            .init(color: Color.dsBackground.opacity(0.08), location: 0.75),
-            .init(color: Color.dsBackground.opacity(0.36), location: 1)
-        ], startPoint: .top, endPoint: .bottom)
-    }
-}
-
-struct LearningCityBackdrop: View {
-    let regionID: String?
-    var body: some View {
-        DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .learning, regionID: regionID), tone: .cool)
-            .overlay { LearningCityWash().ignoresSafeArea() }
-            .allowsHitTesting(false)
-            .accessibilityHidden(true)
-    }
-}
 struct LearningPressStyle: ButtonStyle {
     @Environment(\.accessibilityReduceMotion) var reduceMotion
     func makeBody(configuration: Configuration) -> some View {

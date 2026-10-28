@@ -15,6 +15,8 @@ public struct ChatView: View {
     @State private var learningRegionID: String?
     @State var viewModel: ChatViewModel
     @State private var learningSelected = false
+    @GestureState(resetTransaction: Transaction(animation: .interactiveSpring(duration: 0.28, extraBounce: 0)))
+    private var learningTranslation: CGFloat = 0
     #if DEBUG
     @State private var fillingLearning = false
     @State private var learningDebugError: String?
@@ -82,11 +84,12 @@ public struct ChatView: View {
     public var body: some View {
         GeometryReader { proxy in
             if let learningPage = deps.learningPage {
-                ChatLearningPager(learningSelected: $learningSelected,
+                ChatLearningPager(learningSelected: $learningSelected, translation: $learningTranslation,
                                   enabled: recorder.state == .idle && chineseRecorder.state == .idle && wordSelection == nil && grammarTermSelection == nil && !showsRealtimeConversation) {
                     chatPage(bottomInset: proxy.safeAreaInsets.bottom)
                 } learning: {
                     learningPage(viewModel.character, learningSelected)
+                        .environment(\.dsLearningBackdropProvided, true)
                 }
             } else {
                 chatPage(bottomInset: proxy.safeAreaInsets.bottom)
@@ -107,17 +110,23 @@ public struct ChatView: View {
             guard !Task.isCancelled else { return }
             isTextInputFocused = false; isChineseInputFocused = false
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-            if learningSelected, let region = try? await deps.economyStore.profile().currentRegionID, !Task.isCancelled {
+            if let region = try? await deps.economyStore.profile().currentRegionID, !Task.isCancelled {
                 learningRegionID = region
             }
         }
         .dsQuickNotice($viewModel.quickNotice)
         .background {
-            if learningSelected {
-                DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .learning, regionID: learningRegionID), tone: .cool)
-            } else {
-                Color.dsBackground
+            GeometryReader { viewport in
+                // Share the gesture state rather than copying progress through onChange:
+                // keyboard dismissal and gesture reset must resolve to the same final page.
+                let reveal = (learningSelected ? 1 : 0) - learningTranslation / max(viewport.size.width, 1)
+                ZStack {
+                    Color.dsBackground
+                    DSLearningSceneBackdrop(regionID: learningRegionID)
+                        .opacity(min(1, max(0, reveal)))
+                }
             }
+            .animation(reduceMotion ? nil : .interactiveSpring(duration: 0.28, extraBounce: 0), value: learningSelected)
         }
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }

@@ -2,6 +2,26 @@ import XCTest
 
 @MainActor
 final class CharacterLearningPagerTests: XCTestCase {
+    func testLearningBackgroundAcrossSafeAreasInDarkMode() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_CAPTURE_APPEARANCE": "dark", "UI_TEST_REGION": "melbourne",
+            "UI_TEST_CITY_TAB_REGION": "melbourne"]
+        app.launch()
+        defer { app.terminate() }
+        let oliver = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Oliver Bennett")).firstMatch
+        XCTAssertTrue(oliver.waitForExistence(timeout: 15)); oliver.tap()
+        XCTAssertTrue(app.descendants(matching: .any)["chat.composer"].firstMatch.waitForExistence(timeout: 8))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.88, dy: 0.35))
+            .press(forDuration: 0.08, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.12, dy: 0.35)))
+        XCTAssertTrue(app.otherElements["learning.level.progress"].waitForExistence(timeout: 8))
+        XCTAssertTrue(app.buttons["返回聊天"].isHittable)
+        let screenshot = XCTAttachment(screenshot: app.screenshot())
+        screenshot.name = "深色学习页导航栏与底部连续背景"; screenshot.lifetime = .keepAlways; add(screenshot)
+    }
+
     func testSwipePreservesDraftAndVerticalScrollStaysOnPage() {
         continueAfterFailure = false
         let app = XCUIApplication()
