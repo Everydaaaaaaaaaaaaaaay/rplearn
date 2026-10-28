@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-29",
+  "scope": "Selected new expansion parents and their admitted independent senior children",
+  "problem": "Publishing a mixed parent alone left its two admitted children unavailable; namespace-only withdrawal missed gaokao.independent child IDs.",
+  "behavior": {
+    "selectedPublication": "Atomically register only selected parents and their admitted children; never republish old catalogs. b039 has8authoredgroups,11independentpractices,14registryunits including3historicalcomposites.",
+    "withdrawal": "Batch rollback includes selected children; whole-run rollback reads persisted origin even for future batches missing from local files. Old-run content,answers,earnedpoints remain.",
+    "exposure": "Origin is stored in existing private provenance text, apart from source component exposure IDs, so completing insertion does not hide grammar.",
+    "compatibility": "No new JSON fields; prior73700f69 source decoder accepts all6new independent children. Sample old independent content hash unchanged."
+  },
+  "checks": {
+    "isolatedIntegration": {
+      "passed": 4,
+      "log": "build/learning-supply-audit-20261028/derived-publication-compatible-green.log",
+      "red": "build/learning-supply-audit-20261028/derived-publication-red.log",
+      "database": "Reused existing isolated expansion28-rollback-final cluster; stopped normally and preserved."
+    },
+    "unit": {
+      "passed": 17,
+      "log": "build/learning-supply-audit-20261028/derived-publication-final-unit.log"
+    },
+    "oldDecoder": "build/learning-supply-audit-20261028/derived-old-decoder.log",
+    "typecheck": "passed",
+    "focusedLint": "passed",
+    "architecture": "passed",
+    "rendererSyntax": "4ownedCJSauthoringrenderers passed node--check",
+    "fullLintLimits": "Pre-existing unrelated backend build preview and two test files fail repository-wide ESLint; task paths pass. Owned config media-source scripts are excluded from typed TypeScript ESLint and checked with node--check."
+  },
+  "reviewBoundary": "Author self-review only for new content; software transaction tests and catalog checks are not independent teacher or learner calibration.",
+  "deployment": "Pending; no mixed senior children have yet been published."
+}

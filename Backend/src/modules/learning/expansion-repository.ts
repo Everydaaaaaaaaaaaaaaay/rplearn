@@ -8,6 +8,8 @@ import {
 import { LearningEngineRepository } from "./engine-repository.js";
 import type { LearningImageAsset } from "./images.js";
 import type { LearningAudioAsset } from "./audio.js";
+import { expansionPublication } from "./expansion-publication.js";
+import { expansionCatalogOriginMarker } from "./expansion-origin.js";
 
 export class LearningExpansionRepository {
   constructor(private readonly database: DatabaseResource) {}
@@ -29,12 +31,19 @@ export class LearningExpansionRepository {
     if (audioDigest(selectedAudio) !== audioDigest(audios))
       throw new Error("Expansion selected new audio metadata mismatch");
     // Only explicitly selected new clips may be archived. Reused clips must already exist.
+    const publication = expansionPublication(catalog.units);
     await new LearningEngineRepository(this.database).publishBatch(
-      catalog.units,
+      publication.units,
       audios,
       images,
     );
-    return { run, batch, units: catalog.units.length, hash: catalog.hash };
+    return {
+      run,
+      batch,
+      units: catalog.units.length,
+      admittedPractices: publication.admitted.length,
+      hash: catalog.hash,
+    };
   }
 
   /** The full-run switch also works from an earlier compatible release/catalog. */
@@ -43,7 +52,7 @@ export class LearningExpansionRepository {
     // The full-run emergency switch reads IDs from PostgreSQL, not every new
     // payload. It remains bounded if the new catalog is huge, absent or broken.
     const units: LearningUnit[] = batch
-      ? loadExpansionCatalog(batch, false, run).units
+      ? expansionPublication(loadExpansionCatalog(batch, false, run).units).units
       : [];
     const ids = units.map((u) => u.id);
     return this.database.sql.begin(async (sql) => {
@@ -53,7 +62,9 @@ export class LearningExpansionRepository {
       const rows = await sql<{ id: string; content_hash: string }[]>`
         select u.id,v.content_hash from app.learning_units u
         join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
-        where u.id=any(${ids}) or (${batch === undefined} and u.id like ${namespace + "%"})`;
+        where u.id=any(${ids}) or (${batch === undefined} and (
+          u.id like ${namespace + "%"}
+          or v.payload->'originalGroup'->>'sourceNotice' like ${"%" + expansionCatalogOriginMarker + namespace + "%"}))`;
       const targetIds = rows.map((row) => row.id);
       // A later reviewed version still belongs to this new cohort and must be
       // withdrawable. Report hash drift without blocking the requested rollback.

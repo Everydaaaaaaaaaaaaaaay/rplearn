@@ -8,6 +8,7 @@ export default tseslint.config(
       "coverage/**",
       "dependency-cruiser.cjs",
       "dist/**",
+      "config/learning/expansions/*/media-sources/**",
       "node_modules/**",
       "eslint.config.mjs",
       "prettier.config.mjs",

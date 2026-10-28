@@ -1,0 +1,1990 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b036",
+  "createdAt": "2026-10-29T00:45:53.734384+08:00",
+  "sourceSHA256": "c8624a4e220299d6d46d9353c80dd18d232b88848f6295bb49ad0619f0c2204f",
+  "reviewSHA256": "dcbd7cfdb00f7b8dc4b11b0d153a4a4104a60c952697ae761df839adbbdde6da",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.thank-you-card-envelopes-022",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "感谢卡写给谁",
+        "summary": "感谢卡写给谁，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.thank-you-card-envelopes-022",
+          "family": "function_choice",
+          "label": "感谢卡写给谁",
+          "candidateSHA256": "2094441c6f7c81839c92c52092d95eb40c09874578a8477718f211e5903d5812",
+          "authorCheckSHA256": "a0fb2e7456a8357233ca38418cb069cd987beb7ce359401f5776465f82744ef7",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.thank-you-card-envelopes-022.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b036；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Thank You Card Envelopes 022\n\nOur class writes thank-you cards. The gardener gets the card with a tree. The cook gets the card with a bowl. Sign your name inside, not on the envelope. Leave the top open for the teacher to check. Put finished envelopes in the front tray. Do not post them yourself."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.thank-you-card-envelopes-022.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend puts the tree card in the cook’s envelope. You say, \"____\"",
+            "material": "Thank You Card Envelopes 022\n\nOur class writes thank-you cards. The gardener gets the card with a tree. The cook gets the card with a bowl. Sign your name inside, not on the envelope. Leave the top open for the teacher to check. Put finished envelopes in the front tray. Do not post them yourself.",
+            "explanation": "A树卡给园丁；B全给厨师、C不给园丁均违分配。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "That card is for the gardener."
+              },
+              {
+                "id": "o1",
+                "text": "Both cards are for the cook."
+              },
+              {
+                "id": "o2",
+                "text": "The gardener gets no card."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.thank-you-card-envelopes-022.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend asks which card thanks the cook. You say, \"____\"",
+            "material": "Thank You Card Envelopes 022\n\nOur class writes thank-you cards. The gardener gets the card with a tree. The cook gets the card with a bowl. Sign your name inside, not on the envelope. Leave the top open for the teacher to check. Put finished envelopes in the front tray. Do not post them yourself.",
+            "explanation": "B碗卡给厨师；A树卡园丁；C空信封不是感谢卡。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The one with the tree."
+              },
+              {
+                "id": "o1",
+                "text": "The one with the bowl."
+              },
+              {
+                "id": "o2",
+                "text": "The empty envelope only."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.thank-you-card-envelopes-022.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend signs only the envelope. You say, \"____\"",
+            "material": "Thank You Card Envelopes 022\n\nOur class writes thank-you cards. The gardener gets the card with a tree. The cook gets the card with a bowl. Sign your name inside, not on the envelope. Leave the top open for the teacher to check. Put finished envelopes in the front tray. Do not post them yourself.",
+            "explanation": "C签卡内不信封；A托盘、B外套均非位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Write on the tray."
+              },
+              {
+                "id": "o1",
+                "text": "Write on the teacher’s coat."
+              },
+              {
+                "id": "o2",
+                "text": "Sign your name inside the card."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.thank-you-card-envelopes-022.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend seals the top before the check. You say, \"____\"",
+            "material": "Thank You Card Envelopes 022\n\nOur class writes thank-you cards. The gardener gets the card with a tree. The cook gets the card with a bowl. Sign your name inside, not on the envelope. Leave the top open for the teacher to check. Put finished envelopes in the front tray. Do not post them yourself.",
+            "explanation": "A封口留开待教师检查；B自行寄、C藏包违流程。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Leave it open for the teacher."
+              },
+              {
+                "id": "o1",
+                "text": "Post it without a check."
+              },
+              {
+                "id": "o2",
+                "text": "Hide it in your bag."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.thank-you-card-envelopes-022.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend finishes an envelope and asks where it goes. You say, \"____\"",
+            "material": "Thank You Card Envelopes 022\n\nOur class writes thank-you cards. The gardener gets the card with a tree. The cook gets the card with a bowl. Sign your name inside, not on the envelope. Leave the top open for the teacher to check. Put finished envelopes in the front tray. Do not post them yourself.",
+            "explanation": "B成品前盘且不自行寄；A立刻邮筒违寄送权限；C食物桶无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In the postbox now."
+              },
+              {
+                "id": "o1",
+                "text": "In the front tray."
+              },
+              {
+                "id": "o2",
+                "text": "In the food bin."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "c0fa605ac2e0e6ff603374960e27f3173fccf2a95af45268bffae8b13fb067d0",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.thank-you-card-envelopes-022.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.thank-you-card-envelopes-022.reading.q1",
+            "expansion.20261028.primary2.thank-you-card-envelopes-022.reading.q2",
+            "expansion.20261028.primary2.thank-you-card-envelopes-022.reading.q3",
+            "expansion.20261028.primary2.thank-you-card-envelopes-022.reading.q4",
+            "expansion.20261028.primary2.thank-you-card-envelopes-022.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.school-computer-sound-022",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "电脑角使用前的小确认",
+        "summary": "电脑角使用前的小确认，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.school-computer-sound-022",
+          "family": "function_choice",
+          "label": "电脑角使用前的小确认",
+          "candidateSHA256": "a2ee1d3f4d25ccbd9f595822b7b8d6aa8658526f6314bef152d697f3711bd620",
+          "authorCheckSHA256": "a0fb2e7456a8357233ca38418cb069cd987beb7ce359401f5776465f82744ef7",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.school-computer-sound-022.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b036；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "School Computer Sound 022\n\nAt the computer corner, ask the teacher before starting. Use your own name card to choose a turn. The headphones stay at the desk. Keep drinks on the side table, away from the computer. If the screen freezes, call the teacher. Do not pull cables."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.school-computer-sound-022.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend starts the computer without asking. You say, \"____\"",
+            "material": "School Computer Sound 022\n\nAt the computer corner, ask the teacher before starting. Use your own name card to choose a turn. The headphones stay at the desk. Keep drinks on the side table, away from the computer. If the screen freezes, call the teacher. Do not pull cables.",
+            "explanation": "A开前问教师；B乱按、C拉线违规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Ask the teacher first."
+              },
+              {
+                "id": "o1",
+                "text": "Press every button quickly."
+              },
+              {
+                "id": "o2",
+                "text": "Pull the cable to start."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.school-computer-sound-022.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend uses your name card to take a turn. You say, \"____\"",
+            "material": "School Computer Sound 022\n\nAt the computer corner, ask the teacher before starting. Use your own name card to choose a turn. The headphones stay at the desk. Keep drinks on the side table, away from the computer. If the screen freezes, call the teacher. Do not pull cables.",
+            "explanation": "B本人名牌排轮次；A滥用他人、C藏饮料均非安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Use every child’s card."
+              },
+              {
+                "id": "o1",
+                "text": "Please use your own card."
+              },
+              {
+                "id": "o2",
+                "text": "Hide my card in a drink."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.school-computer-sound-022.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend takes the headphones to the garden. You say, \"____\"",
+            "material": "School Computer Sound 022\n\nAt the computer corner, ask the teacher before starting. Use your own name card to choose a turn. The headphones stay at the desk. Keep drinks on the side table, away from the computer. If the screen freezes, call the teacher. Do not pull cables.",
+            "explanation": "C耳机不离桌；A雨中、B连电脑带走更违位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Leave them in the rain."
+              },
+              {
+                "id": "o1",
+                "text": "Take the computer too."
+              },
+              {
+                "id": "o2",
+                "text": "The headphones stay at the desk."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.school-computer-sound-022.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend puts a drink beside the keyboard. You say, \"____\"",
+            "material": "School Computer Sound 022\n\nAt the computer corner, ask the teacher before starting. Use your own name card to choose a turn. The headphones stay at the desk. Keep drinks on the side table, away from the computer. If the screen freezes, call the teacher. Do not pull cables.",
+            "explanation": "A饮料侧桌远电脑；B倒键盘、C屏下仍近设备不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Put it on the side table."
+              },
+              {
+                "id": "o1",
+                "text": "Pour it onto the keys."
+              },
+              {
+                "id": "o2",
+                "text": "Put it under the screen."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.school-computer-sound-022.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The screen freezes. A friend reaches for a cable. You say, \"____\"",
+            "material": "School Computer Sound 022\n\nAt the computer corner, ask the teacher before starting. Use your own name card to choose a turn. The headphones stay at the desk. Keep drinks on the side table, away from the computer. If the screen freezes, call the teacher. Do not pull cables.",
+            "explanation": "B冻结叫教师不拔线；A拔线相反；C带回家非处理方法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Pull every cable."
+              },
+              {
+                "id": "o1",
+                "text": "Call the teacher; do not pull it."
+              },
+              {
+                "id": "o2",
+                "text": "Take the screen home."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "9fb319d19914d9044012e87e8dfa815703515ebf602e351e055d9fd32a81bbf6",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.school-computer-sound-022.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.school-computer-sound-022.reading.q1",
+            "expansion.20261028.primary2.school-computer-sound-022.reading.q2",
+            "expansion.20261028.primary2.school-computer-sound-022.reading.q3",
+            "expansion.20261028.primary2.school-computer-sound-022.reading.q4",
+            "expansion.20261028.primary2.school-computer-sound-022.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.paper-chain-doorway-022",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "纸链怎么挂进门口",
+        "summary": "纸链怎么挂进门口，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.paper-chain-doorway-022",
+          "family": "reading_tf",
+          "label": "纸链怎么挂进门口",
+          "candidateSHA256": "c1d2e26724e36d5c16d9539d6b8514fe18790eb080028d1b88499f2af47ead27",
+          "authorCheckSHA256": "a0fb2e7456a8357233ca38418cb069cd987beb7ce359401f5776465f82744ef7",
+          "sourceGroupIds": [
+            "original.bens-bag-reading#primary3.paper-chain-doorway-022.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b036；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Paper Chain Doorway 022\n\nWe make a paper chain for the class door. At first, we join all the loops on the floor. The chain is too long for the doorway. Our teacher shows us how to open one loop and take a short part off. We hang the long part above the door and the short part near the window. We use every paper loop. Nothing goes in the bin."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.paper-chain-doorway-022.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The children first join the loops on the floor.",
+            "material": "Paper Chain Doorway 022\n\nWe make a paper chain for the class door. At first, we join all the loops on the floor. The chain is too long for the doorway. Our teacher shows us how to open one loop and take a short part off. We hang the long part above the door and the short part near the window. We use every paper loop. Nothing goes in the bin.",
+            "explanation": "A正确：first join all loops on floor；B否认操作处。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.paper-chain-doorway-022.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The first chain is too short for the doorway.",
+            "material": "Paper Chain Doorway 022\n\nWe make a paper chain for the class door. At first, we join all the loops on the floor. The chain is too long for the doorway. Our teacher shows us how to open one loop and take a short part off. We hang the long part above the door and the short part near the window. We use every paper loop. Nothing goes in the bin.",
+            "explanation": "B正确：too long；A长短反向。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.paper-chain-doorway-022.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A short part is removed from the long chain.",
+            "material": "Paper Chain Doorway 022\n\nWe make a paper chain for the class door. At first, we join all the loops on the floor. The chain is too long for the doorway. Our teacher shows us how to open one loop and take a short part off. We hang the long part above the door and the short part near the window. We use every paper loop. Nothing goes in the bin.",
+            "explanation": "A正确：open loop take short part off；B否认调整。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.paper-chain-doorway-022.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The short part is hung near the window.",
+            "material": "Paper Chain Doorway 022\n\nWe make a paper chain for the class door. At first, we join all the loops on the floor. The chain is too long for the doorway. Our teacher shows us how to open one loop and take a short part off. We hang the long part above the door and the short part near the window. We use every paper loop. Nothing goes in the bin.",
+            "explanation": "A正确：short near window；B否认分配位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.paper-chain-doorway-022.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Several loops are thrown away after the chain is shortened.",
+            "material": "Paper Chain Doorway 022\n\nWe make a paper chain for the class door. At first, we join all the loops on the floor. The chain is too long for the doorway. Our teacher shows us how to open one loop and take a short part off. We hang the long part above the door and the short part near the window. We use every paper loop. Nothing goes in the bin.",
+            "explanation": "B正确：every loop used，nothing bin；A把缩短主链当浪费材料。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "6543200c83e4018bdc9a954c452cfa103114a7a4cb827c648dcbd7f5a3d18757",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.bens-bag-reading#primary3.paper-chain-doorway-022.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.paper-chain-doorway-022.reading.q1",
+            "expansion.20261028.primary3.paper-chain-doorway-022.reading.q2",
+            "expansion.20261028.primary3.paper-chain-doorway-022.reading.q3",
+            "expansion.20261028.primary3.paper-chain-doorway-022.reading.q4",
+            "expansion.20261028.primary3.paper-chain-doorway-022.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.bens-bag-reading",
+          "sourceContentHash": "e1594f6d2c2c96de673832f2efe0847d6e8f968d3ed2c4833705aeba378b5517"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.cat-mirror-kitten-022",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "镜子前的另一只猫",
+        "summary": "镜子前的另一只猫，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.cat-mirror-kitten-022",
+          "family": "reading_tf",
+          "label": "镜子前的另一只猫",
+          "candidateSHA256": "5ed7a30eb24846a0ef1a833b37eb75812444b0024f6cfd168f97a0e1233300ee",
+          "authorCheckSHA256": "a0fb2e7456a8357233ca38418cb069cd987beb7ce359401f5776465f82744ef7",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.cat-mirror-kitten-022.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b036；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Cat Mirror Kitten 022\n\nOur kitten sees a mirror leaning against the wall. She stops and looks at the other kitten in it. She lifts a paw, and the other paw lifts too. She walks behind the mirror but finds no cat. My brother laughs. Mum moves the mirror to a safe shelf so it cannot fall. The kitten soon goes back to her cloth ball."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.cat-mirror-kitten-022.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The mirror is first leaning against a wall.",
+            "material": "Cat Mirror Kitten 022\n\nOur kitten sees a mirror leaning against the wall. She stops and looks at the other kitten in it. She lifts a paw, and the other paw lifts too. She walks behind the mirror but finds no cat. My brother laughs. Mum moves the mirror to a safe shelf so it cannot fall. The kitten soon goes back to her cloth ball.",
+            "explanation": "A正确：mirror leaning wall；B否认初始位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.cat-mirror-kitten-022.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A real second kitten waits behind the mirror.",
+            "material": "Cat Mirror Kitten 022\n\nOur kitten sees a mirror leaning against the wall. She stops and looks at the other kitten in it. She lifts a paw, and the other paw lifts too. She walks behind the mirror but finds no cat. My brother laughs. Mum moves the mirror to a safe shelf so it cannot fall. The kitten soon goes back to her cloth ball.",
+            "explanation": "B正确：behind finds no cat，是镜像；A把反射当另只真实猫。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.cat-mirror-kitten-022.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The kitten lifts a paw in front of the mirror.",
+            "material": "Cat Mirror Kitten 022\n\nOur kitten sees a mirror leaning against the wall. She stops and looks at the other kitten in it. She lifts a paw, and the other paw lifts too. She walks behind the mirror but finds no cat. My brother laughs. Mum moves the mirror to a safe shelf so it cannot fall. The kitten soon goes back to her cloth ball.",
+            "explanation": "A正确：lifts paw镜中也动；B否认行为。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.cat-mirror-kitten-022.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mum moves the mirror so it cannot fall.",
+            "material": "Cat Mirror Kitten 022\n\nOur kitten sees a mirror leaning against the wall. She stops and looks at the other kitten in it. She lifts a paw, and the other paw lifts too. She walks behind the mirror but finds no cat. My brother laughs. Mum moves the mirror to a safe shelf so it cannot fall. The kitten soon goes back to her cloth ball.",
+            "explanation": "A正确：safe shelf目的防倒；B否认原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.cat-mirror-kitten-022.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The kitten spends the whole day behind the mirror.",
+            "material": "Cat Mirror Kitten 022\n\nOur kitten sees a mirror leaning against the wall. She stops and looks at the other kitten in it. She lifts a paw, and the other paw lifts too. She walks behind the mirror but finds no cat. My brother laughs. Mum moves the mirror to a safe shelf so it cannot fall. The kitten soon goes back to her cloth ball.",
+            "explanation": "B正确：soon back cloth ball；A把短暂寻找夸为整日。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "5e255e689ce25e4aa379a2c1a35d63de70e4df52277231308b0f74555c132c6c",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.cat-mirror-kitten-022.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.cat-mirror-kitten-022.reading.q1",
+            "expansion.20261028.primary3.cat-mirror-kitten-022.reading.q2",
+            "expansion.20261028.primary3.cat-mirror-kitten-022.reading.q3",
+            "expansion.20261028.primary3.cat-mirror-kitten-022.reading.q4",
+            "expansion.20261028.primary3.cat-mirror-kitten-022.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.jigsaw-edge-boxes-022",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "拼图边缘块的两个盒子",
+        "summary": "拼图边缘块的两个盒子，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.jigsaw-edge-boxes-022",
+          "family": "reading_choice",
+          "label": "拼图边缘块的两个盒子",
+          "candidateSHA256": "6ad4c100983c64554c8e7ff92efe93535f2488bb4473f6c5d9d1644e93a5a47f",
+          "authorCheckSHA256": "a0fb2e7456a8357233ca38418cb069cd987beb7ce359401f5776465f82744ef7",
+          "sourceGroupIds": [
+            "original.primary4-book-bus-call#primary4.jigsaw-edge-boxes-022.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b036；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Jigsaw Edge Boxes 022\n\nOur group works on a large jigsaw. We put pieces with one straight side in a blue box. Pieces with two straight sides go in a small white box. At first, Sam puts every blue-looking piece in the blue box. He thinks the colour of the box tells him which pieces belong there. We explain that the straight sides, not the picture colours, are the rule. Sam helps us find the corner pieces in the white box. Then we start building the outer edge."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.jigsaw-edge-boxes-022.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which pieces go in the blue box?",
+            "material": "Jigsaw Edge Boxes 022\n\nOur group works on a large jigsaw. We put pieces with one straight side in a blue box. Pieces with two straight sides go in a small white box. At first, Sam puts every blue-looking piece in the blue box. He thinks the colour of the box tells him which pieces belong there. We explain that the straight sides, not the picture colours, are the rule. Sam helps us find the corner pieces in the white box. Then we start building the outer edge.",
+            "explanation": "A一条直边；B：Sam最初误解；C无图不是规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Those with one straight side."
+              },
+              {
+                "id": "o1",
+                "text": "All blue-looking pieces."
+              },
+              {
+                "id": "o2",
+                "text": "Those with no picture."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.jigsaw-edge-boxes-022.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What belongs in the small white box?",
+            "material": "Jigsaw Edge Boxes 022\n\nOur group works on a large jigsaw. We put pieces with one straight side in a blue box. Pieces with two straight sides go in a small white box. At first, Sam puts every blue-looking piece in the blue box. He thinks the colour of the box tells him which pieces belong there. We explain that the straight sides, not the picture colours, are the rule. Sam helps us find the corner pieces in the white box. Then we start building the outer edge.",
+            "explanation": "B两直边即角块；A图片白色、C破块非分类条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every white piece."
+              },
+              {
+                "id": "o1",
+                "text": "Pieces with two straight sides."
+              },
+              {
+                "id": "o2",
+                "text": "Only broken pieces."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.jigsaw-edge-boxes-022.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Sam first sort incorrectly?",
+            "material": "Jigsaw Edge Boxes 022\n\nOur group works on a large jigsaw. We put pieces with one straight side in a blue box. Pieces with two straight sides go in a small white box. At first, Sam puts every blue-looking piece in the blue box. He thinks the colour of the box tells him which pieces belong there. We explain that the straight sides, not the picture colours, are the rule. Sam helps us find the corner pieces in the white box. Then we start building the outer edge.",
+            "explanation": "C误按颜色而非边形；A看得见；B无破坏意图。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He cannot see the boxes."
+              },
+              {
+                "id": "o1",
+                "text": "He wants to lose the puzzle."
+              },
+              {
+                "id": "o2",
+                "text": "He treats box colour as the sorting rule."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.jigsaw-edge-boxes-022.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which pieces do they find in the white box?",
+            "material": "Jigsaw Edge Boxes 022\n\nOur group works on a large jigsaw. We put pieces with one straight side in a blue box. Pieces with two straight sides go in a small white box. At first, Sam puts every blue-looking piece in the blue box. He thinks the colour of the box tells him which pieces belong there. We explain that the straight sides, not the picture colours, are the rule. Sam helps us find the corner pieces in the white box. Then we start building the outer edge.",
+            "explanation": "A两直边角块；B中央块无此边形；C完整另拼图无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Corner pieces."
+              },
+              {
+                "id": "o1",
+                "text": "All centre pieces."
+              },
+              {
+                "id": "o2",
+                "text": "A second whole puzzle."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.jigsaw-edge-boxes-022.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What do they build next?",
+            "material": "Jigsaw Edge Boxes 022\n\nOur group works on a large jigsaw. We put pieces with one straight side in a blue box. Pieces with two straight sides go in a small white box. At first, Sam puts every blue-looking piece in the blue box. He thinks the colour of the box tells him which pieces belong there. We explain that the straight sides, not the picture colours, are the rule. Sam helps us find the corner pieces in the white box. Then we start building the outer edge.",
+            "explanation": "B开始外围；A船、C架子非拼图任务。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A toy boat."
+              },
+              {
+                "id": "o1",
+                "text": "The outer edge."
+              },
+              {
+                "id": "o2",
+                "text": "A new shelf."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "912bcad0bd9d8e3b233da7d1a22ee3dc35fc25bf751980a724d38b84e2900288",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-book-bus-call#primary4.jigsaw-edge-boxes-022.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.jigsaw-edge-boxes-022.reading.q1",
+            "expansion.20261028.primary4.jigsaw-edge-boxes-022.reading.q2",
+            "expansion.20261028.primary4.jigsaw-edge-boxes-022.reading.q3",
+            "expansion.20261028.primary4.jigsaw-edge-boxes-022.reading.q4",
+            "expansion.20261028.primary4.jigsaw-edge-boxes-022.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-book-bus-call",
+          "sourceContentHash": "5237c2b519c0bea74c51656808b22df9c776e14bf36f397fcbd54a9367ed2198"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.hall-display-hook-test-022",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "走廊展板挂钩的试挂",
+        "summary": "走廊展板挂钩的试挂，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.hall-display-hook-test-022",
+          "family": "reading_tf",
+          "label": "走廊展板挂钩的试挂",
+          "candidateSHA256": "a0df984210cb5ecfa88cb153f44ce0737a56f06107cba77036da9d175e441583",
+          "authorCheckSHA256": "a0fb2e7456a8357233ca38418cb069cd987beb7ce359401f5776465f82744ef7",
+          "sourceGroupIds": [
+            "original.class-garden-reading#primary4.hall-display-hook-test-022.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b036；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Hall Display Hook Test 022\n\nWe want to hang a class display in the hall. The caretaker checks two hooks on the wall. One hook moves when he touches it. He puts a paper warning below it and asks us not to use that hook. We use the secure hook for a light sign. The larger display stays on a table until both hooks have been repaired and checked. We do not cover the warning with our pictures."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.hall-display-hook-test-022.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Both hooks are found secure at the first check.",
+            "material": "Hall Display Hook Test 022\n\nWe want to hang a class display in the hall. The caretaker checks two hooks on the wall. One hook moves when he touches it. He puts a paper warning below it and asks us not to use that hook. We use the secure hook for a light sign. The larger display stays on a table until both hooks have been repaired and checked. We do not cover the warning with our pictures.",
+            "explanation": "B正确：一钩触动会松；A把一坏说两好。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.hall-display-hook-test-022.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A warning is placed below the loose hook.",
+            "material": "Hall Display Hook Test 022\n\nWe want to hang a class display in the hall. The caretaker checks two hooks on the wall. One hook moves when he touches it. He puts a paper warning below it and asks us not to use that hook. We use the secure hook for a light sign. The larger display stays on a table until both hooks have been repaired and checked. We do not cover the warning with our pictures.",
+            "explanation": "A正确：paper warning below it；B否认位置和用途。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.hall-display-hook-test-022.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A light sign uses the secure hook.",
+            "material": "Hall Display Hook Test 022\n\nWe want to hang a class display in the hall. The caretaker checks two hooks on the wall. One hook moves when he touches it. He puts a paper warning below it and asks us not to use that hook. We use the secure hook for a light sign. The larger display stays on a table until both hooks have been repaired and checked. We do not cover the warning with our pictures.",
+            "explanation": "A正确：use secure hook light sign；B否认暂用安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.hall-display-hook-test-022.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The larger display is hung immediately from the loose hook.",
+            "material": "Hall Display Hook Test 022\n\nWe want to hang a class display in the hall. The caretaker checks two hooks on the wall. One hook moves when he touches it. He puts a paper warning below it and asks us not to use that hook. We use the secure hook for a light sign. The larger display stays on a table until both hooks have been repaired and checked. We do not cover the warning with our pictures.",
+            "explanation": "B正确：大展品留桌待修检；A把等待改立即挂坏钩。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.hall-display-hook-test-022.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Pictures must not cover the warning.",
+            "material": "Hall Display Hook Test 022\n\nWe want to hang a class display in the hall. The caretaker checks two hooks on the wall. One hook moves when he touches it. He puts a paper warning below it and asks us not to use that hook. We use the secure hook for a light sign. The larger display stays on a table until both hooks have been repaired and checked. We do not cover the warning with our pictures.",
+            "explanation": "A正确：do not cover warning；B否认保持可见要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "4e969b8b6614aa4e8dee3ac3520578f3fb4f02a0f1c1e9be03a2b9e0450bc883",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.class-garden-reading#primary4.hall-display-hook-test-022.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.hall-display-hook-test-022.reading.q1",
+            "expansion.20261028.primary4.hall-display-hook-test-022.reading.q2",
+            "expansion.20261028.primary4.hall-display-hook-test-022.reading.q3",
+            "expansion.20261028.primary4.hall-display-hook-test-022.reading.q4",
+            "expansion.20261028.primary4.hall-display-hook-test-022.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.class-garden-reading",
+          "sourceContentHash": "c48d0add74ac202b6eee2f6cafe95556edd3c7176f1da3b56f14a6e7036dfdab"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.poster-feedback-words-022",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "给海报提意见的具体说法",
+        "summary": "给海报提意见的具体说法，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照已核北京区卷公开转载的相应完整具体模式：一短文五判断／四完整信息卡五判断／两共享句空加三道三选，分别绑定，不截成单一子组。源原键非独立gold，东城两型尚无原键；节日日期等事实不沿用。原创虚构，独立教研、目标学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.poster-feedback-words-022",
+          "family": "reading_tf",
+          "label": "给海报提意见的具体说法",
+          "candidateSHA256": "1bd9a450b6641557669847b1c7054e049e0df12868b621e7a18ec608b21a03cf",
+          "authorCheckSHA256": "a0fb2e7456a8357233ca38418cb069cd987beb7ce359401f5776465f82744ef7",
+          "sourceGroupIds": [
+            "original.primary5-colourful-window-tf#primary5.poster-feedback-words-022.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b036；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Poster Feedback Words 022\n\nOur group first wrote \"This poster is bad\" on a feedback sheet. The artist looked upset and did not know what to change. Our teacher asked us to describe what a viewer could notice. We wrote that the event date was hard to read from a distance and that the dark title disappeared against the dark background. We also said the picture clearly showed the activity. The artist enlarged the date and added a light strip behind the title. She kept the picture. At the next display, visitors found the date more easily. We learned that useful feedback identifies a problem and its effect, rather than simply judging the whole piece."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.poster-feedback-words-022.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The first feedback told the artist exactly what to fix.",
+            "material": "Poster Feedback Words 022\n\nOur group first wrote \"This poster is bad\" on a feedback sheet. The artist looked upset and did not know what to change. Our teacher asked us to describe what a viewer could notice. We wrote that the event date was hard to read from a distance and that the dark title disappeared against the dark background. We also said the picture clearly showed the activity. The artist enlarged the date and added a light strip behind the title. She kept the picture. At the next display, visitors found the date more easily. We learned that useful feedback identifies a problem and its effect, rather than simply judging the whole piece.",
+            "explanation": "B正确：只bad，artist did not know change；A把泛评价当具体建议。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.poster-feedback-words-022.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The revised comments mentioned date readability.",
+            "material": "Poster Feedback Words 022\n\nOur group first wrote \"This poster is bad\" on a feedback sheet. The artist looked upset and did not know what to change. Our teacher asked us to describe what a viewer could notice. We wrote that the event date was hard to read from a distance and that the dark title disappeared against the dark background. We also said the picture clearly showed the activity. The artist enlarged the date and added a light strip behind the title. She kept the picture. At the next display, visitors found the date more easily. We learned that useful feedback identifies a problem and its effect, rather than simply judging the whole piece.",
+            "explanation": "A正确：date hard read distance；B否认具体问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.poster-feedback-words-022.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The group praised no part of the poster.",
+            "material": "Poster Feedback Words 022\n\nOur group first wrote \"This poster is bad\" on a feedback sheet. The artist looked upset and did not know what to change. Our teacher asked us to describe what a viewer could notice. We wrote that the event date was hard to read from a distance and that the dark title disappeared against the dark background. We also said the picture clearly showed the activity. The artist enlarged the date and added a light strip behind the title. She kept the picture. At the next display, visitors found the date more easily. We learned that useful feedback identifies a problem and its effect, rather than simply judging the whole piece.",
+            "explanation": "B正确：称画面清楚表现活动；A忽略正面反馈。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.poster-feedback-words-022.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The artist kept the picture while changing text presentation.",
+            "material": "Poster Feedback Words 022\n\nOur group first wrote \"This poster is bad\" on a feedback sheet. The artist looked upset and did not know what to change. Our teacher asked us to describe what a viewer could notice. We wrote that the event date was hard to read from a distance and that the dark title disappeared against the dark background. We also said the picture clearly showed the activity. The artist enlarged the date and added a light strip behind the title. She kept the picture. At the next display, visitors found the date more easily. We learned that useful feedback identifies a problem and its effect, rather than simply judging the whole piece.",
+            "explanation": "A正确：enlarge date light strip，kept picture；B否认选择性修改。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.poster-feedback-words-022.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The final lesson focused on specific problems and effects.",
+            "material": "Poster Feedback Words 022\n\nOur group first wrote \"This poster is bad\" on a feedback sheet. The artist looked upset and did not know what to change. Our teacher asked us to describe what a viewer could notice. We wrote that the event date was hard to read from a distance and that the dark title disappeared against the dark background. We also said the picture clearly showed the activity. The artist enlarged the date and added a light strip behind the title. She kept the picture. At the next display, visitors found the date more easily. We learned that useful feedback identifies a problem and its effect, rather than simply judging the whole piece.",
+            "explanation": "A正确：结尾problem and effect非总judging；B否认教学收获。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "f8c81085b5b85dbe0b5d99febff3e4402758bc8dfde7d7c41e67e3eb05ad64f9",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-colourful-window-tf#primary5.poster-feedback-words-022.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.poster-feedback-words-022.reading.q1",
+            "expansion.20261028.primary5.poster-feedback-words-022.reading.q2",
+            "expansion.20261028.primary5.poster-feedback-words-022.reading.q3",
+            "expansion.20261028.primary5.poster-feedback-words-022.reading.q4",
+            "expansion.20261028.primary5.poster-feedback-words-022.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-colourful-window-tf",
+          "sourceContentHash": "fbeee88e9bb4e8278f8efa33f16c8036a9d69d0340d0490dba145b8b9c053b06"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.lantern-class-six-cloze-022",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "白天看不清的纸灯笼",
+        "summary": "白天看不清的纸灯笼，共6题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.gcyls2024.attributed.suzhou2022.volunteers6",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照新核公开教辅中分别标注五年级统考期末出处的单篇6空或8空三选完整示例；仅二手归属标签，未取得原校卷，不能认证原考试整节范围/学校/年份或当普通原卷补缺完成。原源6空第5题性别候选信息不足、8空近义风险保留，均不当gold；原创全部子题/候选/回填另核，不按六题截断。历史第一稿为8空三选模拟参照，三稿不是三套真卷或同一具体配置。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.lantern-class-six-cloze-022",
+          "family": "choice_cloze",
+          "label": "白天看不清的纸灯笼",
+          "candidateSHA256": "34b396eb0299fbd46e4498d588b64be236eb4279ef5ac776d3a3c4857f5cc27c",
+          "authorCheckSHA256": "a0fb2e7456a8357233ca38418cb069cd987beb7ce359401f5776465f82744ef7",
+          "sourceGroupIds": [
+            "original.primary5-cake-bus-six-cloze#primary5.lantern-class-six-cloze-022.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b036；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lantern Class Six Cloze 022\n\nRead the complete story and choose the word for each numbered gap.\nOur class made a paper lantern for an evening display. Inside it was a small ____1____ light, not a candle. In the bright classroom, the light looked weak. We thought it was ____2____, but the teacher asked us to test it in a darker place first. She opened a storage room and stood by the door while we looked from outside. The lantern shone ____3____ there. We did not need a new light; we needed to check it under the display conditions. We added a note so helpers would test it ____4____ sunset. The teacher kept the battery box ____5____ the paper, as the kit instructions showed. Before taking it home, we ____6____ the light off to save power."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Lantern Class Six Cloze 022\n\nRead the complete story and choose the word for each numbered gap.\nOur class made a paper lantern for an evening display. Inside it was a small ____1____ light, not a candle. In the bright classroom, the light looked weak. We thought it was ____2____, but the teacher asked us to test it in a darker place first. She opened a storage room and stood by the door while we looked from outside. The lantern shone ____3____ there. We did not need a new light; we needed to check it under the display conditions. We added a note so helpers would test it ____4____ sunset. The teacher kept the battery box ____5____ the paper, as the kit instructions showed. Before taking it home, we ____6____ the light off to save power.",
+            "explanation": "A battery light电池灯与非蜡烛一致；B黄油、C水均不是本篇灯的供电来源。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "battery"
+              },
+              {
+                "id": "o1",
+                "text": "butter"
+              },
+              {
+                "id": "o2",
+                "text": "water"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Lantern Class Six Cloze 022\n\nRead the complete story and choose the word for each numbered gap.\nOur class made a paper lantern for an evening display. Inside it was a small ____1____ light, not a candle. In the bright classroom, the light looked weak. We thought it was ____2____, but the teacher asked us to test it in a darker place first. She opened a storage room and stood by the door while we looked from outside. The lantern shone ____3____ there. We did not need a new light; we needed to check it under the display conditions. We added a note so helpers would test it ____4____ sunset. The teacher kept the battery box ____5____ the paper, as the kit instructions showed. Before taking it home, we ____6____ the light off to save power.",
+            "explanation": "B明处弱而误以为坏，与后文无需换灯相应；A重、C饿不表达功能失灵猜测。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "heavy"
+              },
+              {
+                "id": "o1",
+                "text": "broken"
+              },
+              {
+                "id": "o2",
+                "text": "hungry"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Lantern Class Six Cloze 022\n\nRead the complete story and choose the word for each numbered gap.\nOur class made a paper lantern for an evening display. Inside it was a small ____1____ light, not a candle. In the bright classroom, the light looked weak. We thought it was ____2____, but the teacher asked us to test it in a darker place first. She opened a storage room and stood by the door while we looked from outside. The lantern shone ____3____ there. We did not need a new light; we needed to check it under the display conditions. We added a note so helpers would test it ____4____ sunset. The teacher kept the battery box ____5____ the paper, as the kit instructions showed. Before taking it home, we ____6____ the light off to save power.",
+            "explanation": "C暗处发亮解决误解；A安静地不表达亮度差，B生气地非灯的状态。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "silently"
+              },
+              {
+                "id": "o1",
+                "text": "angrily"
+              },
+              {
+                "id": "o2",
+                "text": "brightly"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Lantern Class Six Cloze 022\n\nRead the complete story and choose the word for each numbered gap.\nOur class made a paper lantern for an evening display. Inside it was a small ____1____ light, not a candle. In the bright classroom, the light looked weak. We thought it was ____2____, but the teacher asked us to test it in a darker place first. She opened a storage room and stood by the door while we looked from outside. The lantern shone ____3____ there. We did not need a new light; we needed to check it under the display conditions. We added a note so helpers would test it ____4____ sunset. The teacher kept the battery box ____5____ the paper, as the kit instructions showed. Before taking it home, we ____6____ the light off to save power.",
+            "explanation": "A日落后符合夜间展条件；B inside sunset、C between sunset缺完整搭配且不表正确测试时段。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "after"
+              },
+              {
+                "id": "o1",
+                "text": "inside"
+              },
+              {
+                "id": "o2",
+                "text": "between"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Lantern Class Six Cloze 022\n\nRead the complete story and choose the word for each numbered gap.\nOur class made a paper lantern for an evening display. Inside it was a small ____1____ light, not a candle. In the bright classroom, the light looked weak. We thought it was ____2____, but the teacher asked us to test it in a darker place first. She opened a storage room and stood by the door while we looked from outside. The lantern shone ____3____ there. We did not need a new light; we needed to check it under the display conditions. We added a note so helpers would test it ____4____ sunset. The teacher kept the battery box ____5____ the paper, as the kit instructions showed. Before taking it home, we ____6____ the light off to save power.",
+            "explanation": "B outside paper表电池盒在纸外且遵套件说明；A尝、C忘不是此处空间关系。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "tasted"
+              },
+              {
+                "id": "o1",
+                "text": "outside"
+              },
+              {
+                "id": "o2",
+                "text": "forgot"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 6?",
+            "material": "Lantern Class Six Cloze 022\n\nRead the complete story and choose the word for each numbered gap.\nOur class made a paper lantern for an evening display. Inside it was a small ____1____ light, not a candle. In the bright classroom, the light looked weak. We thought it was ____2____, but the teacher asked us to test it in a darker place first. She opened a storage room and stood by the door while we looked from outside. The lantern shone ____3____ there. We did not need a new light; we needed to check it under the display conditions. We added a note so helpers would test it ____4____ sunset. The teacher kept the battery box ____5____ the paper, as the kit instructions showed. Before taking it home, we ____6____ the light off to save power.",
+            "explanation": "C switched off灯关闭省电；A grow off、B sing off均不能表达关灯。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "grew"
+              },
+              {
+                "id": "o1",
+                "text": "sang"
+              },
+              {
+                "id": "o2",
+                "text": "switched"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "69b757770d7b00d1b097bc924c66764ac7a451ae53167451072a3da2141e4f99",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-cake-bus-six-cloze#primary5.lantern-class-six-cloze-022.reading",
+          "family": "choice_cloze",
+          "questionIds": [
+            "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q1",
+            "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q2",
+            "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q3",
+            "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q4",
+            "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q5",
+            "expansion.20261028.primary5.lantern-class-six-cloze-022.reading.q6"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "sourceUnitId": "original.primary5-cake-bus-six-cloze",
+          "sourceContentHash": "2a02598496ace020dc46d117606e2bdb24b9958608ca185addee9c1cf91d43eb"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.library-book-not-loaned-022",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "没有借出记录的那本书",
+        "summary": "没有借出记录的那本书，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.prose5x4",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.library-book-not-loaned-022",
+          "family": "reading_choice",
+          "label": "没有借出记录的那本书",
+          "candidateSHA256": "ee41b78e2c2940e762db35baca8d125f51b341df85d2952219ccea1654bc8f45",
+          "authorCheckSHA256": "a0fb2e7456a8357233ca38418cb069cd987beb7ce359401f5776465f82744ef7",
+          "sourceGroupIds": [
+            "original.primary6-reading5joint-models#primary6.library-book-not-loaned-022.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b036；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Library Book Not Loaned 022\n\nThe librarian was reviewing books that had not been borrowed for a year. A large book of local maps appeared on the list. She considered moving it to storage. Before deciding, she watched the reference table for several afternoons.\nPupils often opened the map book to compare old and new street names. An art group used its river shapes for a drawing exercise. None of these visitors checked it out because the book stayed in the reference area. Borrowing records were accurate, but they did not describe all its use.\nThe librarian kept the book on the table and added a note to her review process: check in-room use before removing reference books. She did not decide that borrowing figures were useless. They still helped with ordinary lending books. The map book showed that one measure could be helpful without answering every question. On its new shelf label, she wrote \"Please use here\" and included the archive contact for readers needing more detailed maps."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.library-book-not-loaned-022.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the map book first seem unused?",
+            "material": "Library Book Not Loaned 022\n\nThe librarian was reviewing books that had not been borrowed for a year. A large book of local maps appeared on the list. She considered moving it to storage. Before deciding, she watched the reference table for several afternoons.\nPupils often opened the map book to compare old and new street names. An art group used its river shapes for a drawing exercise. None of these visitors checked it out because the book stayed in the reference area. Borrowing records were accurate, but they did not describe all its use.\nThe librarian kept the book on the table and added a note to her review process: check in-room use before removing reference books. She did not decide that borrowing figures were useless. They still helped with ordinary lending books. The map book showed that one measure could be helpful without answering every question. On its new shelf label, she wrote \"Please use here\" and included the archive contact for readers needing more detailed maps.",
+            "explanation": "B一年无外借；A无页、C空图、D不知题名均无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It had no pages."
+              },
+              {
+                "id": "o1",
+                "text": "It had no borrowing record for a year."
+              },
+              {
+                "id": "o2",
+                "text": "All maps were blank."
+              },
+              {
+                "id": "o3",
+                "text": "Nobody knew its title."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.library-book-not-loaned-022.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the librarian discover by watching?",
+            "material": "Library Book Not Loaned 022\n\nThe librarian was reviewing books that had not been borrowed for a year. A large book of local maps appeared on the list. She considered moving it to storage. Before deciding, she watched the reference table for several afternoons.\nPupils often opened the map book to compare old and new street names. An art group used its river shapes for a drawing exercise. None of these visitors checked it out because the book stayed in the reference area. Borrowing records were accurate, but they did not describe all its use.\nThe librarian kept the book on the table and added a note to her review process: check in-room use before removing reference books. She did not decide that borrowing figures were useless. They still helped with ordinary lending books. The map book showed that one measure could be helpful without answering every question. On its new shelf label, she wrote \"Please use here\" and included the archive contact for readers needing more detailed maps.",
+            "explanation": "C在馆查街名绘河形；A出售、B打不开、D全要撤均不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Visitors were selling the book."
+              },
+              {
+                "id": "o1",
+                "text": "The book could not be opened."
+              },
+              {
+                "id": "o2",
+                "text": "People used it inside the library."
+              },
+              {
+                "id": "o3",
+                "text": "Every pupil wanted it removed."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.library-book-not-loaned-022.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why were these uses absent from loan records?",
+            "material": "Library Book Not Loaned 022\n\nThe librarian was reviewing books that had not been borrowed for a year. A large book of local maps appeared on the list. She considered moving it to storage. Before deciding, she watched the reference table for several afternoons.\nPupils often opened the map book to compare old and new street names. An art group used its river shapes for a drawing exercise. None of these visitors checked it out because the book stayed in the reference area. Borrowing records were accurate, but they did not describe all its use.\nThe librarian kept the book on the table and added a note to her review process: check in-room use before removing reference books. She did not decide that borrowing figures were useless. They still helped with ordinary lending books. The map book showed that one measure could be helpful without answering every question. On its new shelf label, she wrote \"Please use here\" and included the archive contact for readers needing more detailed maps.",
+            "explanation": "A只馆内用不外借；B删记录、C虚构人、D仅河名无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The reference book stayed in the library."
+              },
+              {
+                "id": "o1",
+                "text": "Staff had secretly erased them."
+              },
+              {
+                "id": "o2",
+                "text": "The readers were all imaginary."
+              },
+              {
+                "id": "o3",
+                "text": "The records included only river names."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.library-book-not-loaned-022.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What changed in the review process?",
+            "material": "Library Book Not Loaned 022\n\nThe librarian was reviewing books that had not been borrowed for a year. A large book of local maps appeared on the list. She considered moving it to storage. Before deciding, she watched the reference table for several afternoons.\nPupils often opened the map book to compare old and new street names. An art group used its river shapes for a drawing exercise. None of these visitors checked it out because the book stayed in the reference area. Borrowing records were accurate, but they did not describe all its use.\nThe librarian kept the book on the table and added a note to her review process: check in-room use before removing reference books. She did not decide that borrowing figures were useless. They still helped with ordinary lending books. The map book showed that one measure could be helpful without answering every question. On its new shelf label, she wrote \"Please use here\" and included the archive contact for readers needing more detailed maps.",
+            "explanation": "D撤参考书前查馆内使用；A永久不查夸大；B仍有用；C没禁阅。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every book was kept forever without checks."
+              },
+              {
+                "id": "o1",
+                "text": "All loan data was discarded."
+              },
+              {
+                "id": "o2",
+                "text": "Reference reading was forbidden."
+              },
+              {
+                "id": "o3",
+                "text": "In-room use was checked before removal."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.library-book-not-loaned-022.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the main point?",
+            "material": "Library Book Not Loaned 022\n\nThe librarian was reviewing books that had not been borrowed for a year. A large book of local maps appeared on the list. She considered moving it to storage. Before deciding, she watched the reference table for several afternoons.\nPupils often opened the map book to compare old and new street names. An art group used its river shapes for a drawing exercise. None of these visitors checked it out because the book stayed in the reference area. Borrowing records were accurate, but they did not describe all its use.\nThe librarian kept the book on the table and added a note to her review process: check in-room use before removing reference books. She did not decide that borrowing figures were useless. They still helped with ordinary lending books. The map book showed that one measure could be helpful without answering every question. On its new shelf label, she wrote \"Please use here\" and included the archive contact for readers needing more detailed maps.",
+            "explanation": "B记录准确但用途不全；A正相反；C已供艺术练习；D没法律断言。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "One measure always captures every use."
+              },
+              {
+                "id": "o1",
+                "text": "Accurate loan figures may still give an incomplete picture."
+              },
+              {
+                "id": "o2",
+                "text": "Maps cannot be used for art."
+              },
+              {
+                "id": "o3",
+                "text": "Storage is illegal in libraries."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "cf0dccfff3205eee7812ea4d00b8a9f806860f5d9e591e5b5ab8d4bc282f74cc",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-reading5joint-models#primary6.library-book-not-loaned-022.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.library-book-not-loaned-022.reading.q1",
+            "expansion.20261028.primary6.library-book-not-loaned-022.reading.q2",
+            "expansion.20261028.primary6.library-book-not-loaned-022.reading.q3",
+            "expansion.20261028.primary6.library-book-not-loaned-022.reading.q4",
+            "expansion.20261028.primary6.library-book-not-loaned-022.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-reading5joint-models",
+          "sourceContentHash": "5aa5fe33548304917f000925a15ce9829eb3f5adede5cee6522684b292e75d4a"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.cancelled-trip-ticket-letter-022",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "没有坐上火车的那张票",
+        "summary": "没有坐上火车的那张票，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.cancelled-trip-ticket-letter-022",
+          "family": "reading_tf",
+          "label": "没有坐上火车的那张票",
+          "candidateSHA256": "50f574fd2a01bd077882946e556af020a955fd9f434ef2e8503af9f1f804db91",
+          "authorCheckSHA256": "a0fb2e7456a8357233ca38418cb069cd987beb7ce359401f5776465f82744ef7",
+          "sourceGroupIds": [
+            "original.primary6-train-letter-tf#primary6.cancelled-trip-ticket-letter-022.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b036；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Cancelled Trip Ticket Letter 022\n\nDear Sal,\nYou asked why I keep an unused train ticket in my notebook. It is from the weekend I was going to visit Aunt Rosa. The line closed after a storm, and the trip was cancelled. At first, the ticket reminded me only of disappointment. Then Aunt Rosa sent me a letter describing the walk she had planned for us. We read it together on a video call and chose a new date. I used the old ticket as a bookmark in the guidebook she had given me. It is no longer valid for travel, and I do not treat it as proof of a journey I made. It reminds me that a plan can change without ending the friendship behind it. When we finally travelled in spring, I kept that ticket separately.\nLove,\nNeri"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.cancelled-trip-ticket-letter-022.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The old ticket comes from a trip cancelled after a storm.",
+            "material": "Cancelled Trip Ticket Letter 022\n\nDear Sal,\nYou asked why I keep an unused train ticket in my notebook. It is from the weekend I was going to visit Aunt Rosa. The line closed after a storm, and the trip was cancelled. At first, the ticket reminded me only of disappointment. Then Aunt Rosa sent me a letter describing the walk she had planned for us. We read it together on a video call and chose a new date. I used the old ticket as a bookmark in the guidebook she had given me. It is no longer valid for travel, and I do not treat it as proof of a journey I made. It reminds me that a plan can change without ending the friendship behind it. When we finally travelled in spring, I kept that ticket separately.\nLove,\nNeri",
+            "explanation": "A正确：storm线路停，trip cancelled；B否认未成行原因。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.cancelled-trip-ticket-letter-022.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer has used the old ticket to make the original journey.",
+            "material": "Cancelled Trip Ticket Letter 022\n\nDear Sal,\nYou asked why I keep an unused train ticket in my notebook. It is from the weekend I was going to visit Aunt Rosa. The line closed after a storm, and the trip was cancelled. At first, the ticket reminded me only of disappointment. Then Aunt Rosa sent me a letter describing the walk she had planned for us. We read it together on a video call and chose a new date. I used the old ticket as a bookmark in the guidebook she had given me. It is no longer valid for travel, and I do not treat it as proof of a journey I made. It reminds me that a plan can change without ending the friendship behind it. When we finally travelled in spring, I kept that ticket separately.\nLove,\nNeri",
+            "explanation": "B正确：unused且不当已行证据；A把未用票当成行记录。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.cancelled-trip-ticket-letter-022.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Aunt Rosa’s letter helped them plan another visit.",
+            "material": "Cancelled Trip Ticket Letter 022\n\nDear Sal,\nYou asked why I keep an unused train ticket in my notebook. It is from the weekend I was going to visit Aunt Rosa. The line closed after a storm, and the trip was cancelled. At first, the ticket reminded me only of disappointment. Then Aunt Rosa sent me a letter describing the walk she had planned for us. We read it together on a video call and chose a new date. I used the old ticket as a bookmark in the guidebook she had given me. It is no longer valid for travel, and I do not treat it as proof of a journey I made. It reminds me that a plan can change without ending the friendship behind it. When we finally travelled in spring, I kept that ticket separately.\nLove,\nNeri",
+            "explanation": "A正确：letter planned walk，视频共读选new date；B否认维系计划。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.cancelled-trip-ticket-letter-022.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The old ticket is still valid for a train journey.",
+            "material": "Cancelled Trip Ticket Letter 022\n\nDear Sal,\nYou asked why I keep an unused train ticket in my notebook. It is from the weekend I was going to visit Aunt Rosa. The line closed after a storm, and the trip was cancelled. At first, the ticket reminded me only of disappointment. Then Aunt Rosa sent me a letter describing the walk she had planned for us. We read it together on a video call and chose a new date. I used the old ticket as a bookmark in the guidebook she had given me. It is no longer valid for travel, and I do not treat it as proof of a journey I made. It reminds me that a plan can change without ending the friendship behind it. When we finally travelled in spring, I kept that ticket separately.\nLove,\nNeri",
+            "explanation": "B正确：no longer valid；A把纪念用途当有效票。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.cancelled-trip-ticket-letter-022.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The spring journey’s ticket is kept separately.",
+            "material": "Cancelled Trip Ticket Letter 022\n\nDear Sal,\nYou asked why I keep an unused train ticket in my notebook. It is from the weekend I was going to visit Aunt Rosa. The line closed after a storm, and the trip was cancelled. At first, the ticket reminded me only of disappointment. Then Aunt Rosa sent me a letter describing the walk she had planned for us. We read it together on a video call and chose a new date. I used the old ticket as a bookmark in the guidebook she had given me. It is no longer valid for travel, and I do not treat it as proof of a journey I made. It reminds me that a plan can change without ending the friendship behind it. When we finally travelled in spring, I kept that ticket separately.\nLove,\nNeri",
+            "explanation": "A正确：finally spring kept that separately；B否认两张票区分。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "8e5b7f039a1079808c45ea61f566b11caa8f075e8a3a51d511514377efef3db0",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-train-letter-tf#primary6.cancelled-trip-ticket-letter-022.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.cancelled-trip-ticket-letter-022.reading.q1",
+            "expansion.20261028.primary6.cancelled-trip-ticket-letter-022.reading.q2",
+            "expansion.20261028.primary6.cancelled-trip-ticket-letter-022.reading.q3",
+            "expansion.20261028.primary6.cancelled-trip-ticket-letter-022.reading.q4",
+            "expansion.20261028.primary6.cancelled-trip-ticket-letter-022.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-train-letter-tf",
+          "sourceContentHash": "0aa9b6a3d172a400efc8cc3c785b092bbdf7d9dbb0f195850cf1167bbad992a8"
+        }
+      ]
+    }
+  ]
+}

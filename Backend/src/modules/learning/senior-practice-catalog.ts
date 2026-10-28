@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { z } from "zod";
 import { contentHash, unitSchema, type LearningUnit } from "./content.js";
 import { gaokaoCatalog } from "./gaokao-policy.js";
+import { expansionCatalogOriginMarker } from "./expansion-origin.js";
 
 type Practice = ReturnType<typeof gaokaoCatalog>["practices"][number];
 let cached: { practices: Practice[]; historicalPractices: Practice[] } | undefined;
@@ -63,7 +64,10 @@ export function seniorPracticeCatalog() {
           authorCheckSHA256: contentHash(questions),
           sourceNotice:
             p.unit.originalGroup.sourceNotice +
-            " 本次独立呈现完整子题组；原题号、答案身份和历史作答保留。",
+            " 本次独立呈现完整子题组；原题号、答案身份和历史作答保留。" +
+            (p.unit.id.startsWith("expansion.20261028.")
+              ? expansionCatalogOriginMarker + p.unit.id
+              : ""),
         },
       });
       practices.push({
