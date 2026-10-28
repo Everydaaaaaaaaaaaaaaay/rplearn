@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { AppError } from "../../shared/errors.js";
+import { questionForGrading } from "./grading-revisions.js";
 import {
   clozeFillSchema,
   clozeSlotIds,
@@ -55,6 +56,7 @@ export function gradeAnswer(
   question: LearningQuestion,
   answer: LearningAnswer,
 ): GradeResult {
+  question = questionForGrading(question);
   let correct = false;
   let solution: LearningAnswer;
   let pairResults: GradeResult["pairResults"];

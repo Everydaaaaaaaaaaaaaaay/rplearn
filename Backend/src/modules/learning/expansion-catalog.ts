@@ -10,6 +10,7 @@ import {
   type LearningUnit,
 } from "./content.js";
 import { gradeAnswer } from "./grading.js";
+import { questionForGrading } from "./grading-revisions.js";
 import { learningImageSchema, verifyLearningImage } from "./images.js";
 import {
   learningAudioSchema,
@@ -138,7 +139,9 @@ export function loadExpansionCatalog(
     )
       throw new Error(`Expansion identity/digest mismatch: ${u.id}`);
     ids.add(u.id);
-    for (const q of u.questions) {
+    for (const frozen of u.questions) {
+      // Frozen hashes stay authoritative; probes use only explicitly reviewed effective forms.
+      const q = questionForGrading(frozen);
       if (!q.material) throw new Error(`Incomplete expansion input: ${u.id}/${q.id}`);
       if (run === "2026-10-28") {
         const manifest = manifestByUnit.get(u.id);

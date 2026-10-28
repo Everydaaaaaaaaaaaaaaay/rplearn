@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { z } from "zod";
 import type { LearningQuestion } from "./content.js";
 import { contentHash } from "./content-hash.js";
+import { questionForGrading } from "./grading-revisions.js";
 
 const revisionSchema = z.strictObject({
   sourceHash: z.string().regex(/^[a-f0-9]{64}$/),
@@ -59,12 +60,72 @@ export function presentationSourceHash(question: LearningQuestion) {
   return contentHash(source);
 }
 
+function visibleCompletionBounds(question: LearningQuestion): LearningQuestion {
+  if (question.type !== "completion" || !question.marking) return question;
+  const { minWords, maxWords } = question.marking;
+  if (maxWords === null && minWords === undefined) return question;
+  const minimum = minWords ?? 1;
+  const words = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+  ];
+  const count = (value: number) =>
+    `(?:${String(value)}${words[value] ? `|${words[value]}` : ""})`;
+  const prefix = String.raw`(?:\b(?:use|write|enter)\s+|\b(?:answer|respond)\s+in\s+|\b(?:fill|complete)[^.\n]{0,80}?\bwith\s+)`;
+  const patterns: string[] = [];
+  if (maxWords !== null) {
+    if (minimum === maxWords)
+      patterns.push(
+        `${prefix}(?:(?:exactly|only)\\s+)?${count(maxWords)}\\s+words?\\b`,
+      );
+    else {
+      patterns.push(
+        `${prefix}(?:between\\s+)?${count(minimum)}\\s*(?:to|and|[-–—])\\s*${count(maxWords)}\\s+words?\\b`,
+      );
+      if (minimum === 1)
+        patterns.push(
+          `${prefix}(?:at\\s+most|(?:no|not)\\s+more\\s+than|up\\s+to)\\s+${count(maxWords)}\\s+words?\\b`,
+        );
+    }
+  } else patterns.push(`${prefix}at\\s+least\\s+${count(minimum)}\\s+words?\\b`);
+  const authored = [
+    question.instruction,
+    question.prompt,
+    question.material ?? "",
+  ].join("\n");
+  if (patterns.some((pattern) => new RegExp(pattern, "iu").test(authored)))
+    return question;
+  const bound =
+    maxWords === null
+      ? `Use at least ${String(minimum)} ${minimum === 1 ? "word" : "words"}.`
+      : minimum === maxWords
+        ? `Use exactly ${String(maxWords)} ${maxWords === 1 ? "word" : "words"}.`
+        : minWords === undefined
+          ? `Use at most ${String(maxWords)} words.`
+          : `Use ${String(minimum)} to ${String(maxWords)} words.`;
+  const instruction = question.instruction.trim();
+  return {
+    ...question,
+    instruction: `${instruction}${/[.!?。！？]$/u.test(instruction) ? "" : "."} ${bound}`,
+  };
+}
+
 /** Display copy only. Never use this value for grading or persist it over a snapshot.
  * Exact full-content bindings prevent a translation reaching a different question,
  * changed answer, media asset or administrator revision with a reused local ID.
  */
-export function questionForPresentation(question: LearningQuestion): LearningQuestion {
-  const revision = registry().get(presentationSourceHash(question));
+export function questionForPresentation(source: LearningQuestion): LearningQuestion {
+  const question = visibleCompletionBounds(questionForGrading(source));
+  const revision = registry().get(presentationSourceHash(source));
   if (!revision) return question;
   if (question.type !== "choice" && question.type !== "listeningChoice")
     throw new Error("题面修订只能更改已审核选择题。");
