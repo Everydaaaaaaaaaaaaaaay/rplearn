@@ -85,7 +85,7 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertTrue(complete.exists)
         let progress = app.otherElements["learning.level.progress"]
         reveal(progress, in: app)
-        XCTAssertTrue(app.staticTexts["下一星 0/60 积分"].exists)
+        XCTAssertEqual(app.otherElements["learning.next-star.progress"].value as? String, "0/60 积分")
         XCTAssertFalse(app.buttons["learning.journey"].exists)
         XCTAssertFalse(app.navigationBars["学习进度"].exists)
     }
@@ -128,6 +128,12 @@ final class CharacterLearningLayoutTests: XCTestCase {
         let identity = app.descendants(matching: .any)["learning.character.identity"].firstMatch
         XCTAssertTrue(card.frame.contains(identity.frame))
         let progress = app.otherElements["learning.unlock.progress"]
+        let nextStar = app.otherElements["learning.next-star.progress"]
+        XCTAssertTrue(nextStar.exists)
+        XCTAssertEqual(nextStar.value as? String, "0/60 积分")
+        XCTAssertLessThan(nextStar.frame.width, progress.frame.width)
+        XCTAssertLessThan(nextStar.frame.height, progress.frame.height)
+        XCTAssertFalse(app.staticTexts["下一星 0/60 积分"].exists)
         XCTAssertLessThanOrEqual(card.frame.height, 540, "常规字号卡片应收紧，避免内部留白撑满屏幕")
         XCTAssertLessThan(progress.frame.minY - identity.frame.maxY, 64)
         XCTAssertLessThan(app.otherElements["learning.level.progress"].frame.minY - progress.frame.maxY, 64)

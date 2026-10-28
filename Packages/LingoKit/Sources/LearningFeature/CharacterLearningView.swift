@@ -205,8 +205,19 @@ public struct CharacterLearningView: View {
         return level
     }
     private func nextStar(_ current: LearningLevelProgress?) -> some View {
-        Text((current?.stars ?? 0) >= 9 ? "9 星已达成" : "下一星 \(current?.currentStarPoints ?? 0)/\(current?.pointsPerStar ?? 60) 积分")
-            .font(.caption).monospacedDigit().foregroundStyle(.secondary)
+        let complete = (current?.stars ?? 0) >= 9
+        let total = max(1, current?.pointsPerStar ?? 60)
+        let points = complete ? total : min(total, max(0, current?.currentStarPoints ?? 0))
+        let label = complete ? "9 星已达成" : "下一星"
+        return HStack(spacing: 8) {
+            Text(label).font(.caption2).foregroundStyle(.secondary)
+            LearningMeter(value: points, total: total, tint: theme.tint.opacity(0.72), height: 5)
+                .frame(width: 136)
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(label)
+        .accessibilityValue(complete ? "已全部点亮" : "\(points)/\(total) 积分")
+        .accessibilityIdentifier("learning.next-star.progress")
     }
     private var visibleHistory: [LearningHistory.Item] {
         model.history.filter(historyFilter.matches)
@@ -357,6 +368,7 @@ private struct LearningMeter: View {
     let value: Int
     let total: Int
     let tint: Color
+    var height: CGFloat = 16
     var body: some View {
         GeometryReader { geometry in
             Capsule().fill(tint.opacity(0.10))
@@ -364,7 +376,7 @@ private struct LearningMeter: View {
                     Capsule().fill(tint)
                         .frame(width: geometry.size.width * min(1, max(0, Double(value) / Double(max(1, total)))))
                 }
-        }.frame(height: 16)
+        }.frame(height: height)
     }
 }
 

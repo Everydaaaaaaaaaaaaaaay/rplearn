@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-28",
+  "scope": "Replace next-star point text with a subordinate graphical progress meter",
+  "design": {
+    "chatMeter": "Unchanged, up to 260pt wide and 16pt high.",
+    "nextStarMeter": "136pt wide, 5pt high; caption2 下一星 label and lower-emphasis companion tint, centered below the stars. Visible point fraction removed; exact points retained in accessibility value.",
+    "completion": "Nine stars show a full meter and 9 星已达成; a newly earned star reads the current server remainder, including zero."
+  },
+  "verification": {
+    "standard": {
+      "passed": 4,
+      "failed": 0,
+      "evidence": "build/learning-next-star-meter-20261028/ui-standard.xcresult",
+      "coverage": [
+        "Meter group is shorter and narrower than chat progress",
+        "Ready card and collapsed history layout",
+        "History filters and inline learning progress",
+        "Maximum accessibility text and dark history",
+        "Real-page star replay: 59/60 before, 0/60 after earning the fourth star"
+      ]
+    },
+    "compact": {
+      "passed": 1,
+      "failed": 0,
+      "device": "iPhone SE 3 / iOS 27.0",
+      "evidence": "build/learning-next-star-meter-20261028/ui-compact.xcresult"
+    }
+  },
+  "visualReview": {
+    "result": "Passed standard-screen review of empty and nearly complete meters and dark maximum text. Primary chat progress retains visual priority. Compact ready-card screenshot reviewed; the secondary track remains distinct and controls fit.",
+    "method": "Xcode-hosted interactions and native screenshots; Computer Use unavailable.",
+    "screenshots": "build/learning-next-star-meter-20261028/standard-attachments",
+    "unchangedPhotographyEvidence": "Assets/LearningCityScenes/Review-2026-10-27/acceptance-v2.md",
+    "limits": "No photo assets, scoring rules, backend or stored learning data changed; no physical-device review.",
+    "compactScreenshots": "build/learning-next-star-meter-20261028/compact-attachments"
+  },
+  "preview": {
+    "command": "SIMCTL_CHILD_UI_TEST_REGION=melbourne LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh preview achievement-preview",
+    "result": "Installed the latest tested build and left the real-page star replay open on iPhone 18 Pro.",
+    "log": "build/learning-next-star-meter-20261028/final-preview.log",
+    "screenshot": "build/learning-next-star-meter-20261028/final-preview.png"
+  }
+}
