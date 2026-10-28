@@ -6,7 +6,9 @@ import {
   seniorPracticeHashes,
   isAdmittedSeniorUnit,
   selectSeniorCandidate,
+  seniorPracticeCatalog,
 } from "./senior-practice-catalog.js";
+import { expansionCatalogOrigin } from "./expansion-origin.js";
 import { questionListeningScript } from "./listening-speech.js";
 import { LearningBankSession } from "./bank-repository.js";
 import { LearningDirectionSession } from "./direction-repository.js";
@@ -529,6 +531,16 @@ export class LearningSession {
 
   private async gaokaoCandidates(level: LearningLevel, originalUnitId?: string) {
     const ids = seniorPracticeIds();
+    // These reviewed new drafts cite old roots for task format, not reused content.
+    // Full component overlap below still blocks the same work and its parent/children.
+    const newOriginalIds = seniorPracticeCatalog()
+      .practices.filter(
+        (p) =>
+          p.kind === "authored" &&
+          (p.unit.id.startsWith("expansion.20261028.") ||
+            expansionCatalogOrigin(p.unit)?.startsWith("expansion.20261028.")),
+      )
+      .map((p) => p.unit.id);
     const rows = await this.sql<{ payload: LearningUnit }[]>`
       select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
       where u.published and u.level_key=${level} and u.id=any(${ids})
@@ -538,7 +550,8 @@ export class LearningSession {
           where a.user_id=${this.userId} and (
             (a.unit_id=any(${seniorHistoryIds()}) and (coalesce(a.snapshot,av.payload)->'originalGroup'->'sourceGroupIds') ?|
               array(select jsonb_array_elements_text(v.payload->'originalGroup'->'sourceGroupIds')))
-            or a.unit_id=any(array(select split_part(jsonb_array_elements_text(v.payload->'originalGroup'->'sourceGroupIds'),'#',1)))))
+            or (not (u.id=any(${newOriginalIds})) and
+              a.unit_id=any(array(select split_part(jsonb_array_elements_text(v.payload->'originalGroup'->'sourceGroupIds'),'#',1))))))
       order by random()`;
     return rows.filter((r) => isAdmittedSeniorUnit(r.payload));
   }
