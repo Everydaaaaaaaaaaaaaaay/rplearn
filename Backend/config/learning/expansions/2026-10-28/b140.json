@@ -1,0 +1,615 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b140",
+  "createdAt": "2026-10-29T05:05:42+08:00",
+  "sourceSHA256": "80f7d623199764e713a0c634795d49363034a9f31d69b16f6ad5c20af36875f8",
+  "reviewSHA256": "af00da1b56ccaf56ca9d375cb30762d2a018f0ae13eeb778ca9c0a80e31d785f",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex author with same-AI peer review of scoped rejected variants",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001",
+        "version": 2,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 高一专项：不同步速的散步与饼干摊",
+        "summary": "高一专项：不同步速的散步与饼干摊，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.wenzhou2025.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex author with same-AI peer review of scoped rejected variants (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "One published Senior1 parent receives actual unit version2, bound to b114 version1 by exact prior contentHash and sourceSHA256. Only grammar gap5 removes clear from automatic rejection into unlisted review; no scoreable answers, stimuli, IDs, prompts, options or keys change. This is a forward grading correction, zero additional practice supply. Author and same-AI peer review only; no independent teacher calibration or release claim."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001",
+          "family": "shared_insertion_passage_form",
+          "label": "高一专项：不同步速的散步与饼干摊",
+          "candidateSHA256": "4b6020a82dbb31e33b0e42dc557795e7e42847684fe6058064b1134dafbbad54",
+          "authorCheckSHA256": "6f252890b3c06d1867ec2fed673b4411d27b36c0a18bd3f7736870e09dfc90cc",
+          "sourceGroupIds": [
+            "original.grade10-club-routines-insertion#senior1.mixed-pace-walk-and-biscuit-stall-001.insertion",
+            "original.grade10-grammar-library-cinema-neighbour#senior1.mixed-pace-walk-and-biscuit-stall-001.grammar"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b140；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Mixed Pace Walk And Biscuit Stall · Reading\n\nOur walking club welcomed new members, but the first group walk revealed a difficulty. Faster walkers reached every turning well before the others. They waited, then immediately set off again. ____1____ By the time the slower members arrived, the people at the front had rested while those at the back had not.\n\nThe leader asked everyone to discuss the problem before the next outing. We agreed that a pause would begin only after the whole group had reached the meeting point. ____2____ Nobody had to use the waiting period as a race to earn a longer break.\n\nWe also chose a person to remain at important turnings until the last walker had passed. ____3____ The task was to make the route clear, not to decide that everyone else ought to remember the map.\n\nSome members worried that this would prevent them enjoying a faster pace. The leader explained that separate faster walks could still be arranged. ____4____ A particular outing could have a shared purpose without becoming the only kind of walk the club ever offered.\n\nThe next trip was not free of small delays, but it felt more like a group activity. ____5____ We had changed the organisation of the walk instead of treating one pace as a personal failing.\n\nMixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Gap 1: Choose one sentence from the seven shared candidates.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Reading\n\nOur walking club welcomed new members, but the first group walk revealed a difficulty. Faster walkers reached every turning well before the others. They waited, then immediately set off again. ____1____ By the time the slower members arrived, the people at the front had rested while those at the back had not.\n\nThe leader asked everyone to discuss the problem before the next outing. We agreed that a pause would begin only after the whole group had reached the meeting point. ____2____ Nobody had to use the waiting period as a race to earn a longer break.\n\nWe also chose a person to remain at important turnings until the last walker had passed. ____3____ The task was to make the route clear, not to decide that everyone else ought to remember the map.\n\nSome members worried that this would prevent them enjoying a faster pace. The leader explained that separate faster walks could still be arranged. ____4____ A particular outing could have a shared purpose without becoming the only kind of walk the club ever offered.\n\nThe next trip was not free of small delays, but it felt more like a group activity. ____5____ We had changed the organisation of the walk instead of treating one pace as a personal failing.",
+            "explanation": "D正确：前等后即走导致休息不等，后句明确前休后没休；B新暂停规则下段；G路口第三段；C活动定位第四段；A体验末段；F/E与方案相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Members could see that the arrangement recognised the experience of those at the back."
+              },
+              {
+                "id": "o1",
+                "text": "That gave everyone a genuine pause before the group moved again."
+              },
+              {
+                "id": "o2",
+                "text": "This walk had been advertised as suitable for people walking together at different speeds."
+              },
+              {
+                "id": "o3",
+                "text": "The same stop therefore gave different people different amounts of rest."
+              },
+              {
+                "id": "o4",
+                "text": "The club decided to ban every fast walk for the rest of the year."
+              },
+              {
+                "id": "o5",
+                "text": "The last person to arrive had to leave first without stopping."
+              },
+              {
+                "id": "o6",
+                "text": "A clear signal at a junction reduced the chance of someone following the wrong path."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Gap 2: Choose one sentence from the seven shared candidates.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Reading\n\nOur walking club welcomed new members, but the first group walk revealed a difficulty. Faster walkers reached every turning well before the others. They waited, then immediately set off again. ____1____ By the time the slower members arrived, the people at the front had rested while those at the back had not.\n\nThe leader asked everyone to discuss the problem before the next outing. We agreed that a pause would begin only after the whole group had reached the meeting point. ____2____ Nobody had to use the waiting period as a race to earn a longer break.\n\nWe also chose a person to remain at important turnings until the last walker had passed. ____3____ The task was to make the route clear, not to decide that everyone else ought to remember the map.\n\nSome members worried that this would prevent them enjoying a faster pace. The leader explained that separate faster walks could still be arranged. ____4____ A particular outing could have a shared purpose without becoming the only kind of walk the club ever offered.\n\nThe next trip was not free of small delays, but it felt more like a group activity. ____5____ We had changed the organisation of the walk instead of treating one pace as a personal failing.",
+            "explanation": "B正确：全组到才计休使每人真休，后句不必竞抢长休；D旧不等已讲，G路口下段，C定位与A体验后段；F/E不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Members could see that the arrangement recognised the experience of those at the back."
+              },
+              {
+                "id": "o1",
+                "text": "That gave everyone a genuine pause before the group moved again."
+              },
+              {
+                "id": "o2",
+                "text": "This walk had been advertised as suitable for people walking together at different speeds."
+              },
+              {
+                "id": "o3",
+                "text": "The same stop therefore gave different people different amounts of rest."
+              },
+              {
+                "id": "o4",
+                "text": "The club decided to ban every fast walk for the rest of the year."
+              },
+              {
+                "id": "o5",
+                "text": "The last person to arrive had to leave first without stopping."
+              },
+              {
+                "id": "o6",
+                "text": "A clear signal at a junction reduced the chance of someone following the wrong path."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Gap 3: Choose one sentence from the seven shared candidates.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Reading\n\nOur walking club welcomed new members, but the first group walk revealed a difficulty. Faster walkers reached every turning well before the others. They waited, then immediately set off again. ____1____ By the time the slower members arrived, the people at the front had rested while those at the back had not.\n\nThe leader asked everyone to discuss the problem before the next outing. We agreed that a pause would begin only after the whole group had reached the meeting point. ____2____ Nobody had to use the waiting period as a race to earn a longer break.\n\nWe also chose a person to remain at important turnings until the last walker had passed. ____3____ The task was to make the route clear, not to decide that everyone else ought to remember the map.\n\nSome members worried that this would prevent them enjoying a faster pace. The leader explained that separate faster walks could still be arranged. ____4____ A particular outing could have a shared purpose without becoming the only kind of walk the club ever offered.\n\nThe next trip was not free of small delays, but it felt more like a group activity. ____5____ We had changed the organisation of the walk instead of treating one pace as a personal failing.",
+            "explanation": "G正确：路口留人传明路线防跟错，后句明确任务不是怪人不记图；D/B休时、C定位、A后排体验非转弯信号；F/E错误。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Members could see that the arrangement recognised the experience of those at the back."
+              },
+              {
+                "id": "o1",
+                "text": "That gave everyone a genuine pause before the group moved again."
+              },
+              {
+                "id": "o2",
+                "text": "This walk had been advertised as suitable for people walking together at different speeds."
+              },
+              {
+                "id": "o3",
+                "text": "The same stop therefore gave different people different amounts of rest."
+              },
+              {
+                "id": "o4",
+                "text": "The club decided to ban every fast walk for the rest of the year."
+              },
+              {
+                "id": "o5",
+                "text": "The last person to arrive had to leave first without stopping."
+              },
+              {
+                "id": "o6",
+                "text": "A clear signal at a junction reduced the chance of someone following the wrong path."
+              }
+            ],
+            "answer": "o6"
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Gap 4: Choose one sentence from the seven shared candidates.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Reading\n\nOur walking club welcomed new members, but the first group walk revealed a difficulty. Faster walkers reached every turning well before the others. They waited, then immediately set off again. ____1____ By the time the slower members arrived, the people at the front had rested while those at the back had not.\n\nThe leader asked everyone to discuss the problem before the next outing. We agreed that a pause would begin only after the whole group had reached the meeting point. ____2____ Nobody had to use the waiting period as a race to earn a longer break.\n\nWe also chose a person to remain at important turnings until the last walker had passed. ____3____ The task was to make the route clear, not to decide that everyone else ought to remember the map.\n\nSome members worried that this would prevent them enjoying a faster pace. The leader explained that separate faster walks could still be arranged. ____4____ A particular outing could have a shared purpose without becoming the only kind of walk the club ever offered.\n\nThe next trip was not free of small delays, but it felt more like a group activity. ____5____ We had changed the organisation of the walk instead of treating one pace as a personal failing.",
+            "explanation": "C正确：解释此行公告不同速同走，不禁另设快行，后句单项共同目标非全俱乐部唯一；D/B休时、G路口已述，A末段；F/E反向。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Members could see that the arrangement recognised the experience of those at the back."
+              },
+              {
+                "id": "o1",
+                "text": "That gave everyone a genuine pause before the group moved again."
+              },
+              {
+                "id": "o2",
+                "text": "This walk had been advertised as suitable for people walking together at different speeds."
+              },
+              {
+                "id": "o3",
+                "text": "The same stop therefore gave different people different amounts of rest."
+              },
+              {
+                "id": "o4",
+                "text": "The club decided to ban every fast walk for the rest of the year."
+              },
+              {
+                "id": "o5",
+                "text": "The last person to arrive had to leave first without stopping."
+              },
+              {
+                "id": "o6",
+                "text": "A clear signal at a junction reduced the chance of someone following the wrong path."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Gap 5: Choose one sentence from the seven shared candidates.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Reading\n\nOur walking club welcomed new members, but the first group walk revealed a difficulty. Faster walkers reached every turning well before the others. They waited, then immediately set off again. ____1____ By the time the slower members arrived, the people at the front had rested while those at the back had not.\n\nThe leader asked everyone to discuss the problem before the next outing. We agreed that a pause would begin only after the whole group had reached the meeting point. ____2____ Nobody had to use the waiting period as a race to earn a longer break.\n\nWe also chose a person to remain at important turnings until the last walker had passed. ____3____ The task was to make the route clear, not to decide that everyone else ought to remember the map.\n\nSome members worried that this would prevent them enjoying a faster pace. The leader explained that separate faster walks could still be arranged. ____4____ A particular outing could have a shared purpose without becoming the only kind of walk the club ever offered.\n\nThe next trip was not free of small delays, but it felt more like a group activity. ____5____ We had changed the organisation of the walk instead of treating one pace as a personal failing.",
+            "explanation": "A正确：组织让后排被考虑，后句非将慢当个人失败；D旧不等、B新休、G路口、C公告皆前因非总体感受；F/E错误。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Members could see that the arrangement recognised the experience of those at the back."
+              },
+              {
+                "id": "o1",
+                "text": "That gave everyone a genuine pause before the group moved again."
+              },
+              {
+                "id": "o2",
+                "text": "This walk had been advertised as suitable for people walking together at different speeds."
+              },
+              {
+                "id": "o3",
+                "text": "The same stop therefore gave different people different amounts of rest."
+              },
+              {
+                "id": "o4",
+                "text": "The club decided to ban every fast walk for the rest of the year."
+              },
+              {
+                "id": "o5",
+                "text": "The last person to arrive had to leave first without stopping."
+              },
+              {
+                "id": "o6",
+                "text": "A clear signal at a junction reduced the chance of someone following the wrong path."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 1 (USE): Use 1 to 2 words.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning.",
+            "explanation": "祖母多年使用过去或过去完成均可。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "had used",
+              "used"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 2,
+              "rejectedAnswers": [
+                "use",
+                "using"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 2 (LEAVE): Use 1 to 2 words.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning.",
+            "explanation": "ask somebody to do不定式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to leave"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 2,
+              "rejectedAnswers": [
+                "leaving",
+                "leave"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 3: Write one word.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning.",
+            "explanation": "customer作recognised主语who/that。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 4 (SMALL): Write one word.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning.",
+            "explanation": "than比较smaller。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "smaller"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "small",
+                "smallest"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 5 (CLEAR): Write one word.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning.",
+            "explanation": "spoke后副词clearly。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "clearness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 6 (SERVE): Write one word.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning.",
+            "explanation": "after介词后serving。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "serving"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "serve",
+                "served"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 7 (LABEL): Use 1 to 3 words.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning.",
+            "explanation": "tray单数被标错价，过去或过去完成被动，英美labelled/labeled均收。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "had been labelled",
+              "had been labeled",
+              "was labelled",
+              "was labeled"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 3,
+              "rejectedAnswers": [
+                "had labelled",
+                "were labelled"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 8 (WE): Write one word.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning.",
+            "explanation": "thanked后us宾格。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "we",
+                "our"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 9: Write one word.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning.",
+            "explanation": "what作had worked主语，宾从引导内容。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "what"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "that",
+                "which"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and complete each gap.",
+            "prompt": "Gap 10 (USE): Use 1 to 2 words.",
+            "material": "Mixed Pace Walk And Biscuit Stall · Grammar\n\nAt our town's food fair, my aunt sold biscuits from a recipe that her mother ____1____ (USE) for many years. I helped her prepare the table and write the price cards. She asked me ____2____ (LEAVE) enough space between the trays so that the labels could be read.\n\nA customer ____3____ recognised the recipe name asked whether the biscuits were exactly like the ones he remembered. My aunt said that she had changed the size, but kept the main ingredients the same. The biscuits were ____4____ (SMALL) than those in an old family photograph.\n\nWe spoke ____5____ (CLEAR) about what was in each tray. If we were unsure about a question, we asked the organiser rather than inventing an answer. My aunt said that knowing a family recipe did not mean knowing everything about every customer's needs.\n\nAfter ____6____ (SERVE) the busiest group, we checked the remaining stock. One tray ____7____ (LABEL) with the wrong price, so we corrected it before another sale. The mistake did not change what a customer had already paid.\n\nAt the end, my aunt thanked ____8____ (WE) all for helping. We packed the cards with the recipe notes so we could remember ____9____ had worked well. Next year, we hope ____10____ (USE) a clearer arrangement from the beginning.",
+            "explanation": "hope to do不定式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to use"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 2,
+              "rejectedAnswers": [
+                "using",
+                "use"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "f01ecad01aab92ff7d2f176a190e86e5b4671da920754acb18d2176ae98b72d1",
+      "reviewNotes": "One published Senior1 parent receives actual unit version2, bound to b114 version1 by exact prior contentHash and sourceSHA256. Only grammar gap5 removes clear from automatic rejection into unlisted review; no scoreable answers, stimuli, IDs, prompts, options or keys change. This is a forward grading correction, zero additional practice supply. Author and same-AI peer review only; no independent teacher calibration or release claim.",
+      "components": [
+        {
+          "id": "original.grade10-club-routines-insertion#senior1.mixed-pace-walk-and-biscuit-stall-001.insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.insertion.q1",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.insertion.q2",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.insertion.q3",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.insertion.q4",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.grade10-club-routines-insertion",
+          "sourceContentHash": "666ba116f5fdcb6089f52d3ad8e25fcd9d0fd876fbf2f87e21a17bae57382d5a"
+        },
+        {
+          "id": "original.grade10-grammar-library-cinema-neighbour#senior1.mixed-pace-walk-and-biscuit-stall-001.grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q1",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q2",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q3",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q4",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q5",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q6",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q7",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q8",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q9",
+            "expansion.20261028.senior1.mixed-pace-walk-and-biscuit-stall-001.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "original.grade10-grammar-library-cinema-neighbour",
+          "sourceContentHash": "dac8d8dde62ab879e29bc178770e5d969ca3dbaf1b44e935df946e55bf9083ed"
+        }
+      ],
+      "revises": {
+        "version": 1,
+        "contentHash": "507f3d132b26999439bee52ddd947ff8d43a72b39c98c0a946ac9455f9ee804e",
+        "sourceSHA256": "8edd53f37469e943f800a2d3112be45004e8436e37c0ac5138e788aa47996a96"
+      }
+    }
+  ]
+}

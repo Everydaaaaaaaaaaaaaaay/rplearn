@@ -1,0 +1,895 @@
+{
+  "sourceSHA256": "e8e68e4343aa87d7feadd565ebf3d3d1ceb9122f1200574315b43223fee2ad08",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex root author, explicit reconstruction and bounded-variant review",
+  "reviewedAt": "2026-10-29",
+  "units": [
+    {
+      "id": "advanced.lost-luggage-root-003",
+      "status": "approved",
+      "findings": [
+        "Six complete original sentence pairs; each retains its key word and preserves the stated event, time, polarity and participant roles.",
+        "Every accepted phrase checked against its reconstructed sentence and explicit3–6word range; only a stated malformed/meaning-changing phrase is rejected; other unlisted phrases go to review.",
+        "Same-author English/semantic review, not independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "item": 1,
+          "original": "Someone must have taken my blue suitcase by mistake.",
+          "target": "My blue suitcase ____ by mistake.",
+          "requiredWord": "BEEN",
+          "accepted": [
+            "must have been taken"
+          ],
+          "completedSentences": [
+            "My blue suitcase must have been taken by mistake."
+          ],
+          "acceptedWordCounts": [
+            4
+          ],
+          "explicitRejected": "must had been taken",
+          "rationale": "must have been taken把对过去拿错行李的推断改为被动，保留must的确信程度。情态动词后不能接had。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 2,
+          "original": "I do not know at all where I left the luggage receipt.",
+          "target": "I have ____ where I left the luggage receipt.",
+          "requiredWord": "IDEA",
+          "accepted": [
+            "no idea at all",
+            "absolutely no idea"
+          ],
+          "completedSentences": [
+            "I have no idea at all where I left the luggage receipt.",
+            "I have absolutely no idea where I left the luggage receipt."
+          ],
+          "acceptedWordCounts": [
+            4,
+            3
+          ],
+          "explicitRejected": "not idea at all",
+          "rationale": "have no idea或absolutely no idea均表示完全不知道，保留不知道收据所在位置的当前状态。idea前不能直接使用not代替no。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 3,
+          "original": "Staff will consider a claim only if it is submitted within 48 hours.",
+          "target": "Only claims ____ will be considered by staff.",
+          "requiredWord": "WITHIN",
+          "accepted": [
+            "submitted within 48 hours",
+            "submitted within forty-eight hours"
+          ],
+          "completedSentences": [
+            "Only claims submitted within 48 hours will be considered by staff.",
+            "Only claims submitted within forty-eight hours will be considered by staff."
+          ],
+          "acceptedWordCounts": [
+            4,
+            4
+          ],
+          "explicitRejected": "submitted within 48 hour",
+          "rationale": "过去分词短语修饰claims，保留只有48小时内提交才获考虑的必要条件；48与forty-eight两种写法均接纳。复数时长应为hours。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 4,
+          "original": "I wish I had not left my luggage unattended.",
+          "target": "I regret ____ unattended.",
+          "requiredWord": "HAVING",
+          "accepted": [
+            "having left my luggage"
+          ],
+          "completedSentences": [
+            "I regret having left my luggage unattended."
+          ],
+          "acceptedWordCounts": [
+            4
+          ],
+          "explicitRejected": "having leave my luggage",
+          "rationale": "regret having left表达对过去让行李无人看管的遗憾，与wish加过去完成时否定对应。having后必须用left过去分词。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 5,
+          "original": "The staff checked the labels and only then returned our bags.",
+          "target": "The staff returned our bags ____.",
+          "requiredWord": "AFTER",
+          "accepted": [
+            "only after checking the labels"
+          ],
+          "completedSentences": [
+            "The staff returned our bags only after checking the labels."
+          ],
+          "acceptedWordCounts": [
+            5
+          ],
+          "explicitRejected": "only after check the labels",
+          "rationale": "only after checking保留工作人员先核对标签、随后才归还行李的顺序及同一施事者。after后用动名词checking而非动词原形。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 6,
+          "original": "None of the people at the desk helped us.",
+          "target": "Nobody at the desk ____.",
+          "requiredWord": "HELP",
+          "accepted": [
+            "gave us any help"
+          ],
+          "completedSentences": [
+            "Nobody at the desk gave us any help."
+          ],
+          "acceptedWordCounts": [
+            4
+          ],
+          "explicitRejected": "given us any help",
+          "rationale": "gave somebody help在这里表示实际提供帮助，Nobody保留无人帮助的否定，不把仅提出帮助当成已提供帮助。单独的given缺少所需助动词，不能作该句过去时谓语。",
+          "unlisted": "Review; not automatically incorrect."
+        }
+      ]
+    },
+    {
+      "id": "advanced.science-festival-root-003",
+      "status": "approved",
+      "findings": [
+        "Six complete original sentence pairs; each retains its key word and preserves the stated event, time, polarity and participant roles.",
+        "Every accepted phrase checked against its reconstructed sentence and explicit3–6word range; only a stated malformed/meaning-changing phrase is rejected; other unlisted phrases go to review.",
+        "Same-author English/semantic review, not independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "item": 1,
+          "original": "The robot demonstration had barely begun when the alarm was triggered.",
+          "target": "The robot demonstration ____ when the alarm was triggered.",
+          "requiredWord": "HARDLY",
+          "accepted": [
+            "had hardly begun",
+            "had hardly started"
+          ],
+          "completedSentences": [
+            "The robot demonstration had hardly begun when the alarm was triggered.",
+            "The robot demonstration had hardly started when the alarm was triggered."
+          ],
+          "acceptedWordCounts": [
+            3,
+            3
+          ],
+          "explicitRejected": "had hardly began",
+          "rationale": "had hardly begun或started与had barely begun均表示演示刚开始警报就响起，保留过去完成时。began不能用作had后的过去分词。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 2,
+          "original": "People expect the new exhibition to attract larger audiences.",
+          "target": "The new exhibition is ____.",
+          "requiredWord": "EXPECTED",
+          "accepted": [
+            "expected to attract larger audiences"
+          ],
+          "completedSentences": [
+            "The new exhibition is expected to attract larger audiences."
+          ],
+          "acceptedWordCounts": [
+            5
+          ],
+          "explicitRejected": "expected attracting to larger audiences",
+          "rationale": "be expected to加动词原形构成报道式被动，保留对新展览吸引更多观众的预期。attracting to不是该结构。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 3,
+          "original": "The display has very little practical value for school groups.",
+          "target": "The display is ____ for school groups.",
+          "requiredWord": "USE",
+          "accepted": [
+            "of very little practical use"
+          ],
+          "completedSentences": [
+            "The display is of very little practical use for school groups."
+          ],
+          "acceptedWordCounts": [
+            5
+          ],
+          "explicitRejected": "of very few practical use",
+          "rationale": "be of little use表示实用价值很小，very little practical保留程度与范围。use表示用途价值时为不可数，不能用few。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 4,
+          "original": "We checked the safety barrier twice because we feared leaving a gap.",
+          "target": "We checked the safety barrier twice ____ a gap.",
+          "requiredWord": "FEAR",
+          "accepted": [
+            "for fear of leaving"
+          ],
+          "completedSentences": [
+            "We checked the safety barrier twice for fear of leaving a gap."
+          ],
+          "acceptedWordCounts": [
+            4
+          ],
+          "explicitRejected": "for fear to leaving",
+          "rationale": "for fear of doing表示担心出现某事而采取预防行动，保留两次检查的目的。of后用leaving，to leaving不合该搭配。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 5,
+          "original": "The children found the optical illusion fascinating.",
+          "target": "The children ____ optical illusion.",
+          "requiredWord": "FASCINATED",
+          "accepted": [
+            "were fascinated by the",
+            "were fascinated with the"
+          ],
+          "completedSentences": [
+            "The children were fascinated by the optical illusion.",
+            "The children were fascinated with the optical illusion."
+          ],
+          "acceptedWordCounts": [
+            4,
+            4
+          ],
+          "explicitRejected": "were fascinated of the",
+          "rationale": "be fascinated by或with表达儿童对该视觉错觉着迷，与found it fascinating的感受者和对象相同。of不是此处的搭配。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 6,
+          "original": "The teacher had booked in advance, which was the only reason we could enter the workshop.",
+          "target": "If the teacher ____, we could not have entered the workshop.",
+          "requiredWord": "BOOKED",
+          "accepted": [
+            "had not booked in advance"
+          ],
+          "completedSentences": [
+            "If the teacher had not booked in advance, we could not have entered the workshop."
+          ],
+          "acceptedWordCounts": [
+            5
+          ],
+          "explicitRejected": "had not booked at advance",
+          "rationale": "过去反事实条件If...had not booked与would或could not have entered搭配，保留提前预约是唯一进入条件。固定短语为in advance。",
+          "unlisted": "Review; not automatically incorrect."
+        }
+      ]
+    },
+    {
+      "id": "advanced.instrument-repairs-root-003",
+      "status": "approved",
+      "findings": [
+        "Six complete original sentence pairs; each retains its key word and preserves the stated event, time, polarity and participant roles.",
+        "Every accepted phrase checked against its reconstructed sentence and explicit3–6word range; only a stated malformed/meaning-changing phrase is rejected; other unlisted phrases go to review.",
+        "Same-author English/semantic review, not independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "item": 1,
+          "original": "I have arranged for a specialist to clean my clarinet tomorrow.",
+          "target": "I am going ____ tomorrow.",
+          "requiredWord": "HAVE",
+          "accepted": [
+            "to have my clarinet cleaned"
+          ],
+          "completedSentences": [
+            "I am going to have my clarinet cleaned tomorrow."
+          ],
+          "acceptedWordCounts": [
+            5
+          ],
+          "explicitRejected": "to have my clarinet cleaning",
+          "rationale": "have something done表示安排他人完成清洁，保留已安排明天由专业人员处理单簧管的计划。物品后应接被动分词cleaned。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 2,
+          "original": "I did not realise how fragile the reed was until I visited the workshop.",
+          "target": "Not until I had visited the workshop ____ how fragile the reed was.",
+          "requiredWord": "DID",
+          "accepted": [
+            "did I realise",
+            "did I realize"
+          ],
+          "completedSentences": [
+            "Not until I had visited the workshop did I realise how fragile the reed was.",
+            "Not until I had visited the workshop did I realize how fragile the reed was."
+          ],
+          "acceptedWordCounts": [
+            3,
+            3
+          ],
+          "explicitRejected": "did I had realised",
+          "rationale": "Not until前置时主句用did I realise倒装，保留参观后才意识到的顺序。realise和realize拼法均可；did后不能再接had realised。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 3,
+          "original": "I did not need to pay for the repair, and I did not pay.",
+          "target": "I ____ for the repair.",
+          "requiredWord": "NEED",
+          "accepted": [
+            "did not need to pay",
+            "didn't need to pay"
+          ],
+          "completedSentences": [
+            "I did not need to pay for the repair.",
+            "I didn't need to pay for the repair."
+          ],
+          "acceptedWordCounts": [
+            5,
+            4
+          ],
+          "explicitRejected": "did not need to paid",
+          "rationale": "did not need to pay表示过去没有付款必要，题目明确也没有付款。need后接to pay，不能接to paid；不给出暗示实际付过款的need not have形式。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 4,
+          "original": "The old pad was less flexible than the new one.",
+          "target": "The new pad was ____ the old one.",
+          "requiredWord": "MORE",
+          "accepted": [
+            "more flexible than"
+          ],
+          "completedSentences": [
+            "The new pad was more flexible than the old one."
+          ],
+          "acceptedWordCounts": [
+            3
+          ],
+          "explicitRejected": "more flexible as",
+          "rationale": "把旧垫片更不灵活改写为新垫片更灵活，比较对象与方向保持一致。more形成比较级，后面用than而非as。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 5,
+          "original": "The technician excluded any possibility of restoring the cracked wood.",
+          "target": "The technician ruled ____ the cracked wood.",
+          "requiredWord": "OUT",
+          "accepted": [
+            "out any possibility of restoring"
+          ],
+          "completedSentences": [
+            "The technician ruled out any possibility of restoring the cracked wood."
+          ],
+          "acceptedWordCounts": [
+            5
+          ],
+          "explicitRejected": "out any possibility for restore",
+          "rationale": "rule out any possibility of doing表示排除修复可能，与原句excluded对应。possibility of后接动名词，不接for restore。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 6,
+          "original": "The repairer insisted that nobody should rush the repair.",
+          "target": "The repairer insisted that the repair ____.",
+          "requiredWord": "RUSHED",
+          "accepted": [
+            "should not be rushed",
+            "not be rushed"
+          ],
+          "completedSentences": [
+            "The repairer insisted that the repair should not be rushed.",
+            "The repairer insisted that the repair not be rushed."
+          ],
+          "acceptedWordCounts": [
+            4,
+            3
+          ],
+          "explicitRejected": "should not being rushed",
+          "rationale": "insisted后的被动要求可用should not be rushed或省略should的not be rushed，保留不许赶工。should后不能用being。",
+          "unlisted": "Review; not automatically incorrect."
+        }
+      ]
+    },
+    {
+      "id": "advanced.volunteer-library-root-003",
+      "status": "approved",
+      "findings": [
+        "Six complete original sentence pairs; each retains its key word and preserves the stated event, time, polarity and participant roles.",
+        "Every accepted phrase checked against its reconstructed sentence and explicit3–6word range; only a stated malformed/meaning-changing phrase is rejected; other unlisted phrases go to review.",
+        "Same-author English/semantic review, not independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "item": 1,
+          "original": "We have not received the written agreement yet.",
+          "target": "We have ____.",
+          "requiredWord": "RECEIVED",
+          "accepted": [
+            "not yet received the written agreement",
+            "not received the written agreement yet"
+          ],
+          "completedSentences": [
+            "We have not yet received the written agreement.",
+            "We have not received the written agreement yet."
+          ],
+          "acceptedWordCounts": [
+            6,
+            6
+          ],
+          "explicitRejected": "not yet received of written agreement",
+          "rationale": "两种yet位置均保留尚未收到书面协议的现在完成时。receive直接接agreement，不能在此插入of并省掉限定词。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 2,
+          "original": "Despite being tired, the volunteers finished cataloguing the books.",
+          "target": "The volunteers finished cataloguing the books ____ tired.",
+          "requiredWord": "ALTHOUGH",
+          "accepted": [
+            "although they were"
+          ],
+          "completedSentences": [
+            "The volunteers finished cataloguing the books although they were tired."
+          ],
+          "acceptedWordCounts": [
+            3
+          ],
+          "explicitRejected": "although them were",
+          "rationale": "although引出有主语和谓语的让步从句，对应despite being tired，并明确感到疲倦的是志愿者。them不能作该从句主语。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 3,
+          "original": "We will cancel the event if nobody volunteers.",
+          "target": "The event will be cancelled ____.",
+          "requiredWord": "UNLESS",
+          "accepted": [
+            "unless somebody volunteers",
+            "unless someone volunteers"
+          ],
+          "completedSentences": [
+            "The event will be cancelled unless somebody volunteers.",
+            "The event will be cancelled unless someone volunteers."
+          ],
+          "acceptedWordCounts": [
+            3,
+            3
+          ],
+          "explicitRejected": "unless somebody volunteering",
+          "rationale": "unless somebody volunteers与if nobody volunteers形成相同取消条件；somebody与someone同指有人。unless后的有限从句需要volunteers。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 4,
+          "original": "It was my responsibility to hand back the keys.",
+          "target": "I ____ keys.",
+          "requiredWord": "RESPONSIBLE",
+          "accepted": [
+            "was responsible for handing back the"
+          ],
+          "completedSentences": [
+            "I was responsible for handing back the keys."
+          ],
+          "acceptedWordCounts": [
+            6
+          ],
+          "explicitRejected": "was responsible to handing back the",
+          "rationale": "be responsible for doing与it was my responsibility to do保留我应归还钥匙的责任。for后接动名词，to handing不是该搭配。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 5,
+          "original": "No explanation was available for why the shelf had collapsed.",
+          "target": "There was ____ why the shelf had collapsed.",
+          "requiredWord": "EXPLANATION",
+          "accepted": [
+            "no available explanation for"
+          ],
+          "completedSentences": [
+            "There was no available explanation for why the shelf had collapsed."
+          ],
+          "acceptedWordCounts": [
+            4
+          ],
+          "explicitRejected": "no available explanation of for",
+          "rationale": "there was no available explanation for why保留当时没有可用解释的状态，不把尚无解释扩大成原因不存在。of for不能连续引出同一个解释对象。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 6,
+          "original": "All the posters had been put up before the librarian arrived.",
+          "target": "By the time the librarian arrived, all the posters ____.",
+          "requiredWord": "ALREADY",
+          "accepted": [
+            "had already been put up"
+          ],
+          "completedSentences": [
+            "By the time the librarian arrived, all the posters had already been put up."
+          ],
+          "acceptedWordCounts": [
+            5
+          ],
+          "explicitRejected": "had already being put up",
+          "rationale": "had already been put up保留在图书管理员到来之前已经完成张贴这一过去完成的被动事件。完成被动用been而不是being。",
+          "unlisted": "Review; not automatically incorrect."
+        }
+      ]
+    },
+    {
+      "id": "advanced.community-theatre-root-003",
+      "status": "approved",
+      "findings": [
+        "Six complete original sentence pairs; each retains its key word and preserves the stated event, time, polarity and participant roles.",
+        "Every accepted phrase checked against its reconstructed sentence and explicit3–6word range; only a stated malformed/meaning-changing phrase is rejected; other unlisted phrases go to review.",
+        "Same-author English/semantic review, not independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "item": 1,
+          "original": "The director was not aware that the door was locked until the removal crew arrived.",
+          "target": "The director did not ____ until the removal crew arrived.",
+          "requiredWord": "REALISE",
+          "accepted": [
+            "realise that the door was locked"
+          ],
+          "completedSentences": [
+            "The director did not realise that the door was locked until the removal crew arrived."
+          ],
+          "acceptedWordCounts": [
+            6
+          ],
+          "explicitRejected": "realise that the door were locked",
+          "rationale": "did not realise对应此前并不知情，保留搬运人员到来后才意识到门已锁的时间关系。给定REALISE的拼写必须保留；单数door不能用were。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 2,
+          "original": "I strongly prefer using the earlier script.",
+          "target": "I would ____ the earlier script.",
+          "requiredWord": "RATHER",
+          "accepted": [
+            "much rather use"
+          ],
+          "completedSentences": [
+            "I would much rather use the earlier script."
+          ],
+          "acceptedWordCounts": [
+            3
+          ],
+          "explicitRejected": "much rather using",
+          "rationale": "would much rather use表示明显更愿意采用早先剧本，与strongly prefer using保持同一选择偏好。would rather后用动词原形。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 3,
+          "original": "We could hear only the actors who stood close to the microphone.",
+          "target": "Only actors standing close to the microphone ____ by us.",
+          "requiredWord": "COULD",
+          "accepted": [
+            "could be heard"
+          ],
+          "completedSentences": [
+            "Only actors standing close to the microphone could be heard by us."
+          ],
+          "acceptedWordCounts": [
+            3
+          ],
+          "explicitRejected": "could been heard",
+          "rationale": "could be heard改为被动，by us保留原句听者；只有靠近麦克风者可听见这一范围不变。could后不能接been。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 4,
+          "original": "It is not likely that the play will be extended.",
+          "target": "The play is ____.",
+          "requiredWord": "UNLIKELY",
+          "accepted": [
+            "unlikely to be extended"
+          ],
+          "completedSentences": [
+            "The play is unlikely to be extended."
+          ],
+          "acceptedWordCounts": [
+            4
+          ],
+          "explicitRejected": "unlikely being to extended",
+          "rationale": "be unlikely to be extended保留剧目不太可能延长演期的判断与被动含义。unlikely后用to不定式，不用being to extended。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 5,
+          "original": "The actor admitted that he had lost the only prop.",
+          "target": "The actor admitted ____.",
+          "requiredWord": "HAVING",
+          "accepted": [
+            "having lost the only prop"
+          ],
+          "completedSentences": [
+            "The actor admitted having lost the only prop."
+          ],
+          "acceptedWordCounts": [
+            5
+          ],
+          "explicitRejected": "having lose the only prop",
+          "rationale": "admit having lost把先前已丢失唯一道具的事实作为被承认的内容，保留原先施事者为该演员。having后用lost而不是lose。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 6,
+          "original": "We had barely finished painting the set when the delivery arrived.",
+          "target": "Hardly ____ when the delivery arrived.",
+          "requiredWord": "HAD",
+          "accepted": [
+            "had we finished painting the set"
+          ],
+          "completedSentences": [
+            "Hardly had we finished painting the set when the delivery arrived."
+          ],
+          "acceptedWordCounts": [
+            6
+          ],
+          "explicitRejected": "had we finish painting the set",
+          "rationale": "Hardly前置后使用had we finished倒装，与barely finished...when保留刚刷完布景送货就到的先后关系。had后必须用finished。",
+          "unlisted": "Review; not automatically incorrect."
+        }
+      ]
+    },
+    {
+      "id": "advanced.cycling-route-root-003",
+      "status": "approved",
+      "findings": [
+        "Six complete original sentence pairs; each retains its key word and preserves the stated event, time, polarity and participant roles.",
+        "Every accepted phrase checked against its reconstructed sentence and explicit3–6word range; only a stated malformed/meaning-changing phrase is rejected; other unlisted phrases go to review.",
+        "Same-author English/semantic review, not independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "item": 1,
+          "original": "We did not need to bring cooking gear because the hostel provided it.",
+          "target": "There was ____ because the hostel provided it.",
+          "requiredWord": "NEED",
+          "accepted": [
+            "no need to bring cooking gear"
+          ],
+          "completedSentences": [
+            "There was no need to bring cooking gear because the hostel provided it."
+          ],
+          "acceptedWordCounts": [
+            6
+          ],
+          "explicitRejected": "no need to bringing cooking gear",
+          "rationale": "there was no need to bring保留不必自带炊具这一必要性判断，不额外声称实际带了或没带。to后应接bring原形。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 2,
+          "original": "The worsening weather forced us to seek shelter.",
+          "target": "The worsening weather left ____ shelter.",
+          "requiredWord": "CHOICE",
+          "accepted": [
+            "us no choice but to seek"
+          ],
+          "completedSentences": [
+            "The worsening weather left us no choice but to seek shelter."
+          ],
+          "acceptedWordCounts": [
+            6
+          ],
+          "explicitRejected": "us no choice than to seek",
+          "rationale": "leave somebody no choice but to do表示迫使某人只能采取该行动，保留天气恶化导致找掩蔽处的因果关系。固定连接词为but。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 3,
+          "original": "It is unlikely that we will reach the coast before dusk.",
+          "target": "The ____ the coast before dusk are slim.",
+          "requiredWord": "CHANCES",
+          "accepted": [
+            "chances of our reaching",
+            "chances of us reaching"
+          ],
+          "completedSentences": [
+            "The chances of our reaching the coast before dusk are slim.",
+            "The chances of us reaching the coast before dusk are slim."
+          ],
+          "acceptedWordCounts": [
+            4,
+            4
+          ],
+          "explicitRejected": "chances for our reach",
+          "rationale": "the chances of our或us reaching...are slim表示我们黄昏前抵达的可能性较小，保留原句预测。for our reach不能引出该到达事件。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 4,
+          "original": "I did not know how steep the road would be.",
+          "target": "I ____ how steep the road would be.",
+          "requiredWord": "AWARE",
+          "accepted": [
+            "was not aware of",
+            "wasn't aware of"
+          ],
+          "completedSentences": [
+            "I was not aware of how steep the road would be.",
+            "I wasn't aware of how steep the road would be."
+          ],
+          "acceptedWordCounts": [
+            4,
+            3
+          ],
+          "explicitRejected": "was not aware to",
+          "rationale": "not be aware of how与did not know how都表达当时不知道坡度，of引出间接疑问内容。aware to不是此处搭配。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 5,
+          "original": "We left the campsite early in order to arrive before dark.",
+          "target": "We left the campsite early ____ before dark.",
+          "requiredWord": "AS",
+          "accepted": [
+            "so as to arrive"
+          ],
+          "completedSentences": [
+            "We left the campsite early so as to arrive before dark."
+          ],
+          "acceptedWordCounts": [
+            4
+          ],
+          "explicitRejected": "so as arriving",
+          "rationale": "so as to arrive对应in order to arrive，保留提早离开是为天黑前抵达的目的。so as后不能直接接arriving。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 6,
+          "original": "The old map was of no help in finding the bridleway.",
+          "target": "The old map ____ finding the bridleway.",
+          "requiredWord": "USE",
+          "accepted": [
+            "was of no use in",
+            "was no use for",
+            "was of no use for",
+            "was no use in"
+          ],
+          "completedSentences": [
+            "The old map was of no use in finding the bridleway.",
+            "The old map was no use for finding the bridleway.",
+            "The old map was of no use for finding the bridleway.",
+            "The old map was no use in finding the bridleway."
+          ],
+          "acceptedWordCounts": [
+            5,
+            4,
+            5,
+            4
+          ],
+          "explicitRejected": "were of no use in",
+          "rationale": "of no use或no use后接in或for doing均可表示地图无助于找到马道，保留否定评价。主语the old map为单数，不能用were。",
+          "unlisted": "Review; not automatically incorrect."
+        }
+      ]
+    },
+    {
+      "id": "advanced.research-interview-root-003",
+      "status": "approved",
+      "findings": [
+        "Six complete original sentence pairs; each retains its key word and preserves the stated event, time, polarity and participant roles.",
+        "Every accepted phrase checked against its reconstructed sentence and explicit3–6word range; only a stated malformed/meaning-changing phrase is rejected; other unlisted phrases go to review.",
+        "Same-author English/semantic review, not independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "item": 1,
+          "original": "The interviewer could not establish what the participants actually meant.",
+          "target": "The interviewer was ____ what the participants actually meant.",
+          "requiredWord": "ABLE",
+          "accepted": [
+            "not able to establish",
+            "not able to find out"
+          ],
+          "completedSentences": [
+            "The interviewer was not able to establish what the participants actually meant.",
+            "The interviewer was not able to find out what the participants actually meant."
+          ],
+          "acceptedWordCounts": [
+            4,
+            5
+          ],
+          "explicitRejected": "not able for establish",
+          "rationale": "be not able to establish或find out与could not establish均保留未能确定参与者意思的能力或结果限制。able后接to不定式。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 2,
+          "original": "Although the participant was reluctant, they recorded the interview.",
+          "target": "They recorded the interview ____ participant's reluctance.",
+          "requiredWord": "SPITE",
+          "accepted": [
+            "in spite of the"
+          ],
+          "completedSentences": [
+            "They recorded the interview in spite of the participant's reluctance."
+          ],
+          "acceptedWordCounts": [
+            4
+          ],
+          "explicitRejected": "on spite of the",
+          "rationale": "in spite of引出the participant's reluctance，把although从句改成名词性让步短语，保留虽不情愿仍录制的关系。固定介词为in。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 3,
+          "original": "He said that he had not edited any of the answers.",
+          "target": "He ____ the answers.",
+          "requiredWord": "DENIED",
+          "accepted": [
+            "denied having edited any of",
+            "denied editing any of"
+          ],
+          "completedSentences": [
+            "He denied having edited any of the answers.",
+            "He denied editing any of the answers."
+          ],
+          "acceptedWordCounts": [
+            5,
+            4
+          ],
+          "explicitRejected": "denied to have edited any of",
+          "rationale": "deny having edited或editing表达否认自己编辑过任何回答，保留原句自我否定的陈述内容。deny后不接to have edited作该补语。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 4,
+          "original": "We need to conduct more interviews before any conclusions can be drawn.",
+          "target": "More interviews ____ any conclusions can be drawn.",
+          "requiredWord": "BEFORE",
+          "accepted": [
+            "are needed before",
+            "need to be conducted before",
+            "must be conducted before"
+          ],
+          "completedSentences": [
+            "More interviews are needed before any conclusions can be drawn.",
+            "More interviews need to be conducted before any conclusions can be drawn.",
+            "More interviews must be conducted before any conclusions can be drawn."
+          ],
+          "acceptedWordCounts": [
+            3,
+            5,
+            4
+          ],
+          "explicitRejected": "needs to be conducted before",
+          "rationale": "被动形式保留在得出任何结论前需要进一步访谈的必要条件。主语more interviews为复数，不能用单数needs。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 5,
+          "original": "The interviewer was offended by the participant's refusal.",
+          "target": "The interviewer ____ the participant's refusal.",
+          "requiredWord": "OFFENCE",
+          "accepted": [
+            "took offence at"
+          ],
+          "completedSentences": [
+            "The interviewer took offence at the participant's refusal."
+          ],
+          "acceptedWordCounts": [
+            3
+          ],
+          "explicitRejected": "taken offence at",
+          "rationale": "take offence at与be offended by在此都表示采访者因拒绝而觉得受冒犯，不凭事实原因虚构他人归责行为。独立过去时用took，不能无助动词使用taken。",
+          "unlisted": "Review; not automatically incorrect."
+        },
+        {
+          "item": 6,
+          "original": "The possibility that the coding rule might bias the results had never entered her mind.",
+          "target": "It had never ____ that the coding rule might bias the results.",
+          "requiredWord": "OCCURRED",
+          "accepted": [
+            "occurred to her"
+          ],
+          "completedSentences": [
+            "It had never occurred to her that the coding rule might bias the results."
+          ],
+          "acceptedWordCounts": [
+            3
+          ],
+          "explicitRejected": "occurred for her",
+          "rationale": "occur to somebody表示某个想法进入其脑海，never保留她此前从未想到编码规则可能带来偏差。心理想到这一含义搭配to而非for。",
+          "unlisted": "Review; not automatically incorrect."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1307 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "cet-assist-006-v2.json",
+  "sourceSHA256": "7e40fd018ee589942d880e84997c48073c2e1c3f88824a02362cf5ebf3438ea3",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex CET assist author, same-author review only",
+  "reviewedAt": "2026-10-29",
+  "status": "approved",
+  "units": [
+    {
+      "id": "undergraduate.assist-chocolate-tempering-006",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "butter",
+        "crystals",
+        "melting",
+        "cooling",
+        "tempering",
+        "stable",
+        "gloss",
+        "snap",
+        "bloom",
+        "storage"
+      ],
+      "filledPassage": "A food-science demonstration compared two chocolate bars made from the same ingredients. The fat phase included cocoa butter. Within it, molecules could form ordered solid structures called crystals. The visible result depended partly on how those structures developed, not only on the ingredient list.\n\nDuring melting, solid fat became liquid as it was heated. During cooling, the material lost heat and suitable solid structures could form again. The return to a solid state did not guarantee that every possible crystal arrangement would have identical properties.\n\nThe controlled preparation of an appropriate crystal population was tempering. Under the demonstration's conditions, the desired arrangement was sufficiently stable to give the bar its intended behaviour during ordinary handling. This did not mean that it could resist unlimited heat or never change.\n\nOne surface property was gloss, the shine visible under the light. Another was snap, the clean breaking action and associated sound when the sample was bent. Neither observation alone identified every molecular structure present.\n\nLater, a pale coating developed on a stored sample. The tutor called the appearance bloom and explained that several routes could contribute to such a surface change. The class was not asked to diagnose its exact mechanism from colour alone. Conditions during storage, the period in which the finished bar was kept before use, were therefore recorded alongside preparation.\n\nThe comparison separated making a bar from keeping it. A good appearance immediately after preparation did not promise unchanged behaviour in every later environment. Equally, a pale surface was not automatically evidence that the original ingredient list had been altered.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "bloom",
+          "disposition": "Gap 9: chocolate pale surface coating为起霜；gloss光亮是前述另一观察，不能将发白视为增亮。"
+        },
+        {
+          "letter": "B",
+          "word": "melting",
+          "disposition": "Gap 3: solid to liquid heating为熔化；caramelisation糖褐变、freezing凝固方向不同。"
+        },
+        {
+          "letter": "C",
+          "word": "caramelisation",
+          "disposition": "Unused: 糖加热褐变不是本文可可脂熔化和结晶，未设糖反应空。"
+        },
+        {
+          "letter": "D",
+          "word": "butter",
+          "disposition": "Gap 1: cocoa butter为可可脂；powder粉末不等题设fat phase。"
+        },
+        {
+          "letter": "E",
+          "word": "storage",
+          "disposition": "Gap 10: finished bar kept before use为储存；tempering制备阶段而非保管时期。"
+        },
+        {
+          "letter": "F",
+          "word": "crystals",
+          "disposition": "Gap 2: ordered solid molecular structures为晶体；water不是该脂相有序固体名称。"
+        },
+        {
+          "letter": "G",
+          "word": "water",
+          "disposition": "Unused: 例中脂相的有序结构为crystals；题面未要求水分含量或液体名称。"
+        },
+        {
+          "letter": "H",
+          "word": "stable",
+          "disposition": "Gap 6: ordinary handling保持期望状态为相对稳定；freezing过程词不作此形容，stable并不保证永久不变。"
+        },
+        {
+          "letter": "I",
+          "word": "gloss",
+          "disposition": "Gap 7: shine surface为光泽；bloom发白表面变化非光泽。"
+        },
+        {
+          "letter": "J",
+          "word": "cooling",
+          "disposition": "Gap 4: material loses heat为冷却；freezing特指液变固，冷却可在相变前后持续。"
+        },
+        {
+          "letter": "K",
+          "word": "tempering",
+          "disposition": "Gap 5: controlled crystal population preparation为调温；fermentation发酵不是成品脂相晶体控制。"
+        },
+        {
+          "letter": "L",
+          "word": "snap",
+          "disposition": "Gap 8: clean break action/sound为脆断；powder原料形态非折断声。"
+        },
+        {
+          "letter": "M",
+          "word": "fermentation",
+          "disposition": "Unused: 发酵可能是可可前期处理，但本段制成巧克力后的调温与储存不同。"
+        },
+        {
+          "letter": "N",
+          "word": "powder",
+          "disposition": "Unused: 粉末不等cocoa butter脂相，也不是光泽或断裂行为。"
+        },
+        {
+          "letter": "O",
+          "word": "freezing",
+          "disposition": "Unused: 冷却是降温全过程，不专指凝固；文中不另设液固转变名称空。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 3,
+          "rationale": "D butter：cocoa butter为可可脂；powder粉末不等题设fat phase。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 5,
+          "rationale": "F crystals：ordered solid molecular structures为晶体；water不是该脂相有序固体名称。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 1,
+          "rationale": "B melting：solid to liquid heating为熔化；caramelisation糖褐变、freezing凝固方向不同。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 9,
+          "rationale": "J cooling：material loses heat为冷却；freezing特指液变固，冷却可在相变前后持续。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 10,
+          "rationale": "K tempering：controlled crystal population preparation为调温；fermentation发酵不是成品脂相晶体控制。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 7,
+          "rationale": "H stable：ordinary handling保持期望状态为相对稳定；freezing过程词不作此形容，stable并不保证永久不变。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 8,
+          "rationale": "I gloss：shine surface为光泽；bloom发白表面变化非光泽。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 11,
+          "rationale": "L snap：clean break action/sound为脆断；powder原料形态非折断声。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 0,
+          "rationale": "A bloom：chocolate pale surface coating为起霜；gloss光亮是前述另一观察，不能将发白视为增亮。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 4,
+          "rationale": "E storage：finished bar kept before use为储存；tempering制备阶段而非保管时期。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.assist-paper-fibre-006",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "sorting",
+        "contaminants",
+        "shredding",
+        "pulp",
+        "fibres",
+        "deinking",
+        "screen",
+        "pressing",
+        "drying",
+        "strength"
+      ],
+      "filledPassage": "A recycling workshop followed used office paper into a small demonstration process. Initial sorting separated suitable paper from other materials. The class removed clips and identified contaminants such as food or unwanted plastic that could interfere with the intended product.\n\nCutting the paper into small pieces was shredding. Mixing it with water loosened the material into pulp, a wet mass that could be processed further. The sheet had not dissolved into individual molecules like sugar in water; many solid fibres remained, the elongated plant structures from which paper was made.\n\nRemoving printing ink was deinking. That step differed from simply removing larger foreign objects. The demonstration did not claim that every collection system could remove every ink or produce an identical white finish.\n\nA fine screen supported the wet material while some water drained away. Subsequent pressing squeezed additional water out by applying mechanical force. Later drying removed remaining moisture through a drying stage rather than the same squeezing action.\n\nThe resulting sheet's strength concerned its ability to resist the relevant applied force without failing. The tutor explained that repeated processing could affect fibre condition, so the fact that material had been recovered did not guarantee every property of a new sheet.\n\nThe class compared the actual intended uses. A slightly uneven demonstration sheet could suit a handmade card without being appropriate for a high-speed printer. Recycling was therefore discussed as a route from a collected material to a usable product under particular conditions. Keeping material out of a bin was not the whole account; sorting, processing and the requirements of the next use also mattered.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "fibres",
+          "disposition": "Gap 5: elongated plant structures为纤维；length是维度非实物结构。"
+        },
+        {
+          "letter": "B",
+          "word": "pulp",
+          "disposition": "Gap 4: wet loosened mass为纸浆；plastic塑料不等湿纤维浆。"
+        },
+        {
+          "letter": "C",
+          "word": "screen",
+          "disposition": "Gap 7: fine support drains water为网筛；coating涂层不作该透水承托工具。"
+        },
+        {
+          "letter": "D",
+          "word": "deinking",
+          "disposition": "Gap 6: remove printing ink为脱墨；bleach漂白不是所有除墨过程的同义词。"
+        },
+        {
+          "letter": "E",
+          "word": "coating",
+          "disposition": "Unused: 涂层未作为制备工序空，网筛承托与杂质清除不等施涂。"
+        },
+        {
+          "letter": "F",
+          "word": "strength",
+          "disposition": "Gap 10: resist applied force without failing为强度；length纤维长度可能影响强度，但不是耐力学量本身。"
+        },
+        {
+          "letter": "G",
+          "word": "drying",
+          "disposition": "Gap 9: later moisture removal by drying为干燥；shredding切碎不命名移水相变/蒸发阶段。"
+        },
+        {
+          "letter": "H",
+          "word": "bleach",
+          "disposition": "Unused: 漂白处理色素不同于去除打印油墨，此例明确deinking。"
+        },
+        {
+          "letter": "I",
+          "word": "sorting",
+          "disposition": "Gap 1: separating suitable paper from others为分类；recovery是回收总活动，不专此初始区分。"
+        },
+        {
+          "letter": "J",
+          "word": "contaminants",
+          "disposition": "Gap 2: food/plastic unwanted matter为污染杂质复数；coating表面涂层不概括所有外来物。"
+        },
+        {
+          "letter": "K",
+          "word": "pressing",
+          "disposition": "Gap 8: mechanical squeezing为压榨；drying后续移水工序与受力挤水不同。"
+        },
+        {
+          "letter": "L",
+          "word": "recovery",
+          "disposition": "Unused: 回收是整体目标，最初分别材料叫sorting，未设泛回收过程空。"
+        },
+        {
+          "letter": "M",
+          "word": "plastic",
+          "disposition": "Unused: 被识别为杂质之一，不是纸浆或植物纤维。"
+        },
+        {
+          "letter": "N",
+          "word": "length",
+          "disposition": "Unused: 长度虽影响性能，最后空定义抵抗失效能力为strength，未测纤维尺寸。"
+        },
+        {
+          "letter": "O",
+          "word": "shredding",
+          "disposition": "Gap 3: cutting small pieces为碎纸；pressing挤压、drying干燥不是切碎。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 8,
+          "rationale": "I sorting：separating suitable paper from others为分类；recovery是回收总活动，不专此初始区分。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 9,
+          "rationale": "J contaminants：food/plastic unwanted matter为污染杂质复数；coating表面涂层不概括所有外来物。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 14,
+          "rationale": "O shredding：cutting small pieces为碎纸；pressing挤压、drying干燥不是切碎。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 1,
+          "rationale": "B pulp：wet loosened mass为纸浆；plastic塑料不等湿纤维浆。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 0,
+          "rationale": "A fibres：elongated plant structures为纤维；length是维度非实物结构。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 3,
+          "rationale": "D deinking：remove printing ink为脱墨；bleach漂白不是所有除墨过程的同义词。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 2,
+          "rationale": "C screen：fine support drains water为网筛；coating涂层不作该透水承托工具。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 10,
+          "rationale": "K pressing：mechanical squeezing为压榨；drying后续移水工序与受力挤水不同。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 6,
+          "rationale": "G drying：later moisture removal by drying为干燥；shredding切碎不命名移水相变/蒸发阶段。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 5,
+          "rationale": "F strength：resist applied force without failing为强度；length纤维长度可能影响强度，但不是耐力学量本身。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.assist-meander-oxbow-006",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "channel",
+        "meander",
+        "outer",
+        "erosion",
+        "inner",
+        "deposition",
+        "sediment",
+        "floodplain",
+        "cut-off",
+        "oxbow"
+      ],
+      "filledPassage": "A geography exhibit followed a river bend through a sequence of maps. The channel was the passage carrying the river's water. A pronounced bend in that passage was a meander. The maps showed a changing course, not a pipe fixed permanently in one shape.\n\nIn the simplified example, faster flow near the outer bank contributed to removal of material. This removal was erosion. Near the inner bank, slower local conditions allowed transported particles to settle. That laying down of material was deposition. The exhibit stated these local conditions rather than claiming every point on every bend always behaved identically.\n\nThe transported particles were sediment. They could be moved, stored and moved again, so their presence at one location did not identify where they had originally entered the river.\n\nThe broad low area beside the course was a floodplain, land associated with flooding beyond the usual channel. A later high-flow event opened a shorter route across the narrow neck of the bend. A cut-off occurred when this new route separated the former loop from the main course.\n\nWater left in the curved abandoned loop formed an oxbow lake in the displayed sequence. Its origin differed from a lake created by excavation or by a dam. The old bend remained evidence of an earlier channel position.\n\nThe exhibit combined successive maps because one present view could hide that history. It did not promise that every river bend would follow the same timetable. The explanation concerned the supplied sequence and the processes that could connect its stages, with changes in flow and sediment kept visible rather than reduced to a single unchanging outline.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "outer",
+          "disposition": "Gap 3: 本例faster flow冲刷弯道外侧；inner内侧下一空沉积，按给定局地条件区分。"
+        },
+        {
+          "letter": "B",
+          "word": "channel",
+          "disposition": "Gap 1: water-carrying passage为河道；drainage排水体系是更广过程/网络，不是此物理通道。"
+        },
+        {
+          "letter": "C",
+          "word": "delta",
+          "disposition": "Unused: 三角洲在河口沉积，不是河道弯曲或截弯遗留湖。"
+        },
+        {
+          "letter": "D",
+          "word": "sediment",
+          "disposition": "Gap 7: transported particles为泥沙沉积物；gradient坡降是地形量而非颗粒。"
+        },
+        {
+          "letter": "E",
+          "word": "erosion",
+          "disposition": "Gap 4: material removal为侵蚀；deposition沉积是相反的落置。"
+        },
+        {
+          "letter": "F",
+          "word": "inner",
+          "disposition": "Gap 5: slower local settling为本例内侧；outer前段冲蚀侧不同。"
+        },
+        {
+          "letter": "G",
+          "word": "meander",
+          "disposition": "Gap 2: pronounced bend为河曲；delta三角洲河口沉积体不同。"
+        },
+        {
+          "letter": "H",
+          "word": "tide",
+          "disposition": "Unused: 潮汐未作为该内陆河段时序驱动，河岸方向不由潮代替。"
+        },
+        {
+          "letter": "I",
+          "word": "oxbow",
+          "disposition": "Gap 10: curved abandoned loop lake为牛轭湖；delta河口积体、estuary河口水域不等旧弯湖。"
+        },
+        {
+          "letter": "J",
+          "word": "deposition",
+          "disposition": "Gap 6: laying down particles为沉积；erosion移走相反。"
+        },
+        {
+          "letter": "K",
+          "word": "estuary",
+          "disposition": "Unused: 河口与河曲旁洪泛平原、旧弯湖的定义不同。"
+        },
+        {
+          "letter": "L",
+          "word": "floodplain",
+          "disposition": "Gap 8: low land beside channel affected floods为洪泛平原；estuary入海河口不同位置定义。"
+        },
+        {
+          "letter": "M",
+          "word": "gradient",
+          "disposition": "Unused: 坡降可能影响流动，但运输颗粒为sediment，文中无测坡量空。"
+        },
+        {
+          "letter": "N",
+          "word": "cut-off",
+          "disposition": "Gap 9: short route separates former loop为截弯；drainage不专切断旧河曲事件。"
+        },
+        {
+          "letter": "O",
+          "word": "drainage",
+          "disposition": "Unused: 排水总过程/流域关系不是具体河道及截弯事件，所需术语由明示定义锁定。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 1,
+          "rationale": "B channel：water-carrying passage为河道；drainage排水体系是更广过程/网络，不是此物理通道。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 6,
+          "rationale": "G meander：pronounced bend为河曲；delta三角洲河口沉积体不同。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 0,
+          "rationale": "A outer：本例faster flow冲刷弯道外侧；inner内侧下一空沉积，按给定局地条件区分。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 4,
+          "rationale": "E erosion：material removal为侵蚀；deposition沉积是相反的落置。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 5,
+          "rationale": "F inner：slower local settling为本例内侧；outer前段冲蚀侧不同。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 9,
+          "rationale": "J deposition：laying down particles为沉积；erosion移走相反。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 3,
+          "rationale": "D sediment：transported particles为泥沙沉积物；gradient坡降是地形量而非颗粒。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 11,
+          "rationale": "L floodplain：low land beside channel affected floods为洪泛平原；estuary入海河口不同位置定义。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 13,
+          "rationale": "N cut-off：short route separates former loop为截弯；drainage不专切断旧河曲事件。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 8,
+          "rationale": "I oxbow：curved abandoned loop lake为牛轭湖；delta河口积体、estuary河口水域不等旧弯湖。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.assist-bicycle-brakes-006",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "pads",
+        "rim",
+        "disc",
+        "cables",
+        "hydraulic",
+        "pressure",
+        "friction",
+        "wear",
+        "alignment",
+        "temperature"
+      ],
+      "filledPassage": "A cycle museum compared two braking systems on stationary models. In one, blocks called pads pressed against the wheel's outer rim. In the other, the contact occurred at a metal disc mounted nearer the centre. The guide distinguished these surfaces before discussing how a rider's action reached them.\n\nSome systems transmitted a lever movement through metal cables. Another model was hydraulic, using fluid in a closed arrangement to transmit pressure. These were different transmission designs; neither label by itself established the condition of the particular brake.\n\nThe force acting over the contact area involved pressure. Resistance to relative sliding at the contacting surfaces was friction. Applying force and generating resistance were related, but the guide did not use the two terms as synonyms.\n\nRepeated contact could produce wear, gradual loss of material from a component. The model included a worn sample so visitors could compare it with the original shape. A brake could still move when a component had reached an unsuitable condition.\n\nCorrect alignment placed relevant parts in the intended relative positions. A pad touching at the wrong angle could behave differently even if the operating lever felt familiar. Following braking in a separate recorded demonstration, a sensor showed an increase in temperature, the measure of how hot the relevant component had become.\n\nThe exhibit explained principles rather than authorising visitors to adjust a working bicycle. Its central message concerned the chain between a hand movement and a mechanical result. A moving lever alone did not demonstrate correct contact, adequate material or effective performance under actual riding conditions.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "pads",
+          "disposition": "Gap 1: contact blocks为刹车片复数；spokes辐条承轮非摩擦块。"
+        },
+        {
+          "letter": "B",
+          "word": "disc",
+          "disposition": "Gap 3: metal plate near centre为碟盘；gear齿轮用于传动变比非本例制动面。"
+        },
+        {
+          "letter": "C",
+          "word": "temperature",
+          "disposition": "Gap 10: how hot measured为温度；momentum动量与冷热不同。"
+        },
+        {
+          "letter": "D",
+          "word": "gear",
+          "disposition": "Unused: 齿轮为传动相关部件，本例接触轮圈或碟盘，不是齿轮制动面。"
+        },
+        {
+          "letter": "E",
+          "word": "friction",
+          "disposition": "Gap 7: resist sliding为摩擦；lubrication润滑通常改变摩擦，不是该阻力名称。"
+        },
+        {
+          "letter": "F",
+          "word": "rim",
+          "disposition": "Gap 2: outer wheel surface为轮圈；disc中心附近盘片后空。"
+        },
+        {
+          "letter": "G",
+          "word": "wear",
+          "disposition": "Gap 8: gradual material loss为磨损；alignment相对位置不表示材料耗失。"
+        },
+        {
+          "letter": "H",
+          "word": "pressure",
+          "disposition": "Gap 6: force over area为压强；momentum动量不是单位面积作用力。"
+        },
+        {
+          "letter": "I",
+          "word": "cables",
+          "disposition": "Gap 4: metal cables传拉杆动作；pedal踏板不是这类传力线。"
+        },
+        {
+          "letter": "J",
+          "word": "hydraulic",
+          "disposition": "Gap 5: closed fluid pressure系统为液压的；lubrication润滑不说明以流体传递控制力。"
+        },
+        {
+          "letter": "K",
+          "word": "spokes",
+          "disposition": "Unused: 辐条不等刹车摩擦块，未设轮结构支撑部件空。"
+        },
+        {
+          "letter": "L",
+          "word": "lubrication",
+          "disposition": "Unused: 润滑可改变摩擦但不等摩擦阻力，也不代液压传力设计。"
+        },
+        {
+          "letter": "M",
+          "word": "pedal",
+          "disposition": "Unused: 脚踏板未传手杆制动控制；cables才是所述金属线。"
+        },
+        {
+          "letter": "N",
+          "word": "alignment",
+          "disposition": "Gap 9: parts correct relative positions为对准；gear部件、pressure物理量不命名摆位关系。"
+        },
+        {
+          "letter": "O",
+          "word": "momentum",
+          "disposition": "Unused: 动量与制动关系相关，但空格定义压强、摩擦及温度，并非质量速度乘积。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 0,
+          "rationale": "A pads：contact blocks为刹车片复数；spokes辐条承轮非摩擦块。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 5,
+          "rationale": "F rim：outer wheel surface为轮圈；disc中心附近盘片后空。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 1,
+          "rationale": "B disc：metal plate near centre为碟盘；gear齿轮用于传动变比非本例制动面。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 8,
+          "rationale": "I cables：metal cables传拉杆动作；pedal踏板不是这类传力线。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 9,
+          "rationale": "J hydraulic：closed fluid pressure系统为液压的；lubrication润滑不说明以流体传递控制力。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 7,
+          "rationale": "H pressure：force over area为压强；momentum动量不是单位面积作用力。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 4,
+          "rationale": "E friction：resist sliding为摩擦；lubrication润滑通常改变摩擦，不是该阻力名称。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 6,
+          "rationale": "G wear：gradual material loss为磨损；alignment相对位置不表示材料耗失。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 13,
+          "rationale": "N alignment：parts correct relative positions为对准；gear部件、pressure物理量不命名摆位关系。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 2,
+          "rationale": "C temperature：how hot measured为温度；momentum动量与冷热不同。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.assist-test-power-006",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "null",
+        "alternative",
+        "error",
+        "power",
+        "sample",
+        "effect",
+        "significance",
+        "confidence",
+        "precision",
+        "preregistered"
+      ],
+      "filledPassage": "A statistics seminar examined a hypothetical test of a specified claim. The null hypothesis represented the reference case assessed by the procedure. A stated alternative described a different condition against which the procedure's performance could be evaluated.\n\nRejecting the reference case when it was true was a Type I error. The probability of rejection under a specified alternative concerned power. This probability depended on the alternative and study conditions; it was not a fixed label guaranteeing that any false reference case would be detected.\n\nThe sample size counted the units contributing under the design. Increasing it could affect uncertainty, but simply collecting additional dependent records would not necessarily add the information suggested by the raw count. The targeted effect described the magnitude of the difference or relationship of substantive interest.\n\nA result meeting a stated testing criterion could be described in terms of statistical significance. That description did not by itself establish a large or useful effect. The seminar required estimates and units, not only a decision label.\n\nAn interval constructed by a repeated-sampling procedure had a specified confidence level. Its interpretation referred to the procedure's coverage under assumptions, rather than a guarantee that every particular interval contained the target. A narrower interval indicated greater precision relative to the model and data used, not automatic freedom from systematic error.\n\nThe analysis plan was preregistered because it had been recorded before the relevant results were examined. The record helped distinguish planned tests from later exploration, without making all planned methods correct by definition.\n\nThe exercise treated testing, estimation and planning as related but separate tasks. A numerical threshold could guide a decision under stated conventions; understanding a study still required its design, assumptions and the scale of the question.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "power",
+          "disposition": "Gap 4: given alternative下拒绝概率为功效；significance描述检验决策性质，不是指定备择下检出率。"
+        },
+        {
+          "letter": "B",
+          "word": "sample",
+          "disposition": "Gap 5: sample size为样本量；random描述随机性质，不能替代样本单位计数术语。"
+        },
+        {
+          "letter": "C",
+          "word": "prior",
+          "disposition": "Unused: 先验需贝叶斯推断定义，本段频率检验原/备择及覆盖条件没有先验空。"
+        },
+        {
+          "letter": "D",
+          "word": "effect",
+          "disposition": "Gap 6: substantive magnitude为效应；precision精度不命名差异本身大小。"
+        },
+        {
+          "letter": "E",
+          "word": "error",
+          "disposition": "Gap 3: Type I error为一类错误；bias系统偏差不是该拒真事件名称。"
+        },
+        {
+          "letter": "F",
+          "word": "significance",
+          "disposition": "Gap 7: statistical significance达检验判据为统计显著性；power是重复条件下表现，非单一结果标签。"
+        },
+        {
+          "letter": "G",
+          "word": "confidence",
+          "disposition": "Gap 8: interval repeated-sampling coverage为置信水平；posterior后验需贝叶斯模型，本文非此定义。"
+        },
+        {
+          "letter": "H",
+          "word": "null",
+          "disposition": "Gap 1: reference hypothesis为原假设；alternative后述不同条件，二者不能互换。"
+        },
+        {
+          "letter": "I",
+          "word": "random",
+          "disposition": "Unused: 随机性不是样本量术语，也不等预注册，未设随机分配形容词空。"
+        },
+        {
+          "letter": "J",
+          "word": "precision",
+          "disposition": "Gap 9: narrow interval为相对精密；bias系统偏差不由区间窄自动消失。"
+        },
+        {
+          "letter": "K",
+          "word": "alternative",
+          "disposition": "Gap 2: different condition against reference为备择；prior先验不是频率检验中该对照假设。"
+        },
+        {
+          "letter": "L",
+          "word": "posterior",
+          "disposition": "Unused: 后验概率未被定义，区间以重复抽样覆盖解释而非贝叶斯后验。"
+        },
+        {
+          "letter": "M",
+          "word": "preregistered",
+          "disposition": "Gap 10: plan recorded before results为预注册；random不能描述已事先登记状态。"
+        },
+        {
+          "letter": "N",
+          "word": "equivalence",
+          "disposition": "Unused: 没有等效界值或等效检验目标，显著性不自动表示等效。"
+        },
+        {
+          "letter": "O",
+          "word": "bias",
+          "disposition": "Unused: 系统偏差不等一类错误，也不由高精度自动消除，全文没有需填偏差定义的空。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 7,
+          "rationale": "H null：reference hypothesis为原假设；alternative后述不同条件，二者不能互换。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 10,
+          "rationale": "K alternative：different condition against reference为备择；prior先验不是频率检验中该对照假设。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 4,
+          "rationale": "E error：Type I error为一类错误；bias系统偏差不是该拒真事件名称。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 0,
+          "rationale": "A power：given alternative下拒绝概率为功效；significance描述检验决策性质，不是指定备择下检出率。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 1,
+          "rationale": "B sample：sample size为样本量；random描述随机性质，不能替代样本单位计数术语。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 3,
+          "rationale": "D effect：substantive magnitude为效应；precision精度不命名差异本身大小。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 5,
+          "rationale": "F significance：statistical significance达检验判据为统计显著性；power是重复条件下表现，非单一结果标签。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 6,
+          "rationale": "G confidence：interval repeated-sampling coverage为置信水平；posterior后验需贝叶斯模型，本文非此定义。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 9,
+          "rationale": "J precision：narrow interval为相对精密；bias系统偏差不由区间窄自动消失。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 12,
+          "rationale": "M preregistered：plan recorded before results为预注册；random不能描述已事先登记状态。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.assist-equilibrium-rate-006",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "reversible",
+        "forward",
+        "reverse",
+        "equilibrium",
+        "dynamic",
+        "rate",
+        "catalyst",
+        "constant",
+        "concentration",
+        "temperature"
+      ],
+      "filledPassage": "A chemistry seminar considered a reversible reaction, one able to proceed in both directions under the stated conditions. Conversion from the written reactants towards products was the forward direction. Conversion from those products back towards reactants was the reverse direction.\n\nAt equilibrium, the opposing rates were equal in the model. The condition was dynamic because molecular processes continued, rather than every particle stopping. A zero net change in bulk composition did not imply zero microscopic events.\n\nThe speed of change through a defined reaction route was its rate. A catalyst could provide a different reaction pathway and alter how quickly the system approached equilibrium. It did not change the equilibrium value fixed by the stated thermodynamic conditions merely by accelerating the approach.\n\nThe equilibrium constant related the appropriate activities of species under the chosen reaction convention. Reversing the written reaction would require transforming that quantity consistently. The notation was not a decoration independent of how the reaction had been specified.\n\nFor the carefully defined ideal approximation used in the worked example, concentration was employed in expressing solution composition in place of a full treatment of activities, with the relevant standard-state convention understood. The tutor warned that this simplification was not exact for every real mixture.\n\nThe class held temperature fixed, specifying how hot the system was. Changing it could change the equilibrium relation as well as reaction rates. The seminar separated arriving quickly at a state from the thermodynamic relations describing that state.\n\nThe explanation concerned a supplied theoretical example, not instructions for carrying out a chemical procedure. Students used the distinctions to interpret statements such as the reaction has stopped. Such a phrase could hide whether the speaker meant no visible net change, slow approach or absence of every microscopic transformation.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "dynamic",
+          "disposition": "Gap 5: processes continue为动态；irreversible不可逆与给定双向过程不同。"
+        },
+        {
+          "letter": "B",
+          "word": "equilibrium",
+          "disposition": "Gap 4: opposing rates equal为平衡；saturation饱和不是任意反应正逆速率相等。"
+        },
+        {
+          "letter": "C",
+          "word": "reversible",
+          "disposition": "Gap 1: reaction able to proceed both directions为可逆；irreversible不可逆与定义相反，reverse只指逆向而非双向能力。"
+        },
+        {
+          "letter": "D",
+          "word": "forward",
+          "disposition": "Gap 2: written reactants to products为正向；reverse相反方向下空。"
+        },
+        {
+          "letter": "E",
+          "word": "catalyst",
+          "disposition": "Gap 7: alternative reaction pathway改变接近平衡速度为catalyst催化剂；activity是状态表达量，不是提供路径的物质角色。"
+        },
+        {
+          "letter": "F",
+          "word": "entropy",
+          "disposition": "Unused: 熵相关于热力学但未定义该状态函数，平衡常数不直接以entropy替代。"
+        },
+        {
+          "letter": "G",
+          "word": "reverse",
+          "disposition": "Gap 3: products back reactants为逆向；forward方向正好相反。"
+        },
+        {
+          "letter": "H",
+          "word": "constant",
+          "disposition": "Gap 8: equilibrium constant平衡常数；activity是各物种有效组成量，不是整体平衡比例常数。"
+        },
+        {
+          "letter": "I",
+          "word": "saturation",
+          "disposition": "Unused: 饱和不是普遍化学平衡名称，材料并非仅溶解度饱和情形。"
+        },
+        {
+          "letter": "J",
+          "word": "rate",
+          "disposition": "Gap 6: speed reaction route为速率；constant平衡常数不等速度。"
+        },
+        {
+          "letter": "K",
+          "word": "irreversible",
+          "disposition": "Unused: 开头明示能双向，不可逆与之冲突；动态平衡也不意味着不可逆。"
+        },
+        {
+          "letter": "L",
+          "word": "temperature",
+          "disposition": "Gap 10: how hot为温度；pressure压强是另一状态量不能回答冷热。"
+        },
+        {
+          "letter": "M",
+          "word": "activity",
+          "disposition": "Unused: 活度是完整热力学组成量，此处理想近似空以concentration表达组成；整体系数空为constant，不是单物种活度。"
+        },
+        {
+          "letter": "N",
+          "word": "concentration",
+          "disposition": "Gap 9: ideal solution composition approximation为浓度；activity活度是完整处理对象，此处明确以近似代之。"
+        },
+        {
+          "letter": "O",
+          "word": "enthalpy",
+          "disposition": "Unused: 焓是状态函数，不是温度或反应速率，本例无焓变定义空。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration.",
+        "v2 replaces a rationale reference to a nonoffered pressure term with the actual offered activity/constant alternatives. All passage text, options, keys and positions unchanged."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 2,
+          "rationale": "C reversible：reaction able to proceed both directions为可逆；irreversible不可逆与定义相反，reverse只指逆向而非双向能力。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 3,
+          "rationale": "D forward：written reactants to products为正向；reverse相反方向下空。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 6,
+          "rationale": "G reverse：products back reactants为逆向；forward方向正好相反。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 1,
+          "rationale": "B equilibrium：opposing rates equal为平衡；saturation饱和不是任意反应正逆速率相等。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 0,
+          "rationale": "A dynamic：processes continue为动态；irreversible不可逆与给定双向过程不同。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 9,
+          "rationale": "J rate：speed reaction route为速率；constant平衡常数不等速度。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 4,
+          "rationale": "E catalyst：提供不同反应路径并改变接近平衡速度的物质角色为催化剂；M activity是物种活度，H constant是平衡比例常数，均非提供新路径的物质。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 7,
+          "rationale": "H constant：equilibrium constant平衡常数；activity是各物种有效组成量，不是整体平衡比例常数。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 13,
+          "rationale": "N concentration：ideal solution composition approximation为浓度；activity活度是完整处理对象，此处明确以近似代之。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 11,
+          "rationale": "L temperature：how hot为温度；pressure压强是另一状态量不能回答冷热。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.assist-haplotype-association-006",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "locus",
+        "allele",
+        "haplotype",
+        "recombination",
+        "linkage",
+        "disequilibrium",
+        "frequency",
+        "ancestry",
+        "association",
+        "causal"
+      ],
+      "filledPassage": "A genetics seminar followed variation at several positions on a chromosome. A defined position was a locus. An alternative form observed at that position was an allele. The names distinguished location from the variant present there.\n\nA combination of variants on the same chromosomal copy was a haplotype. Their transmission could be altered by recombination, the exchange of material between homologous chromosomes during the relevant process. Nearby positions often had a smaller chance of being separated by that process than more distant positions.\n\nThe tendency for positions to be inherited together because of their chromosomal relationship concerned linkage. Nonrandom statistical association of alleles across loci was described by linkage disequilibrium. The seminar emphasised that the latter pattern could be influenced by demographic history as well as physical proximity.\n\nThe proportion of copies carrying a variant was its frequency in the sampled population. That proportion could differ among populations. Shared ancestry, aspects of inherited population history, could therefore contribute to patterns that needed attention in an association study.\n\nA statistical association between a marker and an outcome did not by itself prove that the marker produced the outcome. A causal interpretation would require evidence addressing alternative explanations and the relevant biological mechanism. A nearby marker might track another variant rather than act directly.\n\nThe exercise did not treat genetic categories as complete descriptions of people or infer an individual's outcome from a single population proportion. It linked definitions to a limited analytical question: what did the observed pattern establish about the marker, and which steps remained between co-occurrence and an explanation of biological effect?",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "allele",
+          "disposition": "Gap 2: alternative form at locus为等位基因/等位变体；mutation变异事件不同于已观测备选形式类别。"
+        },
+        {
+          "letter": "B",
+          "word": "dominant",
+          "disposition": "Unused: 显性描述特定等位组合表现关系，不是因果推断或祖源，未设显性空。"
+        },
+        {
+          "letter": "C",
+          "word": "frequency",
+          "disposition": "Gap 7: proportion variant copies为频率；penetrance携基因型者表现性状的条件比例，不是等位副本比例。"
+        },
+        {
+          "letter": "D",
+          "word": "causal",
+          "disposition": "Gap 10: interpretation claiming produces outcome为因果解释；dominant显性遗传关系不等因果证据强度。"
+        },
+        {
+          "letter": "E",
+          "word": "locus",
+          "disposition": "Gap 1: defined chromosomal position为位点；allele是该处变体，不是位置。"
+        },
+        {
+          "letter": "F",
+          "word": "phenotype",
+          "disposition": "Unused: 表型是表现结果，文本没有要求为结果现象命名；单倍型为染色体变体组合。"
+        },
+        {
+          "letter": "G",
+          "word": "haplotype",
+          "disposition": "Gap 3: same chromosome copy variants combination为单倍型；phenotype表现特征不是相位变体组合。"
+        },
+        {
+          "letter": "H",
+          "word": "mutation",
+          "disposition": "Unused: 突变与同源重组不同，等位形式也不等某次新突变事件。"
+        },
+        {
+          "letter": "I",
+          "word": "ancestry",
+          "disposition": "Gap 8: inherited population history为祖源；expression表达过程、phenotype表型不概括种群传承史。"
+        },
+        {
+          "letter": "J",
+          "word": "recombination",
+          "disposition": "Gap 4: exchange homologous material为重组；mutation改变序列事件不等同源交换。"
+        },
+        {
+          "letter": "K",
+          "word": "association",
+          "disposition": "Gap 9: statistical association共现关系；causal形容词不能作a statistical后的名词且不能直接升级因果。"
+        },
+        {
+          "letter": "L",
+          "word": "expression",
+          "disposition": "Unused: 基因表达未被测定，不能由标记关联推表达机制。"
+        },
+        {
+          "letter": "M",
+          "word": "disequilibrium",
+          "disposition": "Gap 6: linkage disequilibrium为连锁不平衡，等位基因非随机关联；linkage物理共传不保证人口统计模式完全同义。"
+        },
+        {
+          "letter": "N",
+          "word": "linkage",
+          "disposition": "Gap 5: chromosomal relation导致共传为连锁；association一般统计关系后述，非该物理遗传机制术语。"
+        },
+        {
+          "letter": "O",
+          "word": "penetrance",
+          "disposition": "Unused: 外显率是给定基因型出现表型的条件比例，不能取代等位基因副本频率。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 4,
+          "rationale": "E locus：defined chromosomal position为位点；allele是该处变体，不是位置。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 0,
+          "rationale": "A allele：alternative form at locus为等位基因/等位变体；mutation变异事件不同于已观测备选形式类别。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 6,
+          "rationale": "G haplotype：same chromosome copy variants combination为单倍型；phenotype表现特征不是相位变体组合。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 9,
+          "rationale": "J recombination：exchange homologous material为重组；mutation改变序列事件不等同源交换。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 13,
+          "rationale": "N linkage：chromosomal relation导致共传为连锁；association一般统计关系后述，非该物理遗传机制术语。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 12,
+          "rationale": "M disequilibrium：linkage disequilibrium为连锁不平衡，等位基因非随机关联；linkage物理共传不保证人口统计模式完全同义。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 2,
+          "rationale": "C frequency：proportion variant copies为频率；penetrance携基因型者表现性状的条件比例，不是等位副本比例。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 8,
+          "rationale": "I ancestry：inherited population history为祖源；expression表达过程、phenotype表型不概括种群传承史。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 10,
+          "rationale": "K association：statistical association共现关系；causal形容词不能作a statistical后的名词且不能直接升级因果。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 3,
+          "rationale": "D causal：interpretation claiming produces outcome为因果解释；dominant显性遗传关系不等因果证据强度。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.assist-narrative-perspective-006",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "narrator",
+        "voice",
+        "focalisation",
+        "person",
+        "tense",
+        "deictic",
+        "indirect",
+        "quotation",
+        "irony",
+        "omniscient"
+      ],
+      "filledPassage": "A narratology seminar analysed a fictional paragraph about a woman returning to her childhood home. The speaking agency constructed by the text was the narrator. This role was not automatically identical with the historical writer who composed the book.\n\nThe framework used voice for the question of who spoke and focalisation for the organisation of perception and available information. A paragraph could retain one telling agency while presenting details through a character's limited awareness. The class treated these terms as conventions of the selected framework rather than universal labels accepted by every theorist.\n\nThe pronoun she marked grammatical person, specifically third person in the example. Past verb forms marked tense. Neither feature alone established how closely the language followed the character's thoughts.\n\nThe word now was deictic because its reference depended on a viewpoint and moment. In the supplied paragraph, it oriented readers towards the character's experienced present even within past-tense narration. That combination helped create free indirect discourse: the account carried a character-coloured perspective without a simple introductory phrase announcing that she thought.\n\nThere were no marks of direct quotation around the passage. Their absence did not mean that every evaluative word necessarily belonged to a neutral external account. The class examined wording and context together.\n\nA distance between the character's judgement and the understanding invited from readers could support irony. It was not an automatic consequence of every example of this narrative technique. A broadly omniscient narrator, by contrast, would have access to knowledge beyond the limits of one character under the seminar's definition.\n\nThe analysis connected grammatical form with interpretation without making a checklist sufficient for every literary passage. Knowing whether a sentence used third person or past tense was useful, but identifying perspective required attention to how language was situated across the text.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "narrator",
+          "disposition": "Gap 1: textual speaking agency为叙述者；author真实写作者并非必同此角色。"
+        },
+        {
+          "letter": "B",
+          "word": "author",
+          "disposition": "Unused: 真实作者与文本构造叙述者要区分，首空特指叙述角色而非创作人。"
+        },
+        {
+          "letter": "C",
+          "word": "focalisation",
+          "disposition": "Gap 3: perception/information organisation为聚焦；voice发声与感知可分开。"
+        },
+        {
+          "letter": "D",
+          "word": "voice",
+          "disposition": "Gap 2: who speaks在所选理论中为声音；dialogue人物对话形式不概括叙述发声问题。"
+        },
+        {
+          "letter": "E",
+          "word": "dialogue",
+          "disposition": "Unused: 人物对话不是谁在叙述的voice，文中自由间接话语也不等直接对白。"
+        },
+        {
+          "letter": "F",
+          "word": "person",
+          "disposition": "Gap 4: she third person为语法人称；tense时态不是代词人称类别。"
+        },
+        {
+          "letter": "G",
+          "word": "tense",
+          "disposition": "Gap 5: past verb forms为时态；person人称和chronological年代排序不同。"
+        },
+        {
+          "letter": "H",
+          "word": "reliable",
+          "disposition": "Unused: 可靠性与人称、指示性、全知范围分别独立；知识广不必可靠。"
+        },
+        {
+          "letter": "I",
+          "word": "deictic",
+          "disposition": "Gap 6: now relies on viewpoint/time为指示性的；reliable可靠形容叙述可信度，不说明指示锚点。"
+        },
+        {
+          "letter": "J",
+          "word": "indirect",
+          "disposition": "Gap 7: free indirect discourse自由间接话语固定术语；dialogue一般对话不是该叙述模式。"
+        },
+        {
+          "letter": "K",
+          "word": "quotation",
+          "disposition": "Gap 8: direct quotation marks为直接引语符号；metaphor隐喻无须引号且不等引用标记。"
+        },
+        {
+          "letter": "L",
+          "word": "irony",
+          "disposition": "Gap 9: character judgement/reader understanding mismatch可生反讽；metaphor跨域比喻不同机制，非每个自由间接话语必反讽。"
+        },
+        {
+          "letter": "M",
+          "word": "chronological",
+          "disposition": "Unused: 按年代排序与过去时语法不同，文中没有事件时间排序空。"
+        },
+        {
+          "letter": "N",
+          "word": "omniscient",
+          "disposition": "Gap 10: knowledge beyond one character为此定义下全知的；reliable可信不保证所知范围无局限。"
+        },
+        {
+          "letter": "O",
+          "word": "metaphor",
+          "disposition": "Unused: 隐喻不是引号、聚焦或反讽的同义词，本文没有跨域映射意象定义空。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 0,
+          "rationale": "A narrator：textual speaking agency为叙述者；author真实写作者并非必同此角色。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 3,
+          "rationale": "D voice：who speaks在所选理论中为声音；dialogue人物对话形式不概括叙述发声问题。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 2,
+          "rationale": "C focalisation：perception/information organisation为聚焦；voice发声与感知可分开。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 5,
+          "rationale": "F person：she third person为语法人称；tense时态不是代词人称类别。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 6,
+          "rationale": "G tense：past verb forms为时态；person人称和chronological年代排序不同。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 8,
+          "rationale": "I deictic：now relies on viewpoint/time为指示性的；reliable可靠形容叙述可信度，不说明指示锚点。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 9,
+          "rationale": "J indirect：free indirect discourse自由间接话语固定术语；dialogue一般对话不是该叙述模式。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 10,
+          "rationale": "K quotation：direct quotation marks为直接引语符号；metaphor隐喻无须引号且不等引用标记。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 11,
+          "rationale": "L irony：character judgement/reader understanding mismatch可生反讽；metaphor跨域比喻不同机制，非每个自由间接话语必反讽。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 13,
+          "rationale": "N omniscient：knowledge beyond one character为此定义下全知的；reliable可信不保证所知范围无局限。"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "practices": 8,
+    "undergraduatePractices": 4,
+    "postgraduatePractices": 4,
+    "scoreableResponses": 80,
+    "missingMediaDependencies": 0
+  }
+}

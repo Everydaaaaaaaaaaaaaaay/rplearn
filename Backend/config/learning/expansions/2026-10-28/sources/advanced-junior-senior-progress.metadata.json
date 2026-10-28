@@ -1,0 +1,1498 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "allocation": {
+    "advanced": 116,
+    "junior1": 21,
+    "junior2": 30,
+    "junior3": 34,
+    "senior1": 59,
+    "senior2": 59,
+    "senior3": 59
+  },
+  "readySources": [
+    {
+      "source": "advanced-junior-senior-001.json",
+      "review": "advanced-junior-senior-001.review.json",
+      "sourceSHA256": "b9a61521a00b2c38e0673ca9a4708fd33fb9b17464f42f966a1cb03ece4fa8f5",
+      "status": "author-reviewed-native-schema-and-grading-checked",
+      "groups": 8,
+      "admittedPractices": 8,
+      "questions": 58,
+      "gradingProbes": 218,
+      "levels": {
+        "advanced": 2,
+        "junior1": 1,
+        "junior2": 1,
+        "junior3": 1,
+        "senior1": 1,
+        "senior2": 1,
+        "senior3": 1
+      },
+      "checkedAt": "2026-10-29T00:13:50+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-002.json",
+      "review": "advanced-junior-senior-002.review.json",
+      "sourceSHA256": "f6fcfd7eb25f242d10ddb1ffaf814cf21d49a1723c25b9f509df7a64f4d7c26a",
+      "status": "author-reviewed-native-schema-and-grading-checked",
+      "groups": 8,
+      "admittedPractices": 8,
+      "questions": 54,
+      "gradingProbes": 184,
+      "levels": {
+        "advanced": 5,
+        "junior1": 1,
+        "junior2": 1,
+        "junior3": 1,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedAt": "2026-10-29T00:22:24+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-003.json",
+      "review": "advanced-junior-senior-003.review.json",
+      "sourceSHA256": "56243dd9085e73b463637a5543e80ce0debe788f6cc43b4a66069bbe6efff84c",
+      "status": "author-reviewed-native-schema-and-grading-checked",
+      "groups": 8,
+      "admittedPractices": 8,
+      "questions": 77,
+      "gradingProbes": 296,
+      "levels": {
+        "advanced": 2,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 2,
+        "senior2": 2,
+        "senior3": 2
+      },
+      "checkedAt": "2026-10-29T00:36:23+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-004.json",
+      "review": "advanced-junior-senior-004.review.json",
+      "sourceSHA256": "92ab1b7eada4b23c16bf29de79ac23ea1c993543bfde6c03d9e514b8978c5e0f",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 8,
+      "admittedPractices": 11,
+      "questions": 80,
+      "gradingProbes": 308,
+      "levels": {
+        "advanced": 3,
+        "junior1": 1,
+        "junior2": 0,
+        "junior3": 1,
+        "senior1": 2,
+        "senior2": 2,
+        "senior3": 2
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior1.991d29da120094fb832e",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.72be8b5bf3f9c377cb9e",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.0b3d92b3c257bb296503",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.d85d45f7eeb46366fe78",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.174edf64aa1365f4f8c4",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.c5bc3ab8baa5979f7fa7",
+          "level": "senior3",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T00:52:15+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-005.json",
+      "review": "advanced-junior-senior-005.review.json",
+      "sourceSHA256": "32a4a0a2135bf31c53b5d1d6fc6865c89d2f93a618874673db6cfcfa23ad6858",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 8,
+      "admittedPractices": 11,
+      "questions": 80,
+      "gradingProbes": 313,
+      "levels": {
+        "advanced": 3,
+        "junior1": 0,
+        "junior2": 1,
+        "junior3": 1,
+        "senior1": 2,
+        "senior2": 2,
+        "senior3": 2
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior1.4edbaa55b6b6671ebb1e",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.7589051000fb688eed9d",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.c87bb714d85e20a14b79",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.d8efab432185882ae061",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.154ca593cf6c11613f44",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.869035e634888683776d",
+          "level": "senior3",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T01:25:31+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-006.json",
+      "review": "advanced-junior-senior-006.review.json",
+      "sourceSHA256": "33d1a7f289cf7e01ed548c5a96f0e73c15c4ccbacf8215c6817556ab9a313a6f",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 8,
+      "admittedPractices": 11,
+      "questions": 80,
+      "gradingProbes": 306,
+      "levels": {
+        "advanced": 3,
+        "junior1": 1,
+        "junior2": 1,
+        "junior3": 0,
+        "senior1": 2,
+        "senior2": 2,
+        "senior3": 2
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior1.6ada57a0b94b8213c8ca",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.06ec6d92c016c1ab0e73",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.9c1ac7feec881b8872d9",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.5547e62e9acba1c59270",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.316bb7435d107d179d47",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.389459847eb72c5181ed",
+          "level": "senior3",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T01:51:17+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-007.json",
+      "review": "advanced-junior-senior-007.review.json",
+      "sourceSHA256": "a0d5808806597e18bff24e1c92e34888b4e6d4b762c2f739db0d9d9b7e013cf7",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 16,
+      "admittedPractices": 16,
+      "questions": 96,
+      "gradingProbes": 247,
+      "levels": {
+        "advanced": 16,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [],
+      "checkedAt": "2026-10-29T01:58:32+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-008.json",
+      "review": "advanced-junior-senior-008.review.json",
+      "sourceSHA256": "930b44fc86cab84a4daa3bae4c088156ed87350ee5e4d0c17692d3a54efaaa2a",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 11,
+      "admittedPractices": 14,
+      "questions": 96,
+      "gradingProbes": 405,
+      "levels": {
+        "advanced": 0,
+        "junior1": 2,
+        "junior2": 3,
+        "junior3": 3,
+        "senior1": 2,
+        "senior2": 2,
+        "senior3": 2
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior1.bca9a5456d8be1f75501",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.d577fcb136e455734f4b",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.9bc3ddf816f7eb0812b2",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.869dd84f57f9c59a8e42",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.0b51d3527980f1dfc4b0",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.94aa018ada2d87c740cb",
+          "level": "senior3",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T02:09:27+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-009.json",
+      "review": "advanced-junior-senior-009.review.json",
+      "sourceSHA256": "afcaf9c3ac8e53ca0ac64e791795fce4a15dd9d0242b9a4014e6c988b5e1134c",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 16,
+      "admittedPractices": 16,
+      "questions": 128,
+      "gradingProbes": 418,
+      "levels": {
+        "advanced": 16,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [],
+      "checkedAt": "2026-10-29T02:16:51+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-010.json",
+      "review": "advanced-junior-senior-010.review.json",
+      "sourceSHA256": "d5513df60ea8d265dbf982f490841a239c1fc6b1d84a5f835a6a8d381dfa3f8d",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 9,
+      "admittedPractices": 18,
+      "questions": 135,
+      "gradingProbes": 606,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 6,
+        "senior2": 6,
+        "senior3": 6
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior1.5ecffd562745583d9c75",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.b542a25d5c5eb441a33a",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.60a01c16e00d69d5baf0",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.c527cbddadebfd051dca",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.538f700c8147f441df49",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.8abe6225a19db5f391d5",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.611dc77308e5a230e2f3",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.cd365eb4ce8d28bcb568",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.0f92295e784396be1f08",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.d41e2d49a271387fd871",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.ff41eb9a7e5f8b476a75",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.c8f514f76e0cfa8d8710",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.689e3b90e0d60c2e4ffe",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.04d52161c2bbe3cecbb0",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.e454e2a7ea8c5ba42acb",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.16a468b22e1436748592",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.e9215d5273ae352edff1",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.88bb6494207a0e42506f",
+          "level": "senior3",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T02:30:37+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-011.json",
+      "review": "advanced-junior-senior-011.review.json",
+      "sourceSHA256": "a591184809bf4d978f25cfe9c90e5557ff1cdcedf171d21007560402e37c5b6c",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 16,
+      "admittedPractices": 16,
+      "questions": 80,
+      "gradingProbes": 245,
+      "levels": {
+        "advanced": 0,
+        "junior1": 15,
+        "junior2": 1,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [],
+      "checkedAt": "2026-10-29T02:37:30+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-012.json",
+      "review": "advanced-junior-senior-012.review.json",
+      "sourceSHA256": "b0e10ad13fa682ad94c8d71bfa7a24f7b22ab4162eee88cf559e59eb0ad5dd09",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 16,
+      "admittedPractices": 16,
+      "questions": 104,
+      "gradingProbes": 386,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 16,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [],
+      "checkedAt": "2026-10-29T02:46:37+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-013.json",
+      "review": "advanced-junior-senior-013.review.json",
+      "sourceSHA256": "0c720fb123cccc1b8f92a1891ed65fb558a750460b99b3820abfc3e34b58a097",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 16,
+      "admittedPractices": 16,
+      "questions": 98,
+      "gradingProbes": 343,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 6,
+        "junior3": 10,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [],
+      "checkedAt": "2026-10-29T03:09:10+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-014.json",
+      "review": "advanced-junior-senior-014.review.json",
+      "sourceSHA256": "2d049bf8b77292c363221cb0c1e94cf936fd5eab88f001d526250d56e134f568",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 17,
+      "admittedPractices": 17,
+      "questions": 145,
+      "gradingProbes": 585,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 17,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [],
+      "checkedAt": "2026-10-29T03:21:39+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-015.json",
+      "review": "advanced-junior-senior-015.review.json",
+      "sourceSHA256": "d0998b24933572065d79d8e842878c2393a8f358aadb757ffd75c10830d2b306",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 16,
+      "admittedPractices": 16,
+      "questions": 128,
+      "gradingProbes": 306,
+      "levels": {
+        "advanced": 16,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [],
+      "checkedAt": "2026-10-29T03:32:00+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-016.json",
+      "review": "advanced-junior-senior-016.review.json",
+      "sourceSHA256": "ba0f2a6c01d6962e25dcba4e1681a55a56e25225ff2babdab39525f6e68a0aa2",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 16,
+      "admittedPractices": 16,
+      "questions": 128,
+      "gradingProbes": 512,
+      "levels": {
+        "advanced": 16,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [],
+      "checkedAt": "2026-10-29T03:43:37+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-017-v2.json",
+      "review": "advanced-junior-senior-017-v2.review.json",
+      "sourceSHA256": "8edd53f37469e943f800a2d3112be45004e8436e37c0ac5138e788aa47996a96",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 7,
+      "admittedPractices": 14,
+      "questions": 105,
+      "gradingProbes": 469,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 14,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior1.65f84c83bee68b6a1fed",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.69d36c33278a412211af",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.092709ce9d93ccc09fc3",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.f666711582df39e6b725",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.0c167e8773c4a7c7b4ab",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.f32700fd7e71337f3aba",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.67de22aeb805aef03fa5",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.eb7e892c89b90a43117f",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.40da2f9f55efb10a4778",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.88607de3322114f98a92",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.67286b921c855db59914",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.86694d656485ff2b6272",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.9233ff10845b6e29f4f5",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.98f34a3ace4b27a4e06b",
+          "level": "senior1",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T04:11:41+08:00",
+      "published": false,
+      "supersededUnpublishedCandidate": {
+        "source": "advanced-junior-senior-017.json",
+        "review": "advanced-junior-senior-017.review.json",
+        "sourceSHA256": "2dd19ae930336741bb721601b15a7bc3efdb7208eec0eb2a2f8d7609f7165b78",
+        "frozenBatch": "b107"
+      }
+    },
+    {
+      "source": "advanced-junior-senior-018-v2.json",
+      "review": "advanced-junior-senior-018-v2.review.json",
+      "sourceSHA256": "8bcb9a79f58a96ae97b6909927d9ef03cc1186623c986792e8c7410125517fae",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 7,
+      "admittedPractices": 14,
+      "questions": 105,
+      "gradingProbes": 479,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 14,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior1.e7aec2ba94d084841107",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.5e5e0cadf70fa431e182",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.16d3ca3a15f242380900",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.9cfc774d26e963080bd8",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.a330a7253ac68a1a2f7b",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.b230f677f85a0ec3046c",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.7a19218654ce7160dab2",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.986648b6cf1c82994120",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.60ea50be92a9c5dbf349",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.aa27ec37fc18c0072288",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.34a2fe086535fee3b999",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.9bc53c885817dee8f670",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.5d9c95359c41b2337d68",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.37ad839e009b9a384e66",
+          "level": "senior1",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T04:12:08+08:00",
+      "published": false,
+      "supersededUnpublishedCandidate": {
+        "source": "advanced-junior-senior-018.json",
+        "review": "advanced-junior-senior-018.review.json",
+        "sourceSHA256": "3fccaac6ad2a42179e288a814c84d9bc916a49e22c52ace33a04484da70dce45",
+        "frozenBatch": "b111"
+      }
+    },
+    {
+      "source": "advanced-junior-senior-019.json",
+      "review": "advanced-junior-senior-019.review.json",
+      "sourceSHA256": "c8fd7df002ff00a8e9ae0dbcbd0f61a6829b2016ff5dea624ea7229655087fd9",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 7,
+      "admittedPractices": 14,
+      "questions": 105,
+      "gradingProbes": 474,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 14,
+        "senior2": 0,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior1.17750b23df2bf0afbed6",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.e293f3f2b9ea52a30b72",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.91a8a70091f5d695612e",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.f70a6a8ceefa06fcc423",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.1b7031051ab491008c48",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.d3461362567599566301",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.8fd32524a1abbce088d7",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.1553a8fc7fa7c3b0eb20",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.1389e2de360ad25bdcf0",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.d1fbd5ef59d31f8310a7",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.967f388c8dbf133b05a1",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.9a82e1ac449a2f5d3c92",
+          "level": "senior1",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior1.0665f89a9bffa61c4bc7",
+          "level": "senior1",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior1.bfee5e22ee2f0aea1eec",
+          "level": "senior1",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T04:17:02+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-020-v2.json",
+      "review": "advanced-junior-senior-020-v2.review.json",
+      "sourceSHA256": "a60becdcae4d87b889dfdd93a45a1dc9edb7e34e21a27c67eff2bc0fa2021846",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 7,
+      "admittedPractices": 14,
+      "questions": 105,
+      "gradingProbes": 473,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 14,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior2.94694aa9240f84a581a4",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.e644462af1f0ba1f0ba3",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.2a1f1c490e72c4142bf1",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.a2ac32aa626ce09f13e2",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.b9d72c154408ea493a16",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.0e244f47e8a70787362d",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.1cab75931770549040d8",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.5b96f08f95a2356c2e19",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.83b0dade1870ec0e525d",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.d81466bdfa3eca9c2ead",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.f9d56f6a6056765e778c",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.5db9a5d99fbb9bbfba40",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.616c6b6f07001c25def0",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.3a7d4dd145eb8bf96791",
+          "level": "senior2",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T05:08:25+08:00",
+      "published": false,
+      "supersededUnpublishedCandidate": {
+        "source": "advanced-junior-senior-020.json",
+        "review": "advanced-junior-senior-020.review.json",
+        "sourceSHA256": "203f0644db8bac0fbee6a70e13b2172c27f07ac045ca183544d58c60380a8e34",
+        "reason": "One viable answer removed from automatic rejection after same-AI peer review; preserve old bytes, no extra supply."
+      }
+    },
+    {
+      "source": "advanced-junior-senior-021.json",
+      "review": "advanced-junior-senior-021.review.json",
+      "sourceSHA256": "fa00d3a5768a30920994ac35c8f17a3a8dfe60d0e6bcb83d1bbcf08f87ad77da",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 7,
+      "admittedPractices": 14,
+      "questions": 105,
+      "gradingProbes": 488,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 14,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior2.f2f863a9d8bdfcbc9ba5",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.eeab7744dca977379c95",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.59508da33361a2c62fbd",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.b28c112d634fe4ab5339",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.94ffa4f0532d57e5292d",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.f32b48b2b892e84dba93",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.3ed70acd8a6509293534",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.6d0697177b74aa2c86fc",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.af717d50b69dd8d206d1",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.32050bd260dc7a88b952",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.d0145dfe52ad8673257f",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.dd452d89edea4a11d36a",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.49a73f61922ae5aa4f56",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.876bead74293777e8644",
+          "level": "senior2",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T04:43:17+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-022.json",
+      "review": "advanced-junior-senior-022.review.json",
+      "sourceSHA256": "901e804a70b54e4aa966a64618968cafee2b0a71d270eb3cd1977bd4e8bb293f",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 7,
+      "admittedPractices": 14,
+      "questions": 105,
+      "gradingProbes": 462,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 14,
+        "senior3": 0
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior2.e8a7bfbe5556974e65d1",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.b685eb801e163e77760f",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.47936f8e5343d8b41c3d",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.c260acd217524f6eecc4",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.c469b0aa8935857b1f89",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.653406e0969df50aa8d6",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.125a387b4a88715f0b7f",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.f35cd972c8c845d245a0",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.7be19454800f2311fe65",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.199d2eafa1f03866a5a8",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.b2cf0fb2da0078ef80cf",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.ff7f2907dcffca3bb423",
+          "level": "senior2",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior2.1f550b5014b18458f1f3",
+          "level": "senior2",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior2.3af9aa0d290b9f4aafe3",
+          "level": "senior2",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T04:48:16+08:00",
+      "published": false
+    },
+    {
+      "source": "advanced-junior-senior-023-v2.json",
+      "review": "advanced-junior-senior-023-v2.review.json",
+      "sourceSHA256": "3016e7c7159d22a8b9fb4201463f55c17047bf3b6ac26d532d8d2adbdd805dd3",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 7,
+      "admittedPractices": 14,
+      "questions": 105,
+      "gradingProbes": 458,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 14
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior3.9b2c5c91b50d9645e6b9",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.dd0a2ae49886b9a1898c",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.fd213a523ab5194b64ea",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.ffa5f57974f39433607b",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.48e17695a530c774551d",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.865c6c7a4b98a7bcff95",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.078c0c8fd65f76da1ba9",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.d0482a9bc3de6bf6efff",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.b1329f237971c7dcf64f",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.f24177a803527f962af4",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.b5a7f69674b5ce27cbea",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.185c7a5b527b4c0039be",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.4e79458747394d2e9de8",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.f136def6f1f63ac281d2",
+          "level": "senior3",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T05:08:26+08:00",
+      "published": false,
+      "supersededUnpublishedCandidate": {
+        "source": "advanced-junior-senior-023.json",
+        "review": "advanced-junior-senior-023.review.json",
+        "sourceSHA256": "47157613bdb78042ba5e5aa648b850526b11ab2cc3a7b8499e3213fda4d5ba70",
+        "reason": "One viable answer removed from automatic rejection after same-AI peer review; preserve old bytes, no extra supply."
+      }
+    },
+    {
+      "source": "advanced-junior-senior-024-v2.json",
+      "review": "advanced-junior-senior-024-v2.review.json",
+      "sourceSHA256": "5e9095d249b65666d92c4774452b5929affd86bb8e6c28df3a38ac11ccd1c791",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 7,
+      "admittedPractices": 14,
+      "questions": 105,
+      "gradingProbes": 468,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 14
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior3.0a910fd826e3a51f7537",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.5bf018fbd9ac733a9aa8",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.e1262b2251adccdf2911",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.6a9c7b20657ed38a7ad7",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.3c240e1d540082d424dd",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.0758d017d18290c2f620",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.0b5ddd95fbc5b3d18bf3",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.5ed320d84e07196558a4",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.f9a81144e87b22abee63",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.e05e8d76d92a0cf1ec9a",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.4e591233b8a1709695fe",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.98817ca437a67357cd4b",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.2c8361bce6250e46004f",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.677d47fcec54202d4345",
+          "level": "senior3",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T05:08:28+08:00",
+      "published": false,
+      "supersededUnpublishedCandidate": {
+        "source": "advanced-junior-senior-024.json",
+        "review": "advanced-junior-senior-024.review.json",
+        "sourceSHA256": "bdb23b505122023b16ae3fbd90ad19f3973dac167d68d7fc39e996c6ff503664",
+        "reason": "One viable answer removed from automatic rejection after same-AI peer review; preserve old bytes, no extra supply."
+      }
+    },
+    {
+      "source": "advanced-junior-senior-025-v2.json",
+      "review": "advanced-junior-senior-025-v2.review.json",
+      "sourceSHA256": "b697dacf224e25de9e9551814fa7f85882fc410a21ca1fc01566f8f612659352",
+      "status": "author-reviewed-native-schema-grading-and-senior-admission-checked",
+      "groups": 7,
+      "admittedPractices": 14,
+      "questions": 105,
+      "gradingProbes": 467,
+      "levels": {
+        "advanced": 0,
+        "junior1": 0,
+        "junior2": 0,
+        "junior3": 0,
+        "senior1": 0,
+        "senior2": 0,
+        "senior3": 14
+      },
+      "checkedIndependentSeniorPractices": [
+        {
+          "id": "gaokao.independent.senior3.2a0bb6c585a789c70d96",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.6286c216c66ac1e978af",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.0ad4f01f047c718bfed7",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.bfea5a3696c45b6131bf",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.2769effe733fc8c9410f",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.1dcffbb1c053bd68288f",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.1cb215976bd1cd44a7ed",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.ac41fc799a5e69ff18e1",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.ae9e322f8787aaaa68cd",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.d2e49e4456f3d6489b51",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.d416b94f618bb7d652df",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.78630fc9d30a4da8f0ca",
+          "level": "senior3",
+          "questions": 10
+        },
+        {
+          "id": "gaokao.independent.senior3.1792466c2fc247819548",
+          "level": "senior3",
+          "questions": 5
+        },
+        {
+          "id": "gaokao.independent.senior3.add1f4ab1577c909003c",
+          "level": "senior3",
+          "questions": 10
+        }
+      ],
+      "checkedAt": "2026-10-29T05:08:29+08:00",
+      "published": false,
+      "supersededUnpublishedCandidate": {
+        "source": "advanced-junior-senior-025.json",
+        "review": "advanced-junior-senior-025.review.json",
+        "sourceSHA256": "3390bea7e67e155bd4bc9d52ff144c5b3a85213a26ec6dd2956ab9aa406cabaa",
+        "reason": "One viable answer removed from automatic rejection after same-AI peer review; preserve old bytes, no extra supply."
+      }
+    }
+  ],
+  "delegatedAllocation": {
+    "advanced": {
+      "practices": 34,
+      "owner": "root",
+      "sourcePrefix": "root-advanced-",
+      "status": "assigned",
+      "assignedAt": "2026-10-29",
+      "note": "Root explicitly owns the34remaining advanced practices after source016; source author continues only42new practices for each seniorlevel. Original allocation remains unchanged for audit."
+    }
+  },
+  "forwardRevisions": [
+    {
+      "source": "advanced-junior-senior-017-forward-v2.json",
+      "sourceSHA256": "80f7d623199764e713a0c634795d49363034a9f31d69b16f6ad5c20af36875f8",
+      "oldSource": "advanced-junior-senior-017-v2.json",
+      "oldSourceSHA256": "8edd53f37469e943f800a2d3112be45004e8436e37c0ac5138e788aa47996a96",
+      "unit": "senior1.mixed-pace-walk-and-biscuit-stall-001",
+      "question": 5,
+      "removed": "clear",
+      "forward": true,
+      "stableDerivedChildIds": [
+        "gaokao.independent.senior1.092709ce9d93ccc09fc3",
+        "gaokao.independent.senior1.f666711582df39e6b725"
+      ],
+      "versionedPractices": 2,
+      "additionalPracticeSupply": 0,
+      "schemaChecked": true,
+      "probes": 68,
+      "removedFormReview": true,
+      "admittedChildren": 2,
+      "verifiedAt": "2026-10-29T05:08:24+08:00"
+    }
+  ],
+  "authoredSupply": {
+    "advanced": 82,
+    "junior1": 21,
+    "junior2": 30,
+    "junior3": 34,
+    "senior1": 59,
+    "senior2": 59,
+    "senior3": 59
+  },
+  "delegatedToRoot": {
+    "advanced": 34
+  },
+  "supplyCountBoundary": "344 practices authored in effective readySources; forwardRevisions and supersededUnpublishedCandidate snapshots add zero supply. Root advanced34 is separate."
+}

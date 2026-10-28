@@ -1,0 +1,1308 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "cet-assist-001-v3.json",
+  "sourceSHA256": "7c9bcf26681436a92f932cf4adef616dea286ff51c2b0b36f95e4636559f2c1e",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex CET assist author, same-author review only",
+  "reviewedAt": "2026-10-29",
+  "status": "approved",
+  "units": [
+    {
+      "id": "undergraduate.assist-tea-infusion-001",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "leaves",
+        "dissolve",
+        "infusion",
+        "filter",
+        "temperature",
+        "volume",
+        "concentration",
+        "bitter",
+        "aroma",
+        "residue"
+      ],
+      "filledPassage": "A college tasting club compared tea prepared from the same batch of dried leaves. The plant material was placed in water, but the resulting drink was not simply the original material in a smaller shape. Some substances could dissolve, entering the water at a molecular level, while many solid pieces remained visible.\n\nThe club called the prepared drink an infusion because water had stood in contact with the plant material to extract soluble substances. To remove floating pieces before tasting, the students poured it through a filter. This step separated larger solids; it did not necessarily remove the substances already present in solution.\n\nThey kept the water temperature the same across samples, measuring how hot it was when each preparation began. They also recorded the volume of water in each cup, since adding the same amount of leaf material to different quantities of water could produce different results. The time in contact with water was the variable they deliberately changed.\n\nA stronger concentration meant that more of the relevant dissolved material was present per unit of drink. It did not mean that every flavour became more pleasant. A long steep could taste bitter, with an unpleasant sharp quality for some participants. Individual preference was recorded separately from preparation time.\n\nThe students described the smell rising from each cup as its aroma. Solid material remaining after pouring was the residue. They kept smell, taste and leftover solids as separate observations. Their small comparison could describe these particular preparations, but it could not establish one perfect brewing time for every tea, cup or drinker.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "bitter",
+          "disposition": "Gap 8: taste后形容词，unpleasant sharp quality说明苦味；transparent透明是外观非此味，sealed密封非味觉。"
+        },
+        {
+          "letter": "B",
+          "word": "filter",
+          "disposition": "Gap 4: through a后可数器具，拦浮固体用filter；residue是被留物而非过滤器。"
+        },
+        {
+          "letter": "C",
+          "word": "leaves",
+          "disposition": "Gap 1: dried修饰复数植物材料，leaves茶叶；residue是倒出后的残留物，非起始批次。"
+        },
+        {
+          "letter": "D",
+          "word": "boiling",
+          "disposition": "Unused: 文中统一测开始水温，没有声称水在沸腾；也不能替代温度、体积等名词。"
+        },
+        {
+          "letter": "E",
+          "word": "concentration",
+          "disposition": "Gap 7: per unit of drink说明浓度；volume仅总量，aroma仅嗅觉性质。"
+        },
+        {
+          "letter": "F",
+          "word": "dissolve",
+          "disposition": "Gap 2: could后原形动词，进入水中分子层面为溶解；evaporate变气体方向相反，stir是搅动不等溶解。"
+        },
+        {
+          "letter": "G",
+          "word": "aroma",
+          "disposition": "Gap 9: smell rising定义香气；infusion饮品、residue固体均非气味名称。"
+        },
+        {
+          "letter": "H",
+          "word": "residue",
+          "disposition": "Gap 10: solid material remaining明确残余固体；leaves起始植物材料不能概括此处操作后的剩物角色。"
+        },
+        {
+          "letter": "I",
+          "word": "stir",
+          "disposition": "Unused: 未设置搅拌步骤，分子层进入水的动作是dissolve，不是机械搅动。"
+        },
+        {
+          "letter": "J",
+          "word": "temperature",
+          "disposition": "Gap 5: how hot直接说明温度；volume体积并不测冷热，boiling是状态词而非所需名词。"
+        },
+        {
+          "letter": "K",
+          "word": "transparent",
+          "disposition": "Unused: 文中未比较透明度，taste空格明示味觉而非视觉。"
+        },
+        {
+          "letter": "L",
+          "word": "volume",
+          "disposition": "Gap 6: quantities of water以体积记录；temperature冷热已控制，concentration是溶质相对饮料比例。"
+        },
+        {
+          "letter": "M",
+          "word": "infusion",
+          "disposition": "Gap 3: 饮品由水接触植物萃取得到，infusion浸泡液；aroma仅气味，concentration为比例而非饮品种类。"
+        },
+        {
+          "letter": "N",
+          "word": "evaporate",
+          "disposition": "Unused: 变气而不是进入液体成溶液，与目标动作方向不同。"
+        },
+        {
+          "letter": "O",
+          "word": "sealed",
+          "disposition": "Unused: 杯子未作密封条件；密封也不命名味、香或萃取过程。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 2,
+          "rationale": "C leaves：dried修饰复数植物材料，leaves茶叶；residue是倒出后的残留物，非起始批次。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 5,
+          "rationale": "F dissolve：could后原形动词，进入水中分子层面为溶解；evaporate变气体方向相反，stir是搅动不等溶解。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 12,
+          "rationale": "M infusion：饮品由水接触植物萃取得到，infusion浸泡液；aroma仅气味，concentration为比例而非饮品种类。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 1,
+          "rationale": "B filter：through a后可数器具，拦浮固体用filter；residue是被留物而非过滤器。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 9,
+          "rationale": "J temperature：how hot直接说明温度；volume体积并不测冷热，boiling是状态词而非所需名词。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 11,
+          "rationale": "L volume：quantities of water以体积记录；temperature冷热已控制，concentration是溶质相对饮料比例。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 4,
+          "rationale": "E concentration：per unit of drink说明浓度；volume仅总量，aroma仅嗅觉性质。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 0,
+          "rationale": "A bitter：taste后形容词，unpleasant sharp quality说明苦味；transparent透明是外观非此味，sealed密封非味觉。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 6,
+          "rationale": "G aroma：smell rising定义香气；infusion饮品、residue固体均非气味名称。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 7,
+          "rationale": "H residue：solid material remaining明确残余固体；leaves起始植物材料不能概括此处操作后的剩物角色。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.assist-shoe-fit-001",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "length",
+        "width",
+        "heel",
+        "laces",
+        "tight",
+        "sole",
+        "flexible",
+        "friction",
+        "pressure",
+        "blister"
+      ],
+      "filledPassage": "A walking club invited a shoe fitter to a preparation meeting. Several members assumed that the printed size alone would establish comfort. The fitter measured each foot's length from back to front, then checked its width from side to side. Two feet with a similar first measurement could still require differently shaped shoes.\n\nThe back part of the foot was the heel. It needed to remain reasonably secure rather than rise excessively with every step. The fitter adjusted the laces, the cords threaded through the upper part of the shoe, to alter how it held the foot. Pulling harder was not always better: a shoe that became too tight could squeeze the wearer.\n\nThe bottom part contacting the ground was the sole. For the intended walk, it needed to bend appropriately rather than behave like an entirely stiff board. A suitably flexible material could accommodate that movement. This did not establish that the softest possible shoe was suitable for every surface.\n\nThe group also discussed friction, rubbing between surfaces that could irritate skin during repeated steps. Concentrated pressure meant force acting over a limited area, another possible source of discomfort. These mechanisms were related but were not identical descriptions.\n\nA small fluid-filled skin injury caused by repeated rubbing was a blister. Members were advised to stop and seek suitable help if discomfort developed, rather than treat pain as proof that a shoe was becoming effective. The meeting was about checking fit before the walk; it did not provide a diagnosis or claim that one shoe design could prevent every foot problem.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "tight",
+          "disposition": "Gap 5: squeeze穿者表示过紧；waterproof防水、flexible柔韧均不直接表达挤压合脚问题。"
+        },
+        {
+          "letter": "B",
+          "word": "heel",
+          "disposition": "Gap 3: back part of foot为脚跟；ankle踝是腿足连接部，不等脚的后部。"
+        },
+        {
+          "letter": "C",
+          "word": "repair",
+          "disposition": "Unused: 没有修鞋过程，也非脚形尺寸或损伤名称。"
+        },
+        {
+          "letter": "D",
+          "word": "width",
+          "disposition": "Gap 2: side to side为宽度；length纵长不能交换其明确轴向。"
+        },
+        {
+          "letter": "E",
+          "word": "flexible",
+          "disposition": "Gap 7: 材料可弯且非硬板，对应柔韧；tight紧、waterproof防水不说明弯曲性能。"
+        },
+        {
+          "letter": "F",
+          "word": "laces",
+          "disposition": "Gap 4: cords threaded through鞋带，复数对应they隐含多根；pattern图案不是可拉紧绳。"
+        },
+        {
+          "letter": "G",
+          "word": "sole",
+          "disposition": "Gap 6: bottom contacting ground为鞋底；heel指已述脚跟，不概括整个鞋底部件。"
+        },
+        {
+          "letter": "H",
+          "word": "ankle",
+          "disposition": "Unused: 是踝关节位置，非足后部heel；其他空不要求关节。"
+        },
+        {
+          "letter": "I",
+          "word": "cushioning",
+          "disposition": "Unused: 缓冲性质不是长宽维度、脚跟或鞋底部件名，文中未设缓冲量测空。"
+        },
+        {
+          "letter": "J",
+          "word": "length",
+          "disposition": "Gap 1: back to front为长度；width侧到侧下空，cushioning缓冲性质不属于前后尺寸。"
+        },
+        {
+          "letter": "K",
+          "word": "waterproof",
+          "disposition": "Unused: 没有水条件测试，防水性不能回答柔韧、紧绷或身体部位。"
+        },
+        {
+          "letter": "L",
+          "word": "blister",
+          "disposition": "Gap 10: fluid-filled skin injury明确水疱；repair修理行为、pattern图样均非皮肤损伤。"
+        },
+        {
+          "letter": "M",
+          "word": "friction",
+          "disposition": "Gap 8: rubbing between surfaces为摩擦；pressure下空强调单位面积受力，不能混作擦动。"
+        },
+        {
+          "letter": "N",
+          "word": "pattern",
+          "disposition": "Unused: 没有花纹或图案的描述，鞋带是可调绳而非装饰图样。"
+        },
+        {
+          "letter": "O",
+          "word": "pressure",
+          "disposition": "Gap 9: force over limited area为压强；friction是接触切向摩擦机制，cushioning缓冲不是力除面积的物理量。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 9,
+          "rationale": "J length：back to front为长度；width侧到侧下空，cushioning缓冲性质不属于前后尺寸。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 3,
+          "rationale": "D width：side to side为宽度；length纵长不能交换其明确轴向。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 1,
+          "rationale": "B heel：back part of foot为脚跟；ankle踝是腿足连接部，不等脚的后部。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 5,
+          "rationale": "F laces：cords threaded through鞋带，复数对应they隐含多根；pattern图案不是可拉紧绳。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 0,
+          "rationale": "A tight：squeeze穿者表示过紧；waterproof防水、flexible柔韧均不直接表达挤压合脚问题。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 6,
+          "rationale": "G sole：bottom contacting ground为鞋底；heel指已述脚跟，不概括整个鞋底部件。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 4,
+          "rationale": "E flexible：材料可弯且非硬板，对应柔韧；tight紧、waterproof防水不说明弯曲性能。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 12,
+          "rationale": "M friction：rubbing between surfaces为摩擦；pressure下空强调单位面积受力，不能混作擦动。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 14,
+          "rationale": "O pressure：force over limited area为压强；friction是接触切向摩擦机制，cushioning缓冲不是力除面积的物理量。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 11,
+          "rationale": "L blister：fluid-filled skin injury明确水疱；repair修理行为、pattern图样均非皮肤损伤。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.assist-bee-pollination-001",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "petals",
+        "scent",
+        "nectar",
+        "pollen",
+        "stigma",
+        "pollination",
+        "transfer",
+        "insects",
+        "fruit",
+        "seasonal"
+      ],
+      "filledPassage": "An orchard class watched bees moving among apple flowers. The bright outer flower parts were petals. Their colour, together with the flower's scent, could contribute to attracting visitors. The class kept visual appearance separate from the smell perceived near the blossoms.\n\nBees collected nectar, a sugary liquid, as one food resource. Fine grains of pollen could also attach to their bodies. These grains had a role in plant reproduction and were not another name for the sweet liquid. A visit could therefore involve food collection while also moving reproductive material.\n\nThe receiving flower part was the stigma. When suitable pollen reached it, the movement was described as pollination. This event did not itself guarantee that every flower would eventually develop into a mature apple. Later conditions and processes still mattered.\n\nResearchers could transfer pollen deliberately between flowers in a controlled comparison. They covered some blossoms to reduce visits by insects, the animal group that includes bees. The coverings were part of an experiment, not an assertion that all plants relied on bees or that no other movement of pollen was possible.\n\nAn apple was the eventual fruit considered in this example, while the observation period was seasonal because flowering occurred during a particular part of the year. The class recorded flower visits and later development separately. Counting one bee landing was not the same as counting one apple produced. This distinction helped pupils ask what their observation actually measured before drawing conclusions about the orchard's harvest.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "nectar",
+          "disposition": "Gap 3: sugary liquid明确花蜜；pollen是颗粒，下句显式区分。"
+        },
+        {
+          "letter": "B",
+          "word": "hive",
+          "disposition": "Unused: 文中观察花间转移，没有蜂群居所空格；受粉部位不在蜂巢。"
+        },
+        {
+          "letter": "C",
+          "word": "pollen",
+          "disposition": "Gap 4: fine grains reproductive material为花粉；nectar花蜜非颗粒。"
+        },
+        {
+          "letter": "D",
+          "word": "ripe",
+          "disposition": "Unused: 成熟可描述苹果，但此处苹果分类空需名词，观察时期空需季节性。"
+        },
+        {
+          "letter": "E",
+          "word": "stigma",
+          "disposition": "Gap 5: receiving flower part为柱头；petals吸引作用与该部位不同，hive蜂巢不属花部。"
+        },
+        {
+          "letter": "F",
+          "word": "fruit",
+          "disposition": "Gap 9: apple是本例果实；ripe成熟形容词不能在the eventual后作此名词分类。"
+        },
+        {
+          "letter": "G",
+          "word": "petals",
+          "disposition": "Gap 1: bright outer flower parts为花瓣；roots根在地下，stigma是后述特定受粉部位。"
+        },
+        {
+          "letter": "H",
+          "word": "wind",
+          "disposition": "Unused: 作为相关媒介被保留作干扰，段落具体实验排的是昆虫访问，并未设风空格。"
+        },
+        {
+          "letter": "I",
+          "word": "pollination",
+          "disposition": "Gap 6: 花粉到接受部位的转移为授粉；fruit是后续果实，不是转移事件。"
+        },
+        {
+          "letter": "J",
+          "word": "sterile",
+          "disposition": "Unused: 不育不从访问记录推出，时间限定也不等于不育。"
+        },
+        {
+          "letter": "K",
+          "word": "transfer",
+          "disposition": "Gap 7: could后原形，between flowers移动花粉为transfer；wind作为风名词不命名此有意操作。"
+        },
+        {
+          "letter": "L",
+          "word": "insects",
+          "disposition": "Gap 8: bees所属动物类昆虫，复数在visits by后；roots植物器官，hive栖居处非动物类。"
+        },
+        {
+          "letter": "M",
+          "word": "roots",
+          "disposition": "Unused: 根是植物器官，不是明示鲜艳外花部，更不是蜜蜂动物分类。"
+        },
+        {
+          "letter": "N",
+          "word": "scent",
+          "disposition": "Gap 2: 与visual separate及smell对应气味；nectar液体、pollen颗粒不是气味属性。"
+        },
+        {
+          "letter": "O",
+          "word": "seasonal",
+          "disposition": "Gap 10: particular part of year说明季节性；sterile不育与观察时段性质不同，ripe修饰果实而非观察期。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 6,
+          "rationale": "G petals：bright outer flower parts为花瓣；roots根在地下，stigma是后述特定受粉部位。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 13,
+          "rationale": "N scent：与visual separate及smell对应气味；nectar液体、pollen颗粒不是气味属性。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 0,
+          "rationale": "A nectar：sugary liquid明确花蜜；pollen是颗粒，下句显式区分。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 2,
+          "rationale": "C pollen：fine grains reproductive material为花粉；nectar花蜜非颗粒。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 4,
+          "rationale": "E stigma：receiving flower part为柱头；petals吸引作用与该部位不同，hive蜂巢不属花部。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 8,
+          "rationale": "I pollination：花粉到接受部位的转移为授粉；fruit是后续果实，不是转移事件。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 10,
+          "rationale": "K transfer：could后原形，between flowers移动花粉为transfer；wind作为风名词不命名此有意操作。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 11,
+          "rationale": "L insects：bees所属动物类昆虫，复数在visits by后；roots植物器官，hive栖居处非动物类。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 5,
+          "rationale": "F fruit：apple是本例果实；ripe成熟形容词不能在the eventual后作此名词分类。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 14,
+          "rationale": "O seasonal：particular part of year说明季节性；sterile不育与观察时段性质不同，ripe修饰果实而非观察期。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.assist-train-platform-gap-001",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "carriage",
+        "horizontal",
+        "vertical",
+        "level",
+        "gap",
+        "bridge",
+        "ramp",
+        "gradient",
+        "portable",
+        "alignment"
+      ],
+      "filledPassage": "A rail museum used a stationary carriage to explain boarding arrangements. The vehicle did not move during the demonstration. Visitors compared its floor with the platform, noticing that two different dimensions could cause difficulty.\n\nThe horizontal distance was the separation across from platform edge to vehicle doorway. The vertical difference concerned how far one surface stood above the other. Reducing one did not automatically remove the other. A narrow space could still include a significant step.\n\nWhere both surfaces were at the same height, the guide described them as level. A remaining gap could still lie between them. A short flat board could bridge that space under the museum's controlled demonstration, forming a connection rather than changing the height of the whole platform.\n\nA sloping ramp could accommodate a height change. Its gradient described the steepness of the slope, so the distance available for the slope mattered. The demonstration did not suggest that every steep board was an appropriate boarding aid.\n\nThe staff used a portable device that could be carried into position and removed after use. Correct alignment meant that its relevant edges and the doorway were placed in the intended relation. The guide checked this before anyone used the model.\n\nThe exhibit distinguished a building feature, a vehicle position and a movable aid. It did not offer instructions for independent use on an active railway. Its purpose was to show why calling a station accessible required more information than saying that one step had been removed. Conditions at the actual door and platform mattered together.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "horizontal",
+          "disposition": "Gap 2: across from edge to doorway说明水平距离；vertical垂直高度在下空。"
+        },
+        {
+          "letter": "B",
+          "word": "gradient",
+          "disposition": "Gap 8: steepness of slope为坡度；alignment对齐关系不是坡的陡度。"
+        },
+        {
+          "letter": "C",
+          "word": "bridge",
+          "disposition": "Gap 6: could后原形动词，bridge that space跨接间隙；announce宣布、signal发信号不构成连接。"
+        },
+        {
+          "letter": "D",
+          "word": "vertical",
+          "disposition": "Gap 3: above another为垂直差；horizontal水平不能说明高低。"
+        },
+        {
+          "letter": "E",
+          "word": "announce",
+          "disposition": "Unused: 没有播报操作，跨接空隙所需动词为bridge。"
+        },
+        {
+          "letter": "F",
+          "word": "gap",
+          "disposition": "Gap 5: remaining separation空隙；gradient坡度不是两物间空位。"
+        },
+        {
+          "letter": "G",
+          "word": "curved",
+          "disposition": "Unused: 未描述弯曲几何，水平/垂直和便携都有单独明示条件。"
+        },
+        {
+          "letter": "H",
+          "word": "carriage",
+          "disposition": "Gap 1: stationary vehicle为车厢，可数a后；barrier隔栏不是供上车的车辆。"
+        },
+        {
+          "letter": "I",
+          "word": "ramp",
+          "disposition": "Gap 7: sloping board适应高差为斜坡道；barrier挡板功能相反。"
+        },
+        {
+          "letter": "J",
+          "word": "barrier",
+          "disposition": "Unused: 障碍物不等车厢，也不作通行坡道；例子没有封路步骤。"
+        },
+        {
+          "letter": "K",
+          "word": "level",
+          "disposition": "Gap 4: same height为齐平的；curved曲线与同高不等，portable可搬也不表高度。"
+        },
+        {
+          "letter": "L",
+          "word": "portable",
+          "disposition": "Gap 9: carried and removed为便携；curved曲线、level水平不表达可搬移属性。"
+        },
+        {
+          "letter": "M",
+          "word": "signal",
+          "disposition": "Unused: 信号不承担空间连接功能，也不命名对齐状态。"
+        },
+        {
+          "letter": "N",
+          "word": "wheels",
+          "disposition": "Unused: 词为复数部件，a stationary后不合数，其他名词位置均指距离/坡度/关系而非轮子。"
+        },
+        {
+          "letter": "O",
+          "word": "alignment",
+          "disposition": "Gap 10: edges and doorway intended relation为对齐；signal信号、wheels轮子不能命名相对摆位。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 7,
+          "rationale": "H carriage：stationary vehicle为车厢，可数a后；barrier隔栏不是供上车的车辆。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 0,
+          "rationale": "A horizontal：across from edge to doorway说明水平距离；vertical垂直高度在下空。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 3,
+          "rationale": "D vertical：above another为垂直差；horizontal水平不能说明高低。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 10,
+          "rationale": "K level：same height为齐平的；curved曲线与同高不等，portable可搬也不表高度。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 5,
+          "rationale": "F gap：remaining separation空隙；gradient坡度不是两物间空位。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 2,
+          "rationale": "C bridge：could后原形动词，bridge that space跨接间隙；announce宣布、signal发信号不构成连接。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 8,
+          "rationale": "I ramp：sloping board适应高差为斜坡道；barrier挡板功能相反。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 1,
+          "rationale": "B gradient：steepness of slope为坡度；alignment对齐关系不是坡的陡度。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 11,
+          "rationale": "L portable：carried and removed为便携；curved曲线、level水平不表达可搬移属性。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 14,
+          "rationale": "O alignment：edges and doorway intended relation为对齐；signal信号、wheels轮子不能命名相对摆位。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.assist-occupancy-detection-001",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "habitat",
+        "occupancy",
+        "detection",
+        "effort",
+        "protocol",
+        "replicates",
+        "covariates",
+        "estimate",
+        "uncertain",
+        "extinction"
+      ],
+      "filledPassage": "A conservation seminar examined repeated surveys of ponds for an amphibian. The relevant habitat was the wetland environment used by the species. Whether a site was actually occupied during the defined study period was its occupancy state. The observation process was a separate matter: a present animal could remain unnoticed.\n\nThe probability of recording the species when it was present concerned detection. Search duration, weather and observer experience could affect that process. The team recorded survey effort as time spent searching, rather than assuming every visit represented the same opportunity to notice an animal.\n\nA written protocol specified how each visit should be conducted. Following it improved comparability, although it could not make imperfect observation disappear. Additional visits provided temporal replicates, repeated observations of the same site within the period for which the occupancy state was assumed stable. The team explicitly considered whether that stability assumption was defensible.\n\nMeasured features used to explain variation were covariates in the statistical model. Some described sites; others described visits. Treating them as interchangeable would confuse ecological conditions with observation conditions. The model combined these components to estimate the probability that sites were occupied, rather than simply equating an empty notebook with an empty pond.\n\nConclusions remained uncertain where observations were limited or the assumptions were weak. The investigators reported that uncertainty rather than rounding every result to certainty. A claim of local extinction, the disappearance of the species from a site, would require more justification than one unsuccessful search.\n\nThe exercise did not assert that repeated visits inevitably identified every hidden state. It showed why absence of a record and absence of an organism were different propositions. Assumptions about changes during the study and relationships among visits had to be evaluated alongside the numerical output.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "habitat",
+          "disposition": "Gap 1: 物种使用的环境为habitat；migration迁移过程不指环境。"
+        },
+        {
+          "letter": "B",
+          "word": "occupancy",
+          "disposition": "Gap 2: 地点在期内被占据的隐藏状态；abundance数量不同，detection记录过程被后文区分。"
+        },
+        {
+          "letter": "C",
+          "word": "replicates",
+          "disposition": "Gap 6: additional visits repeated observations为重复观测，复数；covariates解释特征并非再访问。"
+        },
+        {
+          "letter": "D",
+          "word": "extinction",
+          "disposition": "Gap 10: disappearance from site为本地灭绝；migration迁移不保证局地永久消失，abundance仅数量。"
+        },
+        {
+          "letter": "E",
+          "word": "detection",
+          "disposition": "Gap 3: 存在条件下被记录概率属检出；occupancy存在本身，不是观察是否成功。"
+        },
+        {
+          "letter": "F",
+          "word": "protocol",
+          "disposition": "Gap 5: written specifications为规程；likelihood似然函数不规定现场方法。"
+        },
+        {
+          "letter": "G",
+          "word": "seasonal",
+          "disposition": "Unused: 调查时段被界定，但结论证据不足需要uncertain，未要求季节性形容词。"
+        },
+        {
+          "letter": "H",
+          "word": "effort",
+          "disposition": "Gap 4: time spent searching定义调查努力量；protocol方法规范不是实际搜索时长。"
+        },
+        {
+          "letter": "I",
+          "word": "independent",
+          "disposition": "Unused: 重复访问独立性要评估，不可把该假设当作已成立结论；形容词空有明确不确定线索。"
+        },
+        {
+          "letter": "J",
+          "word": "estimate",
+          "disposition": "Gap 8: to后原形，对概率作统计估计；migration名词不能作此动词，likelihood亦名词。"
+        },
+        {
+          "letter": "K",
+          "word": "abundance",
+          "disposition": "Unused: 数量与是否占据不同，材料明确目标为存在概率，没有数量空格。"
+        },
+        {
+          "letter": "L",
+          "word": "uncertain",
+          "disposition": "Gap 9: limited evidence/weak assumptions使结论不确定；independent是独立性，seasonal是季节性，均不回应证据不足。"
+        },
+        {
+          "letter": "M",
+          "word": "covariates",
+          "disposition": "Gap 7: measured explanatory features为协变量；replicates是重复观测单位，abundance是数量状态。"
+        },
+        {
+          "letter": "N",
+          "word": "migration",
+          "disposition": "Unused: 迁移不等记录缺失或局地灭绝，且原形动作空需estimate。"
+        },
+        {
+          "letter": "O",
+          "word": "likelihood",
+          "disposition": "Unused: 相关统计名词但没有似然函数计算空格，概率估计动作要动词。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 0,
+          "rationale": "A habitat：物种使用的环境为habitat；migration迁移过程不指环境。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 1,
+          "rationale": "B occupancy：地点在期内被占据的隐藏状态；abundance数量不同，detection记录过程被后文区分。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 4,
+          "rationale": "E detection：存在条件下被记录概率属检出；occupancy存在本身，不是观察是否成功。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 7,
+          "rationale": "H effort：time spent searching定义调查努力量；protocol方法规范不是实际搜索时长。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 5,
+          "rationale": "F protocol：written specifications为规程；likelihood似然函数不规定现场方法。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 2,
+          "rationale": "C replicates：additional visits repeated observations为重复观测，复数；covariates解释特征并非再访问。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 12,
+          "rationale": "M covariates：measured explanatory features为协变量；replicates是重复观测单位，abundance是数量状态。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 9,
+          "rationale": "J estimate：to后原形，对概率作统计估计；migration名词不能作此动词，likelihood亦名词。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 11,
+          "rationale": "L uncertain：limited evidence/weak assumptions使结论不确定；independent是独立性，seasonal是季节性，均不回应证据不足。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 3,
+          "rationale": "D extinction：disappearance from site为本地灭绝；migration迁移不保证局地永久消失，abundance仅数量。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.assist-timebank-accounting-001",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "reciprocity",
+        "wage",
+        "contribution",
+        "verified",
+        "ledger",
+        "balance",
+        "redemption",
+        "eligibility",
+        "expiry",
+        "dispute"
+      ],
+      "filledPassage": "A neighbourhood time bank allowed members to provide approved services and earn credits measured in hours. The arrangement encouraged reciprocity, a pattern of mutual giving and receiving, without requiring the person who received one service to repay the same provider directly. It was distinct from an ordinary cash wage for employment: the scheme's credits did not claim to settle every legal question about work.\n\nWhen a member completed an accepted task, the recorded service was a contribution to the scheme. A coordinator checked that both parties agreed the task had occurred. An entry became verified after that confirmation, rather than merely because one participant had submitted a request.\n\nTransactions were kept in a ledger, a chronological accounting record. A member's available balance reflected credits earned and used under the local rules. Recording the same task twice would distort that amount even if the duplicated descriptions were individually plausible.\n\nUsing earned credits to receive a service was redemption. The scheme's ability to meet such requests depended on willing members and suitable skills; a positive account did not guarantee immediate access to every kind of assistance. The coordinators therefore distinguished a record from a promise of unlimited supply.\n\nThe rules defined eligibility, the conditions under which a person could join and participate. They also specified an expiry date after which unused credits would no longer remain valid. That condition was explained before members joined, rather than introduced after their contributions.\n\nIf participants disagreed about a recorded task, a dispute could be submitted for review. The review considered the evidence and the announced rules; it did not assume that the larger recorded balance necessarily belonged to the more truthful person. The seminar used the example to separate social purpose, accounting events and obligations. Calling the arrangement mutual aid did not remove the need to explain what each account entry meant.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "redemption",
+          "disposition": "Gap 7: 使用已赚取积分换服务为redemption兑换；contribution提供服务赚取，方向相反。"
+        },
+        {
+          "letter": "B",
+          "word": "reciprocity",
+          "disposition": "Gap 1: mutual giving/receiving定义reciprocity互惠规范；overdraft为透支状态，未设负余额机制。"
+        },
+        {
+          "letter": "C",
+          "word": "transferable",
+          "disposition": "Unused: 可转让规则未设定，认证状态空只表核实，不能推断可让渡。"
+        },
+        {
+          "letter": "D",
+          "word": "liability",
+          "disposition": "Unused: 责任相关但本段没有定义负债数额或特定承担义务，工资/资格不能以它替换。"
+        },
+        {
+          "letter": "E",
+          "word": "wage",
+          "disposition": "Gap 2: cash payment for employment为工资；liability负债义务非工资支付类别，balance账户净额非雇佣支付。"
+        },
+        {
+          "letter": "F",
+          "word": "ledger",
+          "disposition": "Gap 5: chronological accounting record为分类记账簿；balance余额为其中计算值，非记录载体。"
+        },
+        {
+          "letter": "G",
+          "word": "eligibility",
+          "disposition": "Gap 8: conditions to join为资格；liability责任与加入条件不同，exchange交易不命名资格。"
+        },
+        {
+          "letter": "H",
+          "word": "verified",
+          "disposition": "Gap 4: after confirmation为核实状态；anonymous匿名不由双方同意推出，transferable可转让也非认证。"
+        },
+        {
+          "letter": "I",
+          "word": "balance",
+          "disposition": "Gap 6: earned and used后可用净额为余额；inflation物价上涨不是成员账户数。"
+        },
+        {
+          "letter": "J",
+          "word": "inflation",
+          "disposition": "Unused: 无价格水平随时间上涨的论述，余额和有效期不是通胀。"
+        },
+        {
+          "letter": "K",
+          "word": "contribution",
+          "disposition": "Gap 3: completed accepted service为贡献；redemption是后述使用积分，不是赚取服务。"
+        },
+        {
+          "letter": "L",
+          "word": "anonymous",
+          "disposition": "Unused: 双方确认不等匿名，记录状态明确为verified。"
+        },
+        {
+          "letter": "M",
+          "word": "dispute",
+          "disposition": "Gap 10: disagreed case submitted review为争议；ledger记录本身、wage工资均非双方异议案件。"
+        },
+        {
+          "letter": "N",
+          "word": "expiry",
+          "disposition": "Gap 9: date after which invalid为到期；dispute争议非期限，inflation非日期规则。"
+        },
+        {
+          "letter": "O",
+          "word": "overdraft",
+          "disposition": "Unused: 未设定负余额或透支额度；账户余额balance不自动意味着允许透支，互惠关系也不是透支。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration.",
+        "Prepublication v2 replaces potentially viable exchange with overdraft; reciprocity key, every correct answer and all answer positions unchanged. This is same-author lexical disambiguation, not independent review.",
+        "v3 fixes the rationale letter to B and restores the redemption/reciprocity candidate-audit slot bindings. No material, option, key or position changes."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 1,
+          "rationale": "B reciprocity：mutual giving/receiving定义互惠规范；O overdraft透支是可用额度不足的账户状态，本段没有负余额机制；其他候选分别命名工资、贡献、核实、账簿等不同事件或属性。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 4,
+          "rationale": "E wage：cash payment for employment为工资；liability负债义务非工资支付类别，balance账户净额非雇佣支付。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 10,
+          "rationale": "K contribution：completed accepted service为贡献；redemption是后述使用积分，不是赚取服务。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 7,
+          "rationale": "H verified：after confirmation为核实状态；anonymous匿名不由双方同意推出，transferable可转让也非认证。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 5,
+          "rationale": "F ledger：chronological accounting record为分类记账簿；balance余额为其中计算值，非记录载体。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 8,
+          "rationale": "I balance：earned and used后可用净额为余额；inflation物价上涨不是成员账户数。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 0,
+          "rationale": "A redemption：using earned credits兑取服务为兑换；contribution提供服务方向相反。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 6,
+          "rationale": "G eligibility：conditions to join为资格；liability责任与加入条件不同，exchange交易不命名资格。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 13,
+          "rationale": "N expiry：date after which invalid为到期；dispute争议非期限，inflation非日期规则。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 12,
+          "rationale": "M dispute：disagreed case submitted review为争议；ledger记录本身、wage工资均非双方异议案件。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.assist-table-disclosure-001",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "confidential",
+        "threshold",
+        "suppression",
+        "margins",
+        "complementary",
+        "rounding",
+        "perturbation",
+        "utility",
+        "aggregation",
+        "release"
+      ],
+      "filledPassage": "A statistics office prepared a table showing counts of service users across small districts. Several cells contained very few people. Publishing an exact count beside a distinctive category could make information about an individual easier to discover, so the underlying records were treated as confidential rather than open for unrestricted inspection.\n\nThe office's rule used a threshold, a numerical cutoff below which a cell required additional protection. Removing the displayed value was suppression. Yet hiding a single cell did not necessarily protect it: row and column margins could allow a reader to subtract all visible counts and recover the missing one.\n\nThe analyst therefore considered complementary protection, withholding further cells so that the first hidden value could not be obtained by that simple subtraction. This was a coordinated treatment of the table, not an assertion that every unprinted number was equally sensitive.\n\nAnother approach used rounding, reporting counts to a stated numerical interval rather than retaining all their digits. A different technique deliberately added controlled changes, or perturbation, to the published values. These methods affected what readers could calculate, and their properties depended on the specified procedure.\n\nThe agency assessed utility, the usefulness of the published table for its intended analyses, alongside disclosure risk. Combining categories through aggregation could reduce detail, but it might also conceal differences important to users. A larger table was therefore not automatically more informative for every purpose.\n\nBefore public release, the office tested whether protected values could still be derived from combinations of totals and earlier publications. It documented the transformations and limitations. The exercise showed that a visible blank was a presentation feature, whereas protection concerned what could be learned from the entire information environment. No single visual treatment guaranteed that all routes to identification had disappeared.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "aggregation",
+          "disposition": "Gap 9: combining categories为聚合；inference推断是读者得结论，不是合并数据分组操作。"
+        },
+        {
+          "letter": "B",
+          "word": "suppression",
+          "disposition": "Gap 3: removing displayed value为抑制发布；rounding取整、perturbation扰动都仍可显示修改值。"
+        },
+        {
+          "letter": "C",
+          "word": "confidential",
+          "disposition": "Gap 1: records restricted from open inspection为保密的；reversible可逆、complementary互补不表访问属性。"
+        },
+        {
+          "letter": "D",
+          "word": "denominator",
+          "disposition": "Unused: 没有比率的上下分式，保护阈值与表格边际合计均非分母。"
+        },
+        {
+          "letter": "E",
+          "word": "inference",
+          "disposition": "Unused: 整篇涉及反推风险，但没有要求命名推理过程的空；合并类别是aggregation。"
+        },
+        {
+          "letter": "F",
+          "word": "rounding",
+          "disposition": "Gap 6: report to numerical interval为舍入；aggregation合并类别，perturbation刻意加变更不同机制。"
+        },
+        {
+          "letter": "G",
+          "word": "release",
+          "disposition": "Gap 10: before public后名词，公开发布为release；consent同意非发布事件，inference推理不是机构公开动作。"
+        },
+        {
+          "letter": "H",
+          "word": "complementary",
+          "disposition": "Gap 5: further cells protect initial suppression为互补抑制；reversible可逆反而非此额外保护角色。"
+        },
+        {
+          "letter": "I",
+          "word": "consent",
+          "disposition": "Unused: 无个人许可流程空格，公开动作是release，不能从保密推出同意。"
+        },
+        {
+          "letter": "J",
+          "word": "threshold",
+          "disposition": "Gap 2: numerical cutoff为阈值；denominator分母非任意保护界限，precision精度非门槛数。"
+        },
+        {
+          "letter": "K",
+          "word": "reversible",
+          "disposition": "Unused: 可逆性可能影响安全，但这里新增抑制的修饰词明确complementary，并非是否可逆。"
+        },
+        {
+          "letter": "L",
+          "word": "margins",
+          "disposition": "Gap 4: row/column totals为边际合计；denominator是比率分母，本段没有比率计算。"
+        },
+        {
+          "letter": "M",
+          "word": "utility",
+          "disposition": "Gap 8: usefulness for analyses为效用；precision仅数字精细度，不概括用途适配。"
+        },
+        {
+          "letter": "N",
+          "word": "perturbation",
+          "disposition": "Gap 7: controlled deliberate changes为扰动；suppression不发布值，rounding按固定间隔约化，不等本段另述加变更。"
+        },
+        {
+          "letter": "O",
+          "word": "precision",
+          "disposition": "Unused: 数字精细程度与广义分析效用不同，材料专门给usefulness定义utility。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 2,
+          "rationale": "C confidential：records restricted from open inspection为保密的；reversible可逆、complementary互补不表访问属性。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 9,
+          "rationale": "J threshold：numerical cutoff为阈值；denominator分母非任意保护界限，precision精度非门槛数。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 1,
+          "rationale": "B suppression：removing displayed value为抑制发布；rounding取整、perturbation扰动都仍可显示修改值。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 11,
+          "rationale": "L margins：row/column totals为边际合计；denominator是比率分母，本段没有比率计算。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 7,
+          "rationale": "H complementary：further cells protect initial suppression为互补抑制；reversible可逆反而非此额外保护角色。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 5,
+          "rationale": "F rounding：report to numerical interval为舍入；aggregation合并类别，perturbation刻意加变更不同机制。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 13,
+          "rationale": "N perturbation：controlled deliberate changes为扰动；suppression不发布值，rounding按固定间隔约化，不等本段另述加变更。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 12,
+          "rationale": "M utility：usefulness for analyses为效用；precision仅数字精细度，不概括用途适配。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 0,
+          "rationale": "A aggregation：combining categories为聚合；inference推断是读者得结论，不是合并数据分组操作。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 6,
+          "rationale": "G release：before public后名词，公开发布为release；consent同意非发布事件，inference推理不是机构公开动作。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.assist-critical-edition-001",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "witnesses",
+        "collation",
+        "variant",
+        "apparatus",
+        "lacuna",
+        "conjecture",
+        "emend",
+        "transcription",
+        "diplomatic",
+        "provenance"
+      ],
+      "filledPassage": "A seminar prepared a critical edition of a short historical poem surviving in several handwritten copies. The copies were textual witnesses: material sources that preserved forms of the work, not necessarily independent testimonies to its original wording. A later copy might have been made directly from an earlier one.\n\nComparing readings across the copies was collation. The comparison revealed a variant where one manuscript used a different word from another. Frequency alone did not settle which reading should enter the edited text, since several copies could share a single copying history.\n\nThe edition recorded alternatives in an apparatus, a structured set of notes documenting textual differences and editorial decisions. Readers could inspect those notes instead of having to accept a smooth printed line as an unqualified reproduction of every source.\n\nA physical loss that left part of the poem missing was a lacuna. If an editor proposed wording unsupported by a surviving source to fill that space, the proposal was a conjecture. Its plausibility did not turn it into newly discovered manuscript evidence. Such proposals were explicitly marked.\n\nTo emend the text was to correct a suspected error through an announced editorial intervention. The team distinguished that action from a transcription, a written rendering of what a particular source actually showed. A carefully prepared rendering could preserve a reading that the editor considered mistaken.\n\nA diplomatic presentation followed the source's written features closely under stated conventions. It had a different purpose from an edition that silently regularised spelling for convenient reading. Neither format was automatically suitable for every research question.\n\nFinally, the team recorded provenance, the documented origin and custody history of each manuscript. That history could inform evaluation, but it did not guarantee an error-free text. The seminar's governing principle was transparency about the route from material sources to editorial claims. A readable final poem and a demonstrable account of its production were related achievements, not interchangeable ones.",
+      "candidateAudits": [
+        {
+          "letter": "A",
+          "word": "witnesses",
+          "disposition": "Gap 1: 保存文本形态的实物来源为文本见证，复数；translation译文是语言转换不是所有抄本类别。"
+        },
+        {
+          "letter": "B",
+          "word": "translation",
+          "disposition": "Unused: 没有跨语言转译任务，转写保留同一来源文字，不能以translation替代。"
+        },
+        {
+          "letter": "C",
+          "word": "conjecture",
+          "disposition": "Gap 6: unsupported proposed wording为拟补；witnesses为现存证据，不能将合理猜测升级为抄本。"
+        },
+        {
+          "letter": "D",
+          "word": "apparatus",
+          "disposition": "Gap 4: structured textual notes为校勘记；transcription转写正文不等记载不同版本的注释系统。"
+        },
+        {
+          "letter": "E",
+          "word": "chronology",
+          "disposition": "Unused: 文本有历史关系，但比读叫collation，来源及保管链叫provenance，均非纯年代序。"
+        },
+        {
+          "letter": "F",
+          "word": "variant",
+          "disposition": "Gap 3: one word differs为异文；consensus共识不等差异读法，conjecture无来源拟补另述。"
+        },
+        {
+          "letter": "G",
+          "word": "authoritative",
+          "disposition": "Unused: 权威地位不由忠实格式自动保证，材料只定义呈现规范。"
+        },
+        {
+          "letter": "H",
+          "word": "emend",
+          "disposition": "Gap 7: to后原形，correct suspected error为校订；translation名词不合且校订不必转换语言。"
+        },
+        {
+          "letter": "I",
+          "word": "consensus",
+          "disposition": "Unused: 相同抄文多数也不定原文，空格描述的是异文而非共识。"
+        },
+        {
+          "letter": "J",
+          "word": "transcription",
+          "disposition": "Gap 8: rendering of particular source为转写；apparatus注记、collation比对活动与单源转写不同。"
+        },
+        {
+          "letter": "K",
+          "word": "provenance",
+          "disposition": "Gap 10: origin and custody history为来源链；chronology仅年代先后，不能概括持有流转记录。"
+        },
+        {
+          "letter": "L",
+          "word": "diplomatic",
+          "disposition": "Gap 9: closely preserves source written features为外交式/忠实摹录呈现；authoritative权威性不说明呈现格式，legible仅可辨字。"
+        },
+        {
+          "letter": "M",
+          "word": "lacuna",
+          "disposition": "Gap 5: physical missing portion为缺文；variant是保留下来的不同读法，非实物丢失。"
+        },
+        {
+          "letter": "N",
+          "word": "collation",
+          "disposition": "Gap 2: 跨副本逐项比读为校勘对照；chronology年代序列不等逐字比读。"
+        },
+        {
+          "letter": "O",
+          "word": "legible",
+          "disposition": "Unused: 可读性不等保留原书写特征的格式属性，最后段也明确读起来顺不等证据透明。"
+        }
+      ],
+      "findings": [
+        "Author-self-review: all ten unchanged words read in the restored passage; finite clauses, prepositions, noun number and verb complementation checked. Each used candidate has its own stated semantic/grammatical role; all five unused candidates have explicit global exclusion rationales.",
+        "Full-bank uniqueness is assessed under the stated once-only rule; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "question": 1,
+          "answer": 0,
+          "rationale": "A witnesses：保存文本形态的实物来源为文本见证，复数；translation译文是语言转换不是所有抄本类别。"
+        },
+        {
+          "materialId": "whole",
+          "question": 2,
+          "answer": 13,
+          "rationale": "N collation：跨副本逐项比读为校勘对照；chronology年代序列不等逐字比读。"
+        },
+        {
+          "materialId": "whole",
+          "question": 3,
+          "answer": 5,
+          "rationale": "F variant：one word differs为异文；consensus共识不等差异读法，conjecture无来源拟补另述。"
+        },
+        {
+          "materialId": "whole",
+          "question": 4,
+          "answer": 3,
+          "rationale": "D apparatus：structured textual notes为校勘记；transcription转写正文不等记载不同版本的注释系统。"
+        },
+        {
+          "materialId": "whole",
+          "question": 5,
+          "answer": 12,
+          "rationale": "M lacuna：physical missing portion为缺文；variant是保留下来的不同读法，非实物丢失。"
+        },
+        {
+          "materialId": "whole",
+          "question": 6,
+          "answer": 2,
+          "rationale": "C conjecture：unsupported proposed wording为拟补；witnesses为现存证据，不能将合理猜测升级为抄本。"
+        },
+        {
+          "materialId": "whole",
+          "question": 7,
+          "answer": 7,
+          "rationale": "H emend：to后原形，correct suspected error为校订；translation名词不合且校订不必转换语言。"
+        },
+        {
+          "materialId": "whole",
+          "question": 8,
+          "answer": 9,
+          "rationale": "J transcription：rendering of particular source为转写；apparatus注记、collation比对活动与单源转写不同。"
+        },
+        {
+          "materialId": "whole",
+          "question": 9,
+          "answer": 11,
+          "rationale": "L diplomatic：closely preserves source written features为外交式/忠实摹录呈现；authoritative权威性不说明呈现格式，legible仅可辨字。"
+        },
+        {
+          "materialId": "whole",
+          "question": 10,
+          "answer": 10,
+          "rationale": "K provenance：origin and custody history为来源链；chronology仅年代先后，不能概括持有流转记录。"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "practices": 8,
+    "undergraduatePractices": 4,
+    "postgraduatePractices": 4,
+    "scoreableResponses": 80,
+    "missingMediaDependencies": 0
+  }
+}

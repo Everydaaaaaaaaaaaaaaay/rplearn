@@ -1,0 +1,148 @@
+{
+  "checkedAt": "2026-10-28T21:12:06.692123+00:00",
+  "status": "Local acceptance passed; production reconciliation pending",
+  "quota": {
+    "checkedAt": "2026-10-28T21:10:58.853Z",
+    "uniqueNewPractices": 1282,
+    "newResponses": 8658,
+    "newResponsesAllUnique": true,
+    "baselinePractices": 1418,
+    "completePractices": 2700,
+    "groupsByLevel": {
+      "primary1": 180,
+      "primary2": 180,
+      "primary3": 180,
+      "primary4": 180,
+      "primary5": 180,
+      "primary6": 180,
+      "junior1": 180,
+      "junior2": 180,
+      "junior3": 180,
+      "senior1": 180,
+      "senior2": 180,
+      "senior3": 180,
+      "undergraduate": 180,
+      "postgraduate": 180,
+      "advanced": 180
+    },
+    "newGroupsByLevel": {
+      "undergraduate": 138,
+      "postgraduate": 139,
+      "primary2": 107,
+      "primary3": 108,
+      "primary4": 112,
+      "primary5": 99,
+      "primary6": 97,
+      "primary1": 104,
+      "advanced": 116,
+      "junior1": 21,
+      "junior2": 30,
+      "junior3": 34,
+      "senior1": 59,
+      "senior2": 59,
+      "senior3": 59
+    },
+    "revisionSupply": 0,
+    "projection": "Latest frozen version per parent; senior component admission; globally unique actual practice and response identities.",
+    "reviewBoundary": "Original authored candidates; native schema, real grading probes, incremental text-overlap and selected same-AI semantic peer review. No independent teacher or learner calibration claimed."
+  },
+  "selectedBatches": [
+    "b116",
+    "b117",
+    "b118",
+    "b119",
+    "b120",
+    "b121",
+    "b122",
+    "b123",
+    "b124",
+    "b125",
+    "b126",
+    "b127",
+    "b128",
+    "b130",
+    "b131",
+    "b132",
+    "b133",
+    "b135",
+    "b136",
+    "b137",
+    "b138",
+    "b139",
+    "b140"
+  ],
+  "retiredUnpublishedBatches": [
+    "b129",
+    "b134"
+  ],
+  "rootTransformations": {
+    "checkedAt": "2026-10-28T20:59:31.099030+00:00",
+    "bindings": [
+      {
+        "batch": "b112",
+        "gradingInput": "root-advanced-001-grading-input.json",
+        "inputSHA256": "2844ebed4e4ee7dfad2cf43224ce011c091ec4fe72c9592086a82d34dba72b67",
+        "sourceSHA256": "7f8a41ef7691fd584bba4ca999fec5a2bb0e03b5d28b3dc03c32f21e5c107c5a",
+        "questions": 36
+      },
+      {
+        "batch": "b116",
+        "gradingInput": "root-advanced-002-grading-input.json",
+        "inputSHA256": "44c60378b67b1bf44c087e9d88ed5621e73b1a3641bf909a60f2b1d166d1c7f7",
+        "sourceSHA256": "ba299535d285b1fbd75a9f00373ca09e8cc1f715f166b6a92e348479a9c736f2",
+        "questions": 42
+      },
+      {
+        "batch": "b117",
+        "gradingInput": "root-advanced-003-grading-input.json",
+        "inputSHA256": "d7406f0704209f3d377d768ebbadfad5b8ffdf95c08226dc1998997fdf8ba1ba",
+        "sourceSHA256": "fd9def11c0940d380797572c77d537fa9320b64962dd5adad95bd5284bbebd53",
+        "questions": 42
+      },
+      {
+        "batch": "b135",
+        "gradingInput": "root-advanced-004-grading-input.json",
+        "inputSHA256": "37109ce2fedc3f51351dc9316b4bdc0d259c3b7dd3c736d673ccc052d3368b5a",
+        "sourceSHA256": "01cd898fffb429a24c4e2abac3904e4f19f606fefbd1ef85811864a8f47e3839",
+        "questions": 42
+      },
+      {
+        "batch": "b133",
+        "gradingInput": "root-advanced-005-grading-input.json",
+        "inputSHA256": "fdbc66864cad831d5a3cea94f40c6150998f5559aa3d0f49850c782b2e218642",
+        "sourceSHA256": "14709317b1ba9976fd740c64eacec2e459dfa5a7802eb5c1306e433246ff8ac4",
+        "questions": 42
+      }
+    ],
+    "actualGrading": {
+      "checkedAt": "2026-10-28T20:55:31.477Z",
+      "questions": 204,
+      "accepted": 362,
+      "normalized": 362,
+      "rejected": 204,
+      "skips": 204,
+      "unlistedHeldForReview": 204,
+      "missingKeywordRejected": 204,
+      "gradeCalls": 1540
+    },
+    "scope": "Actual frozen question payloads exactly equal tested grading inputs; 34groups/204responses. Author/same-AI peer review, not independent teacher/learner calibration."
+  },
+  "seniorCorrectionEvidence": "build/verification/automatic-promotion-final-auth/senior-final-marking-corrections.json",
+  "sameAIPeerReview": {
+    "scope": "004/005;023–025; bounded017–022relatedpatterncheck; exactfive correctedsource/review/hashdiffs",
+    "issuesResolved": [
+      "017clear flatadverb",
+      "020clear flatadverb",
+      "023rather-than finitepast",
+      "024rather-than finitepast",
+      "025close flatadverb"
+    ],
+    "unlistedPlausibleAnswers": "review required; no forced automaticwrong"
+  },
+  "preservation": "Frozen old manifests/manuscripts retained; two unused frozen batches retired from index before publication; no source, databases, history or userattempts deleted",
+  "cacheCleanup": [
+    "docs/verification/compilation-cache-cleanup-20261029.json",
+    "docs/verification/idle-cache-followup-20261029.json"
+  ],
+  "verificationScope": "No iOS code changes in final content wave; reuse existing preview. Text-only final wave needs no media upload; prior media evidence retained."
+}

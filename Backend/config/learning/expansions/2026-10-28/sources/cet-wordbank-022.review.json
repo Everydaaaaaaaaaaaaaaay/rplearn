@@ -1,0 +1,1184 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "cet-wordbank-022.json",
+  "sourceSHA256": "b944f320f7be0a70aa8ba30546b7d77401c61a63898e2052524e48254d8310f5",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex author of cet-wordbank-022; same author, not independent teacher or learner panel",
+  "reviewedAt": "2026-10-29",
+  "status": "approved",
+  "approvalScope": "Author lexical/grammar/full-bank audit only; not release approval.",
+  "checks": {
+    "practices": 12,
+    "scoreableResponses": 120,
+    "undergraduatePractices": 6,
+    "postgraduatePractices": 6,
+    "candidatesPerBank": 15,
+    "gapsPerPassage": 10,
+    "distinctAnswerWordsPerPassage": 10,
+    "unusedCandidatesPerPassage": 5,
+    "allGapMarkersAppearExactlyOnce": true,
+    "allQuestionsShareTheSameBank": true,
+    "allKeysInBounds": true,
+    "matchingFrozenOriginalLevelsAndFamilies": true,
+    "missingMediaDependencies": 0
+  },
+  "units": [
+    {
+      "id": "undergraduate.battery-rating-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "capacity",
+        "charge",
+        "current",
+        "voltage",
+        "nominal",
+        "terminal",
+        "discharge",
+        "rechargeable",
+        "power",
+        "load"
+      ],
+      "unusedWords": [
+        "chemical",
+        "efficiency",
+        "energy",
+        "resistance",
+        "series"
+      ],
+      "findings": [
+        "Capacity is rated charge, charge differs from current, voltage from energy and power. Nominal is a reference label rather than fixed measured output.",
+        "Terminal is a connection point, discharge a process, rechargeable a design property and load the receiving arrangement.",
+        "Unused chemical, efficiency, energy, resistance and series checked across all ten slots; no practical battery instructions.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 245,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 0,
+          "answerWord": "capacity",
+          "finding": "rated charge amount defines capacity容量。energy总能量与电压也有关非此电荷容量定义，efficiency效率非储量。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 1,
+          "answerWord": "charge",
+          "finding": "quantity carried circuit defines charge电荷。current为速率下一空，resistance电阻不指流过的电量。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 3,
+          "answerWord": "current",
+          "finding": "charge flow rate defines current电流。power能量流率后空非电荷流率，voltage电势差不同。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 14,
+          "answerWord": "voltage",
+          "finding": "potential difference defines voltage电压。resistance电阻、energy能量非两点电势差。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 8,
+          "answerWord": "nominal",
+          "finding": "stated reference value defines nominal标称的。chemical化学性、series串联不说明标签参照值性质。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 13,
+          "answerWord": "terminal",
+          "finding": "electrical connection point defines terminal端子。load负载受能器而非连接点，capacity物理量不合。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 4,
+          "answerWord": "discharge",
+          "finding": "battery supplies stored state changes defines discharge放电。charge此处为电荷名词且已区分，efficiency比例非释能过程。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 10,
+          "answerWord": "rechargeable",
+          "finding": "restoring appropriate for reuse defines rechargeable可充电的。chemical化学的不能区分可复充，nominal标称非恢复能力。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 9,
+          "answerWord": "power",
+          "finding": "energy transfer rate defines power功率。energy本身非每时速率，current电荷速率非能量率。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 7,
+          "answerWord": "load",
+          "finding": "receiving device defines load负载。terminal接点非用电设备，series连接方式不是接供器件。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.barcode-check-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "identifier",
+        "lookup",
+        "symbology",
+        "module",
+        "encoded",
+        "scanner",
+        "decoded",
+        "checksum",
+        "redundancy",
+        "contrast"
+      ],
+      "unusedWords": [
+        "database",
+        "digits",
+        "ink",
+        "orientation",
+        "verified"
+      ],
+      "findings": [
+        "Identifier and lookup connect a printed value with a separate product record. Symbology, module, encoding, scanning and decoding are distinct stages.",
+        "Checksum supplies a specified redundant relationship, detecting certain errors without proving correct attachment or database content.",
+        "Unused database, digits, ink, orientation and verified checked globally. No actual product database or missing barcode image.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 238,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 6,
+          "answerWord": "identifier",
+          "finding": "reference distinguish record defines identifier标识符。database存记录系统非此对象参照值，ink印墨非身份值。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 8,
+          "answerWord": "lookup",
+          "finding": "connect value record defines lookup查找。database信息系统名非查找操作，orientation方向不表按键寻记录。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 13,
+          "answerWord": "symbology",
+          "finding": "barcode pattern rule scheme defines symbology码制。module宽单位下空不同，checksum校验值不是整套编码法。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 9,
+          "answerWord": "module",
+          "finding": "narrow basic width unit defines module模块。digits数位非图案宽度基本单位，ink墨材料不同。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 5,
+          "answerWord": "encoded",
+          "finding": "value represented marks defines encoded已编码。decoded从图恢复值下一空方向反，verified核过不说明变成图案。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 12,
+          "answerWord": "scanner",
+          "finding": "optical reads marks device defines scanner扫描器。database保存记录不光读，identifier值不是读头。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 3,
+          "answerWord": "decoded",
+          "finding": "pattern to candidate value defines decoded解码。encoded反向，verified认证不等恢复数字读值。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 0,
+          "answerWord": "checksum",
+          "finding": "calculated from value for check defines checksum校验和。digits泛数字非额外校验关系，lookup找记录不计算核值。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 11,
+          "answerWord": "redundancy",
+          "finding": "beyond payload error detection relation defines redundancy冗余。contrast图案明暗非内容多余关系，orientation方向不是额外编码信息。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 1,
+          "answerWord": "contrast",
+          "finding": "dark light distinction defines contrast对比度。ink印墨本身非明暗差量，verified已核分词非性质名。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.plane-mirror-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "plane",
+        "incident",
+        "reflected",
+        "normal",
+        "angle",
+        "surface",
+        "virtual",
+        "upright",
+        "lateral",
+        "parallel"
+      ],
+      "unusedWords": [
+        "inverted",
+        "opaque",
+        "real",
+        "refraction",
+        "wavelength"
+      ],
+      "findings": [
+        "Plane mirror, incident ray and reflected ray have distinct geometry; normal reference and angle measurement are explicit.",
+        "Surface and virtual image are separated from a physical ray meeting. Upright concerns vertical orientation, lateral the stated left–right comparison.",
+        "Unused inverted, opaque, real, refraction and wavelength checked globally. All geometry verbal, no missing diagram.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 250,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 7,
+          "answerWord": "plane",
+          "finding": "flat mirror defines plane平面的。opaque不透光不指定反射面平，real像性质非镜形。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 1,
+          "answerWord": "incident",
+          "finding": "arrives surface defines incident入射的。reflected返出方向后空，inverted倒置非进光。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 9,
+          "answerWord": "reflected",
+          "finding": "light returns defines reflected反射的。incident来向相反，refraction折射名词不同。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 4,
+          "answerWord": "normal",
+          "finding": "imaginary perpendicular at point defines normal法线。surface实际面与垂直线不同，wavelength波长不是参考线。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 0,
+          "answerWord": "angle",
+          "finding": "ray line separation angular defines angle角。wavelength长度尺度非方向夹角，surface面非角量。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 11,
+          "answerWord": "surface",
+          "finding": "reflecting face defines surface表面。normal线垂于面非面，real形容真像不名镜面。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 13,
+          "answerWord": "virtual",
+          "finding": "rays not physically meet apparent location defines virtual虚的。real会聚实像相反，opaque透光性非成像位置性。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 12,
+          "answerWord": "upright",
+          "finding": "not upside down defines upright正立。inverted倒置相反，lateral侧向说另一轴不等竖向朝上。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 3,
+          "answerWord": "lateral",
+          "finding": "left right comparison defines lateral侧向的。upright上下正立非左右关系，inverted泛翻转不特指侧向轴类别。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 6,
+          "answerWord": "parallel",
+          "finding": "constant separation lines defines parallel平行。normal某点垂线不泛同距关系，plane平面非两线定距属性。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.paper-fibres-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "fibres",
+        "slurry",
+        "cellulose",
+        "screening",
+        "contaminants",
+        "deinking",
+        "shortened",
+        "strength",
+        "recycled",
+        "virgin"
+      ],
+      "unusedWords": [
+        "bleached",
+        "coating",
+        "drainage",
+        "filler",
+        "yield"
+      ],
+      "findings": [
+        "Fibres are elongated structure, slurry a general solid–liquid mixture and cellulose a plant-derived structural substance.",
+        "Screening separates through openings; contaminants are unwanted; deinking addresses printing ink. Shortened fibres can change strength.",
+        "Recycled and virgin identify origins, not full environmental conclusions. Unused bleached, coating, drainage, filler and yield checked globally.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 260,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 5,
+          "answerWord": "fibres",
+          "finding": "elongated structural elements defines fibres纤维。filler填料颗粒非长条承网结构，coating涂层非交连细丝。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 11,
+          "answerWord": "slurry",
+          "finding": "liquid dispersed solids defines slurry浆液。cellulose纤维化学物质非固液悬混物，drainage排水过程非悬混物。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 7,
+          "answerWord": "cellulose",
+          "finding": "plant structural substance in fibres定义cellulose纤维素。slurry是混合物不是纤维化学成分，filler填料不是植物主体长链材料。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 9,
+          "answerWord": "screening",
+          "finding": "mesh opening separates defines screening筛分。deinking脱墨下空是颜色去除，drainage排液不必筛掉目标杂物。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 2,
+          "answerWord": "contaminants",
+          "finding": "unwanted not intended stream defines contaminants污染杂物。filler可按设计加入非都不应有，coating可能原纸设计部件。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 3,
+          "answerWord": "deinking",
+          "finding": "addresses printing colour defines deinking脱墨。screening物理筛分非印色去除专名，bleached分词非该工序名。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 10,
+          "answerWord": "shortened",
+          "finding": "reduced length defines shortened缩短。bleached漂白不表长度，recycled回收来源不保证变短。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 12,
+          "answerWord": "strength",
+          "finding": "withstand forces test defines strength强度。yield产量比例非承力，drainage排水不表抗力。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 8,
+          "answerWord": "recycled",
+          "finding": "earlier product recovery defines recycled回收的。virgin新原料相反，bleached仅漂白不定材料曾用。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 13,
+          "answerWord": "virgin",
+          "finding": "newly supplied fibre source defines virgin原生的。recycled已用复得相反，bleached化处理不定来源。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.pendulum-period-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "pivot",
+        "length",
+        "oscillation",
+        "period",
+        "frequency",
+        "amplitude",
+        "small",
+        "gravity",
+        "restoring",
+        "damping"
+      ],
+      "unusedWords": [
+        "equilibrium",
+        "density",
+        "mass",
+        "rigid",
+        "vertical"
+      ],
+      "findings": [
+        "Pivot, length, oscillation, period, frequency and amplitude have distinct spatial/event/time roles.",
+        "Small-angle approximation is explicitly bounded; gravity and restoring tendency do not make the object stop at equilibrium on first return.",
+        "Damping is defined by decaying motion, without assuming the physical system swings unchanged forever. Unused equilibrium, density, mass, rigid and vertical checked globally.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 223,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 10,
+          "answerWord": "pivot",
+          "finding": "fixed turn support point defines pivot支点。mass质量不是位置，equilibrium状态非悬挂点。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 6,
+          "answerWord": "length",
+          "finding": "support to centre distance defines length摆长。amplitude相对中心摆幅不是悬绳到质心几何长，other不合。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 8,
+          "answerWord": "oscillation",
+          "finding": "complete repeated movement defines oscillation振荡。frequency每时次数非单周期运动事件，density密度不同。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 9,
+          "answerWord": "period",
+          "finding": "time one repetition defines period周期。frequency每时频率下空为倒数，length空间量非时间。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 3,
+          "answerWord": "frequency",
+          "finding": "repetitions per time defines frequency频率。period一次历时相反关系，damping振幅衰减非重复速率。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 0,
+          "answerWord": "amplitude",
+          "finding": "largest displacement from central defines amplitude振幅。length支点至质心不随摆大变化，mass质量非位移量。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 13,
+          "answerWord": "small",
+          "finding": "limited angle approximation defines small小的。rigid刚体形变性非角度大小，vertical竖直方向不表近似小角。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 5,
+          "answerWord": "gravity",
+          "finding": "gravitational influence defines gravity重力。density密度非引力作用，mass物体质量非重力场作用总称。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 11,
+          "answerWord": "restoring",
+          "finding": "towards equilibrium tendency defines restoring恢复的。vertical全程力向不固定为竖直，rigid形状不指回中趋势。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 1,
+          "answerWord": "damping",
+          "finding": "gradual amplitude reduction energy outward defines damping阻尼。density密度不是运动幅度逐渐减小的过程，period时间非衰减机制类。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.ultrasound-echo-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "transducer",
+        "pulse",
+        "echo",
+        "boundary",
+        "reflection",
+        "absorption",
+        "depth",
+        "speed",
+        "frequency",
+        "resolution"
+      ],
+      "unusedWords": [
+        "coupling",
+        "image",
+        "impedance",
+        "time",
+        "wavelength"
+      ],
+      "findings": [
+        "Transducer, pulse, echo, boundary, reflection and absorption identify different devices, signals, locations or processes.",
+        "Depth estimate uses round-trip delay and assumed sound speed; it is not direct assumption-free location.",
+        "Frequency differs from delay, resolution from image size. Unused coupling, image, impedance, time and wavelength checked globally; no medical or equipment-use claim.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 244,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 13,
+          "answerWord": "transducer",
+          "finding": "electrical mechanical conversion device defines transducer换能器。image输出图非器件，coupling耦合关系非发收装置名。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 8,
+          "answerWord": "pulse",
+          "finding": "brief burst defines pulse脉冲。frequency单位时周期量不是一次短包，wavelength空间周期长度非爆发。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 4,
+          "answerWord": "echo",
+          "finding": "returning sound defines echo回波。reflection产生返波的过程后空非收到声本身，time时间量不指回声。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 1,
+          "answerWord": "boundary",
+          "finding": "regions meet different properties defines boundary界面。depth深度是距离，impedance材料声阻抗非分界位置本身。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 9,
+          "answerWord": "reflection",
+          "finding": "return process defines reflection反射。echo回来的信号不是过程名，absorption吸收下空方向不同。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 0,
+          "answerWord": "absorption",
+          "finding": "energy taken material not returned defines absorption吸收。reflection反射是回，coupling声路连接不是材中能量吸收机制。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 3,
+          "answerWord": "depth",
+          "finding": "below surface distance defines depth深度。wavelength声波空间周期非目标到表面距离，time为延时不是深。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 11,
+          "answerWord": "speed",
+          "finding": "propagation distance per time defines speed速度。frequency周期次数不定路径传播速度，impedance声阻抗非行程速率。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 5,
+          "answerWord": "frequency",
+          "finding": "cycles per time defines frequency频率。time历时本身非次数率，wavelength空间周期不是每秒数。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 10,
+          "answerWord": "resolution",
+          "finding": "distinguish nearby detail defines resolution分辨率。image图整体非细节区分能力名，coupling声耦合不是此成像性能。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.collider-bias-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "nodes",
+        "arrows",
+        "directed",
+        "confounder",
+        "collider",
+        "association",
+        "spurious",
+        "selection",
+        "mediator",
+        "intervention"
+      ],
+      "unusedWords": [
+        "adjustment",
+        "monetary",
+        "descendant",
+        "independence",
+        "temporal"
+      ],
+      "findings": [
+        "Nodes, arrows and direction express assumptions rather than prove them. Confounder common cause and collider common effect have different structures.",
+        "Conditioning through selection can induce spurious association; mediator control changes the estimand rather than universally improving adjustment.",
+        "Intervention differs from observation. Unused adjustment, monetary, descendant, independence and temporal checked globally.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 280,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 11,
+          "answerWord": "nodes",
+          "finding": "variables graph entities defines nodes节点。arrows关系方向下空，descendant后代关系角色非图实体总称。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 1,
+          "answerWord": "arrows",
+          "finding": "oriented proposed causal links defines arrows箭头。nodes变量点非关系线，association统计关联不名图中有向记号。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 7,
+          "answerWord": "directed",
+          "finding": "links orientations defines directed有向。monetary货币的与图边方向定义无关，temporal时间性非图有向特性。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 5,
+          "answerWord": "confounder",
+          "finding": "common cause relevant variables defines confounder混杂因子。collider共同结果下一空相反结构，mediator中路非共同先因。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 4,
+          "answerWord": "collider",
+          "finding": "two incoming common effect defines collider碰撞点。confounder发出两箭头共同因相反，descendant后代泛不必双入。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 2,
+          "answerWord": "association",
+          "finding": "conditioning induces relationship defines association关联。independence独立相反，adjustment调整是操作非新产生的统计关系。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 13,
+          "answerWord": "spurious",
+          "finding": "not target influence apparent relation defines spurious伪的。monetary货币相关非此虚假关联性质，temporal先后不表伪相关。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 12,
+          "answerWord": "selection",
+          "finding": "inclusion in sample defines selection选择。adjustment后续统计控制非纳入样本机制，intervention外部施变非单纳入。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 10,
+          "answerWord": "mediator",
+          "finding": "along causal route defines mediator中介。confounder共同因不是路上结果，collider共同果非一般目标因果中途。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 9,
+          "answerWord": "intervention",
+          "finding": "external operation alters variable defines intervention干预。association观测关系异，independence统计属性非外部操作。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.queueing-model-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "arrival",
+        "service",
+        "queue",
+        "discipline",
+        "throughput",
+        "capacity",
+        "utilisation",
+        "variability",
+        "latency",
+        "stable"
+      ],
+      "unusedWords": [
+        "idle",
+        "vacancy",
+        "population",
+        "overtime",
+        "workload"
+      ],
+      "findings": [
+        "Arrival, service, queue and discipline define events and ordering. Throughput actual rate differs from capacity potential rate.",
+        "Utilisation and variability jointly affect delay interpretation; end-to-end latency differs from active handling and queue waiting alone.",
+        "Stable does not imply constant short-term queue. Unused idle, overtime, population, vacancy and workload checked globally; inventory/waiting excluded to prevent near-synonym competition with queue/latency. No real support-desk promise.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 280,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 0,
+          "answerWord": "arrival",
+          "finding": "requests enter defines arrival到达。service处理下空，population群体本身非到达过程。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 8,
+          "answerWord": "service",
+          "finding": "handling requests defines service服务。overtime加班额外时间不是处理请求的过程名，arrival新进入不是被办理。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 7,
+          "answerWord": "queue",
+          "finding": "requests awaiting handling defines queue队列。vacancy指空缺而非等待请求组成的集合。其他不合。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 2,
+          "answerWord": "discipline",
+          "finding": "rule next request defines queue discipline排队规则。workload工作总量非取次序方法，idle闲置非排序规则名。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 10,
+          "answerWord": "throughput",
+          "finding": "actually completed rate defines throughput吞吐量。capacity潜在能力下空不等实成速率，utilisation占用比例非出件率。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 1,
+          "answerWord": "capacity",
+          "finding": "maximum sustainable handling ability defines capacity容量。throughput实际出量不保证最大，latency历时非能力。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 11,
+          "answerWord": "utilisation",
+          "finding": "proportion resource/time occupied defines utilisation利用率。capacity额定能力不是实际使用比例，population总数非占用率。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 12,
+          "answerWord": "variability",
+          "finding": "unevenness arrival service timing defines variability变异性。workload负荷总量不直接表时差离散，overtime超时工作并非到达服务的不均度。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 5,
+          "answerWord": "latency",
+          "finding": "endpoints request to finish elapsed defines latency延迟。overtime额外工作时长不等起止事件间总延迟。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 9,
+          "answerWord": "stable",
+          "finding": "bounded long run backlog defines stable稳定的。idle完全闲可某时不忙但不命名长期可控积压性质，other不合。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.forensic-likelihood-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "hypothesis",
+        "evidence",
+        "likelihood",
+        "ratio",
+        "denominator",
+        "conditioning",
+        "prior",
+        "posterior",
+        "alternative",
+        "uncertainty"
+      ],
+      "unusedWords": [
+        "independent",
+        "prosecution",
+        "relevant",
+        "sampling",
+        "source"
+      ],
+      "findings": [
+        "Hypothesis and evidence differ. Likelihood conditions evidence on a proposition; ratio and denominator retain comparison direction.",
+        "Prior and posterior odds are separate from a laboratory likelihood contribution. Alternative proposition must be specified, not treated as all imaginable possibilities at once.",
+        "Dependence and uncertainty retained. Unused independent, prosecution, relevant, sampling and source checked globally; hypothetical analysis, no actual legal verdict.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 276,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 4,
+          "answerWord": "hypothesis",
+          "finding": "proposed account defines hypothesis假说。source来源对象不直接是被比较命题，prosecution起诉方不是抽象命题类。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 3,
+          "answerWord": "evidence",
+          "finding": "observed match defines evidence证据。hypothesis假说不同于观察，sampling采样过程不是匹配所得证据本身。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 6,
+          "answerWord": "likelihood",
+          "finding": "probability evidence given proposition defines likelihood似然。posterior反向更新量不同，prior未证前权重不是证据条件概率。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 10,
+          "answerWord": "ratio",
+          "finding": "two likelihood quantities comparison defines ratio比。denominator下面一部分非整个比值，uncertainty不确定非两量除法。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 2,
+          "answerWord": "denominator",
+          "finding": "under comparison defines denominator分母。prior先验权重非此比率下部角色，source来源不指算式位置。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 1,
+          "answerWord": "conditioning",
+          "finding": "given vs questioned direction defines conditioning条件化。sampling取样可能条件一项但非概率前提方向概念，其他不合。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 8,
+          "answerWord": "prior",
+          "finding": "before evidence odds defines prior先验。posterior更新后相反，independent独立不说明证据前后。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 7,
+          "answerWord": "posterior",
+          "finding": "after incorporated evidence odds defines posterior后验。prior先前异，relevant相关不表示更新后的量。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 0,
+          "answerWord": "alternative",
+          "finding": "other proposition comparison defines alternative备择的。prosecution一方不保证是哪命题，independent独立非替代假说身份。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 14,
+          "answerWord": "uncertainty",
+          "finding": "estimated probabilities imperfect defines uncertainty不确定性。sampling过程可有不确定但非关于估值的认知状态总称，other不合。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.memory-reconstruction-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "encoding",
+        "retrieval",
+        "cue",
+        "recognition",
+        "recollection",
+        "familiarity",
+        "source",
+        "suggestion",
+        "reconstruction",
+        "confidence"
+      ],
+      "unusedWords": [
+        "consolidation",
+        "interference",
+        "schema",
+        "storage",
+        "vivid"
+      ],
+      "findings": [
+        "Encoding and retrieval are different stages, cue prompts retrieval, recognition differs from detailed recollection and familiarity.",
+        "Source monitoring can misattribute later suggestion; reconstruction does not make every memory false.",
+        "Confidence is subjective certainty, not automatic accuracy. Unused consolidation, interference, schema, storage and vivid checked globally; no actual witness or study result.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 294,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 3,
+          "answerWord": "encoding",
+          "finding": "initial processing into memory defines encoding编码。storage保存状态非首次处理操作，consolidation稳定化过程非同一初编码概念。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 9,
+          "answerWord": "retrieval",
+          "finding": "access later defines retrieval提取。encoding输入阶段相反，interference干扰不是访问记忆总称。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 2,
+          "answerWord": "cue",
+          "finding": "prompt connects experience defines cue线索。schema知识图式较广非本次触发提示，source信息来源非唤起刺激角色。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 7,
+          "answerWord": "recognition",
+          "finding": "identify previously encountered defines recognition再认。recollection特定细节下空，confidence确信强度不是判断见过。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 6,
+          "answerWord": "recollection",
+          "finding": "richer event details defines recollection回忆。recognition只认熟可无细节，familiarity熟悉感下一空更弱。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 4,
+          "answerWord": "familiarity",
+          "finding": "sense known without when where defines familiarity熟悉性。recollection有事件细节相反，vivid形容鲜明非感觉名词。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 11,
+          "answerWord": "source",
+          "finding": "where information came defines source来源。storage位置保存抽象非将后讨论误归原景的出处归因，other不合。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 13,
+          "answerWord": "suggestion",
+          "finding": "later supplied detail interpretation defines suggestion暗示。interference泛干扰未必通过具体提示供信息，consolidation稳定化非外来暗示。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 8,
+          "answerWord": "reconstruction",
+          "finding": "building account not copied film defines reconstruction重构。storage仅保存非组合建构，recognition是再认任务而非重建整体。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 0,
+          "answerWord": "confidence",
+          "finding": "subjective certainty defines confidence信心。vivid形容鲜明不作此名词，familiarity熟悉程度不等对回答确信度。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.ocean-carbonate-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "dissolved",
+        "ions",
+        "carbonate",
+        "speciation",
+        "pH",
+        "acidification",
+        "alkaline",
+        "buffering",
+        "equilibrium",
+        "saturation"
+      ],
+      "unusedWords": [
+        "mineral",
+        "neutral",
+        "photosynthesis",
+        "precipitation",
+        "salinity"
+      ],
+      "findings": [
+        "Dissolution, charged ions, carbonate and speciation identify different states or chemical descriptions.",
+        "pH decline is acidification without necessarily crossing neutrality; alkaline and neutral are distinct. Buffering is finite.",
+        "Equilibrium differs from saturation relative to a named solid. Unused mineral, neutral, photosynthesis, precipitation and salinity checked globally.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 282,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 4,
+          "answerWord": "dissolved",
+          "finding": "gas incorporated liquid phase defines dissolved溶解的。neutral中性说酸碱非入水相，mineral矿物名不表气液结合状态。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 6,
+          "answerWord": "ions",
+          "finding": "charged chemical species defines ions离子。carbonate一种离子但不命名所有带电种类，salinity盐度量不是带电粒总称。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 3,
+          "answerWord": "carbonate",
+          "finding": "named carbon ion defines carbonate碳酸根。mineral固体矿物非该水相离子，photosynthesis光合过程不是离子。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 14,
+          "answerWord": "speciation",
+          "finding": "relative chemical-form distribution defines speciation形态分布。salinity总溶盐量非各碳形态比例，precipitation固相析出非分布总称。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 9,
+          "answerWord": "pH",
+          "finding": "hydrogen-ion activity measure defines pH酸碱度。salinity盐度不度量氢活动，saturation饱和度针对固相不同。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 0,
+          "answerWord": "acidification",
+          "finding": "decreasing pH process defines acidification酸化。precipitation析固非pH降低通称，photosynthesis可参与却不命名此数变。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 1,
+          "answerWord": "alkaline",
+          "finding": "above neutral becoming less defines alkaline碱性的。neutral恰参照不是above，mineral矿物非酸碱性形容。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 2,
+          "answerWord": "buffering",
+          "finding": "resists stated added change defines buffering缓冲。equilibrium化学平衡不特指抵抗输入pH变能力，salinity盐度非缓冲。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 5,
+          "answerWord": "equilibrium",
+          "finding": "balanced chemical processes state defines equilibrium平衡。saturation相对某固体是后空特定状态量，precipitation单向析出过程不同。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 12,
+          "answerWord": "saturation",
+          "finding": "degree relative named solid defines saturation饱和度。salinity盐度总含量不直接是某固体饱和比，mineral矿物不是degree量。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.language-reconstruction-bank-022",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "cognates",
+        "correspondence",
+        "regular",
+        "borrowing",
+        "inheritance",
+        "protoform",
+        "reconstructed",
+        "attested",
+        "innovation",
+        "subgroup"
+      ],
+      "unusedWords": [
+        "analogy",
+        "dialect",
+        "orthography",
+        "semantics",
+        "similarity"
+      ],
+      "findings": [
+        "Cognates require descent, sound correspondence regular patterns; borrowing and inheritance have distinct routes.",
+        "Protoform identifies proposed ancestral form, reconstructed inferential status, attested direct record status.",
+        "Shared innovation supports subgrouping under the given history, retention alone not equivalent. Unused analogy, dialect, orthography, semantics and similarity checked globally.",
+        "Targeted material and prompt grammar scan reviewed prepositions and finite clauses before source emission; all ten unchanged answer words checked in the full restored passage."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 288,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 3,
+          "answerWord": "cognates",
+          "finding": "shared ancestral descent words defines cognates同源词。similarity外观相近不证明同源，borrowing接触路径不同。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 4,
+          "answerWord": "correspondence",
+          "finding": "matching sound patterns defines correspondence对应。orthography书写规则非跨语言音变对应关系，semantics意义领域不同。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 11,
+          "answerWord": "regular",
+          "finding": "systematic environments defines regular有规律的。reconstructed推建状态不保证规则作用，attested有文献证据非规则性质。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 2,
+          "answerWord": "borrowing",
+          "finding": "contact provides language material defines borrowing借用。inheritance亲缘传承下空，analogy内部类推而非来自他语言。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 6,
+          "answerWord": "inheritance",
+          "finding": "descent transmission defines inheritance继承。borrowing接触相反路径，innovation新变异非传下来的机制总称。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 9,
+          "answerWord": "protoform",
+          "finding": "proposed ancestral form defines protoform原始形式。dialect方言是语言变体不是某词祖形，subgroup分类分支非词形。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 10,
+          "answerWord": "reconstructed",
+          "finding": "inferred comparative evidence defines reconstructed重建的。attested直接文本下空对照，regular规则性不说明证据路径。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 1,
+          "answerWord": "attested",
+          "finding": "represented surviving relevant record defines attested有文献实证的。reconstructed推导非直接保存，regular音变系统性非文本见证。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 7,
+          "answerWord": "innovation",
+          "finding": "new shared change defines innovation共同创新。analogy一种变更机制但不命名所有新性状，similarity一般相似不足组支。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 14,
+          "answerWord": "subgroup",
+          "finding": "smaller branch family defines subgroup次群。dialect单语言变体非必多语言亲缘支，orthography书写体系非历史组。"
+        }
+      ]
+    }
+  ],
+  "unresolvedConcerns": [
+    "No independent teacher or learner difficulty/discrimination calibration; authored level alignment remains provisional.",
+    "All material is original educational prose with complete interpretive evidence, not evidence of real studies, commercial assessments or physical trials.",
+    "No compiled manifests/index changes, publication or deployment performed by this author-source task."
+  ]
+}

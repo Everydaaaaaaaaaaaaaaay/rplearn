@@ -1,0 +1,1741 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b116",
+  "createdAt": "2026-10-29T04:26:34.226943+08:00",
+  "sourceSHA256": "ba299535d285b1fbd75a9f00373ca09e8cc1f715f166b6a92e348479a9c736f2",
+  "reviewSHA256": "d61e24beb024b93c0cdf82b47bba954e299b4a7fd507e9446be16331944313e8",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex root author, explicit reconstruction and bounded-variant review",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.advanced.book-publisher-root-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "高级改写：出版社的缺页与印刷成本",
+        "summary": "高级改写：出版社的缺页与印刷成本，共6题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 14,
+        "goalIds": [
+          "original.keyword_transformation"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.keywordtransformation",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original source supplies the six-item keyword-transformation format and three-to-six-word bound only. All situations, sentence pairs, keys and rationales are newly authored; no official C1 or learner calibration claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex root author, explicit reconstruction and bounded-variant review (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.advanced.book-publisher-root-002",
+          "family": "keyword_transformation",
+          "label": "高级改写：出版社的缺页与印刷成本",
+          "candidateSHA256": "b4a70f828ef9aa84696323e1534a729927d8a3b769ef46c3951548b22afec402",
+          "authorCheckSHA256": "974581a33db09cc1d3189c941335121fc18a9f6800477461791c8e728f6881dc",
+          "sourceGroupIds": [
+            "original.advanced-kwt-timing#advanced.book-publisher-root-002.worksheet"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b116；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "At a Book Publisher\n\n1. First sentence: The editor is certain that the missing pages were removed deliberately.\nSecond sentence: The editor is convinced that the missing pages ____.\nKey word: MUST\n\n2. First sentence: We did not consider the cost of colour printing.\nSecond sentence: We failed ____ the cost of colour printing.\nKey word: ACCOUNT\n\n3. First sentence: I wish I had kept a copy of the original cover design.\nSecond sentence: I regret ____ of the original cover design.\nKey word: NOT\n\n4. First sentence: It was unnecessary for the designer to pay for another copy, but she did.\nSecond sentence: The designer ____ another copy.\nKey word: NEED\n\n5. First sentence: The publisher has decided that it will not accept any more late changes.\nSecond sentence: The publisher has decided ____ any more late changes.\nKey word: PUT\n\n6. First sentence: As far as I know, the index has not yet been checked.\nSecond sentence: To ____, the index has not yet been checked.\nKey word: BEST"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.advanced.book-publisher-root-002.worksheet.q1",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The editor is certain that the missing pages were removed deliberately.\nUse MUST: The editor is convinced that the missing pages ____.\nWrite only the missing words.",
+            "material": "At a Book Publisher\n\n1. First sentence: The editor is certain that the missing pages were removed deliberately.\nSecond sentence: The editor is convinced that the missing pages ____.\nKey word: MUST\n\n2. First sentence: We did not consider the cost of colour printing.\nSecond sentence: We failed ____ the cost of colour printing.\nKey word: ACCOUNT\n\n3. First sentence: I wish I had kept a copy of the original cover design.\nSecond sentence: I regret ____ of the original cover design.\nKey word: NOT\n\n4. First sentence: It was unnecessary for the designer to pay for another copy, but she did.\nSecond sentence: The designer ____ another copy.\nKey word: NEED\n\n5. First sentence: The publisher has decided that it will not accept any more late changes.\nSecond sentence: The publisher has decided ____ any more late changes.\nKey word: PUT\n\n6. First sentence: As far as I know, the index has not yet been checked.\nSecond sentence: To ____, the index has not yet been checked.\nKey word: BEST",
+            "explanation": "must have been加过去分词表示对过去被动事件的确信推断，保留编辑认为缺页遭故意移除的判断。must后不能用had。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "must have been removed deliberately"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "MUST",
+              "rejectedAnswers": [
+                "must had been removed deliberately"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.book-publisher-root-002.worksheet.q2",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "We did not consider the cost of colour printing.\nUse ACCOUNT: We failed ____ the cost of colour printing.\nWrite only the missing words.",
+            "material": "At a Book Publisher\n\n1. First sentence: The editor is certain that the missing pages were removed deliberately.\nSecond sentence: The editor is convinced that the missing pages ____.\nKey word: MUST\n\n2. First sentence: We did not consider the cost of colour printing.\nSecond sentence: We failed ____ the cost of colour printing.\nKey word: ACCOUNT\n\n3. First sentence: I wish I had kept a copy of the original cover design.\nSecond sentence: I regret ____ of the original cover design.\nKey word: NOT\n\n4. First sentence: It was unnecessary for the designer to pay for another copy, but she did.\nSecond sentence: The designer ____ another copy.\nKey word: NEED\n\n5. First sentence: The publisher has decided that it will not accept any more late changes.\nSecond sentence: The publisher has decided ____ any more late changes.\nKey word: PUT\n\n6. First sentence: As far as I know, the index has not yet been checked.\nSecond sentence: To ____, the index has not yet been checked.\nKey word: BEST",
+            "explanation": "take into account表示考虑某项成本，failed to保留没有考虑的事实。固定短语为into account，不能用in account。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to take into account"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "ACCOUNT",
+              "rejectedAnswers": [
+                "to take in account"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.book-publisher-root-002.worksheet.q3",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "I wish I had kept a copy of the original cover design.\nUse NOT: I regret ____ of the original cover design.\nWrite only the missing words.",
+            "material": "At a Book Publisher\n\n1. First sentence: The editor is certain that the missing pages were removed deliberately.\nSecond sentence: The editor is convinced that the missing pages ____.\nKey word: MUST\n\n2. First sentence: We did not consider the cost of colour printing.\nSecond sentence: We failed ____ the cost of colour printing.\nKey word: ACCOUNT\n\n3. First sentence: I wish I had kept a copy of the original cover design.\nSecond sentence: I regret ____ of the original cover design.\nKey word: NOT\n\n4. First sentence: It was unnecessary for the designer to pay for another copy, but she did.\nSecond sentence: The designer ____ another copy.\nKey word: NEED\n\n5. First sentence: The publisher has decided that it will not accept any more late changes.\nSecond sentence: The publisher has decided ____ any more late changes.\nKey word: PUT\n\n6. First sentence: As far as I know, the index has not yet been checked.\nSecond sentence: To ____, the index has not yet been checked.\nKey word: BEST",
+            "explanation": "regret not having kept或not keeping均可表达对过去未保留副本的遗憾。保留否定NOT；have keeping不能构成完成动名词。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "not having kept a copy",
+              "not keeping a copy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "NOT",
+              "rejectedAnswers": [
+                "not have keeping a copy"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.book-publisher-root-002.worksheet.q4",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "It was unnecessary for the designer to pay for another copy, but she did.\nUse NEED: The designer ____ another copy.\nWrite only the missing words.",
+            "material": "At a Book Publisher\n\n1. First sentence: The editor is certain that the missing pages were removed deliberately.\nSecond sentence: The editor is convinced that the missing pages ____.\nKey word: MUST\n\n2. First sentence: We did not consider the cost of colour printing.\nSecond sentence: We failed ____ the cost of colour printing.\nKey word: ACCOUNT\n\n3. First sentence: I wish I had kept a copy of the original cover design.\nSecond sentence: I regret ____ of the original cover design.\nKey word: NOT\n\n4. First sentence: It was unnecessary for the designer to pay for another copy, but she did.\nSecond sentence: The designer ____ another copy.\nKey word: NEED\n\n5. First sentence: The publisher has decided that it will not accept any more late changes.\nSecond sentence: The publisher has decided ____ any more late changes.\nKey word: PUT\n\n6. First sentence: As far as I know, the index has not yet been checked.\nSecond sentence: To ____, the index has not yet been checked.\nKey word: BEST",
+            "explanation": "need not have done表示过去实际做了但并无必要，正对应已付款而不必要。need后不能用had构成该情态完成结构。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "need not have paid for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "NEED",
+              "rejectedAnswers": [
+                "need not had paid for"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.book-publisher-root-002.worksheet.q5",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The publisher has decided that it will not accept any more late changes.\nUse PUT: The publisher has decided ____ any more late changes.\nWrite only the missing words.",
+            "material": "At a Book Publisher\n\n1. First sentence: The editor is certain that the missing pages were removed deliberately.\nSecond sentence: The editor is convinced that the missing pages ____.\nKey word: MUST\n\n2. First sentence: We did not consider the cost of colour printing.\nSecond sentence: We failed ____ the cost of colour printing.\nKey word: ACCOUNT\n\n3. First sentence: I wish I had kept a copy of the original cover design.\nSecond sentence: I regret ____ of the original cover design.\nKey word: NOT\n\n4. First sentence: It was unnecessary for the designer to pay for another copy, but she did.\nSecond sentence: The designer ____ another copy.\nKey word: NEED\n\n5. First sentence: The publisher has decided that it will not accept any more late changes.\nSecond sentence: The publisher has decided ____ any more late changes.\nKey word: PUT\n\n6. First sentence: As far as I know, the index has not yet been checked.\nSecond sentence: To ____, the index has not yet been checked.\nKey word: BEST",
+            "explanation": "put up with在此表示容忍或接受；not to保留出版方已经作出的不再接受迟来修改的决定。put up for不是该含义的搭配。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "not to put up with"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "PUT",
+              "rejectedAnswers": [
+                "not to put up for"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.book-publisher-root-002.worksheet.q6",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "As far as I know, the index has not yet been checked.\nUse BEST: To ____, the index has not yet been checked.\nWrite only the missing words.",
+            "material": "At a Book Publisher\n\n1. First sentence: The editor is certain that the missing pages were removed deliberately.\nSecond sentence: The editor is convinced that the missing pages ____.\nKey word: MUST\n\n2. First sentence: We did not consider the cost of colour printing.\nSecond sentence: We failed ____ the cost of colour printing.\nKey word: ACCOUNT\n\n3. First sentence: I wish I had kept a copy of the original cover design.\nSecond sentence: I regret ____ of the original cover design.\nKey word: NOT\n\n4. First sentence: It was unnecessary for the designer to pay for another copy, but she did.\nSecond sentence: The designer ____ another copy.\nKey word: NEED\n\n5. First sentence: The publisher has decided that it will not accept any more late changes.\nSecond sentence: The publisher has decided ____ any more late changes.\nKey word: PUT\n\n6. First sentence: As far as I know, the index has not yet been checked.\nSecond sentence: To ____, the index has not yet been checked.\nKey word: BEST",
+            "explanation": "to the best of my knowledge表示就我所知，与as far as I know保留相同知识范围限定。of是固定介词，不能替换成from。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "the best of my knowledge"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "BEST",
+              "rejectedAnswers": [
+                "the best from my knowledge"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "508a37ae6f51ff0c4b1116d609de70e8cd9c94cb61b1cf098950694dcf79da77",
+      "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration.",
+      "components": [
+        {
+          "id": "original.advanced-kwt-timing#advanced.book-publisher-root-002.worksheet",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.advanced.book-publisher-root-002.worksheet.q1",
+            "expansion.20261028.advanced.book-publisher-root-002.worksheet.q2",
+            "expansion.20261028.advanced.book-publisher-root-002.worksheet.q3",
+            "expansion.20261028.advanced.book-publisher-root-002.worksheet.q4",
+            "expansion.20261028.advanced.book-publisher-root-002.worksheet.q5",
+            "expansion.20261028.advanced.book-publisher-root-002.worksheet.q6"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "sourceUnitId": "original.advanced-kwt-timing",
+          "sourceContentHash": "a81979aa19cedcb64548a45512463215a096e7ca63edaeace29b87d95bcb93f5"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.advanced.night-ferry-root-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "高级改写：夜间渡轮的登船与风暴",
+        "summary": "高级改写：夜间渡轮的登船与风暴，共6题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 14,
+        "goalIds": [
+          "original.keyword_transformation"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.keywordtransformation",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original source supplies the six-item keyword-transformation format and three-to-six-word bound only. All situations, sentence pairs, keys and rationales are newly authored; no official C1 or learner calibration claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex root author, explicit reconstruction and bounded-variant review (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.advanced.night-ferry-root-002",
+          "family": "keyword_transformation",
+          "label": "高级改写：夜间渡轮的登船与风暴",
+          "candidateSHA256": "5543f949602b5ac967e1a75c40b0d83d62ab25dce657e3baf687148a02f1604d",
+          "authorCheckSHA256": "974581a33db09cc1d3189c941335121fc18a9f6800477461791c8e728f6881dc",
+          "sourceGroupIds": [
+            "original.advanced-kwt-timing#advanced.night-ferry-root-002.worksheet"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b116；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The Night Ferry\n\n1. First sentence: The storm was the only reason the night ferry did not leave.\nSecond sentence: If ____ the storm, the night ferry would have left.\nKey word: BEEN\n\n2. First sentence: Passengers must never step onto the ramp before the crew open the gate.\nSecond sentence: On ____ the ramp before the crew open the gate.\nKey word: ACCOUNT\n\n3. First sentence: The extra inspection delayed our departure by two hours.\nSecond sentence: Our departure ____ two hours by the extra inspection.\nKey word: BACK\n\n4. First sentence: Boarding will begin only when the last truck has been secured.\nSecond sentence: Not ____ has been secured will boarding begin.\nKey word: UNTIL\n\n5. First sentence: The crossing was much less smooth than had been advertised.\nSecond sentence: The crossing was ____ had been advertised.\nKey word: NEAR\n\n6. First sentence: The late arrival did not surprise the regular passengers at all.\nSecond sentence: The late arrival came ____ the regular passengers.\nKey word: SURPRISE"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.advanced.night-ferry-root-002.worksheet.q1",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The storm was the only reason the night ferry did not leave.\nUse BEEN: If ____ the storm, the night ferry would have left.\nWrite only the missing words.",
+            "material": "The Night Ferry\n\n1. First sentence: The storm was the only reason the night ferry did not leave.\nSecond sentence: If ____ the storm, the night ferry would have left.\nKey word: BEEN\n\n2. First sentence: Passengers must never step onto the ramp before the crew open the gate.\nSecond sentence: On ____ the ramp before the crew open the gate.\nKey word: ACCOUNT\n\n3. First sentence: The extra inspection delayed our departure by two hours.\nSecond sentence: Our departure ____ two hours by the extra inspection.\nKey word: BACK\n\n4. First sentence: Boarding will begin only when the last truck has been secured.\nSecond sentence: Not ____ has been secured will boarding begin.\nKey word: UNTIL\n\n5. First sentence: The crossing was much less smooth than had been advertised.\nSecond sentence: The crossing was ____ had been advertised.\nKey word: NEAR\n\n6. First sentence: The late arrival did not surprise the regular passengers at all.\nSecond sentence: The late arrival came ____ the regular passengers.\nKey word: SURPRISE",
+            "explanation": "If it had not been for表示过去若非某一阻碍，本来就会离港，与风暴是唯一原因对应。with不能替换该反事实条件搭配中的for。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "it had not been for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "BEEN",
+              "rejectedAnswers": [
+                "it had not been with"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.night-ferry-root-002.worksheet.q2",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "Passengers must never step onto the ramp before the crew open the gate.\nUse ACCOUNT: On ____ the ramp before the crew open the gate.\nWrite only the missing words.",
+            "material": "The Night Ferry\n\n1. First sentence: The storm was the only reason the night ferry did not leave.\nSecond sentence: If ____ the storm, the night ferry would have left.\nKey word: BEEN\n\n2. First sentence: Passengers must never step onto the ramp before the crew open the gate.\nSecond sentence: On ____ the ramp before the crew open the gate.\nKey word: ACCOUNT\n\n3. First sentence: The extra inspection delayed our departure by two hours.\nSecond sentence: Our departure ____ two hours by the extra inspection.\nKey word: BACK\n\n4. First sentence: Boarding will begin only when the last truck has been secured.\nSecond sentence: Not ____ has been secured will boarding begin.\nKey word: UNTIL\n\n5. First sentence: The crossing was much less smooth than had been advertised.\nSecond sentence: The crossing was ____ had been advertised.\nKey word: NEAR\n\n6. First sentence: The late arrival did not surprise the regular passengers at all.\nSecond sentence: The late arrival came ____ the regular passengers.\nKey word: SURPRISE",
+            "explanation": "On no account前置表示绝不允许，必须使用must passengers step的部分倒装。保留乘客和登船坡道、开门前这一限制。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "no account must passengers step onto"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "ACCOUNT",
+              "rejectedAnswers": [
+                "no account passengers must step onto"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.night-ferry-root-002.worksheet.q3",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The extra inspection delayed our departure by two hours.\nUse BACK: Our departure ____ two hours by the extra inspection.\nWrite only the missing words.",
+            "material": "The Night Ferry\n\n1. First sentence: The storm was the only reason the night ferry did not leave.\nSecond sentence: If ____ the storm, the night ferry would have left.\nKey word: BEEN\n\n2. First sentence: Passengers must never step onto the ramp before the crew open the gate.\nSecond sentence: On ____ the ramp before the crew open the gate.\nKey word: ACCOUNT\n\n3. First sentence: The extra inspection delayed our departure by two hours.\nSecond sentence: Our departure ____ two hours by the extra inspection.\nKey word: BACK\n\n4. First sentence: Boarding will begin only when the last truck has been secured.\nSecond sentence: Not ____ has been secured will boarding begin.\nKey word: UNTIL\n\n5. First sentence: The crossing was much less smooth than had been advertised.\nSecond sentence: The crossing was ____ had been advertised.\nKey word: NEAR\n\n6. First sentence: The late arrival did not surprise the regular passengers at all.\nSecond sentence: The late arrival came ____ the regular passengers.\nKey word: SURPRISE",
+            "explanation": "put back表示推迟；标明两小时延迟时可用by、for或直接接时长。put的过去分词仍为put；putted只适用于高尔夫等其他词义，不适用于推迟出发。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was put back by",
+              "was put back",
+              "was put back for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "BACK",
+              "rejectedAnswers": [
+                "was putted back by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.night-ferry-root-002.worksheet.q4",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "Boarding will begin only when the last truck has been secured.\nUse UNTIL: Not ____ has been secured will boarding begin.\nWrite only the missing words.",
+            "material": "The Night Ferry\n\n1. First sentence: The storm was the only reason the night ferry did not leave.\nSecond sentence: If ____ the storm, the night ferry would have left.\nKey word: BEEN\n\n2. First sentence: Passengers must never step onto the ramp before the crew open the gate.\nSecond sentence: On ____ the ramp before the crew open the gate.\nKey word: ACCOUNT\n\n3. First sentence: The extra inspection delayed our departure by two hours.\nSecond sentence: Our departure ____ two hours by the extra inspection.\nKey word: BACK\n\n4. First sentence: Boarding will begin only when the last truck has been secured.\nSecond sentence: Not ____ has been secured will boarding begin.\nKey word: UNTIL\n\n5. First sentence: The crossing was much less smooth than had been advertised.\nSecond sentence: The crossing was ____ had been advertised.\nKey word: NEAR\n\n6. First sentence: The late arrival did not surprise the regular passengers at all.\nSecond sentence: The late arrival came ____ the regular passengers.\nKey word: SURPRISE",
+            "explanation": "Not until引导的时间条件前置，主句倒装为will boarding begin；空内保留the last truck的正确词序和确定指代。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "until the last truck"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "UNTIL",
+              "rejectedAnswers": [
+                "until last truck the"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.night-ferry-root-002.worksheet.q5",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The crossing was much less smooth than had been advertised.\nUse NEAR: The crossing was ____ had been advertised.\nWrite only the missing words.",
+            "material": "The Night Ferry\n\n1. First sentence: The storm was the only reason the night ferry did not leave.\nSecond sentence: If ____ the storm, the night ferry would have left.\nKey word: BEEN\n\n2. First sentence: Passengers must never step onto the ramp before the crew open the gate.\nSecond sentence: On ____ the ramp before the crew open the gate.\nKey word: ACCOUNT\n\n3. First sentence: The extra inspection delayed our departure by two hours.\nSecond sentence: Our departure ____ two hours by the extra inspection.\nKey word: BACK\n\n4. First sentence: Boarding will begin only when the last truck has been secured.\nSecond sentence: Not ____ has been secured will boarding begin.\nKey word: UNTIL\n\n5. First sentence: The crossing was much less smooth than had been advertised.\nSecond sentence: The crossing was ____ had been advertised.\nKey word: NEAR\n\n6. First sentence: The late arrival did not surprise the regular passengers at all.\nSecond sentence: The late arrival came ____ the regular passengers.\nKey word: SURPRISE",
+            "explanation": "nowhere near as或so...as表示实际平稳程度远低于宣传，保留比较方向。该结构必须以as衔接后文，不能接than。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "nowhere near as smooth as",
+              "not anywhere near as smooth as",
+              "nowhere near so smooth as"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "NEAR",
+              "rejectedAnswers": [
+                "nowhere near as smooth than"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.night-ferry-root-002.worksheet.q6",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The late arrival did not surprise the regular passengers at all.\nUse SURPRISE: The late arrival came ____ the regular passengers.\nWrite only the missing words.",
+            "material": "The Night Ferry\n\n1. First sentence: The storm was the only reason the night ferry did not leave.\nSecond sentence: If ____ the storm, the night ferry would have left.\nKey word: BEEN\n\n2. First sentence: Passengers must never step onto the ramp before the crew open the gate.\nSecond sentence: On ____ the ramp before the crew open the gate.\nKey word: ACCOUNT\n\n3. First sentence: The extra inspection delayed our departure by two hours.\nSecond sentence: Our departure ____ two hours by the extra inspection.\nKey word: BACK\n\n4. First sentence: Boarding will begin only when the last truck has been secured.\nSecond sentence: Not ____ has been secured will boarding begin.\nKey word: UNTIL\n\n5. First sentence: The crossing was much less smooth than had been advertised.\nSecond sentence: The crossing was ____ had been advertised.\nKey word: NEAR\n\n6. First sentence: The late arrival did not surprise the regular passengers at all.\nSecond sentence: The late arrival came ____ the regular passengers.\nKey word: SURPRISE",
+            "explanation": "come as no surprise to somebody表示某人完全不感意外，保留熟客对晚到的反应。of不能在该结构中引出感受者。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "as no surprise to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "SURPRISE",
+              "rejectedAnswers": [
+                "as no surprise of"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "3157542abb0e1a379191fff846db061359d550a6b7bff89b8523ceccf2f46853",
+      "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration.",
+      "components": [
+        {
+          "id": "original.advanced-kwt-timing#advanced.night-ferry-root-002.worksheet",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.advanced.night-ferry-root-002.worksheet.q1",
+            "expansion.20261028.advanced.night-ferry-root-002.worksheet.q2",
+            "expansion.20261028.advanced.night-ferry-root-002.worksheet.q3",
+            "expansion.20261028.advanced.night-ferry-root-002.worksheet.q4",
+            "expansion.20261028.advanced.night-ferry-root-002.worksheet.q5",
+            "expansion.20261028.advanced.night-ferry-root-002.worksheet.q6"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "sourceUnitId": "original.advanced-kwt-timing",
+          "sourceContentHash": "a81979aa19cedcb64548a45512463215a096e7ca63edaeace29b87d95bcb93f5"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.advanced.photography-studio-root-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "高级改写：摄影工作室的责任与保险",
+        "summary": "高级改写：摄影工作室的责任与保险，共6题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 14,
+        "goalIds": [
+          "original.keyword_transformation"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.keywordtransformation",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original source supplies the six-item keyword-transformation format and three-to-six-word bound only. All situations, sentence pairs, keys and rationales are newly authored; no official C1 or learner calibration claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex root author, explicit reconstruction and bounded-variant review (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.advanced.photography-studio-root-002",
+          "family": "keyword_transformation",
+          "label": "高级改写：摄影工作室的责任与保险",
+          "candidateSHA256": "5c0fc3547c1cbb0ac5bba68167c86b165918e7baed61ac525ed4e11f568c9500",
+          "authorCheckSHA256": "974581a33db09cc1d3189c941335121fc18a9f6800477461791c8e728f6881dc",
+          "sourceGroupIds": [
+            "original.advanced-kwt-timing#advanced.photography-studio-root-002.worksheet"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b116；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "In a Photography Studio\n\n1. First sentence: The photographer insisted that the client credit the assistants.\nSecond sentence: The photographer ____ by the client.\nKey word: INSISTED\n\n2. First sentence: I found it impossible to distinguish the twin negatives.\nSecond sentence: I could ____ the twin negatives.\nKey word: DIFFERENCE\n\n3. First sentence: The studio blamed the assistant for the flash failure because he had forgotten to charge the battery.\nSecond sentence: The flash failure ____ the assistant by the studio, because he had forgotten to charge the battery.\nKey word: BLAMED\n\n4. First sentence: The insurance policy did not include damage caused by salt water.\nSecond sentence: Damage caused by salt water ____ the insurance policy.\nKey word: COVERED\n\n5. First sentence: The freelancer accepted the commission only because she was allowed to choose the location.\nSecond sentence: The freelancer's acceptance of the commission ____ choose the location.\nKey word: DEPENDENT\n\n6. First sentence: I must ensure that none of the client's images remain on this computer.\nSecond sentence: I must ____ the client's images remain on this computer.\nKey word: SURE"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.advanced.photography-studio-root-002.worksheet.q1",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The photographer insisted that the client credit the assistants.\nUse INSISTED: The photographer ____ by the client.\nWrite only the missing words.",
+            "material": "In a Photography Studio\n\n1. First sentence: The photographer insisted that the client credit the assistants.\nSecond sentence: The photographer ____ by the client.\nKey word: INSISTED\n\n2. First sentence: I found it impossible to distinguish the twin negatives.\nSecond sentence: I could ____ the twin negatives.\nKey word: DIFFERENCE\n\n3. First sentence: The studio blamed the assistant for the flash failure because he had forgotten to charge the battery.\nSecond sentence: The flash failure ____ the assistant by the studio, because he had forgotten to charge the battery.\nKey word: BLAMED\n\n4. First sentence: The insurance policy did not include damage caused by salt water.\nSecond sentence: Damage caused by salt water ____ the insurance policy.\nKey word: COVERED\n\n5. First sentence: The freelancer accepted the commission only because she was allowed to choose the location.\nSecond sentence: The freelancer's acceptance of the commission ____ choose the location.\nKey word: DEPENDENT\n\n6. First sentence: I must ensure that none of the client's images remain on this computer.\nSecond sentence: I must ____ the client's images remain on this computer.\nKey word: SURE",
+            "explanation": "insist on或upon加被动动名词，保留摄影师要求客户给助理署名的施事关系；by the client不能遗漏。for不接这一要求结构。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "insisted on the assistants being credited",
+              "insisted upon the assistants being credited"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "INSISTED",
+              "rejectedAnswers": [
+                "insisted for the assistants being credited"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.photography-studio-root-002.worksheet.q2",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "I found it impossible to distinguish the twin negatives.\nUse DIFFERENCE: I could ____ the twin negatives.\nWrite only the missing words.",
+            "material": "In a Photography Studio\n\n1. First sentence: The photographer insisted that the client credit the assistants.\nSecond sentence: The photographer ____ by the client.\nKey word: INSISTED\n\n2. First sentence: I found it impossible to distinguish the twin negatives.\nSecond sentence: I could ____ the twin negatives.\nKey word: DIFFERENCE\n\n3. First sentence: The studio blamed the assistant for the flash failure because he had forgotten to charge the battery.\nSecond sentence: The flash failure ____ the assistant by the studio, because he had forgotten to charge the battery.\nKey word: BLAMED\n\n4. First sentence: The insurance policy did not include damage caused by salt water.\nSecond sentence: Damage caused by salt water ____ the insurance policy.\nKey word: COVERED\n\n5. First sentence: The freelancer accepted the commission only because she was allowed to choose the location.\nSecond sentence: The freelancer's acceptance of the commission ____ choose the location.\nKey word: DEPENDENT\n\n6. First sentence: I must ensure that none of the client's images remain on this computer.\nSecond sentence: I must ____ the client's images remain on this computer.\nKey word: SURE",
+            "explanation": "tell the difference between表示区分两个对象，could not保留无法分辨这两张底片的含义。这里不能用of代替between。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "not tell the difference between"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "DIFFERENCE",
+              "rejectedAnswers": [
+                "not tell the difference of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.photography-studio-root-002.worksheet.q3",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The studio blamed the assistant for the flash failure because he had forgotten to charge the battery.\nUse BLAMED: The flash failure ____ the assistant by the studio, because he had forgotten to charge the battery.\nWrite only the missing words.",
+            "material": "In a Photography Studio\n\n1. First sentence: The photographer insisted that the client credit the assistants.\nSecond sentence: The photographer ____ by the client.\nKey word: INSISTED\n\n2. First sentence: I found it impossible to distinguish the twin negatives.\nSecond sentence: I could ____ the twin negatives.\nKey word: DIFFERENCE\n\n3. First sentence: The studio blamed the assistant for the flash failure because he had forgotten to charge the battery.\nSecond sentence: The flash failure ____ the assistant by the studio, because he had forgotten to charge the battery.\nKey word: BLAMED\n\n4. First sentence: The insurance policy did not include damage caused by salt water.\nSecond sentence: Damage caused by salt water ____ the insurance policy.\nKey word: COVERED\n\n5. First sentence: The freelancer accepted the commission only because she was allowed to choose the location.\nSecond sentence: The freelancer's acceptance of the commission ____ choose the location.\nKey word: DEPENDENT\n\n6. First sentence: I must ensure that none of the client's images remain on this computer.\nSecond sentence: I must ____ the client's images remain on this computer.\nKey word: SURE",
+            "explanation": "blame somebody for something被动改为something was blamed on somebody；保留by the studio这一实际归责者，不能从客观原因擅自推断有人归责。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was blamed on"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "BLAMED",
+              "rejectedAnswers": [
+                "was blamed at"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.photography-studio-root-002.worksheet.q4",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The insurance policy did not include damage caused by salt water.\nUse COVERED: Damage caused by salt water ____ the insurance policy.\nWrite only the missing words.",
+            "material": "In a Photography Studio\n\n1. First sentence: The photographer insisted that the client credit the assistants.\nSecond sentence: The photographer ____ by the client.\nKey word: INSISTED\n\n2. First sentence: I found it impossible to distinguish the twin negatives.\nSecond sentence: I could ____ the twin negatives.\nKey word: DIFFERENCE\n\n3. First sentence: The studio blamed the assistant for the flash failure because he had forgotten to charge the battery.\nSecond sentence: The flash failure ____ the assistant by the studio, because he had forgotten to charge the battery.\nKey word: BLAMED\n\n4. First sentence: The insurance policy did not include damage caused by salt water.\nSecond sentence: Damage caused by salt water ____ the insurance policy.\nKey word: COVERED\n\n5. First sentence: The freelancer accepted the commission only because she was allowed to choose the location.\nSecond sentence: The freelancer's acceptance of the commission ____ choose the location.\nKey word: DEPENDENT\n\n6. First sentence: I must ensure that none of the client's images remain on this computer.\nSecond sentence: I must ____ the client's images remain on this computer.\nKey word: SURE",
+            "explanation": "be covered by a policy表示属于保险保障范围，否定形式保留盐水损害不在范围内。from不能引出提供保障的保单。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was not covered by",
+              "wasn't covered by"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "COVERED",
+              "rejectedAnswers": [
+                "was not covered from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.photography-studio-root-002.worksheet.q5",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The freelancer accepted the commission only because she was allowed to choose the location.\nUse DEPENDENT: The freelancer's acceptance of the commission ____ choose the location.\nWrite only the missing words.",
+            "material": "In a Photography Studio\n\n1. First sentence: The photographer insisted that the client credit the assistants.\nSecond sentence: The photographer ____ by the client.\nKey word: INSISTED\n\n2. First sentence: I found it impossible to distinguish the twin negatives.\nSecond sentence: I could ____ the twin negatives.\nKey word: DIFFERENCE\n\n3. First sentence: The studio blamed the assistant for the flash failure because he had forgotten to charge the battery.\nSecond sentence: The flash failure ____ the assistant by the studio, because he had forgotten to charge the battery.\nKey word: BLAMED\n\n4. First sentence: The insurance policy did not include damage caused by salt water.\nSecond sentence: Damage caused by salt water ____ the insurance policy.\nKey word: COVERED\n\n5. First sentence: The freelancer accepted the commission only because she was allowed to choose the location.\nSecond sentence: The freelancer's acceptance of the commission ____ choose the location.\nKey word: DEPENDENT\n\n6. First sentence: I must ensure that none of the client's images remain on this computer.\nSecond sentence: I must ____ the client's images remain on this computer.\nKey word: SURE",
+            "explanation": "be dependent on或upon表示依赖某一条件，being allowed to保留获准选择拍摄地点这一必要条件。for不是dependent在此的搭配。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was dependent on being allowed to",
+              "was dependent upon being allowed to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "DEPENDENT",
+              "rejectedAnswers": [
+                "was dependent for being allowed to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.photography-studio-root-002.worksheet.q6",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "I must ensure that none of the client's images remain on this computer.\nUse SURE: I must ____ the client's images remain on this computer.\nWrite only the missing words.",
+            "material": "In a Photography Studio\n\n1. First sentence: The photographer insisted that the client credit the assistants.\nSecond sentence: The photographer ____ by the client.\nKey word: INSISTED\n\n2. First sentence: I found it impossible to distinguish the twin negatives.\nSecond sentence: I could ____ the twin negatives.\nKey word: DIFFERENCE\n\n3. First sentence: The studio blamed the assistant for the flash failure because he had forgotten to charge the battery.\nSecond sentence: The flash failure ____ the assistant by the studio, because he had forgotten to charge the battery.\nKey word: BLAMED\n\n4. First sentence: The insurance policy did not include damage caused by salt water.\nSecond sentence: Damage caused by salt water ____ the insurance policy.\nKey word: COVERED\n\n5. First sentence: The freelancer accepted the commission only because she was allowed to choose the location.\nSecond sentence: The freelancer's acceptance of the commission ____ choose the location.\nKey word: DEPENDENT\n\n6. First sentence: I must ensure that none of the client's images remain on this computer.\nSecond sentence: I must ____ the client's images remain on this computer.\nKey word: SURE",
+            "explanation": "make sure that none of或省略that，都保留客户所有图像一个也不能留下的要求。none后用of引出该图像集合，不能用from。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "make sure that none of",
+              "make sure none of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "SURE",
+              "rejectedAnswers": [
+                "make sure that none from"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "6ead0ee1e054c5ee166a9ff58ad198b993608a3cb2d120764e7058f398a2a7a6",
+      "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration.",
+      "components": [
+        {
+          "id": "original.advanced-kwt-timing#advanced.photography-studio-root-002.worksheet",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.advanced.photography-studio-root-002.worksheet.q1",
+            "expansion.20261028.advanced.photography-studio-root-002.worksheet.q2",
+            "expansion.20261028.advanced.photography-studio-root-002.worksheet.q3",
+            "expansion.20261028.advanced.photography-studio-root-002.worksheet.q4",
+            "expansion.20261028.advanced.photography-studio-root-002.worksheet.q5",
+            "expansion.20261028.advanced.photography-studio-root-002.worksheet.q6"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "sourceUnitId": "original.advanced-kwt-timing",
+          "sourceContentHash": "a81979aa19cedcb64548a45512463215a096e7ca63edaeace29b87d95bcb93f5"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.advanced.railway-museum-root-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "高级改写：铁路博物馆的车厢与展厅",
+        "summary": "高级改写：铁路博物馆的车厢与展厅，共6题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 14,
+        "goalIds": [
+          "original.keyword_transformation"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.keywordtransformation",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original source supplies the six-item keyword-transformation format and three-to-six-word bound only. All situations, sentence pairs, keys and rationales are newly authored; no official C1 or learner calibration claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex root author, explicit reconstruction and bounded-variant review (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.advanced.railway-museum-root-002",
+          "family": "keyword_transformation",
+          "label": "高级改写：铁路博物馆的车厢与展厅",
+          "candidateSHA256": "6c51138258320ef5e11bbb15454050aaf947dc20e5430b67ddaefcab00d887e1",
+          "authorCheckSHA256": "974581a33db09cc1d3189c941335121fc18a9f6800477461791c8e728f6881dc",
+          "sourceGroupIds": [
+            "original.advanced-kwt-timing#advanced.railway-museum-root-002.worksheet"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b116；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A Railway Museum\n\n1. First sentence: It took the volunteers a full morning to move the carriage.\nSecond sentence: The volunteers ____ the carriage.\nKey word: SPENT\n\n2. First sentence: The museum acquired the engine only after lengthy negotiations.\nSecond sentence: Only after lengthy negotiations ____ the engine.\nKey word: DID\n\n3. First sentence: You are not allowed to enter the cab without a member of staff.\nSecond sentence: You ____ the cab without a member of staff.\nKey word: PERMISSION\n\n4. First sentence: I had expected the signal box to be much larger.\nSecond sentence: The signal box was ____ I had expected.\nKey word: NEAR\n\n5. First sentence: They failed to consider how the crane would enter the yard.\nSecond sentence: They ____ how the crane would enter the yard.\nKey word: ACCOUNT\n\n6. First sentence: We were just about to open the doors when the fire alarm rang.\nSecond sentence: We ____ opening the doors when the fire alarm rang.\nKey word: POINT"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.advanced.railway-museum-root-002.worksheet.q1",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "It took the volunteers a full morning to move the carriage.\nUse SPENT: The volunteers ____ the carriage.\nWrite only the missing words.",
+            "material": "A Railway Museum\n\n1. First sentence: It took the volunteers a full morning to move the carriage.\nSecond sentence: The volunteers ____ the carriage.\nKey word: SPENT\n\n2. First sentence: The museum acquired the engine only after lengthy negotiations.\nSecond sentence: Only after lengthy negotiations ____ the engine.\nKey word: DID\n\n3. First sentence: You are not allowed to enter the cab without a member of staff.\nSecond sentence: You ____ the cab without a member of staff.\nKey word: PERMISSION\n\n4. First sentence: I had expected the signal box to be much larger.\nSecond sentence: The signal box was ____ I had expected.\nKey word: NEAR\n\n5. First sentence: They failed to consider how the crane would enter the yard.\nSecond sentence: They ____ how the crane would enter the yard.\nKey word: ACCOUNT\n\n6. First sentence: We were just about to open the doors when the fire alarm rang.\nSecond sentence: We ____ opening the doors when the fire alarm rang.\nKey word: POINT",
+            "explanation": "spend a period doing表达把整上午用于移动车厢，对应it took结构。spend后活动用动名词moving，不能直接以to move作该补语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "spent a full morning moving"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "SPENT",
+              "rejectedAnswers": [
+                "spent a full morning to move"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.railway-museum-root-002.worksheet.q2",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The museum acquired the engine only after lengthy negotiations.\nUse DID: Only after lengthy negotiations ____ the engine.\nWrite only the missing words.",
+            "material": "A Railway Museum\n\n1. First sentence: It took the volunteers a full morning to move the carriage.\nSecond sentence: The volunteers ____ the carriage.\nKey word: SPENT\n\n2. First sentence: The museum acquired the engine only after lengthy negotiations.\nSecond sentence: Only after lengthy negotiations ____ the engine.\nKey word: DID\n\n3. First sentence: You are not allowed to enter the cab without a member of staff.\nSecond sentence: You ____ the cab without a member of staff.\nKey word: PERMISSION\n\n4. First sentence: I had expected the signal box to be much larger.\nSecond sentence: The signal box was ____ I had expected.\nKey word: NEAR\n\n5. First sentence: They failed to consider how the crane would enter the yard.\nSecond sentence: They ____ how the crane would enter the yard.\nKey word: ACCOUNT\n\n6. First sentence: We were just about to open the doors when the fire alarm rang.\nSecond sentence: We ____ opening the doors when the fire alarm rang.\nKey word: POINT",
+            "explanation": "Only after时间状语前置时主句部分倒装，did后必须用acquire原形。收购发生在漫长谈判之后这一时间顺序保持不变。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "did the museum acquire"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "DID",
+              "rejectedAnswers": [
+                "did the museum acquired"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.railway-museum-root-002.worksheet.q3",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "You are not allowed to enter the cab without a member of staff.\nUse PERMISSION: You ____ the cab without a member of staff.\nWrite only the missing words.",
+            "material": "A Railway Museum\n\n1. First sentence: It took the volunteers a full morning to move the carriage.\nSecond sentence: The volunteers ____ the carriage.\nKey word: SPENT\n\n2. First sentence: The museum acquired the engine only after lengthy negotiations.\nSecond sentence: Only after lengthy negotiations ____ the engine.\nKey word: DID\n\n3. First sentence: You are not allowed to enter the cab without a member of staff.\nSecond sentence: You ____ the cab without a member of staff.\nKey word: PERMISSION\n\n4. First sentence: I had expected the signal box to be much larger.\nSecond sentence: The signal box was ____ I had expected.\nKey word: NEAR\n\n5. First sentence: They failed to consider how the crane would enter the yard.\nSecond sentence: They ____ how the crane would enter the yard.\nKey word: ACCOUNT\n\n6. First sentence: We were just about to open the doors when the fire alarm rang.\nSecond sentence: We ____ opening the doors when the fire alarm rang.\nKey word: POINT",
+            "explanation": "have permission to do表示获准进入，否定保留没有工作人员陪同时不得进入的规则。permission后不能直接用entering作该补语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "do not have permission to enter",
+              "have no permission to enter",
+              "don't have permission to enter"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "PERMISSION",
+              "rejectedAnswers": [
+                "do not have permission entering"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.railway-museum-root-002.worksheet.q4",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "I had expected the signal box to be much larger.\nUse NEAR: The signal box was ____ I had expected.\nWrite only the missing words.",
+            "material": "A Railway Museum\n\n1. First sentence: It took the volunteers a full morning to move the carriage.\nSecond sentence: The volunteers ____ the carriage.\nKey word: SPENT\n\n2. First sentence: The museum acquired the engine only after lengthy negotiations.\nSecond sentence: Only after lengthy negotiations ____ the engine.\nKey word: DID\n\n3. First sentence: You are not allowed to enter the cab without a member of staff.\nSecond sentence: You ____ the cab without a member of staff.\nKey word: PERMISSION\n\n4. First sentence: I had expected the signal box to be much larger.\nSecond sentence: The signal box was ____ I had expected.\nKey word: NEAR\n\n5. First sentence: They failed to consider how the crane would enter the yard.\nSecond sentence: They ____ how the crane would enter the yard.\nKey word: ACCOUNT\n\n6. First sentence: We were just about to open the doors when the fire alarm rang.\nSecond sentence: We ____ opening the doors when the fire alarm rang.\nKey word: POINT",
+            "explanation": "nowhere near...as说明实际大小远不及我先前预期，保留实际较小这一比较方向。than不能与as或so large形成此结构。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "nowhere near as large as",
+              "not anywhere near as large as",
+              "nowhere near so large as"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "NEAR",
+              "rejectedAnswers": [
+                "nowhere near so large than"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.railway-museum-root-002.worksheet.q5",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "They failed to consider how the crane would enter the yard.\nUse ACCOUNT: They ____ how the crane would enter the yard.\nWrite only the missing words.",
+            "material": "A Railway Museum\n\n1. First sentence: It took the volunteers a full morning to move the carriage.\nSecond sentence: The volunteers ____ the carriage.\nKey word: SPENT\n\n2. First sentence: The museum acquired the engine only after lengthy negotiations.\nSecond sentence: Only after lengthy negotiations ____ the engine.\nKey word: DID\n\n3. First sentence: You are not allowed to enter the cab without a member of staff.\nSecond sentence: You ____ the cab without a member of staff.\nKey word: PERMISSION\n\n4. First sentence: I had expected the signal box to be much larger.\nSecond sentence: The signal box was ____ I had expected.\nKey word: NEAR\n\n5. First sentence: They failed to consider how the crane would enter the yard.\nSecond sentence: They ____ how the crane would enter the yard.\nKey word: ACCOUNT\n\n6. First sentence: We were just about to open the doors when the fire alarm rang.\nSecond sentence: We ____ opening the doors when the fire alarm rang.\nKey word: POINT",
+            "explanation": "fail to take into account与fail to consider均表示未把吊车进场方式纳入考虑，保留原句失败事实。固定搭配为into account。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "failed to take into account"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "ACCOUNT",
+              "rejectedAnswers": [
+                "failed to take of account"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.railway-museum-root-002.worksheet.q6",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "We were just about to open the doors when the fire alarm rang.\nUse POINT: We ____ opening the doors when the fire alarm rang.\nWrite only the missing words.",
+            "material": "A Railway Museum\n\n1. First sentence: It took the volunteers a full morning to move the carriage.\nSecond sentence: The volunteers ____ the carriage.\nKey word: SPENT\n\n2. First sentence: The museum acquired the engine only after lengthy negotiations.\nSecond sentence: Only after lengthy negotiations ____ the engine.\nKey word: DID\n\n3. First sentence: You are not allowed to enter the cab without a member of staff.\nSecond sentence: You ____ the cab without a member of staff.\nKey word: PERMISSION\n\n4. First sentence: I had expected the signal box to be much larger.\nSecond sentence: The signal box was ____ I had expected.\nKey word: NEAR\n\n5. First sentence: They failed to consider how the crane would enter the yard.\nSecond sentence: They ____ how the crane would enter the yard.\nKey word: ACCOUNT\n\n6. First sentence: We were just about to open the doors when the fire alarm rang.\nSecond sentence: We ____ opening the doors when the fire alarm rang.\nKey word: POINT",
+            "explanation": "be on the point of doing表示正要做某事，与警报响起前即将开门对应。of后接动名词opening，不能换成to。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "were on the point of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "POINT",
+              "rejectedAnswers": [
+                "were on the point to"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "c8916388766dcfe8641c701b09ec607369278b979567162fa27a77226932eeb8",
+      "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration.",
+      "components": [
+        {
+          "id": "original.advanced-kwt-timing#advanced.railway-museum-root-002.worksheet",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.advanced.railway-museum-root-002.worksheet.q1",
+            "expansion.20261028.advanced.railway-museum-root-002.worksheet.q2",
+            "expansion.20261028.advanced.railway-museum-root-002.worksheet.q3",
+            "expansion.20261028.advanced.railway-museum-root-002.worksheet.q4",
+            "expansion.20261028.advanced.railway-museum-root-002.worksheet.q5",
+            "expansion.20261028.advanced.railway-museum-root-002.worksheet.q6"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "sourceUnitId": "original.advanced-kwt-timing",
+          "sourceContentHash": "a81979aa19cedcb64548a45512463215a096e7ca63edaeace29b87d95bcb93f5"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.advanced.woodwork-class-root-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "高级改写：木工课的工具与材料",
+        "summary": "高级改写：木工课的工具与材料，共6题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 14,
+        "goalIds": [
+          "original.keyword_transformation"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.keywordtransformation",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original source supplies the six-item keyword-transformation format and three-to-six-word bound only. All situations, sentence pairs, keys and rationales are newly authored; no official C1 or learner calibration claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex root author, explicit reconstruction and bounded-variant review (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.advanced.woodwork-class-root-002",
+          "family": "keyword_transformation",
+          "label": "高级改写：木工课的工具与材料",
+          "candidateSHA256": "364411b7c3c4b86bb5b2d4f529d2bff628450afe6e1aa2d4d69e4dc2cc44c344",
+          "authorCheckSHA256": "974581a33db09cc1d3189c941335121fc18a9f6800477461791c8e728f6881dc",
+          "sourceGroupIds": [
+            "original.advanced-kwt-timing#advanced.woodwork-class-root-002.worksheet"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b116；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "In a Woodwork Class\n\n1. First sentence: We could not continue the course unless we had properly sharpened tools.\nSecond sentence: Continuing the course depended ____.\nKey word: HAVING\n\n2. First sentence: The tutor let us use the workshop after class.\nSecond sentence: The tutor ____ the workshop after class.\nKey word: PERMISSION\n\n3. First sentence: I regretted the fact that I had used that splintered piece of wood.\nSecond sentence: I regretted ____ piece of wood.\nKey word: USED\n\n4. First sentence: The repair cost twice as much as the tutor had estimated.\nSecond sentence: The repair was ____ the tutor had estimated.\nKey word: TWICE\n\n5. First sentence: The apprentice's careless sanding caused the veneer to come off.\nSecond sentence: The veneer came off ____ the apprentice's careless sanding.\nKey word: RESULT\n\n6. First sentence: The instructions say that we must always unplug the sander before changing its belt.\nSecond sentence: According to the instructions, we ____ before changing its belt.\nKey word: FAIL"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q1",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "We could not continue the course unless we had properly sharpened tools.\nUse HAVING: Continuing the course depended ____.\nWrite only the missing words.",
+            "material": "In a Woodwork Class\n\n1. First sentence: We could not continue the course unless we had properly sharpened tools.\nSecond sentence: Continuing the course depended ____.\nKey word: HAVING\n\n2. First sentence: The tutor let us use the workshop after class.\nSecond sentence: The tutor ____ the workshop after class.\nKey word: PERMISSION\n\n3. First sentence: I regretted the fact that I had used that splintered piece of wood.\nSecond sentence: I regretted ____ piece of wood.\nKey word: USED\n\n4. First sentence: The repair cost twice as much as the tutor had estimated.\nSecond sentence: The repair was ____ the tutor had estimated.\nKey word: TWICE\n\n5. First sentence: The apprentice's careless sanding caused the veneer to come off.\nSecond sentence: The veneer came off ____ the apprentice's careless sanding.\nKey word: RESULT\n\n6. First sentence: The instructions say that we must always unplug the sander before changing its belt.\nSecond sentence: According to the instructions, we ____ before changing its belt.\nKey word: FAIL",
+            "explanation": "depend on或upon加动名词短语表示继续课程取决于拥有磨好的工具，保留unless表达的必要条件。depend of不是该搭配。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "on having properly sharpened tools",
+              "upon having properly sharpened tools"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "HAVING",
+              "rejectedAnswers": [
+                "of having properly sharpened tools"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q2",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The tutor let us use the workshop after class.\nUse PERMISSION: The tutor ____ the workshop after class.\nWrite only the missing words.",
+            "material": "In a Woodwork Class\n\n1. First sentence: We could not continue the course unless we had properly sharpened tools.\nSecond sentence: Continuing the course depended ____.\nKey word: HAVING\n\n2. First sentence: The tutor let us use the workshop after class.\nSecond sentence: The tutor ____ the workshop after class.\nKey word: PERMISSION\n\n3. First sentence: I regretted the fact that I had used that splintered piece of wood.\nSecond sentence: I regretted ____ piece of wood.\nKey word: USED\n\n4. First sentence: The repair cost twice as much as the tutor had estimated.\nSecond sentence: The repair was ____ the tutor had estimated.\nKey word: TWICE\n\n5. First sentence: The apprentice's careless sanding caused the veneer to come off.\nSecond sentence: The veneer came off ____ the apprentice's careless sanding.\nKey word: RESULT\n\n6. First sentence: The instructions say that we must always unplug the sander before changing its belt.\nSecond sentence: According to the instructions, we ____ before changing its belt.\nKey word: FAIL",
+            "explanation": "give somebody permission to do表示准许我们课后使用工作室，与let us use相同。for use不能替代这里带明确施事者的to use补语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "gave us permission to use"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "PERMISSION",
+              "rejectedAnswers": [
+                "gave us permission for use"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q3",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "I regretted the fact that I had used that splintered piece of wood.\nUse USED: I regretted ____ piece of wood.\nWrite only the missing words.",
+            "material": "In a Woodwork Class\n\n1. First sentence: We could not continue the course unless we had properly sharpened tools.\nSecond sentence: Continuing the course depended ____.\nKey word: HAVING\n\n2. First sentence: The tutor let us use the workshop after class.\nSecond sentence: The tutor ____ the workshop after class.\nKey word: PERMISSION\n\n3. First sentence: I regretted the fact that I had used that splintered piece of wood.\nSecond sentence: I regretted ____ piece of wood.\nKey word: USED\n\n4. First sentence: The repair cost twice as much as the tutor had estimated.\nSecond sentence: The repair was ____ the tutor had estimated.\nKey word: TWICE\n\n5. First sentence: The apprentice's careless sanding caused the veneer to come off.\nSecond sentence: The veneer came off ____ the apprentice's careless sanding.\nKey word: RESULT\n\n6. First sentence: The instructions say that we must always unplug the sander before changing its belt.\nSecond sentence: According to the instructions, we ____ before changing its belt.\nKey word: FAIL",
+            "explanation": "regret having used保留对先前使用这块有木刺材料的遗憾。used后直接接该材料，额外的to不能放在that splintered piece前。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "having used that splintered"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "USED",
+              "rejectedAnswers": [
+                "having used to that splintered"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q4",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The repair cost twice as much as the tutor had estimated.\nUse TWICE: The repair was ____ the tutor had estimated.\nWrite only the missing words.",
+            "material": "In a Woodwork Class\n\n1. First sentence: We could not continue the course unless we had properly sharpened tools.\nSecond sentence: Continuing the course depended ____.\nKey word: HAVING\n\n2. First sentence: The tutor let us use the workshop after class.\nSecond sentence: The tutor ____ the workshop after class.\nKey word: PERMISSION\n\n3. First sentence: I regretted the fact that I had used that splintered piece of wood.\nSecond sentence: I regretted ____ piece of wood.\nKey word: USED\n\n4. First sentence: The repair cost twice as much as the tutor had estimated.\nSecond sentence: The repair was ____ the tutor had estimated.\nKey word: TWICE\n\n5. First sentence: The apprentice's careless sanding caused the veneer to come off.\nSecond sentence: The veneer came off ____ the apprentice's careless sanding.\nKey word: RESULT\n\n6. First sentence: The instructions say that we must always unplug the sander before changing its belt.\nSecond sentence: According to the instructions, we ____ before changing its belt.\nKey word: FAIL",
+            "explanation": "twice as expensive as与cost twice as much as保留价格为估算两倍的关系。more不能与这里的as结尾混成比较结构。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "twice as expensive as"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "TWICE",
+              "rejectedAnswers": [
+                "twice more expensive as"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q5",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The apprentice's careless sanding caused the veneer to come off.\nUse RESULT: The veneer came off ____ the apprentice's careless sanding.\nWrite only the missing words.",
+            "material": "In a Woodwork Class\n\n1. First sentence: We could not continue the course unless we had properly sharpened tools.\nSecond sentence: Continuing the course depended ____.\nKey word: HAVING\n\n2. First sentence: The tutor let us use the workshop after class.\nSecond sentence: The tutor ____ the workshop after class.\nKey word: PERMISSION\n\n3. First sentence: I regretted the fact that I had used that splintered piece of wood.\nSecond sentence: I regretted ____ piece of wood.\nKey word: USED\n\n4. First sentence: The repair cost twice as much as the tutor had estimated.\nSecond sentence: The repair was ____ the tutor had estimated.\nKey word: TWICE\n\n5. First sentence: The apprentice's careless sanding caused the veneer to come off.\nSecond sentence: The veneer came off ____ the apprentice's careless sanding.\nKey word: RESULT\n\n6. First sentence: The instructions say that we must always unplug the sander before changing its belt.\nSecond sentence: According to the instructions, we ____ before changing its belt.\nKey word: FAIL",
+            "explanation": "as a result of引出原因，保留粗心打磨导致饰面脱落的因果方向。of不能在这里换成to。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "as a result of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "RESULT",
+              "rejectedAnswers": [
+                "as a result to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q6",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The instructions say that we must always unplug the sander before changing its belt.\nUse FAIL: According to the instructions, we ____ before changing its belt.\nWrite only the missing words.",
+            "material": "In a Woodwork Class\n\n1. First sentence: We could not continue the course unless we had properly sharpened tools.\nSecond sentence: Continuing the course depended ____.\nKey word: HAVING\n\n2. First sentence: The tutor let us use the workshop after class.\nSecond sentence: The tutor ____ the workshop after class.\nKey word: PERMISSION\n\n3. First sentence: I regretted the fact that I had used that splintered piece of wood.\nSecond sentence: I regretted ____ piece of wood.\nKey word: USED\n\n4. First sentence: The repair cost twice as much as the tutor had estimated.\nSecond sentence: The repair was ____ the tutor had estimated.\nKey word: TWICE\n\n5. First sentence: The apprentice's careless sanding caused the veneer to come off.\nSecond sentence: The veneer came off ____ the apprentice's careless sanding.\nKey word: RESULT\n\n6. First sentence: The instructions say that we must always unplug the sander before changing its belt.\nSecond sentence: According to the instructions, we ____ before changing its belt.\nKey word: FAIL",
+            "explanation": "without fail对应必须每次切断砂光机电源，保留说明书中的强制要求与操作先后。with fail不是务必完成的英语搭配。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "must unplug the sander without fail"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "FAIL",
+              "rejectedAnswers": [
+                "must unplug the sander with fail"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "eebd919a363b8094f5bba52aedd5ae3d5cd17e7c1e5dbf650bb0c654195ceefc",
+      "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration.",
+      "components": [
+        {
+          "id": "original.advanced-kwt-timing#advanced.woodwork-class-root-002.worksheet",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q1",
+            "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q2",
+            "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q3",
+            "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q4",
+            "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q5",
+            "expansion.20261028.advanced.woodwork-class-root-002.worksheet.q6"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "sourceUnitId": "original.advanced-kwt-timing",
+          "sourceContentHash": "a81979aa19cedcb64548a45512463215a096e7ca63edaeace29b87d95bcb93f5"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.advanced.language-exchange-root-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "高级改写：语言互助中的理解与表达",
+        "summary": "高级改写：语言互助中的理解与表达，共6题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 14,
+        "goalIds": [
+          "original.keyword_transformation"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.keywordtransformation",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original source supplies the six-item keyword-transformation format and three-to-six-word bound only. All situations, sentence pairs, keys and rationales are newly authored; no official C1 or learner calibration claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex root author, explicit reconstruction and bounded-variant review (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.advanced.language-exchange-root-002",
+          "family": "keyword_transformation",
+          "label": "高级改写：语言互助中的理解与表达",
+          "candidateSHA256": "1cc073a1452e32ea42391fa63d23dfef79dfe460941c9ff95e5591917182788a",
+          "authorCheckSHA256": "974581a33db09cc1d3189c941335121fc18a9f6800477461791c8e728f6881dc",
+          "sourceGroupIds": [
+            "original.advanced-kwt-timing#advanced.language-exchange-root-002.worksheet"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b116；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A Language Exchange\n\n1. First sentence: I did not start to understand the story until Ana had drawn a map.\nSecond sentence: Only when Ana had drawn a map ____ understand the story.\nKey word: DID\n\n2. First sentence: He is quite accustomed to hearing different accents now.\nSecond sentence: He ____ different accents now.\nKey word: USED\n\n3. First sentence: I could not avoid smiling when I heard the joke.\nSecond sentence: I ____ when I heard the joke.\nKey word: HELP\n\n4. First sentence: I was mistaken to think that these words had the same meaning.\nSecond sentence: I ____ these words had the same meaning.\nKey word: WRONG\n\n5. First sentence: We should keep the conversation in English as much as possible.\nSecond sentence: We should speak English ____.\nKey word: FAR\n\n6. First sentence: You need not apologise for asking me to repeat the directions.\nSecond sentence: There is ____ for asking me to repeat the directions.\nKey word: NEED"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.advanced.language-exchange-root-002.worksheet.q1",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "I did not start to understand the story until Ana had drawn a map.\nUse DID: Only when Ana had drawn a map ____ understand the story.\nWrite only the missing words.",
+            "material": "A Language Exchange\n\n1. First sentence: I did not start to understand the story until Ana had drawn a map.\nSecond sentence: Only when Ana had drawn a map ____ understand the story.\nKey word: DID\n\n2. First sentence: He is quite accustomed to hearing different accents now.\nSecond sentence: He ____ different accents now.\nKey word: USED\n\n3. First sentence: I could not avoid smiling when I heard the joke.\nSecond sentence: I ____ when I heard the joke.\nKey word: HELP\n\n4. First sentence: I was mistaken to think that these words had the same meaning.\nSecond sentence: I ____ these words had the same meaning.\nKey word: WRONG\n\n5. First sentence: We should keep the conversation in English as much as possible.\nSecond sentence: We should speak English ____.\nKey word: FAR\n\n6. First sentence: You need not apologise for asking me to repeat the directions.\nSecond sentence: There is ____ for asking me to repeat the directions.\nKey word: NEED",
+            "explanation": "Only when前置引发主句倒装，did I start或begin to保留到画好地图后才开始理解的先后关系。did后不用started。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "did I start to",
+              "did I begin to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "DID",
+              "rejectedAnswers": [
+                "did I started to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.language-exchange-root-002.worksheet.q2",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "He is quite accustomed to hearing different accents now.\nUse USED: He ____ different accents now.\nWrite only the missing words.",
+            "material": "A Language Exchange\n\n1. First sentence: I did not start to understand the story until Ana had drawn a map.\nSecond sentence: Only when Ana had drawn a map ____ understand the story.\nKey word: DID\n\n2. First sentence: He is quite accustomed to hearing different accents now.\nSecond sentence: He ____ different accents now.\nKey word: USED\n\n3. First sentence: I could not avoid smiling when I heard the joke.\nSecond sentence: I ____ when I heard the joke.\nKey word: HELP\n\n4. First sentence: I was mistaken to think that these words had the same meaning.\nSecond sentence: I ____ these words had the same meaning.\nKey word: WRONG\n\n5. First sentence: We should keep the conversation in English as much as possible.\nSecond sentence: We should speak English ____.\nKey word: FAR\n\n6. First sentence: You need not apologise for asking me to repeat the directions.\nSecond sentence: There is ____ for asking me to repeat the directions.\nKey word: NEED",
+            "explanation": "be used to doing表示已经习惯，与be accustomed to hearing对应。to在此为介词，必须接hearing，不是表示过去习惯的used to hear。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "is quite used to hearing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "USED",
+              "rejectedAnswers": [
+                "is quite used to hear"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.language-exchange-root-002.worksheet.q3",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "I could not avoid smiling when I heard the joke.\nUse HELP: I ____ when I heard the joke.\nWrite only the missing words.",
+            "material": "A Language Exchange\n\n1. First sentence: I did not start to understand the story until Ana had drawn a map.\nSecond sentence: Only when Ana had drawn a map ____ understand the story.\nKey word: DID\n\n2. First sentence: He is quite accustomed to hearing different accents now.\nSecond sentence: He ____ different accents now.\nKey word: USED\n\n3. First sentence: I could not avoid smiling when I heard the joke.\nSecond sentence: I ____ when I heard the joke.\nKey word: HELP\n\n4. First sentence: I was mistaken to think that these words had the same meaning.\nSecond sentence: I ____ these words had the same meaning.\nKey word: WRONG\n\n5. First sentence: We should keep the conversation in English as much as possible.\nSecond sentence: We should speak English ____.\nKey word: FAR\n\n6. First sentence: You need not apologise for asking me to repeat the directions.\nSecond sentence: There is ____ for asking me to repeat the directions.\nKey word: NEED",
+            "explanation": "cannot或could not help doing表示忍不住，保留听笑话后无法避免微笑的过去反应。help to smile在这里会改变为帮助微笑的结构。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "could not help smiling",
+              "couldn't help smiling"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "HELP",
+              "rejectedAnswers": [
+                "could not help to smile"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.language-exchange-root-002.worksheet.q4",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "I was mistaken to think that these words had the same meaning.\nUse WRONG: I ____ these words had the same meaning.\nWrite only the missing words.",
+            "material": "A Language Exchange\n\n1. First sentence: I did not start to understand the story until Ana had drawn a map.\nSecond sentence: Only when Ana had drawn a map ____ understand the story.\nKey word: DID\n\n2. First sentence: He is quite accustomed to hearing different accents now.\nSecond sentence: He ____ different accents now.\nKey word: USED\n\n3. First sentence: I could not avoid smiling when I heard the joke.\nSecond sentence: I ____ when I heard the joke.\nKey word: HELP\n\n4. First sentence: I was mistaken to think that these words had the same meaning.\nSecond sentence: I ____ these words had the same meaning.\nKey word: WRONG\n\n5. First sentence: We should keep the conversation in English as much as possible.\nSecond sentence: We should speak English ____.\nKey word: FAR\n\n6. First sentence: You need not apologise for asking me to repeat the directions.\nSecond sentence: There is ____ for asking me to repeat the directions.\nKey word: NEED",
+            "explanation": "be wrong to think或in thinking均表达认为词义相同是错误判断，保留过去时和判断内容。for think不能构成该补语。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was wrong to think that",
+              "was wrong in thinking that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "WRONG",
+              "rejectedAnswers": [
+                "was wrong for think that"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.language-exchange-root-002.worksheet.q5",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "We should keep the conversation in English as much as possible.\nUse FAR: We should speak English ____.\nWrite only the missing words.",
+            "material": "A Language Exchange\n\n1. First sentence: I did not start to understand the story until Ana had drawn a map.\nSecond sentence: Only when Ana had drawn a map ____ understand the story.\nKey word: DID\n\n2. First sentence: He is quite accustomed to hearing different accents now.\nSecond sentence: He ____ different accents now.\nKey word: USED\n\n3. First sentence: I could not avoid smiling when I heard the joke.\nSecond sentence: I ____ when I heard the joke.\nKey word: HELP\n\n4. First sentence: I was mistaken to think that these words had the same meaning.\nSecond sentence: I ____ these words had the same meaning.\nKey word: WRONG\n\n5. First sentence: We should keep the conversation in English as much as possible.\nSecond sentence: We should speak English ____.\nKey word: FAR\n\n6. First sentence: You need not apologise for asking me to repeat the directions.\nSecond sentence: There is ____ for asking me to repeat the directions.\nKey word: NEED",
+            "explanation": "as far as possible在此表示尽可能使用英语，保留原句尽量保持英语交流的要求。possibly不能代替固定表达末尾的形容词possible。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "as far as possible"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "FAR",
+              "rejectedAnswers": [
+                "so far as possibly"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.language-exchange-root-002.worksheet.q6",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "You need not apologise for asking me to repeat the directions.\nUse NEED: There is ____ for asking me to repeat the directions.\nWrite only the missing words.",
+            "material": "A Language Exchange\n\n1. First sentence: I did not start to understand the story until Ana had drawn a map.\nSecond sentence: Only when Ana had drawn a map ____ understand the story.\nKey word: DID\n\n2. First sentence: He is quite accustomed to hearing different accents now.\nSecond sentence: He ____ different accents now.\nKey word: USED\n\n3. First sentence: I could not avoid smiling when I heard the joke.\nSecond sentence: I ____ when I heard the joke.\nKey word: HELP\n\n4. First sentence: I was mistaken to think that these words had the same meaning.\nSecond sentence: I ____ these words had the same meaning.\nKey word: WRONG\n\n5. First sentence: We should keep the conversation in English as much as possible.\nSecond sentence: We should speak English ____.\nKey word: FAR\n\n6. First sentence: You need not apologise for asking me to repeat the directions.\nSecond sentence: There is ____ for asking me to repeat the directions.\nKey word: NEED",
+            "explanation": "there is no need to或no need for you to均表达不必为请人重复方向而道歉，英美apologise与apologize拼法均接纳。of you apologise不是该结构。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "no need for you to apologise",
+              "no need to apologise",
+              "no need for you to apologize",
+              "no need to apologize"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "NEED",
+              "rejectedAnswers": [
+                "no need of you apologise"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "8d87a2f9fb10b154a963ba0918016971841c29ddc0cc9bbade5db172c4876b54",
+      "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration.",
+      "components": [
+        {
+          "id": "original.advanced-kwt-timing#advanced.language-exchange-root-002.worksheet",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.advanced.language-exchange-root-002.worksheet.q1",
+            "expansion.20261028.advanced.language-exchange-root-002.worksheet.q2",
+            "expansion.20261028.advanced.language-exchange-root-002.worksheet.q3",
+            "expansion.20261028.advanced.language-exchange-root-002.worksheet.q4",
+            "expansion.20261028.advanced.language-exchange-root-002.worksheet.q5",
+            "expansion.20261028.advanced.language-exchange-root-002.worksheet.q6"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "sourceUnitId": "original.advanced-kwt-timing",
+          "sourceContentHash": "a81979aa19cedcb64548a45512463215a096e7ca63edaeace29b87d95bcb93f5"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.advanced.field-camp-root-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "高级改写：野外营地的仪器与样品",
+        "summary": "高级改写：野外营地的仪器与样品，共6题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 14,
+        "goalIds": [
+          "original.keyword_transformation"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.keywordtransformation",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original source supplies the six-item keyword-transformation format and three-to-six-word bound only. All situations, sentence pairs, keys and rationales are newly authored; no official C1 or learner calibration claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex root author, explicit reconstruction and bounded-variant review (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.advanced.field-camp-root-002",
+          "family": "keyword_transformation",
+          "label": "高级改写：野外营地的仪器与样品",
+          "candidateSHA256": "a8b810b48f8ceab84a351db41a35ab396a41a5378034dd3fbdaf908318c7e539",
+          "authorCheckSHA256": "974581a33db09cc1d3189c941335121fc18a9f6800477461791c8e728f6881dc",
+          "sourceGroupIds": [
+            "original.advanced-kwt-timing#advanced.field-camp-root-002.worksheet"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b116；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "At a Field Camp\n\n1. First sentence: The lights went out just as we were beginning to analyse the samples.\nSecond sentence: We had ____ when the lights went out.\nKey word: HARDLY\n\n2. First sentence: The failure of the satellite clock forced us to abandon the measurements.\nSecond sentence: The failure of the satellite clock ____ abandon the measurements.\nKey word: OBLIGED\n\n3. First sentence: Without a spare battery, the logger would have stopped before dawn.\nSecond sentence: The logger would have stopped before dawn ____.\nKey word: BUT\n\n4. First sentence: The instrument will work properly if it is kept level.\nSecond sentence: The instrument will work properly ____ level.\nKey word: PROVIDED\n\n5. First sentence: Some tracks were damaged, but the team continued collecting data.\nSecond sentence: The team continued collecting data ____ some damaged tracks.\nKey word: DESPITE\n\n6. First sentence: The new sensor was much more reliable than its predecessor.\nSecond sentence: The old sensor was ____ the new one.\nKey word: NEAR"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.advanced.field-camp-root-002.worksheet.q1",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The lights went out just as we were beginning to analyse the samples.\nUse HARDLY: We had ____ when the lights went out.\nWrite only the missing words.",
+            "material": "At a Field Camp\n\n1. First sentence: The lights went out just as we were beginning to analyse the samples.\nSecond sentence: We had ____ when the lights went out.\nKey word: HARDLY\n\n2. First sentence: The failure of the satellite clock forced us to abandon the measurements.\nSecond sentence: The failure of the satellite clock ____ abandon the measurements.\nKey word: OBLIGED\n\n3. First sentence: Without a spare battery, the logger would have stopped before dawn.\nSecond sentence: The logger would have stopped before dawn ____.\nKey word: BUT\n\n4. First sentence: The instrument will work properly if it is kept level.\nSecond sentence: The instrument will work properly ____ level.\nKey word: PROVIDED\n\n5. First sentence: Some tracks were damaged, but the team continued collecting data.\nSecond sentence: The team continued collecting data ____ some damaged tracks.\nKey word: DESPITE\n\n6. First sentence: The new sensor was much more reliable than its predecessor.\nSecond sentence: The old sensor was ____ the new one.\nKey word: NEAR",
+            "explanation": "had hardly started或begun对应刚开始分析样品灯就灭了；动名词与不定式、英美analyse拼法的列出形式均保留相同事件。had后不用start原形。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "hardly started analysing the samples",
+              "hardly begun analysing the samples",
+              "hardly started to analyse the samples",
+              "hardly begun to analyse the samples",
+              "hardly started analyzing the samples",
+              "hardly begun analyzing the samples"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "HARDLY",
+              "rejectedAnswers": [
+                "hardly start analysing the samples"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.field-camp-root-002.worksheet.q2",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The failure of the satellite clock forced us to abandon the measurements.\nUse OBLIGED: The failure of the satellite clock ____ abandon the measurements.\nWrite only the missing words.",
+            "material": "At a Field Camp\n\n1. First sentence: The lights went out just as we were beginning to analyse the samples.\nSecond sentence: We had ____ when the lights went out.\nKey word: HARDLY\n\n2. First sentence: The failure of the satellite clock forced us to abandon the measurements.\nSecond sentence: The failure of the satellite clock ____ abandon the measurements.\nKey word: OBLIGED\n\n3. First sentence: Without a spare battery, the logger would have stopped before dawn.\nSecond sentence: The logger would have stopped before dawn ____.\nKey word: BUT\n\n4. First sentence: The instrument will work properly if it is kept level.\nSecond sentence: The instrument will work properly ____ level.\nKey word: PROVIDED\n\n5. First sentence: Some tracks were damaged, but the team continued collecting data.\nSecond sentence: The team continued collecting data ____ some damaged tracks.\nKey word: DESPITE\n\n6. First sentence: The new sensor was much more reliable than its predecessor.\nSecond sentence: The old sensor was ____ the new one.\nKey word: NEAR",
+            "explanation": "oblige somebody to do表示迫使我们放弃测量，与forced us to相同，保留故障造成的因果方向。for不能引出这里的不定式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "obliged us to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "OBLIGED",
+              "rejectedAnswers": [
+                "obliged us for"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.field-camp-root-002.worksheet.q3",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "Without a spare battery, the logger would have stopped before dawn.\nUse BUT: The logger would have stopped before dawn ____.\nWrite only the missing words.",
+            "material": "At a Field Camp\n\n1. First sentence: The lights went out just as we were beginning to analyse the samples.\nSecond sentence: We had ____ when the lights went out.\nKey word: HARDLY\n\n2. First sentence: The failure of the satellite clock forced us to abandon the measurements.\nSecond sentence: The failure of the satellite clock ____ abandon the measurements.\nKey word: OBLIGED\n\n3. First sentence: Without a spare battery, the logger would have stopped before dawn.\nSecond sentence: The logger would have stopped before dawn ____.\nKey word: BUT\n\n4. First sentence: The instrument will work properly if it is kept level.\nSecond sentence: The instrument will work properly ____ level.\nKey word: PROVIDED\n\n5. First sentence: Some tracks were damaged, but the team continued collecting data.\nSecond sentence: The team continued collecting data ____ some damaged tracks.\nKey word: DESPITE\n\n6. First sentence: The new sensor was much more reliable than its predecessor.\nSecond sentence: The old sensor was ____ the new one.\nKey word: NEAR",
+            "explanation": "but for加名词短语可表示若不是有备用电池，与过去反事实条件without对应。from不能替换该固定条件表达中的for。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "but for a spare battery"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "BUT",
+              "rejectedAnswers": [
+                "but from a spare battery"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.field-camp-root-002.worksheet.q4",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The instrument will work properly if it is kept level.\nUse PROVIDED: The instrument will work properly ____ level.\nWrite only the missing words.",
+            "material": "At a Field Camp\n\n1. First sentence: The lights went out just as we were beginning to analyse the samples.\nSecond sentence: We had ____ when the lights went out.\nKey word: HARDLY\n\n2. First sentence: The failure of the satellite clock forced us to abandon the measurements.\nSecond sentence: The failure of the satellite clock ____ abandon the measurements.\nKey word: OBLIGED\n\n3. First sentence: Without a spare battery, the logger would have stopped before dawn.\nSecond sentence: The logger would have stopped before dawn ____.\nKey word: BUT\n\n4. First sentence: The instrument will work properly if it is kept level.\nSecond sentence: The instrument will work properly ____ level.\nKey word: PROVIDED\n\n5. First sentence: Some tracks were damaged, but the team continued collecting data.\nSecond sentence: The team continued collecting data ____ some damaged tracks.\nKey word: DESPITE\n\n6. First sentence: The new sensor was much more reliable than its predecessor.\nSecond sentence: The old sensor was ____ the new one.\nKey word: NEAR",
+            "explanation": "provided或provided that引出与if相同的条件：仪器保持水平即可正常工作。被动结构词序为it is kept，不能写it kept is。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "provided it is kept",
+              "provided that it is kept"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "PROVIDED",
+              "rejectedAnswers": [
+                "provided it kept is"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.field-camp-root-002.worksheet.q5",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "Some tracks were damaged, but the team continued collecting data.\nUse DESPITE: The team continued collecting data ____ some damaged tracks.\nWrite only the missing words.",
+            "material": "At a Field Camp\n\n1. First sentence: The lights went out just as we were beginning to analyse the samples.\nSecond sentence: We had ____ when the lights went out.\nKey word: HARDLY\n\n2. First sentence: The failure of the satellite clock forced us to abandon the measurements.\nSecond sentence: The failure of the satellite clock ____ abandon the measurements.\nKey word: OBLIGED\n\n3. First sentence: Without a spare battery, the logger would have stopped before dawn.\nSecond sentence: The logger would have stopped before dawn ____.\nKey word: BUT\n\n4. First sentence: The instrument will work properly if it is kept level.\nSecond sentence: The instrument will work properly ____ level.\nKey word: PROVIDED\n\n5. First sentence: Some tracks were damaged, but the team continued collecting data.\nSecond sentence: The team continued collecting data ____ some damaged tracks.\nKey word: DESPITE\n\n6. First sentence: The new sensor was much more reliable than its predecessor.\nSecond sentence: The old sensor was ____ the new one.\nKey word: NEAR",
+            "explanation": "despite后接there being动名词结构，保留部分道路损坏仍继续采集数据的让步关系。despite不能直接引出there were有限从句。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "despite there being"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "DESPITE",
+              "rejectedAnswers": [
+                "despite there were"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261028.advanced.field-camp-root-002.worksheet.q6",
+            "goalId": "original.keyword_transformation",
+            "instruction": "Complete the second sentence so that it means the same as the first. Use the given key word without changing it. Write only 3 to 6 words for the gap, including the key word.",
+            "prompt": "The new sensor was much more reliable than its predecessor.\nUse NEAR: The old sensor was ____ the new one.\nWrite only the missing words.",
+            "material": "At a Field Camp\n\n1. First sentence: The lights went out just as we were beginning to analyse the samples.\nSecond sentence: We had ____ when the lights went out.\nKey word: HARDLY\n\n2. First sentence: The failure of the satellite clock forced us to abandon the measurements.\nSecond sentence: The failure of the satellite clock ____ abandon the measurements.\nKey word: OBLIGED\n\n3. First sentence: Without a spare battery, the logger would have stopped before dawn.\nSecond sentence: The logger would have stopped before dawn ____.\nKey word: BUT\n\n4. First sentence: The instrument will work properly if it is kept level.\nSecond sentence: The instrument will work properly ____ level.\nKey word: PROVIDED\n\n5. First sentence: Some tracks were damaged, but the team continued collecting data.\nSecond sentence: The team continued collecting data ____ some damaged tracks.\nKey word: DESPITE\n\n6. First sentence: The new sensor was much more reliable than its predecessor.\nSecond sentence: The old sensor was ____ the new one.\nKey word: NEAR",
+            "explanation": "把新传感器更可靠改写为旧传感器远不如新传感器可靠，比较方向不变。nowhere near as或so...as结尾不能用than。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "nowhere near as reliable as",
+              "not anywhere near as reliable as",
+              "nowhere near so reliable as"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 3,
+              "maxWords": 6,
+              "requiredWord": "NEAR",
+              "rejectedAnswers": [
+                "nowhere near as reliable than"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "d5af2603e263c5fc2b62e7f3f8bc63032dd93d20ee82684322bbe9974f912d8d",
+      "reviewNotes": "New complete six-item keyword transformations, explicitly authored and reviewed sentence by sentence. Counts refer to independent complete practices, not extra names or reworded copies of a base sheet. Source supplies format only; author self-review and native grading checks do not establish independent teacher approval or C1 calibration.",
+      "components": [
+        {
+          "id": "original.advanced-kwt-timing#advanced.field-camp-root-002.worksheet",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.advanced.field-camp-root-002.worksheet.q1",
+            "expansion.20261028.advanced.field-camp-root-002.worksheet.q2",
+            "expansion.20261028.advanced.field-camp-root-002.worksheet.q3",
+            "expansion.20261028.advanced.field-camp-root-002.worksheet.q4",
+            "expansion.20261028.advanced.field-camp-root-002.worksheet.q5",
+            "expansion.20261028.advanced.field-camp-root-002.worksheet.q6"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "sourceUnitId": "original.advanced-kwt-timing",
+          "sourceContentHash": "a81979aa19cedcb64548a45512463215a096e7ca63edaeace29b87d95bcb93f5"
+        }
+      ]
+    }
+  ]
+}
