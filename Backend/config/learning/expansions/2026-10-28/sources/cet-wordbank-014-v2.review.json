@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "cet-wordbank-014-v2.json",
+  "sourceSHA256": "24586f2546191da19862df3cf3254427ffbc793e487c35dc9fffbb952a5d1113",
+  "supersedesSourceSHA256": "697fe780ed619c2c3754b71a8dd9bf3f68baf606fbcd73b91df74b0e7c34593d",
+  "supersedesReviewSHA256": "7db02292a5b5da7ff002abb3cb81f22db94e9a7219bed242763ccb58bcd5b694",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex same author grammar-v2 review; not independent teacher calibration",
+  "reviewedAt": "2026-10-29",
+  "status": "approved",
+  "approvalScope": "Grammar-only forward revision of explicitly bound version1 units. Existing source/review bytes, IDs, all question arrays and answer keys remain preserved; no additional practice supply is claimed.",
+  "checks": {
+    "practicesRevised": 2,
+    "scoreableResponsesRechecked": 20,
+    "grammarEdits": 2,
+    "newPractices": 0,
+    "priorSourceBytesUnchanged": true,
+    "priorReviewBytesUnchanged": true,
+    "allUnitIdsUnchanged": true,
+    "allQuestionArraysOptionsKeysUnchanged": true,
+    "allGapMarkersUnchanged": true,
+    "allParagraphLabelsUnchanged": true,
+    "allEditsOutsideGaps": true,
+    "priorFrozenContentHashesBound": true,
+    "priorSourceSHA256Bound": true,
+    "missingMediaDependencies": 0
+  },
+  "units": [
+    {
+      "id": "postgraduate.crossover-periods-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "crossover",
+        "period",
+        "treatment",
+        "sequence",
+        "randomised",
+        "carryover",
+        "washout",
+        "comparison",
+        "variability",
+        "masked"
+      ],
+      "unusedWords": [
+        "allocation",
+        "baseline",
+        "endpoint",
+        "volunteer",
+        "withdrawn"
+      ],
+      "findings": [
+        "Crossover and period describe repeated-condition structure; sequence and randomisation concern order and assignment.",
+        "Carryover is persistence, washout the intended diminishing interval; washout is not guaranteed to remove every influence.",
+        "Within-person comparison does not remove time variation. Assessor masking is distinguished from participant knowledge.",
+        "Unused allocation, baseline, endpoint, volunteer and withdrawn were checked across all slots. The text gives no actual intervention protocol.",
+        "Grammar-only correction in whole: instead of treat → instead of treating; the gerund follows the preposition without changing the sentence's subject, object, condition or assertion."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "questionNumber": 1,
+          "answerIndex": 4,
+          "answerText": "E. crossover",
+          "finding": "same participant both conditions different times定义crossover交叉设计。allocation分配总过程、baseline起点、endpoint结果不指同人轮换结构。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 2,
+          "answerIndex": 7,
+          "answerText": "H. period",
+          "finding": "defined time span each condition定义period阶段。sequence为阶段次序、baseline开始值、endpoint终点不是持续时间段本身。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 3,
+          "answerIndex": 10,
+          "answerText": "K. treatment",
+          "finding": "intervention label defined treatment处理。volunteer为参与者、endpoint测量结果、allocation分配不命名被比较条件处理。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 4,
+          "answerIndex": 9,
+          "answerText": "J. sequence",
+          "finding": "order conditions定义sequence顺序。comparison为比较过程、period单阶段、baseline起始状态都不是先后组合。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 5,
+          "answerIndex": 8,
+          "answerText": "I. randomised",
+          "finding": "chance rather chosen order定义randomised随机化。masked为不知标签而非随机选序，withdrawn为退出，其他候选不作该分配性质分词。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 6,
+          "answerIndex": 2,
+          "answerText": "C. carryover",
+          "finding": "effect persists first into next定义carryover残留效应。washout间隔旨在减残留而非残留本身，variability泛变化、baseline基线不直接指前期延续影响。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 7,
+          "answerIndex": 13,
+          "answerText": "N. washout",
+          "finding": "interval allowing effects diminish定义washout洗脱间隔。baseline起始时点不保证留间隔，endpoint结果、allocation分配不是这里的阶段之间等待。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 8,
+          "answerIndex": 3,
+          "answerText": "D. comparison",
+          "finding": "within participant comparing two conditions定义comparison比较。allocation把人或序分派不同于条件结果对比，variability是差异现象不是比较动作。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 9,
+          "answerIndex": 11,
+          "answerText": "L. variability",
+          "finding": "differences changes across periods为variability变异。carryover仅一种延续效应不能概括所有差异，baseline起点、endpoint单结果非总变化。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 10,
+          "answerIndex": 6,
+          "answerText": "G. masked",
+          "finding": "assessor unaware condition defines masked遮盲。randomised指抽分不保证不知道，withdrawn退出不是保评者不知，其他候选不合。"
+        }
+      ],
+      "version": 2,
+      "revises": {
+        "version": 1,
+        "contentHash": "7e375d4ade92692fcd06ce93cac341e3cc61c94c9f2bde31473651f28888b2eb"
+      },
+      "approvalScope": "Author grammar-only v2 review: the complete corrected sentences retain their original proposition, negation, scope and question entailments; not release approval or independent teacher calibration.",
+      "wordCounts": {
+        "whole": 237
+      },
+      "sentenceReviews": [
+        {
+          "materialId": "whole",
+          "sentenceBefore": "The class stated which quantities the design was intended to compare instead of treat one person as an unchanging measuring instrument.",
+          "sentenceAfter": "The class stated which quantities the design was intended to compare instead of treating one person as an unchanging measuring instrument.",
+          "finding": "Reviewed the complete sentence: gerund morphology is corrected; all referenced actors, facts, alternatives, uncertainty and logical relations are unchanged.",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.network-experiment-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "unit",
+        "assignment",
+        "randomisation",
+        "control",
+        "baseline",
+        "exposure",
+        "compliance",
+        "spillover",
+        "cluster",
+        "stable"
+      ],
+      "unusedWords": [
+        "attrition",
+        "untreated",
+        "variance",
+        "version",
+        "weighted"
+      ],
+      "findings": [
+        "Unit, assignment, randomisation and baseline are different design elements. Control is a defined comparison, not a promise of zero experiences.",
+        "Exposure and compliance are separate from receiving an invitation. Spillover concerns indirect effects on connected nonrecipients.",
+        "Cluster allocation needs matching design; stable conditions cannot be inferred from a shared programme name.",
+        "Unused attrition, untreated, variance, version and weighted were checked across all gaps. No real social experiment or personal data is used.",
+        "Grammar-only correction in whole: instead of use → instead of using; the gerund follows the preposition without changing the sentence's subject, object, condition or assertion."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "questionAudits": [
+        {
+          "materialId": "whole",
+          "questionNumber": 1,
+          "answerIndex": 10,
+          "answerText": "K. unit",
+          "finding": "entity counted analysis定义unit分析单位。cluster是一种分组单位但此处概念可账户人家庭，assignment为分配、version为版本均非通用分析实体概念。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 2,
+          "answerIndex": 0,
+          "answerText": "A. assignment",
+          "finding": "allocated group记录定义assignment分配。exposure实际遇到、compliance遵从均后续事件，variance变异不指被划到哪条件。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 3,
+          "answerIndex": 7,
+          "answerText": "H. randomisation",
+          "finding": "used chance allocation定义randomisation随机化。attrition退出、spillover间接效应、baseline起点、control比较组不指抽签分配。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 4,
+          "answerIndex": 5,
+          "answerText": "F. control",
+          "finding": "stated comparison arrangement定义control对照条件。untreated未接受可处理性质但不保证无事，本文强调对照非绝对空白，weighted加权非条件名。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 5,
+          "answerIndex": 2,
+          "answerText": "C. baseline",
+          "finding": "before intervention starting state定义baseline基线。version版本、assignment分配、exposure接触不等前测起点；其他词不合。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 6,
+          "answerIndex": 6,
+          "answerText": "G. exposure",
+          "finding": "what actually encountered定义exposure实际接触。assignment仅机会分配、compliance遵从是接触与分配关系不等本身，其他名词不合。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 7,
+          "answerIndex": 4,
+          "answerText": "E. compliance",
+          "finding": "following allocated arrangement定义compliance遵从。exposure只是遇到可能非分配安排，attrition退出相反事件，variance变异不表遵从。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 8,
+          "answerIndex": 8,
+          "answerText": "I. spillover",
+          "finding": "effect reaches nonrecipients neighbours定义spillover溢出效应。attrition是流失、variance总变异、version版本不是间接受益，其他候选不合。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 9,
+          "answerIndex": 3,
+          "answerText": "D. cluster",
+          "finding": "group connected purpose定义cluster群组。unit泛单位但第1空已锁总定义，这里特指一起分配的组；version版本、control条件不等连接群体。"
+        },
+        {
+          "materialId": "whole",
+          "questionNumber": 10,
+          "answerIndex": 9,
+          "answerText": "J. stable",
+          "finding": "unchanged relevant respects定义stable稳定。weighted为加权而非条件不变，untreated未处理、randomisation名词均不说明跨比较相关条件一致。"
+        }
+      ],
+      "version": 2,
+      "revises": {
+        "version": 1,
+        "contentHash": "9f3a72350ac48b994a3a1ffe9eaef5e11e0322b52853d7e0bb7d4f36e957e2f0"
+      },
+      "approvalScope": "Author grammar-only v2 review: the complete corrected sentences retain their original proposition, negation, scope and question entailments; not release approval or independent teacher calibration.",
+      "wordCounts": {
+        "whole": 236
+      },
+      "sentenceReviews": [
+        {
+          "materialId": "whole",
+          "sentenceBefore": "The exercise made unit, assignment, receipt and network effects inspectable instead of use random allocation as a general promise that every later interpretation would be simple.",
+          "sentenceAfter": "The exercise made unit, assignment, receipt and network effects inspectable instead of using random allocation as a general promise that every later interpretation would be simple.",
+          "finding": "Reviewed the complete sentence: gerund morphology is corrected; all referenced actors, facts, alternatives, uncertainty and logical relations are unchanged.",
+          "status": "approved"
+        }
+      ]
+    }
+  ],
+  "corrections": [
+    {
+      "unitId": "postgraduate.crossover-periods-bank-014",
+      "materialId": "whole",
+      "before": "instead of treat",
+      "after": "instead of treating",
+      "sentenceBefore": "The class stated which quantities the design was intended to compare instead of treat one person as an unchanging measuring instrument.",
+      "sentenceAfter": "The class stated which quantities the design was intended to compare instead of treating one person as an unchanging measuring instrument.",
+      "reason": "The preposition of/without requires the gerund here; the edit changes morphology only, preserving subject, complement, scope and claim."
+    },
+    {
+      "unitId": "postgraduate.network-experiment-bank-014",
+      "materialId": "whole",
+      "before": "instead of use",
+      "after": "instead of using",
+      "sentenceBefore": "The exercise made unit, assignment, receipt and network effects inspectable instead of use random allocation as a general promise that every later interpretation would be simple.",
+      "sentenceAfter": "The exercise made unit, assignment, receipt and network effects inspectable instead of using random allocation as a general promise that every later interpretation would be simple.",
+      "reason": "The preposition of/without requires the gerund here; the edit changes morphology only, preserving subject, complement, scope and claim."
+    }
+  ],
+  "unresolvedConcerns": [
+    "Same-author grammar/semantic review and grading parity checks are not independent teacher or learner calibration.",
+    "Only explicitly listed morphology is changed; the provisional pedagogic status of the prior practices is unchanged.",
+    "Root owns forward publication; this author task does not modify old manifests, indexes, database rows, answers or results."
+  ]
+}
