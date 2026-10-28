@@ -5,13 +5,24 @@ import { createDatabase } from "../db/client.js";
 import {
   loadExpansionCatalog,
   loadExpansionImages,
+  expansionNamespace,
+  expansionRun,
 } from "../modules/learning/expansion-catalog.js";
 import { createMediaObjectStore } from "../modules/media/object-store.js";
 import { uploadLearningImages } from "../modules/learning/images.js";
 import { LearningExpansionRepository } from "../modules/learning/expansion-repository.js";
 
 async function main() {
-  const [action, batch, hash, ...extra] = process.argv.slice(2);
+  const args = process.argv.slice(2);
+  const runIndex = args.indexOf("--run");
+  let run: string = expansionRun;
+  if (runIndex >= 0) {
+    if (runIndex !== args.length - 2) throw new Error("Use trailing --run YYYY-MM-DD");
+    run = args[runIndex + 1] ?? "";
+    args.splice(runIndex, 2);
+  }
+  expansionNamespace(run);
+  const [action, batch, hash, ...extra] = args;
   if (
     !["validate", "publish", "withdraw"].includes(action ?? "") ||
     extra.length ||
@@ -21,7 +32,7 @@ async function main() {
     (action !== "publish" && hash)
   )
     throw new Error(
-      "Use learning-expansion validate [batch]; publish batch hash; withdraw [batch|all]",
+      "Use learning-expansion validate [batch]; publish batch hash; withdraw [batch|all]; optional trailing --run 2026-10-24|2026-10-28",
     );
   await requireMaintenanceScope();
   const selected = batch === "all" ? undefined : batch;
@@ -30,7 +41,7 @@ async function main() {
     try {
       console.log(
         JSON.stringify(
-          await new LearningExpansionRepository(database).withdraw(selected),
+          await new LearningExpansionRepository(database).withdraw(selected, run),
         ),
       );
     } finally {
@@ -38,12 +49,14 @@ async function main() {
     }
     return;
   }
-  const catalog = loadExpansionCatalog(selected);
+  const catalog = loadExpansionCatalog(selected, false, run);
   if (action === "validate") {
-    for (const manifest of catalog.manifests) await loadExpansionImages(manifest.batch);
+    for (const manifest of catalog.manifests)
+      await loadExpansionImages(manifest.batch, run);
     console.log(
       JSON.stringify({
         action,
+        run,
         batch: batch ?? "all",
         hash: catalog.hash,
         units: catalog.units.length,
@@ -59,7 +72,7 @@ async function main() {
     if (action === "publish") {
       if (!hash || !selected) throw new Error("Missing expansion batch/hash");
       if (hash !== catalog.hash) throw new Error("Expansion hash mismatch");
-      const images = await loadExpansionImages(selected);
+      const images = await loadExpansionImages(selected, run);
       if (images.length) {
         if (!config.mediaStorageEnabled)
           throw new Error("New images need object storage");
@@ -71,6 +84,7 @@ async function main() {
             hash,
             selected,
             images.map((a) => a.metadata),
+            run,
           ),
         ),
       );

@@ -15,7 +15,7 @@ install -d "${staging}/release"
 pnpm exec tsc -p tsconfig.build.json --outDir "${staging}/release/dist"
 cp -R migrations "${staging}/release/"
 # 原创长音轨采用按SHA增量的独立资产包，避免在每次程序发布中复制全部语料。
-tar --exclude='config/learning/originals/media' -cf - config | tar -xf - -C "${staging}/release/"
+tar --exclude='config/learning/originals/media' --exclude='config/learning/expansions/*/sources' -cf - config | tar -xf - -C "${staging}/release/"
 install -m 0644 package.json pnpm-lock.yaml "${staging}/release/"
 printf '%s\n' "${version}" >"${staging}/release/RELEASE"
 

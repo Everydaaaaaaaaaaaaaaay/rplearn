@@ -33,6 +33,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       for (const id of [
         old.id,
         "expansion.20261024.future-unknown",
+        "expansion.20261028.scope-fixture",
         ...catalog.units.map((u) => u.id),
       ]) {
         await db.sql`delete from app.learning_unit_versions where unit_id=${id}`;
@@ -70,6 +71,25 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(() => loadExpansionCatalog("b999")).toThrow("Unknown");
     });
 
+    it("显式新轮次撤回只触及对应命名空间，默认旧轮次不碰新题", async () => {
+      const unit = catalog.units[0];
+      if (!unit) throw new Error("Missing fixture");
+      const next = { ...unit, id: "expansion.20261028.scope-fixture" };
+      await engine.publish(next);
+      const result = await expansion.withdraw(undefined, "2026-10-28");
+      expect(result.run).toBe("2026-10-28");
+      expect(result.withdrawnUnits).toBe(1);
+      const [oldRow] = await db.sql<
+        { published: boolean }[]
+      >`select published from app.learning_units where id=${unit.id}`;
+      const [newRow] = await db.sql<
+        { published: boolean }[]
+      >`select published from app.learning_units where id=${next.id}`;
+      expect(oldRow?.published).toBe(true);
+      expect(newRow?.published).toBe(false);
+      await expect(expansion.withdraw(undefined, "2026-10-29")).rejects.toThrow();
+    });
+
     it("撤回整轮新题，旧题与作答积分保留、活动与历史补答均不再领奖", async () => {
       const first = catalog.units.find((u) => u.level === "primary2");
       if (!first) throw new Error("Missing authored primary2 unit");
@@ -102,7 +122,12 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         id: "expansion.20261024.future-unknown",
         title: "Future authored batch",
       });
+      await db.sql`update app.learning_units set published=true where id='expansion.20261028.scope-fixture'`;
       const withdrawn = await expansion.withdraw();
+      const [newRun] = await db.sql<
+        { published: boolean }[]
+      >`select published from app.learning_units where id='expansion.20261028.scope-fixture'`;
+      expect(newRun?.published).toBe(true);
       expect(withdrawn.withdrawnUnits).toBe(4);
       expect(withdrawn.targetScope).toBe("reserved-run-namespace");
       expect(withdrawn.retiredAttempts).toBe(2);
@@ -139,13 +164,17 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         (await engine.read(a.user, (s) => s.attempt(a.attempt.id))).correctQuestionIds,
       ).toContain(q.id);
       expect(
-        (await engine.read(b.user, (s) => s.originals("primary2"))).units,
+        (await engine.read(b.user, (s) => s.originals("primary2"))).units.filter((u) =>
+          u.id.startsWith("expansion.20261024."),
+        ),
       ).toHaveLength(0);
       expect((await expansion.withdraw()).withdrawnUnits).toBe(0);
       // Re-running publication does not silently reactivate a withdrawn immutable version.
       await expansion.publish(catalog.hash, "b000");
       expect(
-        (await engine.read(b.user, (s) => s.originals("primary2"))).units,
+        (await engine.read(b.user, (s) => s.originals("primary2"))).units.filter((u) =>
+          u.id.startsWith("expansion.20261024."),
+        ),
       ).toHaveLength(0);
     });
   },

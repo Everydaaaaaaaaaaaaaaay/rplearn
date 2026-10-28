@@ -1,6 +1,10 @@
 import type { DatabaseResource } from "../../db/client.js";
 import { contentHash, type LearningUnit } from "./content.js";
-import { loadExpansionCatalog } from "./expansion-catalog.js";
+import {
+  expansionNamespace,
+  expansionRun,
+  loadExpansionCatalog,
+} from "./expansion-catalog.js";
 import { LearningEngineRepository } from "./engine-repository.js";
 import type { LearningImageAsset } from "./images.js";
 
@@ -11,8 +15,9 @@ export class LearningExpansionRepository {
     expectedHash: string,
     batch: string,
     images: readonly LearningImageAsset[] = [],
+    run: string = expansionRun,
   ) {
-    const catalog = loadExpansionCatalog(batch);
+    const catalog = loadExpansionCatalog(batch, false, run);
     if (catalog.hash !== expectedHash) throw new Error("Expansion hash mismatch");
     // [] verifies all referenced audio against already archived server metadata.
     await new LearningEngineRepository(this.database).publishBatch(
@@ -20,14 +25,17 @@ export class LearningExpansionRepository {
       [],
       images,
     );
-    return { batch, units: catalog.units.length, hash: catalog.hash };
+    return { run, batch, units: catalog.units.length, hash: catalog.hash };
   }
 
   /** The full-run switch also works from an earlier compatible release/catalog. */
-  async withdraw(batch?: string) {
+  async withdraw(batch?: string, run: string = expansionRun) {
+    const namespace = expansionNamespace(run);
     // The full-run emergency switch reads IDs from PostgreSQL, not every new
     // payload. It remains bounded if the new catalog is huge, absent or broken.
-    const units: LearningUnit[] = batch ? loadExpansionCatalog(batch).units : [];
+    const units: LearningUnit[] = batch
+      ? loadExpansionCatalog(batch, false, run).units
+      : [];
     const ids = units.map((u) => u.id);
     return this.database.sql.begin(async (sql) => {
       await sql`set local lock_timeout='5s'`;
@@ -36,7 +44,7 @@ export class LearningExpansionRepository {
       const rows = await sql<{ id: string; content_hash: string }[]>`
         select u.id,v.content_hash from app.learning_units u
         join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
-        where u.id=any(${ids}) or (${batch === undefined} and u.id like 'expansion.20261024.%')`;
+        where u.id=any(${ids}) or (${batch === undefined} and u.id like ${namespace + "%"})`;
       const targetIds = rows.map((row) => row.id);
       // A later reviewed version still belongs to this new cohort and must be
       // withdrawable. Report hash drift without blocking the requested rollback.
@@ -61,7 +69,7 @@ export class LearningExpansionRepository {
         await sql`update app.learning_characters set cycle_id=gen_random_uuid(),revision=revision+1
           where user_id=${attempt.user_id} and character_id=${attempt.character_id} and cycle_id=${attempt.cycle_id}`;
       return {
-        run: "2026-10-24",
+        run,
         batch: batch ?? "all",
         withdrawnUnits: withdrawn.length,
         changedPublishedHashes,

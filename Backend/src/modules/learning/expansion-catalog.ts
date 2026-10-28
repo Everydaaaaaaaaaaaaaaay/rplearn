@@ -7,6 +7,11 @@ import { gradeAnswer } from "./grading.js";
 import { learningImageSchema, verifyLearningImage } from "./images.js";
 
 export const expansionRun = "2026-10-24";
+export const expansionRuns = [expansionRun, "2026-10-28"] as const;
+const runSchema = z.enum(expansionRuns);
+export function expansionNamespace(run: string = expansionRun) {
+  return `expansion.${runSchema.parse(run).replaceAll("-", "")}.`;
+}
 const component = z.strictObject({
   id: z.string(),
   family: z.enum([
@@ -28,30 +33,47 @@ const entry = z.strictObject({
 });
 const manifestSchema = z.strictObject({
   version: z.literal(1),
-  run: z.literal(expansionRun),
+  run: runSchema,
   batch: z.string().regex(/^b[0-9]{3}$/),
   createdAt: z.string(),
   entries: z.array(entry).min(1).max(30),
   imageAssets: z.array(learningImageSchema).optional(),
+  sourceSHA256: z
+    .string()
+    .regex(/^[a-f0-9]{64}$/)
+    .optional(),
+  reviewSHA256: z
+    .string()
+    .regex(/^[a-f0-9]{64}$/)
+    .optional(),
+  reviewKind: z.literal("author-self-review").optional(),
+  reviewer: z.string().min(1).optional(),
 });
 const indexSchema = z.strictObject({
   version: z.literal(1),
-  run: z.literal(expansionRun),
+  run: runSchema,
   batches: z.array(z.string().regex(/^b[0-9]{3}$/)).max(500),
   gaokaoBatches: z.array(z.string().regex(/^b[0-9]{3}$/)).optional(),
 });
 
 /** New content is separate from the frozen old catalogs and has a withdrawable run identity. */
-export function loadExpansionCatalog(batch?: string, highSchoolOnly = false) {
+export function loadExpansionCatalog(
+  batch?: string,
+  highSchoolOnly = false,
+  run: string = expansionRun,
+) {
+  const namespace = expansionNamespace(run);
   const directory = new URL(
-    "../../../config/learning/expansions/2026-10-24/",
+    `../../../config/learning/expansions/${run}/`,
     import.meta.url,
   );
   const index = indexSchema.parse(
     JSON.parse(readFileSync(new URL("index.json", directory), "utf8")),
   );
   if (
+    index.run !== run ||
     new Set(index.batches).size !== index.batches.length ||
+    (index.gaokaoBatches ?? []).some((id) => !index.batches.includes(id)) ||
     (batch && !index.batches.includes(batch))
   )
     throw new Error("Unknown or duplicate expansion batch");
@@ -65,7 +87,16 @@ export function loadExpansionCatalog(batch?: string, highSchoolOnly = false) {
       const manifest = manifestSchema.parse(
         JSON.parse(readFileSync(new URL(`${id}.json`, directory), "utf8")),
       );
-      if (manifest.batch !== id) throw new Error("Expansion batch identity mismatch");
+      if (manifest.batch !== id || manifest.run !== run)
+        throw new Error("Expansion batch identity mismatch");
+      if (
+        run === "2026-10-28" &&
+        (!manifest.sourceSHA256 ||
+          !manifest.reviewSHA256 ||
+          !manifest.reviewKind ||
+          !manifest.reviewer)
+      )
+        throw new Error("Expansion author review binding missing");
       return manifest;
     });
   const entries = manifests.flatMap((m) => m.entries);
@@ -73,14 +104,14 @@ export function loadExpansionCatalog(batch?: string, highSchoolOnly = false) {
   for (const e of entries) {
     const u = e.unit;
     if (
-      !u.id.startsWith("expansion.20261024.") ||
+      !u.id.startsWith(namespace) ||
       u.version !== 1 ||
       ids.has(u.id) ||
       !u.originalGroup ||
       u.roleKey !== "companion" ||
       u.authorship.kind !== "authored" ||
       contentHash(u) !== e.contentHash ||
-      !u.originalGroup.sourceNotice.includes("2026-10-24")
+      !u.originalGroup.sourceNotice.includes(run)
     )
       throw new Error(`Expansion identity/digest mismatch: ${u.id}`);
     ids.add(u.id);
@@ -122,8 +153,9 @@ export function loadExpansionCatalog(batch?: string, highSchoolOnly = false) {
 }
 
 export function expansionGaokaoPractices() {
-  return loadExpansionCatalog(undefined, true)
-    .entries.filter((e) => /^senior[123]$/.test(e.unit.level))
+  return expansionRuns
+    .flatMap((run) => loadExpansionCatalog(undefined, true, run).entries)
+    .filter((e) => /^senior[123]$/.test(e.unit.level))
     .map((e) => ({
       kind: "authored" as const,
       unit: e.unit,
@@ -133,12 +165,12 @@ export function expansionGaokaoPractices() {
 }
 
 export function isExpansionUnit(unit: LearningUnit) {
-  return unit.id.startsWith("expansion.20261024.");
+  return expansionRuns.some((run) => unit.id.startsWith(expansionNamespace(run)));
 }
 
 /** Verify only selected-batch new assets, never the old media corpus. */
-export async function loadExpansionImages(batch: string) {
-  const catalog = loadExpansionCatalog(batch);
+export async function loadExpansionImages(batch: string, run: string = expansionRun) {
+  const catalog = loadExpansionCatalog(batch, false, run);
   const metadata = catalog.manifests.flatMap((m) => m.imageAssets ?? []);
   return Promise.all(
     metadata.map(async (asset) => {
