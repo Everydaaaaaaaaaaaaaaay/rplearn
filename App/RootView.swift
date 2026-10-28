@@ -178,7 +178,8 @@ struct RootView: View {
                     } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "promotion-preview" {
                         DebugLearningPromotionPreview()
                     } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "achievement-preview" {
-                        LearningAchievementPreview()
+                        LearningAchievementPreview(character: character,
+                            currentRegionID: { ProcessInfo.processInfo.environment["UI_TEST_REGION"] ?? "london" })
                     } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "practice-preview" {
                         LearningPracticePreview(character: character)
                     } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "unit-challenge" {

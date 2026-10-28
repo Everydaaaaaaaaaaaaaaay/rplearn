@@ -2,6 +2,30 @@ import XCTest
 
 @MainActor
 final class LearningAchievementUITests: XCTestCase {
+    func testStarReplayUsesTheRealLearningPage() {
+        let app = launch(tab: "achievement-preview")
+        let card = app.otherElements["learning.challenge.card"]
+        XCTAssertTrue(card.waitForExistence(timeout: 10), "动效预览必须直接展示正式角色学习页")
+        let identity = app.descendants(matching: .any)["learning.character.identity"].firstMatch
+        let stars = app.descendants(matching: .any)["learning.achievement.stars"].firstMatch
+        XCTAssertTrue(card.frame.contains(identity.frame))
+        XCTAssertTrue(card.frame.contains(stars.frame))
+        XCTAssertTrue(app.otherElements["learning.unlock.progress"].exists)
+        XCTAssertTrue(app.buttons["learning.start"].exists)
+        XCTAssertEqual(app.buttons["learning.history.toggle"].value as? String, "已折叠")
+        let play = app.buttons["learning.achievement.play-star"]
+        capture(app, "真实学习页升星前")
+        play.tap()
+        capture(app, "真实学习页中的星星飞行")
+        waitForReplay(play)
+        waitForValue("4/9", element: stars)
+        XCTAssertTrue(card.frame.contains(stars.frame))
+        XCTAssertTrue(app.staticTexts["下一星 0/60 积分"].exists)
+        app.buttons["learning.history.toggle"].tap()
+        XCTAssertEqual(app.buttons["learning.history.toggle"].value as? String, "已展开")
+        capture(app, "真实星槽点亮与记录展开")
+    }
+
     func testReplayFirstMultipleAndNinthStarAndPromotion() {
         let app = launch(tab: "achievement-preview")
         let play = app.buttons["learning.achievement.play-star"]
@@ -10,14 +34,12 @@ final class LearningAchievementUITests: XCTestCase {
         play.tap(); waitForValue("4/9", element: stars)
         waitForReplay(play); capture(app, "升星落槽完成")
         play.tap(); waitForReplay(play); waitForValue("4/9", element: stars)
+        app.buttons["learning.achievement.settings"].tap()
         app.buttons["learning.achievement.play-multiple"].tap()
         waitForReplay(play); waitForValue("6/9", element: stars)
-        let picker = app.segmentedControls.firstMatch
-        if !picker.isHittable { app.swipeUp() }
-        picker.buttons.element(boundBy: 0).tap()
+        selectStartingStars(0, in: app)
         play.tap(); waitForReplay(play); waitForValue("1/9", element: stars)
-        if !picker.isHittable { app.swipeUp() }
-        picker.buttons.element(boundBy: 2).tap()
+        selectStartingStars(8, in: app)
         play.tap(); waitForReplay(play); waitForValue("9/9", element: stars)
         capture(app, "第九颗星完成")
         for index in 0..<2 {
@@ -39,6 +61,7 @@ final class LearningAchievementUITests: XCTestCase {
         let play = app.buttons["learning.achievement.play-star"]
         XCTAssertTrue(play.waitForExistence(timeout: 12))
         XCTAssertTrue(play.isHittable)
+        capture(app, "真实学习页最大字号深色预览")
         play.tap(); waitForReplay(play)
         app.buttons["learning.achievement.play-promotion"].tap()
         let next = app.buttons["learning.promotion.begin-journey"]
@@ -77,7 +100,17 @@ final class LearningAchievementUITests: XCTestCase {
         XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 8), .completed)
         preview.tap()
         XCTAssertTrue(app.buttons["learning.achievement.play-star"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.otherElements["learning.challenge.card"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.tabBars.firstMatch.exists, "预览应保持角色学习页的独立页面布局")
         capture(app, "学习实测中的动效入口")
+    }
+
+    private func selectStartingStars(_ count: Int, in app: XCUIApplication) {
+        app.buttons["learning.achievement.settings"].tap()
+        app.buttons["\(count) 颗星"].tap()
+        let play = app.buttons["learning.achievement.play-star"]
+        let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: play)
+        XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 5), .completed)
     }
 
     private func launch(tab: String, large: Bool = false) -> XCUIApplication {
@@ -85,7 +118,10 @@ final class LearningAchievementUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchEnvironment = ["UI_TEST_REQUIRE_AUTHENTICATION": "0", "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
             "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9", "UI_TEST_TAB": tab]
-        if large { app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] }
+        if large {
+            app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+            app.launchEnvironment["UI_TEST_CAPTURE_APPEARANCE"] = "dark"
+        }
         app.launch(); addTeardownBlock { app.terminate() }; return app
     }
     private func waitForValue(_ value: String, element: XCUIElement) {

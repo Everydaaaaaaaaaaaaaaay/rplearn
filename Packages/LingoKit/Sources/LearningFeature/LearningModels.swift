@@ -152,6 +152,16 @@ public final class CharacterLearningModel {
     func consumeStarAward(_ id: UUID? = nil) {
         if id == nil || starAward?.id == id { starAward = nil }
     }
+    #if DEBUG
+    /// Only the isolated in-memory replay service can synthesize this return receipt.
+    func previewReward(toStars stars: Int) async {
+        guard let preview = service as? LearningAchievementPreviewService, let journey else { return }
+        rewardSession = RewardSession(level: journey.currentLevel, before: journey)
+        recordReward(level: journey.currentLevel, points: 1)
+        await preview.set(stars: stars, nearNext: false)
+        await challengeClosed()
+    }
+    #endif
     func openPromotion() async {
         guard !isBusy, canOpenPromotion, let service = service as? any LearningPromotionServing,
               let eligibility = journey?.promotion else { return }

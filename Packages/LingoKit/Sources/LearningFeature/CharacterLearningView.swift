@@ -36,6 +36,13 @@ public struct CharacterLearningView: View {
         _model = State(initialValue: CharacterLearningModel(characterID: character.id, service: service,
                                                            cycleChanged: cycleChanged))
     }
+    #if DEBUG
+    init(character: CharacterDTO, previewModel: CharacterLearningModel,
+         currentRegionID: @escaping @Sendable () async -> String?) {
+        self.init(character: character, service: previewModel.service, currentRegionID: currentRegionID)
+        _model = State(initialValue: previewModel)
+    }
+    #endif
     private var theme: LearningTheme { LearningTheme(role: model.state?.roleKey ?? character.card.name.components(separatedBy: " ").first?.lowercased() ?? "") }
     public var body: some View {
         GeometryReader { viewport in

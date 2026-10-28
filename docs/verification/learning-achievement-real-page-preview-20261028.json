@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-28",
+  "scope": "Achievement replay inside the production character learning page",
+  "implementation": {
+    "sharedView": "CharacterLearningView; no duplicate challenge-card or star-slot layout",
+    "appearance": "Current-city learning photograph, selected companion and level from the trial; system appearance, Dynamic Type and reduced-motion behavior are inherited from the shared page.",
+    "controls": "Navigation-bar replay, settings menu and promotion button; no bottom control dock or forced dark stage. Trial preview hides the tab bar to match the standalone learning page.",
+    "receipt": "Debug-only replay creates a positive memory receipt and uses the existing challengeClosed/load/star-award path. Model rejects replay commands for any service other than the dedicated memory service.",
+    "progress": "Default 3 stars at 59/60 points; single replay adds the next star and ends at 0/60. First/ninth stars and multi-star boundary replay remain available."
+  },
+  "regression": {
+    "before": "The new UI test failed because the old replay did not contain learning.challenge.card.",
+    "evidence": "build/learning-real-achievement-preview-20261028/before-test-output.txt",
+    "runNote": "The expected assertion completed in 18.360 s. Xcode then stalled in diagnostic collection; only this run's xcodebuild was stopped. Successful subsequent runs disabled diagnostic collection."
+  },
+  "unitTests": {
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "evidence": "build/learning-real-achievement-preview-20261028/unit.xcresult"
+  },
+  "uiTests": {
+    "regular": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "build/learning-real-achievement-preview-20261028/ui-after.xcresult"
+    },
+    "trialEntryAfterTabBarFix": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "build/learning-real-achievement-preview-20261028/ui-entry-final.xcresult"
+    },
+    "compact": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "build/learning-real-achievement-preview-20261028/ui-compact.xcresult"
+    },
+    "devices": [
+      "iPhone 18 Pro / iOS 27.0",
+      "iPhone SE 3 / iOS 27.0"
+    ],
+    "coverage": [
+      "Real card, identity, chat progress, challenge action and history disclosure",
+      "Star flight ends in actual card slot with the updated points hint",
+      "Single/repeated/first/ninth/multiple replay and promotion",
+      "Reachable while live services are unavailable; tab bar hidden",
+      "Maximum accessibility text with dark learning page on compact device"
+    ]
+  },
+  "visualReview": {
+    "method": "Xcode-hosted interaction and native screenshots; Computer Use tools unavailable.",
+    "inspected": [
+      "Regular-page before and mid-flight screenshots",
+      "Trial entry with selected companion and no tab bar",
+      "Compact mid-flight and maximum-text dark page"
+    ],
+    "screenshots": [
+      "build/learning-real-achievement-preview-20261028/ui-attachments",
+      "build/learning-real-achievement-preview-20261028/entry-final-attachments",
+      "build/learning-real-achievement-preview-20261028/compact-attachments"
+    ],
+    "unchangedEvidence": [
+      "docs/verification/learning-achievement-motion-20261027.json",
+      "docs/verification/learning-history-stable-disclosure-20261028.json"
+    ]
+  },
+  "preview": {
+    "command": "LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build achievement-preview",
+    "result": "Built, installed and launched latest source; left the actual learning-page replay open on iPhone 18 Pro.",
+    "log": "build/learning-real-achievement-preview-20261028/final-preview.log",
+    "screenshot": "build/learning-real-achievement-preview-20261028/final-preview.png"
+  },
+  "dataSafety": "All new replay code is DEBUG-only. The replay service has no backend client, account store or persistent storage. No score policy, server, account data or production deployment changed.",
+  "limitations": [
+    "Simulator screenshots do not measure physical-device haptic feel or GPU frame rate."
+  ]
+}

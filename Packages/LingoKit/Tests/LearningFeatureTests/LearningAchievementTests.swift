@@ -50,6 +50,17 @@ private actor AchievementService: LearningServing, LearningDirectionServing, Lea
 
 @Suite("Learning achievement presentation") @MainActor
 struct LearningAchievementTests {
+    @Test("Replay commands cannot synthesize rewards on a normal learning service")
+    func previewCannotChangeNormalProgress() async {
+        let service = AchievementService()
+        let model = CharacterLearningModel(characterID: service.characterID, service: service)
+        await model.load()
+        await model.previewReward(toStars: 9)
+        #expect(model.journey?.current?.stars == 0)
+        #expect(model.starAward == nil)
+        #expect(await service.stars == 0)
+    }
+
     @Test("Only a locally rewarded increase in the same current level creates a star display receipt")
     func authoritativeDeltaOnly() throws {
         let zero = try achievementJourney(stars: 0), one = try achievementJourney(stars: 1)

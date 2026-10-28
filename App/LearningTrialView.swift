@@ -35,7 +35,10 @@ struct LearningTrialView: View {
     var body: some View {
         Form {
             Section("动效预览") {
-                NavigationLink { LearningAchievementPreview() } label: {
+                NavigationLink {
+                    LearningAchievementTrialPreview(environment: environment,
+                        characterID: selectedCharacterID, level: model.selectedLevel.rawValue)
+                } label: {
                     Label("升星与晋升特效", systemImage: "sparkles")
                 }.accessibilityIdentifier("learning.trial.achievement-preview")
                 Text("可重复播放，不改变账号的星星、积分或档位。")
@@ -176,6 +179,34 @@ struct LearningTrialView: View {
             if !characters.contains(where: { $0.id == selectedCharacterID }) { selectedCharacterID = characters.first?.id }
             await model.load(characterID: selectedCharacterID)
         } catch { rosterError = error.localizedDescription }
+    }
+}
+
+private struct LearningAchievementTrialPreview: View {
+    let environment: AppEnvironment
+    let characterID: UUID?
+    let level: String
+    @State private var character: CharacterDTO?
+    @State private var error: String?
+    var body: some View {
+        let economy = environment.economyStore
+        Group {
+            if let character {
+                LearningAchievementPreview(character: character, level: level,
+                    currentRegionID: { try? await economy.profile().currentRegionID })
+            } else if let error {
+                ContentUnavailableView("无法载入旅伴", systemImage: "person.crop.circle.badge.exclamationmark",
+                                       description: Text(error))
+            } else { ProgressView() }
+        }
+        .task {
+            do {
+                let roster = try await environment.rosterStore.allCharacters()
+                character = roster.first(where: { $0.id == characterID })
+                    ?? roster.first(where: \.isMainCharacter) ?? roster.first
+                if character == nil { error = "添加旅伴后可查看学习页动效。" }
+            } catch { self.error = error.localizedDescription }
+        }
     }
 }
 #endif
