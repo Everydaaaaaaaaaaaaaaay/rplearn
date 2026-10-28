@@ -70,6 +70,34 @@ private actor AchievementService: LearningServing, LearningDirectionServing, Lea
 
 @Suite("Learning achievement presentation") @MainActor
 struct LearningAchievementTests {
+    @Test("Leaving the learning page defers the saved promotion acknowledgement")
+    func hiddenPageDefersPromotion() async throws {
+        let service = AchievementService()
+        let model = CharacterLearningModel(characterID: service.characterID, service: service)
+        await service.set(stars: 8); await model.load(); await model.open()
+        model.recordReward(level: "primary3", points: 1)
+        await service.advance(); await model.challengeClosed()
+        let award = try #require(model.starAward)
+        model.setPageVisible(false)
+        // A cancelled flight can still deliver its completion callback after page exit.
+        model.consumeStarAward(award.id)
+        #expect(model.journey?.currentLevel == "primary4")
+        #expect(model.presentedAutomaticPromotion == nil)
+        await model.load()
+        #expect(model.presentedAutomaticPromotion == nil)
+        model.setPageVisible(true)
+        let promotion = try #require(model.presentedAutomaticPromotion)
+        #expect(promotion.toLevel == "primary4")
+        #expect(model.starAward == nil)
+        // Hiding immediately after publication also preserves the same acknowledgement.
+        model.setPageVisible(false)
+        #expect(model.presentedAutomaticPromotion == nil)
+        model.setPageVisible(true)
+        #expect(model.presentedAutomaticPromotion?.id == promotion.id)
+        model.presentedAutomaticPromotion = nil
+        model.setPageVisible(false); model.setPageVisible(true)
+        #expect(model.presentedAutomaticPromotion == nil)
+    }
     @Test("Authoritative advancement synchronizes the profile before acknowledgement, after the ninth-star flight")
     func automaticPromotionAfterLanding() async throws {
         let service = AchievementService(), sync = AchievementProfileSync()

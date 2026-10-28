@@ -109,7 +109,7 @@ public struct CharacterLearningView: View {
                 close: { model.presentedAutomaticPromotion = nil },
                 continueJourney: { model.presentedAutomaticPromotion = nil })
         }
-        .onChange(of: isVisible) { _, visible in if !visible { model.consumeStarAward() } }
+        .onChange(of: isVisible, initial: true) { _, visible in model.setPageVisible(visible) }
         .accessibilityIdentifier("learning.character")
     }
     private func reloadPage() async {

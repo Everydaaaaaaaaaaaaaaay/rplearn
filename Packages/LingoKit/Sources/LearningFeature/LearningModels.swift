@@ -23,6 +23,7 @@ public final class CharacterLearningModel {
     var presentedAutomaticPromotion: LearningAutomaticPromotion?
     private var pendingAutomaticPromotion: LearningAutomaticPromotion?
     private var synchronizedLevel: String?
+    private var isPageVisible = true
     private struct RewardSession {
         let level: String
         let before: LearningJourney?
@@ -191,8 +192,22 @@ public final class CharacterLearningModel {
         if id == nil || starAward?.id == id { starAward = nil }
         presentAutomaticPromotionIfReady()
     }
+    func setPageVisible(_ visible: Bool) {
+        isPageVisible = visible
+        if visible {
+            presentAutomaticPromotionIfReady()
+        } else {
+            // A page exit skips the flight, but keeps the saved advancement for return.
+            if let promotion = presentedAutomaticPromotion {
+                pendingAutomaticPromotion = promotion
+                presentedAutomaticPromotion = nil
+            }
+            consumeStarAward()
+        }
+    }
     private func presentAutomaticPromotionIfReady() {
-        guard starAward == nil, let promotion = pendingAutomaticPromotion,
+        guard isPageVisible, starAward == nil, presentedAutomaticPromotion == nil,
+              let promotion = pendingAutomaticPromotion,
               synchronizedLevel == promotion.toLevel else { return }
         presentedAutomaticPromotion = promotion
         pendingAutomaticPromotion = nil
