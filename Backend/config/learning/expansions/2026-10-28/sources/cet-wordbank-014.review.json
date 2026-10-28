@@ -1,0 +1,1178 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "cet-wordbank-014.json",
+  "sourceSHA256": "697fe780ed619c2c3754b71a8dd9bf3f68baf606fbcd73b91df74b0e7c34593d",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex author of cet-wordbank-014; same author, not independent teacher or learner panel",
+  "reviewedAt": "2026-10-29",
+  "status": "approved",
+  "approvalScope": "Author lexical/grammar/full-bank audit only; not release approval.",
+  "checks": {
+    "practices": 12,
+    "scoreableResponses": 120,
+    "undergraduatePractices": 6,
+    "postgraduatePractices": 6,
+    "candidatesPerBank": 15,
+    "gapsPerPassage": 10,
+    "distinctAnswerWordsPerPassage": 10,
+    "unusedCandidatesPerPassage": 5,
+    "allGapMarkersAppearExactlyOnce": true,
+    "allQuestionsShareTheSameBank": true,
+    "allKeysInBounds": true,
+    "matchingFrozenOriginalLevelsAndFamilies": true,
+    "missingMediaDependencies": 0
+  },
+  "units": [
+    {
+      "id": "undergraduate.ice-salt-bath-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "brine",
+        "freezing",
+        "melting",
+        "transfer",
+        "conduction",
+        "insulated",
+        "stirred",
+        "crystals",
+        "temperature",
+        "uniform"
+      ],
+      "unusedWords": [
+        "mixture",
+        "saturated",
+        "solid",
+        "thermal",
+        "volume"
+      ],
+      "findings": [
+        "Brine, freezing point and melting are distinct terms. Salt is not described as creating cold without an energy transfer.",
+        "Transfer is the general action; conduction is the stated wall mechanism and insulation reduces external input.",
+        "Stirring, crystal formation, temperature and uniformity address different observations. Unused mixture, saturated, solid, thermal and volume were checked across all slots."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 205,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 0,
+          "answerWord": "brine",
+          "finding": "salt water solution直接定义brine盐水。mixture泛混合物不命名所述盐水种类，volume体积、conduction过程、crystals固粒不合。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 3,
+          "answerWord": "freezing",
+          "finding": "point liquid begins ice定义freezing point冰点。melting point为固转液方向相反，thermal泛热性质不命名这相变点，其他词不合。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 5,
+          "answerWord": "melting",
+          "finding": "ice changes absorbs energy语境为melting融化。freezing冰成固放出热的过程非此叙述，mixture混合物、volume体积不是冰的融化。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 12,
+          "answerWord": "transfer",
+          "finding": "heat from warmer towards colder需transfer传递。stirred为过去分词、thermal形容词等不作could后的原形动词；其他候选无这项动作。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 1,
+          "answerWord": "conduction",
+          "finding": "through wall direct contact material定义conduction传导。transfer泛转移不具体命名墙内接触机制，volume体积、mixture混合物不是机制。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 4,
+          "answerWord": "insulated",
+          "finding": "reduce room heat arriving定义insulated隔热。saturated饱和、solid固态、thermal热的均不表示加阻热保护，其他词不合。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 9,
+          "answerWord": "stirred",
+          "finding": "avoid unmoving layer，contents被搅动stirred。insulated外层隔热不使内容混合，saturated饱和、uniform均一为性质非此过程动作。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 2,
+          "answerWord": "crystals",
+          "finding": "small solid structures form定义crystals晶体。mixture泛混合、brine液盐水、volume体积不是复数固态结构；其他候选词性不合。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 10,
+          "answerWord": "temperature",
+          "finding": "how hot cold定义temperature温度。volume体积、thermal形容热、conduction传导不同于测冷热程度量。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 13,
+          "answerWord": "uniform",
+          "finding": "similar throughout rather edges different定义uniform均匀。solid仅固态不保证各处一致，saturated饱和也非空间均匀，其他项不合。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.strobe-wheel-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "rotation",
+        "periodic",
+        "flashes",
+        "interval",
+        "sampled",
+        "stationary",
+        "direction",
+        "aliasing",
+        "synchronised",
+        "continuous"
+      ],
+      "unusedWords": [
+        "blur",
+        "exposure",
+        "frequency",
+        "transparent",
+        "vibration"
+      ],
+      "findings": [
+        "Rotation, periodic repetition and discrete light sampling are different properties. The apparent stationary or reversed direction does not establish a physical reversal.",
+        "Interval differs from frequency, and synchronisation concerns timing correspondence rather than mere sampling.",
+        "Unused blur, exposure, frequency, transparent and vibration were checked across all slots; the prose supplies the observation so no film is missing."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 197,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 9,
+          "answerWord": "rotation",
+          "finding": "turn around centre定义rotation旋转。vibration振动不特指绕中心周转，frequency频率是运动属性、exposure曝光非这类动作本身。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 8,
+          "answerWord": "periodic",
+          "finding": "regular repeating cycle定义periodic周期性的。continuous持续不保证规律周期，stationary静止相反，transparent透明与运动形式无关。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 5,
+          "answerWord": "flashes",
+          "finding": "short bursts light定义flashes闪光。exposure是受光过程单数非复数光脉冲，blur模糊、frequency频率不是这些一阵阵光。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 7,
+          "answerWord": "interval",
+          "finding": "between successive bursts定义interval间隔。frequency单位时间次数，exposure单次受光时段不等相邻间的距离，direction方向不表时差。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 10,
+          "answerWord": "sampled",
+          "finding": "position one moment not whole motion为sampled取样。synchronised只是时序对应不表记录瞬间样本，stationary静止性质非采集动作。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 11,
+          "answerWord": "stationary",
+          "finding": "same visible place despite movement定义stationary表观静止。continuous不断不等不移动，transparent透明、periodic周期不等停在同处。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 3,
+          "answerWord": "direction",
+          "finding": "mark progress other way指direction方向。rotation可泛旋转但此处reverse后明确other way所指方向，且第1空锁其运动名称；其他词不合。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 0,
+          "answerWord": "aliasing",
+          "finding": "described mismatch discrete samples named aliasing混叠。blur模糊是失清晰而非采样产生错误运动模式，exposure受光、vibration振动不命名该现象。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 12,
+          "answerWord": "synchronised",
+          "finding": "timing corresponded定义synchronised同步。sampled取样不必时刻对应，periodic周期也可能不同步；其他项不合。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 2,
+          "answerWord": "continuous",
+          "finding": "light present without breaks定义continuous连续。transparent透明、stationary不动、periodic重复都不等常亮不中断；其他词词性不合。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.knitting-loops-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "loop",
+        "fabric",
+        "needle",
+        "rows",
+        "columns",
+        "tension",
+        "slack",
+        "twisted",
+        "unravel",
+        "repaired"
+      ],
+      "unusedWords": [
+        "cast",
+        "elastic",
+        "knitted",
+        "purl",
+        "uniform"
+      ],
+      "findings": [
+        "Single loop and whole fabric are explicitly contrasted; an earlier loop/stitch pairing was removed before publication because their ordinary knitting meanings could overlap. Rows and columns remain different directions.",
+        "Tension and slack concern force/looseness, twisted orientation and unravel loss of linked structure. Repair is described by a restored connection.",
+        "Unused cast, elastic, knitted, purl and uniform were checked across all slots; intentional patterns are not automatically called faults. No unseen fabric is needed."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 198,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 4,
+          "answerWord": "loop",
+          "finding": "open yarn ring直接定义loop线圈。fabric是整体织物而非单一圆环，needle工具、purl一种针法、tension拉力均非这段开放环本身。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 10,
+          "answerWord": "fabric",
+          "finding": "fabric指连接线圈形成的整片织物，后文sheet-like textile直接定义。loop是单个环而非整片，rows/columns是片内排列方向，needle为工具，purl为针法，其他词不命名这里的整体纺织物。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 5,
+          "answerWord": "needle",
+          "finding": "slender tool carries loops定义needle织针。purl是针法、loop是线环、fabric为织物都非工具。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 8,
+          "answerWord": "rows",
+          "finding": "horizontal lines across样片定义rows横行。columns为纵列，loop单环、purl针法不是横向多针排列。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 1,
+          "answerWord": "columns",
+          "finding": "vertical through successive lines定义columns纵列。rows横行已对照，其他候选不指纵向单位排列。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 11,
+          "answerWord": "tension",
+          "finding": "pulling force yarn定义tension张力。elastic为可伸缩形容词、uniform均匀、purl针法、stitch针目不是施拉力。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 9,
+          "answerWord": "slack",
+          "finding": "excess looseness rather intended pull定义slack松的。elastic弹性是伸缩性质不等松弛，uniform均匀不能解释过松，knitted已织不评松紧。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 12,
+          "answerWord": "twisted",
+          "finding": "turned crossing different定义twisted扭转。knitted织成只过程不说明交叉异常，repaired修好与此局部不同形态不等同，其他词不合。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 14,
+          "answerWord": "unravel",
+          "finding": "linked structure coming undone定义unravel脱散。cast原形可投放但不指线圈结构逐步松脱，purl为针法动词非自行散开；其他候选不合。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 7,
+          "answerWord": "repaired",
+          "finding": "connection restored定义repaired修复。twisted扭转是差异之一，knitted已织不保证故障修复，elastic属性非恢复连接，其他项不合。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.sugar-crystal-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "solvent",
+        "dissolved",
+        "solution",
+        "saturated",
+        "evaporated",
+        "crystalline",
+        "nucleation",
+        "seeds",
+        "impurities",
+        "yield"
+      ],
+      "unusedWords": [
+        "particles",
+        "precipitate",
+        "stirred",
+        "transparent",
+        "uniformly"
+      ],
+      "findings": [
+        "Solvent, dissolved sugar and solution distinguish medium/process/mixture. Saturation is tied to stated conditions, not visual clarity.",
+        "Evaporation differs from dissolution; crystalline describes structure and nucleation the onset of growth.",
+        "Seeds are starter crystals, impurities unwanted material and yield recovered quantity. Unused particles, precipitate, stirred, transparent and uniformly were checked across all slots."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 226,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 10,
+          "answerWord": "solvent",
+          "finding": "liquid in which sugar dissolves定义solvent溶剂。solution是糖水整体，precipitate固态析出物、particles颗粒不单指承担溶解的水。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 1,
+          "answerWord": "dissolved",
+          "finding": "no separate grains sugar入液定义dissolved溶解。evaporated进空气、stirred搅拌不保证溶开，crystalline形容结晶态与此不同。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 9,
+          "answerWord": "solution",
+          "finding": "dissolved material together liquid定义solution溶液。solvent只液媒不是整体，precipitate为析出物，particles粒非均一溶液状态。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 7,
+          "answerWord": "saturated",
+          "finding": "as much dissolved allowed conditions定义saturated饱和。transparent透明不能证已至上限，crystalline晶态是固体排列，其他项不合。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 2,
+          "answerWord": "evaporated",
+          "finding": "water into air定义evaporated蒸发。dissolved溶入不等进气，stirred搅动不是相变，其他候选无该过去分词。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 0,
+          "answerWord": "crystalline",
+          "finding": "structure arranged crystal定义crystalline结晶的。saturated是溶液容量状态，transparent透光不说明晶格组织，其他词不合。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 4,
+          "answerWord": "nucleation",
+          "finding": "initial structure growth begins定义nucleation成核。precipitate是析出固体而非开始形成核的过程，solution体系、yield量均不等。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 8,
+          "answerWord": "seeds",
+          "finding": "existing tiny crystals start growth称seeds晶种。particles泛粒不一定既有晶体用作起始，impurities为不想要异物，其他候选不合这个角色。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 3,
+          "answerWord": "impurities",
+          "finding": "unwanted introduced material定义impurities杂质。seeds是有意提供生长核，particles只是形态不说明杂入，precipitate是析出产物不一定外来。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 14,
+          "answerWord": "yield",
+          "finding": "recovered amount procedure定义yield回收产量。solution为体系、solvent液媒、precipitate产物种类都不直接指收得量。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.meeting-actions-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "agenda",
+        "proposal",
+        "draft",
+        "objection",
+        "clarify",
+        "decision",
+        "assign",
+        "owner",
+        "deadline",
+        "minutes"
+      ],
+      "unusedWords": [
+        "anonymous",
+        "consensus",
+        "quorum",
+        "recorded",
+        "unanimous"
+      ],
+      "findings": [
+        "Agenda, proposal, draft and decision occupy different stages; the record does not imply discussion alone approved an event.",
+        "Objection and clarify distinguish a concern from understanding it. Assign, owner and deadline turn a decision into a defined next action.",
+        "Minutes are a checked summary rather than a guaranteed verbatim transcript. Unused anonymous, consensus, quorum, recorded and unanimous were checked across all gaps."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 207,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 0,
+          "answerWord": "agenda",
+          "finding": "planned business list定义agenda议程。minutes为会议后记录、proposal单建议、decision结果、quorum法定出席数都非讨论清单。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 11,
+          "answerWord": "proposal",
+          "finding": "suggesting new event not approved定义proposal提案。decision已定结果，objection反对意见、deadline期限不是这项待审建议。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 7,
+          "answerWord": "draft",
+          "finding": "open revision not final定义draft草稿。consensus共识、quorum出席数、minutes会议记录不等于当前活动文稿可改版本。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 9,
+          "answerWord": "objection",
+          "finding": "stated concern cost定义objection异议。proposal原建议、decision决定、consensus共识均非担忧反对。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 3,
+          "answerWord": "clarify",
+          "finding": "what estimate included需clarify澄清。assign是分任务不是说明费用构成，其他候选不作to后该原形动词。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 6,
+          "answerWord": "decision",
+          "finding": "named agreed outcome under rules定义decision决定。consensus全体共识不是本文必定程序，unanimous形容词也不合a后名词，proposal提案未定不是结果。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 2,
+          "answerWord": "assign",
+          "finding": "give responsibility task to person定义assign分派。clarify澄清对象内容不等给责任，其他词不作此任务分配原形。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 10,
+          "answerWord": "owner",
+          "finding": "person responsible action定义owner责任人。quorum人数阈值、agenda清单、minutes文档、deadline时限均非承担行动者。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 5,
+          "answerWord": "deadline",
+          "finding": "time by completed定义deadline截止期。decision结果、agenda列表、quorum人数、minutes记录均非该完成时限。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 8,
+          "answerWord": "minutes",
+          "finding": "meeting decisions actions record定义minutes纪要。draft草稿是版本状态非文类，agenda事前清单、proposal单建议均不指会后决议行动记录。"
+        }
+      ]
+    },
+    {
+      "id": "undergraduate.sorting-names-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "strings",
+        "characters",
+        "alphabetical",
+        "case",
+        "digits",
+        "numerical",
+        "prefix",
+        "duplicates",
+        "stable",
+        "ignore"
+      ],
+      "unusedWords": [
+        "collation",
+        "entry",
+        "suffix",
+        "lexical",
+        "sequence"
+      ],
+      "findings": [
+        "Strings, characters and digits name different levels. Alphabetical and numerical comparison are distinct rules.",
+        "Case handling, shared prefix and exact duplicate checking are separate identity/comparison issues. A common beginning does not merge people.",
+        "Stable refers to equal-key order, and ignore affects comparison rather than stored display spelling.",
+        "Unused collation, entry, suffix, lexical and sequence were checked for exact definitions and grammar; sort order is not claimed universal across languages."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 220,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 14,
+          "answerWord": "strings",
+          "finding": "sequences symbols in computer定义strings字符串。entry条目是列表角色非数据符号序列类型，sequence单数不匹配复数typed names，collation排序规则不是输入对象。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 2,
+          "answerWord": "characters",
+          "finding": "symbols within strings定义characters字符。digits只数字子类不包名字字母，duplicates重复条目、prefix开头部分不是每符号。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 0,
+          "answerWord": "alphabetical",
+          "finding": "following alphabet定义alphabetical字母顺序。numerical按数、lexical虽泛词汇相关但本题专明字母表且其余规则另定，stable相等键顺序不等字母序。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 1,
+          "answerWord": "case",
+          "finding": "upper lower letters定义case大小写。suffix后缀不表示大小写区别，prefix前缀、collation整体排序规则不具体命名字母大小写属性。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 4,
+          "answerWord": "digits",
+          "finding": "symbols representing numbers定义digits数字字符。characters泛符号第2空已用且此处特指数值表示，prefix开头不必数字，other nouns不合。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 10,
+          "answerWord": "numerical",
+          "finding": "interprets as numbers定义numerical数值比较。alphabetical按字母、lexical按文本词汇，stable只保相等键原序，不表示数字值读取。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 11,
+          "answerWord": "prefix",
+          "finding": "beginning part text直接定义prefix前缀。suffix为结尾片段，与beginning相反，entry整体、sequence序列不特指前段。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 5,
+          "answerWord": "duplicates",
+          "finding": "exact repeated entries定义duplicates重复项。characters是符号、strings是所有输入并不说重复，digits数字非完全同条；其他候选不合。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 13,
+          "answerWord": "stable",
+          "finding": "equal keys preserves earlier order定义stable稳定排序。lexical词法、alphabetical字母、numerical数值各可稳定也可不稳定，均不定义该保序性质。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 7,
+          "answerWord": "ignore",
+          "finding": "leave selected marks no influence定义ignore忽略。其他候选无可接would后的该原形动词，保原拼写展示不同于比较时忽略符号。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.insurance-pooling-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "pool",
+        "premium",
+        "claims",
+        "exposure",
+        "independent",
+        "correlated",
+        "diversification",
+        "reserve",
+        "liquidity",
+        "solvency"
+      ],
+      "unusedWords": [
+        "actuarial",
+        "deductible",
+        "transfer",
+        "underwriting",
+        "volatility"
+      ],
+      "findings": [
+        "Pool, premium, claims and exposure have distinct contract/price/request/risk-scope roles.",
+        "Independent versus correlated loss and diversification are stated model properties; policy count alone does not diversify a shared storm.",
+        "Reserve is explicitly a provision rather than cash; liquidity timing differs from the broader solvency assessment.",
+        "Unused actuarial, deductible, transfer, underwriting and volatility were checked across all gaps. No insurer is assessed or certified."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 231,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 8,
+          "answerWord": "pool",
+          "finding": "grouped insurance contracts为pool风险池。transfer转移、underwriting承保过程、reserve准备金不是这些合同汇集体的名称。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 9,
+          "answerWord": "premium",
+          "finding": "price paid cover定义premium保费。deductible为自负额非购买保障价格，reserve为未来义务准备、claims为申请赔付，均不等。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 1,
+          "answerWord": "claims",
+          "finding": "requests payment under contracts定义claims索赔。premium收价、exposure风险敞口、reserve准备不是申请支付的复数请求。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 5,
+          "answerWord": "exposure",
+          "finding": "extent risk taken defines exposure风险敞口。volatility波动度不同于所承担范围，premium价格、solvency能力非这一风险总敞口概念。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 6,
+          "answerWord": "independent",
+          "finding": "without specified dependence定义independent独立。correlated趋同相反，actuarial精算性质不说明相关结构，other terms不合形容词。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 2,
+          "answerWord": "correlated",
+          "finding": "same storm tend occur together定义correlated相关。independent相反，actuarial仅领域属性，其他候选不表损失共同变动关系。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 4,
+          "answerWord": "diversification",
+          "finding": "spread relevant risks reduce concentration定义diversification分散化。underwriting承保范围更广不等于分散，transfer转移一项也非这里明确跨风险分布策略。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 10,
+          "answerWord": "reserve",
+          "finding": "provision expected future claims定义reserve准备金。liquidity立即支付能力、premium进款、deductible自负额不是这个会计准备；不等现金。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 7,
+          "answerWord": "liquidity",
+          "finding": "meet payments when due定义liquidity流动性。solvency总体偿付条件不同，reserve记账准备不保证能即时付款，其他名词不合。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 11,
+          "answerWord": "solvency",
+          "finding": "broader ability obligations assessment定义solvency偿付能力。liquidity短期付款可用不等整体义务覆盖，volatility波动、premium价格均不是该能力。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.crossover-periods-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "crossover",
+        "period",
+        "treatment",
+        "sequence",
+        "randomised",
+        "carryover",
+        "washout",
+        "comparison",
+        "variability",
+        "masked"
+      ],
+      "unusedWords": [
+        "allocation",
+        "baseline",
+        "endpoint",
+        "volunteer",
+        "withdrawn"
+      ],
+      "findings": [
+        "Crossover and period describe repeated-condition structure; sequence and randomisation concern order and assignment.",
+        "Carryover is persistence, washout the intended diminishing interval; washout is not guaranteed to remove every influence.",
+        "Within-person comparison does not remove time variation. Assessor masking is distinguished from participant knowledge.",
+        "Unused allocation, baseline, endpoint, volunteer and withdrawn were checked across all slots. The text gives no actual intervention protocol."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 237,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 4,
+          "answerWord": "crossover",
+          "finding": "same participant both conditions different times定义crossover交叉设计。allocation分配总过程、baseline起点、endpoint结果不指同人轮换结构。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 7,
+          "answerWord": "period",
+          "finding": "defined time span each condition定义period阶段。sequence为阶段次序、baseline开始值、endpoint终点不是持续时间段本身。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 10,
+          "answerWord": "treatment",
+          "finding": "intervention label defined treatment处理。volunteer为参与者、endpoint测量结果、allocation分配不命名被比较条件处理。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 9,
+          "answerWord": "sequence",
+          "finding": "order conditions定义sequence顺序。comparison为比较过程、period单阶段、baseline起始状态都不是先后组合。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 8,
+          "answerWord": "randomised",
+          "finding": "chance rather chosen order定义randomised随机化。masked为不知标签而非随机选序，withdrawn为退出，其他候选不作该分配性质分词。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 2,
+          "answerWord": "carryover",
+          "finding": "effect persists first into next定义carryover残留效应。washout间隔旨在减残留而非残留本身，variability泛变化、baseline基线不直接指前期延续影响。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 13,
+          "answerWord": "washout",
+          "finding": "interval allowing effects diminish定义washout洗脱间隔。baseline起始时点不保证留间隔，endpoint结果、allocation分配不是这里的阶段之间等待。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 3,
+          "answerWord": "comparison",
+          "finding": "within participant comparing two conditions定义comparison比较。allocation把人或序分派不同于条件结果对比，variability是差异现象不是比较动作。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 11,
+          "answerWord": "variability",
+          "finding": "differences changes across periods为variability变异。carryover仅一种延续效应不能概括所有差异，baseline起点、endpoint单结果非总变化。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 6,
+          "answerWord": "masked",
+          "finding": "assessor unaware condition defines masked遮盲。randomised指抽分不保证不知道，withdrawn退出不是保评者不知，其他候选不合。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.compression-recovery-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "bitstream",
+        "redundancy",
+        "lossless",
+        "exact",
+        "lossy",
+        "quantisation",
+        "perceptual",
+        "codec",
+        "decoded",
+        "storage"
+      ],
+      "unusedWords": [
+        "entropy",
+        "latency",
+        "sampling",
+        "semantic",
+        "transmitted"
+      ],
+      "findings": [
+        "Bitstream, redundancy and codec name data, compactable structure and implementation. Lossless requires exact recovery; lossy admits approximation.",
+        "Quantisation changes representable levels; sampling and latency are different concepts. Perceptual similarity is not bit identity.",
+        "Decoding is not itself a no-loss certificate, and storage includes required supporting information.",
+        "Unused entropy, latency, sampling, semantic and transmitted were checked across all slots. No file or hidden audio/image is required."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 221,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 0,
+          "answerWord": "bitstream",
+          "finding": "sequence binary symbols直接定义bitstream位流。codec程序、entropy信息量性质、storage空间不是组成文件的符号序列本身。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 10,
+          "answerWord": "redundancy",
+          "finding": "repeated predictable structure compact representation对应redundancy冗余。entropy是不确定性度量不同于可省重复，latency延迟、sampling取样不命名此重复信息。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 6,
+          "answerWord": "lossless",
+          "finding": "recover exact original defines lossless无损。lossy允许丢近似反义，perceptual感知标准不保证逐符号恢复，semantic意义层也不保证。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 4,
+          "answerWord": "exact",
+          "finding": "original sequence identical requirement需exact完全精确。perceptual是感知、semantic是意义，不保二进制全同，lossy有损与无损定义矛盾。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 7,
+          "answerWord": "lossy",
+          "finding": "permits discard approximate定义lossy有损。lossless反义，perceptual是评判标准但非许丢的编码类别，semantic不定义该保证。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 9,
+          "answerWord": "quantisation",
+          "finding": "map smaller available levels定义quantisation量化。sampling从位置时刻取值不同于减少表示层级，latency延迟、entropy不确定度不是映射过程。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 8,
+          "answerWord": "perceptual",
+          "finding": "listener viewer can notice定义perceptual感知的。semantic关注意义可保意义也有可察差别，exact符号一致反而本段不保证，其他项不合。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 1,
+          "answerWord": "codec",
+          "finding": "encoding decoding implementation定义codec编解码器。bitstream被处理数据、storage空间、latency时延非执行编解码方法的组件。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 2,
+          "answerWord": "decoded",
+          "finding": "appropriate procedure reconstruct output定义decoded解码。transmitted传输只是移送不等解释还原，lossless形容性质不能作该动作，其他项不合。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 13,
+          "answerWord": "storage",
+          "finding": "space representation plus supporting info定义storage存储量。latency是时延、entropy是理论性质不是本次文件所占存储，bitstream数据序列非空间需求本身。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.metaphor-mapping-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "metaphor",
+        "literal",
+        "figurative",
+        "source",
+        "target",
+        "salient",
+        "connotation",
+        "conventional",
+        "context",
+        "inference"
+      ],
+      "unusedWords": [
+        "analogy",
+        "polysemy",
+        "pragmatic",
+        "register",
+        "transparent"
+      ],
+      "findings": [
+        "Metaphor is not a literal construction; source bridge and target argument map selected relationships, not every property.",
+        "Salience, connotation and conventional familiarity are distinct. Context supports an inference without proving every possible association intended.",
+        "Unused analogy, polysemy, pragmatic, register and transparent were checked against all slots and grammar; no external literary text is needed."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 223,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 7,
+          "answerWord": "metaphor",
+          "finding": "argument was bridge跨域描写并非实物，called a metaphor隐喻。analogy虽相关但需an且通常显比较形式，此句教师命名隐喻；polysemy多义不是该句映射术语。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 6,
+          "answerWord": "literal",
+          "finding": "no physical construction直接说明not literal非字面。figurative是随后正向描述，transparent透明不表真假实物，pragmatic语用不等字面。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 4,
+          "answerWord": "figurative",
+          "finding": "understand one through another定义figurative比喻性的。literal字面相反，conventional惯常不必比喻，register为名词语体不合。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 12,
+          "answerWord": "source",
+          "finding": "ideas drawn from bridge定义source来源域。target是被解释的argument相反，context场景、register语体不指提供映射的一域。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 13,
+          "answerWord": "target",
+          "finding": "argument to be understood定义target目标域。source为提供桥梁概念的域，context周边、connotation关联义均不指被阐释的对象域。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 11,
+          "answerWord": "salient",
+          "finding": "especially noticeable定义salient显著。transparent透明可易懂不等突出，conventional熟悉也未必聚焦某特征，literal字面不指注意度。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 1,
+          "answerWord": "connotation",
+          "finding": "associated feelings values beyond definition定义connotation内涵联想。polysemy是多个意义结构、analogy比较关系、register语体不等附带情感价值。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 3,
+          "answerWord": "conventional",
+          "finding": "through familiarity become conventional惯常的。transparent易明白未必惯常，salient突出、literal字面、pragmatic语用都不说明熟用地位。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 2,
+          "answerWord": "context",
+          "finding": "who spoke what preceded定义context语境。register只语言风格层次，polysemy词多义、analogy比较均非完整交际环境。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 5,
+          "answerWord": "inference",
+          "finding": "conclusion drawn wording situation定义inference推论。metaphor表达方式本身、connotation关联值、context环境都不是读者据此形成的结论。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.ground-motion-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "rupture",
+        "magnitude",
+        "intensity",
+        "epicentre",
+        "acceleration",
+        "velocity",
+        "displacement",
+        "duration",
+        "site",
+        "attenuation"
+      ],
+      "unusedWords": [
+        "aftershock",
+        "amplitude",
+        "recorded",
+        "saturation",
+        "spectrum"
+      ],
+      "findings": [
+        "Magnitude is event size, intensity local effects and epicentre a specified location. They are not treated as one number.",
+        "Acceleration, velocity, displacement and duration are defined by different quantities/units.",
+        "Site conditions qualify distance-related attenuation; no universal nearest-strongest rule or actual event prediction is claimed.",
+        "Unused aftershock, amplitude, recorded, saturation and spectrum were checked across all slots; no missing waveform or building assessment is involved."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 223,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 10,
+          "answerWord": "rupture",
+          "finding": "breaking slipping fault定义rupture破裂。aftershock是后续地震非断裂过程名，displacement位置变是测量量不是此故障过程总称。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 8,
+          "answerWord": "magnitude",
+          "finding": "event size measure定义magnitude震级。intensity局部效应强度不同，amplitude单波幅不等完整事件大小指标，duration时长不等震级。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 7,
+          "answerWord": "intensity",
+          "finding": "effects particular location定义intensity烈度或影响强度。magnitude源事件大小，amplitude运动峰值属性不完整等局地影响评估，其他词不合。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 6,
+          "answerWord": "epicentre",
+          "finding": "surface above rupture start定义epicentre震中。site泛观测点不特指源点正上，spectrum谱、aftershock后震均非该位置。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 0,
+          "answerWord": "acceleration",
+          "finding": "rate velocity changes定义acceleration加速度。velocity位移时间率、displacement位置差、amplitude幅值不等速度变化率。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 14,
+          "answerWord": "velocity",
+          "finding": "position change per time定义velocity速度。acceleration速度变化率，displacement位移本身，duration时间长不合。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 4,
+          "answerWord": "displacement",
+          "finding": "change position itself定义displacement位移。velocity、acceleration都多时间率，amplitude为幅值大小不是这里所定义位置改变量本身。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 5,
+          "answerWord": "duration",
+          "finding": "extent in time直接定义duration持续时长。magnitude事件大小、spectrum频谱、saturation饱和都不表示这段时间长度。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 12,
+          "answerWord": "site",
+          "finding": "ground at observing place定义site场地。epicentre特定震中不等每个观测处局地，recorded分词、amplitude幅值非地点修饰名词。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 3,
+          "answerWord": "attenuation",
+          "finding": "reduction motion propagation distance model定义attenuation衰减。saturation饱和、spectrum频谱、aftershock后震都不指传播中振动减弱现象。"
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.network-experiment-bank-014",
+      "status": "approved",
+      "questionCount": 10,
+      "answerWords": [
+        "unit",
+        "assignment",
+        "randomisation",
+        "control",
+        "baseline",
+        "exposure",
+        "compliance",
+        "spillover",
+        "cluster",
+        "stable"
+      ],
+      "unusedWords": [
+        "attrition",
+        "untreated",
+        "variance",
+        "version",
+        "weighted"
+      ],
+      "findings": [
+        "Unit, assignment, randomisation and baseline are different design elements. Control is a defined comparison, not a promise of zero experiences.",
+        "Exposure and compliance are separate from receiving an invitation. Spillover concerns indirect effects on connected nonrecipients.",
+        "Cluster allocation needs matching design; stable conditions cannot be inferred from a shared programme name.",
+        "Unused attrition, untreated, variance, version and weighted were checked across all gaps. No real social experiment or personal data is used."
+      ],
+      "unresolvedConcerns": [
+        "Same-author lexical/grammar/global once-only audit only; no independent teacher or learner calibration."
+      ],
+      "wordCount": 236,
+      "questionAudits": [
+        {
+          "questionNumber": 1,
+          "answerIndex": 10,
+          "answerWord": "unit",
+          "finding": "entity counted analysis定义unit分析单位。cluster是一种分组单位但此处概念可账户人家庭，assignment为分配、version为版本均非通用分析实体概念。"
+        },
+        {
+          "questionNumber": 2,
+          "answerIndex": 0,
+          "answerWord": "assignment",
+          "finding": "allocated group记录定义assignment分配。exposure实际遇到、compliance遵从均后续事件，variance变异不指被划到哪条件。"
+        },
+        {
+          "questionNumber": 3,
+          "answerIndex": 7,
+          "answerWord": "randomisation",
+          "finding": "used chance allocation定义randomisation随机化。attrition退出、spillover间接效应、baseline起点、control比较组不指抽签分配。"
+        },
+        {
+          "questionNumber": 4,
+          "answerIndex": 5,
+          "answerWord": "control",
+          "finding": "stated comparison arrangement定义control对照条件。untreated未接受可处理性质但不保证无事，本文强调对照非绝对空白，weighted加权非条件名。"
+        },
+        {
+          "questionNumber": 5,
+          "answerIndex": 2,
+          "answerWord": "baseline",
+          "finding": "before intervention starting state定义baseline基线。version版本、assignment分配、exposure接触不等前测起点；其他词不合。"
+        },
+        {
+          "questionNumber": 6,
+          "answerIndex": 6,
+          "answerWord": "exposure",
+          "finding": "what actually encountered定义exposure实际接触。assignment仅机会分配、compliance遵从是接触与分配关系不等本身，其他名词不合。"
+        },
+        {
+          "questionNumber": 7,
+          "answerIndex": 4,
+          "answerWord": "compliance",
+          "finding": "following allocated arrangement定义compliance遵从。exposure只是遇到可能非分配安排，attrition退出相反事件，variance变异不表遵从。"
+        },
+        {
+          "questionNumber": 8,
+          "answerIndex": 8,
+          "answerWord": "spillover",
+          "finding": "effect reaches nonrecipients neighbours定义spillover溢出效应。attrition是流失、variance总变异、version版本不是间接受益，其他候选不合。"
+        },
+        {
+          "questionNumber": 9,
+          "answerIndex": 3,
+          "answerWord": "cluster",
+          "finding": "group connected purpose定义cluster群组。unit泛单位但第1空已锁总定义，这里特指一起分配的组；version版本、control条件不等连接群体。"
+        },
+        {
+          "questionNumber": 10,
+          "answerIndex": 9,
+          "answerWord": "stable",
+          "finding": "unchanged relevant respects定义stable稳定。weighted为加权而非条件不变，untreated未处理、randomisation名词均不说明跨比较相关条件一致。"
+        }
+      ]
+    }
+  ],
+  "unresolvedConcerns": [
+    "No independent teacher or learner difficulty/discrimination calibration; authored level alignment remains provisional.",
+    "All material is original educational prose with complete interpretive evidence, not evidence of real studies, financial assessments or physical trials.",
+    "No compiled manifests/index changes, publication or deployment performed by this author-source task."
+  ]
+}

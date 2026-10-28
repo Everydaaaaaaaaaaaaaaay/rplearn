@@ -1,0 +1,332 @@
+{
+  "createdAt": "2026-10-29T02:36:53.847739+08:00",
+  "reviewBoundary": "原创完整四图短语匹配练习；作者按新物体图卡明确绘制并检查主体轮廓、用途和特征，再逐题核四个选项。复现基础语言不等于新增词汇；不以重排、改名或数量变化重复计组，不声称独立教师、儿童识图或学习者标定。",
+  "imageAssets": [
+    {
+      "id": "image.e34e87f334cd85b71b48a309e4849ade0b84df691f93e532793463500debbb7b",
+      "sha256": "e34e87f334cd85b71b48a309e4849ade0b84df691f93e532793463500debbb7b",
+      "byteSize": 27830,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "家具图卡：沙发、衣柜、书架与镜子；A至D依次为a sofa, a wardrobe, a bookcase, a mirror",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-furniture-006.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看与当前SHA绑定的384×256联系图。字母与主体不重叠；逐项用主体轮廓和用途区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。"
+    },
+    {
+      "id": "image.a371a2106d2a09c2545c21c1819965c9e36ec43934408b9a0f884b7e04d85ba3",
+      "sha256": "a371a2106d2a09c2545c21c1819965c9e36ec43934408b9a0f884b7e04d85ba3",
+      "byteSize": 22445,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "纸品图卡：画笔、纸张、信封与日历；A至D依次为a paintbrush, a sheet of paper, an envelope, a calendar",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-paper-tools-006.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看与当前SHA绑定的384×256联系图。字母与主体不重叠；逐项用主体轮廓和用途区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。"
+    },
+    {
+      "id": "image.ec1cb297329234e40e05a46f214c6cd815e6cbab1d3b8f68e072502ed4774efa",
+      "sha256": "ec1cb297329234e40e05a46f214c6cd815e6cbab1d3b8f68e072502ed4774efa",
+      "byteSize": 42961,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "水果图卡：葡萄、草莓、西瓜与柠檬；A至D依次为grapes, a strawberry, a slice of watermelon, a lemon",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-fruit-extra-006.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看与当前SHA绑定的384×256联系图。字母与主体不重叠；逐项用主体轮廓和用途区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。"
+    },
+    {
+      "id": "image.03ea85192c1e1c49ba46a668d7ad149dd2d199c1abdcade462493ce50759b41d",
+      "sha256": "03ea85192c1e1c49ba46a668d7ad149dd2d199c1abdcade462493ce50759b41d",
+      "byteSize": 34036,
+      "width": 768,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "运动图卡：球拍、头盔、轮滑鞋与圆环；A至D依次为a racket, a helmet, a roller skate, a hoop",
+      "source": "Owned original SVG drawing: Backend/config/learning/expansions/2026-10-28/media-sources/primary1-sports-006.svg",
+      "reviewedBy": "Codex author image and key review",
+      "reviewedAt": "2026-10-29",
+      "reviewNotes": "已查看与当前SHA绑定的384×256联系图。字母与主体不重叠；逐项用主体轮廓和用途区分其余三图，不把人物姓名、衣服颜色或选项顺序当成新题。"
+    }
+  ],
+  "units": [
+    {
+      "id": "primary1.furniture-picture-cards-006",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "家具图卡：沙发、衣柜、书架与镜子",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Furniture at Home",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.e34e87f334cd85b71b48a309e4849ade0b84df691f93e532793463500debbb7b",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a wardrobe",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图是带扶手、三块坐垫和靠背的沙发；B图是带两扇长门和门把手的立式衣柜；C图是三层敞开格子中摆满书的书架；D图是带底座和反光椭圆镜面的立镜。a wardrobe对应B图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "a mirror",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图是带扶手、三块坐垫和靠背的沙发；B图是带两扇长门和门把手的立式衣柜；C图是三层敞开格子中摆满书的书架；D图是带底座和反光椭圆镜面的立镜。a mirror对应D图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "a sofa",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图是带扶手、三块坐垫和靠背的沙发；B图是带两扇长门和门把手的立式衣柜；C图是三层敞开格子中摆满书的书架；D图是带底座和反光椭圆镜面的立镜。a sofa对应A图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "a bookcase",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图是带扶手、三块坐垫和靠背的沙发；B图是带两扇长门和门把手的立式衣柜；C图是三层敞开格子中摆满书的书架；D图是带底座和反光椭圆镜面的立镜。a bookcase对应C图，其他图的物体特征与题面不相符。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.paper-tools-picture-cards-006",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "纸品图卡：画笔、纸张、信封与日历",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Paper and Painting",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.a371a2106d2a09c2545c21c1819965c9e36ec43934408b9a0f884b7e04d85ba3",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a sheet of paper",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图是长柄下连接蘸有绿色颜料的笔毛，旁有颜料滴；B图是右上角折起、其余空白的一张纸；C图是有三角形封口折线的信封；D图是带挂环、网格和日期数字的挂历。a sheet of paper对应B图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "a calendar",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图是长柄下连接蘸有绿色颜料的笔毛，旁有颜料滴；B图是右上角折起、其余空白的一张纸；C图是有三角形封口折线的信封；D图是带挂环、网格和日期数字的挂历。a calendar对应D图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "a paintbrush",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图是长柄下连接蘸有绿色颜料的笔毛，旁有颜料滴；B图是右上角折起、其余空白的一张纸；C图是有三角形封口折线的信封；D图是带挂环、网格和日期数字的挂历。a paintbrush对应A图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "an envelope",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图是长柄下连接蘸有绿色颜料的笔毛，旁有颜料滴；B图是右上角折起、其余空白的一张纸；C图是有三角形封口折线的信封；D图是带挂环、网格和日期数字的挂历。an envelope对应C图，其他图的物体特征与题面不相符。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.fruit-extra-picture-cards-006",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "水果图卡：葡萄、草莓、西瓜与柠檬",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "More Fruit",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.ec1cb297329234e40e05a46f214c6cd815e6cbab1d3b8f68e072502ed4774efa",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a strawberry",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图是多颗紫色圆果聚成的葡萄串；B图是表面有籽、顶部有绿叶的红色草莓；C图是有绿皮、红瓤和黑籽的三角西瓜片；D图是两端微尖、表皮黄色的柠檬。a strawberry对应B图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "a lemon",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图是多颗紫色圆果聚成的葡萄串；B图是表面有籽、顶部有绿叶的红色草莓；C图是有绿皮、红瓤和黑籽的三角西瓜片；D图是两端微尖、表皮黄色的柠檬。a lemon对应D图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "grapes",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图是多颗紫色圆果聚成的葡萄串；B图是表面有籽、顶部有绿叶的红色草莓；C图是有绿皮、红瓤和黑籽的三角西瓜片；D图是两端微尖、表皮黄色的柠檬。grapes对应A图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "a slice of watermelon",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图是多颗紫色圆果聚成的葡萄串；B图是表面有籽、顶部有绿叶的红色草莓；C图是有绿皮、红瓤和黑籽的三角西瓜片；D图是两端微尖、表皮黄色的柠檬。a slice of watermelon对应C图，其他图的物体特征与题面不相符。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary1.sports-picture-cards-006",
+      "sourceUnitId": "original.primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "title": "运动图卡：球拍、头盔、轮滑鞋与圆环",
+      "minutes": 4,
+      "instruction": "Look at the four picture cards. Match each word or phrase to one picture. Use each letter once.",
+      "materials": [
+        {
+          "id": "cards",
+          "title": "Things for Sport",
+          "text": "Look at cards A, B, C and D. Choose the picture that matches each word or phrase.",
+          "materialImages": [
+            {
+              "assetId": "image.03ea85192c1e1c49ba46a668d7ad149dd2d199c1abdcade462493ce50759b41d",
+              "label": "Picture cards A to D"
+            }
+          ],
+          "questions": [
+            {
+              "prompt": "a helmet",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 1,
+              "explanation": "A图是带网线的椭圆拍面和长握柄；B图是带通气孔、下沿和下巴扣带的防护头盔；C图是高帮鞋下连着轮子而非冰刀的轮滑鞋；D图是没有网线或握柄的紫色大圆环。a helmet对应B图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "a hoop",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 3,
+              "explanation": "A图是带网线的椭圆拍面和长握柄；B图是带通气孔、下沿和下巴扣带的防护头盔；C图是高帮鞋下连着轮子而非冰刀的轮滑鞋；D图是没有网线或握柄的紫色大圆环。a hoop对应D图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "a racket",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 0,
+              "explanation": "A图是带网线的椭圆拍面和长握柄；B图是带通气孔、下沿和下巴扣带的防护头盔；C图是高帮鞋下连着轮子而非冰刀的轮滑鞋；D图是没有网线或握柄的紫色大圆环。a racket对应A图，其他图的物体特征与题面不相符。"
+            },
+            {
+              "prompt": "a roller skate",
+              "options": [
+                "Picture A",
+                "Picture B",
+                "Picture C",
+                "Picture D"
+              ],
+              "answer": 2,
+              "explanation": "A图是带网线的椭圆拍面和长握柄；B图是带通气孔、下沿和下巴扣带的防护头盔；C图是高帮鞋下连着轮子而非冰刀的轮滑鞋；D图是没有网线或握柄的紫色大圆环。a roller skate对应C图，其他图的物体特征与题面不相符。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

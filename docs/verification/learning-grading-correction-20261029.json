@@ -20,12 +20,14 @@
     "architecture": "passed",
     "isolatedDatabase": "Reused existing cluster; stopped normally and preserved."
   },
-  "deployment": "Pending combined guarded release; author self-review is not independent teacher calibration.",
+  "deployment": "Deployed in originals-07cae7f4d3c4; api/worker active after guarded release. Author self-review is not independent teacher calibration.",
   "followupCommit": "b1d52dce",
   "followupChecks": {
-    "focusedTestsPassed": 26,
     "revisionTestsAfterLintFix": 8,
     "evidence": "build/learning-supply-audit-20261028/grading-revisions-v4-unit.log",
-    "databaseRerun": "No implementation change; prior historical receipt/reward preservation proof retained."
+    "databaseRerun": "No implementation change; prior historical receipt/reward preservation proof retained.",
+    "authorFocusedTestsPassed": 26,
+    "parentFocusedTestsPassed": 13,
+    "parentCoverage": "8 grading revision cases and5 explicit-run loader cases;13 tests in2files passed."
   }
 }

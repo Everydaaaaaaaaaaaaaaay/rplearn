@@ -1,0 +1,1982 @@
+{
+  "createdAt": "2026-10-29T01:58:31+08:00",
+  "reviewedAt": "2026-10-29",
+  "reviewBoundary": "Sixteen independently authored advanced keyword-transformation practices. The frozen original supplies task form only. Complete source/target pairs, solved example, unchanged keywords, explicit3–6word bounds and item-specific author-reviewed variants are supplied. This is author-self-review and engineering verification, not independent teacher validation, C1 equivalence or learner calibration. No publication is claimed.",
+  "units": [
+    {
+      "id": "advanced.conservation-decisions-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：文物修复中的审慎决定",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Conservation Decisions · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The conservator refused to let anyone polish the surface before it had been examined.\nKeyword: ALLOW\nThe conservator would not ____ before it had been examined.\n\n2. Nobody expected the hidden inscription to be so extensive.\nKeyword: SURPRISE\nThe extent of the hidden inscription ____ everyone.\n\n3. It is possible that the frame was replaced during an earlier repair.\nKeyword: MAY\nThe frame ____ during an earlier repair.\n\n4. The team decided not to remove the older label.\nKeyword: AGAINST\nThe team ____ the older label.\n\n5. The restorer succeeded in separating the two sheets without tearing them.\nKeyword: ABLE\nThe restorer ____ the two sheets without tearing them.\n\n6. We did not discover the repair note until the backing had been removed.\nKeyword: DID\nOnly after the backing had been removed ____ the repair note.",
+          "questions": [
+            {
+              "prompt": "1. The conservator refused to let anyone polish the surface before it had been examined.\nKeyword: ALLOW.\nThe conservator would not ____ before it had been examined.\nUse 3 to 6 words, including ALLOW unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "allow anyone to polish the surface"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "ALLOW",
+                "rejectedAnswers": [
+                  "allow anyone polishing the surface"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "allow somebody to do为宾语加不定式；would not保留拒绝许可，不用allow somebody doing。"
+            },
+            {
+              "prompt": "2. Nobody expected the hidden inscription to be so extensive.\nKeyword: SURPRISE.\nThe extent of the hidden inscription ____ everyone.\nUse 3 to 6 words, including SURPRISE unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "came as a surprise to",
+                "came as a complete surprise to",
+                "came as a total surprise to"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "SURPRISE",
+                "rejectedAnswers": [
+                  "came as no surprise to"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "come as a surprise to表示出乎意料，no surprise反转。complete/total自然加强nobody expected而不改变核心。"
+            },
+            {
+              "prompt": "3. It is possible that the frame was replaced during an earlier repair.\nKeyword: MAY.\nThe frame ____ during an earlier repair.\nUse 3 to 6 words, including MAY unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "may have been replaced"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "MAY",
+                "rejectedAnswers": [
+                  "may have replaced"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "过去可能被换用may have been replaced；主动may have replaced缺替换宾语且改变主语角色。"
+            },
+            {
+              "prompt": "4. The team decided not to remove the older label.\nKeyword: AGAINST.\nThe team ____ the older label.\nUse 3 to 6 words, including AGAINST unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "decided against removing",
+                "decided against the removal of"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "AGAINST",
+                "rejectedAnswers": [
+                  "decided against to remove"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "decide against doing/against the removal of均表决定不移除，against后不接to remove。"
+            },
+            {
+              "prompt": "5. The restorer succeeded in separating the two sheets without tearing them.\nKeyword: ABLE.\nThe restorer ____ the two sheets without tearing them.\nUse 3 to 6 words, including ABLE unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "was able to separate"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "ABLE",
+                "rejectedAnswers": [
+                  "was able separating"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "was able to do保留成功做到，able不直接接动名词。"
+            },
+            {
+              "prompt": "6. We did not discover the repair note until the backing had been removed.\nKeyword: DID.\nOnly after the backing had been removed ____ the repair note.\nUse 3 to 6 words, including DID unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "did we discover"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "DID",
+                "rejectedAnswers": [
+                  "we did discover"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Only after前置触发主句部分倒装did we discover，不能仍主语先行。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.public-hearing-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：公共听证中的发言与回应",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Public Hearing · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The chair asked the audience not to interrupt before the speaker had finished.\nKeyword: REFRAIN\nThe chair asked the audience to ____ until the speaker had finished.\n\n2. The councillor denied that she had promised to close the park.\nKeyword: HAVING\nThe councillor ____ to close the park.\n\n3. They would not consider the proposal unless residents were consulted.\nKeyword: CONDITION\nThey would consider the proposal ____ consulted.\n\n4. I had never before heard such a detailed account at a meeting.\nKeyword: HAD\nNever before ____ such a detailed account at a meeting.\n\n5. The committee postponed making a decision because new evidence had arrived.\nKeyword: PUT\nThe committee ____ because new evidence had arrived.\n\n6. The witness was not responsible for the delay.\nKeyword: BLAME\nThe witness ____ the delay.",
+          "questions": [
+            {
+              "prompt": "1. The chair asked the audience not to interrupt before the speaker had finished.\nKeyword: REFRAIN.\nThe chair asked the audience to ____ until the speaker had finished.\nUse 3 to 6 words, including REFRAIN unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "refrain from interrupting"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "REFRAIN",
+                "rejectedAnswers": [
+                  "refrain to interrupt"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "refrain from doing为克制不打断，to interrupt非该动词搭配；原句明确不打断而非泛泛等候。"
+            },
+            {
+              "prompt": "2. The councillor denied that she had promised to close the park.\nKeyword: HAVING.\nThe councillor ____ to close the park.\nUse 3 to 6 words, including HAVING unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "denied having promised"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "HAVING",
+                "rejectedAnswers": [
+                  "denied having promise"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "deny having done表示否认先前行为；promise缺分词ed。"
+            },
+            {
+              "prompt": "3. They would not consider the proposal unless residents were consulted.\nKeyword: CONDITION.\nThey would consider the proposal ____ consulted.\nUse 3 to 6 words, including CONDITION unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "on condition that residents were",
+                "on the condition that residents were"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "CONDITION",
+                "rejectedAnswers": [
+                  "on condition residents was"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "on (the) condition that保留除非居民被咨询的先决条件，residents复数不配was。"
+            },
+            {
+              "prompt": "4. I had never before heard such a detailed account at a meeting.\nKeyword: HAD.\nNever before ____ such a detailed account at a meeting.\nUse 3 to 6 words, including HAD unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "had I heard"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "HAD",
+                "rejectedAnswers": [
+                  "I had heard"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Never before前置倒装had I heard，I had heard不倒装。"
+            },
+            {
+              "prompt": "5. The committee postponed making a decision because new evidence had arrived.\nKeyword: PUT.\nThe committee ____ because new evidence had arrived.\nUse 3 to 6 words, including PUT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "put off making a decision",
+                "put off reaching a decision",
+                "put off taking a decision"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "PUT",
+                "rejectedAnswers": [
+                  "put off to make a decision"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "put off doing为推迟，make/reach/take a decision在此均可；不定式不能接put off表达同意。"
+            },
+            {
+              "prompt": "6. The witness was not responsible for the delay.\nKeyword: BLAME.\nThe witness ____ the delay.\nUse 3 to 6 words, including BLAME unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "was not to blame for"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "BLAME",
+                "rejectedAnswers": [
+                  "was to blame for"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "not to blame for否定责任，in no way加强否定；去not反转原意。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.coastal-navigation-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：海岸航行的判断",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Coastal Navigation · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The fog was so thick that the crew had to turn back.\nKeyword: WAS\nSuch ____ that the crew had to turn back.\n\n2. The harbour master advised us not to sail before dawn.\nKeyword: AGAINST\nThe harbour master ____ before dawn.\n\n3. I only realised how far we had drifted when I saw the buoy.\nKeyword: THAT\nIt was not until I saw the buoy ____ how far we had drifted.\n\n4. The old chart is much less reliable than the new one.\nKeyword: NEARLY\nThe old chart is ____ the new one.\n\n5. We should have checked the forecast before leaving.\nKeyword: OUGHT\nWe ____ the forecast before leaving.\n\n6. Even if the wind improves, the crossing may still be cancelled.\nKeyword: PREVENT\nAn improvement in the wind does ____ being cancelled.",
+          "questions": [
+            {
+              "prompt": "1. The fog was so thick that the crew had to turn back.\nKeyword: WAS.\nSuch ____ that the crew had to turn back.\nUse 3 to 6 words, including WAS unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "was the thickness of the fog",
+                "was the density of the fog"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "WAS",
+                "rejectedAnswers": [
+                  "was so thickness of the fog"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Such was+名词短语+that重述雾浓导致返回，thickness/density均可；so不能修饰该名词短语。"
+            },
+            {
+              "prompt": "2. The harbour master advised us not to sail before dawn.\nKeyword: AGAINST.\nThe harbour master ____ before dawn.\nUse 3 to 6 words, including AGAINST unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "advised us against sailing"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "AGAINST",
+                "rejectedAnswers": [
+                  "advised us against to sail"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "advise somebody against doing为建议不要，against不接to sail。"
+            },
+            {
+              "prompt": "3. I only realised how far we had drifted when I saw the buoy.\nKeyword: THAT.\nIt was not until I saw the buoy ____ how far we had drifted.\nUse 3 to 6 words, including THAT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "that I realised",
+                "that I realized"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "THAT",
+                "rejectedAnswers": [
+                  "that did I realise"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "It was not until...that强调结构，that后不倒装；英美realise/realize均收。"
+            },
+            {
+              "prompt": "4. The old chart is much less reliable than the new one.\nKeyword: NEARLY.\nThe old chart is ____ the new one.\nUse 3 to 6 words, including NEARLY unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "not nearly as reliable as"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "NEARLY",
+                "rejectedAnswers": [
+                  "not nearly more reliable than"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "not nearly as...as保留远不如，新旧比较方向不能反转。"
+            },
+            {
+              "prompt": "5. We should have checked the forecast before leaving.\nKeyword: OUGHT.\nWe ____ the forecast before leaving.\nUse 3 to 6 words, including OUGHT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "ought to have checked"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "OUGHT",
+                "rejectedAnswers": [
+                  "ought have checked"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "ought to have done表示过去本该做，to不能省略。"
+            },
+            {
+              "prompt": "6. Even if the wind improves, the crossing may still be cancelled.\nKeyword: PREVENT.\nAn improvement in the wind does ____ being cancelled.\nUse 3 to 6 words, including PREVENT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "not necessarily prevent the crossing from"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "PREVENT",
+                "rejectedAnswers": [
+                  "not necessarily prevent the crossing to"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "prevent something from being done，not necessarily保留改善也未必避免取消。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.craft-apprenticeship-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：手艺学习与工作台",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Craft Apprenticeship · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The apprentice found it difficult to keep the blade at the same angle.\nKeyword: DIFFICULTY\nThe apprentice ____ the blade at the same angle.\n\n2. My tutor made me practise on scrap wood first.\nKeyword: MADE\nI ____ on scrap wood first by my tutor.\n\n3. I did not expect the joint to fit perfectly on my first attempt.\nKeyword: EXPECTATION\nI had no ____ perfectly on my first attempt.\n\n4. The instructor said I could use the plane once she had checked it.\nKeyword: PERMISSION\nThe instructor gave me ____ once she had checked it.\n\n5. The crack was too narrow for us to see without a magnifying glass.\nKeyword: ENOUGH\nThe crack was not ____ without a magnifying glass.\n\n6. I wish I had measured the board again before cutting it.\nKeyword: REGRET\nI ____ the board again before cutting it.",
+          "questions": [
+            {
+              "prompt": "1. The apprentice found it difficult to keep the blade at the same angle.\nKeyword: DIFFICULTY.\nThe apprentice ____ the blade at the same angle.\nUse 3 to 6 words, including DIFFICULTY unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "had difficulty keeping",
+                "had some difficulty keeping",
+                "had difficulty in keeping",
+                "experienced difficulty keeping",
+                "experienced difficulty in keeping"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "DIFFICULTY",
+                "rejectedAnswers": [
+                  "had difficulty to keep"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "have/experience difficulty (in) doing均表做某事有困难；in可省，不能用to keep作该补足。"
+            },
+            {
+              "prompt": "2. My tutor made me practise on scrap wood first.\nKeyword: MADE.\nI ____ on scrap wood first by my tutor.\nUse 3 to 6 words, including MADE unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "was made to practise",
+                "was made to practice"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "MADE",
+                "rejectedAnswers": [
+                  "was made practise"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "make的被动补回to，practise/practice均为规范拼写；was made practise缺不定式to。"
+            },
+            {
+              "prompt": "3. I did not expect the joint to fit perfectly on my first attempt.\nKeyword: EXPECTATION.\nI had no ____ perfectly on my first attempt.\nUse 3 to 6 words, including EXPECTATION unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "expectation of the joint fitting",
+                "expectation that the joint would fit"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "EXPECTATION",
+                "rejectedAnswers": [
+                  "expectation the joint fit to"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "expectation of+动名词或expectation that从句保留未预期，错序fit to不合。"
+            },
+            {
+              "prompt": "4. The instructor said I could use the plane once she had checked it.\nKeyword: PERMISSION.\nThe instructor gave me ____ once she had checked it.\nUse 3 to 6 words, including PERMISSION unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "permission to use the plane"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "PERMISSION",
+                "rejectedAnswers": [
+                  "permission using the plane"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "permission to do为许可做某事；permission using缺连接。"
+            },
+            {
+              "prompt": "5. The crack was too narrow for us to see without a magnifying glass.\nKeyword: ENOUGH.\nThe crack was not ____ without a magnifying glass.\nUse 3 to 6 words, including ENOUGH unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "wide enough for us to see",
+                "wide enough to be seen"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "ENOUGH",
+                "rejectedAnswers": [
+                  "wide enough that we see"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "not wide enough与too narrow等义，主动for us to see与被动to be seen均可；that we see非enough结构。"
+            },
+            {
+              "prompt": "6. I wish I had measured the board again before cutting it.\nKeyword: REGRET.\nI ____ the board again before cutting it.\nUse 3 to 6 words, including REGRET unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "regret not measuring",
+                "regret not having measured",
+                "regret having failed to measure",
+                "regret failing to measure"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "REGRET",
+                "rejectedAnswers": [
+                  "regret to measure"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "regret未做过的事可用否定doing/having done或failed to do；regret to measure表示当前遗憾告知并不等义。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.performance-rehearsal-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：排练中的临场调整",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Performance Rehearsal · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The singer continued despite being unable to hear the piano clearly.\nKeyword: ON\nThe singer ____ unable to hear the piano clearly.\n\n2. I had just stepped onto the stage when the lights went out.\nKeyword: HAD\nHardly ____ onto the stage when the lights went out.\n\n3. The director is unlikely to accept another change this late.\nKeyword: CHANCE\nThere is ____ another change this late.\n\n4. The audience could hear every word because the actors spoke so clearly.\nKeyword: ENOUGH\nThe actors spoke ____ hear every word.\n\n5. You must not move the microphone during the performance.\nKeyword: ACCOUNT\nOn no ____ the microphone during the performance.\n\n6. The violinist said the page turner had caused her mistake.\nKeyword: BLAMED\nThe violinist ____ her mistake.",
+          "questions": [
+            {
+              "prompt": "1. The singer continued despite being unable to hear the piano clearly.\nKeyword: ON.\nThe singer ____ unable to hear the piano clearly.\nUse 3 to 6 words, including ON unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "carried on despite being",
+                "went on despite being",
+                "carried on in spite of being",
+                "went on in spite of being"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "ON",
+                "rejectedAnswers": [
+                  "carried on despite of being"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "carry/go on均为继续，despite不加of，in spite of可。"
+            },
+            {
+              "prompt": "2. I had just stepped onto the stage when the lights went out.\nKeyword: HAD.\nHardly ____ onto the stage when the lights went out.\nUse 3 to 6 words, including HAD unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "had I stepped"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "HAD",
+                "rejectedAnswers": [
+                  "I had stepped"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Hardly前置触发过去完成倒装had I stepped，不保持主语先行。"
+            },
+            {
+              "prompt": "3. The director is unlikely to accept another change this late.\nKeyword: CHANCE.\nThere is ____ another change this late.\nUse 3 to 6 words, including CHANCE unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "little chance of the director accepting"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "CHANCE",
+                "rejectedAnswers": [
+                  "little chance the director to accept"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "little chance of+名词所有者+动名词表达不大可能，the director to accept不能作此结构。"
+            },
+            {
+              "prompt": "4. The audience could hear every word because the actors spoke so clearly.\nKeyword: ENOUGH.\nThe actors spoke ____ hear every word.\nUse 3 to 6 words, including ENOUGH unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "clearly enough for the audience to"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "ENOUGH",
+                "rejectedAnswers": [
+                  "clear enough for the audience to"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "修饰spoke用clearly；clearly enough for somebody to do保留结果条件。"
+            },
+            {
+              "prompt": "5. You must not move the microphone during the performance.\nKeyword: ACCOUNT.\nOn no ____ the microphone during the performance.\nUse 3 to 6 words, including ACCOUNT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "account may you move",
+                "account can you move",
+                "account are you to move"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "ACCOUNT",
+                "rejectedAnswers": [
+                  "account you may move"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "On no account前置强否定许可，may/can/are you to均倒装；you may不倒装。"
+            },
+            {
+              "prompt": "6. The violinist said the page turner had caused her mistake.\nKeyword: BLAMED.\nThe violinist ____ her mistake.\nUse 3 to 6 words, including BLAMED unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "blamed the page turner for"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "BLAMED",
+                "rejectedAnswers": [
+                  "blamed the page turner of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "blame somebody for something，不能用of替代责任介词。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.research-design-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：研究计划与证据强度",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Research Design · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The researchers did not take account of seasonal changes.\nKeyword: INTO\nThe researchers failed ____ account.\n\n2. The result is not nearly as conclusive as the abstract suggests.\nKeyword: FAR\nThe result is ____ the abstract suggests.\n\n3. The reviewer insisted that we explain how the sample was selected.\nKeyword: ON\nThe reviewer insisted ____ how the sample was selected.\n\n4. The new evidence made us doubt our first interpretation.\nKeyword: DOUBT\nThe new evidence ____ our first interpretation.\n\n5. We cannot rule out the possibility that the instrument was faulty.\nKeyword: MAY\nThe instrument ____ faulty.\n\n6. The study was abandoned only because the funding ended.\nKeyword: WOULD\nBut for the end of the funding, the study ____ abandoned.",
+          "questions": [
+            {
+              "prompt": "1. The researchers did not take account of seasonal changes.\nKeyword: INTO.\nThe researchers failed ____ account.\nUse 3 to 6 words, including INTO unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "to take seasonal changes into"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "INTO",
+                "rejectedAnswers": [
+                  "taking seasonal changes into"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "fail to do与take into account组成固定结构，taking不能直接接failed。"
+            },
+            {
+              "prompt": "2. The result is not nearly as conclusive as the abstract suggests.\nKeyword: FAR.\nThe result is ____ the abstract suggests.\nUse 3 to 6 words, including FAR unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "far less conclusive than"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "FAR",
+                "rejectedAnswers": [
+                  "far more conclusive than"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "not nearly as conclusive as与far less conclusive than同向，更确凿会反转结论。"
+            },
+            {
+              "prompt": "3. The reviewer insisted that we explain how the sample was selected.\nKeyword: ON.\nThe reviewer insisted ____ how the sample was selected.\nUse 3 to 6 words, including ON unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "on our explaining",
+                "on us explaining"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "ON",
+                "rejectedAnswers": [
+                  "on we explaining"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "insist on+动名词，可用our/us作逻辑主语，we不能放介词后。"
+            },
+            {
+              "prompt": "4. The new evidence made us doubt our first interpretation.\nKeyword: DOUBT.\nThe new evidence ____ our first interpretation.\nUse 3 to 6 words, including DOUBT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "cast doubt on",
+                "cast doubt upon"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "DOUBT",
+                "rejectedAnswers": [
+                  "cast doubt of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "cast doubt on/upon为使怀疑，of不是该动词搭配。"
+            },
+            {
+              "prompt": "5. We cannot rule out the possibility that the instrument was faulty.\nKeyword: MAY.\nThe instrument ____ faulty.\nUse 3 to 6 words, including MAY unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "may have been"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "MAY",
+                "rejectedAnswers": [
+                  "may had been"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "may have been为过去可能；情态后had非原形。"
+            },
+            {
+              "prompt": "6. The study was abandoned only because the funding ended.\nKeyword: WOULD.\nBut for the end of the funding, the study ____ abandoned.\nUse 3 to 6 words, including WOULD unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "would not have been"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "WOULD",
+                "rejectedAnswers": [
+                  "would have been"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "But for表过去反事实条件，would not have been保留非资金终止则不放弃，肯定式反转。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.food-cooperative-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：食品合作社的协商",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Food Cooperative · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. We are short of storage space, so we cannot accept the extra delivery.\nKeyword: PREVENTS\nOur shortage of storage space ____ the extra delivery.\n\n2. It was not necessary for members to bring their own containers.\nKeyword: HAVE\nMembers ____ their own containers.\n\n3. I am sure the supplier misunderstood our order.\nKeyword: MUST\nThe supplier ____ our order.\n\n4. The meeting lasted longer than I had expected.\nKeyword: AS\nThe meeting did not end ____ expected.\n\n5. The members preferred sharing the surplus to throwing it away.\nKeyword: RATHER\nThe members would ____ throw it away.\n\n6. The manager promised that she would inform us about any price changes.\nKeyword: KEEP\nThe manager promised ____ any price changes.",
+          "questions": [
+            {
+              "prompt": "1. We are short of storage space, so we cannot accept the extra delivery.\nKeyword: PREVENTS.\nOur shortage of storage space ____ the extra delivery.\nUse 3 to 6 words, including PREVENTS unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "prevents us from accepting"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "PREVENTS",
+                "rejectedAnswers": [
+                  "prevents us to accept"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "prevent somebody from doing，与空间不足不能收货等义。"
+            },
+            {
+              "prompt": "2. It was not necessary for members to bring their own containers.\nKeyword: HAVE.\nMembers ____ their own containers.\nUse 3 to 6 words, including HAVE unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "did not have to bring"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "HAVE",
+                "rejectedAnswers": [
+                  "had not to bring"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "did not have to表无须，had not to在此非规范必要否定结构。"
+            },
+            {
+              "prompt": "3. I am sure the supplier misunderstood our order.\nKeyword: MUST.\nThe supplier ____ our order.\nUse 3 to 6 words, including MUST unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "must have misunderstood"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "MUST",
+                "rejectedAnswers": [
+                  "must misunderstand"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "对已发生的误解作肯定推断用must have misunderstood，must misunderstand表现在义务或状态不保留过去。"
+            },
+            {
+              "prompt": "4. The meeting lasted longer than I had expected.\nKeyword: AS.\nThe meeting did not end ____ expected.\nUse 3 to 6 words, including AS unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "as soon as I had",
+                "as early as I had",
+                "as soon as I",
+                "as early as I"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "AS",
+                "rejectedAnswers": [
+                  "as late as I had"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "not as soon/early as预期保留更晚结束，as late方向相反。"
+            },
+            {
+              "prompt": "5. The members preferred sharing the surplus to throwing it away.\nKeyword: RATHER.\nThe members would ____ throw it away.\nUse 3 to 6 words, including RATHER unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "rather share the surplus than"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "RATHER",
+                "rejectedAnswers": [
+                  "rather sharing the surplus than"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "would rather do than do平行原形，sharing不合。"
+            },
+            {
+              "prompt": "6. The manager promised that she would inform us about any price changes.\nKeyword: KEEP.\nThe manager promised ____ any price changes.\nUse 3 to 6 words, including KEEP unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "to keep us informed about",
+                "to keep us informed of",
+                "to keep us informed on"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "KEEP",
+                "rejectedAnswers": [
+                  "to keep us informing about"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "keep somebody informed about/of/on均表示使获知该主题变化，informing改变被通知关系。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.museum-displays-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：博物馆展陈中的解释",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Museum Displays · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The label does not explain who made the object.\nKeyword: EXPLANATION\nThe label gives ____ the object.\n\n2. The guide had to speak louder so that everyone could hear her.\nKeyword: ORDER\nThe guide had to raise her voice in ____ by everyone.\n\n3. The painting cannot be displayed until the glass has been replaced.\nKeyword: CAN\nNot until the glass has been replaced ____ displayed.\n\n4. It is a pity that the catalogue does not include an index.\nKeyword: WISH\nI ____ an index.\n\n5. The visitor did not believe that the map was an original.\nKeyword: CONVINCED\nThe visitor ____ an original.\n\n6. The curator let us photograph the display provided we did not use flash.\nKeyword: CONDITION\nThe curator allowed us to photograph the display on ____ flash.",
+          "questions": [
+            {
+              "prompt": "1. The label does not explain who made the object.\nKeyword: EXPLANATION.\nThe label gives ____ the object.\nUse 3 to 6 words, including EXPLANATION unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "no explanation of who made",
+                "no explanation as to who made"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "EXPLANATION",
+                "rejectedAnswers": [
+                  "no explanation who to made"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "explanation of/as to+间接疑问均可，who作made主语；to made不成结构。"
+            },
+            {
+              "prompt": "2. The guide had to speak louder so that everyone could hear her.\nKeyword: ORDER.\nThe guide had to raise her voice in ____ by everyone.\nUse 3 to 6 words, including ORDER unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "order to be heard"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "ORDER",
+                "rejectedAnswers": [
+                  "order to hear"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "in order to be heard为目的被听到，to hear把导览员变听者。"
+            },
+            {
+              "prompt": "3. The painting cannot be displayed until the glass has been replaced.\nKeyword: CAN.\nNot until the glass has been replaced ____ displayed.\nUse 3 to 6 words, including CAN unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "can the painting be"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "CAN",
+                "rejectedAnswers": [
+                  "the painting can be"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Not until前置倒装can the painting be，不能主语先行。"
+            },
+            {
+              "prompt": "4. It is a pity that the catalogue does not include an index.\nKeyword: WISH.\nI ____ an index.\nUse 3 to 6 words, including WISH unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "wish the catalogue included",
+                "wish the catalogue had",
+                "wish the catalogue contained"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "WISH",
+                "rejectedAnswers": [
+                  "wish the catalogue includes"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "wish对当前缺索引的遗憾用过去式included/had/contained，不能用现在includes。"
+            },
+            {
+              "prompt": "5. The visitor did not believe that the map was an original.\nKeyword: CONVINCED.\nThe visitor ____ an original.\nUse 3 to 6 words, including CONVINCED unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "was not convinced the map was",
+                "was not convinced that it was",
+                "was not convinced it was"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "CONVINCED",
+                "rejectedAnswers": [
+                  "was convinced the map was"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "not convinced表示不信，去not颠倒；it在上下文指map，自然指代接受。"
+            },
+            {
+              "prompt": "6. The curator let us photograph the display provided we did not use flash.\nKeyword: CONDITION.\nThe curator allowed us to photograph the display on ____ flash.\nUse 3 to 6 words, including CONDITION unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "condition that we did not use",
+                "the condition we did not use",
+                "the condition that we avoided"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "CONDITION",
+                "rejectedAnswers": [
+                  "condition that we used"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "on condition that...或on the condition...加否定use/肯定avoid，保留禁止闪光；肯定used反义。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.student-newsroom-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：校园新闻与信息核对",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Student Newsroom · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The editor told us not to publish the quotation before checking it.\nKeyword: AGAINST\nThe editor warned ____ the quotation before checking it.\n\n2. The reporter only discovered the error after the article had appeared.\nKeyword: UNTIL\nIt was ____ that the reporter discovered the error.\n\n3. The interview was cancelled because the guest became ill.\nKeyword: ACCOUNT\nThe interview was cancelled ____ the guest becoming ill.\n\n4. I am certain that Maya did not invent the figures.\nKeyword: CANNOT\nMaya ____ the figures.\n\n5. The readers would rather see the full statement than a short extract.\nKeyword: PREFERENCE\nThe readers have ____ over a short extract.\n\n6. The editor made it clear that the draft was not ready for publication.\nKeyword: DOUBT\nThe editor left us ____ the draft was not ready for publication.",
+          "questions": [
+            {
+              "prompt": "1. The editor told us not to publish the quotation before checking it.\nKeyword: AGAINST.\nThe editor warned ____ the quotation before checking it.\nUse 3 to 6 words, including AGAINST unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "us against publishing"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "AGAINST",
+                "rejectedAnswers": [
+                  "us against to publish"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "warn somebody against doing为告诫不要，against后不接不定式。"
+            },
+            {
+              "prompt": "2. The reporter only discovered the error after the article had appeared.\nKeyword: UNTIL.\nIt was ____ that the reporter discovered the error.\nUse 3 to 6 words, including UNTIL unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "not until the article had appeared",
+                "not until the article appeared"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "UNTIL",
+                "rejectedAnswers": [
+                  "not until had the article appeared"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "not until强调时间，两种过去表达均可；嵌入时间从句内部不倒装。"
+            },
+            {
+              "prompt": "3. The interview was cancelled because the guest became ill.\nKeyword: ACCOUNT.\nThe interview was cancelled ____ the guest becoming ill.\nUse 3 to 6 words, including ACCOUNT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "on account of"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "ACCOUNT",
+                "rejectedAnswers": [
+                  "on the account for"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "on account of表示原因，on the account for非固定搭配。"
+            },
+            {
+              "prompt": "4. I am certain that Maya did not invent the figures.\nKeyword: CANNOT.\nMaya ____ the figures.\nUse 3 to 6 words, including CANNOT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "cannot have invented"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "CANNOT",
+                "rejectedAnswers": [
+                  "cannot had invented"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "cannot have done为对过去不可能性的肯定推断；cannot had不合情态原形。"
+            },
+            {
+              "prompt": "5. The readers would rather see the full statement than a short extract.\nKeyword: PREFERENCE.\nThe readers have ____ over a short extract.\nUse 3 to 6 words, including PREFERENCE unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "a preference for the full statement"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "PREFERENCE",
+                "rejectedAnswers": [
+                  "a preference to the full statement"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "have a preference for X over Y保持偏好比较；preference to X不是此结构。"
+            },
+            {
+              "prompt": "6. The editor made it clear that the draft was not ready for publication.\nKeyword: DOUBT.\nThe editor left us ____ the draft was not ready for publication.\nUse 3 to 6 words, including DOUBT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "in no doubt that",
+                "without any doubt that"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "DOUBT",
+                "rejectedAnswers": [
+                  "in a doubt that"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "leave somebody in no doubt/without any doubt that表清楚说明，不是in a doubt。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.community-volunteers-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：志愿工作中的承诺",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Community Volunteers · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. Nora did not want to take responsibility for organising the whole event.\nKeyword: RESPONSIBILITY\nNora was reluctant ____ organising the whole event.\n\n2. We would have finished sooner if more volunteers had arrived.\nKeyword: WOULD\nHad more volunteers arrived, we ____ sooner.\n\n3. The coordinator insisted that every box should carry a destination label.\nKeyword: ON\nThe coordinator insisted ____ a destination label.\n\n4. The delivery was delayed, but this did not discourage the volunteers.\nKeyword: EFFECT\nThe delay did not ____ the volunteers.\n\n5. The organiser did not know that the same job had been assigned twice.\nKeyword: UNAWARE\nThe organiser was ____ had been assigned twice.\n\n6. The volunteers were told that wearing closed shoes was compulsory.\nKeyword: REQUIRED\nThe volunteers were ____ closed shoes.",
+          "questions": [
+            {
+              "prompt": "1. Nora did not want to take responsibility for organising the whole event.\nKeyword: RESPONSIBILITY.\nNora was reluctant ____ organising the whole event.\nUse 3 to 6 words, including RESPONSIBILITY unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "to take responsibility for",
+                "to accept responsibility for",
+                "to assume responsibility for"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "RESPONSIBILITY",
+                "rejectedAnswers": [
+                  "to take responsibility of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "take/accept/assume responsibility for均表示承担，不能of替代for。"
+            },
+            {
+              "prompt": "2. We would have finished sooner if more volunteers had arrived.\nKeyword: WOULD.\nHad more volunteers arrived, we ____ sooner.\nUse 3 to 6 words, including WOULD unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "would have finished"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "WOULD",
+                "rejectedAnswers": [
+                  "would finish"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "过去未实现条件Had arrived对应would have finished，不用一般现在将来结果。"
+            },
+            {
+              "prompt": "3. The coordinator insisted that every box should carry a destination label.\nKeyword: ON.\nThe coordinator insisted ____ a destination label.\nUse 3 to 6 words, including ON unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "on every box carrying"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "ON",
+                "rejectedAnswers": [
+                  "on every box carry"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "insist on+名词逻辑主语+doing，carry裸原形不合。"
+            },
+            {
+              "prompt": "4. The delivery was delayed, but this did not discourage the volunteers.\nKeyword: EFFECT.\nThe delay did not ____ the volunteers.\nUse 3 to 6 words, including EFFECT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "have a discouraging effect on"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "EFFECT",
+                "rejectedAnswers": [
+                  "have a discouraging effect to"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "have an effect on作用于，discouraging保留消极影响的否定；to不能代on。"
+            },
+            {
+              "prompt": "5. The organiser did not know that the same job had been assigned twice.\nKeyword: UNAWARE.\nThe organiser was ____ had been assigned twice.\nUse 3 to 6 words, including UNAWARE unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "unaware that the same job",
+                "unaware the same job"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "UNAWARE",
+                "rejectedAnswers": [
+                  "unaware of the same job"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "unaware (that)+从句，that可省；unaware of不能直接连had been谓语。"
+            },
+            {
+              "prompt": "6. The volunteers were told that wearing closed shoes was compulsory.\nKeyword: REQUIRED.\nThe volunteers were ____ closed shoes.\nUse 3 to 6 words, including REQUIRED unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "required to wear"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "REQUIRED",
+                "rejectedAnswers": [
+                  "required wearing"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "be required to do为必须，required后不直接接wearing表达相同义。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.sports-training-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：训练计划与比赛经验",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Sports Training · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The coach did not allow us to start until everyone had warmed up.\nKeyword: FROM\nThe coach prevented ____ until everyone had warmed up.\n\n2. It was the most demanding training session I had ever attended.\nKeyword: SUCH\nI had ____ training session before.\n\n3. I should not have ignored the coach’s advice about pacing.\nKeyword: IGNORED\nI wish I ____ the coach’s advice about pacing.\n\n4. The team is unlikely to complete the course before noon.\nKeyword: LIKELIHOOD\nThere is little ____ the course before noon.\n\n5. The runner kept going although her legs were aching.\nKeyword: SPITE\nThe runner kept going in ____ legs.\n\n6. We had no idea that the route would be changed at the last moment.\nKeyword: DID\nLittle ____ the route would be changed at the last moment.",
+          "questions": [
+            {
+              "prompt": "1. The coach did not allow us to start until everyone had warmed up.\nKeyword: FROM.\nThe coach prevented ____ until everyone had warmed up.\nUse 3 to 6 words, including FROM unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "us from starting"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "FROM",
+                "rejectedAnswers": [
+                  "us from to start"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "prevent somebody from doing，不能from to start。"
+            },
+            {
+              "prompt": "2. It was the most demanding training session I had ever attended.\nKeyword: SUCH.\nI had ____ training session before.\nUse 3 to 6 words, including SUCH unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "never attended such a demanding"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "SUCH",
+                "rejectedAnswers": [
+                  "ever attended such a demanding"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "never...such...before保留经历中的最高程度，ever肯定不等义。"
+            },
+            {
+              "prompt": "3. I should not have ignored the coach’s advice about pacing.\nKeyword: IGNORED.\nI wish I ____ the coach’s advice about pacing.\nUse 3 to 6 words, including IGNORED unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "had not ignored"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "IGNORED",
+                "rejectedAnswers": [
+                  "have not ignored"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "wish关于过去遗憾用had not ignored，have not不后移。"
+            },
+            {
+              "prompt": "4. The team is unlikely to complete the course before noon.\nKeyword: LIKELIHOOD.\nThere is little ____ the course before noon.\nUse 3 to 6 words, including LIKELIHOOD unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "likelihood of the team completing"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "LIKELIHOOD",
+                "rejectedAnswers": [
+                  "likelihood the team to complete"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "likelihood of+动名词结构，不能名词后接the team to complete。"
+            },
+            {
+              "prompt": "5. The runner kept going although her legs were aching.\nKeyword: SPITE.\nThe runner kept going in ____ legs.\nUse 3 to 6 words, including SPITE unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "spite of her aching"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "SPITE",
+                "rejectedAnswers": [
+                  "spite her aching"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "in spite of后名词短语，of不可丢。"
+            },
+            {
+              "prompt": "6. We had no idea that the route would be changed at the last moment.\nKeyword: DID.\nLittle ____ the route would be changed at the last moment.\nUse 3 to 6 words, including DID unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "did we know that",
+                "did we know"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "DID",
+                "rejectedAnswers": [
+                  "we did know that"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Little置首引发did we know倒装，that宾从标记可省。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.literary-translation-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：文学翻译中的取舍",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Literary Translation · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The translator found it impossible to preserve every pun.\nKeyword: UNABLE\nThe translator was ____ every pun.\n\n2. The editor suggested that I should read the passage aloud.\nKeyword: READING\nThe editor suggested ____ aloud.\n\n3. The meaning only became clear when I reached the final line.\nKeyword: DID\nNot until I reached the final line ____ clear.\n\n4. The new version is much closer to the original than the previous one.\nKeyword: FAR\nThe new version is ____ original than the previous one.\n\n5. I did not intend to make the speaker sound rude.\nKeyword: INTENTION\nI had ____ the speaker sound rude.\n\n6. The critic accused the translator of leaving out an important phrase.\nKeyword: OMITTED\nThe critic claimed that ____ an important phrase.",
+          "questions": [
+            {
+              "prompt": "1. The translator found it impossible to preserve every pun.\nKeyword: UNABLE.\nThe translator was ____ every pun.\nUse 3 to 6 words, including UNABLE unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "unable to preserve"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "UNABLE",
+                "rejectedAnswers": [
+                  "unable preserving"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "be unable to do与found impossible语义相同，不能直接接preserving。"
+            },
+            {
+              "prompt": "2. The editor suggested that I should read the passage aloud.\nKeyword: READING.\nThe editor suggested ____ aloud.\nUse 3 to 6 words, including READING unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "my reading the passage",
+                "me reading the passage"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "READING",
+                "rejectedAnswers": [
+                  "I reading the passage"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "suggest+逻辑主语my/me+reading均可，I不作动名词逻辑主语宾格或所属格。"
+            },
+            {
+              "prompt": "3. The meaning only became clear when I reached the final line.\nKeyword: DID.\nNot until I reached the final line ____ clear.\nUse 3 to 6 words, including DID unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "did the meaning become"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "DID",
+                "rejectedAnswers": [
+                  "the meaning did become"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Not until前置，主句did the meaning become部分倒装。"
+            },
+            {
+              "prompt": "4. The new version is much closer to the original than the previous one.\nKeyword: FAR.\nThe new version is ____ original than the previous one.\nUse 3 to 6 words, including FAR unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "far closer to the",
+                "far nearer to the"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "FAR",
+                "rejectedAnswers": [
+                  "far as close to the"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "much closer可用far closer/nearer，保留与原作比较对象；far as close...than不合比较级结构。"
+            },
+            {
+              "prompt": "5. I did not intend to make the speaker sound rude.\nKeyword: INTENTION.\nI had ____ the speaker sound rude.\nUse 3 to 6 words, including INTENTION unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "no intention of making"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "INTENTION",
+                "rejectedAnswers": [
+                  "no intention to making"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "no intention of doing表达没有意图，to making混接不成立。"
+            },
+            {
+              "prompt": "6. The critic accused the translator of leaving out an important phrase.\nKeyword: OMITTED.\nThe critic claimed that ____ an important phrase.\nUse 3 to 6 words, including OMITTED unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "the translator had omitted"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "OMITTED",
+                "rejectedAnswers": [
+                  "the translator had been omitted"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "translator作删去者，the translator had omitted为主动过去完成；had been omitted改变主语角色。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.building-renovation-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：建筑改造中的预算与许可",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Building Renovation · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The owners could not start work until the permit had arrived.\nKeyword: COULD\nOnly after the permit had arrived ____ work.\n\n2. Replacing every window would cost more than we can afford.\nKeyword: COST\nWe cannot afford ____ every window.\n\n3. The architect persuaded us not to remove the internal wall.\nKeyword: OUT\nThe architect talked ____ the internal wall.\n\n4. The revised design makes much better use of the available light.\nKeyword: AS\nThe original design did not use the available light ____ the revised design.\n\n5. The contractor is said to have underestimated the work involved.\nKeyword: THAT\nIt is ____ the work involved.\n\n6. The inspector demanded that the loose railing be repaired immediately.\nKeyword: REPAIR\nThe inspector demanded ____ the loose railing.",
+          "questions": [
+            {
+              "prompt": "1. The owners could not start work until the permit had arrived.\nKeyword: COULD.\nOnly after the permit had arrived ____ work.\nUse 3 to 6 words, including COULD unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "could the owners start"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "COULD",
+                "rejectedAnswers": [
+                  "the owners could start"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Only after前置，引发could the owners start倒装。"
+            },
+            {
+              "prompt": "2. Replacing every window would cost more than we can afford.\nKeyword: COST.\nWe cannot afford ____ every window.\nUse 3 to 6 words, including COST unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "the cost of replacing"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "COST",
+                "rejectedAnswers": [
+                  "the cost to replacing"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "afford the cost of doing为负担费用；to replacing非该名词搭配。"
+            },
+            {
+              "prompt": "3. The architect persuaded us not to remove the internal wall.\nKeyword: OUT.\nThe architect talked ____ the internal wall.\nUse 3 to 6 words, including OUT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "us out of removing"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "OUT",
+                "rejectedAnswers": [
+                  "us out of to remove"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "talk somebody out of doing表示说服不做，介词后不接to do。"
+            },
+            {
+              "prompt": "4. The revised design makes much better use of the available light.\nKeyword: AS.\nThe original design did not use the available light ____ the revised design.\nUse 3 to 6 words, including AS unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "as well as"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "AS",
+                "rejectedAnswers": [
+                  "as good as"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "修饰use用well，not as well as同向比较；good为形容词不合。"
+            },
+            {
+              "prompt": "5. The contractor is said to have underestimated the work involved.\nKeyword: THAT.\nIt is ____ the work involved.\nUse 3 to 6 words, including THAT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "said that the contractor underestimated",
+                "said that the contractor has underestimated",
+                "said that the contractor had underestimated"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "THAT",
+                "rejectedAnswers": [
+                  "said that the contractor underestimating"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "It is said that完整谓语从句；不同相关过去时视点均可，不以underestimating单独充谓语。"
+            },
+            {
+              "prompt": "6. The inspector demanded that the loose railing be repaired immediately.\nKeyword: REPAIR.\nThe inspector demanded ____ the loose railing.\nUse 3 to 6 words, including REPAIR unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "the immediate repair of"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "REPAIR",
+                "rejectedAnswers": [
+                  "to immediate repair of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "demand the immediate repair of名词结构，to immediate缺动词不成。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.field-weather-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：野外观测与天气变化",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Field Weather · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. We cancelled the observation because it was too cloudy.\nKeyword: PREVENTED\nThe cloud cover ____ the observation.\n\n2. The storm was more severe than any of us had predicted.\nKeyword: SUCH\nNone of us had predicted ____ storm.\n\n3. The clouds had scarcely cleared when a strong wind began to blow.\nKeyword: HAD\nScarcely ____ when a strong wind began to blow.\n\n4. You should not assume that tomorrow will be dry.\nKeyword: GRANTED\nYou should not ____ tomorrow will be dry.\n\n5. I am certain that the sensor was damaged by the hail.\nKeyword: MUST\nThe sensor ____ by the hail.\n\n6. We continued taking readings even though the temperature dropped sharply.\nKeyword: DROP\nWe continued taking readings despite ____ temperature.",
+          "questions": [
+            {
+              "prompt": "1. We cancelled the observation because it was too cloudy.\nKeyword: PREVENTED.\nThe cloud cover ____ the observation.\nUse 3 to 6 words, including PREVENTED unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "prevented us from making",
+                "prevented us from conducting",
+                "prevented us from carrying out"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "PREVENTED",
+                "rejectedAnswers": [
+                  "prevented us to conduct"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "prevent...from doing表达导致无法观测，make/conduct/carry out均可；to conduct不合搭配。"
+            },
+            {
+              "prompt": "2. The storm was more severe than any of us had predicted.\nKeyword: SUCH.\nNone of us had predicted ____ storm.\nUse 3 to 6 words, including SUCH unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "such a severe"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "SUCH",
+                "rejectedAnswers": [
+                  "so a severe"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "such+a+形容词+名词，不能so a severe。"
+            },
+            {
+              "prompt": "3. The clouds had scarcely cleared when a strong wind began to blow.\nKeyword: HAD.\nScarcely ____ when a strong wind began to blow.\nUse 3 to 6 words, including HAD unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "had the clouds cleared"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "HAD",
+                "rejectedAnswers": [
+                  "the clouds had cleared"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Scarcely前置倒装，had在主语前。"
+            },
+            {
+              "prompt": "4. You should not assume that tomorrow will be dry.\nKeyword: GRANTED.\nYou should not ____ tomorrow will be dry.\nUse 3 to 6 words, including GRANTED unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "take it for granted that"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "GRANTED",
+                "rejectedAnswers": [
+                  "take it as granted that"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "take it for granted that为想当然，as不能代for。"
+            },
+            {
+              "prompt": "5. I am certain that the sensor was damaged by the hail.\nKeyword: MUST.\nThe sensor ____ by the hail.\nUse 3 to 6 words, including MUST unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "must have been damaged"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "MUST",
+                "rejectedAnswers": [
+                  "must have damaged"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "过去被动推断must have been damaged，主动缺受事并使sensor成为施事。"
+            },
+            {
+              "prompt": "6. We continued taking readings even though the temperature dropped sharply.\nKeyword: DROP.\nWe continued taking readings despite ____ temperature.\nUse 3 to 6 words, including DROP unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "the sharp drop in",
+                "a sharp drop in"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "DROP",
+                "rejectedAnswers": [
+                  "the sharply drop in"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "despite后名词drop，由形容词sharp修饰；定或不定冠词均可。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.library-access-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：图书馆服务中的沟通",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Library Access · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The librarian said that I could renew the book online.\nKeyword: PERMISSION\nThe librarian gave me ____ online.\n\n2. It is not worth travelling to the branch before checking its opening hours.\nKeyword: POINT\nThere is ____ to the branch before checking its opening hours.\n\n3. The notice did not mention that the reading room would be closed.\nKeyword: REFERENCE\nThe notice made ____ the reading room being closed.\n\n4. I was not informed about the change until I reached the desk.\nKeyword: WAS\nOnly when I reached the desk ____ about the change.\n\n5. The new catalogue is easier to search than the old one.\nKeyword: AS\nThe old catalogue is not ____ the new one.\n\n6. I would prefer you to return the atlas before Friday.\nKeyword: RATHER\nI would ____ the atlas before Friday.",
+          "questions": [
+            {
+              "prompt": "1. The librarian said that I could renew the book online.\nKeyword: PERMISSION.\nThe librarian gave me ____ online.\nUse 3 to 6 words, including PERMISSION unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "permission to renew the book"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "PERMISSION",
+                "rejectedAnswers": [
+                  "permission renewing the book"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "give somebody permission to do，renewing不直接接permission。"
+            },
+            {
+              "prompt": "2. It is not worth travelling to the branch before checking its opening hours.\nKeyword: POINT.\nThere is ____ to the branch before checking its opening hours.\nUse 3 to 6 words, including POINT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "no point in travelling",
+                "no point in traveling"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "POINT",
+                "rejectedAnswers": [
+                  "no point to travelling"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "There is no point in doing，与不值得等义，travel英美双写均可。"
+            },
+            {
+              "prompt": "3. The notice did not mention that the reading room would be closed.\nKeyword: REFERENCE.\nThe notice made ____ the reading room being closed.\nUse 3 to 6 words, including REFERENCE unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "no reference to"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "REFERENCE",
+                "rejectedAnswers": [
+                  "no reference of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "make no reference to未提及，of非该名词搭配。"
+            },
+            {
+              "prompt": "4. I was not informed about the change until I reached the desk.\nKeyword: WAS.\nOnly when I reached the desk ____ about the change.\nUse 3 to 6 words, including WAS unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "was I informed"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "WAS",
+                "rejectedAnswers": [
+                  "I was informed"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Only when前置倒装was I informed。"
+            },
+            {
+              "prompt": "5. The new catalogue is easier to search than the old one.\nKeyword: AS.\nThe old catalogue is not ____ the new one.\nUse 3 to 6 words, including AS unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "as easy to search as"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "AS",
+                "rejectedAnswers": [
+                  "as easier to search as"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "not as easy as同级比较不能把easy换比较级easier。"
+            },
+            {
+              "prompt": "6. I would prefer you to return the atlas before Friday.\nKeyword: RATHER.\nI would ____ the atlas before Friday.\nUse 3 to 6 words, including RATHER unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "rather you returned"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "RATHER",
+                "rejectedAnswers": [
+                  "rather you return"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "would rather+他人主语+过去式表示将来偏好，return裸现在式不合此标准结构。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced.wildlife-recording-transformations-001",
+      "sourceUnitId": "original.advanced-kwt-decisions",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "title": "高级转换：野生动物记录中的谨慎推断",
+      "minutes": 14,
+      "instruction": "Complete the second sentence so that it has a similar meaning to the first. Use the given word unchanged. Write 3 to 6 words including that word, and write only the missing words.",
+      "materials": [
+        {
+          "id": "transformations",
+          "title": "Wildlife Recording · Sentence Transformations",
+          "text": "Complete each second sentence so that it has a similar meaning to the first. Use the given word unchanged and write 3 to 6 words, including that word. Write only the missing words.\n\nExample: They decided not to accept the offer. (AGAINST) They ____ the offer. Answer: decided against accepting\n\n1. The observer was unable to identify the bird with certainty.\nKeyword: SUCCEED\nThe observer did not ____ the bird with certainty.\n\n2. It is possible that the same fox was recorded by both cameras.\nKeyword: MIGHT\nThe same fox ____ by both cameras.\n\n3. We did not realise the importance of the tracks until we compared the photographs.\nKeyword: DID\nOnly after we compared the photographs ____ the importance of the tracks.\n\n4. The second sighting made the original report seem more credible.\nKeyword: CREDIBILITY\nThe second sighting ____ the original report.\n\n5. The coordinator told the volunteers not to approach the nesting area.\nKeyword: AGAINST\nThe coordinator ____ the nesting area.\n\n6. The absence of a photograph does not prove that the animal was absent.\nKeyword: PROOF\nThe fact that no photograph was taken is ____ animal was absent.",
+          "questions": [
+            {
+              "prompt": "1. The observer was unable to identify the bird with certainty.\nKeyword: SUCCEED.\nThe observer did not ____ the bird with certainty.\nUse 3 to 6 words, including SUCCEED unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "succeed in identifying"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "SUCCEED",
+                "rejectedAnswers": [
+                  "succeed to identify"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "succeed in doing，to identify不合成功做成的搭配。"
+            },
+            {
+              "prompt": "2. It is possible that the same fox was recorded by both cameras.\nKeyword: MIGHT.\nThe same fox ____ by both cameras.\nUse 3 to 6 words, including MIGHT unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "might have been recorded"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "MIGHT",
+                "rejectedAnswers": [
+                  "might have recorded"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "过去可能被记录需have been recorded，被记录物不作主动record。"
+            },
+            {
+              "prompt": "3. We did not realise the importance of the tracks until we compared the photographs.\nKeyword: DID.\nOnly after we compared the photographs ____ the importance of the tracks.\nUse 3 to 6 words, including DID unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "did we realise",
+                "did we realize"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "DID",
+                "rejectedAnswers": [
+                  "we did realise"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Only after前置部分倒装，英美拼写均可，不用主语先行。"
+            },
+            {
+              "prompt": "4. The second sighting made the original report seem more credible.\nKeyword: CREDIBILITY.\nThe second sighting ____ the original report.\nUse 3 to 6 words, including CREDIBILITY unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "added credibility to",
+                "lent credibility to",
+                "gave credibility to"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "CREDIBILITY",
+                "rejectedAnswers": [
+                  "added credibility of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "add/lend/give credibility to均表示增添可信度；of不能表达该动词宾语关系。"
+            },
+            {
+              "prompt": "5. The coordinator told the volunteers not to approach the nesting area.\nKeyword: AGAINST.\nThe coordinator ____ the nesting area.\nUse 3 to 6 words, including AGAINST unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "warned the volunteers against approaching"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "AGAINST",
+                "rejectedAnswers": [
+                  "warned the volunteers against to approach"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "warn somebody against doing为告诫不要接近，against后不接to approach。"
+            },
+            {
+              "prompt": "6. The absence of a photograph does not prove that the animal was absent.\nKeyword: PROOF.\nThe fact that no photograph was taken is ____ animal was absent.\nUse 3 to 6 words, including PROOF unchanged. Write only the missing words.",
+              "acceptedAnswers": [
+                "not proof that the",
+                "no proof that the"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 3,
+                "maxWords": 6,
+                "requiredWord": "PROOF",
+                "rejectedAnswers": [
+                  "proof that the"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "not/no proof否定证据充分性，肯定proof会反转谨慎判断。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
