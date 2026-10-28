@@ -45,6 +45,44 @@ class ExpansionCompilerTests(unittest.TestCase):
         self.assertEqual(a['entries'][0]['unit']['originalGroup']['family'], 'reading_choice')
         self.assertTrue(question['instruction'].isascii())
 
+    def test_review_date_uses_actual_review_day_and_rejects_invalid_dates(self):
+        manifest = self.compile(review_change={'reviewedAt': '2026-10-29'})
+        self.assertEqual(manifest['entries'][0]['unit']['authorship']['reviewedAt'], '2026-10-29')
+        for date in ['2026-02-30', 'yesterday', '2026-10-29T00:00:00Z']:
+            with self.assertRaisesRegex(ValueError, 'review date'):
+                self.compile(review_change={'reviewedAt': date})
+
+    def shared_source(self, family, level='undergraduate'):
+        source = copy.deepcopy(self.source)
+        original = next(u for u in self.originals.values() if u['level'] == level and u['originalGroup']['family'] == family)
+        unit = source['units'][0]
+        unit.update(sourceUnitId=original['id'], level=level, family=family)
+        part = unit['materials'][0]
+        part['text'] = '\n'.join(f'[{chr(65+i)}] Complete paragraph about detail {i}.' for i in range(11)) if family == 'paragraph_matching' else ' '.join(f'Context ____{i}____.' for i in range(1, 11))
+        part['candidates'] = [chr(65+i) for i in range(11)] if family == 'paragraph_matching' else [f'word{i}' for i in range(15)]
+        part['questions'] = [dict(prompt=f'Choose the answer for item {i+1}.', answer=i, explanation=(f'{chr(65+i)}段明确给出该信息，其他段讨论不同细节，不支持题干所述关系。' if family == 'paragraph_matching' else f'word{i}是上下文所定义的唯一动作，其他词的词性或语义与此处明确描述不符。')) for i in range(10)]
+        return source
+
+    def test_full_shared_bank_uses_lexical_rationales_and_once_only_keys(self):
+        source = self.shared_source('shared_bank')
+        self.assertEqual(len(self.compile(source)['entries'][0]['unit']['questions'][0]['options']), 15)
+        source['units'][0]['materials'][0]['questions'][9]['answer'] = 0
+        with self.assertRaisesRegex(ValueError, 'shared bank'):
+            self.compile(source)
+
+    def test_paragraph_matching_requires_complete_shared_paragraph_contract(self):
+        source = self.shared_source('paragraph_matching')
+        self.assertEqual(len(self.compile(source)['entries'][0]['unit']['questions']), 10)
+        source['units'][0]['materials'][0]['candidates'] = source['units'][0]['materials'][0]['candidates'][:7]
+        with self.assertRaisesRegex(ValueError, 'paragraph matching'):
+            self.compile(source)
+
+    def test_primary_shared_bank_keeps_its_own_short_contract(self):
+        source = copy.deepcopy(self.source)
+        original = next(u for u in self.originals.values() if u['level'] == 'primary5' and u['originalGroup']['family'] == 'shared_bank')
+        source['units'][0].update(sourceUnitId=original['id'], level='primary5', family='shared_bank')
+        self.assertEqual(len(self.compile(source)['entries'][0]['unit']['questions']), 3)
+
     def test_rejects_unbound_review_wrong_level_wrong_family_and_unexplained_distractor(self):
         with self.assertRaisesRegex(ValueError, 'SHA'):
             self.compile(review_change={'sourceSHA256': '0' * 64})

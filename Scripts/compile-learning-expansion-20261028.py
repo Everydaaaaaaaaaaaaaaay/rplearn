@@ -2,6 +2,7 @@
 """Freeze explicit SHA-bound author-reviewed tasks and selected verified media for 2026-10-28."""
 import argparse
 import copy
+from datetime import date
 import hashlib
 import json
 from pathlib import Path
@@ -126,6 +127,12 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
         raise ValueError('Review source SHA256 does not match exact source bytes')
     if review.get('reviewKind') != 'author-self-review' or not review.get('reviewer'):
         raise ValueError('Explicit author-self-review and reviewer required')
+    reviewed_at = review.get('reviewedAt') or source['createdAt'][:10]
+    try:
+        if date.fromisoformat(reviewed_at).isoformat() != reviewed_at:
+            raise ValueError()
+    except (ValueError, TypeError):
+        raise ValueError('An actual ISO review date is required') from None
     drafts = source.get('units', [])
     if not 1 <= len(drafts) <= 30:
         raise ValueError('One bounded batch needs 1 to 30 explicitly authored units')
@@ -156,12 +163,22 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
         questions, components = [], []
         for part in materials:
             part_family = part.get('family', family)
+            cet_shared = level in {'undergraduate', 'postgraduate'} and part_family in {'shared_bank', 'paragraph_matching'}
             part_source = bind_source(originals, part.get('sourceUnitId', draft['sourceUnitId']), level, part_family)
             if not re.fullmatch(r'[a-z][a-z0-9_.-]{0,30}', part['id']):
                 raise ValueError('Invalid material identity')
             material = nonempty(part['title'], 'material title') + '\n\n' + nonempty(part['text'], 'complete material')
             if not part['questions']:
                 raise ValueError('Authored questions required')
+            if cet_shared:
+                candidates = part['questions'][0].get('options', part.get('candidates', []))
+                required = 15 if part_family == 'shared_bank' or level == 'postgraduate' else 11
+                if len(part['questions']) != 10 or len(candidates) != required or any(q.get('options', part.get('candidates', [])) != candidates for q in part['questions']):
+                    raise ValueError('Complete shared bank or paragraph matching needs ten items and its full shared candidates')
+                if part_family == 'shared_bank' and (len({q['answer'] for q in part['questions']}) != 10 or any(part['text'].count(f'____{n}____') != 1 for n in range(1, 11))):
+                    raise ValueError('Complete shared bank requires ten once-only gaps and distinct keys')
+                if part_family == 'paragraph_matching' and any(not re.search(r'(?m)^\[?' + chr(65+i) + r'\]?(?:[. ]|$)', part['text']) for i in range(required)):
+                    raise ValueError('Complete paragraph matching needs every labelled paragraph')
             question_ids = []
             for number, item in enumerate(part['questions'], 1):
                 question_id = f"{unit_id}.{part['id']}.q{number}"
@@ -200,11 +217,19 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
                 else:
                     options = item.get('options', part.get('candidates', []))
                     answer = item.get('answer')
-                    if not 2 <= len(options) <= 7 or any(not isinstance(o, str) or not o.strip() for o in options) or len(set(options)) != len(options) or type(answer) is not int or not 0 <= answer < len(options):
+                    maximum = 20 if cet_shared else 7
+                    if not 2 <= len(options) <= maximum or any(not isinstance(o, str) or not o.strip() for o in options) or len(set(options)) != len(options) or type(answer) is not int or not 0 <= answer < len(options):
                         raise ValueError('Invalid explicit candidate set or answer key')
                     if re.search('[一-鿿]', question['prompt'] + ''.join(options)):
                         raise ValueError('English choice prompt and options required')
-                    for i in range(len(options)):
+                    if cet_shared and part_family == 'shared_bank':
+                        word = re.sub(r'^[A-O][.、) ]+\s*', '', options[answer])
+                        if len(item['explanation']) < 25 or word.casefold() not in item['explanation'].casefold():
+                            raise ValueError('Shared bank needs an explicit lexical/context rationale for its answer and competitors')
+                    elif cet_shared and part_family == 'paragraph_matching':
+                        if len(item['explanation']) < 25 or not re.search(r'(?<![A-Za-z])' + chr(65+answer) + r'(?![A-Za-z])', item['explanation']):
+                            raise ValueError('Paragraph matching needs explicit selected-paragraph evidence and competing detail rationale')
+                    for i in range(len(options)) if not cet_shared else []:
                         if not re.search(r'(?<![A-Za-z])' + chr(65 + i) + r'(?![A-Za-z])', item['explanation']):
                             raise ValueError('Every option, including each distractor, needs an explicit letter-bound rationale')
                     option_images = item.get('optionImages')
@@ -242,7 +267,7 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
         unit = dict(id=unit_id, version=1, schemaVersion=1, scoringVersion=1, roleKey='companion', roleVersion=1, level=level,
             title=('高考题型原创 · ' if senior else '') + draft['title'], summary=draft['title'] + f'，共{len(questions)}题。', scene='先阅读完整材料，再按题目要求作答。', estimatedMinutes=draft['minutes'],
             goalIds=list(dict.fromkeys(q['goalId'] for q in questions)), prerequisiteGoalIds=[], references=references,
-            authorship=dict(kind='authored', author='Codex 2026-10-28 explicit authoring', reviewedBy=review['reviewer'][:70] + ' (author self-review only)', reviewedAt=RUN, reviewNotes=boundary), beats=[],
+            authorship=dict(kind='authored', author='Codex 2026-10-28 explicit authoring', reviewedBy=review['reviewer'][:70] + ' (author self-review only)', reviewedAt=reviewed_at, reviewNotes=boundary), beats=[],
             originalGroup=dict(id=unit_id, family=family, label=draft['title'], candidateSHA256=digest(draft), authorCheckSHA256=digest(dict(sourceSHA256=source_sha, review=review)), sourceGroupIds=[c['id'] for c in components], sourceNotice=notice, material=material), questions=questions)
         entry = dict(unit=unit, contentHash=digest(unit), reviewNotes=boundary, components=components)
         entries.append(entry)
