@@ -46,5 +46,84 @@
   ],
   "supersedesOlderUnlistedReviewPolicy": true,
   "iosChangesRequired": false,
-  "deployment": "Pending guarded deployment and read-only production reproduction"
+  "deployment": "Complete:originals-c64883f03b0d deployed via unchanged guarded maintenance; API/workeractive andinternal/publichealthready; no pendingrelease transaction.",
+  "productionAcceptance": {
+    "checkedAt": "2026-10-29T03:50:28.852Z",
+    "readOnly": true,
+    "questionId": "expansion.20261024.senior3.quotation-and-letter-133.grammar.q1",
+    "results": [
+      {
+        "input": "1",
+        "outcome": "incorrect",
+        "referenceReturned": true,
+        "explanationReturned": true
+      },
+      {
+        "input": "123",
+        "outcome": "incorrect",
+        "referenceReturned": true,
+        "explanationReturned": true
+      },
+      {
+        "input": "Ⅰ",
+        "outcome": "incorrect",
+        "referenceReturned": true,
+        "explanationReturned": true
+      },
+      {
+        "input": "１２３",
+        "outcome": "incorrect",
+        "referenceReturned": true,
+        "explanationReturned": true
+      },
+      {
+        "input": "unknownword",
+        "outcome": "incorrect",
+        "referenceReturned": true,
+        "explanationReturned": true
+      },
+      {
+        "input": "writtened",
+        "outcome": "incorrect",
+        "referenceReturned": true,
+        "explanationReturned": true
+      },
+      {
+        "input": "中文",
+        "outcome": "incorrect",
+        "referenceReturned": true,
+        "explanationReturned": true
+      },
+      {
+        "input": "🙂",
+        "outcome": "incorrect",
+        "referenceReturned": true,
+        "explanationReturned": true
+      },
+      {
+        "input": "!",
+        "outcome": "incorrect",
+        "referenceReturned": true,
+        "explanationReturned": true
+      }
+    ],
+    "acceptedReferencesPassed": 2,
+    "frozenSnapshotUnchanged": true,
+    "databaseWrites": 0,
+    "modelCalls": 0
+  },
+  "release": {
+    "version": "originals-c64883f03b0d",
+    "implementationCommit": "c64883f0",
+    "guardedRuntime": "4min0.152s includingobservation",
+    "maintenancePeakMiB": 209.7,
+    "swapMiB": 0,
+    "evidence": [
+      "build/reference-grading-fix-20261029/deploy.log",
+      "build/reference-grading-fix-20261029/health.txt",
+      "build/reference-grading-fix-20261029/production-probe.json"
+    ]
+  },
+  "clientAction": "Existing app can retry Submit this section; no iOSupdate required. Failed old422requests wrote no answer/reward receipt; existing successful section answers remain intact.",
+  "completedAt": "2026-10-29T03:51:12.917435+00:00"
 }
