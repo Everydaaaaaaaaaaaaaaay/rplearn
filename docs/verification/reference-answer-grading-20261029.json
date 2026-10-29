@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-29T03:43:56.594831+00:00",
+  "request": "Use accepted reference answers as the standard; ordinary wrong answers across question types must not block learning or whole-section submission.",
+  "rootCause": "Completion answers absent from both acceptedAnswers and rejectedAnswers threw LEARNING_ANSWER_REVIEW_REQUIRED422, preventing the per-question submission loop from finishing a section.",
+  "fix": "All well-formed answers match reviewed accepted references using existing normalization. Nonmatches return incorrect with reference solution/explanation. Remove runtime author-review gate; preserve all frozen source metadata and historical results.",
+  "coveredTypes": [
+    "choice",
+    "audioChoice",
+    "listeningChoice",
+    "arrange",
+    "audioArrange",
+    "completion",
+    "dictation",
+    "listeningCompletion",
+    "cloze",
+    "matching",
+    "audioMatching"
+  ],
+  "red": "26initialregressions:13failed, including exact screenshot question in frozen2026-10-24/b133.",
+  "verification": {
+    "crossTypeMatrix": "28checks cover all11schema types, wrong/skip/partial combinations, arbitrary text/digits/Roman/fullwidth/emoji, legitimate numeric references, snapshot immutability and malformed requests",
+    "learningModules": "26files/175tests passed; final directions7tests passed after adding authored-format coverage",
+    "integration": {
+      "passed": 21,
+      "failed": 0,
+      "evidence": "build/verification/reference-grading-final-20261029/integration.json",
+      "behaviors": [
+        "HTTP200incorrect0pointswithreferenceinstead422",
+        "Remaininganswerssubmitandwholepracticefinishes",
+        "Repeatedbadanswersidempotentandneverrewarded",
+        "Reviewedcorrectvariantsstillscoreonce",
+        "Frozenpayload/oldversions/historypreserved"
+      ]
+    },
+    "typecheck": "passed",
+    "architecture": "278modules/826dependencies,no violations",
+    "codeReview": "Same-AI read-onlyreview: no blockers; independent3file40testpass"
+  },
+  "testMaintenance": "Existingdirectionregistrycountsbelongtothe1418historicalbaseline,new177seniorformatsuseownauthoredinstructions. Scopehistoricregistrytestsexplicitlyandaddnewformatcoverage. LegacytestfixturegoalIdsnowderivedfromitsmodifiedquestions; frozenmaterialcheckedatstorageboundary.",
+  "unchanged": [
+    "Noquestion/answer/source/manifesthashrewrites",
+    "Norescoreordeleteofhistoricalanswers/rewards",
+    "ExistingstrictmalformedkindandinvalidoptionIDguards",
+    "Existingcase/space/punctuationandallowednumericnormalization",
+    "Oldclienterrorfallbackkeptforrollbackcompatibility"
+  ],
+  "supersedesOlderUnlistedReviewPolicy": true,
+  "iosChangesRequired": false,
+  "deployment": "Pending guarded deployment and read-only production reproduction"
+}

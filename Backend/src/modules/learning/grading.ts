@@ -156,42 +156,8 @@ export function gradeAnswer(
                 question.normalization,
               ),
           );
-        if (question.type === "completion" && question.marking && !correct) {
-          const rule = question.marking;
-          const count = listeningAnswerWordCount(answer.text);
-          const exceedsLimit =
-            (rule.maxWords !== null && count > rule.maxWords) ||
-            (rule.minWords !== undefined && count < rule.minWords);
-          const violatesLexicalConstraint =
-            (rule.requiredInitial !== undefined &&
-              !answer.text
-                .trim()
-                .toLowerCase()
-                .startsWith(rule.requiredInitial.toLowerCase())) ||
-            (rule.requiredWord !== undefined &&
-              !answer.text
-                .toLowerCase()
-                .split(/\s+/u)
-                .includes(rule.requiredWord.toLowerCase()));
-          const rejected = rule.rejectedAnswers.some(
-            (value) =>
-              normalize(value, question.normalization) ===
-              normalize(answer.text, question.normalization),
-          );
-          if (
-            answer.text.trim() &&
-            !exceedsLimit &&
-            !violatesLexicalConstraint &&
-            !rejected
-          ) {
-            throw new AppError({
-              code: "LEARNING_ANSWER_REVIEW_REQUIRED",
-              message:
-                "这个答案尚未列入已核形式，暂不判错、不计分。请核对题目要求，可修改答案或留待补答。",
-              statusCode: 422,
-            });
-          }
-        }
+        // A well-formed learner answer is marked against the accepted references.
+        // Historical author-review metadata must not block an incorrect submission.
       }
       break;
     }

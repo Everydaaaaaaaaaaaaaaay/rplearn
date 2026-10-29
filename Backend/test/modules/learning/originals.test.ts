@@ -65,13 +65,13 @@ describe("完整原创题组发布与判分合同", () => {
     expect(JSON.stringify(result)).not.toContain("candidateSHA256");
     expect(JSON.stringify(result)).not.toContain("rejectedAnswers");
   });
-  it("合法英美变体同等接受；明确错项判错，未知表达不计作错误", () => {
+  it("合法英美变体同等接受；其他作答按参考答案判错并返回解析", () => {
     const q = required(original().questions[0]);
     for (const text of ["learned", " LEARNT "])
       expect(gradeAnswer(q, { kind: "text", text }).outcome).toBe("correct");
     expect(gradeAnswer(q, { kind: "text", text: "learn" }).outcome).toBe("incorrect");
-    expect(() => gradeAnswer(q, { kind: "text", text: "learning" })).toThrow(
-      "尚未列入已核形式",
+    expect(gradeAnswer(q, { kind: "text", text: "learning" }).outcome).toBe(
+      "incorrect",
     );
     expect(gradeAnswer(q, { kind: "text", text: "have learned" }).outcome).toBe(
       "incorrect",

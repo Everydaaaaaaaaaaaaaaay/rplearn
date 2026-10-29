@@ -127,7 +127,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
       ],
     };
     frozen.questions[0] = old;
-    frozen.goalIds = [...new Set([...frozen.goalIds, old.goalId])];
+    frozen.goalIds = [...new Set(frozen.questions.map((q) => q.goalId))];
     await db.sql`update app.learning_attempts set snapshot=${JSON.stringify(frozen)}::jsonb where id=${attempt.id}`;
     const hash = contentHash(await privateUnit(attempt.id));
     const shown = await engine.read(c.user, (s) => s.attempt(attempt.id));
@@ -628,7 +628,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     >`select enabled from app.learning_bank_control where id=true`;
     expect(control?.enabled).toBe(false);
   });
-  it("非高中冻结原创整组进入真实事务、跨旅伴不重抽，未知填空不写错答", async () => {
+  it("冻结原创整组跨旅伴不重抽，未知填空正常判错且整篇继续提交并幂等计分", async () => {
     const manifest = JSON.parse(
       await readFile(`${directory}/originals/catalog.json`, "utf8"),
     ) as {
@@ -682,11 +682,11 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
       );
       const attempt = required(started.attempt);
       expect(attempt.unit.questions).toHaveLength(unit.questions.length);
-      expect(
-        attempt.unit.questions.every(
-          (q) => q.material === unit.originalGroup?.material,
-        ),
-      ).toBe(true);
+      const [frozen] = await db.sql<{ payload: unknown }[]>`
+        select v.payload from app.learning_attempts a
+        join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
+        where a.id=${attempt.id}`;
+      expect(frozen && contentHash(frozen.payload)).toBe(contentHash(unit));
       expect(attempt.unit.beats).toEqual([]);
       expect(JSON.stringify(attempt.unit)).not.toContain("acceptedAnswers");
       const q = required(unit.questions[0]);
@@ -728,18 +728,41 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
         )
       ).attempt,
     );
-    await expect(
-      c.command((s) =>
+    const input = {
+      attemptId: attempt.id,
+      roundId: attempt.round.id,
+      questionId: required(grammar.questions[0]).id,
+      answer: { kind: "text" as const, text: "1" },
+    };
+    const requestId = randomUUID();
+    const receipt = await engine.command(c.user, requestId, "answer", input, (s) =>
+      s.submit(input),
+    );
+    expect(receipt.result.outcome).toBe("incorrect");
+    expect(receipt.awardedPoints).toBe(0);
+    expect(receipt.result.solution).toEqual(
+      gradeAnswer(required(grammar.questions[0]), { kind: "skip" }).solution,
+    );
+    expect(
+      await engine.command(c.user, requestId, "answer", input, (s) => s.submit(input)),
+    ).toEqual(receipt);
+    for (const question of grammar.questions.slice(1)) {
+      const next = await c.command((s) =>
         s.submit({
           attemptId: attempt.id,
           roundId: attempt.round.id,
-          questionId: required(grammar.questions[0]).id,
-          answer: { kind: "text", text: "unknownform" },
+          questionId: question.id,
+          answer: gradeAnswer(question, { kind: "skip" }).solution,
         }),
-      ),
-    ).rejects.toMatchObject({ code: "LEARNING_ANSWER_REVIEW_REQUIRED" });
-    const fresh = await engine.read(c.user, (s) => s.attempt(attempt.id));
-    expect(fresh.revision).toBe(attempt.revision);
-    expect(fresh.round.answers).toEqual([]);
+      );
+      expect(next.result.outcome).toBe("correct");
+      expect(next.awardedPoints).toBe(1);
+    }
+    const finished = await c.command((s) => s.finish(attempt.id, false));
+    expect(finished.firstCompletedAt).not.toBeNull();
+    expect(finished.round.answers).toHaveLength(grammar.questions.length);
+    expect(finished.round.answers.reduce((n, a) => n + a.awardedPoints, 0)).toBe(
+      grammar.questions.length - 1,
+    );
   }, 30000);
 });

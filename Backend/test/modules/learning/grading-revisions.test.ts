@@ -48,9 +48,7 @@ describe("reviewed frozen answer correction", () => {
     expect(gradeAnswer(question, text("slow")).outcome).toBe("correct");
     expect(gradeAnswer(question, text("slowly")).outcome).toBe("correct");
     for (const variant of ["slower", "slowest"])
-      expect(() => gradeAnswer(question, text(variant))).toThrow(
-        expect.objectContaining({ code: "LEARNING_ANSWER_REVIEW_REQUIRED" }),
-      );
+      expect(gradeAnswer(question, text(variant)).outcome).toBe("incorrect");
     for (const invalid of ["slowlyer", "slowliest"])
       expect(gradeAnswer(question, text(invalid)).outcome).toBe("incorrect");
     expect(gradeAnswer(question, text("slow")).solution).toEqual(text("slowly"));

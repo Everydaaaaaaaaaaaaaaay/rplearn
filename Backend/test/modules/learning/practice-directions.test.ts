@@ -9,24 +9,44 @@ import {
 import { loadExpansionCatalog } from "../../../src/modules/learning/expansion-catalog.js";
 import { seniorPracticeCatalog } from "../../../src/modules/learning/senior-practice-catalog.js";
 import { practiceDirections } from "../../../src/modules/learning/practice-directions.js";
+import { expansionCatalogOrigin } from "../../../src/modules/learning/expansion-origin.js";
 
 const original = JSON.parse(
   readFileSync("config/learning/originals/catalog.json", "utf8"),
 ) as { units: { unit: unknown }[] };
 const originals = original.units.map((e) => unitSchema.parse(e.unit));
 const catalog = seniorPracticeCatalog();
+// The reviewed direction registry describes the frozen pre-2026-10-28 corpus.
+// New authored tasks use the sources for format, not for copied paper directions.
+const historical = catalog.practices.filter(
+  (p) =>
+    !p.unit.id.startsWith("expansion.20261028.") &&
+    !expansionCatalogOrigin(p.unit)?.startsWith("expansion.20261028."),
+);
 const active = [
   ...originals.filter((u) => !u.level.startsWith("senior")),
   ...loadExpansionCatalog().units.filter((u) => !u.level.startsWith("senior")),
-  ...catalog.practices.map((p) => p.unit),
+  ...historical.map((p) => p.unit),
 ];
 
 describe("source-bound paper directions", () => {
+  it("preserves new authored directions instead of borrowing the old format sample's wording", () => {
+    for (const unit of loadExpansionCatalog("b128", false, "2026-10-28").units) {
+      const before = contentHash(unit);
+      const shown = publicUnit(unit).questions;
+      for (const [index, question] of unit.questions.entries()) {
+        expect(practiceDirections(question, question.material ?? "")).toBeUndefined();
+        expect(shown[index]?.instruction).toBe(publicQuestion(question).instruction);
+      }
+      expect(contentHash(unit)).toBe(before);
+    }
+  });
+
   it("removes reviewed grammar headings, including the reported B section, without removing prose or bracketed words", () => {
     const headings = new Set<string>(
       JSON.parse(
         readFileSync("../Scripts/data/practice-grammar-headings.json", "utf8"),
-      ),
+      ) as string[],
     );
     const grammar = active.filter((u) => u.originalGroup?.family === "passage_form");
     expect(grammar).toHaveLength(171);
@@ -55,14 +75,16 @@ describe("source-bound paper directions", () => {
     expect(contentHash(reported)).toBe(before);
   });
 
-  it("covers all 48 current task families and frozen historical groups without changing source or question content", () => {
+  it("covers all 48 frozen historical task families without changing source or question content", () => {
     expect(active).toHaveLength(1418);
     expect(new Set(active.map((u) => u.originalGroup?.family)).size).toBe(48);
     let responses = 0;
     for (const source of [
       ...active,
       ...originals,
-      ...catalog.historicalPractices.map((p) => p.unit),
+      ...catalog.historicalPractices
+        .filter((p) => !p.unit.id.startsWith("expansion.20261028."))
+        .map((p) => p.unit),
     ]) {
       const before = contentHash(source);
       const shown = publicUnit(source);
@@ -168,7 +190,7 @@ describe("source-bound paper directions", () => {
 
   it("retains source component constraints after splitting and preserves the printed option spacing", () => {
     const byId = new Map(originals.map((u) => [u.id, u]));
-    for (const practice of catalog.practices)
+    for (const practice of historical)
       for (const component of practice.components) {
         const source = component.sourceUnitId && byId.get(component.sourceUnitId);
         if (source) {

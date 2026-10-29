@@ -546,7 +546,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect((await status()).chapters[4]?.state).toBe("completed");
       expect((await complete("mainline_singapore")).statusCode).toBe(409);
     });
-    it("原创完整组鉴权、旧端保护、多答案与未知不误判贯通HTTP", async () => {
+    it("原创完整组鉴权、旧端保护、多答案与错答不中断贯通HTTP", async () => {
       const domain = createDomainService(database);
       const currentProfile = (await domain.getSnapshot(owner())).profile;
       await domain.updateProfile(owner(), randomUUID(), {
@@ -646,15 +646,26 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         headers: modern,
         payload: command,
       });
-      expect(unknown.statusCode).toBe(422);
+      expect(unknown.statusCode).toBe(200);
+      expect(unknown.json()).toMatchObject({
+        result: { outcome: "incorrect", solution: { kind: "text", text: "learned" } },
+        awardedPoints: 0,
+      });
+      expect(
+        (
+          await app.inject({ method: "POST", url, headers: modern, payload: command })
+        ).json(),
+      ).toEqual(unknown.json());
       const fresh = (
         await app.inject({ url: `/v1/learning/attempts/${a.id}`, headers: modern })
       ).json<Attempt>();
-      expect(fresh.revision).toBe(a.revision);
-      expect(fresh.round.answers).toHaveLength(0);
+      expect(fresh.revision).toBe(a.revision + 1);
+      expect(fresh.round.answers).toHaveLength(1);
       const correct = {
         ...command,
         requestId: randomUUID(),
+        expectedRevision: fresh.revision,
+        questionId: "q1",
         answer: { kind: "text", text: " LEARNT " },
       };
       const receipt = await app.inject({
