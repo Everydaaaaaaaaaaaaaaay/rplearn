@@ -606,7 +606,9 @@ struct RootView: View {
         TabView(selection: Binding(
             get: { selectedTab },
             set: { tab in
-                returnTabToRoot(tab)
+                if tab == selectedTab {
+                    returnTabToRoot(tab)
+                }
                 selectedTab = tab
             }
         )) {
@@ -657,7 +659,7 @@ struct RootView: View {
         }
     }
 
-    /// 点击事件独立于 selectedTab 的变化，因此重复点击当前标签也会返回入口。
+    /// 仅重复点击当前标签时返回入口；切换标签保留各自的导航与页面状态。
     private func returnTabToRoot(_ tab: AppTab) {
         switch tab {
         case .messages:

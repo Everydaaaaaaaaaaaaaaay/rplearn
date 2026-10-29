@@ -50,8 +50,6 @@ private struct DSSceneSearchModifier: ViewModifier {
             }
             .onDisappear {
                 isFocused = false
-                isPresented = false
-                text = ""
             }
     }
 

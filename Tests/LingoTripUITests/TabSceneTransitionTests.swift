@@ -25,7 +25,15 @@ final class TabSceneTransitionTests: XCTestCase {
                 XCTAssertTrue(open.waitForExistence(timeout: 3))
                 open.tap()
                 XCTAssertTrue(app.textFields["sceneSearch.field"].waitForExistence(timeout: 3))
+                app.textFields["sceneSearch.field"].typeText("Oliver")
                 app.buttons["sceneSearch.dismissKeyboard"].tap()
+                let otherTitle = title == "信息" ? "联系人" : "信息"
+                app.tabBars.buttons[otherTitle].tap()
+                app.tabBars.buttons[title].tap()
+                XCTAssertTrue(app.textFields["sceneSearch.field"].waitForExistence(timeout: 3), "切回标签应保留搜索状态")
+                XCTAssertEqual(app.textFields["sceneSearch.field"].value as? String, "Oliver", "切回标签应保留搜索内容")
+                let dismissKeyboard = app.buttons["sceneSearch.dismissKeyboard"]
+                if dismissKeyboard.exists { dismissKeyboard.tap() }
                 app.tabBars.buttons[title].tap()
                 XCTAssertTrue(app.textFields["sceneSearch.field"].waitForNonExistence(timeout: 3))
                 XCTAssertTrue(open.waitForExistence(timeout: 3))
@@ -33,7 +41,7 @@ final class TabSceneTransitionTests: XCTestCase {
         }
     }
 
-    func testSceneTabsReturnToRootOnReselectionAndSwitchBack() {
+    func testSceneTabsPreserveNavigationOnSwitchAndReturnToRootOnReselection() {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
@@ -52,9 +60,14 @@ final class TabSceneTransitionTests: XCTestCase {
                     ? app.buttons["返回首页"]
                     : app.navigationBars["设置"].buttons.firstMatch
                 XCTAssertTrue(back.waitForExistence(timeout: 5))
-                if switchesAway { app.tabBars.buttons["联系人"].tap() }
+                if switchesAway {
+                    app.tabBars.buttons["联系人"].tap()
+                    app.tabBars.buttons[title].tap()
+                    XCTAssertTrue(back.waitForExistence(timeout: 5))
+                    XCTAssertTrue(back.isHittable, "切回标签应保留二级页面")
+                }
                 app.tabBars.buttons[title].tap()
-                XCTAssertTrue(back.waitForNonExistence(timeout: 5), "点击标签应关闭二级页面")
+                XCTAssertTrue(back.waitForNonExistence(timeout: 5), "重复点击当前标签应关闭二级页面")
                 XCTAssertTrue(app.buttons[entry].isHittable, "初始页面入口应恢复可点击")
             }
         }
@@ -94,7 +107,7 @@ final class TabSceneTransitionTests: XCTestCase {
         }
     }
 
-    func testContactProfileReturnsToRoot() {
+    func testContactProfileSurvivesTabSwitchAndReturnsToRootOnReselection() {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
@@ -110,11 +123,16 @@ final class TabSceneTransitionTests: XCTestCase {
             entry.tap()
             let message = app.buttons["发消息"]
             XCTAssertTrue(message.waitForExistence(timeout: 5))
-            if switchesAway { app.tabBars.buttons["活动"].tap() }
+            if switchesAway {
+                app.tabBars.buttons["活动"].tap()
+                app.tabBars.buttons["联系人"].tap()
+                XCTAssertTrue(message.waitForExistence(timeout: 5))
+                XCTAssertTrue(message.isHittable, "切回联系人应保留角色资料页")
+            }
             app.tabBars.buttons["联系人"].tap()
             XCTAssertTrue(message.waitForNonExistence(timeout: 5))
             XCTAssertTrue(entry.waitForExistence(timeout: 5))
-            XCTAssertTrue(entry.isHittable, "点击标签应返回联系人列表")
+            XCTAssertTrue(entry.isHittable, "重复点击当前标签应返回联系人列表")
         }
     }
 }
