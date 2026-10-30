@@ -157,7 +157,8 @@ struct ActivitySceneView: View {
                     }
                 }
                 .foregroundStyle(Color.dsHologramIvory)
-                .shadow(color: .black.opacity(0.35), radius: 0.7, y: 0.5)
+                .padding(12)
+                .background(Color.black.opacity(0.48), in: RoundedRectangle(cornerRadius: 18))
                 .padding(.horizontal, 24)
                 .padding(.top, max(proxy.safeAreaInsets.top, 54) + 8)
                 .opacity(showsInterface ? 1 : 0)
@@ -248,15 +249,11 @@ struct ActivitySceneView: View {
     }
 }
 
-/// Compensate the shared text renderer's raster margin inside this calibrated
-/// plane, without moving any existing Home/My labels or changing their material.
+/// Scene labels use the same native text layout as the rest of the interface.
 struct ActivitySceneLabel: View {
     let title: String
     var body: some View {
         DSHologramText(title, size: 22, weight: .bold, tint: .dsHologramIvory,
                        glowColor: .dsHologramGlow, alignment: .center)
-            // Matches DSHologramTextRenderer.displayPadding; pixel regression
-            // test below catches any future mismatch if that renderer changes.
-            .offset(x: -12)
     }
 }

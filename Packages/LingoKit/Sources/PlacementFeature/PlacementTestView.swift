@@ -192,17 +192,16 @@ public struct PlacementTestView: View {
                 Text(phase == .levelSelection ? "选择英语水平" : "英语水平校准")
                     .font(.subheadline.weight(.bold))
                     .foregroundStyle(Color.dsPaperInk)
-                    .shadow(color: Color.dsBrandCream.opacity(0.94), radius: 3)
-                    .shadow(color: Color.white.opacity(0.72), radius: 0.6, x: -0.4, y: -0.4)
-                    .shadow(color: Color.dsTravelNavy.opacity(0.16), radius: 0.7, x: 0.5, y: 0.9)
                 if phase == .question, let engine {
                     Text("已确认 \(engine.responses.count) 题")
                         .font(.caption2)
                         .foregroundStyle(Color.dsPaperInkSecondary)
                         .monospacedDigit()
-                        .shadow(color: Color.dsBrandCream.opacity(0.90), radius: 2.5)
                 }
             }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(Color(red: 0.985, green: 0.970, blue: 0.925).opacity(0.96), in: RoundedRectangle(cornerRadius: 12))
             Spacer()
             Color.clear.frame(width: 44, height: 44)
         }
@@ -240,15 +239,7 @@ public struct PlacementTestView: View {
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                .padding(.vertical, DSSpacing.xs)
-                .shadow(
-                    color: Color(red: 0.985, green: 0.970, blue: 0.925).opacity(0.98),
-                    radius: 10
-                )
-                .shadow(
-                    color: Color(red: 0.985, green: 0.970, blue: 0.925).opacity(0.82),
-                    radius: 4
-                )
+                .placementPaperPanel()
 
                 DSWorkbenchPaperSheet(padding: 0) {
                     VStack(spacing: 0) {

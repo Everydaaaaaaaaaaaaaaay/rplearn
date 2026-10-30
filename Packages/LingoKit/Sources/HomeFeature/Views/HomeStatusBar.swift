@@ -59,7 +59,8 @@ struct HomeStatusBar: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.82)
             }
-            .shadow(color: textShadow, radius: 1, y: 1)
+            .padding(8)
+            .background(statusBackground, in: RoundedRectangle(cornerRadius: 12))
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("当前城市，\(region.nameZh)，\(region.countryNameZh)")
@@ -100,10 +101,6 @@ struct HomeStatusBar: View {
 
     private var statusBackground: Color {
         colorScheme == .dark ? .black.opacity(0.44) : .white.opacity(0.88)
-    }
-
-    private var textShadow: Color {
-        colorScheme == .dark ? .black.opacity(0.42) : .white.opacity(0.5)
     }
 
     private func flag(_ countryCode: String) -> String {

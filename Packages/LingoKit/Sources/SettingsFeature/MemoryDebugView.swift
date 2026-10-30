@@ -90,9 +90,10 @@ public struct MemoryDebugView: View {
             ToolbarItem(placement: .principal) {
                 Text("记忆档案")
                     .font(.headline.weight(.heavy))
-                    .foregroundStyle(Color.dsBrandCream)
-                    .shadow(color: Color.dsFoilGold.opacity(0.46), radius: 5)
-                    .shadow(color: Color.black.opacity(0.78), radius: 1.4, y: 1)
+                    .foregroundStyle(Color.dsHologramIvory)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color.dsTravelNavy.opacity(0.94), in: RoundedRectangle(cornerRadius: 10))
                     .accessibilityAddTraits(.isHeader)
             }
 

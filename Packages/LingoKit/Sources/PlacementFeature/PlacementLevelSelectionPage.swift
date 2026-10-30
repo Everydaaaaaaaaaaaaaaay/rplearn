@@ -22,19 +22,11 @@ struct DifficultyLevelSelectionPage: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: DSSpacing.lg) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("选择适合你的对话难度")
-                        .font(.system(.title2, design: .rounded, weight: .bold))
-                        .foregroundStyle(Color.dsPaperInk)
-                        .shadow(color: Color.dsBrandCream.opacity(0.98), radius: 5)
-                        .shadow(color: Color.white.opacity(0.72), radius: 1)
-                    Text("选择后会先说明切换的影响，确认才会生效。")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.dsPaperInkSecondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .shadow(color: Color.dsBrandCream.opacity(0.98), radius: 5)
-                        .shadow(color: Color.dsBrandCream.opacity(0.88), radius: 2)
-                }
+                Text("选择适合你的对话难度")
+                    .font(.system(.title2, design: .rounded, weight: .bold))
+                    .foregroundStyle(Color.dsPaperInk)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .placementPaperPanel()
 
                 ForEach(groups, id: \.0) { title, levels in
                     levelGroup(title: title, levels: levels)
@@ -65,15 +57,17 @@ struct DifficultyLevelSelectionPage: View {
             Text(title)
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(Color.dsPaperInkSecondary)
-                .padding(.leading, DSSpacing.xs)
+                .padding(.horizontal, DSSpacing.md)
+                .padding(.top, DSSpacing.sm)
 
             VStack(spacing: 4) {
                 ForEach(levels, id: \.rawValue) { level in
                     levelRow(level)
                 }
             }
-            .placementPaperPanel(padding: 4)
+            .padding(4)
         }
+        .placementPaperPanel(padding: 0)
     }
 
     private func levelRow(_ level: DifficultyLevel) -> some View {
