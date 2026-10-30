@@ -66,6 +66,7 @@ export type UserProfile = Readonly<{
   hasCompletedOnboarding: boolean;
   hasCompletedProfileSetup: boolean;
   learningGoal: LearningGoal;
+  learningGoals: readonly LearningGoal[];
   placementCompletedAt: string | null;
   placementScore: number | null;
   proficiencySource: ProficiencySource;
@@ -95,6 +96,7 @@ export type ProfilePatch = Readonly<{
   hasCompletedOnboarding?: boolean;
   hasCompletedProfileSetup?: boolean;
   learningGoal?: LearningGoal;
+  learningGoals?: readonly LearningGoal[];
   placementCompletedAt?: string;
   placementScore?: number;
   proficiencySource?: ProficiencySource;

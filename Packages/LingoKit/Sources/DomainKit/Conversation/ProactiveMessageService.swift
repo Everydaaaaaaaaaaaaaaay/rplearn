@@ -143,7 +143,7 @@ public struct ProactiveMessageService: Sendable {
 
         朋友的偏好称呼是 \(learner.nickname ?? "未提供")，只在自然时使用。
         朋友是一位中国英语学习者，水平为：\(PromptBuilder.languageGuidance(for: learner.difficulty))
-        可选学习兴趣：\(PromptBuilder.goalDescription(learner.goal))。
+        可选学习兴趣：\(PromptBuilder.goalDescriptions(learner.goals))。
         当前生活或学习阶段：\(PromptBuilder.stageDescription(learner.studyStage))。
         \(PromptBuilder.interactionGuidance(for: learner.difficulty))
         把水平作为理解难度的上限，不是使用难词的理由。即使朋友水平高，也默认用高频英语口语，不刻意展示习语或生僻词。

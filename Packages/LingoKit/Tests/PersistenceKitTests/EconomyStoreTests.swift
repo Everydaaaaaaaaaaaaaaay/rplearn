@@ -1,5 +1,6 @@
 import Foundation
 import Testing
+import SwiftData
 @testable import PersistenceKit
 
 @Suite("EconomyStore")
@@ -16,6 +17,36 @@ struct EconomyStoreTests {
         #expect(profile.subscriptionTier == .free)
         #expect(profile.coins == 0)
         #expect(!profile.hasCompletedOnboarding)
+    }
+
+    @Test("多个目标可落盘、重新打开和编码，旧单目标档案兼容")
+    func multipleGoalsPersist() async throws {
+        let root = URL.temporaryDirectory.appending(path: "MultiGoal-\(UUID().uuidString)")
+        try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let url = root.appending(path: "profile.store")
+        let container = try ModelContainerFactory.makeContainer(storeURL: url)
+        // Simulate an existing profile with only the legacy column populated.
+        let context = ModelContext(container)
+        context.insert(UserProfileEntity(learningGoalRaw: "work"))
+        try context.save()
+        let store = EconomyStore(modelContainer: container)
+        #expect(try await store.profile().learningGoals == [.work])
+        let saved = try await store.updateProfile { $0.learningGoals = [.travel, .work, .travel] }
+        #expect(saved.learningGoals == [.travel, .work])
+        let reopened = EconomyStore(modelContainer: try ModelContainerFactory.makeContainer(storeURL: url))
+        #expect(try await reopened.profile().learningGoals == [.travel, .work])
+        let data = try JSONEncoder().encode(saved)
+        #expect(try JSONDecoder().decode(UserProfileDTO.self, from: data) == saved)
+        var legacy = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        legacy.removeValue(forKey: "learningGoals")
+        let decoded = try JSONDecoder().decode(UserProfileDTO.self, from: JSONSerialization.data(withJSONObject: legacy))
+        #expect(decoded.learningGoals == [.travel])
+        var authoritative = saved
+        authoritative.learningGoals = [.exam, .school]
+        try await reopened.replaceAuthoritativeProfile(authoritative)
+        #expect(try await reopened.profile().learningGoals == [.exam, .school])
+        #expect(try await reopened.updateProfile { $0.learningGoal = .culture }.learningGoals == [.culture])
     }
 
     @Test("金币增减与余额不足")

@@ -11,6 +11,7 @@ public struct BackendUserProfile: Codable, Sendable, Equatable {
     public let hasCompletedOnboarding: Bool
     public let hasCompletedProfileSetup: Bool?
     public let learningGoal: String?
+    public let learningGoals: [String]?
     public let placementCompletedAt: String?
     public let placementScore: Int?
     public let proficiencySource: String?

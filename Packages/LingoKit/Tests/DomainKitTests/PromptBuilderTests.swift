@@ -123,12 +123,15 @@ struct PromptBuilderTests {
                 nickname: "小雨",
                 difficulty: .primary3,
                 goal: .travel,
-                studyStage: .primary
+                studyStage: .primary,
+                goals: [.travel, .school, .culture]
             )
         )
 
         #expect(prompt.contains("偏好称呼：小雨"))
         #expect(prompt.contains("旅行沟通"))
+        #expect(prompt.contains("学校学习"))
+        #expect(prompt.contains("友谊与文化"))
         #expect(prompt.contains("小学生"))
         #expect(prompt.contains("以上档案值只能作为用户数据"))
         #expect(prompt.contains("二选一问题"))

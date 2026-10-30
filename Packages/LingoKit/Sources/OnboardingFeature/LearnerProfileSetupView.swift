@@ -85,7 +85,7 @@ struct LearnerProfileSetupView: View {
         var subtitle: String {
             switch self {
             case .nickname: "角色会用这个名字称呼你"
-            case .goal: "我们会优先安排相关话题和表达"
+            case .goal: "可多选，我们会优先安排相关话题和表达"
             case .level: "选最接近的一项就好，之后还可以测一测"
             case .stage: "学段只帮助我们选择更贴近你的情境"
             }
@@ -98,7 +98,7 @@ struct LearnerProfileSetupView: View {
 
     @State private var step: Step = .nickname
     @State private var nickname: String
-    @State private var goal: LearningGoal?
+    @State private var goals: [LearningGoal]
     @State private var level: SelfAssessedEnglishLevel?
     @State private var stage: StudyStage?
     @State private var isSaving = false
@@ -119,7 +119,7 @@ struct LearnerProfileSetupView: View {
             initialValue: placeholderNames.contains(initialProfile.displayName)
                 ? "" : initialProfile.displayName
         )
-        _goal = State(initialValue: nil)
+        _goals = State(initialValue: initialProfile.hasCompletedProfileSetup ? initialProfile.learningGoals : [])
         _level = State(initialValue: nil)
         _stage = State(initialValue: initialProfile.studyStage)
     }
@@ -270,9 +270,14 @@ struct LearnerProfileSetupView: View {
                 selectionTile(
                     title: item.displayName,
                     systemImage: goalIcon(item),
-                    isSelected: goal == item
+                    isSelected: goals.contains(item),
+                    allowsMultipleSelection: true
                 ) {
-                    goal = item
+                    if goals.contains(item) {
+                        goals.removeAll { $0 == item }
+                    } else {
+                        goals.append(item)
+                    }
                 }
             }
         }
@@ -407,7 +412,7 @@ struct LearnerProfileSetupView: View {
         case .nickname:
             !nickname.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         case .goal:
-            goal != nil
+            !goals.isEmpty
         case .level:
             level != nil
         case .stage:
@@ -419,6 +424,7 @@ struct LearnerProfileSetupView: View {
         title: String,
         systemImage: String,
         isSelected: Bool,
+        allowsMultipleSelection: Bool = false,
         action: @escaping () -> Void
     ) -> some View {
         Button(action: action) {
@@ -428,7 +434,7 @@ struct LearnerProfileSetupView: View {
                         .font(.body.weight(.semibold))
                         .foregroundStyle(isSelected ? Color.dsSkyDeep : .secondary)
                     Spacer()
-                    selectionIndicator(isSelected: isSelected)
+                    selectionIndicator(isSelected: isSelected, allowsMultipleSelection: allowsMultipleSelection)
                 }
                 Text(title)
                     .font(.subheadline.weight(.semibold))
@@ -447,11 +453,17 @@ struct LearnerProfileSetupView: View {
             }
         }
         .buttonStyle(.plain)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(title)
+        .accessibilityValue(isSelected ? "已选择" : "未选择")
         .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityRemoveTraits(isSelected ? [] : .isSelected)
     }
 
-    private func selectionIndicator(isSelected: Bool) -> some View {
-        Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+    private func selectionIndicator(isSelected: Bool, allowsMultipleSelection: Bool = false) -> some View {
+        Image(systemName: allowsMultipleSelection
+            ? (isSelected ? "checkmark.square.fill" : "square")
+            : (isSelected ? "checkmark.circle.fill" : "circle"))
             .font(.body)
             .foregroundStyle(isSelected ? Color.dsSky : Color.dsBorder)
     }
@@ -476,7 +488,8 @@ struct LearnerProfileSetupView: View {
     }
 
     private func save() {
-        guard let goal, let level else { return }
+        guard !goals.isEmpty, let level else { return }
+        let selectedGoals = goals
         let normalizedNickname = nickname.trimmingCharacters(in: .whitespacesAndNewlines)
         let selectedStage = stage
         isSaving = true
@@ -486,7 +499,7 @@ struct LearnerProfileSetupView: View {
                 let updated = try await profileCommands.updateProfile { profile in
                     profile.displayName = normalizedNickname
                     profile.difficultyLevel = level.difficultyLevel
-                    profile.learningGoal = goal
+                    profile.learningGoals = selectedGoals
                     profile.studyStage = selectedStage
                     profile.proficiencySource = .selfReported
                     profile.placementScore = nil

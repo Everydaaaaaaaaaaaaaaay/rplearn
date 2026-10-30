@@ -29,6 +29,7 @@ public actor BackendUserStateCoordinator:
         let hasCompletedOnboarding: Bool?
         let hasCompletedProfileSetup: Bool?
         let learningGoal: String?
+        let learningGoals: [String]?
         let placementCompletedAt: String?
         let placementScore: Int?
         let proficiencySource: String?
@@ -151,7 +152,7 @@ public actor BackendUserStateCoordinator:
         return try await updateProfile { profile in
             profile.displayName = guestProfile.displayName
             profile.difficultyLevel = guestProfile.difficultyLevel
-            profile.learningGoal = guestProfile.learningGoal
+            profile.learningGoals = guestProfile.learningGoals
             profile.studyStage = guestProfile.studyStage
             profile.proficiencySource = guestProfile.proficiencySource
             profile.placementScore = guestProfile.placementScore
@@ -245,6 +246,8 @@ public actor BackendUserStateCoordinator:
             learningGoal: desired.learningGoal.rawValue
                 == (current.learningGoal ?? LearningGoal.dailyConversation.rawValue)
                 ? nil : desired.learningGoal.rawValue,
+            learningGoals: desired.learningGoals == map(current).learningGoals
+                ? nil : desired.learningGoals.map(\.rawValue),
             placementCompletedAt: desired.placementCompletedAt.flatMap { date in
                 current.placementCompletedAt == Self.isoString(date) ? nil : Self.isoString(date)
             },
@@ -261,6 +264,7 @@ public actor BackendUserStateCoordinator:
             || patch.hasCompletedOnboarding != nil
             || patch.hasCompletedProfileSetup != nil
             || patch.learningGoal != nil
+            || patch.learningGoals != nil
             || patch.placementCompletedAt != nil
             || patch.placementScore != nil
             || patch.proficiencySource != nil
@@ -277,6 +281,7 @@ public actor BackendUserStateCoordinator:
             onboardingValue,
             patch.hasCompletedProfileSetup.map { String($0) } ?? "-",
             patch.learningGoal ?? "-",
+            patch.learningGoals?.joined(separator: ",") ?? "-",
             patch.placementCompletedAt ?? "-",
             patch.placementScore.map { String($0) } ?? "-",
             patch.proficiencySource ?? "-",
@@ -587,7 +592,8 @@ public actor BackendUserStateCoordinator:
             placementCompletedAt: profile.placementCompletedAt.flatMap {
                 try? parseDate($0)
             },
-            hasCompletedProfileSetup: profile.hasCompletedProfileSetup ?? false
+            hasCompletedProfileSetup: profile.hasCompletedProfileSetup ?? false,
+            learningGoals: profile.learningGoals?.compactMap(LearningGoal.init(rawValue:))
         )
     }
 

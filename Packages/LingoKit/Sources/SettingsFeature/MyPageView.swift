@@ -286,7 +286,7 @@ public struct MyPageView: View {
         }
         .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .learning))
         .accessibilityIdentifier("me.level")
-        .accessibilityLabel("英语旅程，当前水平 \(profile?.difficultyLevel.displayName ?? "载入中")，学习目标 \(profile?.learningGoal.displayName ?? "载入中")")
+        .accessibilityLabel("英语旅程，当前水平 \(profile?.difficultyLevel.displayName ?? "载入中")，学习目标 \(profile?.learningGoalsDisplayName ?? "载入中")")
         .accessibilityHint("重新校准英语水平")
     }
 
@@ -387,7 +387,7 @@ public struct MyPageView: View {
                 SceneHologramIcon(glyph: .journeyBook, size: 44 * scale)
                 SceneHologramText("英语旅程", size: 20 * scale, weight: .bold)
                 SceneHologramText(
-                    "\(profile?.difficultyLevel.displayName ?? "载入中") · \(profile?.learningGoal.displayName ?? "载入中")",
+                    "\(profile?.difficultyLevel.displayName ?? "载入中") · \(profile?.learningGoalsDisplayName ?? "载入中")",
                     size: 11.25 * scale,
                     weight: .semibold
                 )
@@ -578,7 +578,7 @@ public struct MyPageView: View {
                 )
                 learningMetric(
                     title: "学习目标",
-                    value: profile?.learningGoal.displayName ?? "载入中",
+                    value: profile?.learningGoalsDisplayName ?? "载入中",
                     icon: "scope"
                 )
             }

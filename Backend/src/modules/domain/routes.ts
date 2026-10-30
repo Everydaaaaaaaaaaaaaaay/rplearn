@@ -55,6 +55,12 @@ const profilePatchSchema = z
     hasCompletedOnboarding: z.boolean().optional(),
     hasCompletedProfileSetup: z.boolean().optional(),
     learningGoal: learningGoalSchema.optional(),
+    learningGoals: z
+      .array(learningGoalSchema)
+      .min(1)
+      .max(7)
+      .refine((goals) => new Set(goals).size === goals.length, "Goals must be unique")
+      .optional(),
     placementCompletedAt: isoDateSchema.optional(),
     placementScore: z.number().int().min(0).max(100).optional(),
     proficiencySource: proficiencySourceSchema.optional(),
@@ -67,11 +73,19 @@ const profilePatchSchema = z
       value.hasCompletedOnboarding !== undefined ||
       value.hasCompletedProfileSetup !== undefined ||
       value.learningGoal !== undefined ||
+      value.learningGoals !== undefined ||
       value.placementCompletedAt !== undefined ||
       value.placementScore !== undefined ||
       value.proficiencySource !== undefined ||
       value.studyStage !== undefined,
     "At least one profile field must be updated",
+  )
+  .refine(
+    (value) =>
+      value.learningGoals === undefined ||
+      value.learningGoal === undefined ||
+      value.learningGoal === value.learningGoals[0],
+    "Legacy goal must match the first selected goal",
   );
 
 const ticketPurchaseSchema = z
@@ -194,6 +208,9 @@ export function registerDomainRoutes(
         ...(patch.learningGoal === undefined
           ? {}
           : { learningGoal: patch.learningGoal }),
+        ...(patch.learningGoals === undefined
+          ? {}
+          : { learningGoals: patch.learningGoals }),
         ...(patch.placementCompletedAt === undefined
           ? {}
           : { placementCompletedAt: patch.placementCompletedAt }),

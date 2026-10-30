@@ -157,6 +157,7 @@ export class DomainRepository {
           has_completed_onboarding,
           has_completed_profile_setup,
           learning_goal,
+          learning_goals::text[] as learning_goals,
           placement_completed_at,
           placement_score,
           proficiency_source,
@@ -480,9 +481,16 @@ export class DomainRepository {
                 has_completed_profile_setup
               ),
               learning_goal = coalesce(
-                ${patch.learningGoal ?? null},
+                ${patch.learningGoals?.[0] ?? patch.learningGoal ?? null},
                 learning_goal
               )::app.learning_goal,
+              learning_goals = case
+                when ${patch.learningGoals !== undefined} then
+                  array(select jsonb_array_elements_text(${JSON.stringify(patch.learningGoals ?? [])}::jsonb))::app.learning_goal[]
+                when ${patch.learningGoal !== undefined} then
+                  array[${patch.learningGoal ?? null}::app.learning_goal]
+                else learning_goals
+              end,
               placement_completed_at = coalesce(
                 ${patch.placementCompletedAt ?? null}::timestamptz,
                 placement_completed_at
@@ -514,6 +522,7 @@ export class DomainRepository {
             has_completed_onboarding,
             has_completed_profile_setup,
             learning_goal,
+            learning_goals::text[] as learning_goals,
             placement_completed_at,
             placement_score,
             proficiency_source,

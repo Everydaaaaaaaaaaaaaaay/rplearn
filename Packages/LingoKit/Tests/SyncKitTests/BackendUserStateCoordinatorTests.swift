@@ -41,6 +41,7 @@ struct BackendUserStateCoordinatorTests {
             let displayName: String?
             let hasCompletedProfileSetup: Bool?
             let learningGoal: String?
+            let learningGoals: [String]?
             let placementCompletedAt: String?
             let placementScore: Int?
             let proficiencySource: String?
@@ -54,6 +55,7 @@ struct BackendUserStateCoordinatorTests {
         private var hasCompletedOnboarding = false
         private var hasCompletedProfileSetup = false
         private var learningGoal = "dailyConversation"
+        private var learningGoals: [String]?
         private var placementCompletedAt: String?
         private var placementScore: Int?
         private var proficiencySource = "selfReported"
@@ -128,7 +130,8 @@ struct BackendUserStateCoordinatorTests {
                 displayName = body.displayName ?? displayName
                 hasCompletedProfileSetup = body.hasCompletedProfileSetup
                     ?? hasCompletedProfileSetup
-                learningGoal = body.learningGoal ?? learningGoal
+                learningGoal = body.learningGoals?.first ?? body.learningGoal ?? learningGoal
+                learningGoals = body.learningGoals ?? body.learningGoal.map { [$0] } ?? learningGoals
                 placementCompletedAt = body.placementCompletedAt ?? placementCompletedAt
                 placementScore = body.placementScore ?? placementScore
                 proficiencySource = body.proficiencySource ?? proficiencySource
@@ -234,6 +237,7 @@ struct BackendUserStateCoordinatorTests {
               "hasCompletedOnboarding":\(hasCompletedOnboarding),
               "hasCompletedProfileSetup":\(hasCompletedProfileSetup),
               "learningGoal":"\(learningGoal)",
+              "learningGoals":\(learningGoals.map { String(data: try! JSONEncoder().encode($0), encoding: .utf8)! } ?? "null"),
               "placementCompletedAt":\(placementCompletedAtValue),
               "placementScore":\(placementScoreValue),
               "proficiencySource":"\(proficiencySource)",
@@ -554,7 +558,8 @@ struct BackendUserStateCoordinatorTests {
             proficiencySource: .placement,
             placementScore: 72,
             placementCompletedAt: placementDate,
-            hasCompletedProfileSetup: true
+            hasCompletedProfileSetup: true,
+            learningGoals: [.studyAbroad, .travel, .culture]
         )
 
         #expect(await coordinator.shouldCaptureGuestProfileForImport())
@@ -564,6 +569,8 @@ struct BackendUserStateCoordinatorTests {
         #expect(imported.displayName == "小咕")
         #expect(imported.difficultyLevel == .senior2)
         #expect(imported.learningGoal == .studyAbroad)
+        #expect(imported.learningGoals == [.studyAbroad, .travel, .culture])
+        #expect(try await economy.profile().learningGoals == [.studyAbroad, .travel, .culture])
         #expect(imported.studyStage == .seniorHigh)
         #expect(imported.proficiencySource == .placement)
         #expect(imported.placementScore == 72)
@@ -575,6 +582,14 @@ struct BackendUserStateCoordinatorTests {
         conflictingGuest.displayName = "不应覆盖"
         let preserved = try await coordinator.importGuestLearnerProfileIfNeeded(conflictingGuest)
         #expect(preserved.displayName == "小咕")
+        #expect(preserved.learningGoals == [.studyAbroad, .travel, .culture])
+        // Changing only secondary selections must still send a patch.
+        let changed = try await coordinator.updateProfile { $0.learningGoals = [.studyAbroad, .work] }
+        #expect(changed.learningGoals == [.studyAbroad, .work])
+        let sent = try #require(await transport.profileBodies.last)
+        let fields = try #require(JSONSerialization.jsonObject(with: sent) as? [String: Any])
+        #expect(fields["learningGoals"] as? [String] == ["studyAbroad", "work"])
+
     }
 
     @Test("已有完整账号缓存支持离线与优先展示", arguments: [false, true])

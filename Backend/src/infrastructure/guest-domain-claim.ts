@@ -13,6 +13,7 @@ export async function claimDomainJourney(
     display_name=case when a.has_completed_profile_setup then a.display_name else g.display_name end,
     difficulty=case when a.has_completed_profile_setup then a.difficulty else g.difficulty end,
     learning_goal=case when a.has_completed_profile_setup then a.learning_goal else g.learning_goal end,
+    learning_goals=case when a.has_completed_profile_setup then a.learning_goals else g.learning_goals end,
     study_stage=case when a.has_completed_profile_setup then a.study_stage else g.study_stage end,
     proficiency_source=case when a.has_completed_profile_setup then a.proficiency_source else g.proficiency_source end,
     placement_score=case when a.has_completed_profile_setup then a.placement_score else g.placement_score end,

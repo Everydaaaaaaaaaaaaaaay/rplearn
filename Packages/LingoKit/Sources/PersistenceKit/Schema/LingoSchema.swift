@@ -40,6 +40,7 @@ extension LingoSchema {
         public var difficultyLevelRaw: String
         public var hasCompletedOnboarding: Bool
         public var learningGoalRaw: String
+        public var learningGoalsRaw: [String]? = nil
         public var studyStageRaw: String?
         public var proficiencySourceRaw: String
         public var placementScore: Int?

@@ -112,6 +112,7 @@ export const userProfiles = applicationSchema.table(
       .default(false)
       .notNull(),
     learningGoal: learningGoal("learning_goal").default("dailyConversation").notNull(),
+    learningGoals: learningGoal("learning_goals").array(),
     placementCompletedAt: timestamp("placement_completed_at", {
       mode: "date",
       withTimezone: true,

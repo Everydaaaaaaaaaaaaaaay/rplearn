@@ -188,6 +188,7 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       method: "PATCH",
       payload: {
         expectedVersion: initialSnapshot.profile.version,
+        displayName: "过期资料",
       },
       url: "/v1/me",
     });
@@ -454,5 +455,78 @@ describe.runIf(runIntegrationTests)("authoritative user economy and travel", () 
       expect(result.statusCode).toBe(200);
       expect(result.json<UserSnapshot["profile"]>().difficulty).toBe(difficulty);
     }
+  });
+  it("persists multiple goals, preserves them on unrelated edits and supports old clients", async () => {
+    const snapshot = (
+      await app.inject({ headers: authenticated(), method: "GET", url: "/v1/me" })
+    ).json<UserSnapshot>();
+    const headers = authenticated({ idempotencyKey: newEntityId() });
+    const payload = {
+      expectedVersion: snapshot.profile.version,
+      learningGoals: ["travel", "work", "culture"],
+    };
+    const saved = await app.inject({
+      headers,
+      method: "PATCH",
+      url: "/v1/me",
+      payload,
+    });
+    expect(saved.statusCode).toBe(200);
+    const profile = saved.json<UserSnapshot["profile"]>();
+    expect(profile.learningGoals).toEqual(payload.learningGoals);
+    expect(profile.learningGoal).toBe("travel");
+    expect(
+      (await app.inject({ headers, method: "PATCH", url: "/v1/me", payload })).json(),
+    ).toEqual(profile);
+    const renamed = await app.inject({
+      headers: authenticated({ idempotencyKey: newEntityId() }),
+      method: "PATCH",
+      url: "/v1/me",
+      payload: { expectedVersion: profile.version, displayName: "多目标学习者" },
+    });
+    expect(renamed.statusCode).toBe(200);
+    expect(renamed.json<UserSnapshot["profile"]>().learningGoals).toEqual(
+      payload.learningGoals,
+    );
+    const legacy = await app.inject({
+      headers: authenticated({ idempotencyKey: newEntityId() }),
+      method: "PATCH",
+      url: "/v1/me",
+      payload: {
+        expectedVersion: renamed.json<UserSnapshot["profile"]>().version,
+        learningGoal: "exam",
+      },
+    });
+    expect(legacy.statusCode).toBe(200);
+    expect(legacy.json<UserSnapshot["profile"]>().learningGoals).toEqual(["exam"]);
+    expect(
+      (
+        await app.inject({ headers: authenticated(), method: "GET", url: "/v1/me" })
+      ).json<UserSnapshot>().profile.learningGoals,
+    ).toEqual(["exam"]);
+  });
+
+  it.each([
+    { learningGoals: [] },
+    { learningGoals: ["travel", "travel"] },
+    { learningGoals: ["unknown"] },
+    { learningGoals: ["travel"], learningGoal: "work" },
+    { learningGoals: Array(8).fill("travel") },
+  ])("rejects invalid multi-goal selections: %j", async (goals) => {
+    const snapshot = (
+      await app.inject({ headers: authenticated(), method: "GET", url: "/v1/me" })
+    ).json<UserSnapshot>();
+    const response = await app.inject({
+      headers: authenticated({ idempotencyKey: newEntityId() }),
+      method: "PATCH",
+      url: "/v1/me",
+      payload: { expectedVersion: snapshot.profile.version, ...goals },
+    });
+    expect(response.statusCode).toBe(400);
+    expect(
+      (
+        await app.inject({ headers: authenticated(), method: "GET", url: "/v1/me" })
+      ).json<UserSnapshot>().profile,
+    ).toEqual(snapshot.profile);
   });
 });
