@@ -30,8 +30,7 @@ public struct PlacementDependencies: Sendable {
     }
 }
 
-/// 依据答案动态控制在 14–20 题的自适应校准。
-/// 测评过程中不显示对错、不允许回退，避免后续答案被提示影响。
+/// 从基础开始的渐进测评；草稿、确认、回退与计分由同一会话管理。
 public struct PlacementTestView: View {
     enum Phase: Equatable {
         case loading
@@ -52,11 +51,13 @@ public struct PlacementTestView: View {
     @State var hasPrepared = false
     @State var phase: Phase = .loading
     @State var questions: [PlacementQuestion] = []
-    @State var engine: AdaptivePlacementEngine?
-    @State var currentQuestion: PlacementQuestion?
-    @State var optionOrder: [Int] = []
-    @State var selectedOriginalIndex: Int?
-    @State var listeningPlayCount = 0
+    @State var session: PlacementSession?
+    var engine: AdaptivePlacementEngine? { session?.engine }
+    var currentQuestion: PlacementQuestion? { session?.current?.question }
+    var optionOrder: [Int] { session?.current?.optionOrder ?? [] }
+    var selectedOriginalIndex: Int? { session?.current?.selectedIndex }
+    var listeningPlayCount: Int { session?.current?.listeningPlayCount ?? 0 }
+    @State var listeningGeneration = UUID()
     @State var isListeningAudioLoading = false
     @State var isListeningAudioPlaying = false
     @State var result: PlacementResult?
@@ -106,7 +107,7 @@ public struct PlacementTestView: View {
                     DifficultyLevelSelectionPage(
                         selection: $selectedLevel,
                         currentLevel: currentLevel,
-                        recommendedLevel: levelSelectionReturnPhase == .result
+                        recommendedLevel: levelSelectionReturnPhase == .result && result?.hasSufficientEvidence == true
                             ? result?.difficultyLevel
                             : nil,
                         onDone: { applySelectedLevel(testResult: levelSelectionReturnPhase == .result ? result : nil) }
@@ -150,10 +151,12 @@ public struct PlacementTestView: View {
             }
         } message: { Text(pendingLevelChange?.summary ?? "") }
         .onDisappear {
+            listeningGeneration = UUID()
             listeningPlayer.stop()
             isListeningAudioLoading = false; isListeningAudioPlaying = false
             Task { await deps.speech.stopSpeaking() }
         }
+        .dsTabBarHidden()
         .interactiveDismissDisabled(
             phase == .question || phase == .levelSelection || isApplying
         )
@@ -193,7 +196,7 @@ public struct PlacementTestView: View {
                     .shadow(color: Color.white.opacity(0.72), radius: 0.6, x: -0.4, y: -0.4)
                     .shadow(color: Color.dsTravelNavy.opacity(0.16), radius: 0.7, x: 0.5, y: 0.9)
                 if phase == .question, let engine {
-                    Text("已答 \(engine.responses.count) 题")
+                    Text("已确认 \(engine.responses.count) 题")
                         .font(.caption2)
                         .foregroundStyle(Color.dsPaperInkSecondary)
                         .monospacedDigit()
@@ -231,7 +234,7 @@ public struct PlacementTestView: View {
                         .font(.system(.title2, design: .rounded, weight: .bold))
                         .foregroundStyle(Color.dsPaperInk)
                         .multilineTextAlignment(.center)
-                    Text("选择你的英语水平，或用 4–6 分钟短测获得建议。")
+                    Text("从基础开始测一测，找到适合现在的学习起点。")
                         .font(.subheadline)
                         .foregroundStyle(Color.dsPaperInkSecondary)
                         .multilineTextAlignment(.center)
@@ -262,7 +265,7 @@ public struct PlacementTestView: View {
                             HStack(spacing: DSSpacing.md) {
                                 DSObsidianMedallion(systemImage: "safari", size: 58)
                                 VStack(alignment: .leading, spacing: 3) {
-                                    Text("自适应水平测试")
+                                    Text("渐进式水平测评")
                                         .font(.system(.title3, design: .rounded, weight: .bold))
                                         .foregroundStyle(Color.dsPaperInk)
                                     Text("完成后给出适合你的对话难度建议")
@@ -273,13 +276,13 @@ public struct PlacementTestView: View {
 
                             informationRow(
                                 icon: "slider.horizontal.3",
-                                title: "14–20 题",
-                                detail: "答满 14 题后判断稳定度，最多 20 题"
+                                title: "从易到难，最多 20 题",
+                                detail: "累计答错 3 次即结束，按实际作答给出建议"
                             )
                             informationRow(
                                 icon: "headphones",
-                                title: "四类能力",
-                                detail: "词汇、语法、阅读与听力"
+                                title: "以词汇、语法和阅读为主",
+                                detail: "听力最多 2 题，不放在开头，可跳过"
                             )
                             informationRow(
                                 icon: "lock.shield",
@@ -299,7 +302,7 @@ public struct PlacementTestView: View {
                                 .disabled(engine == nil || isApplying)
 
                             Label(
-                                "凭第一感觉作答即可。测评中不会立即显示对错，也不能返回上一题。",
+                                "选好后点击确认；可返回上一题或跳过，跳过不计为答错。",
                                 systemImage: "lightbulb"
                             )
                             .font(.caption)
@@ -343,7 +346,7 @@ public struct PlacementTestView: View {
                             systemImage: skillIcon(question.skill)
                         )
                         Spacer()
-                        Text("第 \(engine.responses.count + 1) 题")
+                        Text("第 \((session?.cursor ?? 0) + 1) 题 / 20")
                             .monospacedDigit()
                     }
                     .font(.caption.weight(.semibold))
@@ -357,6 +360,8 @@ public struct PlacementTestView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: DSSpacing.lg) {
                         Text(question.prompt)
+                            .accessibilityAddTraits(.isHeader)
+                            .accessibilityIdentifier("placement.prompt")
                             .font(.system(.title3, design: .rounded, weight: .bold))
                             .foregroundStyle(Color.dsPaperInk)
                             .fixedSize(horizontal: false, vertical: true)
@@ -386,7 +391,7 @@ public struct PlacementTestView: View {
                             }
                         }
 
-                        Text("选择后会自动进入下一题，不显示即时对错。")
+                        Text("选好后确认再进入下一题，确认前可以修改。")
                             .font(.caption)
                             .foregroundStyle(Color.dsPaperInkSecondary)
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -398,7 +403,36 @@ public struct PlacementTestView: View {
                     .padding(.bottom, DSSpacing.xl)
                     .frame(maxWidth: .infinity)
                 }
+                .id(question.id)
                 .placementScrollEdgeBlend()
+            }
+            .placementBottomBar {
+                VStack(spacing: 8) {
+                    if let errorMessage {
+                        Text(errorMessage).font(.caption).foregroundStyle(Color.dsDanger)
+                    }
+                    HStack(spacing: 12) {
+                        Button { previousQuestion() } label: {
+                            Text("上一题").frame(minWidth: 64, minHeight: 48).contentShape(Rectangle())
+                        }
+                            .disabled(session?.canGoBack != true)
+                            .opacity(session?.canGoBack == true ? 1 : 0.4)
+                            .accessibilityIdentifier("placement.previous")
+                        Spacer()
+                        Button { advanceQuestion(skipping: true) } label: {
+                            Text("跳过").frame(minWidth: 48, minHeight: 48).contentShape(Rectangle())
+                        }
+                            .accessibilityIdentifier("placement.skip")
+                        Button("确认答案") { advanceQuestion(skipping: false) }
+                            .buttonStyle(.dsAction(.primary, fullWidth: false))
+                            .disabled(session?.canConfirm != true)
+                            .opacity(session?.canConfirm == true ? 1 : 0.45)
+                            .accessibilityIdentifier("placement.confirm")
+                    }
+                    .frame(minHeight: 48)
+                }
+                .padding(.horizontal, DSSpacing.lg).padding(.vertical, DSSpacing.sm)
+                .background(.regularMaterial)
             }
         } else {
             loadingView

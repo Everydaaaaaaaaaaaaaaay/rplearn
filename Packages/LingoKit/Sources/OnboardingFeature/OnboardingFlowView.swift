@@ -250,14 +250,14 @@ private struct PlacementCalibrationChoiceView: View {
                     VStack(spacing: 0) {
                         calibrationRow(
                             icon: "slider.horizontal.3",
-                            title: "题目会动态调整",
-                            detail: "答对会变难，答错会回到更合适的位置"
+                            title: "从基础开始",
+                            detail: "从基础开始，累计答错 3 次即结束"
                         )
                         Divider().padding(.leading, 52)
                         calibrationRow(
                             icon: "clock",
-                            title: "约 3–5 分钟",
-                            detail: "通常 8–12 题，可随时退出"
+                            title: "轻量测评",
+                            detail: "最多 20 题，可回退、确认或跳过"
                         )
                         Divider().padding(.leading, 52)
                         calibrationRow(

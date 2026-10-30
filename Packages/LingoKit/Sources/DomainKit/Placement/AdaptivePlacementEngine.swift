@@ -1,25 +1,13 @@
 import Foundation
 import PersistenceKit
 
-/// 面向学习难度校准的小型计算机自适应测评。
-///
-/// 使用固定题库、带猜测修正的 3PL IRT 和网格化贝叶斯后验估计：
-/// - 自评等级只作为宽松先验，不直接决定结果；
-/// - 每项能力至少取样三次，并优先切换任务形态；
-/// - 从信息量相近的优质候选中随机抽题，且限制相邻题难度跳幅；
-/// - 只有精度、等级稳定度和答案一致性同时足够时才提前停止；
-/// - 第 14 题后动态判断，最多 20 题，避免把学习校准做成长考试。
+/// 从基础题逐步探测学习起点。手工难度参数仅用于学习建议，不是考试认证。
+/// 所有人从相同的低难度开始；累计三次错误即停止，跳过不更新能力估计。
 public struct AdaptivePlacementEngine: Sendable {
-    public static let minimumQuestionCount = 14
     public static let maximumQuestionCount = 20
-    public static let minimumQuestionsPerSkill = 3
-    public static let maximumDifficultyStep = 0.85
-    public static let stoppingStandardError = 0.54
-    public static let stoppingLevelConfidence = 0.58
-
-    private static let earlyStoppingStandardError = 0.44
-    private static let earlyStoppingLevelConfidence = 0.72
-    private static let relaxedStoppingQuestionCount = 17
+    public static let maximumMistakes = 3
+    public static let maximumListeningQuestions = 2
+    public static let maximumDifficultyStep = 0.5
 
     private static let thetaGrid: [Double] = stride(
         from: -3.25,
@@ -36,8 +24,9 @@ public struct AdaptivePlacementEngine: Sendable {
         selectionSeed: UInt64 = UInt64.random(in: 0...UInt64.max)
     ) {
         self.selectionSeed = selectionSeed
-        let priorMean = Self.priorMean(for: priorLevel)
-        let priorStandardDeviation = 1.35
+        // Self-reported schooling or exam familiarity must not force a high starting estimate.
+        let priorMean = -1.5
+        let priorStandardDeviation = 1.7
         logPosterior = Self.thetaGrid.map { theta in
             -0.5 * pow((theta - priorMean) / priorStandardDeviation, 2)
         }
@@ -52,171 +41,101 @@ public struct AdaptivePlacementEngine: Sendable {
         posteriorMoments.standardDeviation
     }
 
-    /// 后验落在当前推荐等级或相邻一级的概率质量。
-    ///
-    /// 14–20 道短测不足以把十六个窄等级当成正式考试分数精确切开，
-    /// 因而以“相邻一级内稳定”控制停测，并同时给出 90% 可信区间。
-    public var levelConfidence: Double {
-        let selectedLevel = Self.difficultyLevel(for: ability)
-        let selectedOrdinal = selectedLevel.placementOrdinal
-        return zip(Self.thetaGrid, normalizedPosterior)
-            .filter {
-                abs(Self.difficultyLevel(for: $0.0).placementOrdinal - selectedOrdinal) <= 1
-            }
-            .reduce(0) { $0 + $1.1 }
+    public var mistakeCount: Int { responses.filter { !$0.wasCorrect && !$0.wasSkipped }.count }
+    public var answeredCount: Int { responses.filter { !$0.wasSkipped }.count }
+    public var skippedCount: Int { responses.filter(\.wasSkipped).count }
+    public var stopReason: PlacementStopReason? {
+        if mistakeCount >= Self.maximumMistakes { return .threeMistakes }
+        if responses.count >= Self.maximumQuestionCount { return .questionLimit }
+        return nil
     }
-
+    public var shouldStop: Bool { stopReason != nil }
     public var measurementProgress: Double {
-        if shouldStop { return 1 }
-        let countProgress = min(
-            1,
-            Double(responses.count) / Double(Self.minimumQuestionCount)
-        )
-        let precisionProgress = min(1, Self.stoppingStandardError / max(standardError, 0.01))
-        let confidenceProgress = min(
-            1,
-            levelConfidence / Self.stoppingLevelConfidence
-        )
-        return min(
-            0.96,
-            countProgress * 0.55 + precisionProgress * 0.25 + confidenceProgress * 0.2
-        )
+        shouldStop ? 1 : Double(responses.count) / Double(Self.maximumQuestionCount)
     }
 
-    public var shouldStop: Bool {
-        if responses.count >= Self.maximumQuestionCount {
-            return true
+    // A few easy successes followed by skips must not imply advanced proficiency.
+    private var supportedAbility: Double {
+        guard let highest = responses.filter(\.wasCorrect).map(\.difficulty).max() else {
+            let attempted = responses.filter { !$0.wasSkipped }
+            guard attempted.count >= 3, let easiest = attempted.map(\.difficulty).min() else { return ability }
+            return max(-3.25, min(ability, easiest - 0.35))
         }
-        guard responses.count >= Self.minimumQuestionCount,
-              hasRequiredSkillCoverage,
-              inversionCount <= 2
-        else {
-            return false
-        }
-
-        if responses.count < Self.relaxedStoppingQuestionCount {
-            return standardError <= Self.earlyStoppingStandardError
-                && levelConfidence >= Self.earlyStoppingLevelConfidence
-        }
-        return standardError <= Self.stoppingStandardError
-            && levelConfidence >= Self.stoppingLevelConfidence
+        return min(ability, highest + 0.35)
+    }
+    public var levelConfidence: Double {
+        let ordinal = Self.difficultyLevel(for: supportedAbility).placementOrdinal
+        let probability = zip(Self.thetaGrid, normalizedPosterior)
+            .filter { abs(Self.difficultyLevel(for: $0.0).placementOrdinal - ordinal) <= 1 }
+            .reduce(0) { $0 + $1.1 }
+        return answeredCount < 8 ? min(0.49, probability) : probability
     }
 
     public func nextQuestion(in questions: [PlacementQuestion]) -> PlacementQuestion? {
         guard !shouldStop else { return nil }
-        let answeredIDs = Set(responses.map(\.questionID))
-        let skillCounts = Dictionary(grouping: responses, by: \.skill)
-            .mapValues(\.count)
-        let minimumSkillCount = PlacementSkill.allCases
-            .map { skillCounts[$0, default: 0] }
-            .min() ?? 0
-        let previousSkill = responses.last?.skill
-        let previousFormat = responses.last?.format
-        let previousDifficulty = responses.last?.difficulty
-
-        var candidates = questions.filter { !answeredIDs.contains($0.id) }
-
-        // 前十二题严格轮转到当前取样最少的能力，保证每项至少有三次证据。
-        if minimumSkillCount < Self.minimumQuestionsPerSkill {
-            let leastSampledSkills = Set(
-                PlacementSkill.allCases.filter {
-                    skillCounts[$0, default: 0] == minimumSkillCount
-                }
-            )
-            let balanced = candidates.filter { leastSampledSkills.contains($0.skill) }
-            if !balanced.isEmpty {
-                candidates = balanced
-            }
+        let used = Set(responses.map(\.questionID))
+        let last = responses.last
+        let floor = last?.difficulty ?? -3.0
+        let target = last.map { $0.difficulty + ($0.wasCorrect ? 0.4 : 0.05) } ?? -3.0
+        var candidates = questions.filter { !used.contains($0.id) && $0.difficulty >= floor - 0.0001 }
+        let listeningCount = responses.filter { $0.skill == .listening }.count
+        let listeningSlot = [7, 15].contains(responses.count)
+            && listeningCount < Self.maximumListeningQuestions
+        let listening = candidates.filter {
+            $0.skill == .listening && $0.difficulty <= floor + Self.maximumDifficultyStep
         }
-
-        // 能力覆盖之后优先限制难度跳幅，避免为了切换题型突然跨越多个等级。
-        if let previousDifficulty {
-            let smooth = candidates.filter {
-                abs($0.difficulty - previousDifficulty) <= Self.maximumDifficultyStep
-            }
-            if !smooth.isEmpty {
-                candidates = smooth
-            }
+        if listeningSlot, !listening.isEmpty {
+            candidates = listening
+        } else {
+            candidates = candidates.filter { $0.skill != .listening }
         }
-
-        // 在难度平滑的候选中优先换任务形态，避免证据依赖单一答题方式。
-        let usedFormatsBySkill = Dictionary(grouping: responses, by: \.skill)
-            .mapValues { Set($0.map(\.format)) }
-        let formatDiverse = candidates.filter {
-            !(usedFormatsBySkill[$0.skill] ?? []).contains($0.format)
+        guard !candidates.isEmpty else { return nil }
+        // Stay near the current step, including after a mistake or a skipped item.
+        let smooth = candidates.filter { $0.difficulty <= floor + Self.maximumDifficultyStep }
+        guard !smooth.isEmpty else { return nil }
+        candidates = smooth
+        let counts = Dictionary(grouping: responses, by: \.skill).mapValues(\.count)
+        let ranked = candidates.sorted {
+            let left = abs($0.difficulty - target) + Double(counts[$0.skill, default: 0]) * 0.025
+            let right = abs($1.difficulty - target) + Double(counts[$1.skill, default: 0]) * 0.025
+            if abs(left - right) < 0.0001 { return $0.id < $1.id }
+            return left < right
         }
-        if !formatDiverse.isEmpty {
-            candidates = formatDiverse
-        }
-
-        let posteriorProbabilities = normalizedPosterior
-        let currentAbility = zip(Self.thetaGrid, posteriorProbabilities)
-            .reduce(0) { $0 + $1.0 * $1.1 }
-        let targetAbility = responses.isEmpty ? currentAbility - 0.3 : currentAbility
-        let ranked = candidates.map { candidate in
-            (
-                question: candidate,
-                score: selectionScore(
-                    candidate,
-                    skillCounts: skillCounts,
-                    minimumSkillCount: minimumSkillCount,
-                    previousSkill: previousSkill,
-                    previousFormat: previousFormat,
-                    targetAbility: targetAbility,
-                    posteriorProbabilities: posteriorProbabilities
-                )
-            )
-        }.sorted {
-            if abs($0.score - $1.score) < 1e-12 {
-                return $0.question.id < $1.question.id
-            }
-            return $0.score > $1.score
-        }
-        guard let bestScore = ranked.first?.score else { return nil }
-
-        // 在信息量接近最佳的候选中抽取，既保持测量效率，也避免每次见到同一套题。
-        let competitive = Array(
-            ranked.prefix(6).filter { $0.score >= bestScore * 0.9 }
-        )
-        let pool = competitive.isEmpty ? Array(ranked.prefix(1)) : competitive
-        return pool[stableChoiceIndex(upperBound: pool.count)].question
+        let bestDistance = abs(ranked[0].difficulty - target)
+        let pool = Array(ranked.prefix(4).filter { abs($0.difficulty - target) <= bestDistance + 0.1 })
+        return pool[stableChoiceIndex(upperBound: pool.count)]
     }
 
-    public mutating func record(
-        question: PlacementQuestion,
-        selectedIndex: Int
-    ) {
-        guard !responses.contains(where: { $0.questionID == question.id }) else { return }
-        let wasCorrect = selectedIndex == question.correctIndex
+    public mutating func record(question: PlacementQuestion, selectedIndex: Int) {
+        guard !shouldStop, question.options.indices.contains(selectedIndex),
+              !responses.contains(where: { $0.questionID == question.id }) else { return }
+        let correct = selectedIndex == question.correctIndex
         for index in Self.thetaGrid.indices {
-            let probability = Self.probabilityCorrect(
-                theta: Self.thetaGrid[index],
-                question: question
-            )
-            let likelihood = wasCorrect ? probability : (1 - probability)
-            logPosterior[index] += log(max(likelihood, 1e-12))
+            let probability = Self.probabilityCorrect(theta: Self.thetaGrid[index], question: question)
+            logPosterior[index] += log(max(correct ? probability : 1 - probability, 1e-12))
         }
         normalizeLogPosterior()
-        responses.append(
-            PlacementResponse(
-                questionID: question.id,
-                skill: question.skill,
-                format: question.format,
-                wasCorrect: wasCorrect,
-                difficulty: question.difficulty
-            )
-        )
+        responses.append(PlacementResponse(questionID: question.id, skill: question.skill,
+            format: question.format, wasCorrect: correct, difficulty: question.difficulty))
+    }
+
+    public mutating func skip(question: PlacementQuestion) {
+        guard !shouldStop, !responses.contains(where: { $0.questionID == question.id }) else { return }
+        responses.append(PlacementResponse(questionID: question.id, skill: question.skill,
+            format: question.format, wasCorrect: false, difficulty: question.difficulty, wasSkipped: true))
     }
 
     public func result() -> PlacementResult {
-        let mean = ability
+        let mean = supportedAbility
         let error = standardError
         let score = Self.score(for: mean)
         let credibleRange = posteriorCredibleRange()
-        let lowerScore = Self.score(for: credibleRange.lowerBound)
-        let upperScore = Self.score(for: credibleRange.upperBound)
+        let lowerScore = Self.score(for: min(mean, credibleRange.lowerBound))
+        let demonstratedCeiling = responses.filter(\.wasCorrect).map(\.difficulty).max().map { $0 + 0.35 }
+        let upperAbility = min(credibleRange.upperBound, demonstratedCeiling ?? credibleRange.upperBound)
+        let upperScore = Self.score(for: max(mean, upperAbility))
         let skillResults = PlacementSkill.allCases.map { skill in
-            let matching = responses.filter { $0.skill == skill }
+            let matching = responses.filter { $0.skill == skill && !$0.wasSkipped }
             return PlacementSkillResult(
                 skill: skill,
                 correct: matching.filter(\.wasCorrect).count,
@@ -232,8 +151,11 @@ public struct AdaptivePlacementEngine: Sendable {
             scoreRange: min(lowerScore, upperScore)...max(lowerScore, upperScore),
             difficultyLevel: Self.difficultyLevel(for: mean),
             referenceLevel: Self.referenceLevel(for: mean),
-            answeredCount: responses.count,
-            skillResults: skillResults
+            answeredCount: answeredCount,
+            skillResults: skillResults,
+            skippedCount: skippedCount,
+            mistakeCount: mistakeCount,
+            stopReason: stopReason ?? .questionBankExhausted
         )
     }
 
@@ -297,31 +219,6 @@ public struct AdaptivePlacementEngine: Sendable {
         return weights.map { $0 / total }
     }
 
-    private func selectionScore(
-        _ question: PlacementQuestion,
-        skillCounts: [PlacementSkill: Int],
-        minimumSkillCount: Int,
-        previousSkill: PlacementSkill?,
-        previousFormat: PlacementQuestionFormat?,
-        targetAbility: Double,
-        posteriorProbabilities: [Double]
-    ) -> Double {
-        let information = zip(Self.thetaGrid, posteriorProbabilities)
-            .reduce(0) { partial, pair in
-                partial + pair.1 * Self.information(theta: pair.0, question: question)
-            }
-        let needsSkillCoverage = skillCounts[question.skill, default: 0] == minimumSkillCount
-        let coverageBoost = needsSkillCoverage ? 1.12 : 1
-        let skillRepetitionPenalty = previousSkill == question.skill ? 0.9 : 1
-        let formatRepetitionPenalty = previousFormat == question.format ? 0.88 : 1
-        let distancePenalty = exp(-0.22 * abs(question.difficulty - targetAbility))
-        return information
-            * coverageBoost
-            * skillRepetitionPenalty
-            * formatRepetitionPenalty
-            * distancePenalty
-    }
-
     private static func probabilityCorrect(
         theta: Double,
         question: PlacementQuestion
@@ -331,40 +228,6 @@ public struct AdaptivePlacementEngine: Sendable {
             1 + exp(-question.discrimination * (theta - question.difficulty))
         )
         return guessing + (1 - guessing) * logistic
-    }
-
-    private static func information(
-        theta: Double,
-        question: PlacementQuestion
-    ) -> Double {
-        let probability = probabilityCorrect(theta: theta, question: question)
-        let guessing = 1 / Double(question.options.count)
-        let adjustedProbability = (probability - guessing) / (1 - guessing)
-        return pow(question.discrimination, 2)
-            * (1 - probability)
-            / max(probability, 1e-12)
-            * pow(adjustedProbability, 2)
-    }
-
-    private static func priorMean(for level: DifficultyLevel) -> Double {
-        switch level {
-        case .kindergarten: -2.9
-        case .primary1: -2.6
-        case .primary2: -2.3
-        case .primary3: -2
-        case .primary4: -1.7
-        case .primary5: -1.4
-        case .primary6: -1.1
-        case .junior1: -0.78
-        case .junior2: -0.43
-        case .junior3: -0.08
-        case .senior1: 0.28
-        case .senior2: 0.63
-        case .senior3: 0.98
-        case .undergraduate: 1.35
-        case .postgraduate: 1.8
-        case .advanced: 2.35
-        }
     }
 
     private func stableChoiceIndex(upperBound: Int) -> Int {
@@ -378,33 +241,7 @@ public struct AdaptivePlacementEngine: Sendable {
         return Int(value % UInt64(upperBound))
     }
 
-    private var hasRequiredSkillCoverage: Bool {
-        let counts = Dictionary(grouping: responses, by: \.skill).mapValues(\.count)
-        return PlacementSkill.allCases.allSatisfy {
-            counts[$0, default: 0] >= Self.minimumQuestionsPerSkill
-        }
-    }
-
-    /// 同一能力中“较易题错、明显更难题对”的成对倒置数。
-    /// 少量倒置很常见；多次出现时继续取样，避免幸运猜测触发提前停止。
-    private var inversionCount: Int {
-        Dictionary(grouping: responses, by: \.skill).values.reduce(0) { total, items in
-            total + items.indices.reduce(0) { skillTotal, lhsIndex in
-                skillTotal + items.indices.dropFirst(lhsIndex + 1).reduce(0) { pairTotal, rhsIndex in
-                    let lhs = items[lhsIndex]
-                    let rhs = items[rhsIndex]
-                    let easier = lhs.difficulty <= rhs.difficulty ? lhs : rhs
-                    let harder = lhs.difficulty <= rhs.difficulty ? rhs : lhs
-                    let isInversion = harder.difficulty - easier.difficulty >= 0.45
-                        && !easier.wasCorrect
-                        && harder.wasCorrect
-                    return pairTotal + (isInversion ? 1 : 0)
-                }
-            }
-        }
-    }
-
-    /// 90% 后验可信区间，比“均值 ± 1 标准误”更诚实地表达短测不确定性。
+    /// Internal posterior range; the user-facing result remains a provisional learning suggestion.
     private func posteriorCredibleRange() -> ClosedRange<Double> {
         posteriorQuantile(0.05)...posteriorQuantile(0.95)
     }

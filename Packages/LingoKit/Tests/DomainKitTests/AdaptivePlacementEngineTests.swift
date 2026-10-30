@@ -32,10 +32,10 @@ struct AdaptivePlacementEngineTests {
             }
         )
 
-        #expect(questions.count == 96)
+        #expect(questions.count == 102)
         #expect(Set(questions.map(\.id)).count == questions.count)
         for skill in PlacementSkill.allCases {
-            #expect(questions.filter { $0.skill == skill }.count == 24)
+            #expect(questions.filter { $0.skill == skill }.count >= 24)
             #expect(Set(questions.filter { $0.skill == skill }.map(\.format)).count >= 2)
         }
         #expect(
@@ -60,139 +60,218 @@ struct AdaptivePlacementEngineTests {
         #expect(correctEngine.ability > incorrectEngine.ability)
     }
 
-    @Test("前十二题覆盖四种能力，完整短测不重复且难度变化平滑")
-    func selectionDoesNotRepeatAndBalancesSkills() throws {
-        let questions = try bundledQuestions()
-        var engine = AdaptivePlacementEngine(priorLevel: .junior3)
-        var selectedIDs = Set<String>()
-        var selectedQuestions: [PlacementQuestion] = []
+    @Test("所有自评水平都从基础题开始", arguments: DifficultyLevel.allCases)
+    func easyStart(_ level: DifficultyLevel) throws {
+        let engine = AdaptivePlacementEngine(priorLevel: level, selectionSeed: 42)
+        let question = try #require(engine.nextQuestion(in: bundledQuestions()))
+        #expect(question.difficulty <= -2.75)
+        #expect(question.skill != .listening)
+    }
 
-        let requiredCoverageCount = AdaptivePlacementEngine.minimumQuestionsPerSkill
-            * PlacementSkill.allCases.count
-        for _ in 0..<AdaptivePlacementEngine.minimumQuestionCount {
+    @Test("累计三次错误立即结束，正确答案不会清零错误次数")
+    func threeCumulativeMistakes() throws {
+        var engine = AdaptivePlacementEngine(priorLevel: .advanced, selectionSeed: 42)
+        let questions = try bundledQuestions()
+        for correct in [false, true, false, true, false] {
             let question = try #require(engine.nextQuestion(in: questions))
-            #expect(selectedIDs.insert(question.id).inserted)
-            selectedQuestions.append(question)
-            let selectedIndex = selectedQuestions.count.isMultiple(of: 2)
-                ? question.correctIndex
-                : (question.correctIndex + 1) % question.options.count
-            engine.record(question: question, selectedIndex: selectedIndex)
+            engine.record(question: question, selectedIndex: correct ? question.correctIndex : (question.correctIndex + 1) % 4)
         }
-
-        #expect(Set(engine.responses.map(\.skill)).count == PlacementSkill.allCases.count)
-        for skill in PlacementSkill.allCases {
-            let matching = engine.responses.prefix(requiredCoverageCount).filter { $0.skill == skill }
-            #expect(matching.count == AdaptivePlacementEngine.minimumQuestionsPerSkill)
-            #expect(Set(matching.map(\.format)).count >= 2)
-        }
-        for pair in zip(selectedQuestions, selectedQuestions.dropFirst()) {
-            #expect(
-                abs(pair.1.difficulty - pair.0.difficulty)
-                    <= AdaptivePlacementEngine.maximumDifficultyStep + 0.001
-            )
-        }
+        #expect(engine.responses.count == 5)
+        #expect(engine.mistakeCount == 3)
+        #expect(engine.stopReason == .threeMistakes)
+        #expect(engine.nextQuestion(in: questions) == nil)
+        let count = engine.responses.count
+        engine.record(question: questions[0], selectedIndex: 0)
+        #expect(engine.responses.count == count)
     }
 
-    @Test("测评在十四至二十题之间按稳定度停止")
-    func stoppingRuleIsBounded() throws {
+    @Test("错误、跳过和正确路径均不回退难度；听力最多两题且不在开头", arguments: [true, false])
+    func progressivePath(allCorrect: Bool) throws {
         let questions = try bundledQuestions()
-        var engine = AdaptivePlacementEngine(priorLevel: .senior2)
-
-        while let question = engine.nextQuestion(in: questions) {
-            let selectedIndex = engine.responses.count.isMultiple(of: 2)
-                ? question.correctIndex
-                : (question.correctIndex + 1) % question.options.count
-            engine.record(question: question, selectedIndex: selectedIndex)
-        }
-
-        #expect(engine.responses.count >= AdaptivePlacementEngine.minimumQuestionCount)
-        #expect(engine.responses.count <= AdaptivePlacementEngine.maximumQuestionCount)
-        #expect(engine.shouldStop)
-        #expect(engine.result().answeredCount == engine.responses.count)
-    }
-
-    @Test("持续答对和持续答错会得到显著不同的校准结果")
-    func strongAndEmergingLearnersSeparate() throws {
-        let questions = try bundledQuestions()
-        var strong = AdaptivePlacementEngine(priorLevel: .junior3)
-        var emerging = AdaptivePlacementEngine(priorLevel: .junior3)
-
-        while let question = strong.nextQuestion(in: questions) {
-            strong.record(question: question, selectedIndex: question.correctIndex)
-        }
-        while let question = emerging.nextQuestion(in: questions) {
-            emerging.record(
-                question: question,
-                selectedIndex: (question.correctIndex + 1) % question.options.count
-            )
-        }
-
-        #expect(strong.ability > 1)
-        #expect(emerging.ability < -1.5)
-        #expect(strong.result().score - emerging.result().score >= 40)
-    }
-
-    @Test("短测给出包含中心分数的九成可信区间与等级稳定度")
-    func resultIncludesHonestUncertainty() throws {
-        let questions = try bundledQuestions()
-        var engine = AdaptivePlacementEngine(priorLevel: .senior2)
-
-        while let question = engine.nextQuestion(in: questions) {
-            let selectedIndex = engine.responses.count % 3 == 0
-                ? (question.correctIndex + 1) % question.options.count
-                : question.correctIndex
-            engine.record(question: question, selectedIndex: selectedIndex)
-        }
-
-        let result = engine.result()
-        #expect(result.scoreRange.contains(result.score))
-        #expect((0...1).contains(result.levelConfidence))
-        #expect(result.referenceLevel == AdaptivePlacementEngine.referenceLevel(for: result.ability))
-        #expect(result.skillResults.allSatisfy { $0.total >= 3 })
-    }
-
-    @Test("不同真实能力的模拟作答得到单调且相互分离的估计")
-    func simulatedAbilitiesRemainOrdered() throws {
-        let questions = try bundledQuestions()
-        let trueAbilities = [-2.85, -2.3, -1.7, -1.1, -0.45, 0.25, 0.95, 1.65, 2.4]
-        let simulations = trueAbilities.enumerated().map { index, trueAbility in
-            var engine = AdaptivePlacementEngine(
-                priorLevel: .senior2,
-                selectionSeed: UInt64(index + 100)
-            )
+        for seed in 0..<24 {
+            var engine = AdaptivePlacementEngine(priorLevel: .senior3, selectionSeed: UInt64(seed))
+            var sequence: [PlacementQuestion] = []
             while let question = engine.nextQuestion(in: questions) {
-                let guessing = 1 / Double(question.options.count)
-                let logistic = 1 / (
-                    1 + exp(-question.discrimination * (trueAbility - question.difficulty))
-                )
-                let probability = guessing + (1 - guessing) * logistic
-                let selectedIndex = probability >= 0.625
-                    ? question.correctIndex
-                    : (question.correctIndex + 1) % question.options.count
-                engine.record(question: question, selectedIndex: selectedIndex)
+                sequence.append(question)
+                if allCorrect { engine.record(question: question, selectedIndex: question.correctIndex) }
+                else if sequence.count.isMultiple(of: 3) { engine.skip(question: question) }
+                else { engine.record(question: question, selectedIndex: (question.correctIndex + 1) % 4) }
             }
-            return (
-                ability: engine.ability,
-                count: engine.responses.count,
-                confidence: engine.levelConfidence
-            )
+            #expect(sequence.count <= 20)
+            #expect(Set(sequence.map(\.id)).count == sequence.count)
+            #expect(sequence.filter { $0.skill == .listening }.count <= 2)
+            #expect(sequence.prefix(7).allSatisfy { $0.skill != .listening })
+            for (left, right) in zip(sequence, sequence.dropFirst()) {
+                #expect(right.difficulty >= left.difficulty)
+                #expect(right.difficulty - left.difficulty <= AdaptivePlacementEngine.maximumDifficultyStep + 0.001)
+            }
+            if !allCorrect { #expect(engine.mistakeCount == 3) }
         }
-        let estimates = simulations.map(\.ability)
+    }
 
-        for pair in zip(estimates, estimates.dropFirst()) {
-            #expect(pair.0 < pair.1)
+    @Test("全错得到较低起点，全对可探测高阶；自评不掩盖三次基础题错误")
+    func separatesLearners() throws {
+        let questions = try bundledQuestions()
+        var strong = AdaptivePlacementEngine(priorLevel: .primary3, selectionSeed: 42)
+        var emerging = AdaptivePlacementEngine(priorLevel: .advanced, selectionSeed: 42)
+        while let q = strong.nextQuestion(in: questions) { strong.record(question: q, selectedIndex: q.correctIndex) }
+        while let q = emerging.nextQuestion(in: questions) { emerging.record(question: q, selectedIndex: (q.correctIndex + 1) % 4) }
+        #expect(emerging.responses.count == 3)
+        #expect(emerging.result().ability < -2.4)
+        #expect(emerging.result().difficultyLevel == .kindergarten)
+        #expect((-3.25...3.25).contains(emerging.result().ability))
+        #expect(strong.result().ability > 1.5)
+        #expect(strong.result().score - emerging.result().score >= 40)
+        #expect(emerging.result().levelConfidence < 0.5)
+    }
+
+    @Test("跳过不算错误、不更新能力；全跳过不会产生可应用的定级")
+    func skipsAreNotWrongOrProficiencyEvidence() throws {
+        let questions = try bundledQuestions()
+        var engine = AdaptivePlacementEngine(priorLevel: .advanced, selectionSeed: 42)
+        let ability = engine.ability
+        while let q = engine.nextQuestion(in: questions) { engine.skip(question: q) }
+        #expect(engine.mistakeCount == 0)
+        #expect(engine.ability == ability)
+        #expect(engine.result().answeredCount == 0)
+        #expect(!engine.result().hasSufficientEvidence)
+        #expect(engine.responses.count <= 20)
+        var partial = AdaptivePlacementEngine(priorLevel: .advanced, selectionSeed: 42)
+        for _ in 0..<3 {
+            let q = try #require(partial.nextQuestion(in: questions))
+            partial.record(question: q, selectedIndex: q.correctIndex)
         }
-        #expect((estimates.last ?? 0) - (estimates.first ?? 0) >= 3.5)
-        #expect(
-            simulations.allSatisfy { $0.count >= AdaptivePlacementEngine.minimumQuestionCount },
-            "任何作答路径都不能少于 14 题：\(simulations)"
-        )
-        #expect(simulations.allSatisfy { $0.count <= AdaptivePlacementEngine.maximumQuestionCount })
-        #expect(
-            simulations.contains { $0.count < AdaptivePlacementEngine.maximumQuestionCount },
-            "稳定作答应能在 20 题前结束：\(simulations)"
-        )
-        #expect(Set(simulations.map(\.count)).count >= 2, "题量应随测量不确定性动态变化")
+        let highest = try #require(partial.responses.map(\.difficulty).max())
+        while let q = partial.nextQuestion(in: questions) { partial.skip(question: q) }
+        #expect(partial.result().ability <= highest + 0.35)
+        #expect(partial.result().scoreRange.contains(partial.result().score))
+    }
+
+    @Test("无效答案和重复提交不增加错误或证据")
+    func rejectsInvalidAndDuplicateResponses() throws {
+        var engine = AdaptivePlacementEngine(priorLevel: .junior3)
+        let q = try #require(engine.nextQuestion(in: bundledQuestions()))
+        engine.record(question: q, selectedIndex: -1)
+        #expect(engine.responses.isEmpty)
+        engine.record(question: q, selectedIndex: q.correctIndex)
+        engine.record(question: q, selectedIndex: (q.correctIndex + 1) % 4)
+        engine.skip(question: q)
+        #expect(engine.responses.count == 1)
+        #expect(engine.mistakeCount == 0)
+    }
+
+    @Test("选择只更新草稿；确认后才计分且不能空提交")
+    func explicitConfirmation() throws {
+        var session = PlacementSession(questions: try bundledQuestions(), priorLevel: .junior3, seed: 42)
+        confirm(&session, expected: false)
+        let q = try #require(session.current?.question)
+        session.select(q.correctIndex)
+        #expect(session.engine.responses.isEmpty)
+        confirm(&session)
+        #expect(session.engine.responses.count == 1)
+        confirm(&session, expected: false)
+        #expect(!session.isComplete)
+    }
+
+    @Test("返回保留选项顺序和答案；同答不重复计分，改答移除依赖的后续证据")
+    func backAndRevision() throws {
+        var session = PlacementSession(questions: try bundledQuestions(), priorLevel: .junior3, seed: 42)
+        let first = try #require(session.current)
+        session.select(first.question.correctIndex); confirm(&session)
+        let second = try #require(session.current)
+        session.select(second.question.correctIndex); confirm(&session)
+        session.goBack()
+        #expect(session.current?.optionOrder == second.optionOrder)
+        #expect(session.current?.selectedIndex == second.question.correctIndex)
+        confirm(&session)
+        #expect(session.engine.responses.count == 2)
+        session.goBack(); session.goBack()
+        #expect(session.current?.optionOrder == first.optionOrder)
+        session.select((first.question.correctIndex + 1) % 4)
+        confirm(&session)
+        #expect(session.engine.responses.count == 1)
+        #expect(session.engine.mistakeCount == 1)
+        #expect(session.current?.selectedIndex == nil)
+        #expect(session.entries.count == 2)
+    }
+
+    @Test("返回听力题保留播放次数；播放之前可跳过但不能确认答案")
+    func listeningNavigation() throws {
+        var session = PlacementSession(questions: try bundledQuestions(), priorLevel: .junior3, seed: 42)
+        while let entry = session.current, entry.question.skill != .listening, !session.isComplete {
+            session.select(entry.question.correctIndex); confirm(&session)
+        }
+        #expect(session.current?.question.skill == .listening)
+        session.select(0); #expect(!session.canConfirm)
+        session.recordListeningPlay()
+        let entry = try #require(session.current)
+        session.select(entry.question.correctIndex); confirm(&session)
+        session.goBack()
+        #expect(session.current?.question.id == entry.question.id)
+        #expect(session.current?.listeningPlayCount == 1)
+        session.recordListeningPlay(); session.recordListeningPlay()
+        #expect(session.current?.listeningPlayCount == 2)
+        session.skip()
+        #expect(session.engine.skippedCount == 1)
+        #expect(session.engine.mistakeCount == 0)
+    }
+
+    @Test("确认第三次错误才结束，选项点击和结束后的操作不重复提交")
+    func sessionStopsOnThirdConfirmedMistake() throws {
+        var session = PlacementSession(questions: try bundledQuestions(), priorLevel: .advanced, seed: 42)
+        for index in 0..<3 {
+            let q = try #require(session.current?.question)
+            session.select((q.correctIndex + 1) % 4)
+            #expect(!session.isComplete)
+            confirm(&session)
+            #expect(session.isComplete == (index == 2))
+        }
+        session.skip(); session.goBack()
+        confirm(&session, expected: false)
+        #expect(session.engine.responses.count == 3)
+        #expect(session.engine.result().mistakeCount == 3)
+    }
+
+    @Test("修正旧错误后重新计数，不沿用后来题目的作答")
+    func correctEarlierMistake() throws {
+        var session = PlacementSession(questions: try bundledQuestions(), priorLevel: .junior3, seed: 42)
+        let first = try #require(session.current)
+        session.select((first.question.correctIndex + 1) % 4); confirm(&session)
+        let second = try #require(session.current)
+        session.select((second.question.correctIndex + 1) % 4); confirm(&session)
+        #expect(session.engine.mistakeCount == 2)
+        session.goBack(); session.goBack()
+        session.select(first.question.correctIndex); confirm(&session)
+        #expect(session.engine.mistakeCount == 0)
+        #expect(session.engine.responses.count == 1)
+        #expect(!session.isComplete)
+        #expect(session.current?.selectedIndex == nil)
+    }
+
+    @Test("多种模拟能力下的中位建议随能力递增，且所有路径受题量和错误上限约束")
+    func simulatedPopulation() throws {
+        let questions = try bundledQuestions()
+        let levels = [-2.8, -1.5, 0.0, 1.5, 2.8]
+        var medians: [Double] = []
+        for ability in levels {
+            var estimates: [Double] = []
+            for seed in 1...60 {
+                var random = UInt64(seed)
+                var engine = AdaptivePlacementEngine(priorLevel: .advanced, selectionSeed: UInt64(seed))
+                while let q = engine.nextQuestion(in: questions) {
+                    random = random &* 6364136223846793005 &+ 1
+                    let draw = Double(random >> 11) / Double(UInt64.max >> 11)
+                    let probability = 0.25 + 0.75 / (1 + exp(-q.discrimination * (ability - q.difficulty)))
+                    engine.record(question: q, selectedIndex: draw < probability ? q.correctIndex : (q.correctIndex + 1) % 4)
+                }
+                #expect(engine.responses.count <= 20)
+                #expect(engine.mistakeCount <= 3)
+                estimates.append(engine.result().ability)
+            }
+            estimates.sort(); medians.append(estimates[estimates.count / 2])
+        }
+        for (lower, upper) in zip(medians, medians.dropFirst()) { #expect(lower < upper, "\(medians)") }
+        #expect(medians.last! - medians.first! > 2.5)
     }
 
     @Test(
@@ -249,6 +328,21 @@ struct AdaptivePlacementEngineTests {
             alternateSequences.insert(ids)
         }
         #expect(alternateSequences.count >= 3)
+    }
+
+    @Test("空题库不能产生题目或可应用的结果")
+    func emptyBankIsSafe() {
+        var session = PlacementSession(questions: [], priorLevel: .advanced)
+        #expect(session.isComplete)
+        #expect(session.current == nil)
+        confirm(&session, expected: false)
+        session.skip(); session.goBack()
+        #expect(!session.engine.result().hasSufficientEvidence)
+    }
+
+    private func confirm(_ session: inout PlacementSession, expected: Bool = true) {
+        let actual = session.confirm()
+        #expect(actual == expected)
     }
 
     private func bundledQuestions() throws -> [PlacementQuestion] {
