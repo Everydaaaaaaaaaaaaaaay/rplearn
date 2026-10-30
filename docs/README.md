@@ -19,6 +19,7 @@
 | 公共题库与任意角色组卷 | [规则、管理与发布回退](learning-program/shared-question-bank-2026-10-06.md) |
 | 学习系统历史资料（旧方案已撤下） | [历史研究](learning-program/README.md)、[历史工作流](learning-program/workflow.md)、[进度账本](learning-program/status.md) |
 | NPC 与关系 | [人物多样性](npc-persona-diversity.md)、[关系系统](relationship-system.md) |
+| 赴约互动故事（规划） | [xiaoshuo 机制分析、自由输入边界与实施设计](appointment-story-design-2026-10-30.md) |
 | 积分与成本 | [模型积分](model-credits.md)、[成本评测](user-cost-evaluation.md) |
 | 部署与模型运营 | [部署](backend/DEPLOYMENT.md)、[AI 控制面](backend/AI_CONTROL_PLANE.md)；仅在对应任务使用 |
 
