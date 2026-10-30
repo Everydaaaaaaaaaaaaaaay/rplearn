@@ -584,7 +584,7 @@ public actor BackendClient {
         }
         var request = URLRequest(
             url: url,
-            timeoutInterval: configuration.requestTimeout
+            timeoutInterval: path == "/v1/grammar/analysis" ? max(configuration.requestTimeout, 75) : configuration.requestTimeout
         )
         request.httpMethod = method
         request.httpBody = body

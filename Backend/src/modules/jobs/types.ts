@@ -3,6 +3,7 @@ export const AUTH_PASSWORD_RESET_JOB = "auth.password_reset";
 export const ACCOUNT_PURGE_JOB = "account.purge";
 export const MEDIA_DELETE_JOB = "media.delete";
 export const DICTIONARY_EXAMPLE_GENERATION_JOB = "dictionary.example_generation";
+export const GRAMMAR_LIBRARY_REVIEW_JOB = "grammar.library_review";
 export const DICTIONARY_EXAMPLE_TRANSLATION_JOB = "dictionary.example_translation";
 
 export type AuthEmailJobType =

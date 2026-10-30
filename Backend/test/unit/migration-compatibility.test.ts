@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { assertCompatibleMigrationInventory } from "../../src/db/migration-compatibility.js";
 
 const previous = { hash: "previous", created_at: "1791244800000" };
@@ -7,6 +9,20 @@ const addition = {
   created_at: "1791676800000",
 };
 describe("明确登记的兼容迁移", () => {
+  it("共享语法库新增表和独立任务可保留数据回退，内容变动则拒绝", () => {
+    const hash = createHash("sha256")
+      .update(
+        readFileSync(
+          new URL("../../migrations/0044_shared_grammar.sql", import.meta.url),
+        ),
+      )
+      .digest("hex");
+    const row = { hash, created_at: "1793404800000" };
+    expect(() => assertCompatibleMigrationInventory(1, [previous, row])).not.toThrow();
+    expect(() =>
+      assertCompatibleMigrationInventory(1, [previous, { ...row, hash: "changed" }]),
+    ).toThrow();
+  });
   it("现有迁移完整时通过，缺少迁移则拒绝", () => {
     expect(() => assertCompatibleMigrationInventory(1, [previous])).not.toThrow();
     expect(() => assertCompatibleMigrationInventory(2, [previous])).toThrow();

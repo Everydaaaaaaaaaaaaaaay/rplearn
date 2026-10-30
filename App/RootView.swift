@@ -1178,6 +1178,17 @@ struct RootView: View {
                     ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
             }
         )
+        if !bypassesAuthenticationForUITesting {
+            dependencies.sharedGrammarAnalysis = environment.sharedGrammarAnalyzer
+        }
+        #if DEBUG
+        if bypassesAuthenticationForUITesting,
+           ProcessInfo.processInfo.environment["UI_TEST_GRAMMAR_FIXTURE"] != nil {
+            dependencies.sharedGrammarAnalysis = { sentence, level in
+                try await DebugGrammarAnalysisFixture.shared.analyze(sentence: sentence, level: level)
+            }
+        }
+        #endif
         #if DEBUG
         if bypassesAuthenticationForUITesting {
             dependencies.learningPage = { character, visible, openSettings in AnyView(Self.debugLearningPage(character, isVisible: visible, onOpenChatSettings: openSettings)) }

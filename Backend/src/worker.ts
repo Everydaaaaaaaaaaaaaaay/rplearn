@@ -138,6 +138,11 @@ async function main(): Promise<void> {
       : { processMediaDelete: mediaService.processDeletion }),
     processDictionaryTranslation: dictionaryTranslationProcessor.process,
     processDictionaryExamples: dictionaryExampleProcessor.process,
+    processGrammarReview: createGrammarService(
+      new SharedGrammarRepository(database, await loadGrammarSeed()),
+      aiService,
+      createJobPayloadCipher(config),
+    ).curate,
     repository: new JobRepository(database),
     workerId,
   });
@@ -265,3 +270,6 @@ void main().catch((error: unknown) => {
   );
   process.exitCode = 1;
 });
+import { SharedGrammarRepository } from "./modules/grammar/repository.js";
+import { createGrammarService } from "./modules/grammar/service.js";
+import { loadGrammarSeed } from "./modules/grammar/seed.js";

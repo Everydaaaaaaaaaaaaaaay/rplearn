@@ -9,19 +9,26 @@ public struct AIGrammarAnalysis: Sendable, Codable, Equatable {
         public var pattern: String
         public var explanationZh: String
         public var learnerTipZh: String
+        public var canonicalPointID: String?
+        enum CodingKeys: String, CodingKey {
+            case title, quote, pattern, explanationZh, learnerTipZh
+            case canonicalPointID = "canonicalPointId"
+        }
 
         public init(
             title: String,
             quote: String,
             pattern: String,
             explanationZh: String,
-            learnerTipZh: String
+            learnerTipZh: String,
+            canonicalPointID: String? = nil
         ) {
             self.title = title
             self.quote = quote
             self.pattern = pattern
             self.explanationZh = explanationZh
             self.learnerTipZh = learnerTipZh
+            self.canonicalPointID = canonicalPointID
         }
     }
 
@@ -38,13 +45,17 @@ public struct AIGrammarAnalysis: Sendable, Codable, Equatable {
 public struct GrammarAnalysisService: Sendable {
     private let llm: any LLMClient
     private let timeout: Duration
+    private let sharedAnalysis: (@Sendable (String, String) async throws -> AIGrammarAnalysis)?
 
-    public init(llm: any LLMClient, timeout: Duration = .seconds(20)) {
+    public init(llm: any LLMClient, timeout: Duration = .seconds(60),
+                sharedAnalysis: (@Sendable (String, String) async throws -> AIGrammarAnalysis)? = nil) {
         self.llm = llm
         self.timeout = timeout
+        self.sharedAnalysis = sharedAnalysis
     }
 
     public func analyze(sentence: String, learnerLevel: String) async throws -> AIGrammarAnalysis {
+        if let sharedAnalysis { return try await sharedAnalysis(sentence, learnerLevel) }
         let primaryRequest = Self.makeRequest(
             task: .grammarExplain,
             sentence: sentence,

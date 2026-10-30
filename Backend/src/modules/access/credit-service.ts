@@ -41,6 +41,7 @@ const SERVICE_TASKS = [
   "proactive_message",
   "quiz",
   "speech_feedback",
+  "grammar_library_review",
 ] as const;
 const serviceTaskSet = new Set<string>(SERVICE_TASKS);
 const SERVICE_DAILY_LIMIT_CREDITS = {

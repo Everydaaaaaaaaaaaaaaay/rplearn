@@ -190,7 +190,7 @@ public struct ChatView: View {
         .sheet(item: $grammarAnalysis) { request in
             GrammarAnalysisSheet(
                 request: request,
-                service: GrammarAnalysisService(llm: deps.llm),
+                service: GrammarAnalysisService(llm: deps.llm, sharedAnalysis: deps.sharedGrammarAnalysis),
                 initialAIAnalysis: grammarAICache[request.id],
                 dictionary: deps.dictionary,
                 grammar: deps.grammarPoints,

@@ -1,9 +1,16 @@
 import LLMKit
+import Foundation
 import Testing
 @testable import DomainKit
 
 @Suite("GrammarAnalysisService")
 struct GrammarAnalysisServiceTests {
+    @Test("共享接口的稳定语法点ID在客户端解码后保留")
+    func sharedCanonicalIdentityDecodes() throws {
+        let data = Data(#"{"summaryZh":"完成时","points":[{"title":"现在完成时","quote":"have finished","pattern":"have + participle","explanationZh":"动作已经完成","learnerTipZh":"使用过去分词","canonicalPointId":"present-perfect"}]}"#.utf8)
+        let result = try JSONDecoder().decode(AIGrammarAnalysis.self, from: data)
+        #expect(result.points[0].canonicalPointID == "present-perfect")
+    }
     @Test("使用独立 fast 任务并解析多个结构化语法点")
     func requestAndDecode() async throws {
         let mock = MockLLMProvider(completeHandler: { request in

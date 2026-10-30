@@ -44,6 +44,7 @@ final class AppEnvironment {
         guard resources == nil else { return }
         let startedAt = ContinuousClock.now
         resources = await resourcesTask.value
+        Task { await refreshSharedGrammarLibrary() }
         Log.app.info("启动耗时：等待随包资源 \(String(describing: startedAt.duration(to: .now)), privacy: .public)")
     }
 
@@ -93,7 +94,9 @@ final class AppEnvironment {
             let bundle = Bundle.main
             return LaunchResources(
                 dictionary: try! DictDatabase(databaseURL: bundle.url(forResource: "learner_dictionary", withExtension: "sqlite")!),
-                grammarPoints: try! GrammarPointStore(url: bundle.url(forResource: "grammar_points", withExtension: "json")!),
+                grammarPoints: try! GrammarPointStore(url: bundle.url(forResource: "grammar_points", withExtension: "json")!,
+                    sharedCacheURL: FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+                        .appendingPathComponent("LingoTrip/SharedGrammar/v1.json")),
                 regionCatalog: try! RegionCatalog(url: bundle.url(forResource: "regions", withExtension: "json")!)
             )
         }
@@ -326,6 +329,11 @@ final class AppEnvironment {
         }
         if ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1" {
             try await seedMarketingCapture(into: account)
+        }
+        if ProcessInfo.processInfo.environment["UI_TEST_GRAMMAR_FIXTURE"] != nil,
+           let ruby = try await account.rosterStore.allCharacters().first(where: { $0.card.regionID == "melbourne" && $0.isMainCharacter }) {
+            let conversation = try await account.chatStore.openConversation(characterID: ruby.id)
+            _ = try await account.chatStore.appendMessage(conversationID: conversation.id, role: .assistant, text: "Amazing!")
         }
         needsOnboarding = ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] != "1"
         return userID

@@ -1,4 +1,8 @@
 import { registerLearningBankConsole } from "./modules/learning/bank-console.js";
+import { SharedGrammarRepository } from "./modules/grammar/repository.js";
+import { createGrammarService } from "./modules/grammar/service.js";
+import { registerGrammarRoutes } from "./modules/grammar/routes.js";
+import { loadGrammarSeed } from "./modules/grammar/seed.js";
 import { loadPromotionCourses } from "./modules/learning/promotion-content.js";
 import { fileURLToPath } from "node:url";
 import { loadGenerationBlueprints } from "./modules/learning/generation-content.js";
@@ -213,6 +217,15 @@ async function main(): Promise<void> {
   registerAiRoutes(app, authService, aiService, {
     guestAccessEnabled: false,
   });
+  registerGrammarRoutes(
+    app,
+    authService,
+    createGrammarService(
+      new SharedGrammarRepository(dependencies.database, await loadGrammarSeed()),
+      aiService,
+      createJobPayloadCipher(config),
+    ),
+  );
   const dictionaryTranslationService = createDictionaryTranslationService(
     config,
     dependencies.database,

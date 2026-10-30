@@ -24,7 +24,13 @@ const aiRequestSchema = z.object({
     .min(1)
     .max(100),
   responseFormat: z.enum(["text", "json_object"]).default("text"),
-  task: z.string().regex(/^[a-z][a-z0-9_]{1,63}$/),
+  task: z
+    .string()
+    .regex(/^[a-z][a-z0-9_]{1,63}$/)
+    .refine(
+      (task) => task !== "grammar_analysis" && task !== "grammar_library_review",
+      "Use the grammar endpoint",
+    ),
 });
 const guestDeviceIdSchema = z
   .string()

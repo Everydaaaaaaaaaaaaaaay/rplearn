@@ -264,6 +264,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         "proactive_message",
         "quiz",
         "speech_feedback",
+        "grammar_library_review",
       ];
       const tinyUsage = {
         inputTokens: 1,

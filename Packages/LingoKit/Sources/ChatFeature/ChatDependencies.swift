@@ -52,6 +52,7 @@ public struct ChatDependencies: Sendable {
     public let llm: any LLMClient
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
+    public var sharedGrammarAnalysis: (@Sendable (String, String) async throws -> AIGrammarAnalysis)?
     public let speech: any SpeechService
     public let translator: TranslationService
 
