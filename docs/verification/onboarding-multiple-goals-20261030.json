@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-30",
+  "feature": "注册问卷英语使用目标多选",
+  "commits": {
+    "rollbackCompatibility": "be62ce835f32",
+    "multipleGoals": "25162a0326cb",
+    "accessibility": "7b1ec6cb"
+  },
+  "behavior": [
+    "七个目标可多选，再次点击可取消，至少一项才能继续",
+    "前后切换保留选择，保存全部目标，去重并保留选择顺序",
+    "本地落盘、账号同步、游客导入和聊天上下文均使用全部目标",
+    "旧单目标档案回退为单元素数组，旧客户端更新继续兼容"
+  ],
+  "checks": {
+    "iosHosted": {
+      "passed": 34,
+      "parameterizedExecutions": 52,
+      "failed": 0,
+      "suites": [
+        "EconomyStoreTests",
+        "BackendUserStateCoordinatorTests",
+        "PromptBuilderTests"
+      ],
+      "resultBundle": "build/DerivedData/VerificationResults/20261030T125711Z-94165.xcresult"
+    },
+    "backendUnit": {
+      "passed": 9,
+      "failed": 0
+    },
+    "backendIsolatedIntegration": {
+      "passed": 11,
+      "failed": 0,
+      "evidence": "build/verification/multiple-learning-goals-acceptance-20261030/report.json"
+    },
+    "backendTypecheck": "passed",
+    "backendTargetedLint": "passed",
+    "backendArchitecture": "278 modules / 826 dependencies; passed",
+    "nativePreview": {
+      "latestBuildInstalled": true,
+      "device": "iPhone 18 Pro / iOS 27.0",
+      "method": "Scripts/preview.sh; Computer Use via Device Hub; simctl screenshot",
+      "inspected": [
+        "同时选中两个目标",
+        "取消所有选择时继续按钮禁用",
+        "返回上一页后保留选择",
+        "无障碍按钮角色与已选/未选状态准确"
+      ],
+      "leftOn": "真实注册问卷的目标多选页面（隔离内存预览）",
+      "screenshot": "build/multiple-learning-goals-final.png"
+    }
+  },
+  "production": {
+    "release": "originals-25162a0326cb",
+    "rollbackRelease": "originals-be62ce835f32",
+    "archiveSHA256": "f067eb29a91b5660608f160abd743ed1138096fae87581afd02c1e9c165ea074",
+    "localRemoteArchiveHashesMatched": true,
+    "guardedDeployAndStableObservation": "passed",
+    "api": "active",
+    "worker": "active",
+    "internalReady": "ready",
+    "publicReady": "ready",
+    "migration": "0043_multiple_learning_goals; additive nullable enum array; existing profiles retained",
+    "domainProbe": {
+      "checkedAt": "2026-10-30T13:07:18.032Z",
+      "checks": [
+        "existing single-goal representation projects to a list",
+        "all selected goals survive the real profile write and idempotent retry",
+        "unrelated edits and snapshot reload retain secondary goals",
+        "old clients can still explicitly replace their single selection"
+      ],
+      "transactionRolledBack": true,
+      "retainedProbeAccounts": 0,
+      "realUserDataTouched": false,
+      "modelCalls": 0
+    },
+    "evidence": "build/multiple-learning-goals-deploy.log"
+  },
+  "testFixtureCorrections": [
+    "过期版本请求携带实际修改字段后再验证版本冲突",
+    "游客认领场景遵守起始城市剧情顺序，奖励断言取真实回执，保留重复认领的幂等验证"
+  ],
+  "appStorePublished": false
+}
