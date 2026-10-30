@@ -44,6 +44,16 @@ describe("明确登记的兼容迁移", () => {
       ]),
     ).toThrow();
   });
+  it("多选学习目标迁移仅接受已核对的摘要并支持回退", () => {
+    const hash = "c67cd02ad3db4eb5d84e21176a2c3066daf080bf00e122db2af346c30fd26743";
+    const goals = { hash, created_at: "1793318400000" };
+    expect(() =>
+      assertCompatibleMigrationInventory(1, [previous, goals]),
+    ).not.toThrow();
+    expect(() =>
+      assertCompatibleMigrationInventory(1, [previous, { ...goals, hash: "changed" }]),
+    ).toThrow();
+  });
   it("未知额外迁移或重复迁移不能因总数更多而通过", () => {
     expect(() =>
       assertCompatibleMigrationInventory(1, [
