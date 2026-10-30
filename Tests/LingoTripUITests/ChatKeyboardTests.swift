@@ -3,6 +3,17 @@ import XCTest
 @MainActor
 final class ChatKeyboardTests: XCTestCase {
     func testAutomaticReadingToggle() throws {
+        continueAfterFailure = false
+        var steps: [String] = []
+        let evidence = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("chat-header-controls", isDirectory: true)
+        try FileManager.default.createDirectory(at: evidence, withIntermediateDirectories: true)
+        defer {
+            let result: [String: Any] = ["steps": steps, "failures": testRun?.failureCount ?? -1,
+                "completed": steps.last == "learning-avatar-settings"]
+            try? JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys])
+                .write(to: evidence.appendingPathComponent("result.json"))
+        }
         let app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
         app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
@@ -14,20 +25,54 @@ final class ChatKeyboardTests: XCTestCase {
         let ruby = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Ruby Walker")).firstMatch
         XCTAssertTrue(ruby.waitForExistence(timeout: 15))
         ruby.tap()
-        app.buttons["chat.more"].tap()
+        XCTAssertFalse(app.buttons["chat.more"].exists)
         let toggle = app.buttons["chat.autoRead"]
         XCTAssertTrue(toggle.waitForExistence(timeout: 15))
-        XCTAssertTrue(toggle.label.contains("开启自动朗读"))
-        toggle.tap()
-        app.buttons["chat.more"].tap()
+        XCTAssertEqual(toggle.value as? String, "开启")
+        XCTAssertTrue(toggle.isHittable)
         XCTAssertTrue(toggle.label.contains("关闭自动朗读"))
+        steps.append("default-on-visible-controls")
+        toggle.tap()
+        XCTAssertEqual(toggle.value as? String, "关闭")
+        app.terminate()
+        app.launch()
+        XCTAssertTrue(ruby.waitForExistence(timeout: 15))
+        ruby.tap()
+        XCTAssertTrue(toggle.waitForExistence(timeout: 5))
+        XCTAssertEqual(toggle.value as? String, "关闭", "重新进入聊天应保留手动关闭的选择")
+        steps.append("off-preference-survives-relaunch")
+        toggle.tap()
+        XCTAssertEqual(toggle.value as? String, "开启")
+        app.buttons["chat.localTime"].tap()
+        let clock = app.staticTexts["墨尔本当地时间"]
+        XCTAssertTrue(clock.waitForExistence(timeout: 3))
+        steps.append("local-time-popover")
+        try app.screenshot().pngRepresentation.write(to: evidence.appendingPathComponent("clock.png"))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.55)).tap()
+        XCTAssertTrue(clock.waitForNonExistence(timeout: 3))
+        let headerImage = XCTAttachment(screenshot: app.screenshot())
+        headerImage.name = "Visible chat header controls and compact online status"
+        headerImage.lifetime = .keepAlways
+        add(headerImage)
+        try app.screenshot().pngRepresentation.write(to: evidence.appendingPathComponent("header.png"))
+        app.buttons["chat.settings"].tap()
+        XCTAssertTrue(app.navigationBars["聊天设置"].waitForExistence(timeout: 3))
+        steps.append("direct-settings")
+        app.buttons["完成"].tap()
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.88, dy: 0.35))
+            .press(forDuration: 0.08, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.12, dy: 0.35)))
+        let avatar = app.buttons["learning.character.settings"]
+        XCTAssertTrue(avatar.waitForExistence(timeout: 5))
+        avatar.tap()
+        XCTAssertTrue(app.navigationBars["聊天设置"].waitForExistence(timeout: 3))
+        try app.screenshot().pngRepresentation.write(to: evidence.appendingPathComponent("learning-settings.png"))
+        steps.append("learning-avatar-settings")
+        app.buttons["完成"].tap()
+        XCTAssertTrue(avatar.waitForExistence(timeout: 3))
         let image = XCTAttachment(screenshot: app.screenshot())
-        image.name = "Chat automatic reading enabled"
+        image.name = "Learning avatar opens chat settings"
         image.lifetime = .keepAlways
         add(image)
-        toggle.tap()
-        app.buttons["chat.more"].tap()
-        XCTAssertTrue(toggle.label.contains("开启自动朗读"))
     }
 
     func testDismissKeyboardPreservesDraft() throws {

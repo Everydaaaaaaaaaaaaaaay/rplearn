@@ -10,6 +10,7 @@ public struct CharacterLearningView: View {
     @State private var model: CharacterLearningModel
     private let character: CharacterDTO
     private let isVisible: Bool
+    private let onOpenChatSettings: (@MainActor @Sendable () -> Void)?
     private let speech: any SpeechService
     private let audioSession: AudioSessionCoordinator
     private let beforePlayback: @Sendable () async -> Void
@@ -28,8 +29,10 @@ public struct CharacterLearningView: View {
                 currentRegionID: @escaping @Sendable () async -> String? = { nil },
                 beforePlayback: @escaping @Sendable () async -> Void = {},
                 cycleChanged: @escaping @Sendable () async -> Void = {},
-                promotionCompleted: @escaping @MainActor () async throws -> Void = {}) {
+                promotionCompleted: @escaping @MainActor () async throws -> Void = {},
+                onOpenChatSettings: (@MainActor @Sendable () -> Void)? = nil) {
         self.character = character; self.isVisible = isVisible
+        self.onOpenChatSettings = onOpenChatSettings
         self.speech = speech ?? AdaptiveSpeechService(audioSession: audioSession)
         self.audioSession = audioSession; self.beforePlayback = beforePlayback
         self.currentRegionID = currentRegionID; self.promotionCompleted = promotionCompleted
@@ -122,16 +125,23 @@ public struct CharacterLearningView: View {
         let percentage = learningChatPercentage(characters: state.characters, threshold: state.threshold)
         return VStack(spacing: compact ? 24 : 34) {
             VStack(spacing: compact ? 10 : 14) {
-                AvatarBadge(name: character.displayName, size: compact ? 64 : 88,
-                            imageName: character.card.avatarAssetName,
-                            remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                            usesPendingPlaceholder: true)
-                    .accessibilityHidden(true)
+                if let onOpenChatSettings {
+                    Button(action: onOpenChatSettings) {
+                        learningAvatar(compact: compact)
+                    }
+                    .buttonStyle(LearningPressStyle())
+                    .accessibilityLabel("\(character.displayName)的聊天设置")
+                    .accessibilityHint("打开聊天设置")
+                    .accessibilityIdentifier("learning.character.settings")
+                } else {
+                    learningAvatar(compact: compact)
+                        .accessibilityHidden(true)
+                }
                 Text(character.displayName).font(.title2.weight(.semibold))
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
             }
             .frame(maxWidth: .infinity)
-            .accessibilityElement(children: .combine)
+            .accessibilityElement(children: .contain)
             .accessibilityIdentifier("learning.character.identity")
 
             VStack(spacing: 10) {
@@ -158,6 +168,13 @@ public struct CharacterLearningView: View {
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("learning.challenge.card")
     }
+    private func learningAvatar(compact: Bool) -> some View {
+        AvatarBadge(name: character.displayName, size: compact ? 64 : 88,
+                    imageName: character.card.avatarAssetName,
+                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                    usesPendingPlaceholder: true)
+    }
+
     private func challengeAction(_ state: BackendLearningCharacter) -> some View {
         let preparing = model.isPreparing && state.activeAttemptId == nil
         let unavailable = state.activeAttemptId == nil && !model.canStartNewChallenge

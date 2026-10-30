@@ -1124,7 +1124,7 @@ struct RootView: View {
         )
         #if DEBUG
         if bypassesAuthenticationForUITesting {
-            dependencies.learningPage = { character, visible in AnyView(Self.debugLearningPage(character, isVisible: visible)) }
+            dependencies.learningPage = { character, visible, openSettings in AnyView(Self.debugLearningPage(character, isVisible: visible, onOpenChatSettings: openSettings)) }
         }
         #endif
         dependencies.learningChat = bypassesAuthenticationForUITesting ? nil : environment.workspace?.learningChat
@@ -1136,7 +1136,7 @@ struct RootView: View {
         let learningUserState = environment.userState
         let learningWorkspace = environment.workspace
         if !bypassesAuthenticationForUITesting {
-            dependencies.learningPage = { character, visible in
+            dependencies.learningPage = { character, visible, openSettings in
                 AnyView(CharacterLearningView(character: character, service: backend, isVisible: visible,
                     audioSession: learningAudioSession, speech: learningSpeech,
                     currentRegionID: { try? await learningEconomyStore.profile().currentRegionID },
@@ -1147,7 +1147,7 @@ struct RootView: View {
                         guard environment.workspace === learningWorkspace else { throw CancellationError() }
                         let profile = try await learningEconomyStore.profile()
                         await environment.applyLearnerProfile(profile)
-                    }))
+                    }, onOpenChatSettings: openSettings))
             }
         }
         #if DEBUG
@@ -1189,10 +1189,12 @@ struct RootView: View {
     }
 
     #if DEBUG
-    private static func debugLearningPage(_ character: CharacterDTO, isVisible: Bool = true) -> some View {
+    private static func debugLearningPage(_ character: CharacterDTO, isVisible: Bool = true,
+                                          onOpenChatSettings: (@MainActor @Sendable () -> Void)? = nil) -> some View {
         CharacterLearningView(character: character, service: DebugLearningPreviewService(characterID: character.id,
             roleKey: character.card.name.components(separatedBy: " ").first?.lowercased() ?? "oliver"), isVisible: isVisible,
-            currentRegionID: { ProcessInfo.processInfo.environment["UI_TEST_REGION"] ?? "london" })
+            currentRegionID: { ProcessInfo.processInfo.environment["UI_TEST_REGION"] ?? "london" },
+            onOpenChatSettings: onOpenChatSettings)
             .safeAreaInset(edge: .top, spacing: 0) {
                 Text("界面预览 · 示例进度，不计入账号")
                     .font(.caption).foregroundStyle(.secondary).padding(8).frame(maxWidth: .infinity)

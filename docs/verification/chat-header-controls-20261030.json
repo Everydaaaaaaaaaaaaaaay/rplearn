@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-30",
+  "change": "聊天顶部独立控制、角色当地时钟与学习页头像设置入口",
+  "behavior": [
+    "自动朗读首次默认开启，记住手动关闭的设备偏好",
+    "顶部直接显示语音通话、自动朗读、当地时钟、聊天设置，移除更多按钮",
+    "顶部保留在线状态及角色时区的最近在线时间，当前当地日期与时间在时钟弹层显示",
+    "姓名和状态按可用宽度布局，空间不足时隐藏顶部装饰头像，优先保留文字与44pt操作按钮",
+    "学习页头像通过组合根提供的回调打开同一聊天设置；搜索记录后回到聊天定位"
+  ],
+  "verification": {
+    "hostedTests": {
+      "passed": 9,
+      "failed": 0,
+      "suites": [
+        "ChatHeaderStatusTests",
+        "ChatAutoReadQueueTests"
+      ],
+      "resultBundle": "build/DerivedData/VerificationResults/20261030T133528Z-994.xcresult"
+    },
+    "uiFlow": {
+      "passed": 1,
+      "failed": 0,
+      "test": "ChatKeyboardTests/testAutomaticReadingToggle",
+      "checks": [
+        "默认开启且顶部直接可点",
+        "关闭后重新启动保留关闭状态",
+        "时钟弹层显示墨尔本当地日期与时间",
+        "直接进入聊天设置",
+        "点击学习页头像进入设置并返回学习页"
+      ],
+      "resultBundle": "build/DerivedData/VerificationResults/20261030T135714Z-5768.xcresult"
+    },
+    "architecture": "Scripts/check-architecture.sh --ios: passed",
+    "visualReview": {
+      "device": "iPhone 18 Pro / iOS 27.0",
+      "light": "build/chat-header-controls-accepted/header.png",
+      "dark": "build/chat-header-controls-accepted/dark-preview.png",
+      "clock": "build/chat-header-controls-accepted/clock.png",
+      "learningSettings": "build/chat-header-controls-accepted/learning-settings.png",
+      "method": "Computer Use attempted; final XCTest interactions and native simulator screenshots reviewed"
+    },
+    "latestPreviewInstalled": true
+  },
+  "backendChanged": false,
+  "photographicAssetsChanged": false,
+  "appStorePublished": false
+}

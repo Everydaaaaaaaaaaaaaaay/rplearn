@@ -41,7 +41,7 @@ public struct ChatDependencies: Sendable {
     public var marketingMotionCapture = false
     public var debugFillLearning: (@MainActor @Sendable (UUID) async throws -> Void)? = nil
     #endif
-    public var learningPage: (@MainActor @Sendable (CharacterDTO, Bool) -> AnyView)? = nil
+    public var learningPage: (@MainActor @Sendable (CharacterDTO, Bool, @escaping @MainActor @Sendable () -> Void) -> AnyView)? = nil
     public var learningChat: (any LearningChatTracking)? = nil
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?

@@ -21,7 +21,9 @@ public struct ChatView: View {
     @State private var fillingLearning = false
     @State private var learningDebugError: String?
     #endif
-    @State private var autoReadEnabled = false
+    @AppStorage("chat.autoReadEnabled") private var autoReadEnabled = true
+    @State private var showsLocalTime = false
+    @State private var viewportWidth: CGFloat = 390
     @State private var autoReadReady = false
     @State var autoReadQueue: ChatAutoReadQueue
     @Environment(\.scenePhase) private var scenePhase
@@ -88,13 +90,14 @@ public struct ChatView: View {
                                   enabled: recorder.state == .idle && chineseRecorder.state == .idle && wordSelection == nil && grammarTermSelection == nil && !showsRealtimeConversation) {
                     chatPage(bottomInset: proxy.safeAreaInsets.bottom)
                 } learning: {
-                    learningPage(viewModel.character, learningSelected)
+                    learningPage(viewModel.character, learningSelected, openChatSettings)
                         .environment(\.dsLearningBackdropProvided, true)
                 }
             } else {
                 chatPage(bottomInset: proxy.safeAreaInsets.bottom)
             }
         }
+        .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { viewportWidth = $0 }
         .onChange(of: learningSelected) { _, selected in
             isTextInputFocused = false; isChineseInputFocused = false
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -152,92 +155,22 @@ public struct ChatView: View {
         .tint(learningSelected ? .white : .accentColor)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                if !learningSelected {
-                    TimelineView(.periodic(from: .now, by: 15)) { context in
-                        let presence = viewModel.presence(at: context.date)
-                        ChatTitleView(
-                            title: viewModel.character.displayName,
-                            subtitle: chatStatus(presence, at: context.date)
-                        ) {
-                            ZStack(alignment: .bottomTrailing) {
-                                AvatarBadge(
-                                    name: viewModel.character.displayName,
-                                    size: 32,
-                                    imageName: viewModel.character.card.avatarAssetName,
-                                    remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                                    usesPendingPlaceholder: true
-                                )
-                                Circle()
-                                    .fill(presenceColor(presence))
-                                    .frame(width: 9, height: 9)
-                                    .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1.5) }
-                                    .accessibilityHidden(true)
-                            }
-                        }
-                        .accessibilityElement(children: .combine)
-                    }
-                }
-            }
+            chatIdentityToolbar
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 0) {
                     if learningSelected {
                         Button { learningSelected = false } label: {
                             Image(systemName: "bubble.left.and.bubble.right").frame(width: 44, height: 44)
                         }.accessibilityLabel("返回聊天")
-                    }
-                    if !learningSelected {
-                        Button {
-                            isTextInputFocused = false
-                            voicePlayer.stop()
-                            showsRealtimeConversation = true
-                        } label: {
-                            Image(systemName: "phone.fill").frame(width: 44, height: 44)
-                        }.accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
-                        Menu {
-                            Button {
-                                autoReadEnabled.toggle()
-                            } label: {
-                                Label(autoReadEnabled ? "关闭自动朗读" : "开启自动朗读", systemImage: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
-                            }
-                            .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
-                            .accessibilityIdentifier("chat.autoRead")
-                            Button {
-                                isTextInputFocused = false
-                                voicePlayer.stop()
-                                showsContactDetails = true
-                            } label: { Label("聊天设置", systemImage: "person.crop.circle") }
-                            #if DEBUG
-                            if let fill = deps.debugFillLearning {
-                                Divider()
-                                Button {
-                                    fillingLearning = true
-                                    Task {
-                                        defer { fillingLearning = false }
-                                        do {
-                                            try await fill(viewModel.character.id)
-                                            learningSelected = true
-                                            NotificationCenter.default.post(name: .roleplayConversationDidChange, object: viewModel.character.id)
-                                        } catch { learningDebugError = error.localizedDescription }
-                                    }
-                                } label: { Label("填满挑战进度（开发者）", systemImage: "hammer") }
-                                .disabled(fillingLearning || recorder.state != .idle || chineseRecorder.state != .idle)
-                                .accessibilityIdentifier("chat.debugFillLearning")
-                            }
-                            #endif
-                        } label: {
-                            Image(systemName: "ellipsis.circle").frame(width: 44, height: 44)
-                        }.accessibilityLabel("更多聊天操作").accessibilityIdentifier("chat.more")
+                    } else {
+                        chatActions
                     }
                 }
                 .buttonStyle(.plain)
             }
         }
-        .accessibilityAction(named: "聊天设置") {
-            isTextInputFocused = false
-            voicePlayer.stop()
-            showsContactDetails = true
-        }
+
+        .accessibilityAction(named: "聊天设置", openChatSettings)
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -296,6 +229,7 @@ public struct ChatView: View {
                     viewModel: viewModel,
                     deps: deps,
                     onSelectMessage: { messageID in
+                        learningSelected = false
                         highlightedMessageID = messageID
                         showsContactDetails = false
                     },
@@ -375,6 +309,133 @@ public struct ChatView: View {
         .dsTabBarHidden()
     }
 
+    @ToolbarContentBuilder
+    private var chatIdentityToolbar: some ToolbarContent {
+        if !learningSelected {
+            if #available(iOS 26, *) {
+                ToolbarItem(placement: .topBarLeading) { chatIdentity }
+                    .sharedBackgroundVisibility(.hidden)
+            } else {
+                ToolbarItem(placement: .topBarLeading) { chatIdentity }
+            }
+        }
+    }
+
+    private var chatIdentity: some View {
+        TimelineView(.periodic(from: .now, by: 15)) { context in
+            let presence = viewModel.presence(at: context.date)
+            Button(action: openChatSettings) {
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: 4) {
+                        ZStack(alignment: .bottomTrailing) {
+                            AvatarBadge(name: viewModel.character.displayName, size: 28,
+                                imageName: viewModel.character.card.avatarAssetName,
+                                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                                usesPendingPlaceholder: true)
+                            Circle().fill(presenceColor(presence)).frame(width: 8, height: 8)
+                                .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1) }
+                        }
+                        headerText(presence, at: context.date)
+                    }.fixedSize(horizontal: true, vertical: false)
+                    headerText(presence, at: context.date)
+                }
+            }
+            .buttonStyle(.plain)
+            // Leave room for the native back button, four 44pt actions and bar margins.
+            .frame(width: max(44, viewportWidth - 300), alignment: .leading)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("\(viewModel.character.displayName)，\(chatStatus(presence, at: context.date))")
+            .accessibilityHint("打开聊天设置")
+            .accessibilityAddTraits(.isButton)
+            .accessibilityIdentifier("chat.identity")
+        }
+    }
+
+    private func headerText(_ presence: NPCPresenceSnapshot, at date: Date) -> some View {
+        VStack(alignment: .leading, spacing: 1) {
+            Text(viewModel.character.displayName).font(.subheadline.bold())
+                .lineLimit(1).minimumScaleFactor(0.85)
+            Text(chatStatus(presence, at: date)).font(.caption2).foregroundStyle(.secondary)
+                .lineLimit(2).allowsTightening(true).minimumScaleFactor(0.9)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var chatActions: some View {
+        Group {
+            Button {
+                isTextInputFocused = false
+                voicePlayer.stop()
+                showsRealtimeConversation = true
+            } label: {
+                Image(systemName: "phone.fill").frame(width: 44, height: 44)
+            }.accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
+
+            Button { autoReadEnabled.toggle() } label: {
+                Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                    .frame(width: 44, height: 44)
+            }
+            .accessibilityLabel(autoReadEnabled ? "关闭自动朗读" : "开启自动朗读")
+            .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+            .accessibilityIdentifier("chat.autoRead")
+
+            Button { showsLocalTime.toggle() } label: {
+                Image(systemName: "clock").frame(width: 44, height: 44)
+            }
+            .accessibilityLabel("查看角色当地时间")
+            .accessibilityIdentifier("chat.localTime")
+            .popover(isPresented: $showsLocalTime) {
+                TimelineView(.periodic(from: .now, by: 1)) { context in
+                    let presence = viewModel.presence(at: context.date)
+                    VStack(spacing: 8) {
+                        Text("\(deps.regionName(viewModel.character.card.regionID))当地时间")
+                            .font(.subheadline.weight(.semibold))
+                        Text(ChatHeaderStatus.localTime(at: context.date, timeZoneIdentifier: presence.timeZoneIdentifier))
+                            .font(.system(size: 32, weight: .medium, design: .rounded)).monospacedDigit()
+                        Text(ChatHeaderStatus.localDate(at: context.date, timeZoneIdentifier: presence.timeZoneIdentifier))
+                            .font(.caption).foregroundStyle(.secondary)
+                    }
+                    .padding(20)
+                    .accessibilityIdentifier("chat.localTime.detail")
+                }
+                .presentationCompactAdaptation(.popover)
+            }
+
+            Button(action: openChatSettings) {
+                Image(systemName: "slider.horizontal.3").frame(width: 44, height: 44)
+            }
+            .accessibilityLabel("聊天设置")
+            .accessibilityIdentifier("chat.settings")
+            .contextMenu {
+                #if DEBUG
+                if let fill = deps.debugFillLearning {
+                    Button {
+                        fillingLearning = true
+                        Task {
+                            defer { fillingLearning = false }
+                            do {
+                                try await fill(viewModel.character.id)
+                                learningSelected = true
+                                NotificationCenter.default.post(name: .roleplayConversationDidChange, object: viewModel.character.id)
+                            } catch { learningDebugError = error.localizedDescription }
+                        }
+                    } label: { Label("填满挑战进度（开发者）", systemImage: "hammer") }
+                    .disabled(fillingLearning || recorder.state != .idle || chineseRecorder.state != .idle)
+                    .accessibilityIdentifier("chat.debugFillLearning")
+                }
+                #endif
+            }
+        }
+    }
+
+    private func openChatSettings() {
+        isTextInputFocused = false
+        isChineseInputFocused = false
+        voicePlayer.stop()
+        showsLocalTime = false
+        showsContactDetails = true
+    }
+
     private var autoReadSnapshot: ChatAutoReadQueue.Snapshot {
         .init(enabled: shouldAutoRead, items: viewModel.messages.sorted {
             $0.orderIndex < $1.orderIndex
@@ -407,7 +468,6 @@ public struct ChatView: View {
         ChatHeaderStatus.text(
             presence: presence,
             at: date,
-            regionName: deps.regionName(viewModel.character.card.regionID),
             isStreaming: viewModel.isStreaming
         )
     }

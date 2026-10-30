@@ -21,43 +21,36 @@ struct ChatHeaderStatusTests {
                 timeZoneIdentifier: melbourne
             ),
             at: now,
-            regionName: "墨尔本",
             isStreaming: isStreaming
         )
     }
 
-    @Test("任何状态都同时给出城市和当地时间", arguments: [
-        NPCPresenceState.online,
-        NPCPresenceState.recentlyActive,
-        NPCPresenceState.offline,
-    ])
-    func everyStateKeepsRegionAndLocalTime(state: NPCPresenceState) {
-        let value = text(state)
-        #expect(value.contains("墨尔本"))
-        #expect(value.contains("14:19"), "状态 \(state.rawValue) 缺少当地时间：\(value)")
+    @Test("在线状态不再占用顶部显示城市时钟")
+    func compactPresence() {
+        #expect(text(.online) == "在线")
+        #expect(text(.recentlyActive) == "刚刚在线")
+        #expect(text(.offline) == "离线")
+        #expect(text(.online, isStreaming: true) == "正在输入")
     }
 
-    @Test("刚刚在线使用较长的状态词，仍需保留城市与时间")
-    func recentlyActiveKeepsFullDetail() {
-        #expect(text(.recentlyActive) == "刚刚在线 · 墨尔本 14:19")
+    @Test("离线状态完整保留角色时区的最后在线时间")
+    func offlineKeepsLastActive() {
+        #expect(text(.offline, lastActiveAt: now.addingTimeInterval(-2 * 60 * 60)) == "12:19在线过")
+        #expect(text(.offline, lastActiveAt: now.addingTimeInterval(-25 * 60 * 60)) == "昨天13:19在线")
+        #expect(text(.offline, lastActiveAt: now.addingTimeInterval(-5 * 24 * 60 * 60)) == "9/12 14:19在线")
     }
 
-    @Test("正在输入时仍显示城市与当地时间")
-    func streamingKeepsFullDetail() {
-        #expect(text(.online, isStreaming: true) == "正在输入 · 墨尔本 14:19")
-    }
-
-    @Test("离线状态带上最后在线时间，同时保留当前当地时间")
-    func offlineKeepsLastActiveAndLocalTime() {
-        #expect(
-            text(.offline, lastActiveAt: now.addingTimeInterval(-2 * 60 * 60))
-                == "12:19 在线过 · 墨尔本 14:19"
-        )
-        #expect(
-            text(.offline, lastActiveAt: now.addingTimeInterval(-25 * 60 * 60))
-                == "昨天 13:19 在线 · 墨尔本 14:19"
-        )
-        let older = now.addingTimeInterval(-5 * 24 * 60 * 60)
-        #expect(text(.offline, lastActiveAt: older).hasPrefix("9月12日 14:19 在线 · 墨尔本 14:19"))
+    @Test("独立时钟正确显示城市当地时间和日期，包括跨日与夏令时")
+    func localClock() {
+        #expect(ChatHeaderStatus.localTime(at: now, timeZoneIdentifier: melbourne) == "14:19")
+        #expect(ChatHeaderStatus.localDate(at: now, timeZoneIdentifier: melbourne).contains("2026年9月17日"))
+        let utc = ISO8601DateFormatter()
+        let midnight = utc.date(from: "2026-10-30T15:30:00Z")!
+        #expect(ChatHeaderStatus.localTime(at: midnight, timeZoneIdentifier: melbourne) == "02:30")
+        #expect(ChatHeaderStatus.localDate(at: midnight, timeZoneIdentifier: melbourne).contains("2026年10月31日"))
+        let winter = utc.date(from: "2026-01-15T12:00:00Z")!
+        let summer = utc.date(from: "2026-07-15T12:00:00Z")!
+        #expect(ChatHeaderStatus.localTime(at: winter, timeZoneIdentifier: "Europe/London") == "12:00")
+        #expect(ChatHeaderStatus.localTime(at: summer, timeZoneIdentifier: "Europe/London") == "13:00")
     }
 }
