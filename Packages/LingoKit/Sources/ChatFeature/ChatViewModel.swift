@@ -231,19 +231,19 @@ public final class ChatViewModel {
                 audioFileName: capture.fileName,
                 audioDuration: capture.duration,
                 tokenEstimate: TokenEstimator.estimate(capture.transcript),
-                learningOrigin: await deps.learningChat?.userOrigin(characterID: character.id)
+                learningOrigin: await userLearningOrigin()
             )
             if let sourceFileName = capture.fileName {
-                // 语音发送是常用本地能力；仅在账号云空间已激活时追加备份。
-                if await deps.voiceMedia.isCloudBackupAvailable {
-                    do {
-                        _ = try await deps.voiceMedia.enqueue(
-                            messageID: messageID,
-                            sourceFileName: sourceFileName
-                        )
-                    } catch {
-                        errorMessage = "语音已保存在本机，云端备份暂未完成。"
-                        Log.app.warning("语音云端排队失败：\(String(describing: type(of: error)))")
+                Task { [weak self] in
+                    guard let self else { return }
+                    // Backup must not delay the visible message or its reply.
+                    if await deps.voiceMedia.isCloudBackupAvailable {
+                        do {
+                            _ = try await deps.voiceMedia.enqueue(messageID: messageID, sourceFileName: sourceFileName)
+                        } catch {
+                            if errorMessage == nil { errorMessage = "语音已保存在本机，云端备份暂未完成。" }
+                            Log.app.warning("语音云端排队失败：\(String(describing: type(of: error)))")
+                        }
                     }
                 }
             }
@@ -281,7 +281,7 @@ public final class ChatViewModel {
             role: .user,
             text: text,
             tokenEstimate: TokenEstimator.estimate(text),
-            learningOrigin: await deps.learningChat?.userOrigin(characterID: character.id)
+            learningOrigin: await userLearningOrigin()
         )
         persisted = true
         try await deps.chatStore.setReplyInterrupted(userMessageID: userMessage.id, interrupted: true)
@@ -291,8 +291,14 @@ public final class ChatViewModel {
 
         try Task.checkCancellation()
         realtimeLearningSource = nil
-        var request = await makeRoleplayRequest(voiceMode: true)
-        request.learningChat = try await deps.learningChat?.prepareReply(conversationID: conversation.id, userMessage: userMessage)
+        let tracker = deps.learningChat
+        var request = try await AsyncDeadline.run(timeout: deps.replyTimeout) { [self] in
+            var request = await makeRoleplayRequest(voiceMode: true)
+            try Task.checkCancellation()
+            request.learningChat = try await tracker?.prepareReply(conversationID: conversation.id, userMessage: userMessage)
+            try Task.checkCancellation()
+            return request
+        }
         try Task.checkCancellation()
         realtimeLearningSource = request.learningChat.map { LearningReplySource(context: $0, operationID: request.operationID) }
         try Task.checkCancellation()
@@ -340,7 +346,11 @@ public final class ChatViewModel {
                 learningSource: interrupted ? nil : realtimeLearningSource
             )
             Task { await deps.learningChat?.messageSaved(characterID: character.id) }
-            await grantMainlineTicketIfEligible(conversationID: conversation.id)
+            Task { [weak self] in
+                await self?.grantMainlineTicketIfEligible(conversationID: conversation.id)
+                await self?.reloadMessages()
+                self?.notifyConversationChanged()
+            }
             await reloadMessages()
             notifyConversationChanged()
 
@@ -362,7 +372,7 @@ public final class ChatViewModel {
 
     public func refreshMessages() async {
         await reloadMessages()
-        if messages.last?.role == .assistant, errorMessage == "上次回复未完成，点重试继续。" {
+        if latestDialogueMessage?.role == .assistant, errorMessage == "上次回复未完成，点重试继续。" {
             errorMessage = nil
         }
     }
@@ -377,7 +387,7 @@ public final class ChatViewModel {
     }
 
     public func cancelPendingReply() {
-        replyTask?.cancel()
+        cancelReplyProducer()
         replyTask = nil
         replyCycleID = UUID()
         pendingReplyPlan = nil
@@ -412,6 +422,14 @@ public final class ChatViewModel {
         scheduleAssistantReply(after: "", preferredDelay: 0.45, replacing: messageID)
     }
 
+    private func userLearningOrigin() async -> LearningChatOrigin? {
+        guard let tracker = deps.learningChat else { return nil }
+        let characterID = character.id
+        return try? await AsyncDeadline.run(timeout: .seconds(5)) {
+            await tracker.userOrigin(characterID: characterID)
+        }
+    }
+
     private func send(userText: String) async -> Bool {
         guard let conversation else {
             errorMessage = "聊天尚未加载，请稍后重试。"
@@ -424,7 +442,7 @@ public final class ChatViewModel {
                 role: .user,
                 text: userText,
                 tokenEstimate: TokenEstimator.estimate(userText),
-                learningOrigin: await deps.learningChat?.userOrigin(characterID: character.id)
+                learningOrigin: await userLearningOrigin()
             )
             await reloadMessages()
             notifyConversationChanged()
@@ -490,7 +508,7 @@ public final class ChatViewModel {
         replacing messageID: UUID? = nil,
         userMessage explicitUserMessage: MessageDTO? = nil
     ) {
-        replyTask?.cancel()
+        cancelReplyProducer()
         retryingMessageID = messageID
         guard let anchorMessage = explicitUserMessage
             ?? messages.last(where: { $0.role == .user })
@@ -523,7 +541,7 @@ public final class ChatViewModel {
     }
 
     private func restartPendingReply(using plan: NPCReplyPlan) {
-        replyTask?.cancel()
+        cancelReplyProducer()
         replyCycleID = UUID()
         let cycleID = replyCycleID
         pendingReplyPlan = plan
@@ -557,25 +575,37 @@ public final class ChatViewModel {
         }
     }
 
+    private func cancelReplyProducer() {
+        replyTask?.cancel()
+        if let conversation, let plan = pendingReplyPlan {
+            NPCReplyLeaseRegistry.shared.release(conversationID: conversation.id,
+                ownerID: replyOwnerID, cycleID: replyCycleID, messageID: plan.userMessageID)
+        }
+    }
+
+    private var latestDialogueMessage: MessageDTO? {
+        messages.last { $0.role == .user || $0.role == .assistant }
+    }
+
     public var canRetryUnansweredReply: Bool {
-        !isStreaming && !isWaitingForUserBurst && messages.last?.role == .user
-            && messages.last?.isInterrupted == true && !hasActiveReplyProducer
+        !isStreaming && !isWaitingForUserBurst && latestDialogueMessage?.role == .user
+            && latestDialogueMessage?.isInterrupted == true && !hasActiveReplyProducer
     }
 
     private var hasActiveReplyProducer: Bool {
-        guard let conversation, let latest = messages.last else { return false }
+        guard let conversation, let latest = latestDialogueMessage else { return false }
         return NPCReplyLeaseRegistry.shared.contains(conversationID: conversation.id, messageID: latest.id)
     }
 
     public func retryUnansweredReply() {
-        guard canRetryUnansweredReply, let latest = messages.last else { return }
+        guard canRetryUnansweredReply, let latest = latestDialogueMessage else { return }
         scheduleAssistantReply(after: latest.text, preferredDelay: 0.45, userMessage: latest)
     }
 
     private func resumePendingReplyIfNeeded() {
         guard replyTask == nil,
               conversation?.isArchived == false,
-              let latest = messages.last,
+              let latest = latestDialogueMessage,
               latest.role == .user
         else { return }
         // The persisted interruption marker is also a crash-recovery checkpoint.
@@ -595,7 +625,7 @@ public final class ChatViewModel {
                     try Task.checkCancellation()
                     await reloadMessages()
                     guard replyCycleID == observerCycle else { return }
-                    if messages.last?.role == .user, messages.last?.isInterrupted == true {
+                    if latestDialogueMessage?.role == .user, latestDialogueMessage?.isInterrupted == true {
                         errorMessage = "上次回复未完成，点重试继续。"
                     }
                 } catch { }
@@ -696,6 +726,24 @@ public final class ChatViewModel {
                 messageID: plan.userMessageID
             )
         }
+        let watchdog = Task { [weak self] in
+            guard let self else { return }
+            do { try await Task.sleep(for: deps.replyTimeout) } catch { return }
+            guard cycleID == replyCycleID else { return }
+            replyTask?.cancel()
+            clearReplyState(cycleID: cycleID)
+            replyCycleID = UUID()
+            errorMessage = "回复等待超时，点重试继续；你的消息已保留。"
+            NPCReplyLeaseRegistry.shared.release(conversationID: conversation.id,
+                ownerID: replyOwnerID, cycleID: cycleID, messageID: plan.userMessageID)
+            try? await deps.chatStore.setReplyInterrupted(userMessageID: plan.userMessageID, interrupted: true)
+            if let last = latestDialogueMessage, last.role == .assistant,
+               let user = messages.first(where: { $0.id == plan.userMessageID }), last.orderIndex > user.orderIndex {
+                try? await deps.chatStore.updateMessageText(messageID: last.id, text: last.text, isInterrupted: true)
+            }
+            await reloadMessages()
+        }
+        defer { watchdog.cancel() }
         guard await isStillLatestUnanswered(plan: plan, conversationID: conversation.id) else {
             clearReplyState(cycleID: cycleID)
             return
@@ -719,6 +767,10 @@ public final class ChatViewModel {
             }
         }
 
+        do { try await deps.chatStore.setReplyInterrupted(userMessageID: plan.userMessageID, interrupted: true) }
+        catch { errorMessage = "回复状态未能保存，请重试。"; return }
+        await reloadMessages()
+        guard cycleID == replyCycleID, !Task.isCancelled else { return }
         let memoryService = self.memoryService
         var request = await makeRoleplayRequest(
             voiceMode: false
@@ -737,8 +789,6 @@ public final class ChatViewModel {
                 request.learningChat = try await deps.learningChat?.prepareReply(conversationID: conversation.id, userMessage: userMessage)
             }
             try Task.checkCancellation()
-            try await deps.chatStore.setReplyInterrupted(userMessageID: plan.userMessageID, interrupted: true)
-            await reloadMessages()
             for try await event in await deps.llm.stream(request) {
                 try Task.checkCancellation()
                 guard cycleID == replyCycleID else { throw CancellationError() }
@@ -886,7 +936,11 @@ public final class ChatViewModel {
                 let source: RelationshipEventRecord.Source = userMessage.kind == .voice ? .voiceChat : .textChat
                 runInteractionReview(for: userMessage, source: source)
             }
-            await grantMainlineTicketIfEligible(conversationID: conversation.id)
+            Task { [weak self] in
+                await self?.grantMainlineTicketIfEligible(conversationID: conversation.id)
+                await self?.reloadMessages()
+                self?.notifyConversationChanged()
+            }
             // 回复完成后检查记忆压缩触发（后台，不阻塞 UI）
             let conversationID = conversation.id
             let characterName = character.card.name

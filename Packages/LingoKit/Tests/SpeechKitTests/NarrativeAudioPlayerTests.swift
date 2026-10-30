@@ -58,6 +58,54 @@ struct NarrativeAudioPlayerTests {
         #expect(player.completedID == nil)
     }
 
+    private actor StalledSpeech: SpeechService {
+        var held: [CheckedContinuation<Void, Never>] = []
+        var stallsPlayback = true
+        var stallsStop = false
+        private(set) var stopCalls = 0
+        func configure(playback: Bool, stop: Bool) { stallsPlayback = playback; stallsStop = stop }
+        func speak(_ request: SpeechRequest) async { await speakAndWait(request) }
+        func speakAndWait(_ request: SpeechRequest) async {
+            if stallsPlayback { await withCheckedContinuation { held.append($0) } }
+        }
+        func stopSpeaking() async {
+            stopCalls += 1
+            if stallsStop { await withCheckedContinuation { held.append($0) } }
+        }
+        func release() { let pending = held; held.removeAll(); for waiter in pending { waiter.resume() } }
+    }
+
+    @Test("配音不返回时退出等待，不伪报播放完成；下一页可正常播放")
+    func stalledNarrationDoesNotBlockReading() async {
+        let speech = StalledSpeech()
+        let player = NarrativeAudioPlayer(speech: speech, audioSession: AudioSessionCoordinator(),
+            soundEffects: false, playbackTimeout: .milliseconds(40), stopTimeout: .milliseconds(40))
+        player.play(id: "stalled", request: .init(text: "Stalled line"), rainVolume: 0)
+        #expect(await eventually { player.unavailableID == "stalled" })
+        #expect(player.completedID == nil)
+        await speech.configure(playback: false, stop: false)
+        player.play(id: "next", request: .init(text: "Next line"), rainVolume: 0)
+        #expect(await eventually { player.completedID == "next" })
+        await speech.release()
+        #expect(player.completedID == "next")
+        player.stop(); await player.waitUntilStopped()
+    }
+
+    @Test("停止回调丢失不会把后续所有页面锁在取消屏障后")
+    func stalledStopIsBounded() async {
+        let speech = StalledSpeech()
+        await speech.configure(playback: false, stop: true)
+        let player = NarrativeAudioPlayer(speech: speech, audioSession: AudioSessionCoordinator(),
+            soundEffects: false, playbackTimeout: .milliseconds(40), stopTimeout: .milliseconds(40))
+        player.play(id: "line", request: .init(text: "A line"), rainVolume: 0)
+        for index in 0..<20 { player.play(id: "skip-\(index)", request: .init(text: "Latest line"), rainVolume: 0) }
+        #expect(await eventually { player.completedID == "skip-19" })
+        #expect(await speech.stopCalls == 1)
+        await speech.configure(playback: false, stop: false)
+        await speech.release()
+        player.stop(); await player.waitUntilStopped()
+    }
+
     @Test("原创雨声与翻页声可解码、有非零采样、无削波且生成可复现")
     func soundAssets() throws {
         for (data, duration) in [(NarrativeSoundBank.rain(), 48.0), (NarrativeSoundBank.page(), 0.09)] {

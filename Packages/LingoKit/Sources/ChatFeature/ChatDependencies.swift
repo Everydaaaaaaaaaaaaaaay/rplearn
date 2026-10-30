@@ -43,6 +43,7 @@ public struct ChatDependencies: Sendable {
     #endif
     public var learningPage: (@MainActor @Sendable (CharacterDTO, Bool, @escaping @MainActor @Sendable () -> Void) -> AnyView)? = nil
     public var learningChat: (any LearningChatTracking)? = nil
+    public var replyTimeout: Duration = .seconds(120)
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
     public let onShowAccess: @MainActor @Sendable () -> Void

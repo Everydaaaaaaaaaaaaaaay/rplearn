@@ -19,6 +19,8 @@ public final class StoryPlayer {
     /// 非 nil 时等待用户选择（advance 无效）。
     public private(set) var currentChoices: [StoryChoiceOption]?
     public private(set) var isFinished = false
+    public enum PlaybackError: Error, Equatable { case invalidNode(String), cycle(String) }
+    public private(set) var error: PlaybackError?
     public private(set) var flags: [String: Bool] = [:]
     public var isAuto = false
 
@@ -37,13 +39,13 @@ public final class StoryPlayer {
 
     public init(script: StoryScript, resumeFrom nodeID: String? = nil, flags: [String: Bool] = [:]) {
         self.script = script
-        self.cursor = nodeID ?? script.start
+        self.cursor = nodeID.flatMap { script.node($0) == nil ? nil : $0 } ?? script.start
         self.flags = flags
     }
 
     /// 推进一步：产出下一条台词，或停在选项/结尾。
     public func advance() {
-        guard !isFinished, currentChoices == nil else { return }
+        guard !isFinished, error == nil, currentChoices == nil else { return }
         step(emitLine: true)
     }
 
@@ -61,7 +63,10 @@ public final class StoryPlayer {
 
     /// 快进：连续推进直到遇到选项或结束。
     public func skipToNextChoiceOrEnd() {
-        while !isFinished && currentChoices == nil {
+        var visited = Set<String>()
+        while !isFinished && error == nil && currentChoices == nil {
+            guard let cursor else { return }
+            guard visited.insert(cursor).inserted else { error = .cycle(cursor); return }
             advance()
         }
     }
@@ -70,7 +75,10 @@ public final class StoryPlayer {
 
     /// 处理节点直到产出一条台词（line）或停下（choice/end）。
     private func step(emitLine: Bool) {
-        while let nodeID = cursor, let node = script.node(nodeID) {
+        var visited = Set<String>()
+        while let nodeID = cursor {
+            guard let node = script.node(nodeID) else { error = .invalidNode(nodeID); return }
+            guard visited.insert(nodeID).inserted else { error = .cycle(nodeID); return }
             switch node.payload {
             case .line(let speaker, let text, let bg, let sprite, let next):
                 lastBG = bg ?? lastBG

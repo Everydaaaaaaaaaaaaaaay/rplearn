@@ -29,12 +29,19 @@ public actor LearningChatCoordinator: LearningChatTracking {
     public func deactivate() { active = false }
 
     public func refresh(characterID: UUID) async {
+        await refresh(characterID: characterID, synchronizing: true)
+    }
+
+    private func refresh(characterID: UUID, synchronizing: Bool) async {
         guard await ownsSession() else { return }
         let epoch = cycleEpochs[characterID, default: 0]
         do {
-            try await contentSync.synchronizeAndWait()
+            if synchronizing { try await contentSync.synchronizeAndWait() }
             guard await ownsSession() else { return }
-            let state = try await backend.learningCharacter(characterID)
+            let backend = backend
+            let state = try await AsyncDeadline.run(timeout: .seconds(5)) {
+                try await backend.learningCharacter(characterID)
+            }
             guard await ownsSession(), state.characterId == characterID, epoch == cycleEpochs[characterID, default: 0] else { return }
             guard state.revision >= revisions[characterID, default: 0] else { return }
             revisions[characterID] = state.revision
@@ -45,7 +52,9 @@ public actor LearningChatCoordinator: LearningChatTracking {
     }
     public func userOrigin(characterID: UUID) async -> LearningChatOrigin? {
         guard await ownsSession() else { return nil }
-        if defaults.string(forKey: key(characterID)) == nil { await refresh(characterID: characterID) }
+        // A local send must not wait for unrelated outbox pages and sync retries.
+        // The cycle is read from the authoritative endpoint; never fabricated locally.
+        if defaults.string(forKey: key(characterID)) == nil { await refresh(characterID: characterID, synchronizing: false) }
         guard await ownsSession(), let value = defaults.string(forKey: key(characterID)),
               let cycle = UUID(uuidString: value) else { return nil }
         return .user(cycleID: cycle)

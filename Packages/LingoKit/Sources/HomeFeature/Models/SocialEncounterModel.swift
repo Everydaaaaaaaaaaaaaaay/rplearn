@@ -221,6 +221,9 @@ final class SocialEncounterModel: ObservableObject {
                 busy = false
             } catch is CancellationError {
                 // pause() owns visible state. An obsolete task cannot overwrite a retry.
+                guard !Task.isCancelled else { return }
+                busy = false
+                self.error = "交流已中断，可以重试。当前人物和你的选择会保留。"
             } catch {
                 guard !Task.isCancelled else { return }
                 busy = false
@@ -247,7 +250,8 @@ final class SocialEncounterModel: ObservableObject {
     private func prepareCharacter() async throws {
         #if DEBUG
         if isFixture, ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1" {
-            library = try AuthoredEncounterLibrary.bundled()
+            library = try await Task.detached(priority: .userInitiated) { try AuthoredEncounterLibrary.bundled() }.value
+            try Task.checkCancellation()
             character = try await roster.character(id: UUID(uuidString: "cd59614d-51fa-5876-b419-3ec74a60f52f")!)
             guard character != nil else { throw RosterStore.RosterError.characterNotFound }
             return
@@ -269,11 +273,16 @@ final class SocialEncounterModel: ObservableObject {
             character = try await roster.character(id: id)
             return
         }
-        if library == nil { library = try AuthoredEncounterLibrary.bundled() }
+        if library == nil {
+            library = try await Task.detached(priority: .userInitiated) { try AuthoredEncounterLibrary.bundled() }.value
+            try Task.checkCancellation()
+        }
         guard let library, let registry = deps.npcRegistry else { throw PreparationError.characterUnavailable }
         if pendingPublic == nil {
-            pendingPublic = try await registry.selectAuthoredEncounter(context: encounterContext,
-                libraryVersion: library.version, runID: runID)
+            let context = encounterContext, run = runID
+            pendingPublic = try await AsyncDeadline.run(timeout: .seconds(30)) {
+                try await registry.selectAuthoredEncounter(context: context, libraryVersion: library.version, runID: run)
+            }
             try Task.checkCancellation()
         }
         guard let npc = pendingPublic else {

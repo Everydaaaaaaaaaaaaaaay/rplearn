@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-31",
+  "scope": "Story playback, authored encounters, chat reply generation and foreground learning synchronization",
+  "fixes": [
+    {
+      "issue": "A nominal timeout using a task group still waited for a callback that ignored cancellation.",
+      "change": "CoreKit AsyncDeadline resolves exactly once, cancels losing tasks and discards late results; coaching and grammar reuse it."
+    },
+    {
+      "issue": "A stream could wait indefinitely before headers, before its first token, between tokens, or after the terminal event.",
+      "change": "LLMRouter bounds completion, first-token, idle and total duration; finished/done terminates delivery without HTTP EOF; cancelling retry backoff does not send another request."
+    },
+    {
+      "issue": "A stalled reply preparation or generation retained busy state and its conversation producer lease.",
+      "change": "The chat watchdog preserves the user message, releases state/lease, marks interrupted output and exposes retry. Cancelled or superseded cycles cannot publish a late response. Recovery uses the latest user/assistant message, so an appended coach/reward notice cannot hide an unanswered message."
+    },
+    {
+      "issue": "Local sending could wait behind unrelated content-sync backlog; sync waiters could be starved by later passes or ignore cancellation.",
+      "change": "Read the authoritative learning cycle directly on a cold cache, with a bounded wait. Foreground sync waits for its required pass, supports cancellation and does not cancel other observers. Sync owners stop on account deactivation. Helper identity and restart logic preserve waiters arriving during synchronization task cleanup."
+    },
+    {
+      "issue": "Voice backup and starter-ticket settlement delayed visible message/reply completion.",
+      "change": "Run optional backup/reward work separately from the response state and producer lease."
+    },
+    {
+      "issue": "Story narration completion or a stop callback could block automatic reading and all later narration.",
+      "change": "Bound playback and stop barriers; record unavailable narration separately from natural completion and allow the existing reading-time advance path. Rapid page changes coalesce into one stop barrier instead of serially accumulating stop timeouts."
+    },
+    {
+      "issue": "Story/encounter first-load decoding ran on the UI executor; a cancelled encounter operation could leave busy true.",
+      "change": "Decode episode/encounter content off the main actor, recover spontaneous encounter cancellation with retry, cancel outgoing story actions, and bound idempotent story completion settlement."
+    },
+    {
+      "issue": "Duplicate DSL node IDs crashed dictionary initialization; automatic cycles or stale cursors could spin or stop responding.",
+      "change": "Validate duplicate IDs and automatic cycles, bound fast-forward by visited nodes, and recover unknown legacy resume positions at the opening."
+    }
+  ],
+  "bounds": {
+    "llmCompletionSeconds": 75,
+    "firstTokenSeconds": 45,
+    "streamIdleSeconds": 25,
+    "streamTotalSeconds": 120,
+    "chatReplyAfterAttentionWaitSeconds": 120,
+    "learningCycleLookupSeconds": 5,
+    "storyCompletionSeconds": 30,
+    "narrationStopSeconds": 3,
+    "narrationPlayback": "Default max(20, words * 0.8 + 10) seconds; prepared clips use max(10, clip duration + 5)."
+  },
+  "verification": {
+    "mainHostedSuite": {
+      "passed": 103,
+      "failed": 0,
+      "skipped": 0,
+      "log": "build/story-chat-final-tests.log",
+      "result": "build/DerivedData/VerificationResults/20261030T173532Z-58972.xcresult"
+    },
+    "finalCancellationAndSyncChecks": {
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "overlapsMainSuite": true,
+      "log": "build/story-chat-cancellation-final.log",
+      "result": "build/DerivedData/VerificationResults/20261030T173912Z-60260.xcresult"
+    },
+    "architecture": "build/story-chat-responsiveness-architecture.log: passed",
+    "diffCheck": "passed",
+    "nativeUI": {
+      "status": "passed",
+      "acceptedRoutes": [
+        "LondonEpisodeTests/testRapidContinueKeepsChoiceBoundary",
+        "ChatKeyboardTests/testDismissKeyboardPreservesDraft",
+        "LondonEpisodeTests/testReadingRouteAndResume"
+      ],
+      "initialRun": {
+        "log": "build/story-chat-responsiveness-ui.log",
+        "result": "build/DerivedData/VerificationResults/20261030T174134Z-60912.xcresult",
+        "passedRoutes": 2
+      },
+      "finalResumeRun": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "log": "build/story-chat-resume-ui-accepted.log",
+        "result": "build/DerivedData/VerificationResults/20261030T175857Z-65307.xcresult"
+      },
+      "testInfrastructureCorrections": [
+        "Resume test now uses an isolated UUID-scoped temporary store instead of the ordinary in-memory preview fixture.",
+        "Wait for checkpoint publication before process termination and for actual view dismissal after the existing reward toast."
+      ],
+      "failedAttemptDiagnostic": "A preceding failed assertion triggered Xcode simulator diagnostic collection; only that diagnostic child was stopped, not an application or simulator process."
+    },
+    "finalChatRecoveryChecks": {
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0,
+      "overlapsMainSuite": true,
+      "log": "build/story-chat-recovery-final.log",
+      "result": "build/DerivedData/VerificationResults/20261030T175639Z-63461.xcresult"
+    },
+    "finalSynchronizationOwnerChecks": {
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "overlapsMainSuite": true,
+      "log": "build/story-chat-sync-owner-final.log",
+      "result": "build/DerivedData/VerificationResults/20261030T180401Z-62696.xcresult"
+    },
+    "finalNarrationChecks": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "overlapsMainSuite": true,
+      "log": "build/story-chat-narration-final.log",
+      "result": "build/DerivedData/VerificationResults/20261030T180209Z-66203.xcresult"
+    },
+    "preview": {
+      "status": "installed-and-launched",
+      "script": "Scripts/preview.sh preview messages",
+      "simulator": "659893A7-0822-43F4-8DA1-4A92E9C78814",
+      "log": "build/story-chat-final-preview.log",
+      "screenshot": "build/story-chat-final-preview.png",
+      "mode": "Local Debug fixture, not live-network acceptance"
+    }
+  },
+  "limits": [
+    "Provider and transport failure tests use local deterministic fixtures; no paid live-model requests or production account mutations were used.",
+    "No device-specific frame-rate or network-latency guarantee is inferred from these tests.",
+    "Unavailable learning-cycle metadata is never guessed; ordinary chat can continue without fabricated learning attribution.",
+    "Computer Use device capture failed with SCStreamErrorDomain -3811; targeted native UI tests provide the interaction evidence, with a native simulator screenshot for final preview."
+  ],
+  "deployment": "iOS/client changes only; no backend deployment or App Store publication."
+}

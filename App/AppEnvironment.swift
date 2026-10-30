@@ -272,13 +272,21 @@ final class AppEnvironment {
     }
 
     #if DEBUG
-    /// UI screenshots and interaction tests use an explicit in-memory fixture. Production builds
-    /// have no signed-out workspace and therefore cannot enter the application as a guest.
+    /// UI tests normally use memory. A UUID namespace opts into an isolated temporary store
+    /// only for tests that must verify process relaunch; it never opens an account store.
     func activateUITestWorkspace() async throws -> UUID {
         if let workspace { return workspace.userID }
         let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")!
+        let persistenceID = ProcessInfo.processInfo.environment["UI_TEST_PERSISTENCE_NAMESPACE"].flatMap(UUID.init(uuidString:))
         let container = try await Task.detached(priority: .userInitiated) {
-            try ModelContainerFactory.makeContainer(inMemory: true)
+            if let persistenceID {
+                let folder = FileManager.default.temporaryDirectory
+                    .appendingPathComponent("LingoTrip-UI-Tests", isDirectory: true)
+                    .appendingPathComponent(persistenceID.uuidString, isDirectory: true)
+                try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+                return try ModelContainerFactory.makeContainer(storeURL: folder.appendingPathComponent("workspace.store"))
+            }
+            return try ModelContainerFactory.makeContainer(inMemory: true)
         }.value
         let account = await AccountWorkspace(
             userID: userID,

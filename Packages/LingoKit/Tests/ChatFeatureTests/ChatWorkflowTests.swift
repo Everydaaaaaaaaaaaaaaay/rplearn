@@ -73,6 +73,8 @@ struct ChatWorkflowTests {
 
         func tasks() -> [LLMTask] { requestedTasks }
         func setResponse(_ text: String) { response = text }
+        func setStreamDelay(_ milliseconds: Int) { streamDelayMilliseconds = milliseconds }
+        func setFailure(_ failed: Bool) { fails = failed }
         func failTranslations() { translationResult = nil }
         func completeTranslations(with text: String) { translationResult = text }
     }
@@ -105,6 +107,7 @@ struct ChatWorkflowTests {
     private func fixture(_ provider: Provider = Provider(),
                          now: @escaping @Sendable () -> Date = { .now },
                          replyDelayScale: Double = 0,
+                         replyTimeout: Duration = .seconds(120),
                          tutorial: ChatTutorialConfiguration? = nil,
                          learning: (any LearningChatTracking)? = nil) async throws -> Fixture {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
@@ -126,6 +129,7 @@ struct ChatWorkflowTests {
             now: now, replyDelayScale: replyDelayScale
         )
         deps.learningChat = learning
+        deps.replyTimeout = replyTimeout
         let id = try await roster.addCharacter(card: CharacterCard(name: "Workflow Friend", age: 25, gender: .female, nationality: "British", regionID: "london", occupation: "writer", hobbies: ["books"], appearance: "green coat", personality: "kind"), difficulty: .junior3, isFriend: true)
         let model = ChatViewModel(character: try #require(try await roster.character(id: id)), deps: deps)
         await model.load()
@@ -211,6 +215,48 @@ struct ChatWorkflowTests {
     }
     private func normalized(_ value: String) -> String {
         value.split(whereSeparator: \.isWhitespace).joined(separator: " ")
+    }
+
+    @Test("回复超时释放忙碌状态和会话租约，可重试且丢弃旧请求迟到结果")
+    func timeoutRecoversAndLateReplyCannotOverwriteRetry() async throws {
+        let provider = Provider(response: "Obsolete reply", streamDelayMilliseconds: 1_500)
+        let f = try await fixture(provider, replyTimeout: .milliseconds(200))
+        f.model.draft = "Please answer."
+        await f.model.sendDraft()
+        try await settle(f.model)
+        #expect(f.model.errorMessage?.contains("超时") == true)
+        #expect(f.model.canRetryUnansweredReply)
+        #expect(f.model.messages.filter { $0.role == .user }.count == 1)
+        await provider.setStreamDelay(0)
+        await provider.setResponse("The new complete reply.")
+        f.model.retryUnansweredReply()
+        try await settle(f.model)
+        #expect(f.model.messages.last?.text == "The new complete reply.")
+        #expect(!f.model.canRetryUnansweredReply && f.model.errorMessage == nil)
+        try await Task.sleep(for: .milliseconds(1_550))
+        await f.model.refreshMessages()
+        #expect(!f.model.messages.contains { $0.text.contains("Obsolete") })
+    }
+
+    @Test("后台奖励提示插入末尾后，未回复的用户消息仍能恢复和重试")
+    func coachNoticeCannotHideReplyRecovery() async throws {
+        let provider = Provider(response: "", fails: true)
+        let f = try await fixture(provider)
+        f.model.draft = "A message that needs a reply."
+        await f.model.sendDraft()
+        try await settle(f.model)
+        let conversation = try #require(f.model.conversation)
+        _ = try await f.deps.chatStore.appendMessage(conversationID: conversation.id,
+            role: .coach, kind: .storyLine, text: "A background reward arrived.")
+        let reopened = await f.reopen()
+        #expect(reopened.canRetryUnansweredReply)
+        await provider.setFailure(false)
+        await provider.setResponse("A recovered answer.")
+        reopened.retryUnansweredReply()
+        try await settle(reopened)
+        #expect(reopened.messages.last?.text == "A recovered answer.")
+        #expect(reopened.messages.contains { $0.text == "A background reward arrived." })
+        #expect(reopened.messages.filter { $0.role == .user }.count == 1)
     }
 
     @Test("教程五条额度跨页面共用，文字、语音和通话不能绕过，不可删除好友")

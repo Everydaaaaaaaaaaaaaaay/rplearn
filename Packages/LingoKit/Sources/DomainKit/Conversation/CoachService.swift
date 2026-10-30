@@ -1,3 +1,4 @@
+import CoreKit
 import Foundation
 import LLMKit
 
@@ -149,19 +150,7 @@ public struct CoachService: Sendable {
         _ timeout: Duration,
         operation: @escaping @Sendable () async throws -> T
     ) async throws -> T {
-        try await withThrowingTaskGroup(of: T.self) { group in
-            group.addTask {
-                try await operation()
-            }
-            group.addTask {
-                try await Task.sleep(for: timeout)
-                throw TimeoutError()
-            }
-            guard let result = try await group.next() else {
-                throw TimeoutError()
-            }
-            group.cancelAll()
-            return result
-        }
+        do { return try await AsyncDeadline.run(timeout: timeout, operation: operation) }
+        catch let error as URLError where error.code == .timedOut { throw TimeoutError() }
     }
 }

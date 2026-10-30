@@ -19,6 +19,7 @@ public struct LondonEpisodeView: View {
     @State private var art: [String: UIImage] = [:]
     @State private var loadError = false
     @State private var saving = false
+    @State private var transitionTask: Task<Void, Never>?
     @State private var operationError: String?
     @State private var completionSettled = false
     @State private var earnedCoins: Int?
@@ -123,7 +124,7 @@ public struct LondonEpisodeView: View {
                     .allowsHitTesting(false)
             }
         }
-        .onDisappear { audio.stop() }
+        .onDisappear { transitionTask?.cancel(); audio.stop() }
         .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { notification in
             if let type = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
                type == AVAudioSession.InterruptionType.began.rawValue {
@@ -314,7 +315,7 @@ public struct LondonEpisodeView: View {
             .animation(.easeInOut(duration: reduceMotion ? 0.08 : 0.12), value: session.nodeID)
 
             if session.isFinished {
-                Button { Task { await finish() } } label: {
+                Button { transitionTask = Task { await finish() } } label: {
                     Label(saving ? "正在保存…" : operationError != nil ? "重试完成" : "结束旅程", systemImage: "arrow.right")
                         .font(.subheadline.weight(.semibold)).foregroundStyle(paper)
                         .frame(maxWidth: .infinity, minHeight: 48)
@@ -418,13 +419,14 @@ public struct LondonEpisodeView: View {
     private var canAutoAdvance: Bool {
         automatic && !saving && operationError == nil && scenePhase == .active && wordSelection == nil && !showHistory && !showRestart
             && session?.current.choices == nil && session?.isFinished == false
-            && (!soundEnabled || audio.completedID == session?.nodeID)
+            && (!soundEnabled || audio.completedID == session?.nodeID || audio.unavailableID == session?.nodeID)
     }
     private var autoplayIdentity: String { "\(session?.nodeID ?? "")-\(canAutoAdvance)" }
 
     private func autoplay() async {
         guard canAutoAdvance, let current = session?.current else { return }
-        let delay = soundEnabled && currentLineIsVoiced ? (currentUsesPrepared ? 0 : 0.6) : max(4.0, Double(current.text.split(separator: " ").count) * 0.42)
+        let delay = soundEnabled && currentLineIsVoiced && audio.unavailableID != current.id
+            ? (currentUsesPrepared ? 0 : 0.6) : max(4.0, Double(current.text.split(separator: " ").count) * 0.42)
         do { try await Task.sleep(for: .seconds(delay)) } catch { return }
         guard !Task.isCancelled, canAutoAdvance, session?.nodeID == current.id else { return }
         advance()
@@ -468,10 +470,14 @@ public struct LondonEpisodeView: View {
         defer { saving = false }
         do {
             let loaded = try await artwork(for: candidate)
+            try Task.checkCancellation()
             try await deps.storyProgress.saveCheckpoint(storyID: resourceName, nodeID: candidate.nodeID, flags: candidate.flags)
+            try Task.checkCancellation()
             art = loaded.images
             operationError = nil
             return true
+        } catch is CancellationError {
+            return false
         } catch {
             automatic = false
             operationError = "进度未能保存，请重试刚才的操作。当前阅读位置已保留。"
@@ -480,7 +486,7 @@ public struct LondonEpisodeView: View {
     }
     private func advance() {
         guard !saving, var candidate = session, candidate.advance() else { return }
-        Task {
+        transitionTask = Task {
             if await persist(candidate) {
                 session = candidate
                 if candidate.isFinished { automatic = false }
@@ -490,13 +496,13 @@ public struct LondonEpisodeView: View {
     private func choose(_ id: String) {
         guard !saving, var candidate = session else { return }
         candidate.choose(id)
-        Task { if await persist(candidate) { session = candidate } }
+        transitionTask = Task { if await persist(candidate) { session = candidate } }
     }
     private func restart() {
         guard !saving, let episode = session?.episode else { return }
         automatic = false
         let candidate = EpisodeSession(episode: episode)
-        Task {
+        transitionTask = Task {
             if await persist(candidate) {
                 lastAudioPageID = nil
                 session = candidate
@@ -510,7 +516,11 @@ public struct LondonEpisodeView: View {
         automatic = false
         defer { saving = false }
         do {
-            let coins = try await EpisodeCompletion.settle(resourceName: resourceName, episode: session.episode, deps: deps)
+            let resource = resourceName, episode = session.episode, dependencies = deps
+            let coins = try await AsyncDeadline.run(timeout: .seconds(30)) {
+                try await EpisodeCompletion.settle(resourceName: resource, episode: episode, deps: dependencies)
+            }
+            try Task.checkCancellation()
             completionSettled = true
             operationError = nil
             if let coins, coins > 0 {
@@ -518,6 +528,8 @@ public struct LondonEpisodeView: View {
                 try? await Task.sleep(for: .seconds(1.8))
             }
             dismiss()
+        } catch is CancellationError {
+            return
         } catch {
             operationError = "完成状态尚未保存，请检查网络后重试。已结算的奖励不会重复发放。"
         }
@@ -560,7 +572,10 @@ public struct LondonEpisodeView: View {
             guard let url = Bundle.main.url(forResource: resourceName, withExtension: "json") else {
                 throw CocoaError(.fileNoSuchFile)
             }
-            let episode = try StoryEpisode.load(data: Data(contentsOf: url))
+            let episode = try await Task.detached(priority: .userInitiated) {
+                try StoryEpisode.load(data: Data(contentsOf: url))
+            }.value
+            try Task.checkCancellation()
             // Validate references up front; decode only the current and outgoing
             // shot, so richer chapters do not grow the player's memory budget.
             for name in episode.assetNames {

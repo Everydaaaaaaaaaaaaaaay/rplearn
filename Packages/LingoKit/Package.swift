@@ -70,6 +70,7 @@ let domainTargets: [Target] = [
     .target(
         name: "SyncKit",
         dependencies: [
+            module("CoreKit"),
             module("BackendKit"),
             module("DomainKit"),
             module("PersistenceKit"),

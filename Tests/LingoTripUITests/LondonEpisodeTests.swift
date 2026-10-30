@@ -49,6 +49,7 @@ final class LondonEpisodeTests: XCTestCase {
     }
 
     func testReadingRouteAndResume() {
+        app.launchEnvironment["UI_TEST_PERSISTENCE_NAMESPACE"] = UUID().uuidString
         app.launch()
         XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
         XCTAssertGreaterThan(app.buttons["episode.history"].frame.minY, 50)
@@ -63,6 +64,8 @@ final class LondonEpisodeTests: XCTestCase {
         advanceUntil("episode.choice.private")
         screenshot("london-03-choice")
         app.buttons["episode.choice.private"].tap()
+        // The next page is shown only after the real checkpoint write completes.
+        XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 5))
 
         app.terminate()
         app.launchEnvironment["UI_TEST_EPISODE_FRESH"] = "0"
@@ -97,7 +100,7 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertTrue(app.buttons["继续阅读"].waitForExistence(timeout: 3))
         app.buttons["继续阅读"].tap()
         app.buttons["episode.finish"].tap()
-        XCTAssertFalse(app.buttons["episode.close"].waitForExistence(timeout: 1))
+        XCTAssertTrue(app.buttons["episode.close"].waitForNonExistence(timeout: 5))
     }
 
     func testLeadingEdgeReturnsAndHistoryPauses() {

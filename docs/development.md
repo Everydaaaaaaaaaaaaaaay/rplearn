@@ -105,6 +105,11 @@ Scripts/preview.sh preview home           # 已构建/测试后：只安装和�
 若已有真实登录态，不会强行替换账号；不要清空钥匙串或数据库来制造测试条件。
 此方式只用于页面预览，不能验证真实登录、在线 AI 或同步。Release 不支持该入口。
 
+跨进程断点测试可额外设置 `UI_TEST_PERSISTENCE_NAMESPACE=<新 UUID>`，让免登录 Debug
+工作区使用独立临时 SwiftData 存储。仅同一 UUID 的重启复用这份测试数据，不读取账号数据库；
+普通预览仍使用内存。`LondonEpisodeTests/testReadingRouteAndResume` 使用此入口，并等待
+选择后的下一页出现，确认真实断点已保存后再终止进程。
+
 挑战长题面可使用 `SIMCTL_CHILD_UI_TEST_LEARNING_UNIT_JSON` 传入服务端 `publicUnit` 导出的公开单元 JSON，
 再以 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION_ID` 指定题目；不指定 ID 时沿用 `UI_TEST_LEARNING_QUESTION` 题型选择。
 同时设置 `SIMCTL_CHILD_UI_TEST_LEARNING_STORY=1` 可检查该公开单元的完整封面、开场故事及总题数；仍为免登录只读预览，不提交成绩。

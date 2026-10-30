@@ -11,10 +11,17 @@ public enum ContentSyncActivation: Sendable, Equatable {
 public actor BackendContentSyncCoordinator {
     private let backend: BackendClient
     private let store: ContentSyncStore
-    private var synchronizationWaiters: [CheckedContinuation<Void, Error>] = []
+    private struct Waiter {
+        let pass: Int
+        let continuation: CheckedContinuation<Void, Error>
+    }
+    private var synchronizationWaiters: [UUID: Waiter] = [:]
+    private var synchronizationPass = 0
     private var isSynchronizing = false
     private var needsAnotherPass = false
     private var listenerTask: Task<Void, Never>?
+    private var waitingSynchronizationTask: Task<Void, Never>?
+    private var waitingSynchronizationID = UUID()
     private var userID: UUID?
 
     public init(
@@ -47,6 +54,9 @@ public actor BackendContentSyncCoordinator {
 
     public func deactivate() {
         finishWaiters(error: CancellationError())
+        waitingSynchronizationTask?.cancel()
+        waitingSynchronizationTask = nil
+        waitingSynchronizationID = UUID()
         listenerTask?.cancel()
         listenerTask = nil
         userID = nil
@@ -62,9 +72,12 @@ public actor BackendContentSyncCoordinator {
         defer { isSynchronizing = false }
         do {
             repeat {
+                try Task.checkCancellation()
+                synchronizationPass += 1
                 needsAnotherPass = false
                 try await flushOutbox()
                 try await pullChanges()
+                finishWaiters(error: nil, through: synchronizationPass)
             } while needsAnotherPass
             finishWaiters(error: nil)
         } catch {
@@ -76,20 +89,45 @@ public actor BackendContentSyncCoordinator {
     /// 模型关联需要确认正文真正保存；普通 synchronize 在已有任务时只标记再跑一次。
     public func synchronizeAndWait() async throws {
         guard userID != nil else { throw BackendClientError.signedOut }
-        if isSynchronizing {
-            needsAnotherPass = true
-            try await withCheckedThrowingContinuation { synchronizationWaiters.append($0) }
-        } else {
-            try await synchronize()
+        let id = UUID()
+        try await withTaskCancellationHandler {
+            try Task.checkCancellation()
+            try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                guard !Task.isCancelled else { continuation.resume(throwing: CancellationError()); return }
+                synchronizationWaiters[id] = Waiter(pass: synchronizationPass + 1, continuation: continuation)
+                if isSynchronizing { needsAnotherPass = true }
+                else { startWaitingSynchronization() }
+            }
+        } onCancel: {
+            Task { await self.cancelWaiter(id) }
         }
     }
 
-    private func finishWaiters(error: Error?) {
-        let waiting = synchronizationWaiters
-        synchronizationWaiters.removeAll()
-        for waiter in waiting {
-            if let error { waiter.resume(throwing: error) }
-            else { waiter.resume() }
+    private func cancelWaiter(_ id: UUID) {
+        synchronizationWaiters.removeValue(forKey: id)?.continuation.resume(throwing: CancellationError())
+    }
+
+    private func startWaitingSynchronization() {
+        guard userID != nil else { return }
+        if isSynchronizing { needsAnotherPass = true; return }
+        guard waitingSynchronizationTask == nil else { return }
+        let id = UUID()
+        waitingSynchronizationID = id
+        waitingSynchronizationTask = Task {
+            try? await self.synchronize()
+            guard self.waitingSynchronizationID == id else { return }
+            self.waitingSynchronizationTask = nil
+            // A new waiter may arrive after the pass finishes but before this task resumes.
+            if !self.synchronizationWaiters.isEmpty { self.startWaitingSynchronization() }
+        }
+    }
+
+    private func finishWaiters(error: Error?, through pass: Int = .max) {
+        let waiting = synchronizationWaiters.filter { error != nil || $0.value.pass <= pass }
+        for (id, waiter) in waiting {
+            synchronizationWaiters[id] = nil
+            if let error { waiter.continuation.resume(throwing: error) }
+            else { waiter.continuation.resume() }
         }
     }
 
@@ -99,6 +137,7 @@ public actor BackendContentSyncCoordinator {
         var syncCursor: String?
         repeat {
             let page = try await backend.contentPage(cursor: cursor, limit: 500)
+            try Task.checkCancellation()
             records.append(contentsOf: try page.records.map(Self.remote))
             syncCursor = syncCursor ?? page.syncCursor
             cursor = page.nextCursor
@@ -112,11 +151,13 @@ public actor BackendContentSyncCoordinator {
 
     private func flushOutbox() async throws {
         while true {
+            try Task.checkCancellation()
             let pending = try await store.takePending(limit: 50)
             guard !pending.isEmpty else { return }
             do {
                 let commands = try pending.map(Self.command)
                 let results = try await backend.submitContentCommands(commands)
+                try Task.checkCancellation()
                 let expected = Dictionary(uniqueKeysWithValues: pending.map { ($0.commandID, $0) })
                 // A matching count alone cannot prove these receipts acknowledge this batch.
                 guard results.count == pending.count,
@@ -160,6 +201,7 @@ public actor BackendContentSyncCoordinator {
     private func pullChanges() async throws {
         guard var cursor = try await store.syncCursor() else { return }
         repeat {
+            try Task.checkCancellation()
             let page: BackendSyncPage = try await backend.get(
                 "/v1/sync/changes",
                 queryItems: [
@@ -178,6 +220,7 @@ public actor BackendContentSyncCoordinator {
                     try Self.remote(BackendContentRecord.decode(payload))
                 )
             }
+            try Task.checkCancellation()
             try await store.apply(
                 records: records,
                 nextCursor: page.nextCursor

@@ -9,29 +9,43 @@ public final class LLMRouter: LLMClient, Sendable {
 
     private let clientProvider: ClientProvider
     private let maxRetries: Int
+    private let deadlinePolicy: LLMDeadlinePolicy
 
-    public init(maxRetries: Int = 2, configProvider: @escaping ConfigProvider) {
+    public init(maxRetries: Int = 2, deadlinePolicy: LLMDeadlinePolicy = .init(), configProvider: @escaping ConfigProvider) {
         self.maxRetries = maxRetries
+        self.deadlinePolicy = deadlinePolicy
         self.clientProvider = {
             try await configProvider().makeProvider()
         }
     }
 
-    public init(client: any LLMClient, maxRetries: Int = 2) {
+    public init(client: any LLMClient, maxRetries: Int = 2, deadlinePolicy: LLMDeadlinePolicy = .init()) {
         self.maxRetries = maxRetries
+        self.deadlinePolicy = deadlinePolicy
         self.clientProvider = { client }
     }
 
     public func complete(_ request: LLMRequest) async throws -> String {
+        try await AsyncDeadline.run(timeout: deadlinePolicy.completion) {
+            try await self.completeWithRetries(request)
+        }
+    }
+
+    private func completeWithRetries(_ request: LLMRequest) async throws -> String {
+        try Task.checkCancellation()
         let provider = try await currentClient()
         // Automatic learning tasks can retry on a later interaction; never amplify
         // one failed background review into several paid provider attempts.
         let retryLimit = [.coachReview, .memorySummary].contains(request.task) ? 0 : maxRetries
         var attempt = 0
         while true {
+            try Task.checkCancellation()
             do {
-                return try await provider.complete(request)
+                let result = try await provider.complete(request)
+                try Task.checkCancellation()
+                return result
             } catch {
+                try Task.checkCancellation()
                 guard Self.isRetryable(error), attempt < retryLimit else { throw error }
                 attempt += 1
                 Log.llm.warning("complete 失败，第 \(attempt) 次重试：\(error)")
@@ -41,32 +55,68 @@ public final class LLMRouter: LLMClient, Sendable {
     }
 
     public func stream(_ request: LLMRequest) async -> AsyncThrowingStream<LLMStreamEvent, Error> {
-        AsyncThrowingStream { continuation in
+        guard !Task.isCancelled else { return AsyncThrowingStream { $0.finish(throwing: CancellationError()) } }
+        return AsyncThrowingStream { continuation in
+            let progress = LLMStreamProgress()
             let task = Task {
                 var attempt = 0
                 var deliveredAnyDelta = false
-                while true {
+                while !Task.isCancelled {
                     do {
+                        try Task.checkCancellation()
                         let provider = try await self.currentClient()
+                        try Task.checkCancellation()
                         for try await event in await provider.stream(request) {
-                            if case .textDelta = event { deliveredAnyDelta = true }
-                            continuation.yield(event)
+                            try Task.checkCancellation()
+                            if case .textDelta(let text) = event, !text.isEmpty {
+                                deliveredAnyDelta = true
+                                if !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { progress.recordToken() }
+                            }
+                            if case .terminated = continuation.yield(event) { return }
+                            if event == .finished {
+                                _ = progress.finish()
+                                continuation.finish()
+                                return
+                            }
                         }
+                        _ = progress.finish()
                         continuation.finish()
                         return
                     } catch {
+                        guard !Task.isCancelled, !(error is CancellationError) else {
+                            _ = progress.finish()
+                            continuation.finish(throwing: CancellationError())
+                            return
+                        }
                         if !deliveredAnyDelta, Self.isRetryable(error), attempt < self.maxRetries {
                             attempt += 1
                             Log.llm.warning("stream 失败，第 \(attempt) 次重试：\(error)")
-                            try? await Task.sleep(nanoseconds: Self.backoffNanos(attempt: attempt))
+                            do { try await Task.sleep(nanoseconds: Self.backoffNanos(attempt: attempt)) }
+                            catch { continuation.finish(throwing: CancellationError()); return }
                             continue
                         }
+                        _ = progress.finish()
                         continuation.finish(throwing: error)
                         return
                     }
                 }
+                continuation.finish(throwing: CancellationError())
             }
-            continuation.onTermination = { _ in task.cancel() }
+            let watchdog = Task {
+                while let remaining = progress.remaining(self.deadlinePolicy) {
+                    if remaining <= .zero {
+                        if progress.finish() { continuation.finish(throwing: URLError(.timedOut)) }
+                        task.cancel()
+                        return
+                    }
+                    do { try await Task.sleep(for: min(remaining, .milliseconds(250))) }
+                    catch { return }
+                }
+            }
+            continuation.onTermination = { _ in
+                _ = progress.finish()
+                task.cancel(); watchdog.cancel()
+            }
         }
     }
 

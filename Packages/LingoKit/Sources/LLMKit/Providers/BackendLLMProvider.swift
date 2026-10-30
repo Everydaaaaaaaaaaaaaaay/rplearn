@@ -179,7 +179,7 @@ public struct BackendLLMProvider: LLMProvider {
                     var metadata: StreamMetadata?
                     var usage: BackendLLMUsage?
                     do {
-                        for try await event in events {
+                        streamLoop: for try await event in events {
                             try Task.checkCancellation()
                             switch event.name {
                             case "delta":
@@ -196,6 +196,7 @@ public struct BackendLLMProvider: LLMProvider {
                             case "done":
                                 receivedDone = true
                                 continuation.yield(.finished)
+                                break streamLoop
                             case "error":
                                 let failure = try JSONDecoder().decode(
                                     StreamFailure.self,

@@ -20,12 +20,19 @@ struct SocialEncounterDiversityTests {
         let npc: BackendPublicNPC
         var failFirst: Bool
         let empty: Bool
+        let cancellationFailure: Bool
         private(set) var runIDs: [UUID] = []
-        init(npc: BackendPublicNPC, failFirst: Bool, empty: Bool) { self.npc = npc; self.failFirst = failFirst; self.empty = empty }
+        init(npc: BackendPublicNPC, failFirst: Bool, empty: Bool, cancellationFailure: Bool = false) {
+            self.npc = npc; self.failFirst = failFirst; self.empty = empty; self.cancellationFailure = cancellationFailure
+        }
         func selectAuthoredEncounter(context: BackendNPCEncounterContext, libraryVersion: String, runID: UUID) async throws -> BackendPublicNPC? {
             runIDs.append(runID)
             #expect(context.activityId == "park-route")
-            if failFirst { failFirst = false; throw BackendClientError.invalidResponse }
+            if failFirst {
+                failFirst = false
+                if cancellationFailure { throw CancellationError() }
+                throw BackendClientError.invalidResponse
+            }
             return empty ? nil : npc
         }
         func registerPublicNPC(id: UUID, card: BackendPublicNPCCard) async throws -> BackendPublicNPC { throw BackendClientError.invalidResponse }
@@ -41,8 +48,8 @@ struct SocialEncounterDiversityTests {
         while model.busy && ContinuousClock.now < deadline { try await Task.sleep(for: .milliseconds(10)) }
         #expect(!model.busy)
     }
-    @Test("一次抽取、重试身份稳定、本地分支和再次相遇", arguments: [(false, false), (true, false), (false, true)])
-    func offlineStory(failFirstPart: Bool, noCandidate: Bool) async throws {
+    @Test("一次抽取、重试身份稳定、本地分支和再次相遇", arguments: [(false, false, false), (true, false, false), (false, true, false), (true, false, true)])
+    func offlineStory(failFirstPart: Bool, noCandidate: Bool, cancellationFailure: Bool) async throws {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
         let economy = EconomyStore(modelContainer: container)
         _ = try await economy.updateProfile {
@@ -56,7 +63,7 @@ struct SocialEncounterDiversityTests {
         let manifest = try JSONDecoder().decode(Manifest.self, from: data)
         let source = try #require(manifest.entries.first { $0.card.regionId == "london" && library.entries[$0.id]?.story.actionId == "park-route" })
         let npc = BackendPublicNPC(avatar: nil, card: source.card, createdAt: "2026-09-11T00:00:00Z", id: source.id, travelerId: source.travelerId)
-        let registry = Registry(npc: npc, failFirst: failFirstPart, empty: noCandidate)
+        let registry = Registry(npc: npc, failFirst: failFirstPart, empty: noCandidate, cancellationFailure: cancellationFailure)
         let deps = HomeDependencies(
             economyStore: economy,
             itemStore: ItemStore(modelContainer: container),
