@@ -57,8 +57,22 @@ public struct ChatView: View {
     @State var bubbleMenuSize = CGSize(width: 224, height: 200)
     /// 软件键盘是否占据屏幕底部；键盘占据时输入栏不再补底部安全区。
     @State private var isKeyboardVisible = false
-    @FocusState var isTextInputFocused: Bool
-    @FocusState var isChineseInputFocused: Bool
+    enum ComposerFocus: Hashable { case english, chinese }
+    @FocusState var composerFocus: ComposerFocus?
+    var isTextInputFocused: Bool {
+        get { composerFocus == .english }
+        nonmutating set {
+            if newValue { composerFocus = .english }
+            else if composerFocus == .english { composerFocus = nil }
+        }
+    }
+    var isChineseInputFocused: Bool {
+        get { composerFocus == .chinese }
+        nonmutating set {
+            if newValue { composerFocus = .chinese }
+            else if composerFocus == .chinese { composerFocus = nil }
+        }
+    }
     @Environment(\.accessibilityReduceMotion) var reduceMotion
     @Environment(\.dismiss) var dismiss
     let deps: ChatDependencies
@@ -571,7 +585,9 @@ public struct ChatView: View {
                 .defaultScrollAnchor(.bottom)
                 .defaultScrollAnchor(.bottom, for: .sizeChanges)
                 .scrollBounceBehavior(.always)
-                .scrollDismissesKeyboard(.interactively)
+                // Resizing the composer scrolls programmatically; only a user's
+                // scroll should participate in interactive keyboard dismissal.
+                .scrollDismissesKeyboard(isUserScrollingMessages ? .interactively : .never)
                 // 短会话没有足够滚动范围时，系统的交互式收起不会开始；
                 // 兜底手势仅挂在消息区，避免与输入框争抢首触。
                 .simultaneousGesture(messageListKeyboardDismissGesture)

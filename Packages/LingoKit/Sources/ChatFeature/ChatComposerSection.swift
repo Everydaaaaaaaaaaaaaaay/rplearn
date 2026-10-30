@@ -20,7 +20,8 @@ extension ChatView {
                 .opacity(composerTranslation.isOpen ? 1 : 0)
                 .clipped()
                 .allowsHitTesting(composerTranslation.isOpen)
-                .disabled(!composerTranslation.isOpen)
+                // Visibility and hit testing hide the source field without a
+                // blanket disable resigning its responder during focus handoff.
                 .accessibilityHidden(!composerTranslation.isOpen)
             HStack(spacing: 8) {
                 Button {
@@ -75,7 +76,7 @@ extension ChatView {
                         axis: .vertical
                     )
                         .lineLimit(1...4)
-                        .focused($isTextInputFocused)
+                        .focused($composerFocus, equals: .english)
                         .accessibilityIdentifier("chat.composer")
                         // 保留学习者实际输入，避免系统把语法/拼写错误改成另一个词后再送去点评。
                         .autocorrectionDisabled(true)
@@ -154,7 +155,13 @@ extension ChatView {
 
     private var translatorToggle: some View {
         Button {
-            isChineseInputFocused = false
+            // Transfer focus before hiding the source field. Closing the translator
+            // must not resign the keyboard that the learner is already using.
+            if composerTranslation.isOpen {
+                if composerFocus != nil { composerFocus = .english }
+            } else if composerFocus == .chinese {
+                composerFocus = nil
+            }
             composerTranslation.cancel()
             composerAppleTranslator.cancelAll()
             chineseRecordingTask?.cancel()
@@ -207,7 +214,7 @@ extension ChatView {
                 TextField(isChineseRecording ? "正在听，请说中文…" : "输入中文，或者说中文…",
                           text: $composerTranslation.source, axis: .vertical)
                     .font(.body).foregroundStyle(Color.primary)
-                    .focused($isChineseInputFocused)
+                    .focused($composerFocus, equals: .chinese)
                     .submitLabel(.done)
                     .onSubmit { isChineseInputFocused = false }
                     .lineLimit(1...2)

@@ -112,6 +112,68 @@ final class ChatKeyboardTests: XCTestCase {
         XCTAssertEqual(field.value as? String, "Keep this draft here")
     }
 
+    func testClosingTranslatorTransfersFocusToComposer() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
+        app.launchEnvironment["UI_TEST_MARKETING_CAPTURE"] = "1"
+        app.launchEnvironment["UI_TEST_NATIVE_CAPTURE"] = "chat"
+        app.launch()
+        defer { app.terminate() }
+        let ruby = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Ruby Walker")).firstMatch
+        XCTAssertTrue(ruby.waitForExistence(timeout: 15))
+        ruby.tap()
+        let field = app.descendants(matching: .any)["chat.composer"].firstMatch
+        let toggle = app.buttons["chat.translator.toggle"]
+        let source = app.descendants(matching: .any)["chat.translator.source"].firstMatch
+        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        field.tap()
+        field.typeText("Keep this draft")
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3))
+        let keyboardLayout = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            field.frame.maxY <= app.keyboards.firstMatch.frame.minY + 2
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [keyboardLayout], timeout: 3), .completed)
+        let normalComposerY = field.frame.minY
+        toggle.tap()
+        XCTAssertTrue(source.waitForExistence(timeout: 3))
+        source.tap()
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3))
+        toggle.tap()
+        XCTAssertEqual(toggle.label, "打开翻译器")
+        XCTAssertTrue(app.keyboards.firstMatch.exists, "收起翻译器必须把键盘交回普通输入框")
+        XCTAssertTrue(app.buttons["chat.dismissKeyboard"].waitForExistence(timeout: 3))
+        XCTAssertEqual(field.value as? String, "Keep this draft")
+        field.typeText(" here")
+        XCTAssertEqual(field.value as? String, "Keep this draft here")
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3))
+        XCTAssertEqual(field.frame.minY, normalComposerY, accuracy: 2,
+                       "切换动画和继续输入后，输入栏仍应位于键盘上方")
+        let screenshot = XCTAttachment(screenshot: app.screenshot())
+        screenshot.name = "Translator closes into focused normal composer"
+        screenshot.lifetime = .keepAlways
+        add(screenshot)
+
+        // Closing while the English field owns focus also keeps the keyboard.
+        toggle.tap()
+        XCTAssertTrue(source.waitForExistence(timeout: 3))
+        toggle.tap()
+        XCTAssertEqual(toggle.label, "打开翻译器")
+        XCTAssertTrue(app.buttons["chat.dismissKeyboard"].waitForExistence(timeout: 3))
+        app.buttons["chat.dismissKeyboard"].tap()
+        XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
+
+        // A deliberately hidden keyboard stays hidden when switching modes.
+        toggle.tap()
+        XCTAssertTrue(source.waitForExistence(timeout: 3))
+        toggle.tap()
+        XCTAssertEqual(toggle.label, "打开翻译器")
+        XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
+        XCTAssertEqual(field.value as? String, "Keep this draft here")
+    }
+
     func testDismissKeyboardPreservesDraft() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
