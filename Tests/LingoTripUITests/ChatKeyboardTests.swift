@@ -75,6 +75,43 @@ final class ChatKeyboardTests: XCTestCase {
         add(image)
     }
 
+    func testBubbleMenuPreservesKeyboardAndDraft() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
+        app.launchEnvironment["UI_TEST_MARKETING_CAPTURE"] = "1"
+        app.launchEnvironment["UI_TEST_NATIVE_CAPTURE"] = "chat"
+        app.launch()
+        defer { app.terminate() }
+        let ruby = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Ruby Walker")).firstMatch
+        XCTAssertTrue(ruby.waitForExistence(timeout: 15))
+        ruby.tap()
+        let field = app.descendants(matching: .any)["chat.composer"].firstMatch
+        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        field.tap()
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3))
+        field.typeText("Keep this draft")
+        let latest = app.descendants(matching: .any)["chat.message.latest"].firstMatch
+        XCTAssertTrue(latest.waitForExistence(timeout: 5))
+        let composerY = field.frame.minY
+        latest.coordinate(withNormalizedOffset: CGVector(dx: 0.4, dy: 0.5)).press(forDuration: 1)
+        XCTAssertTrue(app.buttons["复制"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.keyboards.firstMatch.exists, "长按菜单不能收起键盘")
+        XCTAssertEqual(field.frame.minY, composerY, accuracy: 2, "菜单打开不能移动输入栏")
+        XCTAssertEqual(field.value as? String, "Keep this draft")
+        let image = XCTAttachment(screenshot: app.screenshot())
+        image.name = "Bubble menu preserves keyboard and composer position"
+        image.lifetime = .keepAlways
+        add(image)
+        app.buttons["复制"].tap()
+        XCTAssertTrue(app.keyboards.firstMatch.exists)
+        XCTAssertEqual(field.value as? String, "Keep this draft")
+        field.typeText(" here")
+        XCTAssertEqual(field.value as? String, "Keep this draft here")
+    }
+
     func testDismissKeyboardPreservesDraft() throws {
         continueAfterFailure = false
         let app = XCUIApplication()

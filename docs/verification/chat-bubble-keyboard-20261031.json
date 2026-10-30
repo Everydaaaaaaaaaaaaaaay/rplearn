@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-31",
+  "issue": "Long-pressing a chat bubble while typing dismisses the keyboard and leaves its context preview at stale coordinates.",
+  "change": [
+    "Chat bubbles request an in-place action menu anchored to their actual surface; no system preview or responder change is used.",
+    "Action menu stays inside the message viewport and above the composer/keyboard. Existing copy, translation, playback, grammar and voice transcript actions are retained.",
+    "Fallback keyboard dismissal requires a downward drag exceeding 20 points and does not run while the bubble menu is open."
+  ],
+  "verification": {
+    "before": {
+      "result": "Reproduced: composer minY changed from 503.67 to 798.67 points when the native menu opened.",
+      "log": "build/bubble-keyboard-before.log",
+      "xcresult": "build/DerivedData/VerificationResults/20261030T180808Z-69563.xcresult"
+    },
+    "after": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "tests": [
+        "ChatKeyboardTests/testBubbleMenuPreservesKeyboardAndDraft",
+        "ChatKeyboardTests/testDismissKeyboardPreservesDraft"
+      ],
+      "assertions": [
+        "Menu opens with keyboard present and composer minY unchanged within 2 points.",
+        "Draft survives menu opening and copy, then accepts further typing.",
+        "Blank-area tap and explicit keyboard dismissal still preserve the draft."
+      ],
+      "log": "build/bubble-keyboard-after.log",
+      "xcresult": "build/DerivedData/VerificationResults/20261030T181125Z-70391.xcresult",
+      "reviewedScreenshot": "build/bubble-keyboard-attachments/CE9CEE2D-D488-45F4-8A6E-4CDB74CCB0CC.png"
+    },
+    "preview": {
+      "script": "Scripts/preview.sh preview messages",
+      "status": "installed-and-launched",
+      "log": "build/bubble-keyboard-preview.log",
+      "simulator": "659893A7-0822-43F4-8DA1-4A92E9C78814"
+    },
+    "diffCheck": "passed"
+  },
+  "limits": [
+    "Local Debug fixtures only; no production data or live AI requests.",
+    "Device Hub capture failed with SCStreamErrorDomain -3811; native UI tests and exported simulator screenshots provide interaction evidence.",
+    "Xcode began a long diagnostic collection after the expected baseline failure; only that task-owned diagnostic child was stopped to finalize its result."
+  ]
+}

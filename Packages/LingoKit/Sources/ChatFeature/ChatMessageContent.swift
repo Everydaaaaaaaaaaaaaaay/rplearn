@@ -28,6 +28,7 @@ extension ChatView {
                 side: .outgoing,
                 groupPosition: groupPosition,
                 leadingAccessory: { coachButton(message) },
+                onMenuRequest: { presentBubbleMenu(message, frame: $0) },
                 contextMenu: { bubbleMenu(message) }
             ) {
                 tappableText(message, textColor: .white)
@@ -36,6 +37,7 @@ extension ChatView {
             MessageBubble(
                 side: .outgoing,
                 groupPosition: groupPosition,
+                onMenuRequest: { presentBubbleMenu(message, frame: $0) },
                 contextMenu: { bubbleMenu(message) }
             ) {
                 tappableText(message, textColor: .white)

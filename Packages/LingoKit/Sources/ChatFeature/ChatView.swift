@@ -52,6 +52,9 @@ public struct ChatView: View {
     @State var knownLatestMessageID: UUID?
     @State var showsContactDetails = false
     @State var highlightedMessageID: UUID?
+    @State var bubbleMenuMessage: MessageDTO?
+    @State var bubbleMenuFrame: CGRect = .zero
+    @State var bubbleMenuSize = CGSize(width: 224, height: 200)
     /// 软件键盘是否占据屏幕底部；键盘占据时输入栏不再补底部安全区。
     @State private var isKeyboardVisible = false
     @FocusState var isTextInputFocused: Bool
@@ -99,6 +102,7 @@ public struct ChatView: View {
         }
         .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { viewportWidth = $0 }
         .onChange(of: learningSelected) { _, selected in
+            bubbleMenuMessage = nil
             isTextInputFocused = false; isChineseInputFocused = false
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             if selected {
@@ -144,6 +148,7 @@ public struct ChatView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
             isKeyboardVisible = false
+            bubbleMenuMessage = nil
         }
         #if DEBUG
         .alert("无法填满挑战进度", isPresented: Binding(get: { learningDebugError != nil }, set: { if !$0 { learningDebugError = nil } })) {
@@ -678,6 +683,7 @@ public struct ChatView: View {
                 }
             }
         }
+        .overlay { bubbleActionsOverlay }
     }
 
     /// Background-only hit target: word taps and bubble menus remain in the foreground.
@@ -692,9 +698,12 @@ public struct ChatView: View {
     }
 
     private var messageListKeyboardDismissGesture: some Gesture {
-        DragGesture()
+        DragGesture(minimumDistance: 20)
             .onChanged { value in
-                guard isTextInputFocused || isChineseInputFocused, value.translation.height > 0 else { return }
+                guard bubbleMenuMessage == nil,
+                      isTextInputFocused || isChineseInputFocused,
+                      value.translation.height > 20,
+                      value.translation.height > abs(value.translation.width) else { return }
                 isTextInputFocused = false
                 isChineseInputFocused = false
             }
@@ -748,6 +757,7 @@ public struct ChatView: View {
                             )
                         )
                     },
+                    onMenuRequest: { presentBubbleMenu(message, frame: $0) },
                     contextMenu: {
                         bubbleMenu(message)
                     }
@@ -867,22 +877,26 @@ public struct ChatView: View {
     func bubbleMenu(_ message: MessageDTO) -> some View {
         if message.role == .assistant, !message.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             Button {
+                bubbleMenuMessage = nil
                 presentGrammarAnalysis(for: message)
             } label: {
                 Label("语法解析", systemImage: "text.book.closed")
             }
         }
         Button {
+            bubbleMenuMessage = nil
             UIPasteboard.general.string = message.text
         } label: {
             Label("复制", systemImage: "doc.on.doc")
         }
         Button {
+            bubbleMenuMessage = nil
             Task { await viewModel.translate(message: message) }
         } label: {
             Label("翻译", systemImage: "character.book.closed.zh")
         }
         Button {
+            bubbleMenuMessage = nil
             deps.tutorial?.onEvent("manualPlayback")
             let stopped = autoReadQueue.interrupt()
             Task { await stopped?.value; await viewModel.speak(message: message) }
@@ -891,6 +905,7 @@ public struct ChatView: View {
         }
         if message.kind == .voice {
             Button {
+                bubbleMenuMessage = nil
                 if transcriptVisibleMessageIDs.contains(message.id) {
                     transcriptVisibleMessageIDs.remove(message.id)
                 } else {

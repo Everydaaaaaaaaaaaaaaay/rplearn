@@ -20,6 +20,8 @@ public struct MessageBubble<Content: View>: View {
     private let groupPosition: MessageBubbleGroupPosition
     private let leadingAccessory: AnyView?
     private let contextMenuContent: AnyView?
+    private var onMenuRequest: ((CGRect) -> Void)?
+    @State private var surfaceFrame: CGRect = .zero
     private let content: Content
 
     public init(
@@ -38,6 +40,7 @@ public struct MessageBubble<Content: View>: View {
     public init<Menu: View>(
         side: Side,
         groupPosition: MessageBubbleGroupPosition = .single,
+        onMenuRequest: ((CGRect) -> Void)? = nil,
         @ViewBuilder contextMenu: () -> Menu,
         @ViewBuilder content: () -> Content
     ) {
@@ -45,6 +48,7 @@ public struct MessageBubble<Content: View>: View {
         self.groupPosition = groupPosition
         self.leadingAccessory = nil
         self.contextMenuContent = AnyView(contextMenu())
+        self.onMenuRequest = onMenuRequest
         self.content = content()
     }
 
@@ -69,6 +73,7 @@ public struct MessageBubble<Content: View>: View {
         side: Side,
         groupPosition: MessageBubbleGroupPosition = .single,
         @ViewBuilder leadingAccessory: () -> Accessory,
+        onMenuRequest: ((CGRect) -> Void)? = nil,
         @ViewBuilder contextMenu: () -> Menu,
         @ViewBuilder content: () -> Content
     ) {
@@ -76,6 +81,7 @@ public struct MessageBubble<Content: View>: View {
         self.groupPosition = groupPosition
         self.leadingAccessory = AnyView(leadingAccessory())
         self.contextMenuContent = AnyView(contextMenu())
+        self.onMenuRequest = onMenuRequest
         self.content = content()
     }
 
@@ -100,7 +106,14 @@ public struct MessageBubble<Content: View>: View {
 
     @ViewBuilder
     private var interactiveBubble: some View {
-        if let contextMenuContent {
+        if let onMenuRequest {
+            bubbleSurface
+                .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { surfaceFrame = $0 }
+                .highPriorityGesture(LongPressGesture(minimumDuration: 0.45).onEnded { _ in
+                    onMenuRequest(surfaceFrame)
+                })
+                .accessibilityAction(named: "消息操作") { onMenuRequest(surfaceFrame) }
+        } else if let contextMenuContent {
             bubbleSurface
                 .contextMenu { contextMenuContent }
         } else {
