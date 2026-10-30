@@ -12,7 +12,7 @@
 | 模块、账号与同步边界 | [架构](architecture.md) |
 | 登录入口、账号隔离与订阅 | [账号与定价策略](account-access-and-pricing-policy-2026-09-10.md)；商店价格配置不等于已生效 |
 | 城市与剧情 | [旅行设计](journey-design.md)、[出发之后](departures-collection.md)、[剧情美术验收](verification/departures-art.md) |
-| 成人生活剧情方向（评估与局部重构决策） | [现有质量、逐篇取舍、人物承接与首批范围](adult-life-story-review-2026-10-31.md) |
+| 成人生活剧情方向（评估与文稿准备，暂不实装） | [现有质量与逐篇取舍](adult-life-story-review-2026-10-31.md)、[八篇完整双语分支稿、承接与自审](story-preparation-2026-10-31/README.md) |
 | 场景与活动 | [必要视觉验收](activity-scene-visual-acceptance.md)及其中最新记录、[相遇流程](activity-encounter-journey-plan.md) |
 | 活动系统重构（规划） | [城市地点与固定相遇施工方案](activity-system-rebuild-plan-2026-10-31.md) |
 | 视觉与语音 | [设计系统](design-system.md)、[统一视觉原生截图与实施基准（待审阅）](design/unified-native-2026-10-31/README.md)、[实时语音](realtime-voice.md) |
