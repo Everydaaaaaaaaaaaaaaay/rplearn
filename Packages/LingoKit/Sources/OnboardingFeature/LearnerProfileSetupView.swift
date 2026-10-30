@@ -456,7 +456,7 @@ struct LearnerProfileSetupView: View {
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(title)
         .accessibilityValue(isSelected ? "已选择" : "未选择")
-        .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
         .accessibilityRemoveTraits(isSelected ? [] : .isSelected)
     }
 
