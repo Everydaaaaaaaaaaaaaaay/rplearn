@@ -120,4 +120,24 @@ struct VoiceRecorderTests {
         #expect(recorder.state == .recording(inCancelZone: false))
         await recorder.cancelRecording()
     }
+
+    @Test("旧录音的延迟回调不会污染新录音")
+    func ignoresCallbacksFromPreviousCapture() async {
+        let recorder = VoiceRecorder(audioSession: AudioSessionCoordinator(),
+            permissionRequester: { _ in true }, captureStarter: { _ in
+                .init(engine: nil, audioFile: nil, recognitionRequest: nil, recognitionTask: nil, fileName: nil)
+            })
+        await recorder.startRecording()
+        let old = recorder.makeRuntimeCallbacks()
+        await recorder.cancelRecording()
+        await recorder.startRecording()
+        await Task.detached {
+            old.reportLevel(0.9)
+            old.reportRecognition(transcript: "old background noise", isFinal: true)
+        }.value
+        await Task.yield()
+        #expect(recorder.level == 0)
+        #expect(recorder.state == .recording(inCancelZone: false))
+        await recorder.cancelRecording()
+    }
 }

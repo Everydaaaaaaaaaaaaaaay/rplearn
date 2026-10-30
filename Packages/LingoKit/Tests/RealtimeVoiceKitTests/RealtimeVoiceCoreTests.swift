@@ -145,7 +145,7 @@ struct RealtimeVoiceSessionTests {
         await session.start()
         input.emit(.init(text: "I would like", isFinal: false))
         for _ in 0..<10 {
-            input.onLevel?(0.2)
+            input.onLevel?(0.025)
             try? await Task.sleep(for: .milliseconds(15))
         }
         #expect(input.finishTurnCount == 0)

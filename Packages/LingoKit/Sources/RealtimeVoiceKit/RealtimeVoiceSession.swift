@@ -205,7 +205,8 @@ public final class RealtimeVoiceSession {
     private func receiveLevel(_ level: Double) {
         guard phase != .idle, phase != .connecting, phase != .paused, phase != .failed,
               !isMuted else { return }
-        if level >= 0.07 { lastVoiceAt = clock.now }
+        // Input levels are already speech-gated; quiet speech must keep the turn open too.
+        if level > 0 { lastVoiceAt = clock.now }
         rawInputLevel = level
         if phase == .listening || phase == .userSpeaking {
             activityLevel = level

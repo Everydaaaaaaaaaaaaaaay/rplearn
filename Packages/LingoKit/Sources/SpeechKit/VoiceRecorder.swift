@@ -82,15 +82,17 @@ public final class VoiceRecorder {
         private let recognitionReporter: @Sendable (String, Bool) -> Void
         private let recognitionFailureReporter: @Sendable () -> Void
 
-        init(recorder: VoiceRecorder) {
+        @MainActor init(recorder: VoiceRecorder) {
+            let generation = recorder.captureGeneration
             self.levelReporter = { [weak recorder] level in
                 Task { @MainActor [weak recorder] in
+                    guard recorder?.captureGeneration == generation else { return }
                     recorder?.level = level
                 }
             }
             self.recognitionReporter = { [weak recorder] transcript, isFinal in
                 Task { @MainActor [weak recorder] in
-                    guard let recorder else { return }
+                    guard let recorder, recorder.captureGeneration == generation else { return }
                     recorder.latestTranscript = transcript
                     if isFinal {
                         recorder.finalTranscriptContinuation?.resume(returning: transcript)
@@ -100,7 +102,7 @@ public final class VoiceRecorder {
             }
             self.recognitionFailureReporter = { [weak recorder] in
                 Task { @MainActor [weak recorder] in
-                    guard let recorder else { return }
+                    guard let recorder, recorder.captureGeneration == generation else { return }
                     recorder.finalTranscriptContinuation?.resume(returning: recorder.latestTranscript)
                     recorder.finalTranscriptContinuation = nil
                 }
@@ -139,6 +141,7 @@ public final class VoiceRecorder {
     private var startedAt: Date?
     private var ticker: Task<Void, Never>?
     private var latestTranscript = ""
+    private var captureGeneration = UUID()
     private var finalTranscriptContinuation: CheckedContinuation<String, Never>?
     private let permissionRequester: @MainActor (VoiceRecorder) async -> Bool
     private let captureStarter: @MainActor (VoiceRecorder) throws -> StartedCapture
@@ -222,6 +225,7 @@ public final class VoiceRecorder {
                 state = .idle
                 return
             }
+            captureGeneration = UUID()
             let capture = try captureStarter(self)
 
             self.engine = capture.engine
@@ -302,6 +306,7 @@ public final class VoiceRecorder {
 
     private func stopAndTranscribe() async -> Capture? {
         let duration = startedAt.map { Date.now.timeIntervalSince($0) } ?? 0
+        let generation = captureGeneration
         let fileName = self.fileName
         state = .transcribing
 
@@ -314,7 +319,7 @@ public final class VoiceRecorder {
             finalTranscriptContinuation = continuation
             Task { @MainActor [weak self] in
                 try? await Task.sleep(for: .seconds(3))
-                guard let self else { return }
+                guard let self, self.captureGeneration == generation else { return }
                 self.finalTranscriptContinuation?.resume(returning: self.latestTranscript)
                 self.finalTranscriptContinuation = nil
             }
@@ -344,6 +349,7 @@ public final class VoiceRecorder {
         recognitionRequest = nil
         engine = nil
         audioFile = nil
+        captureGeneration = UUID()
         if deleteFile, let fileName {
             VoiceMessageStorage.delete(fileName: fileName)
         }
@@ -367,6 +373,11 @@ public final class VoiceRecorder {
     private nonisolated static func startSystemCapture(callbacks: RuntimeCallbacks, localeIdentifier: String) throws -> StartedCapture {
         let engine = AVAudioEngine()
         let input = engine.inputNode
+        do {
+            try input.setVoiceProcessingEnabled(true)
+        } catch {
+            Log.speech.warning("录音降噪当前不可用，继续使用输入过滤：\(error.localizedDescription)")
+        }
         let format = input.outputFormat(forBus: 0)
         guard Self.isRecordableInputFormat(format) else {
             throw RecorderError.unavailableInputFormat
@@ -387,27 +398,27 @@ public final class VoiceRecorder {
             }
             let request = SFSpeechAudioBufferRecognitionRequest()
             request.shouldReportPartialResults = true
+            request.taskHint = .dictation
+            let gate = SpeechAudioGate()
 
             let recognitionTask = recognizer.recognitionTask(with: request) { result, error in
-                if let result {
+                if let result, gate.hasDetectedSpeech {
                     callbacks.reportRecognition(
                         transcript: result.bestTranscription.formattedString,
                         isFinal: result.isFinal
                     )
+                } else if result?.isFinal == true {
+                    callbacks.reportRecognition(transcript: "", isFinal: true)
                 }
                 if error != nil {
                     callbacks.reportRecognitionFailure()
                 }
             }
 
-            input.installTap(onBus: 0, bufferSize: 1024, format: nil) { [callbacks, request, writer] buffer, _ in
+            input.installTap(onBus: 0, bufferSize: 1024, format: nil) { [callbacks, request, writer, gate] buffer, _ in
                 writer.write(buffer)
-                request.append(buffer)
-                if let channel = buffer.floatChannelData?[0] {
-                    let samples = UnsafeBufferPointer(start: channel, count: Int(buffer.frameLength))
-                    let level = AudioLevelMeter.level(samples: samples)
-                    callbacks.reportLevel(level)
-                }
+                let activity = gate.receive(buffer) { request.append($0) }
+                callbacks.reportLevel(activity.level)
             }
             installedTap = true
 
