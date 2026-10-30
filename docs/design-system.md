@@ -32,3 +32,10 @@ VoiceOver。无需为了减少少量 SwiftUI 代码创建万能组件。
 短暂、无需用户确认的操作反馈统一用 `DSQuickNotice` / `.dsQuickNotice`：SF Symbols 单色图标在上，文字在下；12pt 微圆角方框、系统自适应材质，淡入淡出，停留 2 秒，再次触发重新计时。不得用阻塞式 alert 替代这类轻反馈；新增语义图标加入 `DSQuickNotice.Symbol`。
 
 `TapToContinueHint` 统一剧情的弱继续提示。`tutorialFocus` 仅覆盖呼吸描边、不改变布局或截获手势，并通过 `TutorialTargetPreference` 上报目标位置供指引避让。教程指引不能用 safe-area inset 挤压正式界面。
+
+## 统一视觉原生实施基准（待审阅）
+
+[2026-10-31 原生设计基准](design/unified-native-2026-10-31/README.md)提供 16 个主要页面的
+可编译 SwiftUI 展示源码及真实模拟器截图重现方式，作为后续统一视觉的具体审阅方案。
+它尚未迁入正式组件库，也未记录为用户已认可；正式实现复用同一视觉源码和素材，
+通过数据适配器连接业务，并使用相同设备、字号和数据进行截图对照。

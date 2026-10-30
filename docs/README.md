@@ -15,7 +15,7 @@
 | 成人生活剧情方向（评估与局部重构决策） | [现有质量、逐篇取舍、人物承接与首批范围](adult-life-story-review-2026-10-31.md) |
 | 场景与活动 | [必要视觉验收](activity-scene-visual-acceptance.md)及其中最新记录、[相遇流程](activity-encounter-journey-plan.md) |
 | 活动系统重构（规划） | [城市地点与固定相遇施工方案](activity-system-rebuild-plan-2026-10-31.md) |
-| 视觉与语音 | [设计系统](design-system.md)、[实时语音](realtime-voice.md) |
+| 视觉与语音 | [设计系统](design-system.md)、[统一视觉原生截图与实施基准（待审阅）](design/unified-native-2026-10-31/README.md)、[实时语音](realtime-voice.md) |
 | 对话成长原生原型 | [入口、规则、循环记录与验证边界](learning-program/conversation-prototype-2026-09-22.md) |
 | 角色单元挑战与全局英语旅程（规划） | [实施总纲](learning-program/unit-learning-plan-2026-09-26.md)、[架构](learning-program/unit-learning-architecture-2026-09-26.md)、[内容](learning-program/unit-learning-content-2026-09-26.md)、[体验](learning-program/unit-learning-experience-2026-09-26.md) |
 | 公共题库与任意角色组卷 | [规则、管理与发布回退](learning-program/shared-question-bank-2026-10-06.md) |
