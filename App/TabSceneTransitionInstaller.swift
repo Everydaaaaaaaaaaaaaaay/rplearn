@@ -44,6 +44,9 @@ struct TabSceneTransitionInstaller: UIViewControllerRepresentable {
                 installedController = controller
             }
             guard controller.delegate !== proxy else { return }
+            // A presented root can briefly discover the presenting tab controller.
+            // Never chain installer proxies: competing layout passes can form a cycle.
+            guard !(controller.delegate is TabSceneTransitionDelegate) else { return }
             proxy.original = controller.delegate
             controller.delegate = proxy
         }

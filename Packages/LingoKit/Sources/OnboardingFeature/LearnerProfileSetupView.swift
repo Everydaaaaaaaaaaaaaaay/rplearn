@@ -353,7 +353,7 @@ struct LearnerProfileSetupView: View {
                         ProgressView()
                             .tint(.white)
                     } else {
-                        Text(step == .level ? "保存并认识咕咕" : "继续")
+                        Text(step == .level ? "保存并开始测评" : "继续")
                     }
                 }
                 .buttonStyle(.dsActionPrimary)

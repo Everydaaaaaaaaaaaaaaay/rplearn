@@ -257,6 +257,11 @@ extension PlacementTestView {
                 questionBankError = "测试题库暂时无法载入，你仍可直接选择并应用水平。"
             }
             errorMessage = nil
+            if startsWithQuestions {
+                if !questions.isEmpty { start() }
+                else { phase = .introduction }
+                return
+            }
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_QUESTION"] == "1" {
                 start()

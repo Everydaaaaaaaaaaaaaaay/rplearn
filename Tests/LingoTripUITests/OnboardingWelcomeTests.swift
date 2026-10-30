@@ -361,6 +361,98 @@ final class OnboardingWelcomeTests: XCTestCase {
         XCTAssertFalse(app.buttons["onboarding.selection.confirm"].exists)
     }
 
+    func testSettingsInitialPlacementStartsDirectlyAndRestartsFresh() {
+        openSettingsForFirstLoginTests()
+        let entry = app.buttons["settings.test-initial-placement"]
+        reveal(entry)
+        entry.tap()
+        XCTAssertTrue(app.buttons["placement.confirm"].waitForExistence(timeout: 15))
+        XCTAssertFalse(app.buttons["开始水平测试"].exists)
+        XCTAssertFalse(app.buttons["答几题，更准确"].exists)
+        app.buttons["placement.option.1"].tap()
+        app.buttons["placement.confirm"].tap()
+        XCTAssertTrue(app.staticTexts["第 2 题 / 20"].waitForExistence(timeout: 3))
+        captureScreen(named: "settings-initial-placement-direct")
+        app.buttons["onboarding-test.exit"].firstMatch.tap()
+        XCTAssertTrue(entry.waitForExistence(timeout: 5))
+        entry.tap()
+        XCTAssertTrue(app.staticTexts["第 1 题 / 20"].waitForExistence(timeout: 15))
+        XCTAssertFalse(app.buttons["placement.confirm"].isEnabled)
+        app.buttons["onboarding-test.exit"].firstMatch.tap()
+        XCTAssertTrue(entry.waitForExistence(timeout: 5))
+    }
+
+    func testSettingsFirstLoginFlowReachesMainAndPreservesOriginalAccount() {
+        openSettingsForFirstLoginTests()
+        let entry = app.buttons["settings.test-first-login"]
+        reveal(entry)
+        entry.tap()
+        let nickname = app.textFields["例如：小雨"]
+        XCTAssertTrue(nickname.waitForExistence(timeout: 15))
+        nickname.tap(); nickname.typeText("Replay Learner")
+        app.buttons["继续"].tap()
+        app.buttons["日常交流"].firstMatch.tap()
+        app.buttons["旅行沟通"].firstMatch.tap()
+        app.buttons["继续"].tap()
+        let level = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "初中英语水平，")).firstMatch
+        reveal(level); level.tap()
+        app.buttons["保存并开始测评"].tap()
+        XCTAssertTrue(app.buttons["placement.confirm"].waitForExistence(timeout: 10))
+        captureScreen(named: "settings-first-login-first-question")
+        XCTAssertFalse(app.buttons["开始水平测试"].exists)
+        for _ in 0..<3 {
+            app.buttons["placement.option.1"].tap()
+            app.buttons["placement.confirm"].tap()
+        }
+        let apply = app.buttons["placement.apply"]
+        XCTAssertTrue(apply.waitForExistence(timeout: 5))
+        reveal(apply); apply.tap()
+        let alert = app.alerts["确认切换英语水平"]
+        if alert.waitForExistence(timeout: 3) { alert.buttons["确认切换"].tap() }
+        XCTAssertTrue(app.scrollViews["onboarding.story.messages"].waitForExistence(timeout: 8))
+        for _ in 0..<55 {
+            if app.buttons["onboarding.selection.confirm"].exists { break }
+            let choice = app.buttons["onboarding.story.choice.0"]
+            if choice.exists { choice.tap() } else { advanceStory() }
+        }
+        let select = app.buttons["onboarding.selection.confirm"]
+        XCTAssertTrue(select.waitForExistence(timeout: 5)); select.tap()
+        let skipTutorial = app.buttons["tutorial.skip"]
+        XCTAssertTrue(skipTutorial.waitForExistence(timeout: 8)); skipTutorial.tap()
+        XCTAssertTrue(skipTutorial.waitForNonExistence(timeout: 8))
+        let mainReady = XCTNSPredicateExpectation(predicate: NSPredicate { [self] _, _ in
+            app.tabBars.buttons.matching(identifier: "信息").allElementsBoundByIndex.contains { $0.isHittable }
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [mainReady], timeout: 10), .completed)
+        XCTAssertFalse(app.scrollViews["onboarding.story.messages"].exists)
+        XCTAssertFalse(nickname.exists)
+        captureScreen(named: "settings-first-login-completed")
+        app.buttons["onboarding-test.exit"].firstMatch.tap()
+        XCTAssertTrue(entry.waitForExistence(timeout: 5))
+        // A second run must have no nickname, goals, placement or completion from the first.
+        entry.tap()
+        XCTAssertTrue(nickname.waitForExistence(timeout: 15))
+        XCTAssertEqual(nickname.value as? String, "例如：小雨")
+        app.buttons["onboarding-test.exit"].firstMatch.tap()
+        XCTAssertTrue(entry.waitForExistence(timeout: 5))
+    }
+
+    private func openSettingsForFirstLoginTests() {
+        app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
+        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_TAB"] = "me"
+        app.launchEnvironment["UI_TEST_TUTORIAL_SILENT"] = "1"
+        app.launchEnvironment["UI_TEST_REQUIRE_AUTHENTICATION"] = "0"
+        app.launch()
+        let settings = app.buttons["设置，AI、语音与偏好"]
+        XCTAssertTrue(settings.waitForExistence(timeout: 10)); settings.tap()
+    }
+
+    private func reveal(_ element: XCUIElement) {
+        for _ in 0..<8 where !element.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        XCTAssertTrue(element.isHittable)
+    }
+
     func testTutorialCanBeReplayedWithoutSelectingAnotherCompanion() {
         app.launchEnvironment["UI_TEST_ONBOARDING_WELCOME"] = "0"
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
@@ -476,6 +568,13 @@ final class OnboardingWelcomeTests: XCTestCase {
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)
+        if name.hasPrefix("settings-") {
+            let root = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                .appendingPathComponent("onboarding-entries", isDirectory: true)
+            try? FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+            try? app.screenshot().pngRepresentation.write(to: root.appendingPathComponent(name + ".png"))
+            try? app.debugDescription.write(to: root.appendingPathComponent(name + ".txt"), atomically: true, encoding: .utf8)
+        }
     }
 
     private func waitForAny(_ elements: [XCUIElement], timeout: TimeInterval) -> Bool {

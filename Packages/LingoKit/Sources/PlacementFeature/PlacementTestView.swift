@@ -42,6 +42,7 @@ public struct PlacementTestView: View {
     }
 
     let startsWithLevelSelection: Bool
+    let startsWithQuestions: Bool
     let usesNativeNavigation: Bool
     let deps: PlacementDependencies
     let onComplete: (UserProfileDTO) -> Void
@@ -80,10 +81,12 @@ public struct PlacementTestView: View {
         deps: PlacementDependencies,
         usesNativeNavigation: Bool = false,
         startsWithLevelSelection: Bool = false,
+        startsWithQuestions: Bool = false,
         onComplete: @escaping (UserProfileDTO) -> Void,
         onCancel: @escaping () -> Void
     ) {
         self.startsWithLevelSelection = startsWithLevelSelection
+        self.startsWithQuestions = startsWithQuestions
         self.usesNativeNavigation = usesNativeNavigation
         self.deps = deps
         self.onComplete = onComplete

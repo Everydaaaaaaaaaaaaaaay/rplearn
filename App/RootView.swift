@@ -32,6 +32,7 @@ struct RootView: View {
     }
 
     let environment: AppEnvironment
+    var onExitOnboardingPreview: (() -> Void)?
 
     @State private var unreadCount = 0
     @State private var selectedTab: AppTab = .messages
@@ -60,6 +61,7 @@ struct RootView: View {
     #if DEBUG
     @State private var captureCharacter: CharacterDTO?
     #endif
+    @State private var onboardingPreviewMode: OnboardingPreviewMode?
     @State private var placementCompletionRevision = 0
     @State private var activeUserID: UUID?
     @State private var stateRevision = 0
@@ -71,15 +73,21 @@ struct RootView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    init(environment: AppEnvironment) {
+    init(environment: AppEnvironment, onExitOnboardingPreview: (() -> Void)? = nil) {
         self.environment = environment
+        self.onExitOnboardingPreview = onExitOnboardingPreview
+        if let mode = environment.onboardingPreviewMode {
+            _selectedTab = State(initialValue: mode == .placement ? .me : .messages)
+            _showPlacementTest = State(initialValue: mode == .placement)
+            return
+        }
         #if DEBUG
         let requested = ProcessInfo.processInfo.environment["UI_TEST_TAB"]
         let initial: AppTab = switch requested {
         case "messages": .messages
         case "contacts": .contacts
         case "home", "map": .home
-        case "me", "subscription", "learning", "favorites", "learning-test": .me
+        case "me", "settings", "subscription", "learning", "favorites", "learning-test": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
                 ? .messages
@@ -94,6 +102,9 @@ struct RootView: View {
         }
         if requested == "learning-test" {
             _mePath = State(initialValue: [.learningTrial])
+        }
+        if requested == "settings" {
+            _mePath = State(initialValue: [.settings])
         }
         if requested == "subscription" {
             _mePath = State(initialValue: [.subscription])
@@ -124,6 +135,9 @@ struct RootView: View {
             _selectedTab = State(initialValue: .me)
         }
         #endif
+    }
+    private var isOnboardingPreview: Bool {
+        environment.onboardingPreviewMode != nil
     }
     private var showsOnboarding: Binding<Bool> {
         Binding(
@@ -165,6 +179,7 @@ struct RootView: View {
 
     private var configuredRootContent: some View {
         launchContent
+            .overlay(alignment: .topTrailing) { onboardingPreviewExit }
             #if DEBUG
             .preferredColorScheme(ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_APPEARANCE"].map { $0 == "dark" ? .dark : .light })
             .fullScreenCover(item: $captureCharacter) { character in
@@ -420,6 +435,13 @@ struct RootView: View {
         activationError = nil
         await environment.prepareResources()
         guard !Task.isCancelled else { return }
+        if isOnboardingPreview {
+            do {
+                activeUserID = try await environment.activateOnboardingPreviewWorkspace()
+                stateRevision += 1
+            } catch { activationError = error.localizedDescription }
+            return
+        }
         #if DEBUG
         if bypassesAuthenticationForUITesting,
            case .signedOut = environment.authSession.phase {
@@ -467,6 +489,9 @@ struct RootView: View {
     private var launchContent: some View {
         if !environment.resourcesReady {
             launchLoading
+        } else if isOnboardingPreview {
+            if activeUserID != nil, environment.workspace != nil { appContent }
+            else { launchLoading }
         } else if showsWelcome {
             WelcomeJourneyView(dictionary: environment.dictionary, grammar: environment.grammarPoints) {
                 welcomeCompleted = true
@@ -520,6 +545,7 @@ struct RootView: View {
     }
 
     private var bypassesAuthenticationForUITesting: Bool {
+        if isOnboardingPreview { return true }
         #if DEBUG
         let processEnvironment = ProcessInfo.processInfo.environment
         if processEnvironment["UI_TEST_REQUIRE_AUTHENTICATION"] == "1" {
@@ -548,6 +574,9 @@ struct RootView: View {
                 captureCharacter = try? await environment.rosterStore.allCharacters().first { $0.isMainCharacter }
             }
             #endif
+            .fullScreenCover(item: $onboardingPreviewMode) { mode in
+                OnboardingPreviewView(mode: mode)
+            }
             .fullScreenCover(item: $introductionMode) { mode in
                 JourneyIntroductionView(deps: OnboardingDependencies(
                     economyStore: environment.economyStore,
@@ -592,6 +621,7 @@ struct RootView: View {
                     )
                     return true
                 }
+                .overlay(alignment: .topTrailing) { onboardingPreviewExit }
                 .interactiveDismissDisabled()
                 .fullScreenCover(isPresented: $showOnboardingPlacement) {
                     placementTestView(isOnboarding: true)
@@ -956,7 +986,9 @@ struct RootView: View {
                 },
                 onOpenPhotoCredits: { openMe(.photoCredits) },
                 onOpenIntroduction: { introductionMode = .introduction },
-                onOpenTutorial: { introductionMode = .tutorial }
+                onOpenTutorial: { introductionMode = .tutorial },
+                onTestInitialPlacement: initialPlacementTestAction,
+                onTestFirstLoginFlow: firstLoginTestAction
             )
 
         case .photoCredits:
@@ -998,9 +1030,7 @@ struct RootView: View {
                 speech: environment.speech,
                 audioSession: environment.audioSession,
                 levelChangeSummary: { [client = environment.backendClient, preview = bypassesAuthenticationForUITesting] level in
-                    #if DEBUG
-                    if preview { return "界面预览：目标水平保留 0 颗星、0 点。此操作仅修改本地预览档案，不写入账号。" }
-                    #endif
+                    if preview { return "测试档案：目标水平保留 0 颗星、0 点。此操作仅修改本次测试档案。" }
                     let journey = try await client.learningJourney()
                     guard let target = journey.levels.first(where: { $0.level == level.rawValue }) else { throw URLError(.cannotParseResponse) }
                     let supply = target.publishedUnitCount == 0 ? "该水平目前没有已发布单元，聊天满条后需等待题库准备。" : "各旅伴的可用挑战以角色学习页为准；题库不足时会保留聊天进度。"
@@ -1009,6 +1039,7 @@ struct RootView: View {
             ),
             usesNativeNavigation: !isOnboarding,
             startsWithLevelSelection: !isOnboarding && chooseLevel,
+            startsWithQuestions: isOnboarding || isOnboardingPreview,
             onComplete: { updated in
                 stateRevision += 1
                 Task {
@@ -1022,11 +1053,36 @@ struct RootView: View {
             onCancel: {
                 if isOnboarding {
                     showOnboardingPlacement = false
+                    placementCompletionRevision += 1
                 } else {
                     showPlacementTest = false; showEnglishJourney = false
                 }
             }
         )
+        .overlay(alignment: .topTrailing) { onboardingPreviewExit }
+    }
+
+    private var initialPlacementTestAction: (@MainActor () -> Void)? {
+        guard !isOnboardingPreview else { return nil }
+        return { onboardingPreviewMode = .placement }
+    }
+
+    private var firstLoginTestAction: (@MainActor () -> Void)? {
+        guard !isOnboardingPreview else { return nil }
+        return { onboardingPreviewMode = .completeFlow }
+    }
+
+    @ViewBuilder
+    private var onboardingPreviewExit: some View {
+        if let onExitOnboardingPreview {
+            Button("结束测试", action: onExitOnboardingPreview)
+                .font(.caption.weight(.semibold))
+                .padding(.horizontal, 10)
+                .frame(minHeight: 44)
+                .background(.regularMaterial, in: Capsule())
+                .padding(8)
+                .accessibilityIdentifier("onboarding-test.exit")
+        }
     }
 
     private var englishJourneyView: some View {
@@ -1246,6 +1302,7 @@ struct RootView: View {
         requestAuthorization: Bool
     ) async {
         guard !Self.disablesBackgroundRefreshForUITesting,
+              !isOnboardingPreview,
               environment.needsOnboarding == false
         else { return }
         do {

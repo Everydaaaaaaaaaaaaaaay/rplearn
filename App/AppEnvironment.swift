@@ -48,6 +48,7 @@ final class AppEnvironment {
     }
 
     private(set) var workspace: AccountWorkspace?
+    var onboardingPreviewMode: OnboardingPreviewMode?
 
     var modelContainer: ModelContainer { requiredWorkspace.modelContainer }
     var accountCacheStore: AccountCacheStore { requiredWorkspace.accountCacheStore }
@@ -86,7 +87,7 @@ final class AppEnvironment {
         return workspace
     }
 
-    init() {
+    init(bootstrapAuthentication: Bool = true) {
         // 文件读取与解码不占用主线程；同时允许账号恢复独立进行。
         resourcesTask = Task.detached(priority: .userInitiated) {
             let bundle = Bundle.main
@@ -102,18 +103,25 @@ final class AppEnvironment {
         let speech = AdaptiveSpeechService(audioSession: audioSession)
         self.speech = speech
 
-        let keychain = KeychainStore()
+        let keychain = KeychainStore(service: bootstrapAuthentication
+            ? "com.lingotrip.app" : "com.lingotrip.onboarding-preview.\(UUID().uuidString)")
         self.keychain = keychain
-        LLMSettingsStore.purgeLegacyClientConfiguration(keychain: keychain)
+        if bootstrapAuthentication { LLMSettingsStore.purgeLegacyClientConfiguration(keychain: keychain) }
+        let credentials: any AuthCredentialStore = bootstrapAuthentication
+            ? KeychainAuthCredentialStore(keychain: keychain) : PreviewAuthCredentials()
+        let guestCredentials: any AuthCredentialStore = bootstrapAuthentication
+            ? KeychainAuthCredentialStore(keychain: keychain, isGuest: true) : PreviewAuthCredentials()
         let backendClient = BackendClient(
-            configuration: .live,
-            credentialStore: KeychainAuthCredentialStore(keychain: keychain),
-            guestCredentialStore: KeychainAuthCredentialStore(keychain: keychain, isGuest: true),
-            guestInstallationKey: try? GuestInstallationStore(keychain: keychain).loadOrCreate()
+            configuration: bootstrapAuthentication ? .live
+                : BackendConfiguration(baseURL: URL(string: "http://127.0.0.1:9")!, requestTimeout: 1),
+            credentialStore: credentials,
+            guestCredentialStore: guestCredentials,
+            guestInstallationKey: bootstrapAuthentication
+                ? try? GuestInstallationStore(keychain: keychain).loadOrCreate() : nil
         )
         self.backendClient = backendClient
-        let deviceID =
-            (try? DeviceIdentifierStore(keychain: keychain).loadOrCreate())
+        let deviceID = (bootstrapAuthentication
+            ? try? DeviceIdentifierStore(keychain: keychain).loadOrCreate() : nil)
             ?? UUID().uuidString.lowercased()
         let version =
             Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
@@ -135,7 +143,7 @@ final class AppEnvironment {
         )
 
         Log.app.info("AppEnvironment initialized")
-        Task { await authSession.bootstrap() }
+        if bootstrapAuthentication { Task { await authSession.bootstrap() } }
     }
 
     /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等），并判定是否需要首启引导。
@@ -227,6 +235,10 @@ final class AppEnvironment {
 
     func deactivateAccount() async {
         needsOnboarding = nil
+        if onboardingPreviewMode != nil {
+            workspace = nil
+            return
+        }
         guard let current = workspace else { return }
         current.billing.deactivate()
         await current.learningChat.deactivate()
@@ -234,6 +246,26 @@ final class AppEnvironment {
         await current.voiceMedia.deactivate()
         await current.proactiveMessages.deactivate()
         workspace = nil
+    }
+
+    /// Replays the real post-login flow in an isolated, disposable account.
+    func activateOnboardingPreviewWorkspace() async throws -> UUID {
+        if let workspace { return workspace.userID }
+        let userID = UUID()
+        let container = try await Task.detached(priority: .userInitiated) {
+            try ModelContainerFactory.makeContainer(inMemory: true)
+        }.value
+        let account = await AccountWorkspace(userID: userID, modelContainer: container,
+            backend: backendClient, llm: llmRouter)
+        try await importMainCharacters(into: account)
+        let profile = try await account.economyStore.profile()
+        try await account.rosterStore.configureMainCharacters(
+            unlockedRegionIDs: Set(MainlineCatalog.journeys.map(\.starterRegionID)),
+            difficulty: profile.difficultyLevel)
+        try Task.checkCancellation()
+        workspace = account
+        needsOnboarding = onboardingPreviewMode == .completeFlow
+        return userID
     }
 
     #if DEBUG
@@ -335,6 +367,7 @@ final class AppEnvironment {
     }
 
     func refreshProactiveMessages(requestAuthorization: Bool) async {
+        guard onboardingPreviewMode == nil else { return }
         guard needsOnboarding == false else { return }
         await proactiveMessages.activate(
             scope: proactiveMessageScope,
@@ -353,6 +386,7 @@ final class AppEnvironment {
                     difficulty: profile.difficultyLevel
                 )
             }
+            if onboardingPreviewMode != nil { return }
             await proactiveMessages.learnerProfileDidChange()
             if needsOnboarding == false {
                 await refreshProactiveMessages(requestAuthorization: false)
@@ -527,6 +561,13 @@ final class AccountWorkspace {
             itemStore: itemStore
         )
     }
+}
+
+/// Preview clients never load, persist or remove a real sign-in credential.
+private struct PreviewAuthCredentials: AuthCredentialStore {
+    func load() throws -> StoredAuthCredential? { nil }
+    func remove() throws {}
+    func save(_ credential: StoredAuthCredential) throws {}
 }
 
 /// 在后台创建仓库的 ModelContext，避免后续 actor 查询仍排队到主线程。

@@ -65,7 +65,7 @@ public struct OnboardingFlowView: View {
         accountID: UUID,
         deps: OnboardingDependencies,
         placementCompletionRevision: Int = 0,
-        onRequestPlacement: @escaping () -> Void = {},
+        onRequestPlacement: @escaping () -> Void,
         onComplete: @escaping (CharacterDTO) async -> Bool
     ) {
         self.deps = deps
@@ -98,10 +98,8 @@ public struct OnboardingFlowView: View {
                     onboardingLoading
                 }
             case .calibration:
-                PlacementCalibrationChoiceView(
-                    onStart: onRequestPlacement,
-                    onSkip: continueWithSelfAssessment
-                )
+                onboardingLoading
+                    .task { onRequestPlacement() }
             case .story:
                 if let player {
                     ChatStoryView(player: player, characters: characters, deps: deps) {
@@ -154,11 +152,11 @@ public struct OnboardingFlowView: View {
         .onChange(of: placementCompletionRevision) { oldValue, newValue in
             guard oldValue != newValue else { return }
             placementOfferDismissed = true
+            withAnimation(reduceMotion ? nil : .snappy) {
+                phase = .story
+            }
             Task {
                 profile = try? await deps.economyStore.profile()
-                withAnimation(reduceMotion ? nil : .snappy) {
-                    phase = .story
-                }
             }
         }
     }
@@ -176,13 +174,6 @@ public struct OnboardingFlowView: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.secondary)
             }
-        }
-    }
-
-    private func continueWithSelfAssessment() {
-        placementOfferDismissed = true
-        withAnimation(reduceMotion ? nil : .snappy) {
-            phase = .story
         }
     }
 
@@ -217,97 +208,6 @@ public struct OnboardingFlowView: View {
         }
     }
     #endif
-}
-
-/// 建档与剧情之间只出现一次的可选校准，不把测评包装成强制门槛。
-private struct PlacementCalibrationChoiceView: View {
-    let onStart: () -> Void
-    let onSkip: () -> Void
-
-    var body: some View {
-        ZStack {
-            LinearGradient(
-                colors: [Color.dsSky.opacity(0.1), Color.dsBackground],
-                startPoint: .top,
-                endPoint: .center
-            )
-            .ignoresSafeArea()
-
-            ScrollView {
-                VStack(spacing: DSSpacing.xl) {
-                    HStack(alignment: .top, spacing: DSSpacing.md) {
-                        BrandMascotView(pose: .guide, size: 104, showsShadow: false)
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("要不要再校准一下？")
-                                .font(.system(.title2, design: .rounded, weight: .bold))
-                            Text("这是可选项，自评结果已经可以直接开始。")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                        }
-                        Spacer(minLength: 0)
-                    }
-
-                    VStack(spacing: 0) {
-                        calibrationRow(
-                            icon: "slider.horizontal.3",
-                            title: "从基础开始",
-                            detail: "从基础开始，累计答错 3 次即结束"
-                        )
-                        Divider().padding(.leading, 52)
-                        calibrationRow(
-                            icon: "clock",
-                            title: "轻量测评",
-                            detail: "最多 20 题，可回退、确认或跳过"
-                        )
-                        Divider().padding(.leading, 52)
-                        calibrationRow(
-                            icon: "person.2",
-                            title: "马上影响角色对话",
-                            detail: "问题长度、词汇和引导方式会随结果调整"
-                        )
-                    }
-                    .dsSurface(.grouped, padding: 0)
-
-                    VStack(spacing: DSSpacing.sm) {
-                        Button("答几题，更准确") {
-                            onStart()
-                        }
-                        .buttonStyle(.dsActionPrimary)
-
-                        Button("先按自评结果开始") {
-                            onSkip()
-                        }
-                        .buttonStyle(.dsAction(.secondary))
-                    }
-                }
-                .frame(maxWidth: 560)
-                .padding(DSSpacing.lg)
-                .frame(maxWidth: .infinity)
-            }
-        }
-    }
-
-    private func calibrationRow(
-        icon: String,
-        title: String,
-        detail: String
-    ) -> some View {
-        HStack(spacing: DSSpacing.sm) {
-            Image(systemName: icon)
-                .foregroundStyle(Color.dsSkyDeep)
-                .frame(width: 36, height: 36)
-                .background(Color.dsSky.opacity(0.1), in: RoundedRectangle(cornerRadius: 10))
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .font(.subheadline.weight(.semibold))
-                Text(detail)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-            Spacer()
-        }
-        .padding(DSSpacing.sm)
-    }
 }
 
 /// 聊天皮肤的剧情播放：复用剧情引擎，气泡逐条点击推进。

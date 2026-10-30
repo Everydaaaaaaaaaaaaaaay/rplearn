@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-30",
+  "change": "首次建档后直接测评，并提供两个可重复体验的正式流程入口",
+  "behavior": [
+    "首次学习档案提交后自动打开第一题，移除可选测评邀请及额外介绍页按钮；普通主动校准仍保留介绍页",
+    "设置：测试初次水平测评，直接答题；设置：测试首次登录完整流程，从登录成功后的问卷开始",
+    "完整流程使用正式问卷、测评、开场剧情、选旅伴、上手练习和RootView主页面",
+    "测试入口在普通构建也可用，非仅Debug入口；右上角结束测试返回原设置页，再进从头开始",
+    "测评退出可保留自评水平继续剧情；测评确认结果仍使用现有水平切换流程"
+  ],
+  "isolation": {
+    "database": "每次新建UUID账号及SwiftData内存容器",
+    "preferences": "每次独立UserDefaults域，结束时清除测试域",
+    "credentials": "不启动真实身份恢复；凭证接口不读取、保存或移除账号凭证；使用独立钥匙串命名空间",
+    "backend": "仅连接本机拒绝端口，禁止生产API及账号同步",
+    "notifications": "跳过测试账号的主动消息刷新、档案通知重置和生产通知清理",
+    "authenticationBoundary": "入口从首次登录成功后开始，不重新执行Apple/邮箱认证"
+  },
+  "bugFix": "防止嵌套RootView的TabSceneTransitionInstaller接管同一个代理，避免代理环导致递归闪退",
+  "verification": {
+    "uiTests": [
+      {
+        "name": "OnboardingWelcomeTests/testSettingsInitialPlacementStartsDirectlyAndRestartsFresh",
+        "passed": 1,
+        "failed": 0,
+        "resultBundle": "build/DerivedData/VerificationResults/20261030T152945Z-30454.xcresult",
+        "checks": [
+          "设置入口直接第一题",
+          "无开始测评或邀请按钮",
+          "提交后第二题",
+          "退出返回设置",
+          "重新进入第一题且无草稿"
+        ]
+      },
+      {
+        "name": "OnboardingWelcomeTests/testSettingsFirstLoginFlowReachesMainAndPreservesOriginalAccount",
+        "passed": 1,
+        "failed": 0,
+        "resultBundle": "build/DerivedData/VerificationResults/20261030T152712Z-29848.xcresult",
+        "checks": [
+          "昵称与多选目标",
+          "自评提交后直接第一题",
+          "三错结果及确认应用",
+          "剧情交互",
+          "旅伴选择",
+          "正式教程入口及跳过",
+          "主页面可操作",
+          "结束返回原设置",
+          "重进昵称为空"
+        ]
+      }
+    ],
+    "visualEvidence": "build/onboarding-entries-accepted/",
+    "architecture": "Scripts/check-architecture.sh --ios: passed",
+    "diffCheck": "git diff --check: passed",
+    "latestPreview": "Scripts/preview.sh build settings: installed; iPhone 18 Pro / iOS 27.0",
+    "limits": "测试没有重做登录认证；上手练习使用正式页面的跳过功能完成，全套教程交互未重复测试"
+  },
+  "backendChanged": false,
+  "photographicAssetsChanged": false
+}

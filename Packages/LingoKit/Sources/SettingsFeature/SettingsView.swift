@@ -27,6 +27,8 @@ public struct SettingsView: View {
     private let onOpenPhotoCredits: (@MainActor () -> Void)?
     private let onOpenTutorial: (@MainActor () -> Void)?
     private let onOpenIntroduction: (@MainActor () -> Void)?
+    private let onTestInitialPlacement: (@MainActor () -> Void)?
+    private let onTestFirstLoginFlow: (@MainActor () -> Void)?
     @State private var testState: TestState = .idle
     @State private var profile: UserProfileDTO?
     @State private var voiceReports: [VoiceReport] = []
@@ -50,7 +52,9 @@ public struct SettingsView: View {
         onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in },
         onOpenPhotoCredits: (@MainActor () -> Void)? = nil,
         onOpenIntroduction: (@MainActor () -> Void)? = nil,
-        onOpenTutorial: (@MainActor () -> Void)? = nil
+        onOpenTutorial: (@MainActor () -> Void)? = nil,
+        onTestInitialPlacement: (@MainActor () -> Void)? = nil,
+        onTestFirstLoginFlow: (@MainActor () -> Void)? = nil
     ) {
         _proactiveMessagesEnabled = AppStorage(
             wrappedValue: true,
@@ -67,6 +71,8 @@ public struct SettingsView: View {
         self.onOpenPhotoCredits = onOpenPhotoCredits
         self.onOpenIntroduction = onOpenIntroduction
         self.onOpenTutorial = onOpenTutorial
+        self.onTestInitialPlacement = onTestInitialPlacement
+        self.onTestFirstLoginFlow = onTestFirstLoginFlow
     }
 
     public var body: some View {
@@ -86,6 +92,24 @@ public struct SettingsView: View {
                         paperSectionDivider
                         servicePanel
                         paperSectionDivider
+                        if let onTestInitialPlacement {
+                            Button(action: onTestInitialPlacement) {
+                                settingsLinkLabel("测试初次水平测评", systemImage: "checklist")
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, DSSpacing.lg)
+                            .accessibilityIdentifier("settings.test-initial-placement")
+                            paperSectionDivider
+                        }
+                        if let onTestFirstLoginFlow {
+                            Button(action: onTestFirstLoginFlow) {
+                                settingsLinkLabel("测试首次登录完整流程", systemImage: "point.topleft.down.to.point.bottomright.curvepath")
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, DSSpacing.lg)
+                            .accessibilityIdentifier("settings.test-first-login")
+                            paperSectionDivider
+                        }
                         if let onOpenTutorial {
                             Button(action: onOpenTutorial) {
                                 settingsLinkLabel("上手练习", systemImage: "hand.tap")
