@@ -148,7 +148,7 @@ public struct MapView: View {
                 Button(action: onBack) {
                     Image(systemName: "chevron.left")
                         .font(.system(size: 17, weight: .semibold))
-                        .foregroundStyle(.white.opacity(0.96))
+                        .foregroundStyle(DSReadingPalette.ink)
                         .frame(width: 44, height: 44)
                         .contentShape(Rectangle())
                 }
@@ -178,9 +178,9 @@ public struct MapView: View {
                     Image(systemName: "ticket.fill")
                         .font(.system(size: 14, weight: .semibold))
                     Text("票根夹")
-                        .font(.system(size: 12, weight: .semibold, design: .rounded))
+                        .font(.system(size: 12, weight: .semibold, design: .default))
                 }
-                .foregroundStyle(.white.opacity(0.94))
+                .foregroundStyle(DSReadingPalette.ink)
                 .lineLimit(1)
                 .frame(minHeight: 44)
                 .padding(.horizontal, 7)
@@ -192,7 +192,7 @@ public struct MapView: View {
         .frame(height: 54)
         .padding(.horizontal, 4)
         .background(
-            Color.dsTravelNavy.opacity(0.34),
+            Color.clear,
             in: RoundedRectangle(cornerRadius: 18, style: .continuous)
         )
         .dsSceneGlass(

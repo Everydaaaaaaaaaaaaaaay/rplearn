@@ -20,18 +20,16 @@ final class CityTabSceneTests: XCTestCase {
             ]
             app.launch()
             for (role, title) in [("messages", "信息"), ("contacts", "联系人")] {
-                let tab = app.tabBars.buttons[title]
+                let tab = app.mainTabButtons[title]
                 XCTAssertTrue(tab.waitForExistence(timeout: 15))
                 if !tab.isSelected { tab.tap() }
                 XCTAssertTrue(tab.isSelected)
-                let open = app.buttons["sceneSearch.open"]
-                XCTAssertTrue(open.waitForExistence(timeout: 10))
-                // An active search confirms that the screen has finished entering and remains usable.
-                open.tap()
-                XCTAssertTrue(app.textFields["sceneSearch.field"].waitForExistence(timeout: 5))
-                app.buttons["sceneSearch.close"].tap()
-                XCTAssertTrue(app.textFields["sceneSearch.field"].waitForNonExistence(timeout: 5))
-                XCTAssertTrue(open.waitForExistence(timeout: 5))
+                let field = app.textFields["sceneSearch.field"]
+                XCTAssertTrue(field.waitForExistence(timeout: 10))
+                field.tap(); field.typeText("Oliver")
+                app.buttons["sceneSearch.dismissKeyboard"].tap()
+                app.buttons["sceneSearch.clear"].tap()
+                XCTAssertTrue(field.exists)
                 let screenshot = app.screenshot()
                 XCTAssertTrue(Self.hasSceneDetail(screenshot.image), "Reject an unrendered background")
                 let attachment = XCTAttachment(screenshot: screenshot)

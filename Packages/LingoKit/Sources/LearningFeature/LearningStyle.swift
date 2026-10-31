@@ -11,19 +11,11 @@ struct LearningTheme {
     let symbol: String
     let caption: String
     init(role: String) {
+        tint = DSReadingPalette.tint
         switch role {
-        case "ruby":
-            tint = Color(light: UIColor(red: 0.1, green: 0.44, blue: 0.43, alpha: 1),
-                         dark: UIColor(red: 0.42, green: 0.82, blue: 0.77, alpha: 1))
-            symbol = "water.waves"; caption = "海岸边的活动册"
-        case "marcus":
-            tint = Color(light: UIColor(red: 0.59, green: 0.34, blue: 0.12, alpha: 1),
-                         dark: UIColor(red: 0.93, green: 0.69, blue: 0.41, alpha: 1))
-            symbol = "camera.aperture"; caption = "街头的语言手记"
-        default:
-            tint = Color(light: UIColor(red: 0.32, green: 0.30, blue: 0.55, alpha: 1),
-                         dark: UIColor(red: 0.73, green: 0.70, blue: 0.96, alpha: 1))
-            symbol = "bookmark.fill"; caption = "旅伴的学习手册"
+        case "ruby": symbol = "water.waves"; caption = "海岸边的活动册"
+        case "marcus": symbol = "camera.aperture"; caption = "街头的语言手记"
+        default: symbol = "bookmark.fill"; caption = "旅伴的学习手册"
         }
     }
 }
@@ -33,9 +25,7 @@ struct LearningPaper: ViewModifier {
     var opacity: Double = 1
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     func body(content: Content) -> some View {
-        content.padding(22).frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.dsSurface.opacity(reduceTransparency ? 1 : opacity), in: RoundedRectangle(cornerRadius: 24))
-            .overlay { RoundedRectangle(cornerRadius: 24).strokeBorder(Color.primary.opacity(0.06)) }
+        DSPaper(padding: 20) { content.frame(maxWidth: .infinity, alignment: .leading) }
     }
 }
 
@@ -53,18 +43,16 @@ struct LearningPrimaryButton: View {
     var busy = false
     var disabled = false
     let action: () -> Void
-    private let labelColor = Color(light: .white, dark: UIColor(red: 0.06, green: 0.08, blue: 0.10, alpha: 1))
     var body: some View {
         Button(action: action) {
             HStack(spacing: 10) {
-                if busy { ProgressView().tint(labelColor) }
-                Text(title).font(.headline)
-            }.frame(maxWidth: .infinity).padding(.vertical, 17)
-                .foregroundStyle(labelColor)
-                .background(tint.opacity(disabled ? 0.35 : 1), in: RoundedRectangle(cornerRadius: 18))
-        }.buttonStyle(LearningPressStyle()).disabled(disabled || busy)
+                if busy { ProgressView().tint(DSReadingPalette.onPrimary) }
+                Text(title)
+            }
+        }.buttonStyle(.dsActionPrimary).disabled(disabled || busy)
     }
 }
+
 struct LearningErrorBanner: View {
     let message: String
     let retry: () -> Void

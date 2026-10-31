@@ -12,23 +12,22 @@ final class TabSceneTransitionTests: XCTestCase {
         app.launch()
         defer { app.terminate() }
 
-        XCTAssertTrue(app.buttons["sceneSearch.open"].waitForExistence(timeout: 15))
+        XCTAssertTrue(app.textFields["sceneSearch.field"].waitForExistence(timeout: 15))
         for _ in 0..<2 {
             for title in ["联系人", "活动", "我的", "信息"] {
-                let tab = app.tabBars.buttons[title]
+                let tab = app.mainTabButtons[title]
                 tab.tap()
                 XCTAssertTrue(tab.isSelected, "SwiftUI 与原生标签栏的选中状态必须一致")
             }
             for title in ["信息", "联系人"] {
-                app.tabBars.buttons[title].tap()
-                let open = app.buttons["sceneSearch.open"]
-                XCTAssertTrue(open.waitForExistence(timeout: 3))
-                open.tap()
-                XCTAssertTrue(app.textFields["sceneSearch.field"].waitForExistence(timeout: 3))
+                app.mainTabButtons[title].tap()
+                let field = app.textFields["sceneSearch.field"]
+                XCTAssertTrue(field.waitForExistence(timeout: 3))
+                field.tap(); field.typeText("Oliver")
                 app.buttons["sceneSearch.dismissKeyboard"].tap()
-                app.tabBars.buttons[title].tap()
-                XCTAssertTrue(app.textFields["sceneSearch.field"].waitForNonExistence(timeout: 3))
-                XCTAssertTrue(open.waitForExistence(timeout: 3))
+                app.mainTabButtons[title].tap()
+                XCTAssertTrue(field.waitForExistence(timeout: 3))
+                XCTAssertNotEqual(field.value as? String, "Oliver", "重选标签应恢复根页面的搜索状态")
             }
         }
     }
@@ -43,19 +42,18 @@ final class TabSceneTransitionTests: XCTestCase {
         app.launch()
         defer { app.terminate() }
 
-        for (title, entry) in [("活动", "世界地图"), ("我的", "设置，AI、语音与偏好")] {
-            app.tabBars.buttons[title].tap()
+        for (title, entry) in [("活动", "剧情，"), ("我的", "设置，AI、语音与偏好")] {
+            app.mainTabButtons[title].tap()
             for switchesAway in [false, true] {
-                XCTAssertTrue(app.buttons[entry].waitForExistence(timeout: 15))
-                app.buttons[entry].tap()
-                let back = title == "活动"
-                    ? app.buttons["返回首页"]
-                    : app.navigationBars["设置"].buttons.firstMatch
+                let entrance = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", entry)).firstMatch
+                XCTAssertTrue(entrance.waitForExistence(timeout: 15))
+                entrance.tap()
+                let back = app.navigationBars[title == "活动" ? "剧情" : "设置"].buttons.firstMatch
                 XCTAssertTrue(back.waitForExistence(timeout: 5))
-                if switchesAway { app.tabBars.buttons["联系人"].tap() }
-                app.tabBars.buttons[title].tap()
+                if switchesAway { app.mainTabButtons["联系人"].tap() }
+                app.mainTabButtons[title].tap()
                 XCTAssertTrue(back.waitForNonExistence(timeout: 5), "点击标签应关闭二级页面")
-                XCTAssertTrue(app.buttons[entry].isHittable, "初始页面入口应恢复可点击")
+                XCTAssertTrue(entrance.isHittable, "初始页面入口应恢复可点击")
             }
         }
     }
@@ -110,8 +108,8 @@ final class TabSceneTransitionTests: XCTestCase {
             entry.tap()
             let message = app.buttons["发消息"]
             XCTAssertTrue(message.waitForExistence(timeout: 5))
-            if switchesAway { app.tabBars.buttons["活动"].tap() }
-            app.tabBars.buttons["联系人"].tap()
+            if switchesAway { app.mainTabButtons["活动"].tap() }
+            app.mainTabButtons["联系人"].tap()
             XCTAssertTrue(message.waitForNonExistence(timeout: 5))
             XCTAssertTrue(entry.waitForExistence(timeout: 5))
             XCTAssertTrue(entry.isHittable, "点击标签应返回联系人列表")

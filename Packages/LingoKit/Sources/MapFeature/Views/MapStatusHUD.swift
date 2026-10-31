@@ -28,8 +28,8 @@ struct MapStatusHUD: View {
 
             if showsContext {
                 Text("当前位置")
-                    .font(.system(size: 11, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.68))
+                    .font(.system(size: 11, weight: .semibold, design: .default))
+                    .foregroundStyle(DSReadingPalette.secondary)
                     .fixedSize()
             }
 
@@ -39,14 +39,14 @@ struct MapStatusHUD: View {
                     .fixedSize()
 
                 Text(currentRegion.nameZh)
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.96))
+                    .font(.system(size: 16, weight: .bold, design: .default))
+                    .foregroundStyle(DSReadingPalette.ink)
                     .lineLimit(1)
                     .minimumScaleFactor(0.78)
             } else {
                 Text("正在载入")
-                    .font(.system(size: 13, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.84))
+                    .font(.system(size: 13, weight: .semibold, design: .default))
+                    .foregroundStyle(DSReadingPalette.secondary)
                     .lineLimit(1)
             }
         }
@@ -90,9 +90,9 @@ struct MapResourceHUD: View {
                 .foregroundStyle(tint)
 
             Text(value)
-                .font(.system(size: 13, weight: .semibold, design: .rounded))
+                .font(.system(size: 13, weight: .semibold, design: .default))
                 .monospacedDigit()
-                .foregroundStyle(.white.opacity(0.94))
+                .foregroundStyle(DSReadingPalette.ink)
                 .lineLimit(1)
                 .minimumScaleFactor(0.76)
         }

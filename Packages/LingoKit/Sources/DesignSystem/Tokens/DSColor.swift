@@ -9,14 +9,8 @@ public extension Color {
         })
     }
 
-    static let dsSky = Color(
-        light: UIColor(red: 0.106, green: 0.659, blue: 0.941, alpha: 1),
-        dark: UIColor(red: 0.298, green: 0.761, blue: 1, alpha: 1)
-    )
-    static let dsSkyDeep = Color(
-        light: UIColor(red: 0.078, green: 0.525, blue: 0.776, alpha: 1),
-        dark: UIColor(red: 0.169, green: 0.529, blue: 0.741, alpha: 1)
-    )
+    static let dsSky = DSReadingPalette.tint
+    static let dsSkyDeep = DSReadingPalette.tint
     static let dsCyan = Color(
         light: UIColor(red: 0, green: 0.749, blue: 0.780, alpha: 1),
         dark: UIColor(red: 0.2, green: 0.839, blue: 0.867, alpha: 1)
@@ -45,11 +39,11 @@ public extension Color {
         light: UIColor(red: 0.035, green: 0.118, blue: 0.204, alpha: 1),
         dark: UIColor(red: 0.075, green: 0.180, blue: 0.286, alpha: 1)
     )
-    /// 纸面界面的固定墨色；不参与材质 vibrancy，避免逐字深浅漂移。
-    static let dsPaperInk = Color(red: 0.035, green: 0.094, blue: 0.145)
-    static let dsPaperInkSecondary = Color(red: 0.255, green: 0.271, blue: 0.275)
+    /// 纸面语义色；随系统外观切换，保持所有功能页一致。
+    static let dsPaperInk = DSReadingPalette.ink
+    static let dsPaperInkSecondary = DSReadingPalette.secondary
     /// 黑曜石徽章上的克制浮金，不作为大面积强调色。
-    static let dsFoilGold = Color(red: 0.835, green: 0.666, blue: 0.408)
+    static let dsFoilGold = DSReadingPalette.gold
     static let dsSuccess = Color(
         light: UIColor(red: 0.184, green: 0.749, blue: 0.388, alpha: 1),
         dark: UIColor(red: 0.290, green: 0.871, blue: 0.502, alpha: 1)
@@ -74,45 +68,21 @@ public extension Color {
         light: UIColor(red: 0.478, green: 0.353, blue: 0.973, alpha: 1),
         dark: UIColor(red: 0.655, green: 0.545, blue: 0.980, alpha: 1)
     )
-    static let dsBubbleIncoming = Color(
-        light: UIColor(red: 0.941, green: 0.953, blue: 0.965, alpha: 1),
-        dark: UIColor(red: 0.137, green: 0.157, blue: 0.184, alpha: 1)
-    )
-    static let dsBackground = Color(
-        light: UIColor(red: 0.969, green: 0.973, blue: 0.976, alpha: 1),
-        dark: UIColor(red: 0.059, green: 0.071, blue: 0.086, alpha: 1)
-    )
-    static let dsSurface = Color(
-        light: .white,
-        dark: UIColor(red: 0.098, green: 0.114, blue: 0.137, alpha: 1)
-    )
-    static let dsSurfaceMuted = Color(
-        light: UIColor(red: 0.937, green: 0.949, blue: 0.957, alpha: 1),
-        dark: UIColor(red: 0.129, green: 0.149, blue: 0.176, alpha: 1)
-    )
-    static let dsBorder = Color(
-        light: UIColor(red: 0.855, green: 0.882, blue: 0.902, alpha: 1),
-        dark: UIColor.white.withAlphaComponent(0.1)
-    )
-    /// 摄影场景玻璃上的固定文字色。保持不透明，避免原生 vibrancy 按字符改变明暗。
-    static let dsSceneTextPrimary = Color(
-        light: UIColor(red: 0.035, green: 0.102, blue: 0.165, alpha: 1),
-        dark: UIColor(red: 0.925, green: 0.961, blue: 0.988, alpha: 1)
-    )
-    static let dsSceneTextSecondary = Color(
-        light: UIColor(red: 0.122, green: 0.188, blue: 0.259, alpha: 1),
-        dark: UIColor(red: 0.757, green: 0.824, blue: 0.882, alpha: 1)
-    )
-    static let dsSceneTextTertiary = Color(
-        light: UIColor(red: 0.216, green: 0.286, blue: 0.357, alpha: 1),
-        dark: UIColor(red: 0.631, green: 0.714, blue: 0.788, alpha: 1)
-    )
+    static let dsBubbleIncoming = DSReadingPalette.paper
+    static let dsBackground = DSReadingPalette.canvas
+    static let dsSurface = DSReadingPalette.paper
+    static let dsSurfaceMuted = DSReadingPalette.canvas
+    static let dsBorder = DSReadingPalette.line
+    /// 摄影场景上纸卡的语义文字色。
+    static let dsSceneTextPrimary = DSReadingPalette.ink
+    static let dsSceneTextSecondary = DSReadingPalette.secondary
+    static let dsSceneTextTertiary = DSReadingPalette.secondary
 }
 
 public enum DSUIColor {
     public static let sky = UIColor { traits in
         traits.userInterfaceStyle == .dark
-            ? UIColor(red: 0.298, green: 0.761, blue: 1, alpha: 1)
-            : UIColor(red: 0.106, green: 0.659, blue: 0.941, alpha: 1)
+            ? UIColor(red: 0.686, green: 0.776, blue: 0.706, alpha: 1)
+            : UIColor(red: 0.259, green: 0.408, blue: 0.365, alpha: 1)
     }
 }

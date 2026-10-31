@@ -91,6 +91,7 @@ public struct RosterView: View {
 
     public var body: some View {
         searchAdaptedContent
+            .background { DSSceneBackdrop(imageName: sceneImageName, tone: .cool) }
             .navigationTitle("联系人")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.hidden, for: .navigationBar)
@@ -126,20 +127,12 @@ public struct RosterView: View {
             }
     }
 
-    @ViewBuilder
     private var searchAdaptedContent: some View {
-        if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
-            sceneContent
-                .dsSceneSearch(text: $searchText, title: "联系人", prompt: "搜索联系人")
-        } else {
-            sceneContent
-                .safeAreaInset(edge: .top, spacing: 0) {
-                    DSLegacySceneSearchField(text: $searchText, prompt: "搜索联系人")
-                        .padding(.horizontal, DSSpacing.md)
-                        .padding(.top, 4)
-                        .padding(.bottom, DSSpacing.sm)
-                }
-        }
+        sceneContent
+            .safeAreaInset(edge: .top, spacing: 0) {
+                DSLegacySceneSearchField(text: $searchText, prompt: "姓名、备注或旅伴号")
+                    .padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 18)
+            }
     }
 
     private var sceneContent: some View {
@@ -428,7 +421,7 @@ public struct RosterView: View {
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(character.displayName)
-                        .font(.system(.title2, design: .rounded, weight: .bold))
+                        .font(.headline.weight(.semibold))
                         .foregroundStyle(scenePrimaryText)
                         .lineLimit(1)
                         .layoutPriority(1)

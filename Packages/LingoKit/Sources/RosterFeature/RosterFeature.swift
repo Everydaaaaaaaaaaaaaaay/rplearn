@@ -144,8 +144,9 @@ public struct CharacterProfileView: View {
                     icon: "mappin.and.ellipse"
                 )
             }
-            .padding(DSSpacing.md)
+            .padding(20)
         }
+        .foregroundStyle(DSReadingPalette.ink)
         .background(Color.dsBackground)
         .navigationTitle(card.name)
         .navigationBarTitleDisplayMode(.inline)
@@ -181,43 +182,29 @@ public struct CharacterProfileView: View {
     }
 
     private var profileHero: some View {
-        VStack(spacing: DSSpacing.sm) {
-            AvatarBadge(
-                name: character.displayName,
-                size: 96,
-                imageName: card.avatarAssetName,
-                remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:)),
-                usesPendingPlaceholder: true
-            )
-            Text(character.displayName)
-                .font(.title2.bold())
-                .multilineTextAlignment(.center)
-            Label("AI 旅伴 · 虚构角色", systemImage: "sparkles")
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(Color.dsSkyDeep)
-            if let signature = card.signature, !signature.isEmpty {
-                Text(signature)
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
+        VStack(spacing: 0) {
+            Image(DSCitySceneAssets.imageName(for: .contacts, regionID: card.regionID))
+                .resizable().scaledToFill().frame(height: 180).clipped()
+                .overlay(alignment: .bottom) {
+                    AvatarBadge(name: character.displayName, size: 76, imageName: card.avatarAssetName,
+                                remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
+                        .offset(y: 30)
+                }.zIndex(1)
+            DSPaper {
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(character.displayName).font(.title2.weight(.semibold))
+                    Text([regionName, card.occupation].joined(separator: " · "))
+                        .font(.subheadline).foregroundStyle(DSReadingPalette.secondary)
+                    if let signature = card.signature, !signature.isEmpty {
+                        Text(signature).font(.body).fixedSize(horizontal: false, vertical: true)
+                    }
+                    Label("AI 旅伴 · 虚构角色", systemImage: "sparkles")
+                        .font(.caption).foregroundStyle(DSReadingPalette.tint)
+                }.frame(maxWidth: .infinity, alignment: .leading).padding(.top, 24)
             }
-            Text(
-                [
-                    character.isMainCharacter ? "剧情旅伴" : "旅行朋友",
-                    card.occupation,
-                    regionName,
-                ].joined(separator: " · ")
-            )
-            .font(.subheadline)
-            .foregroundStyle(.secondary)
-            .multilineTextAlignment(.center)
-            Text("\(card.nationality) · \(card.age) 岁")
-                .font(.footnote)
-                .foregroundStyle(.tertiary)
-        }
-        .frame(maxWidth: .infinity)
-        .dsSurface(.grouped)
-        .accessibilityElement(children: .combine)
+        }.foregroundStyle(DSReadingPalette.ink)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .accessibilityElement(children: .combine)
     }
 
     private var contactActions: some View {
@@ -235,7 +222,7 @@ public struct CharacterProfileView: View {
                         systemImage: "person.badge.plus"
                     )
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.dsActionPrimary)
                 .tint(Color.dsSky)
                 .disabled(isRestoringContact)
             } else {
@@ -244,7 +231,7 @@ public struct CharacterProfileView: View {
                 } label: {
                     contactActionLabel("发消息", systemImage: "bubble.left.fill")
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.dsActionPrimary)
                 .tint(Color.dsSky)
 
                 if let callBuilder {
@@ -253,7 +240,7 @@ public struct CharacterProfileView: View {
                     } label: {
                         contactActionLabel("打电话", systemImage: "phone.fill")
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.dsAction(.secondary, compact: true))
                     .tint(Color.dsSkyDeep)
                 }
 
@@ -266,7 +253,7 @@ public struct CharacterProfileView: View {
                     )
                     .contentTransition(reduceMotion ? .opacity : .symbolEffect(.replace))
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(.dsAction(.secondary, compact: true))
                 .tint(isFavorite ? Color.dsSunset : Color.dsSkyDeep)
                 .disabled(isUpdatingFavorite)
                 .accessibilityValue(isFavorite ? "已开启" : "未开启")
@@ -282,6 +269,9 @@ public struct CharacterProfileView: View {
                 .foregroundStyle(Color.dsSky)
             profileValue("旅伴号", value: character.travelerID)
             profileValue("性别", value: genderName)
+            profileValue("国籍", value: card.nationality)
+            profileValue("年龄", value: "\(card.age) 岁")
+            profileValue("旅伴类型", value: character.isMainCharacter ? "剧情旅伴" : "旅行朋友")
             profileValue("生日", value: card.birthday)
             profileValue("家乡", value: card.hometown)
             profileValue("语言", value: card.languages?.joined(separator: "、"))

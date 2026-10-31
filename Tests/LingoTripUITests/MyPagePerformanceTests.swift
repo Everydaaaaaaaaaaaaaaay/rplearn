@@ -21,8 +21,8 @@ final class MyPagePerformanceTests: XCTestCase {
     func testMyPageTabRoundTripPerformance() throws {
         launch(on: "messages")
 
-        let messagesTab = app.tabBars.buttons["信息"]
-        let meTab = app.tabBars.buttons["我的"]
+        let messagesTab = app.mainTabButtons["信息"]
+        let meTab = app.mainTabButtons["我的"]
         let settingsEntry = app.buttons["设置，AI、语音与偏好"]
         XCTAssertTrue(messagesTab.waitForExistence(timeout: 5))
         XCTAssertTrue(meTab.exists)
@@ -139,20 +139,21 @@ final class MyPagePerformanceTests: XCTestCase {
     }
 
     @MainActor
-    func testLegacyTabBarUsesNativeFullWidthAppearance() throws {
+    func testPaperTabBarUsesFullWidthAppearance() throws {
         app.launchEnvironment["UI_TEST_FORCE_LEGACY_CHROME"] = "1"
         launch(on: "me")
 
         let capsule = app.descendants(matching: .any)["LegacyTabBarCapsule"]
-        let tabBar = app.tabBars.firstMatch
+        let tabBar = app.otherElements["main.tabs"]
         XCTAssertTrue(tabBar.waitForExistence(timeout: 5))
         XCTAssertFalse(capsule.exists)
         XCTAssertEqual(tabBar.frame.minX, app.frame.minX, accuracy: 1)
         XCTAssertEqual(tabBar.frame.maxX, app.frame.maxX, accuracy: 1)
-        XCTAssertEqual(tabBar.frame.maxY, app.frame.maxY, accuracy: 1)
+        XCTAssertLessThanOrEqual(tabBar.frame.maxY, app.frame.maxY)
+        XCTAssertGreaterThanOrEqual(tabBar.frame.maxY, app.frame.maxY - 40)
         XCTAssertGreaterThanOrEqual(tabBar.frame.height, 49)
 
-        let labels = ["信息", "联系人", "首页", "我的", "测试"]
+        let labels = ["信息", "联系人", "活动", "我的"]
         for label in labels {
             let item = tabBar.buttons[label]
             XCTAssertTrue(item.exists)

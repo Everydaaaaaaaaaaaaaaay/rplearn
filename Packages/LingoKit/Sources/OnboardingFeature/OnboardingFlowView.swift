@@ -230,7 +230,7 @@ struct ChatStoryView: View {
                                 VStack(alignment: .leading, spacing: 8) {
                                     if let reply = replies[index] {
                                         MessageBubble(side: .outgoing) {
-                                            Text(reply).foregroundStyle(.white)
+                                            Text(reply).foregroundStyle(DSReadingPalette.onPrimary)
                                         }
                                         .padding(.vertical, 8)
                                     }

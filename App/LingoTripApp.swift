@@ -13,7 +13,7 @@ struct LingoTripApp: App {
     var body: some Scene {
         WindowGroup {
             RootView(environment: environment)
-                .fontDesign(.rounded)
+                .fontDesign(.default)
                 .tint(.dsSky)
         }
     }

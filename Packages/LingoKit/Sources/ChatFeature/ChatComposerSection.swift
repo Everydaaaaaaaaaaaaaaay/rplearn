@@ -37,7 +37,7 @@ extension ChatView {
                 } label: {
                     Image(systemName: composerTranslation.isOpen ? (isChineseRecording ? "stop.fill" : "mic") : (isVoiceMode ? "keyboard" : "mic"))
                         .font(.system(size: 22))
-                        .frame(width: 32, height: 32)
+                        .frame(width: 44, height: 44)
                 }
                 .accessibilityLabel(isVoiceMode ? "切换到键盘" : "切换到语音")
 
@@ -86,7 +86,7 @@ extension ChatView {
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
                         .background(
-                            Color.dsBubbleIncoming,
+                            DSReadingPalette.canvas,
                             in: RoundedRectangle(
                                 cornerRadius: DSRadius.bubble,
                                 style: .continuous
@@ -102,7 +102,7 @@ extension ChatView {
                         } label: {
                             Image(systemName: "keyboard.chevron.compact.down")
                                 .font(.system(size: 20))
-                                .frame(width: 32, height: 32)
+                                .frame(width: 44, height: 44)
                                 .contentShape(Rectangle())
                         }
                         .accessibilityLabel("收起键盘")
@@ -116,8 +116,8 @@ extension ChatView {
                     } label: {
                         Image(systemName: "arrow.up")
                             .font(.system(size: 19, weight: .semibold))
-                            .foregroundStyle(.white)
-                            .frame(width: 30, height: 30)
+                            .foregroundStyle(DSReadingPalette.onPrimary)
+                            .frame(width: 42, height: 42)
                             .background(composerTint, in: Circle())
                     }
                     .disabled(
@@ -151,7 +151,7 @@ extension ChatView {
         }
     }
 
-    private var composerTint: Color { composerTranslation.isOpen ? Color(red: 0.49, green: 0.35, blue: 0.91) : .dsSky }
+    private var composerTint: Color { DSReadingPalette.primary }
 
     private var translatorToggle: some View {
         Button {

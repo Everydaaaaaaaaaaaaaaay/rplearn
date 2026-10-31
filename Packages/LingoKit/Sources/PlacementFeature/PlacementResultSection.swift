@@ -15,7 +15,7 @@ extension PlacementTestView {
                     VStack(spacing: 8) {
                         Text("测评完成").font(.subheadline.weight(.semibold)).foregroundStyle(Color.dsSkyDeep)
                         Text(result.hasSufficientEvidence ? result.difficultyLevel.displayName : "还需要一些作答信息")
-                            .font(.system(.title, design: .rounded, weight: .bold))
+                            .font(.system(.title, design: .default, weight: .bold))
                             .multilineTextAlignment(.center)
                         Text("已答 \(result.answeredCount) 题 · 正确 \(result.correctCount) 题 · 跳过 \(result.skippedCount) 题")
                             .font(.caption).foregroundStyle(Color.dsPaperInkSecondary)
