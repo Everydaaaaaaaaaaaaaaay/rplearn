@@ -88,6 +88,19 @@ export class NpcRepository {
     private readonly draw: (maximum: number) => number = randomInt,
   ) {}
 
+  /** Caller holds the viewer lock and commits the outing presentation in this transaction. */
+  async recordOutingEncounter(sql: TransactionSql, userId: string, npcId: string) {
+    await this.linkWithinTransaction(
+      sql,
+      userId,
+      npcId,
+      { localCharacterId: npcId, status: "candidate" },
+      true,
+    );
+    await sql`insert into app.npc_encounter_history(user_id,npc_id) values(${userId},${npcId})
+      on conflict(user_id,npc_id) do update set last_seen_at=now(),encounters=app.npc_encounter_history.encounters+1`;
+  }
+
   async reviewDiversity(
     userId: string,
     input: ReviewNpcDiversityInput,

@@ -31,6 +31,21 @@ const MAINLINE_REGION_IDS = new Set([
 export class DomainRepository {
   constructor(private readonly resource: DatabaseResource) {}
 
+  /** Outing reservation and travel share the domain lock and profile row lock. */
+  async lockActivityLocation(sql: TransactionSql, userId: string) {
+    await sql`select pg_advisory_xact_lock(hashtextextended(${`domain:${userId}`},0))`;
+    const [row] = await sql<{ cityId: string; starterCityId: string }[]>`
+      select current_region_id as "cityId",starter_region_id as "starterCityId"
+      from app.user_profiles where user_id=${userId} for update`;
+    if (!row)
+      throw new AppError({
+        code: "PROFILE_NOT_READY",
+        message: "请先完成个人档案设置。",
+        statusCode: 409,
+      });
+    return row;
+  }
+
   async currentDifficulty(
     sql: TransactionSql,
     userId: string,

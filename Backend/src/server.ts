@@ -57,6 +57,7 @@ import { registerDomainRoutes } from "./modules/domain/routes.js";
 import {
   createDomainService,
   createDomainLearningContext,
+  createDomainActivityContext,
 } from "./modules/domain/service.js";
 import { createSyncCursorCodec } from "./modules/sync/cursor.js";
 import { registerSyncRoutes } from "./modules/sync/routes.js";
@@ -77,6 +78,8 @@ import { registerMediaRoutes } from "./modules/media/routes.js";
 import { createMediaService } from "./modules/media/service.js";
 import { registerNpcRoutes } from "./modules/npc/routes.js";
 import { createNpcService } from "./modules/npc/service.js";
+import { createOutingService } from "./modules/npc/outing-service.js";
+import { registerOutingRoutes } from "./modules/npc/outing-routes.js";
 import { DictionaryExampleGenerationRepository } from "./modules/dictionary-translation/generation-repository.js";
 import { createDictionaryExampleGenerationService } from "./modules/dictionary-translation/generation-service.js";
 import { createJobPayloadCipher } from "./modules/jobs/crypto.js";
@@ -311,6 +314,14 @@ async function main(): Promise<void> {
   );
   registerContentRoutes(app, authService, contentService);
   registerNpcRoutes(app, authService, createNpcService(dependencies.database));
+  registerOutingRoutes(
+    app,
+    authService,
+    createOutingService(
+      dependencies.database,
+      createDomainActivityContext(dependencies.database),
+    ),
+  );
   if (mediaObjectStore !== undefined) {
     registerMediaRoutes(
       app,

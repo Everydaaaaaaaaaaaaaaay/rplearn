@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 import {
   boolean,
   check,
+  foreignKey,
   index,
   integer,
   jsonb,
@@ -19,6 +20,8 @@ import type {
   NpcDiversityProfile,
   RegisterPublicNpcInput,
 } from "./types.js";
+import type { ActivityWorld } from "./activity-world-content.js";
+import type { OutingSnapshot } from "./outing-types.js";
 
 export const npcRelationshipStatus = applicationSchema.enum("npc_relationship_status", [
   "candidate",
@@ -285,6 +288,101 @@ export const npcPendingAvatars = applicationSchema.table(
     check(
       "npc_pending_avatars_persona_profile_size",
       sql`${table.personaProfile} is null or octet_length(${table.personaProfile}::text) <= 4096`,
+    ),
+  ],
+);
+
+export const npcActivityWorlds = applicationSchema.table(
+  "npc_activity_worlds",
+  {
+    releaseId: text("release_id").primaryKey(),
+    manifestHash: text("manifest_hash").notNull(),
+    manifest: jsonb("manifest").$type<ActivityWorld>().notNull(),
+    enabled: boolean("enabled").default(false).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (t) => [
+    check(
+      "npc_activity_worlds_manifest_hash_check",
+      sql`${t.manifestHash} ~ '^[a-f0-9]{64}$'`,
+    ),
+  ],
+);
+
+export const npcOutings = applicationSchema.table(
+  "npc_outings",
+  {
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    runId: uuid("run_id").notNull(),
+    requestHash: text("request_hash").notNull(),
+    releaseId: text("release_id")
+      .notNull()
+      .references(() => npcActivityWorlds.releaseId),
+    cityId: text("city_id").notNull(),
+    placeId: text("place_id").notNull(),
+    status: text("status").notNull(),
+    snapshot: jsonb("snapshot").$type<OutingSnapshot>().notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.userId, t.runId] }),
+    uniqueIndex("npc_outings_one_active")
+      .on(t.userId)
+      .where(sql`${t.status} in ('reserved','opening_presented','in_progress')`),
+    check("npc_outings_request_hash_check", sql`${t.requestHash} ~ '^[a-f0-9]{64}$'`),
+    check(
+      "npc_outings_status_check",
+      sql`${t.status} in ('reserved','opening_presented','in_progress','completed','abandoned')`,
+    ),
+    check(
+      "npc_outings_snapshot_check",
+      sql`octet_length(${t.snapshot}::text) <= 262144`,
+    ),
+  ],
+);
+
+export const npcOutingOperations = applicationSchema.table(
+  "npc_outing_operations",
+  {
+    userId: uuid("user_id").notNull(),
+    runId: uuid("run_id").notNull(),
+    operationId: uuid("operation_id").notNull(),
+    requestHash: text("request_hash").notNull(),
+    response: jsonb("response").$type<OutingSnapshot>().notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.userId, t.runId, t.operationId] }),
+    foreignKey({
+      columns: [t.userId, t.runId],
+      foreignColumns: [npcOutings.userId, npcOutings.runId],
+    }).onDelete("cascade"),
+    check(
+      "npc_outing_operations_request_hash_check",
+      sql`${t.requestHash} ~ '^[a-f0-9]{64}$'`,
+    ),
+  ],
+);
+
+export const npcOutingCityProgress = applicationSchema.table(
+  "npc_outing_city_progress",
+  {
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    cityId: text("city_id").notNull(),
+    quietStreak: integer("quiet_streak").default(0).notNull(),
+    familiarStreak: integer("familiar_streak").default(0).notNull(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.userId, t.cityId] }),
+    check("npc_outing_city_progress_quiet_streak_check", sql`${t.quietStreak} >= 0`),
+    check(
+      "npc_outing_city_progress_familiar_streak_check",
+      sql`${t.familiarStreak} >= 0`,
     ),
   ],
 );
