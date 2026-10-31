@@ -317,7 +317,7 @@ public struct HomeView: View {
         async let loadedCompleted = try? deps.storyProgress.completedStoryIDs()
 
         profile = await loadedProfile
-        completedStories = await loadedCompleted ?? []
+        completedStories = DepartureStoryIdentity.catalogCompletionIDs(await loadedCompleted ?? [])
         onInitialLoad()
     }
 

@@ -1,0 +1,975 @@
+{
+  "id": "departures_city_toronto_v2",
+  "version": 2,
+  "title": "谁带了主菜",
+  "start": "TO00_01",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "多伦多 · 一间公寓的晚饭",
+    "厨房与订单",
+    "蛋糕切开之前"
+  ],
+  "shots": {
+    "flat": {
+      "background": "dp_toronto_flat",
+      "actors": []
+    },
+    "cook": {
+      "background": "dp_toronto_cook",
+      "actors": []
+    },
+    "order": {
+      "background": "dp_toronto_order",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "TO00_01",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "The lift hums beyond Maya's flat. Shoes crowd the door.",
+      "translation": "Maya 公寓门外电梯嗡嗡作响，门口摆满了鞋子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO00_02"
+    },
+    {
+      "id": "TO00_02",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "Four people. Three cakes. One empty dinner plate.",
+      "translation": "四个人，三个蛋糕，一只空餐盘。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO00_03"
+    },
+    {
+      "id": "TO00_03",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "We have planned dessert with great care.",
+      "translation": "甜点安排得相当周到。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO00_04"
+    },
+    {
+      "id": "TO00_04",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "Sam holds up an empty shopping bag.",
+      "translation": "Sam 提了提空购物袋。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO00_05"
+    },
+    {
+      "id": "TO00_05",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "Sam",
+      "text": "Your message said, 'Just bring yourself.'",
+      "translation": "你的消息说“人来就好”。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO00_06"
+    },
+    {
+      "id": "TO00_06",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "It did. The food plan went to my work group.",
+      "translation": "是这么说的。带菜那条发到工作群了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO00_07"
+    },
+    {
+      "id": "TO00_07",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "She shows Sam the wrong group on her phone.",
+      "translation": "她把手机上发错的群给 Sam 看。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO00_08"
+    },
+    {
+      "id": "TO00_08",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "Sam",
+      "text": "That explains the reply about a meeting room.",
+      "translation": "难怪有人回你会议室的事。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO00_09"
+    },
+    {
+      "id": "TO00_09",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "My mistake. Nobody needs to go shopping for me.",
+      "translation": "是我弄错了，不用谁替我出门买东西。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO00_10"
+    },
+    {
+      "id": "TO00_10",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "Rice, eggs and vegetables. Or we can order.",
+      "translation": "有米饭、鸡蛋和蔬菜，也可以点餐。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO00_11"
+    },
+    {
+      "id": "TO00_11",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "I'll pay for the main dishes if we order.",
+      "translation": "点餐的话，主菜我来付。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "TO00_choice"
+    },
+    {
+      "id": "TO00_choice",
+      "act": 0,
+      "location": "多伦多 · 一间公寓的晚饭",
+      "shot": "flat",
+      "speaker": "你的选择",
+      "text": "Cook here, or order together?",
+      "translation": "在家做，还是一起点餐？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I can eat those. Let's cook something simple.",
+          "translation": "这些我都能吃，做点简单的吧。",
+          "next": "TO10_01",
+          "flags": {
+            "TO00": true
+          },
+          "review": {
+            "context": "三个蛋糕，一张空盘",
+            "outcome": "你们选择现有食材做饭，每个人能参与到不同程度。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'd rather order. Let's check the food first.",
+          "translation": "我想点餐，先看看吃什么。",
+          "next": "TO20_01",
+          "flags": {
+            "TO00": false
+          },
+          "review": {
+            "context": "三个蛋糕，一张空盘",
+            "outcome": "大家一起核对菜单与总价，没有替用户付款。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TO10_01",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "Those work for everyone?",
+      "translation": "这些大家都能吃吗？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO10_02"
+    },
+    {
+      "id": "TO10_02",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "Sam and the other guest check and say yes.",
+      "translation": "Sam 和另一位客人确认过，都说可以。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO10_03"
+    },
+    {
+      "id": "TO10_03",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "I'll do the hot pan.",
+      "translation": "热锅我来管。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO10_04"
+    },
+    {
+      "id": "TO10_04",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "flat",
+      "speaker": "Sam",
+      "text": "I'll get the vegetables ready. My best dish.",
+      "translation": "我来备蔬菜，这是我的拿手菜。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO10_05"
+    },
+    {
+      "id": "TO10_05",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "Maya leaves a clear space beside the clean plates.",
+      "translation": "Maya 在干净盘子旁留出一块空位。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO10_06"
+    },
+    {
+      "id": "TO10_06",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "Want to set the table, or just keep us company?",
+      "translation": "想帮着摆盘，还是陪我们待着就好？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "TO10_choice"
+    },
+    {
+      "id": "TO10_choice",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "flat",
+      "speaker": "你的选择",
+      "text": "How would you like to join in?",
+      "translation": "你想怎么参与这顿饭？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I'll set the table. Where are the forks?",
+          "translation": "我来摆桌，叉子在哪儿？",
+          "next": "TO11_01",
+          "flags": {
+            "TO10": true
+          },
+          "review": {
+            "context": "厨房里不需要一个新老板",
+            "outcome": "你摆桌，Maya 和 Sam 准备饭菜。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll sit here and keep you company.",
+          "translation": "我坐在这儿陪你们。",
+          "next": "TO12_01",
+          "flags": {
+            "TO10": false
+          },
+          "review": {
+            "context": "厨房里不需要一个新老板",
+            "outcome": "你只陪着聊天，其他人照自己的分工准备。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TO11_01",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "cook",
+      "speaker": "Maya",
+      "text": "Top drawer. The one that actually opens.",
+      "translation": "最上层抽屉，能打开的那个。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO11_02"
+    },
+    {
+      "id": "TO11_02",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "You lay out plates while Sam chooses a song.",
+      "translation": "你摆好盘子，Sam 在挑歌。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO11_03"
+    },
+    {
+      "id": "TO11_03",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "cook",
+      "speaker": "Maya",
+      "text": "Not that one. We cooked to it three times.",
+      "translation": "别放那首，已经听着它做过三回饭了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO11_04"
+    },
+    {
+      "id": "TO11_04",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "cook",
+      "speaker": "Sam",
+      "text": "And all three meals survived.",
+      "translation": "而且三顿都平安做好了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO11_05"
+    },
+    {
+      "id": "TO11_05",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "The bowls reach the table with the next song.",
+      "translation": "下一首歌响起时，盛好的饭也端上桌。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO11_06"
+    },
+    {
+      "id": "TO11_06",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "cook",
+      "speaker": "Maya",
+      "text": "Eat first. We can argue about music over cake.",
+      "translation": "先吃饭，音乐的事吃蛋糕时再吵。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO11_07"
+    },
+    {
+      "id": "TO11_07",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "Your fork is already in the place you chose.",
+      "translation": "你的叉子已经摆在你选的位子上。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "TO11"
+    },
+    {
+      "id": "TO12_01",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "Good. That stool is out of the splash zone.",
+      "translation": "好，那张凳子不会被油溅到。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO12_02"
+    },
+    {
+      "id": "TO12_02",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "You sit down. Sam puts the last plate on the table.",
+      "translation": "你坐下来，Sam 把最后一个盘子摆好。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO12_03"
+    },
+    {
+      "id": "TO12_03",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "Sam",
+      "text": "Tell her this is good cooking music.",
+      "translation": "你说，这是不是很适合做饭的歌？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO12_04"
+    },
+    {
+      "id": "TO12_04",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "You don't have to join his campaign.",
+      "translation": "不用加入他的拉票活动。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO12_05"
+    },
+    {
+      "id": "TO12_05",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "He turns it down so everyone can hear each other.",
+      "translation": "他把音量调低，让大家能听清彼此说话。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO12_06"
+    },
+    {
+      "id": "TO12_06",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "Maya serves the food and takes the stool next to you.",
+      "translation": "Maya 盛好饭，坐到你旁边的凳子上。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO12_07"
+    },
+    {
+      "id": "TO12_07",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "I've been standing all day. This is better.",
+      "translation": "我站了一整天，这样舒服多了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "TO12"
+    },
+    {
+      "id": "TO20_01",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "order",
+      "speaker": "Maya",
+      "text": "Two big noodle boxes. Everyone okay with those?",
+      "translation": "两大盒面，大家都可以吗？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO20_02"
+    },
+    {
+      "id": "TO20_02",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "Everyone checks the ingredients, including you.",
+      "translation": "包括你在内，大家都查看了食材。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO20_03"
+    },
+    {
+      "id": "TO20_03",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "The order shows thirty-six Canadian dollars in total.",
+      "translation": "订单显示总价三十六加元。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO20_04"
+    },
+    {
+      "id": "TO20_04",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "order",
+      "speaker": "Maya",
+      "text": "Fees included. My treat, or nine each if you want to share.",
+      "translation": "已含费用。我请客，想分担也可以每人九加元。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO20_05"
+    },
+    {
+      "id": "TO20_05",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "order",
+      "speaker": "Sam",
+      "text": "Then I'll get the plates while we wait.",
+      "translation": "那等餐时我来拿盘子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "TO20_06"
+    },
+    {
+      "id": "TO20_06",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "order",
+      "speaker": "Maya",
+      "text": "Shall I send it?",
+      "translation": "那我下单了？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "TO20_choice"
+    },
+    {
+      "id": "TO20_choice",
+      "act": 1,
+      "location": "厨房与订单",
+      "shot": "order",
+      "speaker": "你的选择",
+      "text": "Ready to order?",
+      "translation": "订单清楚了，怎么回应？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Yes, thanks. I'll stay here and chat.",
+          "translation": "好，谢谢。我在这儿陪你们聊。",
+          "next": "TO21_01",
+          "flags": {
+            "TO20": true
+          },
+          "review": {
+            "context": "先看订单",
+            "outcome": "你接受 Maya 自愿请客，没有欠下一次补偿。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Yes. I'd like to pay my nine dollars.",
+          "translation": "好，我想付自己的九加元。",
+          "next": "TO22_01",
+          "flags": {
+            "TO20": false
+          },
+          "review": {
+            "context": "先看订单",
+            "outcome": "你自愿支付已说明的九加元，其余由 Maya 支付。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TO21_01",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "Maya pays for the order as she offered.",
+      "translation": "Maya 按自己说的付了订单费用。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO21_02"
+    },
+    {
+      "id": "TO21_02",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "order",
+      "speaker": "Maya",
+      "text": "Done. I'll put the phone away before I order cake.",
+      "translation": "好了，赶紧收手机，免得又点蛋糕。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO21_03"
+    },
+    {
+      "id": "TO21_03",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "Sam looks at the three cakes already on the table.",
+      "translation": "Sam 看看桌上已经有的三个蛋糕。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO21_04"
+    },
+    {
+      "id": "TO21_04",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "order",
+      "speaker": "Sam",
+      "text": "You would need a second group chat for that.",
+      "translation": "那你得再建一个群。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO21_05"
+    },
+    {
+      "id": "TO21_05",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "While you wait, everyone pulls their chairs closer.",
+      "translation": "等餐时，大家把椅子拉近。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO21_06"
+    },
+    {
+      "id": "TO21_06",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "Next invite gets one message. With the food in it.",
+      "translation": "下次邀请就发一条，把吃什么也写进去。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO21_07"
+    },
+    {
+      "id": "TO21_07",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "I'll get the buzzer. You keep the cake safe.",
+      "translation": "门禁我去应，你们看好蛋糕。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO21_08"
+    },
+    {
+      "id": "TO21_08",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "There is hot food before the first cake is cut.",
+      "translation": "第一块蛋糕切下前，热饭已经到了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "TO21"
+    },
+    {
+      "id": "TO22_01",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "order",
+      "speaker": "Maya",
+      "text": "Okay. I'll cover the rest.",
+      "translation": "好，其余的我来付。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO22_02"
+    },
+    {
+      "id": "TO22_02",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "order",
+      "speaker": "Maya",
+      "text": "Nine Canadian dollars, as we said.",
+      "translation": "那就按说好的，九加元。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO22_03"
+    },
+    {
+      "id": "TO22_03",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "You agree to nine and pay only your share.",
+      "translation": "你同意九加元，只付了自己的那份。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO22_04"
+    },
+    {
+      "id": "TO22_04",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "Maya covers the rest and sends the order.",
+      "translation": "Maya 支付剩下的部分，下了单。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO22_05"
+    },
+    {
+      "id": "TO22_05",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "Sam",
+      "text": "Does the cake get its own bill?",
+      "translation": "蛋糕要单独算账吗？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO22_06"
+    },
+    {
+      "id": "TO22_06",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "Maya",
+      "text": "The cake is now a public service.",
+      "translation": "蛋糕现在是公共服务。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "TO22_07"
+    },
+    {
+      "id": "TO22_07",
+      "act": 2,
+      "location": "蛋糕切开之前",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "When dinner arrives, the phone stays off the table.",
+      "translation": "晚饭到了，手机也从餐桌上收走了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "TO22"
+    }
+  ]
+}

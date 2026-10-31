@@ -1,0 +1,971 @@
+{
+  "id": "departures_mainline_singapore_v2",
+  "version": 2,
+  "title": "下次见面的办法",
+  "start": "SG00_01",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "新加坡 · 最后一晚",
+    "一张餐桌两地时钟",
+    "走到街角之前"
+  ],
+  "shots": {
+    "night": {
+      "background": "dp_singapore_hawker_night",
+      "actors": []
+    },
+    "dinner": {
+      "background": "dp_mei_dinner",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "SG00_01",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "Fans turn above the hawker tables. A shutter rattles down.",
+      "translation": "熟食中心的吊扇转着，一个摊位正拉下卷帘。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG00_02"
+    },
+    {
+      "id": "SG00_02",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "Your bag takes the chair beside you.",
+      "translation": "你的行李袋占了旁边一张椅子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG00_03"
+    },
+    {
+      "id": "SG00_03",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Your bag got here before me. Very keen.",
+      "translation": "行李比我还早到，真积极。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG00_04"
+    },
+    {
+      "id": "SG00_04",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She sets down two bowls and pulls out a chair.",
+      "translation": "她放下两碗食物，拉开椅子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG00_05"
+    },
+    {
+      "id": "SG00_05",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Eat before you start making airport plans.",
+      "translation": "先吃，别一坐下就安排去机场。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG00_06"
+    },
+    {
+      "id": "SG00_06",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "You have written a message, but not sent it.",
+      "translation": "你写了一条消息，还没发出去。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG00_07"
+    },
+    {
+      "id": "SG00_07",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "It starts, 'We should do this again.' You show Mei.",
+      "translation": "开头是“我们还得再聚一次”，你给 Mei 看。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG00_08"
+    },
+    {
+      "id": "SG00_08",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "We can. It doesn't have to be another flight.",
+      "translation": "可以，不一定得再坐一次飞机。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG00_09"
+    },
+    {
+      "id": "SG00_09",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Or we can just enjoy dinner tonight.",
+      "translation": "或者，今晚先好好吃顿饭。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "SG00_choice"
+    },
+    {
+      "id": "SG00_choice",
+      "act": 0,
+      "location": "新加坡 · 最后一晚",
+      "shot": "dinner",
+      "speaker": "你的选择",
+      "text": "Would you like to plan a call?",
+      "translation": "你想约一次通话，还是只说声谢谢？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Could we have a short call next week?",
+          "translation": "下周能通个简短的电话吗？",
+          "next": "SG10_01",
+          "flags": {
+            "SG00": true
+          },
+          "review": {
+            "context": "行李和汤",
+            "outcome": "你提出一次简短通话，具体时间仍需确认。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I just want to say thanks for tonight.",
+          "translation": "我只是想谢谢你今晚来陪我。",
+          "next": "SG20_01",
+          "flags": {
+            "SG00": false
+          },
+          "review": {
+            "context": "行李和汤",
+            "outcome": "你只表达今晚的感谢，不要求下一次安排。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "SG10_01",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Tuesday evening is good for me.",
+      "translation": "我周二晚上方便。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG10_02"
+    },
+    {
+      "id": "SG10_02",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Seven, Singapore time. Would that work?",
+      "translation": "新加坡时间七点，你方便吗？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG10_03"
+    },
+    {
+      "id": "SG10_03",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "You check Tuesday's plans and the two local clocks.",
+      "translation": "你查看周二的安排和两地的当地时间。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG10_04"
+    },
+    {
+      "id": "SG10_04",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "That time fits. The call would be twenty minutes.",
+      "translation": "那个时间合适，通话二十分钟。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG10_05"
+    },
+    {
+      "id": "SG10_05",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Just tea. I don't need a slide show.",
+      "translation": "就喝茶聊聊，不用给我放幻灯片。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG10_06"
+    },
+    {
+      "id": "SG10_06",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Shall we put it down, or check again later?",
+      "translation": "那就记下来，还是以后再看看？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "SG10_choice"
+    },
+    {
+      "id": "SG10_choice",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "你的选择",
+      "text": "Book it now, or wait until you get home?",
+      "translation": "现在定下来，还是到家后再商量？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Let's book Tuesday. Seven, Singapore time.",
+          "translation": "就定周二，新加坡时间七点。",
+          "next": "SG11_01",
+          "flags": {
+            "SG10": true
+          },
+          "review": {
+            "context": "让邀请有一个可用的时间",
+            "outcome": "双方说定故事内周二新加坡时间十九点通话。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's check again when I'm home.",
+          "translation": "等我到家再看看吧。",
+          "next": "SG12_01",
+          "flags": {
+            "SG10": false
+          },
+          "review": {
+            "context": "让邀请有一个可用的时间",
+            "outcome": "双方暂不确认周二，等到家再商量。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "SG11_01",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Tuesday, seven here, twenty minutes. Done.",
+      "translation": "周二，我这里七点，二十分钟。定了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG11_02"
+    },
+    {
+      "id": "SG11_02",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "You both save the same plan.",
+      "translation": "你们各自记下同一个安排。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG11_03"
+    },
+    {
+      "id": "SG11_03",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "We can move it if something changes.",
+      "translation": "有事可以商量着改。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG11_04"
+    },
+    {
+      "id": "SG11_04",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She puts her phone away and tries the soup.",
+      "translation": "她收起手机，尝了一口汤。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG11_05"
+    },
+    {
+      "id": "SG11_05",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Now. What snacks are you taking home?",
+      "translation": "好了，你要带哪些零食回家？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG11_06"
+    },
+    {
+      "id": "SG11_06",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "The bag stays shut while you finish dinner.",
+      "translation": "你们吃完晚饭，行李袋一直没再打开。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG11_07"
+    },
+    {
+      "id": "SG11_07",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "Outside, Mei walks with you to the corner.",
+      "translation": "到外面，Mei 陪你走到街角。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG11_08"
+    },
+    {
+      "id": "SG11_08",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Have a good trip. I'll talk to you Tuesday.",
+      "translation": "一路顺利，周二聊。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "SG11"
+    },
+    {
+      "id": "SG12_01",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Okay. We haven't booked Tuesday, then.",
+      "translation": "好，那周二还没定。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG12_02"
+    },
+    {
+      "id": "SG12_02",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She leaves the calendar empty and puts it away.",
+      "translation": "她没在日历上记什么，收起手机。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG12_03"
+    },
+    {
+      "id": "SG12_03",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "The clocks will still be there when you land.",
+      "translation": "等你落地，钟也不会跑掉。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG12_04"
+    },
+    {
+      "id": "SG12_04",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "You finish dinner without looking for another date.",
+      "translation": "你们吃完晚饭，没有再找另一个日期。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG12_05"
+    },
+    {
+      "id": "SG12_05",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "A cleaner passes. Mei stacks the empty bowls.",
+      "translation": "清洁人员走过，Mei 把空碗叠起来。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG12_06"
+    },
+    {
+      "id": "SG12_06",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "I'm glad we had tonight.",
+      "translation": "能一起过今晚，我挺开心。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG12_07"
+    },
+    {
+      "id": "SG12_07",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "At the corner, she waits as you fix your bag strap.",
+      "translation": "街角，她等你调整好背包带。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG12_08"
+    },
+    {
+      "id": "SG12_08",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Safe trip. We can plan when you're ready.",
+      "translation": "一路平安，等你想安排时再说。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "SG12"
+    },
+    {
+      "id": "SG20_01",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "I'm glad you came. I'd never tried this stall.",
+      "translation": "我也很高兴你来，这个摊位我以前还没试过。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG20_02"
+    },
+    {
+      "id": "SG20_02",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Dad will demand a full report on the soup.",
+      "translation": "我爸肯定要问个明白，这汤到底怎么样。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG20_03"
+    },
+    {
+      "id": "SG20_03",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She moves the empty side dish between you.",
+      "translation": "她把空了的小菜碟挪到你们中间。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG20_04"
+    },
+    {
+      "id": "SG20_04",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "We did well with that one. Not a leaf left.",
+      "translation": "这个选得好，一片叶子也没剩。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "SG20_05"
+    },
+    {
+      "id": "SG20_05",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "There is still time before you have to leave.",
+      "translation": "离你必须走的时候，还有一点时间。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "SG20_choice"
+    },
+    {
+      "id": "SG20_choice",
+      "act": 1,
+      "location": "一张餐桌两地时钟",
+      "shot": "dinner",
+      "speaker": "你的选择",
+      "text": "What would you like before you go?",
+      "translation": "离开之前，你想做什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "One photo together, just for us?",
+          "translation": "一起拍张只留给我们的合照？",
+          "next": "SG21_01",
+          "flags": {
+            "SG20": true
+          },
+          "review": {
+            "context": "感谢只是一句感谢",
+            "outcome": "双方同意拍一张只留给两人的合照。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's finish dinner. No phones for a bit.",
+          "translation": "先吃完吧，一会儿不看手机。",
+          "next": "SG22_01",
+          "flags": {
+            "SG20": false
+          },
+          "review": {
+            "context": "感谢只是一句感谢",
+            "outcome": "你们收起手机，把今晚的饭慢慢吃完。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "SG21_01",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "night",
+      "speaker": "Mei",
+      "text": "Yes. Just for us, though.",
+      "translation": "好，不过只留给我们。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG21_02"
+    },
+    {
+      "id": "SG21_02",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "night",
+      "speaker": "Mei",
+      "text": "I don't want to post every goodbye.",
+      "translation": "我不想把每一次告别都发到网上。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG21_03"
+    },
+    {
+      "id": "SG21_03",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "night",
+      "speaker": "旁白",
+      "text": "You agree and open the camera.",
+      "translation": "你同意，打开相机。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG21_04"
+    },
+    {
+      "id": "SG21_04",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "night",
+      "speaker": "Mei",
+      "text": "Wait. Soup on my sleeve. Very elegant.",
+      "translation": "等等，袖子上沾汤了，真优雅。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG21_05"
+    },
+    {
+      "id": "SG21_05",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "night",
+      "speaker": "旁白",
+      "text": "She wipes it off. You take one photo together.",
+      "translation": "她擦干净，你们一起拍了一张照片。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG21_06"
+    },
+    {
+      "id": "SG21_06",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "night",
+      "speaker": "旁白",
+      "text": "The photo stays on your phone. You put it away.",
+      "translation": "照片留在你手机里，你收起手机。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG21_07"
+    },
+    {
+      "id": "SG21_07",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "night",
+      "speaker": "Mei",
+      "text": "There. Now I can finish my food.",
+      "translation": "好了，现在能把饭吃完了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG21_08"
+    },
+    {
+      "id": "SG21_08",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "night",
+      "speaker": "旁白",
+      "text": "After dinner, you part at the corner.",
+      "translation": "饭后，你们在街角告别。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG21_09"
+    },
+    {
+      "id": "SG21_09",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "night",
+      "speaker": "Mei",
+      "text": "Safe trip. I'm glad we got this evening.",
+      "translation": "一路平安，能一起吃这顿饭真好。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "SG21"
+    },
+    {
+      "id": "SG22_01",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Good plan. I keep checking a very boring email.",
+      "translation": "好主意，我老看一封特别无聊的邮件。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG22_02"
+    },
+    {
+      "id": "SG22_02",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "Both phones go away. She turns back to her bowl.",
+      "translation": "你们都收起手机，她重新端起碗。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG22_03"
+    },
+    {
+      "id": "SG22_03",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "I thought I was full. Apparently not.",
+      "translation": "我还以为吃饱了，看来没有。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG22_04"
+    },
+    {
+      "id": "SG22_04",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She finds a last dumpling under the noodles.",
+      "translation": "她在面条底下找到最后一个饺子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG22_05"
+    },
+    {
+      "id": "SG22_05",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "You finish dinner slowly, with time left to spare.",
+      "translation": "你们慢慢吃完饭，还留有一点时间。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG22_06"
+    },
+    {
+      "id": "SG22_06",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Thanks for leaving time for this. Safe trip.",
+      "translation": "谢谢你留了时间一起吃饭，一路顺利。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "SG22_07"
+    },
+    {
+      "id": "SG22_07",
+      "act": 2,
+      "location": "走到街角之前",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She holds the door while you pick up your bag.",
+      "translation": "你拿行李时，她替你扶着门。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "SG22"
+    }
+  ]
+}

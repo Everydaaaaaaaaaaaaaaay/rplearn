@@ -41,4 +41,30 @@ struct StoryProgressStoreTests {
         #expect(replay?.completedAt == first?.completedAt)
         #expect(replay?.currentNodeID == "arrival")
     }
+    @Test("完成结果只记第一次，重玩不能抹掉或伪造；新版与目录标志一并保存")
+    func preservesFirstExperienceAndCatalog() async throws {
+        let store = try makeStore()
+        try await store.saveCheckpoint(storyID: "new", nodeID: "endA", flags: ["choice": true, "experience.fake": true])
+        #expect(try await store.progress(storyID: "new")?.flags["experience.fake"] == nil)
+        try await store.markCompleted(storyID: "new", experienceID: "A", catalogStoryID: "catalog")
+        let first = try #require(await store.progress(storyID: "new"))
+        #expect(try await store.completedStoryIDs() == ["new", "catalog"])
+        try await store.saveCheckpoint(storyID: "new", nodeID: "endB", flags: ["choice": false])
+        try await store.markCompleted(storyID: "new", experienceID: "B", catalogStoryID: "catalog")
+        let replay = try #require(await store.progress(storyID: "new"))
+        #expect(replay.completedAt == first.completedAt)
+        #expect(replay.flags["experience.A"] == true)
+        #expect(replay.flags["experience.B"] == nil)
+        #expect(replay.readingFlags == ["choice": false])
+    }
+
+    @Test("新版完成不覆盖旧版未读完的节点、分支和完成状态")
+    func preservesOriginalCheckpoint() async throws {
+        let store = try makeStore()
+        try await store.saveCheckpoint(storyID: "old", nodeID: "old-node", flags: ["old-choice": true])
+        let before = try await store.progress(storyID: "old")
+        try await store.markCompleted(storyID: "new", experienceID: "B", catalogStoryID: "old")
+        #expect(try await store.progress(storyID: "old") == before)
+    }
+
 }

@@ -38,7 +38,7 @@ public enum CityStoryCatalog {
             storyID: "departures_city_newyork_v1",
             regionID: "newyork",
             title: "等你吃饭的十分钟",
-            subtitle: "约好的午餐被工作打断，两个人都不想显得难相处。"
+            subtitle: "一顿迟到的午饭，不必占满你的下午。"
         ),
         CityStoryChapter(
             storyID: "departures_city_capetown_v1",
@@ -73,8 +73,8 @@ public enum CityStoryCatalog {
         CityStoryChapter(
             storyID: "departures_city_auckland_v1",
             regionID: "auckland",
-            title: "工具箱归还之前",
-            subtitle: "Hana 借出了一把工具，却收到了一个更大的请求。"
+            title: "工具箱回到桌上",
+            subtitle: "工具回来了，今天还做不完所有事。"
         ),
         CityStoryChapter(
             storyID: "departures_city_nairobi_v1",
@@ -86,7 +86,7 @@ public enum CityStoryCatalog {
             storyID: "departures_city_toronto_v1",
             regionID: "toronto",
             title: "谁带了主菜",
-            subtitle: "Maya 的聚餐收到了三份甜点，还有一份没人敢问的沉默。"
+            subtitle: "三份蛋糕，一顿还没着落的晚饭。"
         ),
         CityStoryChapter(
             storyID: "departures_city_sydney_v1",

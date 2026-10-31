@@ -35,6 +35,16 @@ extension ChatViewModel {
             profileTask,
             currentCharacterTask
         )
+        let memoryCutoff = try? await deps.memoryStore.extractionCutoff(characterID: characterID)
+        var storySections: [String] = []
+        if let storyProgress = deps.storyProgress {
+            let sources = DepartureStoryIdentity.currentEditions.values.sorted()
+            var records: [StoryProgressDTO] = []
+            for source in sources {
+                if let record = try? await storyProgress.progress(storyID: source) { records.append(record) }
+            }
+            storySections = StoryExperienceContext.sections(character: character, progress: records, after: memoryCutoff)
+        }
         let subscriptionTier = profile?.subscriptionTier ?? .free
         let rawWindow = EconomyService.memoryQuota(for: subscriptionTier).rawWindow
         let mainlineActive = character.isMainCharacter && !hasStoryTicket
@@ -44,13 +54,12 @@ extension ChatViewModel {
         } else {
             learner = .fallback(difficulty: character.difficultyLevel)
         }
-        let memoryCutoff = try? await deps.memoryStore.extractionCutoff(characterID: characterID)
         learnerDifficulty = learner.difficulty
         let request = PromptBuilder.roleplayRequest(
             card: character.card,
             learner: learner,
             history: messages.filter { $0.id != retryingMessageID && (memoryCutoff == nil || $0.createdAt > memoryCutoff!) },
-            memorySections: memorySections,
+            memorySections: memorySections + storySections,
             relationshipContext: RelationshipEngine.promptContext(
                 currentCharacter?.relationship ?? character.relationship
             ),

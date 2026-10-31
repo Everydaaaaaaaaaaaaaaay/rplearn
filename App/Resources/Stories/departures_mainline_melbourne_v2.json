@@ -1,0 +1,1107 @@
+{
+  "id": "departures_mainline_melbourne_v2",
+  "version": 2,
+  "title": "留给自己的一个下午",
+  "start": "RB00_01",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "墨尔本 · 收班之后",
+    "坐在一起的二十分钟",
+    "各自的下午"
+  ],
+  "shots": {
+    "cafe": {
+      "background": "dp_melbourne_cafe",
+      "actors": []
+    },
+    "form": {
+      "background": "dp_ruby_application",
+      "actors": []
+    },
+    "lane": {
+      "background": "dp_melbourne_lane",
+      "actors": []
+    },
+    "reply": {
+      "background": "dp_ruby_cafe_reply",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "RB00_01",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "cafe",
+      "speaker": "旁白",
+      "text": "A tram bell fades beyond the café door.",
+      "translation": "咖啡馆门外，一阵电车铃声渐渐远去。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_02"
+    },
+    {
+      "id": "RB00_02",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "cafe",
+      "speaker": "旁白",
+      "text": "Ruby brings two coffees to a table by the door.",
+      "translation": "Ruby 端来两杯咖啡，放在门边的桌上。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_03"
+    },
+    {
+      "id": "RB00_03",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "Mine has a leaf. Yours has... something round.",
+      "translation": "我的拉花是片叶子。你的……是个圆东西。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_04"
+    },
+    {
+      "id": "RB00_04",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "The milk had other plans.",
+      "translation": "牛奶有它自己的想法。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_05"
+    },
+    {
+      "id": "RB00_05",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "旁白",
+      "text": "Her phone lights up beside her open laptop.",
+      "translation": "她的笔记本电脑开着，旁边的手机亮了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_06"
+    },
+    {
+      "id": "RB00_06",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "They need someone for tonight's shift.",
+      "translation": "他们今晚缺人顶班。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_07"
+    },
+    {
+      "id": "RB00_07",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "My marine project application is due tonight.",
+      "translation": "我的海洋项目申请今晚截止。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_08"
+    },
+    {
+      "id": "RB00_08",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "I'd get to help with research, not just clean-ups.",
+      "translation": "这样就能参与研究，不只是清理海滩。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_09"
+    },
+    {
+      "id": "RB00_09",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "I've filled in my name. That's about it.",
+      "translation": "我只填了名字，差不多就这些。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_10"
+    },
+    {
+      "id": "RB00_10",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "旁白",
+      "text": "She starts a reply, stops, then types again.",
+      "translation": "她开始回消息，停下来，又重新打字。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_11"
+    },
+    {
+      "id": "RB00_11",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "I can't do tonight. I've got something to finish.",
+      "translation": "我今晚顶不了班，有自己的事要完成。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_12"
+    },
+    {
+      "id": "RB00_12",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "旁白",
+      "text": "She sends it, then turns back to you.",
+      "translation": "她发出去，转过身来看你。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_13"
+    },
+    {
+      "id": "RB00_13",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "I'm sorry about our walk. I need an hour here.",
+      "translation": "抱歉，散步得耽搁一下。我还得在这儿待一小时。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB00_14"
+    },
+    {
+      "id": "RB00_14",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "You don't have to wait. What works for you?",
+      "translation": "你不用等我。你今天怎么安排方便？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "RB00_choice"
+    },
+    {
+      "id": "RB00_choice",
+      "act": 0,
+      "location": "墨尔本 · 收班之后",
+      "shot": "reply",
+      "speaker": "你的选择",
+      "text": "How would you like to spend your afternoon?",
+      "translation": "你想怎么安排这个下午？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I can stay for twenty minutes.",
+          "translation": "我能陪你待二十分钟。",
+          "next": "RB10_01",
+          "flags": {
+            "RB00": true
+          },
+          "review": {
+            "context": "两杯咖啡",
+            "outcome": "你陪 Ruby 留下二十分钟。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's do our own thing today.",
+          "translation": "今天我们各自安排吧。",
+          "next": "RB20_01",
+          "flags": {
+            "RB00": false
+          },
+          "review": {
+            "context": "两杯咖啡",
+            "outcome": "你决定保留自己的下午，Ruby 接受今天不散步。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "RB10_01",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "Twenty is good. I'll keep an eye on the time.",
+      "translation": "二十分钟就好。我会看着时间。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB10_02"
+    },
+    {
+      "id": "RB10_02",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She sets a timer and moves her coffee away from the laptop.",
+      "translation": "她设好计时，把咖啡从电脑边挪远。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB10_03"
+    },
+    {
+      "id": "RB10_03",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "It asks why I want to work with sea life.",
+      "translation": "它问我为什么想做海洋生物相关的工作。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB10_04"
+    },
+    {
+      "id": "RB10_04",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "I wrote 'I have always been passionate.'",
+      "translation": "我写了“我一直充满热情”。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB10_05"
+    },
+    {
+      "id": "RB10_05",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "Could be about fish. Could be about toast.",
+      "translation": "可以是对鱼充满热情，也可以是对吐司。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB10_06"
+    },
+    {
+      "id": "RB10_06",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She finds a photo from a beach clean-up.",
+      "translation": "她找到一张海滩清理活动的照片。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB10_07"
+    },
+    {
+      "id": "RB10_07",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "Port Phillip Bay. We went back the next week.",
+      "translation": "菲利普港湾，我们下一周又去了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB10_08"
+    },
+    {
+      "id": "RB10_08",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "Same patch of sand. More bottle caps.",
+      "translation": "同一片沙滩，又捡到了瓶盖。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB10_09"
+    },
+    {
+      "id": "RB10_09",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "I want to know what keeps bringing them back.",
+      "translation": "我想弄清是什么不断把它们带回来。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB10_10"
+    },
+    {
+      "id": "RB10_10",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "This was a better day than that sentence.",
+      "translation": "这一天可比那句话有意思多了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB10_11"
+    },
+    {
+      "id": "RB10_11",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "Want to hear my first line? No need to edit it.",
+      "translation": "想听听第一句吗？不用替我改。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "RB10_choice"
+    },
+    {
+      "id": "RB10_choice",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "form",
+      "speaker": "你的选择",
+      "text": "How would you like to spend these twenty minutes?",
+      "translation": "这二十分钟，你想怎么待着？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Sure. Read it to me.",
+          "translation": "好啊，读给我听。",
+          "next": "RB11_01",
+          "flags": {
+            "RB10": true
+          },
+          "review": {
+            "context": "二十分钟，不是一整个下午",
+            "outcome": "Ruby 读出有关瓶盖的开头，申请还没提交。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll sit with you and do my own thing.",
+          "translation": "我陪你坐着，做点自己的事。",
+          "next": "RB12_01",
+          "flags": {
+            "RB10": false
+          },
+          "review": {
+            "context": "二十分钟，不是一整个下午",
+            "outcome": "你们各做各的事，二十分钟后各自继续。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "RB11_01",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "We kept finding bottle caps in the same place.",
+      "translation": "我们总在同一个地方捡到瓶盖。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB11_02"
+    },
+    {
+      "id": "RB11_02",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "I wanted to know where they came from.",
+      "translation": "我想知道它们是从哪儿来的。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB11_03"
+    },
+    {
+      "id": "RB11_03",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She deletes 'passionate' and keeps the beach in the form.",
+      "translation": "她删掉“充满热情”，把海滩的经历留在表里。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB11_04"
+    },
+    {
+      "id": "RB11_04",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "It wasn't a lovely day out. But I went back.",
+      "translation": "那可不是什么美好的郊游，但我又去了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB11_05"
+    },
+    {
+      "id": "RB11_05",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She looks at the photo, then adds another line.",
+      "translation": "她看看照片，又写下一行。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB11_06"
+    },
+    {
+      "id": "RB11_06",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "That's a start. The fish can wait one sentence.",
+      "translation": "开了个头。鱼可以下一句再出场。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB11_07"
+    },
+    {
+      "id": "RB11_07",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "When the timer rings, she closes the photo.",
+      "translation": "计时响了，她关掉照片。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB11_08"
+    },
+    {
+      "id": "RB11_08",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "Your twenty minutes are up. Thanks for listening.",
+      "translation": "你的二十分钟到了。谢谢你听我说。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB11_09"
+    },
+    {
+      "id": "RB11_09",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She stays with the form as you finish your coffee.",
+      "translation": "你喝完咖啡，她继续填表。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB11_10"
+    },
+    {
+      "id": "RB11_10",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "I'll tell you when it's sent. Not there yet.",
+      "translation": "交了我告诉你。还没写完呢。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "RB11"
+    },
+    {
+      "id": "RB12_01",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "Good. I won't make you my unpaid editor.",
+      "translation": "好，我不拉你当免费编辑。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB12_02"
+    },
+    {
+      "id": "RB12_02",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "You look at your own phone beside her.",
+      "translation": "你在她旁边，看起自己的手机。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB12_03"
+    },
+    {
+      "id": "RB12_03",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "For a while, there is only typing and café noise.",
+      "translation": "有一阵，只有打字声和咖啡馆里的动静。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB12_04"
+    },
+    {
+      "id": "RB12_04",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "The grinder starts. She waits, then reads her line again.",
+      "translation": "磨豆机响起来，她等了一会儿，又读了一遍自己写的话。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB12_05"
+    },
+    {
+      "id": "RB12_05",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "This is nice. I needed a quiet table.",
+      "translation": "这样挺好，我正需要一张安静的桌子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB12_06"
+    },
+    {
+      "id": "RB12_06",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "The timer rings before she finishes the last box.",
+      "translation": "最后一栏还没填完，计时就响了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB12_07"
+    },
+    {
+      "id": "RB12_07",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "I need a bit longer. You go enjoy your afternoon.",
+      "translation": "我还要一会儿。你去过自己的下午吧。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB12_08"
+    },
+    {
+      "id": "RB12_08",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She lifts her cup as you put on your coat.",
+      "translation": "你穿上外套，她举了举杯子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB12_09"
+    },
+    {
+      "id": "RB12_09",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "Next coffee gets a proper leaf. Maybe.",
+      "translation": "下杯咖啡给你拉片像样的叶子。大概。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "RB12"
+    },
+    {
+      "id": "RB20_01",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "Okay. I changed our plan at the last minute.",
+      "translation": "好，这确实是我临时改了安排。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB20_02"
+    },
+    {
+      "id": "RB20_02",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "Take your coffee. The round thing travels well.",
+      "translation": "咖啡带着。那个圆东西很适合出门。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB20_03"
+    },
+    {
+      "id": "RB20_03",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "reply",
+      "speaker": "旁白",
+      "text": "She gets you a lid, then opens her calendar.",
+      "translation": "她给你拿了杯盖，再打开日历。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "RB20_04"
+    },
+    {
+      "id": "RB20_04",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "I'd still like that walk. We can pick another day.",
+      "translation": "我还是想一起散步。可以另找一天。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "RB20_choice"
+    },
+    {
+      "id": "RB20_choice",
+      "act": 1,
+      "location": "坐在一起的二十分钟",
+      "shot": "reply",
+      "speaker": "你的选择",
+      "text": "Would you like to choose another day?",
+      "translation": "你想现在另选一天吗？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Tomorrow at four, here?",
+          "translation": "明天四点，在这里？",
+          "next": "RB21_01",
+          "flags": {
+            "RB20": true
+          },
+          "review": {
+            "context": "把今天还给两个人",
+            "outcome": "双方约好故事内明天下午四点再见。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's leave the date open for now.",
+          "translation": "先不定日子吧。",
+          "next": "RB22_01",
+          "flags": {
+            "RB20": false
+          },
+          "review": {
+            "context": "把今天还给两个人",
+            "outcome": "这次没有定下新的散步日期。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "RB21_01",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "Ruby",
+      "text": "I've checked. Four here works for me.",
+      "translation": "我看过了，四点在这里，我方便。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB21_02"
+    },
+    {
+      "id": "RB21_02",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "旁白",
+      "text": "You both note the time you have agreed on.",
+      "translation": "你们各自记下说好的时间。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB21_03"
+    },
+    {
+      "id": "RB21_03",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "Ruby",
+      "text": "I'll put the form away before you arrive.",
+      "translation": "你来之前，我会把表格收好。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB21_04"
+    },
+    {
+      "id": "RB21_04",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "旁白",
+      "text": "She writes the walk beside tomorrow's date.",
+      "translation": "她在明天的日期旁记下散步。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB21_05"
+    },
+    {
+      "id": "RB21_05",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "Ruby",
+      "text": "And if anything changes, I'll tell you early.",
+      "translation": "有变化我会早点告诉你。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB21_06"
+    },
+    {
+      "id": "RB21_06",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "旁白",
+      "text": "You leave with your coffee. She returns to the form.",
+      "translation": "你带着咖啡离开，她继续填表。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "RB21"
+    },
+    {
+      "id": "RB22_01",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "Ruby",
+      "text": "Sure. We can pick a day later.",
+      "translation": "好，之后再找一天。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB22_02"
+    },
+    {
+      "id": "RB22_02",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "旁白",
+      "text": "She closes the calendar without adding anything.",
+      "translation": "她关掉日历，没有记下新安排。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB22_03"
+    },
+    {
+      "id": "RB22_03",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "Ruby",
+      "text": "Thanks for coming, even for a very short coffee.",
+      "translation": "谢谢你过来，虽然只喝了这么一小会儿。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB22_04"
+    },
+    {
+      "id": "RB22_04",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "旁白",
+      "text": "At the door, you look back. She is finally typing.",
+      "translation": "到门边你回头看，她终于开始打字了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB22_05"
+    },
+    {
+      "id": "RB22_05",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "Ruby",
+      "text": "Next time, a leaf. I'll practise.",
+      "translation": "下次拉片叶子，我练练。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "RB22_06"
+    },
+    {
+      "id": "RB22_06",
+      "act": 2,
+      "location": "各自的下午",
+      "shot": "lane",
+      "speaker": "旁白",
+      "text": "You take your coffee outside. She keeps typing.",
+      "translation": "你带着咖啡出门，她继续打字。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "RB22"
+    }
+  ]
+}

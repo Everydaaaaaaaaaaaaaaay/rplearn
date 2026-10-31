@@ -1,5 +1,29 @@
 /// Reading IDs version new narratives; reward IDs preserve the existing ledger.
 public enum DepartureStoryIdentity {
+    /// Catalog IDs remain stable; each rewritten edition owns its reading progress.
+    public static let currentEditions: [String: String] = [
+        "departures_mainline_melbourne_v1": "departures_mainline_melbourne_v2",
+        "departures_city_newyork_v1": "departures_city_newyork_v2",
+        "departures_mainline_singapore_v1": "departures_mainline_singapore_v2",
+        "departures_city_toronto_v1": "departures_city_toronto_v2",
+        "departures_city_auckland_v1": "departures_city_auckland_v2",
+    ]
+
+    public static func catalogID(for readingID: String) -> String {
+        currentEditions.first { $0.value == readingID }?.key ?? readingID
+    }
+
+    public static func catalogCompletionIDs(_ readingIDs: Set<String>) -> Set<String> {
+        readingIDs.union(readingIDs.map { catalogID(for: $0) })
+    }
+
+    /// An unfinished older edition keeps its own graph, choices and artwork.
+    public static func readingID(for requestedID: String, hasUnfinishedOriginal: Bool,
+                                 hasCurrentProgress: Bool = false) -> String {
+        guard let current = currentEditions[requestedID] else { return requestedID }
+        return hasUnfinishedOriginal && !hasCurrentProgress ? requestedID : current
+    }
+
     public static let rewardIDs: [String: String] = [
         "departures_london_v1": "mainline_london",
         "departures_mainline_melbourne_v1": "mainline_melbourne",
@@ -23,5 +47,5 @@ public enum DepartureStoryIdentity {
         "departures_city_kingston_v1": "city_kingston",
     ]
 
-    public static func rewardID(for storyID: String) -> String? { rewardIDs[storyID] }
+    public static func rewardID(for storyID: String) -> String? { rewardIDs[catalogID(for: storyID)] }
 }

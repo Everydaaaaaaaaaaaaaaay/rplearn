@@ -57,6 +57,8 @@ public struct StoryEpisode: Decodable, Sendable {
         public let choices: [Choice]?
         public let branch: Branch?
         public let ending: Bool?
+        /// Authored outcome, committed only after completion; never an unchosen branch.
+        public let experienceID: String?
         public let speech: SpeechDirection?
 
         public var targets: [String] {
@@ -106,6 +108,11 @@ public struct StoryEpisode: Decodable, Sendable {
             else { return try reject("shot") }
         }
         for node in nodes {
+            if let experienceID = node.experienceID {
+                guard node.ending == true, !experienceID.isEmpty,
+                      experienceID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "_") })
+                else { return try reject("experience: \(node.id)") }
+            }
             if let variant = node.shotBranch {
                 guard !variant.flag.isEmpty, shots[variant.yes] != nil, shots[variant.no] != nil,
                       nodes.contains(where: { $0.choices?.contains(where: { $0.flags[variant.flag] != nil }) == true })

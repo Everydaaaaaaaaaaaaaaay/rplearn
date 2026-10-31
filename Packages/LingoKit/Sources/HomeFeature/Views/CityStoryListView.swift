@@ -110,7 +110,7 @@ public struct CityStoryListView: View {
         async let loadedStubs = try? deps.ticketStubStore.all()
         let resolvedProfile = await loadedProfile
         profile = resolvedProfile
-        completed = await loadedCompleted ?? []
+        completed = DepartureStoryIdentity.catalogCompletionIDs(await loadedCompleted ?? [])
         unlockProgress = CityStoryUnlockProgress(
             profile: resolvedProfile,
             availableTickets: await loadedTickets ?? [],

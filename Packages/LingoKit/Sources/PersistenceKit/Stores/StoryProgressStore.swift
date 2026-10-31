@@ -9,6 +9,9 @@ public struct StoryProgressDTO: Sendable, Equatable {
     public var completedAt: Date?
 
     public var isCompleted: Bool { completedAt != nil }
+    public var readingFlags: [String: Bool] {
+        flags.filter { !$0.key.hasPrefix("experience.") }
+    }
 
     public init(storyID: String, currentNodeID: String?, flags: [String: Bool], completedAt: Date?) {
         self.storyID = storyID
@@ -30,7 +33,10 @@ public actor StoryProgressStore {
         do {
             let entity = try fetchOrCreate(storyID)
             entity.currentNodeID = nodeID
-            entity.flagsJSON = Self.encodeFlags(flags)
+            let completedEvidence = Self.decodeFlags(entity.flagsJSON).filter { $0.key.hasPrefix("experience.") }
+            // Reading/replaying cannot erase or forge the first completed outcome.
+            entity.flagsJSON = Self.encodeFlags(flags.filter { !$0.key.hasPrefix("experience.") }
+                .merging(completedEvidence) { _, evidence in evidence })
             try journal(entity)
             try modelContext.save()
         } catch {
@@ -39,11 +45,22 @@ public actor StoryProgressStore {
         }
     }
 
-    public func markCompleted(storyID: String) throws {
+    public func markCompleted(storyID: String, experienceID: String? = nil,
+                              catalogStoryID: String? = nil) throws {
         do {
             let entity = try fetchOrCreate(storyID)
+            if entity.completedAt == nil, let experienceID, !experienceID.isEmpty {
+                var flags = Self.decodeFlags(entity.flagsJSON)
+                flags["experience." + experienceID] = true
+                entity.flagsJSON = Self.encodeFlags(flags)
+            }
             entity.completedAt = entity.completedAt ?? .now
             entity.currentNodeID = nil
+            if let catalogStoryID, catalogStoryID != storyID, try fetch(catalogStoryID) == nil {
+                let marker = try fetchOrCreate(catalogStoryID)
+                marker.completedAt = entity.completedAt
+                try journal(marker)
+            }
             try journal(entity)
             try modelContext.save()
         } catch {

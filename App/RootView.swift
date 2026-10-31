@@ -1194,6 +1194,7 @@ struct RootView: View {
             dependencies.learningPage = { character, visible, openSettings in AnyView(Self.debugLearningPage(character, isVisible: visible, onOpenChatSettings: openSettings)) }
         }
         #endif
+        dependencies.storyProgress = environment.storyProgressStore
         dependencies.learningChat = bypassesAuthenticationForUITesting ? nil : environment.workspace?.learningChat
         let backend = environment.backendClient
         let tracker = environment.workspace?.learningChat

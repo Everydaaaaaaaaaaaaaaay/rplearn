@@ -2,6 +2,7 @@ import AVFoundation
 import CoreKit
 import DesignSystem
 import DictKit
+import DomainKit
 import PersistenceKit
 import Foundation
 import ImageIO
@@ -15,6 +16,9 @@ public struct LondonEpisodeView: View {
     private let deps: StoryDependencies
     private let storageKey: String
     private let resourceName: String
+    @State private var activeResourceName: String
+    @State private var requestedEdition: String?
+    @State private var originalIsReadable = false
     @State private var session: EpisodeSession?
     @State private var art: [String: UIImage] = [:]
     @State private var loadError = false
@@ -49,6 +53,7 @@ public struct LondonEpisodeView: View {
     public init(deps: StoryDependencies, storageNamespace: String = "guest", resourceName: String = "departures_london_v1") {
         self.deps = deps
         self.resourceName = resourceName
+        _activeResourceName = State(initialValue: resourceName)
         _audio = State(initialValue: NarrativeAudioPlayer(speech: deps.speech, audioSession: deps.audioSession))
         #if DEBUG
         _soundEnabled = State(initialValue: ProcessInfo.processInfo.environment["UI_TEST_EPISODE_AUDIO"] != "0")
@@ -386,6 +391,19 @@ public struct LondonEpisodeView: View {
     private var historySheet: some View {
         NavigationStack {
             ScrollView {
+                if let current = DepartureStoryIdentity.currentEditions[resourceName],
+                   current != activeResourceName {
+                    Button("阅读新版，保留当前进度") { readEdition(current) }
+                        .buttonStyle(.bordered)
+                        .padding()
+                        .accessibilityIdentifier("episode.currentEdition")
+                }
+                if originalIsReadable, activeResourceName != resourceName {
+                    Button("继续阅读原版") { readEdition(resourceName) }
+                        .buttonStyle(.bordered)
+                        .padding()
+                        .accessibilityIdentifier("episode.originalEdition")
+                }
                 if let session {
                     LazyVStack(alignment: .leading, spacing: 22) {
                         ForEach(session.history + [session.nodeID], id: \.self) { id in
@@ -413,6 +431,22 @@ public struct LondonEpisodeView: View {
                     Button("从头开始", role: .destructive) { restart(); showHistory = false }
                     Button("取消", role: .cancel) { }
                 }
+        }
+    }
+
+    private func readEdition(_ resource: String) {
+        guard !saving else { return }
+        audio.stop()
+        automatic = false
+        requestedEdition = resource
+        session = nil
+        art = [:]
+        loadError = false
+        lastAudioPageID = nil
+        showHistory = false
+        transitionTask = Task {
+            await load()
+            if let candidate = session { _ = await persist(candidate) }
         }
     }
 
@@ -471,7 +505,7 @@ public struct LondonEpisodeView: View {
         do {
             let loaded = try await artwork(for: candidate)
             try Task.checkCancellation()
-            try await deps.storyProgress.saveCheckpoint(storyID: resourceName, nodeID: candidate.nodeID, flags: candidate.flags)
+            try await deps.storyProgress.saveCheckpoint(storyID: activeResourceName, nodeID: candidate.nodeID, flags: candidate.flags)
             try Task.checkCancellation()
             art = loaded.images
             operationError = nil
@@ -516,9 +550,11 @@ public struct LondonEpisodeView: View {
         automatic = false
         defer { saving = false }
         do {
-            let resource = resourceName, episode = session.episode, dependencies = deps
+            let resource = activeResourceName, episode = session.episode, dependencies = deps
+            let experienceID = session.current.experienceID
             let coins = try await AsyncDeadline.run(timeout: .seconds(30)) {
-                try await EpisodeCompletion.settle(resourceName: resource, episode: episode, deps: dependencies)
+                try await EpisodeCompletion.settle(resourceName: resource, episode: episode, deps: dependencies,
+                                                   experienceID: experienceID)
             }
             try Task.checkCancellation()
             completionSettled = true
@@ -569,7 +605,19 @@ public struct LondonEpisodeView: View {
     private func load() async {
         guard session == nil else { return }
         do {
-            guard let url = Bundle.main.url(forResource: resourceName, withExtension: "json") else {
+            let originalProgress = try await deps.storyProgress.progress(storyID: resourceName)
+            let currentProgress: StoryProgressDTO?
+            if let currentID = DepartureStoryIdentity.currentEditions[resourceName] {
+                currentProgress = try await deps.storyProgress.progress(storyID: currentID)
+            } else { currentProgress = nil }
+            let hasOriginalPreview = originalProgress == nil && UserDefaults.standard.data(forKey: storageKey) != nil
+            originalIsReadable = originalProgress.map {
+                $0.currentNodeID != nil || !$0.readingFlags.isEmpty
+            } ?? hasOriginalPreview
+            activeResourceName = requestedEdition ?? DepartureStoryIdentity.readingID(for: resourceName,
+                hasUnfinishedOriginal: originalProgress.map { !$0.isCompleted } ?? hasOriginalPreview,
+                hasCurrentProgress: currentProgress != nil)
+            guard let url = Bundle.main.url(forResource: activeResourceName, withExtension: "json") else {
                 throw CocoaError(.fileNoSuchFile)
             }
             let episode = try await Task.detached(priority: .userInitiated) {
@@ -581,7 +629,7 @@ public struct LondonEpisodeView: View {
             for name in episode.assetNames {
                 guard Self.artURL(name) != nil || UIImage(named: name) != nil else { throw CocoaError(.fileNoSuchFile) }
             }
-            let progress = try await deps.storyProgress.progress(storyID: resourceName)
+            let progress = try await deps.storyProgress.progress(storyID: activeResourceName)
             completionSettled = progress?.isCompleted == true
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_EPISODE_FRESH"] == "1" {
@@ -593,18 +641,19 @@ public struct LondonEpisodeView: View {
             #endif
             if let progress {
                 let restored = try EpisodeSession(episode: episode, nodeID: progress.currentNodeID,
-                    flags: progress.flags, completed: progress.isCompleted)
+                    flags: progress.readingFlags, completed: progress.isCompleted)
                 art = try await artwork(for: restored).images
                 session = restored
             } else {
-                let saved = UserDefaults.standard.data(forKey: storageKey)
+                // Old preview checkpoints also retain their original script graph.
+                let saved = activeResourceName == resourceName ? UserDefaults.standard.data(forKey: storageKey) : nil
                 let candidate = EpisodeSession(episode: episode, saved: saved)
                 // Remove the old preview checkpoint only after durable migration.
                 // Undecodable data is retained for recovery instead of overwritten.
                 if let saved {
                     let checkpoint = try JSONDecoder().decode(EpisodeSession.Checkpoint.self, from: saved)
                     guard checkpoint == candidate.checkpoint else { throw CocoaError(.coderReadCorrupt) }
-                    try await deps.storyProgress.saveCheckpoint(storyID: resourceName, nodeID: candidate.nodeID, flags: candidate.flags)
+                    try await deps.storyProgress.saveCheckpoint(storyID: activeResourceName, nodeID: candidate.nodeID, flags: candidate.flags)
                     UserDefaults.standard.removeObject(forKey: storageKey)
                 }
                 art = try await artwork(for: candidate).images

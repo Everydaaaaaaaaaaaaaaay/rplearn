@@ -103,7 +103,7 @@ public enum MainlineCatalog {
         storyID: "departures_mainline_melbourne_v1",
         regionID: "melbourne",
         title: "留给自己的一个下午",
-        subtitle: "Ruby 已经答应了所有人，却还没答应自己。"
+        subtitle: "申请今晚截止，散步却是两个人早就说好的。"
     )
     public static let newYork = MainlineChapter(
         storyID: "departures_mainline_newyork_v1",
@@ -121,7 +121,7 @@ public enum MainlineCatalog {
         storyID: "departures_mainline_singapore_v1",
         regionID: "singapore",
         title: "下次见面的办法",
-        subtitle: "旅程接近尾声，你想留下一个真正可以兑现的约定。"
+        subtitle: "说定一次联系，或好好吃完今晚这顿饭。"
     )
 
     public static let chapters: [MainlineChapter] = [
@@ -175,7 +175,7 @@ public enum MainlineCatalog {
         availableSideRegionIDs: [String]
     ) -> JourneyMapGuidance {
         let journey = journey(starterRegionID: starterRegionID)
-        if let stop = journey.stops.first(where: { !completedStoryIDs.contains($0.chapter.storyID) }) {
+        if let stop = journey.stops.first(where: { !DepartureStoryIdentity.catalogCompletionIDs(completedStoryIDs).contains($0.chapter.storyID) }) {
             if stop.regionID == currentRegionID {
                 return .continueStory(chapter: stop.chapter, objective: stop.objective)
             }
@@ -224,7 +224,7 @@ public enum MainlineCatalog {
     ) -> Set<String> {
         var regionIDs = Set([journey(starterRegionID: starterRegionID).starterRegionID])
         for chapter in [london, melbourne, newYork]
-        where completedStoryIDs.contains(chapter.storyID) || completedStoryIDs.contains(DepartureStoryIdentity.rewardID(for: chapter.storyID) ?? chapter.storyID) {
+        where DepartureStoryIdentity.catalogCompletionIDs(completedStoryIDs).contains(chapter.storyID) || completedStoryIDs.contains(DepartureStoryIdentity.rewardID(for: chapter.storyID) ?? chapter.storyID) {
             regionIDs.insert(chapter.regionID)
         }
         return regionIDs
