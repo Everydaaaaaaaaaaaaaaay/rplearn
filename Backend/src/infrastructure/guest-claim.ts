@@ -1,4 +1,5 @@
 import { claimDomainJourney } from "./guest-domain-claim.js";
+import { claimPlaceOutings } from "./guest-outings-claim.js";
 import { createHmac } from "node:crypto";
 import type { DatabaseResource } from "../db/client.js";
 import { AppError } from "../shared/errors.js";
@@ -61,6 +62,7 @@ export function createGuestClaim(database: DatabaseResource, pepper: string) {
             "两段旅程中有不同角色使用同一头像，尚未合并，原旅程已完整保留。请使用新账号认领。",
           statusCode: 409,
         });
+      await claimPlaceOutings(sql, guest.user_id, accountId);
       await claimDomainJourney(sql, guest.user_id, accountId);
       await sql`insert into app.npc_encounter_history(user_id,npc_id,last_seen_at,encounters)
         select ${accountId},npc_id,last_seen_at,encounters from app.npc_encounter_history where user_id=${guest.user_id}

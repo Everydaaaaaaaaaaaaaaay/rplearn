@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { createHmac, randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { integrationConfig } from "../helpers/integration.js";
 import { activityWorldFixture } from "../helpers/activity-world.js";
@@ -11,6 +11,7 @@ import { createDomainActivityContext } from "../../src/modules/domain/service.js
 import { createOutingService } from "../../src/modules/npc/outing-service.js";
 import { importActivityWorld } from "../../src/modules/npc/outing-repository.js";
 import { contentHash } from "../../src/modules/npc/activity-world-content.js";
+import { createGuestClaim } from "../../src/infrastructure/guest-claim.js";
 import type {
   OutingService,
   OutingSnapshot,
@@ -24,6 +25,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
     const viewer = randomUUID(),
       guest = randomUUID(),
       other = randomUUID();
+    const extraUsers: string[] = [];
     const firstPlace = world.places.find((place) => place.cityId === "london");
     if (!firstPlace) throw new Error("Missing place fixture");
     const placeId = firstPlace.id;
@@ -87,7 +89,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- beforeAll may fail before assigning runtime.
       if (!runtime) return;
       await runtime.database
-        .sql`delete from app.users where id=any(${[viewer, guest, other]}::uuid[])`;
+        .sql`delete from app.users where id=any(${[viewer, guest, other, ...extraUsers]}::uuid[])`;
       await runtime.database
         .sql`delete from app.npc_activity_worlds where release_id=${world.releaseId}`;
       await runtime.database
@@ -245,6 +247,89 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       >`select count(*)::int as count
       from app.user_npc_relationships where user_id=${viewer} and npc_id=any(${ids}::uuid[]) and status='removed'`;
       expect(remaining?.count).toBe(ids.length);
+    });
+
+    it("claims snapshots and lost receipts exactly once, rebuilding guarantees from both journeys", async () => {
+      roll = 0.99;
+      for (const userId of [other, guest, guest]) {
+        let current = await service.start(userId, start());
+        expect(current.mode).toBe("solitude");
+        current = await service.apply(userId, current.runId, {
+          type: "presented",
+          operationId: randomUUID(),
+          expectedRevision: 0,
+        });
+        await service.apply(userId, current.runId, {
+          type: "complete",
+          operationId: randomUUID(),
+          expectedRevision: current.revision,
+        });
+      }
+      const reserved = await service.start(guest, start());
+      expect(reserved.npc).not.toBeNull();
+      const operation = {
+        type: "read" as const,
+        beatIndex: 0,
+        operationId: randomUUID(),
+        expectedRevision: 0,
+      };
+      const receipt = await service.apply(guest, reserved.runId, operation);
+      const key = randomUUID().replaceAll("-", "").repeat(2),
+        pepper = "outing-claim-test";
+      const hash = createHmac("sha256", pepper)
+        .update(`guest-installation:${key}`)
+        .digest("hex");
+      await runtime.database
+        .sql`update app.guest_installations set installation_hash=${hash} where user_id=${guest}`;
+      const claim = createGuestClaim(runtime.database, pepper);
+      expect(await claim(key, other)).toEqual({ claimed: true });
+      expect(await claim(key, other)).toEqual({ claimed: true });
+      expect(await service.active(other)).toEqual(receipt);
+      expect(await service.apply(other, reserved.runId, operation)).toEqual(receipt);
+      const [progress] = await runtime.database.sql<{ quiet_streak: number }[]>`
+        select quiet_streak from app.npc_outing_city_progress where user_id=${other} and city_id='london'`;
+      expect(progress?.quiet_streak).toBe(3);
+      const [count] = await runtime.database.sql<{ count: number }[]>`
+        select count(*)::int as count from app.npc_outings where user_id=${other}`;
+      expect(count?.count).toBe(4);
+      await expect(service.active(guest)).rejects.toMatchObject({
+        code: "GUEST_ALREADY_CLAIMED",
+      });
+    });
+
+    it("keeps both active outings intact when claim conflicts, then transfers after an explicit ending", async () => {
+      const guestId = randomUUID(),
+        accountId = randomUUID(),
+        pepper = "outing-claim-conflict";
+      extraUsers.push(guestId, accountId);
+      const key = randomUUID().replaceAll("-", "").repeat(2);
+      const hash = createHmac("sha256", pepper)
+        .update(`guest-installation:${key}`)
+        .digest("hex");
+      for (const user of [guestId, accountId]) {
+        await runtime.database.sql`insert into app.users(id) values(${user})`;
+        await runtime.database
+          .sql`insert into app.user_profiles(user_id,current_region_id,starter_region_id,has_completed_onboarding)
+          values(${user},'london','london',true)`;
+      }
+      await runtime.database
+        .sql`insert into app.guest_installations(user_id,installation_hash) values(${guestId},${hash})`;
+      roll = 0;
+      const anonymous = await service.start(guestId, start());
+      const registered = await service.start(accountId, start());
+      const claim = createGuestClaim(runtime.database, pepper);
+      await expect(claim(key, accountId)).rejects.toMatchObject({
+        code: "OUTING_MERGE_CONFLICT",
+      });
+      expect(await service.active(guestId)).toEqual(anonymous);
+      expect(await service.active(accountId)).toEqual(registered);
+      await service.apply(accountId, registered.runId, {
+        type: "abandon",
+        operationId: randomUUID(),
+        expectedRevision: 0,
+      });
+      expect(await claim(key, accountId)).toEqual({ claimed: true });
+      expect(await service.active(accountId)).toEqual(anonymous);
     });
   },
 );
