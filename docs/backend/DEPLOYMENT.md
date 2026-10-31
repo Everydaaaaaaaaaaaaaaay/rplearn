@@ -4,6 +4,21 @@
 Caddy 是唯一公网入口；`PUBLIC_HOST` 提供 App API，`ADMIN_HOST` 仅提供受管理员鉴权保护的
 AI 控制台。API、Worker、PostgreSQL 17、Redis、MinIO 和 Mailpit 均只在本机监听。
 
+## 2026-10-31 活动后端基础发布
+
+已激活 `857bc77b59a3`，可回退到 `activity-compat-20261031-v1`；原 `grammar-20261031-v2` 保留。
+迁移 0045 仅新增城市地点外出、快照、回执与保底表。先发布精确迁移兼容回退版本，再执行迁移，
+回退程序已通过实际 46 条迁移记录的兼容校验。完整数据库备份位于服务器受限目录
+`/opt/lingotrip/backups/activities-20261031-857bc77b59a3/`。
+
+两次发布均经维护资源限制和稳定观察；18 项线上校验通过，API/Worker/Caddy active，readiness 正常。
+旧版相遇及重试仍正常，现有语法库保留。尚未导入或启用新版活动世界，未完成内容继续关闭；
+iOS App Store 版本未发布。验证范围、归档/备份哈希及未测项见
+[发布记录](../verification/activity-backend-release-20261031.json)。
+
+macOS 打包现使用普通 PAX 文件条目，避免 BSD tar 的 GNU.sparse 元数据造成 Linux 解包失败；
+保留普通文件内容与权限，作者草稿、资源分叉不入包。
+
 ## 2026-10-07 恢复后重新上线
 
 当前线上版本为`2677fe38`，维护资源保护与每分钟资源留档已上线；正式内容保持738道公共题、
