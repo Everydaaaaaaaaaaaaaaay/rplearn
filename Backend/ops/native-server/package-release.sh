@@ -20,6 +20,24 @@ install -m 0644 package.json pnpm-lock.yaml "${staging}/release/"
 printf '%s\n' "${version}" >"${staging}/release/RELEASE"
 
 install -d "$(dirname "${output}")"
-# 作者草稿不进入生产发布包，只有正式目录与审核记录随服务发布。
-COPYFILE_DISABLE=1 tar --no-xattrs --exclude='./config/learning/authoring' -C "${staging}/release" -czf "${output}" .
+# Python writes ordinary file members even when APFS stores the source sparsely.
+# BSD tar may emit GNU.sparse metadata that the production GNU tar cannot extract.
+# 作者草稿与 macOS 资源分叉不进入生产发布包。
+python3 - "${staging}/release" "${output}" <<'PY'
+import sys
+import tarfile
+from pathlib import Path
+
+root, output = map(Path, sys.argv[1:])
+
+def include(entry):
+    if entry.name.startswith('./config/learning/authoring'):
+        return None
+    if any(part.startswith('._') or part == '.DS_Store' for part in Path(entry.name).parts):
+        return None
+    return entry
+
+with tarfile.open(output, 'w:gz', format=tarfile.PAX_FORMAT) as archive:
+    archive.add(root, arcname='.', filter=include)
+PY
 echo "${output}"
