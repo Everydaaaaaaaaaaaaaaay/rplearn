@@ -60,6 +60,7 @@ let domainTargets: [Target] = [
     .target(
         name: "DomainKit",
         dependencies: [
+            module("BackendKit"),
             module("CoreKit"),
             module("LLMKit"),
             module("DictKit"),
