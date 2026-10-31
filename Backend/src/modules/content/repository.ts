@@ -207,6 +207,127 @@ export class ContentRepository {
     });
   }
 
+  async appointmentMessages(
+    sql: TransactionSql,
+    userId: string,
+    conversationId: string,
+  ): Promise<ContentRecord[]> {
+    const rows = await sql<
+      ContentRow[]
+    >`select resource_type,resource_id,parent_id,payload::text as payload_text,version,created_at,updated_at,deleted_at
+      from app.content_records where user_id=${userId} and resource_type='message' and parent_id=${conversationId} and deleted_at is null
+      order by created_at desc,resource_id desc limit 80`;
+    const bounded: ContentRecord[] = [];
+    let characters = 0;
+    for (const row of rows) {
+      const record = mapRecord(row);
+      const size = JSON.stringify(record.payload).length;
+      if (characters + size > 120_000) break;
+      bounded.push(record);
+      characters += size;
+    }
+    return bounded.reverse();
+  }
+
+  async appointmentProofMessages(
+    sql: TransactionSql,
+    userId: string,
+    conversationId: string,
+    evidenceIds: string[],
+  ): Promise<ContentRecord[]> {
+    const rows = await sql<
+      ContentRow[]
+    >`select resource_type,resource_id,parent_id,payload::text as payload_text,version,created_at,updated_at,deleted_at
+      from app.content_records where user_id=${userId} and resource_type='message' and parent_id=${conversationId}
+      and (resource_id=any(${evidenceIds}::text[]) or payload->'learningOrigin'->>'operationId' in (
+        select payload->'learningOrigin'->>'operationId' from app.content_records
+        where user_id=${userId} and resource_type='message' and parent_id=${conversationId} and resource_id=any(${evidenceIds}::text[])
+      )) order by created_at,resource_id`;
+    return rows.map(mapRecord);
+  }
+
+  async appointmentRelationship(
+    sql: TransactionSql,
+    userId: string,
+    characterId: string,
+    expectedVersion: number,
+    relationship: Record<string, unknown>,
+    commandId: string,
+  ) {
+    const record = await this.lockRecord(sql, userId, "character", characterId);
+    if (record?.deletedAt !== null || record.version !== expectedVersion)
+      throw versionConflict(record);
+    const payload = { ...(record.payload as Record<string, unknown>), relationship };
+    const next = await this.upsert(sql, userId, {
+      commandId,
+      operation: "upsert",
+      resourceType: "character",
+      resourceId: characterId,
+      parentId: null,
+      expectedVersion,
+      payload,
+    });
+    await appendSyncChange(sql, {
+      userId,
+      commandId,
+      eventType: "content.character.upsert",
+      payload: next,
+    });
+    return next;
+  }
+
+  async appointmentMemory(
+    sql: TransactionSql,
+    userId: string,
+    characterId: string,
+    memoryId: string,
+    content: string,
+    appointmentId: string,
+    commandId: string,
+    evidence?: string,
+    eventDate?: string,
+  ) {
+    // Stable ID means a replay never recreates an edited or forgotten memory.
+    const previous = await this.readRecord(sql, userId, "memory", memoryId);
+    if (previous) return;
+    const now = new Date().toISOString();
+    const metadata = {
+      key: `appointment.${appointmentId}.${memoryId}`,
+      text: content,
+      status: "active",
+      evidence: evidence ?? `appointment:${appointmentId}`,
+      messageID: appointmentId,
+      observedAt: Date.now() / 1000 - 978307200,
+      eventDate: eventDate ?? now.slice(0, 10),
+      archived: false,
+      forgotten: false,
+      edited: false,
+    };
+    const next = await this.upsert(sql, userId, {
+      commandId,
+      operation: "upsert",
+      resourceType: "memory",
+      resourceId: memoryId,
+      parentId: characterId,
+      expectedVersion: 0,
+      payload: {
+        content: "@lingotrip-memory-v2:" + JSON.stringify(metadata),
+        createdAt: now,
+        importance: 7,
+        source: "appointment",
+        schemaVersion: 2,
+        sourceUpToIndex: -1,
+        tier: "long",
+      },
+    });
+    await appendSyncChange(sql, {
+      userId,
+      commandId,
+      eventType: "content.memory.upsert",
+      payload: next,
+    });
+  }
+
   private async upsert(
     sql: TransactionSql,
     userId: string,
@@ -223,6 +344,23 @@ export class ContentRepository {
       (existing !== undefined && existing.version !== command.expectedVersion)
     ) {
       throw versionConflict(existing);
+    }
+    if (existing && command.resourceType === "character") {
+      const previous = (
+        existing.payload as { relationship?: { settledAppointmentIDs?: string[] } }
+      ).relationship;
+      const incoming = (
+        command.payload as { relationship?: { settledAppointmentIDs?: string[] } }
+      ).relationship;
+      const carried = new Set(
+        (incoming?.settledAppointmentIDs ?? []).map((id) => id.toLowerCase()),
+      );
+      if (
+        (previous?.settledAppointmentIDs ?? []).some(
+          (id) => !carried.has(id.toLowerCase()),
+        )
+      )
+        throw versionConflict(existing);
     }
     await this.requireParent(sql, userId, command.resourceType, command.parentId);
     await this.requireReadyMediaAsset(sql, userId, command);

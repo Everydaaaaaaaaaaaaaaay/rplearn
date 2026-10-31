@@ -53,6 +53,65 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         await runtime.database.sql`delete from app.users where id=${id}`;
       await runtime.close();
     });
+    it("appointment recovery and its one repair stay on the service budget", async () => {
+      const user = await actor(),
+        original = newEntityId(),
+        retry = newEntityId(),
+        repair = newEntityId();
+      await credits.reserve(user, original, "appointment-first", {
+        ...req,
+        task: "appointment_story",
+      });
+      await credits.dispatch(user, original);
+      await credits.finish(
+        user,
+        original,
+        usage,
+        {
+          content: "semantically rejected draft",
+        },
+        "provider-original",
+        req.model,
+      );
+      const used = (await credits.snapshot(user)).used;
+      const [paid] = await runtime.database.sql<
+        { billing_scope: string; settled_units: string }[]
+      >`select billing_scope,settled_units::text from app.credit_operations where user_id=${user} and operation_id=${original}`;
+      expect(paid?.billing_scope).toBe("user");
+      expect(BigInt(paid?.settled_units ?? "0")).toBeGreaterThan(0n);
+      await credits.reserve(user, retry, "appointment-retry", {
+        ...req,
+        task: "appointment_story_retry",
+      });
+      await credits.dispatch(user, retry);
+      await credits.finish(
+        user,
+        retry,
+        usage,
+        { content: "reviewed draft" },
+        "provider-retry",
+        req.model,
+      );
+      await credits.reserve(user, repair, "appointment-repair", {
+        ...req,
+        task: "appointment_story_retry",
+        parentOperationId: retry,
+      });
+      await credits.dispatch(user, repair);
+      await credits.finish(
+        user,
+        repair,
+        usage,
+        { content: "repaired draft" },
+        "provider-repair",
+        req.model,
+      );
+      expect((await credits.snapshot(user)).used).toBe(used);
+      const scopes = await runtime.database.sql<
+        { billing_scope: string }[]
+      >`select billing_scope from app.credit_operations where user_id=${user} and operation_id=any(${[retry, repair]}::uuid[])`;
+      expect(scopes.map((row) => row.billing_scope)).toEqual(["service", "service"]);
+    });
     it.each([false, true])(
       "empty output is a failed, service-funded operation (stream=%s)",
       async (streaming) => {

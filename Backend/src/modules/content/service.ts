@@ -121,3 +121,64 @@ export function createContentReadService(database: DatabaseResource) {
       repository.readRecord(sql, userId, "conversation", id),
   };
 }
+
+/** Appointment assembly uses the content owner for reads and atomic sync writes. */
+export function createAppointmentContentService(database: DatabaseResource) {
+  const repository = new ContentRepository(database);
+  return {
+    readMemory: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "memory", id),
+    proofMessages: (
+      sql: TransactionSql,
+      userId: string,
+      conversationId: string,
+      evidenceIds: string[],
+    ) => repository.appointmentProofMessages(sql, userId, conversationId, evidenceIds),
+    message: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "message", id),
+    character: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "character", id),
+    conversation: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "conversation", id),
+    messages: (sql: TransactionSql, userId: string, conversationId: string) =>
+      repository.appointmentMessages(sql, userId, conversationId),
+    relationship: (
+      sql: TransactionSql,
+      userId: string,
+      characterId: string,
+      expectedVersion: number,
+      relationship: Record<string, unknown>,
+      commandId: string,
+    ) =>
+      repository.appointmentRelationship(
+        sql,
+        userId,
+        characterId,
+        expectedVersion,
+        relationship,
+        commandId,
+      ),
+    memory: (
+      sql: TransactionSql,
+      userId: string,
+      characterId: string,
+      memoryId: string,
+      content: string,
+      appointmentId: string,
+      commandId: string,
+      evidence?: string,
+      eventDate?: string,
+    ) =>
+      repository.appointmentMemory(
+        sql,
+        userId,
+        characterId,
+        memoryId,
+        content,
+        appointmentId,
+        commandId,
+        evidence,
+        eventDate,
+      ),
+  };
+}

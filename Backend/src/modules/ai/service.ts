@@ -244,10 +244,18 @@ export function createAiService(
       await access.assertVoiceLease(userId, input.voiceLeaseId);
     }
     const operationId = input.operationId ?? randomUUID();
-    if (input.parentOperationId !== undefined && input.task !== "conversation")
+    if (
+      input.parentOperationId !== undefined &&
+      ![
+        "conversation",
+        "appointment_story",
+        "appointment_story_retry",
+        "appointment_review",
+      ].includes(input.task)
+    )
       throw new AppError({
         code: "REPAIR_NOT_ALLOWED",
-        message: "Only conversations support a linked repair.",
+        message: "This task does not support a linked repair.",
         statusCode: 400,
       });
     const hash = createHash("sha256")

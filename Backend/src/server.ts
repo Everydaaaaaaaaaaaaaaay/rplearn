@@ -1,3 +1,13 @@
+import { AppError } from "./shared/errors.js";
+import { createAppointmentService } from "./modules/appointments/service.js";
+import { registerAppointmentRoutes } from "./modules/appointments/routes.js";
+import { createAppointmentNarrative } from "./modules/appointments/generation.js";
+import {
+  appointmentCharacter,
+  appointmentMessages,
+  verifyAppointmentEvidence,
+} from "./modules/appointments/context.js";
+import { createAppointmentContentService } from "./modules/content/service.js";
 import { registerLearningBankConsole } from "./modules/learning/bank-console.js";
 import { SharedGrammarRepository } from "./modules/grammar/repository.js";
 import { createGrammarService } from "./modules/grammar/service.js";
@@ -313,6 +323,67 @@ async function main(): Promise<void> {
     learningChat.enqueue,
   );
   registerContentRoutes(app, authService, contentService);
+  const appointmentContent = createAppointmentContentService(dependencies.database);
+  const appointmentLocation = createDomainActivityContext(dependencies.database);
+  registerAppointmentRoutes(
+    app,
+    authService,
+    createAppointmentService(
+      dependencies.database,
+      {
+        character: async (sql, userId, id) =>
+          appointmentCharacter(await appointmentContent.character(sql, userId, id)),
+        messages: async (sql, userId, characterId, conversationId) =>
+          appointmentMessages(
+            await appointmentContent.conversation(sql, userId, conversationId),
+            characterId,
+            await learningChat.verifiedAppointmentMessages(
+              sql,
+              userId,
+              characterId,
+              conversationId,
+              await appointmentContent.messages(sql, userId, conversationId),
+            ),
+          ),
+        verifyEvidence: async (sql, userId, conversationId, evidence) => {
+          const conversation = await appointmentContent.conversation(
+            sql,
+            userId,
+            conversationId,
+          );
+          if (conversation?.deletedAt !== null || !conversation.parentId)
+            throw new AppError({
+              code: "APPOINTMENT_EVIDENCE_CHANGED",
+              message: "确认约定的对话已移除，请重新确认。",
+              statusCode: 409,
+            });
+          const records = await appointmentContent.proofMessages(
+            sql,
+            userId,
+            conversationId,
+            evidence.map((message) => message.id),
+          );
+          const verified = await learningChat.verifiedAppointmentMessages(
+            sql,
+            userId,
+            conversation.parentId,
+            conversationId,
+            records,
+          );
+          const byId = new Map(verified.map((record) => [record.resourceId, record]));
+          verifyAppointmentEvidence(
+            evidence.map((message) => byId.get(message.id)),
+            conversationId,
+            evidence,
+          );
+        },
+        city: async (sql, userId) =>
+          (await appointmentLocation.lock(sql, userId)).cityId,
+      },
+      createAppointmentNarrative(aiService),
+      appointmentContent,
+    ),
+  );
   registerNpcRoutes(app, authService, createNpcService(dependencies.database));
   registerOutingRoutes(
     app,

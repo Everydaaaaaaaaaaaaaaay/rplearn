@@ -56,6 +56,101 @@ export class LearningChatRepository {
     private readonly reader: LearningChatReader,
   ) {}
 
+  /** Appointments accept only assistant bubbles matching a completed server chat receipt. */
+  async verifiedAppointmentMessages(
+    sql: TransactionSql,
+    userId: string,
+    characterId: string,
+    conversationId: string,
+    records: readonly ContentRecord[],
+  ): Promise<ContentRecord[]> {
+    const eligible = new Set<string>();
+    const groups = new Map<
+      string,
+      {
+        record: ContentRecord;
+        origin: Extract<LearningMessageOrigin, { source: "assistant" }>;
+        body: string;
+      }[]
+    >();
+    for (const record of records) {
+      const payload = record.payload as {
+        role?: string;
+        text?: string;
+        learningOrigin?: unknown;
+      };
+      if (payload.role !== "assistant") {
+        eligible.add(record.resourceId);
+        continue;
+      }
+      const parsed = learningMessageOriginSchema.safeParse(payload.learningOrigin);
+      if (
+        !parsed.success ||
+        parsed.data.source !== "assistant" ||
+        typeof payload.text !== "string"
+      )
+        continue;
+      const group = groups.get(parsed.data.operationId) ?? [];
+      group.push({ record, origin: parsed.data, body: payload.text });
+      groups.set(parsed.data.operationId, group);
+    }
+    for (const [operationId, group] of groups) {
+      const [proof] = await sql<
+        {
+          body_fingerprint: string | null;
+          user_message_id: string;
+          conversation_id: string;
+          character_id: string;
+          cycle_id: string;
+          preceding_user_message_id: string | null;
+          current_user_text: string | null;
+          user_body_fingerprint: string;
+        }[]
+      >`
+       select o.body_fingerprint,t.user_message_id,t.conversation_id,t.character_id,t.cycle_id,
+         u.payload->>'text' as current_user_text,original_user.body_fingerprint as user_body_fingerprint,
+         (select candidate.resource_id from app.content_records candidate
+          where candidate.user_id=t.user_id and candidate.resource_type='message' and candidate.parent_id=t.conversation_id::text
+           and candidate.deleted_at is null and candidate.payload->>'role'='user'
+           and candidate.created_at <= (select min(fragment.created_at) from app.content_records fragment
+              where fragment.user_id=t.user_id and fragment.resource_type='message' and fragment.parent_id=t.conversation_id::text
+                and fragment.resource_id=any(${group.map((fragment) => fragment.record.resourceId)}::text[]))
+          order by candidate.created_at desc,candidate.resource_id desc limit 1) as preceding_user_message_id
+       from app.learning_chat_operations o join app.learning_chat_turns t using(user_id,user_message_id)
+       join app.content_records u on u.user_id=t.user_id and u.resource_type='message' and u.resource_id=t.user_message_id::text
+         and u.parent_id=t.conversation_id::text and u.deleted_at is null and u.payload->>'role'='user'
+         and coalesce((u.payload->>'isInterrupted')::boolean,false)=false
+       join app.learning_chat_outbox original_user on original_user.user_id=t.user_id and original_user.message_id=t.user_message_id
+       where o.user_id=${userId} and o.operation_id=${operationId} and o.completed_at is not null`;
+      if (
+        !proof?.body_fingerprint ||
+        proof.preceding_user_message_id !== proof.user_message_id ||
+        typeof proof.current_user_text !== "string" ||
+        chatBodyFingerprint(proof.current_user_text) !== proof.user_body_fingerprint ||
+        proof.character_id.toLowerCase() !== characterId.toLowerCase() ||
+        proof.conversation_id.toLowerCase() !== conversationId.toLowerCase()
+      )
+        continue;
+      group.sort((a, b) => a.origin.fragmentIndex - b.origin.fragmentIndex);
+      if (
+        group.length !== group[0]?.origin.fragmentCount ||
+        group.some(
+          (fragment, index) =>
+            fragment.record.deletedAt !== null ||
+            fragment.origin.fragmentIndex !== index ||
+            fragment.origin.fragmentCount !== group.length ||
+            fragment.origin.cycleId !== proof.cycle_id ||
+            fragment.origin.userMessageId !== proof.user_message_id,
+        ) ||
+        chatBodyFingerprint(group.map((f) => f.body).join("")) !==
+          proof.body_fingerprint
+      )
+        continue;
+      for (const fragment of group) eligible.add(fragment.record.resourceId);
+    }
+    return records.filter((record) => eligible.has(record.resourceId));
+  }
+
   /** 在内容仓库拥有的保存事务中追加；不拿学习锁，避免与内容行锁逆序。 */
   async enqueue(sql: TransactionSql, userId: string, record: ContentRecord) {
     if (

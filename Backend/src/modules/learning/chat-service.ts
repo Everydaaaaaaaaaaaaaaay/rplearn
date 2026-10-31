@@ -9,6 +9,8 @@ export function createLearningChatService(
 ) {
   const repository = new LearningChatRepository(database, context, reader);
   return {
+    verifiedAppointmentMessages:
+      repository.verifiedAppointmentMessages.bind(repository),
     enqueue: repository.enqueue.bind(repository),
     begin: repository.begin.bind(repository),
     complete: repository.complete.bind(repository),

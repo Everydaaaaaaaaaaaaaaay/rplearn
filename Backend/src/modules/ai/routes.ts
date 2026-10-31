@@ -28,8 +28,11 @@ const aiRequestSchema = z.object({
     .string()
     .regex(/^[a-z][a-z0-9_]{1,63}$/)
     .refine(
-      (task) => task !== "grammar_analysis" && task !== "grammar_library_review",
-      "Use the grammar endpoint",
+      (task) =>
+        task !== "grammar_analysis" &&
+        task !== "grammar_library_review" &&
+        !task.startsWith("appointment_"),
+      "Use the corresponding business endpoint",
     ),
 });
 const guestDeviceIdSchema = z
