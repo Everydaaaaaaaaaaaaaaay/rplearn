@@ -41,8 +41,7 @@ async function main() {
   for (const original of legacy.entries) {
     const person = world.characters.find((item) => item.id === original.id);
     if (
-      !person ||
-      person.travelerId !== original.travelerId ||
+      person?.travelerId !== original.travelerId ||
       person.avatarId !== original.avatarId ||
       person.avatarSHA256 !== original.avatarSHA256 ||
       person.sourceCardHash !== contentHash(original.card)

@@ -23,11 +23,16 @@ const legacy = JSON.parse(
   ),
 ) as { entries: { story: { titleZh: string; nodes: unknown[] }; reunion: unknown }[] };
 
+function required<T>(value: T | undefined): T {
+  if (value === undefined) throw new Error("Missing test fixture");
+  return value;
+}
+
 function assignedDraft() {
   const world = activityWorldSchema.parse(structuredClone(source));
-  const person = world.characters[0]!,
-    place = world.places[0]!,
-    previous = legacy.entries[0]!;
+  const person = required(world.characters[0]),
+    place = required(world.places[0]),
+    previous = required(legacy.entries[0]);
   const story = {
     id: "test-first-meeting",
     npcId: person.id,
@@ -88,27 +93,29 @@ describe("place-bound activity content admission", () => {
 
   it("detects changes to the captured baseline and duplicate identity/portrait allocations", () => {
     const changed = activityWorldSchema.parse(structuredClone(source));
-    changed.characters[0]!.originalCard.personality =
+    required(changed.characters[0]).originalCard.personality =
       "Everyone loves chatting in cafes";
     expect(activityWorldSchema.safeParse(changed).success).toBe(false);
     const duplicate = activityWorldSchema.parse(structuredClone(source));
-    duplicate.characters[1]!.avatarId = duplicate.characters[0]!.avatarId;
+    required(duplicate.characters[1]).avatarId = required(
+      duplicate.characters[0],
+    ).avatarId;
     expect(activityWorldSchema.safeParse(duplicate).success).toBe(false);
   });
 
   it("allows a draft binding without v1 action IDs but rejects cross-city or wrong-person stories", () => {
     const draft = assignedDraft();
     expect(activityWorldSchema.safeParse(draft).success).toBe(true);
-    draft.characters[0]!.assignment!.cityId = "newyork";
+    required(required(draft.characters[0]).assignment).cityId = "newyork";
     expect(activityWorldSchema.safeParse(draft).success).toBe(false);
     const wrongPerson = assignedDraft();
-    wrongPerson.stories[0]!.npcId = wrongPerson.characters[1]!.id;
+    required(wrongPerson.stories[0]).npcId = required(wrongPerson.characters[1]).id;
     expect(activityWorldSchema.safeParse(wrongPerson).success).toBe(false);
   });
 
   it("rejects rewriting core traits to make a character fit a place", () => {
     const draft = assignedDraft();
-    draft.characters[0]!.assignment!.card.hobbies = [
+    required(required(draft.characters[0]).assignment).card.hobbies = [
       "coffee tasting",
       "talking to strangers",
     ];
@@ -118,13 +125,14 @@ describe("place-bound activity content admission", () => {
   it("rejects broken branches and causality without a current state", () => {
     const draft = assignedDraft();
     const broken = structuredClone(draft);
-    const nodes = broken.stories[0]!.nodes as {
+    const nodes = required(broken.stories[0]).nodes as {
       id: string;
       choices: { next: string }[];
     }[];
-    nodes.find((node) => node.id === "start")!.choices[0]!.next = "missing";
+    required(required(nodes.find((node) => node.id === "start")).choices[0]).next =
+      "missing";
     expect(activityWorldSchema.safeParse(broken).success).toBe(false);
-    draft.stories[0]!.causality.currentState = "";
+    required(draft.stories[0]).causality.currentState = "";
     expect(activityWorldSchema.safeParse(draft).success).toBe(false);
   });
 

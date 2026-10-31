@@ -189,7 +189,7 @@ export const activityWorldSchema = z
       const image = place.mediaId ? media.get(place.mediaId) : undefined;
       if (
         place.mediaId &&
-        (!image || image.placeId !== place.id || image.cityId !== place.cityId)
+        (image?.placeId !== place.id || image.cityId !== place.cityId)
       )
         fail(`Photo must belong to the exact place and city: ${place.id}`);
       if (new Set(place.solitude.map((item) => item.id)).size !== place.solitude.length)
@@ -214,13 +214,9 @@ export const activityWorldSchema = z
       }
       const place = places.get(binding.placeId);
       const story = stories.get(binding.storyId);
-      if (
-        !place ||
-        place.cityId !== binding.cityId ||
-        binding.card.regionId !== binding.cityId
-      )
+      if (place?.cityId !== binding.cityId || binding.card.regionId !== binding.cityId)
         fail(`Character/place city mismatch: ${person.id}`);
-      if (!story || story.npcId !== person.id || story.placeId !== binding.placeId)
+      if (story?.npcId !== person.id || story.placeId !== binding.placeId)
         fail(`Character/story binding mismatch: ${person.id}`);
       for (const key of [
         "name",
@@ -282,7 +278,14 @@ export function canonicalJSON(value: unknown): string {
       .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
       .map(([key, item]) => `${JSON.stringify(key)}:${canonicalJSON(item)}`)
       .join(",")}}`;
-  return JSON.stringify(value) ?? "null";
+  if (
+    value === undefined ||
+    typeof value === "function" ||
+    typeof value === "symbol" ||
+    typeof value === "bigint"
+  )
+    throw new Error("Content hashing only accepts JSON values");
+  return JSON.stringify(value);
 }
 
 export function contentHash(value: unknown): string {
