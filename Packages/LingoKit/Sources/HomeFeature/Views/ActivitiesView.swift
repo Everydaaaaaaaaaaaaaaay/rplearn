@@ -1,4 +1,5 @@
 import DesignSystem
+import BackendKit
 import DomainKit
 import PersistenceKit
 import SwiftUI
@@ -23,6 +24,9 @@ public struct ActivitiesView: View {
     @State private var journalError: String?
     @State private var showsJournal = false
     @State private var recentPeople: [CharacterDTO] = []
+    @State private var placeCatalog: BackendActivityCatalog?
+    @State private var resumableOuting: CityOutingArchive?
+    @State private var automaticallyRestoreOuting = true
 
     public init(journey: ActivityJourneyCoordinator, deps: HomeDependencies, storageNamespace: String, isVisible: Bool,
                 activity: Binding<SceneActivity?>, onClose: @escaping () -> Void,
@@ -38,6 +42,19 @@ public struct ActivitiesView: View {
 
     public var body: some View {
         ZStack {
+            if let placeCatalog, activity == nil {
+                CityPlacesView(cityName: cityName, catalog: placeCatalog, onBack: onClose,
+                    onJournal: { readRecords(); showsJournal = true }, onSelect: { place in
+                        guard resumableOuting == nil else { return }
+                        guard let region = deps.regionCatalog.region(id: placeCatalog.cityId),
+                              let gateway = deps.outingGateway else { return }
+                        journey.preparePlace(archive: .init(place: place, releaseID: placeCatalog.releaseId),
+                            region: region, deps: deps, namespace: storageNamespace, gateway: gateway)
+                        activity = journey.activeActivity
+                    }, resumeTitle: resumableOuting.map { "继续上次在\($0.place.titleZh)的外出" },
+                    onResume: { if let archive = resumableOuting { openPlaceArchive(archive) } })
+                    .allowsHitTesting(activity == nil).accessibilityHidden(activity != nil)
+            } else if placeCatalog == nil {
             ActivitySceneView(isVisible: isVisible && !showsJournal && activity == nil,
                               showsInterface: activity == nil,
                               scene: $scene, cityName: cityName,
@@ -49,8 +66,15 @@ public struct ActivitiesView: View {
             }
             .allowsHitTesting(activity == nil && cityID != nil)
             .accessibilityHidden(cityID == nil || activity != nil)
+            }
 
-            if let activity, let cityID, let model = journey.model {
+            if activity != nil, let outing = journey.cityOuting {
+                CityOutingView(model: outing, isVisible: isVisible, onBack: {
+                    journey.reset()
+                    activity = nil
+                }, onChat: onChat)
+                    .id(outing.archive.runID).transition(.opacity)
+            } else if let activity, let cityID, let model = journey.model {
                 ActivityActionView(model: model, journey: journey, deps: deps, isVisible: isVisible,
                                    onBack: onClose) { selections, runID, character, responses in
                     let journal = ActivityJournal(namespace: storageNamespace, city: cityID, defaults: journalDefaults)
@@ -81,6 +105,9 @@ public struct ActivitiesView: View {
         .onDisappear { journey.setViewing(false) }
         .onChange(of: isVisible) { _, visible in journey.setViewing(visible) }
         .task(id: storageNamespace) { await loadContext() }
+        .onChange(of: activity?.id) { _, value in
+            if value == nil { automaticallyRestoreOuting = false; Task { await loadContext() } }
+        }
         .onChange(of: showsJournal) { _, presented in deps.tutorial?.onEvent(presented ? "presented" : "dismissed") }
         .sheet(isPresented: $showsJournal) {
             NavigationStack {
@@ -119,6 +146,10 @@ public struct ActivitiesView: View {
                                     Text(record.title).font(.headline)
                                     Spacer()
                                     Text(record.date, style: .date).font(.caption).foregroundStyle(.secondary)
+                                }
+                                if let place = record.placeTitle {
+                                    Text(place + (record.endedEarly == true ? " · 提前结束" : ""))
+                                        .font(.caption).foregroundStyle(.secondary)
                                 }
                                 if let story = record.solitudeStory { Text(story).lineSpacing(5) }
                                 if let name = record.characterName {
@@ -164,6 +195,10 @@ public struct ActivitiesView: View {
 
     @MainActor private func loadContext() async {
         contextError = nil
+        if let outing = journey.cityOuting {
+            cityID = outing.region.id; cityName = outing.region.nameZh
+            readRecords(); return
+        }
         if let model = journey.model, model.started {
             cityID = model.region.id
             cityName = model.region.nameZh
@@ -188,6 +223,29 @@ public struct ActivitiesView: View {
                 contextError = "没有找到当前城市，请返回首页后重试。"
                 return
             }
+            if deps.tutorial == nil, let releaseID = deps.activityReleaseID, let gateway = deps.outingGateway {
+                let cached = try CityOutingArchive.load(namespace: storageNamespace)
+                resumableOuting = cached?.needsContinuation == true ? cached : nil
+                if resumableOuting == nil, let active = try await gateway.activeOuting() {
+                    try PlaceOutingProgress.validate(active)
+                    let restored = CityOutingArchive(restoring: active)
+                    try restored.save(namespace: storageNamespace)
+                    resumableOuting = restored
+                }
+                if automaticallyRestoreOuting, let archive = resumableOuting {
+                    automaticallyRestoreOuting = false
+                    openPlaceArchive(archive); readRecords(); return
+                }
+                guard let catalog = try await gateway.activityCatalog(releaseID: releaseID),
+                      let region = deps.regionCatalog.region(id: catalog.cityId) else {
+                    cityID = nil; contextError = "城市地点暂未准备好，请稍后重试。"; return
+                }
+                try CityActivityRelease.validate(catalog)
+                guard catalog.releaseId == releaseID else { throw PlaceOutingProgress.ProgressError.invalidContent }
+                placeCatalog = catalog; cityID = region.id; cityName = region.nameZh
+                automaticallyRestoreOuting = false
+                readRecords(); return
+            }
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1",
                ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "encounter",
@@ -203,8 +261,20 @@ public struct ActivitiesView: View {
             cityName = deps.regionCatalog.region(id: profile.currentRegionID)?.nameZh ?? "当前城市"
             readRecords()
         } catch {
+            if let catalog = placeCatalog, resumableOuting != nil {
+                cityID = catalog.cityId; readRecords(); return
+            }
+            cityID = nil
             contextError = "城市信息暂时无法读取，请重试。"
         }
+    }
+    @MainActor private func openPlaceArchive(_ archive: CityOutingArchive) {
+        guard let gateway = deps.outingGateway,
+              let region = deps.regionCatalog.region(id: archive.snapshot?.cityId ?? archive.place.photo.cityId) else {
+            contextError = "这次外出的城市暂不可用，请稍后重试。"; return
+        }
+        journey.preparePlace(archive: archive, region: region, deps: deps, namespace: storageNamespace, gateway: gateway)
+        activity = journey.activeActivity; cityID = region.id; cityName = region.nameZh
     }
     private var journalDefaults: UserDefaults {
         guard deps.tutorial != nil else { return .standard }

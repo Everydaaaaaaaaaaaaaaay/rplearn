@@ -1,6 +1,6 @@
 import Foundation
 
-public struct BackendActivityPhoto: Codable, Sendable, Equatable {
+public struct BackendActivityPhoto: Codable, Sendable, Equatable, Identifiable {
     public let id: String
     public let cityId: String
     public let placeId: String
@@ -19,6 +19,9 @@ public struct BackendActivityPlace: Codable, Sendable, Equatable, Identifiable {
     public let titleZh: String
     public let category: String
     public let photo: BackendActivityPhoto
+    public init(id: String, titleZh: String, category: String, photo: BackendActivityPhoto) {
+        self.id = id; self.titleZh = titleZh; self.category = category; self.photo = photo
+    }
 }
 
 public struct BackendActivityCatalog: Codable, Sendable, Equatable {

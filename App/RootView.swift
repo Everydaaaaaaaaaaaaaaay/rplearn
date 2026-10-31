@@ -86,7 +86,7 @@ struct RootView: View {
         let initial: AppTab = switch requested {
         case "messages": .messages
         case "contacts": .contacts
-        case "home", "map": .home
+        case "home", "map", "places-preview": .home
         case "me", "settings", "subscription", "learning", "favorites", "learning-test": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
@@ -111,7 +111,7 @@ struct RootView: View {
         }
         if requested == "map" {
             _activeHomeDestination = State(initialValue: .map)
-        } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
+        } else if requested == "places-preview" || ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
             _activeHomeDestination = State(initialValue: .activities)
         } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "mainline" {
             var path = NavigationPath()
@@ -814,6 +814,9 @@ struct RootView: View {
 
     private var activityStorageNamespace: String {
         #if DEBUG
+        if isPlaceOutingPreview {
+            return "debug.place-outing.preview.v1." + (ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] ?? "manual")
+        }
         if let testNamespace = ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"], !testNamespace.isEmpty {
             return "ui-test.\(testNamespace)"
         }
@@ -1130,8 +1133,30 @@ struct RootView: View {
             speech: environment.speech,
             llm: environment.llmRouter,
             mainline: mainlineClient,
-            npcRegistry: environment.backendClient
+            npcRegistry: isPlaceOutingPreview ? nil : environment.backendClient,
+            outingGateway: placeOutingGateway,
+            activityReleaseID: placeOutingReleaseID
         )
+    }
+
+    private var isPlaceOutingPreview: Bool {
+        #if DEBUG
+        bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "places-preview"
+        #else
+        false
+        #endif
+    }
+    private var placeOutingGateway: any OutingGateway {
+        #if DEBUG
+        if isPlaceOutingPreview { return DebugPlaceOutingGateway.shared }
+        #endif
+        return environment.backendClient
+    }
+    private var placeOutingReleaseID: String? {
+        #if DEBUG
+        if isPlaceOutingPreview { return "debug-places-preview-v1" }
+        #endif
+        return CityActivityRelease.bundled()?.releaseId
     }
 
     private var mapDeps: MapDependencies {

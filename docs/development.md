@@ -225,3 +225,13 @@ Scripts/preview.sh preview learning-test # 已构建后复用产物
 
 相同题面清洁规则作用于共用组件：文章编号和重复标题仅在呈现层处理；听力、配对、词块及短填空也复用精确文本去重，
 只合并相同的说明/设问/材料，不省略不同的题意、作答限制、媒体或评分信息。
+
+### 新版城市地点活动预览
+
+`Scripts/preview.sh build places-preview` 打开独立的伦敦三地点样板；已构建后使用 `preview places-preview`。
+仅在免登录 Debug 内存账号注入本机外出服务，不调用正式分配或好友接口。
+照片来自带署名与许可的伦敦实拍，来源见 `Assets/Activities/CityPlaces-v1/preview-photos.json`。
+咖啡馆提供 Alex 的七节点四结尾故事；书店与公园提供独处短篇。这是界面与状态机样板，不能代表十五城内容已发布。
+外出记录使用 `debug.place-outing.preview.v1.manual` 命名空间，重启继续；界面测试通过独立 UUID 隔离。
+`CityPlaceOutingTests` 定向检查实际分支、暂停返回、杀进程恢复、足迹、照片许可与最大辅助字号独处结尾。
+正式入口仍由已验收的 `activity-world-release.json` 控制，当前未打包此文件。

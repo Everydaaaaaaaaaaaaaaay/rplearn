@@ -297,6 +297,9 @@ final class AppEnvironment {
         try Task.checkCancellation()
         workspace = account
         try await importMainCharacters(into: account)
+        if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "places-preview" {
+            _ = try await account.economyStore.updateProfile { $0.currentRegionID = "london" }
+        }
         // Exercise the real profile-driven backgrounds without touching a persisted account.
         if let regionID = ProcessInfo.processInfo.environment["UI_TEST_CITY_TAB_REGION"],
            regionCatalog.region(id: regionID) != nil {

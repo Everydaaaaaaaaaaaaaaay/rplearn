@@ -1,5 +1,6 @@
 import Foundation
 import DomainKit
+import BackendKit
 
 struct ActivityRecord: Codable, Equatable, Identifiable {
     let id: UUID
@@ -11,6 +12,13 @@ struct ActivityRecord: Codable, Equatable, Identifiable {
     var chapters: [EncounterChapter]? = nil
     var characterID: UUID? = nil
     var characterName: String? = nil
+    var placeID: String? = nil
+    var releaseID: String? = nil
+    var photoAssetName: String? = nil
+    var placeTitle: String? = nil
+    var photo: BackendActivityPhoto? = nil
+    var endedEarly: Bool? = nil
+    var solitudeEnglish: String? = nil
     struct Selection: Codable, Equatable {
         let context: String
         let question: String
@@ -38,6 +46,39 @@ struct ActivityJournal {
         let archive = try JSONDecoder().decode(Archive.self, from: data)
         guard archive.version == 1 else { throw JournalError.unsupportedVersion }
         return archive.records
+    }
+
+    @discardableResult
+    func completePlaceOuting(_ outing: BackendOuting, date: Date = Date()) throws -> [ActivityRecord] {
+        guard outing.status == .completed else { throw JournalError.invalidCompletion }
+        return try endPlaceOuting(outing, date: date)
+    }
+    @discardableResult
+    func endPlaceOuting(_ outing: BackendOuting, date: Date = Date()) throws -> [ActivityRecord] {
+        try PlaceOutingProgress.validate(outing)
+        guard [.completed, .abandoned].contains(outing.status) else { throw JournalError.invalidCompletion }
+        var saved = try records()
+        guard !saved.contains(where: { $0.id == outing.runId }) else { return saved }
+        var chapters = PlaceOutingProgress.chapters(outing)
+        if outing.status == .abandoned, !chapters.isEmpty {
+            let last = chapters.removeLast()
+            chapters.append(.init(title: last.title, outline: last.outline,
+                beats: Array(last.beats.prefix(max(0, outing.beatIndex + 1))), choices: last.choices))
+        }
+        let selections = zip(chapters, outing.choices).compactMap { chapter, choiceID -> ActivityRecord.Selection? in
+            guard let index = Int(choiceID.split(separator: ":").last ?? ""), chapter.choices.indices.contains(index) else { return nil }
+            let choice = chapter.choices[index]
+            return .init(context: chapter.title, question: "你想怎么做？", english: choice.english, chinese: choice.chinese, response: "")
+        }
+        saved.append(.init(id: outing.runId, activityID: outing.placeId,
+            title: outing.mode == .solitude ? outing.solitude.titleZh : chapters.first?.title ?? outing.placeTitleZh,
+            date: date, choices: selections, solitudeStory: outing.mode == .solitude ? outing.solitude.chinese : nil,
+            chapters: outing.mode == .solitude ? nil : chapters, characterID: outing.npc?.id, characterName: outing.npc?.card.name,
+            placeID: outing.placeId, releaseID: outing.releaseId, photoAssetName: outing.photo.assetName,
+            placeTitle: outing.placeTitleZh, photo: outing.photo, endedEarly: outing.status == .abandoned,
+            solitudeEnglish: outing.mode == .solitude ? outing.solitude.english : nil))
+        defaults.set(try JSONEncoder().encode(Archive(version: 1, records: saved)), forKey: key)
+        return saved
     }
     @discardableResult
     func completeSolitude(_ activity: SceneActivity, runID: UUID, date: Date = Date()) throws -> [ActivityRecord] {
