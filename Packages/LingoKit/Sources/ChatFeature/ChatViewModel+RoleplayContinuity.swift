@@ -29,6 +29,7 @@ extension ChatViewModel {
         async let hasStoryTicketTask = (try? await itemStore.hasTicket(source: .story)) ?? false
         async let profileTask = try? await economyStore.profile()
         async let currentCharacterTask = try? await deps.rosterStore.character(id: characterID)
+        async let appointmentContextTask = deps.appointmentContext?(characterID)
         let (memorySections, hasStoryTicket, profile, currentCharacter) = await (
             memorySectionsTask,
             hasStoryTicketTask,
@@ -46,6 +47,7 @@ extension ChatViewModel {
             storySections = StoryExperienceContext.sections(character: character, progress: records, after: memoryCutoff)
         }
         let subscriptionTier = profile?.subscriptionTier ?? .free
+        if let appointmentContext = await appointmentContextTask { storySections.append(appointmentContext) }
         let rawWindow = EconomyService.memoryQuota(for: subscriptionTier).rawWindow
         let mainlineActive = character.isMainCharacter && !hasStoryTicket
         let learner: LearnerContext

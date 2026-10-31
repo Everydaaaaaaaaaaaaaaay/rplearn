@@ -93,6 +93,9 @@ public struct ChatView: View {
 
     private func chatPage(bottomInset: CGFloat) -> some View {
         messageList
+            .safeAreaInset(edge: .top, spacing: 0) {
+                if deps.onOpenAppointment != nil { appointmentBanner }
+            }
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 inputBar(bottomInset: isKeyboardVisible ? 0 : bottomInset)
                     .disabled(learningSelected)

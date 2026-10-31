@@ -56,6 +56,17 @@ public struct HomeView: View {
             }
         }
         .toolbar(.hidden, for: .navigationBar)
+        .overlay(alignment: .topTrailing) {
+            Button { onOpenDestination(.appointments) } label: {
+                Label("赴约", systemImage: "calendar")
+                    .font(.subheadline.weight(.semibold))
+                    .padding(.horizontal, 14).frame(minHeight: 44)
+            }
+            .buttonStyle(.plain)
+            .dsSceneGlass(radius: 16, legibility: .enhanced)
+            .padding(.trailing, 20).padding(.top, 8)
+            .accessibilityIdentifier("home.appointments")
+        }
         .task(id: reloadToken) { await reload() }
         .onDisappear(perform: sceneActions.cancel)
     }

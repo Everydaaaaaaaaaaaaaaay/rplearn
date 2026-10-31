@@ -36,6 +36,9 @@ public struct ChatTutorialConfiguration: Sendable {
 
 /// ChatFeature 所需依赖，由组合根注入。
 public struct ChatDependencies: Sendable {
+    public var refreshAppointments: (@MainActor @Sendable (UUID, UUID, Bool) async throws -> [BackendAppointment])? = nil
+    public var appointmentContext: (@Sendable (UUID) async -> String?)? = nil
+    public var onOpenAppointment: (@MainActor @Sendable (UUID?) -> Void)? = nil
     #if DEBUG
     /// Set only by the app's isolated in-memory marketing workspace.
     public var marketingMotionCapture = false

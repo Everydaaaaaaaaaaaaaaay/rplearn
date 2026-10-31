@@ -1,3 +1,4 @@
+import BackendKit
 import CoreKit
 import DesignSystem
 import DomainKit
@@ -115,6 +116,40 @@ public final class ChatViewModel {
             Log.app.error("openConversation 失败：\(error)")
         }
         await deps.learningChat?.refresh(characterID: character.id)
+        await refreshAppointments()
+    }
+
+    public private(set) var appointments: [BackendAppointment] = []
+    public private(set) var appointmentNotice: String?
+    public private(set) var checkingAppointments = false
+
+    public func refreshAppointments(detect: Bool = false) async {
+        guard !checkingAppointments, let conversation, let refresh = deps.refreshAppointments else { return }
+        checkingAppointments = true
+        defer { checkingAppointments = false }
+        do {
+            appointments = try await refresh(character.id, conversation.id, detect)
+                .filter { $0.characterId == character.id && $0.status != "cancelled" && $0.status != "expired" }
+                .sorted {
+                    let priority: (BackendAppointment) -> Int = { $0.status == "in_progress" ? 0 : $0.status == "confirmed" ? 1 : 2 }
+                    if priority($0) != priority($1) { return priority($0) < priority($1) }
+                    return $0.status == "completed" ? $0.startsAt > $1.startsAt : $0.startsAt < $1.startsAt
+                }
+            appointmentNotice = detect && appointments.isEmpty ? "还没有说定的约定。请在聊天里确认当地日期、时间和地点。" : nil
+        } catch {
+            if detect {
+                appointmentNotice = (error as? BackendClientError)?.code == "LOGIN_REQUIRED"
+                    ? "请先登录账号，再把聊天中的计划保存为约定。"
+                    : "约定暂时没有同步成功，可以稍后再整理。"
+            }
+        }
+    }
+
+    private func inspectAppointmentAgreement() {
+        let context = messages.suffix(12).map(\.text).joined(separator: " ").lowercased()
+        let cues = ["meet", "tomorrow", "tonight", "coffee", "cafe", "café", "see you", "o'clock", "约", "明天", "后天", "周末", "见面", "咖啡", "下午", "上午", "晚上", "改期"]
+        guard cues.contains(where: context.contains) else { return }
+        Task { [weak self] in await self?.refreshAppointments(detect: true) }
     }
 
     /// 正在翻译中的消息（气泡下方转圈）。
@@ -1037,7 +1072,10 @@ public final class ChatViewModel {
                 await self?.reloadMessages()
             }
         }
-        if !delivered.isEmpty { Task { await deps.learningChat?.messageSaved(characterID: character.id) } }
+        if !delivered.isEmpty {
+            Task { await deps.learningChat?.messageSaved(characterID: character.id) }
+            inspectAppointmentAgreement()
+        }
         return delivered
     }
 
@@ -1075,6 +1113,7 @@ public final class ChatViewModel {
         for message in messages {
             await annotateKeywords(message: message, text: message.text)
         }
+        inspectAppointmentAgreement()
         return messages
     }
 

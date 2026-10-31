@@ -28,12 +28,14 @@ public struct MemoryDebugView: View {
         memoryStore: MemoryStore,
         rosterStore: RosterStore,
         economyStore: EconomyStore,
-        memoryService: MemoryService
+        memoryService: MemoryService,
+        initialCharacterID: UUID? = nil
     ) {
         self.memoryStore = memoryStore
         self.rosterStore = rosterStore
         self.economyStore = economyStore
         self.memoryService = memoryService
+        _selectedID = State(initialValue: initialCharacterID)
     }
 
     public var body: some View {

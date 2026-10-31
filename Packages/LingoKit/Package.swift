@@ -92,6 +92,7 @@ func feature(
 }
 
 let featureTargets: [Target] = [
+    feature("AppointmentFeature", dependencies: [module("BackendKit"), module("CoreKit"), module("DictKit"), module("PersistenceKit"), module("SpeechKit")], resources: [.copy("Resources/Photos")]),
     feature("LearningFeature", dependencies: [module("BackendKit"), module("CoreKit"), module("DomainKit"), module("LLMKit"), module("PersistenceKit"), module("SpeechKit")]),
     feature("AuthFeature", dependencies: [
         module("BackendKit"),

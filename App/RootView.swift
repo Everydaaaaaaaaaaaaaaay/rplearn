@@ -1,3 +1,4 @@
+import AppointmentFeature
 import AuthFeature
 import BackendKit
 import BillingKit
@@ -36,6 +37,11 @@ struct RootView: View {
 
     @State private var unreadCount = 0
     @State private var selectedTab: AppTab = .messages
+    @State private var appointmentPresentation: AppointmentPresentation?
+    @State private var appointmentCityID = ""
+    @State private var appointmentNames: [UUID: String] = [:]
+    @State private var memoryCharacterID: UUID?
+    private struct AppointmentPresentation: Identifiable { let id = UUID(); let appointmentID: UUID? }
     @State private var visitedTabs: Set<AppTab> = []
     @State private var messagesPath = NavigationPath()
     @State private var contactsPath = NavigationPath()
@@ -86,7 +92,7 @@ struct RootView: View {
         let initial: AppTab = switch requested {
         case "messages": .messages
         case "contacts": .contacts
-        case "home", "map", "places-preview": .home
+        case "home", "map", "places-preview", "appointments-preview": .home
         case "me", "settings", "subscription", "learning", "favorites", "learning-test": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
@@ -179,6 +185,17 @@ struct RootView: View {
 
     private var configuredRootContent: some View {
         launchContent
+            .onChange(of: isInitialContentReady) { _, ready in
+                #if DEBUG
+                if ready && bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" {
+                    appointmentPresentation = AppointmentPresentation(appointmentID: nil)
+                }
+                #endif
+            }
+            .onChange(of: activeUserID) { _, _ in appointmentPresentation = nil }
+            .fullScreenCover(item: $appointmentPresentation) { presentation in
+                appointmentPage(presentation)
+            }
             .overlay(alignment: .topTrailing) { onboardingPreviewExit }
             #if DEBUG
             .preferredColorScheme(ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_APPEARANCE"].map { $0 == "dark" ? .dark : .light })
@@ -750,7 +767,7 @@ struct RootView: View {
                     CityStoryListView(deps: homeDeps) { chapter in
                         homePath.append(chapter)
                     }
-                case .map, .stories, .activities:
+                case .map, .stories, .activities, .appointments:
                     EmptyView()
                 }
             }
@@ -758,8 +775,72 @@ struct RootView: View {
     }
 
     @ViewBuilder
+    private func appointmentPage(_ presentation: AppointmentPresentation) -> some View {
+        let reading = AppointmentReadingServices(dictionary: environment.dictionary, grammar: environment.grammarPoints,
+                                                 favorites: environment.favoritesStore, speech: environment.speech)
+        let close = { appointmentPresentation = nil }
+        #if DEBUG
+        if bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" {
+            AppointmentListView.previewFixture(scenario: ProcessInfo.processInfo.environment["UI_TEST_APPOINTMENT_SCENARIO"] ?? "confirmed",
+                                               readingServices: reading, onClose: close, onChat: { _ in close() }, onMemory: { _ in close() })
+        } else {
+            liveAppointmentPage(presentation, reading: reading)
+        }
+        #else
+        liveAppointmentPage(presentation, reading: reading)
+        #endif
+    }
+
+    private func liveAppointmentPage(_ presentation: AppointmentPresentation, reading: AppointmentReadingServices) -> some View {
+        let workspace = environment.workspace
+        let coordinator = workspace.map { AppointmentCoordinator(backend: environment.backendClient, sync: $0.contentSync) }
+        return AppointmentListView(client: environment.backendClient, currentCityID: appointmentCityID,
+            storageNamespace: activeUserID?.uuidString ?? "inactive", initialAppointmentID: presentation.appointmentID,
+            readingServices: reading, settle: { id in try await coordinator?.settle(id) },
+            onClose: { appointmentPresentation = nil },
+            characterName: { appointmentNames[$0] ?? "旅伴" },
+            onChat: { id in
+                appointmentPresentation = nil
+                Task { @MainActor in
+                    guard let character = try? await environment.rosterStore.character(id: id) else { return }
+                    selectedTab = .home
+                    activeHomeDestination = .activities
+                    activeActivityChat = character
+                }
+            }, onMemory: { characterID in
+                appointmentPresentation = nil
+                memoryCharacterID = characterID
+                selectedTab = .me
+                openMe(.memory)
+            })
+            .task {
+                appointmentCityID = (try? await environment.economyStore.profile().currentRegionID) ?? ""
+                if let characters = try? await environment.rosterStore.allCharacters() {
+                    appointmentNames = Dictionary(uniqueKeysWithValues: characters.map { ($0.id, $0.displayName) })
+                }
+            }
+            .overlay {
+                if case .signedOut = environment.authSession.phase {
+                    ContentUnavailableView {
+                        Label("登录后保存约定", systemImage: "calendar.badge.clock")
+                    } description: {
+                        Text("约定、共同经历和关系变化会保存在你的账号里。")
+                    } actions: {
+                        Button("前往账号") {
+                            appointmentPresentation = nil
+                            selectedTab = .me
+                            openMe(.account)
+                        }.buttonStyle(.borderedProminent)
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.dsBackground)
+                }
+            }
+    }
+
+    @ViewBuilder
     private func homeDestinationView(_ destination: HomeDestination) -> some View {
         switch destination {
+        case .appointments:
+            EmptyView()
         case .stories:
             StoryHubView(deps: homeDeps)
         case .mainline:
@@ -805,6 +886,10 @@ struct RootView: View {
     }
 
     private func openHomeDestination(_ destination: HomeDestination) {
+        if destination == .appointments {
+            appointmentPresentation = AppointmentPresentation(appointmentID: nil)
+            return
+        }
         guard activeHomeDestination == nil else { return }
         homePath = NavigationPath()
         withAnimation(sceneContentAnimation) {
@@ -917,7 +1002,7 @@ struct RootView: View {
             onCalibrateLevel: { showEnglishJourney = true },
             onOpenFavorites: { openMe(.favorites) },
             onOpenSettings: { openMe(.settings) },
-            onOpenMemory: { openMe(.memory) },
+            onOpenMemory: { memoryCharacterID = nil; openMe(.memory) },
             section: section,
             onOpenAccount: { openMe(.account) },
             onOpenSubscription: { openMe(.subscription) }
@@ -1015,7 +1100,8 @@ struct RootView: View {
                     chatStore: environment.chatStore,
                     memoryStore: environment.memoryStore,
                     economyStore: environment.economyStore
-                )
+                ),
+                initialCharacterID: memoryCharacterID
             )
         }
     }
@@ -1220,6 +1306,18 @@ struct RootView: View {
         }
         #endif
         dependencies.storyProgress = environment.storyProgressStore
+        if !bypassesAuthenticationForUITesting, case .signedIn = environment.authSession.phase, let workspace = environment.workspace {
+            let appointments = AppointmentCoordinator(backend: environment.backendClient, sync: workspace.contentSync)
+            dependencies.refreshAppointments = { characterID, conversationID, detect in
+                try await appointments.refresh(characterID: characterID, conversationID: conversationID, detect: detect)
+            }
+            dependencies.appointmentContext = { characterID in
+                (try? await AsyncDeadline.run(timeout: .seconds(3)) { await appointments.context(characterID: characterID) }) ?? nil
+            }
+            dependencies.onOpenAppointment = { id in
+                appointmentPresentation = AppointmentPresentation(appointmentID: id)
+            }
+        }
         dependencies.learningChat = bypassesAuthenticationForUITesting ? nil : environment.workspace?.learningChat
         let backend = environment.backendClient
         let tracker = environment.workspace?.learningChat
