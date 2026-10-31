@@ -68,6 +68,9 @@ public final class ContentOutboxEntity {
     public var parentID: String?
     public var operationRaw: String
     public var payloadJSON: String?
+    /// Local-only, exact engine inputs. Optional attributes preserve pre-existing on-disk outboxes.
+    public var relationshipReplayJSON: String?
+    public var relationshipReplayComplete: Bool?
     public var expectedVersion: Int
     public var isInFlight: Bool
     public var attemptCount: Int
@@ -95,6 +98,8 @@ public final class ContentOutboxEntity {
         self.parentID = parentID
         self.operationRaw = operation.rawValue
         self.payloadJSON = payloadJSON
+        self.relationshipReplayJSON = nil
+        self.relationshipReplayComplete = nil
         self.expectedVersion = expectedVersion
         self.isInFlight = isInFlight
         self.attemptCount = attemptCount

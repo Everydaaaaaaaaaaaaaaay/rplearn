@@ -394,7 +394,7 @@ public actor RosterStore {
         let current = Self.relationship(from: entity)
         guard current.revision == expectedRevision else { return false }
         entity.relationshipJSON = snapshot.encodedJSON()
-        try journal(entity)
+        try journal(entity, relationshipChanged: true)
         try modelContext.save()
         Task { @MainActor in
             NotificationCenter.default.post(
@@ -409,6 +409,7 @@ public actor RosterStore {
     @discardableResult
     public func mutateRelationship(
         characterID: UUID,
+        replayInput: RelationshipReplayInput? = nil,
         mutation: @Sendable (RelationshipSnapshot) -> RelationshipSnapshot
     ) throws -> RelationshipSnapshot {
         guard let entity = try fetchEntity(id: characterID) else {
@@ -419,8 +420,13 @@ public actor RosterStore {
         guard updated != current else { return current }
 
         entity.relationshipJSON = updated.encodedJSON()
-        try journal(entity)
-        try modelContext.save()
+        do {
+            try journal(entity, relationshipReplayInput: replayInput, relationshipChanged: true)
+            try modelContext.save()
+        } catch {
+            modelContext.rollback()
+            throw error
+        }
         Task { @MainActor in
             NotificationCenter.default.post(
                 name: .rosterRelationshipDidChange,
@@ -459,7 +465,8 @@ public actor RosterStore {
         ).first
     }
 
-    private func journal(_ entity: CharacterEntity) throws {
+    private func journal(_ entity: CharacterEntity, relationshipReplayInput: RelationshipReplayInput? = nil,
+                         relationshipChanged: Bool = false) throws {
         let card = CharacterCard.decode(fromJSON: entity.cardJSON)
         var cardPayload = ContentCharacterPayload.Card(
             age: entity.age,
@@ -506,7 +513,9 @@ public actor RosterStore {
             resourceType: .character,
             resourceID: entity.characterID.uuidString.lowercased(),
             parentID: nil,
-            payloadJSON: try ContentMutationJournal.encode(payload)
+            payloadJSON: try ContentMutationJournal.encode(payload),
+            relationshipReplayInput: relationshipReplayInput,
+            relationshipChanged: relationshipChanged
         )
     }
 

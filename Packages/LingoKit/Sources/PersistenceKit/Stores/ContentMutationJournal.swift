@@ -50,7 +50,9 @@ enum ContentMutationJournal {
         resourceType: ContentResourceKind,
         resourceID: String,
         parentID: String?,
-        payloadJSON: String
+        payloadJSON: String,
+        relationshipReplayInput: RelationshipReplayInput? = nil,
+        relationshipChanged: Bool = false
     ) throws {
         guard let owner = try owner(in: context) else { return }
         let pending = try pendingMutations(
@@ -66,9 +68,14 @@ enum ContentMutationJournal {
             coalescible.parentID = parentID
             coalescible.payloadJSON = payloadJSON
             coalescible.lastErrorCode = nil
+            if let input = relationshipReplayInput {
+                var inputs = try RelationshipReplayInput.decodeList(coalescible.relationshipReplayJSON)
+                if !inputs.contains(where: { $0.messageID == input.messageID }) { inputs.append(input) }
+                coalescible.relationshipReplayJSON = try RelationshipReplayInput.encodeList(inputs)
+            }
+            if relationshipChanged && relationshipReplayInput == nil { coalescible.relationshipReplayComplete = false }
         } else {
-            context.insert(
-                ContentOutboxEntity(
+            let mutation = ContentOutboxEntity(
                     ownerUserID: owner.userID,
                     resourceType: resourceType,
                     resourceID: resourceID,
@@ -82,7 +89,11 @@ enum ContentMutationJournal {
                         pending: pending
                     )
                 )
-            )
+            mutation.relationshipReplayComplete = !relationshipChanged || relationshipReplayInput != nil
+            if let input = relationshipReplayInput {
+                mutation.relationshipReplayJSON = try RelationshipReplayInput.encodeList([input])
+            }
+            context.insert(mutation)
         }
         signal()
     }

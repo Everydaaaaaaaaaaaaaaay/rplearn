@@ -191,10 +191,11 @@ public struct MemoryService: Sendable {
     }
 
     private static func promptFact(_ memory: MemoryDTO) -> String {
-        guard let record = memory.record else { return memory.content }
+        let scope = memory.source == .appointment ? "[应用内赴约共同经历，不是用户现实身份或永久偏好] " : ""
+        guard let record = memory.record else { return scope + memory.content }
         let due = record.eventDate.map { "; event date " + $0 } ?? ""
         let state = record.status == "planned" ? "planned, outcome unknown; ask rather than assume" : record.status
-        return "[\(state)\(due)] " + record.text
+        return scope + "[\(state)\(due)] " + record.text
     }
 
     private static func estimatedTokens(_ memories: [MemoryDTO]) -> Int {

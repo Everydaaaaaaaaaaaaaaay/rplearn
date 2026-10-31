@@ -1,4 +1,5 @@
 import BackendKit
+import DomainKit
 import Foundation
 import PersistenceKit
 
@@ -150,10 +151,14 @@ public actor BackendContentSyncCoordinator {
     }
 
     private func flushOutbox() async throws {
+        var conflictAttempts: [String: Int] = [:]
         while true {
             try Task.checkCancellation()
-            let pending = try await store.takePending(limit: 50)
-            guard !pending.isEmpty else { return }
+            let pending = try await store.takePending(limit: 50, serialPerResource: true)
+            guard !pending.isEmpty else {
+                try await store.assertNoStalledRelationshipReplay()
+                return
+            }
             do {
                 let commands = try pending.map(Self.command)
                 let results = try await backend.submitContentCommands(commands)
@@ -185,8 +190,14 @@ public actor BackendContentSyncCoordinator {
                         try await store.reject(
                             commandID: result.commandId,
                             code: error.code,
-                            current: try Self.currentRecord(from: error.details)
+                            current: try Self.currentRecord(from: error.details),
+                            replayRelationship: { inputs, snapshot in try RelationshipReplay.apply(inputs, to: snapshot) }
                         )
+                        if error.code == "CONTENT_VERSION_CONFLICT", let mutation = expected[result.commandId] {
+                            let key = mutation.resourceType.rawValue + ":" + mutation.resourceID
+                            conflictAttempts[key, default: 0] += 1
+                            if conflictAttempts[key, default: 0] >= 4 { throw ContentSyncStore.SyncStoreError.conflictRetryLimit }
+                        }
                     }
                 }
             } catch {

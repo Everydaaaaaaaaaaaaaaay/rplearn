@@ -11,6 +11,7 @@ public enum ContactStatus: String, Sendable, Codable, CaseIterable {
 }
 
 public enum MemorySource: String, Sendable, Codable, CaseIterable {
+    case appointment
     case chat
     case story
     case activity

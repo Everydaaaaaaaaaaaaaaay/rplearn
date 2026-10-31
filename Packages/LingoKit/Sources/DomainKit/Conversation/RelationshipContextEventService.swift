@@ -144,7 +144,13 @@ public struct RelationshipContextEventService: Sendable {
         eventID: UUID,
         at date: Date = .now
     ) async throws -> RelationshipSnapshot {
-        try await rosterStore.mutateRelationship(characterID: characterID) { latest in
+        guard let character = try await rosterStore.character(id: characterID) else {
+            throw RosterStore.RosterError.characterNotFound
+        }
+        let calendar = RelationshipCalendar.forRegionID(character.card.regionID)
+        let replayInput = try RelationshipReplay.reviewed(signal, source: source, messageID: eventID,
+            messageCreatedAt: date, messageOrderIndex: -1, at: date, calendar: calendar)
+        return try await rosterStore.mutateRelationship(characterID: characterID, replayInput: replayInput) { latest in
             RelationshipEngine.apply(
                 signal,
                 to: latest,
@@ -152,7 +158,8 @@ public struct RelationshipContextEventService: Sendable {
                 messageID: eventID,
                 messageCreatedAt: date,
                 messageOrderIndex: -1,
-                at: date
+                at: date,
+                calendar: calendar
             )
         }
     }

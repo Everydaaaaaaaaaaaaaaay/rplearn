@@ -77,7 +77,8 @@ public enum RelationshipEngine {
         let substantiveEvidence = evidenceStrength * confidence >= 0.12
             && (abs(socialQuality) >= 0.04 || significance >= 0.12 || boundaryHarm >= 0.15 || repair >= 0.15)
 
-        let isSameActivityDay = snapshot.activityDayStart.map {
+        // Actual last interaction remains meaningful when migrating a legacy device-local midnight.
+        let isSameActivityDay = (snapshot.lastInteractionAt ?? snapshot.activityDayStart).map {
             calendar.isDate($0, inSameDayAs: settlementDate)
         } ?? false
         let sameDayCount = isSameActivityDay ? snapshot.activityCountToday : 0
@@ -330,6 +331,7 @@ public enum RelationshipEngine {
             let reason = normalizedReason(signal.reasonZh, delta: delta)
             next.recentEvents.append(
                 RelationshipEventRecord(
+                    id: messageID,
                     source: source,
                     delta: delta,
                     reasonZh: reason,
@@ -354,7 +356,7 @@ public enum RelationshipEngine {
         guard !hasEvaluated(messageID: messageID, in: snapshot) else { return snapshot }
         var next = snapshot
         let settlementDate = max(date, snapshot.lastInteractionAt ?? date)
-        let isSameDay = snapshot.activityDayStart.map {
+        let isSameDay = (snapshot.lastInteractionAt ?? snapshot.activityDayStart).map {
             calendar.isDate($0, inSameDayAs: settlementDate)
         } ?? false
         next.affinity = snapshot.projectedAffinity(at: settlementDate)
@@ -527,8 +529,11 @@ public struct RelationshipService: Sendable {
             userMessage: userMessage,
             memoryContext: memoryContext, extractMemory: extractMemory
         )
-
-        try await rosterStore.mutateRelationship(characterID: character.id) { latest in
+        let calendar = RelationshipCalendar.forRegionID(character.card.regionID)
+        let replayInput = try RelationshipReplay.reviewed(review.relationship, source: source,
+            messageID: userMessage.id, messageCreatedAt: userMessage.createdAt,
+            messageOrderIndex: userMessage.orderIndex, at: date, calendar: calendar)
+        try await rosterStore.mutateRelationship(characterID: character.id, replayInput: replayInput) { latest in
             guard !RelationshipEngine.hasEvaluated(messageID: userMessage.id, in: latest) else {
                 return latest
             }
@@ -539,7 +544,8 @@ public struct RelationshipService: Sendable {
                 messageID: userMessage.id,
                 messageCreatedAt: userMessage.createdAt,
                 messageOrderIndex: userMessage.orderIndex,
-                at: date
+                at: date,
+                calendar: calendar
             )
         }
         try await rosterStore.mutateGrowth(characterID: character.id) { latest in
@@ -563,7 +569,13 @@ public struct RelationshipService: Sendable {
         message: MessageDTO,
         at date: Date = .now
     ) async throws {
-        try await rosterStore.mutateRelationship(characterID: characterID) { latest in
+        guard let character = try await rosterStore.character(id: characterID) else {
+            throw RosterStore.RosterError.characterNotFound
+        }
+        let calendar = RelationshipCalendar.forRegionID(character.card.regionID)
+        let replayInput = RelationshipReplayInput.contact(messageID: message.id, messageCreatedAt: message.createdAt,
+            messageOrderIndex: message.orderIndex, at: date, calendar: calendar)
+        try await rosterStore.mutateRelationship(characterID: characterID, replayInput: replayInput) { latest in
             guard !RelationshipEngine.hasEvaluated(messageID: message.id, in: latest) else {
                 return latest
             }
@@ -572,7 +584,8 @@ public struct RelationshipService: Sendable {
                 messageID: message.id,
                 messageCreatedAt: message.createdAt,
                 messageOrderIndex: message.orderIndex,
-                at: date
+                at: date,
+                calendar: calendar
             )
         }
     }
