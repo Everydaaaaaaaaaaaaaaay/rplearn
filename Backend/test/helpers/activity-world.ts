@@ -28,6 +28,7 @@ export function activityWorldFixture(): ActivityWorld {
   const previous = legacy.entries[0];
   if (!previous) throw new Error("Missing original story fixture");
   const stories: unknown[] = [];
+  world.media = [];
   let index = 0;
   for (const place of world.places) {
     place.reviewStatus = "approved";
@@ -68,15 +69,20 @@ export function activityWorldFixture(): ActivityWorld {
         placeId: place.id,
         storyId,
         nationalityCountryCodes: ["GB"],
-        nationalityLabel: person.originalCard.nationality,
-        hometown: person.originalCard.hometown ?? "Test fixture",
-        localConnection: "settled_here",
+        nationalityLabel: "British",
+        hometown: "London",
+        localConnection: "grew_up_here",
         presenceReason: "Synthetic fixture",
         placeAttitude: "Synthetic fixture",
         fit: "conditional",
         fitEvidence: "Synthetic fixture",
         migrationExplanationZh: "仅供隔离测试",
-        card: { ...person.originalCard, regionId: place.cityId },
+        card: {
+          ...person.originalCard,
+          regionId: place.cityId,
+          nationality: "British",
+          hometown: "London",
+        },
       };
       stories.push({
         id: storyId,

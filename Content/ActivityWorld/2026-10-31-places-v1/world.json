@@ -89,8 +89,26 @@
       "category": "cafe",
       "populationTarget": 4,
       "reviewStatus": "draft",
-      "spaceFacts": [],
-      "solitude": []
+      "spaceFacts": [
+        "Redemption Roasters Bloomsbury 实拍中，顾客位于临街窗内侧，桌椅有正常落脚空间。",
+        "窗边小桌有高脚椅，包可从椅面移至桌下，杯子放桌上。",
+        "柜台与顾客座位分开，用户不进入咖啡制作区。"
+      ],
+      "solitude": [
+        {
+          "id": "london-bloomsbury-cafe-quiet-1",
+          "titleZh": "候着的空隙",
+          "english": "A cup touches its saucer behind the counter. You stand aside to let the next customer pass, then take a moment to look around. No conversation begins, and there is no need to hurry one into being.",
+          "chinese": "柜台后传来杯子碰到托碟的轻响。你侧身让下一位顾客走过，留一点时间看看四周。没有对话开始，也不必急着制造一场。"
+        },
+        {
+          "id": "london-bloomsbury-cafe-quiet-2",
+          "titleZh": "出门之前",
+          "english": "You move your cup back from the table edge. Beyond the glass, a passer-by slows to read the board outside, then carries on. Inside, the space between two orders is briefly quiet.",
+          "chinese": "你把杯子从桌沿往里挪了挪。玻璃外，一位路人放慢脚步看店外的招牌，又继续往前走。两次点单之间，店里短暂地安静下来。"
+        }
+      ],
+      "mediaId": "photo-london-bloomsbury-cafe-v1"
     },
     {
       "id": "london-southbank",
@@ -119,8 +137,25 @@
       "category": "bookshop",
       "populationTarget": 3,
       "reviewStatus": "draft",
-      "spaceFacts": [],
-      "solitude": []
+      "spaceFacts": [
+        "Daunt Books 马里波恩店内，书架、陈列桌和行走空隙同时可辨。",
+        "楼上有连续护栏，不将楼上读者写成位于悬空平台。"
+      ],
+      "solitude": [
+        {
+          "id": "london-marylebone-bookshop-quiet-1",
+          "titleZh": "书架之间",
+          "english": "You follow the shelves past books arranged by country. Upstairs, someone turns a page. You leave a gap for another reader to pass and find a title you had not come looking for.",
+          "chinese": "你沿着按国家陈列的书架慢慢走。楼上传来翻页声。你给另一位读者让出空隙，又发现一本原本没打算找的书。"
+        },
+        {
+          "id": "london-marylebone-bookshop-quiet-2",
+          "titleZh": "翻过一页",
+          "english": "At the bookshop, you open a book and discover a place name you cannot yet pronounce. You read the line again. Around you, other readers keep their own pace.",
+          "chinese": "在书店，你翻开一本书，遇到一个还念不熟的地名。你把那一行又读了一遍。身边的读者，各自按自己的节奏停留。"
+        }
+      ],
+      "mediaId": "photo-london-marylebone-bookshop-v1"
     },
     {
       "id": "london-primrose-hill",
@@ -129,8 +164,25 @@
       "category": "park",
       "populationTarget": 3,
       "reviewStatus": "draft",
-      "spaceFacts": [],
-      "solitude": []
+      "spaceFacts": [
+        "Primrose Hill 草坡面对伦敦天际线，近处有人坐下，中景有步行路径。",
+        "当前选图不含湖、桥或市场摊位，相遇不应依赖这些空间。"
+      ],
+      "solitude": [
+        {
+          "id": "london-primrose-hill-quiet-1",
+          "titleZh": "山坡上的片刻",
+          "english": "From the hill, the city looks layered rather than crowded. People settle on the grass while others keep walking. You stay for a while, following no route except the one back down.",
+          "chinese": "从山坡上看，城市层层展开，并不显得拥挤。有人在草地上坐下，也有人继续往前走。你停留了一会儿，暂时不用决定下山之外的路线。"
+        },
+        {
+          "id": "london-primrose-hill-quiet-2",
+          "titleZh": "远近之间",
+          "english": "A person walking down the slope becomes smaller against the grass. Beyond the trees, the buildings seem almost still. You look from one distance to the other, then take the next few steps at your own pace.",
+          "chinese": "下坡的行人在草地的映衬中渐渐变小。树木之外，建筑几乎一动不动。你的视线在远近之间移动，又按自己的步速往前走了几步。"
+        }
+      ],
+      "mediaId": "photo-london-primrose-hill-v1"
     },
     {
       "id": "newyork-east-village-cafe",
@@ -1980,7 +2032,71 @@
       "legacyActionId": "pond-reflection",
       "legacyStoryTitleZh": "水影里忽隐忽现的线",
       "reviewStatus": "pending",
-      "reviewNotes": []
+      "reviewNotes": [
+        "核心字段逐项与 originalCard 对照，保持一致；只修订地理资料和背景中的过时初见情境。",
+        "本条为完整初见样板，尚未完成伦敦十八人横向审校和客户端设定版本迁移；保留 pending。"
+      ],
+      "assignment": {
+        "cityId": "london",
+        "placeId": "london-bloomsbury-cafe",
+        "storyId": "alex-bloomsbury-first-v1",
+        "nationalityCountryCodes": [
+          "GB"
+        ],
+        "nationalityLabel": "British",
+        "hometown": "London",
+        "localConnection": "grew_up_here",
+        "presenceReason": "熬夜完成博物馆灯光返工后，与朋友约在店里归还借出的望远镜；朋友迟到，因此留下等候。",
+        "placeAttitude": "此刻是方便会合和暂歇的中性场所，没有把慢热的灯光技师改成咖啡爱好者或热衷搭讪的人。",
+        "fit": "conditional",
+        "fitEvidence": "原人物对物慢热、对观察耐心；相遇依靠等待会合与让座的现实理由，不能据此推断其喜欢咖啡馆或愿意长谈。",
+        "migrationExplanationZh": "将旧资料中的虚构国籍及成长地更正为英国、伦敦；保留姓名、旅伴号、头像、职业、性格和兴趣。新版初见固定在伦敦咖啡馆，旧相遇和聊天仍保留原文。",
+        "card": {
+          "name": "Alex Rowan",
+          "age": 28,
+          "gender": "other",
+          "regionId": "london",
+          "nationality": "British",
+          "occupation": "museum lighting technician",
+          "hobbies": [
+            "speed jigsaw puzzles",
+            "learning sign language"
+          ],
+          "personality": "Alex notices things other people walk past — a flicker in a reflection, a shadow slightly too sharp. They are patient with objects and slower with people, often forgetting the time when focused. Honest to a fault about their own mistakes, they recently admitted a lighting design hid the details it was meant to show. Warm once talking, but they need a reason to start.",
+          "background": "Alex works as a museum lighting technician in London. They once admitted that their own lighting plan hid the brushwork on a portrait and stayed to correct it. Patient with objects and slower with people, they carry binoculars to study distant details and reflections.",
+          "speechStyle": "Short, precise sentences with pauses. Names what they see before what they feel. Often says 'look —' before an observation, and trails off when a thought is still forming.",
+          "hometown": "London",
+          "languages": [
+            "English"
+          ],
+          "birthday": "04-17",
+          "signature": "Look — see how it moves.",
+          "appearance": "Upright short spiky hair, flat long jaw, small half-lidded eyes, short level mouth; chin raised above violet high collar.",
+          "personaVoice": {
+            "values": [
+              "honesty about mistakes",
+              "careful observation"
+            ],
+            "flaws": [
+              "loses track of time",
+              "slow to start conversations"
+            ],
+            "boundaries": [
+              "won't pretend to understand when they don't",
+              "won't rush a conclusion"
+            ],
+            "conversationalHabits": [
+              "starts sentences with 'look —'",
+              "pauses mid-thought and restarts"
+            ],
+            "anchorLines": [
+              "Look — the line moved again.",
+              "I could be wrong. Usually I check twice.",
+              "Sorry, I lost track of everything just now."
+            ]
+          }
+        }
+      }
     },
     {
       "id": "cdc5be66-27c4-5868-bf72-ef2a8629b4eb",
@@ -11997,6 +12113,332 @@
       "reviewNotes": []
     }
   ],
-  "stories": [],
-  "media": []
+  "stories": [
+    {
+      "id": "alex-bloomsbury-first-v1",
+      "titleZh": "一张暂时空着的凳子",
+      "nodes": [
+        {
+          "id": "start",
+          "beats": [
+            {
+              "speaker": "narrator",
+              "english": "You step into a small Bloomsbury cafe. At a table by the window, someone has put a bag on the stool beside them.",
+              "chinese": "你走进布卢姆斯伯里的一间小咖啡馆。窗边的小桌旁，一个人把包放在了身边的凳子上。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "They notice you looking for somewhere to sit, check their phone, then lift the bag.",
+              "chinese": "见你在找座位，对方看了一眼手机，随后提起了包。"
+            },
+            {
+              "speaker": "npc",
+              "english": "You can sit here. My friend has just said twenty minutes. That usually means thirty.",
+              "chinese": "你可以坐这儿。我朋友刚说还要二十分钟。通常就是三十分钟。"
+            },
+            {
+              "speaker": "npc",
+              "english": "I'm Alex. Sorry, I was saving it for them. Now I'm mostly trying not to fall asleep.",
+              "chinese": "我是 Alex。刚才在帮朋友留座，抱歉。我现在主要是在努力不睡着。"
+            }
+          ],
+          "choices": [
+            {
+              "english": "Thanks. Long day?",
+              "chinese": "谢谢。今天很累吗？",
+              "next": "a"
+            },
+            {
+              "english": "Thanks. I'll let you rest.",
+              "chinese": "谢谢，那我不打扰你休息。",
+              "next": "b"
+            }
+          ]
+        },
+        {
+          "id": "a",
+          "beats": [
+            {
+              "speaker": "npc",
+              "english": "Long night. We changed the lights for a museum display. The first version was mine. It was also wrong.",
+              "chinese": "是熬了一夜。我们换了一组博物馆展柜的灯光。第一版是我做的，也确实是我做错了。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "Alex turns their cup a little, watching the shadow of its handle move across the table.",
+              "chinese": "Alex 把杯子转了一点，看着杯柄的影子移过桌面。"
+            },
+            {
+              "speaker": "npc",
+              "english": "Too much light. All the small marks disappeared. I had to say so before anyone opened the doors.",
+              "chinese": "光太强了，细小的纹理都看不见。我得赶在开门前把问题说出来。"
+            },
+            {
+              "speaker": "npc",
+              "english": "That's enough work talk from me. My friend has my binoculars; I'm waiting to get them back.",
+              "chinese": "工作就聊到这儿吧。我的望远镜在朋友手里，我在等朋友拿回来。"
+            }
+          ],
+          "choices": [
+            {
+              "english": "Do you use them for work?",
+              "chinese": "你用望远镜工作吗？",
+              "next": "aa"
+            },
+            {
+              "english": "We can leave work at the door.",
+              "chinese": "那就把工作留在门外吧。",
+              "next": "ab"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "beats": [
+            {
+              "speaker": "npc",
+              "english": "Thank you. I'm better with objects than conversation after a night shift.",
+              "chinese": "谢谢。夜班之后，我和物品打交道比和人聊天容易些。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "You settle on the stool. Alex returns to their cup, and neither of you rushes to fill the silence.",
+              "chinese": "你在凳子上坐下。Alex 又看向杯子，你们都没有急着填满沉默。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "After a while, the cup handle casts a narrow crescent across the table. Alex moves the cup, then stops.",
+              "chinese": "过了一会儿，杯柄在柜台上投下一道窄月牙。Alex 挪了挪杯子，又停下来。"
+            },
+            {
+              "speaker": "npc",
+              "english": "Sorry. I move lights around in museums. Apparently I haven't stopped working yet.",
+              "chinese": "抱歉，我的工作是在博物馆里调整灯光。看来我还没有真正下班。"
+            }
+          ],
+          "choices": [
+            {
+              "english": "I hadn't noticed that shadow.",
+              "chinese": "我刚才没有注意到那个影子。",
+              "next": "ba"
+            },
+            {
+              "english": "No need to explain. Enjoy your quiet.",
+              "chinese": "不用解释，好好安静一会儿吧。",
+              "next": "bb"
+            }
+          ]
+        },
+        {
+          "id": "aa",
+          "beats": [
+            {
+              "speaker": "npc",
+              "english": "Sometimes. Mostly for looking. A reflection can change completely when you take two steps.",
+              "chinese": "偶尔会。更多时候只是用来观察。挪两步，同一个倒影就可能完全变样。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "Alex glances towards the door, then checks their phone without sending another message.",
+              "chinese": "Alex 向门口看了一眼，又看了看手机，没有再发消息催促。"
+            },
+            {
+              "speaker": "npc",
+              "english": "Still twenty minutes, apparently. You don't have to keep me company for all of them.",
+              "chinese": "看来还是二十分钟。你不用一直陪我等。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "You finish this small exchange with Alex still at the window table, waiting for their friend. There is no new appointment to keep.",
+              "chinese": "这段简短的交谈告一段落。Alex 仍在窗边的小桌旁等朋友，你也没有因此多出一个必须赴的约。"
+            }
+          ],
+          "choices": []
+        },
+        {
+          "id": "ab",
+          "beats": [
+            {
+              "speaker": "npc",
+              "english": "Good plan. It's followed me all the way here without buying anything.",
+              "chinese": "好主意。工作一路跟到这儿，连东西都没买。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "Alex gives a small, tired smile and puts the phone face down.",
+              "chinese": "Alex 疲惫地笑了一下，把手机扣在桌上。"
+            },
+            {
+              "speaker": "npc",
+              "english": "Thanks for not making me explain the whole display. Some mornings a stool and a bit of quiet are plenty.",
+              "chinese": "谢谢你没让我把整个展柜讲一遍。有些早晨，有张凳子、安静一会儿就够了。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "The conversation ends easily. Alex stays to wait, and you turn back to your own morning.",
+              "chinese": "对话自然地停下来。Alex 留下来等人，你把注意力交还给自己的早晨。"
+            }
+          ],
+          "choices": []
+        },
+        {
+          "id": "ba",
+          "beats": [
+            {
+              "speaker": "npc",
+              "english": "Neither had I, until I started this job. Now I notice shadows and forget where I put my keys.",
+              "chinese": "做这份工作之前，我也注意不到。现在我会留意影子，却忘了钥匙放在哪儿。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "Alex moves the cup back, leaving the narrow crescent where it was.",
+              "chinese": "Alex 把杯子移回去，细窄的月牙又回到了原处。"
+            },
+            {
+              "speaker": "npc",
+              "english": "Nothing you need to do with it. It's just there.",
+              "chinese": "不用拿它做什么。它就在那里。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "You share a brief look at the table. Alex returns to waiting; the silence feels less like an unfinished conversation.",
+              "chinese": "你们一起短暂地看了看桌面。Alex 继续等人，沉默也不再像一句没说完的话。"
+            }
+          ],
+          "choices": []
+        },
+        {
+          "id": "bb",
+          "beats": [
+            {
+              "speaker": "npc",
+              "english": "I will. Thanks for taking that literally.",
+              "chinese": "我会的。谢谢你真的按字面意思理解。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "Alex sets the cup down and relaxes their shoulders. You both return to your own thoughts.",
+              "chinese": "Alex 放下杯子，肩膀松了下来。你们各自回到自己的思绪里。"
+            },
+            {
+              "speaker": "narrator",
+              "english": "A little later, Alex checks the time and shifts their bag further under the table, leaving your feet more room.",
+              "chinese": "又过了一会儿，Alex 看了看时间，把包往桌子下面挪了挪，为你的脚腾出更多空间。"
+            },
+            {
+              "speaker": "npc",
+              "english": "Still waiting. But the seat is yours. Have a good morning.",
+              "chinese": "还在等，不过座位归你了。祝你早晨愉快。"
+            }
+          ],
+          "choices": []
+        }
+      ],
+      "reunion": {
+        "titleZh": "又在窗边",
+        "beats": [
+          {
+            "speaker": "narrator",
+            "english": "At the Bloomsbury cafe, you recognise Alex at the window table. They look up when you approach.",
+            "chinese": "在布卢姆斯伯里的咖啡馆，你认出了窗边的 Alex。你走近时，对方抬起头。"
+          },
+          {
+            "speaker": "npc",
+            "english": "Hello again. I remember you. The stool's free today; no one to save it for.",
+            "chinese": "又见面了，我记得你。今天凳子空着，不用给谁留座。"
+          },
+          {
+            "speaker": "narrator",
+            "english": "Alex moves their bag beneath their own stool. This time the gesture needs no explanation.",
+            "chinese": "Alex 把包挪到自己凳子下面。这次，这个动作不需要再解释。"
+          },
+          {
+            "speaker": "npc",
+            "english": "You can stay if you like. Quiet is still an option.",
+            "chinese": "愿意的话可以坐一会儿。安静地待着也可以。"
+          }
+        ]
+      },
+      "npcId": "0679ce69-7234-58dd-96f6-a5b43d3e8c41",
+      "placeId": "london-bloomsbury-cafe",
+      "reviewStatus": "draft",
+      "reviewEvidence": [
+        "完整四路径已逐支复核；英语阅读可达性通过独立原生测试。全城横向人物差异与资料迁移尚未完成，未授予正式发布批准。"
+      ],
+      "causality": {
+        "presenceReason": "熬夜完成博物馆灯光返工后，与朋友约在店里归还借出的望远镜；朋友迟到，因此留下等候。",
+        "placeAttitude": "此刻是方便会合和暂歇的中性场所，没有把慢热的灯光技师改成咖啡爱好者或热衷搭讪的人。",
+        "stayingConstraint": "朋友明确还需二十分钟。Alex 不离店、不带用户参观博物馆，所有分支留在窗边小桌。",
+        "currentGoal": "取回望远镜并度过等候时间，避免因为疲倦强撑交谈。",
+        "currentState": "长期对细节耐心、对人慢热；当天夜班后疲倦。主动开口仅因将留给朋友的座位腾给眼前找座位的人。",
+        "contactTrigger": "用户在窗边找座位，朋友发来迟到消息，Alex 取走椅上的包，解释这张椅子可以坐。",
+        "characterContinuity": "保留博物馆灯光技师职业、观察反光与阴影的兴趣、望远镜、承认自己工作错误的诚实，以及需要具体理由才开口的慢热边界。没有修改性格、价值观、爱好或 personaVoice。",
+        "reactionAndChange": "询问长夜才简短谈及返工，并主动结束工作话题；选择安静则先沉默，杯柄阴影触发的是自言自语式说明。继续追问、转开工作、共同注意、继续安静分别有不同回应，不用加好友奖励判定结局优劣。",
+        "spatialContinuity": "以同店窗边桌椅实拍为依据，包从旁椅移到桌下，杯子始终位于桌面；没有进入柜台操作区，也没有突然换到室外。",
+        "reunionCommonFacts": "只识别这个人，说明今天座位空着，允许安静停留。不继承四分支才可能知道的工作解释，也不将旧公园初见改写成咖啡馆初见。"
+      }
+    }
+  ],
+  "media": [
+    {
+      "cityId": "london",
+      "placeId": "london-bloomsbury-cafe",
+      "assetName": "preview-london-bloomsbury-cafe.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redemption_Roasters_Cafe,_Bloomsbury,_London,_UK_(35631469331).jpg",
+      "author": "Bex Walton from London, England",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourceSHA256": "516c05dccc2c86ac7823ad603dd82c031bb0d14d2b0e50f1d71eb3e66330300a",
+      "outputSHA256": "f5bb757568cb92e8ff5035fae6816ac706525a4b029fee8dd323bbd0931b4a0e",
+      "width": 1600,
+      "height": 1200,
+      "processing": "EXIF orientation; RGB; maximum 1600px; JPEG quality 88; no generated edits",
+      "id": "photo-london-bloomsbury-cafe-v1",
+      "cityEvidence": "Commons 来源页及实拍场景对应此伦敦地点；逐图观察见 Assets/Activities/CityPlaces-v1/acceptance-preview-v1.md。",
+      "reviewStatus": "draft",
+      "reviewEvidence": [
+        "仅用于独立原生预览；完整正式内容、小屏和真机仍待验收。"
+      ]
+    },
+    {
+      "cityId": "london",
+      "placeId": "london-marylebone-bookshop",
+      "assetName": "preview-london-marylebone-bookshop.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Daunt%27s_Bookshop_-_geograph.org.uk_-_8219001.jpg",
+      "author": "Anthony O'Neil",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourceSHA256": "d06ec44d0fa0435486dad9e2d86573ff49eec6cc376d8108a0e224e7e1d7fc74",
+      "outputSHA256": "0ffac1c75b154b3ac725e476095d01002dce0d389ed0b5a87b7aae6477ae6246",
+      "width": 1600,
+      "height": 1059,
+      "processing": "EXIF orientation; RGB; maximum 1600px; JPEG quality 88; no generated edits",
+      "id": "photo-london-marylebone-bookshop-v1",
+      "cityEvidence": "Commons 来源页及实拍场景对应此伦敦地点；逐图观察见 Assets/Activities/CityPlaces-v1/acceptance-preview-v1.md。",
+      "reviewStatus": "draft",
+      "reviewEvidence": [
+        "仅用于独立原生预览；完整正式内容、小屏和真机仍待验收。"
+      ]
+    },
+    {
+      "cityId": "london",
+      "placeId": "london-primrose-hill",
+      "assetName": "preview-london-primrose-hill.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:London%27s_Skyline_from_Primrose_Hill.jpg",
+      "author": "LatteKnowledge",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceSHA256": "bb3cb446eac650ee2d14318ba191e1153794a52c5ce431e716355d49d3b20afc",
+      "outputSHA256": "b07adb980855bb1c032736ccc127a8bde4364e2f40846a803a21d92336bc0b11",
+      "width": 1600,
+      "height": 1200,
+      "processing": "EXIF orientation; RGB; maximum 1600px; JPEG quality 88; no generated edits",
+      "id": "photo-london-primrose-hill-v1",
+      "cityEvidence": "Commons 来源页及实拍场景对应此伦敦地点；逐图观察见 Assets/Activities/CityPlaces-v1/acceptance-preview-v1.md。",
+      "reviewStatus": "draft",
+      "reviewEvidence": [
+        "仅用于独立原生预览；完整正式内容、小屏和真机仍待验收。"
+      ]
+    }
+  ]
 }

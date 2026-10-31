@@ -3,6 +3,7 @@ import { z } from "zod";
 import { publicCard } from "./card-schema.js";
 import { authoredStorySchema, authoredReunionSchema } from "./authored-content.js";
 import { isValidTravelerId } from "./traveler-id.js";
+import { nationalityCountryCodes } from "./country-codes.js";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]{1,100}$/);
 const hash = z.string().regex(/^[a-f0-9]{64}$/);
@@ -78,7 +79,14 @@ const assignment = z
     placeId: id,
     storyId: id,
     nationalityCountryCodes: z
-      .array(z.string().regex(/^[A-Z]{2}$/))
+      .array(
+        z
+          .string()
+          .refine(
+            (code) => nationalityCountryCodes.has(code),
+            "Expected an ISO country code",
+          ),
+      )
       .min(1)
       .max(3),
     nationalityLabel: text,
@@ -216,6 +224,14 @@ export const activityWorldSchema = z
       const story = stories.get(binding.storyId);
       if (place?.cityId !== binding.cityId || binding.card.regionId !== binding.cityId)
         fail(`Character/place city mismatch: ${person.id}`);
+      if (
+        binding.card.nationality !== binding.nationalityLabel ||
+        binding.card.hometown !== binding.hometown ||
+        /fictional|fictitious|虚构/.test(binding.nationalityLabel.toLowerCase()) ||
+        new Set(binding.nationalityCountryCodes).size !==
+          binding.nationalityCountryCodes.length
+      )
+        fail(`Nationality and hometown must match the canonical card: ${person.id}`);
       if (story?.npcId !== person.id || story.placeId !== binding.placeId)
         fail(`Character/story binding mismatch: ${person.id}`);
       for (const key of [
@@ -256,12 +272,23 @@ export const activityWorldSchema = z
             .length < 3
         )
           fail(`Fewer than three characters at ${place.id}`);
-      for (const city of world.cities)
+      for (const city of world.cities) {
         if (
           world.characters.filter((person) => person.assignment?.cityId === city.id)
             .length !== city.populationTarget
         )
           fail(`Character count differs from city target: ${city.id}`);
+        const residents = world.characters.filter(
+          (person) => person.assignment?.cityId === city.id,
+        );
+        if (
+          residents.filter(
+            (person) => person.assignment?.localConnection === "grew_up_here",
+          ).length <=
+          residents.length / 2
+        )
+          fail(`Most characters must have grown up in the city: ${city.id}`);
+      }
       if (world.stories.length !== 200)
         fail("Published world needs one first-meeting story per character");
     }

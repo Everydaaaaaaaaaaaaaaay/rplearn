@@ -6,6 +6,8 @@ import {
   contentHash,
   requirePublishedWorld,
 } from "../../src/modules/npc/activity-world-content.js";
+import { nationalityCountryCodes } from "../../src/modules/npc/country-codes.js";
+import { activityWorldFixture } from "../helpers/activity-world.js";
 
 const source = JSON.parse(
   readFileSync(
@@ -30,6 +32,7 @@ function required<T>(value: T | undefined): T {
 
 function assignedDraft() {
   const world = activityWorldSchema.parse(structuredClone(source));
+  for (const character of world.characters) delete character.assignment;
   const person = required(world.characters[0]),
     place = required(world.places[0]),
     previous = required(legacy.entries[0]);
@@ -70,7 +73,12 @@ function assignedDraft() {
     fit: "conditional",
     fitEvidence: "Test fixture",
     migrationExplanationZh: "测试夹具",
-    card: { ...person.originalCard, regionId: place.cityId },
+    card: {
+      ...person.originalCard,
+      regionId: place.cityId,
+      nationality: "British",
+      hometown: "London",
+    },
   };
   return {
     ...world,
@@ -84,7 +92,9 @@ describe("place-bound activity content admission", () => {
     const world = activityWorldSchema.parse(source);
     expect(world.characters).toHaveLength(200);
     expect(world.places).toHaveLength(54);
-    expect(world.characters.every((person) => !person.assignment)).toBe(true);
+    expect(world.characters.every((person) => person.reviewStatus !== "approved")).toBe(
+      true,
+    );
     expect(() => requirePublishedWorld(source)).toThrow("still a draft");
     expect(
       activityWorldSchema.safeParse({ ...world, status: "published" }).success,
@@ -141,5 +151,24 @@ describe("place-bound activity content admission", () => {
       '{"a":"伦敦","z":[1,{"a":null,"b":false}]}',
     );
     expect(contentHash({ a: 1, b: 2 })).toBe(contentHash({ b: 2, a: 1 }));
+  });
+
+  it("rejects fictional country codes, contradictory geography and a nonlocal city majority", () => {
+    expect(nationalityCountryCodes.size).toBe(249);
+    const invented = assignedDraft();
+    required(required(invented.characters[0]).assignment).nationalityCountryCodes = [
+      "XX",
+    ];
+    expect(activityWorldSchema.safeParse(invented).success).toBe(false);
+    const contradictory = assignedDraft();
+    required(required(contradictory.characters[0]).assignment).card.hometown =
+      "New York";
+    expect(activityWorldSchema.safeParse(contradictory).success).toBe(false);
+    const nonlocal = activityWorldFixture();
+    for (const person of nonlocal.characters) {
+      if (person.assignment?.cityId === "london")
+        person.assignment.localConnection = "settled_here";
+    }
+    expect(activityWorldSchema.safeParse(nonlocal).success).toBe(false);
   });
 });
