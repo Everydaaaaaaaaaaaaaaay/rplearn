@@ -14,7 +14,6 @@ public struct DSActionButtonStyle: ButtonStyle {
     private let fullWidth: Bool
     private let compact: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.isEnabled) private var enabled
 
     public init(variant: Variant = .primary, fullWidth: Bool = true, compact: Bool = false) {
         self.variant = variant
@@ -24,11 +23,11 @@ public struct DSActionButtonStyle: ButtonStyle {
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(compact ? .subheadline : .body, design: .default, weight: .semibold))
+            .font(.system(compact ? .subheadline : .body, design: .rounded, weight: .bold))
             .foregroundStyle(foreground)
             .padding(.horizontal, compact ? 14 : 18)
             .frame(maxWidth: fullWidth ? .infinity : nil)
-            .frame(minHeight: compact ? 44 : 50)
+            .frame(minHeight: compact ? 38 : 50)
             .background {
                 RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
                     .fill(fill)
@@ -42,15 +41,15 @@ public struct DSActionButtonStyle: ButtonStyle {
                 radius: configuration.isPressed ? 2 : 8,
                 y: configuration.isPressed ? 1 : 3
             )
-            .scaleEffect(1)
-            .opacity(!enabled ? 0.4 : configuration.isPressed ? 0.65 : 1)
+            .scaleEffect(reduceMotion || !configuration.isPressed ? 1 : 0.985)
+            .opacity(configuration.isPressed ? 0.92 : 1)
             .animation(reduceMotion ? nil : DSAnimation.feedback, value: configuration.isPressed)
     }
 
     private var fill: Color {
         switch variant {
-        case .primary: DSReadingPalette.primary
-        case .tinted(let color): color == .dsSky || color == .dsSkyDeep ? DSReadingPalette.primary : color
+        case .primary: .dsSky
+        case .tinted(let color): color
         case .secondary: .dsSurfaceMuted
         case .glass: .white.opacity(0.14)
         case .destructive: .dsDanger
@@ -59,10 +58,8 @@ public struct DSActionButtonStyle: ButtonStyle {
 
     private var foreground: Color {
         switch variant {
-        case .primary: DSReadingPalette.onPrimary
-        case .tinted(let color): color == .dsSky || color == .dsSkyDeep ? DSReadingPalette.onPrimary : .white
-        case .destructive: .white
-        case .secondary: DSReadingPalette.ink
+        case .primary, .tinted, .destructive: .white
+        case .secondary: .primary
         case .glass: .white
         }
     }
@@ -84,8 +81,8 @@ public struct DSActionButtonStyle: ButtonStyle {
 
     private var shadow: Color {
         switch variant {
-        case .primary: .clear
-        case .tinted(let color): color == .dsSky || color == .dsSkyDeep ? DSReadingPalette.primary : color.opacity(0.18)
+        case .primary: Color.dsSky.opacity(0.2)
+        case .tinted(let color): color.opacity(0.18)
         case .destructive: Color.dsDanger.opacity(0.18)
         case .secondary: .black.opacity(0.035)
         case .glass: .black.opacity(0.08)

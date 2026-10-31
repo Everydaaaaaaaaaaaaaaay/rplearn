@@ -89,19 +89,107 @@ public extension View {
         }
     }
 
-    /// 保留原调用入口，标签栏背景与全局纸面一致。
+    /// 摄影场景在 iOS 26 交给 Liquid Glass；旧系统由根视图安装明确的
+    /// 胶囊材质，不能再让某个子页面把整个 UITabBar 背景清空。
+    @ViewBuilder
     func dsSceneTabBarBackground() -> some View {
-        toolbarBackground(DSReadingPalette.paper, for: .tabBar)
+        if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
+            toolbarBackground(.hidden, for: .tabBar)
+        } else {
+            self
+        }
     }
 }
 
-// Keep the public call-site API during migration; all content surfaces use one paper material.
 private struct DSSceneGlassModifier: ViewModifier {
     let radius: CGFloat
     let tint: Color?
     let interactive: Bool
     let legibility: DSSceneGlassLegibility
+
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
+
+    @ViewBuilder
     func body(content: Content) -> some View {
-        DSPaper(padding: 0, floating: true) { content }
+        let shape = RoundedRectangle(cornerRadius: radius, style: .continuous)
+
+        if reduceTransparency {
+            decorated(
+                content.background(Color.dsSurface.opacity(0.97), in: shape),
+                shape: shape
+            )
+        } else if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
+            let glass: Glass = legibility == .ambient ? .regular : .clear
+            decorated(
+                legibilityBackground(content, in: shape)
+                    .glassEffect(
+                        glass.tint(tint).interactive(interactive),
+                        in: shape
+                    ),
+                shape: shape
+            )
+        } else {
+            decorated(
+                legibilityBackground(content, in: shape)
+                    .background(.regularMaterial, in: shape),
+                shape: shape
+            )
+        }
+    }
+
+    @ViewBuilder
+    private func legibilityBackground<ContentView: View, Background: Shape>(
+        _ content: ContentView,
+        in shape: Background
+    ) -> some View {
+        if legibility != .ambient {
+            content.background(
+                legibilitySurface.opacity(legibilitySurfaceOpacity),
+                in: shape
+            )
+        } else {
+            content
+        }
+    }
+
+    private func decorated<ContentView: View, Background: Shape>(
+        _ content: ContentView,
+        shape: Background
+    ) -> some View {
+        content
+            .overlay {
+                shape.stroke(
+                    borderColor,
+                    lineWidth: 0.8
+                )
+            }
+            .shadow(
+                color: .black.opacity(colorScheme == .dark ? 0.24 : 0.12),
+                radius: 18,
+                y: 8
+            )
+    }
+
+    private var borderColor: Color {
+        if legibility != .ambient {
+            return Color.dsBrandInk.opacity(colorSchemeContrast == .increased ? 0.26 : 0.13)
+        }
+        return colorScheme == .dark
+            ? Color.white.opacity(0.17)
+            : Color.white.opacity(0.6)
+    }
+
+    private var legibilitySurface: Color {
+        legibility == .shielded ? .dsSurfaceMuted : .dsSurface
+    }
+
+    private var legibilitySurfaceOpacity: Double {
+        if colorSchemeContrast == .increased { return 0.88 }
+        if legibility == .shielded {
+            return colorScheme == .dark ? 0.54 : 0.44
+        }
+        return colorScheme == .dark ? 0.5 : 0.38
     }
 }

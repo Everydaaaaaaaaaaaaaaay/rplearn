@@ -31,7 +31,7 @@ extension ChatView {
                 onMenuRequest: { presentBubbleMenu(message, frame: $0) },
                 contextMenu: { bubbleMenu(message) }
             ) {
-                tappableText(message, textColor: DSReadingPalette.onPrimary)
+                tappableText(message, textColor: .white)
             }
         } else {
             MessageBubble(
@@ -40,7 +40,7 @@ extension ChatView {
                 onMenuRequest: { presentBubbleMenu(message, frame: $0) },
                 contextMenu: { bubbleMenu(message) }
             ) {
-                tappableText(message, textColor: DSReadingPalette.onPrimary)
+                tappableText(message, textColor: .white)
             }
         }
     }

@@ -70,7 +70,7 @@ public struct FavoritesView: View {
                 if isLoading {
                     Spacer()
                     ProgressView()
-                        .tint(DSReadingPalette.tint)
+                        .tint(Color.dsTravelNavy)
                     Spacer()
                 } else if favorites.isEmpty {
                     emptyNotebook
@@ -158,7 +158,7 @@ public struct FavoritesView: View {
             HStack(spacing: 10) {
                 Image(systemName: "magnifyingglass")
                     .font(.body.weight(.semibold))
-                    .foregroundStyle(DSReadingPalette.tint.opacity(0.78))
+                    .foregroundStyle(Color.dsTravelNavy.opacity(0.78))
 
                 TextField(
                     "",
@@ -174,7 +174,7 @@ public struct FavoritesView: View {
                 Button(action: collapseSearch) {
                     Image(systemName: "xmark")
                         .font(.subheadline.weight(.bold))
-                        .foregroundStyle(DSReadingPalette.ink)
+                        .foregroundStyle(Color.dsTravelNavy)
                         .frame(width: 32, height: 32)
                         .contentShape(Circle())
                 }
@@ -201,7 +201,7 @@ public struct FavoritesView: View {
                 Button(action: expandSearch) {
                     Image(systemName: "magnifyingglass")
                         .font(.body.weight(.semibold))
-                        .foregroundStyle(DSReadingPalette.ink)
+                        .foregroundStyle(Color.dsTravelNavy)
                         .frame(width: 48, height: 48)
                         .contentShape(Circle())
                 }
@@ -277,27 +277,119 @@ public struct FavoritesView: View {
     }
 
     private var emptyNotebook: some View {
-        ScrollView {
-            DSPaper {
-                VStack(spacing: 18) {
-                    Image(systemName: "bookmark")
-                        .font(.system(size: 35, weight: .regular))
-                        .foregroundStyle(DSReadingPalette.tint)
-                    Text("还没有收藏").font(.title3.weight(.semibold))
-                    Text("在对话中收藏单词、语法或句子，它们会整理在这里。")
-                        .font(.subheadline).foregroundStyle(DSReadingPalette.secondary)
-                        .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
-                    Button("去对话看看", action: onBrowseConversations)
-                        .buttonStyle(.dsActionPrimary)
-                }.frame(maxWidth: .infinity).padding(.vertical, 12)
-            }.padding(20).frame(maxWidth: 620).frame(maxWidth: .infinity)
-        }.foregroundStyle(DSReadingPalette.ink)
+        GeometryReader { proxy in
+            journalPlane {
+                VStack(spacing: 26) {
+                    VStack(spacing: 10) {
+                        DSHologramBookmarkIcon(
+                            size: 68,
+                            tint: journalInk,
+                            glowColor: .clear,
+                            isElevated: false,
+                            strokeWidth: 1.3
+                        )
+
+                        Text("还没有收藏")
+                            .font(.system(size: 22, weight: .semibold))
+                            .foregroundStyle(journalInk)
+
+                        Text("在对话中收藏单词、语法或句子\n它们会整理在这里。")
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(journalInk)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(3)
+                            .fixedSize(horizontal: true, vertical: false)
+                    }
+
+                    Button(action: onBrowseConversations) {
+                        HStack(spacing: 6) {
+                            Text("去对话看看")
+                            Image(systemName: "chevron.right")
+                        }
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Color.dsTravelNavy)
+                        .padding(.horizontal, 20)
+                        .frame(minHeight: 42)
+                        .overlay {
+                            Capsule()
+                                .stroke(Color.dsTravelNavy.opacity(0.88), lineWidth: 1.3)
+                                .overlay {
+                                    Capsule()
+                                        .stroke(
+                                            Color.dsSkyDeep.opacity(0.36),
+                                            style: StrokeStyle(lineWidth: 0.75, dash: [1.2, 2.4])
+                                        )
+                                        .offset(x: -0.45, y: 0.35)
+                                }
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
+                .frame(width: min(280, proxy.size.width * 0.72))
+            }
+            .position(
+                x: proxy.size.width * 0.545 + journalPlaneAnchorOffset.width,
+                y: proxy.size.height * 0.365 + journalPlaneAnchorOffset.height
+            )
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var noResultsPanel: some View {
-        ContentUnavailableView("没有找到相关收藏", systemImage: "text.magnifyingglass",
-                               description: Text("试试其他关键词或收藏类型"))
-            .foregroundStyle(DSReadingPalette.ink)
+        GeometryReader { proxy in
+            journalPlane {
+                VStack(spacing: DSSpacing.sm) {
+                    Image(systemName: "text.magnifyingglass")
+                        .font(.system(size: 35, weight: .regular))
+                        .foregroundStyle(journalInk)
+                    Text("没有找到相关收藏")
+                        .font(.system(size: 19, weight: .semibold))
+                        .foregroundStyle(journalInk)
+                    Text("试试其他关键词或收藏类型")
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundStyle(journalInk)
+                }
+                .frame(width: min(280, proxy.size.width * 0.72))
+            }
+            .position(
+                x: proxy.size.width * 0.545 + journalPlaneAnchorOffset.width,
+                y: proxy.size.height * 0.35
+            )
+        }
+    }
+
+    private var journalRotation: Double { -9.25 }
+
+    // The photographed page has non-orthogonal projected axes. This anchor
+    // keeps the approved action position fixed after applying that projection.
+    private var journalPlaneAnchorOffset: CGSize {
+        CGSize(width: -39.5, height: 24)
+    }
+
+    private var journalInk: Color {
+        Color.dsTravelNavy
+    }
+
+    private var journalPageProjection: ProjectionTransform {
+        let horizontalSlope = CGFloat(tan(journalRotation * .pi / 180))
+        let verticalSlope = CGFloat(tan(11.75 * .pi / 180))
+        return ProjectionTransform(
+            CGAffineTransform(
+                a: 1,
+                b: horizontalSlope,
+                c: verticalSlope,
+                d: 0.99,
+                tx: 0,
+                ty: 0
+            )
+        )
+    }
+
+    private func journalPlane<Content: View>(
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        content()
+            .projectionEffect(journalPageProjection)
     }
 
     private func favoritePanel<Content: View>(@ViewBuilder content: () -> Content) -> some View {

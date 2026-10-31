@@ -51,10 +51,7 @@ public struct CharacterLearningView: View {
         GeometryReader { viewport in
             ScrollViewReader { reader in
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    Image(DSCitySceneAssets.imageName(for: .learning, regionID: sceneRegionID))
-                        .resizable().scaledToFill().frame(height: 146).clipped()
-                        .clipShape(RoundedRectangle(cornerRadius: 12)).accessibilityHidden(true)
+                VStack(alignment: .leading, spacing: 12) {
                     if let error = model.error ?? model.directionError {
                         LearningPageError(message: error) {
                             Task {

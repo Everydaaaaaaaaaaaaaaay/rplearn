@@ -14,68 +14,48 @@ struct CityOutingView: View {
     let onChat: (CharacterDTO) -> Void
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    @Environment(\.colorSchemeContrast) private var contrast
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var translation = false
     @State private var autoRead = true
     @State private var word: TokenSelection?
     @State private var credits: BackendActivityPhoto?
     @State private var confirmsEnding = false
-    private let ink = DSReadingPalette.ink
+    private let ink = Color.dsTravelNavy
 
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                GeometryReader { scene in
+        ScrollViewReader { reader in
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
                     ActivityPlacePhoto(photo: model.snapshot?.photo ?? model.archive.place.photo)
-                        .frame(width: scene.size.width, height: scene.size.height).clipped()
-                        .overlay {
-                            LinearGradient(colors: [.black.opacity(0.48), .clear, .black.opacity(0.12)],
-                                           startPoint: .top, endPoint: .bottom)
+                        .frame(height: 190).clipShape(RoundedRectangle(cornerRadius: 24))
+                        .overlay(alignment: .bottomTrailing) {
+                            Button { credits = model.snapshot?.photo ?? model.archive.place.photo } label: {
+                                Image(systemName: "info.circle").frame(width: 44, height: 44).background(.regularMaterial, in: Circle())
+                            }.accessibilityLabel("照片信息").padding(10)
                         }
-                }.ignoresSafeArea()
-                VStack(spacing: 0) {
-                    toolbar
-                    HStack {
-                        Button { credits = model.snapshot?.photo ?? model.archive.place.photo } label: {
-                            Label("地点照片", systemImage: "info.circle").font(.caption).frame(minHeight: 44)
-                        }.accessibilityLabel("照片信息")
-                        Spacer()
-                    }.foregroundStyle(.white.opacity(0.85)).padding(.horizontal, 28)
-                    Spacer(minLength: 12)
-                    ScrollViewReader { reader in
-                        ScrollView {
-                            VStack(alignment: .leading, spacing: 18) {
-                                if let snapshot = model.snapshot { story(snapshot) }
-                                else { ProgressView("正在走进\(model.archive.place.titleZh)…").frame(maxWidth: .infinity).padding(.vertical, 30) }
-                                if let message = model.synchronizationMessage {
-                                    VStack(alignment: .leading, spacing: 10) {
-                                        Text(message).font(.caption)
-                                        if model.conflict { Button("恢复服务器进度") { model.restoreServerProgress() } }
-                                        else { Button("重试同步") { model.retrySynchronization() } }
-                                    }.font(.subheadline).foregroundStyle(DSReadingPalette.secondary)
-                                }
-                                if let error = model.error {
-                                    Text(error).font(.callout)
-                                    Button("重试，保留当前人物与选择") { model.retry() }
-                                }
-                                Color.clear.frame(height: 1).id("outing-bottom")
-                            }.padding(18)
-                        }.scrollBounceBehavior(.basedOnSize)
-                            .frame(maxHeight: geometry.size.height * (dynamicTypeSize.isAccessibilitySize ? 0.83 : 0.64))
-                            .background(DSReadingPalette.paper.opacity(reduceTransparency || contrast == .increased ? 1 : 0.95), in: RoundedRectangle(cornerRadius: 12))
-                            .onChange(of: model.snapshot?.revision) { _, _ in
-                                model.confirmVisibleOpening(); model.updateAutoReading(enabled: shouldRead)
-                                withAnimation(reduceMotion ? nil : .easeOut(duration: 0.2)) { reader.scrollTo("outing-bottom", anchor: .bottom) }
-                            }
-                    }.frame(maxWidth: 620).padding(.horizontal, 18).padding(.bottom, 14)
+                    if let snapshot = model.snapshot { story(snapshot) }
+                    else { ProgressView("正在走进\(model.archive.place.titleZh)…").frame(maxWidth: .infinity).padding(.vertical, 30) }
+                    if let message = model.synchronizationMessage {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(message).font(.caption)
+                            if model.conflict { Button("恢复服务器进度") { model.restoreServerProgress() } }
+                            else { Button("重试同步") { model.retrySynchronization() } }
+                        }.font(.subheadline).foregroundStyle(ink.opacity(0.7))
+                    }
+                    if let error = model.error {
+                        Text(error).font(.callout)
+                        Button("重试，保留当前人物与选择") { model.retry() }
+                    }
+                    Color.clear.frame(height: 1).id("outing-bottom")
+                }.padding(24).frame(maxWidth: 620).frame(maxWidth: .infinity)
+            }.scrollBounceBehavior(.basedOnSize)
+                .onChange(of: model.snapshot?.revision) { _, _ in
+                    model.confirmVisibleOpening(); model.updateAutoReading(enabled: shouldRead)
+                    withAnimation(reduceMotion ? nil : .easeOut(duration: 0.2)) { reader.scrollTo("outing-bottom", anchor: .bottom) }
                 }
-            }
         }
-        .foregroundStyle(ink).tint(DSReadingPalette.tint)
-        .background(DSReadingPalette.canvas)
-        .dsTabBarHidden()
+        .safeAreaInset(edge: .top, spacing: 0) { toolbar }
+        .foregroundStyle(ink).tint(ink).background(CityPlacesView.paper)
         .task {
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_OUTING_AUDIO"] == "0" { autoRead = false }
@@ -115,11 +95,11 @@ struct CityOutingView: View {
             } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }.accessibilityLabel("外出选项")
         }.font(.system(size: 18, weight: .medium))
         if dynamicTypeSize.isAccessibilitySize { placeHeading.padding(.horizontal, 8) }
-        }.padding(.leading, 28).padding(.trailing, 8).padding(.vertical, 6).foregroundStyle(.white)
+        }.padding(.leading, 28).padding(.trailing, 8).padding(.vertical, 6).background(CityPlacesView.paper)
     }
     private var placeHeading: some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(model.region.nameZh).font(.caption).foregroundStyle(.white.opacity(0.75))
+            Text(model.region.nameZh).font(.caption).foregroundStyle(ink.opacity(0.6))
             Text(model.archive.place.titleZh).font(.subheadline.weight(.medium))
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -164,16 +144,20 @@ struct CityOutingView: View {
         if snapshot.status == .completed || snapshot.status == .abandoned { ending(snapshot) }
         else if !model.choices.isEmpty {
             ForEach(Array(model.choices.enumerated()), id: \.offset) { index, choice in
-                DSReadingChoice(english: choice.english, chinese: translation ? choice.chinese : nil) {
-                    model.choose(index)
-                }.disabled(model.conflict)
+                Button { model.choose(index) } label: {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(choice.english).font(.body.weight(.medium))
+                        if translation { Text(choice.chinese).font(.subheadline) }
+                    }.frame(maxWidth: .infinity, alignment: .leading).padding(18)
+                        .background(.white, in: RoundedRectangle(cornerRadius: 18))
+                }.buttonStyle(DSSceneEntranceButtonStyle()).disabled(model.conflict)
                     .accessibilityIdentifier("activities.choice.\(index)")
             }
         } else {
             Button { model.advance() } label: {
-                Text(model.isAtEnding ? "结束这次外出" : "继续")
+                Text(model.isAtEnding ? "结束这次外出" : "继续").foregroundStyle(.white)
             }
-                .buttonStyle(.dsActionPrimary)
+                .buttonStyle(.borderedProminent).controlSize(.large)
                 .disabled(model.conflict || (snapshot.status == .reserved && snapshot.beatIndex == model.currentBeats.count - 1))
                 .accessibilityIdentifier("activities.action.next")
         }
@@ -187,13 +171,13 @@ struct CityOutingView: View {
     @ViewBuilder private func ending(_ snapshot: BackendOuting) -> some View {
         if snapshot.mode != .solitude && snapshot.status == .completed {
             if let character = model.character, character.isFriend {
-                Button { onChat(character) } label: { Text("继续聊天") }
-                    .buttonStyle(.dsActionPrimary)
+                Button { onChat(character) } label: { Text("继续聊天").foregroundStyle(.white) }
+                    .buttonStyle(.borderedProminent).controlSize(.large)
             } else {
                 Button { model.addFriend() } label: {
-                    Text(model.pendingCount > 0 ? "同步完成后可添加好友" : "加为好友")
+                    Text(model.pendingCount > 0 ? "同步完成后可添加好友" : "加为好友").foregroundStyle(.white)
                 }
-                    .buttonStyle(.dsActionPrimary)
+                    .buttonStyle(.borderedProminent).controlSize(.large)
                     .disabled(model.pendingCount > 0 || model.contactBusy)
                     .accessibilityIdentifier("activities.encounter.addFriend")
             }

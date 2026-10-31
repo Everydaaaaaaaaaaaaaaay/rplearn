@@ -51,7 +51,6 @@ public struct ConversationListView: View {
 
     public var body: some View {
         searchAdaptedContent
-            .background { DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .messages, regionID: currentRegionID), tone: .cool) }
             .navigationTitle("信息")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(item: $selectedConversationID) { characterID in
@@ -96,12 +95,20 @@ public struct ConversationListView: View {
             }
     }
 
+    @ViewBuilder
     private var searchAdaptedContent: some View {
-        sceneContent
-            .safeAreaInset(edge: .top, spacing: 0) {
-                DSLegacySceneSearchField(text: $searchText, prompt: "搜索信息")
-                    .padding(.horizontal, 20).padding(.top, 4).padding(.bottom, 18)
-            }
+        if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
+            sceneContent
+                .dsSceneSearch(text: $searchText, title: "信息", prompt: "搜索信息")
+        } else {
+            sceneContent
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    DSLegacySceneSearchField(text: $searchText, prompt: "搜索信息")
+                        .padding(.horizontal, DSSpacing.md)
+                        .padding(.top, 4)
+                        .padding(.bottom, DSSpacing.sm)
+                }
+        }
     }
 
     private var sceneContent: some View {
@@ -139,19 +146,23 @@ public struct ConversationListView: View {
                                 rowLabel(row)
                                     .padding(.horizontal, DSSpacing.md)
                                     .padding(.vertical, DSSpacing.sm)
-
+                                    .dsSceneGlass(
+                                        tint: Color.white.opacity(0.06),
+                                        interactive: true,
+                                        legibility: .enhanced
+                                    )
                             }
                             .buttonStyle(.plain)
                             .listRowInsets(
                                 EdgeInsets(
-                                    top: 0,
-                                    leading: 20,
-                                    bottom: 0,
-                                    trailing: 20
+                                    top: DSSpacing.xs / 2,
+                                    leading: DSSpacing.md,
+                                    bottom: DSSpacing.xs / 2,
+                                    trailing: DSSpacing.md
                                 )
                             )
-                            .listRowBackground(DSReadingPalette.paper)
-                            .listRowSeparatorTint(DSReadingPalette.line)
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
                             .swipeActions(edge: .leading, allowsFullSwipe: true) {
                                 if let conversationID = row.summary?.conversationID {
                                     Button {
@@ -180,8 +191,8 @@ public struct ConversationListView: View {
                         }
                     }
                 }
-                .listStyle(.insetGrouped)
-                .listSectionSpacing(0)
+                .listStyle(.plain)
+                .listSectionSpacing(DSSpacing.xs)
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
             }
@@ -220,7 +231,7 @@ public struct ConversationListView: View {
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
                     Text(row.character.displayName)
-                        .font(.headline.weight(.semibold))
+                        .font(.headline.weight(.bold))
                         .foregroundStyle(Color.dsSceneTextPrimary)
                         .lineLimit(1)
 
@@ -282,7 +293,7 @@ public struct ConversationListView: View {
 
             VStack(spacing: DSSpacing.xs) {
                 Text("通讯录还在等第一位旅伴")
-                    .font(.system(.title3, design: .default, weight: .bold))
+                    .font(.system(.title3, design: .rounded, weight: .bold))
                     .foregroundStyle(Color.dsSceneTextPrimary)
                 Text("完成开场剧情后，你认识的伙伴和消息会出现在这里")
                     .font(.subheadline)

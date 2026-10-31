@@ -9,6 +9,7 @@ struct SubscriptionView: View {
     @State private var selectedProductID: String?
     @State private var managementError: String?
     @Environment(\.openURL) private var openURL
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     private var products: [PurchasableProduct] {
         #if DEBUG
@@ -68,15 +69,29 @@ struct SubscriptionView: View {
         }
         .accessibilityIdentifier("subscription.content")
         .foregroundStyle(Color.dsPaperInk)
-        .tint(DSReadingPalette.tint)
+        .tint(.dsTravelNavy)
         .safeAreaInset(edge: .bottom, spacing: 0) { purchaseDock }
-        .background(DSReadingPalette.canvas.ignoresSafeArea())
+        .background {
+            DSWorkbenchBackdrop(focus: .subscription)
+            LinearGradient(
+                stops: [
+                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.94), location: 0),
+                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.88), location: 0.26),
+                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.18), location: 0.48),
+                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.12), location: 1)
+                ],
+                startPoint: .top, endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            .allowsHitTesting(false)
+        }
         .task { await billing.synchronize(showLoading: true) }
         .alert("无法打开订阅管理", isPresented: Binding(
             get: { managementError != nil }, set: { if !$0 { managementError = nil } }
         )) { Button("好", role: .cancel) {} } message: { Text(managementError ?? "") }
     }
 
+    private var paperTone: Color { Color(red: 0.985, green: 0.970, blue: 0.925) }
 
     private var introduction: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -108,7 +123,7 @@ struct SubscriptionView: View {
             Text(title).font(.subheadline)
         } icon: {
             Image(systemName: symbol)
-                .foregroundStyle(DSReadingPalette.tint)
+                .foregroundStyle(Color.dsTravelNavy)
                 .frame(width: 24)
         }
     }
@@ -148,7 +163,7 @@ struct SubscriptionView: View {
             HStack(alignment: .top, spacing: 12) {
                 Image(systemName: selectedProduct?.id == product.id ? "checkmark.circle.fill" : "circle")
                     .font(.title3)
-                    .foregroundStyle(selectedProduct?.id == product.id ? DSReadingPalette.tint : Color.dsPaperInkSecondary)
+                    .foregroundStyle(selectedProduct?.id == product.id ? Color.dsTravelNavy : Color.dsPaperInkSecondary)
                     .padding(.top, 2)
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(alignment: .firstTextBaseline) {
@@ -187,7 +202,7 @@ struct SubscriptionView: View {
                 }
             } label: {
                 HStack(spacing: 10) {
-                    if busy { ProgressView().tint(DSReadingPalette.onPrimary) }
+                    if busy { ProgressView().tint(.white) }
                     Text(isCurrentPlan ? "管理当前订阅" : selectedProduct.map { "订阅 \($0.tier.displayName)" } ?? "订阅会员")
                         .font(.headline)
                 }
@@ -214,7 +229,7 @@ struct SubscriptionView: View {
         .padding(.horizontal, 24)
         .padding(.vertical, 16)
         .frame(maxWidth: .infinity)
-        .background(DSReadingPalette.paper)
+        .background(paperTone.opacity(reduceTransparency ? 1 : 0.84))
         .overlay(alignment: .top) { Divider() }
     }
 

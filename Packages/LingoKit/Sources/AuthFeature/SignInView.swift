@@ -59,7 +59,7 @@ public struct SignInView: View {
             DSObsidianMedallion(systemImage: "wallet.pass", size: 72)
 
             Text("继续你的语言之旅")
-                .font(.system(.largeTitle, design: .default, weight: .bold))
+                .font(.system(.largeTitle, design: .rounded, weight: .bold))
                 .foregroundStyle(Color.dsPaperInk)
                 .multilineTextAlignment(.center)
 
@@ -69,6 +69,10 @@ public struct SignInView: View {
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
         }
+        .shadow(
+            color: Color(red: 0.985, green: 0.970, blue: 0.925).opacity(0.94),
+            radius: 8
+        )
     }
 
     private var signInPanel: some View {
@@ -189,7 +193,7 @@ public struct SignInView: View {
                 .padding(14)
                 .foregroundStyle(Color.dsPaperInk)
                 .background(
-                    DSReadingPalette.canvas,
+                    Color.white.opacity(0.56),
                     in: RoundedRectangle(cornerRadius: DSRadius.inline)
                 )
                 .overlay {
@@ -202,7 +206,7 @@ public struct SignInView: View {
                 .padding(14)
                 .foregroundStyle(Color.dsPaperInk)
                 .background(
-                    DSReadingPalette.canvas,
+                    Color.white.opacity(0.56),
                     in: RoundedRectangle(cornerRadius: DSRadius.inline)
                 )
                 .overlay {
@@ -224,7 +228,7 @@ public struct SignInView: View {
             submitCredentials()
         } label: {
             HStack {
-                if isBusy { ProgressView().tint(DSReadingPalette.onPrimary) }
+                if isBusy { ProgressView().tint(.white) }
                 Text(mode == .login ? "登录" : "创建账号")
                     .frame(maxWidth: .infinity)
             }

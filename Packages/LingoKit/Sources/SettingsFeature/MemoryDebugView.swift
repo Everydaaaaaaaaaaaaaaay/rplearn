@@ -86,6 +86,18 @@ public struct MemoryDebugView: View {
         .navigationTitle("记忆档案")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("记忆档案")
+                    .font(.headline.weight(.heavy))
+                    .foregroundStyle(Color.dsHologramIvory)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color.dsTravelNavy.opacity(0.94), in: RoundedRectangle(cornerRadius: 10))
+                    .accessibilityAddTraits(.isHeader)
+            }
+
+        }
         .alert("纠正记忆", isPresented: $showsEditor) {
             TextField("正确的内容", text: $editedText)
             Button("保存") {
@@ -112,7 +124,7 @@ public struct MemoryDebugView: View {
 
                 VStack(alignment: .leading, spacing: 3) {
                     Text("记忆档案库")
-                        .font(.system(.title2, design: .default, weight: .bold))
+                        .font(.system(.title2, design: .rounded, weight: .bold))
                         .foregroundStyle(Color.dsPaperInk)
                     Text("\(subscription.displayName) 订阅 · 三层角色记忆")
                         .font(.subheadline)

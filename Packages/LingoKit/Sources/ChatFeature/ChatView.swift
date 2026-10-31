@@ -778,7 +778,7 @@ public struct ChatView: View {
                         bubbleMenu(message)
                     }
                 ) {
-                    tappableText(message, textColor: DSReadingPalette.ink)
+                    tappableText(message, textColor: nil)
                 }
                 .environment(\.tutorialBubbleFocused, deps.tutorial?.focus == "chat.bubble"
                     && message.id == viewModel.messages.last(where: { $0.role == .assistant })?.id)

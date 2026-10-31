@@ -19,19 +19,28 @@ final class SceneSearchTests: XCTestCase {
         app.launch()
         defer { app.terminate() }
 
+        let open = app.buttons["sceneSearch.open"]
+        let close = app.buttons["sceneSearch.close"]
         let field = app.textFields["sceneSearch.field"]
         for _ in 0..<3 {
-            XCTAssertTrue(field.waitForExistence(timeout: 15))
-            field.tap()
+            XCTAssertTrue(open.waitForExistence(timeout: 15))
+            XCTAssertLessThanOrEqual(open.frame.width, 60, "Collapsed search must remain circular")
+            open.tap()
+            XCTAssertTrue(field.waitForExistence(timeout: 3))
             XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3))
+            XCTAssertTrue(close.isHittable)
             field.typeText("Oliver")
             app.buttons["sceneSearch.dismissKeyboard"].tap()
             XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
-            XCTAssertTrue(field.exists, "收起键盘应保留搜索框")
+            XCTAssertTrue(field.exists, "Dismissing the keyboard preserves search")
             XCTAssertEqual(field.value as? String, "Oliver")
-            app.buttons["sceneSearch.clear"].tap()
-            XCTAssertTrue(field.exists)
+            field.tap()
+            XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3))
+            close.tap()
+            XCTAssertTrue(field.waitForNonExistence(timeout: 3))
+            XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
         }
-        XCTAssertTrue(field.isHittable)
+        XCTAssertTrue(open.isHittable)
+        XCTAssertLessThanOrEqual(open.frame.width, 60)
     }
 }

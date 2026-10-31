@@ -92,8 +92,10 @@ public struct MyPageView: View {
                 SubscriptionView(billing: billing)
             } else if let section {
                 detailPage(section)
+            } else if dynamicTypeSize.isAccessibilitySize {
+                accessibleContent
             } else {
-                unifiedContent
+                modernTravelDesk
             }
         }
         .background(Color.dsBackground.ignoresSafeArea())
@@ -118,48 +120,19 @@ public struct MyPageView: View {
 
     }
 
-    private var unifiedContent: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text("我的").font(.system(size: 18, weight: .semibold))
-                Spacer()
-                Button(action: onOpenSettings) {
-                    Image(systemName: "gearshape").font(.system(size: 18)).frame(width: 44, height: 44)
-                }.accessibilityLabel("设置").accessibilityIdentifier("me.settings")
-            }.padding(.horizontal, 20).frame(height: 54)
-            ScrollView {
-                VStack(spacing: 20) {
-                    profileCard
-                    DSPaper {
-                        VStack(spacing: 0) {
-                            Button(action: onCalibrateLevel) {
-                                DSReadingRow("我的英语旅程", symbol: "book.closed", value: profile?.difficultyLevel.displayName)
-                            }.accessibilityIdentifier("me.level")
-                            Divider().overlay(DSReadingPalette.line)
-                            Button(action: onOpenFavorites) { DSReadingRow("收藏夹", symbol: "bookmark") }.accessibilityLabel("收藏夹，单词与语法点")
-                            Divider().overlay(DSReadingPalette.line)
-                            Button(action: onOpenMemory) { DSReadingRow("记忆档案", symbol: "leaf") }
-                        }
-                    }
-                    DSPaper {
-                        VStack(spacing: 0) {
-                            Button(action: onOpenAccount) {
-                                DSReadingRow("账号与积分", symbol: "person.crop.circle", value: presentation.accountBadgeTitle)
-                            }.accessibilityIdentifier("me.profile").accessibilityLabel("个人资料，\(presentation.displayName)")
-                            Divider().overlay(DSReadingPalette.line)
-                            Button(action: onOpenSubscription) { DSReadingRow("会员订阅", symbol: "creditcard") }
-                                .accessibilityIdentifier("me.subscription")
-                            Divider().overlay(DSReadingPalette.line)
-                            usageButton
-                        }
-                    }
-                    DSPaper {
-                        Button(action: onOpenSettings) { DSReadingRow("设置", symbol: "gearshape", value: "语言、提醒与账号") }.accessibilityLabel("设置，AI、语音与偏好")
-                    }
-                }.buttonStyle(DSReadingPressStyle()).padding(.horizontal, 20).padding(.vertical, 12)
-                    .frame(maxWidth: 620).frame(maxWidth: .infinity)
-            }.refreshable { await reload() }
-        }.foregroundStyle(DSReadingPalette.ink)
+    private var accessibleContent: some View {
+        ScrollView {
+            VStack(spacing: DSSpacing.md) {
+                profileCard
+                learningProfileCard
+                Button("会员订阅", action: onOpenSubscription)
+                usageButton
+                entryList
+                debugCard
+            }
+            .padding(DSSpacing.md)
+        }
+        .refreshable { await reload() }
     }
 
     /// 现代旅行者工作台：背景只承载实物，全部入口由统一的实时全息组件绘制。
@@ -473,7 +446,7 @@ public struct MyPageView: View {
                     HStack(spacing: DSSpacing.sm) {
                         avatarPicker(size: 60)
                         Text(presentation.displayName)
-                            .font(.title3.weight(.semibold))
+                            .font(.title2.bold())
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     DSChip(
@@ -489,10 +462,10 @@ public struct MyPageView: View {
                 }
             } else {
                 HStack(spacing: DSSpacing.md) {
-                    avatarPicker(size: 56)
+                    avatarPicker(size: 68)
                     VStack(alignment: .leading, spacing: 5) {
                         Text(presentation.displayName)
-                            .font(.title3.weight(.semibold))
+                            .font(.title2.bold())
                         DSChip(
                             presentation.accountBadgeTitle,
                             tint: presentation.accountBadgeTint,
@@ -515,7 +488,7 @@ public struct MyPageView: View {
                 }
             }
         }
-        .dsSurface(.grouped, padding: 20)
+        .dsSurface(.elevated)
     }
 
     private var accountCredits: some View {
@@ -703,7 +676,7 @@ extension MyPageView {
                                     avatarPicker(size: 72)
                                     VStack(alignment: .leading, spacing: 8) {
                                         Text(presentation.displayName)
-                                            .font(.title3.weight(.semibold))
+                                            .font(.title2.bold())
                                             .fixedSize(horizontal: false, vertical: true)
                                         Text(presentation.accountBadgeTitle)
                                             .font(.subheadline)

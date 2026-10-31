@@ -210,7 +210,7 @@ public struct MessageBubble<Content: View>: View {
         case .incoming:
             Color.dsBubbleIncoming
         case .outgoing:
-            DSReadingPalette.primary
+            Color.dsSky
         }
     }
 

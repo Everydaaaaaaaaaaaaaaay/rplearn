@@ -46,9 +46,9 @@ public struct LondonEpisodeView: View {
     @Environment(\.colorSchemeContrast) private var contrast
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
-    private let ink = DSReadingPalette.ink
-    private let paper = DSReadingPalette.paper
-    private let gold = DSReadingPalette.gold
+    private let ink = Color(red: 0.13, green: 0.19, blue: 0.18)
+    private let paper = Color(red: 0.98, green: 0.96, blue: 0.90)
+    private let gold = Color(red: 0.84, green: 0.68, blue: 0.40)
 
     public init(deps: StoryDependencies, storageNamespace: String = "guest", resourceName: String = "departures_london_v1") {
         self.deps = deps
@@ -88,9 +88,9 @@ public struct LondonEpisodeView: View {
                     } description: {
                         Text("剧情或美术资源缺失。请返回后重试。")
                     } actions: { Button("返回剧情") { dismiss() } }
-                    .foregroundStyle(.white)
+                    .foregroundStyle(paper)
                 } else {
-                    ProgressView("正在打开这一页…").tint(paper).foregroundStyle(.white)
+                    ProgressView("正在打开这一页…").tint(paper).foregroundStyle(paper)
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
@@ -232,7 +232,7 @@ public struct LondonEpisodeView: View {
                 }
             }.padding(.horizontal, 9).accessibilityHidden(true)
         }
-        .foregroundStyle(.white)
+        .foregroundStyle(paper)
         .buttonStyle(EpisodePressStyle())
     }
 
@@ -240,8 +240,8 @@ public struct LondonEpisodeView: View {
         VStack(alignment: .leading, spacing: 10) {
             Text(resourceName == "departures_london_v1" ? "第一站 · 伦敦" : "一段新的经历").font(.caption.weight(.medium)).tracking(3).foregroundStyle(gold)
             Text(resourceName == "departures_london_v1" ? "空着的\n那把椅子" : (session?.episode.title ?? "出发之后")).font(.system(size: 38, weight: .medium, design: .serif))
-                .foregroundStyle(.white).lineSpacing(5)
-            Text(resourceName == "departures_london_v1" ? "A PLACE FOR ONE PAGE" : "AFTER DEPARTURE").font(.system(size: 10)).tracking(3).foregroundStyle(.white.opacity(0.8))
+                .foregroundStyle(paper).lineSpacing(5)
+            Text(resourceName == "departures_london_v1" ? "A PLACE FOR ONE PAGE" : "AFTER DEPARTURE").font(.system(size: 10)).tracking(3).foregroundStyle(paper.opacity(0.8))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.leading, 10)
@@ -276,9 +276,9 @@ public struct LondonEpisodeView: View {
                         )
                         .font(session.isFinished
                               ? .custom("Baskerville-Italic", size: 32, relativeTo: .title2)
-                              : .body)
-                        // Preserve the custom ending face while ordinary lines use the shared system face.
-                        .fontDesign(session.isFinished ? nil : .default)
+                              : .system(.body, design: .serif))
+                        // The app-wide rounded design otherwise replaces the custom face.
+                        .fontDesign(session.isFinished ? nil : .rounded)
                         .italic(session.isFinished)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .accessibilityIdentifier("episode.line")
@@ -288,9 +288,19 @@ public struct LondonEpisodeView: View {
                         }
                         if let choices = session.current.choices {
                             ForEach(choices) { choice in
-                                DSReadingChoice(english: choice.text, chinese: showTranslation ? choice.translation : nil) {
-                                    choose(choice.id)
-                                }
+                                Button { choose(choice.id) } label: {
+                                    HStack(alignment: .top, spacing: 12) {
+                                        Text("↗").foregroundStyle(gold)
+                                        VStack(alignment: .leading, spacing: 6) {
+                                            Text(choice.text).font(.subheadline.weight(.medium))
+                                            if showTranslation { Text(choice.translation).font(.caption).opacity(0.75) }
+                                        }
+                                        Spacer(minLength: 0)
+                                    }
+                                    .foregroundStyle(ink).padding(14).frame(maxWidth: .infinity, alignment: .leading)
+                                    .background(ink.opacity(0.045), in: RoundedRectangle(cornerRadius: 6))
+                                    .overlay(RoundedRectangle(cornerRadius: 6).stroke(gold.opacity(0.5), lineWidth: 1))
+                                }.buttonStyle(EpisodePressStyle())
                                     .accessibilityIdentifier("episode.choice.\(choice.id)")
                             }
                         }
@@ -312,9 +322,9 @@ public struct LondonEpisodeView: View {
             if session.isFinished {
                 Button { transitionTask = Task { await finish() } } label: {
                     Label(saving ? "正在保存…" : operationError != nil ? "重试完成" : "结束旅程", systemImage: "arrow.right")
-                        .font(.subheadline.weight(.semibold)).foregroundStyle(DSReadingPalette.onPrimary)
-                        .frame(maxWidth: .infinity, minHeight: 50)
-                        .background(DSReadingPalette.primary, in: RoundedRectangle(cornerRadius: 12))
+                        .font(.subheadline.weight(.semibold)).foregroundStyle(paper)
+                        .frame(maxWidth: .infinity, minHeight: 48)
+                        .background(ink, in: RoundedRectangle(cornerRadius: 10))
                 }
                 .buttonStyle(EpisodePressStyle())
                 .accessibilityIdentifier("episode.finish")
@@ -344,10 +354,10 @@ public struct LondonEpisodeView: View {
         }
         .disabled(saving)
         .padding(.horizontal, 20).padding(.top, 6).padding(.bottom, 8)
-        .background(paper.opacity(reduceTransparency || contrast == .increased ? 1 : 0.95),
+        .background(paper.opacity(reduceTransparency || contrast == .increased ? 1 : 0.88),
                     in: RoundedRectangle(cornerRadius: 12))
         .overlay(RoundedRectangle(cornerRadius: 12)
-            .stroke(contrast == .increased ? ink.opacity(0.35) : DSReadingPalette.line, lineWidth: 1))
+            .stroke(contrast == .increased ? ink.opacity(0.35) : .white.opacity(0.55), lineWidth: 1))
         .shadow(color: .black.opacity(0.18), radius: 12, y: 5)
         .environment(\.colorScheme, .light)
     }

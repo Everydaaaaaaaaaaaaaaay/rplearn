@@ -17,15 +17,14 @@ public struct DSLegacySceneSearchField: View {
         HStack(spacing: 10) {
             Image(systemName: "magnifyingglass")
                 .font(.body.weight(.semibold))
-                .foregroundStyle(DSReadingPalette.ink.opacity(0.78))
+                .foregroundStyle(Color.dsTravelNavy.opacity(0.78))
 
             TextField(prompt, text: $text)
                 .focused($isFocused)
-                .accessibilityIdentifier("sceneSearch.field")
                 .submitLabel(.search)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
-                .foregroundStyle(DSReadingPalette.ink)
+                .foregroundStyle(Color.dsTravelNavy)
 
             if !text.isEmpty {
                 Button {
@@ -33,27 +32,22 @@ public struct DSLegacySceneSearchField: View {
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                         .font(.body)
-                        .foregroundStyle(DSReadingPalette.ink.opacity(0.66))
+                        .foregroundStyle(Color.dsTravelNavy.opacity(0.66))
                         .frame(width: 32, height: 32)
                         .contentShape(Circle())
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("清除搜索").accessibilityIdentifier("sceneSearch.clear")
-            }
-            if isFocused {
-                Button { isFocused = false } label: {
-                    Image(systemName: "keyboard.chevron.compact.down").frame(width: 44, height: 44)
-                }.buttonStyle(.plain).accessibilityLabel("收起键盘").accessibilityIdentifier("sceneSearch.dismissKeyboard")
+                .accessibilityLabel("清除搜索")
             }
         }
         .padding(.horizontal, 14)
-        .frame(minHeight: 44)
+        .frame(minHeight: 48)
         .background(
             Color.dsSurface.opacity(0.58),
-            in: RoundedRectangle(cornerRadius: 12, style: .continuous)
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
         )
         .dsSceneGlass(
-            radius: 12,
+            radius: 20,
             tint: Color.white.opacity(0.04),
             interactive: true,
             legibility: .shielded

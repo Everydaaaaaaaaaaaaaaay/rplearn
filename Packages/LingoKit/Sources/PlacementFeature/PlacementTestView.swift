@@ -176,7 +176,7 @@ public struct PlacementTestView: View {
             } label: {
                 Image(systemName: phase == .levelSelection ? "chevron.left" : "xmark")
                     .font(.body.weight(.semibold))
-                    .foregroundStyle(DSReadingPalette.ink)
+                    .foregroundStyle(Color.dsTravelNavy)
                     .frame(width: 44, height: 44)
                     .contentShape(Circle())
             }
@@ -233,7 +233,7 @@ public struct PlacementTestView: View {
                     )
 
                     Text("选择或测一测，聊得更合拍")
-                        .font(.system(.title2, design: .default, weight: .bold))
+                        .font(.system(.title2, design: .rounded, weight: .bold))
                         .foregroundStyle(Color.dsPaperInk)
                         .multilineTextAlignment(.center)
                     Text("从基础开始测一测，找到适合现在的学习起点。")
@@ -260,7 +260,7 @@ public struct PlacementTestView: View {
                                 DSObsidianMedallion(systemImage: "safari", size: 58)
                                 VStack(alignment: .leading, spacing: 3) {
                                     Text("渐进式水平测评")
-                                        .font(.system(.title3, design: .default, weight: .bold))
+                                        .font(.system(.title3, design: .rounded, weight: .bold))
                                         .foregroundStyle(Color.dsPaperInk)
                                     Text("完成后给出适合你的对话难度建议")
                                         .font(.caption)
@@ -356,7 +356,7 @@ public struct PlacementTestView: View {
                         Text(question.prompt)
                             .accessibilityAddTraits(.isHeader)
                             .accessibilityIdentifier("placement.prompt")
-                            .font(.system(.title3, design: .default, weight: .bold))
+                            .font(.system(.title3, design: .rounded, weight: .bold))
                             .foregroundStyle(Color.dsPaperInk)
                             .fixedSize(horizontal: false, vertical: true)
 

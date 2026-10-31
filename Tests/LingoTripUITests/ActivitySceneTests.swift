@@ -140,23 +140,23 @@ final class ActivitySceneTests: XCTestCase {
         tap("activities.scene.park-seat", app: app)
         tap("activities.action.start", app: app)
         XCTAssertTrue(app.otherElements["activities.journey"].waitForExistence(timeout: 3))
-        XCTAssertTrue(app.mainTabButtons["我的"].isHittable)
+        XCTAssertTrue(app.tabBars.buttons["我的"].isHittable)
         attach("journey-glass-countdown", app: app)
-        app.mainTabButtons["我的"].tap()
+        app.tabBars.buttons["我的"].tap()
         XCTAssertFalse(app.buttons["activities.choice.0"].exists)
         // Wall-clock deadline runs offscreen; no application navigation should occur.
         let wait = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            app.mainTabButtons["活动"].value as? String == "有未读活动"
+            app.tabBars.buttons["活动"].value as? String == "•"
         }, object: nil)
         _ = XCTWaiter.wait(for: [wait], timeout: 16)
-        XCTAssertTrue(app.mainTabButtons["我的"].isSelected)
-        app.mainTabButtons["活动"].tap()
+        XCTAssertTrue(app.tabBars.buttons["我的"].isSelected)
+        app.tabBars.buttons["活动"].tap()
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 3))
         XCTAssertFalse(app.otherElements["activities.journey"].exists)
         attach("journey-encounter-result", app: app)
         tap("activities.action.next", app: app)
-        app.mainTabButtons["我的"].tap()
-        app.mainTabButtons["活动"].tap()
+        app.tabBars.buttons["我的"].tap()
+        app.tabBars.buttons["活动"].tap()
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 4))
     }
 

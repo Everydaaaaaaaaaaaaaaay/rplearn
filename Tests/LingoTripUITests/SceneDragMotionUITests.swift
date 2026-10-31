@@ -13,7 +13,7 @@ final class SceneDragMotionUITests: XCTestCase {
         defer { app.terminate() }
 
         for (tab, entryName) in [("活动", "世界地图"), ("我的", "设置，AI、语音与偏好")] {
-            app.mainTabButtons[tab].tap()
+            app.tabBars.buttons[tab].tap()
             let entry = app.buttons[entryName]
             XCTAssertTrue(entry.waitForExistence(timeout: 15))
             for target in [CGVector(dx: 0.8, dy: 0.7), CGVector(dx: 0.15, dy: 0.25)] {
@@ -30,8 +30,7 @@ final class SceneDragMotionUITests: XCTestCase {
             entry.tap()
             let back = tab == "活动" ? app.buttons["返回首页"] : app.navigationBars["设置"].buttons.firstMatch
             XCTAssertTrue(back.waitForExistence(timeout: 5), "拖动后仍应正常进入二级页面")
-            if tab == "活动" { back.tap() }
-            else { app.mainTabButtons[tab].tap() }
+            app.tabBars.buttons[tab].tap()
             XCTAssertTrue(back.waitForNonExistence(timeout: 5))
             XCTAssertTrue(entry.isHittable)
         }

@@ -66,7 +66,7 @@ final class OnboardingWelcomeTests: XCTestCase {
             "欢迎页完成后必须进入登录页"
         )
         XCTAssertTrue(app.buttons["使用邮箱登录或注册"].exists)
-        XCTAssertFalse(app.otherElements["main.tabs"].exists, "未登录时不得显示主界面")
+        XCTAssertFalse(app.tabBars.firstMatch.exists, "未登录时不得显示主界面")
     }
 
     func testWelcomeSupportsDirectSwipePaging() {
@@ -421,7 +421,7 @@ final class OnboardingWelcomeTests: XCTestCase {
         XCTAssertTrue(skipTutorial.waitForExistence(timeout: 8)); skipTutorial.tap()
         XCTAssertTrue(skipTutorial.waitForNonExistence(timeout: 8))
         let mainReady = XCTNSPredicateExpectation(predicate: NSPredicate { [self] _, _ in
-            app.mainTabButtons.matching(identifier: "信息").allElementsBoundByIndex.contains { $0.isHittable }
+            app.tabBars.buttons.matching(identifier: "信息").allElementsBoundByIndex.contains { $0.isHittable }
         }, object: nil)
         XCTAssertEqual(XCTWaiter.wait(for: [mainReady], timeout: 10), .completed)
         XCTAssertFalse(app.scrollViews["onboarding.story.messages"].exists)

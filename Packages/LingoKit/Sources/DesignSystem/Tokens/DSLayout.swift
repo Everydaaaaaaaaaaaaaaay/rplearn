@@ -2,9 +2,9 @@ import CoreGraphics
 
 public enum DSRadius {
     public static let inline: CGFloat = 12
-    public static let card: CGFloat = 12
+    public static let card: CGFloat = 16
     public static let bubble: CGFloat = 18
-    public static let hero: CGFloat = 12
+    public static let hero: CGFloat = 24
 }
 
 public enum DSSpacing {

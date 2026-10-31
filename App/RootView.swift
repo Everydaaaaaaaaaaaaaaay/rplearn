@@ -36,7 +36,6 @@ struct RootView: View {
 
     @State private var unreadCount = 0
     @State private var selectedTab: AppTab = .messages
-    @State private var tabBarHiddenByPage: [AppTab: Bool] = [:]
     @State private var visitedTabs: Set<AppTab> = []
     @State private var messagesPath = NavigationPath()
     @State private var contactsPath = NavigationPath()
@@ -633,8 +632,6 @@ struct RootView: View {
         }
     }
 
-    private var tabOrder: [AppTab] { [.messages, .contacts, .home, .me] }
-
     private var tabs: some View {
         TabView(selection: Binding(
             get: { selectedTab },
@@ -644,53 +641,27 @@ struct RootView: View {
             }
         )) {
             deferredTab(.messages) { messagesStack }
-                .toolbar(.hidden, for: .tabBar)
-                .onPreferenceChange(DSTabBarHiddenPreference.self) { hidden in
-                    tabBarHiddenByPage[.messages] = hidden
-                }
                 .tag(AppTab.messages)
                 .tabItem {
                     Label("信息", systemImage: "bubble.left.and.bubble.right")
                 }
                 .badge(unreadCount)
             deferredTab(.contacts) { contactsStack }
-                .toolbar(.hidden, for: .tabBar)
-                .onPreferenceChange(DSTabBarHiddenPreference.self) { hidden in
-                    tabBarHiddenByPage[.contacts] = hidden
-                }
                 .tag(AppTab.contacts)
                 .tabItem {
                     Label("联系人", systemImage: "person.2")
                 }
             deferredTab(.home) { homeStack }
-                .toolbar(.hidden, for: .tabBar)
-                .onPreferenceChange(DSTabBarHiddenPreference.self) { hidden in
-                    tabBarHiddenByPage[.home] = hidden
-                }
                 .tag(AppTab.home)
                 .tabItem {
                     Label("活动", systemImage: "figure.walk")
                 }
                 .badge(activityJourney.hasUnreadResult ? "•" : nil)
             deferredTab(.me) { meStack }
-                .toolbar(.hidden, for: .tabBar)
-                .onPreferenceChange(DSTabBarHiddenPreference.self) { hidden in
-                    tabBarHiddenByPage[.me] = hidden
-                }
                 .tag(AppTab.me)
                 .tabItem {
                     Label("我的", systemImage: "person")
                 }
-        }
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            if tabBarHiddenByPage[selectedTab] != true && !(selectedTab == .home && activeHomeDestination == .map) {
-                DSBottomBar(selected: tabOrder.firstIndex(of: selectedTab) ?? 0,
-                            unreadCount: unreadCount, activityUnread: activityJourney.hasUnreadResult) { index in
-                    let tab = tabOrder[index]
-                    returnTabToRoot(tab)
-                    selectedTab = tab
-                }
-            }
         }
         .onChange(of: selectedTab) { previous, current in
             visitedTabs.formUnion([previous, current])
@@ -699,6 +670,9 @@ struct RootView: View {
         .background {
             if #available(iOS 27.0, *) {
                 TabSceneTransitionInstaller()
+            }
+            if !DSPlatformVisualPolicy.usesLiquidGlass {
+                LegacyTabBarAppearanceInstaller()
             }
         }
     }
@@ -956,9 +930,9 @@ struct RootView: View {
                     Label("学习实测 · 切换档位做题", systemImage: "book.pages")
                         .font(.subheadline.weight(.semibold)).frame(maxWidth: .infinity).padding(12)
                 }
-                .buttonStyle(.dsActionPrimary)
+                .buttonStyle(.borderedProminent)
                 .padding(.horizontal, 20).padding(.vertical, 8)
-                .background(DSReadingPalette.canvas)
+                .background(.regularMaterial)
                 .accessibilityIdentifier("me.learning-trial")
             }
         }

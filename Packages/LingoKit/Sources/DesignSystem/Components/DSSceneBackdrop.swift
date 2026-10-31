@@ -119,7 +119,17 @@ public struct DSLearningSceneBackdrop: View {
     private let regionID: String?
     public init(regionID: String?) { self.regionID = regionID }
     public var body: some View {
-        DSReadingPalette.canvas.ignoresSafeArea().allowsHitTesting(false).accessibilityHidden(true)
+        DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .learning, regionID: regionID), tone: .cool)
+            .overlay {
+                LinearGradient(stops: [
+                    .init(color: Color.dsBackground.opacity(0.24), location: 0),
+                    .init(color: Color.dsBackground.opacity(0.12), location: 0.3),
+                    .init(color: Color.dsBackground.opacity(0.08), location: 0.75),
+                    .init(color: Color.dsBackground.opacity(0.36), location: 1)
+                ], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
+            }
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
     }
 }
 

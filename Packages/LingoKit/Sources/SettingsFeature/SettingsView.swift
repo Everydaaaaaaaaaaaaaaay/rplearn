@@ -80,23 +80,18 @@ public struct SettingsView: View {
             DSWorkbenchBackdrop(focus: .settings)
 
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    settingsGroup("提醒与相处") { learningAndReminderPanel }
-                    settingsGroup("语音与阅读") {
-                        VStack(spacing: 0) {
-                            DisclosureGroup {
-                                offlineVoicePanel
-                            } label: {
-                                settingsDisclosureLabel("离线语音", systemImage: "waveform")
-                            }.padding(.horizontal, 20)
-                            Divider().padding(.horizontal, 20)
-                            systemVoicePanel
-                        }.padding(.vertical, 8)
-                    }
-                    settingsGroup("服务与帮助") {
-                        VStack(spacing: 0) {
-                            servicePanel
-                            paperSectionDivider
+                DSWorkbenchPaperSheet(radius: 28, padding: 0) {
+                    VStack(spacing: 0) {
+                        journeySummary
+                        paperSectionDivider
+                        learningAndReminderPanel
+                        paperSectionDivider
+                        offlineVoicePanel
+                        paperSectionDivider
+                        systemVoicePanel
+                        paperSectionDivider
+                        servicePanel
+                        paperSectionDivider
                         if let onTestInitialPlacement {
                             Button(action: onTestInitialPlacement) {
                                 settingsLinkLabel("测试初次水平测评", systemImage: "checklist")
@@ -133,8 +128,7 @@ public struct SettingsView: View {
                             .accessibilityIdentifier("settings.introduction")
                             paperSectionDivider
                         }
-                            creditsPanel
-                        }.padding(.bottom, 12)
+                        creditsPanel
                     }
                 }
                 .frame(maxWidth: 620)
@@ -170,20 +164,13 @@ public struct SettingsView: View {
         }
     }
 
-    private func settingsGroup<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(title).font(.headline.weight(.semibold)).foregroundStyle(DSReadingPalette.ink)
-            DSPaper(padding: 0) { content() }
-        }
-    }
-
     private var journeySummary: some View {
         HStack(spacing: DSSpacing.lg) {
-            Image(systemName: "bell").foregroundStyle(DSReadingPalette.tint)
+            DSObsidianMedallion(systemImage: "bell", size: 72, isRaised: false)
 
             VStack(alignment: .leading, spacing: 7) {
                 Text("旅程设置")
-                    .font(.system(.title2, design: .default, weight: .bold))
+                    .font(.system(.title2, design: .rounded, weight: .bold))
                     .foregroundStyle(Color.dsPaperInk)
                 Label(reminderSummary, systemImage: reminderSummaryIcon)
                 Label("Supertonic-3 · \(offlineVoicePhaseLabel)", systemImage: "waveform.circle.fill")
@@ -207,6 +194,7 @@ public struct SettingsView: View {
 
     private var learningAndReminderPanel: some View {
         VStack(alignment: .leading, spacing: 0) {
+            panelTitle("消息提醒", systemImage: "bell.and.waves.left.and.right")
 
             settingsToggle(
                 "角色主动联系",
@@ -235,6 +223,7 @@ public struct SettingsView: View {
     private var offlineVoicePanel: some View {
         if let manager = speech as? any SpeechSynthesisEngineManaging {
             VStack(alignment: .leading, spacing: 0) {
+                    panelTitle("语音工作室", systemImage: "waveform")
 
                     settingsValueRow("语音识别", value: "Apple 系统识别")
                     panelDivider
@@ -506,7 +495,7 @@ public struct SettingsView: View {
 
     private func panelTitle(_ title: String, systemImage: String) -> some View {
         Label(title, systemImage: systemImage)
-            .font(.system(.headline, design: .default, weight: .bold))
+            .font(.system(.headline, design: .rounded, weight: .bold))
             .foregroundStyle(Color.dsPaperInk)
             .padding(.bottom, DSSpacing.sm)
     }
@@ -537,7 +526,6 @@ public struct SettingsView: View {
             }
         }
         .tint(Color.dsSkyDeep)
-        .accessibilityIdentifier(title == "角色主动联系" ? "settings.proactive" : "settings.toggle." + title)
         .frame(minHeight: 64)
     }
 
@@ -574,7 +562,7 @@ public struct SettingsView: View {
         emphasized: Bool = false
     ) -> some View {
         let font: Font = emphasized
-            ? .system(.headline, design: .default, weight: .bold)
+            ? .system(.headline, design: .rounded, weight: .bold)
             : .body.weight(.medium)
 
         return Label(title, systemImage: systemImage)
@@ -597,7 +585,7 @@ public struct SettingsView: View {
                     .font(.title3)
             }
             .font(.subheadline.weight(.semibold))
-            .foregroundStyle(DSReadingPalette.tint)
+            .foregroundStyle(Color.dsTravelNavy)
             .frame(maxWidth: .infinity, minHeight: 52)
             .contentShape(Rectangle())
         }

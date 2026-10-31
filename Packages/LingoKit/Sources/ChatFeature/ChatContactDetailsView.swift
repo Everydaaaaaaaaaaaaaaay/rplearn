@@ -133,9 +133,6 @@ struct ChatContactDetailsView: View {
             }
         }
         .dsQuickNotice($viewModel.quickNotice)
-        .scrollContentBackground(.hidden)
-        .background(DSReadingPalette.canvas)
-        .listRowBackground(DSReadingPalette.paper)
         .navigationTitle("聊天设置")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -639,10 +636,6 @@ private struct ChatCharacterProfileView: View {
                 }
             }
         }
-        .scrollContentBackground(.hidden)
-        .background(DSReadingPalette.canvas)
-        .listRowBackground(DSReadingPalette.paper)
-        .foregroundStyle(DSReadingPalette.ink)
         .navigationTitle("旅伴资料")
         .navigationBarTitleDisplayMode(.inline)
         .wordLookupOverlay(

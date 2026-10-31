@@ -26,7 +26,7 @@ private struct DSSurfaceModifier: ViewModifier {
             )
             .overlay {
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .stroke(borderColor, lineWidth: 0.5)
+                    .stroke(borderColor, lineWidth: 1)
             }
     }
 
@@ -41,8 +41,8 @@ private struct DSSurfaceModifier: ViewModifier {
     private var shadowRadius: CGFloat {
         switch level {
         case .grouped: 0
-        case .elevated: 0
-        case .floating: 12
+        case .elevated: 10
+        case .floating: 18
         }
     }
 
@@ -50,7 +50,7 @@ private struct DSSurfaceModifier: ViewModifier {
         switch level {
         case .grouped: 0
         case .elevated: 4
-        case .floating: 5
+        case .floating: 8
         }
     }
 
@@ -59,7 +59,7 @@ private struct DSSurfaceModifier: ViewModifier {
         case .grouped, .elevated:
             Color.dsBorder
         case .floating:
-            Color.dsBorder.opacity(0.55)
+            colorScheme == .dark ? .white.opacity(0.14) : .white.opacity(0.82)
         }
     }
 }

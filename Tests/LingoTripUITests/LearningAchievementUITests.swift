@@ -134,7 +134,7 @@ final class LearningAchievementUITests: XCTestCase {
         preview.tap()
         XCTAssertTrue(app.buttons["learning.achievement.play-star"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.otherElements["learning.challenge.card"].waitForExistence(timeout: 5))
-        XCTAssertFalse(app.otherElements["main.tabs"].exists, "预览应保持角色学习页的独立页面布局")
+        XCTAssertFalse(app.tabBars.firstMatch.exists, "预览应保持角色学习页的独立页面布局")
         capture(app, "学习实测中的动效入口")
     }
 

@@ -23,7 +23,7 @@ struct DifficultyLevelSelectionPage: View {
         ScrollView {
             VStack(alignment: .leading, spacing: DSSpacing.lg) {
                 Text("选择适合你的对话难度")
-                    .font(.system(.title2, design: .default, weight: .bold))
+                    .font(.system(.title2, design: .rounded, weight: .bold))
                     .foregroundStyle(Color.dsPaperInk)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .placementPaperPanel()
