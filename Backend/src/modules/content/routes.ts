@@ -220,8 +220,18 @@ const favoritePayload = z
   })
   .strict();
 
-const memoryPayload = z
-  .object({
+const memoryPayload = z.preprocess((input) => {
+  if (input === null || typeof input !== "object" || Array.isArray(input)) return input;
+  const legacy = input as Record<string, unknown>;
+  if (legacy.source !== "appointment") return input;
+  // Early server-written appointment memories used values outside the public sync contract.
+  // Normalize only those exact legacy sentinels; retain content, provenance, and all valid values.
+  return {
+    ...legacy,
+    importance: legacy.importance === 7 ? 5 : legacy.importance,
+    sourceUpToIndex: legacy.sourceUpToIndex === -1 ? 0 : legacy.sourceUpToIndex,
+  };
+}, z.object({
     content: z.string().trim().min(1).max(4_000),
     createdAt: isoDate,
     importance: z.number().int().min(1).max(5),
@@ -230,7 +240,7 @@ const memoryPayload = z
     sourceUpToIndex: z.number().int().min(0),
     tier: z.enum(["short", "mid", "long"]),
   })
-  .strict();
+  .strict());
 
 const storyProgressPayload = z
   .object({

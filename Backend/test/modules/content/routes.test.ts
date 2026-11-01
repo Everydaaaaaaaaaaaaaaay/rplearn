@@ -58,6 +58,35 @@ function characterCommand(timeZoneIdentifier: string) {
 }
 
 describe("content routes", () => {
+  it.each([
+    { source: "appointment", importance: 7, sourceUpToIndex: -1, status: 200, normalizedImportance: 5, normalizedIndex: 0 },
+    { source: "appointment", importance: 3, sourceUpToIndex: 2, status: 200, normalizedImportance: 3, normalizedIndex: 2 },
+    { source: "chat", importance: 7, sourceUpToIndex: -1, status: 400, normalizedImportance: 0, normalizedIndex: 0 },
+  ])("keeps appointment memory edits compatible without loosening other sources: $source/$importance", async (input) => {
+    const executeCommands = vi.fn<ContentService["executeCommands"]>(() => Promise.resolve([]));
+    const app = await buildApp(loadConfig({ NODE_ENV: "test" }), { logger: false });
+    registerContentRoutes(app, authService(), { executeCommands, getPage: vi.fn() });
+    try {
+      const content = '@lingotrip-memory-v2:{"text":"","forgotten":true}';
+      const response = await app.inject({ method: "POST", url: "/v1/content/commands",
+        headers: { authorization: "Bearer valid-access-token" },
+        payload: { commands: [{ commandId: userId, expectedVersion: 1, operation: "upsert", resourceType: "memory",
+          resourceId: userId, parentId: userId,
+          payload: { content, createdAt: "2026-11-01T00:00:00Z", schemaVersion: 2, source: input.source,
+            importance: input.importance, sourceUpToIndex: input.sourceUpToIndex, tier: "long" },
+        }] },
+      });
+      expect(response.statusCode).toBe(input.status);
+      if (input.status === 200) {
+        expect(executeCommands).toHaveBeenCalledOnce();
+        const call = executeCommands.mock.calls[0];
+        expect(call?.[0]).toBe(userId);
+        const command = call?.[1][0];
+        if (command?.operation !== "upsert") throw new Error("Expected an accepted memory edit");
+        expect(command.payload).toMatchObject({ content, importance: input.normalizedImportance, sourceUpToIndex: input.normalizedIndex });
+      } else expect(executeCommands).not.toHaveBeenCalled();
+    } finally { await app.close(); }
+  });
   it("仅接收已知旧会话字段，仍拒绝未知字段、错误类型及旧小测资源", async () => {
     const executeCommands = vi.fn<ContentService["executeCommands"]>(() =>
       Promise.resolve([]),

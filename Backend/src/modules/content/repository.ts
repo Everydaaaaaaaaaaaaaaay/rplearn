@@ -313,10 +313,10 @@ export class ContentRepository {
       payload: {
         content: "@lingotrip-memory-v2:" + JSON.stringify(metadata),
         createdAt: now,
-        importance: 7,
+        importance: 5,
         source: "appointment",
         schemaVersion: 2,
-        sourceUpToIndex: -1,
+        sourceUpToIndex: 0,
         tier: "long",
       },
     });

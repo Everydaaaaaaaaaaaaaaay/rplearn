@@ -585,8 +585,11 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toEqual(result.summary);
       const memory = result.summary!.memories[0]!;
       const [originalRecord] = await runtime.database.sql<
-        { payload: { content: string }; created_at: string }[]
+        { payload: { content: string; importance: number; sourceUpToIndex: number }; created_at: string }[]
       >`select payload,created_at::text from app.content_records where user_id=${user} and resource_id=${memory.id}`;
+      expect(originalRecord!.payload.importance).toBeGreaterThanOrEqual(1);
+      expect(originalRecord!.payload.importance).toBeLessThanOrEqual(5);
+      expect(originalRecord!.payload.sourceUpToIndex).toBeGreaterThanOrEqual(0);
       const originalSummary = result.summary;
       const generationBeforeManagement = generationCount;
       const prefix = "@lingotrip-memory-v2:";
