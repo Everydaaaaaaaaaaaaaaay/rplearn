@@ -1,5 +1,18 @@
 import Foundation
 
+enum AppointmentRequestTiming {
+    static let requestTimeout: TimeInterval = 170
+    static let resourceTimeout: TimeInterval = 180
+
+    static func needsGenerationWait(_ path: String) -> Bool {
+        let parts = path.split(separator: "/")
+        guard parts.count >= 3, parts[0] == "v1", parts[1] == "appointments" else { return false }
+        if parts.count == 3 && parts[2] == "detect" { return true }
+        guard UUID(uuidString: String(parts[2])) != nil else { return false }
+        return parts.count == 3 || (parts.count == 4 && ["start", "choices", "settlement"].contains(String(parts[3])))
+    }
+}
+
 extension BackendClient: AppointmentServing {
     public func appointments() async throws -> BackendAppointmentList {
         try await get("/v1/appointments")

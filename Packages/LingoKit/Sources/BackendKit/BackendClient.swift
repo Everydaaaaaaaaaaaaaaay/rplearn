@@ -584,7 +584,9 @@ public actor BackendClient {
         }
         var request = URLRequest(
             url: url,
-            timeoutInterval: path == "/v1/grammar/analysis" ? max(configuration.requestTimeout, 75) : configuration.requestTimeout
+            timeoutInterval: AppointmentRequestTiming.needsGenerationWait(path)
+                ? max(configuration.requestTimeout, AppointmentRequestTiming.requestTimeout)
+                : path == "/v1/grammar/analysis" ? max(configuration.requestTimeout, 75) : configuration.requestTimeout
         )
         request.httpMethod = method
         request.httpBody = body
