@@ -6,6 +6,8 @@
  * 必须先发布此兼容版本，再执行该迁移，才能安全回退程序而保留数据。
  */
 const compatibleAdditions = new Map([
+  // 0046 adds appointment-owned tables/routes without changing existing content or relationship columns.
+  [1793490000000, "cd5fe7464ffcf6ea5c769308db938e8f86b248ff354fc83e906b3de3cf10a1bd"],
   [1793410000000, "754294e982590017a100d35349923686b0d0efc066d61601b86c421062fe570e"],
   [1793404800000, "d56a9fd8af5dc82954169765edf96556346eda00871f94ffb2f242616728c389"],
   [1793318400000, "c67cd02ad3db4eb5d84e21176a2c3066daf080bf00e122db2af346c30fd26743"],

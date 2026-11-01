@@ -9,6 +9,15 @@ const addition = {
   created_at: "1791676800000",
 };
 describe("明确登记的兼容迁移", () => {
+  it("赴约新增表和独立 AI 路由允许旧程序回退，摘要或时间改变则拒绝", () => {
+    const hash = createHash("sha256")
+      .update(readFileSync(new URL("../../migrations/0046_appointments.sql", import.meta.url)))
+      .digest("hex");
+    const row = { hash, created_at: "1793490000000" };
+    expect(() => assertCompatibleMigrationInventory(1, [previous, row])).not.toThrow();
+    expect(() => assertCompatibleMigrationInventory(1, [previous, { ...row, hash: "changed" }])).toThrow();
+    expect(() => assertCompatibleMigrationInventory(1, [previous, { ...row, created_at: "1793490000001" }])).toThrow();
+  });
   it("共享语法库新增表和独立任务可保留数据回退，内容变动则拒绝", () => {
     const hash = createHash("sha256")
       .update(
