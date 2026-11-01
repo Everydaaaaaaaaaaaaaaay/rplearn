@@ -24,4 +24,4 @@ G3：素材均为静态照片，没有人物视频循环。界面每 18 秒淡�
 
 G4：检查环境为现有 iPhone 18 Pro / iOS 27.0 / SDK 27.1，402×874pt，原图 1206×2622；原生 XCUITest 覆盖标准和最大辅助字号，最终结果为 `build/DerivedData/VerificationResults/20261031T175819Z-32164.xcresult`，3 项通过、0 失败。已查看本轮的约定、阅读、输入、历史、暂停续读、独立总结、大字及失败恢复截图。原图导出至 `build/appointment-release-verified-attachments/`，截图集与逐图 SHA256 在 `build/appointments-2026-11-01/`。Computer Use 工具本轮不可用，使用原生截图与定向自动交互，不声称手动点击通过。小屏、真机、其他城市新照片、连续观看轮播和人耳音质未新增验收。
 
-总结中的分数和对白在免登录演示里明确标为本地示例；不代表实际用户关系或线上 AI 质量。正式业务接入与发布状态见[施工记录](../../docs/appointments-implementation-2026-11-01.md)。
+总结中的分数和对白在免登录演示里明确标为本地示例；不代表实际用户关系或线上 AI 质量。后端现已发布，真实模型及业务验证独立于这些截图，见[施工记录](../../docs/appointments-implementation-2026-11-01.md)和[发布证据](../../docs/verification/appointment-backend-release-20261101.json)。界面与图片没有因后续接口修正而改变，复用本版视觉证据。

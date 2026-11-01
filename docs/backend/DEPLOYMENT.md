@@ -4,6 +4,19 @@
 Caddy 是唯一公网入口；`PUBLIC_HOST` 提供 App API，`ADMIN_HOST` 仅提供受管理员鉴权保护的
 AI 控制台。API、Worker、PostgreSQL 17、Redis、MinIO 和 Mailpit 均只在本机监听。
 
+## 2026-11-01 赴约系统发布
+
+当前版本 `appointments-20261101-v7`（后端源码 `5474b97d`），上一版本 v6 和原业务兼容回退
+`appointments-compat-20261101-v1` 保留。迁移 0046 仅新增赴约表及 AI 路由，迁移总数 46→47；
+先发布兼容回退再执行迁移，原库及迁移历史保留。完整备份和各轮原始验证记录位于受限目录
+`/opt/lingotrip/backups/appointments-20261101-v1/`。
+
+53 项真实线上业务检查通过，包含实际模型回复建约、自由输入、失败恢复、Swift 算法结算和
+记忆遗忘；实际 v7 审核能拒绝已知的行为切换／双语矛盾样本。额外未通过的生成样章未入正式路径，
+不承诺所有输入一次生成成功。API／Worker／Caddy active，readiness 正常，4 个测试账号已锁定、
+会话已撤销；新版活动世界保持未启用。未发布 iOS App Store 构建。
+备份／归档哈希、适用回退、定向检查与未测项见[发布记录](../verification/appointment-backend-release-20261101.json)。
+
 ## 2026-10-31 活动后端基础发布
 
 已激活 `857bc77b59a3`，可回退到 `activity-compat-20261031-v1`；原 `grammar-20261031-v2` 保留。
