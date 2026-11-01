@@ -1,5 +1,5 @@
 import { relationshipPayload } from "../content/relationship-contract.js";
-import type { FastifyInstance } from "fastify";
+import type { FastifyInstance, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { authenticateRequest } from "../auth/http.js";
 import type { AuthService } from "../auth/service.js";
@@ -11,6 +11,12 @@ const command = z.object({
   expectedRevision: z.number().int().nonnegative(),
 });
 const params = z.object({ id: uuid });
+function allowNarrativeWait(request: FastifyRequest): void {
+  // Generation and independent review can exceed the ordinary 30-second idle limit.
+  // Node restores its normal timeout on the next keep-alive request. No global limit is changed.
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- HTTP injection uses a partial mock socket without the native timeout method.
+  request.raw.socket?.setTimeout?.(180_000);
+}
 function parse<T>(schema: z.ZodType<T>, input: unknown): T {
   const result = schema.safeParse(input);
   if (!result.success)
@@ -49,12 +55,14 @@ export function registerAppointmentRoutes(
       z.object({ characterId: uuid, conversationId: uuid }).strict(),
       request.body,
     );
+    allowNarrativeWait(request);
     reply.header("cache-control", "no-store");
     return service.detect(actor.userId, body);
   });
   app.get("/v1/appointments/:id", async (request, reply) => {
     const actor = await authenticateRequest(request, auth);
     const { id } = parse(params, request.params);
+    allowNarrativeWait(request);
     reply.header("cache-control", "no-store");
     return service.detail(actor.userId, id);
   });
@@ -75,6 +83,7 @@ export function registerAppointmentRoutes(
               request.body,
             )
           : parse(command.strict(), request.body);
+      if (kind !== "cancel") allowNarrativeWait(request);
       reply.header("cache-control", "no-store");
       return kind === "start"
         ? service.start(actor.userId, id, body)
@@ -85,6 +94,7 @@ export function registerAppointmentRoutes(
   app.get("/v1/appointments/:id/settlement", async (request, reply) => {
     const actor = await authenticateRequest(request, auth);
     const { id } = parse(params, request.params);
+    allowNarrativeWait(request);
     reply.header("cache-control", "no-store");
     return service.settlementSeed(actor.userId, id);
   });

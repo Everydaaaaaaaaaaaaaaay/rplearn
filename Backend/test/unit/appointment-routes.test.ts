@@ -3,6 +3,25 @@ import Fastify from "fastify";
 import { expect, it, vi } from "vitest";
 import { registerAppointmentRoutes } from "../../src/modules/appointments/routes.js";
 import type { AuthService } from "../../src/modules/auth/service.js";
+import { setTimeout as delay } from "node:timers/promises";
+it("lets authenticated generation outlast the normal socket timeout without extending other routes", async () => {
+  const app = Fastify({ connectionTimeout: 100 });
+  const id = "019c0123-4567-789a-8bcd-ef01234567f0";
+  const slow = async () => { await delay(250); return { ok: true }; };
+  registerAppointmentRoutes(app, { authenticate: async () => ({ userId: id, isGuest: false }) } as unknown as AuthService,
+    { start: slow } as unknown as Parameters<typeof registerAppointmentRoutes>[2]);
+  app.get("/normal", slow);
+  try {
+    const origin = await app.listen({ port: 0, host: "127.0.0.1" });
+    const response = await fetch(`${origin}/v1/appointments/${id}/start`, {
+      method: "POST", headers: { authorization: "Bearer test", "content-type": "application/json" },
+      body: JSON.stringify({ commandId: id, expectedRevision: 0 }),
+    });
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ ok: true });
+    await expect(fetch(`${origin}/normal`)).rejects.toThrow();
+  } finally { await app.close(); }
+});
 it("authenticates all reads and mutations, rejects malformed commands and keeps city authoritative", async () => {
   const app = Fastify(),
     id = "019c0123-4567-789a-8bcd-ef01234567f0",
