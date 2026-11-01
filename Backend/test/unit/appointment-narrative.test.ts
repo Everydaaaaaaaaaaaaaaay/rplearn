@@ -149,6 +149,23 @@ const detected = {
 };
 
 describe("appointment narrative acceptance", () => {
+  it.each([
+    { zone: "Europe/London", startsAt: "2026-11-01T01:25:00Z", local: "2026-11-01T01:25:00", period: "overnight" },
+    { zone: "Australia/Melbourne", startsAt: "2026-11-01T15:25:00Z", local: "2026-11-02T02:25:00", period: "overnight" },
+  ])("grounds narration and audit in the appointment city's local date and clock: $zone", async ({ zone, startsAt, local, period }) => {
+    const input = context();
+    input.appointment.timeZone = zone;
+    input.appointment.startsAt = startsAt;
+    input.appointment.endsAt = new Date(Date.parse(startsAt) + 30 * 60000).toISOString();
+    const { service, requests } = harness([candidate(), accept]);
+    await service.generate(input);
+    for (const request of requests) {
+      const data = JSON.parse(request.messages[1]?.content ?? "{}") as {
+        acceptedContext: { temporalAnchor: { timeZone: string; localStartsAt: string; startPeriod: string } };
+      };
+      expect(data.acceptedContext.temporalAnchor).toMatchObject({ timeZone: zone, localStartsAt: local, startPeriod: period });
+    }
+  });
   it("accepts one jointly generated beat/choice block and allocates identities server-side", async () => {
     const { service, requests } = harness([candidate(), accept]);
     const first = await service.generate(context());
