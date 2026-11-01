@@ -441,6 +441,13 @@ describe("accepted-path summary review", () => {
     const { service } = harness([{ ...review, relationshipSignal: { ...relationshipSignal, reasonZh } }, accept]);
     expect((await service.review(completed())).relationshipSignal).toEqual({ ...relationshipSignal, reasonZh: Array.from(reasonZh).slice(0, 20).join("") });
   });
+  it("renders known review references as readable response/section labels without changing evidence or scores", async () => {
+    const { service } = harness([{ ...review, reflection: "D1中提供休息，见B2。" }, accept]);
+    const result = await service.review(completed());
+    expect(result.reflection).toBe("回应1中提供休息，见片段2。");
+    expect(result.signals).toEqual(review.signals);
+    expect(result.relationshipSignal).toEqual(relationshipSignal);
+  });
   it.each([
     {
       ...review,
