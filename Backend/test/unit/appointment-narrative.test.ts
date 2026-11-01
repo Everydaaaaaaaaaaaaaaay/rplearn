@@ -426,7 +426,30 @@ describe("accepted-path summary review", () => {
     const { service } = harness([review, accept]);
     expect(await service.review(completed())).toEqual(review);
   });
+  it("resolves distinct short decision/block references to accepted immutable evidence before audit", async () => {
+    const proposed = { ...review,
+      signals: [{ ...review.signals[0], evidenceDecisionIds: ["D1"] }],
+      memories: [{ ...review.memories[0], evidenceBlockIds: ["B2"] }],
+    };
+    const { service, requests } = harness([proposed, accept]);
+    expect(await service.review(completed())).toEqual(review);
+    expect(requests[0]?.messages[1]?.content).toContain('"id":"D1"');
+    expect(requests[1]?.messages[1]?.content).toContain('"evidenceDecisionIds":["decision-1"]');
+  });
+  it("bounds a verbose display reason without changing any reviewed score dimensions", async () => {
+    const reasonZh = "提议之前先征得旅伴同意并为旅伴保留独立选择的空间";
+    const { service } = harness([{ ...review, relationshipSignal: { ...relationshipSignal, reasonZh } }, accept]);
+    expect((await service.review(completed())).relationshipSignal).toEqual({ ...relationshipSignal, reasonZh: Array.from(reasonZh).slice(0, 20).join("") });
+  });
   it.each([
+    {
+      ...review,
+      signals: [{ ...review.signals[0], evidenceDecisionIds: ["B1"] }],
+    },
+    {
+      ...review,
+      memories: [{ ...review.memories[0], evidenceBlockIds: ["D1"] }],
+    },
     {
       ...review,
       signals: [{ ...review.signals[0], evidenceDecisionIds: ["unselected"] }],

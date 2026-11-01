@@ -109,7 +109,8 @@ export const relationshipSignalSchema = z
     repair: unit,
     significance: unit,
     confidence: unit,
-    reasonZh: z.string().max(20),
+    // Display copy is bounded independently of the reviewed numeric evidence.
+    reasonZh: z.string().max(160).transform((value) => Array.from(value.trim()).slice(0, 20).join("")),
   })
   .strict();
 
