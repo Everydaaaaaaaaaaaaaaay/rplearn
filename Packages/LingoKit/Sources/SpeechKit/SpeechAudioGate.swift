@@ -5,11 +5,13 @@ import Foundation
 /// Its lock also serializes the audio tap and recognition-turn replacement.
 public final class SpeechAudioGate: @unchecked Sendable {
     private let lock = NSLock()
-    private var detector = SpeechActivityDetector()
+    private var detector: SpeechActivityDetector
     private var preRoll: [AVAudioPCMBuffer] = []
     private var preRollDuration = 0.0
 
-    public init() {}
+    public init(mode: SpeechActivityDetector.Mode = .dictation) {
+        detector = SpeechActivityDetector(mode: mode)
+    }
 
     public var hasDetectedSpeech: Bool { lock.withLock { detector.hasDetectedSpeech } }
 

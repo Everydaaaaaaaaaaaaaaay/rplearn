@@ -10,7 +10,7 @@ private final class AppleSpeechInputRuntime: @unchecked Sendable {
     private let lock = NSLock()
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var generation = UUID()
-    private let gate = SpeechAudioGate()
+    private let gate = SpeechAudioGate(mode: .conversation)
     private let receiveActivity: @Sendable (UUID, SpeechActivityDetector.Activity) -> Void
 
     init(receiveActivity: @escaping @Sendable (UUID, SpeechActivityDetector.Activity) -> Void) {
@@ -255,7 +255,9 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         let hadSpeech = runtime?.hasDetectedSpeech == true
         stopRecognitionTask()
         resetSpeechGate()
-        if hadSpeech, !text.isEmpty { onTranscription?(.init(text: text, isFinal: true)) }
+        // A noise-triggered turn can have no recognized words. Explicitly end it
+        // so the session can return to listening instead of waiting indefinitely.
+        if hadSpeech { onTranscription?(.init(text: text, isFinal: true)) }
         scheduleRecognitionRestart()
     }
 

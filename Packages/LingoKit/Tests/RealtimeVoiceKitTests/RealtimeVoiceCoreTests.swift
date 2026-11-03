@@ -153,6 +153,71 @@ struct RealtimeVoiceSessionTests {
         await session.stop()
     }
 
+    @Test("持续误判声音和反复改写的字幕不能无限延长通话回合")
+    func noiseCannotKeepStalledTranscriptAlive() async {
+        let input = MockSpeechInput()
+        let session = makeSession(input: input, output: MockSpeechOutput(), probe: ConversationProbe(),
+            turnPolicy: .init(fallbackEndOfTurnDelay: .milliseconds(40), maximumTranscriptStall: .milliseconds(130)))
+        await session.start()
+        input.emitSpeechStarted()
+        for index in 0..<30 {
+            input.onLevel?(0.025)
+            input.emit(.init(text: index.isMultiple(of: 2) ? "A table, please!" : "A Table Please", isFinal: false))
+            try? await Task.sleep(for: .milliseconds(10))
+        }
+        #expect(input.finishTurnCount == 1)
+        await session.stop()
+    }
+
+    @Test("噪声开门但没有识别文字时自动结束空回合，不请求 AI 且下一句仍可使用")
+    func emptyNoiseTurnRecoversListening() async {
+        let input = MockSpeechInput(), probe = ConversationProbe()
+        let session = makeSession(input: input, output: MockSpeechOutput(), probe: probe,
+            turnPolicy: .init(fallbackEndOfTurnDelay: .milliseconds(30), maximumTranscriptStall: .milliseconds(100)))
+        await session.start()
+        input.emitSpeechStarted()
+        for _ in 0..<20 {
+            input.onLevel?(0.02)
+            try? await Task.sleep(for: .milliseconds(10))
+        }
+        #expect(input.finishTurnCount == 1)
+        input.emit(.init(text: "", isFinal: true))
+        #expect(session.phase == .listening && session.liveTranscript.isEmpty)
+        #expect(probe.replyInputs.isEmpty)
+        input.emit(.init(text: "A real answer", isFinal: true))
+        #expect(await eventually { probe.replyInputs == ["A real answer"] })
+        await session.stop()
+    }
+
+    @Test("有持续新词的轻声长句不受无进展上限截断")
+    func progressingSpeechCanOutlastStallLimit() async {
+        let input = MockSpeechInput()
+        let session = makeSession(input: input, output: MockSpeechOutput(), probe: ConversationProbe(),
+            turnPolicy: .init(fallbackEndOfTurnDelay: .milliseconds(70), maximumTranscriptStall: .milliseconds(130)))
+        await session.start()
+        input.emitSpeechStarted()
+        for index in 1...12 {
+            input.onLevel?(0.01)
+            input.emit(.init(text: Array(repeating: "word", count: index).joined(separator: " "), isFinal: false))
+            try? await Task.sleep(for: .milliseconds(25))
+            #expect(input.finishTurnCount == 0)
+        }
+        #expect(await eventually { input.finishTurnCount == 1 })
+        await session.stop()
+    }
+
+    @Test("空识别结束不会打断已在播放的角色回复")
+    func emptyFinalCannotInterruptAssistant() async {
+        let input = MockSpeechInput(), probe = ConversationProbe(keepsStreamOpen: true)
+        let session = makeSession(input: input, output: MockSpeechOutput(), probe: probe)
+        await session.start()
+        input.emit(.init(text: "Hello", isFinal: true))
+        #expect(await eventually { session.phase == .speaking })
+        input.emit(.init(text: "", isFinal: true))
+        #expect(session.phase == .speaking && probe.replyInputs == ["Hello"])
+        await session.stop()
+    }
+
     @Test("重复 partial 不会无限延长静音兜底")
     func repeatedPartialDoesNotResetSilence() async {
         let input = MockSpeechInput()

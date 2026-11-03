@@ -37,6 +37,11 @@ public final class RealtimeVoiceSession {
     private var finalizationID: UUID?
     private var interruptionTask: Task<Void, Never>?
     private var lastVoiceAt: ContinuousClock.Instant?
+    private var inputTurnStartedAt: ContinuousClock.Instant?
+    private var lastTranscriptProgressAt: ContinuousClock.Instant?
+    private var longestTranscriptWords = 0
+    private var longestTranscriptCharacters = 0
+    private var endpointRequested = false
     private let clock = ContinuousClock()
 
     public init(
@@ -85,6 +90,7 @@ public final class RealtimeVoiceSession {
         errorMessage = nil
         requiresSettings = false
         finalizationID = nil
+        resetInputTurn()
 
         do {
             try await input.start()
@@ -130,6 +136,7 @@ public final class RealtimeVoiceSession {
         phase = .paused
         await interruptActiveResponse(nextPhase: .paused)
         await input.stop()
+        resetInputTurn()
         rawInputLevel = 0
         activityLevel = 0
         phase = .paused
@@ -165,7 +172,7 @@ public final class RealtimeVoiceSession {
         isMuted.toggle()
         endpointFallbackTask?.cancel()
         endpointFallbackTask = nil
-        liveTranscript = ""
+        resetInputTurn()
         rawInputLevel = 0
         activityLevel = 0
         input.setMuted(isMuted)
@@ -218,6 +225,7 @@ public final class RealtimeVoiceSession {
               !isMuted else { return }
         endpointFallbackTask?.cancel()
         endpointFallbackTask = nil
+        if inputTurnStartedAt == nil { inputTurnStartedAt = clock.now }
         lastVoiceAt = clock.now
         let wasBusy = agentIsBusy
         phase = .userSpeaking
@@ -226,13 +234,21 @@ public final class RealtimeVoiceSession {
             // Invalidate the reply synchronously; late deltas cannot enqueue more speech.
             beginInterruption(nextPhase: .userSpeaking)
         }
+        if !endpointRequested { scheduleEndpointFallback() }
     }
 
     private func receiveTranscription(_ transcription: RealtimeTranscription) {
         guard phase != .idle, phase != .connecting, phase != .paused, phase != .failed,
               !isMuted else { return }
         let text = transcription.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !text.isEmpty else { return }
+        guard !text.isEmpty else {
+            if transcription.isFinal, activeResponseID == nil,
+               endpointRequested || phase == .userSpeaking {
+                resetInputTurn()
+                phase = .listening
+            }
+            return
+        }
         errorMessage = nil
 
         if transcription.isFinal {
@@ -245,31 +261,47 @@ public final class RealtimeVoiceSession {
                 await self.submitFinalTranscript(text)
             }
         } else {
-            let changed = liveTranscript != text
+            let words = text.split(whereSeparator: { !$0.isLetter && !$0.isNumber })
+            let characters = words.reduce(0) { $0 + $1.count }
+            // Case/punctuation churn and ASR revisions are not new speech. Track
+            // a high-water mark so alternating hypotheses cannot reset the cap.
+            if words.count > longestTranscriptWords || characters > longestTranscriptCharacters {
+                lastTranscriptProgressAt = clock.now
+                longestTranscriptWords = max(longestTranscriptWords, words.count)
+                longestTranscriptCharacters = max(longestTranscriptCharacters, characters)
+            }
+            if inputTurnStartedAt == nil { inputTurnStartedAt = clock.now }
             liveTranscript = text
             if agentIsBusy { beginInterruption(nextPhase: .userSpeaking) }
             phase = .userSpeaking
-            if changed || endpointFallbackTask == nil { scheduleEndpointFallback(for: text) }
+            if !endpointRequested, endpointFallbackTask == nil { scheduleEndpointFallback() }
         }
     }
 
-    private func scheduleEndpointFallback(for transcript: String) {
+    private func scheduleEndpointFallback() {
         endpointFallbackTask?.cancel()
         endpointFallbackTask = Task { [weak self] in
             guard let self else { return }
             do {
-                try await Task.sleep(for: self.turnPolicy.fallbackEndOfTurnDelay)
-                // Stable ASR text does not mean silence: a learner may still be speaking.
-                while let lastVoiceAt = self.lastVoiceAt {
-                    let remaining = self.turnPolicy.fallbackEndOfTurnDelay - lastVoiceAt.duration(to: self.clock.now)
+                while !Task.isCancelled {
+                    guard let startedAt = self.inputTurnStartedAt else { return }
+                    let progressAt = self.lastTranscriptProgressAt ?? startedAt
+                    let silenceAt = max(self.lastVoiceAt ?? startedAt, progressAt)
+                        .advanced(by: self.turnPolicy.fallbackEndOfTurnDelay)
+                    // Acoustic activity may extend a normal pause, but never
+                    // indefinitely when recognition has stopped making progress.
+                    let stalledAt = progressAt.advanced(by: max(self.turnPolicy.fallbackEndOfTurnDelay,
+                                                               self.turnPolicy.maximumTranscriptStall))
+                    let remaining = self.clock.now.duration(to: min(silenceAt, stalledAt))
                     if remaining <= .zero { break }
                     try await Task.sleep(for: remaining)
                 }
             } catch {
                 return
             }
-            guard !Task.isCancelled, self.liveTranscript == transcript else { return }
-            self.phase = .thinking
+            guard !Task.isCancelled, !self.endpointRequested else { return }
+            self.endpointRequested = true
+            if !self.liveTranscript.isEmpty { self.phase = .thinking }
             await self.input.finishCurrentTurn()
         }
     }
@@ -283,7 +315,7 @@ public final class RealtimeVoiceSession {
 
         await interruptActiveResponse(nextPhase: .thinking)
         guard self.generation == generation, !isMuted else { return }
-        liveTranscript = ""
+        resetInputTurn()
         userTranscript = text
         await beginResponse(to: text)
     }
@@ -446,7 +478,7 @@ public final class RealtimeVoiceSession {
     }
 
     private func resetTransientState() {
-        liveTranscript = ""
+        resetInputTurn()
         userTranscript = ""
         assistantTranscript = ""
         activityLevel = 0
@@ -456,5 +488,17 @@ public final class RealtimeVoiceSession {
         requiresSettings = false
         isEnding = false
         finalizationID = nil
+    }
+
+    private func resetInputTurn() {
+        endpointFallbackTask?.cancel()
+        endpointFallbackTask = nil
+        liveTranscript = ""
+        lastVoiceAt = nil
+        inputTurnStartedAt = nil
+        lastTranscriptProgressAt = nil
+        longestTranscriptWords = 0
+        longestTranscriptCharacters = 0
+        endpointRequested = false
     }
 }

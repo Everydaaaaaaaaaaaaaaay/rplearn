@@ -104,4 +104,46 @@ struct SpeechActivityDetectorTests {
         for _ in 0..<20 { receive() }
         #expect(!gate.hasDetectedSpeech && forwardedFrames == 0)
     }
+
+    @Test("通话持续的中频机械底噪在开门后也会学习，不会一直续住回合", arguments: [16_000.0, 48_000.0])
+    func callLearnsStationaryNoiseAfterSpeech(rate: Double) {
+        for frequency in [300.0, 900.0] {
+            var detector = SpeechActivityDetector(mode: .conversation)
+            _ = feed((0..<Int(rate * 0.4)).map { voice(at: $0, rate: rate) }, rate: rate, to: &detector)
+            #expect(detector.hasDetectedSpeech)
+            let noise = (0..<Int(rate * 2)).map { Float(0.03 * sin(2 * .pi * frequency * Double($0) / rate)) }
+            let updates = feed(noise, rate: rate, to: &detector)
+            #expect(updates.suffix(5).allSatisfy { $0.level == 0 && !$0.isSpeech && !$0.shouldForwardAudio })
+            detector.resetTurn()
+            #expect(!detector.hasDetectedSpeech)
+            let followingTurn = feed(noise, rate: rate, to: &detector)
+            #expect(followingTurn.allSatisfy { !$0.didStartSpeech && $0.level == 0 })
+        }
+    }
+
+    @Test("通话适应持续的带限随机底噪，不只识别纯音")
+    func callLearnsStationaryBandNoise() {
+        var detector = SpeechActivityDetector(mode: .conversation)
+        var random: UInt64 = 42
+        var filtered = 0.0
+        let noise = (0..<144_000).map { _ -> Float in
+            random = random &* 6_364_136_223_846_793_005 &+ 1
+            let white = Double(random >> 33) / Double(UInt32.max >> 1) * 2 - 1
+            filtered += 0.2 * (white - filtered)
+            return Float(filtered * 0.06)
+        }
+        let updates = feed(noise, to: &detector)
+        #expect(updates.suffix(10).allSatisfy { $0.level == 0 && !$0.shouldForwardAudio })
+    }
+
+    @Test("通话长句的正常音节起伏和轻声回答仍能检测", arguments: [256, 1_024, 4_096])
+    func callRetainsQuietModulatedSpeech(chunk: Int) {
+        var detector = SpeechActivityDetector(mode: .conversation)
+        let samples = (0..<144_000).map { voice(at: $0, rate: 48_000, amplitude: 0.007) }
+        let updates = feed(samples, chunk: chunk, to: &detector)
+        #expect(detector.hasDetectedSpeech)
+        #expect(updates.suffix(5).contains { $0.isSpeech && $0.level > 0 })
+        let silence = feed(Array(repeating: 0, count: 24_000), chunk: chunk, to: &detector)
+        #expect(silence.last?.level == 0 && silence.last?.shouldForwardAudio == false)
+    }
 }

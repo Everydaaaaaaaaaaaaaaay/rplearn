@@ -4,6 +4,7 @@ import Foundation
 /// System voice processing handles denoising; this gate rejects low-SNR backgrounds,
 /// low-frequency rumble and brief impacts without treating the waveform meter as VAD.
 public struct SpeechActivityDetector: Sendable {
+    public enum Mode: Sendable { case dictation, conversation }
     public struct Activity: Sendable {
         public let level: Double
         public let isSpeech: Bool
@@ -31,8 +32,11 @@ public struct SpeechActivityDetector: Sendable {
     private var gateOpen = false
     private var frameIsSpeech = false
     private var speechLevel = 0.0
+    private let mode: Mode
+    private var recentEnergy: [Double] = []
+    private var energyIndex = 0
 
-    public init() {}
+    public init(mode: Mode = .dictation) { self.mode = mode }
 
     /// Preserve the measured background between recognition turns, never speech evidence.
     public mutating func resetTurn() {
@@ -52,7 +56,7 @@ public struct SpeechActivityDetector: Sendable {
             return Activity(level: 0, isSpeech: false, didStartSpeech: false, shouldForwardAudio: false)
         }
         if self.sampleRate != sampleRate {
-            self = Self()
+            self = Self(mode: mode)
             self.sampleRate = sampleRate
             highPassCoefficient = exp(-2 * .pi * 120 / sampleRate)
             lowPassCoefficient = 1 - exp(-2 * .pi * 3_800 / sampleRate)
@@ -85,6 +89,7 @@ public struct SpeechActivityDetector: Sendable {
 
     private mutating func evaluateFrame(duration: Double) {
         let rms = sqrt(bandEnergy / Double(frameSamples))
+        if mode == .conversation { adaptStationaryBackground(rms) }
         let bandRatio = bandEnergy / max(rawEnergy, 1e-12)
         let crossingRate = Double(crossings) / duration
         // Broadband hiss and sub-bass vibration should not establish a speech turn.
@@ -111,6 +116,21 @@ public struct SpeechActivityDetector: Sendable {
         if !gateOpen, candidateWindow > 0.22 { candidateDuration = 0; candidateWindow = 0 }
         frameIsSpeech = gateOpen && candidate
         speechLevel = min(1, rms * 6)
+    }
+
+    private mutating func adaptStationaryBackground(_ rms: Double) {
+        // A fixed background can pass the initial energy gate. Learn it even
+        // while the gate is open, otherwise it can keep a call turn alive forever.
+        // Speech-like amplitude modulation must not be absorbed into this floor.
+        let window = 50 // one second of 20 ms frames, independent of tap size
+        if recentEnergy.count < window { recentEnergy.append(rms) }
+        else { recentEnergy[energyIndex] = rms }
+        energyIndex = (energyIndex + 1) % window
+        guard recentEnergy.count == window else { return }
+        let mean = recentEnergy.reduce(0, +) / Double(window)
+        guard mean > 0.0001 else { return }
+        let variance = recentEnergy.reduce(0) { $0 + ($1 - mean) * ($1 - mean) } / Double(window)
+        if sqrt(variance) / mean < 0.10 { noiseRMS = max(noiseRMS, mean) }
     }
 
     private mutating func resetFrame() {
