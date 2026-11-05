@@ -581,7 +581,11 @@ export class ChatRepository {
       .sql`update app.chat_generations set partial_text=${text},lease_until=now()+${this.leaseMilliseconds}*interval '1 millisecond'
       where id=${claim.input.generationId} and fence_token=${claim.fenceToken} and status='dispatched'`;
   }
-  async finish(claim: ClaimedGeneration, text: string): Promise<boolean> {
+  async finish(
+    claim: ClaimedGeneration,
+    text: string,
+    retryCommandId?: string,
+  ): Promise<boolean> {
     const input = claim.input;
     return this.database.sql.begin(async (sql) => {
       await this.lock(sql, input.userId);
@@ -590,6 +594,19 @@ export class ChatRepository {
       >`select * from app.chat_generations where id=${input.generationId}
         and fence_token=${claim.fenceToken} and status='dispatched' for update`;
       if (!row) return false;
+      if (retryCommandId) {
+        const [receipt] = await sql<
+          { conversation_id: string }[]
+        >`select conversation_id from app.chat_retry_commands where user_id=${input.userId} and command_id=${retryCommandId}`;
+        if (receipt && receipt.conversation_id !== input.conversationId)
+          throw new AppError({
+            code: "OPERATION_CONFLICT",
+            message: "请求编号已用于其他会话。",
+            statusCode: 409,
+          });
+        await sql`insert into app.chat_retry_commands(user_id,command_id,conversation_id,generation_id)
+          values(${input.userId},${retryCommandId},${input.conversationId},${input.generationId}) on conflict do nothing`;
+      }
       const available =
         await sql`select 1 from app.chat_messages where user_id=${input.userId} and message_id=any(${input.inputMessageIds}::uuid[])`;
       if (available.length !== input.inputMessageIds.length) {
@@ -698,6 +715,55 @@ export class ChatRepository {
       .sql`update app.chat_generations set status='failed',error_code='CHAT_REPLY_FAILED'
       where id=${claim.input.generationId} and fence_token=${claim.fenceToken} and status='dispatched'`;
   }
+  async acknowledgeRetry(
+    userId: string,
+    conversationId: string,
+    commandId: string,
+    generationId: string,
+  ): Promise<void> {
+    await this.database.sql.begin(async (sql) => {
+      await this.lock(sql, userId);
+      const [receipt] = await sql<
+        { conversation_id: string }[]
+      >`select conversation_id from app.chat_retry_commands where user_id=${userId} and command_id=${commandId}`;
+      if (receipt && receipt.conversation_id !== conversationId)
+        throw new AppError({
+          code: "OPERATION_CONFLICT",
+          message: "请求编号已用于其他会话。",
+          statusCode: 409,
+        });
+      await sql`insert into app.chat_retry_commands(user_id,command_id,conversation_id,generation_id)
+        values(${userId},${commandId},${conversationId},${generationId}) on conflict do nothing`;
+    });
+  }
+
+  async retryWasApplied(
+    userId: string,
+    conversationId: string,
+    commandId: string,
+  ): Promise<boolean> {
+    const [receipt] = await this.database.sql<
+      { conversation_id: string }[]
+    >`select conversation_id from app.chat_retry_commands where user_id=${userId} and command_id=${commandId}`;
+    if (receipt && receipt.conversation_id !== conversationId)
+      throw new AppError({
+        code: "OPERATION_CONFLICT",
+        message: "请求编号已用于其他会话。",
+        statusCode: 409,
+      });
+    return receipt !== undefined;
+  }
+
+  async recoveryInput(
+    userId: string,
+    generationId: string,
+  ): Promise<ChatGenerationInput | undefined> {
+    const [row] = await this.database.sql<
+      { snapshot: ChatGenerationInput | null }[]
+    >`select snapshot from app.chat_generations where user_id=${userId} and id=${generationId} and status='uncertain'`;
+    return row?.snapshot ?? undefined;
+  }
+
   async reclaim(
     userId: string,
     conversationId: string,
@@ -742,8 +808,12 @@ export class ChatRepository {
         GenerationRow[]
       >`select * from app.chat_generations where user_id=${userId} and conversation_id=${conversationId}
         order by created_at desc,id desc limit 1 for update`;
-      if (!failed || (failed.status !== "failed" && failed.status !== "uncertain"))
+      if (!failed) return;
+      if (failed.status !== "failed" && failed.status !== "uncertain") {
+        await sql`insert into app.chat_retry_commands(user_id,command_id,conversation_id,generation_id)
+          values(${userId},${commandId},${conversationId},${failed.id})`;
         return;
+      }
       await sql`update app.chat_generations set status='failed',fence_token=${randomUUID()} where id=${failed.id}`;
       await sql`update app.chat_messages set assigned_generation_id=null,protected_payload=protected_payload-'sharedVoiceLeaseId' where user_id=${userId} and assigned_generation_id=${failed.id} and answered_by is null`;
       await this.schedule(sql, userId, conversationId);

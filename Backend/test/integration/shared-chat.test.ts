@@ -346,6 +346,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       );
       await chat.processNext();
       expect(calls.length).toBe(before);
+      expect(
+        await db.sql`select 1 from app.chat_retry_commands where user_id=${f.user} and command_id=${commandId}`,
+      ).toHaveLength(1);
       expect((await f.state()).coveredMessageIds).toEqual([id]);
       expect(
         (await f.state()).records.filter(
@@ -539,6 +542,27 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const archived =
         await db.sql`select 1 from app.content_records where user_id=${f.user} and resource_id=${input} and deleted_at is null`;
       expect(archived).toHaveLength(1);
+    });
+    it("a completed-turn retry receipt cannot later regenerate another failed turn", async () => {
+      const f = await setup(),
+        commandId = randomUUID();
+      await f.send(f.a.accessToken, randomUUID(), "The completed turn");
+      await chat.processNext();
+      await f.request(
+        f.b.accessToken,
+        `/v1/chat/conversations/${f.conversation}/retry`,
+        { commandId },
+      );
+      await f.send(f.a.accessToken, randomUUID(), "A newer turn");
+      await db.sql`update app.chat_generations set status='failed',error_code='TEST_FAILURE' where user_id=${f.user} and status='queued'`;
+      const failed = (await f.state()).generation;
+      await f.request(
+        f.b.accessToken,
+        `/v1/chat/conversations/${f.conversation}/retry`,
+        { commandId },
+      );
+      expect((await f.state()).generation).toEqual(failed);
+      expect(await chat.processNext()).toBe(false);
     });
     it("a second account cannot read or retry another account's conversation", async () => {
       const owner = await setup(),

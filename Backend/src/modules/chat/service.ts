@@ -18,19 +18,25 @@ export function createChatService(
     state: repository.state.bind(repository),
     retry: async (userId: string, conversationId: string, commandId: string) => {
       const state = await repository.state(userId, conversationId);
+      if (await repository.retryWasApplied(userId, conversationId, commandId))
+        return state;
       if (state.generation?.status === "uncertain") {
-        const claim = await repository.reclaim(
-          userId,
-          conversationId,
-          state.generation.id,
-        );
-        if (claim) {
-          const result = await options.recover?.(claim.input);
-          if (result) {
-            await repository.finish(claim, result.content);
-            return repository.state(userId, conversationId);
-          }
-          await repository.uncertain(claim);
+        const input = await repository.recoveryInput(userId, state.generation.id);
+        const result = input ? await options.recover?.(input) : undefined;
+        if (result) {
+          const claim = await repository.reclaim(
+            userId,
+            conversationId,
+            state.generation.id,
+          );
+          if (claim) await repository.finish(claim, result.content, commandId);
+          await repository.acknowledgeRetry(
+            userId,
+            conversationId,
+            commandId,
+            state.generation.id,
+          );
+          return repository.state(userId, conversationId);
         }
       }
       return repository.retry(userId, conversationId, commandId);
