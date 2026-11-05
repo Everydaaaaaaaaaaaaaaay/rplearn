@@ -53,6 +53,33 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         await runtime.database.sql`delete from app.users where id=${id}`;
       await runtime.close();
     });
+    it("pending model results retain uncertainty for both SQL NULL and JSON null", async () => {
+      const user = await actor(),
+        operation = newEntityId(),
+        unused = newEntityId();
+      await credits.reserve(user, operation, operation, req);
+      expect(await credits.operationPending(user, operation)).toBe(true);
+      await credits.dispatch(user, operation);
+      await credits.finish(user, operation, null);
+      expect(await credits.operationPending(user, operation)).toBe(true);
+      expect(await credits.completedResult(user, operation)).toBeNull();
+      await credits.finish(
+        user,
+        operation,
+        usage,
+        { content: "Recovered reply" },
+        "provider",
+        req.model,
+      );
+      expect(await credits.operationPending(user, operation)).toBe(false);
+      expect(await credits.completedResult(user, operation)).toEqual({
+        content: "Recovered reply",
+      });
+      await credits.reserve(user, unused, unused, req);
+      await credits.finish(user, unused, null);
+      expect(await credits.operationPending(user, unused)).toBe(false);
+    });
+
     it("appointment recovery and its one repair stay on the service budget", async () => {
       const user = await actor(),
         original = newEntityId(),

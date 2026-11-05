@@ -169,7 +169,7 @@ export function createCreditService(
   return {
     operationPending: async (userId: string, operationId: string): Promise<boolean> => {
       const rows =
-        await database.sql`select 1 from app.credit_operations where user_id=${userId} and operation_id=${operationId} and status in ('dispatched','pending','reserved') and result is null`;
+        await database.sql`select 1 from app.credit_operations where user_id=${userId} and operation_id=${operationId} and status in ('dispatched','pending','reserved') and (result is null or result='null'::jsonb)`;
       return rows.length > 0;
     },
     completedResult: async (
