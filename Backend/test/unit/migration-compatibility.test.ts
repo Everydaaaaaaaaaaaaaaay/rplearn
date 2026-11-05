@@ -10,12 +10,18 @@ const addition = {
 };
 describe("明确登记的兼容迁移", () => {
   it.each([
-    ["0047_shared_chat.sql", "1793836800000"],
-    ["0048_shared_chat_indexes.sql", "1793836801000"],
-  ])("共享会话增量迁移 %s 只允许已核对的内容回退", (filename, created_at) => {
-    const hash = createHash("sha256")
-      .update(readFileSync(new URL(`../../migrations/${filename}`, import.meta.url)))
-      .digest("hex");
+    [
+      "0047_shared_chat.sql",
+      "8fa60a7cf09d8987f325f41d936ce20fa008012e98c62d55a5137045b9ed15e1",
+      "1793836800000",
+    ],
+    [
+      "0048_shared_chat_indexes.sql",
+      "2126908f51849a242148207ef2dd8df540e9df41740814fb4e4fc9e7c7fa6e69",
+      "1793836801000",
+    ],
+  ])("共享会话增量迁移 %s 只允许已核对的内容回退", (_filename, hash, created_at) => {
+    // This checkpoint must also pass before the additive migration files exist.
     const row = { hash, created_at };
     expect(() => assertCompatibleMigrationInventory(1, [previous, row])).not.toThrow();
     expect(() =>
