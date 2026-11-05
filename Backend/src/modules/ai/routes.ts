@@ -95,7 +95,10 @@ export function registerAiRoutes(
   app: FastifyInstance,
   authService: AuthService,
   aiService: AiService,
-  options: Readonly<{ guestAccessEnabled: boolean }> = {
+  options: Readonly<{
+    guestAccessEnabled: boolean;
+    beforeConversation?: (userId: string) => Promise<void>;
+  }> = {
     guestAccessEnabled: false,
   },
 ): void {
@@ -126,6 +129,7 @@ export function registerAiRoutes(
     async (request) => {
       const userId = await userIdFor(request);
       const body = parse(aiRequestSchema, request.body);
+      if (body.task === "conversation") await options.beforeConversation?.(userId);
       const started = performance.now();
       const result = await aiService.complete(userId, {
         ...(body.maxOutputTokens === undefined
@@ -168,6 +172,7 @@ export function registerAiRoutes(
     async (request, reply) => {
       const userId = await userIdFor(request);
       const body = parse(aiRequestSchema, request.body);
+      if (body.task === "conversation") await options.beforeConversation?.(userId);
       const started = performance.now();
       const cancellation = new AbortController();
       request.raw.once("aborted", () => {

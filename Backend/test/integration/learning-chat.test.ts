@@ -19,7 +19,10 @@ import { learningRoleKey } from "../../src/modules/learning/context.js";
 import { createLearningChatService } from "../../src/modules/learning/chat-service.js";
 import { createLearningService } from "../../src/modules/learning/service.js";
 import { LearningEngineRepository } from "../../src/modules/learning/engine-repository.js";
-import { countChatCharacters } from "../../src/modules/learning/policy.js";
+import {
+  countChatCharacters,
+  learningPolicy,
+} from "../../src/modules/learning/policy.js";
 import { createAiService } from "../../src/modules/ai/service.js";
 import { registerAiRoutes } from "../../src/modules/ai/routes.js";
 import { createBillingService } from "../../src/modules/billing/service.js";
@@ -331,8 +334,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         db,
         createContentCursorCodec(config().authTokenHashPepper),
         createSyncCursorCodec(config().authTokenHashPepper),
-        async (...args) => {
-          await chat.enqueue(...args);
+        async (sql, userId, record) => {
+          await chat.enqueue(sql, userId, record);
           throw new AppError({
             code: "TEST_ROLLBACK",
             message: "测试回滚",
@@ -473,10 +476,19 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const input = s.input(id, text);
       generatedBody = "Late response";
       await ai.complete(s.user, input);
-      expect(await s.count()).toBe(1000);
+      expect(await s.count()).toBe(learningPolicy.characterThreshold);
       const repository = new LearningEngineRepository(db);
+      const fixture = learningFixture(`test.chat-${randomUUID()}`);
+      const questions = fixture.questions.filter(
+        (question) => question.type !== "dictation",
+      );
       const unit = {
-        ...learningFixture(`test.chat-${randomUUID()}`),
+        ...fixture,
+        questions,
+        beats: fixture.beats.map((beat) => ({
+          ...beat,
+          afterQuestion: Math.min(beat.afterQuestion, questions.length),
+        })),
         level: "junior1" as const,
       };
       units.push(unit.id);

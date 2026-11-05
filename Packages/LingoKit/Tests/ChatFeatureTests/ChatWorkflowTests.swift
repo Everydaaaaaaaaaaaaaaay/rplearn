@@ -135,6 +135,98 @@ struct ChatWorkflowTests {
         await model.load()
         return Fixture(model: model, deps: deps)
     }
+    private actor SharedGatewayFixture: SharedChatGateway {
+        let store: ChatStore
+        let characterID: UUID
+        var covered: Set<UUID> = []
+        var generation: SharedChatSnapshot.Generation?
+        init(store: ChatStore, characterID: UUID) {
+            self.store = store
+            self.characterID = characterID
+        }
+        func openSharedConversation(characterID: UUID) async throws -> SharedChatSnapshot {
+            try await snapshot()
+        }
+        func refreshSharedConversation(conversationID: UUID) async throws -> SharedChatSnapshot {
+            try await snapshot()
+        }
+        func sharedReply(conversationID: UUID, userMessageID: UUID) async throws -> SharedChatSnapshot {
+            try await snapshot()
+        }
+        func uploadSharedMessages() async throws {
+            let conversation = try await store.openConversation(characterID: characterID)
+            let pending = try await store.messages(conversationID: conversation.id).filter {
+                $0.role == .user && !covered.contains($0.id)
+            }
+            guard !pending.isEmpty else { return }
+            covered.formUnion(pending.map(\.id))
+            let generationID = UUID()
+            _ = try await store.appendMessage(
+                conversationID: conversation.id, role: .assistant, text: "One shared server reply.")
+            for message in pending {
+                try await store.setReplyInterrupted(userMessageID: message.id, interrupted: false)
+            }
+            generation = .init(
+                id: generationID, status: "completed", partialText: "One shared server reply.",
+                inputMessageIDs: pending.map(\.id))
+        }
+        func retrySharedReply(conversationID: UUID, commandID: UUID) async throws {
+            try await uploadSharedMessages()
+        }
+        private func snapshot() async throws -> SharedChatSnapshot {
+            let conversation = try await store.openConversation(characterID: characterID)
+            let messages = try await store.messages(conversationID: conversation.id)
+            return .init(
+                conversationID: conversation.id, lastSequence: messages.count, generation: generation,
+                coveredMessageIDs: covered)
+        }
+    }
+
+    @Test("共享会话只观察服务端回复，关闭及重开不会启动本地模型")
+    func sharedConversationHasNoLocalReplyProducer() async throws {
+        let provider = Provider()
+        let f = try await fixture(provider)
+        let gateway = SharedGatewayFixture(store: f.deps.chatStore, characterID: f.model.character.id)
+        var dependencies = f.deps
+        dependencies.sharedChat = gateway
+        let model = ChatViewModel(character: f.model.character, deps: dependencies)
+        await model.load()
+        model.draft = "Hello from this device."
+        await model.sendDraft()
+        for _ in 0..<100 {
+            if model.messages.contains(where: { $0.role == .assistant }) { break }
+            try await Task.sleep(for: .milliseconds(25))
+        }
+        #expect(model.messages.filter { $0.role == .assistant }.count == 1)
+        #expect(await provider.tasks().contains(.conversation) == false)
+        model.cancelPendingReply()
+        let reopened = ChatViewModel(character: model.character, deps: dependencies)
+        await reopened.load()
+        #expect(reopened.messages.filter { $0.role == .assistant }.count == 1)
+        #expect(await provider.tasks().contains(.conversation) == false)
+        reopened.cancelPendingReply()
+    }
+
+    @Test("共享语音读取已落库回复，保存字幕不会复制助手消息")
+    func sharedVoiceUsesTheSamePersistedReply() async throws {
+        let provider = Provider()
+        let f = try await fixture(provider)
+        var dependencies = f.deps
+        dependencies.sharedChat = SharedGatewayFixture(
+            store: f.deps.chatStore, characterID: f.model.character.id)
+        let model = ChatViewModel(character: f.model.character, deps: dependencies)
+        await model.load()
+        var text = ""
+        for try await delta in try await model.realtimeReplyStream(userText: "Voice from this device.") {
+            text += delta
+        }
+        #expect(text == "One shared server reply.")
+        await model.saveRealtimeAssistant(spokenText: text, interrupted: false)
+        #expect(model.messages.filter { $0.role == .assistant }.count == 1)
+        #expect(await provider.tasks().contains(.conversation) == false)
+        model.cancelPendingReply()
+    }
+
     private actor LearningTracker: LearningChatTracking {
         let cycle = UUID()
         private(set) var preparations: [UUID] = []

@@ -4,6 +4,7 @@ import { AppError } from "../../shared/errors.js";
 import { appendSyncChange } from "../../infrastructure/sync-change-writer.js";
 import type {
   ContentCommand,
+  ContentCommandGuard,
   ContentCommitObserver,
   ContentDeleteCommand,
   ContentRecord,
@@ -72,6 +73,7 @@ export class ContentRepository {
   constructor(
     private readonly database: DatabaseResource,
     private readonly observer?: ContentCommitObserver,
+    private readonly beforeCommand?: ContentCommandGuard,
   ) {}
 
   async readRecord(
@@ -176,11 +178,17 @@ export class ContentRepository {
         return JSON.parse(receipt.response_text) as ContentRecord;
       }
 
-      const record =
+      await this.beforeCommand?.(sql, userId, command);
+      const previous =
+        this.observer && command.resourceType === "conversation"
+          ? await this.readRecord(sql, userId, command.resourceType, command.resourceId)
+          : undefined;
+      let record =
         command.operation === "upsert"
           ? await this.upsert(sql, userId, command)
           : await this.delete(sql, userId, command);
-      if (this.observer) await this.observer(sql, userId, record);
+      if (this.observer)
+        record = (await this.observer(sql, userId, record, previous)) ?? record;
       await appendSyncChange(sql, {
         commandId: command.commandId,
         eventType: `content.${command.resourceType}.${command.operation}`,
@@ -205,6 +213,77 @@ export class ContentRepository {
       `;
       return record;
     });
+  }
+
+  async sharedRecords(
+    sql: TransactionSql,
+    userId: string,
+    type: ContentResourceType,
+    parentId: string | null,
+    limit = 2_000_000_000,
+  ): Promise<ContentRecord[]> {
+    const rows = await sql<
+      ContentRow[]
+    >`select resource_type,resource_id,parent_id,payload::text as payload_text,
+      version,created_at,updated_at,deleted_at from app.content_records
+      where user_id=${userId} and resource_type=${type} and parent_id is not distinct from ${parentId} and deleted_at is null
+      order by created_at desc,resource_id limit ${limit}`;
+    return rows.map(mapRecord);
+  }
+
+  async sharedMessages(
+    sql: TransactionSql,
+    userId: string,
+    conversationId: string,
+    after: number,
+    limit: number,
+  ): Promise<ContentRecord[]> {
+    const rows = await sql<
+      ContentRow[]
+    >`select resource_type,resource_id,parent_id,payload::text as payload_text,
+      version,created_at,updated_at,deleted_at from app.content_records
+      where user_id=${userId} and resource_type='message' and parent_id=${conversationId} and deleted_at is null
+      and (payload->>'orderIndex')::integer>${after}
+      order by (payload->>'orderIndex')::integer,resource_id limit ${limit}`;
+    return rows.map(mapRecord);
+  }
+
+  async sharedWrite(
+    sql: TransactionSql,
+    userId: string,
+    type: ContentResourceType,
+    id: string,
+    parentId: string | null,
+    payload: Record<string, unknown>,
+  ): Promise<ContentRecord> {
+    const [row] = await sql<
+      ContentRow[]
+    >`insert into app.content_records(user_id,resource_type,resource_id,parent_id,payload)
+      values(${userId},${type},${id},${parentId},${JSON.stringify(payload)}::jsonb)
+      on conflict(user_id,resource_type,resource_id) do update set parent_id=excluded.parent_id,payload=excluded.payload,
+      version=app.content_records.version+1,updated_at=now()
+      returning resource_type,resource_id,parent_id,payload::text as payload_text,version,created_at,updated_at,deleted_at`;
+    if (!row) throw new Error("ChatContentWriteFailed");
+    const record = mapRecord(row);
+    await appendSyncChange(sql, {
+      userId,
+      commandId: crypto.randomUUID(),
+      eventType: `content.${type}.upsert`,
+      payload: record,
+    });
+    return record;
+  }
+
+  async sharedRewrite(
+    sql: TransactionSql,
+    userId: string,
+    record: ContentRecord,
+    parentId: string | null,
+    payload: Record<string, unknown>,
+  ): Promise<ContentRecord> {
+    await sql`update app.content_records set parent_id=${parentId},payload=${JSON.stringify(payload)}::jsonb
+      where user_id=${userId} and resource_type=${record.resourceType} and resource_id=${record.resourceId}`;
+    return { ...record, parentId, payload };
   }
 
   async appointmentMessages(

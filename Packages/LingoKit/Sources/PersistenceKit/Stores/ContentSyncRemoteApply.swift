@@ -5,6 +5,12 @@ extension ContentSyncStore {
 // MARK: - Remote apply
 
     func apply(_ record: RemoteContentRecord) throws {
+        // A direct conversation snapshot can arrive ahead of the global change feed.
+        if let current = try metadata(resourceType: record.resourceType, resourceID: record.resourceID),
+            current.version > record.version
+        {
+            return
+        }
         if record.deletedAt != nil {
             try deleteLocal(record)
             try upsertMetadata(

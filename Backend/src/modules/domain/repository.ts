@@ -46,6 +46,17 @@ export class DomainRepository {
     return row;
   }
 
+  async chatLearner(
+    sql: TransactionSql,
+    userId: string,
+  ): Promise<Record<string, unknown>> {
+    const [profile] =
+      await sql`select difficulty,display_name,learning_goals,study_stage from app.user_profiles where user_id=${userId}`;
+    const tickets =
+      await sql`select 1 from app.inventory_items where user_id=${userId} and source='story' limit 1`;
+    return { ...profile, hasStoryTicket: tickets.length > 0 };
+  }
+
   async currentDifficulty(
     sql: TransactionSql,
     userId: string,

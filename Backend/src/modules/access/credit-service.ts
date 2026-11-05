@@ -167,6 +167,22 @@ export function createCreditService(
 ) {
   const book = loadCreditPriceBook();
   return {
+    operationPending: async (userId: string, operationId: string): Promise<boolean> => {
+      const rows =
+        await database.sql`select 1 from app.credit_operations where user_id=${userId} and operation_id=${operationId} and status in ('dispatched','pending','reserved') and result is null`;
+      return rows.length > 0;
+    },
+    completedResult: async (
+      userId: string,
+      operationId: string,
+    ): Promise<{ content: string } | null> => {
+      const [row] = await database.sql<
+        { result: { content?: unknown } | null }[]
+      >`select result from app.credit_operations where user_id=${userId} and operation_id=${operationId}`;
+      return typeof row?.result?.content === "string" && row.result.content.trim()
+        ? { content: row.result.content }
+        : null;
+    },
     snapshot: (userId: string): Promise<CreditSnapshot> =>
       database.sql.begin(async (sql) => {
         const ctx = await context(sql, userId),

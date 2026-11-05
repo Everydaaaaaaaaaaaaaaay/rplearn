@@ -5,6 +5,42 @@ import Testing
 
 @Suite("ContentSyncStore")
 struct ContentSyncStoreTests {
+    @Test("共享会话快照保留全局游标，迟到的同步事件不能回退服务器顺序")
+    func sharedSnapshotDoesNotAdvanceCursorOrRegressOrder() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let sync = ContentSyncStore(modelContainer: container)
+        let roster = RosterStore(modelContainer: container)
+        let chat = ChatStore(modelContainer: container)
+        try await sync.activateOwner(userID: UUID())
+        let characterID = try await roster.addCharacter(
+            card: characterCard(name: "Shared friend"), difficulty: .junior3, isFriend: true)
+        let conversation = try await chat.openConversation(characterID: characterID)
+        let message = try await chat.appendMessage(
+            conversationID: conversation.id, role: .user, text: "Accepted text", sharedOrdering: true)
+        let pending = try await sync.takePending(limit: 100)
+        let messageMutation = try #require(
+            pending.first { $0.resourceID == message.id.uuidString.lowercased() })
+        let stale = remote(from: messageMutation, version: 1)
+        for mutation in pending {
+            try await sync.complete(commandID: mutation.commandID, record: remote(from: mutation, version: 1))
+        }
+        try await sync.apply(records: [], nextCursor: "unchanged-global-cursor")
+        var payload = try #require(
+            JSONSerialization.jsonObject(with: Data(stale.payloadJSON.utf8)) as? [String: Any])
+        payload["orderIndex"] = 99
+        let canonical = RemoteContentRecord(
+            createdAt: stale.createdAt, deletedAt: nil, parentID: stale.parentID,
+            payloadJSON: String(decoding: try JSONSerialization.data(withJSONObject: payload), as: UTF8.self),
+            resourceID: stale.resourceID,
+            resourceType: .message, updatedAt: .now, version: 2)
+        try await sync.applySharedChat(records: [canonical], coveredMessageIDs: [message.id])
+        #expect(try await sync.syncCursor() == "unchanged-global-cursor")
+        #expect(try await chat.messages(conversationID: conversation.id).first?.orderIndex == 99)
+        try await sync.apply(records: [stale], nextCursor: "next-global-cursor")
+        #expect(try await chat.messages(conversationID: conversation.id).first?.orderIndex == 99)
+        #expect(try await chat.messages(conversationID: conversation.id).first?.isInterrupted == false)
+    }
+
     @Test("磁盘库重新打开后恢复未确认上传，保留原操作 ID")
     func recoversInFlightAfterReopeningDiskStore() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent("sync-restart-\(UUID().uuidString)")

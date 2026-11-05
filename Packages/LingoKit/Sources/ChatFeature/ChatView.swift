@@ -318,6 +318,7 @@ public struct ChatView: View {
             autoReadQueue.synchronize(from: previous, to: current)
         }
         .onDisappear {
+            viewModel.stopSharedObservation()
             autoReadReady = false
             autoReadQueue.configure(enabled: false, existingIDs: viewModel.messages.map(\.id))
             appleTranslator.cancelAll()

@@ -61,4 +61,11 @@ export type ContentCommitObserver = (
   sql: TransactionSql,
   userId: string,
   record: ContentRecord,
+  previous?: ContentRecord,
+) => Promise<ContentRecord> | Promise<void>;
+
+export type ContentCommandGuard = (
+  sql: TransactionSql,
+  userId: string,
+  command: ContentCommand,
 ) => Promise<void>;

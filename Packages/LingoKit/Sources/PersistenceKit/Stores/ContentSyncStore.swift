@@ -153,6 +153,23 @@ public actor ContentSyncStore {
         try modelContext.save()
     }
 
+    /// A conversation snapshot has no global sync cursor. Preserve local pending edits
+    /// while applying canonical server identity, ordering and reply coverage.
+    public func applySharedChat(records: [RemoteContentRecord], coveredMessageIDs: Set<UUID>) throws {
+        guard let owner = try owner() else { throw SyncStoreError.invalidPayload }
+        let userID = owner.userID
+        let pending = try modelContext.fetch(
+            FetchDescriptor<ContentOutboxEntity>(predicate: #Predicate { $0.ownerUserID == userID }))
+        let keys = Set(pending.map { $0.resourceTypeRaw + ":" + $0.resourceID })
+        for record in records where !keys.contains(record.resourceType.rawValue + ":" + record.resourceID) {
+            try apply(record)
+        }
+        for id in coveredMessageIDs {
+            if let message = try message(id: id), message.roleRaw == "user" { message.isInterrupted = false }
+        }
+        try modelContext.save()
+    }
+
     public func syncCursor() throws -> String? {
         try owner()?.syncCursor
     }

@@ -1,3 +1,8 @@
+import { createDomainChatContext } from "./modules/domain/service.js";
+import { createChatService, sharedChatCoverage } from "./modules/chat/service.js";
+import { registerChatRoutes } from "./modules/chat/routes.js";
+import { createChatGeneration } from "./modules/chat/ai-generation.js";
+import { createChatContentService } from "./modules/content/service.js";
 import { AppError } from "./shared/errors.js";
 import { createAppointmentService } from "./modules/appointments/service.js";
 import { registerAppointmentRoutes } from "./modules/appointments/routes.js";
@@ -197,7 +202,7 @@ async function main(): Promise<void> {
   const learningChat = createLearningChatService(
     dependencies.database,
     learningContext,
-    learningContent,
+    { ...learningContent, sharedCoverage: sharedChatCoverage },
   );
   const learningService = createLearningService(
     dependencies.database,
@@ -227,8 +232,29 @@ async function main(): Promise<void> {
     createDeepSeekClient(config),
     { catalog: aiCatalog, openRouter, chatObserver: learningChat },
   );
+  const sharedChat = createChatService(
+    dependencies.database,
+    {
+      ...createChatContentService(dependencies.database),
+      ...createDomainChatContext(dependencies.database),
+      onMessage: learningChat.enqueue,
+      onAdopt: learningChat.adoptConversation,
+    },
+    {
+      generate: createChatGeneration(aiService),
+      recover: (input) =>
+        aiService.completedResult(
+          input.userId,
+          input.generationId,
+          input.learningChat !== undefined,
+        ),
+      operationPending: aiService.operationPending,
+    },
+  );
+  registerChatRoutes(app, authService, sharedChat);
   registerAiRoutes(app, authService, aiService, {
     guestAccessEnabled: false,
+    beforeConversation: sharedChat.assertLegacyAllowed,
   });
   registerGrammarRoutes(
     app,
@@ -320,7 +346,12 @@ async function main(): Promise<void> {
     dependencies.database,
     createContentCursorCodec(config.authTokenHashPepper),
     syncCursor,
-    learningChat.enqueue,
+    async (sql, userId, record, previous) => {
+      const accepted = await sharedChat.observe(sql, userId, record, previous);
+      await learningChat.enqueue(sql, userId, accepted);
+      return accepted;
+    },
+    sharedChat.beforeCommand,
   );
   registerContentRoutes(app, authService, contentService);
   const appointmentContent = createAppointmentContentService(dependencies.database);

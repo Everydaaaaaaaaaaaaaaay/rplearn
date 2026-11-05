@@ -13,6 +13,13 @@ import {
 } from "./chat-contract.js";
 
 export interface LearningChatReader {
+  sharedCoverage?: (
+    sql: TransactionSql,
+    userId: string,
+    operationId: string,
+    inputId: string,
+    conversationId: string,
+  ) => Promise<boolean>;
   message: (
     sql: TransactionSql,
     userId: string,
@@ -55,6 +62,18 @@ export class LearningChatRepository {
     private readonly context: LearningContextReader,
     private readonly reader: LearningChatReader,
   ) {}
+
+  async adoptConversation(
+    sql: TransactionSql,
+    userId: string,
+    oldId: string,
+    canonicalId: string,
+  ): Promise<void> {
+    if (oldId === canonicalId) return;
+    await lock(sql, userId);
+    await sql`update app.learning_chat_outbox set conversation_id=${canonicalId} where user_id=${userId} and conversation_id=${oldId}`;
+    await sql`update app.learning_chat_turns set conversation_id=${canonicalId} where user_id=${userId} and conversation_id=${oldId}`;
+  }
 
   /** Appointments accept only assistant bubbles matching a completed server chat receipt. */
   async verifiedAppointmentMessages(
@@ -122,9 +141,19 @@ export class LearningChatRepository {
          and coalesce((u.payload->>'isInterrupted')::boolean,false)=false
        join app.learning_chat_outbox original_user on original_user.user_id=t.user_id and original_user.message_id=t.user_message_id
        where o.user_id=${userId} and o.operation_id=${operationId} and o.completed_at is not null`;
+      const sharedCoverage =
+        proof &&
+        (await this.reader.sharedCoverage?.(
+          sql,
+          userId,
+          operationId,
+          proof.user_message_id,
+          conversationId,
+        ));
       if (
         !proof?.body_fingerprint ||
-        proof.preceding_user_message_id !== proof.user_message_id ||
+        (proof.preceding_user_message_id !== proof.user_message_id &&
+          sharedCoverage !== true) ||
         typeof proof.current_user_text !== "string" ||
         chatBodyFingerprint(proof.current_user_text) !== proof.user_body_fingerprint ||
         proof.character_id.toLowerCase() !== characterId.toLowerCase() ||
