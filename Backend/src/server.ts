@@ -1,3 +1,4 @@
+import { configureOutboundNetworking } from "./infrastructure/network.js";
 import { createDomainChatContext } from "./modules/domain/service.js";
 import { createChatService, sharedChatCoverage } from "./modules/chat/service.js";
 import { registerChatRoutes } from "./modules/chat/routes.js";
@@ -106,6 +107,7 @@ import { registerDictionaryTranslationAdminRoutes } from "./modules/dictionary-t
 import { createDictionaryTranslationService } from "./modules/dictionary-translation/service.js";
 
 async function main(): Promise<void> {
+  configureOutboundNetworking();
   let config: ReturnType<typeof loadConfig>;
 
   try {

@@ -1,3 +1,4 @@
+import { configureOutboundNetworking } from "./infrastructure/network.js";
 import { createDomainChatContext } from "./modules/domain/service.js";
 import { createChatService, sharedChatCoverage } from "./modules/chat/service.js";
 import { createChatGeneration } from "./modules/chat/ai-generation.js";
@@ -44,6 +45,7 @@ import { createDictionaryTranslationProcessor } from "./modules/dictionary-trans
 import { createNpcService } from "./modules/npc/service.js";
 
 async function main(): Promise<void> {
+  configureOutboundNetworking();
   let config: ReturnType<typeof loadConfig>;
   try {
     config = loadConfig();
