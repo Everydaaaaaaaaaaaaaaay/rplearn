@@ -158,6 +158,14 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 此入口仍是只读工程夹具，不计学习进度，不代表正式听力材料已经审核发布。
 检查词块题；题型可选 `choice`、`arrange`、`matching`、`completion`。正式内容、听力和联网结算另行验收。
 
+### 十五城静态场景预览
+
+```sh
+LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build scenes-preview
+```
+
+左上角城市名打开十五城选择，点照片卡进入对应地点的静态实景背景。每城 3–5 处，详情可打开完整照片及摄影许可。此入口使用 Debug 免登录工作区，内容来自本地已校验的图片包。场景清单、逐图来源及验收范围见[城市场景 v2](../Assets/Activities/CityPlaces-v2/README.md)。
+
 ### 真实学习实测入口
 
 Debug App 的「我的」底部有「学习实测 · 切换档位做题」。也可以直接启动：

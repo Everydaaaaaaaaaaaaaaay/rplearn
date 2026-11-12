@@ -30,7 +30,7 @@ struct CityPlacesView: View {
                 ForEach(catalog.places) { place in
                     Button { onSelect(place) } label: {
                         VStack(alignment: .leading, spacing: 0) {
-                            ActivityPlacePhoto(photo: place.photo).frame(height: 178).clipped()
+                            ActivityPlacePhoto(photo: place.photo).accessibilityHidden(true).frame(height: 178).clipped()
                             HStack(spacing: 14) {
                                 Text(place.titleZh).font(.headline).fixedSize(horizontal: false, vertical: true)
                                 Spacer(minLength: 4)

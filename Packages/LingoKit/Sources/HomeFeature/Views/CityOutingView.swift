@@ -25,29 +25,33 @@ struct CityOutingView: View {
     var body: some View {
         ScrollViewReader { reader in
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    ActivityPlacePhoto(photo: model.snapshot?.photo ?? model.archive.place.photo)
-                        .frame(height: 190).clipShape(RoundedRectangle(cornerRadius: 24))
+                VStack(alignment: .leading, spacing: 0) {
+                    Color.clear.frame(height: 270)
                         .overlay(alignment: .bottomTrailing) {
                             Button { credits = model.snapshot?.photo ?? model.archive.place.photo } label: {
                                 Image(systemName: "info.circle").frame(width: 44, height: 44).background(.regularMaterial, in: Circle())
                             }.accessibilityLabel("照片信息").padding(10)
                         }
-                    if let snapshot = model.snapshot { story(snapshot) }
-                    else { ProgressView("正在走进\(model.archive.place.titleZh)…").frame(maxWidth: .infinity).padding(.vertical, 30) }
-                    if let message = model.synchronizationMessage {
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text(message).font(.caption)
-                            if model.conflict { Button("恢复服务器进度") { model.restoreServerProgress() } }
-                            else { Button("重试同步") { model.retrySynchronization() } }
-                        }.font(.subheadline).foregroundStyle(ink.opacity(0.7))
-                    }
-                    if let error = model.error {
-                        Text(error).font(.callout)
-                        Button("重试，保留当前人物与选择") { model.retry() }
-                    }
-                    Color.clear.frame(height: 1).id("outing-bottom")
-                }.padding(24).frame(maxWidth: 620).frame(maxWidth: .infinity)
+                    VStack(alignment: .leading, spacing: 24) {
+                        if let snapshot = model.snapshot { story(snapshot) }
+                        else { ProgressView("正在走进\(model.archive.place.titleZh)…").frame(maxWidth: .infinity).padding(.vertical, 30) }
+                        if let message = model.synchronizationMessage {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text(message).font(.caption)
+                                if model.conflict { Button("恢复服务器进度") { model.restoreServerProgress() } }
+                                else { Button("重试同步") { model.retrySynchronization() } }
+                            }.font(.subheadline).foregroundStyle(ink.opacity(0.7))
+                        }
+                        if let error = model.error {
+                            Text(error).font(.callout)
+                            Button("重试，保留当前人物与选择") { model.retry() }
+                        }
+                        Color.clear.frame(height: 1).id("outing-bottom")
+                    }.padding(24)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(CityPlacesView.paper.opacity(0.97), in: RoundedRectangle(cornerRadius: 28))
+                }.padding(.horizontal, 16).padding(.bottom, 24)
+                    .frame(maxWidth: 620).frame(maxWidth: .infinity)
             }.scrollBounceBehavior(.basedOnSize)
                 .onChange(of: model.snapshot?.revision) { _, _ in
                     model.confirmVisibleOpening(); model.updateAutoReading(enabled: shouldRead)
@@ -55,7 +59,11 @@ struct CityOutingView: View {
                 }
         }
         .safeAreaInset(edge: .top, spacing: 0) { toolbar }
-        .foregroundStyle(ink).tint(ink).background(CityPlacesView.paper)
+        .foregroundStyle(ink).tint(ink)
+        .background {
+            ActivityPlacePhoto(photo: model.snapshot?.photo ?? model.archive.place.photo)
+                .ignoresSafeArea().accessibilityHidden(true)
+        }
         .task {
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_OUTING_AUDIO"] == "0" { autoRead = false }

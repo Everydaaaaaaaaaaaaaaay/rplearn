@@ -66,6 +66,7 @@ struct RootView: View {
     @State private var introductionMode: IntroductionMode?
     #if DEBUG
     @State private var captureCharacter: CharacterDTO?
+    @State private var showsCitySceneGallery = false
     #endif
     @State private var onboardingPreviewMode: OnboardingPreviewMode?
     @State private var placementCompletionRevision = 0
@@ -92,7 +93,7 @@ struct RootView: View {
         let initial: AppTab = switch requested {
         case "messages": .messages
         case "contacts": .contacts
-        case "home", "map", "places-preview", "appointments-preview": .home
+        case "home", "map", "places-preview", "scenes-preview", "appointments-preview": .home
         case "me", "settings", "subscription", "learning", "favorites", "learning-test": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
@@ -190,6 +191,9 @@ struct RootView: View {
                 if ready && bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" {
                     appointmentPresentation = AppointmentPresentation(appointmentID: nil)
                 }
+                if ready && bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "scenes-preview" {
+                    showsCitySceneGallery = true
+                }
                 #endif
             }
             .onChange(of: activeUserID) { _, _ in appointmentPresentation = nil }
@@ -198,6 +202,7 @@ struct RootView: View {
             }
             .overlay(alignment: .topTrailing) { onboardingPreviewExit }
             #if DEBUG
+            .fullScreenCover(isPresented: $showsCitySceneGallery) { DebugCitySceneGallery() }
             .preferredColorScheme(ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_APPEARANCE"].map { $0 == "dark" ? .dark : .light })
             .fullScreenCover(item: $captureCharacter) { character in
                 NavigationStack {

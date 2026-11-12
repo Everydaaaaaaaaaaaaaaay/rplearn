@@ -16,9 +16,9 @@ import urllib.error
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[2]
-WORLD = ROOT / 'Content/ActivityWorld/2026-10-31-places-v1/world.json'
+CATALOG = ROOT / 'Assets/Activities/CityPlaces-v2/catalog.json'
 CACHE = ROOT / 'build/ActivityWorldPhotos'
-EVIDENCE = ROOT / 'Assets/Activities/CityPlaces-v1'
+EVIDENCE = ROOT / 'Assets/Activities/CityPlaces-v2'
 NETWORK_LOCK = threading.Lock()
 NEXT_REQUEST = 0.0
 QUERIES = {
@@ -83,7 +83,7 @@ def request(url):
     global NEXT_REQUEST
     with NETWORK_LOCK:
         time.sleep(max(0, NEXT_REQUEST - time.monotonic()))
-        NEXT_REQUEST = time.monotonic() + 3
+        NEXT_REQUEST = time.monotonic() + 5
     try:
         return urllib.request.urlopen(urllib.request.Request(url, headers={
             'User-Agent': 'LingoTripContent/1.0 (attributed activity-place photo research)',
@@ -101,37 +101,61 @@ def plain(value):
     return unescape(re.sub('<[^>]+>', '', value)).strip()
 
 
-def acquire(place, candidate_limit):
+def acquire(place, candidate_limit, previous_candidates=()):
     identifier = place['id']
-    query = place.get('photoQuery') or QUERIES[identifier]
-    cache = CACHE / f'{identifier}-{sha256(query.encode()).hexdigest()[:10]}-1280.json'
+    query = place.get('photoQuery') or QUERIES.get(identifier) or f"{place['titleZh']} {place['cityId']}"
+    titles = place.get('photoTitles')
+    cache_key = json.dumps(titles, ensure_ascii=False) if titles else query
+    cache = CACHE / f'{identifier}-{sha256(cache_key.encode()).hexdigest()[:10]}-1280.json'
     if cache.exists():
         result = json.loads(cache.read_text())
     else:
-        arguments = urllib.parse.urlencode({
-            'action': 'query', 'format': 'json', 'generator': 'search', 'gsrsearch': query,
-            'gsrnamespace': 6, 'gsrlimit': 6, 'prop': 'imageinfo',
+        parameters = {
+            'action': 'query', 'format': 'json', 'prop': 'imageinfo',
             'iiprop': 'url|extmetadata|size', 'iiurlwidth': 1280,
-        })
+        }
+        if titles:
+            parameters['titles'] = '|'.join(titles)
+        else:
+            parameters.update(generator='search', gsrsearch=query, gsrnamespace=6, gsrlimit=6)
+        arguments = urllib.parse.urlencode(parameters)
         result = json.loads(request('https://commons.wikimedia.org/w/api.php?' + arguments))
         cache.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
     candidates = []
+    previous_by_id = {item['candidateId']: item for item in previous_candidates}
     for page in sorted(result.get('query', {}).get('pages', {}).values(), key=lambda item: item.get('index', 100)):
         if len(candidates) >= candidate_limit:
             break
         info = page.get('imageinfo', [{}])[0]
+        if info.get('width', 0) < 800 or info.get('height', 0) < 500:
+            continue
+        candidate_id = sha256(page['title'].encode()).hexdigest()[:12]
+        raw_path = CACHE / f'{identifier}-{candidate_id}.source'
         metadata = info.get('extmetadata', {})
         license_name = plain(metadata.get('LicenseShortName', {}).get('value', ''))
         if not re.match(r'^(CC BY(?:-SA)? [0-9.]|CC0|Public domain)', license_name):
             continue
         url = info.get('thumburl') or info.get('url', '')
+        previous = previous_by_id.get(candidate_id)
+        if raw_path.exists() and previous:
+            if sha256(raw_path.read_bytes()).hexdigest() != previous['sourceSHA256']:
+                raise ValueError(f'Cached source hash changed for {identifier}/{candidate_id}')
+            url = previous['downloadUrl']
+        # Small originals can be served with stricter limits. Ask imageinfo for a
+        # standard 960px thumbnail instead of downloading an unscaled original.
+        if not raw_path.exists() and '/thumb/' not in url and info.get('width', 0) > 960:
+            parameters = urllib.parse.urlencode({
+                'action': 'query', 'format': 'json', 'titles': page['title'],
+                'prop': 'imageinfo', 'iiprop': 'url', 'iiurlwidth': 960,
+            })
+            smaller = json.loads(request('https://commons.wikimedia.org/w/api.php?' + parameters))
+            for result_page in smaller.get('query', {}).get('pages', {}).values():
+                url = result_page.get('imageinfo', [{}])[0].get('thumburl', url)
         if (not re.search(r'\.(jpe?g|png)(?:\?|$)', info.get('url', ''), re.I)
                 or not re.search(r'\.(jpe?g|png)(?:\?|$)', url, re.I)):
             continue
-        candidate_id = sha256(page['title'].encode()).hexdigest()[:12]
         image_path = CACHE / f'{identifier}-{candidate_id}.jpg'
         try:
-            raw_path = CACHE / f'{identifier}-{candidate_id}.source'
             raw = raw_path.read_bytes() if raw_path.exists() else request(url)
             raw_path.write_bytes(raw)
             with Image.open(BytesIO(raw)) as opened:
@@ -165,7 +189,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--city', action='append', help='Restrict to named city IDs; repeatable')
     parser.add_argument('--place', action='append', help='Restrict to specific place IDs; repeatable')
-    parser.add_argument('--catalog', type=Path, default=WORLD, help='World or scene catalog containing places')
+    parser.add_argument('--catalog', type=Path, default=CATALOG, help='World or scene catalog containing places')
     parser.add_argument('--evidence', type=Path, default=EVIDENCE, help='Versioned candidate record directory')
     parser.add_argument('--candidate-limit', type=int, choices=range(1, 7), default=2)
     args = parser.parse_args()
@@ -176,7 +200,8 @@ def main():
     saved = json.loads(existing.read_text()) if existing.exists() else {}
     places = [place for place in world['places'] if (not args.city or place['cityId'] in args.city) and (not args.place or place['id'] in args.place)]
     with ThreadPoolExecutor(max_workers=1) as executor:
-        jobs = {executor.submit(acquire, place, args.candidate_limit): place for place in places}
+        jobs = {executor.submit(acquire, place, args.candidate_limit,
+                                saved.get(place['id'], {}).get('candidates', [])): place for place in places}
         for job in as_completed(jobs):
             place = jobs[job]
             try:
@@ -195,7 +220,7 @@ def main():
                 print(json.dumps({'place': place['id'], 'candidates': len(saved[place['id']]['candidates'])}), flush=True)
             except Exception as error:
                 previous = saved.get(place['id'], {'placeId': place['id'], 'candidates': []})
-                saved[place['id']] = dict(previous, query=place.get('photoQuery') or QUERIES[place['id']], error=str(error))
+                saved[place['id']] = dict(previous, query=place.get('photoQuery') or QUERIES.get(place['id'], ''), error=str(error))
                 print(json.dumps({'place': place['id'], 'error': str(error)}), flush=True)
             existing.write_text(json.dumps(saved, ensure_ascii=False, indent=2) + '\n')
 

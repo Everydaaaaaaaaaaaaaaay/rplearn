@@ -1,0 +1,628 @@
+{
+  "schemaVersion": 1,
+  "version": "city-places-v2-2026-11-12",
+  "status": "research",
+  "cities": [
+    {
+      "id": "london",
+      "nameZh": "伦敦",
+      "populationTarget": 18
+    },
+    {
+      "id": "newyork",
+      "nameZh": "纽约",
+      "populationTarget": 18
+    },
+    {
+      "id": "singapore",
+      "nameZh": "新加坡",
+      "populationTarget": 16
+    },
+    {
+      "id": "sydney",
+      "nameZh": "悉尼",
+      "populationTarget": 16
+    },
+    {
+      "id": "melbourne",
+      "nameZh": "墨尔本",
+      "populationTarget": 15
+    },
+    {
+      "id": "toronto",
+      "nameZh": "多伦多",
+      "populationTarget": 14
+    },
+    {
+      "id": "vancouver",
+      "nameZh": "温哥华",
+      "populationTarget": 14
+    },
+    {
+      "id": "edinburgh",
+      "nameZh": "爱丁堡",
+      "populationTarget": 12
+    },
+    {
+      "id": "dublin",
+      "nameZh": "都柏林",
+      "populationTarget": 12
+    },
+    {
+      "id": "auckland",
+      "nameZh": "奥克兰",
+      "populationTarget": 12
+    },
+    {
+      "id": "capetown",
+      "nameZh": "开普敦",
+      "populationTarget": 12
+    },
+    {
+      "id": "manchester",
+      "nameZh": "曼彻斯特",
+      "populationTarget": 11
+    },
+    {
+      "id": "neworleans",
+      "nameZh": "新奥尔良",
+      "populationTarget": 10
+    },
+    {
+      "id": "nairobi",
+      "nameZh": "内罗毕",
+      "populationTarget": 10
+    },
+    {
+      "id": "kingston",
+      "nameZh": "金斯敦",
+      "populationTarget": 10
+    }
+  ],
+  "places": [
+    {
+      "id": "london-southbank",
+      "cityId": "london",
+      "titleZh": "泰晤士河南岸",
+      "category": "street",
+      "descriptionZh": "泰晤士河与树荫之间的南岸步道。",
+      "photoQuery": "\"Queen's Walk\" London -skyline -night",
+      "photoTitles": [
+        "File:London , Lambeth - The Queen's Walk - geograph.org.uk - 1741103.jpg",
+        "File:The Thames Path on the Queen's Walk - geograph.org.uk - 6775962.jpg"
+      ],
+      "photoAlignment": "leading"
+    },
+    {
+      "id": "london-bloomsbury-cafe",
+      "cityId": "london",
+      "titleZh": "布卢姆茨伯里咖啡馆",
+      "category": "cafe",
+      "descriptionZh": "临街窗边的小桌，留给短暂停靠的人。",
+      "photoQuery": "\"Redemption Roasters\" \"Bloomsbury\"",
+      "photoAlignment": "trailing"
+    },
+    {
+      "id": "london-borough-market",
+      "cityId": "london",
+      "titleZh": "博罗市场",
+      "category": "market",
+      "descriptionZh": "铁棚下的食材摊位与穿行的顾客。",
+      "photoQuery": "intitle:\"Borough Market\" stalls",
+      "photoTitles": [
+        "File:Borough Market in London.jpg",
+        "File:Borough Market - geograph.org.uk - 8162263.jpg"
+      ]
+    },
+    {
+      "id": "london-marylebone-bookshop",
+      "cityId": "london",
+      "titleZh": "马里波恩书店",
+      "category": "bookshop",
+      "descriptionZh": "木质书廊与按国家排列的旅行书。",
+      "photoQuery": "\"Daunt\" \"Bookshop\" interior"
+    },
+    {
+      "id": "london-primrose-hill",
+      "cityId": "london",
+      "titleZh": "樱草山草坡",
+      "category": "park",
+      "descriptionZh": "草坡上的停留处，远处是伦敦天际线。",
+      "photoQuery": "\"Primrose Hill\" skyline -railway"
+    },
+    {
+      "id": "newyork-high-line",
+      "cityId": "newyork",
+      "titleZh": "高线公园",
+      "category": "park",
+      "descriptionZh": "旧高架铁路上的步道，从冬末草丛间穿过城市街区。",
+      "photoQuery": "intitle:\"High Line\" walkway",
+      "photoTitles": [
+        "File:High Line Park, Section 1, in late winter.jpg",
+        "File:People walking through High Line, Section 2, at night, through the narrow section.jpg"
+      ]
+    },
+    {
+      "id": "newyork-grand-central",
+      "cityId": "newyork",
+      "titleZh": "中央车站大厅",
+      "category": "transport",
+      "descriptionZh": "星空穹顶下的大堂与交错的通勤人流。",
+      "photoQuery": "\"Grand Central\" \"Main Concourse\""
+    },
+    {
+      "id": "newyork-union-square-market",
+      "cityId": "newyork",
+      "titleZh": "联合广场农夫市集",
+      "category": "market",
+      "descriptionZh": "帐篷下的当季蔬果，广场边的人流。",
+      "photoQuery": "intitle:\"Union Square Greenmarket\"",
+      "photoTitles": [
+        "File:Union square Market.JPG"
+      ]
+    },
+    {
+      "id": "newyork-coney-island",
+      "cityId": "newyork",
+      "titleZh": "康尼岛海边栈桥",
+      "category": "street",
+      "descriptionZh": "海边的木栈桥，尽头望向游乐场与沙滩。",
+      "photoQuery": "\"Coney Island\" \"boardwalk\" -snow -hurricane"
+    },
+    {
+      "id": "newyork-greenwich-village",
+      "cityId": "newyork",
+      "titleZh": "华盛顿广场",
+      "category": "community",
+      "descriptionZh": "喷泉周围的台阶与树荫，人们在广场上停留。",
+      "photoQuery": "\"Washington Square\" \"New York\" fountain"
+    },
+    {
+      "id": "singapore-tiong-bahru-market",
+      "cityId": "singapore",
+      "titleZh": "中峇鲁熟食中心",
+      "category": "market",
+      "descriptionZh": "熟食摊前的队伍与共用餐桌。",
+      "photoQuery": "\"Tiong Bahru Market\" \"food\"",
+      "photoTitles": [
+        "File:Tiong Bahru Market, food centre.jpg"
+      ]
+    },
+    {
+      "id": "singapore-joo-chiat",
+      "cityId": "singapore",
+      "titleZh": "如切彩色店屋街",
+      "category": "street",
+      "descriptionZh": "坤成路上的娘惹风格店屋与街边人行道。",
+      "photoQuery": "\"Joo Chiat\" shophouses"
+    },
+    {
+      "id": "singapore-botanic-gardens",
+      "cityId": "singapore",
+      "titleZh": "植物园天鹅湖畔",
+      "category": "park",
+      "descriptionZh": "热带树荫下的湖边小径。",
+      "photoQuery": "\"Swan Lake\" \"Singapore\""
+    },
+    {
+      "id": "singapore-marina-bay",
+      "cityId": "singapore",
+      "titleZh": "滨海湾步道",
+      "category": "street",
+      "descriptionZh": "隔着海湾看楼群，沿岸有人散步与停留。",
+      "photoQuery": "\"Marina Bay\" promenade -fireworks",
+      "photoTitles": [
+        "File:Boardwalk at Marina Bay Sands Singapore (8037849631).jpg",
+        "File:MarinaBay cool resting spot.jpg"
+      ],
+      "photoAlignment": "leading"
+    },
+    {
+      "id": "sydney-bondi",
+      "cityId": "sydney",
+      "titleZh": "邦迪海岸",
+      "category": "park",
+      "descriptionZh": "岩岸外的海浪，沿着海湾延伸的沙滩。",
+      "photoQuery": "\"Bondi Beach\" promenade",
+      "photoTitles": [
+        "File:Bondi Beach Sydney.jpg",
+        "File:Bondi Beach .jpg"
+      ]
+    },
+    {
+      "id": "sydney-circular-quay",
+      "cityId": "sydney",
+      "titleZh": "环形码头",
+      "category": "transport",
+      "descriptionZh": "渡轮码头廊檐下，等船与经过的人共享通道。",
+      "photoQuery": "\"Circular Quay\" promenade",
+      "photoAlignment": "trailing"
+    },
+    {
+      "id": "sydney-glebe-market",
+      "cityId": "sydney",
+      "titleZh": "格里布周末市集",
+      "category": "market",
+      "descriptionZh": "校园空地上的衣物、手作与旧物摊位。",
+      "photoQuery": "\"Glebe Markets\""
+    },
+    {
+      "id": "sydney-newtown-bookshop",
+      "cityId": "sydney",
+      "titleZh": "纽镇独立书店",
+      "category": "bookshop",
+      "descriptionZh": "King Street 街区里通往书架的窄小店面。",
+      "photoQuery": "\"Elizabeth's Bookshop\" \"Newtown\" interior"
+    },
+    {
+      "id": "melbourne-fitzroy-cafe",
+      "cityId": "melbourne",
+      "titleZh": "菲茨罗伊街边露台",
+      "category": "street",
+      "descriptionZh": "杰特鲁德街边的露台座位与沿街小店。",
+      "photoQuery": "\"Gertrude Street\" \"seating\""
+    },
+    {
+      "id": "melbourne-laneways",
+      "cityId": "melbourne",
+      "titleZh": "霍西尔涂鸦巷",
+      "category": "street",
+      "descriptionZh": "涂鸦墙之间的公共巷道。",
+      "photoQuery": "intitle:\"Hosier Lane\" -portrait"
+    },
+    {
+      "id": "melbourne-queen-victoria-market",
+      "cityId": "melbourne",
+      "titleZh": "维多利亚女王市场",
+      "category": "market",
+      "descriptionZh": "老市场棚廊里的服饰、日用摊位与来往顾客。",
+      "photoQuery": "\"Queen Victoria Market\" produce",
+      "photoTitles": [
+        "File:Queen Victoria Market, Melbourne shed B.jpg",
+        "File:Melbourne (AU), Queen Victoria Market -- 2019 -- 1535.jpg"
+      ]
+    },
+    {
+      "id": "melbourne-state-library",
+      "cityId": "melbourne",
+      "titleZh": "维州图书馆阅览室",
+      "category": "community",
+      "descriptionZh": "穹顶下的放射状书桌与安静通道。",
+      "photoQuery": "\"State Library Victoria\" \"La Trobe\" reading"
+    },
+    {
+      "id": "toronto-kensington",
+      "cityId": "toronto",
+      "titleZh": "肯辛顿街区",
+      "category": "street",
+      "descriptionZh": "杂货店、旧衣店与低层店面相连的街道。",
+      "photoQuery": "\"Kensington Market\" \"Toronto\" street"
+    },
+    {
+      "id": "toronto-islands",
+      "cityId": "toronto",
+      "titleZh": "多伦多群岛湖岸",
+      "category": "park",
+      "descriptionZh": "安大略湖岸的木栈道，一侧临水，一侧是树荫。",
+      "photoQuery": "\"Toronto Islands\" \"boardwalk\""
+    },
+    {
+      "id": "toronto-st-lawrence-market",
+      "cityId": "toronto",
+      "titleZh": "圣劳伦斯市场",
+      "category": "market",
+      "descriptionZh": "室内市场的柜台、货品与顾客通道。",
+      "photoQuery": "\"St. Lawrence Market\" interior"
+    },
+    {
+      "id": "toronto-distillery-district",
+      "cityId": "toronto",
+      "titleZh": "酿酒厂历史街区",
+      "category": "community",
+      "descriptionZh": "红砖厂房之间的石板步行街。",
+      "photoQuery": "intitle:\"Distillery District\" Toronto -christmas",
+      "photoTitles": [
+        "File:Distillery District, Trinity Street looking north, 2026.jpg",
+        "File:The distillery district has brick lined streets -a.jpg"
+      ]
+    },
+    {
+      "id": "vancouver-gastown",
+      "cityId": "vancouver",
+      "titleZh": "煤气镇钟楼街口",
+      "category": "street",
+      "descriptionZh": "蒸汽钟旁的砖石街道与沿街店面。",
+      "photoQuery": "\"Gastown\" \"Water Street\"",
+      "photoTitles": [
+        "File:Gastown steam clock as seen from a street.jpg",
+        "File:Gastown Vancouver Steam Clock Water Street (30853451538).jpg"
+      ],
+      "photoAlignment": "trailing"
+    },
+    {
+      "id": "vancouver-false-creek",
+      "cityId": "vancouver",
+      "titleZh": "福溪海堤",
+      "category": "street",
+      "descriptionZh": "公寓、游艇与湾边步道相邻的空间。",
+      "photoQuery": "\"False Creek\" seawall"
+    },
+    {
+      "id": "vancouver-granville-market",
+      "cityId": "vancouver",
+      "titleZh": "格兰维尔岛公共市场",
+      "category": "market",
+      "descriptionZh": "市场里并排的熟食小店与共用座位。",
+      "photoQuery": "\"Granville Island Market\" interior"
+    },
+    {
+      "id": "vancouver-stanley-park",
+      "cityId": "vancouver",
+      "titleZh": "斯坦利公园林径",
+      "category": "park",
+      "descriptionZh": "高大的雪松与道格拉斯冷杉之间的步道。",
+      "photoQuery": "\"Stanley Park\" \"forest\" path",
+      "photoTitles": [
+        "File:Forest Path - Tatlow Walk, Stanley Park, Vancouver.jpg",
+        "File:Forest Path, Stanley Park, Vancouver, B.C. (13626681374).jpg"
+      ]
+    },
+    {
+      "id": "edinburgh-dean-village",
+      "cityId": "edinburgh",
+      "titleZh": "迪恩村河边",
+      "category": "street",
+      "descriptionZh": "利斯河旁的石屋、桥与沿河小路。",
+      "photoQuery": "\"Dean Village\" \"Water of Leith\""
+    },
+    {
+      "id": "edinburgh-old-town",
+      "cityId": "edinburgh",
+      "titleZh": "皇家英里街巷",
+      "category": "street",
+      "descriptionZh": "石砌建筑与连接主街的狭窄巷口。",
+      "photoQuery": "\"Royal Mile\" Edinburgh street -parade",
+      "photoTitles": [
+        "File:The Royal Mile, Edinburgh, Scotland.jpg",
+        "File:Royal Mile, Edinburgh.jpg"
+      ]
+    },
+    {
+      "id": "edinburgh-calton-hill",
+      "cityId": "edinburgh",
+      "titleZh": "卡尔顿山",
+      "category": "park",
+      "descriptionZh": "石阶尽头的山顶步道与城市远景。",
+      "photoQuery": "\"Calton Hill\" Edinburgh path",
+      "photoTitles": [
+        "File:CaltonHillDugaldMonument.jpg",
+        "File:Edinburgh, Calton Hill.jpg"
+      ]
+    },
+    {
+      "id": "dublin-trinity",
+      "cityId": "dublin",
+      "titleZh": "圣三一学院庭院",
+      "category": "community",
+      "descriptionZh": "钟楼周围的石铺庭院与校园通道。",
+      "photoQuery": "\"Trinity College Dublin\" \"campanile\"",
+      "photoTitles": [
+        "File:Trinity College - Parliament Square - October 2023.jpg"
+      ],
+      "photoAlignment": "trailing"
+    },
+    {
+      "id": "dublin-grand-canal",
+      "cityId": "dublin",
+      "titleZh": "大运河岸",
+      "category": "park",
+      "descriptionZh": "运河边的树荫、步道与静静停泊的船。",
+      "photoQuery": "\"Grand Canal\" \"Dublin\" towpath",
+      "photoTitles": [
+        "File:Dublin, Grand Canal.jpg",
+        "File:DublinGrandCanal.jpg"
+      ]
+    },
+    {
+      "id": "dublin-georges-arcade",
+      "cityId": "dublin",
+      "titleZh": "乔治街拱廊市场",
+      "category": "market",
+      "descriptionZh": "红砖拱廊里的小摊、店面与中央过道。",
+      "photoQuery": "\"George's Street Arcade\" interior"
+    },
+    {
+      "id": "auckland-mount-eden",
+      "cityId": "auckland",
+      "titleZh": "伊甸山观景步道",
+      "category": "park",
+      "descriptionZh": "火山口外缘的观景区域与奥克兰远景。",
+      "photoQuery": "\"Mount Eden\" Auckland crater"
+    },
+    {
+      "id": "auckland-wynyard-quarter",
+      "cityId": "auckland",
+      "titleZh": "温亚德码头街区",
+      "category": "street",
+      "descriptionZh": "旧工业港区里的海滨公共空间。",
+      "photoQuery": "\"Wynyard Quarter\" waterfront",
+      "photoTitles": [
+        "File:North Wharf, Wynyard.jpg",
+        "File:North Wharf And People Crowds.jpg"
+      ],
+      "photoAlignment": "leading"
+    },
+    {
+      "id": "auckland-otara-market",
+      "cityId": "auckland",
+      "titleZh": "奥塔拉周六市集",
+      "category": "market",
+      "descriptionZh": "停车场上铺开的蔬果、衣物与手作摊。",
+      "photoQuery": "\"Ōtara Markets\""
+    },
+    {
+      "id": "capetown-bo-kaap",
+      "cityId": "capetown",
+      "titleZh": "波卡普彩屋街",
+      "category": "street",
+      "descriptionZh": "坡地街道两侧的彩色住宅与人行道。",
+      "photoQuery": "\"Bo-Kaap\" street houses",
+      "photoAlignment": "trailing"
+    },
+    {
+      "id": "capetown-sea-point",
+      "cityId": "capetown",
+      "titleZh": "海角区海滨长廊",
+      "category": "park",
+      "descriptionZh": "大西洋岸边的草地、长椅与公共步道。",
+      "photoQuery": "\"Sea Point Promenade\"",
+      "photoTitles": [
+        "File:Sea Point Promenade (17919667120).jpg",
+        "File:Promenade at Sea Point - panoramio.jpg"
+      ],
+      "photoAlignment": "leading"
+    },
+    {
+      "id": "capetown-greenmarket",
+      "cityId": "capetown",
+      "titleZh": "绿市广场",
+      "category": "market",
+      "descriptionZh": "广场铺石上的工艺品摊位与遮阳棚。",
+      "photoQuery": "\"Greenmarket Square\" market stalls",
+      "photoTitles": [
+        "File:Greenmarket Square Cape Town - Trading Stalls.JPG",
+        "File:Greenmarket Square, Cape Town.JPG"
+      ]
+    },
+    {
+      "id": "manchester-afflecks",
+      "cityId": "manchester",
+      "titleZh": "阿弗莱克斯商店街口",
+      "category": "market",
+      "descriptionZh": "北区红砖旧楼里，独立小店的入口连着公共街道。",
+      "photoQuery": "\"Afflecks\" interior",
+      "photoTitles": [
+        "File:Afflecks market in Manchester.jpg",
+        "File:Afflecks Palace, Manchester.jpg"
+      ]
+    },
+    {
+      "id": "manchester-castlefield",
+      "cityId": "manchester",
+      "titleZh": "卡斯尔菲尔德运河",
+      "category": "street",
+      "descriptionZh": "红砖仓库、铁路高架与运河岸边的小路。",
+      "photoQuery": "\"Castlefield\" canal towpath",
+      "photoTitles": [
+        "File:Rochdale Canal at Castlefield - geograph.org.uk - 3836251.jpg",
+        "File:Ashton Canal Islington Branch Canal 5146.JPG"
+      ]
+    },
+    {
+      "id": "manchester-central-library",
+      "cityId": "manchester",
+      "titleZh": "曼彻斯特中央图书馆",
+      "category": "community",
+      "descriptionZh": "圆形阅览室里的书桌与公共通道。",
+      "photoQuery": "\"Manchester Central Library\" \"reading room\"",
+      "photoTitles": [
+        "File:People studying in the Wolfson Reading Room of Manchester Central Library 01.jpg",
+        "File:Manchester Central Library 2014 re-opening Wolfson Reading Room 7892.JPG"
+      ]
+    },
+    {
+      "id": "neworleans-jackson-square",
+      "cityId": "neworleans",
+      "titleZh": "杰克逊广场",
+      "category": "community",
+      "descriptionZh": "教堂前的绿地与广场外围的步行空间。",
+      "photoQuery": "\"Jackson Square\" \"New Orleans\" -painting"
+    },
+    {
+      "id": "neworleans-frenchmen-street",
+      "cityId": "neworleans",
+      "titleZh": "法国人街",
+      "category": "street",
+      "descriptionZh": "音乐俱乐部门口连着有人经过的人行道。",
+      "photoQuery": "\"Frenchmen Street\" night",
+      "photoTitles": [
+        "File:Frenchmen Street, New Orleans, November 2025 - 600 block at night.jpg",
+        "File:Outside the Apple Barrel at Night, Frenchmen Street, New Orleans.jpg"
+      ]
+    },
+    {
+      "id": "neworleans-french-market",
+      "cityId": "neworleans",
+      "titleZh": "法国市场",
+      "category": "market",
+      "descriptionZh": "长条棚廊下的摊位与穿行的人。",
+      "photoQuery": "\"French Market\" \"New Orleans\" stalls",
+      "photoTitles": [
+        "File:French Market Stalls - New Orleans July 2011.jpg",
+        "File:French Market- New Orleans.jpg"
+      ]
+    },
+    {
+      "id": "nairobi-national-museum",
+      "cityId": "nairobi",
+      "titleZh": "内罗毕国家博物馆庭院",
+      "category": "community",
+      "descriptionZh": "博物馆入口外的台阶、庭院与绿地。",
+      "photoQuery": "\"Nairobi National Museum\" exterior",
+      "photoTitles": [
+        "File:Exterior of Nairobi National Museum, Kenya (1).jpg",
+        "File:External views of the Nairobi National Museum 05.jpg"
+      ]
+    },
+    {
+      "id": "nairobi-karura-forest",
+      "cityId": "nairobi",
+      "titleZh": "卡鲁拉森林步道",
+      "category": "park",
+      "descriptionZh": "城市森林中的土路、树荫与步道标识。",
+      "photoQuery": "\"Karura Forest\" trail -map"
+    },
+    {
+      "id": "nairobi-city-market",
+      "cityId": "nairobi",
+      "titleZh": "内罗毕城市市场街口",
+      "category": "market",
+      "descriptionZh": "彩绘市场外墙下的街口与入口。",
+      "photoQuery": "\"Nairobi City Market\""
+    },
+    {
+      "id": "kingston-devon-house",
+      "cityId": "kingston",
+      "titleZh": "德文大宅庭院",
+      "category": "community",
+      "descriptionZh": "老宅前的草坪与院内公共空间。",
+      "photoQuery": "\"Devon House\" Kingston Jamaica",
+      "photoTitles": [
+        "File:Devon House (46276).jpg",
+        "File:Devonhouse.jpg"
+      ]
+    },
+    {
+      "id": "kingston-emancipation-park",
+      "cityId": "kingston",
+      "titleZh": "解放公园",
+      "category": "park",
+      "descriptionZh": "《救赎之歌》雕塑、水池与解放公园入口广场。",
+      "photoQuery": "\"Emancipation Park\" Kingston Jamaica",
+      "photoTitles": [
+        "File:Emancipation Park-Statues-1.jpg"
+      ]
+    },
+    {
+      "id": "kingston-waterfront",
+      "cityId": "kingston",
+      "titleZh": "金斯敦海滨广场",
+      "category": "street",
+      "descriptionZh": "海滨的遮荫座位，背后是市中心办公楼。",
+      "photoQuery": "\"Kingston\" \"Jamaica\" waterfront -ship",
+      "photoTitles": [
+        "File:Kingston harbour.jpg"
+      ]
+    }
+  ]
+}

@@ -61,22 +61,24 @@
 
 | 城市 ID | 城市 | 人数 | 地点数 | 地点与人物配额 |
 | --- | --- | ---: | ---: | --- |
-| london | 伦敦 | 18 | 5 | 布卢姆茨伯里街区咖啡馆 4；南岸河畔步道 4；Borough Market 生鲜摊区 4；Marylebone 街区书店 3；Primrose Hill 公园 3 |
-| newyork | 纽约 | 18 | 5 | 东村街角咖啡馆 4；格林尼治村街道 4；Union Square 农夫市集 4；布鲁克林社区书店 3；中央公园长椅区 3 |
-| singapore | 新加坡 | 16 | 4 | 中峇鲁咖啡店 4；如切街区 4；Tekka Centre 生鲜市场 4；滨海湾步道 4 |
-| sydney | 悉尼 | 16 | 4 | Surry Hills 咖啡馆 4；Circular Quay 港湾步道 4；Glebe 市集 4；Newtown 街区书店 4 |
-| melbourne | 墨尔本 | 15 | 4 | Fitzroy 咖啡馆 4；市中心巷道 4；Queen Victoria Market 生鲜区 4；Carlton 街区书店 3 |
-| toronto | 多伦多 | 14 | 4 | Annex 街区咖啡馆 4；湖滨步道 4；St Lawrence Market 3；Distillery District 步行街 3 |
-| vancouver | 温哥华 | 14 | 4 | Mount Pleasant 咖啡馆 4；False Creek 海堤步道 4；Granville Island Public Market 3；Stanley Park 林间步道 3 |
-| edinburgh | 爱丁堡 | 12 | 3 | Stockbridge 咖啡馆 4；老城街巷 4；Grassmarket 广场 4 |
-| dublin | 都柏林 | 12 | 3 | Portobello 咖啡馆 4；Grand Canal 步道 4；George's Street Arcade 4 |
-| auckland | 奥克兰 | 12 | 3 | Ponsonby 咖啡馆 4；Wynyard Quarter 海滨 4；Otara 市集 4 |
-| capetown | 开普敦 | 12 | 3 | Observatory 街区咖啡馆 4；Sea Point 海滨步道 4；Oranjezicht City Farm 市场 4 |
-| manchester | 曼彻斯特 | 11 | 3 | Northern Quarter 咖啡馆 4；Castlefield 运河步道 4；Arndale 市场 3 |
-| neworleans | 新奥尔良 | 10 | 3 | Marigny 街区咖啡馆 4；Frenchmen Street 街道 3；French Market 摊区 3 |
-| nairobi | 内罗毕 | 10 | 3 | Westlands 咖啡馆 4；Karura Forest 林间步道 3；City Market 摊区 3 |
-| kingston | 金斯敦 | 10 | 3 | New Kingston 咖啡馆 4；Emancipation Park 步道 3；Coronation Market 生鲜摊区 3 |
+| london | 伦敦 | 18 | 5 | 泰晤士河南岸 4；布卢姆茨伯里咖啡馆 4；博罗市场 4；马里波恩书店 3；樱草山草坡 3 |
+| newyork | 纽约 | 18 | 5 | 高线公园 4；中央车站大厅 4；联合广场农夫市集 4；康尼岛海边栈桥 3；华盛顿广场 3 |
+| singapore | 新加坡 | 16 | 4 | 中峇鲁熟食中心 4；如切彩色店屋街 4；植物园天鹅湖畔 4；滨海湾步道 4 |
+| sydney | 悉尼 | 16 | 4 | 邦迪海岸 4；环形码头 4；格里布周末市集 4；纽镇独立书店 4 |
+| melbourne | 墨尔本 | 15 | 4 | 菲茨罗伊街边露台 4；霍西尔涂鸦巷 4；维多利亚女王市场 4；维州图书馆阅览室 3 |
+| toronto | 多伦多 | 14 | 4 | 肯辛顿街区 4；多伦多群岛湖岸 4；圣劳伦斯市场 3；酿酒厂历史街区 3 |
+| vancouver | 温哥华 | 14 | 4 | 煤气镇钟楼街口 4；福溪海堤 4；格兰维尔岛公共市场 3；斯坦利公园林径 3 |
+| edinburgh | 爱丁堡 | 12 | 3 | 迪恩村河边 4；皇家英里街巷 4；卡尔顿山 4 |
+| dublin | 都柏林 | 12 | 3 | 圣三一学院庭院 4；大运河岸 4；乔治街拱廊市场 4 |
+| auckland | 奥克兰 | 12 | 3 | 伊甸山观景步道 4；温亚德码头街区 4；奥塔拉周六市集 4 |
+| capetown | 开普敦 | 12 | 3 | 波卡普彩屋街 4；海角区海滨长廊 4；绿市广场 4 |
+| manchester | 曼彻斯特 | 11 | 3 | 阿弗莱克斯商店街口 4；卡斯尔菲尔德运河 4；曼彻斯特中央图书馆 3 |
+| neworleans | 新奥尔良 | 10 | 3 | 杰克逊广场 4；法国人街 3；法国市场 3 |
+| nairobi | 内罗毕 | 10 | 3 | 内罗毕国家博物馆庭院 4；卡鲁拉森林步道 3；内罗毕城市市场街口 3 |
+| kingston | 金斯敦 | 10 | 3 | 德文大宅庭院 4；解放公园 3；金斯敦海滨广场 3 |
 | 合计 | 15 城 | 200 | 54 | 每处 3—4 人 |
+
+2026-11-12 按已核对的同城实拍更新地点目录，逐图来源与空间约束见[城市场景 v2](../Assets/Activities/CityPlaces-v2/README.md)。人物数字沿用编辑目标，逐人分配仍在草稿阶段。
 
 最多 18 人、最少 10 人，差距为 1.8 倍，每处 3—4 人。伦敦、纽约各 5 处，新加坡、悉尼、墨尔本、多伦多、温哥华各 4 处，其余八城各 3 处。增加地点时同步分配人物，避免热门城市虽然地点更多、每处反而只剩一两人。地方特色来自日常空间和人群，不要求每城堆满地标，也不把不同城市都写成同一种“热情摊主教游客买东西”。
 
