@@ -101,9 +101,9 @@ def plain(value):
     return unescape(re.sub('<[^>]+>', '', value)).strip()
 
 
-def acquire(place):
+def acquire(place, candidate_limit):
     identifier = place['id']
-    query = QUERIES[identifier]
+    query = place.get('photoQuery') or QUERIES[identifier]
     cache = CACHE / f'{identifier}-{sha256(query.encode()).hexdigest()[:10]}-1280.json'
     if cache.exists():
         result = json.loads(cache.read_text())
@@ -117,7 +117,7 @@ def acquire(place):
         cache.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
     candidates = []
     for page in sorted(result.get('query', {}).get('pages', {}).values(), key=lambda item: item.get('index', 100)):
-        if len(candidates) >= 2:
+        if len(candidates) >= candidate_limit:
             break
         info = page.get('imageinfo', [{}])[0]
         metadata = info.get('extmetadata', {})
@@ -165,15 +165,18 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--city', action='append', help='Restrict to named city IDs; repeatable')
     parser.add_argument('--place', action='append', help='Restrict to specific place IDs; repeatable')
+    parser.add_argument('--catalog', type=Path, default=WORLD, help='World or scene catalog containing places')
+    parser.add_argument('--evidence', type=Path, default=EVIDENCE, help='Versioned candidate record directory')
+    parser.add_argument('--candidate-limit', type=int, choices=range(1, 7), default=2)
     args = parser.parse_args()
     CACHE.mkdir(parents=True, exist_ok=True)
-    EVIDENCE.mkdir(parents=True, exist_ok=True)
-    world = json.loads(WORLD.read_text())
-    existing = EVIDENCE / 'candidates.json'
+    args.evidence.mkdir(parents=True, exist_ok=True)
+    world = json.loads(args.catalog.read_text())
+    existing = args.evidence / 'candidates.json'
     saved = json.loads(existing.read_text()) if existing.exists() else {}
     places = [place for place in world['places'] if (not args.city or place['cityId'] in args.city) and (not args.place or place['id'] in args.place)]
     with ThreadPoolExecutor(max_workers=1) as executor:
-        jobs = {executor.submit(acquire, place): place for place in places}
+        jobs = {executor.submit(acquire, place, args.candidate_limit): place for place in places}
         for job in as_completed(jobs):
             place = jobs[job]
             try:
@@ -192,7 +195,7 @@ def main():
                 print(json.dumps({'place': place['id'], 'candidates': len(saved[place['id']]['candidates'])}), flush=True)
             except Exception as error:
                 previous = saved.get(place['id'], {'placeId': place['id'], 'candidates': []})
-                saved[place['id']] = dict(previous, query=QUERIES[place['id']], error=str(error))
+                saved[place['id']] = dict(previous, query=place.get('photoQuery') or QUERIES[place['id']], error=str(error))
                 print(json.dumps({'place': place['id'], 'error': str(error)}), flush=True)
             existing.write_text(json.dumps(saved, ensure_ascii=False, indent=2) + '\n')
 
