@@ -777,7 +777,15 @@ struct RootView: View {
     @ViewBuilder
     private func appointmentPage(_ presentation: AppointmentPresentation) -> some View {
         let reading = AppointmentReadingServices(dictionary: environment.dictionary, grammar: environment.grammarPoints,
-                                                 favorites: environment.favoritesStore, speech: environment.speech)
+            favorites: environment.favoritesStore, speech: environment.speech,
+            characterNarration: { [roster = environment.rosterStore] id, text in
+                guard let character = try? await roster.character(id: id) else { return nil }
+                let hint = SpeechVoiceHint(stableID: character.id.uuidString.lowercased(),
+                    gender: character.card.gender.rawValue, nationality: character.card.nationality,
+                    supertonicVoice: character.card.resolvedReadingVoice)
+                return StoryVoiceCasting.request(text: text, speaker: character.card.name, fallback: hint,
+                    language: AccentMapper.language(forNationality: character.card.nationality))
+            })
         let close = { appointmentPresentation = nil }
         #if DEBUG
         if bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" {

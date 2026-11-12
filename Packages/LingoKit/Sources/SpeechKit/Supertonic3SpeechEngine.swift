@@ -107,10 +107,12 @@ enum Supertonic3VoiceCatalog {
         let voice: SupertonicVoice
         if hint == nil || hint?.stableID == StoryVoiceCasting.narratorID {
             voice = .narrator
+        } else if let authored = hint?.supertonicVoice {
+            voice = authored
         } else if CharacterReadingVoice.isBritish(hint?.nationality ?? "") {
             voice = hint?.gender == "male" ? .m5 : .f5
         } else {
-            voice = hint?.supertonicVoice ?? .assigned(name: hint?.stableID ?? "", gender: hint?.gender ?? "", nationality: hint?.nationality ?? "")
+            voice = .assigned(name: hint?.stableID ?? "", gender: hint?.gender ?? "", nationality: hint?.nationality ?? "")
         }
         return Profile(voiceID: voice.rawValue, speed: 1, silenceDuration: 0.05)
     }

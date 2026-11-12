@@ -83,20 +83,62 @@ public typealias SupertonicVoice = CharacterReadingVoice
 
 /// Narrator and user messages share one identity across the app.
 public enum StoryVoiceCasting {
+    public struct Profile: Decodable, Sendable {
+        public let voice: SupertonicVoice
+        public let rate: Float
+        public let language: String
+        public let aliases: [String]
+        public let pauseAfter: Double
+    }
+
+    private struct Manifest: Decodable {
+        let version: Int
+        let cast: [String: Profile]
+    }
+
+    /// The same shipped cast is read by the offline production planner.
+    public static let profiles: [String: Profile] = {
+        guard let url = Bundle.main.url(forResource: "story-voice-cast", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let manifest = try? JSONDecoder().decode(Manifest.self, from: data),
+              manifest.version == 1 else { return [:] }
+        return manifest.cast
+    }()
+
     public static let narratorID = "story.narrator"
     public static let narrator = SpeechVoiceHint(stableID: narratorID, gender: "female", nationality: "British", supertonicVoice: .narrator)
     public static func isNarrator(_ speaker: String) -> Bool {
-        ["旁白", "出发之后", "narrator", "你", "you", "user"].contains(speaker)
+        ["旁白", "出发之后", "narrator", "你", "you", "user"].contains(speaker.lowercased())
     }
+
+    public static func profile(speaker: String) -> Profile? {
+        let key = speaker.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        return profiles.first { name, profile in
+            name.lowercased() == key || profile.aliases.contains { $0.lowercased() == key }
+        }?.value
+    }
+
     public static func voice(speaker: String, proposed: SupertonicVoice) -> SupertonicVoice {
         if isNarrator(speaker) { return .narrator }
-        switch speaker {
-        case "Oliver", "Oliver Bennett": return .m5
-        case "Nora", "Isla": return .f5
-        case "Ruby", "Ruby Walker": return .f3
-        case "Marcus", "Marcus Rivera": return .m3
-        default: return proposed
+        return profile(speaker: speaker)?.voice ?? proposed
+    }
+
+    public static func hint(speaker: String, fallback: SpeechVoiceHint? = nil) -> SpeechVoiceHint {
+        if isNarrator(speaker) { return narrator }
+        guard let profile = profile(speaker: speaker) else {
+            return fallback ?? SpeechVoiceHint(stableID: "story.character." + speaker, supertonicVoice: .f2)
         }
+        return SpeechVoiceHint(stableID: "story.character." + speaker,
+            gender: profile.voice.rawValue.hasPrefix("M") ? "male" : "female",
+            supertonicVoice: profile.voice)
+    }
+
+    public static func request(text: String, speaker: String, fallback: SpeechVoiceHint? = nil,
+                               language: String = "en-US") -> SpeechRequest {
+        let profile = profile(speaker: speaker)
+        return SpeechRequest(text: text, language: profile?.language ?? language, purpose: .characterDialogue,
+            voiceHint: hint(speaker: speaker, fallback: fallback), engine: .supertonic3,
+            delivery: SpeechDelivery(speedMultiplier: profile?.rate ?? 1, trailingPause: profile?.pauseAfter ?? 0.3))
     }
 }
 

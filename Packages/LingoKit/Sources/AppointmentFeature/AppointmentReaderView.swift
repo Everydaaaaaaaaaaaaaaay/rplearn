@@ -47,12 +47,27 @@ struct AppointmentReaderView: View {
         .sheet(isPresented: $history) { AppointmentHistoryView(detail: model.detail, characterName: characterName) }
         .sheet(isPresented: $credits) { AppointmentPhotoCreditsView(cityID: model.detail?.appointment.cityId ?? "", cityName: model.detail?.appointment.cityName ?? "") }
         .navigationDestination(isPresented: $summary) { AppointmentSummaryView(model: model, characterName: characterName, onChat: onChat, onMemory: onMemory) }
-        .task(id: "\(model.block?.id ?? "")-\(model.beatIndex)-\(sound)") {
-            guard sound, let beat = model.beat, let readingServices else { return }
-            await readingServices.speech.speak(SpeechRequest(text: beat.english, language: "en-GB", purpose: .general))
+        .task(id: narrationIdentity) {
+            guard let readingServices else { return }
+            await readingServices.speech.stopSpeaking()
+            guard canNarrate, let beat = model.beat, let characterID = model.detail?.appointment.characterId else { return }
+            let characterRequest = beat.speaker == "character"
+                ? await readingServices.characterNarration(characterID, beat.english) : nil
+            guard !Task.isCancelled else { return }
+            let request = AppointmentNarration.request(for: beat, characterName: characterName(characterID),
+                                                      characterRequest: characterRequest)
+            await readingServices.speech.speakAndWait(request)
         }
-        .onDisappear { Task { await model.persistReading(); await readingServices?.speech.stopSpeaking() } }
-        .onChange(of: scenePhase) { _, phase in if phase != .active { Task { await model.persistReading(); await readingServices?.speech.stopSpeaking() } } }
+        .onDisappear { Task { await readingServices?.speech.stopSpeaking(); await model.persistReading() } }
+        .onChange(of: scenePhase) { _, phase in if phase != .active { Task { await model.persistReading() } } }
+    }
+
+    private var canNarrate: Bool {
+        sound && scenePhase == .active && wordSelection == nil && !customInput && !history && !credits && !summary
+    }
+
+    private var narrationIdentity: String {
+        "\(model.block?.id ?? "")-\(model.beatIndex)-\(canNarrate)"
     }
 
     private var reader: some View {

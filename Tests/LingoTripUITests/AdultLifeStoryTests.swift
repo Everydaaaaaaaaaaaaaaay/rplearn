@@ -2,6 +2,35 @@ import XCTest
 
 @MainActor
 final class AdultLifeStoryTests: XCTestCase {
+    func testRubyStartsInHerOwnVoice() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment = [
+            "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_TAB": "home", "UI_TEST_LONDON_EPISODE": "1",
+            "UI_TEST_DEPARTURE_RESOURCE": "departures_mainline_melbourne_v1",
+            "UI_TEST_EPISODE_AUDIO": "0", "UI_TEST_EPISODE_FRESH": "1",
+        ]
+        app.launch()
+        defer { app.terminate() }
+        let sound = app.buttons["episode.sound"]
+        XCTAssertTrue(sound.waitForExistence(timeout: 20))
+        XCTAssertTrue((sound.value as? String ?? "").contains("voice:F5"))
+        for _ in 0..<15 {
+            if (sound.value as? String ?? "").contains("speaker:Ruby;voice:F3") { break }
+            app.buttons["episode.next"].tap()
+        }
+        XCTAssertTrue((sound.value as? String ?? "").contains("speaker:Ruby;voice:F3"))
+        XCTAssertTrue((sound.value as? String ?? "").contains("starts:0;"))
+        sound.tap()
+        expectation(for: NSPredicate(format: "value CONTAINS %@", "starts:1;"), evaluatedWith: sound)
+        waitForExpectations(timeout: 60)
+        XCTAssertTrue((sound.value as? String ?? "").contains("speaker:Ruby;voice:F3"))
+        sound.tap()
+        XCTAssertEqual(sound.label, "开启剧情声音")
+    }
+
     func testNewEditionDeclineAndResume() {
         continueAfterFailure = false
         let app = XCUIApplication()

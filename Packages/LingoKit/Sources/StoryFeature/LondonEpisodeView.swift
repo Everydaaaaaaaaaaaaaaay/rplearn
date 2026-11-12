@@ -460,7 +460,7 @@ public struct LondonEpisodeView: View {
     private func autoplay() async {
         guard canAutoAdvance, let current = session?.current else { return }
         let delay = soundEnabled && currentLineIsVoiced && audio.unavailableID != current.id
-            ? (currentUsesPrepared ? 0 : 0.6) : max(4.0, Double(current.text.split(separator: " ").count) * 0.42)
+            ? 0 : max(4.0, Double(current.text.split(separator: " ").count) * 0.42)
         do { try await Task.sleep(for: .seconds(delay)) } catch { return }
         guard !Task.isCancelled, canAutoAdvance, session?.nodeID == current.id else { return }
         advance()
@@ -469,7 +469,8 @@ public struct LondonEpisodeView: View {
     private var audioAccessibilityValue: String {
         #if DEBUG
         if ProcessInfo.processInfo.environment["UI_TEST_LONDON_EPISODE"] == "1" {
-            return "starts:\(spokenStarts);completed:\(audio.completedID ?? "none");node:\(session?.nodeID ?? "none");prepared:\(currentUsesPrepared)"
+            let voice = session.flatMap { LondonEpisodeNarration.request(for: $0.current).voiceHint?.supertonicVoice?.rawValue } ?? "none"
+            return "starts:\(spokenStarts);completed:\(audio.completedID ?? "none");node:\(session?.nodeID ?? "none");prepared:\(currentUsesPrepared);speaker:\(session?.current.speaker ?? "none");voice:\(voice)"
         }
         #endif
         return soundEnabled ? "角色配音与环境声已开启" : "剧情静音，查词仍可单独播放"
@@ -485,11 +486,11 @@ public struct LondonEpisodeView: View {
         lastAudioPageID = session?.nodeID
         guard canPlayAudio, let session else { audio.pause(); return }
         let speaker = session.current.speaker
-        let request = StoryVoiceLibrary.bundled?.request(story: session.episode.id, node: session.nodeID,
-            speaker: speaker, text: session.current.text) ?? LondonEpisodeNarration.request(for: session.current)
+        let request = LondonEpisodeNarration.request(for: session.current)
         currentLineIsVoiced = speaker != "你" && session.current.choices == nil
         let prepared = currentLineIsVoiced ? StoryVoiceLibrary.bundled?.clip(
-            story: session.episode.id, node: session.nodeID, speaker: speaker, text: session.current.text) : nil
+            story: session.episode.id, node: session.nodeID, speaker: speaker, text: session.current.text,
+            matching: request) : nil
         currentUsesPrepared = prepared != nil
         // The rain has stopped at the ending; inside, only distant window rain.
         let rain: Float = resourceName != "departures_london_v1" || session.current.act == 5 ? 0

@@ -8,6 +8,44 @@ import StoryEngine
 /// Explicit local model evaluation, not a standing unit-test gate. Exports audio
 /// for human listening; nonempty PCM is not evidence that an emotion sounds right.
 final class SpeechDeliveryAuditionTests: XCTestCase {
+    @MainActor func testRenderCharacterCastingSample() async throws {
+        guard Bundle(for: Self.self).object(forInfoDictionaryKey: "LingoTripSpeechSampleEnabled") as? String == "1" else {
+            throw XCTSkip("Opt in with RUN_SPEECH_SAMPLE=1")
+        }
+        executionTimeAllowance = 600
+        let root = Bundle.main.bundleURL.appendingPathComponent("LingoKit_SpeechKit.bundle/Supertonic3/Models")
+        let session = AudioSessionCoordinator()
+        let engine = Supertonic3SpeechEngine(modelsRoot: root,
+            audioCacheDirectory: FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString),
+            audioSession: session, apple: AppleTTSService(audioSession: session))
+        let selections = [("departures_mainline_melbourne_v2", "Ruby", 3),
+                          ("departures_london_v1", "Oliver", 2),
+                          ("departures_london_v1", "Nora", 2),
+                          ("departures_mainline_melbourne_v2", "旁白", 2)]
+        var report: [[String: Any]] = []
+        for (resource, speaker, count) in selections {
+            let url = try XCTUnwrap(Bundle.main.url(forResource: resource, withExtension: "json"))
+            let story = try StoryEpisode.load(data: Data(contentsOf: url))
+            var sequence: [Float] = []
+            for node in story.nodes.filter({ $0.speaker == speaker && $0.choices == nil }).prefix(count) {
+                let request = LondonEpisodeNarration.request(for: node)
+                let samples = try await engine.synthesizeSamples(request)
+                XCTAssertFalse(samples.isEmpty)
+                XCTAssertTrue(samples.allSatisfy(\.isFinite))
+                XCTAssertTrue(samples.contains { abs($0) > 0.001 })
+                let voice = Supertonic3VoiceCatalog.profile(for: request).voiceID
+                report.append(["story": resource, "node": node.id, "speaker": speaker, "text": request.text,
+                               "voice": voice, "rate": request.delivery?.speedMultiplier ?? 1,
+                               "seconds": Double(samples.count) / 44_100])
+                sequence.append(contentsOf: samples)
+            }
+            attach(wav(sequence), name: "casting-\(speaker == "旁白" ? "narrator" : speaker.lowercased()).wav", type: "com.microsoft.waveform-audio")
+        }
+        attach(try JSONSerialization.data(withJSONObject: report, options: [.prettyPrinted, .sortedKeys]),
+               name: "casting-metrics.json", type: "public.json")
+        await engine.cleanup()
+    }
+
     @MainActor func testRenderLondonSample() async throws {
         guard Bundle(for: Self.self).object(forInfoDictionaryKey: "LingoTripSpeechSampleEnabled") as? String == "1" else {
             throw XCTSkip("Opt in with RUN_SPEECH_SAMPLE=1; local synthesis + audio attachments")
