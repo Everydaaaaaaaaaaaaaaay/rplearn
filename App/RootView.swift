@@ -836,23 +836,25 @@ struct RootView: View {
             }
     }
 
-    @ViewBuilder
-    private func homeDestinationView(_ destination: HomeDestination) -> some View {
+    // Keep each route's concrete type behind the navigation boundary. Combining
+    // every scene in one ViewBuilder crashes Swift's runtime metadata decoder
+    // on device when the story hub is first presented. The caller owns route identity.
+    private func homeDestinationView(_ destination: HomeDestination) -> AnyView {
         switch destination {
         case .appointments:
-            EmptyView()
+            return AnyView(EmptyView())
         case .stories:
-            StoryHubView(deps: homeDeps)
+            return AnyView(StoryHubView(deps: homeDeps))
         case .mainline:
-            MainlineListView(deps: homeDeps) { chapter in
+            return AnyView(MainlineListView(deps: homeDeps) { chapter in
                 homePath.append(chapter)
-            }
+            })
         case .cityStories:
-            CityStoryListView(deps: homeDeps) { chapter in
+            return AnyView(CityStoryListView(deps: homeDeps) { chapter in
                 homePath.append(chapter)
-            }
+            })
         case .activities:
-            ZStack {
+            return AnyView(ZStack {
                 ActivitiesView(
                     journey: activityJourney,
                     deps: homeDeps,
@@ -875,13 +877,13 @@ struct RootView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .transition(.opacity)
                 }
-            }
+            })
         case .map:
-            MapView(
+            return AnyView(MapView(
                 deps: mapDeps,
                 reloadToken: stateRevision,
                 onBack: closeHomeDestination
-            )
+            ))
         }
     }
 
