@@ -65,6 +65,7 @@ public struct ActivityPlacePhoto: View {
 public struct ActivityPhotoCredits: View {
     let photo: BackendActivityPhoto
     @Environment(\.dismiss) private var dismiss
+    private let ivory = Color(red: 0.975, green: 0.965, blue: 0.945)
     public init(photo: BackendActivityPhoto) { self.photo = photo }
     public var body: some View {
         NavigationStack {
@@ -74,8 +75,14 @@ public struct ActivityPhotoCredits: View {
                 Link("查看照片来源", destination: photo.sourceUrl)
                 Link("查看使用许可", destination: photo.licenseUrl).accessibilityIdentifier("activities.photo.license")
                 Text("照片经过尺寸缩放与 JPEG 转码，页面中可能裁切显示。").font(.footnote).foregroundStyle(.secondary)
-            }.navigationTitle("照片信息").navigationBarTitleDisplayMode(.inline)
+            }
+            .scrollContentBackground(.hidden).background(ivory)
+            .foregroundStyle(Color.dsPaperInk).tint(Color.dsPaperInk)
+            .navigationTitle("照片信息").navigationBarTitleDisplayMode(.inline)
+                .toolbarBackground(ivory, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
                 .toolbar { ToolbarItem(placement: .confirmationAction) { Button("完成") { dismiss() } } }
-        }.presentationDetents([.medium, .large])
+        }.preferredColorScheme(.light).presentationBackground(ivory)
+            .presentationDetents([.medium, .large])
     }
 }

@@ -1,5 +1,6 @@
 #if DEBUG
 import BackendKit
+import DesignSystem
 import HomeFeature
 import SwiftUI
 
@@ -20,6 +21,7 @@ struct DebugCitySceneGallery: View {
     @State private var visit: BackendActivityPlace?
     @State private var error: String?
     private var city: City? { cities.first { $0.id == selectedCityID } }
+    private let ivory = Color(red: 0.975, green: 0.965, blue: 0.945)
 
     var body: some View {
         Group {
@@ -45,17 +47,25 @@ struct DebugCitySceneGallery: View {
                 List(cities) { item in
                     Button { selectedCityID = item.id; showsCities = false } label: {
                         HStack {
-                            Text(item.nameZh)
+                            Text(item.nameZh).font(.title3.weight(.regular)).tracking(1)
                             Spacer()
-                            if item.id == selectedCityID { Image(systemName: "checkmark") }
-                        }.frame(minHeight: 44)
+                            if item.id == selectedCityID {
+                                Image(systemName: "checkmark").font(.system(size: 12, weight: .medium))
+                            }
+                        }.frame(minHeight: 52).foregroundStyle(Color.dsPaperInk)
                     }.accessibilityIdentifier("sceneGallery.city.\(item.id)")
+                        .listRowBackground(Color.clear).listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 6, leading: 32, bottom: 6, trailing: 32))
                 }
+                .listStyle(.plain).scrollContentBackground(.hidden).background(ivory)
                 .navigationTitle("选择城市").navigationBarTitleDisplayMode(.inline)
+                .toolbarBackground(ivory, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) { Button("取消") { showsCities = false } }
                 }
-            }.tint(Color.primary)
+            }.tint(Color.dsPaperInk).preferredColorScheme(.light)
+                .presentationBackground(ivory)
         }
         .alert("人物剧情正在接入", isPresented: Binding(
             get: { visit != nil }, set: { if !$0 { visit = nil } }

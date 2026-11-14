@@ -53,8 +53,8 @@ public struct ActivitySceneBrowser: View {
             .accessibilityIdentifier("activities.scene.pager")
 
             LinearGradient(stops: [
-                .init(color: .black.opacity(0.38), location: 0),
-                .init(color: .clear, location: 0.23),
+                .init(color: .black.opacity(0.46), location: 0),
+                .init(color: .clear, location: 0.3),
                 .init(color: .clear, location: 0.5),
                 .init(color: .black.opacity(0.68), location: 1),
             ], startPoint: .top, endPoint: .bottom)
@@ -72,9 +72,11 @@ public struct ActivitySceneBrowser: View {
                 header
                 Spacer(minLength: 24)
                 if let place {
-                    VStack(alignment: .leading, spacing: 12) {
+                    VStack(spacing: 12) {
                         Text(place.titleZh)
-                            .font(.system(.largeTitle, design: .serif, weight: .medium))
+                            .font(.system(.largeTitle, design: .serif, weight: .regular))
+                            .tracking(1.5).lineSpacing(8)
+                            .multilineTextAlignment(.center)
                             .fixedSize(horizontal: false, vertical: true)
                             .accessibilityIdentifier("activities.scene.title.\(place.id)")
                             .accessibilityValue("第 \(selection + 1) 个，共 \(places.count) 个场景")
@@ -86,28 +88,29 @@ public struct ActivitySceneBrowser: View {
                                 }
                             }
                         if let resumeTitle {
-                            Text(resumeTitle).font(.subheadline).foregroundStyle(.white.opacity(0.85))
+                            Text(resumeTitle).font(.subheadline).multilineTextAlignment(.center)
+                                .foregroundStyle(.white.opacity(0.85))
                         }
                     }
-                    .frame(maxWidth: 560, alignment: .leading)
+                    .frame(maxWidth: 560)
                     .padding(.horizontal, 36).padding(.bottom, 32)
-                    .shadow(color: .black.opacity(0.2), radius: 8, y: 2)
+                    .shadow(color: .black.opacity(0.18), radius: 6, y: 2)
 
                     Button {
                         if resumeTitle != nil { onResume() }
                         else { onSelect(place) }
                     } label: {
                         Text(resumeTitle == nil ? "去这里逛逛" : "继续上次外出")
-                            .font(.headline.weight(.medium)).tracking(1)
+                            .font(.body.weight(.medium)).tracking(2)
                             .padding(.horizontal, 32).padding(.vertical, 19)
                             .frame(minWidth: 230, minHeight: 58)
-                            .foregroundStyle(Color.dsTravelNavy)
+                            .foregroundStyle(Color.dsPaperInk)
                             .background(ivory, in: Capsule())
                     }
                     .buttonStyle(DSSceneEntranceButtonStyle())
                     .accessibilityIdentifier(resumeTitle == nil
                         ? "activities.place.\(place.id)" : "activities.resumePlaceOuting")
-                    .padding(.horizontal, 28).padding(.bottom, 22)
+                    .padding(.horizontal, 28).padding(.bottom, 26)
                 } else {
                     ContentUnavailableView("暂无可去的地点", systemImage: "mappin")
                     Spacer()
@@ -119,7 +122,7 @@ public struct ActivitySceneBrowser: View {
         .onChange(of: places.map(\.id)) { _, _ in selection = 0 }
         .sheet(item: $credits) {
             ActivityPhotoCredits(photo: $0)
-                .foregroundStyle(Color.dsTravelNavy).tint(Color.dsTravelNavy)
+                .foregroundStyle(Color.dsPaperInk).tint(Color.dsPaperInk)
         }
         .fullScreenCover(item: $original) { OriginalPhoto(photo: $0) }
     }
@@ -127,15 +130,17 @@ public struct ActivitySceneBrowser: View {
     private var header: some View {
         HStack {
             Button(action: onBack) {
-                Image(systemName: "chevron.left").frame(width: 44, height: 44)
+                Image(systemName: "chevron.left").font(.system(size: 18, weight: .light))
+                    .frame(width: 44, height: 44)
                     .contentShape(Rectangle())
             }.accessibilityLabel("返回首页").accessibilityIdentifier("activities.back")
             Spacer(minLength: 8)
             if let onChooseCity {
                 Button(action: onChooseCity) {
                     HStack(spacing: 8) {
-                        Text(cityName)
-                        Image(systemName: "chevron.down").font(.caption2)
+                        Text(cityName).tracking(2)
+                        Image(systemName: "chevron.down").font(.system(size: 10, weight: .regular))
+                            .opacity(0.8)
                     }.frame(minHeight: 44)
                 }.accessibilityIdentifier("sceneGallery.cities")
             } else {
@@ -151,25 +156,26 @@ public struct ActivitySceneBrowser: View {
                     Button("足迹", systemImage: "book.closed", action: onJournal)
                 }
             } label: {
-                Image(systemName: "ellipsis").frame(width: 44, height: 44).contentShape(Rectangle())
+                Image(systemName: "ellipsis").font(.system(size: 18, weight: .regular))
+                    .frame(width: 44, height: 44).contentShape(Rectangle())
             }.accessibilityLabel("更多").accessibilityIdentifier("activities.scene.more")
         }
-        .font(.subheadline.weight(.medium))
-        .padding(.leading, 28).padding(.trailing, 16).padding(.top, 4)
+        .font(.subheadline.weight(.regular))
+        .padding(.horizontal, 28).padding(.top, 4)
         .buttonStyle(DSSceneEntranceButtonStyle())
-        .shadow(color: .black.opacity(0.5), radius: 5, y: 1)
+        .shadow(color: .black.opacity(0.3), radius: 4, y: 1)
     }
 
     private func sceneArrow(forward: Bool) -> some View {
         let enabled = forward ? selection < places.count - 1 : selection > 0
         return Button { move(forward: forward) } label: {
             Image(systemName: forward ? "chevron.right" : "chevron.left")
-                .font(.system(size: 22, weight: .ultraLight))
+                .font(.system(size: 20, weight: .light))
                 .symbolEffect(.breathe, options: .repeating.speed(0.6),
                               isActive: enabled && !reduceMotion && scenePhase == .active
                                 && credits == nil && original == nil)
-                .opacity(enabled ? 0.95 : 0.25)
-                .shadow(color: .black.opacity(0.8), radius: 6, y: 1)
+                .opacity(enabled ? 0.9 : 0.25)
+                .shadow(color: .black.opacity(0.45), radius: 4, y: 1)
                 .frame(width: 44, height: 64).contentShape(Rectangle())
         }
         .buttonStyle(DSSceneEntranceButtonStyle())
