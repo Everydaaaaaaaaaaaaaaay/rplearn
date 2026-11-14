@@ -283,11 +283,11 @@ export const activityWorldSchema = z
         );
         if (
           residents.filter(
-            (person) => person.assignment?.localConnection === "grew_up_here",
+            (person) => person.assignment?.localConnection !== "temporary_stay",
           ).length <=
           residents.length / 2
         )
-          fail(`Most characters must have grown up in the city: ${city.id}`);
+          fail(`Most characters must live in the city long-term: ${city.id}`);
       }
       if (world.stories.length !== 200)
         fail("Published world needs one first-meeting story per character");

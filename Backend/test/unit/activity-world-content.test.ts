@@ -164,10 +164,16 @@ describe("place-bound activity content admission", () => {
     required(required(contradictory.characters[0]).assignment).card.hometown =
       "New York";
     expect(activityWorldSchema.safeParse(contradictory).success).toBe(false);
-    const nonlocal = activityWorldFixture();
-    for (const person of nonlocal.characters) {
+    const settled = activityWorldFixture();
+    for (const person of settled.characters) {
       if (person.assignment?.cityId === "london")
         person.assignment.localConnection = "settled_here";
+    }
+    expect(activityWorldSchema.safeParse(settled).success).toBe(true);
+    const nonlocal = structuredClone(settled);
+    for (const person of nonlocal.characters) {
+      if (person.assignment?.cityId === "london")
+        person.assignment.localConnection = "temporary_stay";
     }
     expect(activityWorldSchema.safeParse(nonlocal).success).toBe(false);
   });
