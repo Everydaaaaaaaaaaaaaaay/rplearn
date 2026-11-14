@@ -8,6 +8,9 @@ export function projectActivityStory(
     projected.background = originalCard.background;
   if (binding.migrationExplanationZh)
     projected.migrationExplanationZh = binding.migrationExplanationZh;
+  for (const key of Object.keys(projected.causality)) {
+    projected.causality[key] = projected.causality[key].replaceAll("；", "。");
+  }
 
   projected.causality.reunionCommonFacts = `已有相遇记录确认用户此前见过${originalCard.name}。本次重逢位于${placeTitleZh}，地点属于当前情境。其余信息由本次可见状态和稳定人物设定提供，适用于新版四条初遇路径与旧活动联系人。`;
 

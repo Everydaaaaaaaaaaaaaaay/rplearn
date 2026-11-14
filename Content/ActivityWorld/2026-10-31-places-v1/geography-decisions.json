@@ -3,21 +3,136 @@
   "status": "draft",
   "policy": "Preserve all real childhood, occupational and relationship history. Correct explicitly fictional London origins as editorial corrections. Established residents count toward the local majority, with childhood and migration tracked separately. New city assignments are fixed for this content version.",
   "moves": [
-    {"name": "Declan Maher", "cityId": "london", "reason": "Moves for a London sensory-testing post at a juice plant, keeping Drogheda childhood and Dublin work history."},
-    {"name": "Mabel Fenwick", "cityId": "sydney", "reason": "Moves for an administrative post at an adult literacy centre in Sydney, preserving Lower Hutt childhood and Auckland work."},
-    {"name": "Nomvula Dlamini", "cityId": "melbourne", "reason": "Takes the same part-time clay-mix role at a Melbourne ceramics supplier, preserving Cape Town history."},
-    {"name": "Bernadette Toups", "cityId": "newyork", "reason": "Retires to New York near adult family, preserving New Orleans childhood and wiring-harness assembly career."},
-    {"name": "Nyarai Chirwa", "cityId": "sydney", "reason": "Moves for a continuing equestrian obstacle-pole painting post near Sydney, preserving Harare childhood and Nairobi work."},
-    {"name": "Wanjiku Mwangi", "cityId": "singapore", "reason": "Temporarily assists another console refurbisher in Singapore with testing a batch of used consoles. Nairobi home, business and family Sundays remain."},
-    {"name": "Odette Landry", "cityId": "vancouver", "reason": "Retired wildlife-rescue supply coordinator moves near family in Vancouver, retaining Lafayette childhood and Louisiana work."},
-    {"name": "Lwazi Ncube", "cityId": "london", "reason": "A finite training placement in a London accompaniment archive, preserving the Cape Town assistant score-keeping job and childhood."},
-    {"name": "Cecil Grantley", "cityId": "newyork", "reason": "Retired community radio newsreader moves near family in New York, preserving Kingston childhood and radio career."},
-    {"name": "Aubrey Wint", "cityId": "singapore", "reason": "A temporary Singapore freight-insurance project secondment. Keeps Kingston home, original occupation and a finite return arrangement."},
-    {"name": "Hazel Wroe", "cityId": "newyork", "reason": "A temporary inter-archive script-licensing project in New York. Keeps the original regional TV archive post, Bury childhood and old regional dramas."},
-    {"name": "Clive Bennett", "cityId": "newyork", "reason": "Moves near family in New York, retaining British nationality, Kingston upon Thames childhood, Kingston life and part-time curtain-track work."},
-    {"name": "Geoffrey Blythe", "cityId": "sydney", "reason": "Retired Manchester parks drinking-fountain technician moves near family in Sydney, preserving Salford childhood and Manchester career."},
-    {"name": "Fraser Muir", "cityId": "london", "reason": "Sets up an established London home base for the folk band's continuing tour-accounting work, preserving Kirkcaldy childhood and Edinburgh life."},
-    {"name": "Emile Fontenot", "cityId": "toronto", "reason": "Retired leather-sofa dye-and-repair specialist moves near family in Toronto, preserving New Orleans childhood and trade."},
-    {"name": "Kevin Mwangi", "cityId": "london", "reason": "Takes a chocolate-packaging design post in London, preserving Nakuru childhood, Nairobi studies and work, and the letter to an old friend."}
+    {
+      "name": "Declan Maher",
+      "cityId": "london",
+      "reason": "Moves for a London sensory-testing post at a juice plant, keeping Drogheda childhood and Dublin work history.",
+      "reasonZh": "因伦敦果汁工厂的同职能岗位迁居，保留德罗赫达成长及都柏林从业经历。",
+      "hometownNormalization": {
+        "from": "Drogheda, lives in Dublin now",
+        "to": "Drogheda, Ireland",
+        "reasonZh": "保留Drogheda家乡及都柏林历史生活，清理与本版伦敦现居设定冲突的旧时态描述。"
+      }
+    },
+    {
+      "name": "Mabel Fenwick",
+      "cityId": "sydney",
+      "reason": "Moves for an administrative post at an adult literacy centre in Sydney, preserving Lower Hutt childhood and Auckland work.",
+      "reasonZh": "因悉尼成人读写中心的行政岗位迁居，保留下哈特成长与奥克兰从业经历。"
+    },
+    {
+      "name": "Nomvula Dlamini",
+      "cityId": "melbourne",
+      "reason": "Takes the same part-time clay-mix role at a Melbourne ceramics supplier, preserving Cape Town history.",
+      "reasonZh": "接受墨尔本陶艺供应工坊的兼职陶土配料岗位，保留开普敦的生活经历。"
+    },
+    {
+      "name": "Bernadette Toups",
+      "cityId": "newyork",
+      "reason": "Retires to New York near adult family, preserving New Orleans childhood and wiring-harness assembly career.",
+      "reasonZh": "退休后迁居纽约，住得离成年家人更近，保留新奥尔良成长与线束装配经历。"
+    },
+    {
+      "name": "Nyarai Chirwa",
+      "cityId": "sydney",
+      "reason": "Moves for a continuing equestrian obstacle-pole painting post near Sydney, preserving Harare childhood and Nairobi work.",
+      "reasonZh": "因悉尼地区持续的马术障碍杆涂装岗位迁居，保留哈拉雷成长和内罗毕从业经历。"
+    },
+    {
+      "name": "Wanjiku Mwangi",
+      "cityId": "singapore",
+      "reason": "Temporarily assists another console refurbisher in Singapore with testing a batch of used consoles. Nairobi home, business and family Sundays remain.",
+      "reasonZh": "短期协助新加坡同业检测一批旧游戏机，保留内罗毕的住所、翻修业务及家庭聚会经历。"
+    },
+    {
+      "name": "Odette Landry",
+      "cityId": "vancouver",
+      "reason": "Retired wildlife-rescue supply coordinator moves near family in Vancouver, retaining Lafayette childhood and Louisiana work.",
+      "reasonZh": "退休后迁居温哥华靠近家人，保留拉法叶成长与路易斯安那野生动物救助站的工作经历。"
+    },
+    {
+      "name": "Lwazi Ncube",
+      "cityId": "london",
+      "reason": "A finite training placement in a London accompaniment archive, preserving the Cape Town assistant score-keeping job and childhood.",
+      "reasonZh": "在伦敦参加有期限的伴奏资料整理培训，保留开普敦的成长及原有助理岗位。"
+    },
+    {
+      "name": "Cecil Grantley",
+      "cityId": "newyork",
+      "reason": "Retired community radio newsreader moves near family in New York, preserving Kingston childhood and radio career.",
+      "reasonZh": "退休后迁居纽约靠近家人，保留金斯敦成长、电台工作与原有朋友联系。"
+    },
+    {
+      "name": "Aubrey Wint",
+      "cityId": "singapore",
+      "reason": "A temporary Singapore freight-insurance project secondment. Keeps Kingston home, original occupation and a finite return arrangement.",
+      "reasonZh": "因货运保险项目短期派驻新加坡，保留金斯敦的家与原职业，并有返回安排。"
+    },
+    {
+      "name": "Hazel Wroe",
+      "cityId": "newyork",
+      "reason": "A temporary inter-archive script-licensing project in New York. Keeps the original regional TV archive post, Bury childhood and old regional dramas.",
+      "reasonZh": "因馆际剧本授权项目短期驻纽约，保留英国区域电视档案岗位与伯里成长经历。"
+    },
+    {
+      "name": "Clive Bennett",
+      "cityId": "newyork",
+      "reason": "Moves near family in New York, retaining British nationality, Kingston upon Thames childhood, Kingston life and part-time curtain-track work.",
+      "reasonZh": "现迁居纽约靠近家人，保留英国Kingston upon Thames家乡、Guildford从业及兼职窗帘轨道安装经历。"
+    },
+    {
+      "name": "Geoffrey Blythe",
+      "cityId": "sydney",
+      "reason": "Retired Manchester parks drinking-fountain technician moves near family in Sydney, preserving Salford childhood and Manchester career.",
+      "reasonZh": "退休后迁居悉尼靠近家人，保留索尔福德成长与曼彻斯特公园设施维护经历。"
+    },
+    {
+      "name": "Fraser Muir",
+      "cityId": "london",
+      "reason": "Sets up an established London home base for the folk band's continuing tour-accounting work, preserving Kirkcaldy childhood and Edinburgh life.",
+      "reasonZh": "因民谣乐队持续的巡演会计工作，在伦敦建立生活据点，保留柯科迪成长与爱丁堡生活经历。"
+    },
+    {
+      "name": "Emile Fontenot",
+      "cityId": "toronto",
+      "reason": "Retired leather-sofa dye-and-repair specialist moves near family in Toronto, preserving New Orleans childhood and trade.",
+      "reasonZh": "退休后迁居多伦多靠近家人，保留新奥尔良成长与皮沙发染修经历。"
+    },
+    {
+      "name": "Kevin Mwangi",
+      "cityId": "london",
+      "reason": "Takes a chocolate-packaging design post in London, preserving Nakuru childhood, Nairobi studies and work, and the letter to an old friend.",
+      "reasonZh": "接受伦敦糖果公司的包装设计岗位，保留纳库鲁成长、内罗毕求学从业与旧友经历。"
+    }
+  ],
+  "clarifications": [
+    {
+      "name": "Marisol Vega",
+      "cityId": "newyork",
+      "localConnection": "temporary_stay",
+      "reason": "Little Falls is outside the New York City metro. Preserve the upstate home and canal apprenticeship; current NYC stay is a finite handbell-ensemble visit, not a new NYC childhood.",
+      "reasonZh": "保留纽约州上州Little Falls的成长、住所和船闸学徒工作，当前因手铃乐团探访及排练短期停留纽约市。"
+    },
+    {
+      "name": "Simon Holt",
+      "cityId": "london",
+      "localConnection": "settled_here",
+      "reason": "Marlow Bottom is a real hometown and is preserved. Correct the fictional Novandian nationality to British without inventing London childhood.",
+      "reasonZh": "保留真实家乡Marlow Bottom及伦敦生活基础，在地关系记录为长期定居。"
+    },
+    {
+      "name": "Achieng Opondo",
+      "cityId": "nairobi",
+      "localConnection": "settled_here",
+      "reason": "Raised in Kisumu, later moved to Nairobi. The residence mentioned in the original hometown field is not childhood evidence.",
+      "reasonZh": "保留在Kisumu成长、后来迁居内罗毕的经历，在地关系记录为长期定居。"
+    },
+    {
+      "name": "Baraka Kimani",
+      "cityId": "nairobi",
+      "localConnection": "settled_here",
+      "reason": "Raised in Mombasa and long settled in Nairobi. Nairobi logistics supports coastal tugboat depots.",
+      "reasonZh": "保留在Mombasa成长、长期定居内罗毕的经历，明确内陆备件业务为沿海拖船提供供应物流。"
+    }
   ]
 }

@@ -87,3 +87,17 @@ test("preserves an explicitly revised biography and non-temporal captions", () =
   );
   assert.deepEqual(projected.reunion, current.reunion);
 });
+
+test("normalizes authored causal prose while preserving original biography wording", () => {
+  const current = structuredClone(story);
+  current.causality.currentState = "平时健谈；今天疲倦";
+  const original = { ...originalCard, background: "Original; biography" };
+  const projected = projectActivityStory(current, {
+    originalCard: original,
+    binding,
+    placeTitleZh: "咖啡馆",
+  });
+  assert.equal(projected.causality.currentState, "平时健谈。今天疲倦");
+  assert.equal(projected.background, original.background);
+  assert.equal(current.causality.currentState, "平时健谈；今天疲倦");
+});
