@@ -867,6 +867,16 @@ struct RootView: View {
                 homePath.append(chapter)
             })
         case .activities:
+            #if DEBUG
+            if !isPlaceOutingPreview,
+               ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] != "1",
+               CityActivityRelease.bundled() == nil {
+                return AnyView(DebugCitySceneGallery(
+                    currentCityID: { try await environment.economyStore.profile().currentRegionID },
+                    onClose: closeHomeDestination
+                ).id(activeUserID?.uuidString ?? "inactive"))
+            }
+            #endif
             return AnyView(ZStack {
                 ActivitiesView(
                     journey: activityJourney,

@@ -6,7 +6,7 @@
 
 ## 当前记录（2026-11-14 文档核对）
 
-- 十五城静态活动地点，54 张当地实拍，最新为[透明描边按钮 v5](../Assets/Activities/CityPlaces-v2/acceptance-v5.md)。该版记录模拟器预览验收与正式世界发布范围。
+- 十五城静态活动地点，54 张当地实拍，最新为[真机正常入口 v6](../Assets/Activities/CityPlaces-v2/acceptance-v6.md)。该版记录模拟器预览验收与正式世界发布范围。
 - 首页 15 城：见[重制记录](home-city-scene-replacement-2026-09-10.md)及其逐城版本记录。
   旧图已退回替换；[旧图复核](home-city-scene-realism-audit-2026-09-10.md)保留历史问题。
 - 活动公园/池畔/雨天咖啡馆：最新为 [v5](../Assets/Activities/RealMotion-v5/acceptance-v5.md)，

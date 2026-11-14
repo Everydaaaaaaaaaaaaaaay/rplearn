@@ -160,6 +160,8 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 
 ### 十五城静态场景预览
 
+Debug 真机构建在正式世界清单尚未配置时，普通首页「城市活动」直接显示当前账号驻地的新场景，按钮显示剧情准备说明。下方专用入口提供跨城素材检查。入口修复及真机验证边界见[v6 记录](../Assets/Activities/CityPlaces-v2/acceptance-v6.md)。
+
 ```sh
 LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build scenes-preview
 ```

@@ -14,6 +14,8 @@ struct DebugCitySceneGallery: View {
         let nameZh: String
         let places: [BackendActivityPlace]
     }
+    private let currentCityID: (() async throws -> String)?
+    private let onClose: (() -> Void)?
     @Environment(\.dismiss) private var dismiss
     @State private var cities: [City] = []
     @State private var selectedCityID = ProcessInfo.processInfo.environment["UI_TEST_SCENE_CITY"] ?? "london"
@@ -23,11 +25,17 @@ struct DebugCitySceneGallery: View {
     private var city: City? { cities.first { $0.id == selectedCityID } }
     private let ivory = Color(red: 0.975, green: 0.965, blue: 0.945)
 
+    init(currentCityID: (() async throws -> String)? = nil, onClose: (() -> Void)? = nil) {
+        self.currentCityID = currentCityID
+        self.onClose = onClose
+    }
+
     var body: some View {
         Group {
             if let city {
                 ActivitySceneBrowser(cityName: city.nameZh, places: city.places,
-                                     onBack: { dismiss() }, onChooseCity: { showsCities = true },
+                                     onBack: onClose ?? { dismiss() },
+                                     onChooseCity: currentCityID == nil ? { showsCities = true } : nil,
                                      onSelect: { visit = $0 })
                     .id(city.id)
             } else if let error {
@@ -36,7 +44,7 @@ struct DebugCitySceneGallery: View {
                 } description: {
                     Text(error)
                 } actions: {
-                    Button("返回") { dismiss() }
+                    Button("返回", action: onClose ?? { dismiss() })
                 }
             } else {
                 ProgressView()
@@ -79,9 +87,18 @@ struct DebugCitySceneGallery: View {
                 guard let url = Bundle.main.url(forResource: "city-scene-gallery", withExtension: "json") else {
                     throw CocoaError(.fileNoSuchFile)
                 }
-                cities = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url)).cities
+                let manifest = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url))
+                if let currentCityID {
+                    let identifier = try await currentCityID()
+                    guard manifest.cities.contains(where: { $0.id == identifier }) else {
+                        throw CocoaError(.fileReadCorruptFile)
+                    }
+                    selectedCityID = identifier
+                }
+                guard !Task.isCancelled else { return }
+                cities = manifest.cities
                 if city == nil { selectedCityID = cities.first?.id ?? "london" }
-            } catch { self.error = "请重新安装最新预览。" }
+            } catch { self.error = "暂时无法读取场景，请返回后重试。" }
         }
     }
 }

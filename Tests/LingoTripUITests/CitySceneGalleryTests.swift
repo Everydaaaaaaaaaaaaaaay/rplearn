@@ -94,6 +94,25 @@ final class CitySceneGalleryTests: XCTestCase {
         app.alerts.buttons["知道了"].tap()
         assertScene("london-southbank")
     }
+    func testHomeActivityEntryUsesCurrentCityPhotographs() {
+        app.launchEnvironment["UI_TEST_TAB"] = "home"
+        app.launchEnvironment["UI_TEST_REGION"] = "newyork"
+        app.launchEnvironment["UI_TEST_CITY_TAB_REGION"] = "newyork"
+        app.launch()
+        let entrance = app.buttons["城市活动"]
+        XCTAssertTrue(entrance.waitForExistence(timeout: 30))
+        entrance.tap()
+        assertScene("newyork-high-line")
+        XCTAssertFalse(app.buttons["sceneGallery.cities"].exists)
+        XCTAssertFalse(app.buttons["activities.tab.park"].exists)
+        capture("home-activity-newyork")
+        app.buttons["activities.scene.next"].tap()
+        assertScene("newyork-grand-central")
+        app.buttons["activities.back"].tap()
+        XCTAssertTrue(entrance.waitForExistence(timeout: 5))
+        entrance.tap()
+        assertScene("newyork-high-line")
+    }
     func testLargeTextCreditsOriginalAndFifthPlace() {
         app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
