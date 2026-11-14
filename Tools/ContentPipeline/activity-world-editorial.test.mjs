@@ -101,3 +101,28 @@ test("normalizes authored causal prose while preserving original biography wordi
   assert.equal(projected.background, original.background);
   assert.equal(current.causality.currentState, "平时健谈；今天疲倦");
 });
+
+test("preserves same-floor and same-bank spatial relationships in reunion captions", () => {
+  for (const location of ["floor", "bank"]) {
+    const current = structuredClone(story);
+    current.reunion.beats[0].english = `On another visit to the same cafe, Alex waits on the same ${location} as you.`;
+    const projected = projectActivityStory(current, {
+      originalCard,
+      binding,
+      placeTitleZh: "咖啡馆",
+    });
+    assert.equal(
+      projected.reunion.beats[0].english,
+      `At the cafe, Alex waits on the same ${location} as you.`,
+    );
+    current.reunion.beats[0].english = `On the same ${location} as you, Alex waits.`;
+    assert.equal(
+      projectActivityStory(current, {
+        originalCard,
+        binding,
+        placeTitleZh: "咖啡馆",
+      }).reunion.beats[0].english,
+      current.reunion.beats[0].english,
+    );
+  }
+});

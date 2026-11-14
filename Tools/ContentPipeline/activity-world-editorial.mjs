@@ -17,8 +17,8 @@ export function projectActivityStory(
   const opening = projected.reunion.beats[0];
   opening.english = opening.english
     .replace(
-      /^On (?:another|a later|a subsequent) (?:(?:winter|summer|weekend) )?(?:visit|outing) to /,
-      "At ",
+      /^On (?:another|a later|a subsequent) (?:(?:winter|summer|weekend) )?(?:visit|outing) to (the same )?/,
+      (_, repeatedPlace) => (repeatedPlace ? "At the " : "At "),
     )
     .replace(
       /^(?:On another|Another) (?:day|afternoon|morning|evening|weekend) (at|on|in) /,
@@ -29,8 +29,7 @@ export function projectActivityStory(
       /^Back (at|on|in) /,
       (_, preposition) =>
         preposition[0].toUpperCase() + preposition.slice(1) + " ",
-    )
-    .replace(/\bthe same /g, "the ");
+    );
 
   const chinese = opening.chinese.replace(
     /^(?:另一次|另一天|后来又一次|后来再|又一次)(?:来到|到)(.+?)(?:时)?，/u,
