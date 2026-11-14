@@ -43,58 +43,79 @@ final class CitySceneGalleryTests: XCTestCase {
         XCTAssertTrue(button.isHittable)
         button.tap()
     }
-    private func open(_ id: String) {
-        let button = app.buttons["sceneGallery.place.\(id)"]
-        for _ in 0..<8 where !button.isHittable || button.frame.maxY > app.frame.maxY - 40 { app.swipeUp() }
-        XCTAssertTrue(button.isHittable)
-        button.tap()
-        XCTAssertTrue(app.buttons["sceneGallery.back"].waitForExistence(timeout: 5))
+    private func assertScene(_ id: String) {
+        let title = app.descendants(matching: .any)["activities.scene.title.\(id)"]
+        XCTAssertTrue(title.waitForExistence(timeout: 5))
         XCTAssertTrue(app.images["activities.photo.loaded.\(id)"].waitForExistence(timeout: 5))
+        let visit = app.buttons["activities.place.\(id)"]
+        XCTAssertTrue(visit.isHittable)
+        XCTAssertEqual(visit.label, "去这里逛逛")
+        XCTAssertGreaterThanOrEqual(visit.frame.height, 44)
+        XCTAssertLessThanOrEqual(visit.frame.maxY, app.frame.maxY)
+        XCTAssertFalse(title.frame.intersects(app.buttons["activities.scene.next"].frame))
+    }
+    private func swipeScene(left: Bool) {
+        let start = app.coordinate(withNormalizedOffset: CGVector(dx: left ? 0.8 : 0.2, dy: 0.4))
+        let end = app.coordinate(withNormalizedOffset: CGVector(dx: left ? 0.2 : 0.8, dy: 0.4))
+        start.press(forDuration: 0.05, thenDragTo: end)
     }
     func testAllCitiesLoadTheirOwnPhotographs() {
         app.launch()
         XCTAssertTrue(app.buttons["sceneGallery.cities"].waitForExistence(timeout: 30))
         for (city, places) in placesByCity {
             chooseCity(city)
-            capture("\(city)-place-list")
-            for place in places {
-                open(place)
-                capture("\(place)-background")
-                app.buttons["sceneGallery.back"].tap()
-                XCTAssertTrue(app.buttons["sceneGallery.back"].waitForNonExistence(timeout: 5))
+            for (index, place) in places.enumerated() {
+                if index > 0 { app.buttons["activities.scene.next"].tap() }
+                assertScene(place)
+                XCTAssertEqual(app.buttons["activities.scene.previous"].isEnabled, index > 0)
+                XCTAssertEqual(app.buttons["activities.scene.next"].isEnabled, index < places.count - 1)
+                capture("\(place)-fullscreen")
             }
         }
+    }
+    func testSwipeArrowsAndVisitSelectTheSameScene() {
+        app.launch()
+        XCTAssertTrue(app.buttons["sceneGallery.cities"].waitForExistence(timeout: 30))
+        assertScene("london-southbank")
+        swipeScene(left: true)
+        assertScene("london-bloomsbury-cafe")
+        app.buttons["activities.scene.next"].tap()
+        assertScene("london-borough-market")
+        swipeScene(left: false)
+        assertScene("london-bloomsbury-cafe")
+        app.buttons["activities.scene.previous"].tap()
+        assertScene("london-southbank")
+        app.buttons["activities.place.london-southbank"].tap()
+        XCTAssertTrue(app.alerts["人物剧情正在接入"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.alerts.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "泰晤士河南岸")).firstMatch.exists)
+        app.alerts.buttons["知道了"].tap()
+        assertScene("london-southbank")
     }
     func testLargeTextCreditsOriginalAndFifthPlace() {
         app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
         XCTAssertTrue(app.buttons["sceneGallery.cities"].waitForExistence(timeout: 30))
-        open("london-southbank")
-        capture("london-southbank-large")
-        let credits = app.buttons["sceneGallery.credits"]
-        for _ in 0..<4 where !credits.isHittable { app.swipeUp() }
-        credits.tap()
+        assertScene("london-southbank")
+        capture("fullscreen-southbank-large")
+        app.buttons["activities.scene.more"].tap()
+        app.buttons["照片信息"].tap()
         XCTAssertTrue(app.navigationBars["照片信息"].waitForExistence(timeout: 5))
-        capture("scene-credits-large")
+        capture("fullscreen-credits-large")
         app.navigationBars["照片信息"].buttons["完成"].tap()
-        app.buttons["sceneGallery.original"].tap()
+        app.buttons["activities.scene.more"].tap()
+        app.buttons["查看全图"].tap()
         XCTAssertTrue(app.buttons["sceneGallery.original.close"].waitForExistence(timeout: 5))
-        capture("scene-original-large")
+        capture("fullscreen-original-large")
         app.buttons["sceneGallery.original.close"].tap()
         XCTAssertTrue(app.buttons["sceneGallery.original.close"].waitForNonExistence(timeout: 5))
-        app.buttons["sceneGallery.back"].tap()
-        open("london-primrose-hill")
-        capture("fifth-scene-large")
-        for _ in 0..<4 where !credits.isHittable { app.swipeUp() }
-        XCTAssertTrue(credits.isHittable)
-        capture("fifth-scene-large-controls")
-        app.buttons["sceneGallery.back"].tap()
-        XCTAssertTrue(app.buttons["sceneGallery.back"].waitForNonExistence(timeout: 5))
+        for _ in 0..<4 { app.buttons["activities.scene.next"].tap() }
+        assertScene("london-primrose-hill")
+        capture("fullscreen-fifth-large")
         chooseCity("nairobi")
-        open("nairobi-city-market")
-        capture("three-place-city-last-scene-large")
-        for _ in 0..<4 where !credits.isHittable { app.swipeUp() }
-        XCTAssertTrue(credits.isHittable)
-        capture("three-place-city-last-scene-large-controls")
+        assertScene("nairobi-national-museum")
+        capture("fullscreen-long-title-large")
+        for _ in 0..<2 { app.buttons["activities.scene.next"].tap() }
+        assertScene("nairobi-city-market")
+        capture("fullscreen-three-place-city-last-large")
     }
 }

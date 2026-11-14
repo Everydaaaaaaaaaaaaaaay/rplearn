@@ -43,7 +43,7 @@ final class CityPlaceOutingTests: XCTestCase {
         app.buttons["activities.action.back"].tap()
         let resume = app.buttons["activities.resumePlaceOuting"]
         XCTAssertTrue(resume.waitForExistence(timeout: 6))
-        XCTAssertFalse(app.buttons["activities.place.london-marylebone-bookshop"].isEnabled)
+        XCTAssertFalse(app.buttons["activities.place.london-bloomsbury-cafe"].exists)
         screenshot("places-resume")
         resume.tap()
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 5))
@@ -55,7 +55,8 @@ final class CityPlaceOutingTests: XCTestCase {
         XCTAssertTrue(app.buttons["activities.encounter.addFriend"].isEnabled)
         screenshot("places-ending")
         app.buttons["activities.action.finish"].tap()
-        XCTAssertTrue(app.buttons["足迹"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["activities.scene.more"].waitForExistence(timeout: 5))
+        app.buttons["activities.scene.more"].tap()
         app.buttons["足迹"].tap()
         XCTAssertTrue(app.staticTexts["一张暂时空着的凳子"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["与 Alex Rowan 的这次交流"].exists)
@@ -65,7 +66,8 @@ final class CityPlaceOutingTests: XCTestCase {
         app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
         XCTAssertTrue(app.buttons["activities.place.london-bloomsbury-cafe"].waitForExistence(timeout: 20))
-        app.buttons["布卢姆斯伯里的咖啡馆的照片信息"].tap()
+        app.buttons["activities.scene.more"].tap()
+        app.buttons["照片信息"].tap()
         XCTAssertTrue(app.navigationBars["照片信息"].waitForExistence(timeout: 4))
         let license = app.descendants(matching: .any)["activities.photo.license"]
         for _ in 0..<5 where !license.exists { app.swipeUp() }
@@ -73,7 +75,7 @@ final class CityPlaceOutingTests: XCTestCase {
         screenshot("places-photo-credit-large")
         app.buttons["完成"].tap()
         let park = app.buttons["activities.place.london-primrose-hill"]
-        for _ in 0..<5 where !park.isHittable { app.swipeUp() }
+        for _ in 0..<2 { app.buttons["activities.scene.next"].tap() }
         XCTAssertTrue(park.isHittable)
         screenshot("places-third-place-large")
         park.tap()

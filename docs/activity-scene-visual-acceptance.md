@@ -4,9 +4,9 @@
 用户问题；同一任务不重复阅读或重填未变内容。使用[简表](templates/activity-scene-acceptance-record.md)
 保留版本、证据和结论，未变化且仍适用的证据可直接引用。
 
-## 当前记录（2026-11-12 文档核对）
+## 当前记录（2026-11-14 文档核对）
 
-- 十五城静态活动地点，54 张当地实拍，最新为[城市场景 v2](../Assets/Activities/CityPlaces-v2/acceptance-v2.md)。该版记录模拟器预览验收与正式世界发布范围。
+- 十五城静态活动地点，54 张当地实拍，最新为[全屏界面 v3](../Assets/Activities/CityPlaces-v2/acceptance-v3.md)。该版记录模拟器预览验收与正式世界发布范围。
 - 首页 15 城：见[重制记录](home-city-scene-replacement-2026-09-10.md)及其逐城版本记录。
   旧图已退回替换；[旧图复核](home-city-scene-realism-audit-2026-09-10.md)保留历史问题。
 - 活动公园/池畔/雨天咖啡馆：最新为 [v5](../Assets/Activities/RealMotion-v5/acceptance-v5.md)，
@@ -14,7 +14,7 @@
 - 十五城相遇过渡影像：见 [v5 完整候选记录](../Assets/Activities/EncounterJourney/acceptance-v5.md)，
   十五城影片已合成并通过用户预览验收，App 解码、标准屏及小屏验证通过，已局域网安装；证据及未测范围见记录。
 
-以上记录各自保留验收范围与未测边界。城市场景 v2 的检查结论适用于该版素材与静态预览。
+以上记录各自保留验收范围与未测边界。各版检查结论适用于记录中的素材与界面版本。
 
 ## 检查范围
 

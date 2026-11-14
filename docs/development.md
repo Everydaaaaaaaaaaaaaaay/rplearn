@@ -164,7 +164,7 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build scenes-preview
 ```
 
-左上角城市名打开十五城选择，点照片卡进入对应地点的静态实景背景。每城 3–5 处，详情可打开完整照片及摄影许可。此入口使用 Debug 免登录工作区，内容来自本地已校验的图片包。场景清单、逐图来源及验收范围见[城市场景 v2](../Assets/Activities/CityPlaces-v2/README.md)。
+顶部城市名打开十五城选择，每城 3–5 处全屏实景。左右滑动或点两侧箭头切换地点，底部为「去这里逛逛」胶囊按钮。右上角更多菜单可打开完整照片及摄影许可。预览按钮显示剧情接入进度，实际外出样板使用 `places-preview`。此入口使用 Debug 免登录工作区，内容来自本地已校验的图片包。场景清单、逐图来源及验收范围见[城市场景 v2](../Assets/Activities/CityPlaces-v2/README.md)。
 
 ### 真实学习实测入口
 
