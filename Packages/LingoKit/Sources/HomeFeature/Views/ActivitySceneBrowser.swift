@@ -18,7 +18,6 @@ public struct ActivitySceneBrowser: View {
     @State private var selection = 0
     @State private var credits: BackendActivityPhoto?
     @State private var original: BackendActivityPhoto?
-    private let ivory = Color(red: 0.975, green: 0.965, blue: 0.945)
     private var place: BackendActivityPlace? {
         places.indices.contains(selection) ? places[selection] : places.first
     }
@@ -104,8 +103,9 @@ public struct ActivitySceneBrowser: View {
                             .font(.body.weight(.medium)).tracking(2)
                             .padding(.horizontal, 32).padding(.vertical, 19)
                             .frame(minWidth: 230, minHeight: 58)
-                            .foregroundStyle(Color.dsPaperInk)
-                            .background(ivory, in: Capsule())
+                            .foregroundStyle(.white)
+                            .overlay { Capsule().strokeBorder(.white, lineWidth: 1) }
+                            .contentShape(Capsule())
                     }
                     .buttonStyle(DSSceneEntranceButtonStyle())
                     .accessibilityIdentifier(resumeTitle == nil

@@ -60,4 +60,4 @@ python3 Tools/ContentPipeline/activity-scene-gallery.py
 LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build scenes-preview
 ```
 
-打开后点顶部城市名切换十五城，左右滑动或点击两侧箭头切换地点。底部保留「去这里逛逛」胶囊按钮，右上角更多菜单提供全图与摄影许可。此入口使用免登录 Debug 工作区，按钮会说明人物剧情仍在接入。伦敦实际外出样板可通过 `places-preview` 进入。最新界面验收、测试证据和待验证范围见 [acceptance-v4.md](acceptance-v4.md)。
+打开后点顶部城市名切换十五城，左右滑动或点击两侧箭头切换地点。底部保留「去这里逛逛」胶囊按钮，右上角更多菜单提供全图与摄影许可。此入口使用免登录 Debug 工作区，按钮会说明人物剧情仍在接入。伦敦实际外出样板可通过 `places-preview` 进入。最新界面验收、测试证据和待验证范围见 [acceptance-v5.md](acceptance-v5.md)。
