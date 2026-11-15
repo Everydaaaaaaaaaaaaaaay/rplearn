@@ -123,13 +123,12 @@ struct CityOutingView: View {
                 }
             }
         }
-        Text(snapshot.mode == .solitude ? snapshot.solitude.titleZh
-             : snapshot.mode == .reunion ? snapshot.story?.reunion.titleZh ?? "又见面了" : snapshot.story?.titleZh ?? "一次相遇")
-            .font(.system(.title, design: .serif, weight: .medium))
         if snapshot.mode == .solitude {
             lookup(snapshot.solitude.english, key: "quiet")
             if translation { Text(snapshot.solitude.chinese).foregroundStyle(ink.opacity(0.65)) }
         } else {
+            Text(snapshot.mode == .reunion ? snapshot.story?.reunion.titleZh ?? "又见面了" : snapshot.story?.titleZh ?? "一次相遇")
+                .font(.system(.title, design: .serif, weight: .medium))
             ForEach(Array(model.chapters.enumerated()), id: \.offset) { stage, chapter in
                 ForEach(Array(chapter.beats.enumerated()), id: \.offset) { index, beat in
                     if stage < model.chapters.count - 1 || index <= snapshot.beatIndex {

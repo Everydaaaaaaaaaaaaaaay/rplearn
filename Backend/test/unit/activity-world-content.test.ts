@@ -88,6 +88,14 @@ function assignedDraft() {
 }
 
 describe("place-bound activity content admission", () => {
+  it("accepts one quiet passage per place and rejects a published place without one", () => {
+    const world = activityWorldFixture();
+    for (const place of world.places) place.solitude = place.solitude.slice(0, 1);
+    expect(activityWorldSchema.safeParse(world).success).toBe(true);
+    required(world.places[0]).solitude = [];
+    expect(activityWorldSchema.safeParse(world).success).toBe(false);
+  });
+
   it("captures all 200 existing identities without making unfinished content discoverable", () => {
     const world = activityWorldSchema.parse(source);
     expect(world.characters).toHaveLength(200);

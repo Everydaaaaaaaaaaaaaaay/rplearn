@@ -206,7 +206,7 @@ export const activityWorldSchema = z
         world.status === "published" &&
         (place.reviewStatus !== "approved" ||
           !place.spaceFacts.length ||
-          place.solitude.length < 2 ||
+          place.solitude.length < 1 ||
           image?.reviewStatus !== "approved" ||
           !image.reviewEvidence.length)
       )
