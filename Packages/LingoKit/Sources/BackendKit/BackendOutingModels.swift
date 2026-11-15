@@ -104,15 +104,30 @@ public struct BackendOutingOperation: Codable, Sendable, Equatable, Identifiable
     }
 }
 
+public struct BackendOutingHistory: Codable, Sendable {
+    public let outings: [BackendOuting]
+    public let nextCursor: UUID?
+    public init(outings: [BackendOuting], nextCursor: UUID?) { self.outings = outings; self.nextCursor = nextCursor }
+}
+
 public protocol OutingGateway: Sendable {
     func activityCatalog(releaseID: String?) async throws -> BackendActivityCatalog?
+    func outingHistory(before: UUID?) async throws -> BackendOutingHistory
     func activeOuting() async throws -> BackendOuting?
     func outing(id: UUID) async throws -> BackendOuting
     func startOuting(id: UUID, releaseID: String, placeID: String) async throws -> BackendOuting
     func applyOuting(id: UUID, operation: BackendOutingOperation) async throws -> BackendOuting
 }
 
+extension OutingGateway {
+    public func outingHistory(before: UUID?) async throws -> BackendOutingHistory { .init(outings: [], nextCursor: nil) }
+}
+
 extension BackendClient: OutingGateway {
+    public func outingHistory(before: UUID? = nil) async throws -> BackendOutingHistory {
+        let query = before.map { [URLQueryItem(name: "before", value: $0.uuidString.lowercased())] } ?? []
+        return try await actorClient().get("/v2/outings/history", queryItems: query)
+    }
     public func activityCatalog(releaseID: String? = nil) async throws -> BackendActivityCatalog? {
         struct Reply: Decodable, Sendable { let catalog: BackendActivityCatalog? }
         let query = releaseID.map { [URLQueryItem(name: "releaseId", value: $0)] } ?? []

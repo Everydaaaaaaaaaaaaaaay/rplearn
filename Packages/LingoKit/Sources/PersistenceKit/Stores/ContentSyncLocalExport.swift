@@ -32,6 +32,9 @@ extension ContentSyncStore {
             )
             cardPayload.readingVoice = card?.resolvedReadingVoice
             cardPayload.activityProfile = card?.activityProfile
+            cardPayload.settingVersion = card?.settingVersion
+            cardPayload.settingReleaseID = card?.settingReleaseID
+            cardPayload.settingHistory = card?.settingHistory
             let payload = ContentCharacterPayload(
                 card: cardPayload,
                 difficulty: entity.difficultyLevelRaw,

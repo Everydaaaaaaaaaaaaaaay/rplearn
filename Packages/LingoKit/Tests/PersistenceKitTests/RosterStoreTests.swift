@@ -22,6 +22,40 @@ struct RosterStoreTests {
         )
     }
 
+    @Test("活动资料迁移保留旧卡、头像与关系，重试幂等")
+    func activitySettingMigration() async throws {
+        let store = try makeStore()
+        let id = UUID(), traveler = TravelerIDGenerator.make(from: id)
+        var original = sampleCard(name: "Alex")
+        original.avatarRemoteURL = "https://example.com/alex.jpg"
+        original.hometown = "Old hometown"
+        _ = try await store.addCharacter(characterID: id, travelerID: traveler, card: original,
+                                         difficulty: .junior3, isFriend: true)
+        try await store.setFavorite(characterID: id, isFavorite: true)
+        let before = try #require(try await store.character(id: id))
+        var current = original
+        current.regionID = "newyork"
+        current.hometown = "London"
+        current.background = "Lives in New York now."
+        for _ in 0..<2 {
+            try await store.applyActivitySetting(characterID: id, travelerID: traveler, card: current,
+                releaseID: "places-v1", version: 1, explanationZh: "现居城市更新为纽约。")
+        }
+        let after = try #require(try await store.character(id: id))
+        #expect(after.card.regionID == "newyork")
+        #expect(after.card.avatarRemoteURL == original.avatarRemoteURL)
+        #expect(after.card.personality == original.personality)
+        #expect(after.isFriend && after.isFavorite)
+        #expect(after.metAt == before.metAt)
+        #expect(after.relationship == before.relationship)
+        #expect(after.card.settingHistory?.count == 1)
+        let history = try #require(after.card.settingHistory?.first)
+        #expect(CharacterCard.decode(fromJSON: history.previousCardJSON)?.hometown == "Old hometown")
+        try await store.applyActivitySetting(characterID: id, travelerID: traveler, card: original,
+            releaseID: "older", version: 1, explanationZh: "旧版")
+        #expect(try await store.character(id: id)?.card.regionID == "newyork")
+    }
+
     @Test("主角色导入幂等，选择与剧情相遇后才进入好友列表")
     func importIdempotent() async throws {
         let store = try makeStore()

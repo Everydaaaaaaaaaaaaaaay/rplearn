@@ -109,6 +109,22 @@ export class OutingRepository implements OutingService {
     });
   }
 
+  async history(userId: string, before?: string) {
+    return this.database.sql.begin(async (sql) => {
+      await this.lockActor(sql, userId);
+      const rows = await sql<{ run_id: string; snapshot: OutingSnapshot }[]>`
+        select run_id::text,snapshot from app.npc_outings
+        where user_id=${userId} and status in ('completed','abandoned')
+          and (${before ?? null}::uuid is null or (created_at,run_id)<(
+            select created_at,run_id from app.npc_outings where user_id=${userId} and run_id=${before ?? null}::uuid))
+        order by created_at desc,run_id desc limit 50`;
+      return {
+        outings: rows.map((row) => row.snapshot),
+        nextCursor: rows.length === 50 ? (rows.at(-1)?.run_id ?? null) : null,
+      };
+    });
+  }
+
   async active(userId: string) {
     return this.database.sql.begin(async (sql) => {
       await this.lockActor(sql, userId);

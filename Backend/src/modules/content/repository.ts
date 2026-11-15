@@ -345,6 +345,7 @@ export class ContentRepository {
     ) {
       throw versionConflict(existing);
     }
+    let payload = command.payload;
     if (existing && command.resourceType === "character") {
       const previous = (
         existing.payload as { relationship?: { settledAppointmentIDs?: string[] } }
@@ -361,6 +362,37 @@ export class ContentRepository {
         )
       )
         throw versionConflict(existing);
+      const previousCard = (existing.payload as { card: Record<string, unknown> }).card;
+      const incomingCard = (command.payload as { card: Record<string, unknown> }).card;
+      const previousVersion = (previousCard.settingVersion as number | undefined) ?? 0;
+      if (previousVersion > 0) {
+        const card = { ...incomingCard };
+        if (
+          previousVersion > ((incomingCard.settingVersion as number | undefined) ?? 0)
+        ) {
+          for (const key of [
+            "nationality",
+            "hometown",
+            "regionId",
+            "background",
+            "settingVersion",
+            "settingReleaseID",
+          ])
+            card[key] = previousCard[key];
+        }
+        const incomingHistory =
+          (incomingCard.settingHistory as unknown[] | undefined) ?? [];
+        const carriedHistory = new Set(
+          incomingHistory.map((revision) => JSON.stringify(revision)),
+        );
+        card.settingHistory = [
+          ...((previousCard.settingHistory as unknown[] | undefined) ?? []).filter(
+            (revision) => !carriedHistory.has(JSON.stringify(revision)),
+          ),
+          ...incomingHistory,
+        ];
+        payload = { ...(command.payload as Record<string, unknown>), card };
+      }
     }
     await this.requireParent(sql, userId, command.resourceType, command.parentId);
     await this.requireReadyMediaAsset(sql, userId, command);
@@ -383,7 +415,7 @@ export class ContentRepository {
               ${command.resourceType}::app.content_resource_type,
               ${command.resourceId},
               ${command.parentId},
-              ${JSON.stringify(command.payload)}::jsonb
+              ${JSON.stringify(payload)}::jsonb
             )
             returning
               resource_type,
@@ -398,7 +430,7 @@ export class ContentRepository {
         : await sql<ContentRow[]>`
             update app.content_records
             set parent_id = ${command.parentId},
-                payload = ${JSON.stringify(command.payload)}::jsonb,
+                payload = ${JSON.stringify(payload)}::jsonb,
                 version = version + 1,
                 deleted_at = null,
                 updated_at = now()

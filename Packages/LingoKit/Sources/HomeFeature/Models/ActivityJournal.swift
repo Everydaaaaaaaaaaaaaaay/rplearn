@@ -48,6 +48,24 @@ struct ActivityJournal {
         return archive.records
     }
 
+    static func merge(namespace source: String, into destination: String, defaults: UserDefaults) throws {
+        let prefix = "lingotrip.activity-journal.v1."
+        let scope = "\(source.utf8.count):\(source)"
+        var updates: [(String, Data)] = []
+        for key in defaults.dictionaryRepresentation().keys where key.hasPrefix(prefix) {
+            guard let decoded = Data(base64Encoded: String(key.dropFirst(prefix.count))),
+                  let value = String(data: decoded, encoding: .utf8), value.hasPrefix(scope) else { continue }
+            let city = String(value.dropFirst(scope.count))
+            let target = ActivityJournal(namespace: destination, city: city, defaults: defaults)
+            let incoming = try ActivityJournal(namespace: source, city: city, defaults: defaults).records()
+            var records = try target.records()
+            for record in incoming where !records.contains(where: { $0.id == record.id }) { records.append(record) }
+            records.sort { $0.date < $1.date }
+            updates.append((target.key, try JSONEncoder().encode(Archive(version: 1, records: records))))
+        }
+        for (key, data) in updates { defaults.set(data, forKey: key) }
+    }
+
     @discardableResult
     func completePlaceOuting(_ outing: BackendOuting, date: Date = Date()) throws -> [ActivityRecord] {
         guard outing.status == .completed else { throw JournalError.invalidCompletion }

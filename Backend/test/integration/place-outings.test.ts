@@ -297,7 +297,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       });
     });
 
-    it("keeps both active outings intact when claim conflicts, then transfers after an explicit ending", async () => {
+    it("keeps both active outings intact until the viewer chooses which one to continue", async () => {
       const guestId = randomUUID(),
         accountId = randomUUID(),
         pepper = "outing-claim-conflict";
@@ -319,16 +319,15 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const registered = await service.start(accountId, start());
       const claim = createGuestClaim(runtime.database, pepper);
       await expect(claim(key, accountId)).rejects.toMatchObject({
-        code: "OUTING_MERGE_CONFLICT",
+        code: "OUTING_MERGE_CHOICE_REQUIRED",
       });
       expect(await service.active(guestId)).toEqual(anonymous);
       expect(await service.active(accountId)).toEqual(registered);
-      await service.apply(accountId, registered.runId, {
-        type: "abandon",
-        operationId: randomUUID(),
-        expectedRevision: 0,
-      });
-      expect(await claim(key, accountId)).toEqual({ claimed: true });
+      expect(await claim(key, accountId, "guest")).toEqual({ claimed: true });
+      expect(await service.active(accountId)).toEqual(anonymous);
+      const history = await service.history(accountId);
+      expect(history.outings.find((outing) => outing.runId === registered.runId)?.status).toBe("abandoned");
+      expect(await claim(key, accountId, "account")).toEqual({ claimed: true });
       expect(await service.active(accountId)).toEqual(anonymous);
     });
   },

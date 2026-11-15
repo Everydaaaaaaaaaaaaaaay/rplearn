@@ -24,6 +24,9 @@ struct ContentCharacterPayload: Codable {
         var readingVoice: CharacterReadingVoice? = nil
         var personaVoice: PersonaVoiceProfile? = nil
         var activityProfile: NPCActivityProfile? = nil
+        var settingVersion: Int? = nil
+        var settingReleaseID: String? = nil
+        var settingHistory: [CharacterSettingRevision]? = nil
 
         init(
             age: Int,
@@ -145,7 +148,7 @@ struct ContentStoryProgressPayload: Codable {
 
 
 
-struct LocalContentRecord: Codable, Sendable {
+public struct LocalContentRecord: Codable, Sendable {
     let resourceType: ContentResourceKind
     let resourceID: String
     let parentID: String?

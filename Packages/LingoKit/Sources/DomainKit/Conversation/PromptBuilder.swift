@@ -40,6 +40,10 @@ public enum PromptBuilder {
             """
         )
 
+        if let revision = card.settingHistory?.last {
+            sections.append("当前资料版本：\(revision.releaseID)。资料更新说明：\(revision.explanationZh)。从这次回复开始采用当前国籍、家乡和现居资料。共同经历以聊天和记忆中实际发生的事实为准，保留朋友对过往相遇的记忆。迁居或资料澄清的说明只在相关话题出现时自然交代。")
+        }
+
         if let voice = card.personaVoice {
             let anchors = voice.anchorLines.prefix(5).map { "- \($0)" }.joined(separator: "\n")
             sections.append(

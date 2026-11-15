@@ -80,6 +80,9 @@ final class CityPlaceOutingTests: XCTestCase {
         screenshot("places-third-place-large")
         park.tap()
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 8))
+        app.buttons["显示中文对照"].tap()
+        XCTAssertTrue(app.staticTexts["你在这里待了一阵，却没有与谁交谈。"].waitForExistence(timeout: 4))
+        XCTAssertFalse(app.staticTexts["独处片刻"].exists)
         for _ in 0..<5 where !app.buttons["activities.action.next"].isHittable { app.swipeUp() }
         app.buttons["activities.action.next"].tap()
         XCTAssertTrue(app.buttons["activities.action.finish"].waitForExistence(timeout: 5))

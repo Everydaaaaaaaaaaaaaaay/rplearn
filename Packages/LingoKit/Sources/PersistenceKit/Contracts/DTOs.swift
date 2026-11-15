@@ -27,6 +27,13 @@ public struct NPCActivityProfile: Sendable, Codable, Equatable {
     }
 }
 
+public struct CharacterSettingRevision: Sendable, Codable, Equatable {
+    public let releaseID: String
+    public let explanationZh: String
+    public let previousCardJSON: String
+    public let appliedAt: Date
+}
+
 /// 角色卡：定义角色的全部设定，用于 AI 角色扮演与形象展示。
 /// 既是 main_characters.json 的解码目标，也是 AI 随机生成角色的结构化输出格式，
 /// 原始 JSON 存入 CharacterEntity.cardJSON 供 prompt 复渲染。
@@ -60,6 +67,9 @@ public struct CharacterCard: Sendable, Codable, Equatable {
     }
     public var personaVoice: PersonaVoiceProfile?
     public var activityProfile: NPCActivityProfile?
+    public var settingVersion: Int?
+    public var settingReleaseID: String?
+    public var settingHistory: [CharacterSettingRevision]?
 
     public init(
         name: String,

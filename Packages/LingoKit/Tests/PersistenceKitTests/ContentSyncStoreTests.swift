@@ -243,6 +243,9 @@ struct ContentSyncStoreTests {
         )
         var localCard = characterCard(name: "Alice")
         localCard.activityProfile = expectedProfile
+        localCard.settingVersion = 1
+        localCard.settingReleaseID = "places-v1"
+        localCard.regionID = "newyork"
         let characterID = try await roster.addCharacter(
             card: localCard,
             difficulty: .junior3,
@@ -283,6 +286,30 @@ struct ContentSyncStoreTests {
         )
 
         #expect(try await roster.character(id: characterID)?.card.activityProfile == expectedProfile)
+        #expect(try await roster.character(id: characterID)?.card.settingReleaseID == "places-v1")
+        #expect(try await roster.character(id: characterID)?.card.regionID == "newyork")
+    }
+
+    @Test func importsGuestIntoExistingAccountIdempotentlyAndPreservesRemovedContacts() async throws {
+        let accountContainer = try ModelContainerFactory.makeContainer(inMemory: true)
+        let guestContainer = try ModelContainerFactory.makeContainer(inMemory: true)
+        let account = ContentSyncStore(modelContainer: accountContainer)
+        let guest = ContentSyncStore(modelContainer: guestContainer)
+        let roster = RosterStore(modelContainer: accountContainer)
+        let guestRoster = RosterStore(modelContainer: guestContainer)
+        try await account.activateOwner(userID: UUID())
+        let id = UUID(), newID = UUID()
+        let card = characterCard(name: "Alice")
+        _ = try await roster.addCharacter(characterID: id, card: card, difficulty: .junior3, isFriend: true)
+        try await roster.removeFriend(characterID: id)
+        _ = try await guestRoster.addCharacter(characterID: id, card: card, difficulty: .junior3, isFriend: true)
+        _ = try await guestRoster.addCharacter(characterID: newID, card: characterCard(name: "Bob"), difficulty: .junior3, isFriend: true)
+        let incoming = try await guest.guestRecords()
+        for _ in 0..<2 { try await account.importGuestRecords(incoming) }
+        #expect(try await roster.allCharacters().count == 2)
+        #expect(try await roster.character(id: id)?.contactStatus == .removed)
+        #expect(try await roster.character(id: id)?.isFriend == false)
+        #expect(try await roster.character(id: newID)?.isFriend == true)
     }
 
     private func characterCard(name: String) -> CharacterCard {

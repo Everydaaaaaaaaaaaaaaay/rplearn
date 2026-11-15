@@ -32,6 +32,22 @@ func makePlaceOutingFixture() throws -> BackendOuting {
 
 
 struct PlaceOutingProgressTests {
+    @Test func publishedWorldHasAllPlacesPeopleAndPlayablePreviewSnapshots() throws {
+        struct Preview: Decodable { let catalogs: [BackendActivityCatalog]; let outings: [BackendOuting] }
+        struct Manifest: Decodable { let preview: Preview }
+        let release = try #require(CityActivityRelease.bundled())
+        #expect(release.characters?.count == 200)
+        #expect(release.settingVersion == 1)
+        let url = try #require(Bundle.main.url(forResource: "activity-world-release", withExtension: "json"))
+        let world = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url)).preview
+        #expect(world.catalogs.count == 15)
+        #expect(world.catalogs.reduce(0) { $0 + $1.places.count } == 54)
+        #expect(world.outings.filter { $0.mode == .first_meeting }.count == 200)
+        #expect(world.outings.filter { $0.mode == .solitude }.count == 54)
+        for catalog in world.catalogs { try CityActivityRelease.validate(catalog) }
+        for outing in world.outings { try PlaceOutingProgress.validate(outing) }
+    }
+
     @Test func isolatedPreviewHasMatchingPhotosAndFourReachableEndings() throws {
         struct Preview: Decodable { let catalog: BackendActivityCatalog; let outings: [BackendOuting] }
         let url = try #require(Bundle.main.url(forResource: "place-outing-preview", withExtension: "json"))

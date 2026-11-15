@@ -131,6 +131,16 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
             hobbies: ["books"],
             name: "Alice",
             nationality: "British",
+            settingVersion: 1,
+            settingReleaseID: "places-v1",
+            settingHistory: [
+              {
+                releaseID: "places-v1",
+                explanationZh: "现居资料澄清",
+                previousCardJSON: "{}",
+                appliedAt: now,
+              },
+            ],
             occupation: "Guide",
             personality: "Warm",
             activityProfile: {
@@ -325,6 +335,16 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
       firstPage.records.find((record) => record.resourceId === characterId)?.payload,
     ).toMatchObject({
       card: {
+        settingVersion: 1,
+        settingReleaseID: "places-v1",
+        settingHistory: [
+          {
+            releaseID: "places-v1",
+            explanationZh: "现居资料澄清",
+            previousCardJSON: "{}",
+            appliedAt: now,
+          },
+        ],
         activityProfile: {
           focusDurationMinutes: 8,
           rhythm: "earlyBird",
@@ -407,6 +427,43 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
         version: 2,
       },
       status: "applied",
+    });
+    const legacyCard: Record<string, unknown> = {
+      ...commands[0].payload.card,
+      regionId: "newyork",
+    };
+    delete legacyCard.settingVersion;
+    delete legacyCard.settingReleaseID;
+    delete legacyCard.settingHistory;
+    const legacyUpdate = await app.inject({
+      headers: headers(),
+      method: "POST",
+      url: "/v1/content/commands",
+      payload: {
+        commands: [
+          {
+            ...commands[0],
+            commandId: newEntityId(),
+            expectedVersion: 1,
+            payload: { ...commands[0].payload, card: legacyCard },
+          },
+        ],
+      },
+    });
+    expect(
+      legacyUpdate.json<{ results: readonly ContentCommandResult[] }>().results[0],
+    ).toMatchObject({
+      status: "applied",
+      record: {
+        payload: {
+          card: {
+            regionId: "london",
+            settingVersion: 1,
+            settingReleaseID: "places-v1",
+            settingHistory: commands[0].payload.card.settingHistory,
+          },
+        },
+      },
     });
   }, 30_000);
 });

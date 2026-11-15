@@ -23,6 +23,7 @@ public struct ActivitiesView: View {
     @State private var contextError: String?
     @State private var journalError: String?
     @State private var showsJournal = false
+    @State private var recoveries: [CityOutingArchive] = []
     @State private var recentPeople: [CharacterDTO] = []
     @State private var placeCatalog: BackendActivityCatalog?
     @State private var resumableOuting: CityOutingArchive?
@@ -54,7 +55,7 @@ public struct ActivitiesView: View {
                     }, resumeTitle: resumableOuting.map { "继续上次在\($0.place.titleZh)的外出" },
                     onResume: { if let archive = resumableOuting { openPlaceArchive(archive) } })
                     .allowsHitTesting(activity == nil).accessibilityHidden(activity != nil)
-            } else if placeCatalog == nil {
+            } else if placeCatalog == nil, deps.activityReleaseID == nil || deps.tutorial != nil {
             ActivitySceneView(isVisible: isVisible && !showsJournal && activity == nil,
                               showsInterface: activity == nil,
                               scene: $scene, cityName: cityName,
@@ -139,6 +140,31 @@ public struct ActivitiesView: View {
                         } else if records.isEmpty {
                             ContentUnavailableView("还没有行动记录", systemImage: "book.closed",
                                 description: Text("完成场景中的行动后，你的选择会留在这里。"))
+                        }
+                        if !recoveries.isEmpty {
+                            DisclosureGroup("合并与冲突前的本机记录") {
+                                ForEach(Array(recoveries.enumerated()), id: \.offset) { _, archive in
+                                    if let snapshot = archive.snapshot {
+                                        DisclosureGroup(archive.place.titleZh) {
+                                            Text("已保留的本机阅读进度").font(.caption).foregroundStyle(.secondary)
+                                            if snapshot.mode == .solitude { Text(snapshot.solitude.chinese) }
+                                            ForEach(Array(PlaceOutingProgress.chapters(snapshot).enumerated()), id: \.offset) { stage, chapter in
+                                                ForEach(Array(chapter.beats.enumerated()), id: \.offset) { index, beat in
+                                                    if stage < PlaceOutingProgress.chapters(snapshot).count - 1 || index <= snapshot.beatIndex {
+                                                        Text(beat.english).padding(.top, 8)
+                                                        Text(beat.chinese).font(.caption).foregroundStyle(.secondary)
+                                                    }
+                                                }
+                                                if snapshot.choices.indices.contains(stage),
+                                                   let index = Int(snapshot.choices[stage].split(separator: ":").last ?? ""),
+                                                   chapter.choices.indices.contains(index) {
+                                                    Text("你的选择：" + chapter.choices[index].chinese).font(.subheadline)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                         ForEach(records.reversed()) { record in
                             VStack(alignment: .leading, spacing: 12) {
@@ -285,6 +311,8 @@ public struct ActivitiesView: View {
         guard let cityID else { return }
         do {
             records = try ActivityJournal(namespace: storageNamespace, city: cityID, defaults: journalDefaults).records()
+            recoveries = try CityOutingArchive.recoveries(namespace: storageNamespace, defaults: journalDefaults)
+                .filter { $0.snapshot?.cityId == cityID }
             journalError = nil
         } catch {
             journalError = "原有记录暂时无法读取，已保留原数据。请重试；读取恢复前不会覆盖保存。"

@@ -62,6 +62,10 @@ export type OutingService = Readonly<{
   start: (userId: string, input: OutingStart) => Promise<OutingSnapshot>;
   find: (userId: string, runId: string) => Promise<OutingSnapshot>;
   active: (userId: string) => Promise<OutingSnapshot | null>;
+  history: (
+    userId: string,
+    before?: string,
+  ) => Promise<{ outings: OutingSnapshot[]; nextCursor: string | null }>;
   apply: (
     userId: string,
     runId: string,

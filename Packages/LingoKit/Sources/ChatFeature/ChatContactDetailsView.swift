@@ -625,6 +625,23 @@ private struct ChatCharacterProfileView: View {
                 }
             }
 
+            if let history = character.card.settingHistory, !history.isEmpty {
+                Section("资料更新记录") {
+                    ForEach(Array(history.enumerated()), id: \.offset) { _, revision in
+                        DisclosureGroup("查看更新与原资料") {
+                            Text(revision.explanationZh)
+                            Text(revision.appliedAt, style: .date).font(.caption).foregroundStyle(.secondary)
+                            if let previous = CharacterCard.decode(fromJSON: revision.previousCardJSON) {
+                                LabeledContent("原国籍", value: previous.nationality)
+                                LabeledContent("原所在城市", value: previous.regionID)
+                                if let hometown = previous.hometown { LabeledContent("原家乡", value: hometown) }
+                                if let background = previous.background { Text(background) }
+                            }
+                        }
+                    }
+                }
+            }
+
             Section("你们的关系") {
                 LabeledContent("共同互动") {
                     Text("\(character.relationship.meaningfulInteractionCount) 次")

@@ -93,7 +93,7 @@ struct RootView: View {
         let initial: AppTab = switch requested {
         case "messages": .messages
         case "contacts": .contacts
-        case "home", "map", "places-preview", "scenes-preview", "appointments-preview": .home
+        case "home", "map", "places-preview", "world-preview", "scenes-preview", "appointments-preview": .home
         case "me", "settings", "subscription", "learning", "favorites", "learning-test": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
@@ -118,7 +118,7 @@ struct RootView: View {
         }
         if requested == "map" {
             _activeHomeDestination = State(initialValue: .map)
-        } else if requested == "places-preview" || ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
+        } else if ["places-preview", "world-preview"].contains(requested ?? "") || ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
             _activeHomeDestination = State(initialValue: .activities)
         } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "mainline" {
             var path = NavigationPath()
@@ -259,7 +259,20 @@ struct RootView: View {
                     VStack(spacing: 16) {
                         Text("旅程尚未载入").font(.headline)
                         Text(activationError).font(.subheadline)
-                        Button("重试") { Task { await handleAuthenticationPhase() } }
+                        if environment.guestOutingChoiceRequired {
+                            Text("另一次外出将结束，已读内容与选择会留在足迹中。")
+                                .font(.caption).foregroundStyle(.secondary)
+                            Button("继续游客的外出") {
+                                environment.guestOutingToKeep = "guest"
+                                Task { await handleAuthenticationPhase() }
+                            }
+                            Button("继续账号的外出") {
+                                environment.guestOutingToKeep = "account"
+                                Task { await handleAuthenticationPhase() }
+                            }
+                        } else {
+                            Button("重试") { Task { await handleAuthenticationPhase() } }
+                        }
                         Button("退出此账号") {
                             Task { await environment.authSession.logout() }
                         }
@@ -868,7 +881,7 @@ struct RootView: View {
             })
         case .activities:
             #if DEBUG
-            if !isPlaceOutingPreview,
+            if !isPlaceOutingPreview, !isWorldOutingPreview,
                ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] != "1",
                CityActivityRelease.bundled() == nil {
                 return AnyView(DebugCitySceneGallery(
@@ -924,6 +937,9 @@ struct RootView: View {
 
     private var activityStorageNamespace: String {
         #if DEBUG
+        if isWorldOutingPreview {
+            return "debug.world-outing.preview.v1." + (ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] ?? "manual")
+        }
         if isPlaceOutingPreview {
             return "debug.place-outing.preview.v1." + (ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] ?? "manual")
         }
@@ -1257,15 +1273,24 @@ struct RootView: View {
         false
         #endif
     }
+    private var isWorldOutingPreview: Bool {
+        #if DEBUG
+        bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "world-preview"
+        #else
+        false
+        #endif
+    }
     private var placeOutingGateway: any OutingGateway {
         #if DEBUG
         if isPlaceOutingPreview { return DebugPlaceOutingGateway.shared }
+        if isWorldOutingPreview { return DebugPlaceOutingGateway.world }
         #endif
         return environment.backendClient
     }
     private var placeOutingReleaseID: String? {
         #if DEBUG
         if isPlaceOutingPreview { return "debug-places-preview-v1" }
+        if bypassesAuthenticationForUITesting, ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1" { return nil }
         #endif
         return CityActivityRelease.bundled()?.releaseId
     }

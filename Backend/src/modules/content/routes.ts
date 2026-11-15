@@ -125,6 +125,24 @@ const characterPayload = z
           .optional(),
         personaVoice: personaVoicePayload.optional(),
         activityProfile: activityProfilePayload.optional(),
+        settingVersion: z.number().int().positive().optional(),
+        settingReleaseID: z
+          .string()
+          .regex(/^[a-z0-9-]{2,101}$/)
+          .optional(),
+        settingHistory: z
+          .array(
+            z
+              .object({
+                releaseID: z.string().regex(/^[a-z0-9-]{2,101}$/),
+                explanationZh: z.string().min(1).max(4_000),
+                previousCardJSON: z.string().min(2).max(32_000),
+                appliedAt: isoDate,
+              })
+              .strict(),
+          )
+          .max(20)
+          .optional(),
         regionId: z.string().regex(/^[a-z0-9-]{2,64}$/),
         signature: nullableText(240),
         speechStyle: nullableText(2_000),

@@ -602,7 +602,13 @@ export class NpcRepository {
       select
         npc.id::text,
         npc.traveler_id,
-        npc.card::text as card_text,
+        coalesce((
+          select person->'assignment'->'card'
+          from app.npc_activity_worlds world
+          cross join lateral jsonb_array_elements(world.manifest->'characters') person
+          where world.enabled and person->>'id'=npc.id::text
+          order by world.created_at desc,world.release_id desc limit 1
+        ),npc.card)::text as card_text,
         npc.avatar_id::text,
         avatar.image_url as avatar_url,
         npc.created_at::text

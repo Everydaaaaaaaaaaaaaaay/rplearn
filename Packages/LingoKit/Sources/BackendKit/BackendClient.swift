@@ -178,11 +178,11 @@ public actor BackendClient {
     }
 
     /// The server deduplicates claims; a retry can never transfer this journey to a second account.
-    public func claimGuestJourney() async throws {
+    public func claimGuestJourney(keepOuting: String? = nil) async throws {
         guard let guestInstallationKey else { return }
-        struct Claim: Encodable, Sendable { let installationKey: String }
+        struct Claim: Encodable, Sendable { let installationKey: String; let keepOuting: String? }
         struct Result: Decodable, Sendable { let claimed: Bool }
-        let _: Result = try await send(path: "/v1/auth/guest/claim", method: "POST", body: Claim(installationKey: guestInstallationKey))
+        let _: Result = try await send(path: "/v1/auth/guest/claim", method: "POST", body: Claim(installationKey: guestInstallationKey, keepOuting: keepOuting))
     }
 
     public func restoreSession() async throws -> AuthIdentity? {

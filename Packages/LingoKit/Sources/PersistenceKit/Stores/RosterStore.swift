@@ -222,24 +222,61 @@ public actor RosterStore {
             }
             return
         }
+        var resolvedCard = card
+        if let previous = CharacterCard.decode(fromJSON: entity.cardJSON), previous.settingVersion != nil {
+            resolvedCard = previous
+            resolvedCard.avatarID = card.avatarID
+            resolvedCard.avatarRemoteURL = card.avatarRemoteURL
+        }
         entity.travelerID = travelerID
         entity.publicIdentityRegistered = true
-        entity.name = card.name
-        entity.age = card.age
-        entity.genderRaw = card.gender.rawValue
-        entity.nationality = card.nationality
-        entity.regionID = card.regionID
-        entity.occupation = card.occupation
-        entity.hobbies = card.hobbies
-        entity.appearance = card.appearance
-        entity.personality = card.personality
-        entity.avatarAssetName = card.avatarAssetName
-        entity.cardJSON = card.encodedJSON()
+        entity.name = resolvedCard.name
+        entity.age = resolvedCard.age
+        entity.genderRaw = resolvedCard.gender.rawValue
+        entity.nationality = resolvedCard.nationality
+        entity.regionID = resolvedCard.regionID
+        entity.occupation = resolvedCard.occupation
+        entity.hobbies = resolvedCard.hobbies
+        entity.appearance = resolvedCard.appearance
+        entity.personality = resolvedCard.personality
+        entity.avatarAssetName = resolvedCard.avatarAssetName
+        entity.cardJSON = resolvedCard.encodedJSON()
         try journal(entity)
         try modelContext.save()
         Task { @MainActor in
             NotificationCenter.default.post(name: .npcAvatarDidChange, object: characterID)
         }
+    }
+
+    /// Runs before opening new chats. History snapshots are private account content.
+    public func applyActivitySetting(characterID: UUID, travelerID: String, card: CharacterCard,
+                                     releaseID: String, version: Int, explanationZh: String) throws {
+        guard let entity = try fetchEntity(id: characterID), !entity.isMainCharacter,
+              let previous = CharacterCard.decode(fromJSON: entity.cardJSON) else { return }
+        guard entity.travelerID == travelerID else { throw RosterError.identityConflict }
+        guard (previous.settingVersion ?? 0) < version else { return }
+        var updated = previous
+        updated.nationality = card.nationality
+        updated.regionID = card.regionID
+        updated.hometown = card.hometown
+        updated.background = card.background
+        updated.settingVersion = version
+        updated.settingReleaseID = releaseID
+        var baseline = previous
+        baseline.settingHistory = nil
+        var history = previous.settingHistory ?? []
+        if previous.nationality != updated.nationality || previous.regionID != updated.regionID
+            || previous.hometown != updated.hometown || previous.background != updated.background {
+            history.append(.init(releaseID: releaseID, explanationZh: explanationZh,
+                                 previousCardJSON: baseline.encodedJSON(), appliedAt: .now))
+        }
+        updated.settingHistory = history
+        entity.nationality = updated.nationality
+        entity.regionID = updated.regionID
+        entity.cardJSON = updated.encodedJSON()
+        try journal(entity)
+        try modelContext.save()
+        postContactChange(characterID)
     }
 
     public func character(id: UUID) throws -> CharacterDTO? {
@@ -491,6 +528,9 @@ public actor RosterStore {
         )
         cardPayload.readingVoice = card?.resolvedReadingVoice
         cardPayload.activityProfile = card?.activityProfile
+        cardPayload.settingVersion = card?.settingVersion
+        cardPayload.settingReleaseID = card?.settingReleaseID
+        cardPayload.settingHistory = card?.settingHistory
         let payload = ContentCharacterPayload(
             card: cardPayload,
             difficulty: entity.difficultyLevelRaw,

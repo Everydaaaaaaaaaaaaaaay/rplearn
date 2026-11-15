@@ -5,6 +5,7 @@ import DesignSystem
 import DictKit
 import DomainKit
 import Foundation
+import HomeFeature
 import LLMKit
 import MediaKit
 import PersistenceKit
@@ -75,6 +76,9 @@ final class AppEnvironment {
     var billing: BillingController { requiredWorkspace.billing }
     var economyService: EconomyService { requiredWorkspace.economyService }
 
+    private var guestOutingChoiceAccountID: UUID?
+    var guestOutingChoiceRequired = false
+    var guestOutingToKeep: String?
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
     let audioSession: AudioSessionCoordinator
@@ -160,6 +164,8 @@ final class AppEnvironment {
         let legacyOwnerID = defaults.string(forKey: "backend.state.cached-owner.v1")
             .flatMap(UUID.init(uuidString:))
         let legacyWasGuest = defaults.bool(forKey: "backend.state.guest-owner.v1")
+        let guestImportKey = "lingotrip.guest-journey-import.v1." + identity.userID.uuidString
+        let pendingGuestNamespaces = defaults.stringArray(forKey: guestImportKey)
         let preparation = try await Task.detached(priority: .userInitiated) {
             try AccountStoreLocation.prepare(
                 for: identity.userID,
@@ -173,6 +179,12 @@ final class AppEnvironment {
             try ModelContainerFactory.makeContainer(storeURL: storeURL)
         }.value
         Log.app.info("启动耗时：打开账号数据库 \(String(describing: databaseStartedAt.duration(to: .now)), privacy: .public)")
+        let legacyGuestContainer: ModelContainer? = try await Task.detached(priority: .userInitiated) {
+            let legacyURL = URL.applicationSupportDirectory.appending(path: "default.store")
+            guard !preparation.importedLegacyStore, (legacyWasGuest || pendingGuestNamespaces != nil),
+                  FileManager.default.fileExists(atPath: legacyURL.path) else { return nil }
+            return try ModelContainerFactory.makeContainer(storeURL: legacyURL)
+        }.value
         let account = await AccountWorkspace(
             userID: identity.userID,
             modelContainer: container,
@@ -184,35 +196,57 @@ final class AppEnvironment {
 
         do {
             let shouldCaptureGuestProfile: Bool
-            if preparation.importedLegacyStore {
+            if pendingGuestNamespaces != nil || legacyGuestContainer != nil {
+                shouldCaptureGuestProfile = true
+            } else if preparation.importedLegacyStore {
                 shouldCaptureGuestProfile = await account.userState.shouldCaptureGuestProfileForImport()
             } else {
                 shouldCaptureGuestProfile = false
             }
-            let guestProfile = shouldCaptureGuestProfile
-                ? try? await account.economyStore.profile()
-                : nil
+            let guestContainer = legacyGuestContainer ?? container
+            let guestEconomy = EconomyStore(modelContainer: guestContainer)
+            let guestRoster = RosterStore(modelContainer: guestContainer)
+            let guestContent = ContentSyncStore(modelContainer: guestContainer)
+            let guestProfile = shouldCaptureGuestProfile ? try await guestEconomy.profile() : nil
+            let guestRecords = legacyGuestContainer != nil ? try await guestContent.guestRecords() : nil
             let hasGuestNPCs = guestProfile != nil
-                ? try await account.rosterStore.allCharacters().contains(where: { !$0.isMainCharacter })
-                : false
+                ? try await guestRoster.allCharacters().contains(where: { !$0.isMainCharacter }) : false
             if let guestProfile,
                guestProfile.hasCompletedProfileSetup
                     || guestProfile.hasCompletedOnboarding
                     || hasGuestNPCs {
-                try await account.contentSyncStore.archiveGuestJourneyIfNeeded(
+                let sourceNamespaces = pendingGuestNamespaces ?? [legacyOwnerID?.uuidString, "inactive"].compactMap { $0 }
+                defaults.set(sourceNamespaces, forKey: guestImportKey)
+                try await guestContent.archiveGuestJourneyIfNeeded(
                     profile: guestProfile,
                     beforeLogin: true
                 )
                 do {
                     try await account.userState.activateAnonymous(
                         legacyProfile: guestProfile,
-                        completedStories: try await account.storyProgressStore.completedStoryIDs(),
-                        hadStarterTicket: try await account.itemStore.hasTicket(source: .quest)
+                        completedStories: try await StoryProgressStore(modelContainer: guestContainer).completedStoryIDs(),
+                        hadStarterTicket: try await ItemStore(modelContainer: guestContainer).hasTicket(source: .quest)
                     )
                 } catch let error as BackendClientError where error.code == "GUEST_ALREADY_CLAIMED" || error == .signedOut {
                     // The claim endpoint below verifies whether this is the same destination account.
                 }
-                try await backendClient.claimGuestJourney()
+                try await ActivityGuestJourney.prepareForClaim(namespaces: [identity.userID.uuidString], gateway: backendClient)
+                do {
+                    let anonymous = try await backendClient.anonymousClient()
+                    try await ActivityGuestJourney.prepareForClaim(namespaces: sourceNamespaces, gateway: anonymous)
+                } catch let error as BackendClientError where error.code == "GUEST_ALREADY_CLAIMED" || error == .signedOut {
+                    // A successful claim may have lost its response. The claim below checks its owner.
+                }
+                do {
+                    try await backendClient.claimGuestJourney(keepOuting: guestOutingChoiceAccountID == identity.userID ? guestOutingToKeep : nil)
+                    guestOutingChoiceRequired = false
+                } catch let error as BackendClientError where error.code == "OUTING_MERGE_CHOICE_REQUIRED" {
+                    guestOutingChoiceAccountID = identity.userID
+                    guestOutingChoiceRequired = true
+                    throw error
+                }
+                try await ActivityGuestJourney.mergeAfterClaim(from: sourceNamespaces, into: identity.userID.uuidString,
+                                                               gateway: backendClient)
             }
             let stateStartedAt = ContinuousClock.now
             let activation = try await account.userState.activate(userID: identity.userID, preferCache: true)
@@ -225,9 +259,13 @@ final class AppEnvironment {
             try await importMainCharacters(into: account)
             let contentStartedAt = ContinuousClock.now
             let contentActivation = try await account.contentSync.activate(userID: identity.userID, preferCache: true)
+            if let guestRecords { try await account.contentSyncStore.importGuestRecords(guestRecords) }
+            try await CityActivityRelease.bundled()?.migrateContacts(in: account.rosterStore)
             Log.app.info("启动耗时：内容激活 \(String(describing: contentStartedAt.duration(to: .now)), privacy: .public)，路径 \(String(describing: contentActivation), privacy: .public)")
             try await reconcileMainCharacters(profile: profile)
             await account.voiceMedia.activate(userID: identity.userID)
+            defaults.removeObject(forKey: guestImportKey)
+            guestOutingToKeep = nil
             needsOnboarding = !profile.hasCompletedOnboarding
             return activation
         } catch {
@@ -297,8 +335,10 @@ final class AppEnvironment {
         try Task.checkCancellation()
         workspace = account
         try await importMainCharacters(into: account)
-        if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "places-preview" {
-            _ = try await account.economyStore.updateProfile { $0.currentRegionID = "london" }
+        if ["places-preview", "world-preview"].contains(ProcessInfo.processInfo.environment["UI_TEST_TAB"] ?? "") {
+            _ = try await account.economyStore.updateProfile {
+                $0.currentRegionID = ProcessInfo.processInfo.environment["UI_TEST_SCENE_CITY"] ?? "london"
+            }
         }
         // Exercise the real profile-driven backgrounds without touching a persisted account.
         if let regionID = ProcessInfo.processInfo.environment["UI_TEST_CITY_TAB_REGION"],

@@ -7,8 +7,11 @@ import Foundation
 /// Receipts stay in this actor; production routes and accounts are never called.
 actor DebugPlaceOutingGateway: OutingGateway {
     static let shared = DebugPlaceOutingGateway()
+    static let world = DebugPlaceOutingGateway(allCities: true)
+    private let allCities: Bool
     private struct Fixture: Decodable {
-        let catalog: BackendActivityCatalog
+        let catalog: BackendActivityCatalog?
+        let catalogs: [BackendActivityCatalog]?
         let outings: [BackendOuting]
     }
     private struct State: Codable {
@@ -17,8 +20,9 @@ actor DebugPlaceOutingGateway: OutingGateway {
     }
     private var state: State
     private let storageKey: String
-    init() {
-        storageKey = "debug.place-outing.gateway.v1." + (ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] ?? "manual")
+    init(allCities: Bool = false) {
+        self.allCities = allCities
+        storageKey = (allCities ? "debug.world-outing.gateway.v1." : "debug.place-outing.gateway.v1.") + (ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] ?? "manual")
         state = UserDefaults.standard.data(forKey: storageKey)
             .flatMap { try? JSONDecoder().decode(State.self, from: $0) } ?? State()
     }
@@ -26,12 +30,20 @@ actor DebugPlaceOutingGateway: OutingGateway {
         UserDefaults.standard.set(try JSONEncoder().encode(state), forKey: storageKey)
     }
     private func fixture() throws -> Fixture {
-        guard let url = Bundle.main.url(forResource: "place-outing-preview", withExtension: "json") else {
+        guard let url = Bundle.main.url(forResource: allCities ? "activity-world-release" : "place-outing-preview", withExtension: "json") else {
             throw BackendClientError.invalidResponse
         }
-        return try JSONDecoder().decode(Fixture.self, from: Data(contentsOf: url))
+        let data = try Data(contentsOf: url)
+        if allCities {
+            struct World: Decodable { let preview: Fixture }
+            return try JSONDecoder().decode(World.self, from: data).preview
+        }
+        return try JSONDecoder().decode(Fixture.self, from: data)
     }
-    func activityCatalog(releaseID: String?) async throws -> BackendActivityCatalog? { try fixture().catalog }
+    func activityCatalog(releaseID: String?) async throws -> BackendActivityCatalog? {
+        let content = try fixture()
+        return allCities ? content.catalogs?.first { $0.cityId == (ProcessInfo.processInfo.environment["UI_TEST_SCENE_CITY"] ?? "london") } : content.catalog
+    }
     func activeOuting() async throws -> BackendOuting? {
         state.sessions.values.first { ![.completed, .abandoned].contains($0.status) }
     }
@@ -44,8 +56,17 @@ actor DebugPlaceOutingGateway: OutingGateway {
         if let active = try await activeOuting(), active.runId != id {
             throw BackendClientError.api(code: "OUTING_ALREADY_ACTIVE", message: "已有外出进度", requestID: nil, status: 409)
         }
-        guard let template = try fixture().outings.first(where: { $0.placeId == placeID && $0.releaseId == releaseID }),
+        let templates = try fixture().outings.filter { $0.placeId == placeID && $0.releaseId == releaseID }
+        let visits = state.sessions.values.filter { $0.placeId == placeID && $0.status != .reserved }
+        let known = Set(visits.compactMap { $0.npc?.id })
+        let encounters = templates.filter { $0.npc != nil }
+        let template: BackendOuting?
+        if allCities, visits.count % 7 != 6, !encounters.isEmpty {
+            template = encounters.first { $0.npc.map { !known.contains($0.id) } ?? false } ?? encounters[visits.count % encounters.count]
+        } else { template = templates.first }
+        guard let template,
               var value = try JSONSerialization.jsonObject(with: JSONEncoder().encode(template)) as? [String: Any] else { throw missing }
+        if allCities, let npc = template.npc, known.contains(npc.id) { value["mode"] = "reunion" }
         value["runId"] = id.uuidString
         let session = try JSONDecoder().decode(BackendOuting.self, from: JSONSerialization.data(withJSONObject: value))
         try PlaceOutingProgress.validate(session)

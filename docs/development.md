@@ -244,4 +244,4 @@ Scripts/preview.sh preview learning-test # 已构建后复用产物
 咖啡馆提供 Alex 的七节点四结尾故事；书店与公园提供独处短篇。这是界面与状态机样板，不能代表十五城内容已发布。
 外出记录使用 `debug.place-outing.preview.v1.manual` 命名空间，重启继续；界面测试通过独立 UUID 隔离。
 `CityPlaceOutingTests` 定向检查实际分支、暂停返回、杀进程恢复、足迹、照片许可与最大辅助字号独处结尾。
-正式入口仍由已验收的 `activity-world-release.json` 控制，当前未打包此文件。
+正式入口由配套 `activity-world-release.json` 控制。完整十五城离线游玩预览使用 `Scripts/preview.sh preview world-preview`，通过 `UI_TEST_SCENE_CITY` 指定城市。线上内容与原生迁移验证见活动系统施工进度记录。

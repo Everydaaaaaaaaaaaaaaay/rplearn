@@ -21,7 +21,11 @@ export function registerGuestRoutes(
   app: FastifyInstance,
   auth: AuthService,
   guests: GuestService,
-  claim: (key: string, accountId: string) => Promise<{ claimed: boolean }>,
+  claim: (
+    key: string,
+    accountId: string,
+    keepOuting?: "guest" | "account",
+  ) => Promise<{ claimed: boolean }>,
 ): void {
   app.post("/v1/auth/guest", { schema: { tags: ["auth"] } }, async (request, reply) => {
     const parsed = sessionBody.safeParse(request.body);
@@ -45,6 +49,7 @@ export function registerGuestRoutes(
       const identity = await authenticateRequest(request, auth);
       const parsed = sessionBody
         .pick({ installationKey: true })
+        .extend({ keepOuting: z.enum(["guest", "account"]).optional() })
         .safeParse(request.body);
       if (!parsed.success)
         throw new AppError({
@@ -53,7 +58,11 @@ export function registerGuestRoutes(
           statusCode: 400,
         });
       reply.header("cache-control", "no-store");
-      return claim(parsed.data.installationKey, identity.userId);
+      return claim(
+        parsed.data.installationKey,
+        identity.userId,
+        parsed.data.keepOuting,
+      );
     },
   );
 }

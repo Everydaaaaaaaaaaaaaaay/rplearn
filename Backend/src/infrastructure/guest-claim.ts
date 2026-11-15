@@ -9,6 +9,7 @@ export function createGuestClaim(database: DatabaseResource, pepper: string) {
   return async (
     installationKey: string,
     accountId: string,
+    keepOuting?: "guest" | "account",
   ): Promise<{ claimed: boolean }> => {
     const hash = createHmac("sha256", pepper)
       .update(`guest-installation:${installationKey}`)
@@ -62,7 +63,7 @@ export function createGuestClaim(database: DatabaseResource, pepper: string) {
             "两段旅程中有不同角色使用同一头像，尚未合并，原旅程已完整保留。请使用新账号认领。",
           statusCode: 409,
         });
-      await claimPlaceOutings(sql, guest.user_id, accountId);
+      await claimPlaceOutings(sql, guest.user_id, accountId, keepOuting);
       await claimDomainJourney(sql, guest.user_id, accountId);
       await sql`insert into app.npc_encounter_history(user_id,npc_id,last_seen_at,encounters)
         select ${accountId},npc_id,last_seen_at,encounters from app.npc_encounter_history where user_id=${guest.user_id}
@@ -73,7 +74,9 @@ export function createGuestClaim(database: DatabaseResource, pepper: string) {
         select ${accountId}, npc_id, local_character_id, status, created_at
         from app.user_npc_relationships where user_id = ${guest.user_id}
         on conflict (user_id, npc_id) do update set status = case
+          when app.user_npc_relationships.status = 'removed' then 'removed'::app.npc_relationship_status
           when app.user_npc_relationships.status = 'friend' or excluded.status = 'friend' then 'friend'::app.npc_relationship_status
+          when excluded.status = 'removed' then 'removed'::app.npc_relationship_status
           else app.user_npc_relationships.status end, updated_at = now()
       `;
       await sql`update app.npc_pending_avatars set user_id = ${accountId} where user_id = ${guest.user_id}`;

@@ -38,6 +38,21 @@ struct CityOutingArchive: Codable, Sendable {
     func save(namespace: String, defaults: UserDefaults = .standard) throws {
         defaults.set(try JSONEncoder().encode(self), forKey: Self.key(namespace: namespace))
     }
+    func preserveRecovery(namespace: String, defaults: UserDefaults = .standard) throws {
+        let key = Self.key(namespace: namespace) + ".recovery." + runID.uuidString
+            + "." + String(snapshot?.revision ?? -1)
+        if defaults.data(forKey: key) == nil { defaults.set(try JSONEncoder().encode(self), forKey: key) }
+    }
+    static func recoveries(namespace: String, defaults: UserDefaults = .standard) throws -> [Self] {
+        let prefix = key(namespace: namespace) + "."
+        return try defaults.dictionaryRepresentation().keys.filter { $0.hasPrefix(prefix) }.sorted().compactMap { key in
+            guard let data = defaults.data(forKey: key) else { return nil }
+            let archive = try JSONDecoder().decode(Self.self, from: data)
+            if let snapshot = archive.snapshot { try PlaceOutingProgress.validate(snapshot) }
+            return archive
+        }
+    }
+
     var needsContinuation: Bool {
         cancelled != true && (snapshot.map { ![.completed, .abandoned].contains($0.status) || !pending.isEmpty } ?? true)
     }

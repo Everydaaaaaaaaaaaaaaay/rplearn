@@ -209,10 +209,15 @@ final class CityOutingModel: ObservableObject {
     private func prepareLocalCharacter() async {
         guard let npc = snapshot?.npc else { return }
         do {
-            if let existing = try await deps.rosterStore.character(id: npc.id) { character = existing; return }
+            if let existing = try await deps.rosterStore.character(id: npc.id) {
+                try await CityActivityRelease.bundled()?.migrateContacts(in: deps.rosterStore, characterID: existing.id)
+                character = try await deps.rosterStore.character(id: existing.id)
+                return
+            }
             let profile = try await deps.economyStore.profile()
             let id = try await deps.rosterStore.addCharacter(characterID: npc.id, travelerID: npc.travelerId,
                 card: PublicNPCAdapter.characterCard(from: npc), difficulty: profile.difficultyLevel, isFriend: false)
+            try await CityActivityRelease.bundled()?.migrateContacts(in: deps.rosterStore, characterID: id)
             character = try await deps.rosterStore.character(id: id)
         } catch { contactMessage = "人物资料暂未保存，故事进度仍会保留。" }
     }

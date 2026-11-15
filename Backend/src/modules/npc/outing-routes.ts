@@ -38,6 +38,12 @@ export function registerOutingRoutes(
     reply.header("cache-control", "no-store");
     return { outing: await service.active(actor.userId) };
   });
+  app.get("/v2/outings/history", async (request, reply) => {
+    const actor = await authenticateActorRequest(request, auth);
+    const query = parse(z.object({ before: uuid.optional() }).strict(), request.query);
+    reply.header("cache-control", "no-store");
+    return service.history(actor.userId, query.before);
+  });
   app.get("/v2/outings/:runId", async (request, reply) => {
     const actor = await authenticateActorRequest(request, auth);
     const { runId } = parse(z.object({ runId: uuid }).strict(), request.params);

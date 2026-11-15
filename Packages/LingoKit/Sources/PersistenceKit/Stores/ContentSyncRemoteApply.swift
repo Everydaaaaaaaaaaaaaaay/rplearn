@@ -41,7 +41,8 @@ extension ContentSyncStore {
             .flatMap { CharacterCard.decode(fromJSON: $0.cardJSON)?.readingVoice }
         let existingActivityProfile = try character(id: id)
             .flatMap { CharacterCard.decode(fromJSON: $0.cardJSON)?.activityProfile }
-        let card = CharacterCard(
+        let existingCard = try character(id: id).flatMap { CharacterCard.decode(fromJSON: $0.cardJSON) }
+        var card = CharacterCard(
             name: payload.card.name,
             age: payload.card.age,
             gender: CharacterGender(rawValue: payload.card.gender) ?? .other,
@@ -66,6 +67,16 @@ extension ContentSyncStore {
             // persona field. This also keeps rolling-version sync from repeatedly downgrading it.
             activityProfile: payload.card.activityProfile ?? existingActivityProfile
         )
+        card.settingVersion = payload.card.settingVersion
+        card.settingReleaseID = payload.card.settingReleaseID
+        card.settingHistory = payload.card.settingHistory
+        if let existingCard {
+            if (existingCard.settingVersion ?? 0) > (card.settingVersion ?? 0) { card = existingCard }
+            else if existingCard.settingVersion == card.settingVersion,
+                    (existingCard.settingHistory?.count ?? 0) > (card.settingHistory?.count ?? 0) {
+                card.settingHistory = existingCard.settingHistory
+            }
+        }
         let entity = try character(id: id) ?? {
             let created = CharacterEntity(
                 characterID: id,
