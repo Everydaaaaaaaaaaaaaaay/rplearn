@@ -89,15 +89,9 @@ struct AppointmentReaderView: View {
 
     private var header: some View {
         HStack(spacing: 4) {
-            Button { inputFocused = false; dismiss() } label: {
-                Image(systemName: "chevron.left").font(.system(size: 18, weight: .medium)).frame(width: 44, height: 44)
-            }.accessibilityLabel("暂停并返回约定")
-            VStack(alignment: .leading, spacing: 4) {
-                Text(model.detail?.appointment.displayCityName ?? "赴约")
-                    .font(.caption).foregroundStyle(ink.opacity(0.65))
-                Text(model.detail.map { $0.appointment.displayTitle(companionName: characterName($0.appointment.characterId)) } ?? "赴约")
-                    .font(.subheadline.weight(.semibold)).lineLimit(inputFocused ? 1 : 2)
-            }
+            AppointmentBackButton(label: "暂停并返回约定") { inputFocused = false; dismiss() }
+            Text(model.detail.map { $0.appointment.displayTitle(companionName: characterName($0.appointment.characterId)) } ?? "")
+                .font(.subheadline.weight(.medium)).lineLimit(1)
             Spacer(minLength: 0)
             Button { inputFocused = false; history = true } label: {
                 Image(systemName: "clock.arrow.circlepath").font(.system(size: 20, weight: .regular)).frame(width: 44, height: 44)
@@ -113,9 +107,9 @@ struct AppointmentReaderView: View {
                 }
             } label: { Image(systemName: "ellipsis").font(.system(size: 18, weight: .medium)).frame(width: 44, height: 44) }.accessibilityLabel("阅读选项")
         }
-        .foregroundStyle(ink)
-        .padding(6)
-        .appointmentSurface(radius: 24)
+        .buttonStyle(.plain)
+        .foregroundStyle(.white)
+        .shadow(color: .black.opacity(0.35), radius: 4, y: 1)
     }
 
     private func panel(maxHeight: CGFloat) -> some View {
@@ -160,7 +154,7 @@ struct AppointmentReaderView: View {
                 }.frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 4)
             }
             .scrollBounceBehavior(.basedOnSize)
-            .frame(maxHeight: max(44, maxHeight - (showsComposer ? 174 : 112)))
+            .frame(maxHeight: max(44, maxHeight - (showsComposer ? 220 : 144)))
             .fixedSize(horizontal: false, vertical: !dynamicTypeSize.isAccessibilitySize && !inputFocused)
             .id("\(model.block?.id ?? "")-\(model.beatIndex)")
             if showsComposer { customActionInput.padding(.top, 16) }
@@ -176,7 +170,7 @@ struct AppointmentReaderView: View {
                 }.padding(.top, 8)
             }
         }
-        .foregroundStyle(ink).padding(.horizontal, 24).padding(.top, 10).padding(.bottom, 14)
+        .foregroundStyle(ink).padding(24)
         .background((reduceTransparency || contrast == .increased ? AppointmentStyle.canvas : Color.white.opacity(0.94)), in: RoundedRectangle(cornerRadius: 28, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).strokeBorder(.white.opacity(0.7)))
         .environment(\.colorScheme, .light)
@@ -197,7 +191,7 @@ struct AppointmentReaderView: View {
                           prompt: Text("自定义你的行动").foregroundStyle(ink.opacity(0.45)), axis: .vertical)
                     .font(.body)
                     .lineLimit(1...2)
-                    .padding(.leading, 16).padding(.vertical, 14)
+                    .padding(.leading, 20).padding(.vertical, 16)
                     .focused($inputFocused)
                     .submitLabel(.send)
                     .onSubmit(submitCustomAction)
@@ -215,10 +209,10 @@ struct AppointmentReaderView: View {
                 .disabled(!canSubmitCustomAction)
                 .accessibilityLabel("提交行动")
                 .accessibilityIdentifier("appointment.sendInput")
-                .padding(5)
+                .padding(8)
             }
-            .background(.white.opacity(0.75), in: RoundedRectangle(cornerRadius: 26))
-            .overlay(RoundedRectangle(cornerRadius: 26).strokeBorder(ink.opacity(inputFocused ? 0.30 : 0.14)))
+            .background(.white.opacity(0.75), in: RoundedRectangle(cornerRadius: 24))
+            .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(ink.opacity(inputFocused ? 0.30 : 0.14)))
             if model.draft.count > 450 {
                 Text("\(model.draft.count) / 500")
                     .font(.caption).monospacedDigit()

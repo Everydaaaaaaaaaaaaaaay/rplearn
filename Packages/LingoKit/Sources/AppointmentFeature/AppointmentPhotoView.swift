@@ -65,7 +65,6 @@ struct AppointmentPhotoView: View {
 struct AppointmentPhotoCreditsView: View {
     let cityID: String
     let cityName: String
-    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationStack {
@@ -90,8 +89,7 @@ struct AppointmentPhotoCreditsView: View {
                 }.padding(22).frame(maxWidth: 640).frame(maxWidth: .infinity)
             }
             .appointmentChrome(cityID: cityID, cityName: cityName)
-            .navigationTitle("照片来源").navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("完成") { dismiss() } } }
+            .appointmentNavigation("照片来源", backLabel: "返回约定")
         }
         .tint(AppointmentStyle.ink)
     }

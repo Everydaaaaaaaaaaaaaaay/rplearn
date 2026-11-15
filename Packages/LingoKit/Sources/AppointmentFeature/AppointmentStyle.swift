@@ -48,15 +48,57 @@ private struct AppointmentChrome: ViewModifier {
             .background { AppointmentBackdrop(cityID: cityID, cityName: cityName) }
             .foregroundStyle(AppointmentStyle.ink)
             .tint(AppointmentStyle.ink)
-            .toolbarBackground(.regularMaterial, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarBackground(.hidden, for: .navigationBar)
             .toolbarColorScheme(.light, for: .navigationBar)
             .environment(\.colorScheme, .light)
             .preferredColorScheme(.light)
     }
 }
 
+struct AppointmentBackButton: View {
+    var label = "返回"
+    var onBack: (() -> Void)?
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        Button {
+            if let onBack { onBack() } else { dismiss() }
+        } label: {
+            Image(systemName: "chevron.left").font(.system(size: 22, weight: .regular))
+                .frame(width: 44, height: 44).contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(label)
+        .accessibilityIdentifier("appointment.back")
+    }
+}
+
+private struct AppointmentNavigation: ViewModifier {
+    var title: String
+    var backLabel: String
+    var onBack: (() -> Void)?
+
+    func body(content: Content) -> some View {
+        content
+            .toolbar(.hidden, for: .navigationBar)
+            .safeAreaInset(edge: .top, spacing: 0) {
+                HStack(spacing: 12) {
+                    AppointmentBackButton(label: backLabel, onBack: onBack)
+                    if !title.isEmpty { Text(title).font(.subheadline.weight(.medium)) }
+                    Spacer(minLength: 0)
+                }
+                .foregroundStyle(AppointmentStyle.ink)
+                .padding(.horizontal, 16).padding(.vertical, 4)
+                .frame(maxWidth: 640).frame(maxWidth: .infinity, alignment: .center)
+            }
+    }
+}
+
 extension View {
+    func appointmentNavigation(_ title: String = "", backLabel: String = "返回", onBack: (() -> Void)? = nil) -> some View {
+        modifier(AppointmentNavigation(title: title, backLabel: backLabel, onBack: onBack))
+    }
+
     func appointmentSurface(radius: CGFloat = 28) -> some View {
         modifier(AppointmentSurface(radius: radius))
     }

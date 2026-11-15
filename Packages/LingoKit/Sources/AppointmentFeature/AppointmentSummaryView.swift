@@ -18,11 +18,6 @@ struct AppointmentSummaryView: View {
                         Text(item.displayTitle(companionName: characterName(item.characterId)))
                             .font(.largeTitle.weight(.semibold))
                         AppointmentTimeView(appointment: item)
-                        if let summary = model.detail?.summary {
-                            Divider()
-                            Text(summary.reflection).font(.system(.title3, design: .serif))
-                                .lineSpacing(6).textSelection(.enabled)
-                        }
                     }
                     .padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
                     if let summary = model.detail?.summary {
@@ -43,23 +38,17 @@ struct AppointmentSummaryView: View {
                             .font(.subheadline.weight(.semibold)).padding(24).frame(minHeight: 52)
                             .appointmentSurface()
                     }.buttonStyle(DSSceneEntranceButtonStyle())
+                    Button { onChat(item.characterId) } label: {
+                        Label("返回聊天", systemImage: "bubble.left")
+                    }
+                    .buttonStyle(AppointmentPrimaryButtonStyle())
+                    .accessibilityIdentifier("appointment.backToChat")
                 }
             }
             .padding(22).frame(maxWidth: 640).frame(maxWidth: .infinity)
         }
         .appointmentChrome(cityID: model.detail?.appointment.cityId ?? "", cityName: model.detail?.appointment.displayCityName ?? "")
-        .navigationTitle("赴约回顾").navigationBarTitleDisplayMode(.inline).navigationBarHidden(false).dsTabBarHidden()
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            if let item = model.detail?.appointment {
-                Button { onChat(item.characterId) } label: {
-                    Label("返回聊天", systemImage: "bubble.left")
-                }
-                .buttonStyle(AppointmentPrimaryButtonStyle())
-                .padding(.horizontal, 22).padding(.vertical, 12)
-                .background(.regularMaterial)
-                .accessibilityIdentifier("appointment.backToChat")
-            }
-        }
+        .appointmentNavigation("回顾").dsTabBarHidden()
         .sheet(isPresented: $history) { AppointmentHistoryView(detail: model.detail, characterName: characterName) }
         .task { await model.settleIfPending() }
     }
@@ -147,7 +136,6 @@ struct AppointmentSummaryView: View {
 struct AppointmentHistoryView: View {
     let detail: BackendAppointmentDetail?
     let characterName: (UUID) -> String
-    @Environment(\.dismiss) private var dismiss
     private let ink = AppointmentStyle.ink
 
     var body: some View {
@@ -186,8 +174,7 @@ struct AppointmentHistoryView: View {
                 }.padding(22).frame(maxWidth: 640).frame(maxWidth: .infinity)
             }
             .appointmentChrome(cityID: detail?.appointment.cityId ?? "", cityName: detail?.appointment.displayCityName ?? "")
-            .navigationTitle("实际经历").navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("完成") { dismiss() } } }
+            .appointmentNavigation("实际经历", backLabel: "返回阅读")
         }
         .tint(ink)
     }

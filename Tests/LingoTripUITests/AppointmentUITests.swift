@@ -22,17 +22,16 @@ final class AppointmentUITests: XCTestCase {
 
     func testConfirmedCustomBilingualPathPauseFinishAndReadOnlySummary() throws {
         launch("list")
-        let card = app.buttons["appointment.card.a0000000-0000-4000-8000-000000000001"]
-        reveal(card)
+        let start = app.buttons["appointment.start"]
+        reveal(start)
         capture("appointment-00-list")
-        card.tap()
-        XCTAssertTrue(app.navigationBars["约定"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.navigationBars["赴约"].exists)
+        XCTAssertFalse(app.buttons["关闭约定"].exists)
         app.buttons["appointment.details.options"].tap()
         app.buttons["照片来源"].tap()
-        XCTAssertTrue(app.navigationBars["照片来源"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["照片来源"].waitForExistence(timeout: 5))
         capture("appointment-photo-credits")
-        app.buttons["完成"].tap()
-        let start = app.buttons["appointment.start"]
+        app.buttons["返回约定"].tap()
         reveal(start)
         XCTAssertEqual(app.staticTexts["appointment.beijingTime"].label, "北京时间，Sun, 1 Nov 2026 · 23:00")
         XCTAssertEqual(app.staticTexts["appointment.localTime"].label, "伦敦 15:00")
@@ -69,10 +68,12 @@ final class AppointmentUITests: XCTestCase {
         reveal(acceptedInput.firstMatch)
         XCTAssertEqual(acceptedInput.count, 1)
         let returnToChat = app.buttons["appointment.backToChat"]
+        reveal(returnToChat)
         XCTAssertTrue(returnToChat.isHittable)
 
         // Reopening exposes saved results and no editable choice/finish action.
-        let back = app.navigationBars.buttons.firstMatch
+        XCTAssertFalse(app.staticTexts["谢谢你把自己的想法说出来。我们一起商量了这段时间怎么过。"].exists)
+        let back = app.buttons["appointment.back"]
         XCTAssertTrue(back.isHittable)
         back.tap()
         let showSummary = app.buttons["appointment.summary"]
@@ -87,6 +88,20 @@ final class AppointmentUITests: XCTestCase {
         reveal(acceptedInput.firstMatch)
         XCTAssertEqual(acceptedInput.count, 1, "只显示一次实际选择，回看不能新增另一条经历")
         capture("appointment-07-reopened-summary-read-only")
+    }
+
+    func testCompletedCardOpensSummaryDirectly() {
+        launch("completed")
+        let summary = app.buttons["appointment.openSummary"]
+        reveal(summary)
+        summary.tap()
+        XCTAssertTrue(app.buttons["appointment.backToChat"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["appointment.affinity"].exists)
+        XCTAssertFalse(app.staticTexts["你们在南岸的水边坐了一会，随后沿步道走回桥边。"].exists)
+        capture("appointment-completed-card-summary")
+        app.buttons["appointment.back"].tap()
+        XCTAssertTrue(summary.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.navigationBars["约定"].exists)
     }
 
     func testFailedContinuationRetriesOriginalInputAndRecordsItOnce() {
@@ -139,6 +154,7 @@ final class AppointmentUITests: XCTestCase {
         advanceToDecision()
         finishNaturally()
         reveal(app.staticTexts["appointment.affinity"])
+        reveal(app.buttons["appointment.backToChat"])
         assertInsideScreen(app.buttons["appointment.backToChat"])
         let memories = app.buttons["appointment.manageMemories"]
         reveal(memories)
@@ -153,7 +169,13 @@ final class AppointmentUITests: XCTestCase {
     private func launch(_ scenario: String) {
         app.launchEnvironment["UI_TEST_APPOINTMENT_SCENARIO"] = scenario
         app.launch()
-        XCTAssertTrue(app.navigationBars[scenario == "list" ? "赴约" : "约定"].waitForExistence(timeout: 20))
+        let action: String
+        switch scenario {
+        case "active", "retry", "offline", "conflict": action = "appointment.resume"
+        case "completed": action = "appointment.openSummary"
+        default: action = "appointment.start"
+        }
+        XCTAssertTrue(app.buttons[action].waitForExistence(timeout: 20))
     }
 
     private func advanceToDecision() {
@@ -192,13 +214,13 @@ final class AppointmentUITests: XCTestCase {
 
     private func openHistoryAndAssert(_ input: String, attachment: String?) {
         app.buttons["appointment.history"].tap()
-        XCTAssertTrue(app.navigationBars["实际经历"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["实际经历"].waitForExistence(timeout: 5))
         let original = app.staticTexts.matching(NSPredicate(format: "label == %@", input))
         reveal(original.firstMatch)
         XCTAssertEqual(original.count, 1, "历史只包含一次已接受的原始输入")
         XCTAssertTrue(app.staticTexts["你 · 自定义行动"].exists)
         if let attachment { capture(attachment) }
-        app.buttons["完成"].tap()
+        app.buttons["返回阅读"].tap()
     }
 
     private func finishNaturally() {
@@ -254,8 +276,16 @@ final class AppointmentUITests: XCTestCase {
     private func waitForKeyboardAndSend(_ send: XCUIElement) {
         let keyboard = app.keyboards.firstMatch
         XCTAssertTrue(keyboard.waitForExistence(timeout: 8), "等待原生输入法展开后再点击随键盘移动的发送按钮")
+        var previousFrame = CGRect.null
+        var stableSince = Date()
         let ready = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            send.exists && send.isHittable && send.frame.maxY < keyboard.frame.minY
+            guard send.exists, send.isHittable, send.frame.maxY < keyboard.frame.minY else { return false }
+            let frame = send.frame
+            if frame != previousFrame {
+                previousFrame = frame
+                stableSince = Date()
+            }
+            return Date().timeIntervalSince(stableSince) >= 0.4
         }, object: nil)
         XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 8), .completed, "发送按钮须完成键盘避让，完整显示在键盘上方")
     }
