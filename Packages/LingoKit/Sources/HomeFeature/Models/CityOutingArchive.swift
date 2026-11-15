@@ -1,4 +1,5 @@
 import BackendKit
+import CryptoKit
 import DomainKit
 import Foundation
 
@@ -39,9 +40,12 @@ struct CityOutingArchive: Codable, Sendable {
         defaults.set(try JSONEncoder().encode(self), forKey: Self.key(namespace: namespace))
     }
     func preserveRecovery(namespace: String, defaults: UserDefaults = .standard) throws {
-        let key = Self.key(namespace: namespace) + ".recovery." + runID.uuidString
-            + "." + String(snapshot?.revision ?? -1)
-        if defaults.data(forKey: key) == nil { defaults.set(try JSONEncoder().encode(self), forKey: key) }
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys]
+        let data = try encoder.encode(self)
+        let fingerprint = SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+        let key = Self.key(namespace: namespace) + ".recovery." + runID.uuidString + "." + fingerprint
+        if defaults.data(forKey: key) == nil { defaults.set(data, forKey: key) }
     }
     static func recoveries(namespace: String, defaults: UserDefaults = .standard) throws -> [Self] {
         let prefix = key(namespace: namespace) + "."

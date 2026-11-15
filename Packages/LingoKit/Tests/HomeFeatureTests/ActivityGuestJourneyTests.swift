@@ -39,6 +39,30 @@ struct ActivityGuestJourneyTests {
         #expect(saved.snapshot == (try await gateway.outing(id: original.runId)))
     }
 
+    @Test func adoptsServerOnlyAfterPreservingLocalChoicesAndTransfersRecovery() async throws {
+        let suite = "guest-conflict-test-\(UUID())"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let original = try makePlaceOutingFixture()
+        let operation = BackendOutingOperation(expectedRevision: 0, type: .read, beatIndex: 0)
+        var archive = CityOutingArchive(restoring: original)
+        archive.snapshot = try PlaceOutingProgress.apply(operation, to: original)
+        archive.pending = [operation]
+        try archive.save(namespace: "guest", defaults: defaults)
+        let localSnapshot = try #require(archive.snapshot)
+        let server = try PlaceOutingProgress.apply(.init(expectedRevision: 1, type: .read, beatIndex: 1), to: localSnapshot)
+        let gateway = Gateway([server])
+        try await ActivityGuestJourney.prepareForClaim(namespaces: ["guest"], gateway: gateway,
+                                                        defaults: defaults, adoptServerProgress: true)
+        let restored = try #require(try CityOutingArchive.load(namespace: "guest", defaults: defaults))
+        #expect(restored.pending.isEmpty)
+        #expect(restored.snapshot == server)
+        try await ActivityGuestJourney.mergeAfterClaim(from: ["guest"], into: "account", gateway: gateway, defaults: defaults)
+        let recoveries = try CityOutingArchive.recoveries(namespace: "account", defaults: defaults)
+        #expect(recoveries.contains { $0.snapshot == archive.snapshot && $0.pending.count == 1 })
+        #expect(try CityOutingArchive.load(namespace: "account", defaults: defaults)?.snapshot == server)
+    }
+
     @Test func mergesFootprintsAndKeepsRecoverableSourcesAcrossRetries() async throws {
         let suite = "guest-footprints-test-\(UUID())"
         let defaults = try #require(UserDefaults(suiteName: suite))

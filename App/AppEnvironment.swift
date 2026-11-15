@@ -78,6 +78,8 @@ final class AppEnvironment {
 
     private var guestOutingChoiceAccountID: UUID?
     var guestOutingChoiceRequired = false
+    var guestOutingProgressConflict = false
+    var adoptGuestServerProgress = false
     var guestOutingToKeep: String?
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
@@ -158,6 +160,12 @@ final class AppEnvironment {
         let startedAt = ContinuousClock.now
         defer { Log.app.info("启动耗时：账号工作区 \(String(describing: startedAt.duration(to: .now)), privacy: .public)") }
         needsOnboarding = nil
+        if guestOutingChoiceAccountID != identity.userID {
+            guestOutingProgressConflict = false
+            guestOutingChoiceRequired = false
+            adoptGuestServerProgress = false
+            guestOutingToKeep = nil
+        }
         await deactivateAccount()
 
         let defaults = UserDefaults.standard
@@ -230,13 +238,16 @@ final class AppEnvironment {
                 } catch let error as BackendClientError where error.code == "GUEST_ALREADY_CLAIMED" || error == .signedOut {
                     // The claim endpoint below verifies whether this is the same destination account.
                 }
-                try await ActivityGuestJourney.prepareForClaim(namespaces: [identity.userID.uuidString], gateway: backendClient)
+                try await ActivityGuestJourney.prepareForClaim(namespaces: [identity.userID.uuidString], gateway: backendClient,
+                    adoptServerProgress: guestOutingChoiceAccountID == identity.userID && adoptGuestServerProgress)
                 do {
                     let anonymous = try await backendClient.anonymousClient()
-                    try await ActivityGuestJourney.prepareForClaim(namespaces: sourceNamespaces, gateway: anonymous)
+                    try await ActivityGuestJourney.prepareForClaim(namespaces: sourceNamespaces, gateway: anonymous,
+                        adoptServerProgress: guestOutingChoiceAccountID == identity.userID && adoptGuestServerProgress)
                 } catch let error as BackendClientError where error.code == "GUEST_ALREADY_CLAIMED" || error == .signedOut {
                     // A successful claim may have lost its response. The claim below checks its owner.
                 }
+                guestOutingProgressConflict = false
                 do {
                     try await backendClient.claimGuestJourney(keepOuting: guestOutingChoiceAccountID == identity.userID ? guestOutingToKeep : nil)
                     guestOutingChoiceRequired = false
@@ -266,9 +277,20 @@ final class AppEnvironment {
             await account.voiceMedia.activate(userID: identity.userID)
             defaults.removeObject(forKey: guestImportKey)
             guestOutingToKeep = nil
+            guestOutingChoiceAccountID = nil
+            guestOutingProgressConflict = false
+            adoptGuestServerProgress = false
             needsOnboarding = !profile.hasCompletedOnboarding
             return activation
         } catch {
+            if (error as? BackendClientError)?.code == "OUTING_CONFLICT" {
+                guestOutingChoiceAccountID = identity.userID
+                guestOutingProgressConflict = true
+            }
+            if let progress = error as? PlaceOutingProgress.ProgressError, case .staleRevision = progress {
+                guestOutingChoiceAccountID = identity.userID
+                guestOutingProgressConflict = true
+            }
             await deactivateAccount()
             throw error
         }

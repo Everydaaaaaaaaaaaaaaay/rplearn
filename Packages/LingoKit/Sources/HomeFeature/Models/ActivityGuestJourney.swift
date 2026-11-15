@@ -6,10 +6,19 @@ import Foundation
 @MainActor
 public enum ActivityGuestJourney {
     public static func prepareForClaim(namespaces: [String], gateway: any OutingGateway,
-                                       defaults: UserDefaults = .standard) async throws {
+                                       defaults: UserDefaults = .standard, adoptServerProgress: Bool = false) async throws {
         for namespace in Set(namespaces) {
             guard var archive = try CityOutingArchive.load(namespace: namespace, defaults: defaults),
                   archive.cancelled != true else { continue }
+            if adoptServerProgress, !archive.pending.isEmpty {
+                try archive.preserveRecovery(namespace: namespace, defaults: defaults)
+                let current = try await gateway.outing(id: archive.runID)
+                try PlaceOutingProgress.validate(current)
+                guard current.runId == archive.runID, current.placeId == archive.place.id,
+                      current.releaseId == archive.releaseID else { throw PlaceOutingProgress.ProgressError.invalidContent }
+                try CityOutingArchive(restoring: current).save(namespace: namespace, defaults: defaults)
+                continue
+            }
             if archive.snapshot == nil {
                 let snapshot = try await gateway.startOuting(id: archive.runID, releaseID: archive.releaseID,
                                                              placeID: archive.place.id)
@@ -40,6 +49,9 @@ public enum ActivityGuestJourney {
             try ActivityJournal.merge(namespace: source, into: destination, defaults: defaults)
             guard let archive = try CityOutingArchive.load(namespace: source, defaults: defaults) else { continue }
             try archive.preserveRecovery(namespace: destination, defaults: defaults)
+            for recovery in try CityOutingArchive.recoveries(namespace: source, defaults: defaults) {
+                try recovery.preserveRecovery(namespace: destination, defaults: defaults)
+            }
             guard archive.snapshot != nil else { continue }
             let current = try await gateway.outing(id: archive.runID)
             try PlaceOutingProgress.validate(current)

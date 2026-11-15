@@ -259,7 +259,14 @@ struct RootView: View {
                     VStack(spacing: 16) {
                         Text("旅程尚未载入").font(.headline)
                         Text(activationError).font(.subheadline)
-                        if environment.guestOutingChoiceRequired {
+                        if environment.guestOutingProgressConflict {
+                            Text("本机阅读与选择会保存为可查看的恢复副本。")
+                                .font(.caption).foregroundStyle(.secondary)
+                            Button("采用服务器外出进度，继续认领") {
+                                environment.adoptGuestServerProgress = true
+                                Task { await handleAuthenticationPhase() }
+                            }
+                        } else if environment.guestOutingChoiceRequired {
                             Text("另一次外出将结束，已读内容与选择会留在足迹中。")
                                 .font(.caption).foregroundStyle(.secondary)
                             Button("继续游客的外出") {
