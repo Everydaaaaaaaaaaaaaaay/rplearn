@@ -130,25 +130,10 @@ final class AppointmentModel {
 }
 
 enum AppointmentTime {
-    static func date(_ value: String) -> Date? {
-        let fractional = ISO8601DateFormatter()
-        fractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return fractional.date(from: value) ?? ISO8601DateFormatter().date(from: value)
-    }
-
-    static func formatted(_ value: String, timeZone: String) -> String {
-        guard let date = date(value) else { return value }
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_GB")
-        formatter.timeZone = TimeZone(identifier: timeZone)
-        formatter.dateFormat = "EEE, d MMM yyyy · HH:mm zzz"
-        return formatter.string(from: date)
-    }
-
     static func entryAvailable(_ detail: BackendAppointmentDetail, cityID: String) -> Bool {
         let item = detail.appointment
         guard item.status == "confirmed", item.cityId == cityID,
-              let now = date(detail.serverNow), let opens = date(item.windowOpensAt), let closes = date(item.windowClosesAt) else { return false }
+              let now = AppointmentDisplayTime.date(detail.serverNow), let opens = AppointmentDisplayTime.date(item.windowOpensAt), let closes = AppointmentDisplayTime.date(item.windowClosesAt) else { return false }
         return now >= opens && now <= closes
     }
 

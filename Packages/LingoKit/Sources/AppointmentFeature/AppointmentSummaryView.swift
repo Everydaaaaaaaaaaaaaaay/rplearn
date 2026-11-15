@@ -15,11 +15,9 @@ struct AppointmentSummaryView: View {
             VStack(alignment: .leading, spacing: 18) {
                 if let item = model.detail?.appointment {
                     VStack(alignment: .leading, spacing: 18) {
-                        Text(item.displayCityName).font(.caption.weight(.semibold)).foregroundStyle(ink.opacity(0.65))
                         Text(item.displayTitle(companionName: characterName(item.characterId)))
                             .font(.largeTitle.weight(.semibold))
-                        Text(AppointmentTime.formatted(item.startsAt, timeZone: item.timeZone))
-                            .font(.subheadline).foregroundStyle(ink.opacity(0.65))
+                        AppointmentTimeView(appointment: item)
                         if let summary = model.detail?.summary {
                             Divider()
                             Text(summary.reflection).font(.system(.title3, design: .serif))
@@ -68,12 +66,11 @@ struct AppointmentSummaryView: View {
 
     private func relationship(_ summary: BackendAppointmentSummary) -> some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("好感度").font(.headline)
             if summary.affinity.status == "settled", let before = summary.affinity.before, let after = summary.affinity.after, let delta = summary.affinity.delta {
                 Text(affinityLabel(delta)).font(.title.weight(.semibold)).accessibilityIdentifier("appointment.affinity")
                 Text("\(number(before)) → \(number(after))").font(.subheadline).monospacedDigit().foregroundStyle(ink.opacity(0.65))
             } else {
-                Text("待结算").font(.title2.weight(.semibold)).accessibilityIdentifier("appointment.affinity.pending")
+                Text("好感待结算").font(.title2.weight(.semibold)).accessibilityIdentifier("appointment.affinity.pending")
                 Text("经历已保存，关系评价完成后会显示实际变化。").font(.subheadline)
                 Button(model.settling ? "正在整理…" : "重试整理回顾") {
                     Task { await model.settleIfPending(); await model.load() }
@@ -117,7 +114,6 @@ struct AppointmentSummaryView: View {
                         Text(block.location).font(.caption).foregroundStyle(ink.opacity(0.6))
                     }
                     Text(decision.input).font(.body.weight(.medium)).textSelection(.enabled)
-                    if decision.custom { Text("自定义行动").font(.caption).foregroundStyle(ink.opacity(0.6)) }
                     Text(decision.outcome).font(.subheadline).foregroundStyle(ink.opacity(0.7)).textSelection(.enabled)
                 }
                 .padding(.leading, 16)
@@ -136,10 +132,10 @@ struct AppointmentSummaryView: View {
     }
     private func memoryStatus(_ value: String) -> String {
         switch value {
-        case "active", "saved": "已保存 · 可管理"
+        case "active", "saved": "已保存"
         case "forgotten", "deleted": "已遗忘 · 不再用于聊天"
         case "superseded": "已更新"
-        case "edited": "已纠正 · 可管理"
+        case "edited": "已纠正"
         case "archived": "已归档"
         case "unavailable": "状态暂不可用"
         case "pending": "待保存"
@@ -162,8 +158,7 @@ struct AppointmentHistoryView: View {
                         VStack(alignment: .leading, spacing: 12) {
                             Text(item.displayTitle(companionName: characterName(item.characterId)))
                                 .font(.title2.weight(.semibold))
-                            Text("\(item.displayCityName) · \(AppointmentTime.formatted(item.startsAt, timeZone: item.timeZone))")
-                                .font(.caption).foregroundStyle(ink.opacity(0.65))
+                            AppointmentTimeView(appointment: item)
                         }.padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
                     }
                     ForEach(detail?.session?.blocks.sorted { $0.sequence < $1.sequence } ?? []) { block in

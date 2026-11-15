@@ -14,16 +14,25 @@ struct AppointmentModelTests {
             ("一段不赶时间的散步", "和Ruby一起散步"),
             ("把下午留给一杯咖啡", "和Ruby一起喝咖啡"),
             ("和Oliver一起学陶艺", "和Ruby一起学陶艺"),
-            ("和Oliver在咖啡馆见面", "和Ruby在南岸 · 滑铁卢桥附近见面"),
-            ("河岸边的片刻", "和Ruby在南岸 · 滑铁卢桥附近见面"),
+            ("和Oliver在咖啡馆见面", "和Ruby在南岸（本地演示）见面"),
+            ("河岸边的片刻", "和Ruby在南岸（本地演示）见面"),
         ] {
             value["title"] = saved
             let appointment = try JSONDecoder().decode(BackendAppointment.self, from: JSONSerialization.data(withJSONObject: value))
             #expect(appointment.displayTitle(companionName: "Ruby") == expected)
         }
         #expect(detail.appointment.displayCityName == "London")
-        #expect(AppointmentTime.formatted("2026-11-01T15:00:00Z", timeZone: "Europe/London").hasPrefix("Sun, 1 Nov 2026 · 15:00"))
-        #expect(AppointmentTime.formatted("2026-11-01T15:00:00Z", timeZone: "Asia/Shanghai").hasPrefix("Sun, 1 Nov 2026 · 23:00"))
+
+    }
+
+    @Test("Beijing is primary, local time respects summer time and shows a different local date")
+    func appointmentDisplayTimes() {
+        #expect(AppointmentDisplayTime.beijing("2026-11-01T15:00:00Z") == "Sun, 1 Nov 2026 · 23:00")
+        #expect(AppointmentDisplayTime.local("2026-11-01T15:00:00Z", city: "伦敦", timeZone: "Europe/London") == "伦敦 15:00")
+        #expect(AppointmentDisplayTime.local("2026-07-01T07:30:00.000Z", city: "伦敦", timeZone: "Europe/London") == "伦敦 8:30")
+        #expect(AppointmentDisplayTime.beijing("2026-12-31T17:00:00Z") == "Fri, 1 Jan 2027 · 01:00")
+        #expect(AppointmentDisplayTime.local("2026-12-31T17:00:00Z", city: "伦敦", timeZone: "Europe/London") == "伦敦 31 Dec 2026 17:00")
+        #expect(AppointmentDisplayTime.beijingWindow(opens: "2026-11-01T15:30:00Z", closes: "2026-11-01T18:00:00Z") == "Sun, 1 Nov 2026 · 23:30–2 Nov 2026 02:00")
     }
 
     @Test("Lost responses retry the original command across model recreation without branching")

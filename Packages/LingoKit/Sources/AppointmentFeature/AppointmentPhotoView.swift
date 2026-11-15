@@ -62,22 +62,6 @@ struct AppointmentPhotoView: View {
     }
 }
 
-struct AppointmentPhotoSourceButton: View {
-    let cityID: String
-    let cityName: String
-    @State private var credits = false
-
-    var body: some View {
-        Button { credits = true } label: {
-            Label("照片来源", systemImage: "info.circle")
-                .font(.caption.weight(.medium)).padding(.horizontal, 16).frame(minHeight: 44)
-                .appointmentSurface(radius: 22)
-        }
-        .buttonStyle(DSSceneEntranceButtonStyle())
-        .sheet(isPresented: $credits) { AppointmentPhotoCreditsView(cityID: cityID, cityName: cityName) }
-    }
-}
-
 struct AppointmentPhotoCreditsView: View {
     let cityID: String
     let cityName: String

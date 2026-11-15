@@ -73,21 +73,14 @@ public struct AppointmentListView: View {
     private func appointmentCard(_ item: BackendAppointment) -> some View {
         VStack(alignment: .leading, spacing: 18) {
             HStack {
-                Text(item.displayCityName).font(.caption.weight(.semibold))
-                Spacer()
                 Text(AppointmentTime.status(item)).font(.caption)
-            }.foregroundStyle(AppointmentStyle.ink.opacity(0.65))
+                Spacer()
+                Image(systemName: "arrow.up.right").font(.system(size: 13, weight: .medium))
+            }.foregroundStyle(AppointmentStyle.ink.opacity(0.6))
             Text(item.displayTitle(companionName: characterName(item.characterId)))
                 .font(.title2.weight(.semibold)).fixedSize(horizontal: false, vertical: true)
-            VStack(alignment: .leading, spacing: 10) {
-                Label(item.placeName, systemImage: "mappin.and.ellipse")
-                Label(AppointmentTime.formatted(item.startsAt, timeZone: item.timeZone), systemImage: "calendar")
-            }.font(.subheadline).foregroundStyle(AppointmentStyle.ink.opacity(0.75))
-            HStack {
-                Text(characterName(item.characterId)).font(.subheadline)
-                Spacer()
-                Image(systemName: "arrow.up.right").font(.subheadline.weight(.semibold))
-            }
+            Text(item.placeName).font(.subheadline).foregroundStyle(AppointmentStyle.ink.opacity(0.75))
+            AppointmentTimeView(appointment: item)
         }
         .multilineTextAlignment(.leading)
         .padding(24).frame(maxWidth: .infinity, alignment: .leading)
@@ -111,6 +104,7 @@ struct AppointmentDetailView: View {
     @State private var reader = false
     @State private var summary = false
     @State private var confirmCancel = false
+    @State private var photoCredits = false
     let currentCityID: String
     let readingServices: AppointmentReadingServices?
     let characterName: (UUID) -> String
@@ -128,32 +122,16 @@ struct AppointmentDetailView: View {
             if let detail = model.detail {
                 let item = detail.appointment
                 VStack(alignment: .leading, spacing: 22) {
-                    Spacer(minLength: 64)
+                    Spacer(minLength: 28)
                     VStack(alignment: .leading, spacing: 22) {
-                        HStack {
-                            Text(item.displayCityName).font(.caption.weight(.semibold))
-                            Spacer()
-                            Text(AppointmentTime.status(item)).font(.caption)
-                        }.foregroundStyle(AppointmentStyle.ink.opacity(0.65))
+                        Text(AppointmentTime.status(item)).font(.caption)
+                            .foregroundStyle(AppointmentStyle.ink.opacity(0.6))
                         Text(item.displayTitle(companionName: characterName(item.characterId)))
                             .font(.largeTitle.weight(.semibold)).fixedSize(horizontal: false, vertical: true)
-                        Text(characterName(item.characterId)).font(.subheadline)
                         Divider().overlay(AppointmentStyle.ink.opacity(0.08))
                         Label(item.placeName, systemImage: "mappin.and.ellipse")
                             .font(.body.weight(.medium))
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(AppointmentTime.formatted(item.startsAt, timeZone: item.timeZone))
-                                .font(.subheadline.weight(.medium))
-                            Text("\(item.displayCityName)当地时间").font(.caption)
-                                .foregroundStyle(AppointmentStyle.ink.opacity(0.6))
-                        }
-                        if TimeZone.current.identifier != item.timeZone {
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text(AppointmentTime.formatted(item.startsAt, timeZone: TimeZone.current.identifier))
-                                    .font(.subheadline)
-                                Text("设备时间").font(.caption).foregroundStyle(AppointmentStyle.ink.opacity(0.6))
-                            }
-                        }
+                        AppointmentTimeView(appointment: item)
                     }
                     .padding(24).frame(maxWidth: .infinity, alignment: .leading)
                     .appointmentSurface()
@@ -169,18 +147,13 @@ struct AppointmentDetailView: View {
                                 Task { await model.submit(action: .start); if model.detail?.session != nil { reader = true } }
                             }.buttonStyle(AppointmentPrimaryButtonStyle()).disabled(model.submitting || model.offline || !AppointmentTime.entryAvailable(detail, cityID: currentCityID) || model.pending != nil)
                                 .accessibilityIdentifier("appointment.start")
-                            Text(entryExplanation(detail)).font(.footnote).foregroundStyle(.secondary)
-                            Button("回聊天商量改期") { onChat(item.characterId) }.frame(minHeight: 44)
-                            Button("取消这次约定", role: .destructive) { confirmCancel = true }.frame(minHeight: 44).disabled(model.offline || model.submitting || model.pending != nil)
+                            if !AppointmentTime.entryAvailable(detail, cityID: currentCityID) {
+                                Text(entryExplanation(detail)).font(.footnote).foregroundStyle(.secondary)
+                            }
                         } else { Button("回聊天商量下次") { onChat(item.characterId) }.buttonStyle(AppointmentPrimaryButtonStyle()) }
                         if detail.session != nil, item.status == "completed" { Button("回看完整经历") { reader = true }.frame(minHeight: 44) }
                     }
-                    .padding(24).frame(maxWidth: .infinity, alignment: .leading)
-                    .appointmentSurface()
-                    HStack {
-                        Spacer()
-                        AppointmentPhotoSourceButton(cityID: item.cityId, cityName: item.displayCityName)
-                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }.padding(22).frame(maxWidth: 640).frame(maxWidth: .infinity)
             } else if model.loading { ProgressView("正在打开约定…").padding(40) }
             else { AppointmentErrorView(message: model.error ?? "约定暂时无法打开", loading: false) { Task { await model.load() } }.padding() }
@@ -193,6 +166,23 @@ struct AppointmentDetailView: View {
         .task { await model.load() }
         .navigationDestination(isPresented: $reader) { AppointmentReaderView(model: model, readingServices: readingServices, characterName: characterName, onChat: onChat, onMemory: onMemory) }
         .navigationDestination(isPresented: $summary) { AppointmentSummaryView(model: model, characterName: characterName, onChat: onChat, onMemory: onMemory) }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    Button("照片来源", systemImage: "info.circle") { photoCredits = true }
+                    if let item = model.detail?.appointment, item.status == "confirmed" {
+                        Button("商量改期", systemImage: "bubble.left") { onChat(item.characterId) }
+                        Button("取消约定", systemImage: "calendar.badge.minus", role: .destructive) { confirmCancel = true }
+                            .disabled(model.offline || model.submitting || model.pending != nil)
+                    }
+                } label: { Image(systemName: "ellipsis").font(.system(size: 18)).frame(width: 44, height: 44) }
+                    .accessibilityLabel("约定选项").accessibilityIdentifier("appointment.details.options")
+            }
+        }
+        .sheet(isPresented: $photoCredits) {
+            AppointmentPhotoCreditsView(cityID: model.detail?.appointment.cityId ?? currentCityID,
+                                        cityName: model.detail?.appointment.displayCityName ?? "")
+        }
         .confirmationDialog("取消这次约定？", isPresented: $confirmCancel, titleVisibility: .visible) {
             if model.detail?.appointment.status == "confirmed" {
                 Button("取消约定", role: .destructive) { Task { await model.submit(action: .cancel) } }
@@ -203,8 +193,7 @@ struct AppointmentDetailView: View {
 
     private func entryExplanation(_ detail: BackendAppointmentDetail) -> String {
         if detail.appointment.cityId != currentCityID { return "这次约定在\(detail.appointment.displayCityName)。切换应用城市后，可在约定时段进入。" }
-        if AppointmentTime.entryAvailable(detail, cityID: currentCityID) { return "已到约定时段。开始后可随时暂停，再继续。" }
-        return "可进入时间：\(AppointmentTime.formatted(detail.appointment.windowOpensAt, timeZone: detail.appointment.timeZone)) 至 \(AppointmentTime.formatted(detail.appointment.windowClosesAt, timeZone: detail.appointment.timeZone))。"
+        return "可赴约时段 · \(AppointmentDisplayTime.beijingWindow(opens: detail.appointment.windowOpensAt, closes: detail.appointment.windowClosesAt))"
     }
 }
 

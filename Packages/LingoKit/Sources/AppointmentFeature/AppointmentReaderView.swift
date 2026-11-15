@@ -154,7 +154,7 @@ struct AppointmentReaderView: View {
                             }.buttonStyle(DSSceneEntranceButtonStyle()).disabled(!model.mayRespond || sendingCustomAction).accessibilityIdentifier("appointment.choice.\(choice.id)")
                         }
                     }
-                    if model.submitting { ProgressView("你的回应已保留，正在接上下一页…").tint(ink).font(.subheadline) }
+                    if model.submitting { ProgressView("正在继续…").tint(ink).font(.subheadline) }
                     if let error = model.error { AppointmentErrorView(message: error, loading: model.submitting) { Task { if model.pending != nil { await model.retry() } else { await model.load() } } } }
                     else if model.pending != nil && !model.submitting { Text("上次回应已保留。"); Button("重试原回应") { Task { await model.retry() } } }
                 }.frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 4)
@@ -166,7 +166,7 @@ struct AppointmentReaderView: View {
             if showsComposer { customActionInput.padding(.top, 16) }
             if !inputFocused {
                 HStack {
-                    Text(readingServices == nil ? "已发生的经历会保留" : "轻点英文可查词").font(.caption2).foregroundStyle(ink.opacity(0.6))
+                    if readingServices != nil { Text("轻点英文可查词").font(.caption2).foregroundStyle(ink.opacity(0.6)) }
                     Spacer()
                     if model.isLastBeat && model.isLatestBlock && model.block?.ending == true {
                         Button("查看这次回顾") { summary = true }.font(.subheadline.weight(.semibold)).frame(minHeight: 48).accessibilityIdentifier("appointment.summary")
