@@ -1282,7 +1282,8 @@ struct RootView: View {
     }
     private var isWorldOutingPreview: Bool {
         #if DEBUG
-        bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "world-preview"
+        bypassesAuthenticationForUITesting && (ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "world-preview"
+            || ProcessInfo.processInfo.environment["UI_TEST_WORLD_GATEWAY"] == "1")
         #else
         false
         #endif

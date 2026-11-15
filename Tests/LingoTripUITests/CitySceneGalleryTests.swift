@@ -89,13 +89,16 @@ final class CitySceneGalleryTests: XCTestCase {
         assertScene("london-southbank")
         app.buttons["activities.place.london-southbank"]
             .coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5)).tap()
-        XCTAssertTrue(app.alerts["人物剧情正在接入"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.alerts["场景照片预览"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.alerts.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "泰晤士河南岸")).firstMatch.exists)
         app.alerts.buttons["知道了"].tap()
         assertScene("london-southbank")
     }
     func testHomeActivityEntryUsesCurrentCityPhotographs() {
         app.launchEnvironment["UI_TEST_TAB"] = "home"
+        app.launchEnvironment["UI_TEST_WORLD_GATEWAY"] = "1"
+        app.launchEnvironment["UI_TEST_SCENE_CITY"] = "newyork"
+        app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
         app.launchEnvironment["UI_TEST_REGION"] = "newyork"
         app.launchEnvironment["UI_TEST_CITY_TAB_REGION"] = "newyork"
         app.launch()
@@ -112,6 +115,9 @@ final class CitySceneGalleryTests: XCTestCase {
         XCTAssertTrue(entrance.waitForExistence(timeout: 5))
         entrance.tap()
         assertScene("newyork-high-line")
+        app.buttons["activities.place.newyork-high-line"].tap()
+        XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 8))
+        capture("home-activity-newyork-story")
     }
     func testLargeTextCreditsOriginalAndFifthPlace() {
         app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]

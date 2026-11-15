@@ -4,7 +4,7 @@ import DesignSystem
 import HomeFeature
 import SwiftUI
 
-/// Local scene review. The visit button explains the draft content state.
+/// Local photograph review with directions to the playable activity entry.
 struct DebugCitySceneGallery: View {
     private struct Manifest: Decodable {
         let cities: [City]
@@ -75,12 +75,12 @@ struct DebugCitySceneGallery: View {
             }.tint(Color.dsPaperInk).preferredColorScheme(.light)
                 .presentationBackground(ivory)
         }
-        .alert("人物剧情正在接入", isPresented: Binding(
+        .alert("场景照片预览", isPresented: Binding(
             get: { visit != nil }, set: { if !$0 { visit = nil } }
         )) {
             Button("知道了", role: .cancel) { visit = nil }
         } message: {
-            Text("已选定\(visit?.titleZh ?? "这个地点")。当前为场景预览，完整相遇内容完成后将从这里进入活动。")
+            Text("正在预览\(visit?.titleZh ?? "这个地点")的照片。首页的「城市活动」已接入初遇、重逢与独处内容。")
         }
         .task {
             do {

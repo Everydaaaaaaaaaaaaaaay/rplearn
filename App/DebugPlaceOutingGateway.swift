@@ -58,7 +58,7 @@ actor DebugPlaceOutingGateway: OutingGateway {
         }
         let templates = try fixture().outings.filter { $0.placeId == placeID && $0.releaseId == releaseID }
         let visits = state.sessions.values.filter { $0.placeId == placeID && $0.status != .reserved }
-        let known = Set(visits.compactMap { $0.npc?.id })
+        let known = Set(state.receipts.values.filter { $0.status == .opening_presented }.compactMap { $0.npc?.id })
         let encounters = templates.filter { $0.npc != nil }
         let template: BackendOuting?
         if allCities, visits.count % 7 != 6, !encounters.isEmpty {
