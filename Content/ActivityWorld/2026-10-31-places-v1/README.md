@@ -53,10 +53,19 @@ pnpm exec tsx src/cli/activity-world.ts release-check ../Content/ActivityWorld/2
 
 ## 2026-11-15 正式发布编译与原生接入
 
-200 篇当前正文均匹配逐人审校和照片空间复核中的最终指纹。发布批准及逐篇、逐图指纹见 [发布审校单](release-review-20261115.json)。每处独处改为同一句中英文提示，共 54 份稳定地点 ID，阅读页只显示正文与正常结束入口。
+200 篇当前正文均匹配逐人审校和照片空间复核中的最终指纹。发布批准记录逐篇、逐图指纹。每处独处改为同一句中英文提示，共 54 份稳定地点 ID，阅读页只显示正文与正常结束入口。[发布审校单](release-review-20261115.json)
 
 正式包位于 `Backend/config/activity-world/2026-10-31-places-v1.json`，App 配套清单为 `App/Resources/activity-world-release.json`。发布编译器验证批准单与精确草稿哈希、全部故事指纹及 54 个实际照片文件，随后生成批准状态的不可变世界和原生资料迁移清单。App 清单同时包含隔离离线预览所需的相同正文，`Scripts/preview.sh preview world-preview` 可在模拟器游玩，`UI_TEST_SCENE_CITY` 可指定城市。
 
 联系人迁移在账号内容载入后执行，更新现居、国籍、家乡及必要背景，并保存原资料和解释。资料页可展开查看历史，后续聊天使用当前设定。同步端保留已有版本与历史，并兼容旧设备提交的资料。游客认领先重放本机队列，合并各城足迹，并保存可查看的冲突前副本。双外出由用户选择继续哪次，另一次结束后写入足迹。服务器历史补齐其他设备上的结束记录。
 
 本地验证包含 30 项原生测试、12 项隔离数据库测试、实际生产代码组合的 9 项隔离兼容测试，以及照片清单与发布 CLI 检查。全量内容测试真实预定了 200 人，检查 54 地点重逢，并运行 800 条纯状态路径。线上发布证据与真机显示状态以最新施工进度记录为准。本轮外部模型 API 调用为零。
+
+正式世界已启用，后端发布版本为 `activity-world-20261115-v1-91e6583b`。线上相遇、认领与资料同步验证通过。[发布证据](../../../docs/verification/activity-world-release-20261115.json)
+
+重新编译使用以下命令，内容批准绑定精确草稿和素材字节。
+
+```sh
+pnpm exec tsx src/cli/compile-activity-world.ts ../Content/ActivityWorld/2026-10-31-places-v1/world.json ../Content/ActivityWorld/2026-10-31-places-v1/release-review-20261115.json ../App/Resources/ActivityPlacesGallery config/activity-world/2026-10-31-places-v1.json ../App/Resources/activity-world-release.json
+pnpm exec tsx src/cli/activity-world.ts release-check config/activity-world/2026-10-31-places-v1.json ../App/Resources/npc-library-v3.json
+```

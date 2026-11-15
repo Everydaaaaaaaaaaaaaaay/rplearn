@@ -1,0 +1,188 @@
+{
+  "date": "2026-11-15",
+  "backendRelease": "activity-world-20261115-v1-91e6583b",
+  "baseRelease": "appointments-titles-20261114-v2-e38a8b90",
+  "sourceCommits": [
+    "b1ace870",
+    "91e6583b",
+    "83e413d0",
+    "6aca1b42"
+  ],
+  "archiveSHA256": "f7bdbedd9e9dbec2440fe0c07d98868264f8599c8ab7636b94f4b2322309d63f",
+  "manifestHash": "8cece8943a75de358dab5fe0bad089b40f50a7faa061425cdee9509045e2807a",
+  "world": {
+    "releaseId": "2026-10-31-places-v1",
+    "enabled": true,
+    "cities": 15,
+    "places": 54,
+    "characters": 200,
+    "firstMeetingPaths": 800,
+    "reunions": 200,
+    "solitudePassages": 54
+  },
+  "productionPatch": {
+    "files": [
+      {
+        "path": "dist/infrastructure/guest-claim.js",
+        "beforeSHA256": "5dfa8b9ecd97ebfa24bafa2b3bd06079dc1b548415305108aebd55ff60f4a4de",
+        "afterSHA256": "324d0339528ac1560323768a926c65385e6f6669677455b9ad7a09ee850b4710"
+      },
+      {
+        "path": "dist/infrastructure/guest-outings-claim.js",
+        "beforeSHA256": "c638bffccac6e287a9ddad1c93c91ac04d990d2678508c1876be246c4c842ac6",
+        "afterSHA256": "918c52962aebec1f7226129c828e9920b22592b7d61c6d23950dc59b5d2188f6"
+      },
+      {
+        "path": "dist/modules/auth/guest-routes.js",
+        "beforeSHA256": "d26ff03b1798bb4250dc8eed10c721b43ade6c936d732f805f8e4fc5aa1888ee",
+        "afterSHA256": "adeb31f6d7755dc50409c0eaade37e34b47da0ef266ed1f3065af82ef8a9f00a"
+      },
+      {
+        "path": "dist/modules/content/routes.js",
+        "beforeSHA256": "7945094a65af25a8e6bb1abd37c7c84a663d463acfe229498a870760ddf3ffc5",
+        "afterSHA256": "64f89f2c45ab10393386e5b96b88c3e369527cde0f8364f02cadbb0348f6d084"
+      },
+      {
+        "path": "dist/modules/content/repository.js",
+        "beforeSHA256": "500c4928aaa075dea5d525fb114b86dd00d30e7c158f8988905b84865dbaef58",
+        "afterSHA256": "4cdf4b9f9c3f9bf17d44d5ac51bd068a94bb9693560b235edf8eaa6df87a0074"
+      },
+      {
+        "path": "dist/modules/npc/outing-routes.js",
+        "beforeSHA256": "0c443fddcfd241561d0fa0cdde2685b7672c33769daddb54bf38a48316881dec",
+        "afterSHA256": "6427045ac7994a552b03ab50fa6e7f85a2994a1a116c4a83e7feac288dd1eea0"
+      },
+      {
+        "path": "dist/modules/npc/outing-repository.js",
+        "beforeSHA256": "1ec88bfd355da5c7630e8fee39aac9cde09c8c91f389089e5c366e1ff51d3862",
+        "afterSHA256": "db4bc9ca3cec6cd5407b7820a60f21ff66ce1d00f18dd3ae1bbeba0f0b911d02"
+      },
+      {
+        "path": "dist/modules/npc/activity-world-content.js",
+        "beforeSHA256": "302f8d62bbf32be5d76b48c090bdc04ae48fd1de967e6a9d3b5911d919222e7c",
+        "afterSHA256": "d6c42edcc8ed7b27ff0953f8502a7967c20c8bf06b798f0cd895f6f7d96bcf56"
+      },
+      {
+        "path": "dist/modules/npc/repository.js",
+        "beforeSHA256": "68e6832982c788808355dc777fe7c7b6c6a1e63299025009fc30c0f745f8761e",
+        "afterSHA256": "087e52e056ff9eedc2714d7faa6438b97862d1eb01356606657245b13a645bc1"
+      }
+    ],
+    "filesVerified": 9,
+    "sharedChatPreserved": true
+  },
+  "dataPreservation": {
+    "migrationsBefore": 49,
+    "migrationsAfter": 49,
+    "publicNPCsBefore": 202,
+    "publicNPCsAfter": 202,
+    "existingMessagesBefore": 852,
+    "existingMessagesAfter": 852,
+    "eligibleOriginalPortraitsVerified": 200
+  },
+  "backup": {
+    "path": "/opt/lingotrip/ops-backups/activity-world-20261115/before-activity-world.dump",
+    "sha256": "4db02fafa1283decb8134c183df9fbabcb8f21c0c596f60331b0d949b6b21ff1",
+    "scope": [
+      "public_npcs",
+      "user_npc_relationships",
+      "npc_encounter_history",
+      "npc_activity_worlds",
+      "npc_outings",
+      "npc_outing_operations",
+      "npc_outing_city_progress",
+      "content_records"
+    ]
+  },
+  "rollbackReadiness": {
+    "previousReleaseRetained": true,
+    "disableWorldTransaction": {
+      "enabledInsideTransaction": 0,
+      "enabledAfterRollback": 1
+    },
+    "order": [
+      "Disable 2026-10-31-places-v1 in app.npc_activity_worlds",
+      "Restore the previous current symlink and release.env",
+      "Restart lingotrip-api, lingotrip-worker and lingotrip-caddy"
+    ]
+  },
+  "onlineProbe": {
+    "checkedAt": "2026-11-15T14:53:15.409Z",
+    "releaseId": "2026-10-31-places-v1",
+    "checks": [
+      "London catalog has five exact release places and matching photographs",
+      "Exact-place first meeting, current public nationality/city, complete branch and idempotent start/read receipts",
+      "Cross-city outing rejected",
+      "Dual-active claim preserves both until choice, keeps account outing, imports ended guest history and retries once",
+      "Native ISO-date migration history synchronizes and survives an old-device card update"
+    ],
+    "modelCalls": 0,
+    "syntheticUserIDs": [
+      "01a1dfb2-bdc2-724d-8c90-125b9922e8d6",
+      "7571ba9a-72b5-45db-811a-e80f3705391a"
+    ],
+    "status": "passed",
+    "syntheticUsersLocked": true
+  },
+  "readiness": {
+    "status": "ready"
+  },
+  "services": {
+    "api": "active",
+    "worker": "active",
+    "caddy": "active"
+  },
+  "verification": {
+    "nativeFull": {
+      "passed": 30,
+      "result": "build/DerivedData/VerificationResults/20261115T143408Z-50697.xcresult"
+    },
+    "nativeRecoveryFollowUp": {
+      "passed": 8,
+      "result": "build/DerivedData/VerificationResults/20261115T145642Z-54515.xcresult"
+    },
+    "ui": {
+      "passed": 2,
+      "result": "build/DerivedData/VerificationResults/20261115T143850Z-51803.xcresult"
+    },
+    "isolatedBackend": {
+      "passed": 12,
+      "result": "build/verification/20261115T143409Z-51289b7e/report.json"
+    },
+    "productionCombinedModules": {
+      "passed": 9,
+      "result": "build/verification/20261115T143654Z-dce83e02/report.json"
+    },
+    "publicSettingsAndFullWorld": {
+      "passed": 1,
+      "result": "build/verification/20261115T144240Z-ba0ceb35/report.json"
+    },
+    "unitContentAndSelection": 13,
+    "iosArchitecture": "passed",
+    "backendArchitecture": "passed",
+    "typescriptAndFocusedESLint": "passed",
+    "photoManifest": "54 verified",
+    "externalModelAPICalls": 0,
+    "entryAndPreviewUI": {
+      "passed": 2,
+      "result": "build/DerivedData/VerificationResults/20261115T150916Z-58825.xcresult"
+    }
+  },
+  "ios": {
+    "simulator": "Latest complete-world offline preview installed",
+    "previewAvatars": "Placeholders in the offline preview",
+    "physicalDevice": "Latest signed build installed on iPhone 13; device lock prevents launching for visual verification",
+    "appStorePublication": "Outside this deployment",
+    "physicalPackage": {
+      "releaseId": "2026-10-31-places-v1",
+      "appManifestSHA256": "07fbd5512a7e01a14656454f1a7d8eb6527fec28420413f9e4e18bd19302c752",
+      "photographsVerified": 54,
+      "platform": "iphoneos",
+      "installedOn": "iPhone 13",
+      "launch": "blocked by device lock"
+    },
+    "physicalBuildSourceCommit": "6aca1b42",
+    "finalSimulatorScreenshot": "build/activity-world-release-20261115/final-simulator.jpg",
+    "finalComputerUse": "Latest Elliot story visible on the compact simulator; connected iPhone remains locked"
+  }
+}

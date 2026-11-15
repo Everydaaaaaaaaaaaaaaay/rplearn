@@ -14,5 +14,13 @@
 
 - 原生结果为 `build/DerivedData/VerificationResults/20261115T143408Z-50697.xcresult`。
 - 两项 UI 路径为 `build/DerivedData/VerificationResults/20261115T143850Z-51803.xcresult`，含保留截图附件。
-- 全量世界与发布数据见 [发布审校单](../../../Content/ActivityWorld/2026-10-31-places-v1/release-review-20261115.json)和施工进度记录。
+- 全量世界与发布数据见发布审校单和施工进度记录。[发布审校单](../../../Content/ActivityWorld/2026-10-31-places-v1/release-review-20261115.json)
 - 真机仍待复核。连接的 iPhone 13 处于锁屏状态，已请求用户解锁。模拟器离线预览的人物头像使用占位，线上服务返回角色原有头像。
+
+## 普通入口与真机安装补充
+
+另两项 UI 路径通过，确认当前城市为纽约时，普通首页「城市活动」进入当地实拍，场景切换、返回后重进及地点按钮进入实际故事均正常。照片专用预览显示完整活动入口的说明，证据为 `build/DerivedData/VerificationResults/20261115T150916Z-58825.xcresult`。
+
+iPhone 13 签名构建和安装完成。实际 iphoneos 安装包内的世界清单与源文件一致，54 个 JPEG 指纹逐一匹配本版清单。设备锁屏，系统拒绝启动，真机的显示与交互维持待复核状态。现有大小屏模拟器及图片源证据继续保留。
+
+最终安装后的模拟器原生截图为 `build/activity-world-release-20261115/final-simulator.jpg`，确认最新南岸故事可见。Device Hub 同时确认连接的 iPhone 仍处于锁屏状态。
