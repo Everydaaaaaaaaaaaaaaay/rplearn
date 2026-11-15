@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 from urllib.parse import urlparse
 from PIL import Image
+from activity_photo_quality import has_screen_resolution
 
 ROOT = Path(__file__).resolve().parents[2]
 EVIDENCE = ROOT / 'Assets/Activities/CityPlaces-v2'
@@ -47,7 +48,11 @@ def main():
             asset_name = f"scene-{place['id']}-v2.jpg"
             alignment = place.get('photoAlignment', 'center')
             assert alignment in ['leading', 'center', 'trailing'], 'Unknown photo framing'
-            if alignment != 'center':
+            position = place.get('photoHorizontalPosition')
+            if position is not None:
+                assert type(position) in (int, float) and 0 <= position <= 1, 'Invalid photo focal position'
+                framing[asset_name] = str(position)
+            elif alignment != 'center':
                 framing[asset_name] = alignment
             destination = ASSETS / asset_name
             if args.build:
@@ -61,7 +66,7 @@ def main():
             assert sha256(destination.read_bytes()).hexdigest() == photo['outputSHA256'], str(destination)
             with Image.open(destination) as image:
                 assert image.format == 'JPEG' and image.size == (photo['width'], photo['height']), str(destination)
-                assert image.width >= 800 and image.height >= 500, 'Photograph too small'
+                assert has_screen_resolution(image.width, image.height), 'Insufficient full-screen portrait pixels'
                 image.verify()
             public_photo = {key: photo[key] for key in [
                 'cityId', 'placeId', 'sourceUrl', 'author', 'license', 'licenseUrl', 'outputSHA256', 'width', 'height',

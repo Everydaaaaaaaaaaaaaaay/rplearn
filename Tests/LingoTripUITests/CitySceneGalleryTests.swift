@@ -18,7 +18,7 @@ final class CitySceneGalleryTests: XCTestCase {
         ("manchester", ["manchester-afflecks", "manchester-castlefield", "manchester-central-library"]),
         ("neworleans", ["neworleans-jackson-square", "neworleans-frenchmen-street", "neworleans-french-market"]),
         ("nairobi", ["nairobi-national-museum", "nairobi-karura-forest", "nairobi-city-market"]),
-        ("kingston", ["kingston-devon-house", "kingston-emancipation-park", "kingston-waterfront"])
+        ("kingston", ["kingston-fort-charles", "kingston-emancipation-park", "kingston-waterfront"])
     ]
     override func setUp() async throws {
         continueAfterFailure = false

@@ -14,6 +14,7 @@ import urllib.parse
 import urllib.request
 import urllib.error
 from PIL import Image, ImageOps
+from activity_photo_quality import has_screen_resolution, PROCESSING
 
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / 'Assets/Activities/CityPlaces-v2/catalog.json'
@@ -106,13 +107,13 @@ def acquire(place, candidate_limit, previous_candidates=()):
     query = place.get('photoQuery') or QUERIES.get(identifier) or f"{place['titleZh']} {place['cityId']}"
     titles = place.get('photoTitles')
     cache_key = json.dumps(titles, ensure_ascii=False) if titles else query
-    cache = CACHE / f'{identifier}-{sha256(cache_key.encode()).hexdigest()[:10]}-1280.json'
+    cache = CACHE / f'{identifier}-{sha256(cache_key.encode()).hexdigest()[:10]}-hd.json'
     if cache.exists():
         result = json.loads(cache.read_text())
     else:
         parameters = {
             'action': 'query', 'format': 'json', 'prop': 'imageinfo',
-            'iiprop': 'url|extmetadata|size', 'iiurlwidth': 1280,
+            'iiprop': 'url|extmetadata|size', 'iiurlwidth': 3840,
         }
         if titles:
             parameters['titles'] = '|'.join(titles)
@@ -127,26 +128,33 @@ def acquire(place, candidate_limit, previous_candidates=()):
         if len(candidates) >= candidate_limit:
             break
         info = page.get('imageinfo', [{}])[0]
-        if info.get('width', 0) < 800 or info.get('height', 0) < 500:
+        if not has_screen_resolution(info.get('width', 0), info.get('height', 0)):
             continue
         candidate_id = sha256(page['title'].encode()).hexdigest()[:12]
-        raw_path = CACHE / f'{identifier}-{candidate_id}.source'
+        raw_path = CACHE / f'{identifier}-{candidate_id}.hd.source'
         metadata = info.get('extmetadata', {})
         license_name = plain(metadata.get('LicenseShortName', {}).get('value', ''))
         if not re.match(r'^(CC BY(?:-SA)? [0-9.]|CC0|Public domain)', license_name):
             continue
         url = info.get('thumburl') or info.get('url', '')
+        if not has_screen_resolution(info.get('thumbwidth', info['width']),
+                                     info.get('thumbheight', info['height'])):
+            url = info['url']
         previous = previous_by_id.get(candidate_id)
+        if previous and previous.get('processing') != PROCESSING:
+            previous = None
+            raw_path.unlink(missing_ok=True)
         if raw_path.exists() and previous:
             if sha256(raw_path.read_bytes()).hexdigest() != previous['sourceSHA256']:
                 raise ValueError(f'Cached source hash changed for {identifier}/{candidate_id}')
             url = previous['downloadUrl']
-        # Small originals can be served with stricter limits. Ask imageinfo for a
-        # standard 960px thumbnail instead of downloading an unscaled original.
-        if not raw_path.exists() and '/thumb/' not in url and info.get('width', 0) > 960:
+        # Use a standard portrait derivative only when it still covers the screen.
+        if (not raw_path.exists() and '/thumb/' not in url
+                and info.get('width', 0) > 1920
+                and has_screen_resolution(1920, info['height'] * 1920 / info['width'])):
             parameters = urllib.parse.urlencode({
                 'action': 'query', 'format': 'json', 'titles': page['title'],
-                'prop': 'imageinfo', 'iiprop': 'url', 'iiurlwidth': 960,
+                'prop': 'imageinfo', 'iiprop': 'url', 'iiurlwidth': 1920,
             })
             smaller = json.loads(request('https://commons.wikimedia.org/w/api.php?' + parameters))
             for result_page in smaller.get('query', {}).get('pages', {}).values():
@@ -154,16 +162,18 @@ def acquire(place, candidate_limit, previous_candidates=()):
         if (not re.search(r'\.(jpe?g|png)(?:\?|$)', info.get('url', ''), re.I)
                 or not re.search(r'\.(jpe?g|png)(?:\?|$)', url, re.I)):
             continue
-        image_path = CACHE / f'{identifier}-{candidate_id}.jpg'
+        image_path = CACHE / f'{identifier}-{candidate_id}-hd.jpg'
         try:
             raw = raw_path.read_bytes() if raw_path.exists() else request(url)
             raw_path.write_bytes(raw)
             with Image.open(BytesIO(raw)) as opened:
                 image = ImageOps.exif_transpose(opened).convert('RGB')
-                if image.width < 800 or image.height < 500:
+                if not has_screen_resolution(image.width, image.height):
                     continue
-                image.thumbnail((1600, 1600), Image.Resampling.LANCZOS)
-                image.save(image_path, 'JPEG', quality=88, optimize=True)
+                image.thumbnail((8192, 3200), Image.Resampling.LANCZOS)
+                if not has_screen_resolution(image.width, image.height):
+                    continue
+                image.save(image_path, 'JPEG', quality=92, subsampling=0, optimize=True)
                 width, height = image.size
             candidates.append({
                 'candidateId': candidate_id, 'placeId': identifier, 'cityId': place['cityId'],
@@ -177,7 +187,7 @@ def acquire(place, candidate_limit, previous_candidates=()):
                 'outputSHA256': sha256(image_path.read_bytes()).hexdigest(),
                 'width': width, 'height': height,
                 'localPreview': str(image_path.relative_to(ROOT)),
-                'processing': 'EXIF orientation; RGB; maximum 1600px; JPEG quality 88; no generated edits',
+                'processing': PROCESSING,
                 'reviewStatus': 'draft',
             })
         except Exception as error:
@@ -211,8 +221,9 @@ def main():
                 candidates = {item['candidateId']: item for item in previous.get('candidates', [])}
                 for item in incoming['candidates']:
                     old = candidates.get(item['candidateId'], {})
-                    item['reviewStatus'] = old.get('reviewStatus', 'draft')
-                    if 'reviewNotes' in old:
+                    unchanged = item['outputSHA256'] == old.get('outputSHA256')
+                    item['reviewStatus'] = old.get('reviewStatus', 'draft') if unchanged else 'draft'
+                    if unchanged and 'reviewNotes' in old:
                         item['reviewNotes'] = old['reviewNotes']
                     candidates[item['candidateId']] = item
                 incoming['candidates'] = list(candidates.values())

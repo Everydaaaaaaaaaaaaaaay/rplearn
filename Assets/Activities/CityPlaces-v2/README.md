@@ -1,6 +1,6 @@
 # 十五城静态活动场景 v2
 
-2026-11-12，15 座城市共 54 个地点，每城 3–5 个。每个地点配一张对应当地的真实照片与独立空间说明。App 使用静态实拍背景，提供全图和摄影许可查看。
+2026-11-15 高清修订，15 座城市共 54 个地点，每城 3–5 个。每个地点配一张对应当地的真实照片与独立空间说明。App 使用静态实拍背景，提供全图和摄影许可查看。
 
 ## 场景清单
 
@@ -20,7 +20,7 @@
 | 曼彻斯特 | 3 | 阿弗莱克斯商店街口、卡斯尔菲尔德运河、曼彻斯特中央图书馆 |
 | 新奥尔良 | 3 | 杰克逊广场、法国人街、法国市场 |
 | 内罗毕 | 3 | 内罗毕国家博物馆庭院、卡鲁拉森林步道、内罗毕城市市场街口 |
-| 金斯敦 | 3 | 德文大宅庭院、解放公园、金斯敦海滨广场 |
+| 金斯敦 | 3 | 皇家港查尔斯堡、解放公园、金斯敦海滨广场 |
 
 ## 内容、来源与许可
 
@@ -30,7 +30,7 @@
 - App 中的「摄影与许可」展示作者、许可及原始来源页，并说明尺寸缩放、JPEG 转码和显示裁切。CC BY-SA 照片的衍生 JPEG 沿用其来源许可，逐图对应关系见选图清单。
 - 整图采用确定性 EXIF 方向修正、RGB 转换、等比缩小及 JPEG 编码。裁切仅发生在界面显示，完整图仍可打开。
 
-本轮补查发现同名跨国地点、邻近但不同的市场、历史插图、商品特写和航拍误匹配，已在候选中记录处置。伦敦博罗市场选用了完整的 2024 年棚内照片。金斯敦的 Devon House、Emancipation Park 和海滨座位均分别核对了牙买加出处。
+本轮补查发现同名跨国地点、邻近但不同的市场、历史插图、商品特写和航拍误匹配，已在候选中记录处置。伦敦博罗市场选用了完整的 2024 年棚内照片。金斯敦本轮使用 Port Royal 的 Fort Charles、Emancipation Park 的蓝马霍树与海滨广场，分别核对牙买加出处。旧德文大宅庭院图的历史信息保留在高清复核记录中。
 
 地方参照包括伦敦南岸的 Queen’s Walk、植物园天鹅湖、卡鲁拉步道和曼彻斯特独立商店入口。每张实际入包照片的直接来源页另在选图清单与 App 中展示。[South Bank London](https://southbank.london/see-and-do/queens-walk)、[Singapore Botanic Gardens](https://sbg.nparks.gov.sg/visit/self-guided-walks/)、[Friends of Karura](https://friendsofkarura.org/forest-maps/)、[Visit Manchester](https://www.visitmanchester.com/ideas-and-inspiration/blog/post/a-guide-to-exploring-afflecks-for-first-time-visitors-and-locals-alike/)
 
@@ -38,11 +38,11 @@
 
 `spatialNotes` 明确了照片中的实际动线、楼层、私人区域、季节和时段。图书馆上层书廊、河岸两侧、住户门阶与市场柜台各有对应说明。人物可因工作、候人、通行、义务、偶然停留等原因到场，其当下社交意愿仍由人物与剧情决定。
 
-世界草稿已引用这 54 处地点、同一批照片及空间说明。200 份原始人物资料基线与 Alex 的咖啡馆绑定保留，完整首遇剧情仍在后续重构范围内。新世界当前保持草稿状态。
+世界草稿已引用这 54 处地点、同一批照片及空间说明。200 份原始人物资料基线、Alex 的咖啡馆绑定及完整初遇与重逢内容见世界草稿。正式发布与剧情入口接入状态由其 README 记录。
 
 ## 获取与校验
 
-从仓库根运行，照片检索默认使用本版清单，单线程全局间隔至少五秒，429 继续遵循 Retry-After 冷却。已知标题直接查询 imageinfo，遇到小原图时获取标准 960px 缩略图。
+从仓库根运行，照片检索默认使用本版清单，单线程全局间隔至少五秒，429 继续遵循 Retry-After 冷却。已知标题直接查询 imageinfo，优先获取标准 3840px 高清版本。竖图可使用覆盖屏幕像素的 1920px 版本。原图或返回文件的竖屏有效像素不足时跳过候选。
 
 ```sh
 python3 Tools/ContentPipeline/activity-place-photos.py --city london
@@ -52,7 +52,7 @@ python3 Tools/ContentPipeline/activity-scene-gallery.py
 
 后两条命令从已审选图生成或检查本地预览包，核对十五城覆盖、每城 3–5 处、54 个唯一图像哈希、作者许可、逐场景空间记录、JPEG 字节与尺寸、App 清单、裁切配置及陈旧文件。已入包的图片可直接复验。重新获取来源使用候选清单中的精确地址。
 
-本轮运行素材位于 `App/Resources/ActivityPlacesGallery/`，清单为 `city-scene-gallery.json`，横图对齐为 `activity-photo-framing.json`。图片 SHA256 在 App 读取时再次校验。正式世界发布检查独立执行。
+本轮运行素材位于 `App/Resources/ActivityPlacesGallery/`，清单为 `city-scene-gallery.json`，横图对齐为 `activity-photo-framing.json`。对齐文件支持 leading、center、trailing，以及 0–1 的水平裁切位置，用于保留钟楼、码头等取景主体。图片 SHA256 在 App 读取时再次校验。正式世界发布检查独立执行。
 
 ## App 预览
 
@@ -60,6 +60,14 @@ python3 Tools/ContentPipeline/activity-scene-gallery.py
 LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build scenes-preview
 ```
 
-打开后点顶部城市名切换十五城，左右滑动或点击两侧箭头切换地点。底部保留「去这里逛逛」胶囊按钮，右上角更多菜单提供全图与摄影许可。此入口使用免登录 Debug 工作区，按钮会说明人物剧情仍在接入。伦敦实际外出样板可通过 `places-preview` 进入。最新界面验收、测试证据和待验证范围见 [acceptance-v6.md](acceptance-v6.md)。
+打开后点顶部城市名切换十五城，左右滑动或点击两侧箭头切换地点。底部保留「去这里逛逛」胶囊按钮，右上角更多菜单提供全图与摄影许可。此入口使用免登录 Debug 工作区，按钮会说明人物剧情仍在接入。伦敦实际外出样板可通过 `places-preview` 进入。最新高清版本的验收、验证证据和待验证范围见 [acceptance-v7.md](acceptance-v7.md)。
 
 Debug 构建在正式世界清单尚未配置时，从普通首页「城市活动」直接展示账号当前城市的新版场景。此入口跟随账号驻地，场景按钮显示剧情准备提示。专用 `scenes-preview` 用于跨城素材查看。
+
+## 2026-11-15 高清版本
+
+54 张入包照片高度为 2304–3200 像素，52 张达到 2500 像素。42 张提升同一照片的像素，12 张重选当地取景。解放公园改用蓝马霍树，德文大宅庭院改为皇家港查尔斯堡的石铺庭院。四位角色随地点迁移，其他换图涉及的海湾岸侧、运河护栏、市场陈设与棚号同步修订，共调整 21 篇草稿故事。
+
+[逐图高清复核](hd-review-v7.json) 保存旧清单完整快照、前后指纹、像素覆盖及新来源。本版采图与校验按 1206×2622 的手机竖屏计算放大比例，允许上限 1.2，结合原生细节审看。金斯敦海滨图的 2304px 高度对应约 1.14 倍显示，记录中单独可查。编码使用 JPEG quality 92、4:4:4，完整构图保存在包内，界面按屏幕像素解码并仅保留当前可见裁切位图，全图入口单独按完整构图适配。
+
+绑定修订与逐篇前后指纹见[剧情照片复核](../../../Content/ActivityWorld/2026-10-31-places-v1/photo-binding-review-20261115.json)。正式世界的发布状态和剩余集成见其 README。
