@@ -10,8 +10,8 @@ extension ChatView {
                     HStack(spacing: 10) {
                         Image(systemName: "calendar").font(.title3)
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(item.title).font(.subheadline.weight(.semibold)).lineLimit(1)
-                            Text("\(item.cityName) · \(item.placeName) · \(appointmentDate(item))")
+                            Text(item.displayTitle(companionName: viewModel.character.displayName)).font(.subheadline.weight(.semibold)).lineLimit(2)
+                            Text("\(item.displayCityName) · \(item.placeName) · \(appointmentDate(item))")
                                 .font(.caption).foregroundStyle(.secondary).lineLimit(2)
                         }
                         Spacer(minLength: 0)
@@ -42,9 +42,9 @@ extension ChatView {
         parser.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         guard let date = parser.date(from: item.startsAt) ?? ISO8601DateFormatter().date(from: item.startsAt) else { return item.startsAt }
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "zh_CN")
+        formatter.locale = Locale(identifier: "en_GB")
         formatter.timeZone = TimeZone(identifier: item.timeZone)
-        formatter.dateFormat = "M月d日 HH:mm"
+        formatter.dateFormat = "EEE, d MMM · HH:mm"
         return formatter.string(from: date)
     }
 }

@@ -139,9 +139,9 @@ enum AppointmentTime {
     static func formatted(_ value: String, timeZone: String) -> String {
         guard let date = date(value) else { return value }
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "zh_CN")
+        formatter.locale = Locale(identifier: "en_GB")
         formatter.timeZone = TimeZone(identifier: timeZone)
-        formatter.dateFormat = "M月d日 EEEE HH:mm zzz"
+        formatter.dateFormat = "EEE, d MMM yyyy · HH:mm zzz"
         return formatter.string(from: date)
     }
 

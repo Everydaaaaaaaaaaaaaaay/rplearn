@@ -1,3 +1,4 @@
+import DesignSystem
 import SwiftUI
 import UIKit
 
@@ -10,9 +11,9 @@ struct AppointmentPhoto: Identifiable {
     let licenseURL: String
 
     static let london: [AppointmentPhoto] = [
-        .init(id: "little-venice", title: "小威尼斯运河", author: "Matthias v.d. Elbe", license: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Little_Venice_in_March.jpg", licenseURL: "https://creativecommons.org/licenses/by-sa/4.0"),
-        .init(id: "primrose-hill", title: "樱草山", author: "LatteKnowledge", license: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:London%27s_Skyline_from_Primrose_Hill.jpg", licenseURL: "https://creativecommons.org/licenses/by-sa/4.0"),
-        .init(id: "notting-hill", title: "诺丁山街区", author: "Bex Walton", license: "CC BY 2.0", source: "https://commons.wikimedia.org/wiki/File:Colourful_houses_in_Lancaster_Road,_Notting_Hill_-_2020-07-05.jpg", licenseURL: "https://creativecommons.org/licenses/by/2.0")
+        .init(id: "little-venice", title: "Little Venice", author: "Matthias v.d. Elbe", license: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Little_Venice_in_March.jpg", licenseURL: "https://creativecommons.org/licenses/by-sa/4.0"),
+        .init(id: "primrose-hill", title: "Primrose Hill", author: "LatteKnowledge", license: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:London%27s_Skyline_from_Primrose_Hill.jpg", licenseURL: "https://creativecommons.org/licenses/by-sa/4.0"),
+        .init(id: "notting-hill", title: "Notting Hill", author: "Bex Walton", license: "CC BY 2.0", source: "https://commons.wikimedia.org/wiki/File:Colourful_houses_in_Lancaster_Road,_Notting_Hill_-_2020-07-05.jpg", licenseURL: "https://creativecommons.org/licenses/by/2.0")
     ]
 }
 
@@ -32,7 +33,7 @@ struct AppointmentPhotoView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .bottomTrailing) {
-                Color(red: 0.10, green: 0.16, blue: 0.16)
+                AppointmentStyle.ink
                 if !photos.isEmpty,
                    let url = Bundle.module.url(forResource: photos[index % photos.count].id, withExtension: "jpg", subdirectory: "Photos"),
                    let image = UIImage(contentsOfFile: url.path) {
@@ -61,23 +62,53 @@ struct AppointmentPhotoView: View {
     }
 }
 
+struct AppointmentPhotoSourceButton: View {
+    let cityID: String
+    let cityName: String
+    @State private var credits = false
+
+    var body: some View {
+        Button { credits = true } label: {
+            Label("照片来源", systemImage: "info.circle")
+                .font(.caption.weight(.medium)).padding(.horizontal, 16).frame(minHeight: 44)
+                .appointmentSurface(radius: 22)
+        }
+        .buttonStyle(DSSceneEntranceButtonStyle())
+        .sheet(isPresented: $credits) { AppointmentPhotoCreditsView(cityID: cityID, cityName: cityName) }
+    }
+}
+
 struct AppointmentPhotoCreditsView: View {
     let cityID: String
     let cityName: String
     @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         NavigationStack {
-            List {
-                Text("这些照片提供\(cityName)城市氛围，不代表故事中的精确地点。照片只作显示裁切，保留原始下载字节。")
-                ForEach(cityID == "london" ? AppointmentPhoto.london : []) { photo in
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(photo.title).font(.headline)
-                        Text("\(photo.author) · \(photo.license)")
-                        if let url = URL(string: photo.source) { Link("Wikimedia Commons 原图与作者", destination: url) }
-                        if let url = URL(string: photo.licenseURL) { Link("查看许可", destination: url) }
-                    }.padding(.vertical, 8)
-                }
-            }.navigationTitle("照片来源").toolbar { ToolbarItem(placement: .confirmationAction) { Button("完成") { dismiss() } } }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 18) {
+                    Text("照片取景于\(cityName)，用于呈现城市氛围。故事地点以约定为准。")
+                        .font(.subheadline).foregroundStyle(AppointmentStyle.ink.opacity(0.7))
+                        .padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
+                    ForEach(cityID == "london" ? AppointmentPhoto.london : []) { photo in
+                        VStack(alignment: .leading, spacing: 14) {
+                            Text(photo.title).font(.title3.weight(.semibold))
+                            Text("\(photo.author) · \(photo.license)").font(.subheadline)
+                                .foregroundStyle(AppointmentStyle.ink.opacity(0.7))
+                            if let url = URL(string: photo.source) {
+                                Link(destination: url) { Label("Wikimedia Commons", systemImage: "arrow.up.right").frame(minHeight: 44) }
+                            }
+                            if let url = URL(string: photo.licenseURL) {
+                                Link("查看许可", destination: url).frame(minHeight: 44)
+                            }
+                        }.padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
+                    }
+                }.padding(22).frame(maxWidth: 640).frame(maxWidth: .infinity)
+            }
+            .appointmentChrome(cityID: cityID, cityName: cityName)
+            .navigationTitle("照片来源").navigationBarTitleDisplayMode(.inline)
+            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("完成") { dismiss() } } }
         }
+        .tint(AppointmentStyle.ink)
     }
 }

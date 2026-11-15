@@ -21,7 +21,18 @@ final class AppointmentUITests: XCTestCase {
     override func tearDown() async throws { app.terminate() }
 
     func testConfirmedCustomBilingualPathPauseFinishAndReadOnlySummary() throws {
-        launch("confirmed")
+        launch("list")
+        let card = app.buttons["appointment.card.a0000000-0000-4000-8000-000000000001"]
+        reveal(card)
+        capture("appointment-00-list")
+        card.tap()
+        XCTAssertTrue(app.navigationBars["约定"].waitForExistence(timeout: 5))
+        let photoCredits = app.buttons["照片来源"]
+        reveal(photoCredits)
+        photoCredits.tap()
+        XCTAssertTrue(app.navigationBars["照片来源"].waitForExistence(timeout: 5))
+        capture("appointment-photo-credits")
+        app.buttons["完成"].tap()
         let start = app.buttons["appointment.start"]
         reveal(start)
         XCTAssertTrue(start.isEnabled)
@@ -64,7 +75,7 @@ final class AppointmentUITests: XCTestCase {
         back.tap()
         let showSummary = app.buttons["appointment.summary"]
         XCTAssertTrue(showSummary.waitForExistence(timeout: 5))
-        XCTAssertFalse(app.buttons["appointment.custom"].exists)
+        XCTAssertFalse(actionInput.exists)
         app.buttons["阅读选项"].tap()
         XCTAssertFalse(app.buttons["今天就到这里"].exists)
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.12, dy: 0.45)).tap()
@@ -106,12 +117,11 @@ final class AppointmentUITests: XCTestCase {
         assertInsideScreen(app.buttons["appointment.choice.quiet"])
         capture("appointment-max-text-choice-scroll")
 
-        let custom = app.buttons["appointment.custom"]
-        reveal(custom)
-        custom.tap()
-        let editor = app.textViews["appointment.input"]
+        let editor = actionInput
         XCTAssertTrue(editor.waitForExistence(timeout: 5))
         reveal(editor)
+        XCTAssertFalse(app.buttons["appointment.sendInput"].isEnabled)
+        XCTAssertFalse(app.navigationBars["自己说一句"].exists)
         editor.tap()
         editor.typeText("Let's take our time. 慢慢来。")
         XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5))
@@ -122,7 +132,7 @@ final class AppointmentUITests: XCTestCase {
         assertInsideScreen(send)
         capture("appointment-max-text-keyboard-send-reachable")
         send.tap()
-        XCTAssertTrue(editor.waitForNonExistence(timeout: 8), "发送后应先关闭输入页，再接上故事")
+        XCTAssertTrue(editor.waitForNonExistence(timeout: 8), "发送后应收起输入框并接上故事")
         XCTAssertTrue(app.buttons["appointment.next"].waitForExistence(timeout: 8))
         advanceToDecision()
         finishNaturally()
@@ -134,15 +144,19 @@ final class AppointmentUITests: XCTestCase {
         capture("appointment-max-text-summary-memory-controls")
     }
 
+    private var actionInput: XCUIElement {
+        app.descendants(matching: .any).matching(identifier: "appointment.input").firstMatch
+    }
+
     private func launch(_ scenario: String) {
         app.launchEnvironment["UI_TEST_APPOINTMENT_SCENARIO"] = scenario
         app.launch()
-        XCTAssertTrue(app.navigationBars["约定"].waitForExistence(timeout: 20))
+        XCTAssertTrue(app.navigationBars[scenario == "list" ? "赴约" : "约定"].waitForExistence(timeout: 20))
     }
 
     private func advanceToDecision() {
         for _ in 0..<4 {
-            if app.buttons["appointment.custom"].exists { return }
+            if actionInput.exists { return }
             let next = app.buttons["appointment.next"]
             XCTAssertTrue(next.waitForExistence(timeout: 5))
             reveal(next)
@@ -152,12 +166,11 @@ final class AppointmentUITests: XCTestCase {
     }
 
     private func submitCustom(_ input: String) {
-        let custom = app.buttons["appointment.custom"]
-        reveal(custom)
-        custom.tap()
-        let editor = app.textViews["appointment.input"]
+        let editor = actionInput
         XCTAssertTrue(editor.waitForExistence(timeout: 5))
         reveal(editor)
+        XCTAssertFalse(app.buttons["appointment.sendInput"].isEnabled)
+        XCTAssertFalse(app.navigationBars["自己说一句"].exists)
         editor.tap()
         editor.typeText(input)
         capture("appointment-03-bilingual-native-input")
@@ -168,8 +181,11 @@ final class AppointmentUITests: XCTestCase {
         send.tap()
         let dismissed = editor.waitForNonExistence(timeout: 8)
         inputTrace("after-send", send: send)
-        XCTAssertTrue(dismissed, "发送后应先关闭输入页，再显示生成结果或重试")
-        XCTAssertEqual(app.buttons["appointment.history"].value as? String, "customSubmitActions:1;sheet:false;queued:false", "一次点击应触发且仅触发一次真实发送动作")
+        if !dismissed {
+            // Failed continuations retain the inline draft, locked to the original command.
+            XCTAssertFalse(editor.isEnabled)
+        }
+        XCTAssertEqual(app.buttons["appointment.history"].value as? String, "customSubmitActions:1;focused:false", "一次点击应触发且仅触发一次真实发送动作")
     }
 
     private func openHistoryAndAssert(_ input: String, attachment: String?) {
@@ -178,7 +194,7 @@ final class AppointmentUITests: XCTestCase {
         let original = app.staticTexts.matching(NSPredicate(format: "label == %@", input))
         reveal(original.firstMatch)
         XCTAssertEqual(original.count, 1, "历史只包含一次已接受的原始输入")
-        XCTAssertTrue(app.staticTexts["你 · 自己说的"].exists)
+        XCTAssertTrue(app.staticTexts["你 · 自定义行动"].exists)
         if let attachment { capture(attachment) }
         app.buttons["完成"].tap()
     }
@@ -206,8 +222,13 @@ final class AppointmentUITests: XCTestCase {
             let frame = element.frame
             let scroll = app.scrollViews.firstMatch
             let surface = scroll.exists ? scroll : app!
-            if element.exists && frame.midY < app.frame.minY + 65 { surface.swipeDown() }
-            else { surface.swipeUp() }
+            let upper = surface.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.30))
+            let lower = surface.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.65))
+            if element.exists && frame.midY < app.frame.minY + 65 {
+                upper.press(forDuration: 0.05, thenDragTo: lower)
+            } else {
+                lower.press(forDuration: 0.05, thenDragTo: upper)
+            }
         }
         capture("appointment-unreachable-control")
         XCTFail("控件无法滚动到可操作区域：\(element)", file: file, line: line)

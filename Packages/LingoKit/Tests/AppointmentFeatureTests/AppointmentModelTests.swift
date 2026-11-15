@@ -5,6 +5,27 @@ import BackendKit
 
 @Suite("Appointment durable choices") @MainActor
 struct AppointmentModelTests {
+    @Test("Titles keep the agreed activity and use the same concise format for legacy records")
+    func appointmentTitles() async throws {
+        let detail = try await AppointmentPreviewService(scenario: "confirmed").appointment(AppointmentListView.previewAppointmentID)
+        var value = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(detail.appointment)) as? [String: Any])
+        for (saved, expected) in [
+            ("和Ruby一起看电影", "和Ruby一起看电影"),
+            ("一段不赶时间的散步", "和Ruby一起散步"),
+            ("把下午留给一杯咖啡", "和Ruby一起喝咖啡"),
+            ("和Oliver一起学陶艺", "和Ruby一起学陶艺"),
+            ("和Oliver在咖啡馆见面", "和Ruby在南岸 · 滑铁卢桥附近见面"),
+            ("河岸边的片刻", "和Ruby在南岸 · 滑铁卢桥附近见面"),
+        ] {
+            value["title"] = saved
+            let appointment = try JSONDecoder().decode(BackendAppointment.self, from: JSONSerialization.data(withJSONObject: value))
+            #expect(appointment.displayTitle(companionName: "Ruby") == expected)
+        }
+        #expect(detail.appointment.displayCityName == "London")
+        #expect(AppointmentTime.formatted("2026-11-01T15:00:00Z", timeZone: "Europe/London").hasPrefix("Sun, 1 Nov 2026 · 15:00"))
+        #expect(AppointmentTime.formatted("2026-11-01T15:00:00Z", timeZone: "Asia/Shanghai").hasPrefix("Sun, 1 Nov 2026 · 23:00"))
+    }
+
     @Test("Lost responses retry the original command across model recreation without branching")
     func lostResponse() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)

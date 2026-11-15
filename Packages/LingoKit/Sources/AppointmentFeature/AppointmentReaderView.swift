@@ -12,8 +12,6 @@ struct AppointmentReaderView: View {
     let onChat: (UUID) -> Void
     let onMemory: (UUID) -> Void
     @State private var translation = true
-    @State private var customInput = false
-    @State private var queuedCustomInput: String?
     @State private var history = false
     @State private var credits = false
     @State private var photoPaused = false
@@ -21,6 +19,7 @@ struct AppointmentReaderView: View {
     @State private var wordSelection: TokenSelection?
     @State private var sound = false
     @State private var customSubmitActions = 0
+    @State private var sendingCustomAction = false
     @FocusState private var inputFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
@@ -28,9 +27,7 @@ struct AppointmentReaderView: View {
     @Environment(\.colorSchemeContrast) private var contrast
     @Environment(\.scenePhase) private var scenePhase
 
-    private let ink = Color(red: 0.13, green: 0.19, blue: 0.18)
-    private let paper = Color(red: 0.98, green: 0.96, blue: 0.90)
-    private let gold = Color(red: 0.84, green: 0.68, blue: 0.40)
+    private let ink = AppointmentStyle.ink
 
     var body: some View {
         Group {
@@ -41,9 +38,9 @@ struct AppointmentReaderView: View {
             } else { reader }
         }
         .navigationBarHidden(true).dsTabBarHidden()
-        .environment(\.colorScheme, .dark)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .sheet(isPresented: $customInput, onDismiss: completeCustomInputDismissal) { inputSheet }
+        .environment(\.colorScheme, .light)
+        .tint(ink)
+        .onChange(of: model.draft) { _, _ in Task { await model.persistReading() } }
         .sheet(isPresented: $history) { AppointmentHistoryView(detail: model.detail, characterName: characterName) }
         .sheet(isPresented: $credits) { AppointmentPhotoCreditsView(cityID: model.detail?.appointment.cityId ?? "", cityName: model.detail?.appointment.cityName ?? "") }
         .navigationDestination(isPresented: $summary) { AppointmentSummaryView(model: model, characterName: characterName, onChat: onChat, onMemory: onMemory) }
@@ -63,7 +60,7 @@ struct AppointmentReaderView: View {
     }
 
     private var canNarrate: Bool {
-        sound && scenePhase == .active && wordSelection == nil && !customInput && !history && !credits && !summary
+        sound && scenePhase == .active && wordSelection == nil && !inputFocused && !history && !credits && !summary
     }
 
     private var narrationIdentity: String {
@@ -72,34 +69,39 @@ struct AppointmentReaderView: View {
 
     private var reader: some View {
         GeometryReader { geometry in
-            ZStack {
-                VStack(spacing: 0) {
-                    header
-                    Spacer(minLength: 12)
-                    if !dynamicTypeSize.isAccessibilitySize {
-                        Text(model.detail?.appointment.title ?? "这次相处")
-                            .font(.system(.title, design: .serif).weight(.medium)).multilineTextAlignment(.center)
-                            .foregroundStyle(paper).shadow(radius: 8).padding(.bottom, 20)
-                    }
-                    panel(maxHeight: geometry.size.height * (dynamicTypeSize.isAccessibilitySize ? 0.84 : 0.60))
-                }.padding(.horizontal, 18).padding(.bottom, 12).padding(.top, 4)
+            VStack(spacing: 16) {
+                Spacer(minLength: 0)
+                panel(maxHeight: geometry.size.height - 24)
             }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 12)
+            .frame(maxWidth: 640)
             .frame(width: geometry.size.width, height: geometry.size.height)
-            .background {
-                AppointmentPhotoView(cityID: model.detail?.appointment.cityId ?? "", cityName: model.detail?.appointment.cityName ?? "", paused: photoPaused || customInput || history || credits || wordSelection != nil, showsControls: false).ignoresSafeArea()
-            }
+        }
+        .safeAreaInset(edge: .top, spacing: 0) {
+            header.padding(.horizontal, 20).padding(.vertical, 4).frame(maxWidth: 640)
+        }
+        .background {
+            AppointmentPhotoView(cityID: model.detail?.appointment.cityId ?? "", cityName: model.detail?.appointment.displayCityName ?? "", paused: photoPaused || inputFocused || history || credits || wordSelection != nil, showsControls: false)
+                .ignoresSafeArea()
         }
     }
 
     private var header: some View {
-        HStack(spacing: 12) {
-            Button { dismiss() } label: { Image(systemName: "chevron.left").frame(width: 44, height: 44) }.accessibilityLabel("暂停并返回约定")
+        HStack(spacing: 4) {
+            Button { inputFocused = false; dismiss() } label: {
+                Image(systemName: "chevron.left").font(.system(size: 18, weight: .medium)).frame(width: 44, height: 44)
+            }.accessibilityLabel("暂停并返回约定")
             VStack(alignment: .leading, spacing: 4) {
-                Text(model.detail?.appointment.cityName ?? "赴约").font(.caption)
-                Text(model.block?.location ?? "这次相处").font(.subheadline.weight(.semibold)).lineLimit(2)
+                Text(model.detail?.appointment.displayCityName ?? "赴约")
+                    .font(.caption).foregroundStyle(ink.opacity(0.65))
+                Text(model.detail.map { $0.appointment.displayTitle(companionName: characterName($0.appointment.characterId)) } ?? "赴约")
+                    .font(.subheadline.weight(.semibold)).lineLimit(inputFocused ? 1 : 2)
             }
             Spacer(minLength: 0)
-            Button { history = true } label: { Image(systemName: "clock.arrow.circlepath").frame(width: 44, height: 44) }.accessibilityLabel("回看实际经历").accessibilityIdentifier("appointment.history")
+            Button { inputFocused = false; history = true } label: {
+                Image(systemName: "clock.arrow.circlepath").font(.system(size: 20, weight: .regular)).frame(width: 44, height: 44)
+            }.accessibilityLabel("回看实际经历").accessibilityIdentifier("appointment.history")
                 .accessibilityValue(customInputDiagnostic)
             Menu {
                 if readingServices != nil { Button(sound ? "关闭朗读" : "朗读英文", systemImage: sound ? "speaker.slash" : "speaker.wave.2") { sound.toggle(); if !sound { Task { await readingServices?.speech.stopSpeaking() } } } }
@@ -107,47 +109,50 @@ struct AppointmentReaderView: View {
                 Button("照片来源", systemImage: "info.circle") { credits = true }
                 Button("暂时离开", systemImage: "pause") { dismiss() }
                 if model.detail?.appointment.status == "in_progress", model.block?.ending == false {
-                    Button("今天就到这里", systemImage: "leaf") { Task { await model.submit(action: .choice, finish: true) } }.disabled(!model.mayRespond)
+                    Button("今天就到这里", systemImage: "leaf") { inputFocused = false; Task { await model.submit(action: .choice, finish: true) } }.disabled(!model.mayRespond || sendingCustomAction)
                 }
-            } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }.accessibilityLabel("阅读选项")
-        }.foregroundStyle(paper).background(.black.opacity(0.20), in: RoundedRectangle(cornerRadius: 12))
+            } label: { Image(systemName: "ellipsis").font(.system(size: 18, weight: .medium)).frame(width: 44, height: 44) }.accessibilityLabel("阅读选项")
+        }
+        .foregroundStyle(ink)
+        .padding(6)
+        .appointmentSurface(radius: 24)
     }
 
     private func panel(maxHeight: CGFloat) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                Text(model.beat?.speaker == "character" ? characterName(model.detail?.appointment.characterId ?? model.id) : "旁白").font(.subheadline.weight(.semibold))
-                Spacer()
-                Button(translation ? "中 / EN" : "EN") { translation.toggle() }.font(.caption.weight(.medium)).frame(minWidth: 52, minHeight: 44).accessibilityLabel(translation ? "隐藏中文翻译" : "显示中文翻译")
+            if !inputFocused {
+                HStack {
+                    Text(model.beat?.speaker == "character" ? characterName(model.detail?.appointment.characterId ?? model.id) : "旁白")
+                        .font(.caption.weight(.semibold)).foregroundStyle(ink.opacity(0.65))
+                    Spacer()
+                    Button(translation ? "中 / EN" : "EN") { translation.toggle() }.font(.caption.weight(.medium)).frame(minWidth: 52, minHeight: 44).accessibilityLabel(translation ? "隐藏中文翻译" : "显示中文翻译")
+                }
+                Rectangle().fill(ink.opacity(0.12)).frame(height: 0.5).padding(.bottom, 18)
             }
-            Rectangle().fill(gold.opacity(0.6)).frame(height: 1).padding(.bottom, 14)
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     if let beat = model.beat {
                         if readingServices != nil {
                             TappableText(tokens: TokenCache.tokens(for: beat.english, cacheKey: "appointment-\(model.block?.id ?? "")-\(model.beatIndex)"), contextID: "appointment-\(model.id)-\(model.block?.id ?? "")-\(model.beatIndex)", textColor: ink, selection: wordSelection, onSelect: { wordSelection = $0 })
-                                .font(.body).fontDesign(.rounded).accessibilityIdentifier("appointment.line")
-                        } else { Text(beat.english).font(.body).textSelection(.enabled).accessibilityIdentifier("appointment.line") }
+                                .font(.system(.title3, design: .serif)).lineSpacing(6).accessibilityIdentifier("appointment.line")
+                        } else { Text(beat.english).font(.system(.title3, design: .serif)).lineSpacing(6).textSelection(.enabled).accessibilityIdentifier("appointment.line") }
                         if translation { Text(beat.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.77)).lineSpacing(5).fixedSize(horizontal: false, vertical: true) }
                     }
                     if model.isLastBeat && model.isLatestBlock && model.block?.ending == false && model.detail?.appointment.status == "in_progress" {
                         ForEach(model.block?.choices ?? []) { choice in
                             Button { Task { await model.submit(action: .choice, choiceID: choice.id) } } label: {
                                 HStack(alignment: .top, spacing: 12) {
-                                    Text("↗").foregroundStyle(gold)
+                                    Image(systemName: "arrow.up.right").font(.system(size: 13, weight: .medium)).foregroundStyle(ink.opacity(0.5))
                                     VStack(alignment: .leading, spacing: 6) {
                                         Text(choice.english).font(.subheadline.weight(.medium))
                                         if translation { Text(choice.chinese).font(.caption).opacity(0.75) }
                                     }
                                     Spacer(minLength: 0)
-                                }.padding(14).frame(maxWidth: .infinity, minHeight: 48, alignment: .leading)
-                                    .background(ink.opacity(0.045), in: RoundedRectangle(cornerRadius: 6))
-                                    .overlay(RoundedRectangle(cornerRadius: 6).stroke(gold.opacity(0.5), lineWidth: 1))
-                            }.buttonStyle(.plain).disabled(!model.mayRespond).accessibilityIdentifier("appointment.choice.\(choice.id)")
+                                }.multilineTextAlignment(.leading).padding(16).frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
+                                    .background(ink.opacity(0.045), in: RoundedRectangle(cornerRadius: 18))
+                                    .overlay(RoundedRectangle(cornerRadius: 18).strokeBorder(ink.opacity(0.14), lineWidth: 1))
+                            }.buttonStyle(DSSceneEntranceButtonStyle()).disabled(!model.mayRespond || sendingCustomAction).accessibilityIdentifier("appointment.choice.\(choice.id)")
                         }
-                        Button { customInput = true } label: { Label("自己说一句，或做点别的", systemImage: "square.and.pencil").frame(maxWidth: .infinity, minHeight: 48) }
-                            .buttonStyle(.plain).disabled(model.submitting || model.pending != nil).accessibilityIdentifier("appointment.custom")
-                        if model.offline { Text("离线时可保存想法，联网后再发送。").font(.footnote) }
                     }
                     if model.submitting { ProgressView("你的回应已保留，正在接上下一页…").tint(ink).font(.subheadline) }
                     if let error = model.error { AppointmentErrorView(message: error, loading: model.submitting) { Task { if model.pending != nil { await model.retry() } else { await model.load() } } } }
@@ -155,74 +160,92 @@ struct AppointmentReaderView: View {
                 }.frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 4)
             }
             .scrollBounceBehavior(.basedOnSize)
-            .frame(maxHeight: max(44, maxHeight - 100)).fixedSize(horizontal: false, vertical: !dynamicTypeSize.isAccessibilitySize)
+            .frame(maxHeight: max(44, maxHeight - (showsComposer ? 174 : 112)))
+            .fixedSize(horizontal: false, vertical: !dynamicTypeSize.isAccessibilitySize && !inputFocused)
             .id("\(model.block?.id ?? "")-\(model.beatIndex)")
-            HStack {
-                Text(readingServices == nil ? "已发生的经历会保留" : "轻点英文可查词").font(.caption2).foregroundStyle(ink.opacity(0.6))
-                Spacer()
-                if model.isLastBeat && model.isLatestBlock && model.block?.ending == true {
-                    Button("查看这次回顾") { summary = true }.font(.subheadline.weight(.semibold)).frame(minHeight: 48).accessibilityIdentifier("appointment.summary")
-                } else if !model.isLastBeat || !model.isLatestBlock {
-                    Button { wordSelection = nil; Task { await model.advance() } } label: { Label("继续", systemImage: "arrow.right").font(.subheadline.weight(.medium)).frame(minWidth: 72, minHeight: 44) }.accessibilityIdentifier("appointment.next")
-                }
-            }.padding(.top, 8)
+            if showsComposer { customActionInput.padding(.top, 16) }
+            if !inputFocused {
+                HStack {
+                    Text(readingServices == nil ? "已发生的经历会保留" : "轻点英文可查词").font(.caption2).foregroundStyle(ink.opacity(0.6))
+                    Spacer()
+                    if model.isLastBeat && model.isLatestBlock && model.block?.ending == true {
+                        Button("查看这次回顾") { summary = true }.font(.subheadline.weight(.semibold)).frame(minHeight: 48).accessibilityIdentifier("appointment.summary")
+                    } else if !model.isLastBeat || !model.isLatestBlock {
+                        Button { wordSelection = nil; Task { await model.advance() } } label: { Label("继续", systemImage: "arrow.right").font(.subheadline.weight(.medium)).frame(minWidth: 72, minHeight: 44) }.accessibilityIdentifier("appointment.next")
+                    }
+                }.padding(.top, 8)
+            }
         }
-        .foregroundStyle(ink).padding(.horizontal, 20).padding(.top, 6).padding(.bottom, 8)
-        .background(paper.opacity(reduceTransparency || contrast == .increased ? 1 : 0.92), in: RoundedRectangle(cornerRadius: 12))
-        .overlay(RoundedRectangle(cornerRadius: 12).stroke(.white.opacity(0.55), lineWidth: 1))
-        .shadow(color: .black.opacity(0.18), radius: 12, y: 5)
+        .foregroundStyle(ink).padding(.horizontal, 24).padding(.top, 10).padding(.bottom, 14)
+        .background((reduceTransparency || contrast == .increased ? AppointmentStyle.canvas : Color.white.opacity(0.94)), in: RoundedRectangle(cornerRadius: 28, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).strokeBorder(.white.opacity(0.7)))
         .environment(\.colorScheme, .light)
     }
 
-    private var inputSheet: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    Text("你想怎样继续？").font(.headline)
-                    Text("中文、英语都可以，也可以描述想做的事。你的原话会保留；旅伴会作出自己的回应。").font(.subheadline).foregroundStyle(.secondary)
-                    TextEditor(text: $model.draft).focused($inputFocused).frame(minHeight: 170).accessibilityIdentifier("appointment.input")
-                    Text("\(model.draft.count) / 500").font(.caption).foregroundStyle(model.draft.count > 500 ? .red : .secondary)
-                }
-            }
-            .scrollDismissesKeyboard(.interactively)
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                Button {
-                    customSubmitActions += 1
-                    let input = model.draft.trimmingCharacters(in: .whitespacesAndNewlines)
-                    inputFocused = false
-                    queuedCustomInput = input
-                    customInput = false
-                } label: {
-                    Text(model.offline ? "联网后发送" : "就这样继续")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, minHeight: 48)
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(model.offline || model.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || model.draft.count > 500 || model.submitting || model.pending != nil)
-                .accessibilityIdentifier("appointment.sendInput")
-                .padding(.horizontal, 16).padding(.vertical, 8)
-                .background(Color(uiColor: .systemBackground))
-            }
-            .navigationTitle("自己说一句").navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .cancellationAction) { Button("保存想法并返回") { inputFocused = false; customInput = false } } }
-            .onChange(of: model.draft) { _, _ in Task { await model.persistReading() } }
-            .task { inputFocused = true }
-        }.environment(\.colorScheme, .light)
+    private var showsComposer: Bool {
+        model.isLastBeat && model.isLatestBlock && model.block?.ending == false && model.detail?.appointment.status == "in_progress"
     }
 
-    private func completeCustomInputDismissal() {
+    private var canSubmitCustomAction: Bool {
+        model.mayRespond && !sendingCustomAction && !model.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && model.draft.count <= 500
+    }
+
+    private var customActionInput: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .bottom, spacing: 8) {
+                TextField("", text: $model.draft,
+                          prompt: Text("自定义你的行动").foregroundStyle(ink.opacity(0.45)), axis: .vertical)
+                    .font(.body)
+                    .lineLimit(1...2)
+                    .padding(.leading, 16).padding(.vertical, 14)
+                    .focused($inputFocused)
+                    .submitLabel(.send)
+                    .onSubmit(submitCustomAction)
+                    .disabled(model.submitting || model.pending != nil || sendingCustomAction)
+                    .accessibilityLabel("自定义你的行动")
+                    .accessibilityIdentifier("appointment.input")
+                Button(action: submitCustomAction) {
+                    Image(systemName: "arrow.up")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundStyle(canSubmitCustomAction ? .white : ink.opacity(0.35))
+                        .frame(width: 44, height: 44)
+                        .background(canSubmitCustomAction ? ink : ink.opacity(0.08), in: Circle())
+                }
+                .buttonStyle(DSSceneEntranceButtonStyle())
+                .disabled(!canSubmitCustomAction)
+                .accessibilityLabel("提交行动")
+                .accessibilityIdentifier("appointment.sendInput")
+                .padding(5)
+            }
+            .background(.white.opacity(0.75), in: RoundedRectangle(cornerRadius: 26))
+            .overlay(RoundedRectangle(cornerRadius: 26).strokeBorder(ink.opacity(inputFocused ? 0.30 : 0.14)))
+            if model.draft.count > 450 {
+                Text("\(model.draft.count) / 500")
+                    .font(.caption).monospacedDigit()
+                    .foregroundStyle(model.draft.count > 500 ? Color.red : ink.opacity(0.6))
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            if model.offline {
+                Text("已保存草稿，联网后可提交。").font(.footnote).foregroundStyle(ink.opacity(0.65))
+            }
+        }
+    }
+
+    private func submitCustomAction() {
+        guard canSubmitCustomAction else { return }
+        let input = model.draft.trimmingCharacters(in: .whitespacesAndNewlines)
+        customSubmitActions += 1
+        sendingCustomAction = true
         inputFocused = false
-        let input = queuedCustomInput
-        queuedCustomInput = nil
         Task {
-            await model.persistReading()
-            if let input { await model.submit(action: .choice, input: input) }
+            await model.submit(action: .choice, input: input)
+            sendingCustomAction = false
         }
     }
 
     private var customInputDiagnostic: String {
         #if DEBUG
-        "customSubmitActions:\(customSubmitActions);sheet:\(customInput);queued:\(queuedCustomInput != nil)"
+        "customSubmitActions:\(customSubmitActions);focused:\(inputFocused)"
         #else
         ""
         #endif
