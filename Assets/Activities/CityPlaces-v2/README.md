@@ -60,7 +60,7 @@ python3 Tools/ContentPipeline/activity-scene-gallery.py
 LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build scenes-preview
 ```
 
-打开后点顶部城市名切换十五城，左右滑动或点击两侧箭头切换地点。底部保留「去这里逛逛」胶囊按钮，右上角更多菜单提供全图与摄影许可。此入口使用免登录 Debug 工作区，按钮提供完整世界预览的入口说明。运行 `Scripts/preview.sh preview world-preview` 可进入 200 人的正式世界离线预览，人物头像为占位。最新高清来源与大小屏证据见 [v7](acceptance-v7.md)，正式接入见 [v8](acceptance-v8.md)，真机四项路径与显示抽检见 [v9](acceptance-v9.md)。
+打开后点顶部城市名切换十五城，左右滑动或点击两侧箭头切换地点。底部保留「去这里逛逛」胶囊按钮，右上角更多菜单提供全图与摄影许可。此入口使用免登录 Debug 工作区，按钮提供完整世界预览的入口说明。运行 `Scripts/preview.sh preview world-preview` 可进入 200 人的正式世界离线预览，人物头像为占位。最新高清来源与大小屏证据见 [v7](acceptance-v7.md)，正式接入见 [v8](acceptance-v8.md)，真机四项离线路径与显示抽检见 [v9](acceptance-v9.md)，实际客户端修复及线上真机入口复验见 [v10](acceptance-v10.md)。
 
 Debug 构建在正式世界清单尚未配置时，从普通首页「城市活动」直接展示账号当前城市的新版场景。此入口跟随账号驻地，场景按钮显示剧情准备提示。专用 `scenes-preview` 用于跨城素材查看。
 

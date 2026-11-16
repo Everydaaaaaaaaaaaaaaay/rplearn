@@ -518,7 +518,7 @@ public actor BackendClient {
         additionalHeaders: [String: String] = [:],
         retryAfterUnauthorized: Bool
     ) async throws -> Data {
-        guard path.hasPrefix("/v1/") else {
+        guard path.hasPrefix("/v1/") || path.hasPrefix("/v2/") else {
             throw BackendClientError.invalidResponse
         }
         let request = try await makeRequest(

@@ -84,6 +84,11 @@ struct BackendClientTests {
         private(set) var refreshCount = 0
         private(set) var requests: [URLRequest] = []
         var refreshStatus = 200
+        private var responses: [String: Data] = [:]
+
+        func setResponse<Value: Encodable & Sendable>(_ value: Value, for path: String) throws {
+            responses[path] = try JSONEncoder().encode(value)
+        }
 
         func setRefreshStatus(_ status: Int) {
             refreshStatus = status
@@ -91,6 +96,9 @@ struct BackendClientTests {
 
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
             requests.append(request)
+            if let path = request.url?.path, let data = responses[path] {
+                return BackendTransportResponse(data: data, headers: [:], statusCode: 200)
+            }
             switch request.url?.path {
             case "/v1/auth/guest":
                 return json(Self.tokenJSON(access: "guest-access", refresh: "guest-refresh"))
@@ -154,6 +162,79 @@ struct BackendClientTests {
             }
             """
         }
+    }
+
+    @Test("活动 v2 接口通过真实客户端完成鉴权、目录和进度请求", arguments: [false, true])
+    func activityWorldRequestsUseVersionTwo(usesGuest: Bool) async throws {
+        struct Preview: Decodable {
+            let catalogs: [BackendActivityCatalog]
+            let outings: [BackendOuting]
+        }
+        struct Manifest: Decodable { let preview: Preview }
+        struct CatalogReply: Encodable, Sendable { let catalog: BackendActivityCatalog }
+        struct ActiveReply: Encodable, Sendable { let outing: BackendOuting? }
+        let url = try #require(Bundle.main.url(forResource: "activity-world-release", withExtension: "json"))
+        let preview = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url)).preview
+        let catalog = try #require(preview.catalogs.first)
+        let outing = try #require(preview.outings.first { $0.cityId == catalog.cityId })
+        let accountStore = MemoryCredentialStore()
+        let guestStore = MemoryCredentialStore()
+        let transport = MockTransport()
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: accountStore, transport: transport,
+            guestCredentialStore: guestStore, guestInstallationKey: String(repeating: "c", count: 64)
+        )
+        if !usesGuest {
+            _ = try await client.login(email: "traveler@example.com", password: "test-password",
+                                       device: BackendDevice(appVersion: "1.0", deviceID: "test", deviceName: "Test"))
+        }
+        try await transport.setResponse(CatalogReply(catalog: catalog), for: "/v2/activity-world")
+        try await transport.setResponse(ActiveReply(outing: nil), for: "/v2/outings/active")
+        try await transport.setResponse(BackendOutingHistory(outings: [outing], nextCursor: nil), for: "/v2/outings/history")
+        let runPath = "/v2/outings/\(outing.runId.uuidString.lowercased())"
+        try await transport.setResponse(outing, for: runPath)
+        try await transport.setResponse(outing, for: "/v2/outings")
+
+        #expect(try await client.activeOuting() == nil)
+        #expect(try await client.activityCatalog(releaseID: catalog.releaseId) == catalog)
+        #expect(try await client.outingHistory(before: outing.runId).outings == [outing])
+        #expect(try await client.outing(id: outing.runId) == outing)
+        #expect(try await client.startOuting(id: outing.runId, releaseID: outing.releaseId, placeID: outing.placeId) == outing)
+        for type in [BackendOutingOperation.Kind.read, .presented, .choice, .complete, .abandon] {
+            let operation = BackendOutingOperation(expectedRevision: 0, type: type,
+                                                   beatIndex: type == .read ? 0 : nil,
+                                                   choiceID: type == .choice ? "start:0" : nil)
+            let path = "\(runPath)/\(type == .choice ? "choices" : type.rawValue)"
+            try await transport.setResponse(outing, for: path)
+            #expect(try await client.applyOuting(id: outing.runId, operation: operation) == outing)
+        }
+        try await transport.setResponse(ActiveReply(outing: outing), for: "/v2/outings/active")
+        #expect(try await client.activeOuting() == outing)
+
+        let requests = await transport.requests.filter { $0.url?.path.hasPrefix("/v2/") == true }
+        #expect(requests.count == 11)
+        let token = usesGuest ? "guest-access" : "login-access"
+        #expect(requests.allSatisfy { $0.value(forHTTPHeaderField: "Authorization") == "Bearer \(token)" })
+        let catalogRequest = try #require(requests.first { $0.url?.path == "/v2/activity-world" })
+        let catalogURL = try #require(catalogRequest.url)
+        let query = try #require(URLComponents(url: catalogURL, resolvingAgainstBaseURL: false)?.queryItems)
+        #expect(query == [URLQueryItem(name: "releaseId", value: catalog.releaseId)])
+        #expect(requests.filter { $0.httpMethod == "POST" }.count == 6)
+        #expect((try accountStore.load() == nil) == usesGuest)
+    }
+
+    @Test("客户端仍拒绝未支持的版本和非 API 路径", arguments: ["/v3/probe", "/v20/probe", "/health", "https://other.example/v2/probe"])
+    func rejectsUnsupportedAPIPaths(path: String) async throws {
+        let transport = MockTransport()
+        let client = BackendClient(
+            configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentialStore(), transport: transport
+        )
+        await #expect(throws: BackendClientError.invalidResponse) {
+            let _: Probe = try await client.publicGet(path)
+        }
+        #expect(await transport.requests.isEmpty)
     }
 
     @Test("并发游客请求只建立一个会话，匿名凭证不会变成已登录账号")
