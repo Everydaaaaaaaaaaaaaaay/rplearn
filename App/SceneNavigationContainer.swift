@@ -11,6 +11,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
     let navigationPath: Binding<NavigationPath>?
     let showsNavigationBar: Bool
     let backLabel: String
+    let rootIgnoresSafeArea: Bool
     let rootContent: RootContent
     let destinationContent: DestinationContent
 
@@ -23,6 +24,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
         navigationPath: Binding<NavigationPath>? = nil,
         showsNavigationBar: Bool = true,
         backLabel: String = "返回",
+        rootIgnoresSafeArea: Bool = true,
         @ViewBuilder root: () -> RootContent,
         @ViewBuilder destination: () -> DestinationContent
     ) {
@@ -32,6 +34,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
         self.navigationPath = navigationPath
         self.showsNavigationBar = showsNavigationBar
         self.backLabel = backLabel
+        self.rootIgnoresSafeArea = rootIgnoresSafeArea
         self.rootContent = root()
         self.destinationContent = destination()
     }
@@ -42,7 +45,7 @@ struct SceneNavigationContainer<RootContent: View, DestinationContent: View>: Vi
                 .opacity(isPresentingDestination ? 0 : 1)
                 .allowsHitTesting(!isPresentingDestination)
                 .accessibilityHidden(isPresentingDestination)
-                .ignoresSafeArea(.container, edges: [.top, .bottom])
+                .ignoresSafeArea(.container, edges: rootIgnoresSafeArea ? [.top, .bottom] : [])
                 .zIndex(0)
 
             if isPresentingDestination {

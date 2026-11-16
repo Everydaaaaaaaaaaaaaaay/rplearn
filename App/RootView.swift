@@ -753,6 +753,33 @@ struct RootView: View {
         }
     }
 
+    private var usesTabDesignPreview: Bool {
+        #if DEBUG
+        bypassesAuthenticationForUITesting
+            && ProcessInfo.processInfo.environment["UI_TEST_TAB_DESIGN_PREVIEW"] == "1"
+        #else
+        false
+        #endif
+    }
+
+    private var homeRootContent: some View {
+        #if DEBUG
+        if usesTabDesignPreview {
+            return AnyView(DebugActivityHubDesignPreview(onOpen: openHomeDestination)
+                .onAppear { isInitialContentReady = true })
+        }
+        #endif
+        return AnyView(HomeView(
+            deps: homeDeps,
+            reloadToken: stateRevision,
+            onInitialLoad: {
+                guard environment.needsOnboarding == false else { return }
+                isInitialContentReady = true
+            },
+            onOpenDestination: openHomeDestination
+        ).id("home-root"))
+    }
+
     private var homeStack: some View {
         SceneNavigationContainer(
             isPresentingDestination: activeHomeDestination != nil,
@@ -761,18 +788,10 @@ struct RootView: View {
             navigationPath: $homePath,
             showsNavigationBar: activeHomeDestination != .map
                 && (activeHomeDestination != .activities || activeActivityChat != nil),
-            backLabel: activeActivityChat == nil ? "返回" : "返回城市活动"
+            backLabel: activeActivityChat == nil ? "返回" : "返回城市活动",
+            rootIgnoresSafeArea: !usesTabDesignPreview
         ) {
-            HomeView(
-                deps: homeDeps,
-                reloadToken: stateRevision,
-                onInitialLoad: {
-                    guard environment.needsOnboarding == false else { return }
-                    isInitialContentReady = true
-                },
-                onOpenDestination: openHomeDestination
-            )
-            .id("home-root")
+            homeRootContent
         } destination: {
             Group {
                 if let destination = activeHomeDestination {
@@ -817,7 +836,7 @@ struct RootView: View {
             })
         let close = { appointmentPresentation = nil }
         #if DEBUG
-        if bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" {
+        if bypassesAuthenticationForUITesting && (ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" || usesTabDesignPreview) {
             if ProcessInfo.processInfo.environment["UI_TEST_APPOINTMENT_SCENARIO"] == "summary-design" {
                 AppointmentSummaryDesignPreview(onClose: close)
             } else {
@@ -1054,6 +1073,22 @@ struct RootView: View {
     }
 
     private func myPage(section: MyPageSection? = nil) -> some View {
+        #if DEBUG
+        if usesTabDesignPreview, section == nil {
+            return AnyView(DebugMyHubDesignPreview(
+                onAccount: { openMe(.account) },
+                onLearning: { showEnglishJourney = true },
+                onFavorites: { openMe(.favorites) },
+                onMemory: { memoryCharacterID = nil; openMe(.memory) },
+                onSubscription: { openMe(.subscription) },
+                onSettings: { openMe(.settings) }
+            ))
+        }
+        #endif
+        return AnyView(standardMyPage(section: section))
+    }
+
+    private func standardMyPage(section: MyPageSection?) -> some View {
         MyPageView(
             accessClient: environment.backendClient,
             economyStore: environment.economyStore,
@@ -1297,7 +1332,7 @@ struct RootView: View {
     }
     private var isWorldOutingPreview: Bool {
         #if DEBUG
-        bypassesAuthenticationForUITesting && (ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "world-preview"
+        bypassesAuthenticationForUITesting && (usesTabDesignPreview || ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "world-preview"
             || ProcessInfo.processInfo.environment["UI_TEST_WORLD_GATEWAY"] == "1")
         #else
         false
