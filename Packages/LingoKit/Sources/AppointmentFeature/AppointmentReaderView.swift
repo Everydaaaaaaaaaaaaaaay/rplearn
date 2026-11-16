@@ -116,8 +116,14 @@ struct AppointmentReaderView: View {
         VStack(alignment: .leading, spacing: 0) {
             if !inputFocused {
                 HStack {
-                    Text(model.beat?.speaker == "character" ? characterName(model.detail?.appointment.characterId ?? model.id) : "旁白")
-                        .font(.caption.weight(.semibold)).foregroundStyle(ink.opacity(0.65))
+                    if model.beat?.speaker == "character", let item = model.detail?.appointment {
+                        AppointmentAvatarView(characterID: item.characterId, name: characterName(item.characterId))
+                        Text(characterName(item.characterId)).font(.caption.weight(.medium))
+                            .foregroundStyle(ink.opacity(0.65)).lineLimit(2)
+                    } else {
+                        Label("旁白", systemImage: "text.alignleft").font(.caption.weight(.medium))
+                            .foregroundStyle(ink.opacity(0.65))
+                    }
                     Spacer()
                     Button(translation ? "中 / EN" : "EN") { translation.toggle() }.font(.caption.weight(.medium)).frame(minWidth: 52, minHeight: 44).accessibilityLabel(translation ? "隐藏中文翻译" : "显示中文翻译")
                 }
@@ -128,8 +134,8 @@ struct AppointmentReaderView: View {
                     if let beat = model.beat {
                         if readingServices != nil {
                             TappableText(tokens: TokenCache.tokens(for: beat.english, cacheKey: "appointment-\(model.block?.id ?? "")-\(model.beatIndex)"), contextID: "appointment-\(model.id)-\(model.block?.id ?? "")-\(model.beatIndex)", textColor: ink, selection: wordSelection, onSelect: { wordSelection = $0 })
-                                .font(.system(.title3, design: .serif)).lineSpacing(6).accessibilityIdentifier("appointment.line")
-                        } else { Text(beat.english).font(.system(.title3, design: .serif)).lineSpacing(6).textSelection(.enabled).accessibilityIdentifier("appointment.line") }
+                                .font(.body).lineSpacing(6).accessibilityIdentifier("appointment.line")
+                        } else { Text(beat.english).font(.body).lineSpacing(6).textSelection(.enabled).accessibilityIdentifier("appointment.line") }
                         if translation { Text(beat.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.77)).lineSpacing(5).fixedSize(horizontal: false, vertical: true) }
                     }
                     if model.isLastBeat && model.isLatestBlock && model.block?.ending == false && model.detail?.appointment.status == "in_progress" {
@@ -155,7 +161,7 @@ struct AppointmentReaderView: View {
             }
             .scrollBounceBehavior(.basedOnSize)
             .frame(maxHeight: max(44, maxHeight - (showsComposer ? 220 : 144)))
-            .fixedSize(horizontal: false, vertical: !dynamicTypeSize.isAccessibilitySize && !inputFocused)
+            .fixedSize(horizontal: false, vertical: !dynamicTypeSize.isAccessibilitySize)
             .id("\(model.block?.id ?? "")-\(model.beatIndex)")
             if showsComposer { customActionInput.padding(.top, 16) }
             if !inputFocused {
@@ -171,7 +177,7 @@ struct AppointmentReaderView: View {
             }
         }
         .foregroundStyle(ink).padding(24)
-        .background((reduceTransparency || contrast == .increased ? AppointmentStyle.canvas : Color.white.opacity(0.94)), in: RoundedRectangle(cornerRadius: 28, style: .continuous))
+        .background((reduceTransparency || contrast == .increased ? AppointmentStyle.canvas : AppointmentStyle.canvas.opacity(0.96)), in: RoundedRectangle(cornerRadius: 28, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).strokeBorder(.white.opacity(0.7)))
         .environment(\.colorScheme, .light)
     }

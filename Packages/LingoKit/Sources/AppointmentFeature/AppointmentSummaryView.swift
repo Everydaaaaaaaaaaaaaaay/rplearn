@@ -7,110 +7,141 @@ struct AppointmentSummaryView: View {
     let characterName: (UUID) -> String
     let onChat: (UUID) -> Void
     let onMemory: (UUID) -> Void
+    var onBack: (() -> Void)? = nil
     @State private var history = false
+    @ScaledMetric(relativeTo: .body) private var bodySize = 16
+    @ScaledMetric(relativeTo: .subheadline) private var secondarySize = 14
+    @ScaledMetric(relativeTo: .headline) private var affinitySize = 18
     private let ink = AppointmentStyle.ink
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
+        AppointmentPage(cityID: model.detail?.appointment.cityId ?? "", cityName: model.detail?.appointment.cityName ?? "",
+                        title: "回顾", onBack: onBack) {
+            ScrollView {
                 if let item = model.detail?.appointment {
-                    VStack(alignment: .leading, spacing: 18) {
-                        Text(item.displayTitle(companionName: characterName(item.characterId)))
-                            .font(.largeTitle.weight(.semibold))
-                        AppointmentTimeView(appointment: item)
-                    }
-                    .padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
-                    if let summary = model.detail?.summary {
-                        relationship(summary)
+                    VStack(alignment: .leading, spacing: 0) {
+                        AppointmentIdentityView(appointment: item, name: characterName(item.characterId))
+                        AppointmentSectionDivider()
+                        if let summary = model.detail?.summary {
+                            relationship(summary)
+                        } else {
+                            VStack(alignment: .leading, spacing: 14) {
+                                Text("回顾整理中").font(.headline)
+                                Text("经历已保存，可以稍后查看。").font(.subheadline).foregroundStyle(ink.opacity(0.65))
+                                Button("重新载入回顾") { Task { await model.load() } }.frame(minHeight: 44)
+                            }
+                        }
+                        AppointmentSectionDivider()
                         actualPath
-                        memories(summary, characterID: item.characterId)
-                    } else {
-                        VStack(alignment: .leading, spacing: 14) {
-                            Text("回顾整理中").font(.headline)
-                            Text("经历已保存，可以稍后查看。").font(.subheadline).foregroundStyle(ink.opacity(0.65))
-                            Button("重新载入回顾") { Task { await model.load() } }.frame(minHeight: 44)
-                        }.padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
-                        actualPath
+                        if let summary = model.detail?.summary {
+                            AppointmentSectionDivider()
+                            memories(summary, characterID: item.characterId)
+                        }
+                        if let error = model.error { Text(error).font(.footnote).padding(.top, 12) }
+                        Button { history = true } label: {
+                            HStack(spacing: 10) {
+                                Image(systemName: "clock.arrow.circlepath")
+                                Text("回看完整经历")
+                                Spacer()
+                                Image(systemName: "chevron.right").font(.system(size: 12))
+                            }.font(.subheadline.weight(.medium)).frame(minHeight: 48)
+                        }.buttonStyle(.plain).padding(.top, 12)
+                        Button { onChat(item.characterId) } label: { Text("返回聊天") }
+                            .buttonStyle(AppointmentPrimaryButtonStyle()).padding(.top, 12)
+                            .accessibilityIdentifier("appointment.backToChat")
                     }
-                    if let error = model.error { Text(error).font(.footnote) }
-                    Button { history = true } label: {
-                        HStack { Text("回看完整经历"); Spacer(); Image(systemName: "arrow.up.right") }
-                            .font(.subheadline.weight(.semibold)).padding(24).frame(minHeight: 52)
-                            .appointmentSurface()
-                    }.buttonStyle(DSSceneEntranceButtonStyle())
-                    Button { onChat(item.characterId) } label: {
-                        Label("返回聊天", systemImage: "bubble.left")
-                    }
-                    .buttonStyle(AppointmentPrimaryButtonStyle())
-                    .accessibilityIdentifier("appointment.backToChat")
-                }
-            }
-            .padding(22).frame(maxWidth: 640).frame(maxWidth: .infinity)
+                    .padding(.horizontal, 24).padding(.top, 22).padding(.bottom, 24)
+                    .frame(maxWidth: 640).frame(maxWidth: .infinity)
+                } else { ProgressView("正在打开回顾…").padding(40) }
+            }.scrollBounceBehavior(.basedOnSize)
         }
-        .appointmentChrome(cityID: model.detail?.appointment.cityId ?? "", cityName: model.detail?.appointment.displayCityName ?? "")
-        .appointmentNavigation("回顾").dsTabBarHidden()
+        .dsTabBarHidden()
         .sheet(isPresented: $history) { AppointmentHistoryView(detail: model.detail, characterName: characterName) }
-        .task { await model.settleIfPending() }
+        .task {
+            if model.detail == nil { await model.load() }
+            else { await model.settleIfPending() }
+        }
     }
 
     private func relationship(_ summary: BackendAppointmentSummary) -> some View {
-        VStack(alignment: .leading, spacing: 16) {
-            if summary.affinity.status == "settled", let before = summary.affinity.before, let after = summary.affinity.after, let delta = summary.affinity.delta {
-                Text(affinityLabel(delta)).font(.title.weight(.semibold)).accessibilityIdentifier("appointment.affinity")
-                Text("\(number(before)) → \(number(after))").font(.subheadline).monospacedDigit().foregroundStyle(ink.opacity(0.65))
-            } else {
-                Text("好感待结算").font(.title2.weight(.semibold)).accessibilityIdentifier("appointment.affinity.pending")
-                Text("经历已保存，关系评价完成后会显示实际变化。").font(.subheadline)
-                Button(model.settling ? "正在整理…" : "重试整理回顾") {
-                    Task { await model.settleIfPending(); await model.load() }
-                }.disabled(model.settling || model.loading || model.offline).frame(minHeight: 44)
+        HStack(alignment: .top, spacing: 14) {
+            let color = summary.affinity.delta.map { $0 < 0 } == true
+                ? Color(red: 0.59, green: 0.40, blue: 0.20) : Color(red: 0.65, green: 0.32, blue: 0.40)
+            Image(systemName: "heart.fill")
+                .font(.system(size: 20)).foregroundStyle(color)
+                .frame(width: 38, height: 38).background(color.opacity(0.08), in: Circle())
+            VStack(alignment: .leading, spacing: 8) {
+                if summary.affinity.status == "settled", let before = summary.affinity.before,
+                   let after = summary.affinity.after, let delta = summary.affinity.delta {
+                    HStack(alignment: .firstTextBaseline, spacing: 12) {
+                        Text(affinityLabel(delta)).font(.system(size: affinitySize, weight: .semibold))
+                            .fixedSize(horizontal: false, vertical: true).accessibilityIdentifier("appointment.affinity")
+                        Spacer(minLength: 0)
+                        Text("\(number(before)) → \(number(after))")
+                            .font(.caption).monospacedDigit().foregroundStyle(ink.opacity(0.6))
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                } else {
+                    Text("好感待结算").font(.system(size: affinitySize, weight: .semibold))
+                        .accessibilityIdentifier("appointment.affinity.pending")
+                    Text("经历已保存，关系评价完成后会显示实际变化。").font(.footnote)
+                    Button(model.settling ? "正在整理…" : "重试整理回顾") {
+                        Task { await model.settleIfPending(); await model.load() }
+                    }.disabled(model.settling || model.loading || model.offline).frame(minHeight: 44)
+                }
+                if !summary.affinity.reason.isEmpty {
+                    Text(summary.affinity.reason).font(.footnote).foregroundStyle(ink.opacity(0.65))
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
-            Text(summary.affinity.reason).font(.subheadline).foregroundStyle(ink.opacity(0.65))
         }
-        .padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
     }
 
     private func memories(_ summary: BackendAppointmentSummary, characterID: UUID) -> some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("共同记忆").font(.headline)
+        let allSaved = !summary.memories.isEmpty && summary.memories.allSatisfy { ["active", "saved"].contains($0.status) }
+        return VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .firstTextBaseline) {
+                Label("共同记忆", systemImage: "bookmark").font(.system(size: bodySize, weight: .semibold))
+                Spacer()
+                if allSaved { Label("已保存", systemImage: "checkmark.circle").font(.caption).foregroundStyle(ink.opacity(0.6)) }
+            }
             if summary.memories.isEmpty {
                 Text(summary.affinity.status == "pending" ? "记忆整理中。" : "这次没有新增精选记忆，完整经历可随时回看。")
                     .font(.subheadline).foregroundStyle(ink.opacity(0.65))
             }
             ForEach(summary.memories) { memory in
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(memory.content).font(.body).lineSpacing(4)
-                    Text(memoryStatus(memory.status)).font(.caption).foregroundStyle(ink.opacity(0.6))
+                    Text(memory.content).font(.subheadline).lineSpacing(4)
+                        .foregroundStyle(ink.opacity(0.8)).fixedSize(horizontal: false, vertical: true)
+                    if !allSaved { Text(memoryStatus(memory.status)).font(.caption).foregroundStyle(ink.opacity(0.6)) }
                 }
             }
             Button { onMemory(characterID) } label: {
-                HStack { Text("管理记忆"); Spacer(); Image(systemName: "arrow.up.right") }
-                    .font(.subheadline.weight(.semibold)).frame(minHeight: 44)
-            }.accessibilityIdentifier("appointment.manageMemories")
+                HStack(spacing: 6) {
+                    Text("管理记忆")
+                    Image(systemName: "arrow.up.right").font(.system(size: 11))
+                }.font(.footnote.weight(.medium)).frame(minHeight: 44)
+            }.buttonStyle(.plain).accessibilityIdentifier("appointment.manageMemories")
         }
-        .padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
     }
 
     private var actualPath: some View {
-        VStack(alignment: .leading, spacing: 22) {
-            Text("你的选择").font(.headline)
+        VStack(alignment: .leading, spacing: 16) {
+            Label("你的选择", systemImage: "arrow.turn.down.right").font(.system(size: bodySize, weight: .semibold))
             if model.detail?.session?.decisions.isEmpty != false {
                 Text("这次没有提交选择。").font(.subheadline).foregroundStyle(ink.opacity(0.65))
             }
             ForEach(model.detail?.session?.decisions ?? []) { decision in
-                VStack(alignment: .leading, spacing: 10) {
-                    if let block = model.blocks.first(where: { $0.id == decision.blockId }) {
-                        Text(block.location).font(.caption).foregroundStyle(ink.opacity(0.6))
-                    }
-                    Text(decision.input).font(.body.weight(.medium)).textSelection(.enabled)
-                    Text(decision.outcome).font(.subheadline).foregroundStyle(ink.opacity(0.7)).textSelection(.enabled)
+                HStack(alignment: .top, spacing: 12) {
+                    UserAvatar(name: "你", size: 26)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(decision.input).font(.system(size: bodySize, weight: .medium)).lineSpacing(3).textSelection(.enabled)
+                        Text(decision.outcome).font(.system(size: secondarySize)).lineSpacing(3)
+                            .foregroundStyle(ink.opacity(0.65)).textSelection(.enabled)
+                    }.fixedSize(horizontal: false, vertical: true)
                 }
-                .padding(.leading, 16)
-                .overlay(alignment: .leading) { RoundedRectangle(cornerRadius: 1).fill(ink.opacity(0.15)).frame(width: 2) }
             }
         }
-        .padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
-        .accessibilityIdentifier("appointment.actualPath")
     }
 
     private func number(_ value: Double) -> String { value.formatted(.number.precision(.fractionLength(0...3))) }
@@ -136,46 +167,58 @@ struct AppointmentSummaryView: View {
 struct AppointmentHistoryView: View {
     let detail: BackendAppointmentDetail?
     let characterName: (UUID) -> String
+    @ScaledMetric(relativeTo: .body) private var bodySize = 16
+    @ScaledMetric(relativeTo: .subheadline) private var secondarySize = 14
     private let ink = AppointmentStyle.ink
+    private var blocks: [BackendAppointmentBlock] { detail?.session?.blocks.sorted { $0.sequence < $1.sequence } ?? [] }
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: 18) {
-                    if let item = detail?.appointment {
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text(item.displayTitle(companionName: characterName(item.characterId)))
-                                .font(.title2.weight(.semibold))
-                            AppointmentTimeView(appointment: item)
-                        }.padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
-                    }
-                    ForEach(detail?.session?.blocks.sorted { $0.sequence < $1.sequence } ?? []) { block in
-                        VStack(alignment: .leading, spacing: 22) {
-                            Text(block.location).font(.subheadline.weight(.semibold)).foregroundStyle(ink.opacity(0.65))
-                            ForEach(Array(block.beats.enumerated()), id: \.offset) { _, beat in
-                                VStack(alignment: .leading, spacing: 10) {
-                                    Text(beat.speaker == "character" ? detail.map { characterName($0.appointment.characterId) } ?? "旅伴" : "旁白")
-                                        .font(.caption.weight(.semibold)).foregroundStyle(ink.opacity(0.6))
-                                    Text(beat.english).font(.system(.body, design: .serif)).lineSpacing(6).textSelection(.enabled)
-                                    Text(beat.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.7)).textSelection(.enabled)
+            AppointmentPage(cityID: detail?.appointment.cityId ?? "", cityName: detail?.appointment.cityName ?? "",
+                            title: "实际经历", backLabel: "返回阅读") {
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 0) {
+                        if let item = detail?.appointment {
+                            AppointmentIdentityView(appointment: item, name: characterName(item.characterId))
+                            AppointmentSectionDivider()
+                        }
+                        ForEach(Array(blocks.enumerated()), id: \.element.id) { index, block in
+                            VStack(alignment: .leading, spacing: 20) {
+                                if index == 0 || blocks[index - 1].location != block.location {
+                                    Label(block.location, systemImage: "mappin").font(.footnote).foregroundStyle(ink.opacity(0.65))
+                                }
+                                ForEach(Array(block.beats.enumerated()), id: \.offset) { _, beat in
+                                    HStack(alignment: .top, spacing: 12) {
+                                        if beat.speaker == "character", let item = detail?.appointment {
+                                            AppointmentAvatarView(characterID: item.characterId, name: characterName(item.characterId))
+                                        }
+                                        VStack(alignment: .leading, spacing: 8) {
+                                            Text(beat.speaker == "character" ? detail.map { characterName($0.appointment.characterId) } ?? "旅伴" : "旁白")
+                                                .font(.caption.weight(.medium)).foregroundStyle(ink.opacity(0.6))
+                                            Text(beat.english).font(.system(size: bodySize)).lineSpacing(5).textSelection(.enabled)
+                                            Text(beat.chinese).font(.system(size: secondarySize)).lineSpacing(4)
+                                                .foregroundStyle(ink.opacity(0.65)).textSelection(.enabled)
+                                        }
+                                    }.fixedSize(horizontal: false, vertical: true)
+                                }
+                                ForEach(detail?.session?.decisions.filter { $0.blockId == block.id } ?? []) { decision in
+                                    HStack(alignment: .top, spacing: 12) {
+                                        UserAvatar(name: "你", size: 26)
+                                        VStack(alignment: .leading, spacing: 8) {
+                                            Text(decision.custom ? "你 · 自定义行动" : "你的选择").font(.caption.weight(.medium))
+                                                .foregroundStyle(ink.opacity(0.6))
+                                            Text(decision.input).font(.system(size: bodySize, weight: .medium)).textSelection(.enabled)
+                                            Text(decision.outcome).font(.system(size: secondarySize)).foregroundStyle(ink.opacity(0.65))
+                                        }
+                                    }.fixedSize(horizontal: false, vertical: true)
                                 }
                             }
-                            ForEach(detail?.session?.decisions.filter { $0.blockId == block.id } ?? []) { decision in
-                                VStack(alignment: .leading, spacing: 10) {
-                                    Text(decision.custom ? "你 · 自定义行动" : "你的选择").font(.caption.weight(.semibold))
-                                    Text(decision.input).textSelection(.enabled)
-                                    Text(decision.outcome).font(.subheadline).foregroundStyle(ink.opacity(0.7))
-                                }
-                                .padding(18).frame(maxWidth: .infinity, alignment: .leading)
-                                .background(ink.opacity(0.045), in: RoundedRectangle(cornerRadius: 18))
-                            }
-                        }.padding(24).frame(maxWidth: .infinity, alignment: .leading).appointmentSurface()
-                    }
-                }.padding(22).frame(maxWidth: 640).frame(maxWidth: .infinity)
+                            AppointmentSectionDivider()
+                        }
+                    }.padding(.horizontal, 24).padding(.top, 22).padding(.bottom, 24)
+                        .frame(maxWidth: 640).frame(maxWidth: .infinity)
+                }.scrollBounceBehavior(.basedOnSize)
             }
-            .appointmentChrome(cityID: detail?.appointment.cityId ?? "", cityName: detail?.appointment.displayCityName ?? "")
-            .appointmentNavigation("实际经历", backLabel: "返回阅读")
-        }
-        .tint(ink)
+        }.tint(ink)
     }
 }

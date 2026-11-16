@@ -3,55 +3,45 @@ import SwiftUI
 
 enum AppointmentStyle {
     static let ink = Color.dsTravelNavy
-    static let canvas = Color(red: 0.96, green: 0.97, blue: 0.97)
+    static let canvas = Color(red: 0.985, green: 0.98, blue: 0.965)
 }
 
-struct AppointmentBackdrop: View {
+struct AppointmentPage<Content: View>: View {
     let cityID: String
     let cityName: String
+    var title = ""
+    var backLabel = "返回"
+    var onBack: (() -> Void)?
+    @ViewBuilder let content: () -> Content
 
     var body: some View {
-        AppointmentPhotoView(cityID: cityID, cityName: cityName, paused: true, showsControls: false)
-            .blur(radius: 14, opaque: true)
-            .overlay(.white.opacity(0.30))
-            .ignoresSafeArea()
-            .allowsHitTesting(false)
-            .accessibilityHidden(true)
-    }
-}
-
-private struct AppointmentSurface: ViewModifier {
-    let radius: CGFloat
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    @Environment(\.colorSchemeContrast) private var contrast
-
-    func body(content: Content) -> some View {
-        content
-            .background {
-                let shape = RoundedRectangle(cornerRadius: radius, style: .continuous)
-                if reduceTransparency || contrast == .increased {
-                    shape.fill(AppointmentStyle.canvas)
-                } else {
-                    shape.fill(.regularMaterial).environment(\.colorScheme, .light)
+        VStack(spacing: 0) {
+            AppointmentPhotoView(cityID: cityID, cityName: cityName, paused: true,
+                                 showsControls: false, showsPlaceholder: false)
+                .frame(height: 148).clipped()
+                .overlay(alignment: .bottom) {
+                    HStack(spacing: 12) {
+                        AppointmentBackButton(label: backLabel, onBack: onBack)
+                        if !title.isEmpty { Text(title).font(.subheadline.weight(.medium)) }
+                        Spacer(minLength: 0)
+                    }
+                    .foregroundStyle(.white)
+                    .shadow(color: .black.opacity(0.25), radius: 3, y: 1)
+                    .padding(.horizontal, 16).padding(.bottom, 8)
+                    .frame(maxWidth: 640).frame(maxWidth: .infinity)
                 }
-            }
-            .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous).strokeBorder(.white.opacity(0.65)))
+            content().frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .background(AppointmentStyle.canvas).foregroundStyle(AppointmentStyle.ink).tint(AppointmentStyle.ink)
+        .ignoresSafeArea(edges: .top)
+        .toolbar(.hidden, for: .navigationBar)
+        .preferredColorScheme(.light)
     }
 }
 
-private struct AppointmentChrome: ViewModifier {
-    let cityID: String
-    let cityName: String
-
-    func body(content: Content) -> some View {
-        content
-            .background { AppointmentBackdrop(cityID: cityID, cityName: cityName) }
-            .foregroundStyle(AppointmentStyle.ink)
-            .tint(AppointmentStyle.ink)
-            .toolbarBackground(.hidden, for: .navigationBar)
-            .toolbarColorScheme(.light, for: .navigationBar)
-            .environment(\.colorScheme, .light)
-            .preferredColorScheme(.light)
+struct AppointmentSectionDivider: View {
+    var body: some View {
+        Rectangle().fill(AppointmentStyle.ink.opacity(0.09)).frame(height: 0.5).padding(.vertical, 22)
     }
 }
 
@@ -73,40 +63,6 @@ struct AppointmentBackButton: View {
     }
 }
 
-private struct AppointmentNavigation: ViewModifier {
-    var title: String
-    var backLabel: String
-    var onBack: (() -> Void)?
-
-    func body(content: Content) -> some View {
-        content
-            .toolbar(.hidden, for: .navigationBar)
-            .safeAreaInset(edge: .top, spacing: 0) {
-                HStack(spacing: 12) {
-                    AppointmentBackButton(label: backLabel, onBack: onBack)
-                    if !title.isEmpty { Text(title).font(.subheadline.weight(.medium)) }
-                    Spacer(minLength: 0)
-                }
-                .foregroundStyle(AppointmentStyle.ink)
-                .padding(.horizontal, 16).padding(.vertical, 4)
-                .frame(maxWidth: 640).frame(maxWidth: .infinity, alignment: .center)
-            }
-    }
-}
-
-extension View {
-    func appointmentNavigation(_ title: String = "", backLabel: String = "返回", onBack: (() -> Void)? = nil) -> some View {
-        modifier(AppointmentNavigation(title: title, backLabel: backLabel, onBack: onBack))
-    }
-
-    func appointmentSurface(radius: CGFloat = 28) -> some View {
-        modifier(AppointmentSurface(radius: radius))
-    }
-
-    func appointmentChrome(cityID: String, cityName: String) -> some View {
-        modifier(AppointmentChrome(cityID: cityID, cityName: cityName))
-    }
-}
 
 struct AppointmentPrimaryButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) private var isEnabled

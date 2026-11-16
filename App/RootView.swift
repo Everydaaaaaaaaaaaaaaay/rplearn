@@ -39,7 +39,7 @@ struct RootView: View {
     @State private var selectedTab: AppTab = .messages
     @State private var appointmentPresentation: AppointmentPresentation?
     @State private var appointmentCityID = ""
-    @State private var appointmentNames: [UUID: String] = [:]
+    @State private var appointmentCharacters: [UUID: CharacterDTO] = [:]
     @State private var memoryCharacterID: UUID?
     private struct AppointmentPresentation: Identifiable { let id = UUID(); let appointmentID: UUID? }
     @State private var visitedTabs: Set<AppTab> = []
@@ -196,7 +196,11 @@ struct RootView: View {
                 }
                 #endif
             }
-            .onChange(of: activeUserID) { _, _ in appointmentPresentation = nil }
+            .onChange(of: activeUserID) { _, _ in
+                appointmentPresentation = nil
+                appointmentCharacters = [:]
+                appointmentCityID = ""
+            }
             .fullScreenCover(item: $appointmentPresentation) { presentation in
                 appointmentPage(presentation)
             }
@@ -837,7 +841,8 @@ struct RootView: View {
             storageNamespace: activeUserID?.uuidString ?? "inactive", initialAppointmentID: presentation.appointmentID,
             readingServices: reading, settle: { id in try await coordinator?.settle(id) },
             onClose: { appointmentPresentation = nil },
-            characterName: { appointmentNames[$0] ?? "旅伴" },
+            characterName: { appointmentCharacters[$0]?.displayName ?? "旅伴" },
+            characterCards: appointmentCharacters.mapValues(\.card),
             onChat: { id in
                 appointmentPresentation = nil
                 Task { @MainActor in
@@ -853,9 +858,13 @@ struct RootView: View {
                 openMe(.memory)
             })
             .task {
-                appointmentCityID = (try? await environment.economyStore.profile().currentRegionID) ?? ""
-                if let characters = try? await environment.rosterStore.allCharacters() {
-                    appointmentNames = Dictionary(uniqueKeysWithValues: characters.map { ($0.id, $0.displayName) })
+                let accountID = activeUserID
+                let cityID = try? await environment.economyStore.profile().currentRegionID
+                let characters = try? await environment.rosterStore.allCharacters()
+                guard !Task.isCancelled, activeUserID == accountID else { return }
+                appointmentCityID = cityID ?? ""
+                if let characters {
+                    appointmentCharacters = Dictionary(uniqueKeysWithValues: characters.map { ($0.id, $0) })
                 }
             }
             .overlay {

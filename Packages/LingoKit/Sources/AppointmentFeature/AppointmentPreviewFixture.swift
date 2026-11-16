@@ -1,14 +1,21 @@
 #if DEBUG
 import BackendKit
 import Foundation
+import PersistenceKit
 
 /// Explicitly isolated local fixture. It never calls the backend or opens the user's cache.
 extension AppointmentListView {
     public nonisolated static let previewAppointmentID = UUID(uuidString: "a0000000-0000-4000-8000-000000000001")!
     public nonisolated static let previewCharacterID = UUID(uuidString: "a0000000-0000-4000-8000-000000000002")!
 
+    static var previewCharacterCards: [UUID: CharacterCard] {
+        [previewCharacterID: CharacterCard(name: "Oliver", age: 25, gender: .male, nationality: "UK",
+                                          regionID: "london", occupation: "", hobbies: [], appearance: "",
+                                          personality: "", avatarAssetName: "avatar_oliver")]
+    }
+
     public static func previewFixture(scenario: String = "confirmed", readingServices: AppointmentReadingServices? = nil, onClose: (() -> Void)? = nil, onChat: @escaping (UUID) -> Void = { _ in }, onMemory: @escaping (UUID) -> Void = { _ in }) -> AppointmentListView {
-        AppointmentListView(service: AppointmentPreviewService(scenario: scenario), currentCityID: "london", storageNamespace: "debug-fixture-\(UUID().uuidString)", initialAppointmentID: scenario == "list" ? nil : previewAppointmentID, readingServices: readingServices, onClose: onClose, characterName: { _ in "Oliver · 本地演示" }, onChat: onChat, onMemory: onMemory)
+        AppointmentListView(service: AppointmentPreviewService(scenario: scenario), currentCityID: "london", storageNamespace: "debug-fixture-\(UUID().uuidString)", initialAppointmentID: scenario == "list" ? nil : previewAppointmentID, readingServices: readingServices, onClose: onClose, characterName: { _ in "Oliver" }, characterCards: previewCharacterCards, onChat: onChat, onMemory: onMemory)
     }
 }
 

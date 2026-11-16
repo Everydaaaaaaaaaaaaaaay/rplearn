@@ -23,12 +23,14 @@ final class AppointmentUITests: XCTestCase {
     func testNativeSummaryDesignPreview() {
         app.launchEnvironment["UI_TEST_APPOINTMENT_SCENARIO"] = "summary-design"
         app.launch()
-        XCTAssertTrue(app.staticTexts["appointment.design.title"].waitForExistence(timeout: 20))
-        XCTAssertEqual(app.staticTexts["appointment.design.title"].label, "和Oliver一起散步")
-        XCTAssertTrue(app.staticTexts["appointment.design.affinity"].exists)
+        XCTAssertTrue(app.staticTexts["appointment.title"].waitForExistence(timeout: 20))
+        XCTAssertEqual(app.staticTexts["appointment.title"].label, "和Oliver一起散步")
+        XCTAssertTrue(app.staticTexts["appointment.affinity"].exists)
         XCTAssertTrue(app.staticTexts["Could we sit by the water? 我想安静坐一会。"].exists)
         XCTAssertTrue(app.staticTexts["今天就到这里"].exists)
         capture("appointment-native-summary-design")
+        app.buttons["appointment.back"].tap()
+        XCTAssertTrue(app.buttons["home.appointments"].waitForExistence(timeout: 5))
     }
 
     func testConfirmedCustomBilingualPathPauseFinishAndReadOnlySummary() throws {
@@ -115,6 +117,21 @@ final class AppointmentUITests: XCTestCase {
         XCTAssertFalse(app.navigationBars["约定"].exists)
     }
 
+    func testSummaryDisplaysZeroNegativeAndPendingValues() {
+        for (scenario, label) in [("zero", "好感不变"), ("negative", "好感 -1"), ("pending", "好感待结算")] {
+            launch(scenario)
+            let summary = app.buttons["appointment.openSummary"]
+            reveal(summary)
+            summary.tap()
+            let identifier = scenario == "pending" ? "appointment.affinity.pending" : "appointment.affinity"
+            let affinity = app.staticTexts[identifier]
+            reveal(affinity)
+            XCTAssertEqual(affinity.label, label)
+            capture("appointment-summary-\(scenario)")
+            app.terminate()
+        }
+    }
+
     func testFailedContinuationRetriesOriginalInputAndRecordsItOnce() {
         launch("retry")
         reveal(app.buttons["appointment.resume"])
@@ -183,7 +200,7 @@ final class AppointmentUITests: XCTestCase {
         let action: String
         switch scenario {
         case "active", "retry", "offline", "conflict": action = "appointment.resume"
-        case "completed": action = "appointment.openSummary"
+        case "completed", "zero", "negative", "pending": action = "appointment.openSummary"
         default: action = "appointment.start"
         }
         XCTAssertTrue(app.buttons[action].waitForExistence(timeout: 20))
@@ -208,9 +225,12 @@ final class AppointmentUITests: XCTestCase {
         XCTAssertFalse(app.navigationBars["自己说一句"].exists)
         editor.tap()
         editor.typeText(input)
+        assertComposerFollowsChoices(editor)
         capture("appointment-03-bilingual-native-input")
         let send = app.buttons["appointment.sendInput"]
         waitForKeyboardAndSend(send)
+        assertComposerFollowsChoices(editor)
+        capture("appointment-03-bilingual-keyboard-settled")
         XCTAssertTrue(send.isEnabled)
         inputTrace("before-send", send: send)
         send.tap()
@@ -234,6 +254,13 @@ final class AppointmentUITests: XCTestCase {
         app.buttons["返回阅读"].tap()
     }
 
+    private func assertComposerFollowsChoices(_ editor: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
+        let lastChoice = app.buttons["appointment.choice.quiet"]
+        XCTAssertTrue(lastChoice.exists, file: file, line: line)
+        XCTAssertLessThanOrEqual(editor.frame.minY - lastChoice.frame.maxY, 48,
+                                 "聚焦输入时，选项与输入框之间不应出现撑满滚动区的空白", file: file, line: line)
+    }
+
     private func finishNaturally() {
         app.buttons["阅读选项"].tap()
         let finish = app.buttons["今天就到这里"]
@@ -252,14 +279,15 @@ final class AppointmentUITests: XCTestCase {
 
     private func reveal(_ element: XCUIElement, aboveKeyboard: Bool = false, file: StaticString = #filePath, line: UInt = #line) {
         for _ in 0..<14 {
-            let bottom = aboveKeyboard && app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY : app.frame.maxY - 12
-            if element.exists, element.isHittable, element.frame.midY > app.frame.minY + 65, element.frame.midY < bottom - 10 { return }
-            let frame = element.frame
             let scroll = app.scrollViews.firstMatch
+            let top = max(app.frame.minY + 65, scroll.exists ? scroll.frame.minY + 8 : app.frame.minY + 65)
+            let bottom = aboveKeyboard && app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY : app.frame.maxY - 12
+            if element.exists, element.isHittable, element.frame.midY > top, element.frame.midY < bottom - 10 { return }
+            let frame = element.frame
             let surface = scroll.exists ? scroll : app!
             let upper = surface.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.30))
             let lower = surface.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.65))
-            if element.exists && frame.midY < app.frame.minY + 65 {
+            if element.exists && frame.midY < top {
                 upper.press(forDuration: 0.05, thenDragTo: lower)
             } else {
                 lower.press(forDuration: 0.05, thenDragTo: upper)
