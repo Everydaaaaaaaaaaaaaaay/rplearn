@@ -12,12 +12,18 @@ final class PlacementListeningAudioPlayer {
     func play(text: String, question: String, completedPlays: Int,
               started: @escaping @MainActor @Sendable () -> Void,
               completed: @escaping @MainActor @Sendable (Bool) -> Void) {
-        var segments = [ListeningSpeechSegment(text: text)]
-        if question.contains("?"), question.range(of: "\\p{Han}", options: .regularExpression) == nil {
-            segments = [.init(text: text, pauseAfterMs: 3000), .init(text: "Question: " + question)]
-        }
-        player.play(segments: segments, voice: ListeningVoicePolicy.voice(completedPlays: completedPlays),
+        player.play(segments: Self.segments(text: text, question: question, completedPlays: completedPlays),
+                    voice: ListeningVoicePolicy.voice(completedPlays: completedPlays),
                     started: started, completed: completed)
     }
+
+    static func segments(text: String, question: String, completedPlays: Int) -> [ListeningSpeechSegment] {
+        if completedPlays == 1, question.contains("?"),
+           question.range(of: "\\p{Han}", options: .regularExpression) == nil {
+            return [.init(text: text, pauseAfterMs: 3000), .init(text: "Question: " + question)]
+        }
+        return [.init(text: text)]
+    }
+
     func stop() { player.stop() }
 }
