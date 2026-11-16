@@ -20,6 +20,17 @@ final class AppointmentUITests: XCTestCase {
 
     override func tearDown() async throws { app.terminate() }
 
+    func testNativeSummaryDesignPreview() {
+        app.launchEnvironment["UI_TEST_APPOINTMENT_SCENARIO"] = "summary-design"
+        app.launch()
+        XCTAssertTrue(app.staticTexts["appointment.design.title"].waitForExistence(timeout: 20))
+        XCTAssertEqual(app.staticTexts["appointment.design.title"].label, "和Oliver一起散步")
+        XCTAssertTrue(app.staticTexts["appointment.design.affinity"].exists)
+        XCTAssertTrue(app.staticTexts["Could we sit by the water? 我想安静坐一会。"].exists)
+        XCTAssertTrue(app.staticTexts["今天就到这里"].exists)
+        capture("appointment-native-summary-design")
+    }
+
     func testConfirmedCustomBilingualPathPauseFinishAndReadOnlySummary() throws {
         launch("list")
         let start = app.buttons["appointment.start"]

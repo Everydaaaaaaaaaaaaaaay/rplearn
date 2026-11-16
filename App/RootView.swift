@@ -794,8 +794,14 @@ struct RootView: View {
         let close = { appointmentPresentation = nil }
         #if DEBUG
         if bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" {
-            AppointmentListView.previewFixture(scenario: ProcessInfo.processInfo.environment["UI_TEST_APPOINTMENT_SCENARIO"] ?? "confirmed",
-                                               readingServices: reading, onClose: close, onChat: { _ in close() }, onMemory: { _ in close() })
+            if ProcessInfo.processInfo.environment["UI_TEST_APPOINTMENT_SCENARIO"] == "summary-design" {
+                AppointmentSummaryDesignPreview(onClose: close)
+            } else {
+                AppointmentListView.previewFixture(
+                    scenario: ProcessInfo.processInfo.environment["UI_TEST_APPOINTMENT_SCENARIO"] ?? "confirmed",
+                    readingServices: reading, onClose: close,
+                    onChat: { _ in close() }, onMemory: { _ in close() })
+            }
         } else {
             liveAppointmentPage(presentation, reading: reading)
         }
