@@ -78,13 +78,19 @@ final class TabHubTests: XCTestCase {
     }
 
     func testHeaderContrastAndDarkAppearance() {
-        for (city, appearance) in [("capetown", "light"), ("manchester", "light"),
-                                   ("newyork", "light"), ("sydney", "light"), ("london", "dark")] {
+        for (city, cityName, appearance) in [("capetown", "开普敦", "light"), ("manchester", "曼彻斯特", "light"),
+                                             ("newyork", "纽约", "light"), ("sydney", "悉尼", "light"), ("london", "伦敦", "dark")] {
             let app = launch(city: city, appearance: appearance)
             XCTAssertTrue(app.buttons["home.activities"].waitForExistence(timeout: 15))
+            XCTAssertTrue(app.staticTexts.matching(NSPredicate(
+                format: "label BEGINSWITH %@ AND label ENDSWITH %@", "当前驻地，", cityName
+            )).firstMatch.exists)
             capture(app, name: "hub-\(city)-activities-\(appearance)")
             app.tabBars.buttons["我的"].tap()
-            XCTAssertTrue(app.buttons["me.profile"].waitForExistence(timeout: 10))
+            let profile = app.buttons["me.profile"]
+            XCTAssertTrue(profile.waitForExistence(timeout: 10))
+            let updated = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", cityName), object: profile)
+            XCTAssertEqual(XCTWaiter.wait(for: [updated], timeout: 5), .completed)
             capture(app, name: "hub-\(city)-profile-\(appearance)")
             app.terminate()
         }

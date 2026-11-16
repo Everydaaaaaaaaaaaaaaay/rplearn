@@ -133,7 +133,7 @@ public struct MyPageView: View {
                     hubDivider
                     Button(action: onOpenMemory) { hubRow("记忆档案", symbol: "text.book.closed") }.accessibilityIdentifier("me.memory")
                 }
-                .dsSceneGlass(radius: 22, legibility: .shielded)
+                .dsSceneGlass(radius: 22, legibility: .frosted)
                 VStack(spacing: 0) {
                     Button(action: onOpenSubscription) {
                         hubRow("会员订阅", symbol: "person.crop.circle.badge.checkmark", value: presentation.accountBadgeTitle)
@@ -151,7 +151,7 @@ public struct MyPageView: View {
                         .accessibilityIdentifier("me.credits")
                     }
                 }
-                .dsSceneGlass(radius: 22, legibility: .shielded)
+                .dsSceneGlass(radius: 22, legibility: .frosted)
             }
             .buttonStyle(DSSceneEntranceButtonStyle())
             .padding(.horizontal, 16).padding(.top, 8).padding(.bottom, 24)
@@ -185,7 +185,7 @@ public struct MyPageView: View {
                 hubChevron
             }
             .padding(22).frame(maxWidth: .infinity, alignment: .leading)
-            .dsSceneGlass(radius: 22, interactive: true, legibility: .shielded)
+            .dsSceneGlass(radius: 22, interactive: true, legibility: .frosted)
         }
         .accessibilityIdentifier("me.profile")
         .accessibilityValue(cityName)
@@ -209,7 +209,7 @@ public struct MyPageView: View {
                 hubChevron.padding(.top, 6)
             }
             .padding(20).frame(maxWidth: .infinity, alignment: .leading)
-            .dsSceneGlass(radius: 22, interactive: true, legibility: .shielded)
+            .dsSceneGlass(radius: 22, interactive: true, legibility: .frosted)
         }
         .accessibilityIdentifier("me.learning")
     }

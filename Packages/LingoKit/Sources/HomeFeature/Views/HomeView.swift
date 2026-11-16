@@ -73,9 +73,9 @@ public struct HomeView: View {
                     } actions: {
                         Button("重试") { Task { await reloadProfile() } }
                     }
-                    .padding(24).dsSceneGlass(legibility: .shielded).padding(16)
+                    .padding(24).dsSceneGlass(legibility: .frosted).padding(16)
                 } else {
-                    ProgressView("正在读取旅程").padding(24).dsSceneGlass(legibility: .shielded).padding(16)
+                    ProgressView("正在读取旅程").padding(24).dsSceneGlass(legibility: .frosted).padding(16)
                 }
             }
             .scrollBounceBehavior(.basedOnSize)
@@ -166,7 +166,7 @@ public struct HomeView: View {
                 Image(systemName: "chevron.right").font(.system(size: 12, weight: .medium)).foregroundStyle(Color.dsSceneTextTertiary)
             }
             .padding(18).frame(maxWidth: .infinity, alignment: .leading)
-            .dsSceneGlass(radius: 22, interactive: true, legibility: .shielded)
+            .dsSceneGlass(radius: 22, interactive: true, legibility: .frosted)
             .contentShape(RoundedRectangle(cornerRadius: 22))
         }
         .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityIdentifier("home.appointments")
@@ -222,7 +222,7 @@ public struct HomeView: View {
                 }.padding(18)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .dsSceneGlass(radius: 22, interactive: true, legibility: .shielded)
+            .dsSceneGlass(radius: 22, interactive: true, legibility: .frosted)
             .contentShape(RoundedRectangle(cornerRadius: 22))
         }
         .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityLabel("世界地图")
