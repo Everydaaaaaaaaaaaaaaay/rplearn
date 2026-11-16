@@ -195,3 +195,9 @@ export function createDomainLearningContext(database: DatabaseResource) {
       repository.promoteDifficulty(sql, userId, requestId, from, to, expectedVersion),
   };
 }
+
+/** Read-only learner context for the server-owned conversation producer. */
+export function createDomainChatContext(database: DatabaseResource) {
+  const repository = new DomainRepository(database);
+  return { learner: repository.chatLearner.bind(repository) };
+}

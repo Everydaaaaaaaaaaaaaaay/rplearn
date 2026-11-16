@@ -8,6 +8,8 @@ import { ContentRepository } from "./repository.js";
 import { stripLegacyContentCommand } from "./legacy-compatibility.js";
 import type {
   ContentCommand,
+  ContentResourceType,
+  ContentCommandGuard,
   ContentCommandResult,
   ContentPage,
   ContentCommitObserver,
@@ -36,8 +38,9 @@ export function createContentService(
   contentCursor: ContentCursorCodec,
   syncCursor: SyncCursorCodec,
   observer?: ContentCommitObserver,
+  beforeCommand?: ContentCommandGuard,
 ): ContentService {
-  const repository = new ContentRepository(database, observer);
+  const repository = new ContentRepository(database, observer, beforeCommand);
   return {
     executeCommands: async (userId, commands) => {
       const results: ContentCommandResult[] = [];
@@ -180,5 +183,22 @@ export function createAppointmentContentService(database: DatabaseResource) {
         evidence,
         eventDate,
       ),
+  };
+}
+
+/** Shared conversations use the content owner for transaction-scoped reads and sync writes. */
+export function createChatContentService(database: DatabaseResource) {
+  const repository = new ContentRepository(database);
+  return {
+    read: (
+      sql: TransactionSql,
+      userId: string,
+      type: ContentResourceType,
+      id: string,
+    ) => repository.readRecord(sql, userId, type, id),
+    list: repository.sharedRecords.bind(repository),
+    messages: repository.sharedMessages.bind(repository),
+    write: repository.sharedWrite.bind(repository),
+    rewrite: repository.sharedRewrite.bind(repository),
   };
 }

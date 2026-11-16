@@ -206,7 +206,7 @@ public actor ChatStore {
         modelContext.insert(message)
         conversation.lastMessageAt = message.createdAt
         conversation.turnCount += 1
-        try journal(message)
+        try journal(message, deliveryOrigin: "proactive")
         try journal(conversation)
         try modelContext.save()
         return dto(from: message)
@@ -237,7 +237,7 @@ public actor ChatStore {
         message.text = cleanedReplacement
         message.tokenEstimate = TokenEstimator.estimate(cleanedReplacement)
         conversation.lastMessageAt = message.createdAt
-        try journal(message)
+        try journal(message, deliveryOrigin: "proactive")
         try journal(conversation)
         try modelContext.save()
         return dto(from: message)
@@ -283,7 +283,7 @@ public actor ChatStore {
         modelContext.insert(message)
         conversation.lastMessageAt = max(conversation.lastMessageAt, message.createdAt)
         conversation.turnCount += 1
-        try journal(message)
+        try journal(message, deliveryOrigin: "proactive")
         try journal(conversation)
         try modelContext.save()
         return dto(from: message)
@@ -301,7 +301,9 @@ public actor ChatStore {
         audioDuration: Double? = nil,
         tokenEstimate: Int = 0,
         createdAt: Date = .now,
-        learningOrigin: LearningChatOrigin? = nil
+        learningOrigin: LearningChatOrigin? = nil,
+        sharedVoiceLeaseID: UUID? = nil,
+        sharedOrdering: Bool = false
     ) throws -> MessageDTO {
         guard let conversation = try fetchConversation(id: conversationID) else {
             throw ChatError.conversationNotFound
@@ -325,7 +327,12 @@ public actor ChatStore {
         if role == .assistant {
             conversation.turnCount += 1
         }
-        try journal(message)
+        let predecessor =
+            sharedOrdering
+            ? conversation.messages.filter { $0.roleRaw == "user" && $0.messageID != message.messageID }.max {
+                $0.orderIndex < $1.orderIndex
+            }?.messageID : nil
+        try journal(message, sharedVoiceLeaseID: sharedVoiceLeaseID, sharedPredecessorID: predecessor)
         try journal(conversation)
         try modelContext.save()
         return dto(from: message)
@@ -761,7 +768,10 @@ public actor ChatStore {
         )
     }
 
-    private func journal(_ message: MessageEntity) throws {
+    private func journal(
+        _ message: MessageEntity, sharedVoiceLeaseID: UUID? = nil, sharedPredecessorID: UUID? = nil,
+        deliveryOrigin: String? = nil
+    ) throws {
         guard let conversationID = message.conversation?.conversationID else { return }
         let media = try voiceMediaLink(messageID: message.messageID)
         try ContentMutationJournal.upsert(
@@ -771,6 +781,9 @@ public actor ChatStore {
             parentID: conversationID.uuidString.lowercased(),
             payloadJSON: try ContentMutationJournal.encode(
                 ContentMessagePayload(
+                    sharedPredecessorId: sharedPredecessorID,
+                    sharedVoiceLeaseId: sharedVoiceLeaseID,
+                    deliveryOrigin: deliveryOrigin,
                     learningOrigin: LearningChatOrigin.decode(json: message.learningOriginJSON),
                     audioAssetId: media?.isRemoteReady == true ? media?.assetID : nil,
                     audioDuration: message.audioDuration,

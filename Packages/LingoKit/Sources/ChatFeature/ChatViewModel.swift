@@ -83,6 +83,13 @@ public final class ChatViewModel {
         }
     }
 
+    private var sharedPageVisible = false
+    private var sharedObserver: Task<Void, Never>?
+    private var sharedSnapshot: SharedChatSnapshot?
+    private var sharedReviewMessages: [UUID: MessageDTO] = [:]
+    private var sharedReplyError = false
+    private var usesSharedChat: Bool { deps.sharedChat != nil }
+
     private var realtimeLearningSource: LearningReplySource?
     private var replyTask: Task<Void, Never>?
     private let replyOwnerID = UUID()
@@ -98,11 +105,21 @@ public final class ChatViewModel {
     }
 
     public func load() async {
+        sharedPageVisible = true
         await refreshCharacter()
         do {
             let conversation = try await deps.chatStore.openConversation(characterID: character.id)
             self.conversation = conversation
             self.messages = try await deps.chatStore.messages(conversationID: conversation.id)
+            if let gateway = deps.sharedChat {
+                do {
+                    let state = try await gateway.openSharedConversation(characterID: character.id)
+                    try await acceptSharedState(state)
+                } catch {
+                    errorMessage = "会话暂未同步，恢复连接后会继续。"
+                }
+                startSharedObservation()
+            }
             if let profile = try? await deps.economyStore.profile() {
                 learnerDifficulty = profile.difficultyLevel
             }
@@ -266,7 +283,8 @@ public final class ChatViewModel {
                 audioFileName: capture.fileName,
                 audioDuration: capture.duration,
                 tokenEstimate: TokenEstimator.estimate(capture.transcript),
-                learningOrigin: await userLearningOrigin()
+                learningOrigin: await userLearningOrigin(),
+                sharedOrdering: usesSharedChat
             )
             if let sourceFileName = capture.fileName {
                 Task { [weak self] in
@@ -316,7 +334,9 @@ public final class ChatViewModel {
             role: .user,
             text: text,
             tokenEstimate: TokenEstimator.estimate(text),
-            learningOrigin: await userLearningOrigin()
+            learningOrigin: await userLearningOrigin(),
+            sharedVoiceLeaseID: usesSharedChat ? voiceLeaseID : nil,
+            sharedOrdering: usesSharedChat
         )
         persisted = true
         try await deps.chatStore.setReplyInterrupted(userMessageID: userMessage.id, interrupted: true)
@@ -324,6 +344,13 @@ public final class ChatViewModel {
         messages.sort { $0.orderIndex < $1.orderIndex }
         notifyConversationChanged()
 
+        if let gateway = deps.sharedChat {
+            sharedReviewMessages[userMessage.id] = userMessage
+            startSharedObservation()
+            try await gateway.uploadSharedMessages()
+            return sharedVoiceStream(
+                gateway: gateway, conversationID: conversation.id, userMessageID: userMessage.id)
+        }
         try Task.checkCancellation()
         realtimeLearningSource = nil
         let tracker = deps.learningChat
@@ -370,6 +397,11 @@ public final class ChatViewModel {
 
     /// 保存模型实际生成的语音字幕；被用户插话截断时保留中断标记。
     public func saveRealtimeAssistant(spokenText: String, interrupted: Bool) async {
+        if usesSharedChat {
+            await reloadMessages()
+            notifyConversationChanged()
+            return
+        }
         guard let conversation else { return }
         let spokenText = spokenText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !spokenText.isEmpty else { return }
@@ -406,6 +438,7 @@ public final class ChatViewModel {
     }
 
     public func refreshMessages() async {
+        if usesSharedChat { startSharedObservation() }
         await reloadMessages()
         if latestDialogueMessage?.role == .assistant, errorMessage == "上次回复未完成，点重试继续。" {
             errorMessage = nil
@@ -422,6 +455,8 @@ public final class ChatViewModel {
     }
 
     public func cancelPendingReply() {
+        sharedObserver?.cancel()
+        sharedObserver = nil
         cancelReplyProducer()
         replyTask = nil
         replyCycleID = UUID()
@@ -477,7 +512,8 @@ public final class ChatViewModel {
                 role: .user,
                 text: userText,
                 tokenEstimate: TokenEstimator.estimate(userText),
-                learningOrigin: await userLearningOrigin()
+                learningOrigin: await userLearningOrigin(),
+                sharedOrdering: usesSharedChat
             )
             await reloadMessages()
             notifyConversationChanged()
@@ -543,6 +579,19 @@ public final class ChatViewModel {
         replacing messageID: UUID? = nil,
         userMessage explicitUserMessage: MessageDTO? = nil
     ) {
+        if usesSharedChat {
+            if let explicitUserMessage { sharedReviewMessages[explicitUserMessage.id] = explicitUserMessage }
+            errorMessage = nil
+            isWaitingForUserBurst = true
+            startSharedObservation()
+            Task { [weak self] in
+                guard let self, let gateway = self.deps.sharedChat else { return }
+                do { try await gateway.uploadSharedMessages() } catch {
+                    self.errorMessage = "消息已保存在本机，连接恢复后会继续发送。"
+                }
+            }
+            return
+        }
         cancelReplyProducer()
         retryingMessageID = messageID
         guard let anchorMessage = explicitUserMessage
@@ -623,7 +672,8 @@ public final class ChatViewModel {
     }
 
     public var canRetryUnansweredReply: Bool {
-        !isStreaming && !isWaitingForUserBurst && latestDialogueMessage?.role == .user
+        if usesSharedChat { return sharedReplyError && !isStreaming && !isWaitingForUserBurst }
+        return !isStreaming && !isWaitingForUserBurst && latestDialogueMessage?.role == .user
             && latestDialogueMessage?.isInterrupted == true && !hasActiveReplyProducer
     }
 
@@ -633,11 +683,29 @@ public final class ChatViewModel {
     }
 
     public func retryUnansweredReply() {
+        if let gateway = deps.sharedChat, let conversation {
+            guard canRetryUnansweredReply else { return }
+            sharedReplyError = false
+            isWaitingForUserBurst = true
+            Task { [weak self] in
+                do {
+                    try await gateway.uploadSharedMessages()
+                    try await gateway.retrySharedReply(conversationID: conversation.id, commandID: UUID())
+                    self?.startSharedObservation()
+                } catch {
+                    self?.errorMessage = "回复状态核对失败，请稍后重试。"
+                    self?.isWaitingForUserBurst = false
+                    self?.sharedReplyError = true
+                }
+            }
+            return
+        }
         guard canRetryUnansweredReply, let latest = latestDialogueMessage else { return }
         scheduleAssistantReply(after: latest.text, preferredDelay: 0.45, userMessage: latest)
     }
 
     private func resumePendingReplyIfNeeded() {
+        guard !usesSharedChat else { return }
         guard replyTask == nil,
               conversation?.isArchived == false,
               let latest = latestDialogueMessage,
@@ -1165,6 +1233,125 @@ public final class ChatViewModel {
             )
         } catch {
             Log.app.warning("主线机票发放失败：\(error)")
+        }
+    }
+
+    public func stopSharedObservation() {
+        sharedPageVisible = false
+        // Finish the originating device's existing coaching/memory work when the
+        // user navigates away, without affecting the durable server producer.
+        guard sharedReviewMessages.isEmpty || sharedReplyError else { return }
+        sharedObserver?.cancel()
+        sharedObserver = nil
+    }
+
+    private func startSharedObservation() {
+        guard sharedObserver == nil, let gateway = deps.sharedChat else { return }
+        sharedObserver = Task { [self] in
+            while !Task.isCancelled {
+                do {
+                    let state: SharedChatSnapshot
+                    if let snapshot = self.sharedSnapshot {
+                        state = try await gateway.refreshSharedConversation(
+                            conversationID: snapshot.conversationID)
+                    } else {
+                        state = try await gateway.openSharedConversation(characterID: self.character.id)
+                    }
+                    try Task.checkCancellation()
+                    try await self.acceptSharedState(state)
+                } catch is CancellationError { return } catch BackendClientError.signedOut {
+                    sharedObserver = nil
+                    return
+                } catch { errorMessage = "会话连接暂时中断，正在重新同步。" }
+                do { try await Task.sleep(for: .milliseconds(800)) } catch { return }
+            }
+        }
+    }
+
+    private func acceptSharedState(_ state: SharedChatSnapshot) async throws {
+        sharedSnapshot = state
+        guard let canonical = try await deps.chatStore.conversation(id: state.conversationID) else {
+            throw AppError.storage("会话尚未同步")
+        }
+        conversation = canonical
+        await reloadMessages()
+        let status = state.generation?.status
+        isWaitingForUserBurst = status == "queued"
+        isStreaming = status == "dispatched"
+        streamingText = isStreaming ? state.generation?.partialText : nil
+        sharedReplyError = status == "failed" || status == "uncertain"
+        errorMessage =
+            status == "uncertain" ? "上次回复状态未确认。重试会重新生成，可能再次计费。" : (sharedReplyError ? "上次回复未完成，点重试继续。" : nil)
+        let reviewed = sharedReviewMessages.values.filter { state.coveredMessageIDs.contains($0.id) }
+        for message in reviewed {
+            sharedReviewMessages[message.id] = nil
+            runInteractionReview(for: message, source: message.kind == .voice ? .voiceChat : .textChat)
+        }
+        if !reviewed.isEmpty {
+            await grantMainlineTicketIfEligible(conversationID: state.conversationID)
+            Task { await deps.learningChat?.messageSaved(characterID: character.id) }
+            inspectAppointmentAgreement()
+            let memoryService = self.memoryService
+            let character = self.character
+            Task(priority: .utility) {
+                await memoryService.compressIfNeeded(
+                    conversationID: state.conversationID, characterName: character.card.name,
+                    characterRegionID: character.card.regionID)
+            }
+        }
+        notifyConversationChanged()
+        if !sharedPageVisible && (sharedReviewMessages.isEmpty || sharedReplyError) {
+            stopSharedObservation()
+        }
+    }
+
+    private func sharedVoiceStream(gateway: any SharedChatGateway, conversationID: UUID, userMessageID: UUID)
+        -> AsyncThrowingStream<String, Error>
+    {
+        AsyncThrowingStream { continuation in
+            let task = Task { [weak self] in
+                let deadline = ContinuousClock.now.advanced(by: .seconds(120))
+                var generationID: UUID?
+                var emitted = ""
+                do {
+                    while ContinuousClock.now < deadline {
+                        try Task.checkCancellation()
+                        let state = try await gateway.sharedReply(
+                            conversationID: conversationID, userMessageID: userMessageID)
+                        await self?.reloadMessages()
+                        if let generation = state.generation,
+                            generation.inputMessageIDs.contains(userMessageID)
+                        {
+                            if let generationID, generationID != generation.id {
+                                throw AppError.storage("回复已重新开始，请重试")
+                            }
+                            generationID = generation.id
+                            guard generation.partialText.hasPrefix(emitted) else {
+                                throw AppError.storage("回复状态已更新，请重试")
+                            }
+                            let delta = String(generation.partialText.dropFirst(emitted.count))
+                            if !delta.isEmpty {
+                                continuation.yield(delta)
+                                emitted = generation.partialText
+                            }
+                            if generation.status == "failed" || generation.status == "uncertain" {
+                                throw AppError.storage("通话回复未完成，请重试")
+                            }
+                            if generation.status == "completed" {
+                                continuation.finish()
+                                return
+                            }
+                        }
+                        if state.coveredMessageIDs.contains(userMessageID), !emitted.isEmpty {
+                            continuation.finish()
+                            return
+                        }
+                        try await Task.sleep(for: .milliseconds(250))
+                    }
+                    throw AppError.storage("通话回复等待超时，文字回复会继续同步")
+                } catch { continuation.finish(throwing: error) }
+            }
+            continuation.onTermination = { _ in task.cancel() }
         }
     }
 

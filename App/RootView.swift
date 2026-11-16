@@ -1371,6 +1371,7 @@ struct RootView: View {
         #endif
         dependencies.storyProgress = environment.storyProgressStore
         if !bypassesAuthenticationForUITesting, case .signedIn = environment.authSession.phase, let workspace = environment.workspace {
+            dependencies.sharedChat = workspace.contentSync
             let appointments = AppointmentCoordinator(backend: environment.backendClient, sync: workspace.contentSync)
             dependencies.refreshAppointments = { characterID, conversationID, detect in
                 try await appointments.refresh(characterID: characterID, conversationID: conversationID, detect: detect)

@@ -103,6 +103,9 @@ struct ContentConversationPayload: Codable {
 }
 
 struct ContentMessagePayload: Codable {
+    var sharedPredecessorId: UUID? = nil
+    var sharedVoiceLeaseId: UUID? = nil
+    var deliveryOrigin: String? = nil
     var learningOrigin: LearningChatOrigin? = nil
     var audioAssetId: UUID? = nil
     let audioDuration: Double?

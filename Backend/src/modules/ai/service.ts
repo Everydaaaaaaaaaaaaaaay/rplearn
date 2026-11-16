@@ -37,6 +37,12 @@ export type AiRequestInput = Readonly<{
 type StoredCompletion = Omit<AiCompletion, "usage"> & { usage: AiUsage | null };
 
 export type AiService = Readonly<{
+  operationPending: (userId: string, operationId: string) => Promise<boolean>;
+  completedResult: (
+    userId: string,
+    operationId: string,
+    restoreLearning?: boolean,
+  ) => Promise<{ content: string } | null>;
   complete: (
     userId: string,
     input: AiRequestInput,
@@ -365,6 +371,13 @@ export function createAiService(
   };
 
   return {
+    completedResult: async (userId, operationId, restoreLearning = false) => {
+      const result = await credits.completedResult(userId, operationId);
+      if (result && restoreLearning)
+        await options.chatObserver?.complete(userId, operationId, result.content);
+      return result;
+    },
+    operationPending: credits.operationPending,
     complete: async (userId, input) => {
       const prepared = await prepare(userId, input);
       if (prepared.replay) {

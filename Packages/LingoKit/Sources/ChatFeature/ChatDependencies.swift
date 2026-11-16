@@ -45,6 +45,7 @@ public struct ChatDependencies: Sendable {
     public var debugFillLearning: (@MainActor @Sendable (UUID) async throws -> Void)? = nil
     #endif
     public var learningPage: (@MainActor @Sendable (CharacterDTO, Bool, @escaping @MainActor @Sendable () -> Void) -> AnyView)? = nil
+    public var sharedChat: (any SharedChatGateway)? = nil
     public var learningChat: (any LearningChatTracking)? = nil
     public var storyProgress: StoryProgressStore? = nil
     public var replyTimeout: Duration = .seconds(120)

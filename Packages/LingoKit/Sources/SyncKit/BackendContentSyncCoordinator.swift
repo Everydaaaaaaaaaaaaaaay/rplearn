@@ -1,4 +1,5 @@
 import BackendKit
+import CoreKit
 import DomainKit
 import Foundation
 import PersistenceKit
@@ -9,7 +10,9 @@ public enum ContentSyncActivation: Sendable, Equatable {
     case synchronized
 }
 
-public actor BackendContentSyncCoordinator {
+public actor BackendContentSyncCoordinator: SharedChatGateway {
+    private var sharedLastSync = Date.distantPast
+    private var sharedSequences: [UUID: Int] = [:]
     private let backend: BackendClient
     private let store: ContentSyncStore
     private struct Waiter {
@@ -61,6 +64,7 @@ public actor BackendContentSyncCoordinator {
         listenerTask?.cancel()
         listenerTask = nil
         userID = nil
+        sharedSequences = [:]
     }
 
     public func synchronize() async throws {
@@ -132,6 +136,71 @@ public actor BackendContentSyncCoordinator {
         }
     }
 
+    public func openSharedConversation(characterID: UUID) async throws -> SharedChatSnapshot {
+        try await synchronizeAndWait()
+        let owner = userID
+        let state = try await backend.openSharedChat(characterID: characterID)
+        guard owner == userID, owner != nil else { throw CancellationError() }
+        return try await applySharedPages(state)
+    }
+
+    public func sharedReply(conversationID: UUID, userMessageID: UUID) async throws -> SharedChatSnapshot {
+        guard let owner = userID else { throw BackendClientError.signedOut }
+        let state = try await backend.sharedChatState(
+            conversationID: conversationID, afterSequence: sharedSequences[conversationID] ?? 0,
+            inputMessageID: userMessageID)
+        guard owner == userID else { throw CancellationError() }
+        return try await applySharedPages(state, inputMessageID: userMessageID)
+    }
+
+    public func uploadSharedMessages() async throws { try await synchronizeAndWait() }
+
+    public func refreshSharedConversation(conversationID: UUID) async throws -> SharedChatSnapshot {
+        guard let owner = userID else { throw BackendClientError.signedOut }
+        if Date.now.timeIntervalSince(sharedLastSync) > 5 {
+            try await synchronizeAndWait()
+            sharedLastSync = .now
+        }
+        let state = try await backend.sharedChatState(
+            conversationID: conversationID, afterSequence: sharedSequences[conversationID] ?? 0)
+        guard owner == userID else { throw CancellationError() }
+        return try await applySharedPages(state)
+    }
+
+    public func retrySharedReply(conversationID: UUID, commandID: UUID) async throws {
+        guard let owner = userID else { throw BackendClientError.signedOut }
+        let state = try await backend.retrySharedChat(conversationID: conversationID, commandID: commandID)
+        guard owner == userID else { throw CancellationError() }
+        _ = try await applySharedPages(state)
+    }
+
+    private func applySharedPages(_ initial: BackendSharedChatState, inputMessageID: UUID? = nil) async throws
+        -> SharedChatSnapshot
+    {
+        let owner = userID
+        var state = initial
+        repeat {
+            guard owner == userID, owner != nil else { throw CancellationError() }
+            try Task.checkCancellation()
+            try await store.applySharedChat(
+                records: try state.records.map(Self.remote), coveredMessageIDs: Set(state.coveredMessageIds))
+            sharedSequences[state.conversationId] = max(
+                sharedSequences[state.conversationId] ?? 0, state.lastSequence)
+            if !state.hasMore { break }
+            state = try await backend.sharedChatState(
+                conversationID: state.conversationId, afterSequence: state.lastSequence,
+                inputMessageID: inputMessageID)
+        } while true
+        return SharedChatSnapshot(
+            conversationID: state.conversationId, lastSequence: state.lastSequence,
+            generation: state.generation.map {
+                .init(
+                    id: $0.id, status: $0.status, partialText: $0.partialText,
+                    inputMessageIDs: $0.inputMessageIds, errorCode: $0.errorCode)
+            },
+            coveredMessageIDs: Set(state.coveredMessageIds))
+    }
+
     private func bootstrap() async throws {
         var cursor: String?
         var records: [RemoteContentRecord] = []
@@ -187,6 +256,9 @@ public actor BackendContentSyncCoordinator {
                             record: try Self.remote(record)
                         )
                     } else if let error = result.error {
+                        if error.code == "CHAT_PREDECESSOR_PENDING" {
+                            throw BackendClientError.invalidResponse
+                        }
                         try await store.reject(
                             commandID: result.commandId,
                             code: error.code,
