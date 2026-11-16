@@ -25,6 +25,7 @@ final class CitySceneGalleryTests: XCTestCase {
         app = XCUIApplication()
         app.launchEnvironment = [
             "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
+            "UI_TEST_WELCOME_CAPTURE": "1", "UI_TEST_OUTING_AUDIO": "0",
             "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "UI_TEST_TAB": "scenes-preview",
             "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
         ]
