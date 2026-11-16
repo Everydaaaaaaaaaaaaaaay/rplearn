@@ -171,6 +171,12 @@ final class AppointmentUITests: XCTestCase {
         editor.typeText("Let's take our time. 慢慢来。")
         XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5))
         capture("appointment-max-text-native-keyboard")
+        let quietChoice = app.buttons["appointment.choice.quiet"]
+        reveal(quietChoice, aboveKeyboard: true)
+        assertInsideScreen(quietChoice)
+        capture("appointment-max-text-keyboard-second-choice")
+        reveal(editor, aboveKeyboard: true)
+        editor.tap()
         let send = app.buttons["appointment.sendInput"]
         waitForKeyboardAndSend(send)
         XCTAssertTrue(send.isEnabled)
@@ -229,6 +235,9 @@ final class AppointmentUITests: XCTestCase {
         capture("appointment-03-bilingual-native-input")
         let send = app.buttons["appointment.sendInput"]
         waitForKeyboardAndSend(send)
+        assertInsideReader(app.buttons["appointment.choice.walk"])
+        assertInsideReader(app.buttons["appointment.choice.quiet"])
+        assertInsideReader(editor)
         assertComposerFollowsChoices(editor)
         capture("appointment-03-bilingual-keyboard-settled")
         XCTAssertTrue(send.isEnabled)
@@ -257,8 +266,17 @@ final class AppointmentUITests: XCTestCase {
     private func assertComposerFollowsChoices(_ editor: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
         let lastChoice = app.buttons["appointment.choice.quiet"]
         XCTAssertTrue(lastChoice.exists, file: file, line: line)
+        XCTAssertGreaterThanOrEqual(editor.frame.minY - lastChoice.frame.maxY, 12,
+                                    "输入框必须排在完整的最后一个选项之后", file: file, line: line)
         XCTAssertLessThanOrEqual(editor.frame.minY - lastChoice.frame.maxY, 48,
                                  "聚焦输入时，选项与输入框之间不应出现撑满滚动区的空白", file: file, line: line)
+    }
+
+    private func assertInsideReader(_ element: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
+        let viewport = app.scrollViews["appointment.readerScroll"].frame
+        XCTAssertTrue(element.isHittable, file: file, line: line)
+        XCTAssertGreaterThanOrEqual(element.frame.minY, viewport.minY - 1, file: file, line: line)
+        XCTAssertLessThanOrEqual(element.frame.maxY, viewport.maxY + 1, file: file, line: line)
     }
 
     private func finishNaturally() {
@@ -279,7 +297,8 @@ final class AppointmentUITests: XCTestCase {
 
     private func reveal(_ element: XCUIElement, aboveKeyboard: Bool = false, file: StaticString = #filePath, line: UInt = #line) {
         for _ in 0..<14 {
-            let scroll = app.scrollViews.firstMatch
+            let reader = app.scrollViews["appointment.readerScroll"]
+            let scroll = reader.exists ? reader : app.scrollViews.firstMatch
             let top = max(app.frame.minY + 65, scroll.exists ? scroll.frame.minY + 8 : app.frame.minY + 65)
             let bottom = aboveKeyboard && app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY : app.frame.maxY - 12
             if element.exists, element.isHittable, element.frame.midY > top, element.frame.midY < bottom - 10 { return }
