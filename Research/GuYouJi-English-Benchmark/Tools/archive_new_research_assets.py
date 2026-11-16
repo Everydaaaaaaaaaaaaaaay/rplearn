@@ -17,6 +17,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True)
     args = parser.parse_args()
+    policy = json.loads((BASE / 'Storage/retention-policy.json').read_text())
+    if not policy.get('automatic_content_archiving', True):
+        raise ValueError('Research backups disabled by owner storage policy')
     registry_path = BASE / 'Storage/local-snapshots.json'
     registry = json.loads(registry_path.read_text())
     if not registry.get('content_archives'):
