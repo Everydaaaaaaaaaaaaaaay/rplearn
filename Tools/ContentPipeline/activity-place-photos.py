@@ -102,11 +102,13 @@ def plain(value):
     return unescape(re.sub('<[^>]+>', '', value)).strip()
 
 
-def acquire(place, candidate_limit, previous_candidates=()):
+def acquire(place, candidate_limit, previous_candidates=(), search_limit=6):
     identifier = place['id']
     query = place.get('photoQuery') or QUERIES.get(identifier) or f"{place['titleZh']} {place['cityId']}"
     titles = place.get('photoTitles')
     cache_key = json.dumps(titles, ensure_ascii=False) if titles else query
+    if search_limit != 6 and not titles:
+        cache_key += f'|search-limit={search_limit}'
     cache = CACHE / f'{identifier}-{sha256(cache_key.encode()).hexdigest()[:10]}-hd.json'
     if cache.exists():
         result = json.loads(cache.read_text())
@@ -118,7 +120,7 @@ def acquire(place, candidate_limit, previous_candidates=()):
         if titles:
             parameters['titles'] = '|'.join(titles)
         else:
-            parameters.update(generator='search', gsrsearch=query, gsrnamespace=6, gsrlimit=6)
+            parameters.update(generator='search', gsrsearch=query, gsrnamespace=6, gsrlimit=search_limit)
         arguments = urllib.parse.urlencode(parameters)
         result = json.loads(request('https://commons.wikimedia.org/w/api.php?' + arguments))
         cache.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
@@ -202,7 +204,10 @@ def main():
     parser.add_argument('--catalog', type=Path, default=CATALOG, help='World or scene catalog containing places')
     parser.add_argument('--evidence', type=Path, default=EVIDENCE, help='Versioned candidate record directory')
     parser.add_argument('--candidate-limit', type=int, choices=range(1, 7), default=2)
+    parser.add_argument('--search-limit', type=int, default=6, help='Commons search results to inspect (1–50)')
     args = parser.parse_args()
+    if not 1 <= args.search_limit <= 50:
+        parser.error('--search-limit must be between 1 and 50')
     CACHE.mkdir(parents=True, exist_ok=True)
     args.evidence.mkdir(parents=True, exist_ok=True)
     world = json.loads(args.catalog.read_text())
@@ -211,7 +216,7 @@ def main():
     places = [place for place in world['places'] if (not args.city or place['cityId'] in args.city) and (not args.place or place['id'] in args.place)]
     with ThreadPoolExecutor(max_workers=1) as executor:
         jobs = {executor.submit(acquire, place, args.candidate_limit,
-                                saved.get(place['id'], {}).get('candidates', [])): place for place in places}
+                                saved.get(place['id'], {}).get('candidates', []), args.search_limit): place for place in places}
         for job in as_completed(jobs):
             place = jobs[job]
             try:

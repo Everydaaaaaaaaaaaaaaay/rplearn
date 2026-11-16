@@ -1,0 +1,118 @@
+import XCTest
+
+@MainActor
+final class TabHubTests: XCTestCase {
+    func testAllCitiesUseProfileDrivenHubScenes() {
+        continueAfterFailure = false
+        let cities = [("london", "伦敦"), ("newyork", "纽约"), ("melbourne", "墨尔本"),
+                      ("capetown", "开普敦"), ("singapore", "新加坡"), ("dublin", "都柏林"),
+                      ("edinburgh", "爱丁堡"), ("vancouver", "温哥华"), ("auckland", "奥克兰"),
+                      ("nairobi", "内罗毕"), ("toronto", "多伦多"), ("sydney", "悉尼"),
+                      ("neworleans", "新奥尔良"), ("manchester", "曼彻斯特"), ("kingston", "金斯敦")]
+        for (city, name) in cities {
+            let app = launch(city: city)
+            XCTAssertTrue(app.buttons["home.activities"].waitForExistence(timeout: 15))
+            XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@ AND label ENDSWITH %@", "当前驻地，", name)).firstMatch.exists)
+            capture(app, name: "hub-\(city)-activities")
+            app.tabBars.buttons["我的"].tap()
+            let profile = app.buttons["me.profile"]
+            XCTAssertTrue(profile.waitForExistence(timeout: 10))
+            let updated = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", name), object: profile)
+            XCTAssertEqual(XCTWaiter.wait(for: [updated], timeout: 5), .completed)
+            XCTAssertTrue(profile.isHittable)
+            capture(app, name: "hub-\(city)-profile")
+            app.terminate()
+        }
+    }
+
+    func testHubRoutesAndPhotoCredits() {
+        continueAfterFailure = false
+        let app = launch(city: "london")
+        defer { app.terminate() }
+        XCTAssertTrue(app.buttons["home.activities"].waitForExistence(timeout: 15))
+        app.buttons["背景照片与许可"].tap()
+        XCTAssertTrue(app.navigationBars["背景照片"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.links.matching(identifier: "查看照片来源").count, 2)
+        app.buttons["完成"].tap()
+        app.buttons["home.activities"].tap()
+        XCTAssertTrue(app.buttons["activities.back"].waitForExistence(timeout: 5))
+        app.buttons["activities.back"].tap()
+        app.buttons["home.appointments"].tap()
+        XCTAssertTrue(app.buttons["appointment.signIn.close"].waitForExistence(timeout: 5))
+        app.buttons["appointment.signIn.close"].tap()
+        XCTAssertTrue(app.buttons["appointment.signIn.close"].waitForNonExistence(timeout: 5))
+        app.tabBars.buttons["我的"].tap()
+        for id in ["me.profile", "me.favorites", "me.memory"] {
+            let entry = app.buttons[id]
+            if !entry.isHittable { app.swipeUp() }
+            entry.tap()
+            XCTAssertTrue(app.navigationBars.buttons.firstMatch.waitForExistence(timeout: 5))
+            app.navigationBars.buttons.firstMatch.tap()
+        }
+        app.buttons["设置，AI、语音与偏好"].tap()
+        XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["me.learning-trial"].exists)
+    }
+
+    func testAccessibilityLayouts() {
+        continueAfterFailure = false
+        let app = launch(city: "london", contentSize: "UICTContentSizeCategoryAccessibilityXXXL")
+        defer { app.terminate() }
+        let city = app.buttons["home.activities"]
+        XCTAssertTrue(city.waitForExistence(timeout: 15))
+        if !city.isHittable { app.swipeUp() }
+        XCTAssertTrue(city.isHittable)
+        XCTAssertGreaterThanOrEqual(city.frame.height, 44)
+        capture(app, name: "hub-london-activities-accessibility")
+        app.swipeUp()
+        app.swipeUp()
+        XCTAssertTrue(app.buttons["世界地图"].isHittable)
+        capture(app, name: "hub-london-activities-accessibility-bottom")
+        app.tabBars.buttons["我的"].tap()
+        XCTAssertTrue(app.buttons["me.profile"].waitForExistence(timeout: 10))
+        capture(app, name: "hub-london-profile-accessibility")
+        app.swipeUp()
+        app.swipeUp()
+        XCTAssertTrue(app.buttons["me.coinBalance"].isHittable)
+        capture(app, name: "hub-london-profile-accessibility-bottom")
+    }
+
+    func testHeaderContrastAndDarkAppearance() {
+        for (city, appearance) in [("capetown", "light"), ("manchester", "light"),
+                                   ("newyork", "light"), ("sydney", "light"), ("london", "dark")] {
+            let app = launch(city: city, appearance: appearance)
+            XCTAssertTrue(app.buttons["home.activities"].waitForExistence(timeout: 15))
+            capture(app, name: "hub-\(city)-activities-\(appearance)")
+            app.tabBars.buttons["我的"].tap()
+            XCTAssertTrue(app.buttons["me.profile"].waitForExistence(timeout: 10))
+            capture(app, name: "hub-\(city)-profile-\(appearance)")
+            app.terminate()
+        }
+    }
+
+    private func launch(city: String, contentSize: String? = nil, appearance: String = "light") -> XCUIApplication {
+        let app = XCUIApplication()
+        app.launchEnvironment = [
+            "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_WELCOME_CAPTURE": "1",
+            "UI_TEST_WORLD_GATEWAY": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+            "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_CITY_TAB_REGION": city, "UI_TEST_TAB": "home",
+            "UI_TEST_CAPTURE_APPEARANCE": appearance
+        ]
+        app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
+        if let category = contentSize {
+            app.launchArguments += ["-UIPreferredContentSizeCategoryName", category]
+        }
+        app.launch()
+        return app
+    }
+
+    private func capture(_ app: XCUIApplication, name: String) {
+        // Wait for the transition to settle before recording the native composition.
+        XCTAssertTrue(app.tabBars.firstMatch.isHittable)
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+}

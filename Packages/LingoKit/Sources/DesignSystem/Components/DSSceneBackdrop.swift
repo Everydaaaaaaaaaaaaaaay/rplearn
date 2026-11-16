@@ -1,9 +1,11 @@
 import SwiftUI
 
-public enum DSCitySceneRole: String, Sendable {
+public enum DSCitySceneRole: String, Sendable, Codable {
     case messages
     case contacts
     case learning
+    case activities
+    case profile
 }
 
 /// 将当前旅程地区映射到各页面独立核验的城市摄影。

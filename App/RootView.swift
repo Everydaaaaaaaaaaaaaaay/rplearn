@@ -763,21 +763,19 @@ struct RootView: View {
     }
 
     private var homeRootContent: some View {
-        #if DEBUG
-        if usesTabDesignPreview {
-            return AnyView(DebugActivityHubDesignPreview(onOpen: openHomeDestination)
-                .onAppear { isInitialContentReady = true })
-        }
-        #endif
-        return AnyView(HomeView(
+        HomeView(
             deps: homeDeps,
             reloadToken: stateRevision,
+            isVisible: selectedTab == .home && activeHomeDestination == nil && appointmentPresentation == nil,
+            activityNamespace: activityStorageNamespace,
             onInitialLoad: {
                 guard environment.needsOnboarding == false else { return }
                 isInitialContentReady = true
             },
-            onOpenDestination: openHomeDestination
-        ).id("home-root"))
+            onOpenDestination: openHomeDestination,
+            onOpenAppointment: { appointmentPresentation = AppointmentPresentation(appointmentID: $0) }
+        )
+        .id("home-root")
     }
 
     private var homeStack: some View {
@@ -789,7 +787,7 @@ struct RootView: View {
             showsNavigationBar: activeHomeDestination != .map
                 && (activeHomeDestination != .activities || activeActivityChat != nil),
             backLabel: activeActivityChat == nil ? "返回" : "返回城市活动",
-            rootIgnoresSafeArea: !usesTabDesignPreview
+            rootIgnoresSafeArea: false
         ) {
             homeRootContent
         } destination: {
@@ -898,6 +896,9 @@ struct RootView: View {
                             selectedTab = .me
                             openMe(.account)
                         }.buttonStyle(.borderedProminent)
+                        Button("返回活动") { appointmentPresentation = nil }
+                            .frame(minHeight: 44)
+                            .accessibilityIdentifier("appointment.signIn.close")
                     }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.dsBackground)
                 }
             }
@@ -1073,22 +1074,6 @@ struct RootView: View {
     }
 
     private func myPage(section: MyPageSection? = nil) -> some View {
-        #if DEBUG
-        if usesTabDesignPreview, section == nil {
-            return AnyView(DebugMyHubDesignPreview(
-                onAccount: { openMe(.account) },
-                onLearning: { showEnglishJourney = true },
-                onFavorites: { openMe(.favorites) },
-                onMemory: { memoryCharacterID = nil; openMe(.memory) },
-                onSubscription: { openMe(.subscription) },
-                onSettings: { openMe(.settings) }
-            ))
-        }
-        #endif
-        return AnyView(standardMyPage(section: section))
-    }
-
-    private func standardMyPage(section: MyPageSection?) -> some View {
         MyPageView(
             accessClient: environment.backendClient,
             economyStore: environment.economyStore,
@@ -1097,6 +1082,8 @@ struct RootView: View {
             authSession: environment.authSession,
             billing: environment.billing,
             reloadToken: stateRevision,
+            isVisible: selectedTab == .me,
+            regionCatalog: environment.regionCatalog,
             onCalibrateLevel: { showEnglishJourney = true },
             onOpenFavorites: { openMe(.favorites) },
             onOpenSettings: { openMe(.settings) },
@@ -1106,20 +1093,6 @@ struct RootView: View {
             onOpenSubscription: { openMe(.subscription) }
         )
         .id("me-root")
-        #if DEBUG
-        .safeAreaInset(edge: .bottom) {
-            if section == nil {
-                Button { openMe(.learningTrial) } label: {
-                    Label("学习实测 · 切换档位做题", systemImage: "book.pages")
-                        .font(.subheadline.weight(.semibold)).frame(maxWidth: .infinity).padding(12)
-                }
-                .buttonStyle(.borderedProminent)
-                .padding(.horizontal, 20).padding(.vertical, 8)
-                .background(.regularMaterial)
-                .accessibilityIdentifier("me.learning-trial")
-            }
-        }
-        #endif
     }
 
     private func meNavigationTitle(for destination: MeDestination) -> String {
@@ -1134,6 +1107,14 @@ struct RootView: View {
         case .learningTrial: "学习实测"
         #endif
         }
+    }
+
+    private var learningTrialAction: (@MainActor () -> Void)? {
+        #if DEBUG
+        { openMe(.learningTrial) }
+        #else
+        nil
+        #endif
     }
 
     private func openMe(_ destination: MeDestination) {
@@ -1174,7 +1155,8 @@ struct RootView: View {
                 onOpenIntroduction: { introductionMode = .introduction },
                 onOpenTutorial: { introductionMode = .tutorial },
                 onTestInitialPlacement: initialPlacementTestAction,
-                onTestFirstLoginFlow: firstLoginTestAction
+                onTestFirstLoginFlow: firstLoginTestAction,
+                onOpenLearningTrial: learningTrialAction
             )
 
         case .photoCredits:
@@ -1301,6 +1283,11 @@ struct RootView: View {
         return environment.backendClient
     }
 
+    private var homeAppointmentService: (any AppointmentServing)? {
+        guard case .signedIn = environment.authSession.phase else { return nil }
+        return environment.backendClient
+    }
+
     private var homeDeps: HomeDependencies {
         HomeDependencies(
             access: journeyAccess,
@@ -1319,7 +1306,8 @@ struct RootView: View {
             mainline: mainlineClient,
             npcRegistry: isPlaceOutingPreview ? nil : environment.backendClient,
             outingGateway: placeOutingGateway,
-            activityReleaseID: placeOutingReleaseID
+            activityReleaseID: placeOutingReleaseID,
+            appointments: homeAppointmentService
         )
     }
 

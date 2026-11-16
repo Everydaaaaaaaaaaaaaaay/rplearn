@@ -19,6 +19,8 @@ public struct MyPageView: View {
     private let authSession: AuthSession
     private let billing: BillingController
     private let reloadToken: Int
+    private let isVisible: Bool
+    private let regionCatalog: RegionCatalog?
     private let onCalibrateLevel: @MainActor () -> Void
     private let onOpenFavorites: @MainActor () -> Void
     private let onOpenSettings: @MainActor () -> Void
@@ -31,27 +33,18 @@ public struct MyPageView: View {
     @State private var selectedAvatar: PhotosPickerItem?
     @State private var avatarError: String?
     @State private var isSavingAvatar = false
-    @State private var spatialPhotoReady = false
 
     @State private var credits: BackendAccessSnapshot.Credits?
     @State private var creditsError: String?
     @State private var isLoadingCredits = false
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
-    @StateObject private var sceneActions = DSSceneActionCoordinator<MyPageSceneHotspot>()
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     private var presentation: MyPagePresentation {
         MyPagePresentation(
             profile: profile,
             tier: billing.tier
         )
-    }
-
-    private var sceneLayout: TravelDeskSceneLayout {
-        .production
     }
 
     public init(
@@ -62,6 +55,8 @@ public struct MyPageView: View {
         authSession: AuthSession,
         billing: BillingController,
         reloadToken: Int = 0,
+        isVisible: Bool = true,
+        regionCatalog: RegionCatalog? = nil,
         onCalibrateLevel: @escaping @MainActor () -> Void,
         onOpenFavorites: @escaping @MainActor () -> Void,
         onOpenSettings: @escaping @MainActor () -> Void,
@@ -77,6 +72,8 @@ public struct MyPageView: View {
         self.authSession = authSession
         self.billing = billing
         self.reloadToken = reloadToken
+        self.isVisible = isVisible
+        self.regionCatalog = regionCatalog
         self.onCalibrateLevel = onCalibrateLevel
         self.onOpenFavorites = onOpenFavorites
         self.onOpenSettings = onOpenSettings
@@ -92,14 +89,16 @@ public struct MyPageView: View {
                 SubscriptionView(billing: billing)
             } else if let section {
                 detailPage(section)
-            } else if dynamicTypeSize.isAccessibilitySize {
-                accessibleContent
             } else {
-                modernTravelDesk
+                hubContent
             }
         }
         .background(Color.dsBackground.ignoresSafeArea())
-        .task(id: reloadToken) { await reload() }
+        .task(id: "\(reloadToken)-\(isVisible)") {
+            guard isVisible else { return }
+            await reload()
+            if section == nil { await reloadCredits() }
+        }
         .task(id: selectedAvatar) {
             guard let item = selectedAvatar, let userAvatar else { return }
             isSavingAvatar = true
@@ -116,308 +115,133 @@ public struct MyPageView: View {
         .alert("未能更换头像", isPresented: Binding(
             get: { avatarError != nil }, set: { if !$0 { avatarError = nil } }
         )) { Button("好", role: .cancel) {} } message: { Text(avatarError ?? "") }
-        .onDisappear(perform: sceneActions.cancel)
 
     }
 
-    private var accessibleContent: some View {
+    private var cityName: String {
+        guard let id = profile?.currentRegionID else { return "" }
+        return regionCatalog?.region(id: id)?.nameZh ?? BackendAppointment.cityDisplayName(id: id, fallback: id)
+    }
+
+    private var hubContent: some View {
         ScrollView {
-            VStack(spacing: DSSpacing.md) {
-                profileCard
-                learningProfileCard
-                Button("会员订阅", action: onOpenSubscription)
-                usageButton
-                entryList
-                debugCard
-            }
-            .padding(DSSpacing.md)
-        }
-        .refreshable { await reload() }
-    }
-
-    /// 现代旅行者工作台：背景只承载实物，全部入口由统一的实时全息组件绘制。
-    private var modernTravelDesk: some View {
-        GeometryReader { proxy in
-            let widthScale = proxy.size.width / TravelDeskLayout.canvasWidth
-            let heightScale = proxy.size.height / TravelDeskLayout.interactiveContentBottom
-            let sceneScale = min(widthScale, heightScale)
-            let horizontalInset = max(
-                0,
-                (proxy.size.width - TravelDeskLayout.canvasWidth * sceneScale) / 2
-            )
-
-            MyPageSpatialScene { proposedCamera in
-                let camera = spatialPhotoReady ? proposedCamera : .zero
-                ZStack(alignment: .topLeading) {
-                    if sceneScale < widthScale {
-                        compactHeightBackdrop(size: proxy.size)
-                    }
-
-                    travelDeskCanvas(camera: camera)
-                        .frame(
-                            width: TravelDeskLayout.canvasWidth,
-                            height: TravelDeskLayout.canvasHeight,
-                            alignment: .topLeading
-                        )
-                        .dynamicTypeSize(...DynamicTypeSize.xLarge)
-                        .scaleEffect(sceneScale, anchor: .topLeading)
-                        .offset(x: horizontalInset)
+            VStack(spacing: 16) {
+                hubProfile
+                hubLearning
+                VStack(spacing: 0) {
+                    Button(action: onOpenFavorites) { hubRow("收藏夹", symbol: "bookmark") }.accessibilityIdentifier("me.favorites")
+                    hubDivider
+                    Button(action: onOpenMemory) { hubRow("记忆档案", symbol: "text.book.closed") }.accessibilityIdentifier("me.memory")
                 }
-                .frame(
-                    width: proxy.size.width,
-                    height: proxy.size.height,
-                    alignment: .topLeading
-                )
+                .dsSceneGlass(radius: 22, legibility: .shielded)
+                VStack(spacing: 0) {
+                    Button(action: onOpenSubscription) {
+                        hubRow("会员订阅", symbol: "person.crop.circle.badge.checkmark", value: presentation.accountBadgeTitle)
+                    }.accessibilityIdentifier("me.subscription")
+                    hubDivider
+                    Button(action: onOpenAccount) {
+                        hubRow("金币", symbol: "circle.circle", value: profile.map { $0.coins.formatted() } ?? "—")
+                    }
+                    .accessibilityIdentifier("me.coinBalance")
+                    hubDivider
+                    if let accessClient {
+                        NavigationLink { UsageAccessView(backend: accessClient, billing: billing) } label: {
+                            hubRow("AI 积分", symbol: "sparkles", value: creditSummary)
+                        }
+                        .accessibilityIdentifier("me.credits")
+                    }
+                }
+                .dsSceneGlass(radius: 22, legibility: .shielded)
             }
-            .background { compactHeightBackdrop(size: proxy.size) }
-            .clipped()
+            .buttonStyle(DSSceneEntranceButtonStyle())
+            .padding(.horizontal, 16).padding(.top, 8).padding(.bottom, 24)
         }
-        .ignoresSafeArea(edges: [.top, .bottom])
-        .dsSceneTabBarBackground()
-    }
-
-    /// 极短屏幕缩小参考画布后只会留下很窄的侧边余量；使用同源场景作柔化衬底，
-    /// 避免硬色带，同时不参与任何入口的定位与点击。
-    private func compactHeightBackdrop(size: CGSize) -> some View {
-        MyPageCompactTravelDeskBackdrop(
-            assetName: sceneLayout.assetName,
-            size: size,
-            overlayOpacity: colorScheme == .dark ? 0.3 : 0.035
-        )
-            .equatable()
-            .accessibilityHidden(true)
-            .allowsHitTesting(false)
-    }
-
-    /// 所有背景像素、入口、微光和点击区域都在同一参考画布中布局。
-    /// 先按共享深度投影，再整体等比适配设备，避免图片、入口与命中区域各自取整。
-    private func travelDeskCanvas(camera: CGSize) -> some View {
-        let width = TravelDeskLayout.canvasWidth
-        let sceneHeight = TravelDeskLayout.canvasHeight
-        let layout = sceneLayout
-
-        return ZStack(alignment: .topLeading) {
-            travelDeskBackground(width: width, height: sceneHeight, camera: camera)
-
-            profileHotspot
-                .frame(width: layout.profile.size.width, height: layout.profile.size.height)
-                .position(x: width * layout.profile.center.x, y: sceneHeight * layout.profile.center.y)
-                .offset(MyPageSpatialGeometry.displacement(at: layout.profile.center, camera: camera, floating: true))
-
-            coinHotspot
-                .frame(width: layout.coin.size.width, height: layout.coin.size.height)
-                .position(x: width * layout.coin.center.x, y: sceneHeight * layout.coin.center.y)
-                .offset(MyPageSpatialGeometry.displacement(at: layout.coin.center, camera: camera, floating: true))
-
-            learningHotspot
-                .frame(width: layout.learning.size.width, height: layout.learning.size.height)
-                .position(x: width * layout.learning.center.x, y: sceneHeight * layout.learning.center.y)
-                .offset(MyPageSpatialGeometry.displacement(at: layout.learning.center, camera: camera, floating: true))
-
-            favoritesHotspot
-                .frame(width: layout.favorites.size.width, height: layout.favorites.size.height)
-                .position(x: width * layout.favorites.center.x, y: sceneHeight * layout.favorites.center.y)
-                .offset(MyPageSpatialGeometry.displacement(at: layout.favorites.center, camera: camera, floating: true))
-
-            settingsHotspot
-                .frame(width: layout.settings.size.width, height: layout.settings.size.height)
-                .position(x: width * layout.settings.center.x, y: sceneHeight * layout.settings.center.y)
-                .offset(MyPageSpatialGeometry.displacement(at: layout.settings.center, camera: camera, floating: true))
-
-            accountHotspot
-                .frame(width: layout.account.size.width, height: layout.account.size.height)
-                .position(x: width * layout.account.center.x, y: sceneHeight * layout.account.center.y)
-                .offset(MyPageSpatialGeometry.displacement(at: layout.account.center, camera: camera, floating: true))
-
-            memoryDebugHotspot
-                .frame(width: layout.memory.size.width, height: layout.memory.size.height)
-                .position(x: width * layout.memory.center.x, y: sceneHeight * layout.memory.center.y)
-                .offset(MyPageSpatialGeometry.displacement(at: UnitPoint(x: 441.0 / 825, y: 424.0 / 1906), camera: camera, floating: true))
+        .scrollBounceBehavior(.basedOnSize)
+        .refreshable { await reload(); await reloadCredits() }
+        .background {
+            DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .profile, regionID: profile?.currentRegionID), tone: .cool)
+                .accessibilityIdentifier("me.background.\(profile?.currentRegionID ?? "loading")")
         }
-        .frame(width: width, height: sceneHeight, alignment: .topLeading)
-        .scaleEffect(MyPageSpatialGeometry.coverageScale(camera: camera))
+        .safeAreaInset(edge: .top, spacing: 0) {
+            DSHubHeader(title: "我的", symbol: "gearshape", actionLabel: "设置，AI、语音与偏好", action: onOpenSettings)
+        }
+        .foregroundStyle(Color.dsSceneTextPrimary)
+        .toolbar(.hidden, for: .navigationBar).dsSceneTabBarBackground()
     }
 
-    private func travelDeskBackground(width: CGFloat, height: CGFloat, camera: CGSize) -> some View {
-        ZStack {
-            // Metal 不可用时保留原始照片与全部原生入口。
-            Image(sceneLayout.assetName, bundle: .main)
-                .resizable()
-            MyPageSpatialPhoto(assetName: sceneLayout.assetName, camera: camera) { ready in
-                spatialPhotoReady = ready
+    private var hubProfile: some View {
+        Button(action: onOpenAccount) {
+            HStack(spacing: 16) {
+                UserAvatar(name: presentation.displayName, size: 58)
+                VStack(alignment: .leading, spacing: 7) {
+                    Text(presentation.displayName).font(.title2.weight(.medium))
+                        .fixedSize(horizontal: false, vertical: true)
+                    if !cityName.isEmpty {
+                        Label(cityName, systemImage: "mappin").font(.subheadline)
+                            .foregroundStyle(Color.dsSceneTextSecondary)
+                    }
+                }
+                Spacer(minLength: 0)
+                hubChevron
             }
-            Color.black.opacity(colorScheme == .dark ? 0.28 : 0.02)
+            .padding(22).frame(maxWidth: .infinity, alignment: .leading)
+            .dsSceneGlass(radius: 22, interactive: true, legibility: .shielded)
         }
-        .frame(width: width, height: height)
-        .accessibilityHidden(true)
-        .allowsHitTesting(false)
-    }
-
-    private var profileHotspot: some View {
-        Button {
-            sceneActions.perform(for: .profile) {
-                onOpenAccount()
-            }
-        } label: {
-            profileSceneEntry
-        }
-        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .profile))
         .accessibilityIdentifier("me.profile")
+        .accessibilityValue(cityName)
         .accessibilityLabel("个人资料，\(presentation.displayName)，\(presentation.accountBadgeTitle)，已认识 \(occupiedFriendSlots) 位旅途朋友")
-        .accessibilityHint("查看账号、用量与权益")
     }
 
-    private var coinHotspot: some View {
-        coinLabel
-            .accessibilityIdentifier("me.coinBalance")
-    }
-
-    private var coinLabel: some View {
-        coinSceneEntry
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel("\(profile?.coins ?? 0) 金币")
-    }
-
-    private var learningHotspot: some View {
-        Button {
-            sceneActions.perform(for: .learning, action: onCalibrateLevel)
-        } label: {
-            learningSceneEntry
-        }
-        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .learning))
-        .accessibilityIdentifier("me.level")
-        .accessibilityLabel("英语旅程，当前水平 \(profile?.difficultyLevel.displayName ?? "载入中")，学习目标 \(profile?.learningGoalsDisplayName ?? "载入中")")
-        .accessibilityHint("重新校准英语水平")
-    }
-
-    private var favoritesHotspot: some View {
-        Button {
-            sceneActions.perform(for: .favorites, action: onOpenFavorites)
-        } label: {
-            fixedSceneEntry(
-                glyph: .bookmarkStar,
-                title: "收藏",
-                plane: sceneLayout.favorites.plane,
-                scale: sceneLayout.favorites.contentScale
-            )
-        }
-        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .favorites))
-        .accessibilityLabel("收藏夹，单词与语法点")
-        .accessibilityHint("查看收藏的单词与语法点")
-    }
-
-    private var settingsHotspot: some View {
-        Button {
-            sceneActions.perform(for: .settings, action: onOpenSettings)
-        } label: {
-            fixedSceneEntry(
-                glyph: .system("slider.horizontal.3"),
-                title: "设置",
-                plane: sceneLayout.settings.plane,
-                scale: sceneLayout.settings.contentScale
-            )
-        }
-        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .settings))
-        .accessibilityLabel("设置，AI、语音与偏好")
-        .accessibilityHint("打开设置")
-    }
-
-    private var accountHotspot: some View {
-        Button {
-            sceneActions.perform(for: .account) {
-                onOpenSubscription()
+    private var hubLearning: some View {
+        Button(action: onCalibrateLevel) {
+            HStack(alignment: .top, spacing: 14) {
+                Image(systemName: "book.pages").font(.system(size: 22, weight: .regular)).frame(width: 26, height: 28)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("英语旅程").font(.body.weight(.medium))
+                    if let profile {
+                        Text("\(profile.difficultyLevel.displayName) · \(profile.learningGoalsDisplayName)")
+                            .font(.subheadline).foregroundStyle(Color.dsSceneTextSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Text(presentation.placementSummary).font(.caption).foregroundStyle(Color.dsSceneTextTertiary)
+                }
+                Spacer(minLength: 0)
+                hubChevron.padding(.top, 6)
             }
-        } label: {
-            fixedSceneEntry(
-                glyph: .system("sparkles.rectangle.stack"),
-                title: "订阅",
-                plane: sceneLayout.account.plane,
-                scale: sceneLayout.account.contentScale
-            )
+            .padding(20).frame(maxWidth: .infinity, alignment: .leading)
+            .dsSceneGlass(radius: 22, interactive: true, legibility: .shielded)
         }
-        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .account))
-        .accessibilityIdentifier("me.subscription")
-        .accessibilityLabel("会员订阅")
-        .accessibilityHint("查看会员权益与订阅方案")
+        .accessibilityIdentifier("me.learning")
     }
 
-    private var memoryDebugHotspot: some View {
-        Button {
-            sceneActions.perform(for: .memory, action: onOpenMemory)
-        } label: {
-            fixedSceneEntry(
-                glyph: .system("photo"),
-                title: "记忆",
-                plane: sceneLayout.memory.plane,
-                scale: sceneLayout.memory.contentScale
-            )
-        }
-        .buttonStyle(.myPageSceneEntrance(keepsPressedAppearance: sceneActions.pressedHotspot == .memory))
-        .accessibilityLabel("记忆档案")
-        .accessibilityHint("查看角色长期与近期记忆")
+    private var creditSummary: String {
+        if let credits { return credits.remaining.formatted(.number.precision(.fractionLength(2))) }
+        return isLoadingCredits ? "读取中" : creditsError == nil ? "查看用量" : "暂未更新"
     }
 
-    private var profileSceneEntry: some View {
-        let scale = sceneLayout.profile.contentScale
-
-        return MyPageProfileSceneEntry(
-            plane: sceneLayout.profile.plane,
-            scale: scale,
-            displayName: presentation.displayName,
-            accountBadgeTitle: presentation.accountBadgeTitle,
-            occupiedFriendSlots: occupiedFriendSlots
-        )
-    }
-
-    private var coinSceneEntry: some View {
-        fixedSceneEntry(
-            glyph: .coinStacks,
-            title: "\(profile?.coins ?? 0) 金币",
-            plane: sceneLayout.coin.plane,
-            tint: .sceneHologramYellow,
-            scale: sceneLayout.coin.contentScale
-        )
-    }
-
-    private var learningSceneEntry: some View {
-        let scale = sceneLayout.learning.contentScale
-
-        return SceneHologram(plane: sceneLayout.learning.plane) {
-            VStack(spacing: 7 * scale) {
-                SceneHologramIcon(glyph: .journeyBook, size: 44 * scale)
-                SceneHologramText("英语旅程", size: 20 * scale, weight: .bold)
-                SceneHologramText(
-                    "\(profile?.difficultyLevel.displayName ?? "载入中") · \(profile?.learningGoalsDisplayName ?? "载入中")",
-                    size: 11.25 * scale,
-                    weight: .semibold
-                )
-                .lineLimit(1)
-                .minimumScaleFactor(0.65)
-                .padding(.horizontal, 8)
-                SceneHologramText(presentation.placementSummary, size: 11.5 * scale, weight: .bold)
+    private func hubRow(_ title: String, symbol: String, value: String? = nil) -> some View {
+        HStack(spacing: 14) {
+            Image(systemName: symbol).font(.system(size: 19, weight: .regular)).frame(width: 26)
+            Text(title).font(.body).fixedSize(horizontal: false, vertical: true)
+            Spacer(minLength: 8)
+            if let value {
+                Text(value).font(.subheadline).foregroundStyle(Color.dsSceneTextTertiary)
+                    .fixedSize(horizontal: false, vertical: true).multilineTextAlignment(.trailing)
             }
+            hubChevron
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 20).padding(.vertical, 18).frame(minHeight: 60)
         .contentShape(Rectangle())
     }
 
-    private func fixedSceneEntry(
-        glyph: SceneHologramGlyph,
-        title: String,
-        plane: SceneHologramPlane,
-        tint: Color = .sceneHologramYellow,
-        scale: CGFloat
-    ) -> some View {
-        SceneHologram(plane: plane, tint: tint) {
-            VStack(spacing: 6 * scale) {
-                SceneHologramIcon(glyph: glyph, size: 48 * scale, tint: tint)
-                SceneHologramText(title, size: 24 * scale, weight: .bold, tint: tint)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.72)
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .contentShape(Rectangle())
+    private var hubChevron: some View {
+        Image(systemName: "chevron.right").font(.system(size: 12, weight: .medium))
+            .foregroundStyle(Color.dsSceneTextTertiary)
+    }
+
+    private var hubDivider: some View {
+        Rectangle().fill(Color.dsSceneTextPrimary.opacity(0.12)).frame(height: 0.5)
+            .padding(.leading, 60).padding(.trailing, 20)
     }
 
     private func avatarPicker(size: CGFloat) -> some View {
@@ -437,58 +261,6 @@ public struct MyPageView: View {
         .disabled(isSavingAvatar || userAvatar == nil)
         .accessibilityLabel("从相册更换头像")
         .accessibilityIdentifier("profile.avatarPicker")
-    }
-
-    private var profileCard: some View {
-        Group {
-            if dynamicTypeSize.isAccessibilitySize {
-                VStack(alignment: .leading, spacing: DSSpacing.sm) {
-                    HStack(spacing: DSSpacing.sm) {
-                        avatarPicker(size: 60)
-                        Text(presentation.displayName)
-                            .font(.title2.bold())
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                    DSChip(
-                        presentation.accountBadgeTitle,
-                        tint: presentation.accountBadgeTint,
-                        prominent: billing.tier != .free
-                    )
-                    Label("已认识 \(occupiedFriendSlots) 位旅途朋友", systemImage: "person.2.fill")
-                        .foregroundStyle(.secondary)
-                    Label("\(profile?.coins ?? 0) 金币", systemImage: "circle.grid.2x1.fill")
-                        .foregroundStyle(Color.dsSunset)
-                        .monospacedDigit()
-                }
-            } else {
-                HStack(spacing: DSSpacing.md) {
-                    avatarPicker(size: 68)
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(presentation.displayName)
-                            .font(.title2.bold())
-                        DSChip(
-                            presentation.accountBadgeTitle,
-                            tint: presentation.accountBadgeTint,
-                            prominent: billing.tier != .free
-                        )
-                        Text("已认识 \(occupiedFriendSlots) 位旅途朋友")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                    Spacer()
-                    VStack(spacing: 4) {
-                        Image(systemName: "circle.grid.2x1.fill")
-                            .foregroundStyle(Color.dsSunset)
-                        Text("\(profile?.coins ?? 0)")
-                            .font(.title3.bold().monospacedDigit())
-                        Text("金币")
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
-                    }
-                }
-            }
-        }
-        .dsSurface(.elevated)
     }
 
     private var accountCredits: some View {
@@ -549,110 +321,6 @@ public struct MyPageView: View {
                 .accessibilityIdentifier("me.credits")
             }
         }
-    }
-
-    private var learningProfileCard: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.md) {
-            HStack(alignment: .firstTextBaseline) {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("英语学习档案")
-                        .font(.headline)
-                    Text(
-                        profile?.proficiencySource == .placement
-                            ? "已通过答题校准"
-                            : "当前使用自选水平"
-                    )
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                }
-                Spacer()
-                Button("校准水平", action: onCalibrateLevel)
-                    .buttonStyle(.dsAction(.secondary, fullWidth: false, compact: true))
-            }
-
-            HStack(spacing: DSSpacing.sm) {
-                learningMetric(
-                    title: "当前水平",
-                    value: profile?.difficultyLevel.displayName ?? "载入中",
-                    icon: "gauge.with.dots.needle.33percent"
-                )
-                learningMetric(
-                    title: "学习目标",
-                    value: profile?.learningGoalsDisplayName ?? "载入中",
-                    icon: "scope"
-                )
-            }
-
-            if let score = profile?.placementScore {
-                HStack {
-                    Label("最近校准 \(score) / 100", systemImage: "checkmark.seal.fill")
-                        .foregroundStyle(Color.dsSkyDeep)
-                    Spacer()
-                    if let date = profile?.placementCompletedAt {
-                        Text(date.formatted(date: .abbreviated, time: .omitted))
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .font(.caption.weight(.semibold))
-            }
-        }
-        .dsSurface(.grouped)
-    }
-
-    private func learningMetric(
-        title: String,
-        value: String,
-        icon: String
-    ) -> some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Label(title, systemImage: icon)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            Text(value)
-                .font(.subheadline.weight(.semibold))
-                .lineLimit(2)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-        .padding(DSSpacing.sm)
-        .frame(maxWidth: .infinity, minHeight: 72, alignment: .leading)
-        .background(Color.dsSurfaceMuted, in: RoundedRectangle(cornerRadius: DSRadius.inline))
-    }
-
-    private var entryList: some View {
-        VStack(spacing: 0) {
-            Button(action: onOpenFavorites) {
-                MyPageEntryRow("收藏夹", subtitle: "收集旅途中遇到的单词与语法点", icon: "star.fill", tint: .dsSunset)
-            }
-            .buttonStyle(.plain)
-            Divider().padding(.leading, 56)
-            Button(action: onOpenSettings) {
-                MyPageEntryRow("设置", subtitle: "AI、语音与学习偏好", icon: "gearshape.fill", tint: .dsSky)
-            }
-            .buttonStyle(.plain)
-            Divider().padding(.leading, 56)
-            Button(role: .destructive) {
-                Task { await authSession.logout() }
-            } label: {
-                MyPageEntryRow(
-                    "退出登录",
-                    subtitle: "退出账号并返回登录页",
-                    icon: "rectangle.portrait.and.arrow.right",
-                    tint: .red
-                )
-            }
-            .buttonStyle(.plain)
-        }
-        .dsSurface(.grouped, padding: 0)
-    }
-
-    private var debugCard: some View {
-        VStack(spacing: 0) {
-            Button(action: onOpenMemory) {
-                MyPageEntryRow("记忆档案", subtitle: "查看角色长期与近期记忆", icon: "brain.head.profile", tint: .dsQuiz)
-            }
-            .buttonStyle(.plain)
-        }
-        .dsSurface(.grouped, padding: 0)
     }
 
     private func reload() async {

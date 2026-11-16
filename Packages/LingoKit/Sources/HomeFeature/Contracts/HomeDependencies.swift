@@ -31,6 +31,7 @@ public struct HomeDependencies: Sendable {
     public let npcRegistry: (any PublicNPCRegistry)?
     public let outingGateway: (any OutingGateway)?
     public let activityReleaseID: String?
+    public let appointments: (any AppointmentServing)?
 
     public init(
         tutorial: ActivityTutorialConfiguration? = nil,
@@ -50,7 +51,8 @@ public struct HomeDependencies: Sendable {
         mainline: (any MainlineServing)? = nil,
         npcRegistry: (any PublicNPCRegistry)? = nil,
         outingGateway: (any OutingGateway)? = nil,
-        activityReleaseID: String? = nil
+        activityReleaseID: String? = nil,
+        appointments: (any AppointmentServing)? = nil
     ) {
         self.tutorial = tutorial
         self.access = access
@@ -71,6 +73,7 @@ public struct HomeDependencies: Sendable {
         self.npcRegistry = npcRegistry
         self.outingGateway = outingGateway
         self.activityReleaseID = activityReleaseID
+        self.appointments = appointments
     }
 }
 

@@ -29,6 +29,7 @@ public struct SettingsView: View {
     private let onOpenIntroduction: (@MainActor () -> Void)?
     private let onTestInitialPlacement: (@MainActor () -> Void)?
     private let onTestFirstLoginFlow: (@MainActor () -> Void)?
+    private let onOpenLearningTrial: (@MainActor () -> Void)?
     @State private var testState: TestState = .idle
     @State private var profile: UserProfileDTO?
     @State private var voiceReports: [VoiceReport] = []
@@ -54,7 +55,8 @@ public struct SettingsView: View {
         onOpenIntroduction: (@MainActor () -> Void)? = nil,
         onOpenTutorial: (@MainActor () -> Void)? = nil,
         onTestInitialPlacement: (@MainActor () -> Void)? = nil,
-        onTestFirstLoginFlow: (@MainActor () -> Void)? = nil
+        onTestFirstLoginFlow: (@MainActor () -> Void)? = nil,
+        onOpenLearningTrial: (@MainActor () -> Void)? = nil
     ) {
         _proactiveMessagesEnabled = AppStorage(
             wrappedValue: true,
@@ -73,6 +75,7 @@ public struct SettingsView: View {
         self.onOpenTutorial = onOpenTutorial
         self.onTestInitialPlacement = onTestInitialPlacement
         self.onTestFirstLoginFlow = onTestFirstLoginFlow
+        self.onOpenLearningTrial = onOpenLearningTrial
     }
 
     public var body: some View {
@@ -92,6 +95,15 @@ public struct SettingsView: View {
                         paperSectionDivider
                         servicePanel
                         paperSectionDivider
+                        if let onOpenLearningTrial {
+                            Button(action: onOpenLearningTrial) {
+                                settingsLinkLabel("学习实测 · 切换档位做题", systemImage: "book.pages")
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, DSSpacing.lg)
+                            .accessibilityIdentifier("me.learning-trial")
+                            paperSectionDivider
+                        }
                         if let onTestInitialPlacement {
                             Button(action: onTestInitialPlacement) {
                                 settingsLinkLabel("测试初次水平测评", systemImage: "checklist")

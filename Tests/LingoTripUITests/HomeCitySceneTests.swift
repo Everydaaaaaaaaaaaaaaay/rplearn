@@ -27,9 +27,14 @@ final class HomeCitySceneTests: XCTestCase {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_WELCOME_CAPTURE"] = "1"
+        app.launchEnvironment["UI_TEST_WORLD_GATEWAY"] = "1"
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
         app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
         app.launchEnvironment["UI_TEST_TAB"] = "home"
         app.launchEnvironment["UI_TEST_REGION"] = id
+        app.launchEnvironment["UI_TEST_CITY_TAB_REGION"] = id
+        app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
         app.launch()
         defer { app.terminate() }
         let map = app.buttons["世界地图"]

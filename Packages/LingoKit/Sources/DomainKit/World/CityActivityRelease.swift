@@ -9,6 +9,15 @@ public struct CityActivityRelease: Decodable, Sendable {
     public let manifestHash: String
     public let settingVersion: Int?
     public let characters: [Setting]?
+    private let preview: Preview?
+
+    private struct Preview: Decodable, Sendable {
+        let catalogs: [BackendActivityCatalog]
+    }
+
+    public func places(in cityID: String) -> [BackendActivityPlace] {
+        preview?.catalogs.first { $0.cityId == cityID }?.places ?? []
+    }
 
     public struct Setting: Decodable, Sendable {
         public let npc: BackendPublicNPC
