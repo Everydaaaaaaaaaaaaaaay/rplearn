@@ -161,7 +161,7 @@ struct AppointmentReaderView: View {
             }
             .scrollBounceBehavior(.basedOnSize)
             .frame(maxHeight: max(44, maxHeight - (showsComposer ? 220 : 144)))
-            .fixedSize(horizontal: false, vertical: !dynamicTypeSize.isAccessibilitySize && !inputFocused)
+            .fixedSize(horizontal: false, vertical: !dynamicTypeSize.isAccessibilitySize)
             .id("\(model.block?.id ?? "")-\(model.beatIndex)")
             if showsComposer { customActionInput.padding(.top, 16) }
             if !inputFocused {

@@ -225,9 +225,12 @@ final class AppointmentUITests: XCTestCase {
         XCTAssertFalse(app.navigationBars["自己说一句"].exists)
         editor.tap()
         editor.typeText(input)
+        assertComposerFollowsChoices(editor)
         capture("appointment-03-bilingual-native-input")
         let send = app.buttons["appointment.sendInput"]
         waitForKeyboardAndSend(send)
+        assertComposerFollowsChoices(editor)
+        capture("appointment-03-bilingual-keyboard-settled")
         XCTAssertTrue(send.isEnabled)
         inputTrace("before-send", send: send)
         send.tap()
@@ -249,6 +252,13 @@ final class AppointmentUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["你 · 自定义行动"].exists)
         if let attachment { capture(attachment) }
         app.buttons["返回阅读"].tap()
+    }
+
+    private func assertComposerFollowsChoices(_ editor: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
+        let lastChoice = app.buttons["appointment.choice.quiet"]
+        XCTAssertTrue(lastChoice.exists, file: file, line: line)
+        XCTAssertLessThanOrEqual(editor.frame.minY - lastChoice.frame.maxY, 48,
+                                 "聚焦输入时，选项与输入框之间不应出现撑满滚动区的空白", file: file, line: line)
     }
 
     private func finishNaturally() {
