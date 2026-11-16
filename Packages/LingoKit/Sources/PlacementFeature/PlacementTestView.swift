@@ -202,9 +202,6 @@ public struct PlacementTestView: View {
                         .monospacedDigit()
                 }
             }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
-            .background(Color(red: 0.985, green: 0.970, blue: 0.925).opacity(0.96), in: RoundedRectangle(cornerRadius: 12))
             Spacer()
             Color.clear.frame(width: 44, height: 44)
         }
@@ -324,11 +321,7 @@ public struct PlacementTestView: View {
     @ViewBuilder
     private var questionView: some View {
         if let question = currentQuestion, let engine {
-            VStack(
-                spacing: DSPlatformVisualPolicy.requiresIOS18RenderingCompensation
-                    ? DSSpacing.sm
-                    : 0
-            ) {
+            VStack(spacing: DSSpacing.md) {
                 VStack(alignment: .leading, spacing: 6) {
                     ProgressView(
                         value: engine.measurementProgress
@@ -425,8 +418,14 @@ public struct PlacementTestView: View {
                     }
                     .frame(minHeight: 48)
                 }
-                .padding(.horizontal, DSSpacing.lg).padding(.vertical, DSSpacing.sm)
-                .background(.regularMaterial)
+                .padding(.horizontal, DSSpacing.md)
+                .padding(.vertical, DSSpacing.sm)
+                .frame(maxWidth: 560)
+                .dsSceneGlass(radius: 28, tint: Color.dsBrandCream.opacity(0.08))
+                .environment(\.colorScheme, .light)
+                .padding(.horizontal, DSSpacing.lg)
+                .padding(.vertical, DSSpacing.sm)
+                .frame(maxWidth: .infinity)
             }
         } else {
             loadingView
