@@ -26,9 +26,9 @@ actor AppointmentPreviewService: AppointmentServing {
             "appointment": [
                 "id": AppointmentListView.previewAppointmentID.uuidString,
                 "characterId": AppointmentListView.previewCharacterID.uuidString,
-                "title": "一段不赶时间的散步",
+                "title": "和Oliver一起散步",
                 "cityId": "london", "cityName": "伦敦", "timeZone": "Europe/London",
-                "placeName": "南岸 · 滑铁卢桥附近",
+                "placeName": "南岸（本地演示）",
                 "startsAt": "2026-11-01T15:00:00Z", "endsAt": "2026-11-01T16:00:00Z",
                 "windowOpensAt": "2026-11-01T14:30:00Z", "windowClosesAt": "2026-11-01T17:00:00Z",
                 "status": completed ? "completed" : active ? "in_progress" : "confirmed", "revision": active || completed ? 1 : 0
@@ -98,7 +98,7 @@ actor AppointmentPreviewService: AppointmentServing {
 
     private static func summary(scenario: String) -> [String: Any] {
         let delta = scenario == "zero" ? 0 : scenario == "negative" ? -1 : 1
-        return ["title": "把下午留给一小段散步", "reflection": "谢谢你把自己的想法说出来。我们一起商量了这段时间怎么过。", "affinity": ["status": scenario == "pending" ? "pending" : "settled", "before": 30, "after": 30 + delta, "delta": delta, "reason": "本地演示数据，用于检查关系变化的显示；不代表真实评价。"], "memories": [["id": "fixture-memory", "content": "演示：你与 Oliver 在伦敦南岸商量散步的安排。", "status": "active"]]]
+        return ["title": "和Oliver一起散步", "reflection": "你们在南岸的水边坐了一会，随后沿步道走回桥边。", "affinity": ["status": scenario == "pending" ? "pending" : "settled", "before": 30, "after": 30 + delta, "delta": delta, "reason": "本地演示 · 相处自然，彼此尊重"], "memories": [["id": "fixture-memory", "content": "演示：你与 Oliver 在伦敦南岸商量散步的安排。", "status": "active"]]]
     }
 }
 #endif

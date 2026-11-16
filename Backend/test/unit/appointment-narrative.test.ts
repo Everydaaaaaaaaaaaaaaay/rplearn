@@ -352,6 +352,9 @@ describe("appointment detection evidence", () => {
     const { service, requests } = harness([{ appointment: detected }, accept]);
     expect(await service.detect(detectionInput())).toEqual(detected);
     expect(requests[0]?.messages[1]?.content).toContain("Europe/London");
+    expect(requests[0]?.messages[0]?.content).toContain("和{character.name}一起{agreed activity}");
+    expect(requests[0]?.messages[0]?.content).toContain("和Ruby一起看电影");
+    expect(requests[0]?.messages[0]?.content).toContain("和{character.name}在{placeName}见面");
     expect(requests[1]?.messages[1]?.content).toContain("user-message");
   });
   it.each([

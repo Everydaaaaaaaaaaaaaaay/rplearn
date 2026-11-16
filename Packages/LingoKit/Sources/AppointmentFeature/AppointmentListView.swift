@@ -14,7 +14,8 @@ public struct AppointmentListView: View {
     private let readingServices: AppointmentReadingServices?
     private let settle: (@Sendable (UUID) async throws -> Void)?
     @State private var appointments: [BackendAppointment] = []
-    @State private var path: [UUID] = []
+    @State private var path: [AppointmentRoute] = []
+    @State private var selectedModel: AppointmentModel?
     @State private var loading = false
     @State private var message: String?
     @State private var openedInitial = false
@@ -35,35 +36,56 @@ public struct AppointmentListView: View {
             Group {
                 if loading && appointments.isEmpty { ProgressView("正在查看约定…") }
                 else if appointments.isEmpty {
-                    ContentUnavailableView("下一次见，慢慢约。", systemImage: "calendar", description: Text("在聊天里与旅伴约好时间地点，就会出现在这里。"))
+                    ContentUnavailableView("还没有约定", systemImage: "calendar", description: Text("在聊天里与旅伴约好时间地点，就会出现在这里。"))
                 } else {
-                    List(appointments.sorted { $0.startsAt < $1.startsAt }) { item in
-                        NavigationLink(value: item.id) {
-                            VStack(alignment: .leading, spacing: 7) {
-                                Text(item.title).font(.headline)
-                                Text("\(characterName(item.characterId)) · \(item.cityName) · \(item.placeName)").font(.subheadline)
-                                Text(AppointmentTime.formatted(item.startsAt, timeZone: item.timeZone)).font(.subheadline).foregroundStyle(.secondary)
-                                Text(AppointmentTime.status(item)).font(.caption).foregroundStyle(.secondary)
-                            }.padding(.vertical, 5)
-                        }.accessibilityIdentifier("appointment.card.\(item.id.uuidString.lowercased())")
-                    }.listStyle(.insetGrouped)
+                    ScrollViewReader { proxy in
+                        ScrollView {
+                            LazyVStack(spacing: 20) {
+                                ForEach(appointments.sorted { $0.startsAt < $1.startsAt }) { item in
+                                    AppointmentCardView(item: item, service: service, cache: cache,
+                                                        currentCityID: currentCityID, settle: settle,
+                                                        characterName: characterName, onChat: onChat) { model, route in
+                                        guard path.isEmpty else { return }
+                                        selectedModel = model
+                                        path.append(route)
+                                    }
+                                    .id(item.id)
+                                }
+                            }
+                            .padding(22).frame(maxWidth: 640).frame(maxWidth: .infinity)
+                        }
+                        .scrollBounceBehavior(.basedOnSize)
+                        .onChange(of: appointments.map(\.id), initial: true) { _, ids in
+                            if !openedInitial, let initialAppointmentID, ids.contains(initialAppointmentID) {
+                                openedInitial = true
+                                proxy.scrollTo(initialAppointmentID, anchor: .top)
+                            }
+                        }
+                    }
                 }
             }
-            .navigationTitle("赴约")
-            .toolbar { if let onClose { ToolbarItem(placement: .cancellationAction) { Button("关闭", action: onClose) } } }
+            .appointmentChrome(cityID: currentCityID, cityName: BackendAppointment.cityDisplayName(id: currentCityID, fallback: currentCityID))
+            .appointmentNavigation(backLabel: "返回活动", onBack: onClose)
             .safeAreaInset(edge: .bottom) {
                 if let message { VStack { Text(message).font(.footnote); Button("重新载入") { Task { await load() } } }.padding().frame(maxWidth: .infinity).background(.regularMaterial) }
             }
-            .navigationDestination(for: UUID.self) { id in
-                AppointmentDetailView(id: id, service: service, cache: cache, currentCityID: currentCityID, readingServices: readingServices, settle: settle, characterName: characterName, onChat: onChat, onMemory: onMemory)
+            .navigationDestination(for: AppointmentRoute.self) { route in
+                if let selectedModel {
+                    switch route {
+                    case .reader:
+                        AppointmentReaderView(model: selectedModel, readingServices: readingServices,
+                                              characterName: characterName, onChat: onChat, onMemory: onMemory)
+                    case .summary:
+                        AppointmentSummaryView(model: selectedModel, characterName: characterName,
+                                               onChat: onChat, onMemory: onMemory)
+                    }
+                }
             }
             .refreshable { await load() }
             .onChange(of: path) { _, value in if value.isEmpty { Task { await load() } } }
-            .task {
-                if !openedInitial, let initialAppointmentID { openedInitial = true; path = [initialAppointmentID] }
-                await load()
-            }
+            .task { await load() }
         }
+        .tint(AppointmentStyle.ink)
         .preferredColorScheme(.light)
     }
 
@@ -79,75 +101,124 @@ public struct AppointmentListView: View {
     }
 }
 
-struct AppointmentDetailView: View {
+private enum AppointmentRoute: Hashable {
+    case reader
+    case summary
+}
+
+private struct AppointmentCardView: View {
+    let item: BackendAppointment
     @State private var model: AppointmentModel
-    @State private var reader = false
-    @State private var summary = false
     @State private var confirmCancel = false
+    @State private var photoCredits = false
     let currentCityID: String
-    let readingServices: AppointmentReadingServices?
     let characterName: (UUID) -> String
     let onChat: (UUID) -> Void
-    let onMemory: (UUID) -> Void
+    let onOpen: (AppointmentModel, AppointmentRoute) -> Void
 
-    init(id: UUID, service: any AppointmentServing, cache: AppointmentCache, currentCityID: String, readingServices: AppointmentReadingServices?, settle: (@Sendable (UUID) async throws -> Void)?, characterName: @escaping (UUID) -> String, onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {
-        _model = State(initialValue: AppointmentModel(id: id, service: service, cache: cache, settle: settle))
-        self.readingServices = readingServices
-        self.currentCityID = currentCityID; self.characterName = characterName; self.onChat = onChat; self.onMemory = onMemory
+    init(item: BackendAppointment, service: any AppointmentServing, cache: AppointmentCache,
+         currentCityID: String, settle: (@Sendable (UUID) async throws -> Void)?,
+         characterName: @escaping (UUID) -> String, onChat: @escaping (UUID) -> Void,
+         onOpen: @escaping (AppointmentModel, AppointmentRoute) -> Void) {
+        self.item = item
+        _model = State(initialValue: AppointmentModel(id: item.id, service: service, cache: cache, settle: settle))
+        self.currentCityID = currentCityID
+        self.characterName = characterName
+        self.onChat = onChat
+        self.onOpen = onOpen
     }
+
+    private var appointment: BackendAppointment { model.detail?.appointment ?? item }
 
     var body: some View {
-        ScrollView {
-            if let detail = model.detail {
-                let item = detail.appointment
-                VStack(alignment: .leading, spacing: 20) {
-                    AppointmentPhotoView(cityID: item.cityId, cityName: item.cityName, paused: false)
-                        .frame(height: 230).clipShape(RoundedRectangle(cornerRadius: 12))
-                    Text(item.title).font(.largeTitle.weight(.medium)).fontDesign(.serif)
-                    Text("与 \(characterName(item.characterId)) · \(AppointmentTime.status(item))").font(.headline)
-                    Label(item.placeName, systemImage: "mappin.and.ellipse")
-                    Text("\(item.cityName)当地时间\n\(AppointmentTime.formatted(item.startsAt, timeZone: item.timeZone))")
-                    if TimeZone.current.identifier != item.timeZone {
-                        Text("设备所在时区\n\(AppointmentTime.formatted(item.startsAt, timeZone: TimeZone.current.identifier))").foregroundStyle(.secondary)
-                    }
-                    if let error = model.error { AppointmentErrorView(message: error, loading: model.submitting) { Task { if model.pending != nil { await model.retry() } else { await model.load() } } } }
-                    if model.pending != nil && model.error == nil { Text("上次回应已保留，请重试以同步结果。").font(.footnote); Button("重试原回应") { Task { await model.retry() } } }
-                    if item.status == "completed" || item.status == "finishing" {
-                        Button("查看这次回顾") { summary = true }.buttonStyle(.borderedProminent)
-                    } else if item.status == "in_progress" || detail.session != nil {
-                        Button("继续这次相处") { reader = true }.buttonStyle(.borderedProminent).accessibilityIdentifier("appointment.resume")
-                    } else if item.status == "confirmed" {
-                        Button(model.submitting ? "正在接上这一页…" : "去赴约") {
-                            Task { await model.submit(action: .start); if model.detail?.session != nil { reader = true } }
-                        }.buttonStyle(.borderedProminent).disabled(model.submitting || model.offline || !AppointmentTime.entryAvailable(detail, cityID: currentCityID) || model.pending != nil)
-                            .accessibilityIdentifier("appointment.start")
-                        Text(entryExplanation(detail)).font(.footnote).foregroundStyle(.secondary)
-                        Button("回聊天商量改期") { onChat(item.characterId) }.frame(minHeight: 44)
-                        Button("取消这次约定", role: .destructive) { confirmCancel = true }.frame(minHeight: 44).disabled(model.offline || model.submitting || model.pending != nil)
-                    } else { Button("回聊天商量下次") { onChat(item.characterId) }.buttonStyle(.borderedProminent) }
-                    if detail.session != nil, item.status == "completed" { Button("回看完整经历") { reader = true } }
-                }.padding(20)
-            } else if model.loading { ProgressView("正在打开约定…").padding(40) }
-            else { AppointmentErrorView(message: model.error ?? "约定暂时无法打开", loading: false) { Task { await model.load() } }.padding() }
-        }
-        .navigationTitle("约定").navigationBarTitleDisplayMode(.inline)
-        .controlSize(.large)
-        .refreshable { await model.load() }
-        .task { await model.load() }
-        .navigationDestination(isPresented: $reader) { AppointmentReaderView(model: model, readingServices: readingServices, characterName: characterName, onChat: onChat, onMemory: onMemory) }
-        .navigationDestination(isPresented: $summary) { AppointmentSummaryView(model: model, characterName: characterName, onChat: onChat, onMemory: onMemory) }
-        .confirmationDialog("取消这次约定？", isPresented: $confirmCancel, titleVisibility: .visible) {
-            if model.detail?.appointment.status == "confirmed" {
-                Button("取消约定", role: .destructive) { Task { await model.submit(action: .cancel) } }
+        VStack(alignment: .leading, spacing: 20) {
+            HStack {
+                Text(AppointmentTime.status(appointment)).font(.caption)
+                    .foregroundStyle(AppointmentStyle.ink.opacity(0.6))
+                Spacer()
+                options
             }
+            Text(appointment.displayTitle(companionName: characterName(appointment.characterId)))
+                .font(.title2.weight(.semibold)).fixedSize(horizontal: false, vertical: true)
+            Text(appointment.placeName).font(.subheadline)
+                .foregroundStyle(AppointmentStyle.ink.opacity(0.75))
+            AppointmentTimeView(appointment: appointment)
+            if let error = model.error {
+                AppointmentErrorView(message: error, loading: model.loading || model.submitting) {
+                    Task { if model.pending != nil { await model.retry() } else { await model.load() } }
+                }
+            } else if model.pending != nil && !model.submitting {
+                Button("重试原回应") { Task { await model.retry() } }.frame(minHeight: 44)
+            }
+            action.padding(.top, 4)
+        }
+        .multilineTextAlignment(.leading)
+        .padding(24).frame(maxWidth: .infinity, alignment: .leading)
+        .appointmentSurface()
+        .task(id: item.revision) { await model.load() }
+        .sheet(isPresented: $photoCredits) {
+            AppointmentPhotoCreditsView(cityID: appointment.cityId, cityName: appointment.displayCityName)
+        }
+        .confirmationDialog("取消这次约定？", isPresented: $confirmCancel, titleVisibility: .visible) {
+            Button("取消约定", role: .destructive) { Task { await model.submit(action: .cancel) } }
             Button("保留约定", role: .cancel) { }
-        } message: { Text("时间地点会保留为历史。取消不会扣好感，之后可以在聊天里重新约定。") }
+        } message: { Text("取消不会扣好感，之后可以在聊天里重新约定。") }
     }
 
-    private func entryExplanation(_ detail: BackendAppointmentDetail) -> String {
-        if detail.appointment.cityId != currentCityID { return "这次约定在\(detail.appointment.cityName)。切换应用城市后，可在约定时段进入。" }
-        if AppointmentTime.entryAvailable(detail, cityID: currentCityID) { return "已到约定时段。开始后可随时暂停，再继续。" }
-        return "可进入时间：\(AppointmentTime.formatted(detail.appointment.windowOpensAt, timeZone: detail.appointment.timeZone)) 至 \(AppointmentTime.formatted(detail.appointment.windowClosesAt, timeZone: detail.appointment.timeZone))。以服务端时间为准。"
+    private var options: some View {
+        Menu {
+            Button("照片来源", systemImage: "info.circle") { photoCredits = true }
+            if appointment.status == "confirmed" {
+                Button("商量改期", systemImage: "bubble.left") { onChat(appointment.characterId) }
+                Button("取消约定", systemImage: "calendar.badge.minus", role: .destructive) { confirmCancel = true }
+                    .disabled(model.detail == nil || model.offline || model.submitting || model.pending != nil)
+            }
+        } label: {
+            Image(systemName: "ellipsis").font(.system(size: 18, weight: .medium))
+                .frame(width: 44, height: 44).contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("约定选项").accessibilityIdentifier("appointment.details.options")
+    }
+
+    @ViewBuilder private var action: some View {
+        if appointment.status == "completed" || appointment.status == "finishing" {
+            Button("查看回顾") { onOpen(model, .summary) }
+                .buttonStyle(AppointmentPrimaryButtonStyle()).disabled(model.detail == nil)
+                .accessibilityIdentifier("appointment.openSummary")
+        } else if appointment.status == "in_progress" || model.detail?.session != nil {
+            Button("继续赴约") { onOpen(model, .reader) }
+                .buttonStyle(AppointmentPrimaryButtonStyle()).disabled(model.detail == nil)
+                .accessibilityIdentifier("appointment.resume")
+        } else if appointment.status == "confirmed" {
+            Button(model.submitting ? "正在开始…" : "去赴约") {
+                Task {
+                    // Refresh the server clock and status when entering from a long-lived list.
+                    await model.load()
+                    guard let detail = model.detail, !model.offline else { return }
+                    if detail.appointment.status == "completed" || detail.appointment.status == "finishing" {
+                        onOpen(model, .summary)
+                    } else if detail.session != nil {
+                        onOpen(model, .reader)
+                    } else if AppointmentTime.entryAvailable(detail, cityID: currentCityID) {
+                        await model.submit(action: .start)
+                        if model.detail?.session != nil { onOpen(model, .reader) }
+                    }
+                }
+            }
+            .buttonStyle(AppointmentPrimaryButtonStyle())
+            .disabled(model.loading || model.submitting || model.offline || model.detail == nil || model.pending != nil || appointment.cityId != currentCityID)
+            .accessibilityIdentifier("appointment.start")
+            if let detail = model.detail, !AppointmentTime.entryAvailable(detail, cityID: currentCityID) {
+                Text(appointment.cityId != currentCityID
+                     ? "切换到\(appointment.cityName)后赴约"
+                     : "可赴约时段 · \(AppointmentDisplayTime.beijingWindow(opens: appointment.windowOpensAt, closes: appointment.windowClosesAt))")
+                    .font(.footnote).foregroundStyle(AppointmentStyle.ink.opacity(0.65))
+            }
+        } else {
+            Button("回聊天商量下次") { onChat(appointment.characterId) }
+                .buttonStyle(AppointmentPrimaryButtonStyle())
+        }
     }
 }
 

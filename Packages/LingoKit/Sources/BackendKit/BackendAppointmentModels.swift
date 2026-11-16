@@ -14,6 +14,55 @@ public struct BackendAppointment: Codable, Sendable, Hashable, Identifiable {
     public let windowClosesAt: String
     public let status: String
     public let revision: Int
+
+    public func displayTitle(companionName: String) -> String {
+        let name = companionName.replacingOccurrences(of: " · 本地演示", with: "")
+        let savedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        if savedTitle.hasPrefix("和"), let separator = savedTitle.range(of: "一起") {
+            let activity = savedTitle[separator.upperBound...].trimmingCharacters(in: .whitespacesAndNewlines)
+            if !activity.isEmpty { return "和\(name)一起\(activity)" }
+        }
+        if savedTitle.hasPrefix("和"), savedTitle.hasSuffix("见面") {
+            return "和\(name)在\(placeName)见面"
+        }
+        // Older appointments used literary titles. Use only an activity named in
+        // that title, falling back to the agreed place when it gives no activity.
+        let activities = [
+            ("电影", "看电影"), ("咖啡", "喝咖啡"), ("散步", "散步"),
+            ("看展", "看展"), ("野餐", "野餐"), ("晚餐", "吃晚餐"),
+            ("午餐", "吃午餐"), ("早餐", "吃早餐"), ("骑行", "骑行"),
+            ("逛书店", "逛书店"), ("逛街", "逛街"), ("爬山", "爬山"),
+        ]
+        if let activity = activities.first(where: { savedTitle.contains($0.0) })?.1 {
+            return "和\(name)一起\(activity)"
+        }
+        return "和\(name)在\(placeName)见面"
+    }
+
+    public var displayCityName: String {
+        Self.cityDisplayName(id: cityId, fallback: cityName)
+    }
+
+    public static func cityDisplayName(id: String, fallback: String) -> String {
+        switch id {
+        case "london": "London"
+        case "newyork": "New York"
+        case "capetown": "Cape Town"
+        case "singapore": "Singapore"
+        case "dublin": "Dublin"
+        case "edinburgh": "Edinburgh"
+        case "vancouver": "Vancouver"
+        case "nairobi": "Nairobi"
+        case "sydney": "Sydney"
+        case "toronto": "Toronto"
+        case "auckland": "Auckland"
+        case "melbourne": "Melbourne"
+        case "neworleans": "New Orleans"
+        case "manchester": "Manchester"
+        case "kingston": "Kingston"
+        default: fallback
+        }
+    }
 }
 
 public struct BackendAppointmentList: Codable, Sendable, Hashable {
