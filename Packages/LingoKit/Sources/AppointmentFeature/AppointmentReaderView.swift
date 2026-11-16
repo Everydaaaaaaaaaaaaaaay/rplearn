@@ -157,13 +157,15 @@ struct AppointmentReaderView: View {
                     if model.submitting { ProgressView("正在继续…").tint(ink).font(.subheadline) }
                     if let error = model.error { AppointmentErrorView(message: error, loading: model.submitting) { Task { if model.pending != nil { await model.retry() } else { await model.load() } } } }
                     else if model.pending != nil && !model.submitting { Text("上次回应已保留。"); Button("重试原回应") { Task { await model.retry() } } }
+                    if showsComposer { customActionInput }
                 }.frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 4)
             }
             .scrollBounceBehavior(.basedOnSize)
-            .frame(maxHeight: max(44, maxHeight - (showsComposer ? 220 : 144)))
+            .defaultScrollAnchor(inputFocused ? .bottom : .top, for: .sizeChanges)
+            .frame(maxHeight: max(44, maxHeight - (inputFocused ? 48 : 144)))
             .fixedSize(horizontal: false, vertical: !dynamicTypeSize.isAccessibilitySize)
+            .accessibilityIdentifier("appointment.readerScroll")
             .id("\(model.block?.id ?? "")-\(model.beatIndex)")
-            if showsComposer { customActionInput.padding(.top, 16) }
             if !inputFocused {
                 HStack {
                     if readingServices != nil { Text("轻点英文可查词").font(.caption2).foregroundStyle(ink.opacity(0.6)) }
