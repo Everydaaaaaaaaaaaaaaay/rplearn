@@ -1,5 +1,6 @@
 import BackendKit
 import DesignSystem
+import PersistenceKit
 import SwiftUI
 
 public struct AppointmentListView: View {
@@ -7,6 +8,7 @@ public struct AppointmentListView: View {
     private let currentCityID: String
     private let initialAppointmentID: UUID?
     private let characterName: (UUID) -> String
+    private let characterCards: [UUID: CharacterCard]
     private let onChat: (UUID) -> Void
     private let onMemory: (UUID) -> Void
     private let onClose: (() -> Void)?
@@ -20,54 +22,56 @@ public struct AppointmentListView: View {
     @State private var message: String?
     @State private var openedInitial = false
 
-    public init(client: BackendClient, currentCityID: String, storageNamespace: String, initialAppointmentID: UUID? = nil, readingServices: AppointmentReadingServices? = nil, settle: (@Sendable (UUID) async throws -> Void)? = nil, onClose: (() -> Void)? = nil, characterName: @escaping (UUID) -> String, onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {
-        self.init(service: client, currentCityID: currentCityID, storageNamespace: storageNamespace, initialAppointmentID: initialAppointmentID, readingServices: readingServices, settle: settle, onClose: onClose, characterName: characterName, onChat: onChat, onMemory: onMemory)
+    public init(client: BackendClient, currentCityID: String, storageNamespace: String, initialAppointmentID: UUID? = nil, readingServices: AppointmentReadingServices? = nil, settle: (@Sendable (UUID) async throws -> Void)? = nil, onClose: (() -> Void)? = nil, characterName: @escaping (UUID) -> String, characterCards: [UUID: CharacterCard] = [:], onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {
+        self.init(service: client, currentCityID: currentCityID, storageNamespace: storageNamespace, initialAppointmentID: initialAppointmentID, readingServices: readingServices, settle: settle, onClose: onClose, characterName: characterName, characterCards: characterCards, onChat: onChat, onMemory: onMemory)
     }
 
-    init(service: any AppointmentServing, currentCityID: String, storageNamespace: String, initialAppointmentID: UUID? = nil, readingServices: AppointmentReadingServices? = nil, settle: (@Sendable (UUID) async throws -> Void)? = nil, onClose: (() -> Void)? = nil, characterName: @escaping (UUID) -> String, onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {
+    init(service: any AppointmentServing, currentCityID: String, storageNamespace: String, initialAppointmentID: UUID? = nil, readingServices: AppointmentReadingServices? = nil, settle: (@Sendable (UUID) async throws -> Void)? = nil, onClose: (() -> Void)? = nil, characterName: @escaping (UUID) -> String, characterCards: [UUID: CharacterCard] = [:], onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {
         self.service = service; self.currentCityID = currentCityID; self.initialAppointmentID = initialAppointmentID
-        self.characterName = characterName; self.onChat = onChat; self.onMemory = onMemory
+        self.characterName = characterName; self.characterCards = characterCards
+        self.onChat = onChat; self.onMemory = onMemory
         self.cache = AppointmentCaches.account(storageNamespace)
         self.readingServices = readingServices; self.settle = settle; self.onClose = onClose
     }
 
     public var body: some View {
         NavigationStack(path: $path) {
-            Group {
-                if loading && appointments.isEmpty { ProgressView("正在查看约定…") }
-                else if appointments.isEmpty {
-                    ContentUnavailableView("还没有约定", systemImage: "calendar", description: Text("在聊天里与旅伴约好时间地点，就会出现在这里。"))
-                } else {
-                    ScrollViewReader { proxy in
-                        ScrollView {
-                            LazyVStack(spacing: 20) {
-                                ForEach(appointments.sorted { $0.startsAt < $1.startsAt }) { item in
-                                    AppointmentCardView(item: item, service: service, cache: cache,
-                                                        currentCityID: currentCityID, settle: settle,
-                                                        characterName: characterName, onChat: onChat) { model, route in
-                                        guard path.isEmpty else { return }
-                                        selectedModel = model
-                                        path.append(route)
+            AppointmentPage(cityID: currentCityID, cityName: BackendAppointment.cityDisplayName(id: currentCityID, fallback: currentCityID),
+                            backLabel: "返回活动", onBack: onClose) {
+                Group {
+                    if loading && appointments.isEmpty { ProgressView("正在查看约定…") }
+                    else if appointments.isEmpty {
+                        ContentUnavailableView("还没有约定", systemImage: "calendar", description: Text("在聊天里与旅伴约好时间地点，就会出现在这里。"))
+                    } else {
+                        ScrollViewReader { proxy in
+                            ScrollView {
+                                LazyVStack(spacing: 0) {
+                                    ForEach(appointments.sorted { $0.startsAt < $1.startsAt }) { item in
+                                        AppointmentCardView(item: item, service: service, cache: cache,
+                                                            currentCityID: currentCityID, settle: settle,
+                                                            characterName: characterName, onChat: onChat) { model, route in
+                                            guard path.isEmpty else { return }
+                                            selectedModel = model
+                                            path.append(route)
+                                        }
+                                        .id(item.id)
                                     }
-                                    .id(item.id)
                                 }
+                                .padding(.horizontal, 24).padding(.bottom, 24).frame(maxWidth: 640).frame(maxWidth: .infinity)
                             }
-                            .padding(22).frame(maxWidth: 640).frame(maxWidth: .infinity)
-                        }
-                        .scrollBounceBehavior(.basedOnSize)
-                        .onChange(of: appointments.map(\.id), initial: true) { _, ids in
-                            if !openedInitial, let initialAppointmentID, ids.contains(initialAppointmentID) {
-                                openedInitial = true
-                                proxy.scrollTo(initialAppointmentID, anchor: .top)
+                            .scrollBounceBehavior(.basedOnSize)
+                            .onChange(of: appointments.map(\.id), initial: true) { _, ids in
+                                if !openedInitial, let initialAppointmentID, ids.contains(initialAppointmentID) {
+                                    openedInitial = true
+                                    proxy.scrollTo(initialAppointmentID, anchor: .top)
+                                }
                             }
                         }
                     }
                 }
             }
-            .appointmentChrome(cityID: currentCityID, cityName: BackendAppointment.cityDisplayName(id: currentCityID, fallback: currentCityID))
-            .appointmentNavigation(backLabel: "返回活动", onBack: onClose)
             .safeAreaInset(edge: .bottom) {
-                if let message { VStack { Text(message).font(.footnote); Button("重新载入") { Task { await load() } } }.padding().frame(maxWidth: .infinity).background(.regularMaterial) }
+                if let message { VStack { Text(message).font(.footnote); Button("重新载入") { Task { await load() } } }.padding().frame(maxWidth: .infinity).background(AppointmentStyle.canvas) }
             }
             .navigationDestination(for: AppointmentRoute.self) { route in
                 if let selectedModel {
@@ -85,6 +89,7 @@ public struct AppointmentListView: View {
             .onChange(of: path) { _, value in if value.isEmpty { Task { await load() } } }
             .task { await load() }
         }
+        .environment(\.appointmentCharacterCards, characterCards)
         .tint(AppointmentStyle.ink)
         .preferredColorScheme(.light)
     }
@@ -138,11 +143,7 @@ private struct AppointmentCardView: View {
                 Spacer()
                 options
             }
-            Text(appointment.displayTitle(companionName: characterName(appointment.characterId)))
-                .font(.title2.weight(.semibold)).fixedSize(horizontal: false, vertical: true)
-            Text(appointment.placeName).font(.subheadline)
-                .foregroundStyle(AppointmentStyle.ink.opacity(0.75))
-            AppointmentTimeView(appointment: appointment)
+            AppointmentIdentityView(appointment: appointment, name: characterName(appointment.characterId))
             if let error = model.error {
                 AppointmentErrorView(message: error, loading: model.loading || model.submitting) {
                     Task { if model.pending != nil { await model.retry() } else { await model.load() } }
@@ -153,8 +154,8 @@ private struct AppointmentCardView: View {
             action.padding(.top, 4)
         }
         .multilineTextAlignment(.leading)
-        .padding(24).frame(maxWidth: .infinity, alignment: .leading)
-        .appointmentSurface()
+        .padding(.vertical, 22).frame(maxWidth: .infinity, alignment: .leading)
+        .overlay(alignment: .bottom) { Rectangle().fill(AppointmentStyle.ink.opacity(0.09)).frame(height: 0.5) }
         .task(id: item.revision) { await model.load() }
         .sheet(isPresented: $photoCredits) {
             AppointmentPhotoCreditsView(cityID: appointment.cityId, cityName: appointment.displayCityName)
