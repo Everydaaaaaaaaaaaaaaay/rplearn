@@ -112,22 +112,28 @@ public struct HomeView: View {
                     }
                 }
                 Spacer(minLength: 24)
-                Text(region.nameZh).font(.system(.largeTitle, design: .serif, weight: .regular)).tracking(3)
-                    .accessibilityLabel("当前驻地，\(region.countryNameZh)，\(region.nameZh)")
-                if let resumableTitle {
-                    Text("上次停留在\(resumableTitle)").font(.subheadline)
-                        .fixedSize(horizontal: false, vertical: true)
+                VStack(spacing: 16) {
+                    Text(region.nameZh)
+                        .font(.system(.largeTitle, design: .serif, weight: .regular)).tracking(3)
+                        .accessibilityLabel("当前驻地，\(region.countryNameZh)，\(region.nameZh)")
+                        .accessibilityIdentifier("home.cityName")
+                    if let resumableTitle {
+                        Text("上次停留在\(resumableTitle)").font(.subheadline)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Button { onOpenDestination(.activities) } label: {
+                        Text("出去走走")
+                            .font(.body.weight(.medium)).tracking(1.5)
+                            .padding(.horizontal, 24).padding(.vertical, 12)
+                            .frame(minHeight: 48)
+                            .overlay { Capsule().strokeBorder(.white, lineWidth: 1) }
+                            .contentShape(Capsule())
+                    }
+                    .buttonStyle(DSSceneEntranceButtonStyle())
+                    .accessibilityIdentifier("home.activities")
                 }
-                Button { onOpenDestination(.activities) } label: {
-                    Text(resumableTitle == nil ? "去这里逛逛" : "继续上次外出")
-                        .font(.body.weight(.medium)).tracking(1.5)
-                        .padding(.horizontal, 24).padding(.vertical, 12)
-                        .frame(minHeight: 48)
-                        .overlay { Capsule().strokeBorder(.white, lineWidth: 1) }
-                        .contentShape(Capsule())
-                }
-                .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityLabel("城市活动")
-                .accessibilityIdentifier("home.activities")
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
             }
             .padding(24).foregroundStyle(.white)
         }
@@ -213,12 +219,12 @@ public struct HomeView: View {
                     .foregroundStyle(Color.dsSceneTextTertiary.opacity(0.22)).padding(.top, 12).padding(.trailing, 12)
                 VStack(alignment: .leading, spacing: 7) {
                     Spacer(minLength: 24)
-                    Text("世界地图").font(.body.weight(.medium))
                     HStack {
-                        Text("\(deps.regionCatalog.regions.count) 座城市").font(.caption)
+                        Text("世界地图").font(.body.weight(.medium))
                         Spacer(minLength: 0)
                         Image(systemName: "arrow.up.right").font(.system(size: 11))
-                    }.foregroundStyle(Color.dsSceneTextSecondary)
+                            .foregroundStyle(Color.dsSceneTextSecondary)
+                    }
                 }.padding(18)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

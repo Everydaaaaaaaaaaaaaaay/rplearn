@@ -254,7 +254,7 @@ final class ActivitySceneTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["与 Alex 的这次交流"].exists)
         app.buttons["完成"].tap()
         edgeBack(app)
-        XCTAssertTrue(app.buttons["城市活动"].waitForExistence(timeout: 4))
+        XCTAssertTrue(app.buttons["home.activities"].waitForExistence(timeout: 4))
     }
 
     func testChapterSupportsWordLookupAndVoice() {
@@ -297,7 +297,7 @@ final class ActivitySceneTests: XCTestCase {
         XCTAssertFalse(app.buttons["activities.encounter.chat"].exists)
         tap("activities.action.finish", app: app)
         edgeBack(app)
-        XCTAssertTrue(app.buttons["城市活动"].waitForExistence(timeout: 4))
+        XCTAssertTrue(app.buttons["home.activities"].waitForExistence(timeout: 4))
     }
 
     func testPondAndRainCafeContinueAcrossTwoRealLoopsAndLifecycleChanges() {

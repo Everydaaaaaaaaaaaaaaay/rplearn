@@ -103,7 +103,7 @@ final class CitySceneGalleryTests: XCTestCase {
         app.launchEnvironment["UI_TEST_REGION"] = "newyork"
         app.launchEnvironment["UI_TEST_CITY_TAB_REGION"] = "newyork"
         app.launch()
-        let entrance = app.buttons["城市活动"]
+        let entrance = app.buttons["home.activities"]
         XCTAssertTrue(entrance.waitForExistence(timeout: 30))
         entrance.tap()
         assertScene("newyork-high-line")
