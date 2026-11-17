@@ -19,6 +19,8 @@ struct MapViewportRequest {
 /// momentum. SwiftUI receives only settled selections and travel actions, never per-frame camera
 /// updates.
 struct WorldMapCanvas: UIViewRepresentable {
+    let cache: WorldMapCache?
+    let initialRegion: Region?
     let regions: [Region]
     let presentations: [String: MapRegionPresentation]
     let selectedRegionID: String?
@@ -32,8 +34,20 @@ struct WorldMapCanvas: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView(frame: .zero)
+        let mapView = cache?.acquire(region: initialRegion) ?? Self.preparedMapView()
         mapView.delegate = context.coordinator
+        context.coordinator.installAnnotations(in: mapView)
+        return mapView
+    }
+
+    static func dismantleUIView(_ mapView: MKMapView, coordinator: Coordinator) {
+        guard mapView.delegate === coordinator else { return }
+        mapView.delegate = nil
+        coordinator.parent.cache?.release(mapView)
+    }
+
+    static func preparedMapView() -> MKMapView {
+        let mapView = MKMapView(frame: .zero)
         mapView.isScrollEnabled = true
         mapView.isZoomEnabled = true
         mapView.isPitchEnabled = true
@@ -64,7 +78,6 @@ struct WorldMapCanvas: UIViewRepresentable {
             RegionAnnotationView.self,
             forAnnotationViewWithReuseIdentifier: RegionAnnotationView.reuseIdentifier
         )
-        context.coordinator.installAnnotations(in: mapView)
         return mapView
     }
 
@@ -89,6 +102,7 @@ struct WorldMapCanvas: UIViewRepresentable {
         }
 
         func installAnnotations(in mapView: MKMapView) {
+            mapView.removeAnnotations(mapView.annotations)
             let annotations = parent.regions.map(RegionAnnotation.init)
             annotationsByID = Dictionary(uniqueKeysWithValues: annotations.map { ($0.region.id, $0) })
             mapView.addAnnotations(annotations)

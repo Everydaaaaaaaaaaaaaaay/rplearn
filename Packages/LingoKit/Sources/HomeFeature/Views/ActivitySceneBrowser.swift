@@ -119,6 +119,13 @@ public struct ActivitySceneBrowser: View {
             .dynamicTypeSize(...DynamicTypeSize.accessibility2)
         }
         .foregroundStyle(.white).tint(.white)
+        .task(id: selection) {
+            let window = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+                .flatMap(\.windows).first(where: \.isKeyWindow)
+            guard let window else { return }
+            await ActivityPlacePhoto.preload(Array(places.dropFirst(selection).prefix(2)).map(\.photo),
+                size: window.bounds.size, scale: window.screen.scale)
+        }
         .onChange(of: places.map(\.id)) { _, _ in selection = 0 }
         .sheet(item: $credits) {
             ActivityPhotoCredits(photo: $0)

@@ -34,6 +34,15 @@ public struct ActivitiesView: View {
                 onChat: @escaping (CharacterDTO) -> Void) {
         self.journey = journey
         self.deps = deps
+        if let profile = deps.presentationCache?.profile,
+           let region = deps.regionCatalog.region(id: profile.currentRegionID) {
+            _cityName = State(initialValue: region.nameZh)
+            if deps.tutorial == nil, let releaseID = deps.activityReleaseID {
+                let catalog = deps.presentationCache?.catalog(releaseID: releaseID, cityID: region.id)
+                _placeCatalog = State(initialValue: catalog)
+                _cityID = State(initialValue: catalog == nil ? nil : region.id)
+            } else { _cityID = State(initialValue: region.id) }
+        }
         self.storageNamespace = storageNamespace
         self.isVisible = isVisible
         _activity = activity
@@ -47,6 +56,16 @@ public struct ActivitiesView: View {
                 CityPlacesView(cityName: cityName, catalog: placeCatalog, onBack: onClose,
                     onJournal: { readRecords(); showsJournal = true }, onSelect: { place in
                         guard resumableOuting == nil else { return }
+                        do {
+                            if let saved = try CityOutingArchive.load(namespace: storageNamespace), saved.needsContinuation {
+                                openPlaceArchive(saved)
+                                return
+                            }
+                        } catch {
+                            cityID = nil
+                            contextError = "上次外出进度暂时无法读取，请重试。"
+                            return
+                        }
                         guard let region = deps.regionCatalog.region(id: placeCatalog.cityId),
                               let gateway = deps.outingGateway else { return }
                         journey.preparePlace(archive: .init(place: place, releaseID: placeCatalog.releaseId),
@@ -250,6 +269,13 @@ public struct ActivitiesView: View {
                 return
             }
             if deps.tutorial == nil, let releaseID = deps.activityReleaseID, let gateway = deps.outingGateway {
+                cityName = deps.regionCatalog.region(id: profile.currentRegionID)?.nameZh ?? cityName
+                if let local = deps.presentationCache?.catalog(releaseID: releaseID, cityID: profile.currentRegionID)
+                    ?? CityActivityRelease.bundled().flatMap({ $0.releaseId == releaseID ? $0.catalog(in: profile.currentRegionID) : nil }) {
+                    placeCatalog = local
+                    cityID = local.cityId
+                    readRecords()
+                }
                 let cached = try CityOutingArchive.load(namespace: storageNamespace)
                 resumableOuting = cached?.needsContinuation == true ? cached : nil
                 if resumableOuting == nil, let active = try await gateway.activeOuting() {
@@ -258,12 +284,19 @@ public struct ActivitiesView: View {
                     try restored.save(namespace: storageNamespace)
                     resumableOuting = restored
                 }
+                guard !Task.isCancelled, activity == nil else { return }
                 if automaticallyRestoreOuting, let archive = resumableOuting {
                     automaticallyRestoreOuting = false
                     openPlaceArchive(archive); readRecords(); return
                 }
-                guard let catalog = try await gateway.activityCatalog(releaseID: releaseID),
+                let remote: BackendActivityCatalog?
+                if let cache = deps.presentationCache {
+                    remote = try await cache.refreshCatalog(releaseID: releaseID, cityID: profile.currentRegionID, gateway: gateway)
+                } else { remote = try await gateway.activityCatalog(releaseID: releaseID) }
+                guard !Task.isCancelled else { return }
+                guard let catalog = remote,
                       let region = deps.regionCatalog.region(id: catalog.cityId) else {
+                    if placeCatalog != nil { return }
                     cityID = nil; contextError = "城市地点暂未准备好，请稍后重试。"; return
                 }
                 try CityActivityRelease.validate(catalog)
@@ -287,7 +320,7 @@ public struct ActivitiesView: View {
             cityName = deps.regionCatalog.region(id: profile.currentRegionID)?.nameZh ?? "当前城市"
             readRecords()
         } catch {
-            if let catalog = placeCatalog, resumableOuting != nil {
+            if let catalog = placeCatalog {
                 cityID = catalog.cityId; readRecords(); return
             }
             cityID = nil

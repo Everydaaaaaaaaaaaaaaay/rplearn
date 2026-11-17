@@ -11,9 +11,51 @@ private final class PreparedActivityPhoto: @unchecked Sendable {
 }
 
 public struct ActivityPlacePhoto: View {
+    @MainActor private static let cache = PhotoCache()
+
+    @MainActor private final class PhotoCache {
+        let images = NSCache<NSString, UIImage>()
+        var loads: [String: Task<PreparedActivityPhoto?, Never>] = [:]
+        init() { images.totalCostLimit = 64 * 1_024 * 1_024 }
+        func key(_ photo: BackendActivityPhoto, size: CGSize, fit: Bool) -> String {
+            "\(photo.assetName):\(photo.outputSHA256):\(size):\(fit)"
+        }
+        func image(_ photo: BackendActivityPhoto, size: CGSize, fit: Bool) -> UIImage? {
+            images.object(forKey: key(photo, size: size, fit: fit) as NSString)
+        }
+        func load(_ photo: BackendActivityPhoto, size: CGSize, fit: Bool) async -> UIImage? {
+            let key = key(photo, size: size, fit: fit)
+            if let image = images.object(forKey: key as NSString) { return image }
+            let task: Task<PreparedActivityPhoto?, Never>
+            if let existing = loads[key] { task = existing }
+            else {
+                let alignment = ActivityPlacePhoto.framing[photo.assetName] ?? "center"
+                task = Task.detached(priority: .utility) {
+                    ActivityPlacePhoto.prepare(photo, pixelSize: size, fit: fit, alignment: alignment)
+                }
+                loads[key] = task
+            }
+            let value = await task.value
+            loads[key] = nil
+            if let image = value?.image, let bitmap = image.cgImage {
+                images.setObject(image, forKey: key as NSString, cost: bitmap.bytesPerRow * bitmap.height)
+            }
+            return value?.image
+        }
+    }
+
+    public static func preload(_ photos: [BackendActivityPhoto], size: CGSize, scale: CGFloat) async {
+        let pixels = CGSize(width: ceil(size.width * scale), height: ceil(size.height * scale))
+        for photo in photos.prefix(3) {
+            guard !Task.isCancelled else { return }
+            _ = await cache.load(photo, size: pixels, fit: false)
+        }
+    }
+
     let photo: BackendActivityPhoto
     let contentMode: ContentMode
     @State private var image: UIImage?
+    @State private var imageKey: String?
     @State private var failed = false
     @State private var attempt = 0
     @Environment(\.displayScale) private var displayScale
@@ -31,8 +73,9 @@ public struct ActivityPlacePhoto: View {
         GeometryReader { geometry in
             let pixelSize = CGSize(width: ceil(geometry.size.width * displayScale),
                                    height: ceil(geometry.size.height * displayScale))
+            let key = Self.cache.key(photo, size: pixelSize, fit: contentMode == .fit)
             Group {
-                if let image {
+                if let image = (imageKey == key ? image : nil) ?? Self.cache.image(photo, size: pixelSize, fit: contentMode == .fit) {
                     Image(uiImage: image).resizable().aspectRatio(contentMode: contentMode)
                         .frame(width: geometry.size.width, height: geometry.size.height,
                                alignment: .center).clipped()
@@ -47,15 +90,11 @@ public struct ActivityPlacePhoto: View {
             }.frame(width: geometry.size.width, height: geometry.size.height)
                 .background(Color.dsTravelNavy.opacity(0.06))
                 .task(id: "\(photo.outputSHA256):\(attempt):\(pixelSize):\(contentMode)") {
-                    image = nil
                     failed = false
-                    let fit = contentMode == .fit
-                    let horizontalAlignment = Self.framing[photo.assetName] ?? "center"
-                    let prepared = await Task.detached(priority: .utility) {
-                        Self.prepare(photo, pixelSize: pixelSize, fit: fit, alignment: horizontalAlignment)
-                    }.value
+                    let prepared = await Self.cache.load(photo, size: pixelSize, fit: contentMode == .fit)
                     guard !Task.isCancelled else { return }
-                    image = prepared?.image
+                    image = prepared
+                    imageKey = key
                     failed = image == nil
                 }
         }.contentShape(Rectangle()).accessibilityLabel("地点实拍")

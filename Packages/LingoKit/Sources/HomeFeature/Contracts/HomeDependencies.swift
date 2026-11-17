@@ -12,6 +12,7 @@ public struct ActivityTutorialConfiguration: Sendable {
 }
 
 public struct HomeDependencies: Sendable {
+    public let presentationCache: JourneyPresentationCache?
     public let tutorial: ActivityTutorialConfiguration?
     public let access: JourneyAccess
     public let economyStore: EconomyStore
@@ -52,9 +53,11 @@ public struct HomeDependencies: Sendable {
         npcRegistry: (any PublicNPCRegistry)? = nil,
         outingGateway: (any OutingGateway)? = nil,
         activityReleaseID: String? = nil,
-        appointments: (any AppointmentServing)? = nil
+        appointments: (any AppointmentServing)? = nil,
+        presentationCache: JourneyPresentationCache? = nil
     ) {
         self.tutorial = tutorial
+        self.presentationCache = presentationCache
         self.access = access
         self.economyStore = economyStore
         self.itemStore = itemStore

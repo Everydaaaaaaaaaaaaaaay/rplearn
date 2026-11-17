@@ -609,6 +609,23 @@ struct RootView: View {
         if let accountID = activeUserID,
            environment.workspace?.userID == accountID {
             tabs
+            .task(id: "destinations-\(accountID)-\(stateRevision)-\(environment.needsOnboarding == false)") {
+                guard environment.needsOnboarding == false, let account = environment.workspace,
+                      account.userID == accountID else { return }
+                let cache = account.journeyPresentation
+                await cache.refreshLocal(economy: account.economyStore, items: account.itemStore,
+                    progress: account.storyProgressStore, ticketStubs: account.ticketStubStore)
+                guard !Task.isCancelled else { return }
+                _ = try? await cache.refreshMainline(using: mainlineClient)
+            }
+            .background {
+                if let account = environment.workspace, environment.needsOnboarding == false,
+                   let profile = account.journeyPresentation.profile {
+                    WorldMapWarmupView(cache: account.worldMapCache,
+                        region: environment.regionCatalog.region(id: profile.currentRegionID))
+                        .opacity(0.001).allowsHitTesting(false).accessibilityHidden(true)
+                }
+            }
             #if DEBUG
             .task(id: "\(accountID.uuidString)-\(stateRevision)-\(environment.needsOnboarding == false)") {
                 // 内存账号可能先挂载、后导入角色；等导入完成，避免冷启动丢失预览展示。
@@ -1303,7 +1320,8 @@ struct RootView: View {
             npcRegistry: isPlaceOutingPreview ? nil : environment.backendClient,
             outingGateway: placeOutingGateway,
             activityReleaseID: placeOutingReleaseID,
-            appointments: homeAppointmentService
+            appointments: homeAppointmentService,
+            presentationCache: environment.workspace?.journeyPresentation
         )
     }
 
@@ -1346,7 +1364,9 @@ struct RootView: View {
             travelService: travelService,
             economyService: economyService,
             regionCatalog: environment.regionCatalog,
-            storyProgress: environment.storyProgressStore
+            storyProgress: environment.storyProgressStore,
+            presentationCache: environment.workspace?.journeyPresentation,
+            mapCache: environment.workspace?.worldMapCache
         )
     }
 

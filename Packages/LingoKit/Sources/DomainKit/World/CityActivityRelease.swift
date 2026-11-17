@@ -16,7 +16,13 @@ public struct CityActivityRelease: Decodable, Sendable {
     }
 
     public func places(in cityID: String) -> [BackendActivityPlace] {
-        preview?.catalogs.first { $0.cityId == cityID }?.places ?? []
+        catalog(in: cityID)?.places ?? []
+    }
+
+    public func catalog(in cityID: String) -> BackendActivityCatalog? {
+        guard let value = preview?.catalogs.first(where: { $0.cityId == cityID }),
+              value.releaseId == releaseId, (try? Self.validate(value)) != nil else { return nil }
+        return value
     }
 
     public struct Setting: Decodable, Sendable {

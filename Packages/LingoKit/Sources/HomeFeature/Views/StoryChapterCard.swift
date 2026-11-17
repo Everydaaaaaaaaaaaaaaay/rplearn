@@ -99,6 +99,10 @@ struct StoryCoverFlow: View {
             .frame(width: proxy.size.width, height: proxy.size.height)
         }
         .background(Color.black)
+        .task(id: selectedID) {
+            let nearby = items.dropFirst(max(0, selectedIndex - 1)).prefix(3).map(\.artworkName)
+            await DSSceneImageCache.preload(nearby)
+        }
         .accessibilityIdentifier(accessibilityIdentifier)
         .onAppear {
             synchronizeSelection()
@@ -249,7 +253,7 @@ private struct StoryPoster: View {
 
     var body: some View {
         ZStack {
-            Image(item.artworkName)
+            DSSceneImageCache.image(named: item.artworkName)
                 .resizable()
                 .scaledToFill()
                 .frame(width: width, height: height)

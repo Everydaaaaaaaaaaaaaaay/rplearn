@@ -41,6 +41,44 @@ final class HomeNavigationTests: XCTestCase {
         add(capture)
     }
 
+    func testCachedActivityStoriesAndMapReentry() {
+        app.launchEnvironment["UI_TEST_WELCOME_CAPTURE"] = "1"
+        app.launchEnvironment["UI_TEST_WORLD_GATEWAY"] = "1"
+        app.launchEnvironment["UI_TEST_REGION"] = "london"
+        app.launchEnvironment["UI_TEST_CITY_TAB_REGION"] = "london"
+        app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
+        app.launch()
+        let activities = app.buttons["home.activities"]
+        XCTAssertTrue(activities.waitForExistence(timeout: 15))
+        for visit in 0..<2 {
+            activities.tap()
+            XCTAssertTrue(app.buttons["activities.back"].waitForExistence(timeout: 2))
+            XCTAssertFalse(app.staticTexts["正在打开场景"].exists)
+            let photo = app.descendants(matching: .any)["activities.photo.loaded.london-southbank"].firstMatch
+            XCTAssertTrue(photo.waitForExistence(timeout: 2))
+            app.buttons["activities.back"].tap()
+
+            let story = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "剧情，")).firstMatch
+            story.tap()
+            app.buttons["story.mainline"].tap()
+            XCTAssertTrue(app.buttons["story.chapter.departures_london_v1"].waitForExistence(timeout: 2))
+            app.navigationBars.buttons.firstMatch.tap()
+            app.buttons["story.cities"].tap()
+            XCTAssertTrue(app.buttons["story.chapter.departures_city_london_v1"].waitForExistence(timeout: 2))
+            app.navigationBars.buttons.firstMatch.tap()
+            app.navigationBars.buttons.firstMatch.tap()
+
+            app.buttons["世界地图"].tap()
+            XCTAssertTrue(app.buttons["回到地球全景"].waitForExistence(timeout: 2))
+            let capture = XCTAttachment(screenshot: app.screenshot())
+            capture.name = "world-map-cached-visit-\(visit + 1)"
+            capture.lifetime = .keepAlways
+            add(capture)
+            app.buttons["返回首页"].tap()
+            XCTAssertTrue(activities.waitForExistence(timeout: 2))
+        }
+    }
+
     func testMapSupportsLeadingEdgeSwipeBack() {
         app.launch()
         let mapEntry = app.buttons["世界地图"]

@@ -13,7 +13,7 @@ public struct HomeView: View {
     private let onOpenDestination: @MainActor (HomeDestination) -> Void
     private let onOpenAppointment: (@MainActor (UUID) -> Void)?
 
-    @State private var profile: UserProfileDTO?
+    @State private var loadedProfile: UserProfileDTO?
     @State private var completedStories: Set<String> = []
     @State private var profileError = false
     @State private var resumableTitle: String?
@@ -30,6 +30,8 @@ public struct HomeView: View {
                 onOpenDestination: @escaping @MainActor (HomeDestination) -> Void = { _ in },
                 onOpenAppointment: (@MainActor (UUID) -> Void)? = nil) {
         self.deps = deps
+        _loadedProfile = State(initialValue: deps.presentationCache?.profile)
+        _completedStories = State(initialValue: deps.presentationCache?.completed ?? [])
         self.reloadToken = reloadToken
         self.isVisible = isVisible
         self.activityNamespace = activityNamespace
@@ -37,6 +39,8 @@ public struct HomeView: View {
         self.onOpenDestination = onOpenDestination
         self.onOpenAppointment = onOpenAppointment
     }
+
+    private var profile: UserProfileDTO? { deps.presentationCache?.profile ?? loadedProfile }
 
     private var currentRegion: Region? {
         #if DEBUG
@@ -94,6 +98,22 @@ public struct HomeView: View {
         .task(id: reloadKey) { if isVisible { await reloadProfile() } }
         .task(id: reloadKey) { if isVisible { await reloadOuting() } }
         .task(id: reloadKey) { if isVisible { await reloadAppointment() } }
+        .task(id: currentRegion?.id) {
+            guard let region = currentRegion else { return }
+            let window = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+                .flatMap(\.windows).first(where: \.isKeyWindow)
+            if let window {
+                await ActivityPlacePhoto.preload(places.map(\.photo), size: window.bounds.size, scale: window.screen.scale)
+            }
+            let main = MainlineCatalog.journey(starterRegionID: profile?.starterRegionID).stops.prefix(2)
+                .map { DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID) }
+            let cities = CityStoryCatalog.chapters.prefix(2)
+                .map { DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID) }
+            await DSSceneImageCache.preload(main + cities)
+            if let cache = deps.presentationCache, let releaseID = deps.activityReleaseID, let gateway = deps.outingGateway {
+                _ = try? await cache.refreshCatalog(releaseID: releaseID, cityID: region.id, gateway: gateway)
+            }
+        }
         .sheet(isPresented: $showsBackgroundCredits) { DSHubPhotoCreditsView(cityID: currentRegion?.id ?? "london") }
         .sheet(item: $creditedPhoto) { ActivityPhotoCredits(photo: $0) }
     }
@@ -246,7 +266,11 @@ public struct HomeView: View {
             async let completed = deps.storyProgress.completedStoryIDs()
             let (newProfile, completedIDs) = try await (loadedProfile, completed)
             guard !Task.isCancelled else { return }
-            profile = newProfile
+            self.loadedProfile = newProfile
+            if let cache = deps.presentationCache {
+                await cache.refreshLocal(economy: deps.economyStore, items: deps.itemStore,
+                    progress: deps.storyProgress, ticketStubs: deps.ticketStubStore)
+            }
             completedStories = DepartureStoryIdentity.catalogCompletionIDs(completedIDs)
             profileError = currentRegion == nil
         } catch is CancellationError {

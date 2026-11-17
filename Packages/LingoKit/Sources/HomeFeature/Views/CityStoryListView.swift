@@ -20,6 +20,11 @@ public struct CityStoryListView: View {
         onOpenChapter: @escaping @MainActor (CityStoryChapter) -> Void
     ) {
         self.deps = deps
+        _profile = State(initialValue: deps.presentationCache?.profile)
+        _completed = State(initialValue: deps.presentationCache?.completed ?? [])
+        _unlockProgress = State(initialValue: CityStoryUnlockProgress(
+            profile: deps.presentationCache?.profile, availableTickets: deps.presentationCache?.tickets ?? [],
+            ticketStubs: deps.presentationCache?.stubs ?? []))
         self.onOpenChapter = onOpenChapter
     }
 
@@ -55,7 +60,6 @@ public struct CityStoryListView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
         .tint(.white)
         .task { await reload() }
-        .onAppear { Task { await reload() } }
     }
 
     private var coverItems: [StoryCoverItem] {
@@ -104,6 +108,15 @@ public struct CityStoryListView: View {
     }
 
     private func reload() async {
+        if let cache = deps.presentationCache {
+            await cache.refreshLocal(economy: deps.economyStore, items: deps.itemStore,
+                progress: deps.storyProgress, ticketStubs: deps.ticketStubStore)
+            guard !Task.isCancelled else { return }
+            profile = cache.profile
+            completed = cache.completed
+            unlockProgress = CityStoryUnlockProgress(profile: cache.profile, availableTickets: cache.tickets, ticketStubs: cache.stubs)
+            return
+        }
         async let loadedProfile = try? deps.economyStore.profile()
         async let loadedCompleted = try? deps.storyProgress.completedStoryIDs()
         async let loadedTickets = try? deps.itemStore.unconsumedTickets()

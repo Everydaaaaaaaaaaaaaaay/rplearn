@@ -9,6 +9,7 @@ import Foundation
 import HomeFeature
 import LLMKit
 import MediaKit
+import MapFeature
 import PersistenceKit
 import SpeechKit
 import SwiftData
@@ -530,6 +531,8 @@ final class AppEnvironment {
 /// from the previously active account while a new account is loading.
 @MainActor
 final class AccountWorkspace {
+    let journeyPresentation = JourneyPresentationCache()
+    let worldMapCache = WorldMapCache()
     let userID: UUID
     let userAvatar: UserAvatarStore
     let modelContainer: ModelContainer
@@ -674,7 +677,8 @@ final class AccountWorkspace {
                     _ = try await backend.detectAppointments(characterID: character.id, conversationID: conversationID)
                 }
             }))
-
+        await journeyPresentation.refreshLocal(economy: economyStore, items: itemStore,
+            progress: storyProgressStore, ticketStubs: ticketStubStore)
     }
 }
 

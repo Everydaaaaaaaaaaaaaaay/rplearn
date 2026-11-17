@@ -17,6 +17,8 @@ public struct MainlineListView: View {
         onOpenChapter: @escaping @MainActor (MainlineChapter) -> Void
     ) {
         self.deps = deps
+        _profile = State(initialValue: deps.presentationCache?.profile)
+        _progress = State(initialValue: deps.presentationCache?.mainline)
         self.onOpenChapter = onOpenChapter
     }
 
@@ -118,11 +120,14 @@ public struct MainlineListView: View {
     }
 
     private func reload() async {
-        profile = try? await deps.economyStore.profile()
+        if let value = try? await deps.economyStore.profile() { profile = value }
         do {
             guard let mainline = deps.mainline else { progressError = "旅程进度暂不可用，点击重试"; return }
-            progress = try await mainline.mainlineProgress(); progressError = nil
-        } catch { progress = nil; progressError = "旅程进度更新失败，点击重试" }
+            if let cache = deps.presentationCache {
+                progress = try await cache.refreshMainline(using: mainline, force: true)
+            } else { progress = try await mainline.mainlineProgress() }
+            progressError = nil
+        } catch { progressError = "旅程进度更新失败，点击重试" }
     }
 
     private func padded(_ value: Int) -> String {
