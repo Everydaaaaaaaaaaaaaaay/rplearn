@@ -8,10 +8,11 @@ CREATE TABLE app.chat_followups (
 --> statement-breakpoint
 CREATE INDEX chat_followups_pending ON app.chat_followups(user_id,created_at) WHERE completed_at IS NULL;
 --> statement-breakpoint
-ALTER TABLE app.chat_generations ADD COLUMN voice_receipt jsonb;
---> statement-breakpoint
 CREATE TABLE app.chat_voice_receipts (
  user_id uuid NOT NULL REFERENCES app.users(id) ON DELETE CASCADE,
  message_id uuid NOT NULL, heard_text text NOT NULL, interrupted boolean NOT NULL,
  created_at timestamptz NOT NULL DEFAULT now(), PRIMARY KEY(user_id,message_id)
 );
+--> statement-breakpoint
+CREATE INDEX chat_voice_receipt_waiting ON app.chat_generations(completed_at,id)
+ WHERE status='completed' AND snapshot->>'awaitingVoiceReceipt'='true';

@@ -19,6 +19,7 @@ const factSchema = z.object({
 interface Note {
   id: string;
   date: string;
+  updatedAt: string;
   text: string;
   tier: string;
   importance: number;
@@ -47,6 +48,7 @@ export function memoryNotes(memories: ContentRecord[]) {
     notes.push({
       id: memory.resourceId,
       date: fact?.observedAt ?? payload.createdAt ?? memory.createdAt,
+      updatedAt: memory.updatedAt,
       text: fact?.text ?? payload.content,
       tier: payload.tier ?? "long",
       importance: payload.importance ?? 1,
@@ -59,9 +61,20 @@ export function memoryNotes(memories: ContentRecord[]) {
     .map((n) => n.date)
     .sort()
     .at(-1);
+  // Independent devices can create different sync records for the same fact key.
+  // A newer correction or tombstone supersedes every older copy before retrieval.
+  const latest = new Map<string, Note>();
+  for (const note of notes.toSorted(
+    (a, b) =>
+      a.date.localeCompare(b.date) ||
+      a.updatedAt.localeCompare(b.updatedAt) ||
+      a.id.localeCompare(b.id),
+  )) {
+    latest.set(note.fact ? `fact:${note.fact.key}` : `record:${note.id}`, note);
+  }
   return {
     cutoff,
-    notes: notes.filter(
+    notes: [...latest.values()].filter(
       (n) =>
         !n.fact?.forgotten &&
         !/\b(today|tomorrow|tonight|yesterday|last night|this morning|this afternoon|this evening|this weekend|next week|next month|last week|last month|currently|in a few days|in a couple of days)\b/i.test(

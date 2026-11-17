@@ -50,6 +50,33 @@ describe("shared conversation prompt", () => {
     expect(JSON.stringify(prompt)).not.toContain("old private address");
     expect(prompt.at(-1)?.content).toBe("Let's talk about today");
   });
+  it("a forgotten fact suppresses older copies created by another device", () => {
+    const memories = [
+      record("old-device", {
+        createdAt: "2026-11-01T00:00:00Z",
+        content: '@lingotrip-memory-v2:{"key":"address","text":"OLD PRIVATE ADDRESS"}',
+      }),
+      record("tombstone", {
+        createdAt: "2026-11-04T00:00:00Z",
+        content: '@lingotrip-memory-v2:{"key":"address","text":"","forgotten":true}',
+      }),
+    ];
+    const prompt = conversationPrompt(
+      persona,
+      memories,
+      [
+        record("q", {
+          role: "user",
+          text: "What is my address?",
+          createdAt: "2026-11-05T00:00:00Z",
+          contextMemoryIds: ["old-device"],
+        }),
+      ],
+      ["q"],
+      {},
+    );
+    expect(JSON.stringify(prompt)).not.toContain("OLD PRIVATE ADDRESS");
+  });
   it("keeps every pending input even when more than one message is coalesced", () => {
     const ids = Array.from({ length: 20 }, (_, i) => `message-${i.toString()}`);
     const prompt = conversationPrompt(
