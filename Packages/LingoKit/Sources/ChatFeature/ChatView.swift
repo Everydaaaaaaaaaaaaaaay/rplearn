@@ -21,7 +21,7 @@ public struct ChatView: View {
     @State private var fillingLearning = false
     @State private var learningDebugError: String?
     #endif
-    @AppStorage("chat.autoReadEnabled") var autoReadEnabled = true
+    @AppStorage("chat.autoReadEnabled") private var autoReadEnabled = true
     @State var showsChatFunctions = false
     @State private var opensAppointmentsAfterSettings = false
     @State private var appointmentAfterSettings: UUID?
@@ -185,6 +185,20 @@ public struct ChatView: View {
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel("返回聊天")
+                }
+            } else {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack(spacing: 0) {
+                        Button { autoReadEnabled.toggle() } label: {
+                            Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                                .frame(width: 44, height: 44)
+                        }
+                        .accessibilityLabel(autoReadEnabled ? "关闭自动朗读" : "开启自动朗读")
+                        .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+                        .accessibilityIdentifier("chat.autoRead")
+                        chatSettingsAction
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }
@@ -365,7 +379,7 @@ public struct ChatView: View {
                 }
             }
             .buttonStyle(.plain)
-            .frame(width: max(44, viewportWidth - 100), alignment: .leading)
+            .frame(width: max(44, viewportWidth - 188), alignment: .leading)
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("\(viewModel.character.displayName)，\(chatStatus(presence, at: context.date))，\(deps.regionName(viewModel.character.card.regionID))当地时间 \(ChatHeaderStatus.localTime(at: context.date, timeZoneIdentifier: presence.timeZoneIdentifier))")
             .accessibilityHint("打开聊天设置")
@@ -391,9 +405,9 @@ public struct ChatView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    var chatSettingsAction: some View {
+    private var chatSettingsAction: some View {
         Button(action: openChatSettings) {
-            chatFunctionLabel("聊天设置", symbol: "slider.horizontal.3")
+            Image(systemName: "slider.horizontal.3").frame(width: 44, height: 44)
         }
         .accessibilityLabel("聊天设置")
         .accessibilityIdentifier("chat.settings")

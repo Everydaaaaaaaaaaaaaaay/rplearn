@@ -16,7 +16,9 @@ final class ComposerTranslatorUITests: XCTestCase {
         capture("composer-normal", app)
         let english = app.descendants(matching: .any)["chat.composer"].firstMatch
         english.tap(); english.typeText("Yes, please send me the name.")
-        app.buttons["chat.dismissKeyboard"].tap()
+        let blankChatY = (app.navigationBars.firstMatch.frame.maxY + english.frame.minY) / 2
+        app.coordinate(withNormalizedOffset: .zero)
+            .withOffset(CGVector(dx: app.frame.width - 3, dy: blankChatY)).tap()
         toggle.tap()
         Thread.sleep(forTimeInterval: 0.7)
         assertLatestMessageVisible(app)

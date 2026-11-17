@@ -51,7 +51,6 @@ final class CharacterLearningPagerTests: XCTestCase {
         XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
         XCTAssertFalse(app.buttons["chat.learning"].exists)
         XCTAssertFalse(app.buttons["chat.debugFillLearning"].exists)
-        app.buttons["chat.functions"].tap()
         app.buttons["chat.settings"].press(forDuration: 1)
         app.buttons["chat.debugFillLearning"].tap()
         XCTAssertTrue(page.waitForExistence(timeout: 3))

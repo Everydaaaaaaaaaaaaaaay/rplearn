@@ -96,19 +96,6 @@ extension ChatView {
                             Task { await sendComposerDraft() }
                         }
 
-                    if isTextInputFocused && !composerTranslation.isOpen {
-                        Button {
-                            isTextInputFocused = false
-                        } label: {
-                            Image(systemName: "keyboard.chevron.compact.down")
-                                .font(.system(size: 20))
-                                .frame(width: 32, height: 32)
-                                .contentShape(Rectangle())
-                        }
-                        .accessibilityLabel("收起键盘")
-                        .accessibilityIdentifier("chat.dismissKeyboard")
-                    }
-
                     translatorToggle
                 }
                 composerAction
@@ -116,15 +103,14 @@ extension ChatView {
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
             if showsChatFunctions {
+                // Apply menu height and composer position in the same layout pass.
                 chatFunctionPanel
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
         .padding(.bottom, max(0, bottomInset))
         .tint(composerTint)
         .background(ComposerPanelSurface(expanded: composerTranslation.isOpen))
         .animation(reduceMotion ? .linear(duration: 0.15) : .spring(response: 0.42, dampingFraction: 0.94), value: composerTranslation.isOpen)
-        .animation(reduceMotion ? nil : .snappy(duration: 0.2), value: showsChatFunctions)
         .onChange(of: composerFocus) { _, focus in
             if focus != nil { showsChatFunctions = false }
         }
@@ -160,7 +146,11 @@ extension ChatView {
                 .accessibilityLabel("发送消息")
                 .accessibilityIdentifier("chat.send")
             } else {
-                Button { showsChatFunctions.toggle() } label: {
+                Button {
+                    var transaction = Transaction(animation: nil)
+                    transaction.disablesAnimations = true
+                    withTransaction(transaction) { showsChatFunctions.toggle() }
+                } label: {
                     Image(systemName: "line.3.horizontal")
                         .font(.system(size: 22, weight: .medium))
                         .frame(width: 44, height: 44)
@@ -171,6 +161,7 @@ extension ChatView {
                 .accessibilityValue(showsChatFunctions ? "展开" : "收起")
             }
         }
+        .buttonStyle(.plain)
     }
 
     private var chatFunctionPanel: some View {
@@ -190,35 +181,18 @@ extension ChatView {
                 .accessibilityIdentifier("chat.learningMode")
             }
 
-            chatSettingsAction
-
-            Button { autoReadEnabled.toggle() } label: {
-                chatFunctionLabel(autoReadEnabled ? "自动朗读已开" : "自动朗读已关",
-                                  symbol: autoReadEnabled ? "speaker.wave.2" : "speaker.slash")
-            }
-            .accessibilityIdentifier("chat.autoRead")
-            .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
-
             Button {
                 showsChatFunctions = false
                 toggleComposerTranslator()
             } label: { chatFunctionLabel("翻译器", symbol: "character.bubble") }
             .accessibilityIdentifier("chat.translationMode")
-
-            Button {
-                showsChatFunctions = false
-                if composerTranslation.isOpen { toggleComposerTranslator() }
-                isVoiceMode.toggle()
-                recorder.resetFailure()
-            } label: { chatFunctionLabel(isVoiceMode ? "文字输入" : "语音输入", symbol: isVoiceMode ? "keyboard" : "waveform") }
-            .accessibilityIdentifier("chat.inputMode")
         }
         .buttonStyle(.plain)
         .padding(.horizontal, 16).padding(.top, 12).padding(.bottom, 16)
         .accessibilityIdentifier("chat.functions.panel")
     }
 
-    func chatFunctionLabel(_ title: String, symbol: String) -> some View {
+    private func chatFunctionLabel(_ title: String, symbol: String) -> some View {
         VStack(spacing: 7) {
             Image(systemName: symbol).font(.system(size: 23))
                 .frame(width: 48, height: 48)

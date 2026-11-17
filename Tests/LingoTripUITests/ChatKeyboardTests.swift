@@ -14,6 +14,9 @@ final class ChatKeyboardTests: XCTestCase {
         defer { app.terminate() }
         let functions = app.buttons["chat.functions"]
         XCTAssertTrue(functions.waitForExistence(timeout: 15))
+        let field = app.descendants(matching: .any)["chat.composer"].firstMatch
+        XCTAssertTrue(app.buttons["chat.settings"].isHittable)
+        XCTAssertTrue(app.buttons["chat.autoRead"].isHittable)
         XCTAssertFalse(app.buttons["chat.send"].exists)
         XCTAssertFalse(app.buttons["chat.localTime"].exists)
         XCTAssertFalse(app.buttons["chat.detectAppointment"].exists)
@@ -21,6 +24,11 @@ final class ChatKeyboardTests: XCTestCase {
         functions.tap()
         XCTAssertTrue(app.buttons["chat.call"].waitForExistence(timeout: 3))
         XCTAssertTrue(app.buttons["chat.learningMode"].exists)
+        XCTAssertFalse(app.buttons["chat.inputMode"].exists)
+        XCTAssertEqual(functions.frame.midY, field.frame.midY, accuracy: 2)
+        XCTAssertGreaterThan(app.buttons["chat.settings"].frame.maxY, 0)
+        XCTAssertLessThan(app.buttons["chat.settings"].frame.maxY, app.navigationBars.firstMatch.frame.maxY + 2)
+        XCTAssertLessThan(app.buttons["chat.autoRead"].frame.maxY, app.navigationBars.firstMatch.frame.maxY + 2)
         let menuImage = XCTAttachment(screenshot: app.screenshot())
         menuImage.name = "Chat composer function panel"
         menuImage.lifetime = .keepAlways
@@ -34,23 +42,25 @@ final class ChatKeyboardTests: XCTestCase {
         app.buttons["chat.settings"].tap()
         XCTAssertTrue(app.navigationBars["聊天设置"].waitForExistence(timeout: 3))
         app.buttons["完成"].tap()
-        let field = app.descendants(matching: .any)["chat.composer"].firstMatch
         field.tap()
         field.typeText("Keep this draft")
         XCTAssertTrue(app.buttons["chat.send"].waitForExistence(timeout: 3))
         XCTAssertFalse(functions.exists)
+        let keyboardLayout = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            field.frame.maxY <= app.keyboards.firstMatch.frame.minY + 2
+                && app.buttons["chat.send"].frame.maxY <= app.keyboards.firstMatch.frame.minY + 2
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [keyboardLayout], timeout: 3), .completed)
         let keyboardImage = XCTAttachment(screenshot: app.screenshot())
         keyboardImage.name = "Focused composer shows send action"
         keyboardImage.lifetime = .keepAlways
         add(keyboardImage)
-        app.buttons["chat.dismissKeyboard"].tap()
+        dismissKeyboard(in: app)
         XCTAssertTrue(functions.waitForExistence(timeout: 3))
         XCTAssertEqual(field.value as? String, "Keep this draft")
-        functions.tap()
-        app.buttons["chat.inputMode"].tap()
+        app.buttons["切换到语音"].tap()
         XCTAssertTrue(app.buttons["切换到键盘"].waitForExistence(timeout: 3))
-        functions.tap()
-        app.buttons["chat.inputMode"].tap()
+        app.buttons["切换到键盘"].tap()
         XCTAssertEqual(field.value as? String, "Keep this draft")
         functions.tap()
         app.buttons["chat.learningMode"].tap()
@@ -133,7 +143,7 @@ final class ChatKeyboardTests: XCTestCase {
         toggle.tap()
         XCTAssertEqual(toggle.label, "打开翻译器")
         XCTAssertTrue(app.keyboards.firstMatch.exists, "收起翻译器必须把键盘交回普通输入框")
-        XCTAssertTrue(app.buttons["chat.dismissKeyboard"].waitForExistence(timeout: 3))
+        XCTAssertFalse(app.buttons["chat.dismissKeyboard"].exists)
         XCTAssertEqual(field.value as? String, "Keep this draft")
         field.typeText(" here")
         XCTAssertEqual(field.value as? String, "Keep this draft here")
@@ -150,8 +160,8 @@ final class ChatKeyboardTests: XCTestCase {
         XCTAssertTrue(source.waitForExistence(timeout: 3))
         toggle.tap()
         XCTAssertEqual(toggle.label, "打开翻译器")
-        XCTAssertTrue(app.buttons["chat.dismissKeyboard"].waitForExistence(timeout: 3))
-        app.buttons["chat.dismissKeyboard"].tap()
+        XCTAssertFalse(app.buttons["chat.dismissKeyboard"].exists)
+        dismissKeyboard(in: app)
         XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
 
         // A deliberately hidden keyboard stays hidden when switching modes.
@@ -197,8 +207,16 @@ final class ChatKeyboardTests: XCTestCase {
         screenshot.name = "Chat keyboard dismiss control"
         screenshot.lifetime = .keepAlways
         add(screenshot)
-        app.buttons["chat.dismissKeyboard"].tap()
+        dismissKeyboard(in: app)
         XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
         XCTAssertEqual(field.value as? String, "what should we")
+    }
+
+    private func dismissKeyboard(in app: XCUIApplication) {
+        let field = app.descendants(matching: .any)["chat.composer"].firstMatch
+        let blankY = (app.navigationBars.firstMatch.frame.maxY + field.frame.minY) / 2
+        app.coordinate(withNormalizedOffset: .zero)
+            .withOffset(CGVector(dx: app.frame.width - 3, dy: blankY)).tap()
+        XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
     }
 }
