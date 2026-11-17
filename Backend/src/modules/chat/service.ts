@@ -12,10 +12,12 @@ export function createChatService(
     content,
     options.coalesceMilliseconds ?? 450,
     options.leaseMilliseconds ?? 180_000,
+    options.replyTimingScale ?? 1,
   );
   return {
     open: repository.open.bind(repository),
     state: repository.state.bind(repository),
+    composerActivity: repository.composerActivity.bind(repository),
     retry: async (userId: string, conversationId: string, commandId: string) => {
       const state = await repository.state(userId, conversationId);
       if (await repository.retryWasApplied(userId, conversationId, commandId))
@@ -29,7 +31,7 @@ export function createChatService(
             conversationId,
             state.generation.id,
           );
-          if (claim) await repository.finish(claim, result.content, commandId);
+          if (claim) await repository.prepare(claim, result.content);
           await repository.acknowledgeRetry(
             userId,
             conversationId,
@@ -47,9 +49,13 @@ export function createChatService(
     processNext: async (): Promise<boolean> => {
       const claim = await repository.claim();
       if (!claim) return false;
+      if (claim.deliveryOnly) {
+        await repository.deliverPrepared(claim);
+        return true;
+      }
       if (claim.recoverOnly) {
         const result = await options.recover?.(claim.input);
-        if (result) await repository.finish(claim, result.content);
+        if (result) await repository.prepare(claim, result.content);
         else await repository.uncertain(claim);
         return true;
       }
@@ -65,10 +71,10 @@ export function createChatService(
           })
         ).trim();
         if (!text) throw new Error("EmptyChatReply");
-        await repository.finish(claim, text);
+        await repository.prepare(claim, text);
       } catch {
         const result = await options.recover?.(claim.input);
-        if (result) await repository.finish(claim, result.content);
+        if (result) await repository.prepare(claim, result.content);
         else if (
           await options.operationPending?.(claim.input.userId, claim.input.generationId)
         )

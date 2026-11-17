@@ -1,6 +1,7 @@
 import type { TransactionSql } from "postgres";
 import type { ContentRecord, ContentResourceType } from "../content/types.js";
 import type { AiMessage } from "../ai/types.js";
+import type { ReplySimulation, ReplyPlan } from "./reply-timing.js";
 
 export interface ChatGeneration {
   id: string;
@@ -8,6 +9,8 @@ export interface ChatGeneration {
   partialText: string;
   inputMessageIds: string[];
   errorCode: string | null;
+  phase?: "waiting" | "preparing" | "yielding" | "typing";
+  replyPlan?: ReplyPlan;
 }
 export interface ChatState {
   protocolVersion: 1;
@@ -28,6 +31,7 @@ export interface ChatGenerationInput {
   messages: AiMessage[];
   voiceLeaseId?: string;
   learningChat?: { conversationId: string; userMessageId: string; cycleId: string };
+  simulation?: ReplySimulation;
 }
 export interface ChatContentAccess {
   read(
@@ -83,4 +87,5 @@ export interface ChatProcessorOptions {
   recover?: (input: ChatGenerationInput) => Promise<{ content: string } | null>;
   coalesceMilliseconds?: number;
   leaseMilliseconds?: number;
+  replyTimingScale?: number;
 }

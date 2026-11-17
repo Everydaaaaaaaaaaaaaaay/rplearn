@@ -140,7 +140,10 @@ struct ChatWorkflowTests {
         let characterID: UUID
         var covered: Set<UUID> = []
         var generation: SharedChatSnapshot.Generation?
-        init(store: ChatStore, characterID: UUID) {
+        let defersReply: Bool
+        private(set) var composerEvents: [SharedComposerActivity] = []
+        init(store: ChatStore, characterID: UUID, defersReply: Bool = false) {
+            self.defersReply = defersReply
             self.store = store
             self.characterID = characterID
         }
@@ -159,6 +162,11 @@ struct ChatWorkflowTests {
                 $0.role == .user && !covered.contains($0.id)
             }
             guard !pending.isEmpty else { return }
+            if defersReply {
+                generation = .init(id: UUID(), status: "queued", partialText: "",
+                                   inputMessageIDs: pending.map(\.id), phase: "waiting")
+                return
+            }
             covered.formUnion(pending.map(\.id))
             let generationID = UUID()
             _ = try await store.appendMessage(
@@ -172,6 +180,19 @@ struct ChatWorkflowTests {
         }
         func retrySharedReply(conversationID: UUID, commandID: UUID) async throws {
             try await uploadSharedMessages()
+        }
+        func reportSharedComposer(conversationID: UUID, sessionID: UUID, sequence: Int,
+                                  activity: SharedComposerActivity, remaining: TimeInterval) async throws -> Bool {
+            composerEvents.append(activity)
+            return true
+        }
+        func setPhase(_ phase: String, at date: Date) {
+            guard let generation, let user = generation.inputMessageIDs.last else { return }
+            self.generation = .init(id: generation.id, status: "dispatched", partialText: "Already generated text",
+                inputMessageIDs: generation.inputMessageIDs, phase: phase,
+                replyPlan: .init(userMessageID: user, attention: "focused", noticedAt: date,
+                    generationStartsAt: date, typingStartsAt: date, firstBubbleAt: date,
+                    continuingConversation: true))
         }
         private func snapshot() async throws -> SharedChatSnapshot {
             let conversation = try await store.openConversation(characterID: characterID)
@@ -205,6 +226,54 @@ struct ChatWorkflowTests {
         #expect(reopened.messages.filter { $0.role == .assistant }.count == 1)
         #expect(await provider.tasks().contains(.conversation) == false)
         reopened.cancelPendingReply()
+    }
+
+    @Test("共享回复按服务端阶段展示，有效编辑立刻让步且不调用本地模型")
+    func sharedReplyRespectsTypingAndComposerActivity() async throws {
+        let provider = Provider()
+        let clock = TestClock()
+        let f = try await fixture(provider, now: { clock.now() }, replyDelayScale: 1)
+        let gateway = SharedGatewayFixture(store: f.deps.chatStore, characterID: f.model.character.id, defersReply: true)
+        var dependencies = f.deps
+        dependencies.sharedChat = gateway
+        let model = ChatViewModel(character: f.model.character, deps: dependencies)
+        defer { model.cancelPendingReply() }
+        await model.load()
+        model.draft = "Hello there"
+        await model.sendDraft()
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(model.isWaitingForUserBurst)
+        #expect(!model.isStreaming)
+        let user = try #require(model.messages.last(where: { $0.role == .user }))
+        clock.set(user.createdAt.addingTimeInterval(20))
+        await gateway.setPhase("preparing", at: user.createdAt)
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(!model.isStreaming)
+        await gateway.setPhase("typing", at: user.createdAt)
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(model.isStreaming)
+        #expect(model.streamingText == "")
+        model.composerFocusChanged(true)
+        model.draft = "I"
+        #expect(model.isStreaming)
+        model.draft = "what"
+        #expect(!model.isStreaming)
+        #expect(model.isWaitingForUserBurst)
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(!model.isStreaming)
+        #expect(await gateway.composerEvents.contains(.edited))
+        model.composerFocusChanged(false)
+        clock.set(user.createdAt.addingTimeInterval(26))
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(model.isStreaming)
+        #expect(await gateway.composerEvents.contains(.blurred))
+        #expect(await provider.tasks().contains(.conversation) == false)
+        model.composerRecordingChanged(true)
+        #expect(!model.isStreaming)
+        model.composerRecordingChanged(false)
+        model.stopSharedObservation()
+        try await Task.sleep(for: .milliseconds(50))
+        #expect(await gateway.composerEvents.contains(.inactive))
     }
 
     @Test("共享语音读取已落库回复，保存字幕不会复制助手消息")

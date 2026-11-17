@@ -95,6 +95,9 @@ struct ChatTimelinePolicyTests {
             at: 0,
             isReplying: true
         ) == .read)
+        #expect(ChatTimelinePolicy.deliveryReceipt(
+            in: [userMessage], at: 0, isReplying: false, hasBeenRead: true
+        ) == .read)
 
         let reply = message(role: .assistant, at: start.addingTimeInterval(20), index: 1)
         #expect(ChatTimelinePolicy.deliveryReceipt(

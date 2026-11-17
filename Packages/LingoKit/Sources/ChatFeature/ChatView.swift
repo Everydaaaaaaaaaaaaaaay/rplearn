@@ -119,6 +119,10 @@ public struct ChatView: View {
         .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { viewportWidth = $0 }
         .onChange(of: recorder.state) { _, state in
             if case .recording = state { voicePlayer.stop() }
+            switch state {
+            case .recording, .transcribing: viewModel.composerRecordingChanged(true)
+            default: viewModel.composerRecordingChanged(false)
+            }
         }
         .onChange(of: scenePhase) { _, phase in
             if phase != .active { voicePlayer.stop() }
@@ -870,7 +874,8 @@ public struct ChatView: View {
         if let receipt = ChatTimelinePolicy.deliveryReceipt(
             in: viewModel.messages,
             at: index,
-            isReplying: viewModel.isStreaming
+            isReplying: viewModel.isStreaming,
+            hasBeenRead: viewModel.hasRead(viewModel.messages[index].id)
         ) {
             Label(receipt.label, systemImage: receipt.systemImage)
                 .font(.caption2.weight(.medium))

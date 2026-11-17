@@ -99,13 +99,14 @@ enum ChatTimelinePolicy {
     static func deliveryReceipt(
         in messages: [MessageDTO],
         at index: Int,
-        isReplying: Bool
+        isReplying: Bool,
+        hasBeenRead: Bool = false
     ) -> DeliveryReceipt? {
         guard messages.indices.contains(index), messages[index].role == .user else { return nil }
         guard messages.lastIndex(where: { $0.role == .user }) == index else { return nil }
 
         let hasLaterReply = messages[(index + 1)...].contains { $0.role == .assistant }
-        guard hasLaterReply || isReplying else { return .delivered }
+        guard hasLaterReply || isReplying || hasBeenRead else { return .delivered }
         return messages[index].kind == .voice ? .listened : .read
     }
 

@@ -1,3 +1,4 @@
+import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { buildApp } from "../../src/app.js";
@@ -56,6 +57,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           return Promise.resolve(content === undefined ? null : { content });
         },
         coalesceMilliseconds: 0,
+        replyTimingScale: 0,
         leaseMilliseconds: 1_000,
       });
       app = await buildApp(config, { logger: false });
@@ -217,6 +219,194 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         message,
       };
     }
+    it("paces shared replies, yields to typing on either device, and resumes prepared parts without another model call", async () => {
+      const f = await setup();
+      let generations = 0;
+      let releaseGeneration: (() => void) | undefined;
+      const options = {
+        generate: async (
+          _input: ChatGenerationInput,
+          onDelta: (text: string) => Promise<void>,
+        ) => {
+          generations += 1;
+          await onDelta("First reply.");
+          await new Promise<void>((resolve) => {
+            releaseGeneration = resolve;
+          });
+          return "First reply.\nSecond reply.";
+        },
+        coalesceMilliseconds: 0,
+        recover: (input: ChatGenerationInput) =>
+          Promise.resolve(
+            input.simulation?.preparedText
+              ? { content: input.simulation.preparedText }
+              : null,
+          ),
+      };
+      const paced = createChatService(db, createChatContentService(db), options);
+      const first = randomUUID();
+      await f.send(f.a.accessToken, first, "Hello there");
+      async function reschedule(id: string) {
+        const record = (await f.state()).records.find((r) => r.resourceId === id);
+        assert(record);
+        await db.sql.begin(async (sql) => {
+          await paced.observe(sql, f.user, record);
+        });
+      }
+      await reschedule(first);
+      const initial = await paced.state(f.user, f.conversation);
+      const generation = initial.generation;
+      assert(generation);
+      const generationId = generation.id;
+      expect(initial.generation?.phase).not.toBe("typing");
+      expect(await paced.processNext()).toBe(false);
+      const second = randomUUID();
+      await f.send(f.b.accessToken, second, "And tomorrow?");
+      await reschedule(second);
+      const aSession = randomUUID(),
+        bSession = randomUUID();
+      const edit = async (
+        sessionId: string,
+        sequence: number,
+        activity = "edited",
+        remainingMilliseconds = 25_000,
+        token = f.a.accessToken,
+      ) =>
+        f.request(token, `/v1/chat/conversations/${f.conversation}/composer`, {
+          sessionId,
+          sequence,
+          activity,
+          remainingMilliseconds,
+        });
+      expect((await edit(aSession, 1)).status).toBe(200);
+      expect((await paced.state(f.user, f.conversation)).generation?.phase).toBe(
+        "yielding",
+      );
+      async function simulationState() {
+        const [row] = await db.sql<
+          { snapshot: ChatGenerationInput }[]
+        >`select snapshot from app.chat_generations where id=${generationId}`;
+        assert(row?.snapshot.simulation);
+        return { snapshot: row.snapshot, simulation: row.snapshot.simulation };
+      }
+      const until = (await simulationState()).simulation.composers[aSession]?.until;
+      expect(until).toBeDefined();
+      await edit(aSession, 1);
+      await edit(aSession, 0, "blurred", 0);
+      expect((await simulationState()).simulation.composers[aSession]?.until).toBe(
+        until,
+      );
+      await edit(bSession, 1);
+      await edit(aSession, 2, "blurred", 5000);
+      expect(
+        (await simulationState()).simulation.composers[bSession]?.until,
+      ).toBeGreaterThan(Date.now() + 20_000);
+      const other = await setup();
+      expect(
+        (await edit(aSession, 3, "edited", 25_000, other.a.accessToken)).status,
+      ).toBe(404);
+      async function advance() {
+        const { snapshot, simulation } = await simulationState();
+        simulation.quietUntil = Date.now() - 60_000;
+        simulation.resumeTypingAt = Date.now() - 60_000;
+        simulation.plan.generationStartsAt = Date.now() - 60_000;
+        simulation.plan.typingStartsAt = Date.now() - 60_000;
+        simulation.plan.firstBubbleAt = Date.now() - 60_000;
+        simulation.nextDeliveryAt = Date.now() - 60_000;
+        simulation.composers = {};
+        await db.sql`update app.chat_generations set snapshot=${JSON.stringify(snapshot)}::jsonb,available_at=now() where id=${generationId}`;
+      }
+      await advance();
+      const pending = paced.processNext();
+      for (let i = 0; !releaseGeneration && i < 100; i += 1)
+        await new Promise((resolve) => setTimeout(resolve, 5));
+      assert(releaseGeneration);
+      expect((await paced.state(f.user, f.conversation)).generation?.phase).toBe(
+        "typing",
+      );
+      await edit(aSession, 3);
+      releaseGeneration();
+      await pending;
+      expect(generations).toBe(1);
+      expect((await paced.state(f.user, f.conversation)).generation?.phase).toBe(
+        "yielding",
+      );
+      expect(
+        (await f.state()).records.filter(
+          (r) => (r.payload as { role?: string }).role === "assistant",
+        ),
+      ).toHaveLength(0);
+      const restarted = createChatService(db, createChatContentService(db), options);
+      expect(await restarted.processNext()).toBe(false);
+      await advance();
+      expect(await restarted.processNext()).toBe(true);
+      let state = await f.state();
+      expect(
+        state.records.filter(
+          (r) => (r.payload as { role?: string }).role === "assistant",
+        ),
+      ).toHaveLength(1);
+      expect(state.coveredMessageIds).not.toContain(first);
+      await db.sql`update app.chat_generations set status='uncertain' where id=${generationId}`;
+      await restarted.retry(f.user, f.conversation, randomUUID());
+      expect(
+        (await f.state()).records.filter(
+          (r) => (r.payload as { role?: string }).role === "assistant",
+        ),
+      ).toHaveLength(1);
+      await edit(bSession, 4);
+      expect(await restarted.processNext()).toBe(false);
+      await advance();
+      expect(await restarted.processNext()).toBe(true);
+      state = await f.state();
+      expect(state.generation?.status).toBe("completed");
+      expect(
+        state.records.filter(
+          (r) => (r.payload as { role?: string }).role === "assistant",
+        ),
+      ).toHaveLength(2);
+      expect(state.coveredMessageIds).toEqual(expect.arrayContaining([first, second]));
+      expect(generations).toBe(1);
+    });
+
+    it("keeps real-time calls out of the text quiet window even behind a queued text", async () => {
+      const f = await setup();
+      const inputs: ChatGenerationInput[] = [];
+      const paced = createChatService(db, createChatContentService(db), {
+        generate: (input) => {
+          inputs.push(input);
+          return Promise.resolve("A short reply.");
+        },
+        coalesceMilliseconds: 0,
+      });
+      const textId = randomUUID(),
+        callId = randomUUID(),
+        voiceLeaseId = randomUUID();
+      await f.send(f.a.accessToken, textId, "A text before calling.");
+      async function observe(id: string) {
+        const record = (await f.state()).records.find((r) => r.resourceId === id);
+        assert(record);
+        await db.sql.begin(async (sql) => {
+          await paced.observe(sql, f.user, record);
+        });
+      }
+      await observe(textId);
+      expect(await paced.processNext()).toBe(false);
+      await f.put(f.a.accessToken, "message", callId, f.conversation, {
+        ...f.message("Hello on the phone."),
+        sharedVoiceLeaseId: voiceLeaseId,
+      });
+      await observe(callId);
+      expect(await paced.processNext()).toBe(true);
+      expect(await paced.processNext()).toBe(true);
+      expect(inputs.map((input) => input.inputMessageIds)).toEqual([
+        [textId],
+        [callId],
+      ]);
+      expect(inputs[1]?.voiceLeaseId).toBe(voiceLeaseId);
+      expect(inputs[1]?.simulation).toBeUndefined();
+    });
+
     it("both devices resolve the same canonical conversation", async () => {
       const f = await setup();
       const response = await f.request(

@@ -155,6 +155,15 @@ public actor BackendContentSyncCoordinator: SharedChatGateway {
 
     public func uploadSharedMessages() async throws { try await synchronizeAndWait() }
 
+    public func reportSharedComposer(conversationID: UUID, sessionID: UUID, sequence: Int,
+                                     activity: SharedComposerActivity, remaining: TimeInterval) async throws -> Bool {
+        guard let owner = userID else { throw BackendClientError.signedOut }
+        let accepted = try await backend.reportChatComposer(conversationID: conversationID, sessionID: sessionID,
+            sequence: sequence, activity: activity, remaining: remaining)
+        guard owner == userID else { throw CancellationError() }
+        return accepted
+    }
+
     public func refreshSharedConversation(conversationID: UUID) async throws -> SharedChatSnapshot {
         guard let owner = userID else { throw BackendClientError.signedOut }
         if Date.now.timeIntervalSince(sharedLastSync) > 5 {
@@ -196,7 +205,15 @@ public actor BackendContentSyncCoordinator: SharedChatGateway {
             generation: state.generation.map {
                 .init(
                     id: $0.id, status: $0.status, partialText: $0.partialText,
-                    inputMessageIDs: $0.inputMessageIds, errorCode: $0.errorCode)
+                    inputMessageIDs: $0.inputMessageIds, errorCode: $0.errorCode, phase: $0.phase,
+                    replyPlan: $0.replyPlan.map { plan in
+                        .init(userMessageID: plan.userMessageId, attention: plan.attention,
+                              noticedAt: Date(timeIntervalSince1970: plan.noticedAt / 1000),
+                              generationStartsAt: Date(timeIntervalSince1970: plan.generationStartsAt / 1000),
+                              typingStartsAt: Date(timeIntervalSince1970: plan.typingStartsAt / 1000),
+                              firstBubbleAt: Date(timeIntervalSince1970: plan.firstBubbleAt / 1000),
+                              continuingConversation: plan.continuingConversation)
+                    })
             },
             coveredMessageIDs: Set(state.coveredMessageIds))
     }

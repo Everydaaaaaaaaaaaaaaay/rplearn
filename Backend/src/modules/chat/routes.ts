@@ -54,4 +54,27 @@ export function registerChatRoutes(
     const body = parse(z.strictObject({ commandId: z.uuid() }), request.body);
     return chat.retry(identity.userId, params.conversationId, body.commandId);
   });
+  app.post(
+    "/v1/chat/conversations/:conversationId/composer",
+    async (request, reply) => {
+      reply.header("cache-control", "no-store");
+      const identity = await authenticateRequest(request, auth);
+      const params = parse(conversationParams, request.params);
+      const body = parse(
+        z.strictObject({
+          sessionId: z.uuid(),
+          sequence: z.number().int().min(0).max(2_000_000_000),
+          activity: z.enum(["edited", "blurred", "sent", "inactive"]),
+          remainingMilliseconds: z.number().min(0).max(25_000),
+        }),
+        request.body,
+      );
+      const accepted = await chat.composerActivity(
+        identity.userId,
+        params.conversationId,
+        body,
+      );
+      return { accepted };
+    },
+  );
 }

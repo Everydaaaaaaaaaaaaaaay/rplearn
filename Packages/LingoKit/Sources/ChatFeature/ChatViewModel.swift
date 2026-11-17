@@ -32,18 +32,100 @@ public final class ChatViewModel {
     public var draft = "" {
         didSet {
             if draft != oldValue {
-                composerActivity.recordEdit(from: oldValue, to: draft, at: deps.now())
+                recordComposerEdit(from: oldValue, to: draft)
             }
         }
     }
     private var composerActivity = RoleplayComposerActivity()
 
     func composerSourceEdited(from old: String, to new: String) {
-        composerActivity.recordEdit(from: old, to: new, at: deps.now())
+        recordComposerEdit(from: old, to: new)
     }
 
     public func composerFocusChanged(_ focused: Bool) {
         composerActivity.focusChanged(focused, at: deps.now())
+        if !focused { queueSharedComposer(.blurred, remaining: 5) }
+    }
+
+    private func recordComposerEdit(from old: String, to new: String) {
+        let previous = composerActivity.editedAt
+        composerActivity.recordEdit(from: old, to: new, at: deps.now())
+        if composerActivity.editedAt != previous {
+            queueSharedComposer(.edited, remaining: 25)
+            pauseTypingForComposer()
+        }
+    }
+
+    private func pauseTypingForComposer() {
+        if isStreaming {
+            isStreaming = false
+            streamingText = nil
+            isWaitingForUserBurst = true
+            typingBeganAt = nil
+            if !usesSharedChat, let plan = pendingReplyPlan {
+                replyYieldTask?.cancel()
+                let cycle = replyCycleID
+                replyYieldTask = Task { [weak self] in
+                    guard let self else { return }
+                    do { try await waitForUserToFinish(plan: plan) } catch { return }
+                    beginTyping(cycleID: cycle)
+                }
+            }
+        }
+    }
+
+    private struct ComposerEvent {
+        let sequence: Int
+        let activity: SharedComposerActivity
+        let expiresAt: Date
+    }
+    private let sharedComposerSessionID = UUID()
+    private var sharedComposerSequence = 0
+    private var pendingComposerEvent: ComposerEvent?
+    private var composerReportTask: Task<Void, Never>?
+    private var voiceCompositionTask: Task<Void, Never>?
+
+    public func composerRecordingChanged(_ active: Bool) {
+        voiceCompositionTask?.cancel()
+        composerActivity.voiceActivityChanged(recording: active, at: deps.now())
+        queueSharedComposer(active ? .edited : .blurred, remaining: active ? 25 : 5)
+        guard active else { voiceCompositionTask = nil; return }
+        pauseTypingForComposer()
+        voiceCompositionTask = Task { [weak self] in
+            while !Task.isCancelled {
+                do { try await Task.sleep(for: .seconds(10)) } catch { return }
+                guard let self else { return }
+                self.composerActivity.voiceActivityChanged(recording: true, at: self.deps.now())
+                self.queueSharedComposer(.edited, remaining: 25)
+            }
+        }
+    }
+
+    private func queueSharedComposer(_ activity: SharedComposerActivity, remaining: TimeInterval = 0) {
+        guard usesSharedChat else { return }
+        sharedComposerSequence += 1
+        pendingComposerEvent = .init(sequence: sharedComposerSequence, activity: activity,
+                                     expiresAt: deps.now().addingTimeInterval(remaining))
+        flushSharedComposer()
+    }
+
+    private func flushSharedComposer() {
+        guard composerReportTask == nil, let event = pendingComposerEvent,
+              let gateway = deps.sharedChat, let conversation else { return }
+        composerReportTask = Task { [weak self] in
+            guard let self else { return }
+            let remaining = max(0, event.expiresAt.timeIntervalSince(deps.now()))
+            do {
+                let accepted = try await gateway.reportSharedComposer(conversationID: conversation.id,
+                    sessionID: sharedComposerSessionID, sequence: event.sequence,
+                    activity: event.activity, remaining: remaining)
+                if accepted, pendingComposerEvent?.sequence == event.sequence { pendingComposerEvent = nil }
+            } catch { /* The observer retries the same event within its original deadline. */ }
+            composerReportTask = nil
+            if let pendingComposerEvent, pendingComposerEvent.sequence != event.sequence {
+                flushSharedComposer()
+            }
+        }
     }
 
     func userTurnHandoffDate(after message: MessageDTO) -> Date {
@@ -88,10 +170,14 @@ public final class ChatViewModel {
     private var sharedSnapshot: SharedChatSnapshot?
     private var sharedReviewMessages: [UUID: MessageDTO] = [:]
     private var sharedReplyError = false
+    private var noticedMessageIDs: Set<UUID> = []
     private var usesSharedChat: Bool { deps.sharedChat != nil }
+
+    func hasRead(_ messageID: UUID) -> Bool { noticedMessageIDs.contains(messageID) }
 
     private var realtimeLearningSource: LearningReplySource?
     private var replyTask: Task<Void, Never>?
+    private var replyYieldTask: Task<Void, Never>?
     private let replyOwnerID = UUID()
     private var replyCycleID = UUID()
     private var pendingReplyPlan: NPCReplyPlan?
@@ -258,6 +344,7 @@ public final class ChatViewModel {
         Haptics.impact(.light)
         draft = ""
         composerActivity.didSend()
+        queueSharedComposer(.sent)
         if !(await send(userText: text)) {
             deps.tutorial?.session.releaseFailedMessage()
             if draft.isEmpty { draft = originalDraft }
@@ -266,6 +353,8 @@ public final class ChatViewModel {
 
     /// 发送语音消息：气泡为语音条，发给 LLM 的是转写文本，同样走教练审核。
     public func sendVoice(capture: VoiceRecorder.Capture) async {
+        composerActivity.didSend()
+        queueSharedComposer(.sent)
         guard let conversation else { return }
         guard reserveTutorialMessage() else {
             if let file = capture.fileName { VoiceMessageStorage.delete(fileName: file) }
@@ -664,6 +753,8 @@ public final class ChatViewModel {
 
     private func cancelReplyProducer() {
         replyTask?.cancel()
+        replyYieldTask?.cancel()
+        replyYieldTask = nil
         if let conversation, let plan = pendingReplyPlan {
             NPCReplyLeaseRegistry.shared.release(conversationID: conversation.id,
                 ownerID: replyOwnerID, cycleID: replyCycleID, messageID: plan.userMessageID)
@@ -760,6 +851,7 @@ public final class ChatViewModel {
 
     private func beginTyping(cycleID: UUID) {
         guard cycleID == replyCycleID, !Task.isCancelled else { return }
+        if let messageID = pendingReplyPlan?.userMessageID { noticedMessageIDs.insert(messageID) }
         if typingBeganAt == nil {
             typingBeganAt = deps.now()
         }
@@ -860,6 +952,7 @@ public final class ChatViewModel {
             guard let self else { return }
             do {
                 try await wait(until: plan.typingStartsAt)
+                try await waitForUserToFinish(plan: plan)
                 try Task.checkCancellation()
             } catch {
                 return
@@ -1096,6 +1189,7 @@ public final class ChatViewModel {
             try Task.checkCancellation()
             guard cycleID == replyCycleID else { throw CancellationError() }
             try await waitForUserToFinish(plan: plan)
+            beginTyping(cycleID: cycleID)
             let delay = RoleplayTypingPace.standard.delay(
                 for: text,
                 messageIndex: index,
@@ -1240,6 +1334,9 @@ public final class ChatViewModel {
     }
 
     public func stopSharedObservation() {
+        voiceCompositionTask?.cancel()
+        voiceCompositionTask = nil
+        queueSharedComposer(.inactive)
         sharedPageVisible = false
         // Finish the originating device's existing coaching/memory work when the
         // user navigates away, without affecting the durable server producer.
@@ -1262,6 +1359,7 @@ public final class ChatViewModel {
                     }
                     try Task.checkCancellation()
                     try await self.acceptSharedState(state)
+                    self.flushSharedComposer()
                 } catch is CancellationError { return } catch BackendClientError.signedOut {
                     sharedObserver = nil
                     return
@@ -1279,9 +1377,23 @@ public final class ChatViewModel {
         conversation = canonical
         await reloadMessages()
         let status = state.generation?.status
-        isWaitingForUserBurst = status == "queued"
-        isStreaming = status == "dispatched"
-        streamingText = isStreaming ? state.generation?.partialText : nil
+        let active = status == "queued" || status == "dispatched"
+        if status == "dispatched", let ids = state.generation?.inputMessageIDs {
+            noticedMessageIDs.formUnion(ids)
+        }
+        if active, let plan = state.generation?.replyPlan,
+           let attention = NPCAttentionLevel(rawValue: plan.attention) {
+            pendingReplyPlan = .init(userMessageID: plan.userMessageID, attention: attention,
+                noticedAt: plan.noticedAt, generationStartsAt: plan.generationStartsAt,
+                typingStartsAt: plan.typingStartsAt, firstBubbleAt: plan.firstBubbleAt,
+                continuingConversation: plan.continuingConversation)
+        } else if !active { pendingReplyPlan = nil }
+        let localYield = messages.last(where: { $0.role == .user }).map {
+            deps.replyDelayScale > 0 && userTurnHandoffDate(after: $0) > deps.now()
+        } ?? false
+        isStreaming = status == "dispatched" && (state.generation?.phase ?? "typing") == "typing" && !localYield
+        isWaitingForUserBurst = active && !isStreaming
+        streamingText = isStreaming ? "" : nil
         sharedReplyError = status == "failed" || status == "uncertain"
         errorMessage =
             status == "uncertain" ? "上次回复状态未确认。重试会重新生成，可能再次计费。" : (sharedReplyError ? "上次回复未完成，点重试继续。" : nil)

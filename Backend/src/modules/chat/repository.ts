@@ -10,6 +10,15 @@ import type {
   ChatState,
 } from "./contracts.js";
 import { conversationPrompt } from "./prompt.js";
+import {
+  handoffAt,
+  generationEligibleAt,
+  quietWindow,
+  replyPlan,
+  typingDuration,
+  visiblePhase,
+  type ReplySimulation,
+} from "./reply-timing.js";
 
 type Payload = Record<string, unknown>;
 interface Session {
@@ -33,6 +42,7 @@ export interface ClaimedGeneration {
   input: ChatGenerationInput;
   fenceToken: string;
   recoverOnly?: boolean;
+  deliveryOnly?: boolean;
 }
 
 function missing(): never {
@@ -49,6 +59,12 @@ function generation(row: GenerationRow): ChatGeneration {
     partialText: row.partial_text,
     inputMessageIds: row.input_message_ids,
     errorCode: row.error_code,
+    ...(row.snapshot?.simulation && ["queued", "dispatched"].includes(row.status)
+      ? {
+          phase: visiblePhase(row.snapshot.simulation, row.status, Date.now()),
+          replyPlan: row.snapshot.simulation.plan,
+        }
+      : {}),
   };
 }
 export class ChatRepository {
@@ -71,6 +87,7 @@ export class ChatRepository {
     private readonly content: ChatContentAccess,
     private readonly coalesceMilliseconds: number,
     private readonly leaseMilliseconds: number,
+    private readonly replyTimingScale = 1,
   ) {}
 
   async lock(sql: TransactionSql, userId: string): Promise<void> {
@@ -388,9 +405,9 @@ export class ChatRepository {
     userId: string,
     conversationId: string,
   ): Promise<void> {
-    const pending =
-      await sql`select 1 from app.chat_messages where user_id=${userId} and conversation_id=${conversationId}
-      and role='user' and answered_by is null and assigned_generation_id is null limit 1`;
+    const pending = await sql<{ message_id: string; protected_payload: Payload }[]>`
+      select message_id,protected_payload from app.chat_messages where user_id=${userId} and conversation_id=${conversationId}
+      and role='user' and answered_by is null and assigned_generation_id is null order by sequence desc limit 20`;
     if (!pending.length) return;
     const unresolved =
       await sql`select 1 from app.chat_generations where user_id=${userId} and conversation_id=${conversationId} and status='uncertain' limit 1`;
@@ -399,6 +416,138 @@ export class ChatRepository {
       select ${randomUUID()},${userId},${conversationId},'queued',now()+${this.coalesceMilliseconds}*interval '1 millisecond'
       where exists(select 1 from app.chat_sessions where user_id=${userId} and conversation_id=${conversationId})
       on conflict(user_id,conversation_id) where status in ('queued','dispatched') do nothing`;
+    if (this.replyTimingScale === 0) return;
+    const latest = pending[0];
+    if (!latest) return;
+    if (latest.protected_payload.sharedVoiceLeaseId) {
+      // A phone call must not inherit a text chat's offline/typing wait.
+      await sql`update app.chat_generations set snapshot=null,available_at=now()+${this.coalesceMilliseconds}*interval '1 millisecond'
+        where user_id=${userId} and conversation_id=${conversationId} and status='queued'`;
+      return;
+    }
+    const [current] = await sql<
+      GenerationRow[]
+    >`select * from app.chat_generations where user_id=${userId} and conversation_id=${conversationId} and status in ('queued','dispatched') for update`;
+    if (!current || current.snapshot?.voiceLeaseId) return;
+    if (current.snapshot?.simulation?.latestUserMessageId === latest.message_id) return;
+    const [session] = await sql<
+      Session[]
+    >`select * from app.chat_sessions where user_id=${userId} and conversation_id=${conversationId}`;
+    if (!session) return;
+    const character = await this.content.read(
+      sql,
+      userId,
+      "character",
+      session.character_id,
+    );
+    if (!character) return;
+    const history = await sql<{ message_id: string; protected_payload: Payload }[]>`
+      select message_id,protected_payload from app.chat_messages where user_id=${userId} and conversation_id=${conversationId} order by sequence desc limit 24`;
+    const now = Date.now();
+    const plan = replyPlan(
+      character,
+      { resourceId: latest.message_id, payload: latest.protected_payload },
+      history
+        .toReversed()
+        .map((m) => ({ resourceId: m.message_id, payload: m.protected_payload })),
+      now,
+    );
+    const [priorGeneration] = current.snapshot?.simulation
+      ? []
+      : await sql<GenerationRow[]>`
+      select * from app.chat_generations where user_id=${userId} and conversation_id=${conversationId}
+      and id<>${current.id} order by created_at desc,id desc limit 1`;
+    const previous = current.snapshot?.simulation;
+    const quietUntil =
+      Math.min(now, Date.parse(String(latest.protected_payload.createdAt))) +
+      quietWindow(
+        String(latest.protected_payload.text),
+        pending.length,
+        plan.continuingConversation,
+      ) *
+        this.replyTimingScale;
+    const simulation: ReplySimulation = {
+      ...(previous ?? {}),
+      plan: current.status === "queued" ? plan : (previous?.plan ?? plan),
+      latestUserMessageId: latest.message_id,
+      quietUntil,
+      composers:
+        previous?.composers ?? priorGeneration?.snapshot?.simulation?.composers ?? {},
+      resumeTypingAt: quietUntil,
+    };
+    const preparation = plan.continuingConversation
+      ? 0
+      : (2500 +
+          Math.min(
+            8000,
+            String(latest.protected_payload.text).split(/\s+/).length * 200,
+          )) *
+        this.replyTimingScale;
+    simulation.preparationMilliseconds = preparation;
+    const availableAt =
+      current.status === "queued" ? generationEligibleAt(simulation) : now;
+    const snapshot: ChatGenerationInput = {
+      userId,
+      generationId: current.id,
+      conversationId,
+      characterId: session.character_id,
+      inputMessageIds: [],
+      messages: [],
+      ...(current.snapshot ?? {}),
+      simulation,
+    };
+    await sql`update app.chat_generations set snapshot=${JSON.stringify(snapshot)}::jsonb,
+      available_at=case when status='queued' then ${new Date(availableAt).toISOString()} else available_at end where id=${current.id}`;
+  }
+
+  async composerActivity(
+    userId: string,
+    conversationId: string,
+    event: {
+      sessionId: string;
+      sequence: number;
+      activity: "edited" | "blurred" | "sent" | "inactive";
+      remainingMilliseconds: number;
+    },
+  ): Promise<boolean> {
+    return this.database.sql.begin(async (sql) => {
+      await this.lock(sql, userId);
+      const [session] =
+        await sql`select 1 from app.chat_sessions where user_id=${userId} and conversation_id=${conversationId}`;
+      if (!session) missing();
+      const [row] = await sql<
+        GenerationRow[]
+      >`select * from app.chat_generations where user_id=${userId} and conversation_id=${conversationId} and status in ('queued','dispatched') for update`;
+      const simulation = row?.snapshot?.simulation;
+      if (!row || !simulation || !row.snapshot) return false;
+      const previous = simulation.composers[event.sessionId];
+      if (previous && event.sequence <= previous.sequence) return true;
+      const now = Date.now();
+      const until =
+        event.activity === "edited"
+          ? now + Math.min(25_000, event.remainingMilliseconds)
+          : event.activity === "blurred"
+            ? Math.min(
+                previous?.until ?? 0,
+                now + Math.min(5000, event.remainingMilliseconds),
+              )
+            : 0;
+      simulation.composers[event.sessionId] = { sequence: event.sequence, until };
+      if (event.activity === "blurred") {
+        simulation.quietUntil = Math.min(
+          simulation.quietUntil,
+          now + Math.min(5000, event.remainingMilliseconds),
+        );
+      }
+      simulation.resumeTypingAt = handoffAt(simulation);
+      const availableAt =
+        row.status === "queued"
+          ? Math.max(now, generationEligibleAt(simulation))
+          : Math.max(now, handoffAt(simulation));
+      await sql`update app.chat_generations set snapshot=${JSON.stringify(row.snapshot)}::jsonb,
+        available_at=case when status='queued' or snapshot->'simulation'->>'preparedText' is not null then ${new Date(availableAt).toISOString()} else available_at end where id=${row.id}`;
+      return true;
+    });
   }
 
   async state(
@@ -462,15 +611,20 @@ export class ChatRepository {
   async claim(): Promise<ClaimedGeneration | undefined> {
     return this.database.sql.begin(async (sql) => {
       const [candidate] = await sql<GenerationRow[]>`select * from app.chat_generations
-        where (status='queued' and available_at<=now()) or (status in ('dispatched','uncertain') and lease_until<=now())
+        where (status='queued' and available_at<=now()) or (status='dispatched' and snapshot->'simulation'->>'preparedText' is not null and available_at<=now()) or (status in ('dispatched','uncertain') and lease_until<=now())
         order by available_at,id limit 1`;
       if (!candidate) return undefined;
       await this.lock(sql, candidate.user_id);
       const [row] = await sql<
         GenerationRow[]
       >`select * from app.chat_generations where id=${candidate.id}
-        and ((status='queued' and available_at<=now()) or (status in ('dispatched','uncertain') and lease_until<=now())) for update`;
+        and ((status='queued' and available_at<=now()) or (status='dispatched' and snapshot->'simulation'->>'preparedText' is not null and available_at<=now()) or (status in ('dispatched','uncertain') and lease_until<=now())) for update`;
       if (!row) return undefined;
+      if (row.status === "dispatched" && row.snapshot?.simulation?.preparedText) {
+        const fenceToken = randomUUID();
+        await sql`update app.chat_generations set fence_token=${fenceToken},available_at=now()+${this.leaseMilliseconds}*interval '1 millisecond',lease_until=now()+${this.leaseMilliseconds}*interval '1 millisecond' where id=${row.id}`;
+        return { input: row.snapshot, fenceToken, deliveryOnly: true };
+      }
       if (row.status === "dispatched" || row.status === "uncertain") {
         const fenceToken = randomUUID();
         await sql`update app.chat_generations set status='dispatched',fence_token=${fenceToken},lease_until=now()+${this.leaseMilliseconds}*interval '1 millisecond' where id=${row.id}`;
@@ -542,6 +696,7 @@ export class ChatRepository {
         conversationId: row.conversation_id,
         characterId: session.character_id,
         inputMessageIds: ids,
+        ...(row.snapshot?.simulation ? { simulation: row.snapshot.simulation } : {}),
         messages: conversationPrompt(character, memories, history, ids, profile ?? {}),
       };
       const voiceLeaseId = pending[0]?.voice_lease_id;
@@ -567,6 +722,18 @@ export class ChatRepository {
           userMessageId: ids[ids.length - 1] ?? "",
           cycleId: origin.cycleId,
         };
+      if (input.simulation) {
+        const now = Date.now();
+        const until = generationEligibleAt(input.simulation);
+        if (until > now) {
+          await sql`update app.chat_generations set available_at=${new Date(until).toISOString()} where id=${row.id}`;
+          return undefined;
+        }
+        input.simulation.resumeTypingAt = Math.max(
+          input.simulation.plan.typingStartsAt,
+          now,
+        );
+      }
       const fenceToken = randomUUID();
       await sql`update app.chat_generations set status='dispatched',fence_token=${fenceToken},
         lease_until=now()+${this.leaseMilliseconds}*interval '1 millisecond',input_message_ids=${ids}::uuid[],snapshot=${JSON.stringify(input)}::jsonb where id=${row.id}`;
@@ -581,10 +748,67 @@ export class ChatRepository {
       .sql`update app.chat_generations set partial_text=${text},lease_until=now()+${this.leaseMilliseconds}*interval '1 millisecond'
       where id=${claim.input.generationId} and fence_token=${claim.fenceToken} and status='dispatched'`;
   }
+  async prepare(claim: ClaimedGeneration, text: string): Promise<void> {
+    if (
+      claim.input.voiceLeaseId ||
+      !claim.input.simulation ||
+      this.replyTimingScale === 0
+    ) {
+      await this.finish(claim, text);
+      return;
+    }
+    await this.database.sql.begin(async (sql) => {
+      await this.lock(sql, claim.input.userId);
+      const [row] = await sql<
+        GenerationRow[]
+      >`select * from app.chat_generations where id=${claim.input.generationId} and fence_token=${claim.fenceToken} and status='dispatched' for update`;
+      const simulation = row?.snapshot?.simulation;
+      if (!row?.snapshot || !simulation) return;
+      const lines = text
+        .split(/\n+/)
+        .map((line) => line.trim())
+        .filter(Boolean);
+      simulation.fragments ??=
+        lines.length > 8 ? [...lines.slice(0, 7), lines.slice(7).join(" ")] : lines;
+      simulation.preparedText ??= text;
+      simulation.deliveredCount ??= 0;
+      const now = Date.now();
+      const start = Math.max(
+        simulation.resumeTypingAt,
+        simulation.plan.typingStartsAt,
+        handoffAt(simulation),
+      );
+      simulation.nextDeliveryAt ??= now + 1000 * this.replyTimingScale;
+      const due = Math.max(
+        simulation.plan.firstBubbleAt,
+        simulation.nextDeliveryAt,
+        start +
+          typingDuration(
+            simulation.fragments[simulation.deliveredCount] ?? text,
+            simulation.deliveredCount,
+            row.id,
+          ) *
+            this.replyTimingScale,
+      );
+      await sql`update app.chat_generations set snapshot=${JSON.stringify(row.snapshot)}::jsonb,
+        available_at=${new Date(due).toISOString()},lease_until=${new Date(due + this.leaseMilliseconds).toISOString()} where id=${row.id}`;
+    });
+  }
+
+  async deliverPrepared(claim: ClaimedGeneration): Promise<void> {
+    await this.finish(
+      claim,
+      claim.input.simulation?.preparedText ?? "",
+      undefined,
+      true,
+    );
+  }
+
   async finish(
     claim: ClaimedGeneration,
     text: string,
     retryCommandId?: string,
+    paced = false,
   ): Promise<boolean> {
     const input = claim.input;
     return this.database.sql.begin(async (sql) => {
@@ -615,6 +839,31 @@ export class ChatRepository {
         await this.schedule(sql, input.userId, input.conversationId);
         return false;
       }
+      const simulation = paced ? row.snapshot?.simulation : undefined;
+      const deliveredIndex = simulation?.deliveredCount ?? 0;
+      if (simulation) {
+        const now = Date.now();
+        const start = Math.max(
+          simulation.resumeTypingAt,
+          simulation.plan.typingStartsAt,
+          handoffAt(simulation),
+        );
+        const due = Math.max(
+          simulation.plan.firstBubbleAt,
+          simulation.nextDeliveryAt ?? 0,
+          start +
+            typingDuration(
+              simulation.fragments?.[deliveredIndex] ?? text,
+              deliveredIndex,
+              row.id,
+            ) *
+              this.replyTimingScale,
+        );
+        if (due > now) {
+          await sql`update app.chat_generations set available_at=${new Date(due).toISOString()},lease_until=${new Date(due + this.leaseMilliseconds).toISOString()} where id=${row.id}`;
+          return false;
+        }
+      }
       const now = new Date().toISOString();
       const lines = input.voiceLeaseId
         ? [text]
@@ -622,8 +871,12 @@ export class ChatRepository {
             .split(/\n+/)
             .map((line) => line.trim())
             .filter(Boolean);
-      const fragments =
-        lines.length > 8 ? [...lines.slice(0, 7), lines.slice(7).join(" ")] : lines;
+      const allFragments =
+        simulation?.fragments ??
+        (lines.length > 8 ? [...lines.slice(0, 7), lines.slice(7).join(" ")] : lines);
+      const fragments = simulation
+        ? allFragments.slice(deliveredIndex, deliveredIndex + 1)
+        : allFragments;
       const [session] = await sql<
         Session[]
       >`update app.chat_sessions set last_sequence=last_sequence+${fragments.length},revision=revision+1
@@ -648,8 +901,8 @@ export class ChatRepository {
             cycleId: input.learningChat.cycleId,
             userMessageId: input.learningChat.userMessageId,
             operationId: input.generationId,
-            fragmentIndex: index,
-            fragmentCount: fragments.length,
+            fragmentIndex: simulation ? deliveredIndex : index,
+            fragmentCount: allFragments.length,
           };
         const assistant = await this.content.write(
           sql,
@@ -662,6 +915,37 @@ export class ChatRepository {
         await sql`insert into app.chat_messages(user_id,message_id,conversation_id,sequence,role,protected_payload)
           values(${input.userId},${id},${input.conversationId},${sequence},'assistant',${JSON.stringify(payload)}::jsonb)`;
         await this.content.onMessage?.(sql, input.userId, assistant);
+      }
+      if (simulation && deliveredIndex + 1 < allFragments.length && row.snapshot) {
+        simulation.deliveredCount = deliveredIndex + 1;
+        simulation.resumeTypingAt = Date.now();
+        simulation.nextDeliveryAt = simulation.resumeTypingAt;
+        const due =
+          simulation.resumeTypingAt +
+          typingDuration(
+            allFragments[deliveredIndex + 1] ?? "",
+            deliveredIndex + 1,
+            row.id,
+          ) *
+            this.replyTimingScale;
+        await sql`update app.chat_generations set snapshot=${JSON.stringify(row.snapshot)}::jsonb,
+          available_at=${new Date(due).toISOString()},lease_until=${new Date(due + this.leaseMilliseconds).toISOString()} where id=${row.id}`;
+        const conversation = await this.content.read(
+          sql,
+          input.userId,
+          "conversation",
+          input.conversationId,
+        );
+        if (conversation)
+          await this.content.write(
+            sql,
+            input.userId,
+            "conversation",
+            input.conversationId,
+            input.characterId,
+            { ...(conversation.payload as Payload), lastMessageAt: now },
+          );
+        return true;
       }
       await sql`update app.chat_messages set answered_by=${input.generationId} where user_id=${input.userId} and message_id=any(${input.inputMessageIds}::uuid[])`;
       for (const messageId of input.inputMessageIds) {

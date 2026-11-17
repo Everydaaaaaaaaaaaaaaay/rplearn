@@ -41,6 +41,11 @@ public struct RoleplayComposerActivity: Sendable {
         unfocusedAt = nil
         lastQualifiedDraft = ""
     }
+
+    public mutating func voiceActivityChanged(recording: Bool, at date: Date) {
+        if recording { editedAt = date }
+        else { unfocusedAt = date }
+    }
 }
 
 /// 文本聊天的回合交接策略。
