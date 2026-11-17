@@ -23,6 +23,16 @@ For assets, start with the nearest manifest or README.
 ## Verify and finish
 
 Choose checks for the changed behavior and risk; stop when evidence is sufficient.
+
+Standing owner speed preference (2026-11-17): prioritize the shortest useful delivery loop.
+For small copy, styling, alignment, icon and simple navigation-entry changes, use one
+incremental build and a brief check of the affected page on the current simulator.
+Reuse successful builds, the running simulator and cached evidence. Add targeted tests,
+extra devices, appearances, accessibility sizes or architecture checks when the changed
+behavior or an observed failure specifically needs them. Recheck only the affected scope
+following a fix. Batch independent reads and checks, and keep progress reports concise.
+A brief verification note in the commit or final reply is sufficient for small UI changes.
+
 Docs-only changes need diff/link/command checks, not an app build. Use Xcode-hosted
 Swift tests (`Scripts/test.sh -only-testing:...`, or the focused scripts in the development
 guide); do not run `swift build` inside `Packages/LingoKit`. Local unit tests need no
@@ -34,9 +44,11 @@ relevant checks, deploy them to production and verify the affected online behavi
 without asking again, unless the user explicitly defers deployment. Preserve data
 and rollback readiness. Backend deployment does not publish an iOS App Store build.
 
-For photographic scenes, use `docs/activity-scene-visual-acceptance.md` and the latest
-scene record. Reuse unchanged evidence; verify affected visuals and each open user issue.
-Keep a per-version record; rejected or unverified assets are not release-ready.
+For new or changed photographic assets, use `docs/activity-scene-visual-acceptance.md`
+and keep a per-version asset record. For small UI changes over existing photographs,
+reuse the asset evidence and record the affected-page check in the commit or final reply.
+Expand visual checks to address changed cropping, readability, gestures or open user issues.
+Rejected or unverified assets are not release-ready.
 
 Inspect Git status first and preserve unrelated work. Finish with a focused commit unless
 asked otherwise: stage explicit task paths, inspect the staged diff, and report verification
