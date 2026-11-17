@@ -170,6 +170,15 @@ final class MyPagePerformanceTests: XCTestCase {
             XCTAssertFalse(app.buttons[id].exists)
             XCTAssertTrue(app.descendants(matching: .any)[id].firstMatch.exists)
         }
+        let coins = app.descendants(matching: .any)["me.coinBalance"].firstMatch
+        let credits = app.descendants(matching: .any)["me.credits"].firstMatch
+        XCTAssertEqual(coins.frame.maxY, credits.frame.maxY, accuracy: 2)
+        XCTAssertLessThan(coins.frame.maxX, credits.frame.minX)
+        XCTAssertTrue(app.staticTexts["会员与资产"].exists)
+        let overview = XCTAttachment(screenshot: app.screenshot())
+        overview.name = "grouped-profile-overview"
+        overview.lifetime = .keepAlways
+        add(overview)
         profile.tap()
         XCTAssertTrue(app.navigationBars["个人资料"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.buttons["profile.avatarPicker"].exists)

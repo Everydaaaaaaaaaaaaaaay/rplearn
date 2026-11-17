@@ -29,6 +29,8 @@ public struct MyPageView: View {
     private let onOpenSubscription: @MainActor () -> Void
 
     @Environment(\.userAvatar) private var userAvatar
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @ScaledMetric(relativeTo: .title2) private var hubBalanceHeight: CGFloat = 28
     @State private var selectedAvatar: PhotosPickerItem?
     @State private var avatarError: String?
     @State private var isSavingAvatar = false
@@ -122,46 +124,39 @@ public struct MyPageView: View {
 
     private var hubContent: some View {
         ScrollView {
-            VStack(spacing: 16) {
+            VStack(alignment: .leading, spacing: 24) {
                 hubProfile
-                hubLearning
-                VStack(spacing: 0) {
-                    Button(action: onOpenFavorites) {
-                        hubRow("收藏夹", symbol: "bookmark")
-                    }
-                    .accessibilityIdentifier("me.favorites")
-                    hubDivider
-                    Button(action: onOpenSettings) {
-                        hubRow("设置", symbol: "gearshape")
-                    }
-                    .accessibilityLabel("设置，AI、语音与偏好")
-                    .accessibilityIdentifier("me.settings")
-                }
-                .dsSceneGlass(radius: 22, legibility: .frosted)
-                VStack(spacing: 0) {
-                    Button(action: onOpenSubscription) {
-                        hubRow("会员订阅", symbol: "person.crop.circle.badge.checkmark", value: presentation.accountBadgeTitle)
-                    }.accessibilityIdentifier("me.subscription")
-                    hubDivider
-                    hubRow("金币", symbol: "circle.circle", value: profile.map { $0.coins.formatted() } ?? "—", showsChevron: false)
-                        .accessibilityElement(children: .combine)
-                        .accessibilityIdentifier("me.coinBalance")
-                    if accessClient != nil {
+                hubGroup("英语旅程") { hubLearning }
+                hubGroup("会员与资产") { hubMembership }
+                hubGroup("常用") {
+                    VStack(spacing: 0) {
+                        Button(action: onOpenFavorites) {
+                            hubRow("收藏夹", symbol: "bookmark")
+                        }
+                        .accessibilityIdentifier("me.favorites")
                         hubDivider
-                        hubRow("AI 积分", symbol: "sparkles", value: creditSummary, showsChevron: false)
-                            .accessibilityElement(children: .combine)
-                            .accessibilityIdentifier("me.credits")
+                        Button(action: onOpenSettings) {
+                            hubRow("设置", symbol: "gearshape")
+                        }
+                        .accessibilityLabel("设置，AI、语音与偏好")
+                        .accessibilityIdentifier("me.settings")
                     }
+                    .dsSceneGlass(radius: 24, legibility: .frosted)
                 }
-                .dsSceneGlass(radius: 22, legibility: .frosted)
             }
             .buttonStyle(DSSceneEntranceButtonStyle())
-            .padding(.horizontal, 16).padding(.top, 8).padding(.bottom, 24)
+            .padding(.horizontal, 20).padding(.top, 12).padding(.bottom, 28)
         }
         .scrollBounceBehavior(.basedOnSize)
         .refreshable { await reload(); await reloadCredits() }
         .background {
             DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .profile, regionID: profile?.currentRegionID), tone: .cool)
+                .overlay { Color.black.opacity(0.22).ignoresSafeArea() }
+                .overlay(alignment: .top) {
+                    LinearGradient(colors: [.black.opacity(0.48), .clear],
+                        startPoint: .top, endPoint: .bottom)
+                        .frame(height: 280).ignoresSafeArea(edges: .top)
+                }
                 .accessibilityIdentifier("me.background.\(profile?.currentRegionID ?? "loading")")
         }
         .safeAreaInset(edge: .top, spacing: 0) {
@@ -171,23 +166,42 @@ public struct MyPageView: View {
         .toolbar(.hidden, for: .navigationBar).dsSceneTabBarBackground()
     }
 
+    private func hubGroup<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(title)
+                .font(.subheadline.weight(.medium))
+                .tracking(1)
+                .foregroundStyle(.white)
+                .shadow(color: .black.opacity(0.8), radius: 4, y: 1)
+                .padding(.horizontal, 6)
+                .accessibilityAddTraits(.isHeader)
+            content()
+        }
+    }
+
     private var hubProfile: some View {
         Button(action: onOpenAccount) {
             HStack(spacing: 16) {
-                UserAvatar(name: presentation.displayName, size: 58)
-                VStack(alignment: .leading, spacing: 7) {
-                    Text(presentation.displayName).font(.title2.weight(.medium))
+                UserAvatar(name: presentation.displayName, size: 70)
+                    .overlay { Circle().strokeBorder(.white.opacity(0.32), lineWidth: 1) }
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(presentation.displayName).font(.title.weight(.semibold))
                         .fixedSize(horizontal: false, vertical: true)
                     if !cityName.isEmpty {
-                        Label(cityName, systemImage: "mappin").font(.subheadline)
-                            .foregroundStyle(Color.dsSceneTextSecondary)
+                        Label(cityName, systemImage: "mappin")
+                            .font(.subheadline).foregroundStyle(.white.opacity(0.94))
                     }
                 }
-                Spacer(minLength: 0)
-                hubChevron
+                Spacer(minLength: 8)
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 13, weight: .medium))
+                    .foregroundStyle(.white.opacity(0.8))
             }
-            .padding(22).frame(maxWidth: .infinity, alignment: .leading)
-            .dsSceneGlass(radius: 22, interactive: true, legibility: .frosted)
+            .foregroundStyle(.white)
+            .shadow(color: .black.opacity(0.24), radius: 6, y: 2)
+            .padding(.horizontal, 6).padding(.vertical, 12)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
         }
         .accessibilityIdentifier("me.profile")
         .accessibilityValue(cityName)
@@ -196,24 +210,86 @@ public struct MyPageView: View {
 
     private var hubLearning: some View {
         Button(action: onCalibrateLevel) {
-            HStack(alignment: .top, spacing: 14) {
-                Image(systemName: "book.pages").font(.system(size: 22, weight: .regular)).frame(width: 26, height: 28)
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("英语旅程").font(.body.weight(.medium))
+            HStack(spacing: 14) {
+                hubIcon("book.pages")
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(profile?.difficultyLevel.displayName ?? "英语旅程")
+                        .font(.title3.weight(.medium))
                     if let profile {
-                        Text("\(profile.difficultyLevel.displayName) · \(profile.learningGoalsDisplayName)")
+                        Text(profile.learningGoalsDisplayName)
                             .font(.subheadline).foregroundStyle(Color.dsSceneTextSecondary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
-                    Text(presentation.placementSummary).font(.caption).foregroundStyle(Color.dsSceneTextTertiary)
+                    Text(presentation.placementSummary)
+                        .font(.caption).foregroundStyle(Color.dsSceneTextTertiary)
                 }
                 Spacer(minLength: 0)
-                hubChevron.padding(.top, 6)
+                hubChevron
             }
-            .padding(20).frame(maxWidth: .infinity, alignment: .leading)
-            .dsSceneGlass(radius: 22, interactive: true, legibility: .frosted)
+            .padding(18).frame(maxWidth: .infinity, alignment: .leading)
+            .dsSceneGlass(radius: 24, interactive: true, legibility: .frosted)
         }
+        .accessibilityLabel("英语旅程，\(profile?.difficultyLevel.displayName ?? "读取中")，\(profile?.learningGoalsDisplayName ?? "")，\(presentation.placementSummary)")
         .accessibilityIdentifier("me.learning")
+    }
+
+    private var hubMembership: some View {
+        VStack(spacing: 0) {
+            Button(action: onOpenSubscription) {
+                HStack(spacing: 14) {
+                    hubIcon("crown")
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(presentation.accountBadgeTitle).font(.headline.weight(.medium))
+                        Text("会员订阅").font(.caption).foregroundStyle(Color.dsSceneTextSecondary)
+                    }
+                    Spacer(minLength: 8)
+                    Text("管理").font(.subheadline.weight(.medium))
+                        .padding(.horizontal, 14).padding(.vertical, 8)
+                        .background(Color.dsSceneTextPrimary.opacity(0.06), in: Capsule())
+                }
+                .padding(18).frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(Rectangle())
+            }
+            .accessibilityLabel("会员订阅，\(presentation.accountBadgeTitle)，管理会员")
+            .accessibilityIdentifier("me.subscription")
+
+            Rectangle().fill(Color.dsSceneTextPrimary.opacity(0.12)).frame(height: 0.5)
+                .padding(.horizontal, 18)
+            hubBalanceLayout {
+                hubBalance("金币", value: profile.map { $0.coins.formatted() } ?? "—", isLoaded: profile != nil, identifier: "me.coinBalance")
+                if accessClient != nil {
+                    Rectangle().fill(Color.dsSceneTextPrimary.opacity(0.12))
+                        .frame(width: dynamicTypeSize.isAccessibilitySize ? nil : 0.5,
+                               height: dynamicTypeSize.isAccessibilitySize ? 0.5 : 36)
+                    hubBalance("AI 积分", value: creditSummary, isLoaded: credits != nil, identifier: "me.credits")
+                }
+            }
+            .padding(.horizontal, 22).padding(.vertical, 18)
+        }
+        .dsSceneGlass(radius: 24, legibility: .frosted)
+    }
+
+    private func hubBalance(_ title: String, value: String, isLoaded: Bool, identifier: String) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(value)
+                .font(isLoaded ? .title2.weight(.semibold) : .subheadline.weight(.medium))
+                .foregroundStyle(isLoaded ? Color.dsSceneTextPrimary : Color.dsSceneTextSecondary)
+                .monospacedDigit()
+                .lineLimit(1).minimumScaleFactor(0.75)
+                .frame(minHeight: hubBalanceHeight, alignment: .bottomLeading)
+            Text(title).font(.caption).foregroundStyle(Color.dsSceneTextSecondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(title)，\(value)")
+        .accessibilityIdentifier(identifier)
+    }
+
+    private var hubBalanceLayout: AnyLayout {
+        if dynamicTypeSize.isAccessibilitySize {
+            return AnyLayout(VStackLayout(alignment: .leading, spacing: 16))
+        }
+        return AnyLayout(HStackLayout(alignment: .top, spacing: 20))
     }
 
     private var creditSummary: String {
@@ -221,18 +297,23 @@ public struct MyPageView: View {
         return isLoadingCredits ? "读取中" : creditsError == nil ? "—" : "暂未更新"
     }
 
-    private func hubRow(_ title: String, symbol: String, value: String? = nil, showsChevron: Bool = true) -> some View {
+    private func hubIcon(_ symbol: String) -> some View {
+        Image(systemName: symbol)
+            .font(.system(size: 19, weight: .regular))
+            .foregroundStyle(Color.dsSceneTextSecondary)
+            .frame(width: 36, height: 36)
+            .background(Color.dsSceneTextPrimary.opacity(0.05), in: RoundedRectangle(cornerRadius: 11))
+            .accessibilityHidden(true)
+    }
+
+    private func hubRow(_ title: String, symbol: String) -> some View {
         HStack(spacing: 14) {
-            Image(systemName: symbol).font(.system(size: 19, weight: .regular)).frame(width: 26)
+            hubIcon(symbol)
             Text(title).font(.body).fixedSize(horizontal: false, vertical: true)
             Spacer(minLength: 8)
-            if let value {
-                Text(value).font(.subheadline).foregroundStyle(Color.dsSceneTextTertiary)
-                    .fixedSize(horizontal: false, vertical: true).multilineTextAlignment(.trailing)
-            }
-            if showsChevron { hubChevron }
+            hubChevron
         }
-        .padding(.horizontal, 20).padding(.vertical, 18).frame(minHeight: 60)
+        .padding(.horizontal, 18).padding(.vertical, 12).frame(minHeight: 60)
         .contentShape(Rectangle())
     }
 
@@ -243,7 +324,7 @@ public struct MyPageView: View {
 
     private var hubDivider: some View {
         Rectangle().fill(Color.dsSceneTextPrimary.opacity(0.12)).frame(height: 0.5)
-            .padding(.leading, 60).padding(.trailing, 20)
+            .padding(.leading, 68).padding(.trailing, 18)
     }
 
     private func avatarPicker(size: CGFloat) -> some View {
