@@ -470,10 +470,13 @@ public final class ChatViewModel {
 
     public func localVoiceFile(for message: MessageDTO) async -> String? {
         do {
+            // 云端备份可能已将原始文件移入账号目录，先取得最新媒体引用。
+            await reloadMessages()
+            let current = messages.first(where: { $0.id == message.id }) ?? message
             let fileName = try await deps.voiceMedia.localFile(
                 messageID: message.id,
-                assetID: message.audioAssetID,
-                existingFileName: message.audioFileName
+                assetID: current.audioAssetID,
+                existingFileName: current.audioFileName
             )
             await reloadMessages()
             return fileName

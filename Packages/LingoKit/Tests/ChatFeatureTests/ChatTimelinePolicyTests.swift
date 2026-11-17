@@ -104,6 +104,24 @@ struct ChatTimelinePolicyTests {
         ) == .read)
     }
 
+    @Test("语音回复开始后显示已听，发送时仍显示已送达")
+    func voiceReceiptTracksListening() {
+        let voice = MessageDTO(id: UUID(), role: .user, kind: .voice,
+                               text: "Meet at the river?", orderIndex: 0)
+        let reply = message(role: .assistant, at: .now, index: 1)
+        #expect(ChatTimelinePolicy.deliveryReceipt(in: [voice], at: 0, isReplying: false) == .delivered)
+        #expect(ChatTimelinePolicy.deliveryReceipt(in: [voice], at: 0, isReplying: true) == .listened)
+        #expect(ChatTimelinePolicy.deliveryReceipt(in: [voice, reply], at: 0, isReplying: false) == .listened)
+        #expect(ChatTimelinePolicy.deliveryReceipt(in: [voice, reply, voice], at: 0, isReplying: false) == nil)
+    }
+
+    @Test("历史录音时长安全显示")
+    func voiceDurationHandlesLegacyValues() {
+        for (raw, seconds) in [(Double.nan, 0), (.infinity, 0), (-1, 0), (4.2, 5), (1e20, 3600)] {
+            #expect(VoiceBubbleContent.VoiceBubbleModel(duration: raw, transcript: "", hasAudio: true).seconds == seconds)
+        }
+    }
+
     @Test("中文时间文案区分今天和昨天")
     func localizedTimeMarkersAreHumanReadable() {
         let calendar = testCalendar

@@ -74,7 +74,7 @@ struct VoiceInputBar: View {
     private var labelText: String {
         switch recorder.state {
         case .recording(let inZone): inZone ? "松开取消" : "松开发送 · 上滑取消"
-        case .transcribing: "识别中…"
+        case .transcribing: "正在发送…"
         case .denied: "请在设置中允许麦克风与语音识别"
         case .failed(let message): message
         case .idle: "按住 说话"
@@ -159,61 +159,87 @@ struct VoiceInputBar: View {
     }
 }
 
-/// 语音条气泡内容：播放按钮 + 波形示意 + 时长；点击回放。
+/// 原音回放条。转写默认收起，缺失录音的历史消息仍可阅读。
 struct VoiceBubbleContent: View {
     let message: VoiceBubbleModel
     let isPlaying: Bool
+    let isLoading: Bool
+    let playbackFailed: Bool
     let showTranscript: Bool
     let textColor: Color?
     let onTogglePlay: () -> Void
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     struct VoiceBubbleModel {
         let duration: Double
         let transcript: String
         let hasAudio: Bool
+
+        var seconds: Int {
+            guard duration.isFinite else { return 0 }
+            return Int(min(3_600, max(0, duration)).rounded(.up))
+        }
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            if message.hasAudio {
-                Button(action: onTogglePlay) {
-                    playbackRow
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel(isPlaying ? "暂停语音消息" : "播放语音消息")
-                .accessibilityValue("\(Int(message.duration.rounded())) 秒")
-            } else {
+        VStack(alignment: .leading, spacing: 8) {
+            Button(action: onTogglePlay) {
                 playbackRow
             }
-            if showTranscript {
+            .buttonStyle(.plain)
+            .disabled(!message.hasAudio)
+            .accessibilityLabel(isPlaying ? "停止语音消息" : "播放语音消息")
+            .accessibilityValue(isLoading ? "加载中" : "\(message.seconds) 秒，\(isPlaying ? "正在播放" : "未播放")")
+            .accessibilityHint("再次点击停止，播放结束后可点击重听。长按可查看文字。")
+
+            if playbackFailed || !message.hasAudio {
+                Text(message.hasAudio ? "播放失败，点按重试" : "原录音不可用")
+                    .font(.caption)
+                    .foregroundStyle((textColor ?? .primary).opacity(0.85))
+            }
+            if showTranscript || !message.hasAudio {
                 Text(message.transcript)
                     .font(.footnote)
-                    .foregroundStyle((textColor ?? .primary).opacity(0.85))
+                    .foregroundStyle((textColor ?? .primary).opacity(0.9))
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
     }
 
     private var playbackRow: some View {
-        HStack(spacing: 8) {
-            Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                .font(.title3)
+        HStack(spacing: 12) {
+            Group {
+                if isLoading {
+                    ProgressView()
+                        .tint(textColor ?? .primary)
+                        .controlSize(.small)
+                } else {
+                    Image(systemName: playbackFailed ? "arrow.clockwise" : "speaker.wave.2.fill")
+                        .symbolEffect(.variableColor.iterative, options: .repeating,
+                                      isActive: isPlaying && !reduceMotion)
+                }
+            }
+            .font(.system(size: 19, weight: .medium))
+            .frame(width: 24)
             waveform
-            Text("\(Int(message.duration.rounded()))″")
-                .font(.subheadline.monospacedDigit())
+            Text("\(message.seconds)″")
+                .font(.subheadline.monospacedDigit().weight(.medium))
         }
+        .frame(minHeight: 28)
         .foregroundStyle(textColor ?? .primary)
         .contentShape(Rectangle())
     }
 
     private var waveform: some View {
-        // 波形宽度随时长增长（10s 封顶），模拟微信语音条
-        let barCount = min(18, 6 + Int(message.duration))
-        return HStack(spacing: 2.5) {
+        let barCount = min(24, 8 + message.seconds / 3)
+        return HStack(spacing: 3) {
             ForEach(0..<barCount, id: \.self) { index in
                 Capsule()
-                    .fill((textColor ?? .primary).opacity(isPlaying ? 1 : 0.75))
-                    .frame(width: 2.5, height: CGFloat([8, 14, 10, 18, 12, 16][index % 6]))
+                    .fill((textColor ?? .primary).opacity(isPlaying ? 1 : 0.65))
+                    .frame(width: 2, height: CGFloat([7, 13, 9, 19, 11, 15][index % 6]))
             }
         }
+        .accessibilityHidden(true)
     }
 }

@@ -117,6 +117,12 @@ public struct ChatView: View {
             }
         }
         .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { viewportWidth = $0 }
+        .onChange(of: recorder.state) { _, state in
+            if case .recording = state { voicePlayer.stop() }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase != .active { voicePlayer.stop() }
+        }
         .onChange(of: learningSelected) { _, selected in
             bubbleMenuMessage = nil
             showsChatFunctions = false
@@ -340,6 +346,7 @@ public struct ChatView: View {
             autoReadQueue.synchronize(from: previous, to: current)
         }
         .onDisappear {
+            voicePlayer.stop()
             viewModel.stopSharedObservation()
             autoReadReady = false
             autoReadQueue.configure(enabled: false, existingIDs: viewModel.messages.map(\.id))
@@ -460,6 +467,7 @@ public struct ChatView: View {
             && !showsRealtimeConversation && !showsContactDetails && !showsChatFunctions && !recording
             && wordSelection == nil && grammarTermSelection == nil && grammarAnalysis == nil
             && voicePlayer.playingFileName == nil
+            && voicePlayer.loadingMessageID == nil
     }
 
     private func markVisibleConversationRead() {
@@ -866,7 +874,7 @@ public struct ChatView: View {
         ) {
             Label(receipt.label, systemImage: receipt.systemImage)
                 .font(.caption2.weight(.medium))
-                .foregroundStyle(receipt == .read ? Color.dsSkyDeep : Color.secondary)
+                .foregroundStyle(receipt == .delivered ? Color.secondary : Color.dsSkyDeep)
                 .padding(.trailing, 4)
                 .transition(.opacity)
                 .accessibilityLabel("消息\(receipt.label)")
@@ -899,10 +907,15 @@ public struct ChatView: View {
         Button {
             bubbleMenuMessage = nil
             deps.tutorial?.onEvent("manualPlayback")
-            let stopped = autoReadQueue.interrupt()
-            Task { await stopped?.value; await viewModel.speak(message: message) }
+            if message.kind == .voice {
+                toggleVoicePlayback(message)
+            } else {
+                voicePlayer.stop()
+                let stopped = autoReadQueue.interrupt()
+                Task { await stopped?.value; await viewModel.speak(message: message) }
+            }
         } label: {
-            Label("播放", systemImage: "speaker.wave.2")
+            Label(message.kind == .voice ? "播放原音" : "播放", systemImage: "speaker.wave.2")
         }
         if message.kind == .voice {
             Button {

@@ -19,6 +19,20 @@ struct PromptBuilderTests {
         background: "grew up in Kent"
     )
 
+    @Test("录音消息保留原始转写并告知角色消息形式，已答复的语音不污染下一轮")
+    func recordedVoiceContext() {
+        let voice = MessageDTO(id: UUID(), role: .user, kind: .voice,
+                               text: "Could we meet by the river?", orderIndex: 0)
+        let request = PromptBuilder.roleplayRequest(card: card, learner: learner(difficulty: .junior3), history: [voice])
+        #expect(request.system?.contains("## 收到语音消息") == true)
+        #expect(request.system?.contains("不要编造这些细节") == true)
+        #expect(request.messages.last?.content == voice.text)
+        let reply = MessageDTO(id: UUID(), role: .assistant, kind: .text, text: "Sure", orderIndex: 1)
+        let text = MessageDTO(id: UUID(), role: .user, kind: .text, text: "Tomorrow?", orderIndex: 2)
+        let next = PromptBuilder.roleplayRequest(card: card, learner: learner(difficulty: .junior3), history: [voice, reply, text])
+        #expect(next.system?.contains("## 收到语音消息") == false)
+    }
+
     @Test("基础英语保留成人话题，不强制追问或主动纠错")
     func beginnerAdultConversation() {
         for level in [DifficultyLevel.kindergarten, .primary1, .primary6] {

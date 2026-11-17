@@ -1,3 +1,4 @@
+import AVFoundation
 import BackendKit
 import BillingKit
 import CoreKit
@@ -398,6 +399,21 @@ final class AppEnvironment {
             for (index, line) in lines.enumerated() {
                 _ = try await account.chatStore.appendMessage(conversationID: conversation.id,
                     role: line.0, text: line.1, createdAt: Date().addingTimeInterval(Double(index - lines.count) * 60))
+            }
+            if let path = ProcessInfo.processInfo.environment["UI_TEST_VOICE_CAPTURE_FILE"] {
+                let source = URL(fileURLWithPath: path)
+                let audio = try AVAudioFile(forReading: source)
+                let fileName = "CA970000-0000-4000-8000-000000000002.caf"
+                VoiceMessageStorage.delete(fileName: fileName)
+                try FileManager.default.copyItem(at: source, to: VoiceMessageStorage.url(for: fileName))
+                _ = try await account.chatStore.appendMessage(
+                    conversationID: conversation.id, role: .user, kind: .voice,
+                    text: "Could we meet at the café by the river tomorrow?",
+                    audioFileName: fileName,
+                    audioDuration: Double(audio.length) / audio.processingFormat.sampleRate
+                )
+                _ = try await account.chatStore.appendMessage(
+                    conversationID: conversation.id, role: .assistant, text: "Sure! Shall we say three?")
             }
         }
         if ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1" {

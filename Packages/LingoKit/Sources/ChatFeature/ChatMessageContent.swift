@@ -137,18 +137,14 @@ extension ChatView {
                     transcript: message.text,
                     hasAudio: message.audioFileName != nil || message.audioAssetID != nil
                 ),
-                isPlaying: voicePlayer.playingFileName != nil && voicePlayer.playingFileName == message.audioFileName,
+                isPlaying: voicePlayer.playingMessageID == message.id,
+                isLoading: voicePlayer.loadingMessageID == message.id,
+                playbackFailed: voicePlayer.failedMessageID == message.id,
                 showTranscript: transcriptVisibleMessageIDs.contains(message.id),
                 textColor: textColor,
-                onTogglePlay: {
-                    Task {
-                        guard let fileName = await viewModel.localVoiceFile(for: message) else {
-                            return
-                        }
-                        await voicePlayer.togglePlay(fileName: fileName)
-                    }
-                }
+                onTogglePlay: { toggleVoicePlayback(message) }
             )
+            .accessibilityIdentifier("chat.voice.\(message.id.uuidString)")
         } else {
             let displayText = message.role == .assistant
                 ? RoleplayReplyFormatter.streamingPreview(from: message.text)
@@ -167,6 +163,17 @@ extension ChatView {
                 selection: wordSelection,
                 onSelect: selectWord
             )
+        }
+    }
+
+    func toggleVoicePlayback(_ message: MessageDTO) {
+        let stopped = autoReadQueue.interrupt()
+        Task {
+            await voicePlayer.togglePlay(messageID: message.id) {
+                await stopped?.value
+                await deps.speech.stopSpeaking()
+                return await viewModel.localVoiceFile(for: message)
+            }
         }
     }
 

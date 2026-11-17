@@ -306,6 +306,7 @@ public enum PromptBuilder {
                 baseSystem,
                 immediateTurnAnchor(history: history),
                 sensitiveRepairAnchor(history: history),
+                voiceMode ? nil : voiceMessageContext(history: history),
             ]
                 .compactMap { $0 }
                 .joined(separator: "\n\n"),
@@ -313,6 +314,16 @@ public enum PromptBuilder {
             maxTokens: 120,
             temperature: 0.8
         )
+    }
+
+    private static func voiceMessageContext(history: [MessageDTO]) -> String? {
+        let pending = history.sorted { $0.orderIndex < $1.orderIndex }
+            .reversed().prefix { $0.role != .assistant }
+        guard pending.contains(where: { $0.role == .user && $0.kind == .voice }) else { return nil }
+        return """
+        ## 收到语音消息
+        朋友本轮发来了录音，用户消息中的文字是录音转写。在虚构聊天中，你已经听过这些语音。按角色性格自然回应内容，仅在有必要时提及听过了。除非被问到，否则不要提及转写或技术处理。文字无法证明音色、口音、发音、背景声音或文字之外的情绪，不要编造这些细节。继续用普通简短文字回复。
+        """
     }
 
     private static func immediateTurnAnchor(history: [MessageDTO]) -> String? {
