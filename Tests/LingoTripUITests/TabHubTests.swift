@@ -31,7 +31,7 @@ final class TabHubTests: XCTestCase {
         defer { app.terminate() }
         XCTAssertTrue(app.buttons["home.activities"].waitForExistence(timeout: 15))
         XCTAssertEqual(app.buttons["home.activities"].label, "出去走走")
-        XCTAssertEqual(app.buttons["home.activities"].frame.minX, app.frame.minX + 40, accuracy: 1)
+        XCTAssertEqual(app.buttons["home.activities"].frame.maxX, app.frame.maxX - 40, accuracy: 1)
         XCTAssertEqual(app.staticTexts["home.cityName"].frame.midX,
                        app.buttons["home.activities"].frame.midX, accuracy: 1)
         capture(app, name: "hub-london-activities-entrance")
@@ -96,7 +96,7 @@ final class TabHubTests: XCTestCase {
         XCTAssertTrue(city.isHittable)
         XCTAssertGreaterThanOrEqual(city.frame.height, 44)
         XCTAssertEqual(city.label, "出去走走")
-        XCTAssertEqual(city.frame.minX, app.frame.minX + 40, accuracy: 1)
+        XCTAssertEqual(city.frame.maxX, app.frame.maxX - 40, accuracy: 1)
         XCTAssertEqual(app.staticTexts["home.cityName"].frame.midX, city.frame.midX, accuracy: 1)
         capture(app, name: "hub-london-activities-accessibility")
         app.swipeUp()
@@ -131,7 +131,7 @@ final class TabHubTests: XCTestCase {
             let app = launch(city: city, appearance: appearance)
             XCTAssertTrue(app.buttons["home.activities"].waitForExistence(timeout: 15))
             XCTAssertEqual(app.buttons["home.activities"].label, "出去走走")
-            XCTAssertEqual(app.buttons["home.activities"].frame.minX, app.frame.minX + 40, accuracy: 1)
+            XCTAssertEqual(app.buttons["home.activities"].frame.maxX, app.frame.maxX - 40, accuracy: 1)
             XCTAssertEqual(app.staticTexts["home.cityName"].frame.midX,
                            app.buttons["home.activities"].frame.midX, accuracy: 1)
             XCTAssertTrue(app.staticTexts.matching(NSPredicate(

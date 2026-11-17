@@ -103,7 +103,7 @@ public struct HomeView: View {
             if let cover { ActivityPlacePhoto(photo: cover.photo) }
             LinearGradient(colors: [.black.opacity(0.08), .clear, .black.opacity(0.64)], startPoint: .top, endPoint: .bottom)
                 .allowsHitTesting(false)
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .trailing, spacing: 16) {
                 HStack {
                     Text("城市活动").font(.subheadline.weight(.medium)).tracking(1)
                     Spacer()
