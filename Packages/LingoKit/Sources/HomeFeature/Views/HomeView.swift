@@ -17,6 +17,7 @@ public struct HomeView: View {
     @State private var completedStories: Set<String> = []
     @State private var profileError = false
     @State private var resumableTitle: String?
+    @State private var cityEntranceButtonWidth: CGFloat?
     @State private var appointment: BackendAppointment?
     @State private var companion: CharacterDTO?
     @State private var appointmentError = false
@@ -115,11 +116,14 @@ public struct HomeView: View {
                 VStack(spacing: 16) {
                     Text(region.nameZh)
                         .font(.system(.largeTitle, design: .serif, weight: .regular)).tracking(3)
+                        .fixedSize()
+                        .frame(width: cityEntranceButtonWidth)
                         .accessibilityLabel("当前驻地，\(region.countryNameZh)，\(region.nameZh)")
                         .accessibilityIdentifier("home.cityName")
                     if let resumableTitle {
                         Text("上次停留在\(resumableTitle)").font(.subheadline)
                             .fixedSize(horizontal: false, vertical: true)
+                            .frame(width: cityEntranceButtonWidth)
                     }
                     Button { onOpenDestination(.activities) } label: {
                         Text("出去走走")
@@ -131,9 +135,11 @@ public struct HomeView: View {
                     }
                     .buttonStyle(DSSceneEntranceButtonStyle())
                     .accessibilityIdentifier("home.activities")
+                    .onGeometryChange(for: CGFloat.self) { geometry in
+                        geometry.size.width
+                    } action: { cityEntranceButtonWidth = $0 }
                 }
                 .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity)
             }
             .padding(24).foregroundStyle(.white)
         }
@@ -219,8 +225,8 @@ public struct HomeView: View {
                     .foregroundStyle(Color.dsSceneTextTertiary.opacity(0.22)).padding(.top, 12).padding(.trailing, 12)
                 VStack(alignment: .leading, spacing: 7) {
                     Spacer(minLength: 24)
-                    HStack {
-                        Text("世界地图").font(.body.weight(.medium))
+                    HStack(spacing: 2) {
+                        Text("世界地图").font(.title3.weight(.medium))
                         Spacer(minLength: 0)
                         Image(systemName: "arrow.up.right").font(.system(size: 11))
                             .foregroundStyle(Color.dsSceneTextSecondary)

@@ -7,7 +7,7 @@
 ## 当前记录（2026-11-17 文档核对）
 
 - 十五城静态活动地点，54 张当地实拍，最新为[高清照片 v7](../Assets/Activities/CityPlaces-v2/acceptance-v7.md)。该版记录同图升清、重选取景、人物场景修订及大小屏模拟器预览。完整世界与独处阅读页的接入验收见 [v8](../Assets/Activities/CityPlaces-v2/acceptance-v8.md)，iPhone 13 的四项离线路径与照片显示抽检见 [v9 真机验收](../Assets/Activities/CityPlaces-v2/acceptance-v9.md)，实际客户端版本检查修复与线上真机入口复验见 [v10](../Assets/Activities/CityPlaces-v2/acceptance-v10.md)。
-- 活动首页与我的页包含 15 城 30 张独立背景与真实账号数据，最新活动首页验收为入口排版 v4，我的页见入口精简 v3。摄影来源与完整接入证据保留在 v1。[入口排版 v4](../Assets/TabHubScenes/2026-11-16-v1/acceptance-v4.md) · [入口精简 v3](../Assets/TabHubScenes/2026-11-16-v1/acceptance-v3.md) · [玻璃可读性 v2](../Assets/TabHubScenes/2026-11-16-v1/acceptance-v2.md) · [摄影与实装 v1](../Assets/TabHubScenes/2026-11-16-v1/acceptance-v1.md)
+- 活动首页与我的页包含 15 城 30 张独立背景与真实账号数据，最新活动首页验收为左下按钮对齐 v5，我的页见入口精简 v3。摄影来源与完整接入证据保留在 v1。[左下按钮对齐 v5](../Assets/TabHubScenes/2026-11-16-v1/acceptance-v5.md) · [入口精简 v3](../Assets/TabHubScenes/2026-11-16-v1/acceptance-v3.md) · [玻璃可读性 v2](../Assets/TabHubScenes/2026-11-16-v1/acceptance-v2.md) · [摄影与实装 v1](../Assets/TabHubScenes/2026-11-16-v1/acceptance-v1.md)
 - 首页 15 城：见[重制记录](home-city-scene-replacement-2026-09-10.md)及其逐城版本记录。
   旧图已退回替换；[旧图复核](home-city-scene-realism-audit-2026-09-10.md)保留历史问题。
 - 活动公园/池畔/雨天咖啡馆：最新为 [v5](../Assets/Activities/RealMotion-v5/acceptance-v5.md)，
