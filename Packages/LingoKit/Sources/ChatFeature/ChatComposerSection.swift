@@ -110,30 +110,24 @@ extension ChatView {
                     }
 
                     translatorToggle
-
-                    Button {
-                        Task { await sendComposerDraft() }
-                    } label: {
-                        Image(systemName: "arrow.up")
-                            .font(.system(size: 19, weight: .semibold))
-                            .foregroundStyle(.white)
-                            .frame(width: 30, height: 30)
-                            .background(composerTint, in: Circle())
-                    }
-                    .disabled(
-                        viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                    )
-                    .accessibilityLabel("发送消息")
-                    .accessibilityHint("发送输入框中的英文消息；对方正在输入时也可以继续发送")
                 }
+                composerAction
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
+            if showsChatFunctions {
+                chatFunctionPanel
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
         }
         .padding(.bottom, max(0, bottomInset))
         .tint(composerTint)
         .background(ComposerPanelSurface(expanded: composerTranslation.isOpen))
         .animation(reduceMotion ? .linear(duration: 0.15) : .spring(response: 0.42, dampingFraction: 0.94), value: composerTranslation.isOpen)
+        .animation(reduceMotion ? nil : .snappy(duration: 0.2), value: showsChatFunctions)
+        .onChange(of: composerFocus) { _, focus in
+            if focus != nil { showsChatFunctions = false }
+        }
         .onChange(of: composerTranslation.source) { old, new in
             if composerTranslation.isOpen { viewModel.composerSourceEdited(from: old, to: new) }
             composerTranslation.cancel()
@@ -151,30 +145,95 @@ extension ChatView {
         }
     }
 
+    private var composerAction: some View {
+        Group {
+            if composerFocus != nil {
+                Button { Task { await sendComposerDraft() } } label: {
+                    Image(systemName: "arrow.up")
+                        .font(.system(size: 19, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .frame(width: 32, height: 32)
+                        .background(composerTint, in: Circle())
+                        .frame(width: 44, height: 44)
+                }
+                .disabled(viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                .accessibilityLabel("发送消息")
+                .accessibilityIdentifier("chat.send")
+            } else {
+                Button { showsChatFunctions.toggle() } label: {
+                    Image(systemName: "line.3.horizontal")
+                        .font(.system(size: 22, weight: .medium))
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityLabel(showsChatFunctions ? "收起聊天功能" : "聊天功能")
+                .accessibilityIdentifier("chat.functions")
+                .accessibilityValue(showsChatFunctions ? "展开" : "收起")
+            }
+        }
+    }
+
+    private var chatFunctionPanel: some View {
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+            Button {
+                showsChatFunctions = false
+                voicePlayer.stop()
+                showsRealtimeConversation = true
+            } label: { chatFunctionLabel("打电话", symbol: "phone") }
+            .accessibilityIdentifier("chat.call")
+
+            if deps.learningPage != nil {
+                Button {
+                    showsChatFunctions = false
+                    learningSelected = true
+                } label: { chatFunctionLabel("学习模式", symbol: "book.closed") }
+                .accessibilityIdentifier("chat.learningMode")
+            }
+
+            chatSettingsAction
+
+            Button { autoReadEnabled.toggle() } label: {
+                chatFunctionLabel(autoReadEnabled ? "自动朗读已开" : "自动朗读已关",
+                                  symbol: autoReadEnabled ? "speaker.wave.2" : "speaker.slash")
+            }
+            .accessibilityIdentifier("chat.autoRead")
+            .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+
+            Button {
+                showsChatFunctions = false
+                toggleComposerTranslator()
+            } label: { chatFunctionLabel("翻译器", symbol: "character.bubble") }
+            .accessibilityIdentifier("chat.translationMode")
+
+            Button {
+                showsChatFunctions = false
+                if composerTranslation.isOpen { toggleComposerTranslator() }
+                isVoiceMode.toggle()
+                recorder.resetFailure()
+            } label: { chatFunctionLabel(isVoiceMode ? "文字输入" : "语音输入", symbol: isVoiceMode ? "keyboard" : "waveform") }
+            .accessibilityIdentifier("chat.inputMode")
+        }
+        .buttonStyle(.plain)
+        .padding(.horizontal, 16).padding(.top, 12).padding(.bottom, 16)
+        .accessibilityIdentifier("chat.functions.panel")
+    }
+
+    func chatFunctionLabel(_ title: String, symbol: String) -> some View {
+        VStack(spacing: 7) {
+            Image(systemName: symbol).font(.system(size: 23))
+                .frame(width: 48, height: 48)
+                .background(composerTint.opacity(0.1), in: RoundedRectangle(cornerRadius: 14))
+            Text(title).font(.caption).foregroundStyle(.primary)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity, minHeight: 76)
+        .contentShape(Rectangle())
+    }
+
     private var composerTint: Color { composerTranslation.isOpen ? Color(red: 0.49, green: 0.35, blue: 0.91) : .dsSky }
 
     private var translatorToggle: some View {
-        Button {
-            // Transfer focus before hiding the source field. Closing the translator
-            // must not resign the keyboard that the learner is already using.
-            if composerTranslation.isOpen {
-                if composerFocus != nil { composerFocus = .english }
-            } else if composerFocus == .chinese {
-                composerFocus = nil
-            }
-            composerTranslation.cancel()
-            composerAppleTranslator.cancelAll()
-            chineseRecordingTask?.cancel()
-            Task {
-                await chineseRecorder.cancelRecording()
-                await recorder.cancelRecording()
-            }
-            withAnimation(reduceMotion ? nil : .spring(response: 0.48, dampingFraction: 0.94)) {
-                composerTranslation.isOpen.toggle()
-                isVoiceMode = false
-            }
-            if composerTranslation.isOpen && composerTranslation.mode == .instant { translateComposer() }
-        } label: {
+        Button(action: toggleComposerTranslator) {
             ZStack {
                 Circle().fill(composerTint.opacity(0.12))
                 BrandMascotView(pose: composerTranslation.isOpen ? .achievement : .greeting, size: 49)
@@ -190,6 +249,28 @@ extension ChatView {
         .buttonStyle(.plain)
         .accessibilityLabel(composerTranslation.isOpen ? "收起翻译器" : "打开翻译器")
         .accessibilityIdentifier("chat.translator.toggle")
+    }
+
+    private func toggleComposerTranslator() {
+        // Transfer focus before hiding the source field. Closing the translator
+        // must not resign the keyboard that the learner is already using.
+        if composerTranslation.isOpen {
+            if composerFocus != nil { composerFocus = .english }
+        } else if composerFocus == .chinese {
+            composerFocus = nil
+        }
+        composerTranslation.cancel()
+        composerAppleTranslator.cancelAll()
+        chineseRecordingTask?.cancel()
+        Task {
+            await chineseRecorder.cancelRecording()
+            await recorder.cancelRecording()
+        }
+        withAnimation(reduceMotion ? nil : .spring(response: 0.48, dampingFraction: 0.94)) {
+            composerTranslation.isOpen.toggle()
+            isVoiceMode = false
+        }
+        if composerTranslation.isOpen && composerTranslation.mode == .instant { translateComposer() }
     }
 
     private var translatorControls: some View {

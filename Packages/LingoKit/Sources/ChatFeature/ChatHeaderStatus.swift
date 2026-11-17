@@ -1,7 +1,7 @@
 import DomainKit
 import Foundation
 
-/// 顶部显示在线状态；角色当地时间由独立时钟入口展示。
+/// 聊天顶部的在线状态与角色当地时间。
 public enum ChatHeaderStatus {
     public static func text(
         presence: NPCPresenceSnapshot,
@@ -16,7 +16,7 @@ public enum ChatHeaderStatus {
         case .online:
             return "在线"
         case .recentlyActive:
-            return "刚刚在线"
+            return "忙碌"
         case .offline:
             guard let lastActiveAt = presence.lastActiveAt else {
                 return "离线"

@@ -25,10 +25,10 @@ struct ChatHeaderStatusTests {
         )
     }
 
-    @Test("在线状态不再占用顶部显示城市时钟")
+    @Test("在线、忙碌与离线状态")
     func compactPresence() {
         #expect(text(.online) == "在线")
-        #expect(text(.recentlyActive) == "刚刚在线")
+        #expect(text(.recentlyActive) == "忙碌")
         #expect(text(.offline) == "离线")
         #expect(text(.online, isStreaming: true) == "正在输入")
     }
@@ -40,7 +40,7 @@ struct ChatHeaderStatusTests {
         #expect(text(.offline, lastActiveAt: now.addingTimeInterval(-5 * 24 * 60 * 60)) == "9/12 14:19在线")
     }
 
-    @Test("独立时钟正确显示城市当地时间和日期，包括跨日与夏令时")
+    @Test("当地时间和日期正确处理跨日与夏令时")
     func localClock() {
         #expect(ChatHeaderStatus.localTime(at: now, timeZoneIdentifier: melbourne) == "14:19")
         #expect(ChatHeaderStatus.localDate(at: now, timeZoneIdentifier: melbourne).contains("2026年9月17日"))

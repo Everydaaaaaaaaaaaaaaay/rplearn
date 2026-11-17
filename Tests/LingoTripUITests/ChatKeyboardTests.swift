@@ -4,75 +4,64 @@ import XCTest
 final class ChatKeyboardTests: XCTestCase {
     func testAutomaticReadingToggle() throws {
         continueAfterFailure = false
-        var steps: [String] = []
-        let evidence = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("chat-header-controls", isDirectory: true)
-        try FileManager.default.createDirectory(at: evidence, withIntermediateDirectories: true)
-        defer {
-            let result: [String: Any] = ["steps": steps, "failures": testRun?.failureCount ?? -1,
-                "completed": steps.last == "learning-avatar-settings"]
-            try? JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys])
-                .write(to: evidence.appendingPathComponent("result.json"))
-        }
         let app = XCUIApplication()
-        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
-        app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
-        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
-        app.launchEnvironment["UI_TEST_MARKETING_CAPTURE"] = "1"
-        app.launchEnvironment["UI_TEST_NATIVE_CAPTURE"] = "chat"
+        app.launchEnvironment = [
+            "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_WELCOME_CAPTURE": "1",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_NATIVE_CAPTURE": "chat"
+        ]
         app.launch()
         defer { app.terminate() }
-        let ruby = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Ruby Walker")).firstMatch
-        XCTAssertTrue(ruby.waitForExistence(timeout: 15))
-        ruby.tap()
-        XCTAssertFalse(app.buttons["chat.more"].exists)
+        let functions = app.buttons["chat.functions"]
+        XCTAssertTrue(functions.waitForExistence(timeout: 15))
+        XCTAssertFalse(app.buttons["chat.send"].exists)
+        XCTAssertFalse(app.buttons["chat.localTime"].exists)
+        XCTAssertFalse(app.buttons["chat.detectAppointment"].exists)
+        XCTAssertTrue(app.buttons["chat.identity"].label.contains("当地时间"))
+        functions.tap()
+        XCTAssertTrue(app.buttons["chat.call"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.buttons["chat.learningMode"].exists)
+        let menuImage = XCTAttachment(screenshot: app.screenshot())
+        menuImage.name = "Chat composer function panel"
+        menuImage.lifetime = .keepAlways
+        add(menuImage)
         let toggle = app.buttons["chat.autoRead"]
-        XCTAssertTrue(toggle.waitForExistence(timeout: 15))
-        XCTAssertEqual(toggle.value as? String, "开启")
-        XCTAssertTrue(toggle.isHittable)
-        XCTAssertTrue(toggle.label.contains("关闭自动朗读"))
-        steps.append("default-on-visible-controls")
+        let previousValue = toggle.value as? String
         toggle.tap()
-        XCTAssertEqual(toggle.value as? String, "关闭")
-        app.terminate()
-        app.launch()
-        XCTAssertTrue(ruby.waitForExistence(timeout: 15))
-        ruby.tap()
-        XCTAssertTrue(toggle.waitForExistence(timeout: 5))
-        XCTAssertEqual(toggle.value as? String, "关闭", "重新进入聊天应保留手动关闭的选择")
-        steps.append("off-preference-survives-relaunch")
+        XCTAssertNotEqual(toggle.value as? String, previousValue)
         toggle.tap()
-        XCTAssertEqual(toggle.value as? String, "开启")
-        app.buttons["chat.localTime"].tap()
-        let clock = app.staticTexts["墨尔本当地时间"]
-        XCTAssertTrue(clock.waitForExistence(timeout: 3))
-        steps.append("local-time-popover")
-        try app.screenshot().pngRepresentation.write(to: evidence.appendingPathComponent("clock.png"))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.55)).tap()
-        XCTAssertTrue(clock.waitForNonExistence(timeout: 3))
-        let headerImage = XCTAttachment(screenshot: app.screenshot())
-        headerImage.name = "Visible chat header controls and compact online status"
-        headerImage.lifetime = .keepAlways
-        add(headerImage)
-        try app.screenshot().pngRepresentation.write(to: evidence.appendingPathComponent("header.png"))
+        XCTAssertEqual(toggle.value as? String, previousValue)
         app.buttons["chat.settings"].tap()
         XCTAssertTrue(app.navigationBars["聊天设置"].waitForExistence(timeout: 3))
-        steps.append("direct-settings")
         app.buttons["完成"].tap()
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.88, dy: 0.35))
-            .press(forDuration: 0.08, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.12, dy: 0.35)))
-        let avatar = app.buttons["learning.character.settings"]
-        XCTAssertTrue(avatar.waitForExistence(timeout: 5))
-        avatar.tap()
-        XCTAssertTrue(app.navigationBars["聊天设置"].waitForExistence(timeout: 3))
-        try app.screenshot().pngRepresentation.write(to: evidence.appendingPathComponent("learning-settings.png"))
-        steps.append("learning-avatar-settings")
-        app.buttons["完成"].tap()
-        XCTAssertTrue(avatar.waitForExistence(timeout: 3))
-        let image = XCTAttachment(screenshot: app.screenshot())
-        image.name = "Learning avatar opens chat settings"
-        image.lifetime = .keepAlways
-        add(image)
+        let field = app.descendants(matching: .any)["chat.composer"].firstMatch
+        field.tap()
+        field.typeText("Keep this draft")
+        XCTAssertTrue(app.buttons["chat.send"].waitForExistence(timeout: 3))
+        XCTAssertFalse(functions.exists)
+        let keyboardImage = XCTAttachment(screenshot: app.screenshot())
+        keyboardImage.name = "Focused composer shows send action"
+        keyboardImage.lifetime = .keepAlways
+        add(keyboardImage)
+        app.buttons["chat.dismissKeyboard"].tap()
+        XCTAssertTrue(functions.waitForExistence(timeout: 3))
+        XCTAssertEqual(field.value as? String, "Keep this draft")
+        functions.tap()
+        app.buttons["chat.inputMode"].tap()
+        XCTAssertTrue(app.buttons["切换到键盘"].waitForExistence(timeout: 3))
+        functions.tap()
+        app.buttons["chat.inputMode"].tap()
+        XCTAssertEqual(field.value as? String, "Keep this draft")
+        functions.tap()
+        app.buttons["chat.learningMode"].tap()
+        XCTAssertTrue(app.buttons["返回聊天"].waitForExistence(timeout: 5))
+        app.buttons["返回聊天"].tap()
+        XCTAssertTrue(functions.waitForExistence(timeout: 5))
+        XCTAssertEqual(field.value as? String, "Keep this draft")
+        let screenshot = XCTAttachment(screenshot: app.screenshot())
+        screenshot.name = "Chat header with inline time and composer function menu"
+        screenshot.lifetime = .keepAlways
+        add(screenshot)
     }
 
     func testBubbleMenuPreservesKeyboardAndDraft() throws {

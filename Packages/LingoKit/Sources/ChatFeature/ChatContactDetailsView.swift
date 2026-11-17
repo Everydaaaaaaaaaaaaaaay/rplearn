@@ -10,6 +10,7 @@ import SwiftUI
 struct ChatContactDetailsView: View {
     @Bindable var viewModel: ChatViewModel
     let deps: ChatDependencies
+    let onOpenAppointment: (UUID?) -> Void
     let onSelectMessage: (UUID) -> Void
     let onRemoved: () -> Void
 
@@ -23,11 +24,13 @@ struct ChatContactDetailsView: View {
     init(
         viewModel: ChatViewModel,
         deps: ChatDependencies,
+        onOpenAppointment: @escaping (UUID?) -> Void,
         onSelectMessage: @escaping (UUID) -> Void,
         onRemoved: @escaping () -> Void
     ) {
         self.viewModel = viewModel
         self.deps = deps
+        self.onOpenAppointment = onOpenAppointment
         self.onSelectMessage = onSelectMessage
         self.onRemoved = onRemoved
         _isPinned = State(
@@ -54,6 +57,29 @@ struct ChatContactDetailsView: View {
                     )
                 } label: {
                     Label("查找聊天记录", systemImage: "magnifyingglass")
+                }
+            }
+
+            if deps.refreshAppointments != nil || deps.onOpenAppointment != nil {
+                Section("约定") {
+                    if deps.onOpenAppointment != nil {
+                        if let appointment = viewModel.appointments.first {
+                            Button { onOpenAppointment(appointment.id) } label: {
+                                Label(appointment.displayTitle(companionName: viewModel.character.displayName), systemImage: "calendar")
+                            }
+                        }
+                        Button("全部约定", systemImage: "calendar.badge.clock") { onOpenAppointment(nil) }
+                    }
+                    if deps.refreshAppointments != nil {
+                        Button(viewModel.checkingAppointments ? "整理中…" : "整理聊天中的约定", systemImage: "text.badge.checkmark") {
+                            Task { await viewModel.refreshAppointments(detect: true) }
+                        }
+                        .disabled(viewModel.checkingAppointments)
+                        .accessibilityIdentifier("chat.detectAppointment")
+                        if let notice = viewModel.appointmentNotice {
+                            Text(notice).font(.footnote).foregroundStyle(.secondary)
+                        }
+                    }
                 }
             }
 
