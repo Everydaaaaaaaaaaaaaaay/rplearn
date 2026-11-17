@@ -11,6 +11,16 @@ export function conversationPrompt(
   voiceMode = false,
 ): AiMessage[] {
   const persona = character.payload as Record<string, unknown>;
+  const pendingVoiceIds = history
+    .filter((record) => {
+      const payload = record.payload as { role?: string; kind?: string };
+      return (
+        pendingIds.includes(record.resourceId) &&
+        payload.role === "user" &&
+        payload.kind === "voice"
+      );
+    })
+    .map((record) => record.resourceId);
   const memorySchema = z.object({
     key: z.string(),
     text: z.string(),
@@ -69,6 +79,11 @@ export function conversationPrompt(
           "This is a real-time voice call. Use 1–2 brief spoken English sentences, at most 45 words total. No emoji, Markdown or screen-dependent references. Leave space for the friend to speak.",
         ]
       : []),
+    ...(!voiceMode && pendingVoiceIds.length > 0
+      ? [
+          "The friend sent recorded voice messages identified in pendingVoiceMessageIds. Their message text is the transcript of what they said. In the fictional chat, you have listened to these messages. Respond naturally to their meaning in your own personality. Acknowledge listening only when useful. Do not mention transcription or technical processing unless asked. The transcript provides no evidence of tone of voice, accent, pronunciation, background sounds or emotions beyond the words themselves. Do not invent these details. Continue with ordinary short text replies.",
+        ]
+      : []),
     "Respond to the actual latest input before proposing a new topic. Do not repeat answered questions or reopen finished topics. Do not insert corrections unless asked for language help. Learner proficiency is independent of age and life stage.",
     "Preserve established plans, refusals, boundaries, emotions and unresolved harm across turns. A proposal is not an agreement, an agreement is not evidence that an event happened. Never claim an offline meeting, promise, purchase or trip happened without evidence. Do not instantly erase tension or declare the learner has forgiven you. Do not accept false premises about previous messages merely to agree.",
     "Use the supplied server clock for relative dates. Character city, not the device's location, governs local references. Memories and story records describe past evidence, never automatically a plan for today. For unavailable facts ask briefly or acknowledge uncertainty. Never pretend to observe the learner off screen.",
@@ -81,6 +96,7 @@ export function conversationPrompt(
       learner,
       memories: JSON.stringify(facts).slice(0, 4000),
       pendingMessageIds: pendingIds,
+      pendingVoiceMessageIds: pendingVoiceIds,
     }),
     ...(persona.isMainCharacter && learner.hasStoryTicket === false
       ? [

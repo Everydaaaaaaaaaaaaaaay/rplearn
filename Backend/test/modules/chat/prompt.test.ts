@@ -56,6 +56,27 @@ describe("shared conversation prompt", () => {
     );
     expect(prompt.filter((m) => m.role === "user").map((m) => m.content)).toEqual(ids);
   });
+  it("marks pending recorded voice inputs while keeping transcript text unchanged", () => {
+    const history = [
+      record("old-voice", { role: "user", kind: "voice", text: "Yesterday" }),
+      record("voice", {
+        role: "user",
+        kind: "voice",
+        text: "Could we meet by the river?",
+      }),
+      record("text", { role: "user", kind: "text", text: "Tomorrow?" }),
+    ];
+    const prompt = conversationPrompt(persona, [], history, ["voice", "text"], {});
+    expect(prompt[0]?.content).toContain("you have listened");
+    expect(prompt[0]?.content).toContain("Do not invent these details");
+    expect(prompt[0]?.content).toContain('"pendingVoiceMessageIds":["voice"]');
+    expect(prompt.at(-2)?.content).toBe("Could we meet by the river?");
+    expect(prompt.at(-1)?.content).toBe("Tomorrow?");
+    const next = conversationPrompt(persona, [], history, ["text"], {});
+    expect(next[0]?.content).not.toContain("you have listened");
+    const call = conversationPrompt(persona, [], history, ["voice"], {}, true);
+    expect(call[0]?.content).not.toContain("recorded voice messages");
+  });
   it("uses the explicit voice contract for call input", () => {
     const prompt = conversationPrompt(
       persona,
