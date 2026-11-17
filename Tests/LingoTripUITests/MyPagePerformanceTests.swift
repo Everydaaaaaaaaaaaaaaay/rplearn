@@ -161,32 +161,34 @@ final class MyPagePerformanceTests: XCTestCase {
     }
 
     @MainActor
-    func testAccountSubscriptionAndMemoryPages() throws {
+    func testAccountSubscriptionAndReadOnlyBalances() throws {
         launch(on: "me")
         let profile = app.buttons["me.profile"]
         XCTAssertTrue(profile.waitForExistence(timeout: 10))
-        let scene = XCTAttachment(screenshot: app.screenshot()); scene.name = "subscription-entry-size"; scene.lifetime = .keepAlways; add(scene)
-        XCTAssertFalse(app.buttons["me.coinBalance"].exists)
+        XCTAssertFalse(app.descendants(matching: .any)["me.memory"].exists)
+        for id in ["me.coinBalance", "me.credits"] {
+            XCTAssertFalse(app.buttons[id].exists)
+            XCTAssertTrue(app.descendants(matching: .any)[id].firstMatch.exists)
+        }
         profile.tap()
         XCTAssertTrue(app.navigationBars["个人资料"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.buttons["profile.avatarPicker"].exists)
-        let account = XCTAttachment(screenshot: app.screenshot()); account.name = "account-page"; account.lifetime = .keepAlways; add(account)
-        app.navigationBars.buttons["返回"].tap()
-        app.buttons["me.subscription"].tap()
-        XCTAssertTrue(app.navigationBars["订阅与金币"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["订阅计划"].exists)
-        XCTAssertTrue(app.staticTexts["金币充值"].exists)
-        XCTAssertTrue(app.buttons["me.credits"].exists)
-        let store = XCTAttachment(screenshot: app.screenshot()); store.name = "subscription-page"; store.lifetime = .keepAlways; add(store)
-        app.buttons["me.credits"].tap()
-        XCTAssertTrue(app.navigationBars["积分余额与明细"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.buttons["重试"].waitForExistence(timeout: 15))
-        let credits = XCTAttachment(screenshot: app.screenshot()); credits.name = "credits-load-error"; credits.lifetime = .keepAlways; add(credits)
+        XCTAssertFalse(app.staticTexts["AI 积分"].exists)
+        let account = XCTAttachment(screenshot: app.screenshot())
+        account.name = "account-page"
+        account.lifetime = .keepAlways
+        add(account)
         app.navigationBars.buttons.firstMatch.tap()
-        XCTAssertTrue(app.navigationBars["订阅与金币"].waitForExistence(timeout: 5))
-        app.navigationBars.buttons["返回"].tap()
-        app.buttons["记忆档案"].tap()
-        XCTAssertTrue(app.staticTexts["记忆档案库"].waitForExistence(timeout: 5))
+        app.buttons["me.subscription"].tap()
+        XCTAssertTrue(app.navigationBars["会员订阅"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["咕游记会员"].exists)
+        XCTAssertFalse(app.buttons["me.credits"].exists)
+        let store = XCTAttachment(screenshot: app.screenshot())
+        store.name = "subscription-page"
+        store.lifetime = .keepAlways
+        add(store)
+        app.navigationBars.buttons.firstMatch.tap()
+        XCTAssertTrue(profile.waitForExistence(timeout: 5))
     }
 
     func testLevelDoneSavesImmediately() throws {

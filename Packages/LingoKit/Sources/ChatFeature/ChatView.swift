@@ -555,7 +555,7 @@ public struct ChatView: View {
                         }
                         if let error = viewModel.errorMessage {
                             if error.contains("额度") || error.contains("登录") || error.contains("语音体验") {
-                                Button("查看用量与权益", action: deps.onShowAccess)
+                                Button("查看会员订阅", action: deps.onShowAccess)
                                     .font(.footnote.weight(.semibold))
                             }
                             Label(error, systemImage: "exclamationmark.triangle.fill")

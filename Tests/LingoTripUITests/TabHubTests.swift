@@ -42,13 +42,31 @@ final class TabHubTests: XCTestCase {
         app.buttons["appointment.signIn.close"].tap()
         XCTAssertTrue(app.buttons["appointment.signIn.close"].waitForNonExistence(timeout: 5))
         app.tabBars.buttons["我的"].tap()
-        for id in ["me.profile", "me.favorites", "me.memory"] {
+        for id in ["me.profile", "me.favorites"] {
             let entry = app.buttons[id]
             if !entry.isHittable { app.swipeUp() }
             entry.tap()
             XCTAssertTrue(app.navigationBars.buttons.firstMatch.waitForExistence(timeout: 5))
+            if id == "me.profile" {
+                XCTAssertFalse(app.staticTexts["AI 积分"].exists)
+                XCTAssertFalse(app.buttons["积分余额与明细"].exists)
+            }
             app.navigationBars.buttons.firstMatch.tap()
         }
+        XCTAssertFalse(app.descendants(matching: .any)["me.memory"].exists)
+        for id in ["me.coinBalance", "me.credits"] {
+            XCTAssertFalse(app.buttons[id].exists)
+            let balance = app.descendants(matching: .any)[id].firstMatch
+            XCTAssertTrue(balance.exists)
+            if !balance.isHittable { app.swipeUp() }
+            XCTAssertTrue(balance.isHittable)
+            XCTAssertFalse(balance.label.isEmpty)
+            balance.tap()
+            XCTAssertTrue(app.buttons["me.profile"].exists)
+            XCTAssertFalse(app.navigationBars["个人资料"].exists)
+            XCTAssertFalse(app.navigationBars["积分余额与明细"].exists)
+        }
+        capture(app, name: "hub-london-profile-readonly-balances")
         app.buttons["设置，AI、语音与偏好"].tap()
         XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.buttons["me.learning-trial"].exists)
@@ -73,7 +91,12 @@ final class TabHubTests: XCTestCase {
         capture(app, name: "hub-london-profile-accessibility")
         app.swipeUp()
         app.swipeUp()
-        XCTAssertTrue(app.buttons["me.coinBalance"].isHittable)
+        XCTAssertFalse(app.buttons["me.coinBalance"].exists)
+        XCTAssertFalse(app.buttons["me.credits"].exists)
+        XCTAssertTrue(app.descendants(matching: .any)["me.coinBalance"].firstMatch.isHittable)
+        let credits = app.descendants(matching: .any)["me.credits"].firstMatch
+        if !credits.isHittable { app.swipeUp() }
+        XCTAssertTrue(credits.isHittable)
         capture(app, name: "hub-london-profile-accessibility-bottom")
     }
 

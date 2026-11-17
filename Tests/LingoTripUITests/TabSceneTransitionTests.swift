@@ -69,23 +69,17 @@ final class TabSceneTransitionTests: XCTestCase {
         app.launch()
         defer { app.terminate() }
 
-        for (prefix, title) in [("个人资料，", "个人资料"), ("会员订阅", "会员订阅"),
-                                ("收藏夹，", "收藏夹"), ("设置，", "设置"), ("记忆档案", "记忆档案")] {
-            let entry = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", prefix)).firstMatch
+        for (identifier, title) in [("me.profile", "个人资料"), ("me.subscription", "会员订阅"),
+                                    ("me.favorites", "收藏夹"), ("设置，AI、语音与偏好", "设置")] {
+            let entry = app.buttons[identifier]
             XCTAssertTrue(entry.waitForExistence(timeout: 15))
             entry.tap()
             let navigationBar = app.navigationBars[title]
             XCTAssertTrue(navigationBar.waitForExistence(timeout: 5))
             XCTAssertTrue(navigationBar.buttons.firstMatch.isHittable, "应显示原生返回按钮")
             if title == "个人资料" {
-                let subscription = app.buttons["profile.subscription"]
-                XCTAssertTrue(subscription.waitForExistence(timeout: 5))
-                XCTAssertTrue(app.staticTexts["AI 积分"].exists)
-                subscription.tap()
-                let subscriptionBar = app.navigationBars["会员订阅"]
-                XCTAssertTrue(subscriptionBar.waitForExistence(timeout: 5))
-                subscriptionBar.buttons.firstMatch.tap()
-                XCTAssertTrue(navigationBar.waitForExistence(timeout: 5), "订阅返回应保留个人资料层级")
+                XCTAssertTrue(app.buttons["profile.avatarPicker"].exists)
+                XCTAssertFalse(app.staticTexts["AI 积分"].exists)
             }
             app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.5))
                 .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.5)))

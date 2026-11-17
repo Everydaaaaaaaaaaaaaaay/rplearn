@@ -27,7 +27,6 @@ public struct MyPageView: View {
     private let section: MyPageSection?
     private let onOpenAccount: @MainActor () -> Void
     private let onOpenSubscription: @MainActor () -> Void
-    private let onOpenMemory: @MainActor () -> Void
 
     @Environment(\.userAvatar) private var userAvatar
     @State private var selectedAvatar: PhotosPickerItem?
@@ -60,7 +59,6 @@ public struct MyPageView: View {
         onCalibrateLevel: @escaping @MainActor () -> Void,
         onOpenFavorites: @escaping @MainActor () -> Void,
         onOpenSettings: @escaping @MainActor () -> Void,
-        onOpenMemory: @escaping @MainActor () -> Void = {},
         section: MyPageSection? = nil,
         onOpenAccount: @escaping @MainActor () -> Void = {},
         onOpenSubscription: @escaping @MainActor () -> Void = {}
@@ -77,7 +75,6 @@ public struct MyPageView: View {
         self.onCalibrateLevel = onCalibrateLevel
         self.onOpenFavorites = onOpenFavorites
         self.onOpenSettings = onOpenSettings
-        self.onOpenMemory = onOpenMemory
         self.section = section
         self.onOpenAccount = onOpenAccount
         self.onOpenSubscription = onOpenSubscription
@@ -128,27 +125,24 @@ public struct MyPageView: View {
             VStack(spacing: 16) {
                 hubProfile
                 hubLearning
-                VStack(spacing: 0) {
-                    Button(action: onOpenFavorites) { hubRow("收藏夹", symbol: "bookmark") }.accessibilityIdentifier("me.favorites")
-                    hubDivider
-                    Button(action: onOpenMemory) { hubRow("记忆档案", symbol: "text.book.closed") }.accessibilityIdentifier("me.memory")
+                Button(action: onOpenFavorites) {
+                    hubRow("收藏夹", symbol: "bookmark")
                 }
+                .accessibilityIdentifier("me.favorites")
                 .dsSceneGlass(radius: 22, legibility: .frosted)
                 VStack(spacing: 0) {
                     Button(action: onOpenSubscription) {
                         hubRow("会员订阅", symbol: "person.crop.circle.badge.checkmark", value: presentation.accountBadgeTitle)
                     }.accessibilityIdentifier("me.subscription")
                     hubDivider
-                    Button(action: onOpenAccount) {
-                        hubRow("金币", symbol: "circle.circle", value: profile.map { $0.coins.formatted() } ?? "—")
-                    }
-                    .accessibilityIdentifier("me.coinBalance")
-                    hubDivider
-                    if let accessClient {
-                        NavigationLink { UsageAccessView(backend: accessClient, billing: billing) } label: {
-                            hubRow("AI 积分", symbol: "sparkles", value: creditSummary)
-                        }
-                        .accessibilityIdentifier("me.credits")
+                    hubRow("金币", symbol: "circle.circle", value: profile.map { $0.coins.formatted() } ?? "—", showsChevron: false)
+                        .accessibilityElement(children: .combine)
+                        .accessibilityIdentifier("me.coinBalance")
+                    if accessClient != nil {
+                        hubDivider
+                        hubRow("AI 积分", symbol: "sparkles", value: creditSummary, showsChevron: false)
+                            .accessibilityElement(children: .combine)
+                            .accessibilityIdentifier("me.credits")
                     }
                 }
                 .dsSceneGlass(radius: 22, legibility: .frosted)
@@ -216,10 +210,10 @@ public struct MyPageView: View {
 
     private var creditSummary: String {
         if let credits { return credits.remaining.formatted(.number.precision(.fractionLength(2))) }
-        return isLoadingCredits ? "读取中" : creditsError == nil ? "查看用量" : "暂未更新"
+        return isLoadingCredits ? "读取中" : creditsError == nil ? "—" : "暂未更新"
     }
 
-    private func hubRow(_ title: String, symbol: String, value: String? = nil) -> some View {
+    private func hubRow(_ title: String, symbol: String, value: String? = nil, showsChevron: Bool = true) -> some View {
         HStack(spacing: 14) {
             Image(systemName: symbol).font(.system(size: 19, weight: .regular)).frame(width: 26)
             Text(title).font(.body).fixedSize(horizontal: false, vertical: true)
@@ -228,7 +222,7 @@ public struct MyPageView: View {
                 Text(value).font(.subheadline).foregroundStyle(Color.dsSceneTextTertiary)
                     .fixedSize(horizontal: false, vertical: true).multilineTextAlignment(.trailing)
             }
-            hubChevron
+            if showsChevron { hubChevron }
         }
         .padding(.horizontal, 20).padding(.vertical, 18).frame(minHeight: 60)
         .contentShape(Rectangle())
@@ -263,35 +257,6 @@ public struct MyPageView: View {
         .accessibilityIdentifier("profile.avatarPicker")
     }
 
-    private var accountCredits: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            Text("AI 积分").font(.headline)
-            if let credits {
-                LabeledContent("可用积分", value: credits.remaining.formatted(.number.precision(.fractionLength(2))))
-                LabeledContent("已用积分", value: credits.used.formatted(.number.precision(.fractionLength(2))))
-                LabeledContent("本期额度", value: credits.limit.formatted(.number.precision(.fractionLength(2))))
-            } else if isLoadingCredits {
-                ProgressView("正在读取积分…")
-            } else {
-                Text(creditsError ?? "暂无积分用量")
-                    .font(.footnote)
-                    .foregroundStyle(Color.dsPaperInkSecondary)
-                Button("重试") { Task { await reloadCredits() } }
-            }
-            usageButton
-            Button(action: onOpenSubscription) {
-                HStack {
-                    Label("查看会员订阅", systemImage: "sparkles")
-                    Spacer()
-                    Image(systemName: "chevron.right").font(.caption.weight(.semibold))
-                }
-                .frame(minHeight: 44)
-            }
-            .accessibilityIdentifier("profile.subscription")
-        }
-        .monospacedDigit()
-    }
-
     private func reloadCredits() async {
         guard let accessClient, !isLoadingCredits else { return }
         isLoadingCredits = true
@@ -302,24 +267,6 @@ public struct MyPageView: View {
         } catch is CancellationError {
         } catch {
             creditsError = "积分暂时无法加载，请重试。"
-        }
-    }
-
-    private var usageButton: some View {
-        Group {
-            if let accessClient {
-                NavigationLink {
-                    UsageAccessView(backend: accessClient, billing: billing)
-                } label: {
-                    HStack {
-                        Label("积分余额与明细", systemImage: "chart.bar.fill")
-                        Spacer()
-                        Image(systemName: "chevron.right").font(.caption.weight(.semibold))
-                    }
-                    .frame(minHeight: 44)
-                }
-                .accessibilityIdentifier("me.credits")
-            }
         }
     }
 
@@ -355,8 +302,6 @@ extension MyPageView {
                                     }
                                     Spacer(minLength: 0)
                                 }
-                                Divider()
-                                accountCredits
                                 Divider()
                                 NavigationLink {
                                     AccountSecurityView(session: authSession)
@@ -405,11 +350,7 @@ extension MyPageView {
                 .frame(maxWidth: .infinity)
             }
             .scrollIndicators(.hidden)
-            .task { await reloadCredits() }
-            .refreshable {
-                await reload()
-                await reloadCredits()
-            }
+            .refreshable { await reload() }
         }
     }
 }

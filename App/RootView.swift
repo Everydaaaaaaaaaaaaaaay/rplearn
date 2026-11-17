@@ -51,7 +51,7 @@ struct RootView: View {
     @State private var activeHomeDestination: HomeDestination?
     @State private var mePath: [MeDestination] = []
     @State private var activationError: String?
-    @State private var showUsage = false
+    @State private var showSubscription = false
     @State private var showLondonEpisode = false
     @StateObject private var activityJourney = ActivityJourneyCoordinator()
     @State private var activeSceneActivity: SceneActivity?
@@ -293,12 +293,9 @@ struct RootView: View {
                     .background(.background)
                 }
             }
-            .sheet(isPresented: $showUsage) {
+            .sheet(isPresented: $showSubscription) {
                 if environment.workspace != nil {
-                    UsageAccessView(
-                        backend: environment.backendClient,
-                        billing: environment.billing
-                    )
+                    myPage(section: .subscription)
                 }
             }
             .task(id: authenticationTaskID) {
@@ -1087,7 +1084,6 @@ struct RootView: View {
             onCalibrateLevel: { showEnglishJourney = true },
             onOpenFavorites: { openMe(.favorites) },
             onOpenSettings: { openMe(.settings) },
-            onOpenMemory: { memoryCharacterID = nil; openMe(.memory) },
             section: section,
             onOpenAccount: { openMe(.account) },
             onOpenSubscription: { openMe(.subscription) }
@@ -1364,7 +1360,7 @@ struct RootView: View {
         let regionCatalog = environment.regionCatalog
         var dependencies = ChatDependencies(
             accessClient: environment.backendClient,
-            onShowAccess: { showUsage = true },
+            onShowAccess: { showSubscription = true },
             chatStore: environment.chatStore,
             rosterStore: environment.rosterStore,
             favorites: environment.favoritesStore,
