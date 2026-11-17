@@ -74,6 +74,82 @@ final class ChatKeyboardTests: XCTestCase {
         add(screenshot)
     }
 
+    func testFunctionPanelKeyboardHandoffBlankDismissalAndSettings() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment = [
+            "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_WELCOME_CAPTURE": "1",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_NATIVE_CAPTURE": "chat"
+        ]
+        app.launch()
+        defer { app.terminate() }
+        let field = app.descendants(matching: .any)["chat.composer"].firstMatch
+        let functions = app.buttons["chat.functions"]
+        let settings = app.buttons["chat.settings"]
+        XCTAssertTrue(field.waitForExistence(timeout: 15))
+        let collapsedY = field.frame.minY
+        field.tap()
+        let visibleKeyboard = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            app.keyboards.firstMatch.exists && field.frame.minY < collapsedY - 100
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [visibleKeyboard], timeout: 5), .completed)
+        let keyboardY = field.frame.minY
+        let keyboardImage = XCTAttachment(screenshot: app.screenshot())
+        keyboardImage.name = "Keyboard and composer alignment"
+        keyboardImage.lifetime = .keepAlways
+        add(keyboardImage)
+        // Keyboard AX bounds exclude the system suggestion bar above the keys.
+        XCTAssertLessThan(field.frame.maxY, app.keyboards.firstMatch.frame.minY)
+        let latest = app.descendants(matching: .any)["chat.message.latest"].firstMatch
+        XCTAssertLessThan(latest.frame.maxY, field.frame.minY)
+        let keyboardBubbleY = latest.frame.minY
+        Thread.sleep(forTimeInterval: 0.4)
+        XCTAssertEqual(latest.frame.minY, keyboardBubbleY, accuracy: 1, "键盘展开后不能再次补偿气泡位置")
+        dismissKeyboard(in: app)
+        XCTAssertEqual(field.frame.minY, collapsedY, accuracy: 2)
+
+        for _ in 0..<2 {
+            functions.tap()
+            XCTAssertTrue(app.buttons["chat.call"].waitForExistence(timeout: 3))
+            XCTAssertTrue(app.buttons["chat.call"].isHittable)
+            XCTAssertEqual(field.frame.minY, keyboardY, accuracy: 2, "功能面板复用本机键盘高度")
+            XCTAssertEqual(functions.frame.midY, field.frame.midY, accuracy: 2)
+            XCTAssertLessThan(latest.frame.maxY, field.frame.minY)
+            let panelBubbleY = latest.frame.minY
+            Thread.sleep(forTimeInterval: 0.4)
+            XCTAssertEqual(latest.frame.minY, panelBubbleY, accuracy: 1, "面板展开后不能再次补偿气泡位置")
+            functions.tap()
+            XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3))
+            XCTAssertEqual(field.frame.minY, keyboardY, accuracy: 2, "切换到键盘时保持展开位置")
+            XCTAssertEqual(latest.frame.minY, panelBubbleY, accuracy: 2)
+            dismissKeyboard(in: app)
+            XCTAssertTrue(functions.waitForExistence(timeout: 3))
+            XCTAssertEqual(field.frame.minY, collapsedY, accuracy: 2)
+        }
+
+        functions.tap()
+        XCTAssertTrue(app.buttons["chat.call"].isHittable)
+        let blankY = (app.navigationBars.firstMatch.frame.maxY + field.frame.minY) / 2
+        app.coordinate(withNormalizedOffset: .zero)
+            .withOffset(CGVector(dx: app.frame.width - 2, dy: blankY)).tap()
+        XCTAssertEqual(functions.value as? String, "收起")
+        XCTAssertTrue(app.buttons["chat.call"].waitForNonExistence(timeout: 3))
+        XCTAssertEqual(field.frame.minY, collapsedY, accuracy: 2)
+
+        field.tap()
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3))
+        settings.tap()
+        XCTAssertTrue(app.navigationBars["聊天设置"].waitForExistence(timeout: 3))
+        app.buttons["完成"].tap()
+        XCTAssertTrue(functions.waitForExistence(timeout: 3))
+        functions.tap()
+        settings.tap()
+        XCTAssertTrue(app.navigationBars["聊天设置"].waitForExistence(timeout: 3))
+        app.buttons["完成"].tap()
+        XCTAssertEqual(field.frame.minY, collapsedY, accuracy: 2)
+    }
+
     func testBubbleMenuPreservesKeyboardAndDraft() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -195,11 +271,11 @@ final class ChatKeyboardTests: XCTestCase {
         field.typeText("what should we")
         let list = app.scrollViews["chat.messages"]
         XCTAssertTrue(list.exists)
-        // ScrollView's AX frame can include offscreen content; choose the visible viewport.
-        let blankY = (app.navigationBars.firstMatch.frame.maxY + field.frame.minY) / 2
-        app.coordinate(withNormalizedOffset: .zero)
-            .withOffset(CGVector(dx: app.frame.width * 0.92, dy: blankY)).tap()
-        XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
+        let beforeDismissal = XCTAttachment(screenshot: app.screenshot())
+        beforeDismissal.name = "Chat before blank-area dismissal"
+        beforeDismissal.lifetime = .keepAlways
+        add(beforeDismissal)
+        dismissKeyboard(in: app)
         XCTAssertEqual(field.value as? String, "what should we")
         field.tap()
         XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3))
@@ -217,6 +293,7 @@ final class ChatKeyboardTests: XCTestCase {
         let blankY = (app.navigationBars.firstMatch.frame.maxY + field.frame.minY) / 2
         app.coordinate(withNormalizedOffset: .zero)
             .withOffset(CGVector(dx: app.frame.width - 3, dy: blankY)).tap()
-        XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
+        XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3),
+                      "Functions exist: \(app.buttons["chat.functions"].exists), send exists: \(app.buttons["chat.send"].exists), keyboard: \(app.keyboards.firstMatch.frame)")
     }
 }

@@ -26,6 +26,9 @@ public struct ChatView: View {
     @State private var opensAppointmentsAfterSettings = false
     @State private var appointmentAfterSettings: UUID?
     @State private var viewportWidth: CGFloat = 390
+    @State var inputDockHeight: CGFloat = 0
+    @AppStorage("chat.keyboardHeight.portrait") private var portraitKeyboardHeight = 346.0
+    @AppStorage("chat.keyboardHeight.landscape") private var landscapeKeyboardHeight = 216.0
     @State private var autoReadReady = false
     @State var autoReadQueue: ChatAutoReadQueue
     @Environment(\.scenePhase) private var scenePhase
@@ -48,8 +51,7 @@ public struct ChatView: View {
     @State var showsRealtimeConversation = false
     @State private var accessAfterVoice = false
     @State var isNearConversationBottom = true
-    @State private var followsComposerResize = true
-    @State private var isUserScrollingMessages = false
+    @State var messageScrollPosition = ScrollPosition(edge: .bottom)
     @State var unseenIncomingMessageCount = 0
     @State var knownLatestMessageID: UUID?
     @State var showsContactDetails = false
@@ -57,8 +59,6 @@ public struct ChatView: View {
     @State var bubbleMenuMessage: MessageDTO?
     @State var bubbleMenuFrame: CGRect = .zero
     @State var bubbleMenuSize = CGSize(width: 224, height: 200)
-    /// 软件键盘是否占据屏幕底部；键盘占据时输入栏不再补底部安全区。
-    @State private var isKeyboardVisible = false
     enum ComposerFocus: Hashable { case english, chinese }
     @FocusState var composerFocus: ComposerFocus?
     var isTextInputFocused: Bool {
@@ -93,30 +93,93 @@ public struct ChatView: View {
         self.deps = deps
     }
 
+    var inputDockAnimation: Animation {
+        reduceMotion ? .easeOut(duration: 0.15) : .interactiveSpring(response: 0.28, dampingFraction: 1)
+    }
+
+    private var chatWindow: UIWindow? {
+        UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+            .flatMap(\.windows).first(where: \.isKeyWindow)
+    }
+
+    var preferredKeyboardHeight: CGFloat {
+        let landscape = chatWindow.map { $0.bounds.width > $0.bounds.height } ?? false
+        return CGFloat(landscape ? landscapeKeyboardHeight : portraitKeyboardHeight)
+    }
+
     private func chatPage(bottomInset: CGFloat) -> some View {
-        messageList
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                inputBar(bottomInset: isKeyboardVisible ? 0 : bottomInset)
-                    .disabled(learningSelected)
-            }
-            .ignoresSafeArea(.container, edges: .bottom)
+        VStack(spacing: 0) {
+            messageList
+            inputBar(bottomInset: bottomInset)
+                .disabled(learningSelected)
+                .layoutPriority(1)
+        }
+        .ignoresSafeArea(.container, edges: .bottom)
+    }
+
+    func dismissChatInput() {
+        withAnimation(inputDockAnimation) {
+            showsChatFunctions = false
+            inputDockHeight = 0
+            composerFocus = nil
+        }
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+
+    private func updateKeyboard(_ notification: Notification) {
+        guard let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        guard let window = chatWindow else { return }
+        let localFrame = window.convert(frame, from: window.screen.coordinateSpace)
+        // Floating and external keyboards do not reserve the bottom of the conversation.
+        let height = localFrame.maxY >= window.bounds.maxY - 1 ? max(0, window.bounds.maxY - localFrame.minY) : 0
+        if height > 0, composerFocus != nil {
+            if window.bounds.width > window.bounds.height { landscapeKeyboardHeight = height }
+            else { portraitKeyboardHeight = height }
+        }
+        guard height == 0 || composerFocus != nil else { return }
+        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.25
+        let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int ?? 7
+        let animation: Animation
+        switch curve {
+        case 0: animation = .easeInOut(duration: duration)
+        case 1: animation = .easeIn(duration: duration)
+        case 2: animation = .easeOut(duration: duration)
+        case 3: animation = .linear(duration: duration)
+        default: animation = .interpolatingSpring(duration: max(0.2, duration), bounce: 0)
+        }
+        withAnimation(reduceMotion ? .easeOut(duration: 0.15) : animation) {
+            if !showsChatFunctions { inputDockHeight = height }
+        }
+        if height == 0 { bubbleMenuMessage = nil }
     }
 
     public var body: some View {
         GeometryReader { proxy in
-            if let learningPage = deps.learningPage {
-                ChatLearningPager(learningSelected: $learningSelected, translation: $learningTranslation,
-                                  enabled: recorder.state == .idle && chineseRecorder.state == .idle && wordSelection == nil && grammarTermSelection == nil && !showsRealtimeConversation) {
-                    chatPage(bottomInset: proxy.safeAreaInsets.bottom)
-                } learning: {
-                    learningPage(viewModel.character, learningSelected, openChatSettings)
-                        .environment(\.dsLearningBackdropProvided, true)
+            // Reserve the keyboard and function panel through one layout height.
+            // Native keyboard avoidance would apply the same movement a second time.
+            let bottomInset = chatWindow?.safeAreaInsets.bottom ?? proxy.safeAreaInsets.bottom
+            Group {
+                if let learningPage = deps.learningPage {
+                    ChatLearningPager(learningSelected: $learningSelected, translation: $learningTranslation,
+                                      enabled: recorder.state == .idle && chineseRecorder.state == .idle && wordSelection == nil && grammarTermSelection == nil && !showsRealtimeConversation) {
+                        chatPage(bottomInset: bottomInset)
+                    } learning: {
+                        learningPage(viewModel.character, learningSelected, openChatSettings)
+                            .environment(\.dsLearningBackdropProvided, true)
+                    }
+                } else {
+                    chatPage(bottomInset: bottomInset)
                 }
-            } else {
-                chatPage(bottomInset: proxy.safeAreaInsets.bottom)
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)) { notification in
+                updateKeyboard(notification)
             }
         }
-        .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { viewportWidth = $0 }
+        .ignoresSafeArea(learningSelected ? [] : [.keyboard, .container], edges: .bottom)
+        .onGeometryChange(for: CGFloat.self) { $0.size.width } action: {
+            viewportWidth = $0
+            if showsChatFunctions { inputDockHeight = preferredKeyboardHeight }
+        }
         .onChange(of: recorder.state) { _, state in
             if case .recording = state { voicePlayer.stop() }
             switch state {
@@ -129,9 +192,7 @@ public struct ChatView: View {
         }
         .onChange(of: learningSelected) { _, selected in
             bubbleMenuMessage = nil
-            showsChatFunctions = false
-            isTextInputFocused = false; isChineseInputFocused = false
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            dismissChatInput()
             if selected {
                 voicePlayer.stop()
             } else {
@@ -170,13 +231,6 @@ public struct ChatView: View {
             guard notification.object as? UUID == viewModel.character.id else { return }
             Task { await viewModel.refreshCharacter() }
         }
-        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-            isKeyboardVisible = true
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-            isKeyboardVisible = false
-            bubbleMenuMessage = nil
-        }
         #if DEBUG
         .alert("无法填满挑战进度", isPresented: Binding(get: { learningDebugError != nil }, set: { if !$0 { learningDebugError = nil } })) {
             Button("知道了", role: .cancel) { learningDebugError = nil }
@@ -198,18 +252,17 @@ public struct ChatView: View {
                 }
             } else {
                 ToolbarItem(placement: .topBarTrailing) {
-                    HStack(spacing: 0) {
-                        Button { autoReadEnabled.toggle() } label: {
-                            Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
-                                .frame(width: 44, height: 44)
-                        }
-                        .accessibilityLabel(autoReadEnabled ? "关闭自动朗读" : "开启自动朗读")
-                        .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
-                        .accessibilityIdentifier("chat.autoRead")
-                        chatSettingsAction
+                    Button { autoReadEnabled.toggle() } label: {
+                        Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel(autoReadEnabled ? "关闭自动朗读" : "开启自动朗读")
+                    .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+                    .accessibilityIdentifier("chat.autoRead")
                 }
+                ToolbarItem(placement: .topBarTrailing) { chatSettingsAction }
             }
         }
 
@@ -416,15 +469,22 @@ public struct ChatView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private var chatSettingsAction: some View {
+    private var chatSettingsButton: some View {
         Button(action: openChatSettings) {
-            Image(systemName: "slider.horizontal.3").frame(width: 44, height: 44)
+            Image(systemName: "slider.horizontal.3")
+                .frame(width: 44, height: 44)
+                .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
         .accessibilityLabel("聊天设置")
         .accessibilityIdentifier("chat.settings")
-        .contextMenu {
-            #if DEBUG
-            if let fill = deps.debugFillLearning {
+    }
+
+    @ViewBuilder
+    private var chatSettingsAction: some View {
+        #if DEBUG
+        if let fill = deps.debugFillLearning {
+            chatSettingsButton.contextMenu {
                 Button {
                     fillingLearning = true
                     Task {
@@ -439,15 +499,15 @@ public struct ChatView: View {
                 .disabled(fillingLearning || recorder.state != .idle || chineseRecorder.state != .idle)
                 .accessibilityIdentifier("chat.debugFillLearning")
             }
-            #endif
-        }
+        } else { chatSettingsButton }
+        #else
+        chatSettingsButton
+        #endif
     }
 
     func openChatSettings() {
-        isTextInputFocused = false
-        isChineseInputFocused = false
+        dismissChatInput()
         voicePlayer.stop()
-        showsChatFunctions = false
         showsContactDetails = true
     }
 
@@ -503,7 +563,7 @@ public struct ChatView: View {
     }
 
     private func messageList(viewportHeight: CGFloat) -> some View {
-        ScrollViewReader { proxy in
+        Group {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     LazyVStack(spacing: 0) {
@@ -570,52 +630,38 @@ public struct ChatView: View {
                             .frame(height: 1)
                             .id("conversation-bottom")
                     }
+                    .scrollTargetLayout()
                     .padding(.horizontal, 12)
                     .padding(.vertical, 10)
-                    // Fill short/empty conversations so blank taps land inside scroll content.
-                    .frame(minHeight: max(0, viewportHeight), alignment: .bottom)
-                    .background {
-                        keyboardDismissBackdrop
-                    }
+                    .frame(maxWidth: .infinity, minHeight: max(0, viewportHeight), alignment: .bottom)
+                    .background { keyboardDismissBackdrop }
                 }
                 .accessibilityIdentifier("chat.messages")
+                .scrollPosition($messageScrollPosition)
                 .defaultScrollAnchor(.bottom)
                 .defaultScrollAnchor(.bottom, for: .sizeChanges)
                 .scrollBounceBehavior(.always)
-                // Resizing the composer scrolls programmatically; only a user's
-                // scroll should participate in interactive keyboard dismissal.
-                .scrollDismissesKeyboard(isUserScrollingMessages ? .interactively : .never)
-                // 短会话没有足够滚动范围时，系统的交互式收起不会开始；
-                // 兜底手势仅挂在消息区，避免与输入框争抢首触。
+                // The bottom anchor follows dock resizing in the same layout pass.
+                // Blank taps and downward drags share one dismissal transition.
+                .scrollDismissesKeyboard(.never)
                 .simultaneousGesture(messageListKeyboardDismissGesture)
+                .contentShape(Rectangle())
+                .simultaneousGesture(TapGesture().onEnded {
+                    if viewModel.messages.isEmpty { dismissChatInput() }
+                })
                 .background(Color.dsBackground)
                 .onScrollGeometryChange(for: Bool.self) { geometry in
                     geometry.contentSize.height - geometry.visibleRect.maxY < 96
                 } action: { _, isNearBottom in
                     isNearConversationBottom = isNearBottom
-                    if isUserScrollingMessages { followsComposerResize = isNearBottom }
                     if isNearBottom {
                         unseenIncomingMessageCount = 0
                     }
                 }
-                // Follow the actual laid-out viewport, not the mode toggle before layout.
-                // Keep this intent separate from proximity: shrinking the viewport can
-                // temporarily move the bottom outside the visible rect.
-                .onScrollGeometryChange(for: CGSize.self) { geometry in
-                    CGSize(width: geometry.containerSize.width,
-                           height: geometry.containerSize.height - geometry.contentInsets.top - geometry.contentInsets.bottom)
-                } action: { old, new in
-                    guard old != new, followsComposerResize else { return }
-                    proxy.scrollTo("conversation-bottom", anchor: .bottom)
-                }
-                .onScrollPhaseChange { _, phase in
-                    isUserScrollingMessages = phase == .tracking || phase == .interacting || phase == .decelerating
-                    if isUserScrollingMessages { followsComposerResize = isNearConversationBottom }
-                }
                 .onChange(of: viewModel.streamingText) {
                     guard isNearConversationBottom else { return }
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                        messageScrollPosition.scrollTo(edge: .bottom)
                     }
                 }
                 .onChange(of: viewModel.messages.last?.id) {
@@ -627,13 +673,12 @@ public struct ChatView: View {
                     let isInitialHistory = knownLatestMessageID == nil
                     knownLatestMessageID = last.id
                     if isInitialHistory {
-                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                        messageScrollPosition.scrollTo(edge: .bottom)
                         return
                     }
                     if isNearConversationBottom || last.role == .user {
-                        followsComposerResize = true
                         withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                            proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                            messageScrollPosition.scrollTo(edge: .bottom)
                         }
                     } else if last.role == .assistant {
                         unseenIncomingMessageCount += 1
@@ -641,23 +686,12 @@ public struct ChatView: View {
                 }
                 .onChange(of: isTextInputFocused || isChineseInputFocused) {
                     viewModel.composerFocusChanged(isTextInputFocused || isChineseInputFocused)
-                    guard isTextInputFocused || isChineseInputFocused else { return }
-                    followsComposerResize = true
-                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
-                    }
-                }
-                .onChange(of: composerTranslation.isOpen) {
-                    guard followsComposerResize else { return }
-                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
-                    }
+                    if composerFocus != nil { messageScrollPosition.scrollTo(edge: .bottom) }
                 }
                 .onChange(of: highlightedMessageID) { _, messageID in
                     guard let messageID else { return }
-                    followsComposerResize = false
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                        proxy.scrollTo(messageID, anchor: .center)
+                        messageScrollPosition.scrollTo(id: messageID, anchor: .center)
                     }
                     Task { @MainActor in
                         try? await Task.sleep(for: .seconds(2))
@@ -669,9 +703,8 @@ public struct ChatView: View {
                 if !isNearConversationBottom {
                     Button {
                         withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                            proxy.scrollTo("conversation-bottom", anchor: .bottom)
+                            messageScrollPosition.scrollTo(edge: .bottom)
                         }
-                        followsComposerResize = true
                         isNearConversationBottom = true
                         unseenIncomingMessageCount = 0
                     } label: {
@@ -703,10 +736,7 @@ public struct ChatView: View {
     private var keyboardDismissBackdrop: some View {
         Color.dsBackground
             .contentShape(Rectangle())
-            .onTapGesture {
-                isTextInputFocused = false
-                isChineseInputFocused = false
-            }
+            .onTapGesture { dismissChatInput() }
             .accessibilityHidden(true)
     }
 
@@ -714,11 +744,10 @@ public struct ChatView: View {
         DragGesture(minimumDistance: 20)
             .onChanged { value in
                 guard bubbleMenuMessage == nil,
-                      isTextInputFocused || isChineseInputFocused,
+                      showsChatFunctions || isTextInputFocused || isChineseInputFocused,
                       value.translation.height > 20,
                       value.translation.height > abs(value.translation.width) else { return }
-                isTextInputFocused = false
-                isChineseInputFocused = false
+                dismissChatInput()
             }
     }
 

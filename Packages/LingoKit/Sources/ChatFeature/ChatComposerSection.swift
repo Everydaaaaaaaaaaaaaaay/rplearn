@@ -10,9 +10,7 @@ import SwiftUI
 import Translation
 
 extension ChatView {
-    /// 输入栏。`bottomInset` 是屏幕底部安全区（home indicator）——iOS 26 的 `safeAreaInset`
-    /// 会把安全区算进输入栏自身，iOS 27 不会；为了让输入栏在所有系统上都贴住屏幕底边，
-    /// 这里由输入栏自己带上这段高度（材质一起铺下去，内容仍留在 indicator 之上）。
+    /// 输入栏与底部输入区域。`bottomInset` 仅包含 home indicator 的固定安全区。
     func inputBar(bottomInset: CGFloat) -> some View {
         VStack(spacing: 0) {
             translatorControls
@@ -29,8 +27,8 @@ extension ChatView {
                         toggleChineseRecording()
                         return
                     }
+                    dismissChatInput()
                     withAnimation(.snappy) {
-                        isTextInputFocused = false
                         isVoiceMode.toggle()
                         recorder.resetFailure()
                     }
@@ -102,12 +100,14 @@ extension ChatView {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
-            if showsChatFunctions {
-                // Apply menu height and composer position in the same layout pass.
-                chatFunctionPanel
+            ZStack(alignment: .top) {
+                if showsChatFunctions { chatFunctionPanel.transition(.opacity) }
             }
+            .frame(height: max(0, inputDockHeight - bottomInset), alignment: .top)
+            .padding(.bottom, inputDockHeight > 0 ? bottomInset : 0)
+            .clipped()
         }
-        .padding(.bottom, max(0, bottomInset))
+        .padding(.bottom, inputDockHeight > 0 ? 0 : max(0, bottomInset))
         .tint(composerTint)
         .background(ComposerPanelSurface(expanded: composerTranslation.isOpen))
         .animation(reduceMotion ? .linear(duration: 0.15) : .spring(response: 0.42, dampingFraction: 0.94), value: composerTranslation.isOpen)
@@ -147,16 +147,24 @@ extension ChatView {
                 .accessibilityIdentifier("chat.send")
             } else {
                 Button {
-                    var transaction = Transaction(animation: nil)
-                    transaction.disablesAnimations = true
-                    withTransaction(transaction) { showsChatFunctions.toggle() }
+                    if showsChatFunctions {
+                        // Keep the same reserved height while the system keyboard takes over.
+                        showsChatFunctions = false
+                        isVoiceMode = false
+                        composerFocus = .english
+                    } else {
+                        withAnimation(inputDockAnimation) {
+                            showsChatFunctions = true
+                            inputDockHeight = preferredKeyboardHeight
+                        }
+                    }
                 } label: {
                     Image(systemName: "line.3.horizontal")
                         .font(.system(size: 22, weight: .medium))
                         .frame(width: 44, height: 44)
                         .contentShape(Rectangle())
                 }
-                .accessibilityLabel(showsChatFunctions ? "收起聊天功能" : "聊天功能")
+                .accessibilityLabel(showsChatFunctions ? "切换到键盘" : "聊天功能")
                 .accessibilityIdentifier("chat.functions")
                 .accessibilityValue(showsChatFunctions ? "展开" : "收起")
             }
@@ -167,7 +175,7 @@ extension ChatView {
     private var chatFunctionPanel: some View {
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
             Button {
-                showsChatFunctions = false
+                dismissChatInput()
                 voicePlayer.stop()
                 showsRealtimeConversation = true
             } label: { chatFunctionLabel("打电话", symbol: "phone") }
@@ -175,14 +183,14 @@ extension ChatView {
 
             if deps.learningPage != nil {
                 Button {
-                    showsChatFunctions = false
+                    dismissChatInput()
                     learningSelected = true
                 } label: { chatFunctionLabel("学习模式", symbol: "book.closed") }
                 .accessibilityIdentifier("chat.learningMode")
             }
 
             Button {
-                showsChatFunctions = false
+                dismissChatInput()
                 toggleComposerTranslator()
             } label: { chatFunctionLabel("翻译器", symbol: "character.bubble") }
             .accessibilityIdentifier("chat.translationMode")
