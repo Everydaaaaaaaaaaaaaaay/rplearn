@@ -125,10 +125,18 @@ public struct MyPageView: View {
             VStack(spacing: 16) {
                 hubProfile
                 hubLearning
-                Button(action: onOpenFavorites) {
-                    hubRow("收藏夹", symbol: "bookmark")
+                VStack(spacing: 0) {
+                    Button(action: onOpenFavorites) {
+                        hubRow("收藏夹", symbol: "bookmark")
+                    }
+                    .accessibilityIdentifier("me.favorites")
+                    hubDivider
+                    Button(action: onOpenSettings) {
+                        hubRow("设置", symbol: "gearshape")
+                    }
+                    .accessibilityLabel("设置，AI、语音与偏好")
+                    .accessibilityIdentifier("me.settings")
                 }
-                .accessibilityIdentifier("me.favorites")
                 .dsSceneGlass(radius: 22, legibility: .frosted)
                 VStack(spacing: 0) {
                     Button(action: onOpenSubscription) {
@@ -157,7 +165,7 @@ public struct MyPageView: View {
                 .accessibilityIdentifier("me.background.\(profile?.currentRegionID ?? "loading")")
         }
         .safeAreaInset(edge: .top, spacing: 0) {
-            DSHubHeader(title: "我的", symbol: "gearshape", actionLabel: "设置，AI、语音与偏好", action: onOpenSettings)
+            DSHubHeader(title: "我的")
         }
         .foregroundStyle(Color.dsSceneTextPrimary)
         .toolbar(.hidden, for: .navigationBar).dsSceneTabBarBackground()

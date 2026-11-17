@@ -76,7 +76,12 @@ final class TabHubTests: XCTestCase {
             XCTAssertFalse(app.navigationBars["积分余额与明细"].exists)
         }
         capture(app, name: "hub-london-profile-readonly-balances")
-        app.buttons["设置，AI、语音与偏好"].tap()
+        let settings = app.buttons["me.settings"]
+        XCTAssertEqual(app.buttons.matching(identifier: "设置，AI、语音与偏好").count, 1)
+        XCTAssertGreaterThan(settings.frame.width, app.frame.width * 0.8)
+        XCTAssertGreaterThanOrEqual(settings.frame.height, 60)
+        XCTAssertGreaterThan(settings.frame.minY, app.buttons["me.favorites"].frame.minY)
+        settings.tap()
         XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.buttons["me.learning-trial"].exists)
     }
@@ -101,6 +106,14 @@ final class TabHubTests: XCTestCase {
         app.tabBars.buttons["我的"].tap()
         XCTAssertTrue(app.buttons["me.profile"].waitForExistence(timeout: 10))
         capture(app, name: "hub-london-profile-accessibility")
+        let settings = app.buttons["me.settings"]
+        for _ in 0..<5 where !settings.isHittable { app.swipeUp() }
+        XCTAssertTrue(settings.isHittable)
+        XCTAssertGreaterThan(settings.frame.width, app.frame.width * 0.8)
+        capture(app, name: "hub-london-profile-settings-accessibility")
+        settings.tap()
+        XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 5))
+        app.navigationBars.buttons.firstMatch.tap()
         app.swipeUp()
         app.swipeUp()
         XCTAssertFalse(app.buttons["me.coinBalance"].exists)
