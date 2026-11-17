@@ -20,6 +20,7 @@ public struct BackendSharedChatState: Decodable, Sendable {
         public let phase: String?
         public let replyPlan: ReplyPlan?
     }
+    public let durableFollowups: Bool?
     public let protocolVersion: Int
     public let conversationId: UUID
     public let revision: Int

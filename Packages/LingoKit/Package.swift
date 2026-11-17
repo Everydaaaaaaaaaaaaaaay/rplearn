@@ -74,6 +74,7 @@ let domainTargets: [Target] = [
             module("CoreKit"),
             module("BackendKit"),
             module("DomainKit"),
+            module("LLMKit"),
             module("PersistenceKit"),
         ]
     ),

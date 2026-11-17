@@ -657,6 +657,24 @@ final class AccountWorkspace {
             economyStore: economyStore,
             itemStore: itemStore
         )
+        await self.contentSync.configureFollowups(SharedChatFollowupCoordinator(
+            backend: backend, chatStore: chatStore, rosterStore: rosterStore,
+            memoryStore: stores.memoryStore, economyStore: economyStore, llm: llm,
+            afterReply: { character, conversationID in
+                if character.isMainCharacter,
+                   let conversation = try await chatStore.conversation(id: conversationID), conversation.turnCount >= 3,
+                   try await itemStore.hasTicket(source: .quest) == false,
+                   try await userState.claimStarterTicket() {
+                    _ = try await chatStore.appendMessage(conversationID: conversationID, role: .coach, kind: .storyLine,
+                        text: "🎫 主办方送来一张通用机票！之后可以在地图里用它解锁新的城市。")
+                }
+                let messages = try await chatStore.messages(conversationID: conversationID)
+                let text = messages.suffix(12).map(\.text).joined(separator: " ").lowercased()
+                if ["meet", "tomorrow", "tonight", "coffee", "cafe", "café", "see you", "o'clock", "约", "明天", "后天", "周末", "见面", "咖啡", "下午", "上午", "晚上", "改期"].contains(where: text.contains) {
+                    _ = try await backend.detectAppointments(characterID: character.id, conversationID: conversationID)
+                }
+            }))
+
     }
 }
 

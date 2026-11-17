@@ -90,6 +90,14 @@ public actor MemoryStore {
         }
     }
 
+    public func contextResourceIDs(for memories: [MemoryDTO]) throws -> [UUID] {
+        try memories.compactMap { memory in
+            guard modelContext.model(for: memory.id) is MemoryEntity else { return nil }
+            return UUID(uuidString: try ContentMutationJournal.resourceID(in: modelContext, resourceType: .memory,
+                localKey: ContentMutationJournal.persistentKey(memory.id)))
+        }
+    }
+
     public func count(characterID: UUID, tier: MemoryTier) throws -> Int {
         try memories(characterID: characterID, tier: tier).count
     }

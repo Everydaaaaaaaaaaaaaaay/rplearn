@@ -1,3 +1,5 @@
+import { replyFragments } from "./reply-quality.js";
+import { historyWindow } from "./context.js";
 import { randomUUID } from "node:crypto";
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
@@ -77,7 +79,7 @@ export class ChatRepository {
   ): Promise<boolean> {
     const rows =
       await sql`select 1 from app.chat_generations g join app.chat_messages m on m.user_id=g.user_id and m.answered_by=g.id
-      where g.user_id=${userId} and g.id=${operationId} and g.conversation_id=${conversationId} and g.status='completed'
+      where g.user_id=${userId} and (g.id=${operationId} or g.snapshot->>'resultOperationId'=${operationId}) and g.conversation_id=${conversationId} and g.status='completed'
         and m.message_id=${inputId} and ${inputId}=any(g.input_message_ids)`;
     return rows.length > 0;
   }
@@ -274,9 +276,17 @@ export class ChatRepository {
     record: ContentRecord,
     previous?: ContentRecord,
   ): Promise<ContentRecord> {
+    if (record.resourceType === "character" && record.deletedAt !== null) {
+      await sql`delete from app.chat_followups where user_id=${userId} and character_id=${record.resourceId}`;
+      await sql`update app.chat_generations set status='failed',fence_token=${randomUUID()},error_code='CHAT_CHARACTER_REMOVED'
+        where user_id=${userId} and conversation_id in(select conversation_id from app.chat_sessions where user_id=${userId} and character_id=${record.resourceId})
+          and (status in ('queued','dispatched','uncertain') or snapshot->>'awaitingVoiceReceipt'='true' or snapshot->>'voiceReceiptExpired'='true')`;
+    }
     if (record.resourceType === "conversation" && record.deletedAt !== null) {
+      await sql`delete from app.chat_followups where user_id=${userId} and conversation_id=${record.resourceId}`;
+      await sql`delete from app.chat_voice_receipts r using app.chat_messages m where r.user_id=${userId} and m.user_id=r.user_id and m.message_id=r.message_id and m.conversation_id=${record.resourceId}`;
       await sql`update app.chat_generations set status='failed',fence_token=${randomUUID()},error_code='CHAT_ARCHIVED'
-        where user_id=${userId} and conversation_id=${record.resourceId} and status in ('queued','dispatched','uncertain')`;
+        where user_id=${userId} and conversation_id=${record.resourceId} and (status in ('queued','dispatched','uncertain') or snapshot->>'awaitingVoiceReceipt'='true' or snapshot->>'voiceReceiptExpired'='true')`;
       await sql`delete from app.chat_sessions where user_id=${userId} and conversation_id=${record.resourceId}`;
       return record;
     }
@@ -337,6 +347,11 @@ export class ChatRepository {
       where user_id=${userId} and conversation_id=${record.parentId}`;
     if (!alias) return record;
     if (record.deletedAt !== null) {
+      await sql`delete from app.chat_followups where user_id=${userId} and message_id=${record.resourceId}`;
+      await sql`delete from app.chat_voice_receipts where user_id=${userId} and message_id=${record.resourceId}`;
+      await sql`update app.chat_generations set status='failed',fence_token=${randomUUID()},error_code='CHAT_INPUT_REMOVED'
+        where user_id=${userId} and ${record.resourceId}=any(input_message_ids)
+          and (snapshot->>'awaitingVoiceReceipt'='true' or snapshot->>'voiceReceiptExpired'='true')`;
       await sql`delete from app.chat_messages where user_id=${userId} and message_id=${record.resourceId}`;
       return record;
     }
@@ -355,10 +370,15 @@ export class ChatRepository {
         learningOrigin: old.protected_payload.learningOrigin ?? null,
         sharedPredecessorId: old.protected_payload.sharedPredecessorId ?? null,
         sharedVoiceLeaseId: old.protected_payload.sharedVoiceLeaseId ?? null,
+        voiceReceiptVersion: old.protected_payload.voiceReceiptVersion,
+        contextMemoryIds: old.protected_payload.contextMemoryIds,
         deliveryOrigin: old.protected_payload.deliveryOrigin,
+        replyToMessageIds: old.protected_payload.replyToMessageIds,
         orderIndex: old.sequence,
         isInterrupted:
-          old.protected_payload.role === "user" ? old.answered_by === null : false,
+          old.protected_payload.role === "user"
+            ? old.answered_by === null
+            : old.protected_payload.isInterrupted,
       };
     } else {
       const [session] = await sql<
@@ -597,6 +617,7 @@ export class ChatRepository {
         : afterSequence;
       return {
         protocolVersion: 1,
+        durableFollowups: true,
         conversationId,
         revision: Number(session.revision),
         lastSequence,
@@ -647,8 +668,13 @@ export class ChatRepository {
         return undefined;
       }
       const pending = await sql<
-        { message_id: string; text_length: number; voice_lease_id: string | null }[]
-      >`select message_id,length(protected_payload->>'text') as text_length,protected_payload->>'sharedVoiceLeaseId' as voice_lease_id from app.chat_messages
+        {
+          message_id: string;
+          text_length: number;
+          voice_lease_id: string | null;
+          receipt_version: number | null;
+        }[]
+      >`select message_id,length(protected_payload->>'text') as text_length,protected_payload->>'sharedVoiceLeaseId' as voice_lease_id,(protected_payload->>'voiceReceiptVersion')::integer as receipt_version from app.chat_messages
         where user_id=${row.user_id} and conversation_id=${row.conversation_id} and role='user'
         and answered_by is null and assigned_generation_id is null order by sequence limit 20`;
       const ids: string[] = [];
@@ -656,7 +682,8 @@ export class ChatRepository {
       for (const message of pending) {
         if (
           ids.length > 0 &&
-          (pendingCharacters + message.text_length > 40_000 ||
+          (pending[0]?.receipt_version === 1 ||
+            pendingCharacters + message.text_length > 40_000 ||
             message.voice_lease_id !== pending[0]?.voice_lease_id)
         )
           break;
@@ -667,11 +694,20 @@ export class ChatRepository {
         await sql`update app.chat_generations set status='failed',error_code='CHAT_INPUT_REMOVED' where id=${row.id}`;
         return undefined;
       }
+      const profile = {
+        ...(await this.content.learner?.(sql, row.user_id)),
+        subscriptionTier:
+          (await this.content.subscriptionTier?.(sql, row.user_id)) ?? "free",
+      };
+      const window = historyWindow(
+        profile.subscriptionTier,
+        Boolean(pending[0]?.voice_lease_id),
+      );
       const prior = await sql<
         { message_id: string }[]
       >`select message_id from app.chat_messages
         where user_id=${row.user_id} and conversation_id=${row.conversation_id} and (role='assistant' or answered_by is not null)
-        order by sequence desc limit 24`;
+        order by sequence desc limit ${window}`;
       const history: ContentRecord[] = [];
       for (const id of [...prior.map((message) => message.message_id), ...ids]) {
         const record = await this.content.read(sql, row.user_id, "message", id);
@@ -687,9 +723,13 @@ export class ChatRepository {
         row.user_id,
         "memory",
         session.character_id,
-        200,
       );
-      const profile = await this.content.learner?.(sql, row.user_id);
+      const context = {
+        stories: await this.content.list(sql, row.user_id, "story_progress", null),
+        appointments:
+          (await this.content.appointments?.(sql, row.user_id, session.character_id)) ??
+          [],
+      };
       const input: ChatGenerationInput = {
         userId: row.user_id,
         generationId: row.id,
@@ -697,18 +737,28 @@ export class ChatRepository {
         characterId: session.character_id,
         inputMessageIds: ids,
         ...(row.snapshot?.simulation ? { simulation: row.snapshot.simulation } : {}),
-        messages: conversationPrompt(character, memories, history, ids, profile ?? {}),
+        messages: conversationPrompt(
+          character,
+          memories,
+          history,
+          ids,
+          profile,
+          false,
+          context,
+        ),
       };
       const voiceLeaseId = pending[0]?.voice_lease_id;
       if (voiceLeaseId) {
         input.voiceLeaseId = voiceLeaseId;
+        input.voiceReceiptRequired = pending[0]?.receipt_version === 1;
         input.messages = conversationPrompt(
           character,
           memories,
           history,
           ids,
-          profile ?? {},
+          profile,
           true,
+          context,
         );
       }
       const anchor = history.find((m) => m.resourceId === ids.at(-1));
@@ -739,7 +789,18 @@ export class ChatRepository {
         lease_until=now()+${this.leaseMilliseconds}*interval '1 millisecond',input_message_ids=${ids}::uuid[],snapshot=${JSON.stringify(input)}::jsonb where id=${row.id}`;
       await sql`update app.chat_messages set assigned_generation_id=${row.id} where user_id=${row.user_id} and message_id=any(${ids}::uuid[])`;
       await sql`update app.chat_sessions set revision=revision+1 where user_id=${row.user_id} and conversation_id=${row.conversation_id}`;
-      return { input, fenceToken };
+      const [receipt] = input.voiceReceiptRequired
+        ? await sql<{ heard_text: string; interrupted: boolean }[]>`
+        select heard_text,interrupted from app.chat_voice_receipts where user_id=${row.user_id} and message_id=${ids[0] ?? ""}`
+        : [];
+      return {
+        input,
+        fenceToken,
+        ...((receipt?.interrupted && !receipt.heard_text.trim()) ||
+        !input.messages.some((m) => m.role === "user")
+          ? { deliveryOnly: true }
+          : {}),
+      };
     });
   }
 
@@ -764,12 +825,10 @@ export class ChatRepository {
       >`select * from app.chat_generations where id=${claim.input.generationId} and fence_token=${claim.fenceToken} and status='dispatched' for update`;
       const simulation = row?.snapshot?.simulation;
       if (!row?.snapshot || !simulation) return;
-      const lines = text
-        .split(/\n+/)
-        .map((line) => line.trim())
-        .filter(Boolean);
-      simulation.fragments ??=
-        lines.length > 8 ? [...lines.slice(0, 7), lines.slice(7).join(" ")] : lines;
+      if (claim.input.resultOperationId)
+        row.snapshot.resultOperationId = claim.input.resultOperationId;
+      row.snapshot.suppressLearning = claim.input.suppressLearning ?? false;
+      simulation.fragments ??= replyFragments(text);
       simulation.preparedText ??= text;
       simulation.deliveredCount ??= 0;
       const now = Date.now();
@@ -816,7 +875,7 @@ export class ChatRepository {
       const [row] = await sql<
         GenerationRow[]
       >`select * from app.chat_generations where id=${input.generationId}
-        and fence_token=${claim.fenceToken} and status='dispatched' for update`;
+        and fence_token=${claim.fenceToken} and (status='dispatched' or (status='completed' and (snapshot->>'awaitingVoiceReceipt'='true' or snapshot->>'voiceReceiptExpired'='true'))) for update`;
       if (!row) return false;
       if (retryCommandId) {
         const [receipt] = await sql<
@@ -864,16 +923,29 @@ export class ChatRepository {
           return false;
         }
       }
+      const generatedText = text;
+      let interrupted = false;
+      if (input.voiceReceiptRequired) {
+        const [receipt] = await sql<{ heard_text: string; interrupted: boolean }[]>`
+          select heard_text,interrupted from app.chat_voice_receipts where user_id=${input.userId} and message_id=${input.inputMessageIds[0] ?? ""}`;
+        if (!receipt && !input.voiceReceiptExpired) {
+          input.awaitingVoiceReceipt = true;
+          await sql`update app.chat_generations set status='completed',partial_text=${text},snapshot=${JSON.stringify(input)}::jsonb,
+            completed_at=now(),lease_until=null where id=${row.id}`;
+          return true;
+        }
+        text = receipt?.heard_text.trim() ?? "";
+        interrupted =
+          (receipt?.interrupted ?? true) ||
+          text.replace(/\s+/g, " ") !== generatedText.trim().replace(/\s+/g, " ");
+        input.suppressLearning = interrupted;
+        input.awaitingVoiceReceipt = false;
+        if (receipt) input.voiceReceiptExpired = false;
+      }
       const now = new Date().toISOString();
-      const lines = input.voiceLeaseId
-        ? [text]
-        : text
-            .split(/\n+/)
-            .map((line) => line.trim())
-            .filter(Boolean);
       const allFragments =
         simulation?.fragments ??
-        (lines.length > 8 ? [...lines.slice(0, 7), lines.slice(7).join(" ")] : lines);
+        (input.voiceLeaseId ? (text ? [text] : []) : replyFragments(text));
       const fragments = simulation
         ? allFragments.slice(deliveredIndex, deliveredIndex + 1)
         : allFragments;
@@ -892,15 +964,16 @@ export class ChatRepository {
           text: fragment,
           createdAt: now,
           orderIndex: sequence,
-          isInterrupted: false,
+          isInterrupted: interrupted,
+          replyToMessageIds: input.inputMessageIds,
           tokenEstimate: Math.ceil(fragment.length / 4),
         };
-        if (input.learningChat)
+        if (input.learningChat && !input.suppressLearning)
           payload.learningOrigin = {
             source: "assistant",
             cycleId: input.learningChat.cycleId,
             userMessageId: input.learningChat.userMessageId,
-            operationId: input.generationId,
+            operationId: input.resultOperationId ?? input.generationId,
             fragmentIndex: simulation ? deliveredIndex : index,
             fragmentCount: allFragments.length,
           };
@@ -965,6 +1038,10 @@ export class ChatRepository {
             { ...(message.payload as Payload), isInterrupted: false },
           );
       }
+      for (const messageId of input.inputMessageIds) {
+        await sql`insert into app.chat_followups(user_id,message_id,conversation_id,character_id)
+          values(${input.userId},${messageId},${input.conversationId},${input.characterId}) on conflict do nothing`;
+      }
       const conversation = await this.content.read(
         sql,
         input.userId,
@@ -981,13 +1058,74 @@ export class ChatRepository {
           {
             ...(conversation.payload as Payload),
             lastMessageAt: now,
-            turnCount: Number((conversation.payload as Payload).turnCount ?? 0) + 1,
+            turnCount:
+              Number((conversation.payload as Payload).turnCount ?? 0) +
+              (fragments.length > 0 && !row.snapshot?.voiceTurnCounted ? 1 : 0),
           },
         );
-      await sql`update app.chat_generations set status='completed',partial_text=${text},error_code=null,completed_at=now() where id=${row.id}`;
+      if (input.voiceReceiptRequired && fragments.length > 0)
+        input.voiceTurnCounted = true;
+      await sql`update app.chat_generations set status='completed',partial_text=${generatedText},snapshot=${JSON.stringify(input)}::jsonb,error_code=null,completed_at=now() where id=${row.id}`;
       await this.schedule(sql, input.userId, input.conversationId);
       return true;
     });
+  }
+  async expireVoiceReceipt(): Promise<boolean> {
+    const [row] = await this.database.sql<
+      GenerationRow[]
+    >`select * from app.chat_generations
+      where status='completed' and snapshot->>'awaitingVoiceReceipt'='true'
+        and completed_at<now()-interval '5 minutes' order by completed_at limit 1`;
+    if (!row?.snapshot || !row.fence_token) return false;
+    const messageId = row.input_message_ids[0];
+    if (!messageId) return false;
+    // A killed playback process cannot attest that audio was heard. Keep generated output
+    // in the generation ledger and close its conversational turn as an empty interruption.
+    row.snapshot.voiceReceiptExpired = true;
+    await this.finish(
+      { input: row.snapshot, fenceToken: row.fence_token },
+      row.partial_text,
+    );
+    return true;
+  }
+  async voiceReceipt(
+    userId: string,
+    conversationId: string,
+    messageId: string,
+    text: string,
+    interrupted: boolean,
+  ) {
+    const claim = await this.database.sql.begin(async (sql) => {
+      await this.lock(sql, userId);
+      const [message] = await sql<
+        {
+          assigned_generation_id: string | null;
+          answered_by: string | null;
+          protected_payload: Payload;
+        }[]
+      >`
+        select assigned_generation_id,answered_by,protected_payload from app.chat_messages
+        where user_id=${userId} and conversation_id=${conversationId} and message_id=${messageId} and role='user'`;
+      if (
+        message?.protected_payload.voiceReceiptVersion !== 1 ||
+        !message.protected_payload.sharedVoiceLeaseId
+      )
+        missing();
+      await sql`insert into app.chat_voice_receipts(user_id,message_id,heard_text,interrupted)
+        values(${userId},${messageId},${text},${interrupted}) on conflict do nothing`;
+      const id = message.assigned_generation_id ?? message.answered_by;
+      if (!id) return undefined;
+      const [row] = await sql<
+        GenerationRow[]
+      >`select * from app.chat_generations where user_id=${userId} and id=${id}`;
+      return (row?.snapshot?.awaitingVoiceReceipt ||
+        row?.snapshot?.voiceReceiptExpired) &&
+        row.fence_token
+        ? { input: row.snapshot, fenceToken: row.fence_token, text: row.partial_text }
+        : undefined;
+    });
+    if (claim) await this.finish(claim, claim.text);
+    return { accepted: true };
   }
   async uncertain(claim: ClaimedGeneration): Promise<void> {
     await this.database

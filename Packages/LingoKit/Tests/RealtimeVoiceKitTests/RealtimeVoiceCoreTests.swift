@@ -272,9 +272,10 @@ struct RealtimeVoiceSessionTests {
     @Test("上游自行取消时释放当前回合，不永久停在思考状态")
     func upstreamCancellationReleasesTurn() async {
         let input = MockSpeechInput()
+        let probe = ConversationProbe()
         let session = RealtimeVoiceSession(input: input, output: MockSpeechOutput(), conversation: .init(
             replyStream: { _ in AsyncThrowingStream { $0.finish(throwing: CancellationError()) } },
-            saveAssistant: { _, _ in }
+            saveAssistant: { text, interrupted in probe.assistants.append(.init(text: text, interrupted: interrupted)) }
         ))
         await session.start()
         input.emit(.init(text: "Hello", isFinal: true))
@@ -282,6 +283,38 @@ struct RealtimeVoiceSessionTests {
         #expect(await eventually { session.phase == .listening })
         await session.finishSpeakingAndStop()
         #expect(session.phase == .idle)
+        #expect(probe.assistants == [.init(text: "", interrupted: true)])
+    }
+
+    @Test("生成前插话的空收听记录绑定原回合，不挪到下一回合")
+    func emptyReceiptKeepsItsResponseIdentity() async {
+        let input = MockSpeechInput()
+        var inputs: [(UUID, String)] = []
+        var saved: [(UUID, String, Bool)] = []
+        let session = RealtimeVoiceSession(input: input, output: MockSpeechOutput(), conversation: .init(
+            scopedReplyStream: { id, text in
+                inputs.append((id, text))
+                if text == "First" { try await Task.sleep(for: .seconds(5)) }
+                return AsyncThrowingStream { continuation in
+                    continuation.yield("Second reply.")
+                    continuation.finish()
+                }
+            },
+            scopedSaveAssistant: { id, text, interrupted in saved.append((id, text, interrupted)) }
+        ))
+        await session.start()
+        input.emit(.init(text: "First", isFinal: true))
+        #expect(await eventually { inputs.count == 1 })
+        input.emitSpeechStarted()
+        #expect(await eventually { saved.count == 1 })
+        input.emit(.init(text: "Second", isFinal: true))
+        #expect(await eventually { inputs.count == 2 && saved.count == 2 })
+        #expect(saved[0].0 == inputs[0].0)
+        #expect(saved[0].1.isEmpty)
+        #expect(saved[0].2)
+        #expect(saved[1].0 == inputs[1].0)
+        #expect(saved[0].0 != saved[1].0)
+        await session.stop()
     }
 
     private func makeSession(

@@ -373,6 +373,7 @@ public final class ChatViewModel {
                 audioDuration: capture.duration,
                 tokenEstimate: TokenEstimator.estimate(capture.transcript),
                 learningOrigin: await userLearningOrigin(),
+                contextMemoryIDs: usesSharedChat ? await memoryService.contextMemoryIDs(characterID: character.id, query: capture.transcript) : nil,
                 sharedOrdering: usesSharedChat
             )
             if let sourceFileName = capture.fileName {
@@ -403,9 +404,12 @@ public final class ChatViewModel {
     /// 实时语音回合：端侧终稿只发送为文本，并继续复用当前低成本流式 LLM。
     /// 该方法先持久化用户话轮，再返回纯文本增量；应用不向 LLM 上传音频。
     var voiceLeaseID: UUID?
+    private var sharedVoiceInputs: [UUID: UUID] = [:]
+    private var earlyVoiceReceipts: [UUID: (text: String, interrupted: Bool)] = [:]
+    private var legacyVoiceResponseID = UUID()
 
     public func realtimeReplyStream(
-        userText: String
+        userText: String, responseID: UUID? = nil
     ) async throws -> AsyncThrowingStream<String, Error> {
         guard let conversation else {
             throw AppError.storage("聊天尚未加载")
@@ -418,13 +422,18 @@ public final class ChatViewModel {
         guard reserveTutorialMessage() else { throw AppError.storage("请先完成教程再和朋友聊天吧～") }
         var persisted = false
         defer { if !persisted { deps.tutorial?.session.releaseFailedMessage() } }
+        let responseID = responseID ?? legacyVoiceResponseID
+        let origin = await userLearningOrigin()
+        let recall = usesSharedChat ? await memoryService.contextMemoryIDs(characterID: character.id, query: text) : nil
+        try Task.checkCancellation()
         let userMessage = try await deps.chatStore.appendMessage(
             conversationID: conversation.id,
             role: .user,
             text: text,
             tokenEstimate: TokenEstimator.estimate(text),
-            learningOrigin: await userLearningOrigin(),
+            learningOrigin: origin,
             sharedVoiceLeaseID: usesSharedChat ? voiceLeaseID : nil,
+            contextMemoryIDs: recall,
             sharedOrdering: usesSharedChat
         )
         persisted = true
@@ -434,6 +443,10 @@ public final class ChatViewModel {
         notifyConversationChanged()
 
         if let gateway = deps.sharedChat {
+            sharedVoiceInputs[responseID] = userMessage.id
+            if let early = earlyVoiceReceipts.removeValue(forKey: responseID) {
+                await saveRealtimeAssistant(spokenText: early.text, interrupted: early.interrupted, responseID: responseID)
+            }
             sharedReviewMessages[userMessage.id] = userMessage
             startSharedObservation()
             try await gateway.uploadSharedMessages()
@@ -485,8 +498,21 @@ public final class ChatViewModel {
     }
 
     /// 保存模型实际生成的语音字幕；被用户插话截断时保留中断标记。
-    public func saveRealtimeAssistant(spokenText: String, interrupted: Bool) async {
+    public func saveRealtimeAssistant(spokenText: String, interrupted: Bool, responseID: UUID? = nil) async {
         if usesSharedChat {
+            let responseID = responseID ?? legacyVoiceResponseID
+            guard let conversation, let gateway = deps.sharedChat else { return }
+            guard let inputID = sharedVoiceInputs.removeValue(forKey: responseID) else {
+                earlyVoiceReceipts[responseID] = (spokenText, interrupted)
+                return
+            }
+            if responseID == legacyVoiceResponseID { legacyVoiceResponseID = UUID() }
+            do {
+                try await gateway.recordSharedVoiceReceipt(conversationID: conversation.id, userMessageID: inputID,
+                                                           text: spokenText, interrupted: interrupted)
+            } catch {
+                Log.app.warning("通话收听记录等待同步：\(error.localizedDescription)")
+            }
             await reloadMessages()
             notifyConversationChanged()
             return
@@ -605,6 +631,7 @@ public final class ChatViewModel {
                 text: userText,
                 tokenEstimate: TokenEstimator.estimate(userText),
                 learningOrigin: await userLearningOrigin(),
+                contextMemoryIDs: usesSharedChat ? await memoryService.contextMemoryIDs(characterID: character.id, query: userText) : nil,
                 sharedOrdering: usesSharedChat
             )
             await reloadMessages()
@@ -1400,7 +1427,9 @@ public final class ChatViewModel {
         let reviewed = sharedReviewMessages.values.filter { state.coveredMessageIDs.contains($0.id) }
         for message in reviewed {
             sharedReviewMessages[message.id] = nil
-            runInteractionReview(for: message, source: message.kind == .voice ? .voiceChat : .textChat)
+            if !state.durableFollowups {
+                runInteractionReview(for: message, source: message.kind == .voice ? .voiceChat : .textChat)
+            }
         }
         if !reviewed.isEmpty {
             await grantMainlineTicketIfEligible(conversationID: state.conversationID)
@@ -1409,6 +1438,7 @@ public final class ChatViewModel {
             let memoryService = self.memoryService
             let character = self.character
             Task(priority: .utility) {
+                guard !state.durableFollowups else { return }
                 await memoryService.compressIfNeeded(
                     conversationID: state.conversationID, characterName: character.card.name,
                     characterRegionID: character.card.regionID)

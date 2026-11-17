@@ -47,13 +47,15 @@ public struct SharedChatSnapshot: Sendable, Equatable {
             self.replyPlan = replyPlan
         }
     }
+    public let durableFollowups: Bool
     public let conversationID: UUID
     public let lastSequence: Int
     public let generation: Generation?
     public let coveredMessageIDs: Set<UUID>
     public init(
-        conversationID: UUID, lastSequence: Int, generation: Generation?, coveredMessageIDs: Set<UUID>
+        conversationID: UUID, lastSequence: Int, generation: Generation?, coveredMessageIDs: Set<UUID>, durableFollowups: Bool = false
     ) {
+        self.durableFollowups = durableFollowups
         self.conversationID = conversationID
         self.lastSequence = lastSequence
         self.generation = generation
@@ -65,6 +67,7 @@ public protocol SharedChatGateway: Sendable {
     func openSharedConversation(characterID: UUID) async throws -> SharedChatSnapshot
     func refreshSharedConversation(conversationID: UUID) async throws -> SharedChatSnapshot
     func sharedReply(conversationID: UUID, userMessageID: UUID) async throws -> SharedChatSnapshot
+    func recordSharedVoiceReceipt(conversationID: UUID, userMessageID: UUID, text: String, interrupted: Bool) async throws
     func uploadSharedMessages() async throws
     func retrySharedReply(conversationID: UUID, commandID: UUID) async throws
     func reportSharedComposer(conversationID: UUID, sessionID: UUID, sequence: Int,
@@ -72,6 +75,7 @@ public protocol SharedChatGateway: Sendable {
 }
 
 extension SharedChatGateway {
+    public func recordSharedVoiceReceipt(conversationID: UUID, userMessageID: UUID, text: String, interrupted: Bool) async throws {}
     public func reportSharedComposer(conversationID: UUID, sessionID: UUID, sequence: Int,
                                      activity: SharedComposerActivity, remaining: TimeInterval) async throws -> Bool { true }
 }

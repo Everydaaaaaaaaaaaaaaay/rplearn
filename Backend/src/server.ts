@@ -1,8 +1,13 @@
+import { createBillingChatContext } from "./modules/billing/service.js";
+import { createAppointmentChatContext } from "./modules/appointments/service.js";
 import { configureOutboundNetworking } from "./infrastructure/network.js";
 import { createDomainChatContext } from "./modules/domain/service.js";
 import { createChatService, sharedChatCoverage } from "./modules/chat/service.js";
 import { registerChatRoutes } from "./modules/chat/routes.js";
-import { createChatGeneration } from "./modules/chat/ai-generation.js";
+import {
+  createChatGeneration,
+  createChatRecovery,
+} from "./modules/chat/ai-generation.js";
 import { createChatContentService } from "./modules/content/service.js";
 import { AppError } from "./shared/errors.js";
 import { createAppointmentService } from "./modules/appointments/service.js";
@@ -239,18 +244,14 @@ async function main(): Promise<void> {
     {
       ...createChatContentService(dependencies.database),
       ...createDomainChatContext(dependencies.database),
+      ...createBillingChatContext(dependencies.database),
+      ...createAppointmentChatContext(),
       onMessage: learningChat.enqueue,
       onAdopt: learningChat.adoptConversation,
     },
     {
       generate: createChatGeneration(aiService),
-      recover: (input) =>
-        aiService.completedResult(
-          input.userId,
-          input.generationId,
-          input.learningChat !== undefined,
-        ),
-      operationPending: aiService.operationPending,
+      ...createChatRecovery(aiService),
     },
   );
   registerChatRoutes(app, authService, sharedChat);

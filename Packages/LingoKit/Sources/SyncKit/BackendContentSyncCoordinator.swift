@@ -27,6 +27,30 @@ public actor BackendContentSyncCoordinator: SharedChatGateway {
     private var waitingSynchronizationTask: Task<Void, Never>?
     private var waitingSynchronizationID = UUID()
     private var userID: UUID?
+    private var followups: SharedChatFollowupCoordinator?
+    private var followupTask: Task<Void, Never>?
+    private var followupMonitor: Task<Void, Never>?
+
+    public func configureFollowups(_ processor: SharedChatFollowupCoordinator) { followups = processor }
+
+    private func startFollowups() {
+        guard followupTask == nil, let processor = followups, let owner = userID else { return }
+        followupTask = Task { [weak self] in
+            do {
+                try await processor.process(synchronize: { [weak self] in
+                    guard let self, await self.userID == owner else { throw CancellationError() }
+                    try Task.checkCancellation()
+                    try await self.synchronizeAndWait()
+                })
+            } catch is CancellationError {} catch {
+                Log.app.warning("聊天辅助处理等待恢复：\(error.localizedDescription)")
+            }
+            await self?.finishFollowups(owner: owner)
+        }
+    }
+
+
+    private func finishFollowups(owner: UUID) { if userID == owner { followupTask = nil } }
 
     public init(
         backend: BackendClient,
@@ -44,6 +68,14 @@ public actor BackendContentSyncCoordinator: SharedChatGateway {
             try await bootstrap()
         }
         startListener()
+        if followupMonitor == nil {
+            followupMonitor = Task { [weak self] in
+                while !Task.isCancelled {
+                    await self?.startFollowups()
+                    do { try await Task.sleep(for: .seconds(30)) } catch { return }
+                }
+            }
+        }
         if preferCache, !needsBootstrap { return .cached }
         do {
             try await synchronize()
@@ -63,6 +95,10 @@ public actor BackendContentSyncCoordinator: SharedChatGateway {
         waitingSynchronizationID = UUID()
         listenerTask?.cancel()
         listenerTask = nil
+        followupTask?.cancel()
+        followupTask = nil
+        followupMonitor?.cancel()
+        followupMonitor = nil
         userID = nil
         sharedSequences = [:]
     }
@@ -82,9 +118,11 @@ public actor BackendContentSyncCoordinator: SharedChatGateway {
                 needsAnotherPass = false
                 try await flushOutbox()
                 try await pullChanges()
+                try await flushVoiceReceipts()
                 finishWaiters(error: nil, through: synchronizationPass)
             } while needsAnotherPass
             finishWaiters(error: nil)
+            startFollowups()
         } catch {
             finishWaiters(error: error)
             throw error
@@ -153,6 +191,45 @@ public actor BackendContentSyncCoordinator: SharedChatGateway {
         return try await applySharedPages(state, inputMessageID: userMessageID)
     }
 
+    private struct VoiceReceipt: Codable, Sendable {
+        let conversationID: UUID
+        let messageId: UUID
+        let text: String
+        let interrupted: Bool
+    }
+    private func receiptKey(_ owner: UUID) -> String { "chat.voice.receipts.\(owner.uuidString.lowercased()).v1" }
+    private func voiceReceipts(_ owner: UUID) -> [VoiceReceipt] {
+        guard let data = UserDefaults.standard.data(forKey: receiptKey(owner)) else { return [] }
+        return (try? JSONDecoder().decode([VoiceReceipt].self, from: data)) ?? []
+    }
+    public func recordSharedVoiceReceipt(conversationID: UUID, userMessageID: UUID, text: String, interrupted: Bool) async throws {
+        guard let owner = userID else { throw BackendClientError.signedOut }
+        var receipts = voiceReceipts(owner)
+        if !receipts.contains(where: { $0.messageId == userMessageID }) {
+            receipts.append(VoiceReceipt(conversationID: conversationID, messageId: userMessageID, text: text, interrupted: interrupted))
+            UserDefaults.standard.set(try JSONEncoder().encode(receipts), forKey: receiptKey(owner))
+        }
+        try await synchronizeAndWait()
+    }
+    private func flushVoiceReceipts() async throws {
+        guard let owner = userID else { return }
+        for receipt in voiceReceipts(owner) {
+            try Task.checkCancellation()
+            struct Body: Encodable { let messageId: UUID; let text: String; let interrupted: Bool }
+            struct Accepted: Decodable { let accepted: Bool }
+            do {
+                let _: Accepted = try await backend.send(
+                    path: "/v1/chat/conversations/\(receipt.conversationID.uuidString.lowercased())/voice-receipt", method: "POST",
+                    body: Body(messageId: receipt.messageId, text: receipt.text, interrupted: receipt.interrupted))
+            } catch let error as BackendClientError where error.code == "CHAT_NOT_FOUND" {
+                // A deleted user turn has no remaining history to reconcile.
+            }
+            guard owner == userID else { throw CancellationError() }
+            let remaining = voiceReceipts(owner).filter { $0.messageId != receipt.messageId }
+            UserDefaults.standard.set(try JSONEncoder().encode(remaining), forKey: receiptKey(owner))
+        }
+    }
+
     public func uploadSharedMessages() async throws { try await synchronizeAndWait() }
 
     public func reportSharedComposer(conversationID: UUID, sessionID: UUID, sequence: Int,
@@ -200,6 +277,7 @@ public actor BackendContentSyncCoordinator: SharedChatGateway {
                 conversationID: state.conversationId, afterSequence: state.lastSequence,
                 inputMessageID: inputMessageID)
         } while true
+        startFollowups()
         return SharedChatSnapshot(
             conversationID: state.conversationId, lastSequence: state.lastSequence,
             generation: state.generation.map {
@@ -215,7 +293,7 @@ public actor BackendContentSyncCoordinator: SharedChatGateway {
                               continuingConversation: plan.continuingConversation)
                     })
             },
-            coveredMessageIDs: Set(state.coveredMessageIds))
+            coveredMessageIDs: Set(state.coveredMessageIds), durableFollowups: state.durableFollowups ?? false)
     }
 
     private func bootstrap() async throws {

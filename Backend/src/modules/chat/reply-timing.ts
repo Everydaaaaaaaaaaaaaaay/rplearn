@@ -125,6 +125,9 @@ function activity(character: ContentRecord) {
     metAt: Date.parse(String(payload.metAt)),
   };
 }
+export function characterTimeZone(character: ContentRecord): string {
+  return activity(character).zone;
+}
 function probability(rhythm: Rhythm, hour: number, weekend: boolean): number {
   const schedules: Record<Rhythm, readonly (readonly [number, number])[]> = {
     earlyBird: [

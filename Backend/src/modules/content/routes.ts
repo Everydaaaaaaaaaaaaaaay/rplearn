@@ -191,6 +191,9 @@ const messagePayload = z
   .object({
     sharedPredecessorId: uuid.nullable().optional(),
     sharedVoiceLeaseId: uuid.nullable().optional(),
+    voiceReceiptVersion: z.literal(1).nullable().optional(),
+    contextMemoryIds: z.array(uuid).max(20).nullable().optional(),
+    replyToMessageIds: z.array(uuid).max(20).nullable().optional(),
     deliveryOrigin: z.literal("proactive").optional(),
     learningOrigin: learningMessageOriginSchema.nullable().optional(),
     audioAssetId: uuid.nullable().optional(),

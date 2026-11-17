@@ -342,7 +342,7 @@ public final class RealtimeVoiceSession {
         var segmenter = StreamingSpeechSegmenter()
 
         do {
-            let stream = try await conversation.replyStream(userText)
+            let stream = try await conversation.replyStream(userText, responseID: id)
             try Task.checkCancellation()
             guard activeResponseID == id else { return }
 
@@ -376,13 +376,7 @@ public final class RealtimeVoiceSession {
             await output.waitUntilFinished()
             guard activeResponseID == id else { return }
             let heard = output.heardText
-            if !heard.isEmpty {
-                completeResponse(id: id, spokenText: heard, interrupted: true)
-            } else {
-                activeResponseID = nil
-                responseTask = nil
-                phase = .listening
-            }
+            completeResponse(id: id, spokenText: heard, interrupted: true)
             errorMessage = "回复暂时中断了，可以直接继续说。"
         }
     }
@@ -401,12 +395,12 @@ public final class RealtimeVoiceSession {
         responseTask = nil
         assistantTranscript = spokenText
         phase = .listening
-        if !spokenText.isEmpty { queueAssistantSave(spokenText, interrupted: interrupted) }
+        queueAssistantSave(spokenText, interrupted: interrupted, responseID: id)
     }
 
     private func beginInterruption(nextPhase: RealtimeVoicePhase) {
         phase = nextPhase
-        guard activeResponseID != nil || responseTask != nil else { return }
+        guard let responseID = activeResponseID else { return }
         activeResponseID = nil
         responseTask?.cancel()
         responseTask = nil
@@ -416,7 +410,7 @@ public final class RealtimeVoiceSession {
             await previous?.value
             guard let self else { return }
             let heard = SpokenTextSanitizer.sanitize(await self.output.stop())
-            if !heard.isEmpty { self.queueAssistantSave(heard, interrupted: true) }
+            self.queueAssistantSave(heard, interrupted: true, responseID: responseID)
             if self.generation == generation { self.assistantTranscript = heard }
         }
     }
@@ -426,14 +420,13 @@ public final class RealtimeVoiceSession {
         await interruptionTask?.value
     }
 
-    private func queueAssistantSave(_ text: String, interrupted: Bool) {
+    private func queueAssistantSave(_ text: String, interrupted: Bool, responseID: UUID) {
         let text = SpokenTextSanitizer.sanitize(text)
-        guard !text.isEmpty else { return }
         let previous = persistenceTail
         let conversation = conversation
         persistenceTail = Task {
             await previous?.value
-            await conversation.saveAssistant(text, interrupted)
+            await conversation.saveAssistant(text, interrupted, responseID: responseID)
         }
     }
 

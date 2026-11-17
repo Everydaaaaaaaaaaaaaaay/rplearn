@@ -22,6 +22,56 @@ export function registerChatRoutes(
   auth: AuthService,
   chat: ChatService,
 ): void {
+  app.get("/v1/chat/followups", async (request, reply) => {
+    reply.header("cache-control", "no-store");
+    const identity = await authenticateRequest(request, auth);
+    return chat.followups.pending(identity.userId);
+  });
+  app.post("/v1/chat/followups/:messageId/claim", async (request, reply) => {
+    reply.header("cache-control", "no-store");
+    const identity = await authenticateRequest(request, auth);
+    const { messageId } = parse(z.object({ messageId: z.uuid() }), request.params);
+    const { review } = parse(
+      z.strictObject({
+        review: z.strictObject({
+          system: z.string().max(40000),
+          input: z.string().max(100000),
+          schema: z.record(z.string(), z.unknown()),
+        }),
+      }),
+      request.body,
+    );
+    return chat.followups.claim(identity.userId, messageId, review);
+  });
+  app.post("/v1/chat/followups/:messageId/complete", async (request) => {
+    const identity = await authenticateRequest(request, auth);
+    const { messageId } = parse(z.object({ messageId: z.uuid() }), request.params);
+    const { token } = parse(z.strictObject({ token: z.uuid() }), request.body);
+    return chat.followups.complete(identity.userId, messageId, token);
+  });
+  app.post(
+    "/v1/chat/conversations/:conversationId/voice-receipt",
+    async (request, reply) => {
+      reply.header("cache-control", "no-store");
+      const identity = await authenticateRequest(request, auth);
+      const { conversationId } = parse(conversationParams, request.params);
+      const body = parse(
+        z.strictObject({
+          messageId: z.uuid(),
+          text: z.string().max(40000),
+          interrupted: z.boolean(),
+        }),
+        request.body,
+      );
+      return chat.voiceReceipt(
+        identity.userId,
+        conversationId,
+        body.messageId,
+        body.text,
+        body.interrupted,
+      );
+    },
+  );
   app.post("/v1/chat/characters/:characterId/open", async (request, reply) => {
     reply.header("cache-control", "no-store");
     const identity = await authenticateRequest(request, auth);

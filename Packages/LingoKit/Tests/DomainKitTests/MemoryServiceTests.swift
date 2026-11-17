@@ -483,6 +483,21 @@ struct MemoryServiceTests {
         #expect(try await fixture.memoryStore.count(characterID: fixture.characterID, tier: .mid) == 0)
     }
 
+    @Test("共享聊天的语义召回使用稳定同步编号")
+    func sharedRecallUsesStableResourceIDs() async throws {
+        let fixture = try await makeFixture()
+        try await fixture.memoryStore.addMemories(characterID: fixture.characterID, tier: .long,
+            facts: [.init(content: "My sister lives in Bristol", importance: 4)], sourceUpToIndex: 0)
+        let service = MemoryService(llm: MockLLMProvider(), chatStore: fixture.chatStore,
+            memoryStore: fixture.memoryStore, economyStore: fixture.economyStore)
+        let first = await service.contextMemoryIDs(characterID: fixture.characterID, query: "Where does my sister live?")
+        let second = await service.contextMemoryIDs(characterID: fixture.characterID, query: "Where does my sister live?")
+        #expect(first.count == 1)
+        #expect(first == second)
+        let memories = try await fixture.memoryStore.memories(characterID: fixture.characterID, tier: .long)
+        #expect(first == (try await fixture.memoryStore.contextResourceIDs(for: memories)))
+    }
+
     @Test("long 超配额按重要度裁剪（Free long=5）")
     func longPruneByImportance() async throws {
         let fixture = try await makeFixture()

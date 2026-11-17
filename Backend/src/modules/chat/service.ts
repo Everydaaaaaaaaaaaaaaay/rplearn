@@ -1,3 +1,4 @@
+import { ChatFollowupRepository } from "./followups.js";
 import type { DatabaseResource } from "../../db/client.js";
 import type { ChatContentAccess, ChatProcessorOptions } from "./contracts.js";
 import { ChatRepository } from "./repository.js";
@@ -14,7 +15,10 @@ export function createChatService(
     options.leaseMilliseconds ?? 180_000,
     options.replyTimingScale ?? 1,
   );
+  const followups = new ChatFollowupRepository(database, content);
   return {
+    followups,
+    voiceReceipt: repository.voiceReceipt.bind(repository),
     open: repository.open.bind(repository),
     state: repository.state.bind(repository),
     composerActivity: repository.composerActivity.bind(repository),
@@ -47,6 +51,7 @@ export function createChatService(
     beforeCommand: repository.beforeCommand.bind(repository),
     assertLegacyAllowed: repository.assertLegacyAllowed.bind(repository),
     processNext: async (): Promise<boolean> => {
+      if (await repository.expireVoiceReceipt()) return true;
       const claim = await repository.claim();
       if (!claim) return false;
       if (claim.deliveryOnly) {

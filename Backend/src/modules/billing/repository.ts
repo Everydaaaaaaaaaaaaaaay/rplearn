@@ -68,6 +68,16 @@ export class BillingRepository {
     }));
   }
 
+  async chatTier(sql: TransactionSql, userId: string): Promise<string> {
+    const [plan] = await sql<{ tier: string }[]>`
+      select p.tier from app.entitlement_grants g
+      join app.billing_plans p on p.id=g.plan_id
+      where g.user_id=${userId} and g.status in ('active','grace')
+        and (g.valid_until is null or g.valid_until>now()) and p.is_active=true
+      order by p.rank desc limit 1`;
+    return plan?.tier ?? "free";
+  }
+
   async entitlements(userId: string): Promise<EntitlementSnapshot> {
     const rows = await this.database.sql<(GrantRow & PlanRow)[]>`
       select

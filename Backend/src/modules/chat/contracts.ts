@@ -14,6 +14,7 @@ export interface ChatGeneration {
 }
 export interface ChatState {
   protocolVersion: 1;
+  durableFollowups?: boolean;
   conversationId: string;
   revision: number;
   lastSequence: number;
@@ -30,6 +31,12 @@ export interface ChatGenerationInput {
   inputMessageIds: string[];
   messages: AiMessage[];
   voiceLeaseId?: string;
+  voiceReceiptRequired?: boolean;
+  awaitingVoiceReceipt?: boolean;
+  voiceReceiptExpired?: boolean;
+  voiceTurnCounted?: boolean;
+  resultOperationId?: string;
+  suppressLearning?: boolean;
   learningChat?: { conversationId: string; userMessageId: string; cycleId: string };
   simulation?: ReplySimulation;
 }
@@ -63,6 +70,12 @@ export interface ChatContentAccess {
     limit: number,
   ): Promise<ContentRecord[]>;
   learner?(sql: TransactionSql, userId: string): Promise<Record<string, unknown>>;
+  subscriptionTier?(sql: TransactionSql, userId: string): Promise<string>;
+  appointments?(
+    sql: TransactionSql,
+    userId: string,
+    characterId: string,
+  ): Promise<unknown[]>;
   onAdopt?(
     sql: TransactionSql,
     userId: string,

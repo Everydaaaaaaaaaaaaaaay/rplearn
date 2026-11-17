@@ -26,14 +26,14 @@ private final class RealtimeConversationCoordinator {
     init(chat: ChatViewModel, deps: ChatDependencies) {
         let character = chat.character
         let conversation = RealtimeVoiceConversationClient(
-            replyStream: { [weak chat] text in
+            scopedReplyStream: { [weak chat] responseID, text in
                 guard let chat else { throw AppError.storage("实时语音会话已结束") }
-                return try await chat.realtimeReplyStream(userText: text)
+                return try await chat.realtimeReplyStream(userText: text, responseID: responseID)
             },
-            saveAssistant: { [weak chat] text, interrupted in
+            scopedSaveAssistant: { [weak chat] responseID, text, interrupted in
                 await chat?.saveRealtimeAssistant(
                     spokenText: text,
-                    interrupted: interrupted
+                    interrupted: interrupted, responseID: responseID
                 )
             }
         )

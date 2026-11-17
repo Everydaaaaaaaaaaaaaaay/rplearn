@@ -885,12 +885,14 @@ struct ChatWorkflowTests {
         f.model.draft = "Received the order, madam"
         await f.model.sendDraft()
         try await settle(f.model)
+        let conversationID = try #require(f.model.conversation?.id)
         for _ in 0..<50 {
-            if await provider.tasks().filter { $0 == .coachReview }.count >= 2 { break }
+            let stored = try await f.deps.chatStore.messages(conversationID: conversationID)
+            let firstReviewSaved = stored.first(where: { $0.role == .user })?.coachReviewJSON != nil
+            if firstReviewSaved, await provider.tasks().filter({ $0 == .coachReview }).count >= 2 { break }
             try await Task.sleep(for: .milliseconds(20))
         }
 
-        let conversationID = try #require(f.model.conversation?.id)
         let saved = try await f.deps.chatStore.messages(conversationID: conversationID)
         let userMessages = saved.filter { $0.role == .user }
         #expect(userMessages.count == 2)

@@ -1,3 +1,6 @@
+import { createDomainChatContext } from "../../src/modules/domain/service.js";
+import { createBillingChatContext } from "../../src/modules/billing/service.js";
+import { createAppointmentChatContext } from "../../src/modules/appointments/service.js";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
@@ -41,25 +44,34 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       db = createDatabase(config);
       await runMigrations(db);
       auth = await createAuthService(config, db);
-      chat = createChatService(db, createChatContentService(db), {
-        generate: async (input, onDelta) => {
-          calls.push(input);
-          await onDelta("A shared reply.");
-          if (block)
-            await new Promise<void>((resolve) => {
-              release = resolve;
-            });
-          completed.set(input.generationId, "A shared reply.");
-          return "A shared reply.";
+      chat = createChatService(
+        db,
+        {
+          ...createChatContentService(db),
+          ...createDomainChatContext(db),
+          ...createBillingChatContext(db),
+          ...createAppointmentChatContext(),
         },
-        recover: (input) => {
-          const content = completed.get(input.generationId);
-          return Promise.resolve(content === undefined ? null : { content });
+        {
+          generate: async (input, onDelta) => {
+            calls.push(input);
+            await onDelta("A shared reply.");
+            if (block)
+              await new Promise<void>((resolve) => {
+                release = resolve;
+              });
+            completed.set(input.generationId, "A shared reply.");
+            return "A shared reply.";
+          },
+          recover: (input) => {
+            const content = completed.get(input.generationId);
+            return Promise.resolve(content === undefined ? null : { content });
+          },
+          coalesceMilliseconds: 0,
+          replyTimingScale: 0,
+          leaseMilliseconds: 1_000,
         },
-        coalesceMilliseconds: 0,
-        replyTimingScale: 0,
-        leaseMilliseconds: 1_000,
-      });
+      );
       app = await buildApp(config, { logger: false });
       registerChatRoutes(app, auth, chat);
       registerContentRoutes(
@@ -753,6 +765,216 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       );
       expect((await f.state()).generation).toEqual(failed);
       expect(await chat.processNext()).toBe(false);
+    });
+    it("recovers auxiliary work across devices with a frozen request and fenced receipt", async () => {
+      const f = await setup(),
+        id = randomUUID();
+      await f.send(f.a.accessToken, id, "My sister lives in Bristol");
+      await chat.processNext();
+      const jobs = await chat.followups.pending(f.user);
+      expect(jobs.jobs.map((j) => j.messageId)).toContain(id);
+      const original = {
+        system: "review",
+        input: "original",
+        schema: { type: "object" },
+      };
+      const first = await chat.followups.claim(f.user, id, original);
+      expect(first.claim).not.toBeNull();
+      expect(
+        (await chat.followups.claim(f.user, id, { ...original, input: "changed" }))
+          .claim,
+      ).toBeNull();
+      await db.sql`update app.chat_followups set lease_until=now()-interval '1 second' where user_id=${f.user} and message_id=${id}`;
+      const resumed = await chat.followups.claim(f.user, id, {
+        ...original,
+        input: "changed",
+      });
+      expect(resumed.claim?.request).toEqual(original);
+      expect(resumed.claim?.operationId).toBe(first.claim?.operationId);
+      await expect(
+        chat.followups.complete(f.user, id, first.claim?.token ?? ""),
+      ).rejects.toMatchObject({ code: "CHAT_REVIEW_LEASE_EXPIRED" });
+      await chat.followups.complete(f.user, id, resumed.claim?.token ?? "");
+      expect((await chat.followups.pending(f.user)).jobs).toHaveLength(0);
+      const stranger = await setup();
+      expect(
+        (await chat.followups.claim(stranger.user, id, original)).claim,
+      ).toBeNull();
+    });
+    it("publishes only heard phone text and preserves interruption through annotations", async () => {
+      const f = await setup(),
+        id = randomUUID();
+      await f.put(f.a.accessToken, "message", id, f.conversation, {
+        ...f.message("Hello"),
+        sharedVoiceLeaseId: randomUUID(),
+        voiceReceiptVersion: 1,
+      });
+      await chat.processNext();
+      const before = await f.state();
+      expect(before.generation?.status).toBe("completed");
+      expect(before.generation?.partialText).toBe("A shared reply.");
+      expect(
+        before.records.filter(
+          (r) => (r.payload as { role?: string }).role === "assistant",
+        ),
+      ).toHaveLength(0);
+      expect(before.coveredMessageIds).not.toContain(id);
+      const receipt = { messageId: id, text: "A shared", interrupted: true };
+      expect(
+        (
+          await f.request(
+            f.a.accessToken,
+            `/v1/chat/conversations/${f.conversation}/voice-receipt`,
+            receipt,
+          )
+        ).status,
+      ).toBe(200);
+      const after = await f.state();
+      const assistant = after.records.find(
+        (r) => (r.payload as { role?: string }).role === "assistant",
+      );
+      expect(assistant?.payload).toMatchObject({
+        text: "A shared",
+        isInterrupted: true,
+      });
+      expect(after.coveredMessageIds).toContain(id);
+      assert(assistant);
+      await f.put(
+        f.b.accessToken,
+        "message",
+        assistant.resourceId,
+        f.conversation,
+        {
+          ...(assistant.payload as Record<string, unknown>),
+          translationZh: "听到的内容",
+          isInterrupted: false,
+        },
+        randomUUID(),
+        assistant.version,
+      );
+      expect(
+        (await f.state()).records.find((r) => r.resourceId === assistant.resourceId)
+          ?.payload,
+      ).toMatchObject({ text: "A shared", isInterrupted: true });
+      await f.request(
+        f.a.accessToken,
+        `/v1/chat/conversations/${f.conversation}/voice-receipt`,
+        receipt,
+      );
+      expect(
+        (await f.state()).records.filter(
+          (r) => (r.payload as { role?: string }).role === "assistant",
+        ),
+      ).toHaveLength(1);
+    });
+    it("handles zero-heard interruptions before generation and never coalesces separate phone receipts", async () => {
+      const f = await setup(),
+        a = randomUUID(),
+        b = randomUUID(),
+        lease = randomUUID();
+      for (const id of [a, b])
+        await f.put(f.a.accessToken, "message", id, f.conversation, {
+          ...f.message("Hello"),
+          sharedVoiceLeaseId: lease,
+          voiceReceiptVersion: 1,
+        });
+      await chat.voiceReceipt(f.user, f.conversation, a, "", true);
+      await chat.processNext();
+      expect(
+        (await f.state()).records.filter(
+          (r) => (r.payload as { role?: string }).role === "assistant",
+        ),
+      ).toHaveLength(0);
+      expect((await f.state()).coveredMessageIds).toContain(a);
+      expect((await f.state()).coveredMessageIds).not.toContain(b);
+      await chat.processNext();
+      await chat.voiceReceipt(f.user, f.conversation, b, "A shared reply.", false);
+      expect((await f.state()).coveredMessageIds).toContain(b);
+      expect(
+        (await f.state()).records.filter(
+          (r) => (r.payload as { role?: string }).role === "assistant",
+        ),
+      ).toHaveLength(1);
+    });
+    it("closes playback lost to process death without inventing heard audio", async () => {
+      const f = await setup(),
+        id = randomUUID();
+      await f.put(f.a.accessToken, "message", id, f.conversation, {
+        ...f.message("Hello"),
+        sharedVoiceLeaseId: randomUUID(),
+        voiceReceiptVersion: 1,
+      });
+      await chat.processNext();
+      await db.sql`update app.chat_generations set completed_at=now()-interval '6 minutes' where user_id=${f.user}`;
+      expect(await chat.processNext()).toBe(true);
+      const state = await f.state();
+      expect(state.coveredMessageIds).toContain(id);
+      expect(
+        state.records.filter(
+          (r) => (r.payload as { role?: string }).role === "assistant",
+        ),
+      ).toHaveLength(0);
+      await chat.voiceReceipt(f.user, f.conversation, id, "A shared reply.", false);
+      const reconciled = await f.state();
+      expect(
+        reconciled.records.filter(
+          (r) => (r.payload as { role?: string }).role === "assistant",
+        ),
+      ).toHaveLength(1);
+      expect(
+        reconciled.records.find((r) => r.resourceType === "conversation")?.payload,
+      ).toMatchObject({ turnCount: 1 });
+    });
+    it("reads authoritative subscription tiers and all forty pro history messages", async () => {
+      const f = await setup();
+      const billing = createBillingChatContext(db);
+      expect(await db.sql.begin((sql) => billing.subscriptionTier(sql, f.user))).toBe(
+        "free",
+      );
+      await db.sql`insert into app.entitlement_grants(id,user_id,plan_id,entitlement_key,environment,source_provider,source_reference_id,status,provider_event_at)
+        values(${randomUUID()},${f.user},'pro','subscription','test','manual',${randomUUID()},'active',now())`;
+      expect(await db.sql.begin((sql) => billing.subscriptionTier(sql, f.user))).toBe(
+        "pro",
+      );
+      for (let i = 0; i < 21; i += 1) {
+        await f.send(f.a.accessToken, randomUUID(), `History ${i.toString()}`);
+        await chat.processNext();
+      }
+      const latest = calls.at(-1);
+      expect(latest?.messages).toHaveLength(41);
+      expect(latest?.messages[0]?.content).toContain('"subscriptionTier":"pro"');
+      await db.sql`update app.entitlement_grants set valid_until=now()-interval '1 second' where user_id=${f.user}`;
+      expect(await db.sql.begin((sql) => billing.subscriptionTier(sql, f.user))).toBe(
+        "free",
+      );
+    });
+    it("removes pending auxiliary work when an awaiting phone input is deleted", async () => {
+      const f = await setup(),
+        id = randomUUID();
+      await f.put(f.a.accessToken, "message", id, f.conversation, {
+        ...f.message("Hello"),
+        sharedVoiceLeaseId: randomUUID(),
+        voiceReceiptVersion: 1,
+      });
+      await chat.processNext();
+      const message = (await f.state()).records.find((r) => r.resourceId === id);
+      assert(message);
+      const response = await f.request(f.a.accessToken, "/v1/content/commands", {
+        commands: [
+          {
+            commandId: randomUUID(),
+            expectedVersion: message.version,
+            operation: "delete",
+            resourceType: "message",
+            resourceId: id,
+            parentId: f.conversation,
+          },
+        ],
+      });
+      expect(response.status).toBe(200);
+      await db.sql`update app.chat_generations set completed_at=now()-interval '6 minutes' where user_id=${f.user}`;
+      expect(await chat.processNext()).toBe(false);
+      expect((await chat.followups.pending(f.user)).jobs).toHaveLength(0);
     });
     it("a second account cannot read or retry another account's conversation", async () => {
       const owner = await setup(),

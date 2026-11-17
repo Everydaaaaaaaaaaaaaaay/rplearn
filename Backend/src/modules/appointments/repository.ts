@@ -53,6 +53,21 @@ export class AppointmentRepository {
     private settlement: AppointmentSettlementWriter,
     private now: () => Date = () => new Date(),
   ) {}
+  static async chatContext(sql: TransactionSql, userId: string, characterId: string) {
+    const rows = await sql<Row[]>`select snapshot,summary from app.appointments
+      where user_id=${userId} and character_id=${characterId} order by created_at desc limit 20`;
+    return rows.map(({ snapshot, summary }) => ({
+      ...snapshot,
+      status:
+        snapshot.status === "confirmed" &&
+        Date.parse(snapshot.windowClosesAt) < Date.now()
+          ? "expired"
+          : snapshot.status,
+      ...(snapshot.status === "completed" && summary
+        ? { memories: summary.memories }
+        : {}),
+    }));
+  }
   private async lock(sql: TransactionSql, userId: string, id: string) {
     await sql`select pg_advisory_xact_lock(hashtextextended(${`appointment:${userId}:${id}`},0))`;
   }

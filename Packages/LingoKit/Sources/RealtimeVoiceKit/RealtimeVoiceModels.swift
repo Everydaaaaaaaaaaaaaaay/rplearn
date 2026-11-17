@@ -55,15 +55,24 @@ public struct RealtimeVoiceConversationClient: Sendable {
         _ interrupted: Bool
     ) async -> Void
 
-    public let replyStream: ReplyStream
-    public let saveAssistant: SaveAssistant
+    public typealias ScopedReplyStream = @MainActor @Sendable (UUID, String) async throws -> AsyncThrowingStream<String, Error>
+    public typealias ScopedSaveAssistant = @MainActor @Sendable (UUID, String, Bool) async -> Void
+    private let scopedReplyStream: ScopedReplyStream
+    private let scopedSaveAssistant: ScopedSaveAssistant
 
-    public init(
-        replyStream: @escaping ReplyStream,
-        saveAssistant: @escaping SaveAssistant
-    ) {
-        self.replyStream = replyStream
-        self.saveAssistant = saveAssistant
+    public init(replyStream: @escaping ReplyStream, saveAssistant: @escaping SaveAssistant) {
+        self.scopedReplyStream = { _, text in try await replyStream(text) }
+        self.scopedSaveAssistant = { _, text, interrupted in await saveAssistant(text, interrupted) }
+    }
+    public init(scopedReplyStream: @escaping ScopedReplyStream, scopedSaveAssistant: @escaping ScopedSaveAssistant) {
+        self.scopedReplyStream = scopedReplyStream
+        self.scopedSaveAssistant = scopedSaveAssistant
+    }
+    @MainActor public func replyStream(_ text: String, responseID: UUID = UUID()) async throws -> AsyncThrowingStream<String, Error> {
+        try await scopedReplyStream(responseID, text)
+    }
+    @MainActor public func saveAssistant(_ text: String, _ interrupted: Bool, responseID: UUID = UUID()) async {
+        await scopedSaveAssistant(responseID, text, interrupted)
     }
 }
 

@@ -303,6 +303,7 @@ public actor ChatStore {
         createdAt: Date = .now,
         learningOrigin: LearningChatOrigin? = nil,
         sharedVoiceLeaseID: UUID? = nil,
+        contextMemoryIDs: [UUID]? = nil,
         sharedOrdering: Bool = false
     ) throws -> MessageDTO {
         guard let conversation = try fetchConversation(id: conversationID) else {
@@ -332,7 +333,7 @@ public actor ChatStore {
             ? conversation.messages.filter { $0.roleRaw == "user" && $0.messageID != message.messageID }.max {
                 $0.orderIndex < $1.orderIndex
             }?.messageID : nil
-        try journal(message, sharedVoiceLeaseID: sharedVoiceLeaseID, sharedPredecessorID: predecessor)
+        try journal(message, sharedVoiceLeaseID: sharedVoiceLeaseID, sharedPredecessorID: predecessor, contextMemoryIDs: contextMemoryIDs)
         try journal(conversation)
         try modelContext.save()
         return dto(from: message)
@@ -770,7 +771,7 @@ public actor ChatStore {
 
     private func journal(
         _ message: MessageEntity, sharedVoiceLeaseID: UUID? = nil, sharedPredecessorID: UUID? = nil,
-        deliveryOrigin: String? = nil
+        deliveryOrigin: String? = nil, contextMemoryIDs: [UUID]? = nil
     ) throws {
         guard let conversationID = message.conversation?.conversationID else { return }
         let media = try voiceMediaLink(messageID: message.messageID)
@@ -783,6 +784,8 @@ public actor ChatStore {
                 ContentMessagePayload(
                     sharedPredecessorId: sharedPredecessorID,
                     sharedVoiceLeaseId: sharedVoiceLeaseID,
+                    voiceReceiptVersion: sharedVoiceLeaseID == nil ? nil : 1,
+                    contextMemoryIds: contextMemoryIDs,
                     deliveryOrigin: deliveryOrigin,
                     learningOrigin: LearningChatOrigin.decode(json: message.learningOriginJSON),
                     audioAssetId: media?.isRemoteReady == true ? media?.assetID : nil,

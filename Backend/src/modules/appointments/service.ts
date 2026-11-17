@@ -14,3 +14,9 @@ export function createAppointmentService(
 ) {
   return new AppointmentRepository(database, context, narrative, settlement, now);
 }
+
+export function createAppointmentChatContext() {
+  return {
+    appointments: AppointmentRepository.chatContext.bind(AppointmentRepository),
+  };
+}
