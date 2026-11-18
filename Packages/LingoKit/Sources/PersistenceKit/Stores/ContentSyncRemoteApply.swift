@@ -178,7 +178,9 @@ extension ContentSyncStore {
         entity.isEncounterSession = payload.isEncounterSession
         entity.isArchived = payload.isArchived
         entity.isPinned = payload.isPinned ?? false
-        entity.lastReadAt = payload.lastReadAt
+        if let readAt = payload.lastReadAt, readAt > (entity.lastReadAt ?? .distantPast) {
+            entity.lastReadAt = readAt
+        }
         try upsertMetadata(record, localKey: record.resourceID)
     }
 

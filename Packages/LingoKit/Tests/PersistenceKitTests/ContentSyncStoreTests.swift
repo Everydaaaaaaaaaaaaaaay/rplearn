@@ -5,6 +5,34 @@ import Testing
 
 @Suite("ContentSyncStore")
 struct ContentSyncStoreTests {
+    @Test("已读回执保留毫秒，同步不能把读过的回复变回未读")
+    func conversationReadReceiptSurvivesOlderRemoteSnapshot() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let sync = ContentSyncStore(modelContainer: container)
+        let chat = ChatStore(modelContainer: container)
+        let roster = RosterStore(modelContainer: container)
+        try await sync.activateOwner(userID: UUID())
+        let character = try await roster.addCharacter(
+            card: characterCard(name: "Read receipt"), difficulty: .junior3, isFriend: true)
+        let conversation = try await chat.openConversation(characterID: character)
+        let messageAt = Date(timeIntervalSince1970: 1_795_000_000.865)
+        _ = try await chat.appendMessage(conversationID: conversation.id, role: .assistant,
+            text: "Already seen", createdAt: messageAt)
+        for mutation in try await sync.takePending() {
+            try await sync.complete(commandID: mutation.commandID, record: remote(from: mutation, version: 1))
+        }
+        try await chat.markRead(conversationID: conversation.id, at: messageAt)
+        let pending = try #require(try await sync.takePending().first)
+        let data = Data(try #require(pending.payloadJSON).utf8)
+        var fields = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        #expect(fields["lastReadAt"] as? String == "2026-11-18T11:06:40.865Z")
+        fields["lastReadAt"] = "2026-11-18T11:06:40Z"
+        let stale = remote(type: .conversation, id: pending.resourceID, parentID: pending.parentID,
+            payload: String(decoding: try JSONSerialization.data(withJSONObject: fields), as: UTF8.self), version: 2)
+        try await sync.apply(records: [stale], nextCursor: "stale-read")
+        #expect(try await chat.conversationSummaries().first?.unreadCount == 0)
+    }
+
     @Test("共享会话快照保留全局游标，迟到的同步事件不能回退服务器顺序")
     func sharedSnapshotDoesNotAdvanceCursorOrRegressOrder() async throws {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)

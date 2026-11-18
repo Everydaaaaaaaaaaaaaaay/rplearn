@@ -40,7 +40,18 @@ public actor ContentSyncSignal {
 enum ContentMutationJournal {
     static func encode<T: Encodable>(_ payload: T) throws -> String {
         let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .iso8601
+        if payload is ContentConversationPayload {
+            // Server replies already arrive with millisecond precision.
+            // Truncating a read receipt to seconds makes that reply unread again.
+            encoder.dateEncodingStrategy = .custom { date, encoder in
+                let formatter = ISO8601DateFormatter()
+                formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+                var value = encoder.singleValueContainer()
+                try value.encode(formatter.string(from: date))
+            }
+        } else {
+            encoder.dateEncodingStrategy = .iso8601
+        }
         encoder.outputFormatting = [.sortedKeys]
         return String(decoding: try encoder.encode(payload), as: UTF8.self)
     }
