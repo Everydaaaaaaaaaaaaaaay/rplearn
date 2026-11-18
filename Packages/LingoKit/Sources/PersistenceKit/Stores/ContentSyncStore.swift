@@ -92,6 +92,22 @@ public actor ContentSyncStore {
                 predicate: #Predicate { $0.ownerUserID == userID && $0.isInFlight }
             ))
             for mutation in pending { mutation.isInFlight = false }
+            // Older builds could reuse a submitted ID after editing a conversation.
+            // Keep the edit and its expected version; the server still checks for
+            // a version conflict before applying it under a fresh command ID.
+            let conflict = "IDEMPOTENCY_KEY_CONFLICT"
+            let conversation = ContentResourceKind.conversation.rawValue
+            let upsert = ContentMutationOperation.upsert.rawValue
+            let blockedConversations = try modelContext.fetch(FetchDescriptor<ContentOutboxEntity>(
+                predicate: #Predicate {
+                    $0.ownerUserID == userID && $0.resourceTypeRaw == conversation
+                        && $0.operationRaw == upsert && $0.lastErrorCode == conflict
+                }
+            ))
+            for mutation in blockedConversations {
+                mutation.commandID = UUID()
+                mutation.lastErrorCode = nil
+            }
         }
         try modelContext.save()
         recoveredOwnerID = userID

@@ -118,6 +118,65 @@ struct ContentSyncStoreTests {
         #expect(try await sync.takePending().isEmpty)
     }
 
+    @Test("回执丢失后修改置顶，重试保留原操作和原内容")
+    func editedConversationKeepsUnacknowledgedUploadImmutable() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let sync = ContentSyncStore(modelContainer: container)
+        let roster = RosterStore(modelContainer: container)
+        let chat = ChatStore(modelContainer: container)
+        try await sync.activateOwner(userID: UUID())
+        let character = try await roster.addCharacter(
+            card: characterCard(name: "Pinned after retry"), difficulty: .junior3, isFriend: true)
+        let conversation = try await chat.openConversation(characterID: character)
+        let initial = try await sync.takePending()
+        let attempted = try #require(initial.first { $0.resourceType == .conversation })
+        for mutation in initial where mutation.commandID != attempted.commandID {
+            try await sync.complete(commandID: mutation.commandID, record: remote(from: mutation, version: 1))
+        }
+        try await sync.resetInFlight(commandIDs: [attempted.commandID])
+
+        try await chat.setPinned(conversationID: conversation.id, isPinned: true)
+
+        let retry = try #require(try await sync.takePending(serialPerResource: true).first)
+        #expect(retry.commandID == attempted.commandID)
+        #expect(retry.payloadJSON == attempted.payloadJSON)
+        try await sync.complete(commandID: retry.commandID, record: remote(from: attempted, version: 1))
+        let update = try #require(try await sync.takePending(serialPerResource: true).first)
+        #expect(update.commandID != attempted.commandID)
+        #expect(update.expectedVersion == 1)
+        let payload = try #require(update.payloadJSON)
+        let record = try JSONSerialization.jsonObject(with: Data(payload.utf8)) as? [String: Any]
+        #expect(record?["isPinned"] as? Bool == true)
+    }
+
+    @Test("已卡住的会话更新在下次打开账号时用新编号恢复")
+    func recoversRejectedConversationWithoutDroppingTheEdit() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let user = UUID()
+        let sync = ContentSyncStore(modelContainer: container)
+        try await sync.activateOwner(userID: user)
+        let character = try await RosterStore(modelContainer: container).addCharacter(
+            card: characterCard(name: "Retry the pinned update"), difficulty: .junior3, isFriend: true)
+        let chat = ChatStore(modelContainer: container)
+        let conversation = try await chat.openConversation(characterID: character)
+        for mutation in try await sync.takePending() {
+            try await sync.complete(commandID: mutation.commandID, record: remote(from: mutation, version: 1))
+        }
+        try await chat.setPinned(conversationID: conversation.id, isPinned: true)
+        let submitted = try #require(try await sync.takePending().first)
+        try await sync.reject(commandID: submitted.commandID, code: "IDEMPOTENCY_KEY_CONFLICT", current: nil)
+
+        let reopened = ContentSyncStore(modelContainer: container)
+        try await reopened.activateOwner(userID: user)
+        let retry = try #require(try await reopened.takePending(serialPerResource: true).first)
+        #expect(retry.commandID != submitted.commandID)
+        #expect(retry.expectedVersion == submitted.expectedVersion)
+        #expect(retry.payloadJSON == submitted.payloadJSON)
+        try await reopened.complete(commandID: retry.commandID, record: remote(from: retry, version: 2))
+        #expect(try await reopened.unresolvedErrorCount() == 0)
+        #expect(try await chat.conversation(id: conversation.id)?.isPinned == true)
+    }
+
     @Test("远端角色、会话与消息可以重建干净设备")
     func bootstrapsRemoteHierarchy() async throws {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)

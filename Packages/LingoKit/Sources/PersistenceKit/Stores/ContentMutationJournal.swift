@@ -61,8 +61,12 @@ enum ContentMutationJournal {
             resourceType: resourceType,
             resourceID: resourceID
         )
+        // A released request may already have committed remotely. Its command ID
+        // must keep the original wire payload until we receive the receipt.
         if let coalescible = pending.last,
            !coalescible.isInFlight,
+           coalescible.attemptCount == 0,
+           coalescible.lastErrorCode == nil,
            coalescible.operationRaw == ContentMutationOperation.upsert.rawValue
         {
             coalescible.parentID = parentID
