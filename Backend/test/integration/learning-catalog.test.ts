@@ -12,6 +12,7 @@ import {
   type LearningSession,
 } from "../../src/modules/learning/engine-repository.js";
 import { gradeAnswer } from "../../src/modules/learning/grading.js";
+import { learningPolicy } from "../../src/modules/learning/policy.js";
 import { learningFixture } from "../helpers/learning.js";
 import { integrationConfig } from "../helpers/integration.js";
 
@@ -62,6 +63,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toHaveLength(2);
     });
 
+    // 高中完整题组的准入、分配和历史兼容由 learning-gaokao.test.ts 验证。
     it.each([
       "primary1",
       "primary2",
@@ -72,9 +74,6 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       "junior1",
       "junior2",
       "junior3",
-      "senior1",
-      "senior2",
-      "senior3",
     ] as const)(
       "%s 的实际原创池可独立分配，补答不重复得分，耗尽保持满条",
       async (level) => {
@@ -182,7 +181,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           ).toEqual({ status: "preparing", attempt: null });
           expect(
             (await repository.read(user, (s) => s.character(character))).characters,
-          ).toBe(1000);
+          ).toBe(learningPolicy.characterThreshold);
         }
         const expectedPoints = units.reduce(
           (sum, unit) => sum + unit.questions.length,
