@@ -84,7 +84,11 @@ actor AppointmentCache {
     }
 
     func saveReading(_ id: UUID, cursor: AppointmentReadingCursor?, draft: String) throws {
-        var state = try snapshot(); state.reading[id.uuidString] = AppointmentReading(cursor: cursor, draft: draft); try persist(state)
+        var state = try snapshot()
+        let key = id.uuidString
+        guard state.reading[key]?.cursor != cursor || state.reading[key]?.draft != draft else { return }
+        state.reading[key] = AppointmentReading(cursor: cursor, draft: draft)
+        try persist(state)
     }
 
     private func snapshot() throws -> Snapshot {

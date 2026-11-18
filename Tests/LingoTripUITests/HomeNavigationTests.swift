@@ -11,6 +11,7 @@ final class HomeNavigationTests: XCTestCase {
         app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
         app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
         app.launchEnvironment["UI_TEST_TAB"] = "home"
+        app.launchEnvironment["UI_TEST_CITY_TAB_REGION"] = "london"
     }
 
     override func tearDownWithError() throws {

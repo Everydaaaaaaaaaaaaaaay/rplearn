@@ -4,7 +4,13 @@ import Observation
 
 @MainActor @Observable
 final class AppointmentModel {
-    var detail: BackendAppointmentDetail?
+    var detail: BackendAppointmentDetail? {
+        didSet {
+            let ordered = detail?.session?.blocks.sorted { $0.sequence < $1.sequence } ?? []
+            if blocks != ordered { blocks = ordered }
+        }
+    }
+    private(set) var blocks: [BackendAppointmentBlock] = []
     var loading = false
     var submitting = false
     var offline = false
@@ -22,7 +28,6 @@ final class AppointmentModel {
         self.id = id; self.service = service; self.cache = cache; self.settle = settle
     }
 
-    var blocks: [BackendAppointmentBlock] { detail?.session?.blocks.sorted { $0.sequence < $1.sequence } ?? [] }
     var block: BackendAppointmentBlock? { blocks.first { $0.id == cursor?.blockID } ?? blocks.last }
     var beatIndex: Int { min(max(cursor?.beatIndex ?? 0, 0), max((block?.beats.count ?? 1) - 1, 0)) }
     var beat: BackendAppointmentBeat? { guard let block, block.beats.indices.contains(beatIndex) else { return nil }; return block.beats[beatIndex] }

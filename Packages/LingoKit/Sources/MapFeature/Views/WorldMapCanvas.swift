@@ -249,6 +249,7 @@ private final class RegionAnnotationView: MKAnnotationView {
     private var region: Region?
     private var presentation = MapRegionPresentation(state: .locked, hasUsableTicket: false)
     private var onTravel: (() -> Void)?
+    private var renderedSelection: Bool?
 
     override init(annotation: (any MKAnnotation)?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -272,6 +273,7 @@ private final class RegionAnnotationView: MKAnnotationView {
     override func prepareForReuse() {
         super.prepareForReuse()
         region = nil
+        renderedSelection = nil
         onTravel = nil
         markerAccessibilityView.onActivate = nil
         actionButton.isHidden = true
@@ -324,9 +326,15 @@ private final class RegionAnnotationView: MKAnnotationView {
         onSelect: @escaping () -> Void,
         onTravel: @escaping () -> Void
     ) {
+        self.onTravel = onTravel
+        markerAccessibilityView.onActivate = onSelect
+        guard self.region != region || self.presentation != presentation else {
+            applySelection(isSelected)
+            return
+        }
         self.region = region
         self.presentation = presentation
-        self.onTravel = onTravel
+        renderedSelection = nil
 
         photoView.image = UIImage(named: "city_pin_\(region.id)")
         flagLabel.text = region.flagEmoji
@@ -335,7 +343,6 @@ private final class RegionAnnotationView: MKAnnotationView {
 
         markerAccessibilityView.accessibilityLabel = "\(region.nameZh)，\(presentation.state.accessibilityText)"
         markerAccessibilityView.accessibilityHint = "轻点选择城市，拖动可继续移动地图"
-        markerAccessibilityView.onActivate = onSelect
 
         updateBadge()
         updateActionConfiguration()
@@ -474,6 +481,8 @@ private final class RegionAnnotationView: MKAnnotationView {
     }
 
     private func applySelection(_ selected: Bool) {
+        guard renderedSelection != selected else { return }
+        renderedSelection = selected
         actionButton.isHidden = !selected
         actionButton.accessibilityElementsHidden = !selected
         layer.zPosition = selected ? 10 : 0

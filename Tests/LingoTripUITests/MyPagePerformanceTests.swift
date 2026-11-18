@@ -44,7 +44,7 @@ final class MyPagePerformanceTests: XCTestCase {
     func testFavoritesRoundTripPerformance() throws {
         launch(on: "me")
 
-        let favoritesEntry = app.buttons["收藏夹，单词与语法点"]
+        let favoritesEntry = app.buttons["me.favorites"]
         XCTAssertTrue(favoritesEntry.waitForExistence(timeout: 5))
 
         let options = XCTMeasureOptions()
@@ -53,13 +53,13 @@ final class MyPagePerformanceTests: XCTestCase {
             metrics: [XCTClockMetric(), XCTCPUMetric(), XCTMemoryMetric()],
             options: options
         ) {
-            let currentFavoritesEntry = app.buttons["收藏夹，单词与语法点"]
+            let currentFavoritesEntry = app.buttons["me.favorites"]
             XCTAssertTrue(currentFavoritesEntry.waitForExistence(timeout: 3))
             currentFavoritesEntry.tap()
             let back = app.navigationBars.buttons.firstMatch
             XCTAssertTrue(back.waitForExistence(timeout: 3))
             back.tap()
-            XCTAssertTrue(app.buttons["收藏夹，单词与语法点"].waitForExistence(timeout: 3))
+            XCTAssertTrue(app.buttons["me.favorites"].waitForExistence(timeout: 3))
         }
     }
 
@@ -90,7 +90,7 @@ final class MyPagePerformanceTests: XCTestCase {
     func testQuickTapKeepsSceneFeedbackVisibleBeforeNavigation() throws {
         launch(on: "me")
 
-        let favoritesEntry = app.buttons["收藏夹，单词与语法点"]
+        let favoritesEntry = app.buttons["me.favorites"]
         XCTAssertTrue(favoritesEntry.waitForExistence(timeout: 5))
 
         let start = ContinuousClock.now
@@ -108,7 +108,7 @@ final class MyPagePerformanceTests: XCTestCase {
     func testFavoritesSupportsLeadingEdgeSwipeBack() throws {
         launch(on: "me")
 
-        let favoritesEntry = app.buttons["收藏夹，单词与语法点"]
+        let favoritesEntry = app.buttons["me.favorites"]
         XCTAssertTrue(favoritesEntry.waitForExistence(timeout: 5))
         favoritesEntry.tap()
         XCTAssertTrue(app.navigationBars["收藏夹"].waitForExistence(timeout: 2))
@@ -152,7 +152,7 @@ final class MyPagePerformanceTests: XCTestCase {
         XCTAssertEqual(tabBar.frame.maxY, app.frame.maxY, accuracy: 1)
         XCTAssertGreaterThanOrEqual(tabBar.frame.height, 49)
 
-        let labels = ["信息", "联系人", "首页", "我的", "测试"]
+        let labels = ["信息", "联系人", "活动", "我的"]
         for label in labels {
             let item = tabBar.buttons[label]
             XCTAssertTrue(item.exists)

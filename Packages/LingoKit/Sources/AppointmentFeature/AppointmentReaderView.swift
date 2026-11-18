@@ -40,7 +40,6 @@ struct AppointmentReaderView: View {
         .navigationBarHidden(true).dsTabBarHidden()
         .environment(\.colorScheme, .light)
         .tint(ink)
-        .onChange(of: model.draft) { _, _ in Task { await model.persistReading() } }
         .sheet(isPresented: $history) { AppointmentHistoryView(detail: model.detail, characterName: characterName) }
         .sheet(isPresented: $credits) { AppointmentPhotoCreditsView(cityID: model.detail?.appointment.cityId ?? "", cityName: model.detail?.appointment.cityName ?? "") }
         .navigationDestination(isPresented: $summary) { AppointmentSummaryView(model: model, characterName: characterName, onChat: onChat, onMemory: onMemory) }
@@ -193,44 +192,8 @@ struct AppointmentReaderView: View {
     }
 
     private var customActionInput: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(alignment: .bottom, spacing: 8) {
-                TextField("", text: $model.draft,
-                          prompt: Text("自定义你的行动").foregroundStyle(ink.opacity(0.45)), axis: .vertical)
-                    .font(.body)
-                    .lineLimit(1...2)
-                    .padding(.leading, 20).padding(.vertical, 16)
-                    .focused($inputFocused)
-                    .submitLabel(.send)
-                    .onSubmit(submitCustomAction)
-                    .disabled(model.submitting || model.pending != nil || sendingCustomAction)
-                    .accessibilityLabel("自定义你的行动")
-                    .accessibilityIdentifier("appointment.input")
-                Button(action: submitCustomAction) {
-                    Image(systemName: "arrow.up")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundStyle(canSubmitCustomAction ? .white : ink.opacity(0.35))
-                        .frame(width: 44, height: 44)
-                        .background(canSubmitCustomAction ? ink : ink.opacity(0.08), in: Circle())
-                }
-                .buttonStyle(DSSceneEntranceButtonStyle())
-                .disabled(!canSubmitCustomAction)
-                .accessibilityLabel("提交行动")
-                .accessibilityIdentifier("appointment.sendInput")
-                .padding(8)
-            }
-            .background(.white.opacity(0.75), in: RoundedRectangle(cornerRadius: 24))
-            .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(ink.opacity(inputFocused ? 0.30 : 0.14)))
-            if model.draft.count > 450 {
-                Text("\(model.draft.count) / 500")
-                    .font(.caption).monospacedDigit()
-                    .foregroundStyle(model.draft.count > 500 ? Color.red : ink.opacity(0.6))
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-            }
-            if model.offline {
-                Text("已保存草稿，联网后可提交。").font(.footnote).foregroundStyle(ink.opacity(0.65))
-            }
-        }
+        AppointmentCustomActionInput(model: model, inputFocused: $inputFocused,
+            sendingCustomAction: sendingCustomAction, submitCustomAction: submitCustomAction)
     }
 
     private func submitCustomAction() {

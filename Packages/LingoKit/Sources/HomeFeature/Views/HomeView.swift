@@ -18,9 +18,7 @@ public struct HomeView: View {
     @State private var profileError = false
     @State private var resumableTitle: String?
     @State private var cityEntranceButtonWidth: CGFloat?
-    @State private var appointment: BackendAppointment?
-    @State private var companion: CharacterDTO?
-    @State private var appointmentError = false
+    @State private var appointments = HomeAppointmentPresentation()
     @State private var showsBackgroundCredits = false
     @State private var creditedPhoto: BackendActivityPhoto?
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
@@ -84,7 +82,7 @@ public struct HomeView: View {
                 }
             }
             .scrollBounceBehavior(.basedOnSize)
-            .refreshable { await reloadProfile(); await reloadOuting(); await reloadAppointment() }
+            .refreshable { await reloadProfile(); await reloadOuting(); await appointments.reload(using: deps) }
         }
         .background {
             DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .activities, regionID: currentRegion?.id), tone: .cool)
@@ -97,7 +95,7 @@ public struct HomeView: View {
         .toolbar(.hidden, for: .navigationBar).dsSceneTabBarBackground()
         .task(id: reloadKey) { if isVisible { await reloadProfile() } }
         .task(id: reloadKey) { if isVisible { await reloadOuting() } }
-        .task(id: reloadKey) { if isVisible { await reloadAppointment() } }
+        .task(id: reloadKey) { if isVisible { await appointments.reload(using: deps) } }
         .task(id: currentRegion?.id) {
             guard let region = currentRegion else { return }
             let window = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
@@ -169,39 +167,8 @@ public struct HomeView: View {
     }
 
     private var appointmentEntrance: some View {
-        Button {
-            if let appointment, let onOpenAppointment { onOpenAppointment(appointment.id) }
-            else { onOpenDestination(.appointments) }
-        } label: {
-            HStack(spacing: 14) {
-                if let companion {
-                    AvatarBadge(name: companion.displayName, size: 48, imageName: companion.card.avatarAssetName,
-                                remoteURL: companion.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
-                } else {
-                    Image(systemName: "calendar").font(.system(size: 25, weight: .regular)).frame(width: 48, height: 48)
-                }
-                VStack(alignment: .leading, spacing: 6) {
-                    if let appointment {
-                        Text(appointment.status == "in_progress" ? "继续赴约" : "赴约")
-                            .font(.caption).foregroundStyle(Color.dsSceneTextTertiary)
-                        Text(appointment.displayTitle(companionName: companion?.displayName ?? "旅伴"))
-                            .font(.body.weight(.medium)).fixedSize(horizontal: false, vertical: true)
-                        Text("\(AppointmentDisplayTime.beijing(appointment.startsAt)) 北京时间 · \(appointment.displayCityName) \(appointment.placeName)")
-                            .font(.caption).foregroundStyle(Color.dsSceneTextSecondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    } else {
-                        Text("赴约").font(.body.weight(.medium))
-                    }
-                    if appointmentError { Text("约定暂未更新，进入后可重试").font(.caption).foregroundStyle(Color.dsSceneTextSecondary) }
-                }
-                Spacer(minLength: 0)
-                Image(systemName: "chevron.right").font(.system(size: 12, weight: .medium)).foregroundStyle(Color.dsSceneTextTertiary)
-            }
-            .padding(18).frame(maxWidth: .infinity, alignment: .leading)
-            .dsSceneGlass(radius: 22, interactive: true, legibility: .frosted)
-            .contentShape(RoundedRectangle(cornerRadius: 22))
-        }
-        .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityIdentifier("home.appointments")
+        HomeAppointmentEntrance(model: appointments, onOpenAppointment: onOpenAppointment,
+            onOpenDestination: onOpenDestination)
     }
 
     @ViewBuilder private var secondaryEntrances: some View {
@@ -292,18 +259,4 @@ public struct HomeView: View {
         } catch { /* The activity destination provides its progress recovery controls. */ }
     }
 
-    private func reloadAppointment() async {
-        guard let service = deps.appointments else { return }
-        do {
-            let list = try await service.appointments()
-            let next = HomeHubPresentation.nextAppointment(in: list)
-            var person: CharacterDTO?
-            if let next { person = try? await deps.rosterStore.character(id: next.characterId) }
-            guard !Task.isCancelled else { return }
-            appointment = next
-            companion = person
-            appointmentError = false
-        } catch is CancellationError {
-        } catch { appointmentError = true }
-    }
 }

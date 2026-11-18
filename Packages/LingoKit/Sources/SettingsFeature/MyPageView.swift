@@ -30,14 +30,11 @@ public struct MyPageView: View {
 
     @Environment(\.userAvatar) private var userAvatar
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @ScaledMetric(relativeTo: .title2) private var hubBalanceHeight: CGFloat = 28
     @State private var selectedAvatar: PhotosPickerItem?
     @State private var avatarError: String?
     @State private var isSavingAvatar = false
 
-    @State private var credits: BackendAccessSnapshot.Credits?
-    @State private var creditsError: String?
-    @State private var isLoadingCredits = false
+    @State private var creditBalance = MyPageCreditBalance()
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
 
@@ -96,7 +93,7 @@ public struct MyPageView: View {
         .task(id: "\(reloadToken)-\(isVisible)") {
             guard isVisible else { return }
             await reload()
-            if section == nil { await reloadCredits() }
+            if section == nil { await creditBalance.reload(using: accessClient) }
         }
         .task(id: selectedAvatar) {
             guard let item = selectedAvatar, let userAvatar else { return }
@@ -148,7 +145,7 @@ public struct MyPageView: View {
             .padding(.horizontal, 20).padding(.top, 12).padding(.bottom, 28)
         }
         .scrollBounceBehavior(.basedOnSize)
-        .refreshable { await reload(); await reloadCredits() }
+        .refreshable { await reload(); await creditBalance.reload(using: accessClient) }
         .background {
             DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .profile, regionID: profile?.currentRegionID), tone: .cool)
                 .overlay { Color.black.opacity(0.22).ignoresSafeArea() }
@@ -256,12 +253,12 @@ public struct MyPageView: View {
             Rectangle().fill(Color.dsSceneTextPrimary.opacity(0.12)).frame(height: 0.5)
                 .padding(.horizontal, 18)
             hubBalanceLayout {
-                hubBalance("金币", value: profile.map { $0.coins.formatted() } ?? "—", isLoaded: profile != nil, identifier: "me.coinBalance")
+                MyPageBalanceMetric(title: "金币", value: profile.map { $0.coins.formatted() } ?? "—", isLoaded: profile != nil, identifier: "me.coinBalance")
                 if accessClient != nil {
                     Rectangle().fill(Color.dsSceneTextPrimary.opacity(0.12))
                         .frame(width: dynamicTypeSize.isAccessibilitySize ? nil : 0.5,
                                height: dynamicTypeSize.isAccessibilitySize ? 0.5 : 36)
-                    hubBalance("AI 积分", value: creditSummary, isLoaded: credits != nil, identifier: "me.credits")
+                    MyPageCreditMetric(balance: creditBalance)
                 }
             }
             .padding(.horizontal, 22).padding(.vertical, 18)
@@ -269,32 +266,11 @@ public struct MyPageView: View {
         .dsSceneGlass(radius: 24, legibility: .frosted)
     }
 
-    private func hubBalance(_ title: String, value: String, isLoaded: Bool, identifier: String) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(value)
-                .font(isLoaded ? .title2.weight(.semibold) : .subheadline.weight(.medium))
-                .foregroundStyle(isLoaded ? Color.dsSceneTextPrimary : Color.dsSceneTextSecondary)
-                .monospacedDigit()
-                .lineLimit(1).minimumScaleFactor(0.75)
-                .frame(minHeight: hubBalanceHeight, alignment: .bottomLeading)
-            Text(title).font(.caption).foregroundStyle(Color.dsSceneTextSecondary)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(title)，\(value)")
-        .accessibilityIdentifier(identifier)
-    }
-
     private var hubBalanceLayout: AnyLayout {
         if dynamicTypeSize.isAccessibilitySize {
             return AnyLayout(VStackLayout(alignment: .leading, spacing: 16))
         }
         return AnyLayout(HStackLayout(alignment: .top, spacing: 20))
-    }
-
-    private var creditSummary: String {
-        if let credits { return credits.remaining.formatted(.number.precision(.fractionLength(2))) }
-        return isLoadingCredits ? "读取中" : creditsError == nil ? "—" : "暂未更新"
     }
 
     private func hubIcon(_ symbol: String) -> some View {
@@ -344,19 +320,6 @@ public struct MyPageView: View {
         .disabled(isSavingAvatar || userAvatar == nil)
         .accessibilityLabel("从相册更换头像")
         .accessibilityIdentifier("profile.avatarPicker")
-    }
-
-    private func reloadCredits() async {
-        guard let accessClient, !isLoadingCredits else { return }
-        isLoadingCredits = true
-        defer { isLoadingCredits = false }
-        do {
-            credits = try await accessClient.accessSnapshot().credits
-            creditsError = nil
-        } catch is CancellationError {
-        } catch {
-            creditsError = "积分暂时无法加载，请重试。"
-        }
     }
 
     private func reload() async {
