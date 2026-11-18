@@ -133,18 +133,25 @@ public struct PlacementTestView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .placementTopBar {
-            if !usesNativeNavigation || phase != .introduction {
-                header
-                    .padding(.horizontal, DSSpacing.md)
-                    .padding(.top, 2)
-                    .padding(.bottom, 5)
-            }
+            header
+                .padding(.horizontal, DSSpacing.md)
+                .padding(.top, 2)
+                .padding(.bottom, 5)
         }
         // The photographic workbench stays light in both system appearances.
         .foregroundStyle(Color.dsPaperInk)
         .navigationTitle("英语水平校准")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar(usesNativeNavigation && phase == .introduction ? .visible : .hidden, for: .navigationBar)
+        // Keep one header through loading and interactive navigation transitions.
+        .toolbar(.hidden, for: .navigationBar)
+        .background {
+            if usesNativeNavigation {
+                PlacementNavigationGesture(
+                    isEnabled: phase == .loading || phase == .introduction || phase == .failure
+                )
+                .frame(width: 0, height: 0)
+            }
+        }
         .task { await prepareIfNeeded() }
         .alert("确认切换英语水平", isPresented: $showLevelChangeConfirmation) {
             Button("保持当前水平", role: .cancel) { pendingLevelChange = nil }
@@ -166,7 +173,9 @@ public struct PlacementTestView: View {
     }
 
     private var header: some View {
-        HStack {
+        let showsBackArrow = phase == .levelSelection || (usesNativeNavigation &&
+            (phase == .loading || phase == .introduction || phase == .failure))
+        return HStack {
             Button {
                 if phase == .levelSelection {
                     closeLevelSelection()
@@ -174,7 +183,7 @@ public struct PlacementTestView: View {
                     onCancel()
                 }
             } label: {
-                Image(systemName: phase == .levelSelection ? "chevron.left" : "xmark")
+                Image(systemName: showsBackArrow ? "chevron.left" : "xmark")
                     .font(.body.weight(.semibold))
                     .foregroundStyle(Color.dsTravelNavy)
                     .frame(width: 44, height: 44)
@@ -188,13 +197,17 @@ public struct PlacementTestView: View {
                 legibility: .ambient
             )
             .disabled(isApplying)
-            .accessibilityLabel(phase == .levelSelection ? "返回水平校准" : "退出水平校准")
+            .accessibilityLabel(phase == .levelSelection ? "返回水平校准" : showsBackArrow ? "返回" : "退出水平校准")
+            .accessibilityIdentifier("placement.back")
 
             Spacer()
             VStack(spacing: 1) {
                 Text(phase == .levelSelection ? "选择英语水平" : "英语水平校准")
-                    .font(.subheadline.weight(.bold))
+                    .font(usesNativeNavigation
+                        ? .system(.headline, design: .rounded, weight: .semibold)
+                        : .subheadline.weight(.bold))
                     .foregroundStyle(Color.dsPaperInk)
+                    .accessibilityIdentifier("placement.title")
                 if phase == .question, let engine {
                     Text("已确认 \(engine.responses.count) 题")
                         .font(.caption2)
@@ -205,6 +218,7 @@ public struct PlacementTestView: View {
             Spacer()
             Color.clear.frame(width: 44, height: 44)
         }
+        .frame(maxWidth: .infinity)
     }
 
     var loadingView: some View {

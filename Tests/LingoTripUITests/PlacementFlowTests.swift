@@ -2,6 +2,56 @@ import XCTest
 
 @MainActor
 final class PlacementFlowTests: XCTestCase {
+    func testCalibrationHeaderAndInteractiveReturn() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment = [
+            "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "UI_TEST_TAB": "me",
+            "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9"
+        ]
+        app.launch()
+        defer { app.terminate() }
+
+        let entry = app.buttons["me.learning"]
+        XCTAssertTrue(entry.waitForExistence(timeout: 15))
+        entry.tap()
+        let title = app.staticTexts["placement.title"]
+        let back = app.buttons["placement.back"]
+        XCTAssertTrue(title.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["placement.chooseLevel"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.navigationBars.count, 0, "校准页始终使用同一个页面内 header")
+        let titleFrame = title.frame
+        let backFrame = back.frame
+
+        let edge = app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.25))
+        let shortDrag = app.coordinate(withNormalizedOffset: CGVector(dx: 0.12, dy: 0.25))
+        edge.press(forDuration: 0.05, thenDragTo: shortDrag, withVelocity: .slow, thenHoldForDuration: 0.5)
+        XCTAssertTrue(title.exists, "短距离返回手势取消后仍留在校准页")
+        XCTAssertEqual(title.label, "英语水平校准")
+        XCTAssertEqual(title.frame.width, titleFrame.width, accuracy: 0.5)
+        XCTAssertEqual(title.frame.minX, titleFrame.minX, accuracy: 0.5)
+        XCTAssertEqual(back.frame.width, backFrame.width, accuracy: 0.5)
+        XCTAssertEqual(back.frame.minX, backFrame.minX, accuracy: 0.5)
+
+        app.buttons["placement.chooseLevel"].tap()
+        XCTAssertEqual(title.label, "选择英语水平")
+        XCTAssertEqual(app.navigationBars.count, 0)
+        back.tap()
+        XCTAssertEqual(title.label, "英语水平校准")
+
+        let finish = app.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.25))
+        edge.press(forDuration: 0.05, thenDragTo: finish)
+        XCTAssertTrue(entry.waitForExistence(timeout: 5), "页面内 header 保留原生交互式返回")
+        XCTAssertFalse(title.exists)
+
+        entry.tap()
+        XCTAssertTrue(back.waitForExistence(timeout: 5))
+        back.tap()
+        XCTAssertTrue(entry.waitForExistence(timeout: 5))
+        XCTAssertFalse(title.exists)
+    }
+
     private func launch() -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
