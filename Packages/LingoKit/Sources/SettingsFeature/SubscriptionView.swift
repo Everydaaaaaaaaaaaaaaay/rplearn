@@ -139,12 +139,17 @@ struct SubscriptionView: View {
                     }
                     .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
                 } else {
-                    Text("暂时无法获取订阅价格")
+                    Text(billing.catalogState == .available
+                        ? "App Store 尚未提供会员订阅方案，请稍后重新加载。"
+                        : billing.catalogStatusMessage)
                         .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
-                    Button("重新加载") { Task { await billing.synchronize(showLoading: true) } }
-                        .font(.subheadline.weight(.medium))
-                        .padding(.top, 12)
-                        .accessibilityIdentifier("subscription.reload")
+                        .accessibilityIdentifier("subscription.catalogStatus")
+                    if billing.catalogState != .unavailable {
+                        Button("重新加载") { Task { await billing.synchronize(showLoading: true) } }
+                            .font(.subheadline.weight(.medium))
+                            .padding(.top, 12)
+                            .accessibilityIdentifier("subscription.reload")
+                    }
                 }
             } else {
                 Divider()
