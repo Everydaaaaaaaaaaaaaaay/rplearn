@@ -105,12 +105,14 @@ export class ChatRepository {
     const payload = command.payload as Payload;
     if (!command.parentId) return;
     if (payload.role === "user" && typeof payload.sharedPredecessorId === "string") {
-      const predecessor = await this.content.read(
-        sql,
-        userId,
-        "message",
-        payload.sharedPredecessorId,
-      );
+      const predecessorId = payload.sharedPredecessorId;
+      const canonicalId = predecessorId.toLowerCase();
+      // Swift encodes UUID payload fields in uppercase; content keys are case-sensitive.
+      const predecessor =
+        (await this.content.read(sql, userId, "message", predecessorId)) ??
+        (canonicalId !== predecessorId
+          ? await this.content.read(sql, userId, "message", canonicalId)
+          : undefined);
       if (!predecessor)
         throw new AppError({
           code: "CHAT_PREDECESSOR_PENDING",

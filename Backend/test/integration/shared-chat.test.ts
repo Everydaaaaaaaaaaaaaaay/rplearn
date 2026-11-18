@@ -592,45 +592,49 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toBe(true);
       await chat.processNext();
     });
-    it("defers a same-device successor that arrives before its predecessor and accepts the same retry ID", async () => {
-      const f = await setup();
-      const first = randomUUID(),
-        second = randomUUID(),
-        commandId = randomUUID();
-      const command = {
-        commandId,
-        expectedVersion: 0,
-        operation: "upsert",
-        resourceType: "message",
-        resourceId: second,
-        parentId: f.conversation,
-        payload: {
-          ...f.message("Second on the same device"),
-          sharedPredecessorId: first,
-        },
-      };
-      const deferred = await f.request(f.a.accessToken, "/v1/content/commands", {
-        commands: [command],
-      });
-      expect(
-        ((await deferred.json()) as { results: { error: { code: string } }[] })
-          .results[0]?.error.code,
-      ).toBe("CHAT_PREDECESSOR_PENDING");
-      await f.send(f.a.accessToken, first, "First on the same device");
-      const retried = await f.request(f.a.accessToken, "/v1/content/commands", {
-        commands: [command],
-      });
-      expect(
-        ((await retried.json()) as { results: { status: string }[] }).results[0]
-          ?.status,
-      ).toBe("applied");
-      expect(
-        (await f.state()).records
-          .filter((r) => r.resourceType === "message")
-          .map((r) => r.resourceId),
-      ).toEqual([first, second]);
-      await chat.processNext();
-    });
+    it.each(["canonical", "Swift uppercase"])(
+      "defers a same-device successor and accepts the same retry ID with a %s predecessor UUID",
+      async (wireFormat) => {
+        const f = await setup();
+        const first = randomUUID(),
+          second = randomUUID(),
+          commandId = randomUUID();
+        const command = {
+          commandId,
+          expectedVersion: 0,
+          operation: "upsert",
+          resourceType: "message",
+          resourceId: second,
+          parentId: f.conversation,
+          payload: {
+            ...f.message("Second on the same device"),
+            sharedPredecessorId:
+              wireFormat === "canonical" ? first : first.toUpperCase(),
+          },
+        };
+        const deferred = await f.request(f.a.accessToken, "/v1/content/commands", {
+          commands: [command],
+        });
+        expect(
+          ((await deferred.json()) as { results: { error: { code: string } }[] })
+            .results[0]?.error.code,
+        ).toBe("CHAT_PREDECESSOR_PENDING");
+        await f.send(f.a.accessToken, first, "First on the same device");
+        const retried = await f.request(f.a.accessToken, "/v1/content/commands", {
+          commands: [command],
+        });
+        expect(
+          ((await retried.json()) as { results: { status: string }[] }).results[0]
+            ?.status,
+        ).toBe("applied");
+        expect(
+          (await f.state()).records
+            .filter((r) => r.resourceType === "message")
+            .map((r) => r.resourceId),
+        ).toEqual([first, second]);
+        await chat.processNext();
+      },
+    );
     it("protects accepted body and server ordering against stale metadata updates", async () => {
       const f = await setup(),
         id = randomUUID();
