@@ -454,7 +454,6 @@ struct RootView: View {
             }
             .onReceive(NotificationCenter.default.publisher(for: .rosterContactDidChange)) { _ in
                 guard environment.workspace != nil else { return }
-                stateRevision += 1
                 Task {
                     await environment.refreshProactiveMessages(requestAuthorization: false)
                     await reloadUnreadCount()
@@ -1031,10 +1030,10 @@ struct RootView: View {
                 ConversationListView(
                     accountID: requiredActiveAccountID,
                     deps: chatDeps,
-                    reloadToken: stateRevision
+                    reloadToken: stateRevision,
+                    resetToken: messagesNavigationRevision
                 )
             }
-            .id(messagesNavigationRevision)
         }
     }
 
@@ -1054,6 +1053,7 @@ struct RootView: View {
                         }
                     ),
                     reloadToken: stateRevision,
+                    resetToken: contactsNavigationRevision,
                     chatBuilder: { character in
                         AnyView(ChatView(character: character, deps: chatDeps))
                     },
@@ -1068,7 +1068,6 @@ struct RootView: View {
                     }
                 )
             }
-            .id(contactsNavigationRevision)
         }
     }
 
