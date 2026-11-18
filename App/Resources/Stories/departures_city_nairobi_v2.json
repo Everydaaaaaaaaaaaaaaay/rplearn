@@ -1,0 +1,297 @@
+{
+  "id": "departures_city_nairobi_v2",
+  "version": 2,
+  "title": "最后一块布",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "内罗毕 · 午后的工作室",
+    "纸样之外"
+  ],
+  "shots": {
+    "room": {
+      "background": "dp_nairobi_room",
+      "actors": []
+    },
+    "wanjiku": {
+      "background": "dp_nairobi_room",
+      "actors": [
+        {
+          "id": "Wanjiku",
+          "asset": "dp_wanjiku_consider",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "shortage": {
+      "background": "dp_nairobi_shortage",
+      "actors": []
+    },
+    "compare": {
+      "background": "dp_nairobi_compare",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "Wanjiku has drawn a bag around a scrap of blue cloth.",
+      "translation": "Wanjiku 对着一小块蓝布，画好了一只包。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "room",
+      "speaker": "Zuri",
+      "text": "Beautiful. Now show me its back.",
+      "translation": "好看。现在让我看看背面。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "The cloth falls short of the paper outline.",
+      "translation": "布料盖不住纸上的轮廓。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "room",
+      "speaker": "Wanjiku",
+      "text": "Could we make the handles shorter?",
+      "translation": "把提手缩短一点呢？",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "room",
+      "speaker": "Zuri",
+      "text": "You'd have a bag you carry with two fingers.",
+      "translation": "那你就得用两根手指拎包了。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "Wanjiku hides a smile behind her drawing.",
+      "translation": "Wanjiku 把笑藏在画稿后面。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "room",
+      "speaker": "Zuri",
+      "text": "I have a rust-red offcut. Or you can keep looking.",
+      "translation": "我有块铁锈红余料。也可以继续找。",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "shortage",
+      "speaker": "你的选择",
+      "text": "What would you like to look at with her?",
+      "translation": "你想和她一起看看什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Put the blue cloth beside the rust-red offcut.",
+          "translation": "把蓝布和铁锈红余料摆在一起。",
+          "next": "contrast",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "蓝布不够做整只包。",
+            "outcome": "你们把余料拿到自然光旁比较，Wanjiku 选了不对称的两面。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Keep the drawing. Look for another blue.",
+          "translation": "先留着画稿，再找找别的蓝色。",
+          "next": "wait",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "蓝布不够，Wanjiku 还惦记原来的设计。",
+            "outcome": "Wanjiku 没有买布，你们发现画稿里的蓝色本身就受屏幕影响。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "contrast",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "compare",
+      "speaker": "旁白",
+      "text": "By the window, the red looks warmer beside the blue.",
+      "translation": "到了窗边，红色衬着蓝色，显得更暖。",
+      "next": "contrast_2"
+    },
+    {
+      "id": "contrast_2",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "compare",
+      "speaker": "Wanjiku",
+      "text": "My aunt will ask which side is the proper front.",
+      "translation": "我阿姨一定会问，哪面才是正面。",
+      "next": "contrast_3"
+    },
+    {
+      "id": "contrast_3",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "compare",
+      "speaker": "Zuri",
+      "text": "Which answer would annoy her more?",
+      "translation": "哪个答案更能气到她？",
+      "next": "contrast_4"
+    },
+    {
+      "id": "contrast_4",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "compare",
+      "speaker": "Wanjiku",
+      "text": "Both.",
+      "translation": "两面都是。",
+      "next": "contrast_5"
+    },
+    {
+      "id": "contrast_5",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "compare",
+      "speaker": "旁白",
+      "text": "She turns the cloth twice, then redraws one pocket.",
+      "translation": "她把布翻了两遍，重新画了一个口袋。",
+      "next": "contrast_6"
+    },
+    {
+      "id": "contrast_6",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "compare",
+      "speaker": "Wanjiku",
+      "text": "Put the pocket on the red. She'll have to use that side.",
+      "translation": "口袋做在红色这边。这样她就不得不用这面。",
+      "next": "contrast_7"
+    },
+    {
+      "id": "contrast_7",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "compare",
+      "speaker": "Zuri",
+      "text": "So we're making this for your aunt now?",
+      "translation": "所以现在变成给你阿姨做了？",
+      "next": "contrast_8"
+    },
+    {
+      "id": "contrast_8",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "compare",
+      "speaker": "旁白",
+      "text": "Wanjiku pulls the drawing back towards herself.",
+      "translation": "Wanjiku 把画稿往自己面前拉了拉。",
+      "ending": true,
+      "experienceID": "NA2A"
+    },
+    {
+      "id": "wait",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "wanjiku",
+      "speaker": "Wanjiku",
+      "text": "I want this blue. I know it's fussy.",
+      "translation": "我想要的就是这个蓝。我知道有点挑。",
+      "next": "wait_2"
+    },
+    {
+      "id": "wait_2",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "wanjiku",
+      "speaker": "旁白",
+      "text": "She opens the original picture on her phone.",
+      "translation": "她在手机上打开最初那张参考图。",
+      "next": "wait_3"
+    },
+    {
+      "id": "wait_3",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "wanjiku",
+      "speaker": "Zuri",
+      "text": "Turn your brightness up.",
+      "translation": "把亮度调高一点。",
+      "next": "wait_4"
+    },
+    {
+      "id": "wait_4",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "wanjiku",
+      "speaker": "旁白",
+      "text": "The blue changes. Wanjiku lowers it again.",
+      "translation": "蓝色变了。Wanjiku 又把亮度调低。",
+      "next": "wait_5"
+    },
+    {
+      "id": "wait_5",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "wanjiku",
+      "speaker": "Wanjiku",
+      "text": "I've been shopping for a phone setting.",
+      "translation": "我逛了半天，在买一个手机设置。",
+      "next": "wait_6"
+    },
+    {
+      "id": "wait_6",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "wanjiku",
+      "speaker": "Zuri",
+      "text": "Bring the drawing next time. And the phone, I suppose.",
+      "translation": "下次带着画稿来。看来手机也得带。",
+      "next": "wait_7"
+    },
+    {
+      "id": "wait_7",
+      "act": 0,
+      "location": "内罗毕 · 午后的工作室",
+      "shot": "wanjiku",
+      "speaker": "旁白",
+      "text": "The fabric stays uncut. Wanjiku saves a second picture.",
+      "translation": "布没有剪。Wanjiku 又存了一张参考图。",
+      "ending": true,
+      "experienceID": "NA2B"
+    }
+  ]
+}

@@ -34,4 +34,20 @@ struct StoryExperienceContextTests {
         #expect(StoryExperienceContext.sections(character: marcus(), progress: [progress(["experience.ML22": true])],
             after: Date(timeIntervalSince1970: 101)).isEmpty)
     }
+
+    @Test("新版经历优先按完成时间承接，中间版仍可回忆且不串入其他路径")
+    func revisedAndOlderExperiences() {
+        let older = progress(["experience.ML11": true])
+        let revised = StoryProgressDTO(storyID: "departures_city_newyork_v3", currentNodeID: nil,
+            flags: ["experience.ML322": true], completedAt: Date(timeIntervalSince1970: 200))
+        let context = StoryExperienceContext.sections(character: marcus(), progress: [older, revised]).joined()
+        #expect(context.contains("unless they reopen planning"))
+        #expect(!context.contains("humming a song"))
+        #expect(!context.contains("joking about a song"))
+        #expect(StoryExperienceContext.sections(character: marcus(), progress: [older]).joined()
+            .contains("joking about a song"))
+        #expect(StoryExperienceContext.sections(character: marcus(), progress: [older, revised],
+            after: Date(timeIntervalSince1970: 201)).isEmpty)
+        #expect(StoryExperienceContext.sourceIDs(for: marcus()).count == 2)
+    }
 }

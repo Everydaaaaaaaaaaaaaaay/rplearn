@@ -10,7 +10,7 @@ struct AdultLifeEpisodeTests {
     @Test("二十条路径每页可恢复，所有结尾有独立经历，角色与画面都可载入")
     func allPathsRestore() throws {
         var endings = Set<String>()
-        for currentID in DepartureStoryIdentity.currentEditions.values.sorted() {
+        for currentID in DepartureStoryIdentity.previousEditions.values.flatMap({ $0 }).sorted() {
             let url = try #require(Bundle.main.url(forResource: currentID, withExtension: "json"))
             let episode = try StoryEpisode.load(data: Data(contentsOf: url))
             #expect(episode.id == currentID)

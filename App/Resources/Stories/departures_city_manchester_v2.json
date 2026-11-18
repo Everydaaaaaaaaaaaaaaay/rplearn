@@ -1,0 +1,297 @@
+{
+  "id": "departures_city_manchester_v2",
+  "version": 2,
+  "title": "你会留下哪一面",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "曼彻斯特 · 唱片店的试听桌",
+    "唱针抬起以后"
+  ],
+  "shots": {
+    "shop": {
+      "background": "dp_manchester_records",
+      "actors": []
+    },
+    "record": {
+      "background": "dp_manchester_records",
+      "actors": [
+        {
+          "id": "Leah",
+          "asset": "dp_leah_record",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "listen": {
+      "background": "dp_manchester_listen",
+      "actors": []
+    },
+    "notes": {
+      "background": "dp_manchester_notes",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "shop",
+      "speaker": "旁白",
+      "text": "Leah has kept a local band's record beside the till.",
+      "translation": "Leah 把一支本地乐队的唱片留在收银台旁。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "shop",
+      "speaker": "Leah",
+      "text": "They want honest feedback. They may regret that.",
+      "translation": "他们想听真话。可能会后悔。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "shop",
+      "speaker": "旁白",
+      "text": "The first side is bright and busy. She taps the table.",
+      "translation": "第一面明亮又热闹，她跟着敲桌子。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "shop",
+      "speaker": "你",
+      "text": "I liked the quiet bit near the end.",
+      "translation": "我喜欢快结束时安静的那段。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "shop",
+      "speaker": "Leah",
+      "text": "Really? That's when I checked whether the kettle was on.",
+      "translation": "真的？我就在那儿去看水烧开没。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "shop",
+      "speaker": "旁白",
+      "text": "Her card says 'cut the last minute'. She covers it.",
+      "translation": "她的卡片上写着“剪掉最后一分钟”。她把字遮住了。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "shop",
+      "speaker": "你",
+      "text": "I've seen it.",
+      "translation": "我看见了。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "shop",
+      "speaker": "Leah",
+      "text": "Then write your defence.",
+      "translation": "那你写写辩护词。",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "record",
+      "speaker": "你的选择",
+      "text": "Replay the disputed minute, or put it in writing?",
+      "translation": "重听争议最大的那一分钟，还是落笔写评价？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Play it again. Listen past the drums.",
+          "translation": "再放一遍，听听鼓声后面。",
+          "next": "listen",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "你和 Leah 喜欢的部分完全不同。",
+            "outcome": "Leah 听到了房间里的声音，也注意到咳嗽声，依然觉得这一段太长。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Give them two cards. They asked for honest ears.",
+          "translation": "给他们两张卡，他们要的就是真实感受。",
+          "next": "notes",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "你和 Leah 对结尾有相反意见。",
+            "outcome": "两张评价保留分歧，Leah 不肯删掉自己的意见，又追问你为什么喜欢。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "listen",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "listen",
+      "speaker": "旁白",
+      "text": "She moves her hand away from the needle.",
+      "translation": "她把手从唱针旁挪开。",
+      "next": "listen_2"
+    },
+    {
+      "id": "listen_2",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "listen",
+      "speaker": "你",
+      "text": "Hear the room around the singer?",
+      "translation": "听见歌手周围那个房间了吗？",
+      "next": "listen_3"
+    },
+    {
+      "id": "listen_3",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "listen",
+      "speaker": "Leah",
+      "text": "Yes. And someone coughing. They kept that in?",
+      "translation": "听见了。还有人咳嗽。他们真给留着了？",
+      "next": "listen_4"
+    },
+    {
+      "id": "listen_4",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "listen",
+      "speaker": "你",
+      "text": "That's why it sounds close.",
+      "translation": "所以才觉得近。",
+      "next": "listen_5"
+    },
+    {
+      "id": "listen_5",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "listen",
+      "speaker": "旁白",
+      "text": "She listens to the end, tapping nothing this time.",
+      "translation": "她听到结尾，这次没有敲桌子。",
+      "next": "listen_6"
+    },
+    {
+      "id": "listen_6",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "listen",
+      "speaker": "Leah",
+      "text": "Still too long. But the cough stays in my review.",
+      "translation": "还是太长。不过那声咳嗽，我会写进去。",
+      "next": "listen_7"
+    },
+    {
+      "id": "listen_7",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "listen",
+      "speaker": "旁白",
+      "text": "The kettle clicks off. Neither of you gets up yet.",
+      "translation": "水壶跳了。你们谁也没马上起身。",
+      "ending": true,
+      "experienceID": "MA2A"
+    },
+    {
+      "id": "notes",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "notes",
+      "speaker": "Leah",
+      "text": "Mine says the ending needs cutting. No, I'm keeping that.",
+      "translation": "我写结尾该剪短。对，这句我留着。",
+      "next": "notes_2"
+    },
+    {
+      "id": "notes_2",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "notes",
+      "speaker": "你",
+      "text": "Mine says that's where I wanted to stay.",
+      "translation": "我写，我正想在那儿多待一会儿。",
+      "next": "notes_3"
+    },
+    {
+      "id": "notes_3",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "notes",
+      "speaker": "Leah",
+      "text": "They'll think we heard different records.",
+      "translation": "他们会以为我们听了两张唱片。",
+      "next": "notes_4"
+    },
+    {
+      "id": "notes_4",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "notes",
+      "speaker": "旁白",
+      "text": "She puts both cards in the sleeve, then pulls yours out.",
+      "translation": "她把两张卡塞进唱片套，又抽出你那张。",
+      "next": "notes_5"
+    },
+    {
+      "id": "notes_5",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "notes",
+      "speaker": "Leah",
+      "text": "You can't just write 'stay'. Tell them what you heard.",
+      "translation": "不能只写“多待一会儿”。告诉他们你听见了什么。",
+      "next": "notes_6"
+    },
+    {
+      "id": "notes_6",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "notes",
+      "speaker": "你",
+      "text": "You can't just write 'cut', either.",
+      "translation": "那你也不能只写“剪短”。",
+      "next": "notes_7"
+    },
+    {
+      "id": "notes_7",
+      "act": 0,
+      "location": "曼彻斯特 · 唱片店的试听桌",
+      "shot": "notes",
+      "speaker": "旁白",
+      "text": "She gets the pen back. You both miss the kettle.",
+      "translation": "她又拿回笔。水烧好了，谁也没去管。",
+      "ending": true,
+      "experienceID": "MA2B"
+    }
+  ]
+}

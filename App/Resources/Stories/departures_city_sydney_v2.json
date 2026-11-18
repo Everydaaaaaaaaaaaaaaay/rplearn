@@ -1,0 +1,317 @@
+{
+  "id": "departures_city_sydney_v2",
+  "version": 2,
+  "title": "多坐一站",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "悉尼 · 渡轮码头",
+    "靠岸以后"
+  ],
+  "shots": {
+    "wharf": {
+      "background": "dp_sydney_wharf",
+      "actors": []
+    },
+    "tahlia": {
+      "background": "dp_sydney_wharf",
+      "actors": [
+        {
+          "id": "Tahlia",
+          "asset": "dp_tahlia_gesture",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "crossing": {
+      "background": "dp_sydney_ferry",
+      "actors": []
+    },
+    "shore": {
+      "background": "dp_sydney_shore",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "wharf",
+      "speaker": "旁白",
+      "text": "Tahlia meets you at Circular Quay after her shift.",
+      "translation": "下班后，Tahlia 在环形码头和你碰面。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "wharf",
+      "speaker": "Tahlia",
+      "text": "Cremorne Point? There's a little harbour pool I like.",
+      "translation": "去克雷蒙角？那儿有个我喜欢的小海港泳池。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "wharf",
+      "speaker": "你",
+      "text": "I have a call home in an hour.",
+      "translation": "我一小时后要给家里打电话。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "wharf",
+      "speaker": "旁白",
+      "text": "She looks at the board, then at the ferry being loaded.",
+      "translation": "她看看时刻板，又看看正在上客的渡轮。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "wharf",
+      "speaker": "Tahlia",
+      "text": "Enough for a short return trip. Not the pool walk.",
+      "translation": "够坐一趟短途往返。来不及走到泳池。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "wharf",
+      "speaker": "你",
+      "text": "What do you like about it?",
+      "translation": "你喜欢那儿什么？",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "wharf",
+      "speaker": "Tahlia",
+      "text": "You swim with the city in front of you. Hard to explain.",
+      "translation": "游泳时，城市就在面前。有点说不清。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "wharf",
+      "speaker": "旁白",
+      "text": "She starts drawing the shore in the air with one finger.",
+      "translation": "她伸出手指，在空中画起岸线。",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "tahlia",
+      "speaker": "你的选择",
+      "text": "Which bit of the harbour would you like tonight?",
+      "translation": "今晚，你想看看海港的哪一部分？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Take the short return trip. The pool can wait.",
+          "translation": "坐一趟短途往返。泳池下回再说。",
+          "next": "ferry",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "已查过时刻，往返来得及，但走不到泳池。",
+            "outcome": "你们按时刻坐船往返，从水上看了泳池方向，没有上岸游览，仍赶得上电话。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Stay here. Tell me about it without the ferry engine.",
+          "translation": "留这儿吧。没有引擎声，你慢慢讲。",
+          "next": "shore",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "时间只够坐船往返，也可以留在码头附近。",
+            "outcome": "你们留在岸边，Tahlia 讲起自己初次去泳池却没下水的经历。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ferry",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "旁白",
+      "text": "You check the return and board for the short round trip.",
+      "translation": "你们核对返程后上船，坐一趟短途往返。",
+      "next": "ferry_2"
+    },
+    {
+      "id": "ferry_2",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "Tahlia",
+      "text": "There. Past those trees. You can nearly see the pool.",
+      "translation": "那儿。树后面。差不多能看见泳池。",
+      "next": "ferry_3"
+    },
+    {
+      "id": "ferry_3",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "旁白",
+      "text": "A ferry pillar blocks her pointing hand from your view.",
+      "translation": "从你的角度，一根船柱挡住了她指的方向。",
+      "next": "ferry_4"
+    },
+    {
+      "id": "ferry_4",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "你",
+      "text": "A very nice pillar.",
+      "translation": "柱子挺好看。",
+      "next": "ferry_5"
+    },
+    {
+      "id": "ferry_5",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "旁白",
+      "text": "She moves aside, laughing. You can finally see the water.",
+      "translation": "她笑着挪开。你终于看见了水面。",
+      "next": "ferry_6"
+    },
+    {
+      "id": "ferry_6",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "Tahlia",
+      "text": "I promise the proper tour has fewer pillars.",
+      "translation": "正式导览保证少看柱子。",
+      "next": "ferry_7"
+    },
+    {
+      "id": "ferry_7",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "旁白",
+      "text": "Back at the quay, you have time to find a quiet spot.",
+      "translation": "回到码头，你还来得及找个安静地方。",
+      "next": "ferry_8"
+    },
+    {
+      "id": "ferry_8",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "旁白",
+      "text": "She waits farther along while you make the call.",
+      "translation": "你打电话时，她在前面不远处等。",
+      "ending": true,
+      "experienceID": "SY2A"
+    },
+    {
+      "id": "shore",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "Tahlia",
+      "text": "First time, I carried a towel all the way there.",
+      "translation": "第一次去，我一路带着毛巾。",
+      "next": "shore_2"
+    },
+    {
+      "id": "shore_2",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "Tahlia",
+      "text": "Forgot the swimsuit. Sat there looking very prepared.",
+      "translation": "忘带泳衣了。坐在旁边，显得准备特别充分。",
+      "next": "shore_3"
+    },
+    {
+      "id": "shore_3",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "你",
+      "text": "Did you go back?",
+      "translation": "后来又去了？",
+      "next": "shore_4"
+    },
+    {
+      "id": "shore_4",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "Tahlia",
+      "text": "Next day. Same towel. Actually wet that time.",
+      "translation": "第二天。同一条毛巾。那次真弄湿了。",
+      "next": "shore_5"
+    },
+    {
+      "id": "shore_5",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "旁白",
+      "text": "The ferry leaves while she describes the cold first step.",
+      "translation": "渡轮开走时，她正讲下水第一步有多冷。",
+      "next": "shore_6"
+    },
+    {
+      "id": "shore_6",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "旁白",
+      "text": "Your call reminder lights up beside her empty hands.",
+      "translation": "通话提醒亮了。她还空着手比画。",
+      "next": "shore_7"
+    },
+    {
+      "id": "shore_7",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "Tahlia",
+      "text": "Go on. I'll finish the tour later.",
+      "translation": "打吧。导览等会儿接着讲。",
+      "next": "shore_8"
+    },
+    {
+      "id": "shore_8",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "旁白",
+      "text": "She finds a seat farther along, looking towards the water.",
+      "translation": "她往前找了个座位，望着水面。",
+      "ending": true,
+      "experienceID": "SY2B"
+    }
+  ]
+}

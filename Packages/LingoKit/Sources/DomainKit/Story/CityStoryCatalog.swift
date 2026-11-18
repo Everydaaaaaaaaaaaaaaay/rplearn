@@ -26,7 +26,7 @@ public enum CityStoryCatalog {
             storyID: "departures_city_london_v1",
             regionID: "london",
             title: "退回书架的那一本",
-            subtitle: "一本人人称赞的书，你却读不下去。"
+            subtitle: "书签停在第十九页，推荐这本书的人也没读远。"
         ),
         CityStoryChapter(
             storyID: "departures_city_melbourne_v1",
@@ -38,7 +38,7 @@ public enum CityStoryCatalog {
             storyID: "departures_city_newyork_v1",
             regionID: "newyork",
             title: "等你吃饭的十分钟",
-            subtitle: "一顿迟到的午饭，不必占满你的下午。"
+            subtitle: "午饭已经凉了，说好十分钟的人还没到。"
         ),
         CityStoryChapter(
             storyID: "departures_city_capetown_v1",
@@ -50,7 +50,7 @@ public enum CityStoryCatalog {
             storyID: "departures_city_singapore_v1",
             regionID: "singapore",
             title: "打包的另一份",
-            subtitle: "一份顺手的好意，也需要先问一句。"
+            subtitle: "父亲想解除和那份鸡饭的终身合同。"
         ),
         CityStoryChapter(
             storyID: "departures_city_dublin_v1",
@@ -68,19 +68,19 @@ public enum CityStoryCatalog {
             storyID: "departures_city_vancouver_v1",
             regionID: "vancouver",
             title: "慢一点的那条路",
-            subtitle: "Noah 想拍到日落，也想让这次散步真正属于同行的人。"
+            subtitle: "Noah 追日落，Ruth 等一只迟迟不动的苍鹭。"
         ),
         CityStoryChapter(
             storyID: "departures_city_auckland_v1",
             regionID: "auckland",
             title: "工具箱回到桌上",
-            subtitle: "工具回来了，今天还做不完所有事。"
+            subtitle: "借走的工具回来了，还附带一只卡住的抽屉。"
         ),
         CityStoryChapter(
             storyID: "departures_city_nairobi_v1",
             regionID: "nairobi",
             title: "最后一块布",
-            subtitle: "一块不够大的布料，把原本确定的设计变成了讨论。"
+            subtitle: "蓝布不够，原来的设计还舍不得放下。"
         ),
         CityStoryChapter(
             storyID: "departures_city_toronto_v1",
@@ -92,7 +92,7 @@ public enum CityStoryCatalog {
             storyID: "departures_city_sydney_v1",
             regionID: "sydney",
             title: "多坐一站",
-            subtitle: "轮渡快到了，你们对“顺便走走”的理解却不一样。"
+            subtitle: "一条毛巾、一座海港泳池，和一小时后的电话。"
         ),
         CityStoryChapter(
             storyID: "departures_city_neworleans_v1",
@@ -104,13 +104,13 @@ public enum CityStoryCatalog {
             storyID: "departures_city_manchester_v1",
             regionID: "manchester",
             title: "你会留下哪一面",
-            subtitle: "Leah 的新唱片让两位朋友听出了完全不同的东西。"
+            subtitle: "同一张唱片，你想留下的，Leah 正准备剪掉。"
         ),
         CityStoryChapter(
             storyID: "departures_city_kingston_v1",
             regionID: "kingston",
             title: "节目末尾的名字",
-            subtitle: "Aaliyah 的节目超时了，最容易剪掉的是别人的名字。"
+            subtitle: "节目超了三十秒，Aaliyah 舍不得自己的笑话。"
         ),
     ]
 

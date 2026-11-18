@@ -1,0 +1,479 @@
+{
+  "id": "departures_city_newyork_v3",
+  "version": 3,
+  "title": "等你吃饭的十分钟",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "纽约 · 已经凉了的午饭",
+    "后来"
+  ],
+  "shots": {
+    "lunch": {
+      "background": "dp_newyork_lunch",
+      "actors": []
+    },
+    "meet": {
+      "background": "dp_newyork_lunch",
+      "actors": [
+        {
+          "id": "Marcus",
+          "asset": "dp_marcus_listen",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "evening": {
+      "background": "dp_newyork_evening_phone",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "Your lunch has stopped steaming. Marcus calls at twelve forty.",
+      "translation": "午饭已经不冒热气了。十二点四十，Marcus 打来电话。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "I'm still at the shop. That wasn't ten minutes. Sorry.",
+      "translation": "我还在店里。可不止十分钟了。抱歉。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "A stack of used records has arrived while he's alone.",
+      "translation": "他一个人看店时，送来一大摞二手唱片。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "I said ten because I wanted it to be ten.",
+      "translation": "我说十分钟，因为我希望就是十分钟。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "lunch",
+      "speaker": "你",
+      "text": "I have something at two.",
+      "translation": "我两点有事。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "I can get there at one twenty. Please eat first.",
+      "translation": "我一点二十能到。你先吃。",
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "lunch",
+      "speaker": "你的选择",
+      "text": "Do you still want to meet today?",
+      "translation": "你今天还想见面吗？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I'll eat. We can still have a few minutes.",
+          "translation": "我先吃。还能见几分钟。",
+          "next": "meet",
+          "flags": {
+            "first_a": true
+          },
+          "review": {
+            "context": "Marcus 迟到，你两点另有安排。",
+            "outcome": "你先吃饭，他一点二十到，你们只剩一小会儿相处。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll go after lunch. Let's skip today.",
+          "translation": "我吃完就走。今天算了吧。",
+          "next": "later",
+          "flags": {
+            "first_a": false
+          },
+          "review": {
+            "context": "Marcus 迟到，你不想继续等待。",
+            "outcome": "今天没能见面，晚上他承认还忘了取自己点的午饭，并试着另约。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "meet",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "He arrives at one twenty, carrying only his keys.",
+      "translation": "一点二十，他到了，手里还攥着钥匙。",
+      "next": "meet_2"
+    },
+    {
+      "id": "meet_2",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "meet",
+      "speaker": "Marcus",
+      "text": "Still got the shop key in my hand. Right.",
+      "translation": "还攥着店里钥匙。好了。",
+      "next": "meet_3"
+    },
+    {
+      "id": "meet_3",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "He looks at your empty box and starts to say sorry again.",
+      "translation": "他看看你的空饭盒，又想说抱歉。",
+      "next": "meet_4"
+    },
+    {
+      "id": "meet_4",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "meet",
+      "speaker": "Marcus",
+      "text": "Right. You've heard that bit. What time do you need to go?",
+      "translation": "好，这句你听过了。你几点得走？",
+      "next": "second_meet"
+    },
+    {
+      "id": "second_meet",
+      "act": 0,
+      "location": "纽约 · 已经凉了的午饭",
+      "shot": "meet",
+      "speaker": "你的选择",
+      "text": "You have ten minutes left.",
+      "translation": "你还剩十分钟。",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Let's walk to the corner. I'm going that way.",
+          "translation": "走到街角吧。我正好往那边去。",
+          "next": "walk",
+          "flags": {
+            "second_meet_a": true
+          },
+          "review": {
+            "context": "你们能相处的时间不多。",
+            "outcome": "你们走到街角，Marcus 跟唱了自己嫌难听的歌，然后分别。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's sit. I don't want to spend it walking.",
+          "translation": "坐会儿吧。我不想把时间花在赶路上。",
+          "next": "sit",
+          "flags": {
+            "second_meet_a": false
+          },
+          "review": {
+            "context": "你们能相处的时间不多。",
+            "outcome": "你们短暂坐下，冷薯条让 Marcus 想起自己也没吃饭，他没能补上这顿午餐。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "walk",
+      "act": 1,
+      "location": "后来",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "An open shop door spills music onto the pavement.",
+      "translation": "街边店门开着，音乐流到人行道上。",
+      "next": "walk_2"
+    },
+    {
+      "id": "walk_2",
+      "act": 1,
+      "location": "后来",
+      "shot": "meet",
+      "speaker": "Marcus",
+      "text": "Worst song on that record.",
+      "translation": "那张唱片上最难听的一首。",
+      "next": "walk_3"
+    },
+    {
+      "id": "walk_3",
+      "act": 1,
+      "location": "后来",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "He hums the next line before he can stop himself.",
+      "translation": "还没忍住，他已经哼出了下一句。",
+      "next": "walk_4"
+    },
+    {
+      "id": "walk_4",
+      "act": 1,
+      "location": "后来",
+      "shot": "meet",
+      "speaker": "你",
+      "text": "You know all the words.",
+      "translation": "歌词你都会。",
+      "next": "walk_5"
+    },
+    {
+      "id": "walk_5",
+      "act": 1,
+      "location": "后来",
+      "shot": "meet",
+      "speaker": "Marcus",
+      "text": "I worked Saturdays. It played every Saturday.",
+      "translation": "我以前周六值班。每个周六都放。",
+      "next": "walk_6"
+    },
+    {
+      "id": "walk_6",
+      "act": 1,
+      "location": "后来",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "At the corner, he catches the chorus, then waves goodbye.",
+      "translation": "街角，他又跟上副歌，才挥手道别。",
+      "next": "walk_7"
+    },
+    {
+      "id": "walk_7",
+      "act": 1,
+      "location": "后来",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "You can still hear him when the traffic light changes.",
+      "translation": "交通灯变了，你还能听见他在哼。",
+      "ending": true,
+      "experienceID": "ML311"
+    },
+    {
+      "id": "sit",
+      "act": 1,
+      "location": "后来",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "He sits opposite your last cold chip.",
+      "translation": "他在你对面坐下，饭盒里剩着最后一根冷薯条。",
+      "next": "sit_2"
+    },
+    {
+      "id": "sit_2",
+      "act": 1,
+      "location": "后来",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "Was it good before I ruined the timing?",
+      "translation": "被我拖成这样之前，好吃吗？",
+      "next": "sit_3"
+    },
+    {
+      "id": "sit_3",
+      "act": 1,
+      "location": "后来",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "You point to the chip. His stomach makes a small noise.",
+      "translation": "你指指薯条。他肚子轻轻叫了一声。",
+      "next": "sit_4"
+    },
+    {
+      "id": "sit_4",
+      "act": 1,
+      "location": "后来",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "That's my review. Didn't even get to try it.",
+      "translation": "这就是我的评价。连尝都没尝上。",
+      "next": "sit_5"
+    },
+    {
+      "id": "sit_5",
+      "act": 1,
+      "location": "后来",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "He laughs, but looks away when you check the time.",
+      "translation": "他笑了。你看时间时，他又移开了目光。",
+      "next": "sit_6"
+    },
+    {
+      "id": "sit_6",
+      "act": 1,
+      "location": "后来",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "You close the box and leave. He goes to find his own lunch.",
+      "translation": "你合上饭盒离开。他去找自己的午饭。",
+      "ending": true,
+      "experienceID": "ML312"
+    },
+    {
+      "id": "later",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "That evening, he sends a photo of an untouched sandwich.",
+      "translation": "晚上，他发来一张完整三明治的照片。",
+      "next": "later_2"
+    },
+    {
+      "id": "later_2",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "Marcus",
+      "text": "Mine. Forgot to pick it up. The shop kept it for me.",
+      "translation": "我的。忘了拿。店里给我留着了。",
+      "next": "later_3"
+    },
+    {
+      "id": "later_3",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "Marcus",
+      "text": "Do you want me to check a day off for another lunch?",
+      "translation": "想让我查个休息日，重新约顿午饭吗？",
+      "next": "second_later"
+    },
+    {
+      "id": "second_later",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "你的选择",
+      "text": "Would you like another suggestion?",
+      "translation": "你想让他再提时间吗？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Check first, then give me two times.",
+          "translation": "先查好，再给我两个时间。",
+          "next": "dates",
+          "flags": {
+            "second_later_a": true
+          },
+          "review": {
+            "context": "今天没见成面，Marcus 提议另找休息日。",
+            "outcome": "他查过班表后提出两个时间，你尚未选定，没有新约会成立。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Not yet. I'll message when I want to plan.",
+          "translation": "暂时不用。我想安排时会发消息。",
+          "next": "pause",
+          "flags": {
+            "second_later_a": false
+          },
+          "review": {
+            "context": "今天没见成面，你还不想安排下次。",
+            "outcome": "他接受由你决定何时重提，没有再追加日期。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dates",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "Marcus",
+      "text": "Tuesday or Thursday, twelve. Both actually off.",
+      "translation": "周二或周四，十二点。这回真是休息日。",
+      "next": "dates_2"
+    },
+    {
+      "id": "dates_2",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "Below it, he adds the name of the sandwich place.",
+      "translation": "下面，他又发来三明治店的名字。",
+      "next": "dates_3"
+    },
+    {
+      "id": "dates_3",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "Marcus",
+      "text": "Food's good. Scheduling by me remains under review.",
+      "translation": "吃的不错。我的排期服务还在考察。",
+      "next": "dates_4"
+    },
+    {
+      "id": "dates_4",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "The two dates wait on your screen, neither chosen yet.",
+      "translation": "屏幕上留着两个日期，你还没选。",
+      "ending": true,
+      "experienceID": "ML321"
+    },
+    {
+      "id": "pause",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "Marcus",
+      "text": "Okay. I'll leave it with you.",
+      "translation": "好，等你说。",
+      "next": "pause_2"
+    },
+    {
+      "id": "pause_2",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "No new dates follow. You put the phone beside the sink.",
+      "translation": "后面没有新日期。你把手机放在水槽边。",
+      "next": "pause_3"
+    },
+    {
+      "id": "pause_3",
+      "act": 1,
+      "location": "后来",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "The lunch box needs washing. A chip is stuck to its corner.",
+      "translation": "饭盒还得洗。一截薯条粘在角上。",
+      "ending": true,
+      "experienceID": "ML322"
+    }
+  ]
+}

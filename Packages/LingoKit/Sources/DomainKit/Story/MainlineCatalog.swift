@@ -97,31 +97,31 @@ public enum MainlineCatalog {
         storyID: "departures_london_v1",
         regionID: "london",
         title: "空着的那把椅子",
-        subtitle: "一页没念过的文字，以及一个由你陪伴的决定。"
+        subtitle: "Oliver 带来一页小说，还没决定让谁听见。"
     )
     public static let melbourne = MainlineChapter(
         storyID: "departures_mainline_melbourne_v1",
         regionID: "melbourne",
         title: "留给自己的一个下午",
-        subtitle: "申请今晚截止，散步却是两个人早就说好的。"
+        subtitle: "申请今晚截止，Ruby 却还在改第一句话。"
     )
     public static let newYork = MainlineChapter(
         storyID: "departures_mainline_newyork_v1",
         regionID: "newyork",
         title: "没有挂上的那张照片",
-        subtitle: "Marcus 最满意的照片，遇到了一个明确的“不”。"
+        subtitle: "Marcus 最满意的照片，要从展墙上撤下来。"
     )
     public static let capeTown = MainlineChapter(
         storyID: "departures_mainline_capetown_v1",
         regionID: "capetown",
         title: "故事是谁的",
-        subtitle: "一场小型社区展览，不打算用一个声音代表所有人。"
+        subtitle: "展览标题已经印好，曾住在那里的人却不认同。"
     )
     public static let singapore = MainlineChapter(
         storyID: "departures_mainline_singapore_v1",
         regionID: "singapore",
         title: "下次见面的办法",
-        subtitle: "说定一次联系，或好好吃完今晚这顿饭。"
+        subtitle: "行李占了一张椅子，Mei 还在加菜。"
     )
 
     public static let chapters: [MainlineChapter] = [

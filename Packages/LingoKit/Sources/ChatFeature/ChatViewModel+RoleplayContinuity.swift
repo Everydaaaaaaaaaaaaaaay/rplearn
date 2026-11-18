@@ -39,7 +39,7 @@ extension ChatViewModel {
         let memoryCutoff = try? await deps.memoryStore.extractionCutoff(characterID: characterID)
         var storySections: [String] = []
         if let storyProgress = deps.storyProgress {
-            let sources = DepartureStoryIdentity.currentEditions.values.sorted()
+            let sources = StoryExperienceContext.sourceIDs(for: character)
             var records: [StoryProgressDTO] = []
             for source in sources {
                 if let record = try? await storyProgress.progress(storyID: source) { records.append(record) }

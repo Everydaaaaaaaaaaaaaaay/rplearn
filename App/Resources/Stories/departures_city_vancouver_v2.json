@@ -1,0 +1,294 @@
+{
+  "id": "departures_city_vancouver_v2",
+  "version": 2,
+  "title": "慢一点的那条路",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "温哥华 · 海边步道",
+    "日落还在继续"
+  ],
+  "shots": {
+    "shore": {
+      "background": "dp_vancouver_seawall",
+      "actors": []
+    },
+    "noah": {
+      "background": "dp_vancouver_seawall",
+      "actors": [
+        {
+          "id": "Noah",
+          "asset": "dp_noah_camera",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "ruth": {
+      "background": "dp_vancouver_seawall",
+      "actors": [
+        {
+          "id": "Ruth",
+          "asset": "dp_ruth_pause",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "bench": {
+      "background": "dp_vancouver_bench",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "shore",
+      "speaker": "旁白",
+      "text": "On the seawall, Noah checks the light beyond the point.",
+      "translation": "海堤步道上，Noah 看着岬角那边的光。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "shore",
+      "speaker": "Noah",
+      "text": "Five minutes that way. Last chance for the sunset shot.",
+      "translation": "往那边走五分钟。日落照片的最后机会。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "shore",
+      "speaker": "旁白",
+      "text": "Ruth has stopped beside a heron in the shallows.",
+      "translation": "Ruth 却停下来，看着浅水里的一只苍鹭。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "shore",
+      "speaker": "Ruth",
+      "text": "It's been about to catch something for ten minutes.",
+      "translation": "它这“马上要抓到东西”，已经持续十分钟了。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "shore",
+      "speaker": "Noah",
+      "text": "It might not be hungry.",
+      "translation": "它可能根本不饿。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "shore",
+      "speaker": "Ruth",
+      "text": "Then it has wasted both our time.",
+      "translation": "那它可耽误了我们俩的时间。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "shore",
+      "speaker": "旁白",
+      "text": "Noah lifts the camera, then looks towards the point again.",
+      "translation": "Noah 举起相机，又看了看岬角。",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "ruth",
+      "speaker": "你的选择",
+      "text": "Where would you like to wait for the sunset?",
+      "translation": "你想在哪里等日落？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Stay here. I want to see if Ruth's bird ever moves.",
+          "translation": "留这儿。我想看 Ruth 那只鸟到底动不动。",
+          "next": "stay",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "Noah 想赶去拍日落，Ruth 想继续看鸟。",
+            "outcome": "大家留下看鸟，Noah 错过想要的日落角度，苍鹭最后只抓到一条很小的鱼。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let Noah get his shot. We'll meet him at the bench.",
+          "translation": "让 Noah 去拍。我们在长椅等他。",
+          "next": "detour",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "Noah 想拍日落，Ruth 不想赶那段路。",
+            "outcome": "Noah 得到了想拍的日落，你和 Ruth 错过那张现场风景，他也错过了鸟的动作。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stay",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "noah",
+      "speaker": "旁白",
+      "text": "Noah stays, but glances once at the fading orange light.",
+      "translation": "Noah 留下了，仍回头看了一眼渐暗的橘光。",
+      "next": "stay_2"
+    },
+    {
+      "id": "stay_2",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "noah",
+      "speaker": "旁白",
+      "text": "The heron strikes. A tiny fish flashes in its beak.",
+      "translation": "苍鹭突然探头，嘴里闪过一条很小的鱼。",
+      "next": "stay_3"
+    },
+    {
+      "id": "stay_3",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "noah",
+      "speaker": "Ruth",
+      "text": "All that for that?",
+      "translation": "等了这么久，就这么一点？",
+      "next": "stay_4"
+    },
+    {
+      "id": "stay_4",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "noah",
+      "speaker": "旁白",
+      "text": "Noah checks his pictures. Not one has the fish in it.",
+      "translation": "Noah 翻看照片。没有一张拍到鱼。",
+      "next": "stay_5"
+    },
+    {
+      "id": "stay_5",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "noah",
+      "speaker": "Noah",
+      "text": "I got seventeen pictures of it standing still.",
+      "translation": "我拍了十七张。全是它站着。",
+      "next": "stay_6"
+    },
+    {
+      "id": "stay_6",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "noah",
+      "speaker": "你",
+      "text": "Show us the best one.",
+      "translation": "给我们看看最好的一张。",
+      "next": "stay_7"
+    },
+    {
+      "id": "stay_7",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "noah",
+      "speaker": "旁白",
+      "text": "He scrolls back and forth. They look exactly alike.",
+      "translation": "他来回翻着。每张看起来都一模一样。",
+      "ending": true,
+      "experienceID": "VA2A"
+    },
+    {
+      "id": "detour",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "bench",
+      "speaker": "旁白",
+      "text": "Noah goes ahead. You and Ruth take the bench.",
+      "translation": "Noah 先走了。你和 Ruth 坐到长椅上。",
+      "next": "detour_2"
+    },
+    {
+      "id": "detour_2",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "bench",
+      "speaker": "旁白",
+      "text": "The heron catches a fish while Ruth is wiping her glasses.",
+      "translation": "Ruth 擦眼镜时，苍鹭抓到了一条鱼。",
+      "next": "detour_3"
+    },
+    {
+      "id": "detour_3",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "bench",
+      "speaker": "Ruth",
+      "text": "Of course it did.",
+      "translation": "就知道会这样。",
+      "next": "detour_4"
+    },
+    {
+      "id": "detour_4",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "bench",
+      "speaker": "旁白",
+      "text": "Noah returns with a clear orange line across the water.",
+      "translation": "Noah 回来了。照片里，水上横着一道清晰的橘光。",
+      "next": "detour_5"
+    },
+    {
+      "id": "detour_5",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "bench",
+      "speaker": "Noah",
+      "text": "Got it. What did I miss?",
+      "translation": "拍到了。我错过什么了？",
+      "next": "detour_6"
+    },
+    {
+      "id": "detour_6",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "bench",
+      "speaker": "Ruth",
+      "text": "Apparently, everything. Ask the person who could see.",
+      "translation": "看来全错过了。问问旁边能看清的人。",
+      "next": "detour_7"
+    },
+    {
+      "id": "detour_7",
+      "act": 0,
+      "location": "温哥华 · 海边步道",
+      "shot": "bench",
+      "speaker": "旁白",
+      "text": "She puts her glasses back on and turns towards you.",
+      "translation": "她重新戴好眼镜，转过来看你。",
+      "ending": true,
+      "experienceID": "VA2B"
+    }
+  ]
+}

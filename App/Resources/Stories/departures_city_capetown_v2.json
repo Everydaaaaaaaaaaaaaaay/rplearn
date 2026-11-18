@@ -1,0 +1,294 @@
+{
+  "id": "departures_city_capetown_v2",
+  "version": 2,
+  "title": "借你半张桌子",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "开普敦 · 周末集市",
+    "桌子中间的那条线"
+  ],
+  "shots": {
+    "market": {
+      "background": "dp_capetown_market",
+      "actors": []
+    },
+    "amina": {
+      "background": "dp_capetown_market",
+      "actors": [
+        {
+          "id": "Amina",
+          "asset": "dp_amina_boundary",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "jonas": {
+      "background": "dp_capetown_market",
+      "actors": [
+        {
+          "id": "Jonas",
+          "asset": "dp_jonas_apology",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "blocked": {
+      "background": "dp_market_corner_table",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "market",
+      "speaker": "旁白",
+      "text": "At the market, Amina's prints vanish behind three boxes.",
+      "translation": "集市上，Amina 的画被三只箱子挡得看不见了。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "market",
+      "speaker": "Amina",
+      "text": "Jonas asked for a corner. His corners breed.",
+      "translation": "Jonas 说借个角。他的角可会繁殖。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "market",
+      "speaker": "旁白",
+      "text": "A customer points past the boxes at something blue.",
+      "translation": "一位顾客越过箱子，指了指一片蓝色。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "market",
+      "speaker": "Amina",
+      "text": "The harbour print? Just a moment.",
+      "translation": "海港那张？等一下。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "market",
+      "speaker": "旁白",
+      "text": "She lifts one box. Another catches on its handle.",
+      "translation": "她提起一只箱子，另一只的提手又钩住了它。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "market",
+      "speaker": "Jonas",
+      "text": "Careful. Those are cups.",
+      "translation": "小心，那些是杯子。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "market",
+      "speaker": "Amina",
+      "text": "Then come and care for them.",
+      "translation": "那你快来关心关心它们。",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "blocked",
+      "speaker": "你的选择",
+      "text": "What would you like to do?",
+      "translation": "你想怎么做？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Help Amina reach the print while Jonas moves his boxes.",
+          "translation": "Jonas 搬箱子时，帮 Amina 取出那张画。",
+          "next": "print",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "箱子挡住画，也拦住了顾客挑选。",
+            "outcome": "你取出的并非顾客想要的那张，Amina 找对了画，Jonas 搬走箱子后仍有些不自在。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Ask Jonas where the boxes were meant to go.",
+          "translation": "问问 Jonas，箱子原本准备放哪儿。",
+          "next": "boxes",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "Jonas 把暂存的东西越放越多。",
+            "outcome": "他原本的地方被自己的椅子占着，最后收起椅子搬走箱子，暂时没能坐下。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "print",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "amina",
+      "speaker": "旁白",
+      "text": "You lift out a blue print. The customer shakes her head.",
+      "translation": "你抽出一张蓝色的画。顾客摇摇头。",
+      "next": "print_2"
+    },
+    {
+      "id": "print_2",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "Other blue. I should label these like paint tins.",
+      "translation": "另一张蓝的。早该像油漆罐那样贴标签了。",
+      "next": "print_3"
+    },
+    {
+      "id": "print_3",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "amina",
+      "speaker": "旁白",
+      "text": "She finds it beneath a folder as Jonas takes the boxes.",
+      "translation": "Jonas 抱走箱子时，她在画夹下找到了那张。",
+      "next": "print_4"
+    },
+    {
+      "id": "print_4",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "amina",
+      "speaker": "Jonas",
+      "text": "I was coming back for them.",
+      "translation": "我本来就要回来拿。",
+      "next": "print_5"
+    },
+    {
+      "id": "print_5",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "I know. I needed you five minutes earlier.",
+      "translation": "我知道。我需要你早五分钟。",
+      "next": "print_6"
+    },
+    {
+      "id": "print_6",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "amina",
+      "speaker": "旁白",
+      "text": "He starts to reply, then carries the last box away.",
+      "translation": "他想接话，最后抱着那只箱子走开了。",
+      "next": "print_7"
+    },
+    {
+      "id": "print_7",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "amina",
+      "speaker": "旁白",
+      "text": "The customer asks whether the frame comes with the print.",
+      "translation": "顾客问，画框是不是也一起卖。",
+      "ending": true,
+      "experienceID": "CC2A"
+    },
+    {
+      "id": "boxes",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "jonas",
+      "speaker": "Jonas",
+      "text": "Under my table. If I move the chair.",
+      "translation": "我桌子底下。得先挪开椅子。",
+      "next": "boxes_2"
+    },
+    {
+      "id": "boxes_2",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "jonas",
+      "speaker": "旁白",
+      "text": "He looks at the chair. His coat is on it too.",
+      "translation": "他看看椅子。外套也搭在上面。",
+      "next": "boxes_3"
+    },
+    {
+      "id": "boxes_3",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "jonas",
+      "speaker": "Amina",
+      "text": "I carried my stool here at six. You can stand a bit.",
+      "translation": "我六点就扛着凳子来了。你站一会儿吧。",
+      "next": "boxes_4"
+    },
+    {
+      "id": "boxes_4",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "jonas",
+      "speaker": "旁白",
+      "text": "He folds the chair, puts the coat away, and stacks the cups.",
+      "translation": "他收起椅子，放好外套，把杯箱摞了进去。",
+      "next": "boxes_5"
+    },
+    {
+      "id": "boxes_5",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "jonas",
+      "speaker": "Jonas",
+      "text": "Right. My feet will remember this arrangement.",
+      "translation": "好。我的脚会记住这次安排的。",
+      "next": "boxes_6"
+    },
+    {
+      "id": "boxes_6",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "jonas",
+      "speaker": "Amina",
+      "text": "Mine already do.",
+      "translation": "我的已经记住了。",
+      "next": "boxes_7"
+    },
+    {
+      "id": "boxes_7",
+      "act": 0,
+      "location": "开普敦 · 周末集市",
+      "shot": "jonas",
+      "speaker": "旁白",
+      "text": "She sits, rubbing one ankle, while he opens his stall.",
+      "translation": "她坐下来揉了揉脚踝。他开始摆自己的摊。",
+      "ending": true,
+      "experienceID": "CC2B"
+    }
+  ]
+}

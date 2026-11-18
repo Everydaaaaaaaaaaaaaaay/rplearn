@@ -1,0 +1,304 @@
+{
+  "id": "departures_city_singapore_v2",
+  "version": 2,
+  "title": "打包的另一份",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "新加坡 · 熟食中心",
+    "饭盒里的约定"
+  ],
+  "shots": {
+    "day": {
+      "background": "dp_singapore_hawker_day",
+      "actors": []
+    },
+    "phone": {
+      "background": "dp_singapore_hawker_day",
+      "actors": [
+        {
+          "id": "Mei",
+          "asset": "dp_mei_phone",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "arrive": {
+      "background": "dp_singapore_hawker_day",
+      "actors": [
+        {
+          "id": "Uncle Tan",
+          "asset": "dp_uncle_tan_arrive",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "takeaway": {
+      "background": "dp_singapore_takeaway",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "day",
+      "speaker": "旁白",
+      "text": "Mei adds her father's usual lunch to the takeaway order.",
+      "translation": "Mei 在打包订单里添上父亲平常吃的那份。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "day",
+      "speaker": "Mei",
+      "text": "Same stall, same order. I've got it memorised.",
+      "translation": "同一个摊，同一份。我都背下来了。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "day",
+      "speaker": "旁白",
+      "text": "Her phone buzzes before she can pay.",
+      "translation": "还没付款，手机振了。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "day",
+      "speaker": "Uncle Tan",
+      "text": "Is my lifetime contract with that chicken rice ending soon?",
+      "translation": "我跟那份鸡饭的终身合同，什么时候到期？",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "day",
+      "speaker": "Mei",
+      "text": "He said he liked it.",
+      "translation": "他明明说喜欢。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "day",
+      "speaker": "你",
+      "text": "When?",
+      "translation": "什么时候说的？",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "day",
+      "speaker": "Mei",
+      "text": "I don't remember. That's not helping.",
+      "translation": "不记得了。你这个问题没帮上忙。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "day",
+      "speaker": "旁白",
+      "text": "She removes the extra order, but keeps the chat open.",
+      "translation": "她删掉多加的那份，聊天窗口还开着。",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "phone",
+      "speaker": "你的选择",
+      "text": "What would you like to suggest?",
+      "translation": "你想提议什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ask what he actually wants today.",
+          "translation": "问问他今天到底想吃什么。",
+          "next": "order",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "父亲厌倦了 Mei 一直替他点的午饭。",
+            "outcome": "父亲想吃的东西让 Mei 吃了一惊，她另排队打包，先借走了一口尝味道。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Invite him to choose at the stalls with us.",
+          "translation": "叫他来和我们一起挑。",
+          "next": "join",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "午饭还没下单，父亲就在附近。",
+            "outcome": "父亲来到熟食中心，认真研究后仍选了鸡饭，但换了摊位和口味。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "order",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "takeaway",
+      "speaker": "旁白",
+      "text": "His answer arrives with three exclamation marks.",
+      "translation": "回复到了，后面跟着三个感叹号。",
+      "next": "order_2"
+    },
+    {
+      "id": "order_2",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "takeaway",
+      "speaker": "Uncle Tan",
+      "text": "The spicy noodles. Extra chilli.",
+      "translation": "辣面。多加辣椒。",
+      "next": "order_3"
+    },
+    {
+      "id": "order_3",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "takeaway",
+      "speaker": "Mei",
+      "text": "He takes the chilli out of everything at home.",
+      "translation": "他在家吃什么都把辣椒挑出来。",
+      "next": "order_4"
+    },
+    {
+      "id": "order_4",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "takeaway",
+      "speaker": "Uncle Tan",
+      "text": "Your chilli is much hotter than this stall's.",
+      "translation": "你调的辣椒，比这摊的辣多了。",
+      "next": "order_5"
+    },
+    {
+      "id": "order_5",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "takeaway",
+      "speaker": "旁白",
+      "text": "Mei reads that twice, then joins the noodle queue.",
+      "translation": "Mei 看了两遍，去排面摊的队。",
+      "next": "order_6"
+    },
+    {
+      "id": "order_6",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "takeaway",
+      "speaker": "Mei",
+      "text": "I'm trying one bite before I carry it over.",
+      "translation": "送过去之前，我得先尝一口。",
+      "next": "order_7"
+    },
+    {
+      "id": "order_7",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "takeaway",
+      "speaker": "旁白",
+      "text": "She asks for a separate fork with the takeaway box.",
+      "translation": "拿打包盒时，她又要了一把叉子。",
+      "ending": true,
+      "experienceID": "SC2A"
+    },
+    {
+      "id": "join",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "arrive",
+      "speaker": "旁白",
+      "text": "He arrives, walks past two queues, and studies a menu.",
+      "translation": "他到了，经过两条长队，盯着一张菜单看。",
+      "next": "join_2"
+    },
+    {
+      "id": "join_2",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "arrive",
+      "speaker": "Mei",
+      "text": "Anything you like. I mean it this time.",
+      "translation": "想吃什么都行。这次认真的。",
+      "next": "join_3"
+    },
+    {
+      "id": "join_3",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "arrive",
+      "speaker": "Uncle Tan",
+      "text": "Chicken rice.",
+      "translation": "鸡饭。",
+      "next": "join_4"
+    },
+    {
+      "id": "join_4",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "arrive",
+      "speaker": "旁白",
+      "text": "Mei looks at you. Then back at him.",
+      "translation": "Mei 看看你，又看看他。",
+      "next": "join_5"
+    },
+    {
+      "id": "join_5",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "arrive",
+      "speaker": "Uncle Tan",
+      "text": "Roasted. That stall. Extra cucumber.",
+      "translation": "烧鸡的。那家。多加黄瓜。",
+      "next": "join_6"
+    },
+    {
+      "id": "join_6",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "arrive",
+      "speaker": "Mei",
+      "text": "That took a whole family discussion?",
+      "translation": "这值得全家讨论一轮？",
+      "next": "join_7"
+    },
+    {
+      "id": "join_7",
+      "act": 0,
+      "location": "新加坡 · 熟食中心",
+      "shot": "arrive",
+      "speaker": "旁白",
+      "text": "He takes out his wallet and joins the other queue.",
+      "translation": "他掏出钱包，排进了另一条队伍。",
+      "ending": true,
+      "experienceID": "SC2B"
+    }
+  ]
+}

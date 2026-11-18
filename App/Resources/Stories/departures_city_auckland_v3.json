@@ -1,0 +1,535 @@
+{
+  "id": "departures_city_auckland_v3",
+  "version": 3,
+  "title": "工具箱回到桌上",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "奥克兰 · 借回来的工具",
+    "午饭前的工作台"
+  ],
+  "shots": {
+    "workshop": {
+      "background": "dp_auckland_repair",
+      "actors": []
+    },
+    "hana": {
+      "background": "dp_auckland_repair",
+      "actors": [
+        {
+          "id": "Hana",
+          "asset": "dp_hana_explain",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "A ferry horn sounds while Hana tests a small kitchen shelf.",
+      "translation": "渡轮汽笛响起时，Hana 正在试一个厨房小架子。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "It wobbles. Tea lives up here. This is serious.",
+      "translation": "它晃。上面要放茶的。这可很严重。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "Peter returns her toolbox, carrying a drawer as well.",
+      "translation": "Peter 来还工具箱，还抱了只抽屉。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "It's been sticking since the move. Could you have a look?",
+      "translation": "搬家后就一直卡住。能帮忙看看吗？",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "Hana looks from the drawer to her shelf, then the clock.",
+      "translation": "Hana 看看抽屉、自己的架子，又看看钟。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Ten minutes. This bench belongs to someone else at lunch.",
+      "translation": "十分钟。午饭时，工作台就轮到别人了。",
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "hana",
+      "speaker": "你的选择",
+      "text": "Drawer, or keep your eye on the shelf?",
+      "translation": "看看抽屉，还是留意那个架子？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I'll look at the drawer with you.",
+          "translation": "我和你们一起看看抽屉。",
+          "next": "drawer",
+          "flags": {
+            "first_a": true
+          },
+          "review": {
+            "context": "Hana 只留了十分钟检查 Peter 带来的抽屉。",
+            "outcome": "你参与检查抽屉，发现它离开柜体后无法重现问题，得留下有用的线索。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll stay with the shelf. Where does it wobble?",
+          "translation": "我看看架子。哪里会晃？",
+          "next": "shelf",
+          "flags": {
+            "first_a": false
+          },
+          "review": {
+            "context": "Hana 还没做好自己的架子，工作台到午饭就得让出。",
+            "outcome": "Peter 带回抽屉后，Hana 回来处理架子，才发现她自己装错了位置。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "drawer",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "Peter puts the drawer down. It has nothing to slide in.",
+      "translation": "Peter 放下抽屉。这里并没有能让它滑进去的柜体。",
+      "next": "drawer_2"
+    },
+    {
+      "id": "drawer_2",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Ah. We need the cupboard too.",
+      "translation": "啊。还得有柜子。",
+      "next": "drawer_3"
+    },
+    {
+      "id": "drawer_3",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "I did wonder. It wouldn't fit on the bus.",
+      "translation": "我也想过。公交车可放不下。",
+      "next": "drawer_4"
+    },
+    {
+      "id": "drawer_4",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "Hana checks the runners, but finds no obvious damage.",
+      "translation": "Hana 检查滑轨，没发现明显损坏。",
+      "next": "drawer_5"
+    },
+    {
+      "id": "drawer_5",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "We need something better than 'it sticks'.",
+      "translation": "只说“卡住了”，还是不够。",
+      "next": "second_drawer"
+    },
+    {
+      "id": "second_drawer",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "workshop",
+      "speaker": "你的选择",
+      "text": "What could help locate the problem?",
+      "translation": "怎么留下更有用的线索？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Peter, can you show where it stops?",
+          "translation": "Peter，能比一下卡住的位置吗？",
+          "next": "mark",
+          "flags": {
+            "second_drawer_a": true
+          },
+          "review": {
+            "context": "没有柜体，抽屉无法现场测试。",
+            "outcome": "Peter 用手比出位置，Hana 标了检查点，抽屉仍未修好。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's note what changed when you moved.",
+          "translation": "记记搬家时有哪些东西变了。",
+          "next": "note",
+          "flags": {
+            "second_drawer_a": false
+          },
+          "review": {
+            "context": "没有柜体，抽屉无法现场测试。",
+            "outcome": "Peter 想起柜子换了地面，你们记下这一线索，仍需回家检查。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mark",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "Peter holds his hands apart. Then changes the distance.",
+      "translation": "Peter 两手比出距离，又改了一下。",
+      "next": "mark_2"
+    },
+    {
+      "id": "mark_2",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "Peter",
+      "text": "There. I think. Less certain when it's not stuck.",
+      "translation": "这儿。大概。现在不卡，倒没把握了。",
+      "next": "mark_3"
+    },
+    {
+      "id": "mark_3",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "Hana marks a place to check with a paper label.",
+      "translation": "Hana 用纸标签标出一个待检查的位置。",
+      "next": "mark_4"
+    },
+    {
+      "id": "mark_4",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "Take a photo in the cupboard before you pull it out.",
+      "translation": "回去先在柜子里拍张照，再拿出来。",
+      "next": "mark_5"
+    },
+    {
+      "id": "mark_5",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "He takes the drawer home. She turns back to her shelf.",
+      "translation": "他带抽屉回家了。她转回自己的架子前。",
+      "next": "mark_6"
+    },
+    {
+      "id": "mark_6",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "Now. My own expensive wobble.",
+      "translation": "好了。轮到我这位晃晃悠悠的。",
+      "ending": true,
+      "experienceID": "AK311"
+    },
+    {
+      "id": "note",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "It used to stand on carpet. Now it's on bare boards.",
+      "translation": "原来放地毯上。现在直接放木地板。",
+      "next": "note_2"
+    },
+    {
+      "id": "note_2",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "You add that below 'after moving'. Hana circles it.",
+      "translation": "你把这句记在“搬家之后”下面。Hana 画了个圈。",
+      "next": "note_3"
+    },
+    {
+      "id": "note_3",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Check whether the whole cupboard rocks. Before sanding.",
+      "translation": "先看整个柜子晃不晃。别急着磨。",
+      "next": "note_4"
+    },
+    {
+      "id": "note_4",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "So I might have brought the innocent bit on the bus.",
+      "translation": "所以我可能把没毛病的部分抱上了公交。",
+      "next": "note_5"
+    },
+    {
+      "id": "note_5",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "He puts the note inside the drawer and lifts it again.",
+      "translation": "他把记录放进抽屉，又抱了起来。",
+      "next": "note_6"
+    },
+    {
+      "id": "note_6",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "Hana has six minutes left for her own shelf.",
+      "translation": "Hana 给自己的架子，还剩六分钟。",
+      "ending": true,
+      "experienceID": "AK312"
+    },
+    {
+      "id": "shelf",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "Hana gives Peter a note to check the cupboard at home.",
+      "translation": "Hana 给 Peter 写下回家检查柜体的提示。",
+      "next": "shelf_2"
+    },
+    {
+      "id": "shelf_2",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "He takes the drawer away. She turns her shelf around.",
+      "translation": "他抱着抽屉走了。她把自己的架子转过来。",
+      "next": "shelf_3"
+    },
+    {
+      "id": "shelf_3",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "Oh, no. That brace is backwards.",
+      "translation": "哦，不。撑条装反了。",
+      "next": "shelf_4"
+    },
+    {
+      "id": "shelf_4",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "She checks the instruction sheet, which is upside down.",
+      "translation": "她看看说明书。说明书也放反了。",
+      "next": "shelf_5"
+    },
+    {
+      "id": "shelf_5",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "Nobody mention the drawer.",
+      "translation": "谁也不准提抽屉。",
+      "next": "second_shelf"
+    },
+    {
+      "id": "second_shelf",
+      "act": 0,
+      "location": "奥克兰 · 借回来的工具",
+      "shot": "hana",
+      "speaker": "你的选择",
+      "text": "What would you like to do?",
+      "translation": "你想怎么做？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I'll hold it while you turn the brace.",
+          "translation": "你调整撑条，我帮你扶稳。",
+          "next": "hold",
+          "flags": {
+            "second_shelf_a": true
+          },
+          "review": {
+            "context": "Hana 发现自己把架子撑条装反了。",
+            "outcome": "你扶稳架子让她调整，晃动变小，但她仍需继续检查，尚未完工。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll take that chair and supervise the tea plan.",
+          "translation": "我坐那张椅子，监督放茶的规划。",
+          "next": "chair",
+          "flags": {
+            "second_shelf_a": false
+          },
+          "review": {
+            "context": "Hana 发现装反的位置，想把架子转回来继续检查。",
+            "outcome": "你坐下看架子布局，发现茶罐可能放不下，Hana 又得重新量。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hold",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "She shows you where to hold it, then resets the brace.",
+      "translation": "她指给你扶稳的位置，重新装正撑条。",
+      "next": "hold_2"
+    },
+    {
+      "id": "hold_2",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "The shelf rocks less. She takes its weight back.",
+      "translation": "架子晃得小了。她重新接住重量。",
+      "next": "hold_3"
+    },
+    {
+      "id": "hold_3",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "Better. I wouldn't trust it with the good teapot yet.",
+      "translation": "好多了。不过还不能放我那把好茶壶。",
+      "next": "hold_4"
+    },
+    {
+      "id": "hold_4",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "She sets it down and tests it from the other side.",
+      "translation": "她放下架子，又从另一边试了试。",
+      "next": "hold_5"
+    },
+    {
+      "id": "hold_5",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "Lunch will have to be quick. The bench has a booking.",
+      "translation": "午饭得快点吃。这张工作台可有预约。",
+      "ending": true,
+      "experienceID": "AK321"
+    },
+    {
+      "id": "chair",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "You sit down while she measures the space between shelves.",
+      "translation": "你坐下来。她量起两层搁板之间的距离。",
+      "next": "chair_2"
+    },
+    {
+      "id": "chair_2",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "你",
+      "text": "How tall is the tea tin?",
+      "translation": "茶罐多高？",
+      "next": "chair_3"
+    },
+    {
+      "id": "chair_3",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "She stops with the ruler halfway across.",
+      "translation": "尺子量到一半，她停住了。",
+      "next": "chair_4"
+    },
+    {
+      "id": "chair_4",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "I measured the tins. Did I measure the lids?",
+      "translation": "罐子量过了。盖子量没量？",
+      "next": "chair_5"
+    },
+    {
+      "id": "chair_5",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "She looks for her phone, leaving the ruler where it is.",
+      "translation": "她开始找手机，尺子还留在原处。",
+      "next": "chair_6"
+    },
+    {
+      "id": "chair_6",
+      "act": 1,
+      "location": "午饭前的工作台",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "From the harbour, another ferry sounds its horn.",
+      "translation": "海港那边，又一班渡轮鸣起汽笛。",
+      "ending": true,
+      "experienceID": "AK322"
+    }
+  ]
+}

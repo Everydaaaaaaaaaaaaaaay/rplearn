@@ -1,0 +1,293 @@
+{
+  "id": "departures_city_kingston_v2",
+  "version": 2,
+  "title": "节目末尾的名字",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "金斯敦 · 社区录音室",
+    "倒计时结束之前"
+  ],
+  "shots": {
+    "studio": {
+      "background": "dp_kingston_studio",
+      "actors": []
+    },
+    "listen": {
+      "background": "dp_kingston_studio",
+      "actors": [
+        {
+          "id": "Aaliyah",
+          "asset": "dp_aaliyah_listen",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "record": {
+      "background": "dp_kingston_record_clean",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "studio",
+      "speaker": "旁白",
+      "text": "Aaliyah stops the edit. It's still thirty seconds over.",
+      "translation": "Aaliyah 停下剪辑。节目仍超时三十秒。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "studio",
+      "speaker": "Aaliyah",
+      "text": "I welcomed everybody twice. Very welcoming of me.",
+      "translation": "我欢迎了大家两遍。我可真热情。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "studio",
+      "speaker": "旁白",
+      "text": "Her pen hovers over the closing credits.",
+      "translation": "她的笔停在结尾的致谢名单上。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "studio",
+      "speaker": "你",
+      "text": "Who fixed that cable during the interview?",
+      "translation": "采访中途是谁把那根线修好的？",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "studio",
+      "speaker": "Aaliyah",
+      "text": "Devon. On the floor, under my grand introduction.",
+      "translation": "Devon。趴在地上，我那宏大的开场白底下。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "studio",
+      "speaker": "旁白",
+      "text": "She plays it. A chair scrapes beneath her voice.",
+      "translation": "她按下播放。说话声下面，椅子刺啦响了一下。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "studio",
+      "speaker": "Aaliyah",
+      "text": "That's him going under. We could use that bit.",
+      "translation": "就是这儿，他钻下去了。这段倒可以用。",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "listen",
+      "speaker": "你的选择",
+      "text": "Which version would you like to try?",
+      "translation": "你想试剪哪一版？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Cut the second welcome. Keep the spoken credits.",
+          "translation": "剪掉第二段欢迎，保留口头致谢。",
+          "next": "opening",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "节目超时，致谢和主持人的开场都占时长。",
+            "outcome": "Aaliyah 缩短开场，也割舍了喜欢的结尾笑话，才保住完整致谢。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Use the repair sound, and name Devon there.",
+          "translation": "用那段修线的声音，在那里介绍 Devon。",
+          "next": "through",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "录音里留下了 Devon 修线的声音。",
+            "outcome": "你们把幕后工作剪进节目，停顿稍显笨拙，但能听见 Devon 本人。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "opening",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "record",
+      "speaker": "旁白",
+      "text": "The second welcome goes. Twelve seconds remain to cut.",
+      "translation": "第二段欢迎删掉了。还得再剪十二秒。",
+      "next": "opening_2"
+    },
+    {
+      "id": "opening_2",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "record",
+      "speaker": "Aaliyah",
+      "text": "Oh, don't look at my closing joke.",
+      "translation": "哦，别盯着我最后那个笑话。",
+      "next": "opening_3"
+    },
+    {
+      "id": "opening_3",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "record",
+      "speaker": "旁白",
+      "text": "She plays it once. Then once more.",
+      "translation": "她放了一遍。又放了一遍。",
+      "next": "opening_4"
+    },
+    {
+      "id": "opening_4",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "record",
+      "speaker": "你",
+      "text": "You really like that one.",
+      "translation": "你真的很喜欢它。",
+      "next": "opening_5"
+    },
+    {
+      "id": "opening_5",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "record",
+      "speaker": "Aaliyah",
+      "text": "I do. Devon was the only person who laughed.",
+      "translation": "是啊。就 Devon 一个人笑了。",
+      "next": "opening_6"
+    },
+    {
+      "id": "opening_6",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "record",
+      "speaker": "旁白",
+      "text": "She cuts it, records the names, and saves a copy.",
+      "translation": "她剪掉笑话，录下名字，保存一份副本。",
+      "next": "opening_7"
+    },
+    {
+      "id": "opening_7",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "record",
+      "speaker": "Aaliyah",
+      "text": "I'll tell it to him again. He owes me another laugh.",
+      "translation": "我再给他讲一遍。他还欠我一声笑。",
+      "ending": true,
+      "experienceID": "KI2A"
+    },
+    {
+      "id": "through",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "listen",
+      "speaker": "旁白",
+      "text": "A chair scrapes. Then Devon says, 'Try it now.'",
+      "translation": "椅子刺啦响了一下。然后 Devon 说：“再试试。”",
+      "next": "through_2"
+    },
+    {
+      "id": "through_2",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "listen",
+      "speaker": "Aaliyah",
+      "text": "That's Devon. He got us back on air.",
+      "translation": "这是 Devon，是他让我们重新有了声音。",
+      "next": "through_3"
+    },
+    {
+      "id": "through_3",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "listen",
+      "speaker": "旁白",
+      "text": "She records that line. It overlaps his next word.",
+      "translation": "她录下这一句，盖住了他接下来的话。",
+      "next": "through_4"
+    },
+    {
+      "id": "through_4",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "listen",
+      "speaker": "Aaliyah",
+      "text": "Again. My introductions are becoming a problem.",
+      "translation": "再来。我这些介绍词真成问题了。",
+      "next": "through_5"
+    },
+    {
+      "id": "through_5",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "listen",
+      "speaker": "旁白",
+      "text": "The new edit leaves a slightly awkward pause.",
+      "translation": "新剪辑留下一段有点别扭的停顿。",
+      "next": "through_6"
+    },
+    {
+      "id": "through_6",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "listen",
+      "speaker": "你",
+      "text": "He sounds as if he's still under the table.",
+      "translation": "听起来他好像还在桌子底下。",
+      "next": "through_7"
+    },
+    {
+      "id": "through_7",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "listen",
+      "speaker": "Aaliyah",
+      "text": "He was. I'm keeping that.",
+      "translation": "他当时就是在。这段我留着。",
+      "next": "through_8"
+    },
+    {
+      "id": "through_8",
+      "act": 0,
+      "location": "金斯敦 · 社区录音室",
+      "shot": "listen",
+      "speaker": "旁白",
+      "text": "She saves it before she can tidy the pause away.",
+      "translation": "她先保存下来，免得自己又去修那段停顿。",
+      "ending": true,
+      "experienceID": "KI2B"
+    }
+  ]
+}

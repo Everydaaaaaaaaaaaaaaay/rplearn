@@ -1,0 +1,286 @@
+{
+  "id": "departures_city_london_v2",
+  "version": 2,
+  "title": "退回书架的那一本",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "伦敦 · 午后的书店",
+    "推荐之外"
+  ],
+  "shots": {
+    "day": {
+      "background": "dp_london_day",
+      "actors": []
+    },
+    "book": {
+      "background": "dp_oliver_book",
+      "actors": []
+    },
+    "quiet": {
+      "background": "dp_oliver_quiet",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "day",
+      "speaker": "旁白",
+      "text": "Oliver finds your bookmark on page nineteen. Again.",
+      "translation": "Oliver 又在第十九页找到了你的书签。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "day",
+      "speaker": "Oliver",
+      "text": "Still there? That man has crossed Russia by now.",
+      "translation": "还在这儿？那个人这会儿都横穿俄罗斯了。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "day",
+      "speaker": "你",
+      "text": "I've crossed this paragraph six times.",
+      "translation": "我把这一段横穿了六遍。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "day",
+      "speaker": "Oliver",
+      "text": "I recommended it. I may have oversold the snow.",
+      "translation": "是我推荐的。可能把雪景夸过头了。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "day",
+      "speaker": "旁白",
+      "text": "He reaches for the book, then checks his own bookmark.",
+      "translation": "他伸手来拿书，又看了看自己那本里的书签。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "day",
+      "speaker": "你",
+      "text": "Page twenty-three?",
+      "translation": "第二十三页？",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "day",
+      "speaker": "Oliver",
+      "text": "The shop has been busy.",
+      "translation": "店里最近挺忙的。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "day",
+      "speaker": "旁白",
+      "text": "It is empty except for you and a sleeping cat.",
+      "translation": "店里只有你们和一只睡着的猫。",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "book",
+      "speaker": "你的选择",
+      "text": "What shall you do with this very long book?",
+      "translation": "怎么处理这本很长很长的书？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Find out what is holding both of you up.",
+          "translation": "看看究竟是什么把你们俩都卡住了。",
+          "next": "reread",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "你和推荐这本书的 Oliver 都没读下去。",
+            "outcome": "你们重读同一段，对主人公的看法仍不一致，决定先只读到火车站。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Find something you can finish before the cat wakes.",
+          "translation": "找一本能在猫醒来前读完的。",
+          "next": "short",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "你和推荐这本书的 Oliver 都没读下去。",
+            "outcome": "你们换读一篇短小说，Oliver 猜错了结尾，猫也提前醒了。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "reread",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "book",
+      "speaker": "旁白",
+      "text": "You read the paragraph aloud. Oliver follows the lines.",
+      "translation": "你把那一段念出来，Oliver 顺着文字看。",
+      "next": "reread_2"
+    },
+    {
+      "id": "reread_2",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "book",
+      "speaker": "你",
+      "text": "He keeps saying he'll leave. Then he orders more tea.",
+      "translation": "他一直说要走，然后又点一杯茶。",
+      "next": "reread_3"
+    },
+    {
+      "id": "reread_3",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "book",
+      "speaker": "Oliver",
+      "text": "I rather like him.",
+      "translation": "我倒挺喜欢他。",
+      "next": "reread_4"
+    },
+    {
+      "id": "reread_4",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "book",
+      "speaker": "你",
+      "text": "You would.",
+      "translation": "就知道你会。",
+      "next": "reread_5"
+    },
+    {
+      "id": "reread_5",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "book",
+      "speaker": "旁白",
+      "text": "Oliver finds the station a few pages ahead.",
+      "translation": "Oliver 在后面几页找到了火车站。",
+      "next": "reread_6"
+    },
+    {
+      "id": "reread_6",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "book",
+      "speaker": "Oliver",
+      "text": "Let's get him onto that train. Then I want lunch.",
+      "translation": "先把他送上火车。然后我要吃午饭。",
+      "next": "reread_7"
+    },
+    {
+      "id": "reread_7",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "book",
+      "speaker": "旁白",
+      "text": "Your bookmarks move. His stays four pages ahead.",
+      "translation": "你们的书签动了。他那枚仍然领先四页。",
+      "ending": true,
+      "experienceID": "LC2A"
+    },
+    {
+      "id": "short",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "quiet",
+      "speaker": "旁白",
+      "text": "He finds a story with seven pages and a missing dog.",
+      "translation": "他找出一篇七页长的小说，讲一只失踪的狗。",
+      "next": "short_2"
+    },
+    {
+      "id": "short_2",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "quiet",
+      "speaker": "Oliver",
+      "text": "The neighbour took it. Definitely.",
+      "translation": "邻居带走了它。肯定的。",
+      "next": "short_3"
+    },
+    {
+      "id": "short_3",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "quiet",
+      "speaker": "旁白",
+      "text": "On page six, the dog comes out from under the bed.",
+      "translation": "第六页，狗从床底下出来了。",
+      "next": "short_4"
+    },
+    {
+      "id": "short_4",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "quiet",
+      "speaker": "你",
+      "text": "Your recommendations come with detective work now?",
+      "translation": "你的推荐现在还附带破案服务？",
+      "next": "short_5"
+    },
+    {
+      "id": "short_5",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "quiet",
+      "speaker": "Oliver",
+      "text": "Poor detective work. No extra charge.",
+      "translation": "破得不好。不另收费。",
+      "next": "short_6"
+    },
+    {
+      "id": "short_6",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "quiet",
+      "speaker": "旁白",
+      "text": "The cat wakes before you finish the last page.",
+      "translation": "最后一页还没读完，猫就醒了。",
+      "next": "short_7"
+    },
+    {
+      "id": "short_7",
+      "act": 0,
+      "location": "伦敦 · 午后的书店",
+      "shot": "quiet",
+      "speaker": "Oliver",
+      "text": "She's read ahead. Look at that smug face.",
+      "translation": "它提前看过了。瞧那张得意的脸。",
+      "ending": true,
+      "experienceID": "LC2B"
+    }
+  ]
+}

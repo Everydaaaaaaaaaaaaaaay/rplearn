@@ -1,0 +1,313 @@
+{
+  "id": "departures_city_neworleans_v2",
+  "version": 2,
+  "title": "点歌纸上的一行字",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "新奥尔良 · 小场演出前",
+    "最后一首的空位"
+  ],
+  "shots": {
+    "room": {
+      "background": "dp_neworleans_room",
+      "actors": []
+    },
+    "june": {
+      "background": "dp_neworleans_room",
+      "actors": [
+        {
+          "id": "June",
+          "asset": "dp_june_request",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "music": {
+      "background": "dp_neworleans_music",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "You help Calvin sort requests before the evening set.",
+      "translation": "晚间演出前，你帮 Calvin 整理点歌条。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "room",
+      "speaker": "Calvin",
+      "text": "This one says, 'Something for getting through Thursday.'",
+      "translation": "这张写着，“来点撑过星期四的音乐。”",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "room",
+      "speaker": "你",
+      "text": "It's Saturday.",
+      "translation": "今天星期六。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "room",
+      "speaker": "Calvin",
+      "text": "Some Thursdays take their time leaving.",
+      "translation": "有些星期四，需要花点时间才会离开。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "A woman at the back raises her hand.",
+      "translation": "后排一位女士举起手。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "room",
+      "speaker": "June",
+      "text": "Mine. And nothing that sounds like a slow funeral.",
+      "translation": "我写的。还有，别来那种慢吞吞的葬礼音乐。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "Calvin turns over the ballad on his music stand.",
+      "translation": "Calvin 把谱架上的抒情曲翻了过去。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "room",
+      "speaker": "Calvin",
+      "text": "Useful detail. What else?",
+      "translation": "这点有用。还有呢？",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "june",
+      "speaker": "你的选择",
+      "text": "What would you like to ask June?",
+      "translation": "你想问 June 什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Something to tap your foot to?",
+          "translation": "想来点能跟着打拍子的？",
+          "next": "rhythm",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "June 想点歌，但记不得歌名，也不想听伤感慢歌。",
+            "outcome": "乐队试了两种速度，June 直接嫌第一种太急，最后用鞋尖跟上节拍。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Is there a sound you remember wanting to hear again?",
+          "translation": "有没有一种声音，是你还想再听一次的？",
+          "next": "piano",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "June 不记得歌名，仍然知道自己想听什么。",
+            "outcome": "她想听临街窗口里的钢琴，钢琴手从低音试起，最后把掌声接进下一首。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rhythm",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "June",
+      "text": "A little lift. Don't make me run for a bus.",
+      "translation": "轻快一点。别像让我追公交。",
+      "next": "rhythm_2"
+    },
+    {
+      "id": "rhythm_2",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "旁白",
+      "text": "Calvin taps a rhythm. She shakes her head at the speed.",
+      "translation": "Calvin 敲起节奏。她嫌太快，摇了摇头。",
+      "next": "rhythm_3"
+    },
+    {
+      "id": "rhythm_3",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "Calvin",
+      "text": "A bus that's willing to wait, then.",
+      "translation": "那就换一辆肯等人的公交。",
+      "next": "rhythm_4"
+    },
+    {
+      "id": "rhythm_4",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "旁白",
+      "text": "The band tries again. Her shoe finds the beat.",
+      "translation": "乐队又试了一次。她的鞋尖跟上了拍子。",
+      "next": "rhythm_5"
+    },
+    {
+      "id": "rhythm_5",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "旁白",
+      "text": "She misses a beat to take a drink, then finds it again.",
+      "translation": "她喝水时漏了一拍，又跟了回来。",
+      "next": "rhythm_6"
+    },
+    {
+      "id": "rhythm_6",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "你",
+      "text": "Is this the one?",
+      "translation": "是这个感觉吗？",
+      "next": "rhythm_7"
+    },
+    {
+      "id": "rhythm_7",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "June",
+      "text": "Nearly. Let them play it.",
+      "translation": "差不多了。让他们接着弹。",
+      "next": "rhythm_8"
+    },
+    {
+      "id": "rhythm_8",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "旁白",
+      "text": "Calvin turns back before the next bar passes.",
+      "translation": "下一小节过去之前，Calvin 已经转回乐队。",
+      "ending": true,
+      "experienceID": "NO2A"
+    },
+    {
+      "id": "piano",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "June",
+      "text": "A piano through an open window. Not in a hurry.",
+      "translation": "从敞开的窗里传来的钢琴。不着急的那种。",
+      "next": "piano_2"
+    },
+    {
+      "id": "piano_2",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "旁白",
+      "text": "The pianist tries a low phrase. June tilts her head.",
+      "translation": "钢琴手试了一句低音。June 歪头听着。",
+      "next": "piano_3"
+    },
+    {
+      "id": "piano_3",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "June",
+      "text": "Less grand. It was a very small window.",
+      "translation": "别这么宏大。那扇窗很小。",
+      "next": "piano_4"
+    },
+    {
+      "id": "piano_4",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "旁白",
+      "text": "He lifts his hands, then begins again more softly.",
+      "translation": "他抬起双手，再弹时轻了些。",
+      "next": "piano_5"
+    },
+    {
+      "id": "piano_5",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "旁白",
+      "text": "This time she stops turning the paper in her fingers.",
+      "translation": "这一次，她不再翻弄手里的纸条。",
+      "next": "piano_6"
+    },
+    {
+      "id": "piano_6",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "旁白",
+      "text": "Her first clap comes early. He plays straight into it.",
+      "translation": "她第一下掌声拍早了。他顺着掌声接着弹下去。",
+      "next": "piano_7"
+    },
+    {
+      "id": "piano_7",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "Calvin",
+      "text": "Leave the list. I'll catch the next request later.",
+      "translation": "点歌单先放着。下一张等会儿再收。",
+      "next": "piano_8"
+    },
+    {
+      "id": "piano_8",
+      "act": 0,
+      "location": "新奥尔良 · 小场演出前",
+      "shot": "music",
+      "speaker": "旁白",
+      "text": "He lifts his instrument before the piano phrase ends.",
+      "translation": "钢琴那句还没结束，他便举起了乐器。",
+      "ending": true,
+      "experienceID": "NO2B"
+    }
+  ]
+}

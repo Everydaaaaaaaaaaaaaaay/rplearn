@@ -18,7 +18,7 @@ public struct LondonEpisodeView: View {
     private let resourceName: String
     @State private var activeResourceName: String
     @State private var requestedEdition: String?
-    @State private var originalIsReadable = false
+    @State private var readableOlderEditions: [String] = []
     @State private var session: EpisodeSession?
     @State private var art: [String: UIImage] = [:]
     @State private var loadError = false
@@ -398,11 +398,14 @@ public struct LondonEpisodeView: View {
                         .padding()
                         .accessibilityIdentifier("episode.currentEdition")
                 }
-                if originalIsReadable, activeResourceName != resourceName {
-                    Button("继续阅读原版") { readEdition(resourceName) }
+                ForEach(readableOlderEditions.filter { $0 != activeResourceName }, id: \.self) { edition in
+                    Button("继续阅读旧版（第\(edition.components(separatedBy: "_v").last ?? "1")版）") {
+                        readEdition(edition)
+                    }
                         .buttonStyle(.bordered)
                         .padding()
-                        .accessibilityIdentifier("episode.originalEdition")
+                        .accessibilityIdentifier(edition == resourceName
+                            ? "episode.originalEdition" : "episode.olderEdition.\(edition)")
                 }
                 if let session {
                     LazyVStack(alignment: .leading, spacing: 22) {
@@ -606,18 +609,22 @@ public struct LondonEpisodeView: View {
     private func load() async {
         guard session == nil else { return }
         do {
-            let originalProgress = try await deps.storyProgress.progress(storyID: resourceName)
-            let currentProgress: StoryProgressDTO?
-            if let currentID = DepartureStoryIdentity.currentEditions[resourceName] {
-                currentProgress = try await deps.storyProgress.progress(storyID: currentID)
-            } else { currentProgress = nil }
+            let editions = DepartureStoryIdentity.readingEditions(for: resourceName)
+            var progressByEdition: [String: StoryProgressDTO] = [:]
+            for edition in editions {
+                progressByEdition[edition] = try await deps.storyProgress.progress(storyID: edition)
+            }
+            let originalProgress = progressByEdition[resourceName]
             let hasOriginalPreview = originalProgress == nil && UserDefaults.standard.data(forKey: storageKey) != nil
-            originalIsReadable = originalProgress.map {
-                $0.currentNodeID != nil || !$0.readingFlags.isEmpty
-            } ?? hasOriginalPreview
+            readableOlderEditions = editions.dropLast().filter {
+                progressByEdition[$0].map {
+                    $0.currentNodeID != nil || !$0.readingFlags.isEmpty
+                } ?? ($0 == resourceName && hasOriginalPreview)
+            }
+            var unfinished = Set(progressByEdition.values.filter { !$0.isCompleted }.map(\.storyID))
+            if hasOriginalPreview { unfinished.insert(resourceName) }
             activeResourceName = requestedEdition ?? DepartureStoryIdentity.readingID(for: resourceName,
-                hasUnfinishedOriginal: originalProgress.map { !$0.isCompleted } ?? hasOriginalPreview,
-                hasCurrentProgress: currentProgress != nil)
+                unfinishedEditions: unfinished, startedEditions: Set(progressByEdition.keys))
             guard let url = Bundle.main.url(forResource: activeResourceName, withExtension: "json") else {
                 throw CocoaError(.fileNoSuchFile)
             }
@@ -630,7 +637,7 @@ public struct LondonEpisodeView: View {
             for name in episode.assetNames {
                 guard Self.artURL(name) != nil || UIImage(named: name) != nil else { throw CocoaError(.fileNoSuchFile) }
             }
-            let progress = try await deps.storyProgress.progress(storyID: activeResourceName)
+            let progress = progressByEdition[activeResourceName]
             completionSettled = progress?.isCompleted == true
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_EPISODE_FRESH"] == "1" {

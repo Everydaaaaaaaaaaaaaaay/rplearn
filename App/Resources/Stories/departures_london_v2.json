@@ -1,0 +1,883 @@
+{
+  "id": "departures_london_v2",
+  "version": 2,
+  "title": "空着的那把椅子",
+  "start": "start",
+  "acts": [
+    "伦敦 · 书店里的雨夜",
+    "一页纸的声音",
+    "散场之后"
+  ],
+  "shots": {
+    "outside": {
+      "background": "london_exterior",
+      "actors": []
+    },
+    "room": {
+      "background": "london_interior",
+      "actors": []
+    },
+    "oliver_neutral": {
+      "background": "london_interior",
+      "actors": [
+        {
+          "id": "Oliver",
+          "asset": "dp_oliver_manuscript",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
+    },
+    "oliver_worried": {
+      "background": "london_interior",
+      "actors": [
+        {
+          "id": "Oliver",
+          "asset": "dp_oliver_manuscript",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
+    },
+    "nora": {
+      "background": "london_interior",
+      "actors": [
+        {
+          "id": "Nora",
+          "asset": "dp_nora_host",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
+    },
+    "reading": {
+      "background": "london_reading",
+      "actors": []
+    },
+    "reading_oliver_smile": {
+      "background": "london_reading",
+      "actors": [
+        {
+          "id": "Oliver",
+          "asset": "dp_oliver_relief",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
+    },
+    "listening": {
+      "background": "dp_oliver_listening",
+      "actors": []
+    },
+    "outside_relief": {
+      "background": "london_exterior",
+      "actors": [
+        {
+          "id": "Oliver",
+          "asset": "dp_oliver_relief",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "outside",
+      "speaker": "旁白",
+      "text": "Rain shines on the pavement outside Oliver's bookshop.",
+      "translation": "Oliver 的书店外，人行道被雨水照得发亮。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "outside",
+      "speaker": "Oliver",
+      "text": "You found it. I nearly sent my pigeon directions.",
+      "translation": "你找到了。我差点就把那套鸽子路线发给你。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "outside",
+      "speaker": "你",
+      "text": "The pigeon was outside the wrong pub.",
+      "translation": "鸽子停在了另一家酒馆外。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "outside",
+      "speaker": "Oliver",
+      "text": "Unreliable. Always has been.",
+      "translation": "不可靠。一直这样。",
+      "next": "inside"
+    },
+    {
+      "id": "inside",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "Inside, Nora removes a name from the reading list.",
+      "translation": "店里，Nora 从朗读名单上划去一个名字。",
+      "next": "inside_2"
+    },
+    {
+      "id": "inside_2",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "room",
+      "speaker": "Nora",
+      "text": "One cancellation. More time for the terrible biscuits.",
+      "translation": "一位来不了了。能多吃一会儿难吃的饼干。",
+      "next": "inside_3"
+    },
+    {
+      "id": "inside_3",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "room",
+      "speaker": "Oliver",
+      "text": "You bought those.",
+      "translation": "那是你买的。",
+      "next": "inside_4"
+    },
+    {
+      "id": "inside_4",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "room",
+      "speaker": "Nora",
+      "text": "I bought the tin. A serious error.",
+      "translation": "我看中了饼干盒。严重失误。",
+      "next": "inside_5"
+    },
+    {
+      "id": "inside_5",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "Oliver's folded page slips from his coat pocket.",
+      "translation": "Oliver 外套口袋里，折起的纸滑了出来。",
+      "next": "inside_6"
+    },
+    {
+      "id": "inside_6",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "room",
+      "speaker": "你",
+      "text": "Is that for tonight?",
+      "translation": "那是今晚要念的？",
+      "next": "inside_7"
+    },
+    {
+      "id": "inside_7",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "room",
+      "speaker": "Oliver",
+      "text": "Shopping list. Unusually strong on imaginary people.",
+      "translation": "购物清单。虚构人物买得特别多。",
+      "next": "inside_8"
+    },
+    {
+      "id": "inside_8",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "He smooths it once, then folds it smaller.",
+      "translation": "他把纸抚平一次，又折得更小。",
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_worried",
+      "speaker": "你的选择",
+      "text": "What catches your interest?",
+      "translation": "你想先弄清什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ask to see the first sentence.",
+          "translation": "问问能不能看看第一句。",
+          "next": "page",
+          "flags": {
+            "first_a": true
+          },
+          "review": {
+            "context": "Oliver 带来了小说，却还没报名朗读。",
+            "outcome": "你先听到小说的开头，也发现 Oliver 正在躲避对后文的追问。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Ask Nora what the missing reader was going to read.",
+          "translation": "问问 Nora，缺席的人原本要读什么。",
+          "next": "list",
+          "flags": {
+            "first_a": false
+          },
+          "review": {
+            "context": "朗读名单临时少了一人。",
+            "outcome": "你听到 Nora 对朗读顺序的顾虑，Oliver 自己提出带了一页小说。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "page",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_neutral",
+      "speaker": "Oliver",
+      "text": "Every morning, the man at number twelve opened his window.",
+      "translation": "每天早上，十二号屋子的那个人都会先打开窗。",
+      "next": "page_2"
+    },
+    {
+      "id": "page_2",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_neutral",
+      "speaker": "Oliver",
+      "text": "Before he checked the weather.",
+      "translation": "然后再看天气。",
+      "next": "page_3"
+    },
+    {
+      "id": "page_3",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_neutral",
+      "speaker": "你",
+      "text": "Why that way round?",
+      "translation": "为什么反着来？",
+      "next": "page_4"
+    },
+    {
+      "id": "page_4",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_neutral",
+      "speaker": "Oliver",
+      "text": "Good question. An inconveniently good question.",
+      "translation": "好问题。好得有点让我为难。",
+      "next": "page_5"
+    },
+    {
+      "id": "page_5",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_neutral",
+      "speaker": "旁白",
+      "text": "There is a blank line halfway down the page.",
+      "translation": "纸页中间，空着一行。",
+      "next": "page_6"
+    },
+    {
+      "id": "page_6",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_neutral",
+      "speaker": "Oliver",
+      "text": "I keep changing what happens after the window.",
+      "translation": "开窗之后发生什么，我一直在改。",
+      "next": "ready"
+    },
+    {
+      "id": "list",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "nora",
+      "speaker": "Nora",
+      "text": "A sea poem. We already have two sea poems.",
+      "translation": "海的诗。前面已经有两首海的诗了。",
+      "next": "list_2"
+    },
+    {
+      "id": "list_2",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "nora",
+      "speaker": "你",
+      "text": "That's a lot of sea for a room this size.",
+      "translation": "这么小的屋子，海可够多的。",
+      "next": "list_3"
+    },
+    {
+      "id": "list_3",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "nora",
+      "speaker": "Oliver",
+      "text": "Mine has a street. Just one street.",
+      "translation": "我这篇有一条街。就一条。",
+      "next": "list_4"
+    },
+    {
+      "id": "list_4",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "nora",
+      "speaker": "旁白",
+      "text": "Nora looks at the page. Oliver grips its folded edge.",
+      "translation": "Nora 看向那页纸。Oliver 捏紧了折边。",
+      "next": "list_5"
+    },
+    {
+      "id": "list_5",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "nora",
+      "speaker": "Nora",
+      "text": "Can we put it between the seas?",
+      "translation": "能放在两片海中间吗？",
+      "next": "list_6"
+    },
+    {
+      "id": "list_6",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "nora",
+      "speaker": "Oliver",
+      "text": "Possibly. It's only a page.",
+      "translation": "也许吧。只有一页。",
+      "next": "ready"
+    },
+    {
+      "id": "ready",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_worried",
+      "speaker": "Oliver",
+      "text": "I want to read it. I also want a small power cut.",
+      "translation": "我想念。也希望这里小小地停一次电。",
+      "next": "ready_2"
+    },
+    {
+      "id": "ready_2",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_worried",
+      "speaker": "Nora",
+      "text": "Emergency lamps. Sorry.",
+      "translation": "有应急灯。真遗憾。",
+      "next": "ready_3"
+    },
+    {
+      "id": "ready_3",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_worried",
+      "speaker": "旁白",
+      "text": "The first reader takes the chair. Oliver stays beside you.",
+      "translation": "第一位朗读者坐上椅子。Oliver 仍站在你旁边。",
+      "next": "ready_4"
+    },
+    {
+      "id": "ready_4",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_worried",
+      "speaker": "Oliver",
+      "text": "One page. I'll stop there. No explaining the whole novel.",
+      "translation": "一页就停。别让我解释整部小说。",
+      "next": "ready_5"
+    },
+    {
+      "id": "ready_5",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "nora",
+      "speaker": "Nora",
+      "text": "Next is a sea poem. Oliver, give me a nod if you're in.",
+      "translation": "下一位是海的诗。Oliver，想上就给我个信号。",
+      "next": "second"
+    },
+    {
+      "id": "second",
+      "act": 0,
+      "location": "伦敦 · 书店里的雨夜",
+      "shot": "oliver_worried",
+      "speaker": "你的选择",
+      "text": "The chair will be free after this reader.",
+      "translation": "这位读者结束后，椅子就空出来了。",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I'll sit where you can see me. Give the page a go.",
+          "translation": "我坐在你能看见的地方。试试这一页吧。",
+          "next": "read",
+          "flags": {
+            "second_a": true
+          },
+          "review": {
+            "context": "Oliver 想读，也担心还没写好的小说。",
+            "outcome": "Oliver 自己上前读了一页，有人笑在了他没预料的位置，他没读到下一页。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's listen tonight. I'm curious about that sea poem.",
+          "translation": "今晚先听吧。我想听听那首海的诗。",
+          "next": "listen",
+          "flags": {
+            "second_a": false
+          },
+          "review": {
+            "context": "Oliver 想读，也还在犹豫。",
+            "outcome": "你们听了别人的朗读，之后 Oliver 私下继续念到面包店，却停在未写完的地方。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "read",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "旁白",
+      "text": "Oliver nods to Nora, then unfolds the page at the chair.",
+      "translation": "Oliver 向 Nora 点点头，走到椅子旁展开纸。",
+      "next": "read_2"
+    },
+    {
+      "id": "read_2",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "Oliver",
+      "text": "If I faint, call it an experimental ending.",
+      "translation": "如果我晕倒，请说这是实验性结尾。",
+      "next": "read_3"
+    },
+    {
+      "id": "read_3",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "旁白",
+      "text": "He starts too quickly. The paper shakes against his knee.",
+      "translation": "他开口有点快。纸页在膝头轻轻发抖。",
+      "next": "read_window"
+    },
+    {
+      "id": "read_window",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "Oliver",
+      "text": "Every morning, the man at number twelve opened his window.",
+      "translation": "每天早上，十二号屋子的那个人都会先打开窗。",
+      "next": "read_weather"
+    },
+    {
+      "id": "read_weather",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "Oliver",
+      "text": "Before he checked the weather.",
+      "translation": "然后再看天气。",
+      "next": "read_4"
+    },
+    {
+      "id": "read_4",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "Oliver",
+      "text": "The man said a forecast could tell you about rain.",
+      "translation": "那个人说，预报能告诉你会不会下雨。",
+      "next": "read_5"
+    },
+    {
+      "id": "read_5",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "Oliver",
+      "text": "But not what the street had decided to become.",
+      "translation": "却说不出这条街今天决定成为什么样子。",
+      "next": "read_6"
+    },
+    {
+      "id": "read_6",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "旁白",
+      "text": "Someone near the back gives a small laugh.",
+      "translation": "后排有人轻轻笑了一声。",
+      "next": "read_7"
+    },
+    {
+      "id": "read_7",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "Oliver",
+      "text": "That Tuesday, a chair stood outside the bakery.",
+      "translation": "那个星期二，面包店门外多了一把椅子。",
+      "next": "read_8"
+    },
+    {
+      "id": "read_8",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "Oliver",
+      "text": "He sat down before he found a reason.",
+      "translation": "他还没想好理由，就坐下了。",
+      "next": "read_9"
+    },
+    {
+      "id": "read_9",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "旁白",
+      "text": "He reaches the blank line, waits, and lowers the page.",
+      "translation": "他念到空行，停了一会儿，把纸放下。",
+      "next": "read_10"
+    },
+    {
+      "id": "read_10",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading",
+      "speaker": "旁白",
+      "text": "There is applause. Nora passes him the biscuit tin.",
+      "translation": "掌声响起来。Nora 把饼干盒递给他。",
+      "next": "read_after"
+    },
+    {
+      "id": "read_after",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading_oliver_smile",
+      "speaker": "Oliver",
+      "text": "They laughed at the street. I wasn't trying to be funny.",
+      "translation": "他们笑了那条街。我那句没打算搞笑。",
+      "next": "read_after_2"
+    },
+    {
+      "id": "read_after_2",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading_oliver_smile",
+      "speaker": "你",
+      "text": "The street sounds rather full of itself.",
+      "translation": "那条街听着确实挺自以为是的。",
+      "next": "read_after_3"
+    },
+    {
+      "id": "read_after_3",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading_oliver_smile",
+      "speaker": "旁白",
+      "text": "He looks down at the sentence. He does not cross it out.",
+      "translation": "他低头看看那一句，没有划掉。",
+      "next": "read_after_4"
+    },
+    {
+      "id": "read_after_4",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "reading_oliver_smile",
+      "speaker": "Oliver",
+      "text": "I'm keeping it. Though now I have to read it differently.",
+      "translation": "我留着。不过以后得换个念法。",
+      "next": "read_close"
+    },
+    {
+      "id": "listen",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "listening",
+      "speaker": "旁白",
+      "text": "You take two seats. Oliver's page stays in his hand.",
+      "translation": "你们找了两个座位。Oliver 手里还拿着纸。",
+      "next": "listen_2"
+    },
+    {
+      "id": "listen_2",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "listening",
+      "speaker": "旁白",
+      "text": "The sea poem turns out to be about a broken kettle.",
+      "translation": "那首海的诗，讲的竟然是一只坏水壶。",
+      "next": "listen_3"
+    },
+    {
+      "id": "listen_3",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "listening",
+      "speaker": "Oliver",
+      "text": "I was not expecting the sea to be in the kitchen.",
+      "translation": "没想到海在厨房里。",
+      "next": "listen_4"
+    },
+    {
+      "id": "listen_4",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "listening",
+      "speaker": "旁白",
+      "text": "He laughs, then misses the next line. He leans forward.",
+      "translation": "他笑了一下，漏听了下一句，便往前探了探身。",
+      "next": "listen_5"
+    },
+    {
+      "id": "listen_5",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "listening",
+      "speaker": "旁白",
+      "text": "Afterwards, Nora begins stacking cups.",
+      "translation": "散场后，Nora 开始摞杯子。",
+      "next": "listen_6"
+    },
+    {
+      "id": "listen_6",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "listening",
+      "speaker": "Oliver",
+      "text": "Want the street version? Just the bit I've finished.",
+      "translation": "想听听街的版本吗？就念写完的那段。",
+      "next": "private_read"
+    },
+    {
+      "id": "private_read",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "oliver_neutral",
+      "speaker": "旁白",
+      "text": "He reads the window, the bakery, the chair.",
+      "translation": "他念了那扇窗、面包店，还有椅子。",
+      "next": "private_read_2"
+    },
+    {
+      "id": "private_read_2",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "oliver_neutral",
+      "speaker": "你",
+      "text": "What does the man do next?",
+      "translation": "那个人接下来做什么？",
+      "next": "private_read_3"
+    },
+    {
+      "id": "private_read_3",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "oliver_neutral",
+      "speaker": "Oliver",
+      "text": "That's where I stopped. He has excellent sitting skills.",
+      "translation": "我就写到这儿。他可真擅长坐着。",
+      "next": "private_read_4"
+    },
+    {
+      "id": "private_read_4",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "oliver_neutral",
+      "speaker": "旁白",
+      "text": "He begins a sentence, shakes his head, and puts it away.",
+      "translation": "他又起了半句，摇摇头，把纸收起来。",
+      "next": "private_read_5"
+    },
+    {
+      "id": "private_read_5",
+      "act": 1,
+      "location": "一页纸的声音",
+      "shot": "oliver_neutral",
+      "speaker": "Oliver",
+      "text": "No. That was the bad version. You heard nothing.",
+      "translation": "不，那是写坏的版本。你什么也没听见。",
+      "next": "listen_close"
+    },
+    {
+      "id": "read_close",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "旁白",
+      "text": "The rain has stopped by the time you reach the door.",
+      "translation": "走到门口时，雨已经停了。",
+      "branch": {
+        "flag": "first_a",
+        "yes": "read_close_a",
+        "no": "read_close_b"
+      }
+    },
+    {
+      "id": "listen_close",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "旁白",
+      "text": "The rain has stopped by the time you reach the door.",
+      "translation": "走到门口时，雨已经停了。",
+      "branch": {
+        "flag": "first_a",
+        "yes": "listen_close_a",
+        "no": "listen_close_b"
+      }
+    },
+    {
+      "id": "read_close_a",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "Oliver",
+      "text": "Still thinking about why he opens the window first?",
+      "translation": "还在想他为什么先开窗？",
+      "next": "read_close_a_2"
+    },
+    {
+      "id": "read_close_a_2",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "你",
+      "text": "Now I'm wondering who put the chair there.",
+      "translation": "现在我想知道，椅子是谁放的。",
+      "next": "read_close_a_3"
+    },
+    {
+      "id": "read_close_a_3",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "旁白",
+      "text": "He gets the page out again, using the door as a desk.",
+      "translation": "他又拿出纸，借门板垫着写字。",
+      "ending": true,
+      "experienceID": "LM2AA"
+    },
+    {
+      "id": "read_close_b",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "Nora",
+      "text": "The street worked. Next month I have three sea poems.",
+      "translation": "那条街挺好。下个月我有三首海的诗。",
+      "next": "read_close_b_2"
+    },
+    {
+      "id": "read_close_b_2",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "Oliver",
+      "text": "I'll need a longer street.",
+      "translation": "我得把街写长一点。",
+      "next": "read_close_b_3"
+    },
+    {
+      "id": "read_close_b_3",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "旁白",
+      "text": "He pockets the page, leaving its corner unfolded.",
+      "translation": "他收好纸，留了一个角没有折进去。",
+      "ending": true,
+      "experienceID": "LM2BA"
+    },
+    {
+      "id": "listen_close_a",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "Oliver",
+      "text": "Don't tell me your theory about the window yet.",
+      "translation": "先别把你对那扇窗的猜想告诉我。",
+      "next": "listen_close_a_2"
+    },
+    {
+      "id": "listen_close_a_2",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "你",
+      "text": "I don't have one.",
+      "translation": "我还没猜呢。",
+      "next": "listen_close_a_3"
+    },
+    {
+      "id": "listen_close_a_3",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "Oliver",
+      "text": "Good. Nor do I.",
+      "translation": "那就好。我也没。",
+      "next": "listen_close_a_4"
+    },
+    {
+      "id": "listen_close_a_4",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "旁白",
+      "text": "He checks his pocket for the page before locking up.",
+      "translation": "锁门前，他摸了摸口袋里的纸。",
+      "ending": true,
+      "experienceID": "LM2AB"
+    },
+    {
+      "id": "listen_close_b",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "Oliver",
+      "text": "The kettle poem was good. Annoyingly good.",
+      "translation": "水壶那首写得好。好得让人有点烦。",
+      "next": "listen_close_b_2"
+    },
+    {
+      "id": "listen_close_b_2",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "你",
+      "text": "Bring a toaster next time.",
+      "translation": "下次你带个烤面包机来。",
+      "next": "listen_close_b_3"
+    },
+    {
+      "id": "listen_close_b_3",
+      "act": 2,
+      "location": "散场之后",
+      "shot": "outside_relief",
+      "speaker": "旁白",
+      "text": "He laughs, then looks back at the empty reading chair.",
+      "translation": "他笑了，又回头看了一眼空下来的朗读椅。",
+      "ending": true,
+      "experienceID": "LM2BB"
+    }
+  ],
+  "maxDialogueCharacters": 65
+}
