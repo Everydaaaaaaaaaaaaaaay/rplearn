@@ -235,6 +235,7 @@ public struct SignInView: View {
         }
         .buttonStyle(.dsWorkbenchAction)
         .disabled(isBusy || !isFormValid)
+        .accessibilityIdentifier("auth.submitCredentials")
     }
 
     private func syncItem(_ systemImage: String, text: String) -> some View {
