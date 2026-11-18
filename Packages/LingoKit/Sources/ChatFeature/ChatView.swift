@@ -213,17 +213,8 @@ public struct ChatView: View {
         }
         .dsQuickNotice($viewModel.quickNotice)
         .background {
-            GeometryReader { viewport in
-                // Share the gesture state rather than copying progress through onChange:
-                // keyboard dismissal and gesture reset must resolve to the same final page.
-                let reveal = (learningSelected ? 1 : 0) - learningTranslation / max(viewport.size.width, 1)
-                ZStack {
-                    Color.dsBackground
-                    DSLearningSceneBackdrop(regionID: learningRegionID)
-                        .opacity(min(1, max(0, reveal)))
-                }
-            }
-            .animation(reduceMotion ? nil : .interactiveSpring(duration: 0.28, extraBounce: 0), value: learningSelected)
+            ChatLearningBackdrop(regionID: learningRegionID, learningSelected: learningSelected,
+                translation: $learningTranslation)
         }
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
@@ -241,6 +232,7 @@ public struct ChatView: View {
         .toolbarBackground(learningSelected ? .hidden : .automatic, for: .navigationBar)
         .toolbarColorScheme(learningSelected ? .dark : nil, for: .navigationBar)
         .tint(learningSelected ? .white : .accentColor)
+        .toolbarRole(.editor)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             chatIdentityToolbar
@@ -443,7 +435,7 @@ public struct ChatView: View {
                 }
             }
             .buttonStyle(.plain)
-            .frame(width: max(44, viewportWidth - 188), alignment: .leading)
+            .frame(maxWidth: max(44, viewportWidth - 188), alignment: .leading)
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("\(viewModel.character.displayName)，\(chatStatus(presence, at: context.date))，\(deps.regionName(viewModel.character.card.regionID))当地时间 \(ChatHeaderStatus.localTime(at: context.date, timeZoneIdentifier: presence.timeZoneIdentifier))")
             .accessibilityHint("打开聊天设置")

@@ -1,4 +1,5 @@
 import SwiftUI
+import DesignSystem
 
 /// 两页保留在同一视图树；横拖只改变位置，不重建聊天和草稿。
 struct ChatLearningPager<Chat: View, Learning: View>: View {
@@ -45,5 +46,25 @@ struct ChatLearningPager<Chat: View, Learning: View>: View {
     private func accepts(_ value: DragGesture.Value, size: CGSize) -> Bool {
         enabled && value.startLocation.x > 28 && value.startLocation.y < size.height - 90 &&
         abs(value.translation.width) > abs(value.translation.height) * 1.5
+    }
+}
+
+/// Gesture progress is consumed by the moving pages and backdrop, outside the chat host.
+struct ChatLearningBackdrop: View {
+    let regionID: String?
+    let learningSelected: Bool
+    let translation: GestureState<CGFloat>
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
+        GeometryReader { viewport in
+            let reveal = (learningSelected ? 1 : 0) - translation.wrappedValue / max(viewport.size.width, 1)
+            ZStack {
+                Color.dsBackground
+                DSLearningSceneBackdrop(regionID: regionID)
+                    .opacity(min(1, max(0, reveal)))
+            }
+        }
+        .animation(reduceMotion ? nil : .interactiveSpring(duration: 0.28, extraBounce: 0), value: learningSelected)
     }
 }
