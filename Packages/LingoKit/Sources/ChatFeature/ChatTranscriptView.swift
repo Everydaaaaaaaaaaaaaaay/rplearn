@@ -18,6 +18,8 @@ private struct ChatTranscriptBoundsKey: PreferenceKey {
     }
 }
 
+private let chatMessageInset: CGFloat = 12
+
 /// Owns conversation scrolling and bubble interaction independently of draft editing.
 struct ChatTranscriptView: View {
     let viewModel: ChatViewModel
@@ -70,6 +72,7 @@ struct ChatTranscriptView: View {
                             timeMarker(for: message.createdAt)
                                 .padding(.top, index == 0 ? 2 : 12)
                                 .padding(.bottom, 6)
+                                .padding(.horizontal, chatMessageInset)
                         }
                         messageRow(message, at: index)
                             .id(message.id)
@@ -86,6 +89,7 @@ struct ChatTranscriptView: View {
                                 reduceMotion ? nil : .easeInOut(duration: 0.2),
                                 value: highlightedMessageID
                             )
+                            .padding(.horizontal, chatMessageInset)
                     }
                     if viewModel.streamingText != nil {
                         MessageBubble(
@@ -99,12 +103,14 @@ struct ChatTranscriptView: View {
                         }
                         .id("streaming")
                         .padding(.top, streamingTopSpacing)
+                        .padding(.horizontal, chatMessageInset)
                         .transition(.opacity)
                     }
                     if let error = viewModel.errorMessage {
                         if error.contains("额度") || error.contains("登录") || error.contains("语音体验") {
                             Button("查看会员订阅", action: deps.onShowAccess)
                                 .font(.footnote.weight(.semibold))
+                                .padding(.horizontal, chatMessageInset)
                         }
                         Label(error, systemImage: "exclamationmark.triangle.fill")
                             .font(.footnote)
@@ -113,6 +119,7 @@ struct ChatTranscriptView: View {
                             .padding(.vertical, 8)
                             .background(.regularMaterial, in: Capsule())
                             .padding(.top, 8)
+                            .padding(.horizontal, chatMessageInset)
                     }
                     if viewModel.canRetryUnansweredReply {
                         Button("重试回复", systemImage: "arrow.clockwise") {
@@ -120,12 +127,14 @@ struct ChatTranscriptView: View {
                         }
                         .font(.footnote.weight(.semibold))
                         .padding(.vertical, 8)
+                        .padding(.horizontal, chatMessageInset)
                     }
                     // Include the trailing gap in the lazy stack’s bottom edge.
                     Color.clear.frame(height: 10).accessibilityHidden(true)
                 }
                 .scrollTargetLayout()
-                .padding(.horizontal, 12)
+                // Keep the gutter inside the lazy rows so a scroll anchor adjustment
+                // cannot move them between the padded and unpadded content origins.
                 .frame(maxWidth: .infinity)
                 .background { keyboardDismissBackdrop }
                 .anchorPreference(key: ChatTranscriptBoundsKey.self, value: .bounds) { $0 }

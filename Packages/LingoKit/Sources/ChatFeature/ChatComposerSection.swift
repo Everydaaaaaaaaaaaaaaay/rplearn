@@ -158,44 +158,36 @@ struct ChatComposerView: View {
     }
 
     private var composerAction: some View {
-        Group {
-            if composerFocus != nil {
-                Button { Task { await sendComposerDraft() } } label: {
-                    Image(systemName: "arrow.up")
-                        .font(.system(size: 19, weight: .semibold))
-                        .foregroundStyle(.white)
-                        .frame(width: 32, height: 32)
-                        .background(composerTint, in: Circle())
-                        .frame(width: 44, height: 44)
-                }
-                .disabled(viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                .accessibilityLabel("发送消息")
-                .accessibilityIdentifier("chat.send")
+        let sends = composerFocus != nil
+        return Button {
+            if sends {
+                Task { await sendComposerDraft() }
+            } else if showsChatFunctions {
+                // Keep the same reserved height while the system keyboard takes over.
+                showsChatFunctions = false
+                isVoiceMode = false
+                composerFocus = .english
             } else {
-                Button {
-                    if showsChatFunctions {
-                        // Keep the same reserved height while the system keyboard takes over.
-                        showsChatFunctions = false
-                        isVoiceMode = false
-                        composerFocus = .english
-                    } else {
-                        withAnimation(inputDockAnimation) {
-                            showsChatFunctions = true
-                            inputDockHeight = preferredKeyboardHeight
-                        }
-                    }
-                } label: {
-                    Image(systemName: "line.3.horizontal")
-                        .font(.system(size: 22, weight: .medium))
-                        .frame(width: 44, height: 44)
-                        .contentShape(Rectangle())
+                withAnimation(inputDockAnimation) {
+                    showsChatFunctions = true
+                    inputDockHeight = preferredKeyboardHeight
                 }
-                .accessibilityLabel(showsChatFunctions ? "切换到键盘" : "聊天功能")
-                .accessibilityIdentifier("chat.functions")
-                .accessibilityValue(showsChatFunctions ? "展开" : "收起")
             }
+        } label: {
+            Image(systemName: sends ? "arrow.up" : "line.3.horizontal")
+                .font(.system(size: sends ? 19 : 22, weight: sends ? .semibold : .medium))
+                .foregroundStyle(sends ? Color.white : Color.primary)
+                .frame(width: 32, height: 32)
+                .background(sends ? composerTint : Color.clear, in: Circle())
+                .contentTransition(.identity)
+                .frame(width: 44, height: 44)
+                .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .disabled(sends && viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        .accessibilityLabel(sends ? "发送消息" : (showsChatFunctions ? "切换到键盘" : "聊天功能"))
+        .accessibilityIdentifier(sends ? "chat.send" : "chat.functions")
+        .accessibilityValue(sends ? "" : (showsChatFunctions ? "展开" : "收起"))
     }
 
     private var chatFunctionPanel: some View {

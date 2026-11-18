@@ -134,7 +134,9 @@ final class ChatKeyboardTests: XCTestCase {
         XCTAssertTrue(latest.waitForExistence(timeout: 10))
         let collapsedY = field.frame.minY
         let collapsedBottom = transcript.frame.maxY
-        let bottomGap = collapsedBottom - latest.frame.maxY
+        let collapsedBubble = latest.frame
+        let collapsedWidth = transcript.frame.width
+        let bottomGap = collapsedBottom - collapsedBubble.maxY
         XCTAssertTrue((0..<24).contains(bottomGap), "末条消息应贴近底部，实际间距 \(bottomGap)")
 
         for _ in 0..<2 {
@@ -150,6 +152,9 @@ final class ChatKeyboardTests: XCTestCase {
                 expandedGeometry = "composer=\(composer), viewport=\(viewport), bubble=\(bubble), collapsedY=\(collapsedY), bottomGap=\(bottomGap)"
                 return composer.minY < collapsedY - 100 && abs(viewport.maxY - bubble.maxY - bottomGap) <= 2
             }
+            XCTAssertEqual(transcript.frame.width, collapsedWidth, accuracy: 1)
+            XCTAssertEqual(latest.frame.minX, collapsedBubble.minX, accuracy: 1)
+            XCTAssertEqual(latest.frame.width, collapsedBubble.width, accuracy: 1)
             if tapUpperBlankSpace {
                 let headerBottom = app.navigationBars.firstMatch.frame.maxY
                 let bubbleTop = latest.frame.minY
@@ -166,6 +171,9 @@ final class ChatKeyboardTests: XCTestCase {
             let restoredViewport = transcript.frame
             let restoredBubble = latest.frame
             XCTAssertEqual(restoredViewport.maxY, collapsedBottom, accuracy: 2)
+            XCTAssertEqual(restoredViewport.width, collapsedWidth, accuracy: 1)
+            XCTAssertEqual(restoredBubble.minX, collapsedBubble.minX, accuracy: 1)
+            XCTAssertEqual(restoredBubble.width, collapsedBubble.width, accuracy: 1)
             XCTAssertEqual(restoredViewport.maxY - restoredBubble.maxY, bottomGap, accuracy: 2,
                            "键盘收起后末条消息应回到原位：viewport=\(restoredViewport), bubble=\(restoredBubble)")
         }
