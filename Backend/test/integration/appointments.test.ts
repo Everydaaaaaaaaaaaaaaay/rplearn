@@ -479,7 +479,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         "network interrupted",
       );
       await runtime.database
-        .sql`update app.appointment_operations set status='running',lease_until=now()-interval '1 minute' where user_id=${user} and command_id=${input.commandId}`;
+        .sql`update app.appointment_operations set status='running',lease_until=${new Date(clock.getTime() - 60_000).toISOString()} where user_id=${user} and command_id=${input.commandId}`;
       fail = false;
       const opened = await service.start(user, a.id, input);
       narrative.generate = originalGenerate;

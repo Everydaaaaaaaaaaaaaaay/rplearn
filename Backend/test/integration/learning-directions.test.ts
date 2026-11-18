@@ -4,9 +4,10 @@ import { createDatabase, type DatabaseResource } from "../../src/db/client.js";
 import { runMigrations } from "../../src/db/migrate.js";
 import { LearningEngineRepository } from "../../src/modules/learning/engine-repository.js";
 import { learningDirectionKeys } from "../../src/modules/learning/direction.js";
+import { learningPolicy } from "../../src/modules/learning/policy.js";
 import { createLearningService } from "../../src/modules/learning/service.js";
 import { integrationConfig } from "../helpers/integration.js";
-import { learningFixture } from "../helpers/learning.js";
+import { freshLearningFixture } from "../helpers/learning.js";
 
 describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("并列备考方向", () => {
   let database: DatabaseResource;
@@ -34,7 +35,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("并列备考方向
     const role = `test.${randomUUID()}`;
     users.push(user);
     await database.sql`insert into app.users(id) values(${user})`;
-    const unit = { ...learningFixture(`test.${randomUUID()}`), roleKey: role };
+    const unit = { ...freshLearningFixture(`test.${randomUUID()}`), roleKey: role };
     units.push(unit.id);
     await repository.publish(unit);
     const service = createLearningService(database, {
@@ -69,7 +70,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("并列备考方向
       const character = await c.service.character(c.user, c.character);
       expect(character).toMatchObject({
         level: "primary3",
-        characters: 1000,
+        characters: learningPolicy.characterThreshold,
         cycleId: characterBefore.cycleId,
         availableUnits: 0,
         generationStatus: null,
@@ -86,7 +87,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("并列备考方向
     const [row] =
       await database.sql`select count(*)::int as count from app.learning_attempts where user_id=${c.user}`;
     expect(row?.count).toBe(0);
-    expect((await c.service.character(c.user, c.character)).characters).toBe(1000);
+    expect((await c.service.character(c.user, c.character)).characters).toBe(
+      learningPolicy.characterThreshold,
+    );
     await c.service.selectDirection(c.user, randomUUID(), "general", revision);
     expect((await c.service.start(c.user, randomUUID(), c.character)).status).toBe(
       "started",
