@@ -425,6 +425,22 @@ export class ContentRepository {
       throw versionConflict(existing);
     }
     let payload = command.payload;
+    if (existing?.deletedAt === null && command.resourceType === "conversation") {
+      const previous = (existing.payload as { lastReadAt?: string | null }).lastReadAt;
+      const incoming = (command.payload as { lastReadAt?: string | null }).lastReadAt;
+      // Whole-second receipts from older clients, or a write from an earlier
+      // device snapshot, must not make an already-read reply unread again.
+      if (
+        typeof previous === "string" &&
+        Number.isFinite(Date.parse(previous)) &&
+        (typeof incoming !== "string" || Date.parse(previous) > Date.parse(incoming))
+      ) {
+        payload = {
+          ...(command.payload as Record<string, unknown>),
+          lastReadAt: previous,
+        };
+      }
+    }
     if (existing && command.resourceType === "character") {
       const previous = (
         existing.payload as { relationship?: { settledAppointmentIDs?: string[] } }

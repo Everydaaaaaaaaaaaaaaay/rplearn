@@ -252,6 +252,38 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
     });
     expect(replay.json<unknown>()).toEqual(uploadBody);
 
+    const conversation = commands[1];
+    const readAt = "2026-11-18T19:00:00.865Z";
+    const updateRead = async (version: number, lastReadAt: string | null) => {
+      const response = await app.inject({
+        headers: headers(),
+        method: "POST",
+        payload: {
+          commands: [
+            {
+              ...conversation,
+              commandId: newEntityId(),
+              expectedVersion: version,
+              payload: { ...conversation.payload, lastReadAt },
+            },
+          ],
+        },
+        url: "/v1/content/commands",
+      });
+      expect(response.statusCode).toBe(200);
+      const result = response.json<{ results: readonly ContentCommandResult[] }>()
+        .results[0];
+      expect(result?.status).toBe("applied");
+      if (result?.status !== "applied") throw new Error("Missing conversation receipt");
+      return result.record;
+    };
+    const read = await updateRead(1, readAt);
+    const oldDevice = await updateRead(read.version, "2026-11-18T19:00:00Z");
+    expect(oldDevice.payload).toMatchObject({ lastReadAt: readAt });
+    expect((await updateRead(oldDevice.version, null)).payload).toMatchObject({
+      lastReadAt: readAt,
+    });
+
     const conflict = await app.inject({
       headers: headers(),
       method: "POST",
