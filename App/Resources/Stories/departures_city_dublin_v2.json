@@ -76,8 +76,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "cafe",
       "speaker": "旁白",
-      "text": "Her sister's name waits above the record button.",
-      "translation": "录音按钮上方，是她妹妹的名字。",
+      "text": "Her sister's name is still on the screen.",
+      "translation": "屏幕上还亮着她妹妹的名字。",
       "next": "start_6"
     },
     {
@@ -86,8 +86,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "cafe",
       "speaker": "Niamh",
-      "text": "We used to share a wall. Now I have to leave a message.",
-      "translation": "以前我们就隔一堵墙。现在得留言。",
+      "text": "Her room was next to mine. We shouted through the wall.",
+      "translation": "她以前就睡我隔壁那间。我俩隔着墙喊话。",
       "next": "start_7"
     },
     {
@@ -106,8 +106,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "cafe",
       "speaker": "Niamh",
-      "text": "Mostly 'turn it down'. She's probably glad she moved out.",
-      "translation": "多半是“小声点”。她搬走以后估计耳根清净多了。",
+      "text": "Mostly 'turn it down'. Her alarm used to wake me first.",
+      "translation": "多半是“小声点”。她那闹钟每次先把我吵醒。",
       "next": "pick"
     },
     {
@@ -121,28 +121,28 @@
       "choices": [
         {
           "id": "a",
-          "text": "What happened on her last birthday at home?",
-          "translation": "她上次在家过生日，有什么事？",
+          "text": "Ask what they had on her last birthday at home.",
+          "translation": "问问她妹妹上次在家过生日时，桌上都有什么。",
           "next": "cake",
           "flags": {
             "pick_a": true
           },
           "review": {
-            "context": "Niamh 总把给妹妹的生日留言录得像正式致辞。",
-            "outcome": "她讲起摔坏的蛋糕，把今天少掉的半块也录了进去，没有重录那声停顿。"
+            "context": "Niamh 录了好几遍生日语音，盘里还放着熟悉的蛋糕。",
+            "outcome": "她想起妹妹伸手捡蜡烛的样子，录下了今天少掉的半块蛋糕，也把那几秒停顿发了出去。"
           }
         },
         {
           "id": "b",
-          "text": "Could you send the ordinary version, like through the wall?",
-          "translation": "能不能像隔着墙那样，说句平常话？",
+          "text": "Ask what she'd say if her sister were still next door.",
+          "translation": "问问妹妹要是还在隔壁，她会说什么。",
           "next": "call",
           "flags": {
             "pick_a": false
           },
           "review": {
-            "context": "Niamh 想把整年的话塞进一分钟。",
-            "outcome": "她发了一条很短的生日语音，之后才想起有句话没说，又补了一条。"
+            "context": "她们以前只隔一堵墙，出声就能听见。",
+            "outcome": "她开口就问窗户还漏不漏风，又补一条让妹妹明天拍张照。屏幕还朝上，她把茶杯拉近了些。"
           }
         }
       ]
@@ -153,8 +153,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "memory",
       "speaker": "Niamh",
-      "text": "We dropped the cake. Blamed the table for years.",
-      "translation": "我俩把蛋糕摔了，后来怪了那桌子好几年。",
+      "text": "We dropped it. She got down to save the candles.",
+      "translation": "蛋糕摔了。她先蹲下去捡那几根蜡烛。",
       "next": "cake_2"
     },
     {
@@ -163,8 +163,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "memory",
       "speaker": "旁白",
-      "text": "She turns her plate. The icing has broken on one side.",
-      "translation": "她转转盘子，一边的糖霜裂开了。",
+      "text": "Niamh turns her plate. A corner of the icing has cracked.",
+      "translation": "Niamh 转了转盘子。糖霜裂了一角。",
       "next": "cake_3"
     },
     {
@@ -173,8 +173,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "memory",
       "speaker": "Niamh",
-      "text": "Same bakery. Still makes terrible icing.",
-      "translation": "还是那家。糖霜也还是那么难吃。",
+      "text": "Same bakery. We kept buying it even after that.",
+      "translation": "还是那家店。摔完那回，后来我俩还是买。",
       "next": "cake_4"
     },
     {
@@ -183,8 +183,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "memory",
       "speaker": "旁白",
-      "text": "She presses record, holding back a laugh.",
-      "translation": "她忍着笑，按下了录音。",
+      "text": "She presses record with a little icing on her thumb.",
+      "translation": "拇指头上还沾着糖霜，她就按下了录音键。",
       "next": "cake_5"
     },
     {
@@ -234,8 +234,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "record",
       "speaker": "Niamh",
-      "text": "Happy birthday. Are you still awake?",
-      "translation": "生日快乐。你还没睡吧？",
+      "text": "Happy birthday. Is that window still letting the cold in?",
+      "translation": "生日快乐。你那扇窗是不是还漏风？",
       "next": "call_2"
     },
     {
@@ -254,8 +254,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "record",
       "speaker": "Niamh",
-      "text": "Oh, it sent. That's all I said.",
-      "translation": "诶，发出去了。就这么两句。",
+      "text": "Oh no. I went straight on about the window.",
+      "translation": "完了。我一张嘴就问窗户。",
       "next": "call_4"
     },
     {
@@ -264,8 +264,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "record",
       "speaker": "你",
-      "text": "You forgot 'turn it down'.",
-      "translation": "你忘了说“小声点”。",
+      "text": "You'd have asked through the wall too.",
+      "translation": "隔着墙你也会问啊。",
       "next": "call_5"
     },
     {
@@ -274,8 +274,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "record",
       "speaker": "旁白",
-      "text": "She smiles, then presses the button once more.",
-      "translation": "她笑了一下，又按住按钮。",
+      "text": "Her thumb hovers. Then she presses record again.",
+      "translation": "她的手指在录音键上停了一会儿，才按下去。",
       "next": "call_6"
     },
     {
@@ -284,8 +284,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "record",
       "speaker": "Niamh",
-      "text": "And eat something that isn't toast. Call me when you can.",
-      "translation": "还有，别老吃吐司。有空给我打个电话。",
+      "text": "Send me a photo of the gap. Tomorrow's fine. Sleep now.",
+      "translation": "窗缝给我拍张照。明天也行啊。先睡吧。",
       "next": "call_7"
     },
     {
@@ -294,8 +294,8 @@
       "location": "都柏林 · 咖啡馆打烊前",
       "shot": "record",
       "speaker": "旁白",
-      "text": "She puts the phone beside her cup, screen facing up.",
-      "translation": "她把手机放在杯子边，屏幕朝上。",
+      "text": "She leaves the phone face up and pulls her cup closer.",
+      "translation": "她把手机屏幕朝上搁着，把杯子拉近了点。",
       "ending": true,
       "experienceID": "DU2B"
     }

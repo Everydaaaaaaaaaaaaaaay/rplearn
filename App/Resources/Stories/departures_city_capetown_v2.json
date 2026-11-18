@@ -57,8 +57,8 @@
       "location": "开普敦 · 周末集市",
       "shot": "market",
       "speaker": "Amina",
-      "text": "Jonas asked for a corner. Look at it now. Three boxes!",
-      "translation": "Jonas 说借个桌角。看看，三个箱子了！",
+      "text": "He asked for a corner. Can you see a corner now?",
+      "translation": "他说借个桌角。你还看得见桌角吗？",
       "next": "start_3"
     },
     {
@@ -77,8 +77,8 @@
       "location": "开普敦 · 周末集市",
       "shot": "market",
       "speaker": "Amina",
-      "text": "The harbour print? Just a moment.",
-      "translation": "海港那张？稍等啊，我这就给你拿。",
+      "text": "Was it the small blue one? Hang on, I'll find it.",
+      "translation": "你是说小的那张蓝色的吗？稍等，我找找。",
       "next": "start_5"
     },
     {
@@ -122,28 +122,28 @@
       "choices": [
         {
           "id": "a",
-          "text": "Help Amina reach the print while Jonas moves his boxes.",
-          "translation": "Jonas 搬箱子时，帮 Amina 取出那张画。",
+          "text": "Reach for the print while Jonas shifts the boxes.",
+          "translation": "趁 Jonas 挪箱子，伸手把画抽出来。",
           "next": "print",
           "flags": {
             "pick_a": true
           },
           "review": {
-            "context": "箱子挡住画，也拦住了顾客挑选。",
-            "outcome": "你拿错了画。Amina 找到客人要的那张，也打断 Jonas 的解释，让他先扶住杯箱。"
+            "context": "客人想看一张画，Jonas 的杯箱挡在前面。",
+            "outcome": "你抽错了画，Amina 翻出小的那张。她打断 Jonas，让他托住杯箱。客人举起画细看颜色。"
           }
         },
         {
           "id": "b",
-          "text": "Ask Jonas where the boxes were meant to go.",
-          "translation": "问问 Jonas，箱子原本准备放哪儿。",
+          "text": "Ask Jonas where he can put the boxes right now.",
+          "translation": "问 Jonas 现在能把箱子挪去哪儿。",
           "next": "boxes",
           "flags": {
             "pick_a": false
           },
           "review": {
-            "context": "Jonas 把暂存的东西越放越多。",
-            "outcome": "Jonas 折起椅子给箱子腾地，两人隔着桌子拌了两句嘴，Amina 总算能坐下。"
+            "context": "Jonas 一时没搬走杯箱，他自己的桌子下面还放着椅子。",
+            "outcome": "客人等不及走开了。Jonas 把椅子折起来，收走箱子。Amina 把那张画摆到了空出来的位置。"
           }
         }
       ]
@@ -164,8 +164,8 @@
       "location": "开普敦 · 周末集市",
       "shot": "amina",
       "speaker": "Amina",
-      "text": "Other blue. I should label these like paint tins.",
-      "translation": "哦，另一张蓝的。我真该给它们贴个标签。",
+      "text": "Oh, the small blue one. Sorry, that's on me.",
+      "translation": "哦，是小的那张。抱歉，我刚没看清。",
       "next": "print_3"
     },
     {
@@ -174,8 +174,8 @@
       "location": "开普敦 · 周末集市",
       "shot": "amina",
       "speaker": "旁白",
-      "text": "She finds it beneath a folder as Jonas takes the boxes.",
-      "translation": "Jonas 把箱子往外挪。Amina 翻起画夹，找到了。",
+      "text": "She lifts a folder. The small print is still underneath.",
+      "translation": "她掀开画夹。小的那张还压在底下。",
       "next": "print_4"
     },
     {
@@ -214,8 +214,8 @@
       "location": "开普敦 · 周末集市",
       "shot": "amina",
       "speaker": "旁白",
-      "text": "She hands over the print. The customer asks about the frame.",
-      "translation": "Amina 把画递过去。客人问，画框也一起卖吗？",
+      "text": "Amina hands it over. The customer tilts it to catch the light.",
+      "translation": "Amina 把画递过去。客人斜着拿，借着光看颜色。",
       "ending": true,
       "experienceID": "CC2A"
     },
@@ -225,8 +225,8 @@
       "location": "开普敦 · 周末集市",
       "shot": "jonas",
       "speaker": "Jonas",
-      "text": "Under my table. If I move the chair.",
-      "translation": "我桌子底下。得先挪开椅子。",
+      "text": "Under mine. I'd set up my chair, so I left the boxes here.",
+      "translation": "我桌子底下。我刚把椅子支起来，就先搁你这边了。",
       "next": "boxes_2"
     },
     {
@@ -235,8 +235,8 @@
       "location": "开普敦 · 周末集市",
       "shot": "jonas",
       "speaker": "旁白",
-      "text": "He looks at the chair. His coat is on it too.",
-      "translation": "他看看椅子。外套也搭在上面。",
+      "text": "He takes his coat off the chair. The customer steps away.",
+      "translation": "他把外套从椅背上拎起来。客人已经走开了。",
       "next": "boxes_3"
     },
     {
@@ -245,8 +245,8 @@
       "location": "开普敦 · 周末集市",
       "shot": "jonas",
       "speaker": "Amina",
-      "text": "I carried my stool here at six. You can stand a bit.",
-      "translation": "我六点就扛着凳子来了。你站一会儿吧。",
+      "text": "Fold it, will you? She couldn't even see the print.",
+      "translation": "那你折一下吧。她刚才连画都没看见。",
       "next": "boxes_4"
     },
     {
@@ -255,8 +255,8 @@
       "location": "开普敦 · 周末集市",
       "shot": "jonas",
       "speaker": "旁白",
-      "text": "He folds the chair, puts the coat away, and stacks the cups.",
-      "translation": "他收起椅子，放好外套，把杯箱摞了进去。",
+      "text": "Jonas folds the chair and shoves the boxes under his table.",
+      "translation": "Jonas 把椅子一折，几个箱子都塞回自己桌子底下。",
       "next": "boxes_5"
     },
     {
@@ -265,8 +265,8 @@
       "location": "开普敦 · 周末集市",
       "shot": "jonas",
       "speaker": "Jonas",
-      "text": "Fine. My feet are here till closing, then.",
-      "translation": "行呗。我这双脚得站到收摊了。",
+      "text": "I'd go get her, but I don't know what she looks like.",
+      "translation": "我去叫她回来吧……她长什么样？",
       "next": "boxes_6"
     },
     {
@@ -275,18 +275,18 @@
       "location": "开普敦 · 周末集市",
       "shot": "jonas",
       "speaker": "Amina",
-      "text": "And mine are taking a break.",
-      "translation": "正好，我这双脚可以歇会儿了。",
+      "text": "Leave it. Just leave my end of the table clear.",
+      "translation": "算了。你给我把这头空着就行。",
       "next": "boxes_7"
     },
     {
       "id": "boxes_7",
       "act": 0,
       "location": "开普敦 · 周末集市",
-      "shot": "jonas",
+      "shot": "market",
       "speaker": "旁白",
-      "text": "She drops onto the stool and rubs an ankle. He sets up.",
-      "translation": "Amina 一屁股坐到凳子上，揉起脚踝。Jonas 站着摆摊。",
+      "text": "Amina props up the print where the highest box stood.",
+      "translation": "Amina 把那张画立了起来，就摆在刚才最高那个箱子的位置。",
       "ending": true,
       "experienceID": "CC2B"
     }

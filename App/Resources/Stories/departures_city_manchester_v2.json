@@ -50,8 +50,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "shop",
       "speaker": "Leah",
-      "text": "They want honest feedback. They may regret that.",
-      "translation": "他们想听真话。可能会后悔。",
+      "text": "It's a test pressing. They're picking it up this afternoon.",
+      "translation": "是试压盘。他们下午就来取。",
       "next": "start_3"
     },
     {
@@ -80,8 +80,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "shop",
       "speaker": "Leah",
-      "text": "Really? That's when I checked whether the kettle was on.",
-      "translation": "啊？我听到这儿都去看水开没开了。",
+      "text": "The guitars stopped. I thought that was it.",
+      "translation": "吉他一停，我还以为已经放完了。",
       "next": "start_6"
     },
     {
@@ -100,8 +100,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "shop",
       "speaker": "你",
-      "text": "I've seen it.",
-      "translation": "我看见了。",
+      "text": "You can leave your hand there. I saw it.",
+      "translation": "别盖了，我看见了。",
       "next": "start_8"
     },
     {
@@ -110,8 +110,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "shop",
       "speaker": "Leah",
-      "text": "Then write your defence.",
-      "translation": "来，你替那一分钟辩护。",
+      "text": "Fine. What did you hear that I didn't?",
+      "translation": "行。那你听到了什么我没听到的？",
       "next": "pick"
     },
     {
@@ -125,28 +125,28 @@
       "choices": [
         {
           "id": "a",
-          "text": "Play it again. Listen past the drums.",
-          "translation": "再放一遍，听听鼓声后面。",
+          "text": "Play it again. There's a sound after the guitars stop.",
+          "translation": "再放一遍。吉他停了以后，还有个声音。",
           "next": "listen",
           "flags": {
             "pick_a": true
           },
           "review": {
-            "context": "你和 Leah 喜欢的部分完全不同。",
-            "outcome": "Leah 听到了房间里的声音，也注意到咳嗽声，依然觉得这一段太长。"
+            "context": "乐队下午会来取试压盘。Leah 觉得最后一分钟该剪。",
+            "outcome": "Leah 戴上耳机重听，还是觉得这段长，但想听清后面那句。客人敲柜台时，她让人再等一下。"
           }
         },
         {
           "id": "b",
-          "text": "Give them two cards. They asked for honest ears.",
-          "translation": "各写一张吧。人家本来就想听实话。",
+          "text": "Let's write two cards. We can both sign ours.",
+          "translation": "各写一张吧，写完签自己的名字。",
           "next": "notes",
           "flags": {
             "pick_a": false
           },
           "review": {
-            "context": "你和 Leah 对结尾有相反意见。",
-            "outcome": "两张评价保留分歧，Leah 不肯删掉自己的意见，又追问你为什么喜欢。"
+            "context": "你和 Leah 一起听了这张试压盘，对结尾的意见完全不同。",
+            "outcome": "Leah 担心乐队先问她，想把自己的意见放上面。最后她先塞了你那张，自己的还露着一截。"
           }
         }
       ]
@@ -157,8 +157,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "listen",
       "speaker": "旁白",
-      "text": "She moves her hand away from the needle.",
-      "translation": "她把手从唱针旁挪开。",
+      "text": "Leah cues up that bit and puts on the headphones.",
+      "translation": "Leah 把唱针拨回那一段，戴上耳机。",
       "next": "listen_2"
     },
     {
@@ -167,8 +167,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "listen",
       "speaker": "你",
-      "text": "Listen. Hear those sounds around the singer?",
-      "translation": "你听，歌手旁边还有声音。",
+      "text": "There's a cough just after the guitars. Hear it?",
+      "translation": "吉他一停就有人咳嗽。听见没？",
       "next": "listen_3"
     },
     {
@@ -177,8 +177,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "listen",
       "speaker": "Leah",
-      "text": "Yes. And someone coughing. They kept that in?",
-      "translation": "听见了。是咳嗽？他们连这个都录进去了啊。",
+      "text": "There. Did they leave the singer's mic on?",
+      "translation": "听到了。歌手那支麦一直没关？",
       "next": "listen_4"
     },
     {
@@ -187,8 +187,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "listen",
       "speaker": "你",
-      "text": "That's why it sounds close.",
-      "translation": "所以才觉得近。",
+      "text": "He sings one more line. It's almost a whisper.",
+      "translation": "他后面又唱了一句，轻得差点听不见。",
       "next": "listen_5"
     },
     {
@@ -197,8 +197,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "listen",
       "speaker": "旁白",
-      "text": "She listens to the end, tapping nothing this time.",
-      "translation": "她听到结尾，这次没有敲桌子。",
+      "text": "Leah tilts her head. The shop door opens behind her.",
+      "translation": "Leah 侧着头听。她身后，店门开了。",
       "next": "listen_6"
     },
     {
@@ -207,8 +207,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "listen",
       "speaker": "Leah",
-      "text": "Still too long. But the cough stays in my review.",
-      "translation": "还是太长。咳嗽那下倒是可以写一笔。",
+      "text": "Still drags. Wait, I missed that line again.",
+      "translation": "还是拖。等一下，那句我又漏了。",
       "next": "listen_7"
     },
     {
@@ -217,8 +217,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "listen",
       "speaker": "旁白",
-      "text": "The kettle clicks off. Neither of you gets up yet.",
-      "translation": "水壶跳了。你们谁也没马上起身。",
+      "text": "A customer taps the counter. Leah holds up one finger.",
+      "translation": "客人敲了敲柜台。Leah 竖起一根手指，示意等一下。",
       "ending": true,
       "experienceID": "MA2A"
     },
@@ -228,8 +228,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "notes",
       "speaker": "Leah",
-      "text": "Mine says the ending needs cutting. No, I'm keeping that.",
-      "translation": "我写结尾该剪短。对，这句我留着。",
+      "text": "I've put 'cut the last minute'. They know how I talk.",
+      "translation": "我就写了“剪掉最后一分钟”。他们知道我说话就这样。",
       "next": "notes_2"
     },
     {
@@ -238,8 +238,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "notes",
       "speaker": "你",
-      "text": "Mine says that's where I wanted to stay.",
-      "translation": "我写的是，听到这儿我才舍不得关。",
+      "text": "Mine says that's the bit I'd play again.",
+      "translation": "我写的是，那段我会再放一遍。",
       "next": "notes_3"
     },
     {
@@ -248,8 +248,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "notes",
       "speaker": "Leah",
-      "text": "They'll think we heard different records.",
-      "translation": "他们会以为我们听了两张唱片。",
+      "text": "You're leaving that in? I told them we'd both listen.",
+      "translation": "这句你要留着啊？我跟他们说过咱俩一起听。",
       "next": "notes_4"
     },
     {
@@ -258,8 +258,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "notes",
       "speaker": "旁白",
-      "text": "She puts both cards in the sleeve, then pulls yours out.",
-      "translation": "她把两张卡塞进唱片套，又抽出你那张。",
+      "text": "She lines up the two cards, then draws hers back.",
+      "translation": "她把两张卡并排放好，又往回抽了抽自己那张。",
       "next": "notes_5"
     },
     {
@@ -268,8 +268,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "notes",
       "speaker": "Leah",
-      "text": "You can't just write 'stay'. Tell them what you heard.",
-      "translation": "光写“想听”谁懂啊？你到底听见什么了？",
+      "text": "Mine on top? I'm the one they'll talk to this afternoon.",
+      "translation": "我那张能放上面吗？他们下午来店里还得找我。",
       "next": "notes_6"
     },
     {
@@ -278,8 +278,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "notes",
       "speaker": "你",
-      "text": "You can't just write 'cut', either.",
-      "translation": "那你也不能只写“剪短”。",
+      "text": "Go on, then. Put your name on yours. I'll sign mine.",
+      "translation": "行。你写你的名字，我也签一下。",
       "next": "notes_7"
     },
     {
@@ -288,8 +288,8 @@
       "location": "曼彻斯特 · 唱片店的试听桌",
       "shot": "notes",
       "speaker": "旁白",
-      "text": "She gets the pen back. You both miss the kettle.",
-      "translation": "她把笔拿回去又写。水壶响了也没人去倒水。",
+      "text": "She slips your card in first. Her own sticks out a little.",
+      "translation": "她先把你那张塞进封套。自己那张还露着一截。",
       "ending": true,
       "experienceID": "MA2B"
     }

@@ -36,8 +36,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "beach",
       "speaker": "旁白",
-      "text": "Ruby is holding a surfboard beneath a grey sky.",
-      "translation": "灰蒙蒙的天底下，Ruby 抱着一块冲浪板。",
+      "text": "Ruby holds the board sideways. The wind shoves it back.",
+      "translation": "Ruby 横着抱板，风一顶，板子猛地往她身上一撞。",
       "next": "start_2"
     },
     {
@@ -56,8 +56,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "beach",
       "speaker": "旁白",
-      "text": "She checks the message again. It has not improved.",
-      "translation": "Ruby 又把消息点开看一遍。还是取消。",
+      "text": "She opens the text again and checks who sent it.",
+      "translation": "她又点开消息，看看是不是教练发的。",
       "next": "start_4"
     },
     {
@@ -66,8 +66,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "beach",
       "speaker": "Ruby",
-      "text": "I was up before the kettle! All to lug this plank around.",
-      "translation": "水还没烧开我就起来了！就为抱着这么大块板走一趟。",
+      "text": "I took the early bus. I packed everything last night.",
+      "translation": "我坐的早班车。东西昨晚就都收拾好了。",
       "next": "start_5"
     },
     {
@@ -76,8 +76,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "beach",
       "speaker": "你",
-      "text": "Do we have to carry it to breakfast?",
-      "translation": "吃早饭也得抱着它？",
+      "text": "Want to sit down for a bit?",
+      "translation": "要不先找个地方坐会儿？",
       "next": "start_6"
     },
     {
@@ -86,8 +86,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "beach",
       "speaker": "Ruby",
-      "text": "It's rented until ten. Our expensive third friend.",
-      "translation": "租到十点呢。它今天可比咱俩金贵。",
+      "text": "It's due back at ten. Can we stay near the beach?",
+      "translation": "板最迟十点还。咱们先别走远行吗？",
       "next": "pick"
     },
     {
@@ -101,28 +101,28 @@
       "choices": [
         {
           "id": "a",
-          "text": "Breakfast. The board can watch us eat.",
-          "translation": "吃早饭，让冲浪板看着。",
+          "text": "Let's get breakfast where we can still see the water.",
+          "translation": "去吃早饭吧，坐个还能看见海的位置。",
           "next": "breakfast",
           "flags": {
             "pick_a": true
           },
           "review": {
             "context": "冲浪课因海况取消，租来的板还没到归还时间。",
-            "outcome": "你们去吃早饭，Ruby 仍有点失落，把更早闹钟的计划删了。"
+            "outcome": "Ruby 删了明天早起的闹钟，看到有个人在水上站起来，叉子又停在了半空。"
           }
         },
         {
           "id": "b",
-          "text": "Stay here. Show me what lesson one would have been.",
-          "translation": "留这儿吧，给我讲讲第一课原本要学什么。",
+          "text": "Let's stay. Can you show me how you get up on the board?",
+          "translation": "再待会儿吧。你能给我看看怎么站上板吗？",
           "next": "sand",
           "flags": {
             "pick_a": false
           },
           "review": {
             "context": "冲浪课因海况取消，你们留在干沙滩上。",
-            "outcome": "Ruby 只在沙上示范起身，结果自己先失去平衡，你们没下水。"
+            "outcome": "Ruby 在干沙上示范，一边膝盖先跪进沙里。她请你盯着后脚，重新试了一遍。"
           }
         }
       ]
@@ -143,8 +143,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "breakfast",
       "speaker": "Ruby",
-      "text": "It looks better at this than I feel.",
-      "translation": "你看它，适应得比我快多了。",
+      "text": "Are those people going in?",
+      "translation": "那几个人是要下水？",
       "next": "breakfast_3"
     },
     {
@@ -153,8 +153,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "breakfast",
       "speaker": "你",
-      "text": "Still disappointed?",
-      "translation": "还挺失望的？",
+      "text": "Looks like it. They've got their own boards.",
+      "translation": "好像是。他们带的是自己的板。",
       "next": "breakfast_4"
     },
     {
@@ -163,8 +163,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "breakfast",
       "speaker": "Ruby",
-      "text": "Very. Pass the pepper?",
-      "translation": "当然啊。胡椒给我递一下？",
+      "text": "Right. Pass the pepper?",
+      "translation": "哦。胡椒给我递一下？",
       "next": "breakfast_5"
     },
     {
@@ -173,8 +173,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "breakfast",
       "speaker": "旁白",
-      "text": "She deletes tomorrow's extra-early alarm.",
-      "translation": "她打开手机，把明天特地设早的闹钟删了。",
+      "text": "Ruby deletes the early alarm she'd set for tomorrow.",
+      "translation": "Ruby 把明天早起的闹钟删了。",
       "next": "breakfast_6"
     },
     {
@@ -183,8 +183,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "breakfast",
       "speaker": "Ruby",
-      "text": "I'll book another lesson. After I've slept.",
-      "translation": "我会再约课的。先睡够再说。",
+      "text": "I'll wait for them to say we're on before I get up that early.",
+      "translation": "等教练说能下水了，我再起这么早。",
       "next": "breakfast_7"
     },
     {
@@ -193,8 +193,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "breakfast",
       "speaker": "旁白",
-      "text": "A gull lands on the board. Ruby taps her fork on the table.",
-      "translation": "一只海鸥落在板上。Ruby 用叉子敲敲桌面。",
+      "text": "A surfer stands. Ruby's fork stops halfway to her mouth.",
+      "translation": "有个冲浪的人站起来了。Ruby 的叉子举到一半，停住了。",
       "next": "breakfast_8"
     },
     {
@@ -203,8 +203,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "breakfast",
       "speaker": "Ruby",
-      "text": "Hey! Have you paid for that lesson?",
-      "translation": "哎！你交学费了吗？",
+      "text": "How does she make that look so easy?",
+      "translation": "她怎么站得那么轻松？",
       "ending": true,
       "experienceID": "MC2A"
     },
@@ -214,8 +214,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "ruby",
       "speaker": "Ruby",
-      "text": "Dry sand only. No heroic little paddle.",
-      "translation": "就在干沙子上啊。别逞能往水里去。",
+      "text": "On the dry sand. Here, where it's flat.",
+      "translation": "就在干沙上。来，这块平。",
       "next": "sand_2"
     },
     {
@@ -224,8 +224,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "ruby",
       "speaker": "旁白",
-      "text": "She lays the board down and shows you where feet go.",
-      "translation": "她放下板子，指给你看脚应该放在哪儿。",
+      "text": "She lays the board down. One rail sinks into the sand.",
+      "translation": "她把板放下，板边陷进沙里一点。",
       "next": "sand_3"
     },
     {
@@ -244,8 +244,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "ruby",
       "speaker": "旁白",
-      "text": "She lands beside the board, one foot still on it.",
-      "translation": "说着她一脚踩进沙里，另一只还在板上。",
+      "text": "One foot finds the board. Her other knee hits the sand.",
+      "translation": "她一只脚踩上板，另一条腿直接跪进了沙里。",
       "next": "sand_5"
     },
     {
@@ -254,8 +254,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "ruby",
       "speaker": "Ruby",
-      "text": "That's the advanced version. Don't copy it.",
-      "translation": "这是进阶版。别学。",
+      "text": "Hang on. Leave the board there.",
+      "translation": "等会儿。板别动。",
       "next": "sand_6"
     },
     {
@@ -264,8 +264,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "ruby",
       "speaker": "你",
-      "text": "I thought I was supposed to fall first.",
-      "translation": "我以为应该我先摔。",
+      "text": "Did you hurt yourself?",
+      "translation": "磕着了？",
       "next": "sand_7"
     },
     {
@@ -274,8 +274,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "ruby",
       "speaker": "Ruby",
-      "text": "You'll have to work harder now.",
-      "translation": "那你现在得加把劲了。",
+      "text": "I'm fine. Again. Watch my back foot.",
+      "translation": "没事。再来。你帮我看后脚。",
       "next": "sand_8"
     },
     {
@@ -284,8 +284,8 @@
       "location": "墨尔本 · 海边的早晨",
       "shot": "ruby",
       "speaker": "旁白",
-      "text": "She brushes the board clean. Sand pours from her sleeve.",
-      "translation": "她拍拍板，又一抬胳膊，袖子里哗啦掉下来一堆沙。",
+      "text": "Both feet land on the board. One hand stays down.",
+      "translation": "这回两只脚都上了板。她还有一只手撑着。",
       "ending": true,
       "experienceID": "MC2B"
     }

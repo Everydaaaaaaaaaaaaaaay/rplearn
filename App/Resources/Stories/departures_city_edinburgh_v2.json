@@ -50,8 +50,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "theatre",
       "speaker": "Isla",
-      "text": "One ticket. Two of us. Excellent maths.",
-      "translation": "一张票，两个人。好，太会算了。",
+      "text": "They had one. I bought it before I thought to ask for two.",
+      "translation": "就一张。我一着急先买了，买完才想起来咱们俩呢。",
       "next": "start_3"
     },
     {
@@ -70,8 +70,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "theatre",
       "speaker": "Isla",
-      "text": "Yes. I checked for returns six times today.",
-      "translation": "对。我今天查了六遍退票。",
+      "text": "Yeah. I checked for returns six times just today.",
+      "translation": "对。光今天我就刷了六回退票。",
       "next": "start_5"
     },
     {
@@ -80,8 +80,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "theatre",
       "speaker": "旁白",
-      "text": "She checks the ticket as if another might be stuck to it.",
-      "translation": "她还特地把票翻了个面，像是后面能粘着第二张。",
+      "text": "She tucks the ticket away, then pulls it out again.",
+      "translation": "她刚把票塞进口袋，又拿了出来。",
       "next": "start_6"
     },
     {
@@ -90,8 +90,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "theatre",
       "speaker": "Isla",
-      "text": "Two seats at the one next door. No idea what it's about.",
-      "translation": "隔壁那场还有俩位子，我都不知道是演什么的。",
+      "text": "The one next door has two seats. We'd miss this one, though.",
+      "translation": "隔壁还有两个位子。那这场就赶不上了。",
       "next": "pick"
     },
     {
@@ -112,21 +112,21 @@
             "pick_a": true
           },
           "review": {
-            "context": "Isla 等了很久的演出只剩一张票。",
-            "outcome": "你们各看一场，Isla 不喜欢期待已久的结尾，你看的那场却根本没结尾。"
+            "context": "Isla 刷了一天退票，抢到了期待很久的那场，可票只有一张。",
+            "outcome": "Isla 不喜欢梦醒的结尾，你看的那场投影却坏了。散场后她还在找一位演员的名字。"
           }
         },
         {
           "id": "b",
-          "text": "Let's risk the unknown show together.",
-          "translation": "一起赌一把那场不认识的吧。",
+          "text": "Let's try the one next door together.",
+          "translation": "那就一起去看隔壁那场吧。",
           "next": "together",
           "flags": {
             "pick_a": false
           },
           "review": {
-            "context": "另一场演出有两张票，但你们不了解内容。",
-            "outcome": "Isla 放弃原本期待的演出，你们一起惦记舞台上的纸板月亮。"
+            "context": "隔壁还有两个位子，进去就会错过 Isla 原本想看的那场。",
+            "outcome": "Isla 把票还给窗口。你们盯了半场纸板月亮，它一直没掉。另一场已散场，Isla 还是想自己看结尾。"
           }
         }
       ]
@@ -137,8 +137,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "after",
       "speaker": "旁白",
-      "text": "You meet outside later. Isla is scowling at her programme.",
-      "translation": "散场一碰头，Isla 还皱着眉盯着节目单。",
+      "text": "You meet outside. Isla is still holding her programme open.",
+      "translation": "散场碰头时，Isla 手里的节目单还摊着。",
       "next": "apart_2"
     },
     {
@@ -147,8 +147,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "after",
       "speaker": "Isla",
-      "text": "It was all a dream! I waited a year for a dream?",
-      "translation": "闹半天全在梦里！梦里！我等了一年就等这个？",
+      "text": "All of that was a dream. They even made her say it twice.",
+      "translation": "前面那些全是她做的梦。还特地让她说了两遍。",
       "next": "apart_3"
     },
     {
@@ -167,8 +167,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "after",
       "speaker": "Isla",
-      "text": "On purpose?",
-      "translation": "故意的？",
+      "text": "Did they cut it short?",
+      "translation": "临时砍掉了？",
       "next": "apart_5"
     },
     {
@@ -177,8 +177,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "after",
       "speaker": "你",
-      "text": "The projector broke.",
-      "translation": "投影仪坏了。",
+      "text": "The projector died. He kept pointing at a blank wall.",
+      "translation": "投影仪坏了。他还在那儿指，墙上什么都没有。",
       "next": "apart_6"
     },
     {
@@ -187,8 +187,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "after",
       "speaker": "旁白",
-      "text": "She opens her mouth, then starts laughing instead.",
-      "translation": "她嘴刚张开，自己先憋不住笑了。",
+      "text": "Isla laughs once and runs a finger down the cast list.",
+      "translation": "Isla 笑了一声，手指还顺着演员名单往下划。",
       "next": "apart_7"
     },
     {
@@ -197,8 +197,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "after",
       "speaker": "Isla",
-      "text": "I waited a year for mine. Okay, you win.",
-      "translation": "我等了足足一年呢。行，你赢了。",
+      "text": "Wait. I want the name of the woman with the suitcase.",
+      "translation": "等会儿，我看看拎箱子那个女演员叫什么。",
       "ending": true,
       "experienceID": "ED2A"
     },
@@ -208,8 +208,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "moon",
       "speaker": "旁白",
-      "text": "A cardboard moon hangs at an angle above the stage.",
-      "translation": "舞台上方，一轮纸板月亮斜着挂在那里。",
+      "text": "Isla gives it back. Next door, a cardboard moon hangs askew.",
+      "translation": "Isla 把那张票还给窗口。隔壁台上的纸板月亮挂得有点歪。",
       "next": "together_2"
     },
     {
@@ -258,8 +258,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "moon",
       "speaker": "Isla",
-      "text": "I still want to know how the other play ends.",
-      "translation": "我还是想知道另一场怎么结尾。",
+      "text": "I've still got the ticket page for the other one open.",
+      "translation": "我还没关那场的售票页。",
       "next": "together_7"
     },
     {
@@ -268,8 +268,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "moon",
       "speaker": "旁白",
-      "text": "Outside, she pauses at the other play's poster.",
-      "translation": "出去后，她在另一场演出的海报前停了一下。",
+      "text": "The lights come up. The other listing says 'Show ended'.",
+      "translation": "灯一亮。她再看一眼，另一场已经显示“演出结束”了。",
       "next": "together_8"
     },
     {
@@ -278,8 +278,8 @@
       "location": "爱丁堡 · 开演前",
       "shot": "moon",
       "speaker": "Isla",
-      "text": "Next year, two tickets. Before I invite you.",
-      "translation": "明年先买两张票。买完再叫你。",
+      "text": "If you find out the ending, don't tell me yet.",
+      "translation": "你要是知道结尾了，先别告诉我。",
       "ending": true,
       "experienceID": "ED2B"
     }

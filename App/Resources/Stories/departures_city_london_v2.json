@@ -29,8 +29,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "day",
       "speaker": "旁白",
-      "text": "Oliver finds your bookmark on page nineteen. Again.",
-      "translation": "Oliver 翻开你的书。书签又卡在第十九页。",
+      "text": "Your bookmark is still on page nineteen.",
+      "translation": "你的书签还夹在第十九页。",
       "next": "start_2"
     },
     {
@@ -39,8 +39,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "day",
       "speaker": "Oliver",
-      "text": "Still there? That man has crossed Russia by now.",
-      "translation": "还在这儿？那个人这会儿都横穿俄罗斯了。",
+      "text": "Still there? Has he at least got out of the hotel?",
+      "translation": "还在这儿？他起码走出旅馆了吧？",
       "next": "start_3"
     },
     {
@@ -49,8 +49,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "day",
       "speaker": "你",
-      "text": "I've crossed this paragraph six times.",
-      "translation": "是啊。我在这一段来回走了六遍。",
+      "text": "He put his coat on. Then he ordered more tea.",
+      "translation": "外套倒是穿好了。又叫了一壶茶。",
       "next": "start_4"
     },
     {
@@ -59,8 +59,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "day",
       "speaker": "Oliver",
-      "text": "I recommended it. I may have oversold the snow.",
-      "translation": "也是我推荐的。我可能把那场雪夸过了。",
+      "text": "I put 'Fast-moving' on the shelf card. Don't look.",
+      "translation": "我在推荐卡上写了“节奏很快”。你别去看。",
       "next": "start_5"
     },
     {
@@ -69,8 +69,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "day",
       "speaker": "旁白",
-      "text": "He reaches for the book, then checks his own bookmark.",
-      "translation": "他伸手来拿书，又看了看自己那本里的书签。",
+      "text": "He opens his own copy, keeping it turned towards himself.",
+      "translation": "他翻开自己那本，书一直朝着他自己。",
       "next": "start_6"
     },
     {
@@ -79,8 +79,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "day",
       "speaker": "你",
-      "text": "Page twenty-three?",
-      "translation": "第二十三页？",
+      "text": "Twenties? You've hardly got any further than me.",
+      "translation": "二十几？你这不就比我多读了几页吗？",
       "next": "start_7"
     },
     {
@@ -89,8 +89,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "day",
       "speaker": "Oliver",
-      "text": "The shop has been busy.",
-      "translation": "店里最近挺忙的。",
+      "text": "Twenty-three. I got as far as the bill for the tea.",
+      "translation": "二十三。读到他结茶钱了。",
       "next": "start_8"
     },
     {
@@ -99,8 +99,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "day",
       "speaker": "旁白",
-      "text": "It is empty except for you and a sleeping cat.",
-      "translation": "店里只有你们和一只睡着的猫。",
+      "text": "Oliver looks at the shelf card. The cat sleeps on.",
+      "translation": "Oliver 看了眼架上的推荐卡。猫还睡着。",
       "next": "pick"
     },
     {
@@ -109,8 +109,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "book",
       "speaker": "你的选择",
-      "text": "What shall you do with this very long book?",
-      "translation": "怎么处理这本很长很长的书？",
+      "text": "Do you keep reading or give his next pick a chance?",
+      "translation": "再往下读几页，还是看看他下一本能挑出什么？",
       "choices": [
         {
           "id": "a",
@@ -121,8 +121,8 @@
             "pick_a": true
           },
           "review": {
-            "context": "你和推荐这本书的 Oliver 都没读下去。",
-            "outcome": "你们重读同一段，对主人公的看法仍不一致，决定先只读到火车站。"
+            "context": "Oliver 给一本自己也没读下去的长篇写了推荐卡。",
+            "outcome": "你们读到被忘下的手套，Oliver 看出了你漏掉的细节，又跟你挤到一起读到了车站。"
           }
         },
         {
@@ -134,8 +134,8 @@
             "pick_a": false
           },
           "review": {
-            "context": "你和推荐这本书的 Oliver 都没读下去。",
-            "outcome": "你们换读一篇短小说，Oliver 猜错了结尾，猫也提前醒了。"
+            "context": "Oliver 给一本自己也没读下去的长篇写了推荐卡。",
+            "outcome": "Oliver 选了本七页的短篇，猜错结尾。猫踩在末页上，你俩得一起把书翻完。"
           }
         }
       ]
@@ -146,8 +146,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "book",
       "speaker": "旁白",
-      "text": "You read the paragraph aloud. Oliver follows the lines.",
-      "translation": "你把那一段念出来，Oliver 顺着文字看。",
+      "text": "You read on. The man pays, but leaves his gloves.",
+      "translation": "你接着念。那人结了账，手套却忘在桌上。",
       "next": "reread_2"
     },
     {
@@ -156,8 +156,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "book",
       "speaker": "你",
-      "text": "He keeps saying he'll leave. Then he orders more tea.",
-      "translation": "他一直说要走，然后又点一杯茶。",
+      "text": "Oh, please don't go back for them.",
+      "translation": "千万别回去拿啊。",
       "next": "reread_3"
     },
     {
@@ -166,8 +166,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "book",
       "speaker": "Oliver",
-      "text": "I rather like him.",
-      "translation": "我倒挺喜欢他。",
+      "text": "They weren't his. Look at the name sewn inside.",
+      "translation": "那不是他的。你看看里面绣的名字。",
       "next": "reread_4"
     },
     {
@@ -176,8 +176,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "book",
       "speaker": "你",
-      "text": "You would.",
-      "translation": "就知道你会。",
+      "text": "Wait. I missed that.",
+      "translation": "等下。这儿我没看见。",
       "next": "reread_5"
     },
     {
@@ -186,8 +186,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "book",
       "speaker": "旁白",
-      "text": "Oliver finds the station a few pages ahead.",
-      "translation": "Oliver 在后面几页找到了火车站。",
+      "text": "Oliver pulls the other chair up to your copy.",
+      "translation": "Oliver 把另一把椅子拖到你边上，跟你看同一本。",
       "next": "reread_6"
     },
     {
@@ -196,8 +196,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "book",
       "speaker": "Oliver",
-      "text": "Let's get him onto that train. Then I want lunch.",
-      "translation": "先把他送上火车。然后我要吃午饭。",
+      "text": "Read that bit again. From when he puts his coat on.",
+      "translation": "这段再念一下。从他穿外套那儿开始。",
       "next": "reread_7"
     },
     {
@@ -206,8 +206,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "book",
       "speaker": "旁白",
-      "text": "Your bookmarks move. His stays four pages ahead.",
-      "translation": "总算都往后翻了几页。他还是领先你四页。",
+      "text": "You both stop at the station. The chairs stay together.",
+      "translation": "读到火车站，你俩都停了。椅子还挨在一起。",
       "ending": true,
       "experienceID": "LC2A"
     },
@@ -247,8 +247,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "quiet",
       "speaker": "你",
-      "text": "Your recommendations come with detective work now?",
-      "translation": "你这儿买书还送破案啊？",
+      "text": "You were so sure about the neighbour.",
+      "translation": "你刚才还说肯定是邻居。",
       "next": "short_5"
     },
     {
@@ -257,8 +257,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "quiet",
       "speaker": "Oliver",
-      "text": "Poor detective work. No extra charge.",
-      "translation": "破错了。就不收你钱了。",
+      "text": "I was. I'll let you finish it this time.",
+      "translation": "是啊。这回我等你读完再开口。",
       "next": "short_6"
     },
     {
@@ -267,8 +267,8 @@
       "location": "伦敦 · 午后的书店",
       "shot": "quiet",
       "speaker": "旁白",
-      "text": "The cat wakes before you finish the last page.",
-      "translation": "最后一页还没读完，猫就醒了。",
+      "text": "The cat wakes and steps straight onto the last page.",
+      "translation": "猫醒了，一脚踩在最后一页上。",
       "next": "short_7"
     },
     {
@@ -276,9 +276,9 @@
       "act": 0,
       "location": "伦敦 · 午后的书店",
       "shot": "quiet",
-      "speaker": "Oliver",
-      "text": "She's read ahead. Look at that smug face.",
-      "translation": "它肯定偷看过后面。看它得意的。",
+      "speaker": "旁白",
+      "text": "Oliver lifts one paw. You hold the page flat.",
+      "translation": "Oliver 抬起它一只爪子。你按住那页纸。",
       "ending": true,
       "experienceID": "LC2B"
     }

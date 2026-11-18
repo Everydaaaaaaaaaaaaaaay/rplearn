@@ -57,8 +57,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "shore",
       "speaker": "Noah",
-      "text": "Five minutes that way. Last chance for the sunset shot.",
-      "translation": "往那边走五分钟。还赶得上拍日落！",
+      "text": "Five minutes to the point. The sun sets between those rocks.",
+      "translation": "再走五分钟。到了岬角，正好能拍到太阳落在那两块石头中间。",
       "next": "start_3"
     },
     {
@@ -77,8 +77,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "shore",
       "speaker": "Ruth",
-      "text": "It's been about to catch something for ten minutes.",
-      "translation": "你看它，摆好架势十分钟了，一口都没啄。",
+      "text": "Ten minutes. It hasn't so much as dipped its beak.",
+      "translation": "十分钟了。连嘴都没沾一下水。",
       "next": "start_5"
     },
     {
@@ -87,8 +87,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "shore",
       "speaker": "Noah",
-      "text": "It might not be hungry.",
-      "translation": "它可能根本不饿。",
+      "text": "You can sit down, you know. That bench has a view too.",
+      "translation": "你可以坐会儿啊。从长椅上也看得见。",
       "next": "start_6"
     },
     {
@@ -97,8 +97,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "shore",
       "speaker": "Ruth",
-      "text": "Then it has wasted both our time.",
-      "translation": "那它可白让我俩等了这么久。",
+      "text": "From here I can see what it's looking at. Give it a minute.",
+      "translation": "这儿能看清它盯着哪儿。再等它一分钟。",
       "next": "start_7"
     },
     {
@@ -107,8 +107,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "shore",
       "speaker": "旁白",
-      "text": "Noah lifts the camera, then looks towards the point again.",
-      "translation": "Noah 举起相机，又看了看岬角。",
+      "text": "Noah raises his camera. One foot is still turned away.",
+      "translation": "Noah 抬起相机，一只脚还朝着岬角那边。",
       "next": "pick"
     },
     {
@@ -117,33 +117,33 @@
       "location": "温哥华 · 海边步道",
       "shot": "ruth",
       "speaker": "你的选择",
-      "text": "Where would you like to wait for the sunset?",
-      "translation": "你想在哪里等日落？",
+      "text": "Wait by the water or split up for a bit?",
+      "translation": "一起留在水边，还是先分开一会儿？",
       "choices": [
         {
           "id": "a",
-          "text": "Stay here. I want to see if Ruth's bird ever moves.",
-          "translation": "留这儿。我想看 Ruth 那只鸟到底动不动。",
+          "text": "Let's stay. I want to see what it's looking at.",
+          "translation": "留这儿吧。我也想看看它在盯什么。",
           "next": "stay",
           "flags": {
             "pick_a": true
           },
           "review": {
-            "context": "Noah 想赶去拍日落，Ruth 想继续看鸟。",
-            "outcome": "大家留下看鸟，Noah 错过想要的日落角度，苍鹭最后只抓到一条很小的鱼。"
+            "context": "Noah 想赶到能拍见太阳落在两块石头之间的位置，Ruth 还想盯一会儿苍鹭。",
+            "outcome": "你们看到苍鹭吞鱼，Noah 拍了十七张都没赶上那一下，也没到岬角。"
           }
         },
         {
           "id": "b",
-          "text": "Let Noah get his shot. We'll meet him at the bench.",
-          "translation": "让 Noah 去拍。我们在长椅等他。",
+          "text": "Go on, Noah. Ruth and I will wait on the bench.",
+          "translation": "Noah，你先去拍吧。我和 Ruth 在长椅等你。",
           "next": "detour",
           "flags": {
             "pick_a": false
           },
           "review": {
-            "context": "Noah 想拍日落，Ruth 不想赶那段路。",
-            "outcome": "Noah 得到了想拍的日落，你和 Ruth 错过那张现场风景，他也错过了鸟的动作。"
+            "context": "Noah 想赶到岬角，长椅上也看得见苍鹭。",
+            "outcome": "Ruth 擦眼镜时错过了鸟抓鱼，Noah 带着岬角的照片回来，坐下来给你们看。"
           }
         }
       ]
@@ -154,8 +154,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "noah",
       "speaker": "旁白",
-      "text": "Noah stays, but glances once at the fading orange light.",
-      "translation": "Noah 还是留下了，又扭头看了眼快没了的日光。",
+      "text": "Noah stays. From here, a rock cuts across the sun.",
+      "translation": "Noah 留下了。从这里看过去，一块石头挡住了太阳。",
       "next": "stay_2"
     },
     {
@@ -174,8 +174,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "noah",
       "speaker": "Ruth",
-      "text": "All that for that?",
-      "translation": "等这么半天，就这点儿？",
+      "text": "Oh. It just swallowed it. Did you get that?",
+      "translation": "哎，一下就吞了。你拍到了吗？",
       "next": "stay_4"
     },
     {
@@ -194,8 +194,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "noah",
       "speaker": "Noah",
-      "text": "Seventeen shots. Seventeen of it just standing there!",
-      "translation": "十七张。十七张全是它站着！",
+      "text": "Seventeen shots. Every single one of it standing still.",
+      "translation": "十七张。怎么全是它站着不动啊。",
       "next": "stay_6"
     },
     {
@@ -204,8 +204,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "noah",
       "speaker": "你",
-      "text": "Show us the best one.",
-      "translation": "给我们看看最好的一张。",
+      "text": "Go back one. I can see its foot in that one.",
+      "translation": "往回翻一张。那张能看见它的脚。",
       "next": "stay_7"
     },
     {
@@ -214,8 +214,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "noah",
       "speaker": "旁白",
-      "text": "He scrolls back and forth. They look exactly alike.",
-      "translation": "他往前翻，又往后翻。看哪张都一样。",
+      "text": "Noah stops scrolling. Ruth looks from the screen to the water.",
+      "translation": "Noah 停在那张。Ruth 看完照片，又往水里看了一眼。",
       "ending": true,
       "experienceID": "VA2A"
     },
@@ -235,8 +235,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "bench",
       "speaker": "旁白",
-      "text": "The heron catches a fish while Ruth is wiping her glasses.",
-      "translation": "Ruth 擦眼镜时，苍鹭抓到了一条鱼。",
+      "text": "Ruth takes off her glasses. A splash, then a fish in its beak.",
+      "translation": "Ruth 摘下眼镜要擦。水里“啪”地一声，苍鹭叼起了一条鱼。",
       "next": "detour_3"
     },
     {
@@ -245,8 +245,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "bench",
       "speaker": "Ruth",
-      "text": "Of course it did.",
-      "translation": "就知道会这样。",
+      "text": "Was that it? I've got a smear right across both lenses.",
+      "translation": "刚才是它？我把两片镜片都擦糊了。",
       "next": "detour_4"
     },
     {
@@ -255,8 +255,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "bench",
       "speaker": "旁白",
-      "text": "Noah returns with a clear orange line across the water.",
-      "translation": "Noah 回来了。他给你们看照片，水上亮着一道橙光。",
+      "text": "Noah comes back. On his screen, the sun fills the gap.",
+      "translation": "Noah 回来了。照片上，太阳正好落在两块石头中间。",
       "next": "detour_5"
     },
     {
@@ -265,8 +265,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "bench",
       "speaker": "Noah",
-      "text": "Got it. What did I miss?",
-      "translation": "拍到了。我错过什么了？",
+      "text": "I got two frames before it slipped behind the rock.",
+      "translation": "太阳被石头挡住前，我就来得及按两下。",
       "next": "detour_6"
     },
     {
@@ -275,8 +275,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "bench",
       "speaker": "Ruth",
-      "text": "Apparently, everything. Ask the person who could see.",
-      "translation": "我那会儿瞎着呢。问旁边这位。",
+      "text": "Hold it there. I want to see it with my glasses on.",
+      "translation": "先别收。我把眼镜戴上看看。",
       "next": "detour_7"
     },
     {
@@ -285,8 +285,8 @@
       "location": "温哥华 · 海边步道",
       "shot": "bench",
       "speaker": "旁白",
-      "text": "She puts her glasses back on and turns towards you.",
-      "translation": "她重新戴好眼镜，转过来看你。",
+      "text": "Noah sits down and holds the screen between you and Ruth.",
+      "translation": "Noah 也坐了下来，把相机举在你和 Ruth 中间。",
       "ending": true,
       "experienceID": "VA2B"
     }

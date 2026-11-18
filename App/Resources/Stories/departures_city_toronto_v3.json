@@ -39,8 +39,8 @@
       "location": "多伦多 · 三个蛋糕",
       "shot": "flat",
       "speaker": "Maya",
-      "text": "Well, there's enough dessert for three rounds.",
-      "translation": "好嘛，甜点够吃三轮了。",
+      "text": "Well, at least nobody's going home hungry.",
+      "translation": "好，至少谁也不会饿着回去。",
       "next": "start_3"
     },
     {
@@ -59,8 +59,8 @@
       "location": "多伦多 · 三个蛋糕",
       "shot": "flat",
       "speaker": "旁白",
-      "text": "Maya checks her phone, then holds it away from Sam.",
-      "translation": "Maya 看看手机，又把它从 Sam 面前移开。",
+      "text": "Maya reads her phone twice. She turns it away from Sam.",
+      "translation": "Maya 把手机看了两遍，又把屏幕转开，不给 Sam 看。",
       "next": "start_5"
     },
     {
@@ -121,8 +121,8 @@
             "first_a": true
           },
           "review": {
-            "context": "大家都带了甜点，主菜还没着落。",
-            "outcome": "大家确认能吃现有食材，临时开火做饭，蛋糕继续占着半张桌子。"
+            "context": "大家都带了甜点，桌上没主菜。",
+            "outcome": "大家确认能吃现有食材，开火做鸡蛋饭。三盒蛋糕还占着桌子。"
           }
         },
         {
@@ -186,8 +186,8 @@
       "location": "多伦多 · 三个蛋糕",
       "shot": "cook",
       "speaker": "Maya",
-      "text": "Table or music? We need both sorted.",
-      "translation": "管桌子还是管音乐？都缺人。",
+      "text": "Could you clear the table? Or get some music on?",
+      "translation": "能帮我把桌子腾一下吗？或者找首歌放？",
       "next": "second_cook"
     },
     {
@@ -196,20 +196,20 @@
       "location": "多伦多 · 三个蛋糕",
       "shot": "cook",
       "speaker": "你的选择",
-      "text": "Which would you like to take on?",
-      "translation": "你想接哪一项？",
+      "text": "How do you want to help in the kitchen?",
+      "translation": "你想怎么搭把手？",
       "choices": [
         {
           "id": "a",
-          "text": "I'll make room for the plates.",
-          "translation": "我给盘子腾点地方。",
+          "text": "I'll move the cakes to make room for dinner.",
+          "translation": "我把蛋糕挪挪，给晚饭腾块地方。",
           "next": "table",
           "flags": {
             "second_cook_a": true
           },
           "review": {
-            "context": "蛋糕占住餐桌，晚饭正在做。",
-            "outcome": "你把蛋糕移开摆好桌子，发现四个人的餐具并不成套。"
+            "context": "锅已经上火，蛋糕把桌子占了。",
+            "outcome": "蛋糕盒一角塌了。你和 Maya 合力把她做的蛋糕挪到大盘里，大家用小碗盛饭。"
           }
         },
         {
@@ -221,8 +221,8 @@
             "second_cook_a": false
           },
           "review": {
-            "context": "厨房忙起来，还没选好音乐。",
-            "outcome": "你放起音乐，Sam 跟着唱乱了切菜节奏，Maya 把歌声也当成了计时器。"
+            "context": "菜在锅边等着，厨房还没放歌。",
+            "outcome": "Sam 提前唱到副歌，Maya 没赶上翻鸡蛋。她把焦的那块盛给了自己。"
           }
         }
       ]
@@ -233,8 +233,8 @@
       "location": "终于有饭吃了",
       "shot": "cook",
       "speaker": "旁白",
-      "text": "You find three forks, two spoons, and a very small fork.",
-      "translation": "你翻出三把叉子、两把勺子，还有一把特别小的叉子。",
+      "text": "You lift a cake box. One corner gives under your hand.",
+      "translation": "你抬起一盒蛋糕。底下有个角突然塌了。",
       "next": "table_2"
     },
     {
@@ -243,8 +243,8 @@
       "location": "终于有饭吃了",
       "shot": "cook",
       "speaker": "Maya",
-      "text": "That one's for cake. It has qualifications.",
-      "translation": "小的那把别拿啊。人家是专门吃蛋糕的。",
+      "text": "That's the one I made. Hold it level. I left the base loose.",
+      "translation": "我做的那盒！端平，底下那块板我忘了固定。",
       "next": "table_3"
     },
     {
@@ -253,8 +253,8 @@
       "location": "终于有饭吃了",
       "shot": "cook",
       "speaker": "旁白",
-      "text": "Sam arrives with bowls of rice and eggs.",
-      "translation": "Sam 端着盛好的米饭和鸡蛋来了。",
+      "text": "Sam puts down two hot serving bowls of rice and eggs.",
+      "translation": "Sam 端着两大碗热乎的鸡蛋饭过来，赶紧搁下。",
       "next": "table_4"
     },
     {
@@ -263,8 +263,8 @@
       "location": "终于有饭吃了",
       "shot": "cook",
       "speaker": "Sam",
-      "text": "I used the big spoon. Was that anybody's cutlery?",
-      "translation": "大勺我拿去盛饭了。刚才谁说要用来着？",
+      "text": "Here. The big plate. Can you slide it under the cake?",
+      "translation": "拿这个，大盘子。能垫到蛋糕底下吗？",
       "next": "table_5"
     },
     {
@@ -273,8 +273,8 @@
       "location": "终于有饭吃了",
       "shot": "cook",
       "speaker": "旁白",
-      "text": "Maya gives him the tiny fork and takes the rice.",
-      "translation": "Maya 把最小的叉子塞给他，伸手接过饭。",
+      "text": "You hold the box. Maya slides the cake onto the plate.",
+      "translation": "你端住盒子。Maya 贴着盘沿，把蛋糕慢慢推过去。",
       "next": "table_6"
     },
     {
@@ -283,8 +283,8 @@
       "location": "终于有饭吃了",
       "shot": "cook",
       "speaker": "旁白",
-      "text": "Dinner begins with the cake knife still on the table.",
-      "translation": "晚饭开始了，蛋糕刀还躺在桌上。",
+      "text": "The cake gets the big plate. Dinner goes in the small bowls.",
+      "translation": "最大的盘子保住了蛋糕。大家拿小碗盛饭。",
       "ending": true,
       "experienceID": "TO311"
     },
@@ -385,8 +385,8 @@
       "location": "多伦多 · 三个蛋糕",
       "shot": "order",
       "speaker": "Maya",
-      "text": "That's a question for later.",
-      "translation": "你先别替蛋糕操心了。",
+      "text": "Let's get something hot first. I'm starving.",
+      "translation": "先来点热的。我快饿扁了。",
       "next": "second_order"
     },
     {
@@ -407,8 +407,8 @@
             "second_order_a": true
           },
           "review": {
-            "context": "Maya 主动请客，也提供了自愿分担的选择。",
-            "outcome": "Maya 付钱点餐，你摆盘，大家用选甜点的严肃态度研究三只蛋糕。"
+            "context": "两盒面共三十六加元。Maya 愿意请客。",
+            "outcome": "Maya 付钱，你拿盘子。Sam 给蛋糕排名，辩到一半就来餐了。"
           }
         },
         {
@@ -420,8 +420,8 @@
             "second_order_a": false
           },
           "review": {
-            "context": "订单总价明确，你可以自愿分担自己的份额。",
-            "outcome": "你付九加元，Maya 支付剩余部分，热饭送来前大家都没有动蛋糕。"
+            "context": "两盒面共三十六加元。愿意分担的人可以出九加元。",
+            "outcome": "你付九加元，Maya 付二十七加元。Sam 让忙了一晚的 Maya 坐下，把第一盒热面端给了她。"
           }
         }
       ]
@@ -452,8 +452,8 @@
       "location": "终于有饭吃了",
       "shot": "order",
       "speaker": "旁白",
-      "text": "He reaches for the knife. Maya moves it behind her cup.",
-      "translation": "他伸手拿刀，Maya 把刀移到自己杯后。",
+      "text": "Sam reaches for the knife. Maya moves it behind her cup.",
+      "translation": "Sam 伸手拿刀。Maya 把刀拨到自己杯子后面。",
       "next": "treat_4"
     },
     {
@@ -472,8 +472,8 @@
       "location": "终于有饭吃了",
       "shot": "order",
       "speaker": "旁白",
-      "text": "By the time the buzzer rings, Sam has an actual list.",
-      "translation": "门铃一响，Sam 手里已经有份像模像样的名单了。",
+      "text": "The buzzer cuts him off halfway through his final argument.",
+      "translation": "Sam 最后一条理由还没说完，门铃就响了。",
       "ending": true,
       "experienceID": "TO321"
     },
@@ -483,8 +483,8 @@
       "location": "终于有饭吃了",
       "shot": "order",
       "speaker": "旁白",
-      "text": "You pay nine. Maya covers the rest and sends the order.",
-      "translation": "你付了九加元。Maya 付好余款，下了单。",
+      "text": "You pay C$9. Maya pays the other C$27 and places the order.",
+      "translation": "你付了九加元。Maya 付剩下的二十七，下单。",
       "next": "share_2"
     },
     {
@@ -493,8 +493,8 @@
       "location": "终于有饭吃了",
       "shot": "order",
       "speaker": "Sam",
-      "text": "Do the cakes get their own bill?",
-      "translation": "蛋糕单独算账吗？",
+      "text": "You haven't sat down since we got here.",
+      "translation": "我们来这么久，你都没坐过吧？",
       "next": "share_3"
     },
     {
@@ -503,8 +503,8 @@
       "location": "终于有饭吃了",
       "shot": "order",
       "speaker": "Maya",
-      "text": "They're guests. They've already overstayed.",
-      "translation": "蛋糕算客人。还是赖着不走的那种。",
+      "text": "I got home ten minutes before you lot. Just let me sit.",
+      "translation": "我也就比你们早到家十分钟。让我坐会儿。",
       "next": "share_4"
     },
     {
@@ -513,8 +513,8 @@
       "location": "终于有饭吃了",
       "shot": "order",
       "speaker": "旁白",
-      "text": "When the buzzer rings, Sam reaches the door first.",
-      "translation": "门禁一响，Sam 第一个到了门边。",
+      "text": "Sam pulls up a chair for her. She sinks into it.",
+      "translation": "Sam 给她拉了把椅子。Maya 一下坐了进去。",
       "next": "share_5"
     },
     {
@@ -523,8 +523,8 @@
       "location": "终于有饭吃了",
       "shot": "order",
       "speaker": "旁白",
-      "text": "The cake knife stays clean until the hot food is gone.",
-      "translation": "热饭吃完之前，蛋糕刀一直是干净的。",
+      "text": "When the food comes, he opens the first carton beside her.",
+      "translation": "面送到了，Sam 在她旁边掀开第一盒。",
       "ending": true,
       "experienceID": "TO322"
     }

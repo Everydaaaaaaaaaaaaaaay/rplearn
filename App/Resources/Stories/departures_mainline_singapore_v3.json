@@ -36,8 +36,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "night",
       "speaker": "Mei",
-      "text": "Your bag got a better seat than me.",
-      "translation": "你包坐得倒是比我好。",
+      "text": "Your bag picked a good seat. Right under the fan.",
+      "translation": "你这包还挺会挑座，正对着风扇。",
       "next": "start_3"
     },
     {
@@ -86,8 +86,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "night",
       "speaker": "Mei",
-      "text": "I kept thinking of things we hadn't eaten yet.",
-      "translation": "我一直在想，还有什么没一起吃过。",
+      "text": "I kept seeing things I still wanted you to try.",
+      "translation": "排着队呢，又看见一样你还没吃过的。",
       "next": "start_8"
     },
     {
@@ -116,8 +116,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "night",
       "speaker": "你",
-      "text": "One pocket is starting to split.",
-      "translation": "有一个口袋都快撑裂了。",
+      "text": "The side pocket's splitting at the bottom.",
+      "translation": "侧面那只兜，底下都快撑开线了。",
       "next": "start_11"
     },
     {
@@ -126,8 +126,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "night",
       "speaker": "Mei",
-      "text": "Good filing system.",
-      "translation": "行啊，这也算分类整理。",
+      "text": "Oh, that pocket. Turn it towards the chair.",
+      "translation": "那只啊。朝椅背放，省得漏一地。",
       "next": "first"
     },
     {
@@ -136,8 +136,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "dinner",
       "speaker": "你的选择",
-      "text": "What would you like to say over dinner?",
-      "translation": "这顿饭里，你想说些什么？",
+      "text": "Do you bring up next week or stay with dinner?",
+      "translation": "你现在聊聊下周，还是想先把这顿饭吃好？",
       "choices": [
         {
           "id": "a",
@@ -154,15 +154,15 @@
         },
         {
           "id": "b",
-          "text": "You keep ordering. Are you putting off saying goodbye?",
-          "translation": "你还在加菜。是不是不想这么早说再见？",
+          "text": "Slide the plate over. Let's eat this while it's hot.",
+          "translation": "把碟子往中间推。咱们趁热吃。",
           "next": "goodbye",
           "flags": {
             "first_a": false
           },
           "review": {
-            "context": "Mei 不断想到还有什么没一起吃过。",
-            "outcome": "她承认自己也不擅长告别，晚饭结束前你们拍照或安静吃完。"
+            "context": "Mei 多点了一小碟，旁边的摊已经开始收碗。",
+            "outcome": "你们分着吃那碟菜。隔壁桌开始收拾时，Mei 说你们这桌还没吃完。"
           }
         }
       ]
@@ -173,8 +173,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "dinner",
       "speaker": "Mei",
-      "text": "Tuesday at seven here? I finish before that.",
-      "translation": "我这边周二晚上七点行吗？那会儿下班了。",
+      "text": "Tuesday? I get off at six. Seven here works.",
+      "translation": "周二呢？六点下班，我这边七点行。",
       "next": "call_2"
     },
     {
@@ -183,8 +183,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "dinner",
       "speaker": "旁白",
-      "text": "You check the time difference. A short call would fit.",
-      "translation": "你看过时差，那个时间能聊一小会儿。",
+      "text": "You check the time back home. You should be in by then.",
+      "translation": "你看了眼时差。那个点你应该已经到家了。",
       "next": "call_3"
     },
     {
@@ -223,8 +223,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "dinner",
       "speaker": "旁白",
-      "text": "Her spoon rests above the soup while she waits.",
-      "translation": "她举着勺子，没往嘴里送，等你回话。",
+      "text": "A drop slips off her spoon and back into the soup.",
+      "translation": "一滴汤从她勺沿滑下去，又掉回碗里。",
       "next": "second_call"
     },
     {
@@ -245,8 +245,8 @@
             "second_call_a": true
           },
           "review": {
-            "context": "Mei 提议新加坡时间周二七点，你已核对时差。",
-            "outcome": "你们定下通话时间，接着吃饭，没有把尚未发生的通话当成经历。"
+            "context": "Mei 提议她那里周二晚上七点。",
+            "outcome": "你们约好视频喝茶，还说到你到时可以给她看看窗外。"
           }
         },
         {
@@ -258,8 +258,8 @@
             "second_call_a": false
           },
           "review": {
-            "context": "时间看起来合适，你仍不确定回家后的安排。",
-            "outcome": "你没有确认通话，Mei 收起手机，讲起自己此刻舍不得结束这顿饭。"
+            "context": "Mei 提出周二通话，你回家后的安排还没定。",
+            "outcome": "你们把通话先放着。到了街口，她提醒你把快掉小票的包转个面。"
           }
         }
       ]
@@ -270,8 +270,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "Mei",
-      "text": "Tea and a wall. That's in my calendar now.",
-      "translation": "茶，还有墙。我真写进日历了。",
+      "text": "I've put it in. Just tea, then.",
+      "translation": "记上了。到时就喝杯茶。",
       "next": "book_2"
     },
     {
@@ -280,8 +280,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "旁白",
-      "text": "She puts the phone away, then finds soup on her sleeve.",
-      "translation": "她收起手机，发现袖子上沾了汤。",
+      "text": "She locks her phone and picks up her chopsticks again.",
+      "translation": "她把手机锁了屏，重新拿起筷子。",
       "next": "book_3"
     },
     {
@@ -290,8 +290,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "Mei",
-      "text": "This is the outfit you'll remember me in.",
-      "translation": "完了，你以后想起我，先想起这一袖子汤。",
+      "text": "Can you sit by the window when you call?",
+      "translation": "到时候你能坐窗边吗？",
       "next": "book_4"
     },
     {
@@ -300,8 +300,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "你",
-      "text": "I might recognise the sleeve on Tuesday.",
-      "translation": "周二说不定就靠袖子认人了。",
+      "text": "Sure. I'll show you what's outside.",
+      "translation": "行啊，到时候给你看看外头。",
       "next": "book_5"
     },
     {
@@ -310,8 +310,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "旁白",
-      "text": "She folds the stained cuff under and reaches for the plate.",
-      "translation": "她把沾到汤的那截袖口卷进去，又去夹菜。",
+      "text": "She reaches for the last piece and splits it with you.",
+      "translation": "她夹起最后一块，分了一半给你。",
       "next": "book_end"
     },
     {
@@ -320,8 +320,8 @@
       "location": "路口的灯",
       "shot": "night",
       "speaker": "旁白",
-      "text": "At the corner, she starts to say 'message when you land'.",
-      "translation": "街角，她刚要说“落地发个消息”。",
+      "text": "At the corner, you lift the bag onto your shoulder.",
+      "translation": "到了街口，你把包甩到肩上。",
       "next": "book_end_2"
     },
     {
@@ -330,8 +330,8 @@
       "location": "路口的灯",
       "shot": "night",
       "speaker": "Mei",
-      "text": "Actually, you will be tired. Tuesday. I have it written.",
-      "translation": "你到时候肯定累了。周二吧。我记着呢。",
+      "text": "Don't buy tea just for me, okay? Use what you've got.",
+      "translation": "你别特地买茶啊，家里有啥就喝啥。",
       "next": "book_end_3"
     },
     {
@@ -340,8 +340,8 @@
       "location": "路口的灯",
       "shot": "night",
       "speaker": "旁白",
-      "text": "She lifts her clean sleeve to wave. The other stays folded.",
-      "translation": "她用干净那边袖子挥手。另一边还折着。",
+      "text": "She waves while you're still waiting for the light.",
+      "translation": "你还在等红灯，她先冲你挥了挥手。",
       "ending": true,
       "experienceID": "SG311"
     },
@@ -351,8 +351,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "Mei",
-      "text": "Okay. Tell me when you've worked it out.",
-      "translation": "好。确定了告诉我。",
+      "text": "All right. Let's eat before this gets cold.",
+      "translation": "嗯。趁没凉，接着吃吧。",
       "next": "wait_2"
     },
     {
@@ -421,8 +421,8 @@
       "location": "路口的灯",
       "shot": "night",
       "speaker": "Mei",
-      "text": "Next time, fewer plates. Probably.",
-      "translation": "下回少点几盘。大概。",
+      "text": "Turn your bag round. A receipt's sticking out.",
+      "translation": "包转过去。小票都露出来了。",
       "next": "wait_end_3"
     },
     {
@@ -431,8 +431,8 @@
       "location": "路口的灯",
       "shot": "night",
       "speaker": "旁白",
-      "text": "She waits for the light to change, then heads back alone.",
-      "translation": "灯一变，她就一个人往回走。",
+      "text": "You turn the bag. When you look up, she's walking back.",
+      "translation": "你把包转了个面。再抬头，她已经往回走了。",
       "ending": true,
       "experienceID": "SG312"
     },
@@ -442,8 +442,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "dinner",
       "speaker": "Mei",
-      "text": "Is it that obvious?",
-      "translation": "这么明显？",
+      "text": "Try the pale dip. The red one nearly made me cry.",
+      "translation": "蘸浅的那碟。红的刚才差点把我辣哭。",
       "next": "goodbye_2"
     },
     {
@@ -452,8 +452,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "dinner",
       "speaker": "旁白",
-      "text": "She looks at the small plate instead of at you.",
-      "translation": "她看着小碟，没有看你。",
+      "text": "Mei slides the dips across, then wipes her eyes.",
+      "translation": "Mei 把两碟蘸料推过来，这才拿纸巾擦眼睛。",
       "next": "goodbye_3"
     },
     {
@@ -462,8 +462,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "dinner",
       "speaker": "Mei",
-      "text": "I was going to say 'safe trip'. It feels like too little now.",
-      "translation": "我来的时候想，就说声一路顺风。现在又觉得说少了。",
+      "text": "I usually get here after this stall has shut.",
+      "translation": "我平时下班来，这摊早收了。",
       "next": "goodbye_4"
     },
     {
@@ -472,8 +472,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "dinner",
       "speaker": "你",
-      "text": "You could say it with noodles in your mouth.",
-      "translation": "你可以含着面说。",
+      "text": "Here. I've left you another piece.",
+      "translation": "喏，我还给你留了一块。",
       "next": "goodbye_5"
     },
     {
@@ -482,8 +482,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "dinner",
       "speaker": "旁白",
-      "text": "She laughs, then has to put the spoon down.",
-      "translation": "她笑了，只好先放下勺子。",
+      "text": "The stallholder clears the table next to yours.",
+      "translation": "摊主把隔壁桌的碗叠起来了。",
       "next": "goodbye_6"
     },
     {
@@ -492,8 +492,8 @@
       "location": "新加坡 · 最后一顿晚饭",
       "shot": "dinner",
       "speaker": "Mei",
-      "text": "I'd choke! You'd never forget that, would you?",
-      "translation": "我会呛到的！那你可真忘不了我。",
+      "text": "We're still eating here, Uncle.",
+      "translation": "叔叔，我们这桌还在吃啊。",
       "next": "second_goodbye"
     },
     {
@@ -514,21 +514,21 @@
             "second_goodbye_a": true
           },
           "review": {
-            "context": "Mei 也舍不得告别，你们还有一点时间。",
-            "outcome": "你们同意私下留一张合照，照片里留着汤渍，没有拍成完美的告别照。"
+            "context": "摊主开始收碗，你们还可以在这里坐一会儿。",
+            "outcome": "你们留下一张袖口带汤渍的合照。到了街口，Mei 请你把刚才那张发给她。"
           }
         },
         {
           "id": "b",
-          "text": "Let's eat. We haven't finished that extra plate.",
-          "translation": "接着吃吧。多点那碟还没吃完。",
+          "text": "Let's finish what's on the plate. Phones down.",
+          "translation": "手机先放一放。把这碟吃完吧。",
           "next": "eat",
           "flags": {
             "second_goodbye_a": false
           },
           "review": {
-            "context": "你们还有一点时间，也有没吃完的食物。",
-            "outcome": "你们收起手机吃完饭，Mei 最后还是只说了一路顺风。"
+            "context": "你们还没吃完小碟，也还没到非走不可的时候。",
+            "outcome": "你们分完最后几块。到了街口，Mei 只说了一句一路顺风，等你过了马路才走。"
           }
         }
       ]
@@ -539,8 +539,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "Mei",
-      "text": "Just for us, okay? I'm not posting a goodbye tonight.",
-      "translation": "就咱俩看啊。今晚我可不发告别照。",
+      "text": "All right. Just keep it between us.",
+      "translation": "行。就咱俩留着。",
       "next": "photo_2"
     },
     {
@@ -559,8 +559,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "Mei",
-      "text": "Wait. No, leave it. That's what dinner looked like.",
-      "translation": "等下，袖子……算了，拍吧。就这么吃的。",
+      "text": "Wait. My sleeve. Oh, go ahead.",
+      "translation": "等下，袖子……算了，拍吧。",
       "next": "photo_4"
     },
     {
@@ -569,8 +569,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "旁白",
-      "text": "The photo catches her turning back towards you.",
-      "translation": "拍下来时，她刚转回脸看你。",
+      "text": "You take it while she's still turning back to you.",
+      "translation": "她脸还没转过来，你就按下去了。",
       "next": "photo_5"
     },
     {
@@ -579,8 +579,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "旁白",
-      "text": "You put the phone away before the bowl is cleared.",
-      "translation": "碗收走之前，你已经把手机收好了。",
+      "text": "She reaches for another shot, then picks up her chopsticks.",
+      "translation": "她手都朝手机伸出去了，又收回来，拿起筷子。",
       "next": "photo_end"
     },
     {
@@ -589,8 +589,8 @@
       "location": "路口的灯",
       "shot": "night",
       "speaker": "Mei",
-      "text": "Send me that one when you can.",
-      "translation": "有空把那张发我。",
+      "text": "Send me the one we took, okay?",
+      "translation": "有空把刚拍那张发我啊。",
       "next": "photo_end_2"
     },
     {
@@ -599,8 +599,8 @@
       "location": "路口的灯",
       "shot": "night",
       "speaker": "旁白",
-      "text": "At the corner, she checks that she hasn't taken your bag.",
-      "translation": "走到街口，她低头确认自己拿的是哪个包。",
+      "text": "At the corner, your strap slips. She catches it.",
+      "translation": "到街口，你那根包带往下滑，被她一把抄住了。",
       "next": "photo_end_3"
     },
     {
@@ -609,8 +609,8 @@
       "location": "路口的灯",
       "shot": "night",
       "speaker": "Mei",
-      "text": "Almost walked off with it. Safe trip.",
-      "translation": "差点给你拎走。一路顺风。",
+      "text": "Got it? Right. Go on.",
+      "translation": "拿稳了？行，走吧。",
       "ending": true,
       "experienceID": "SG321"
     },
@@ -630,8 +630,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "Mei",
-      "text": "There's more on your side. Very unfair.",
-      "translation": "哎，你那边怎么比我多？",
+      "text": "You have the big one. I want the crunchy bit.",
+      "translation": "大的你吃。小的那个脆，我要那个。",
       "next": "eat_3"
     },
     {
@@ -640,8 +640,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "旁白",
-      "text": "She nudges the last piece towards you anyway.",
-      "translation": "她还是把最后一块往你这边推了推。",
+      "text": "She pushes yours over and takes hers, crumbs and all.",
+      "translation": "她把大的拨给你，小的连碎渣一块夹走。",
       "next": "eat_4"
     },
     {
@@ -650,8 +650,8 @@
       "location": "还没说完的话",
       "shot": "dinner",
       "speaker": "旁白",
-      "text": "Neither of you starts a new topic while you finish it.",
-      "translation": "你们吃完了剩下的菜。这会儿谁也没说话。",
+      "text": "You eat without talking until the plate's empty.",
+      "translation": "你俩没再说话，一直吃到碟子空了。",
       "next": "eat_end"
     },
     {

@@ -57,8 +57,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "day",
       "speaker": "Mei",
-      "text": "Same stall, same order. I've got it memorised.",
-      "translation": "还是那家，还是那份。我闭着眼都能点。",
+      "text": "Skin off. Sauce on the side. His is easy to remember.",
+      "translation": "去鸡皮，酱另放。他那份我早记熟了。",
       "next": "start_3"
     },
     {
@@ -77,8 +77,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "day",
       "speaker": "Uncle Tan",
-      "text": "How do I cancel my chicken rice subscription?",
-      "translation": "我这鸡饭包年，什么时候能退啊？",
+      "text": "Can we take a day off the chicken rice?",
+      "translation": "鸡饭今天能停一天吗？",
       "next": "start_5"
     },
     {
@@ -87,8 +87,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "day",
       "speaker": "Mei",
-      "text": "He said he liked it.",
-      "translation": "他明明说喜欢。",
+      "text": "He said he liked it. I go there on my break every day.",
+      "translation": "他说喜欢啊。我每天午休都过去给他买。",
       "next": "start_6"
     },
     {
@@ -97,8 +97,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "day",
       "speaker": "你",
-      "text": "When?",
-      "translation": "什么时候说的？",
+      "text": "Do you ever get lunch somewhere else?",
+      "translation": "那你平时会去别家吃吗？",
       "next": "start_7"
     },
     {
@@ -107,8 +107,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "day",
       "speaker": "Mei",
-      "text": "I don't remember. Whose side are you on?",
-      "translation": "忘了。你到底站哪边的？",
+      "text": "Sometimes. When I'm just getting something for me.",
+      "translation": "偶尔吧。只给我自己买的时候。",
       "next": "start_8"
     },
     {
@@ -117,8 +117,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "day",
       "speaker": "旁白",
-      "text": "She removes the extra order, but keeps the chat open.",
-      "translation": "她删掉多加的那份，聊天窗口还开着。",
+      "text": "She takes his order off the screen, then opens their chat.",
+      "translation": "她把给爸爸点的那份删了，点开他俩的聊天。",
       "next": "pick"
     },
     {
@@ -132,28 +132,28 @@
       "choices": [
         {
           "id": "a",
-          "text": "Ask what he actually wants today.",
-          "translation": "问问他今天到底想吃什么。",
+          "text": "Text him and ask what he wants for lunch.",
+          "translation": "发消息问他今天想吃什么。",
           "next": "order",
           "flags": {
             "pick_a": true
           },
           "review": {
-            "context": "父亲厌倦了 Mei 一直替他点的午饭。",
-            "outcome": "父亲说要吃加辣的面，Mei 吃了一惊，决定先偷尝一口再送去。"
+            "context": "Mei 删掉替爸爸点的老样子，给他发消息问想吃什么。",
+            "outcome": "爸爸多要的辣椒是给 Mei 的。她让摊主单装辣椒，删掉自己那份，把两把叉子都塞进爸爸的外卖袋。"
           }
         },
         {
           "id": "b",
-          "text": "Invite him to choose at the stalls with us.",
-          "translation": "叫他来和我们一起挑。",
+          "text": "Ask him to come over and choose for himself.",
+          "translation": "请他过来，让他自己挑。",
           "next": "join",
           "flags": {
             "pick_a": false
           },
           "review": {
-            "context": "午饭还没下单，父亲就在附近。",
-            "outcome": "父亲来到熟食中心，认真研究后仍选了鸡饭，但换了摊位和口味。"
+            "context": "爸爸来熟食中心自己挑午饭，Mei 在旁边等他。",
+            "outcome": "爸爸选了另一摊的烧鸡饭，多加黄瓜。Mei 差点替他喊去皮，最后去找了张桌子等他。"
           }
         }
       ]
@@ -162,60 +162,60 @@
       "id": "order",
       "act": 0,
       "location": "新加坡 · 熟食中心",
-      "shot": "takeaway",
+      "shot": "phone",
       "speaker": "旁白",
-      "text": "His reply comes straight back, with three exclamation marks.",
-      "translation": "爸爸回得飞快，末尾还带了三个感叹号。",
+      "text": "She texts him. His reply comes before her screen goes dark.",
+      "translation": "她发去一条消息。屏幕还没暗，爸爸就回了。",
       "next": "order_2"
     },
     {
       "id": "order_2",
       "act": 0,
       "location": "新加坡 · 熟食中心",
-      "shot": "takeaway",
+      "shot": "phone",
       "speaker": "Uncle Tan",
-      "text": "The spicy noodles. Extra chilli.",
-      "translation": "辣面。多加辣椒。",
+      "text": "Noodles from by the drinks stall. Ask for more chilli.",
+      "translation": "饮料摊旁边那家的面。辣椒多要点。",
       "next": "order_3"
     },
     {
       "id": "order_3",
       "act": 0,
       "location": "新加坡 · 熟食中心",
-      "shot": "takeaway",
+      "shot": "phone",
       "speaker": "Mei",
-      "text": "He takes the chilli out of everything at home.",
-      "translation": "真的假的？他在家吃什么都得把辣椒挑出来。",
+      "text": "He picks the chilli out when I cook. I'll ask him again.",
+      "translation": "我做饭他都把辣椒挑出来。我再问他一遍。",
       "next": "order_4"
     },
     {
       "id": "order_4",
       "act": 0,
       "location": "新加坡 · 熟食中心",
-      "shot": "takeaway",
+      "shot": "phone",
       "speaker": "Uncle Tan",
-      "text": "Your chilli is much hotter than this stall's.",
-      "translation": "你调那个比人家这摊辣多了好吧。",
+      "text": "It's for you. You always take the first bite.",
+      "translation": "给你要的。你哪次不先尝一口？",
       "next": "order_5"
     },
     {
       "id": "order_5",
       "act": 0,
       "location": "新加坡 · 熟食中心",
-      "shot": "takeaway",
+      "shot": "phone",
       "speaker": "旁白",
-      "text": "Mei reads that twice, then joins the noodle queue.",
-      "translation": "Mei 看了两遍，去排面摊的队。",
+      "text": "Mei checks her own order. She hasn't paid for it yet.",
+      "translation": "Mei 切回订单。自己那份也还没付。",
       "next": "order_6"
     },
     {
       "id": "order_6",
       "act": 0,
       "location": "新加坡 · 熟食中心",
-      "shot": "takeaway",
+      "shot": "day",
       "speaker": "Mei",
-      "text": "I'm stealing one bite before I take it over.",
-      "translation": "等会儿送过去之前，我得偷尝一口。",
+      "text": "Two forks, please. And could I get the chilli on the side?",
+      "translation": "麻烦给两把叉子。辣椒能单独给我装一包吗？",
       "next": "order_7"
     },
     {
@@ -224,8 +224,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "takeaway",
       "speaker": "旁白",
-      "text": "She asks for a separate fork with the takeaway box.",
-      "translation": "拿打包盒时，她又要了一把叉子。",
+      "text": "She drops her own order. Both forks go in his bag.",
+      "translation": "她把自己那份也删了，两把叉子都塞进了打包袋。",
       "ending": true,
       "experienceID": "SC2A"
     },
@@ -235,8 +235,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "arrive",
       "speaker": "旁白",
-      "text": "He arrives, walks past two queues, and studies a menu.",
-      "translation": "他到了，经过两条长队，盯着一张菜单看。",
+      "text": "He comes in, walks past her usual stall and reads a menu.",
+      "translation": "他一来就绕过 Mei 常买的那摊，去看另一家的菜单。",
       "next": "join_2"
     },
     {
@@ -245,8 +245,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "arrive",
       "speaker": "Mei",
-      "text": "Anything you like. I mean it this time.",
-      "translation": "真的，你想吃哪个就挑哪个。",
+      "text": "I'll get us a table, Dad. I'll be over there.",
+      "translation": "爸，那我去找张桌子。我在那边等你。",
       "next": "join_3"
     },
     {
@@ -265,8 +265,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "arrive",
       "speaker": "旁白",
-      "text": "Mei looks at you. Then back at him.",
-      "translation": "Mei 看看你，又看看他。",
+      "text": "Mei almost says 'skin off'. Her father points to a photo.",
+      "translation": "Mei 差点喊了声“去皮”。爸爸指了指菜单上的照片。",
       "next": "join_5"
     },
     {
@@ -275,8 +275,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "arrive",
       "speaker": "Uncle Tan",
-      "text": "Roasted! That stall. Tell them extra cucumber.",
-      "translation": "烧鸡！那家。跟老板说黄瓜多放点。",
+      "text": "Roast chicken, here. Extra cucumber, please.",
+      "translation": "这家的烧鸡。黄瓜给我多放点。",
       "next": "join_6"
     },
     {
@@ -285,8 +285,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "arrive",
       "speaker": "Mei",
-      "text": "Dad! You had me guessing this whole time.",
-      "translation": "爸！你害我刚才猜了一圈。",
+      "text": "Dad, I've been taking the skin off for years.",
+      "translation": "爸，我给你去皮都去多少年了。",
       "next": "join_7"
     },
     {
@@ -295,8 +295,8 @@
       "location": "新加坡 · 熟食中心",
       "shot": "arrive",
       "speaker": "旁白",
-      "text": "He takes out his wallet and joins the other queue.",
-      "translation": "他掏出钱包，排进了另一条队伍。",
+      "text": "He pays. Mei wipes a table where he can see her.",
+      "translation": "爸爸在摊前掏钱。Mei 找了张他抬头就能看见的桌子，擦了擦。",
       "ending": true,
       "experienceID": "SC2B"
     }
