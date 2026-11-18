@@ -228,6 +228,10 @@ final class ChatKeyboardTests: XCTestCase {
         field.typeText(" here")
         XCTAssertEqual(field.value as? String, "Keep this draft here")
         XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3))
+        let restoredLayout = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            abs(field.frame.minY - normalComposerY) <= 2
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [restoredLayout], timeout: 3), .completed)
         XCTAssertEqual(field.frame.minY, normalComposerY, accuracy: 2,
                        "切换动画和继续输入后，输入栏仍应位于键盘上方")
         let screenshot = XCTAttachment(screenshot: app.screenshot())

@@ -2,7 +2,7 @@ import DesignSystem
 import PersistenceKit
 import SwiftUI
 
-extension ChatView {
+extension ChatTranscriptView {
     func presentBubbleMenu(_ message: MessageDTO, frame: CGRect) {
         // Keep the actual bubble and current responder in place. A system context
         // preview dismisses the keyboard and snapshots the old bubble coordinates.

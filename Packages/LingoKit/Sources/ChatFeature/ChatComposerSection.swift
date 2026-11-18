@@ -9,18 +9,44 @@ import SpeechKit
 import SwiftUI
 import Translation
 
-extension ChatView {
-    /// 输入栏与底部输入区域。`bottomInset` 仅包含 home indicator 的固定安全区。
-    func inputBar(bottomInset: CGFloat) -> some View {
+/// Draft and translation edits are observed within the composer, outside the transcript.
+struct ChatComposerView: View {
+    @Bindable var viewModel: ChatViewModel
+    @Bindable var composerTranslation: ComposerTranslationModel
+    let deps: ChatDependencies
+    let bottomInset: CGFloat
+    let autoReadQueue: ChatAutoReadQueue
+    let recorder: VoiceRecorder
+    let chineseRecorder: VoiceRecorder
+    let voicePlayer: VoiceMessagePlayer
+    let composerAppleTranslator: AppleTranslator
+    @FocusState.Binding var composerFocus: ChatView.ComposerFocus?
+    @Binding var showsChatFunctions: Bool
+    @Binding var inputDockHeight: CGFloat
+    @Binding var isVoiceMode: Bool
+    @Binding var showsRealtimeConversation: Bool
+    @Binding var learningSelected: Bool
+    let preferredKeyboardHeight: CGFloat
+    let inputDockAnimation: Animation
+    let dismissChatInput: () -> Void
+    @State private var chineseRecordingTask: Task<Void, Never>?
+    @State private var showSimulatorInjection = false
+    @State private var simulatorInjectionText = ""
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    private var isChineseInputFocused: Bool {
+        get { composerFocus == .chinese }
+        nonmutating set {
+            if newValue { composerFocus = .chinese }
+            else if composerFocus == .chinese { composerFocus = nil }
+        }
+    }
+
+    var body: some View {
         VStack(spacing: 0) {
-            translatorControls
-                .frame(height: composerTranslation.isOpen ? nil : 0)
-                .opacity(composerTranslation.isOpen ? 1 : 0)
-                .clipped()
-                .allowsHitTesting(composerTranslation.isOpen)
-                // Visibility and hit testing hide the source field without a
-                // blanket disable resigning its responder during focus handoff.
-                .accessibilityHidden(!composerTranslation.isOpen)
+            if composerTranslation.isOpen {
+                translatorControls.transition(.opacity)
+            }
             HStack(spacing: 8) {
                 Button {
                     if composerTranslation.isOpen {
@@ -124,6 +150,7 @@ extension ChatView {
             composerAppleTranslator.cancelAll()
             if composerTranslation.mode == .instant { translateComposer() }
         }
+        .onDisappear { chineseRecordingTask?.cancel() }
         .onChange(of: chineseRecorder.pendingAutoCapture?.transcript) { _, transcript in
             guard let transcript, composerTranslation.isOpen else { return }
             composerTranslation.source = transcript

@@ -9,7 +9,7 @@ import SpeechKit
 import SwiftUI
 import Translation
 
-extension ChatView {
+extension ChatTranscriptView {
 // MARK: - 教练纠错
 
     /// 本条消息的点评。落库后仍按原文复核一次，历史误存的上文旧错句不再显示。
@@ -213,6 +213,9 @@ extension ChatView {
         )
     }
 
+}
+
+extension ChatView {
     /// 词典未收录时的 AI 简释兜底（fast 档）。
     var aiWordFallback: @Sendable (String) async -> String? {
         deps.lookupAIWordFallback

@@ -48,7 +48,7 @@ final class ComposerTranslatorUITests: XCTestCase {
         XCTAssertTrue(source.exists)
         XCTAssertTrue(String(describing: source.value).contains("可以呀"))
         toggle.tap()
-        XCTAssertFalse(source.isEnabled)
+        XCTAssertTrue(source.waitForNonExistence(timeout: 3))
         XCTAssertEqual(toggle.label, "打开翻译器")
     }
 

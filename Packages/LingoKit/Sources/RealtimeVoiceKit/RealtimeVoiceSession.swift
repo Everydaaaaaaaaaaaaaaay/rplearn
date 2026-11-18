@@ -437,7 +437,8 @@ public final class RealtimeVoiceSession {
             while !Task.isCancelled {
                 guard let self, self.generation == generation else { return }
                 if let startedAt = self.startedAt {
-                    self.elapsedSeconds = Int(Date.now.timeIntervalSince(startedAt))
+                    let seconds = Int(Date.now.timeIntervalSince(startedAt))
+                    if self.elapsedSeconds != seconds { self.elapsedSeconds = seconds }
                 }
                 tick += 0.42
                 if self.phase == .speaking {
