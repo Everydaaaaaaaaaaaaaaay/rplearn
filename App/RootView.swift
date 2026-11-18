@@ -53,7 +53,7 @@ struct RootView: View {
     @State private var activationError: String?
     @State private var showSubscription = false
     @State private var showLondonEpisode = false
-    @StateObject private var activityJourney = ActivityJourneyCoordinator()
+    @State private var activityJourney = ActivityJourneyCoordinator()
     @State private var activeSceneActivity: SceneActivity?
     @State private var activeActivityChat: CharacterDTO?
     @State private var showPlacementTest = false

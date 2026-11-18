@@ -14,7 +14,7 @@ struct ActivityActionView: View {
     let onComplete: ([Int], UUID, CharacterDTO?, [String]) throws -> Void
     let deps: HomeDependencies
     @ObservedObject var model: SocialEncounterModel
-    @ObservedObject var journey: ActivityJourneyCoordinator
+    let journey: ActivityJourneyCoordinator
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.tutorialGuideClearance) private var tutorialGuideClearance
     @State private var showsTranslation = false
@@ -24,6 +24,7 @@ struct ActivityActionView: View {
     @State private var saved = false
     @State private var saveError: String?
     @State private var wordSelection: TokenSelection?
+    @State private var revealDate = Date.now
     private let ink = Color.dsTravelNavy
 
     init(model: SocialEncounterModel, journey: ActivityJourneyCoordinator, deps: HomeDependencies, isVisible: Bool,
@@ -34,19 +35,26 @@ struct ActivityActionView: View {
     }
 
     var body: some View {
-        TimelineView(.animation(minimumInterval: 0.1, paused: !isVisible || scenePhase != .active)) { timeline in
-            Group {
-                if model.started && !model.canReveal(at: timeline.date) {
+        Group {
+            if model.started && !model.canReveal(at: revealDate) {
+                TimelineView(.animation(minimumInterval: 1, paused: !isVisible || scenePhase != .active)) { timeline in
                     ActivityJourneyTransitionView(deadline: model.revealAt ?? timeline.date, now: timeline.date,
                         cityID: model.region.id, cityName: model.region.nameZh,
                         isVisible: isVisible && scenePhase == .active, error: model.error,
                         onRetry: model.retry)
-                } else if !model.started {
-                    preparationContent
-                } else {
-                    resultContent
                 }
+            } else if !model.started {
+                preparationContent
+            } else {
+                resultContent
             }
+        }
+        .task(id: model.revealAt) {
+            revealDate = .now
+            guard let deadline = model.revealAt else { return }
+            do { try await Task.sleep(for: .seconds(max(0, deadline.timeIntervalSinceNow))) }
+            catch { return }
+            revealDate = max(.now, deadline)
         }
         .foregroundStyle(ink)
         .allowsHitTesting(isVisible)

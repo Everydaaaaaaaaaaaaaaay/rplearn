@@ -31,7 +31,7 @@ struct ProductionTutorialView: View {
     @State private var hasPracticeBubble = true
     @State private var activity: SceneActivity?
     @State private var encounterChat: CharacterDTO?
-    @StateObject private var journey = ActivityJourneyCoordinator()
+    @State private var journey = ActivityJourneyCoordinator()
     @State private var saving = false
     @State private var error: String?
     @State private var speechStarts = 0

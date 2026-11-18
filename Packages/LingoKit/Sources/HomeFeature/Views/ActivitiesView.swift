@@ -7,7 +7,7 @@ import SwiftUI
 /// Production entry: a scene, never a category/route list. App owns the current
 /// action so its existing left-edge gesture returns exactly one level.
 public struct ActivitiesView: View {
-    @ObservedObject var journey: ActivityJourneyCoordinator
+    let journey: ActivityJourneyCoordinator
     let deps: HomeDependencies
     let storageNamespace: String
     let isVisible: Bool

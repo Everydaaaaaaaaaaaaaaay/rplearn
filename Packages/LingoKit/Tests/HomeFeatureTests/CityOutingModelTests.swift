@@ -2,14 +2,42 @@ import BackendKit
 import DictKit
 import DomainKit
 import Foundation
+import Observation
 import LLMKit
 import PersistenceKit
 import SpeechKit
 import Testing
+import Synchronization
 @testable import HomeFeature
 
 @MainActor
 struct CityOutingModelTests {
+    @Test func outingProgressDoesNotInvalidateTheApplicationBadge() async throws {
+        let source = try makePlaceOutingFixture(), namespace = "place-observation-\(UUID())"
+        defer { clean(namespace) }
+        let deps = try await dependencies(), gateway = Gateway(saved: source)
+        let coordinator = ActivityJourneyCoordinator()
+        coordinator.preparePlace(archive: .init(restoring: source),
+            region: try #require(deps.regionCatalog.region(id: "london")), deps: deps,
+            namespace: namespace, gateway: gateway)
+        coordinator.setViewing(true)
+        let changes = Mutex(0)
+        withObservationTracking {
+            _ = coordinator.hasUnreadResult
+        } onChange: {
+            changes.withLock { $0 += 1 }
+        }
+        coordinator.start()
+        let outing = try #require(coordinator.cityOuting)
+        outing.advance()
+        try await settle { outing.pendingCount == 0 }
+        coordinator.setViewing(true)
+        #expect(changes.withLock { $0 } == 0)
+        #expect(!coordinator.hasUnreadResult)
+        coordinator.reset()
+        #expect(changes.withLock { $0 } == 0)
+    }
+
     private actor Gateway: OutingGateway {
         var saved: BackendOuting
         var offline: Bool

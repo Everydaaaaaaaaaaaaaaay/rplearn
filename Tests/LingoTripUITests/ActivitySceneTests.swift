@@ -151,12 +151,14 @@ final class ActivitySceneTests: XCTestCase {
         _ = XCTWaiter.wait(for: [wait], timeout: 16)
         XCTAssertTrue(app.tabBars.buttons["我的"].isSelected)
         app.tabBars.buttons["活动"].tap()
+        tap("home.activities", app: app)
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 3))
         XCTAssertFalse(app.otherElements["activities.journey"].exists)
         attach("journey-encounter-result", app: app)
         tap("activities.action.next", app: app)
         app.tabBars.buttons["我的"].tap()
         app.tabBars.buttons["活动"].tap()
+        tap("home.activities", app: app)
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 4))
     }
 

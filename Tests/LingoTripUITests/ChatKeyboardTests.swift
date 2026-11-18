@@ -170,6 +170,10 @@ final class ChatKeyboardTests: XCTestCase {
         field.typeText("Keep this draft")
         let latest = app.descendants(matching: .any)["chat.message.latest"].firstMatch
         XCTAssertTrue(latest.waitForExistence(timeout: 5))
+        let dockSettled = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            field.frame.minY < app.frame.maxY - 200
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [dockSettled], timeout: 5), .completed)
         let composerY = field.frame.minY
         latest.coordinate(withNormalizedOffset: CGVector(dx: 0.4, dy: 0.5)).press(forDuration: 1)
         XCTAssertTrue(app.buttons["复制"].waitForExistence(timeout: 3))
