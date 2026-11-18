@@ -40,7 +40,10 @@ def main():
         redis_port = free_port()
     database = 'lingotrip_test_' + uuid.uuid4().hex[:12]
     env.update(DATABASE_URL=f'postgres://127.0.0.1:{pg_port}/{database}', REDIS_URL=f'redis://127.0.0.1:{redis_port}', NODE_ENV='test')
-    report = {'runId': run_id, 'commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(), 'workingTree': subprocess.check_output(['git', 'status', '--short'], cwd=ROOT, text=True).splitlines(), 'modelCalls': 'mocked; no live providers', 'phases': [], 'excluded': ['S3 media integration requires a dedicated object store', 'NPC art-library benchmark is a separate opt-in dataset evaluation'], 'status': 'running'}
+    excluded = ['NPC art-library benchmark is a separate opt-in dataset evaluation']
+    if args.phase == 'e2e' or not any(Path(test).name == 'media.test.ts' for test in args.test or []):
+        excluded.append('S3 media integration requires a dedicated object store')
+    report = {'runId': run_id, 'commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(), 'workingTree': subprocess.check_output(['git', 'status', '--short'], cwd=ROOT, text=True).splitlines(), 'modelCalls': 'mocked; no live providers', 'phases': [], 'excluded': excluded, 'status': 'running'}
     pg_started = False
     redis = None
     pg_data = output / 'postgres'
@@ -50,7 +53,7 @@ def main():
         temp.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
         temp.replace(output / 'report.json')
 
-    def run(name, command, cwd=ROOT / 'Backend'):
+    def run(name, command, cwd=ROOT / 'Backend', timeout=600):
         phase = {'name': name, 'command': command, 'status': 'running', 'log': f'{name}.log'}
         report['phases'].append(phase)
         save()
@@ -59,7 +62,7 @@ def main():
         with (output / phase['log']).open('w') as log:
             child = subprocess.Popen(command, cwd=cwd, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
             try:
-                code = child.wait(timeout=600)
+                code = child.wait(timeout=timeout)
             except (BaseException,):
                 # Stop the complete pnpm/test/API process group before stopping its database.
                 try:
@@ -105,14 +108,21 @@ def main():
             tests = args.test or [str(p.relative_to(ROOT / 'Backend')) for p in sorted((ROOT / 'Backend/test/integration').glob('*.test.ts')) if p.name != 'media.test.ts']
             if args.test:
                 report['selection'] = tests
-            successes.append(run('integration', ['pnpm', 'exec', 'vitest', 'run', '--maxWorkers=1', '--no-file-parallelism', '--reporter=default', '--reporter=json', f'--outputFile.json={output / "integration.json"}', *tests]))
+            # The published-corpus case alone allows ten minutes to visit every group.
+            successes.append(run('integration', ['pnpm', 'exec', 'vitest', 'run', '--maxWorkers=1', '--no-file-parallelism', '--testTimeout=30000', '--hookTimeout=45000', '--reporter=default', '--reporter=json', f'--outputFile.json={output / "integration.json"}', *tests], timeout=900))
             env.pop('RUN_INTEGRATION_TESTS')
         if args.phase in ['e2e', 'all']:
+            if args.phase == 'all':
+                # The real worker must not process jobs left by integration fixtures.
+                process_database = f'{database}_process'
+                if not run('createdb-process', ['createdb', '-h', '127.0.0.1', '-p', str(pg_port), process_database]):
+                    raise RuntimeError('Process E2E database creation failed')
+                env.update(DATABASE_URL=f'postgres://127.0.0.1:{pg_port}/{process_database}', REDIS_URL=f'redis://127.0.0.1:{redis_port}/1')
             built = run('build', ['pnpm', 'build'])
             successes.append(built)
             if built:
                 env['RUN_E2E_TESTS'] = 'true'
-                successes.append(run('process-e2e', ['pnpm', 'exec', 'vitest', 'run', '--maxWorkers=1', '--no-file-parallelism', '--reporter=default', '--reporter=json', f'--outputFile.json={output / "process-e2e.json"}', 'test/e2e/backend-process.test.ts']))
+                successes.append(run('process-e2e', ['pnpm', 'exec', 'vitest', 'run', '--maxWorkers=1', '--no-file-parallelism', '--reporter=default', '--reporter=json', f'--outputFile.json={output / "process-e2e.json"}', 'test/e2e/backend-process.test.ts', 'test/e2e/shared-chat-process.test.ts']))
         report['status'] = 'passed' if all(successes) else 'failed'
     except (Exception, KeyboardInterrupt) as error:
         report.update(status='interrupted' if isinstance(error, KeyboardInterrupt) else 'failed', error=str(error))
