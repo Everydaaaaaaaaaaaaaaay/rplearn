@@ -74,6 +74,111 @@ final class ChatKeyboardTests: XCTestCase {
         add(screenshot)
     }
 
+    func testLatestBubbleFollowsComposerBothWays() {
+        checkLatestBubbleFollowsComposer()
+    }
+
+    func testShortConversationDismissesFromUpperBlankSpace() {
+        checkLatestBubbleFollowsComposer(environment: ["UI_TEST_DICTIONARY_EXAMPLES": "1"], tapUpperBlankSpace: true)
+    }
+
+    func testOpeningKeyboardKeepsHistoryReadingPosition() {
+        continueAfterFailure = false
+        let app = launchKeyboardFixture(environment: ["UI_TEST_CHAT_SCROLL_HISTORY": "1"])
+        defer { app.terminate() }
+        let field = app.descendants(matching: .any)["chat.composer"].firstMatch
+        let transcript = app.scrollViews["chat.messages"]
+        XCTAssertTrue(field.waitForExistence(timeout: 30))
+        XCTAssertTrue(app.descendants(matching: .any)["chat.message.latest"].firstMatch.waitForExistence(timeout: 10))
+        transcript.swipeDown(velocity: .slow)
+        let returnToBottom = app.buttons["回到底部"]
+        XCTAssertTrue(returnToBottom.waitForExistence(timeout: 3))
+        let readingBand = (transcript.frame.minY + 30)...(transcript.frame.minY + 180)
+        let rows = transcript.descendants(matching: .any)
+            .matching(NSPredicate(format: "identifier BEGINSWITH %@", "chat.message.")).allElementsBoundByIndex
+        guard let oldRowID = rows.first(where: { $0.exists && readingBand.contains($0.frame.midY) })?.identifier else {
+            return XCTFail("找不到当前可见的历史气泡")
+        }
+        let oldRow = transcript.descendants(matching: .any)[oldRowID].firstMatch
+        let oldFrame = oldRow.frame
+        let collapsedY = field.frame.minY
+        field.tap()
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5))
+        waitForChatGeometry { field.frame.minY < collapsedY - 100 }
+        XCTAssertTrue(returnToBottom.exists)
+        XCTAssertEqual(oldRow.frame.midY, oldFrame.midY, accuracy: 2)
+        dismissKeyboard(in: app)
+        waitForChatGeometry { abs(field.frame.minY - collapsedY) <= 2 }
+        XCTAssertEqual(oldRow.frame.midY, oldFrame.midY, accuracy: 2)
+    }
+
+    private func launchKeyboardFixture(environment: [String: String] = [:]) -> XCUIApplication {
+        let app = XCUIApplication()
+        app.launchEnvironment = [
+            "UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_WELCOME_CAPTURE": "1",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_NATIVE_CAPTURE": "chat"
+        ].merging(environment) { _, override in override }
+        app.launch()
+        return app
+    }
+
+    private func checkLatestBubbleFollowsComposer(environment: [String: String] = [:], tapUpperBlankSpace: Bool = false) {
+        continueAfterFailure = false
+        let app = launchKeyboardFixture(environment: environment)
+        defer { app.terminate() }
+        let field = app.descendants(matching: .any)["chat.composer"].firstMatch
+        let latest = app.descendants(matching: .any)["chat.message.latest"].firstMatch
+        let transcript = app.scrollViews["chat.messages"]
+        XCTAssertTrue(field.waitForExistence(timeout: 30))
+        XCTAssertTrue(latest.waitForExistence(timeout: 10))
+        let collapsedY = field.frame.minY
+        let collapsedBottom = transcript.frame.maxY
+        let bottomGap = collapsedBottom - latest.frame.maxY
+        XCTAssertTrue((0..<24).contains(bottomGap), "末条消息应贴近底部，实际间距 \(bottomGap)")
+
+        for _ in 0..<2 {
+            let composerCenter = field.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+            XCTAssertTrue(app.frame.contains(composerCenter.screenPoint), "输入框中心应在屏幕内：\(field.frame)")
+            composerCenter.tap()
+            XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5))
+            var expandedGeometry = ""
+            waitForChatGeometry(diagnostics: { expandedGeometry }) {
+                let composer = field.frame
+                let viewport = transcript.frame
+                let bubble = latest.frame
+                expandedGeometry = "composer=\(composer), viewport=\(viewport), bubble=\(bubble), collapsedY=\(collapsedY), bottomGap=\(bottomGap)"
+                return composer.minY < collapsedY - 100 && abs(viewport.maxY - bubble.maxY - bottomGap) <= 2
+            }
+            if tapUpperBlankSpace {
+                let headerBottom = app.navigationBars.firstMatch.frame.maxY
+                let bubbleTop = latest.frame.minY
+                XCTAssertGreaterThan(bubbleTop - headerBottom, 20, "短会话应在导航栏和气泡之间留出空白")
+                app.coordinate(withNormalizedOffset: .zero)
+                    .withOffset(CGVector(dx: app.frame.width / 2, dy: (headerBottom + bubbleTop) / 2)).tap()
+                XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
+                XCTAssertFalse(app.navigationBars["聊天设置"].exists)
+            } else {
+                dismissKeyboard(in: app)
+            }
+            waitForChatGeometry { abs(field.frame.minY - collapsedY) <= 2 }
+            XCTAssertTrue(latest.waitForExistence(timeout: 5), "键盘收起后末条消息应可见")
+            let restoredViewport = transcript.frame
+            let restoredBubble = latest.frame
+            XCTAssertEqual(restoredViewport.maxY, collapsedBottom, accuracy: 2)
+            XCTAssertEqual(restoredViewport.maxY - restoredBubble.maxY, bottomGap, accuracy: 2,
+                           "键盘收起后末条消息应回到原位：viewport=\(restoredViewport), bubble=\(restoredBubble)")
+        }
+    }
+
+    private func waitForChatGeometry(
+        file: StaticString = #filePath, line: UInt = #line,
+        diagnostics: () -> String = { "" }, _ matches: @escaping () -> Bool
+    ) {
+        let layout = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in matches() }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [layout], timeout: 3), .completed, diagnostics(), file: file, line: line)
+    }
+
     func testFunctionPanelKeyboardHandoffBlankDismissalAndSettings() {
         continueAfterFailure = false
         let app = XCUIApplication()

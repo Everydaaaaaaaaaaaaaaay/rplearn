@@ -119,6 +119,7 @@ public struct ChatView: View {
     }
 
     func dismissChatInput() {
+        guard showsChatFunctions || inputDockHeight > 0 || composerFocus != nil else { return }
         withAnimation(inputDockAnimation) {
             showsChatFunctions = false
             inputDockHeight = 0
@@ -128,16 +129,29 @@ public struct ChatView: View {
     }
 
     private func updateKeyboard(_ notification: Notification) {
-        guard let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-        guard let window = chatWindow else { return }
-        let localFrame = window.convert(frame, from: window.screen.coordinateSpace)
-        // Floating and external keyboards do not reserve the bottom of the conversation.
-        let height = localFrame.maxY >= window.bounds.maxY - 1 ? max(0, window.bounds.maxY - localFrame.minY) : 0
-        if height > 0, composerFocus != nil {
-            if window.bounds.width > window.bounds.height { landscapeKeyboardHeight = height }
-            else { portraitKeyboardHeight = height }
+        // The function panel owns the dock until it hands that space to the keyboard.
+        guard !showsChatFunctions else { return }
+        let height: CGFloat
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            height = 0
+        } else {
+            guard let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+                  let window = chatWindow else { return }
+            let localFrame = window.convert(frame, from: window.screen.coordinateSpace)
+            let overlap = localFrame.intersection(window.bounds)
+            // Floating and external keyboards do not reserve the bottom of the conversation.
+            height = !overlap.isEmpty && localFrame.maxY >= window.bounds.maxY - 1
+                && overlap.width >= window.bounds.width - 1 ? (overlap.height.rounded()) : 0
+            if height > 0 {
+                guard composerFocus != nil else { return }
+                if window.bounds.width > window.bounds.height {
+                    if landscapeKeyboardHeight != height { landscapeKeyboardHeight = height }
+                } else if portraitKeyboardHeight != height {
+                    portraitKeyboardHeight = height
+                }
+            }
         }
-        guard height == 0 || composerFocus != nil else { return }
+        guard height != inputDockHeight else { return }
         let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.25
         let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int ?? 7
         let animation: Animation
@@ -149,7 +163,7 @@ public struct ChatView: View {
         default: animation = .interpolatingSpring(duration: max(0.2, duration), bounce: 0)
         }
         withAnimation(reduceMotion ? .easeOut(duration: 0.15) : animation) {
-            if !showsChatFunctions { inputDockHeight = height }
+            inputDockHeight = height
         }
         if height == 0 { bubbleMenuMessage = nil }
     }
@@ -173,6 +187,9 @@ public struct ChatView: View {
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)) { notification in
+                updateKeyboard(notification)
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { notification in
                 updateKeyboard(notification)
             }
         }

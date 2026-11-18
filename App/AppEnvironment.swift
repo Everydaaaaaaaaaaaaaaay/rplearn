@@ -397,6 +397,9 @@ final class AppEnvironment {
             } else if ProcessInfo.processInfo.environment["UI_TEST_RUNTIME_EXAMPLES"] == "1" {
                 lines = [(.assistant, "Murmuration was the word we discussed today.")]
             }
+            if ProcessInfo.processInfo.environment["UI_TEST_CHAT_SCROLL_HISTORY"] == "1" {
+                lines = (1...30).map { (.assistant, "River walk note \($0). The wind picked up beside the bridge.") } + lines
+            }
             for (index, line) in lines.enumerated() {
                 _ = try await account.chatStore.appendMessage(conversationID: conversation.id,
                     role: line.0, text: line.1, createdAt: Date().addingTimeInterval(Double(index - lines.count) * 60))

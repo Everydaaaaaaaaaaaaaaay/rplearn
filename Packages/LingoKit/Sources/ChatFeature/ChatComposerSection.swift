@@ -130,10 +130,9 @@ struct ChatComposerView: View {
                 if showsChatFunctions { chatFunctionPanel.transition(.opacity) }
             }
             .frame(height: max(0, inputDockHeight - bottomInset), alignment: .top)
-            .padding(.bottom, inputDockHeight > 0 ? bottomInset : 0)
             .clipped()
         }
-        .padding(.bottom, inputDockHeight > 0 ? 0 : max(0, bottomInset))
+        .padding(.bottom, max(0, bottomInset))
         .tint(composerTint)
         .background(ComposerPanelSurface(expanded: composerTranslation.isOpen))
         .animation(reduceMotion ? .linear(duration: 0.15) : .spring(response: 0.42, dampingFraction: 0.94), value: composerTranslation.isOpen)

@@ -10,6 +10,14 @@ import SwiftUI
 import Translation
 import UIKit
 
+private struct ChatTranscriptBoundsKey: PreferenceKey {
+    static var defaultValue: Anchor<CGRect>? { nil }
+
+    static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) {
+        value = nextValue() ?? value
+    }
+}
+
 /// Owns conversation scrolling and bubble interaction independently of draft editing.
 struct ChatTranscriptView: View {
     let viewModel: ChatViewModel
@@ -25,8 +33,9 @@ struct ChatTranscriptView: View {
     @FocusState.Binding var composerFocus: ChatView.ComposerFocus?
     let showsChatFunctions: Bool
     let dismissChatInput: () -> Void
+    @State private var messageScrollPosition = ScrollPosition()
     @State private var isNearConversationBottom = true
-    @State private var messageScrollPosition = ScrollPosition(edge: .bottom)
+    @State private var followsConversationBottom = true
     @State private var unseenIncomingMessageCount = 0
     @State private var knownLatestMessageID: UUID?
     @State var transcriptVisibleMessageIDs: Set<UUID> = []
@@ -49,176 +58,188 @@ struct ChatTranscriptView: View {
         }
     }
     var body: some View {
-        GeometryReader { viewport in
-            messageList(viewportHeight: viewport.size.height)
-        }
-    }
-
-    private func messageList(viewportHeight: CGFloat) -> some View {
-        Group {
-            ZStack(alignment: .bottomTrailing) {
-                ScrollView {
-                    LazyVStack(spacing: 0) {
-                        ForEach(Array(viewModel.messages.enumerated()), id: \.element.id) { index, message in
-                            if ChatTimelinePolicy.shouldShowTimeMarker(
-                                in: viewModel.messages,
-                                at: index
-                            ) {
-                                timeMarker(for: message.createdAt)
-                                    .padding(.top, index == 0 ? 2 : 12)
-                                    .padding(.bottom, 6)
-                            }
-                            messageRow(message, at: index)
-                                .id(message.id)
-                                .accessibilityElement(children: .contain)
-                                .accessibilityIdentifier(message.id == viewModel.messages.last?.id ? "chat.message.latest" : "chat.message.\(message.id)")
-                                .padding(.top, messageTopSpacing(at: index))
-                                .background(
-                                    highlightedMessageID == message.id
-                                        ? Color.dsSky.opacity(0.14)
-                                        : Color.clear,
-                                    in: RoundedRectangle(cornerRadius: DSRadius.card)
-                                )
-                                .animation(
-                                    reduceMotion ? nil : .easeInOut(duration: 0.2),
-                                    value: highlightedMessageID
-                                )
+        ZStack(alignment: .bottomTrailing) {
+            ScrollView {
+                LazyVStack(spacing: 0) {
+                    Color.clear.frame(height: 10).accessibilityHidden(true)
+                    ForEach(Array(viewModel.messages.enumerated()), id: \.element.id) { index, message in
+                        if ChatTimelinePolicy.shouldShowTimeMarker(
+                            in: viewModel.messages,
+                            at: index
+                        ) {
+                            timeMarker(for: message.createdAt)
+                                .padding(.top, index == 0 ? 2 : 12)
+                                .padding(.bottom, 6)
                         }
-                        if viewModel.streamingText != nil {
-                            MessageBubble(
-                                side: .incoming,
-                                groupPosition: streamingGroupPosition,
-                                leadingAccessory: {
-                                    incomingAvatar(isVisible: true)
-                                }
-                            ) {
-                                TypingIndicator()
+                        messageRow(message, at: index)
+                            .id(message.id)
+                            .accessibilityElement(children: .contain)
+                            .accessibilityIdentifier(message.id == viewModel.messages.last?.id ? "chat.message.latest" : "chat.message.\(message.id)")
+                            .padding(.top, messageTopSpacing(at: index))
+                            .background(
+                                highlightedMessageID == message.id
+                                    ? Color.dsSky.opacity(0.14)
+                                    : Color.clear,
+                                in: RoundedRectangle(cornerRadius: DSRadius.card)
+                            )
+                            .animation(
+                                reduceMotion ? nil : .easeInOut(duration: 0.2),
+                                value: highlightedMessageID
+                            )
+                    }
+                    if viewModel.streamingText != nil {
+                        MessageBubble(
+                            side: .incoming,
+                            groupPosition: streamingGroupPosition,
+                            leadingAccessory: {
+                                incomingAvatar(isVisible: true)
                             }
-                            .id("streaming")
-                            .padding(.top, streamingTopSpacing)
-                            .transition(.opacity)
+                        ) {
+                            TypingIndicator()
                         }
-                        if let error = viewModel.errorMessage {
-                            if error.contains("额度") || error.contains("登录") || error.contains("语音体验") {
-                                Button("查看会员订阅", action: deps.onShowAccess)
-                                    .font(.footnote.weight(.semibold))
-                            }
-                            Label(error, systemImage: "exclamationmark.triangle.fill")
-                                .font(.footnote)
-                                .foregroundStyle(Color.dsDanger)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 8)
-                                .background(.regularMaterial, in: Capsule())
-                                .padding(.top, 8)
+                        .id("streaming")
+                        .padding(.top, streamingTopSpacing)
+                        .transition(.opacity)
+                    }
+                    if let error = viewModel.errorMessage {
+                        if error.contains("额度") || error.contains("登录") || error.contains("语音体验") {
+                            Button("查看会员订阅", action: deps.onShowAccess)
+                                .font(.footnote.weight(.semibold))
                         }
-                        if viewModel.canRetryUnansweredReply {
-                            Button("重试回复", systemImage: "arrow.clockwise") {
-                                viewModel.retryUnansweredReply()
-                            }
-                            .font(.footnote.weight(.semibold))
+                        Label(error, systemImage: "exclamationmark.triangle.fill")
+                            .font(.footnote)
+                            .foregroundStyle(Color.dsDanger)
+                            .padding(.horizontal, 12)
                             .padding(.vertical, 8)
+                            .background(.regularMaterial, in: Capsule())
+                            .padding(.top, 8)
+                    }
+                    if viewModel.canRetryUnansweredReply {
+                        Button("重试回复", systemImage: "arrow.clockwise") {
+                            viewModel.retryUnansweredReply()
                         }
-                        Color.clear
-                            .frame(height: 1)
-                            .id("conversation-bottom")
-                    }
-                    .scrollTargetLayout()
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 10)
-                    .frame(maxWidth: .infinity, minHeight: max(0, viewportHeight), alignment: .bottom)
-                    .background { keyboardDismissBackdrop }
-                }
-                .accessibilityIdentifier("chat.messages")
-                .scrollPosition($messageScrollPosition)
-                .defaultScrollAnchor(.bottom)
-                .defaultScrollAnchor(.bottom, for: .sizeChanges)
-                .scrollBounceBehavior(.always)
-                // The bottom anchor follows dock resizing in the same layout pass.
-                // Blank taps and downward drags share one dismissal transition.
-                .scrollDismissesKeyboard(.never)
-                .simultaneousGesture(messageListKeyboardDismissGesture)
-                .contentShape(Rectangle())
-                .simultaneousGesture(TapGesture().onEnded {
-                    if viewModel.messages.isEmpty { dismissChatInput() }
-                })
-                .background(Color.dsBackground)
-                .onScrollGeometryChange(for: Bool.self) { geometry in
-                    geometry.contentSize.height - geometry.visibleRect.maxY < 96
-                } action: { _, isNearBottom in
-                    isNearConversationBottom = isNearBottom
-                    if isNearBottom {
-                        unseenIncomingMessageCount = 0
-                    }
-                }
-                .onChange(of: viewModel.streamingText) {
-                    guard isNearConversationBottom else { return }
-                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                        messageScrollPosition.scrollTo(edge: .bottom)
-                    }
-                }
-                .onChange(of: viewModel.messages.last?.id) {
-                    guard let last = viewModel.messages.last else {
-                        knownLatestMessageID = nil
-                        return
-                    }
-                    guard knownLatestMessageID != last.id else { return }
-                    let isInitialHistory = knownLatestMessageID == nil
-                    knownLatestMessageID = last.id
-                    if isInitialHistory {
-                        messageScrollPosition.scrollTo(edge: .bottom)
-                        return
-                    }
-                    if isNearConversationBottom || last.role == .user {
-                        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                            messageScrollPosition.scrollTo(edge: .bottom)
-                        }
-                    } else if last.role == .assistant {
-                        unseenIncomingMessageCount += 1
-                    }
-                }
-                .onChange(of: isTextInputFocused || isChineseInputFocused) {
-                    viewModel.composerFocusChanged(isTextInputFocused || isChineseInputFocused)
-                    if composerFocus != nil { messageScrollPosition.scrollTo(edge: .bottom) }
-                }
-                .onChange(of: highlightedMessageID) { _, messageID in
-                    guard let messageID else { return }
-                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                        messageScrollPosition.scrollTo(id: messageID, anchor: .center)
-                    }
-                    Task { @MainActor in
-                        try? await Task.sleep(for: .seconds(2))
-                        guard highlightedMessageID == messageID else { return }
-                        highlightedMessageID = nil
-                    }
-                }
-
-                if !isNearConversationBottom {
-                    Button {
-                        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                            messageScrollPosition.scrollTo(edge: .bottom)
-                        }
-                        isNearConversationBottom = true
-                        unseenIncomingMessageCount = 0
-                    } label: {
-                        Label(
-                            unseenIncomingMessageCount > 0
-                                ? "\(unseenIncomingMessageCount) 条新消息"
-                                : "回到底部",
-                            systemImage: "arrow.down"
-                        )
                         .font(.footnote.weight(.semibold))
-                        .foregroundStyle(Color.dsSkyDeep)
-                        .padding(.horizontal, 12)
-                        .frame(minHeight: 36)
-                        .background(.regularMaterial, in: Capsule())
-                        .overlay { Capsule().stroke(Color.dsBorder, lineWidth: 0.5) }
-                        .shadow(color: .black.opacity(0.1), radius: 8, y: 3)
+                        .padding(.vertical, 8)
                     }
-                    .buttonStyle(.plain)
-                    .padding(.trailing, 12)
-                    .padding(.bottom, 12)
-                    .accessibilityHint("跳转到会话中的最新消息")
+                    // Include the trailing gap in the lazy stack’s bottom edge.
+                    Color.clear.frame(height: 10).accessibilityHidden(true)
                 }
+                .scrollTargetLayout()
+                .padding(.horizontal, 12)
+                .frame(maxWidth: .infinity)
+                .background { keyboardDismissBackdrop }
+                .anchorPreference(key: ChatTranscriptBoundsKey.self, value: .bounds) { $0 }
+            }
+            .accessibilityIdentifier("chat.messages")
+            .scrollPosition($messageScrollPosition)
+            .defaultScrollAnchor(.bottom, for: .initialOffset)
+            .defaultScrollAnchor(.bottom, for: .alignment)
+            .defaultScrollAnchor(followsConversationBottom ? .bottom : .top, for: .sizeChanges)
+            .scrollBounceBehavior(.always)
+            // The bottom anchor follows dock resizing in the same layout pass.
+            // Blank taps and downward drags share one dismissal transition.
+            .scrollDismissesKeyboard(.never)
+            .simultaneousGesture(messageListKeyboardDismissGesture)
+            .background(Color.dsBackground)
+            .overlayPreferenceValue(ChatTranscriptBoundsKey.self, alignment: .top) { bounds in
+                if composerFocus != nil || showsChatFunctions {
+                    // A bottom-aligned short transcript leaves blank space outside its content.
+                    GeometryReader { proxy in
+                        let blankHeight = bounds.map { max(0, min(proxy[$0].minY, proxy.size.height)) } ?? proxy.size.height
+                        if blankHeight > 0 {
+                            Color.clear
+                                .contentShape(Rectangle())
+                                .onTapGesture(perform: dismissChatInput)
+                                .frame(height: blankHeight)
+                        }
+                    }
+                    .accessibilityHidden(true)
+                }
+            }
+            .onScrollPhaseChange { oldPhase, newPhase, context in
+                guard newPhase == .idle,
+                      oldPhase == .interacting || oldPhase == .decelerating else { return }
+                followsConversationBottom = context.geometry.contentSize.height - context.geometry.visibleRect.maxY < 96
+            }
+            .onScrollGeometryChange(for: Bool.self) { geometry in
+                geometry.contentSize.height - geometry.visibleRect.maxY < 96
+            } action: { _, isNearBottom in
+                isNearConversationBottom = isNearBottom
+                if isNearBottom {
+                    unseenIncomingMessageCount = 0
+                }
+            }
+            .onChange(of: viewModel.streamingText) {
+                guard isNearConversationBottom else { return }
+                withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                    messageScrollPosition.scrollTo(edge: .bottom)
+                }
+            }
+            .onChange(of: viewModel.messages.last?.id, initial: true) {
+                guard let last = viewModel.messages.last else {
+                    knownLatestMessageID = nil
+                    return
+                }
+                guard knownLatestMessageID != last.id else { return }
+                let isInitialHistory = knownLatestMessageID == nil
+                knownLatestMessageID = last.id
+                if isInitialHistory {
+                    followsConversationBottom = true
+                    messageScrollPosition.scrollTo(edge: .bottom)
+                    return
+                }
+                if isNearConversationBottom || last.role == .user {
+                    followsConversationBottom = true
+                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                        messageScrollPosition.scrollTo(edge: .bottom)
+                    }
+                } else if last.role == .assistant {
+                    unseenIncomingMessageCount += 1
+                }
+            }
+            .onChange(of: composerFocus != nil) { _, isFocused in
+                viewModel.composerFocusChanged(isFocused)
+            }
+            .onChange(of: highlightedMessageID) { _, messageID in
+                guard let messageID else { return }
+                followsConversationBottom = false
+                withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                    messageScrollPosition.scrollTo(id: messageID, anchor: .center)
+                }
+                Task { @MainActor in
+                    try? await Task.sleep(for: .seconds(2))
+                    guard highlightedMessageID == messageID else { return }
+                    highlightedMessageID = nil
+                }
+            }
+
+            if !isNearConversationBottom {
+                Button {
+                    followsConversationBottom = true
+                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                        messageScrollPosition.scrollTo(edge: .bottom)
+                    }
+                    isNearConversationBottom = true
+                    unseenIncomingMessageCount = 0
+                } label: {
+                    Label(
+                        unseenIncomingMessageCount > 0
+                            ? "\(unseenIncomingMessageCount) 条新消息"
+                            : "回到底部",
+                        systemImage: "arrow.down"
+                    )
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(Color.dsSkyDeep)
+                    .padding(.horizontal, 12)
+                    .frame(minHeight: 36)
+                    .background(.regularMaterial, in: Capsule())
+                    .overlay { Capsule().stroke(Color.dsBorder, lineWidth: 0.5) }
+                    .shadow(color: .black.opacity(0.1), radius: 8, y: 3)
+                }
+                .buttonStyle(.plain)
+                .padding(.trailing, 12)
+                .padding(.bottom, 12)
+                .accessibilityHint("跳转到会话中的最新消息")
             }
         }
         .overlay { bubbleActionsOverlay }
