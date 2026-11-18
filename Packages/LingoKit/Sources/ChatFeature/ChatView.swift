@@ -25,7 +25,6 @@ public struct ChatView: View {
     @State var showsChatFunctions = false
     @State private var opensAppointmentsAfterSettings = false
     @State private var appointmentAfterSettings: UUID?
-    @State private var viewportWidth: CGFloat = 390
     @State var inputDockHeight: CGFloat = 0
     @AppStorage("chat.keyboardHeight.portrait") private var portraitKeyboardHeight = 346.0
     @AppStorage("chat.keyboardHeight.landscape") private var landscapeKeyboardHeight = 216.0
@@ -178,8 +177,7 @@ public struct ChatView: View {
             }
         }
         .ignoresSafeArea(learningSelected ? [] : [.keyboard, .container], edges: .bottom)
-        .onGeometryChange(for: CGFloat.self) { $0.size.width } action: {
-            viewportWidth = $0
+        .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { _ in
             if showsChatFunctions { inputDockHeight = preferredKeyboardHeight }
         }
         .onChange(of: recorder.state) { _, state in
@@ -413,52 +411,49 @@ public struct ChatView: View {
     @ToolbarContentBuilder
     private var chatIdentityToolbar: some ToolbarContent {
         if !learningSelected {
-            if #available(iOS 26, *) {
-                ToolbarItem(placement: .topBarLeading) { chatIdentity }
-                    .sharedBackgroundVisibility(.hidden)
-            } else {
-                ToolbarItem(placement: .topBarLeading) { chatIdentity }
-            }
+            // The principal item is sized in the space between the native back
+            // button and trailing controls. A leading item shares the back group.
+            ToolbarItem(placement: .principal) { chatIdentity }
         }
     }
 
     private var chatIdentity: some View {
         TimelineView(.periodic(from: .now, by: 15)) { context in
             let presence = viewModel.presence(at: context.date)
+            let status = chatStatus(presence, at: context.date)
+            let shortStatus = presence.state == .offline && !viewModel.isStreaming ? "离线" : status
+            let city = deps.regionName(viewModel.character.card.regionID)
+            let localTime = ChatHeaderStatus.localTime(at: context.date, timeZoneIdentifier: presence.timeZoneIdentifier)
             Button(action: openChatSettings) {
                 HStack(spacing: 9) {
                     AvatarBadge(name: viewModel.character.displayName, size: 34,
                         imageName: viewModel.character.card.avatarAssetName,
                         remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
                         usesPendingPlaceholder: true)
-                    headerText(presence, at: context.date)
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text(viewModel.character.displayName).font(.subheadline.bold())
+                            .lineLimit(1).minimumScaleFactor(0.75)
+                        HStack(spacing: 5) {
+                            Circle().fill(presenceColor(presence)).frame(width: 7, height: 7)
+                            ViewThatFits(in: .horizontal) {
+                                Text("\(status) · \(city) \(localTime)").fixedSize()
+                                Text("\(shortStatus) · \(city) \(localTime)").fixedSize()
+                                Text("\(shortStatus) · \(localTime)")
+                            }
+                        }
+                        .font(.caption2).foregroundStyle(.secondary)
+                        .monospacedDigit()
+                        .lineLimit(1).allowsTightening(true).minimumScaleFactor(0.7)
+                    }
                 }
             }
             .buttonStyle(.plain)
-            .frame(maxWidth: max(44, viewportWidth - 188), alignment: .leading)
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel("\(viewModel.character.displayName)，\(chatStatus(presence, at: context.date))，\(deps.regionName(viewModel.character.card.regionID))当地时间 \(ChatHeaderStatus.localTime(at: context.date, timeZoneIdentifier: presence.timeZoneIdentifier))")
+            .accessibilityLabel("\(viewModel.character.displayName)，\(status)，\(city)当地时间 \(localTime)")
             .accessibilityHint("打开聊天设置")
             .accessibilityAddTraits(.isButton)
             .accessibilityIdentifier("chat.identity")
         }
-    }
-
-    private func headerText(_ presence: NPCPresenceSnapshot, at date: Date) -> some View {
-        VStack(alignment: .leading, spacing: 1) {
-            Text(viewModel.character.displayName).font(.subheadline.bold())
-                .lineLimit(1).minimumScaleFactor(0.85)
-            HStack(spacing: 5) {
-                Circle().fill(presenceColor(presence)).frame(width: 7, height: 7)
-                Text(chatStatus(presence, at: date))
-                Text("·")
-                Text("\(deps.regionName(viewModel.character.card.regionID)) \(ChatHeaderStatus.localTime(at: date, timeZoneIdentifier: presence.timeZoneIdentifier))")
-                    .monospacedDigit()
-            }
-            .font(.caption2).foregroundStyle(.secondary)
-            .lineLimit(1).allowsTightening(true).minimumScaleFactor(0.7)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var chatSettingsButton: some View {
