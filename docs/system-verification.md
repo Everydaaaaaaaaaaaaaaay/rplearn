@@ -14,7 +14,7 @@
 | --- | --- | --- | --- |
 | 登录入口、邮箱注册、刷新、注销、旧游客兼容 | 生产必须登录；账号工作区隔离；旧游客认领不重发额度；刷新/撤销、错误凭据 | 后端 `auth`、`guest-journey`、`access`、`apple-auth` 集成；`backend-process` E2E；`BackendClientTests` | 邮件投递、Apple 登录授权界面、多账号真机切换 |
 | 首启、用户资料、分级测评 | 自评/测评结果落库；路线和等级一致；重复操作幂等 | `AdaptivePlacementEngineTests`、`SelfAssessedEnglishLevelTests`、`BackendUserStateCoordinatorTests`；后端 `domain` | 新用户从安装到完成首启的 UI 路径及可理解性 |
-| 文本聊天 | 输入保存后才视为发送；模型全文→气泡→本地保存→重新进入一致；空结果报错 | `ChatWorkflowTests`、`RoleplayReplyFormatterTests`、`ChatStoreTests`；后端 `ai`/`credits` | 模型答非所问、真实延迟、学习收益用独立 live/cost 工作流 |
+| 文本聊天 | 输入保存后才视为发送；模型全文→气泡→本地保存→重新进入一致；空结果报错 | `ChatWorkflowTests`、`RoleplayReplyFormatterTests`、`ChatStoreTests`；后端 `shared-chat`（含 Swift UUID 大小写及前序重试）、`ai`/`credits` | 模型答非所问、真实延迟、学习收益用独立 live/cost 工作流 |
 | 聊天异常恢复 | 断网保留已收到的片段；重试失败保留旧内容；普通消息不能被重试入口删除 | `ChatWorkflowTests` 故障注入；`LLMRouterTests`、`SSEParserTests` | 系统强杀进程与真实网络切换、生成中连续发送/离开页面 |
 | 语音、实时对话 | 终稿进入聊天；打断停止生成与 TTS；保存实际已听片段；录音权限/路由状态可恢复 | `RealtimeVoiceCoreTests`、`VoiceRecorderTests`、`SpeechServiceTests`、`ChatWorkflowTests` | 真机麦克风、蓝牙/扬声器回声、后台打断、模型音频质量；文字输入不算语音 E2E |
 | 聊天整句翻译 | 优先云端 LLM 并持久缓存；重复点击与重新进入复用译文；云端失败回退 Apple 端上翻译，两者都失败才报错；回退队列取消可恢复 | `ChatWorkflowTests`、`TranslationServiceTests`、`AppleTranslatorQueueTests`；后端 `ai`/`credits` | 译文质量需真实样本人工审阅；真机系统语言包下载/取消、离线回退与逐句延迟；模拟器不运行翻译模型 |
@@ -50,6 +50,12 @@
    不能由此宣称实际登录、购买或模型能力通过。
 5. **发布/大检查**：根据本次版本涉及的领域组合上述路径；真实邮件、StoreKit、语音、S3、跨设备
    单独出具记录。只阻止受影响且尚未验证的功能发布，不把所有历史测试变成每次提交的门禁。
+
+改变前后端聊天或同步协议时，用有历史记录的登录会话验收连续发两条、回执丢失后重试、退出重进；
+可使用隔离后端和测试模型，但请求应由当前 App 编码，核对服务器入库、回复和客户端落库。
+单发首条消息没有前序依赖，离线聊天预览也不走这条路径。改键盘、顶栏或视图拆分时，
+至少覆盖连续开合、历史阅读保位、顶栏显示和键盘/功能面板交接中受影响的行为。
+性能样本只证明该负载下的性能；交互正确性单独报告。纯文案和样式仍走快速路径。
 
 iOS 执行前指定测试用 `LINGOTRIP_SIMULATOR_UDID`，不要借用用户正在使用的模拟器。
 测试通过后只因代码又变更或出现新问题才重跑。live Swift 套件不属于普通验证范围。
