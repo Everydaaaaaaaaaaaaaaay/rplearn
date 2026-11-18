@@ -24,6 +24,7 @@ public struct ConversationListView: View {
     @State private var searchText = ""
     @State private var currentRegionID = "london"
     @State private var selectedConversationID: UUID?
+    @State private var hasPublishedUnreadCount = false
     @AppStorage private var persistedUnreadCount: Int
 
     public init(accountID: UUID, deps: ChatDependencies, reloadToken: Int = 0, resetToken: Int = 0) {
@@ -370,7 +371,11 @@ public struct ConversationListView: View {
             guard let summary = row.summary else { return }
             total += summary.unreadCount
         }
-        if persistedUnreadCount != count { persistedUnreadCount = count }
+        if !hasPublishedUnreadCount || persistedUnreadCount != count {
+            // Publish the first loaded snapshot, even when it matches the default zero.
+            persistedUnreadCount = count
+            hasPublishedUnreadCount = true
+        }
     }
 
     private func markRead(_ summary: ConversationSummaryDTO) {
