@@ -54,7 +54,12 @@ struct CityOutingModelTests {
         func activityCatalog(releaseID: String?) async throws -> BackendActivityCatalog? { nil }
         func activeOuting() async throws -> BackendOuting? { saved }
         func outing(id: UUID) async throws -> BackendOuting { saved }
-        func startOuting(id: UUID, releaseID: String, placeID: String) async throws -> BackendOuting { saved }
+        func startOuting(id: UUID, releaseID: String, placeID: String) async throws -> BackendOuting {
+            guard id == saved.runId else {
+                throw BackendClientError.api(code: "OUTING_ALREADY_ACTIVE", message: "Conflict", requestID: nil, status: 409)
+            }
+            return saved
+        }
         func applyOuting(id: UUID, operation: BackendOutingOperation) async throws -> BackendOuting {
             operations.append(operation.operationId)
             if offline { throw BackendClientError.transport("offline") }
@@ -100,6 +105,31 @@ struct CityOutingModelTests {
     private func model(_ archive: CityOutingArchive, deps: HomeDependencies, namespace: String, gateway: Gateway) throws -> CityOutingModel {
         let region = try #require(deps.regionCatalog.region(id: "london"))
         return CityOutingModel(archive: archive, region: region, deps: deps, namespace: namespace, gateway: gateway)
+    }
+
+    @Test func draftResumesOtherDevicesOutingAfterStartConflict() async throws {
+        let source = try makePlaceOutingFixture(), namespace = "place-concurrent-start-\(UUID())"
+        defer { clean(namespace) }
+        let deps = try await dependencies(), gateway = Gateway(saved: source)
+        try await gateway.advanceOnAnotherDevice()
+        let remote = await gateway.saved
+        let selectedPlace = BackendActivityPlace(id: "another-place", titleZh: "另一处地点", category: "", photo: source.photo)
+        let draft = CityOutingArchive(place: selectedPlace, releaseID: source.releaseId)
+        let first = try model(draft, deps: deps, namespace: namespace, gateway: gateway)
+        first.start()
+        try await settle { !first.busy }
+
+        let cached = try CityOutingArchive.load(namespace: namespace)
+        let saved = try #require(cached)
+        #expect(saved.needsContinuation)
+        #expect(saved.runID == remote.runId)
+        #expect(saved.place.id == remote.placeId)
+        #expect(saved.snapshot == remote)
+
+        first.retry()
+        try await settle { !first.busy }
+        first.abandon()
+        #expect(try CityOutingArchive.load(namespace: namespace)?.snapshot == remote)
     }
 
     @Test func retriesALostAcknowledgmentWithTheSameOperationAfterReopening() async throws {

@@ -10,6 +10,7 @@ final class CityOutingModel: ObservableObject {
     @Published private(set) var snapshot: BackendOuting?
     @Published private(set) var busy = false
     @Published private(set) var error: String?
+    @Published private(set) var hasRecoverableOuting = false
     @Published private(set) var synchronizationMessage: String?
     @Published private(set) var conflict = false
     @Published private(set) var pendingCount = 0
@@ -55,7 +56,7 @@ final class CityOutingModel: ObservableObject {
     }
 
     func start() {
-        guard !busy, archive.cancelled != true else { return }
+        guard !busy, archive.cancelled != true, !hasRecoverableOuting else { return }
         error = nil
         if snapshot != nil {
             flush(); recordCompletionIfNeeded()
@@ -74,8 +75,9 @@ final class CityOutingModel: ObservableObject {
                     result = try await gateway.startOuting(id: archive.runID, releaseID: archive.releaseID, placeID: archive.place.id)
                 } catch let failure as BackendClientError where failure.code == "OUTING_ALREADY_ACTIVE" {
                     guard let active = try await gateway.activeOuting() else { throw failure }
-                    // Return to the place list to open the actual saved session, rather than relabel it.
-                    throw ActiveOutingError(runID: active.runId)
+                    try Task.checkCancellation()
+                    try recoverActiveOuting(active)
+                    return
                 }
                 try Task.checkCancellation()
                 try PlaceOutingProgress.validate(result)
@@ -91,15 +93,24 @@ final class CityOutingModel: ObservableObject {
                 }
                 recordCompletionIfNeeded()
             } catch is CancellationError {
-            } catch is ActiveOutingError {
-                error = "另一台设备已有外出进度，请返回地点页恢复。"
             } catch {
                 self.error = error.localizedDescription
             }
         }
     }
 
-    private struct ActiveOutingError: Error { let runID: UUID }
+    private func recoverActiveOuting(_ active: BackendOuting) throws {
+        try PlaceOutingProgress.validate(active)
+        guard ![.completed, .abandoned].contains(active.status),
+              deps.regionCatalog.region(id: active.cityId) != nil else { throw PlaceOutingProgress.ProgressError.invalidContent }
+        if let current = try CityOutingArchive.load(namespace: namespace), current.runID == archive.runID,
+           current.snapshot == nil, current.pending.isEmpty, current.cancelled != true {
+            // Only replace the unaccepted draft. The place list will open the saved outing in its original scene.
+            try CityOutingArchive(restoring: active).save(namespace: namespace)
+        }
+        hasRecoverableOuting = true
+        error = "另一台设备已有外出进度，请返回地点页恢复。"
+    }
 
     func confirmVisibleOpening() {
         guard let snapshot, snapshot.status == .reserved,
@@ -119,6 +130,7 @@ final class CityOutingModel: ObservableObject {
         if self.snapshot?.beatIndex == -1 { enqueue(.read, beatIndex: 0) }
     }
     func abandon() {
+        guard !hasRecoverableOuting else { return }
         if snapshot != nil { enqueue(.abandon); recordCompletionIfNeeded(); return }
         requestTask?.cancel()
         archive.cancelled = true

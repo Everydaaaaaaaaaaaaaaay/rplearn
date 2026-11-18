@@ -34,7 +34,9 @@ struct CityOutingView: View {
                         }
                     VStack(alignment: .leading, spacing: 24) {
                         if let snapshot = model.snapshot { story(snapshot) }
-                        else { ProgressView("正在走进\(model.archive.place.titleZh)…").frame(maxWidth: .infinity).padding(.vertical, 30) }
+                        else if model.error == nil {
+                            ProgressView("正在走进\(model.archive.place.titleZh)…").frame(maxWidth: .infinity).padding(.vertical, 30)
+                        }
                         if let message = model.synchronizationMessage {
                             VStack(alignment: .leading, spacing: 10) {
                                 Text(message).font(.caption)
@@ -44,7 +46,11 @@ struct CityOutingView: View {
                         }
                         if let error = model.error {
                             Text(error).font(.callout)
-                            Button("重试，保留当前人物与选择") { model.retry() }
+                            if model.hasRecoverableOuting {
+                                Button("返回地点页", action: onBack).frame(minHeight: 44)
+                            } else {
+                                Button("重试，保留当前人物与选择") { model.retry() }
+                            }
                         }
                         Color.clear.frame(height: 1).id("outing-bottom")
                     }.padding(24)
@@ -97,10 +103,12 @@ struct CityOutingView: View {
                 .accessibilityLabel(translation ? "隐藏中文对照" : "显示中文对照")
             Button { autoRead.toggle() } label: { Image(systemName: autoRead ? "speaker.wave.2" : "speaker.slash").frame(width: 44, height: 44) }
                 .accessibilityLabel(autoRead ? "关闭自动朗读" : "开启自动朗读")
-            Menu {
-                Button("先离开，稍后继续", action: onBack)
-                Button("结束这次外出", role: .destructive) { confirmsEnding = true }
-            } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }.accessibilityLabel("外出选项")
+            if !model.hasRecoverableOuting {
+                Menu {
+                    Button("先离开，稍后继续", action: onBack)
+                    Button("结束这次外出", role: .destructive) { confirmsEnding = true }
+                } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }.accessibilityLabel("外出选项")
+            }
         }.font(.system(size: 18, weight: .medium))
         if dynamicTypeSize.isAccessibilitySize { placeHeading.padding(.horizontal, 8) }
         }.padding(.leading, 28).padding(.trailing, 8).padding(.vertical, 6).background(CityPlacesView.paper)
