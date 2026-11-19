@@ -78,11 +78,25 @@ public struct OnboardingFlowView: View {
         )
     }
 
+    private var stepAnimation: Animation {
+        DSAnimation.resolve(DSAnimation.scene, reduceMotion: reduceMotion)
+    }
+
+    private var stepTransition: AnyTransition {
+        reduceMotion
+            ? .opacity
+            : .asymmetric(
+                insertion: .move(edge: .trailing).combined(with: .opacity),
+                removal: .move(edge: .leading).combined(with: .opacity)
+            )
+    }
+
     public var body: some View {
-        Group {
+        ZStack {
             switch phase {
             case .loading:
                 onboardingLoading
+                    .transition(.opacity)
             case .profile:
                 if let profile {
                     LearnerProfileSetupView(
@@ -90,36 +104,44 @@ public struct OnboardingFlowView: View {
                         profileCommands: deps.profileCommands
                     ) { updated in
                         self.profile = updated
-                        withAnimation(reduceMotion ? nil : .snappy) {
+                        withAnimation(stepAnimation) {
                             phase = .calibration
                         }
                     }
+                    .transition(stepTransition)
                 } else {
                     onboardingLoading
+                        .transition(.opacity)
                 }
             case .calibration:
                 onboardingLoading
+                    .transition(.opacity)
                     .task { onRequestPlacement() }
             case .story:
                 if let player {
                     ChatStoryView(player: player, characters: characters, deps: deps) {
-                        withAnimation(reduceMotion ? nil : .snappy) {
+                        withAnimation(stepAnimation) {
                             phase = .selection
                         }
                     }
+                    .transition(stepTransition)
                 } else {
                     onboardingLoading
+                        .transition(.opacity)
                 }
             case .selection:
                 CharacterSelectView(characters: characters) { character in
                     tutorialCharacter = character
-                    phase = .tutorial
+                    withAnimation(stepAnimation) {
+                        phase = .tutorial
+                    }
                     return true
                 }
-                    .transition(reduceMotion ? .opacity : .move(edge: .trailing).combined(with: .opacity))
+                .transition(stepTransition)
             case .tutorial:
                 if let character = tutorialCharacter {
                     deps.tutorial(character, { await onComplete(character) })
+                        .transition(stepTransition)
                 }
             }
         }
@@ -134,7 +156,9 @@ public struct OnboardingFlowView: View {
             }
             characters = (try? await deps.rosterStore.allCharacters().filter(\.isMainCharacter)) ?? []
             if phase == .loading, let profile {
-                phase = destination(for: profile)
+                withAnimation(reduceMotion ? .easeOut(duration: 0.12) : .smooth(duration: 0.26, extraBounce: 0)) {
+                    phase = destination(for: profile)
+                }
             }
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_SELECTION"] == "1" {
@@ -152,7 +176,7 @@ public struct OnboardingFlowView: View {
         .onChange(of: placementCompletionRevision) { oldValue, newValue in
             guard oldValue != newValue else { return }
             placementOfferDismissed = true
-            withAnimation(reduceMotion ? nil : .snappy) {
+            withAnimation(stepAnimation) {
                 phase = .story
             }
             Task {

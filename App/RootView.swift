@@ -551,41 +551,58 @@ struct RootView: View {
         }
     }
 
-    @ViewBuilder
-    private var launchContent: some View {
-        if !environment.resourcesReady {
-            launchLoading
-        } else if isOnboardingPreview {
-            if activeUserID != nil, environment.workspace != nil { appContent }
-            else { launchLoading }
-        } else if showsWelcome {
-            WelcomeJourneyView(dictionary: environment.dictionary, grammar: environment.grammarPoints) {
-                welcomeCompleted = true
-                completedForcedWelcome = true
+    private enum LaunchScreenPhase: Equatable {
+        case loading
+        case welcome
+        case signIn
+        case app
+    }
+
+    private var launchPhase: LaunchScreenPhase {
+        if !environment.resourcesReady { return .loading }
+        if isOnboardingPreview {
+            return (activeUserID != nil && environment.workspace != nil) ? .app : .loading
+        }
+        if showsWelcome { return .welcome }
+        switch environment.authSession.phase {
+        case .loading:
+            return .loading
+        case .signedOut:
+            if bypassesAuthenticationForUITesting {
+                return (activeUserID != nil && environment.workspace != nil) ? .app : .loading
             }
-        } else {
-            switch environment.authSession.phase {
+            return .signIn
+        case .signedIn(let identity):
+            return (activeUserID == identity.userID && environment.workspace?.userID == identity.userID)
+                ? .app
+                : .loading
+        }
+    }
+
+    private var launchContent: some View {
+        ZStack {
+            switch launchPhase {
             case .loading:
                 launchLoading
-            case .signedOut:
-                if bypassesAuthenticationForUITesting,
-                   activeUserID != nil,
-                   environment.workspace != nil {
-                    appContent
-                } else if bypassesAuthenticationForUITesting {
-                    launchLoading
-                } else {
-                    SignInView(session: environment.authSession)
+                    .transition(.opacity)
+            case .welcome:
+                WelcomeJourneyView(dictionary: environment.dictionary, grammar: environment.grammarPoints) {
+                    welcomeCompleted = true
+                    completedForcedWelcome = true
                 }
-            case .signedIn(let identity):
-                if activeUserID == identity.userID,
-                   environment.workspace?.userID == identity.userID {
-                    appContent
-                } else {
-                    launchLoading
-                }
+                .transition(.opacity)
+            case .signIn:
+                SignInView(session: environment.authSession)
+                    .transition(.opacity)
+            case .app:
+                appContent
+                    .transition(.opacity)
             }
         }
+        .animation(
+            reduceMotion ? .easeOut(duration: 0.12) : .smooth(duration: 0.26, extraBounce: 0),
+            value: launchPhase
+        )
     }
 
     private var launchLoading: some View {
