@@ -37,7 +37,9 @@ struct AppointmentReaderView: View {
                 }, favoriteActions: WordFavoriteActions(contains: { (try? await services.favorites.isWordFavorited($0)) ?? false }, toggle: { (try? await services.favorites.toggleWord($0, translationZh: $1)) ?? false }))
             } else { reader }
         }
-        .navigationBarHidden(true).dsTabBarHidden()
+        .toolbar(.hidden, for: .navigationBar)
+        .dsInteractivePopGesture(enabled: !inputFocused)
+        .dsTabBarHidden()
         .environment(\.colorScheme, .light)
         .tint(ink)
         .sheet(isPresented: $history) { AppointmentHistoryView(detail: model.detail, characterName: characterName) }

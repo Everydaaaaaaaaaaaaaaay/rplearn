@@ -29,8 +29,13 @@ struct ChatLearningPager<Chat: View, Learning: View>: View {
                 DragGesture(minimumDistance: 18)
                     .updating(translation) { value, state, _ in
                         guard accepts(value, size: geometry.size) else { return }
-                        let direction = learningSelected ? max(0, value.translation.width) : min(0, value.translation.width)
-                        state = min(geometry.size.width, max(-geometry.size.width, direction))
+                        let raw = value.translation.width
+                        let isOverscrolling = (learningSelected && raw < 0) || (!learningSelected && raw > 0)
+                        if isOverscrolling {
+                            state = min(36, max(-36, raw * 0.16))
+                        } else {
+                            state = min(geometry.size.width, max(-geometry.size.width, raw))
+                        }
                     }
                     .onEnded { value in
                         guard accepts(value, size: geometry.size) else { return }
@@ -65,6 +70,7 @@ struct ChatLearningBackdrop: View {
                     .opacity(min(1, max(0, reveal)))
             }
         }
+        .transaction { if reduceMotion { $0.animation = nil } }
         .animation(reduceMotion ? nil : .interactiveSpring(duration: 0.28, extraBounce: 0), value: learningSelected)
     }
 }

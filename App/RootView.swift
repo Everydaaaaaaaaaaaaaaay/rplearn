@@ -774,17 +774,17 @@ struct RootView: View {
     private func returnTabToRoot(_ tab: AppTab) {
         switch tab {
         case .messages:
-            messagesPath = NavigationPath()
+            if !messagesPath.isEmpty { messagesPath = NavigationPath() }
             messagesNavigationRevision += 1
         case .contacts:
-            contactsPath = NavigationPath()
+            if !contactsPath.isEmpty { contactsPath = NavigationPath() }
             contactsNavigationRevision += 1
         case .home:
             if !homePath.isEmpty { homePath = NavigationPath() }
         case .me:
-            showPlacementTest = false
-            showEnglishJourney = false
-            mePath.removeAll()
+            if showPlacementTest { showPlacementTest = false }
+            if showEnglishJourney { showEnglishJourney = false }
+            if !mePath.isEmpty { mePath.removeAll() }
         }
     }
 

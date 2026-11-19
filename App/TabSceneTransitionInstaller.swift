@@ -119,8 +119,7 @@ final class TabSceneDissolveAnimator: NSObject, UIViewControllerAnimatedTransiti
         UIView.animate(
             withDuration: transitionDuration(using: context),
             delay: 0,
-            options: [.allowUserInteraction, .beginFromCurrentState,
-                      reduceMotion ? .curveEaseOut : .curveEaseInOut]
+            options: [.allowUserInteraction, .beginFromCurrentState, .curveEaseOut]
         ) {
             incoming.alpha = originalAlpha
         } completion: { _ in

@@ -55,6 +55,7 @@ struct AppointmentSummaryView: View {
                 } else { ProgressView("正在打开回顾…").padding(40) }
             }.scrollBounceBehavior(.basedOnSize)
         }
+        .dsInteractivePopGesture()
         .dsTabBarHidden()
         .sheet(isPresented: $history) { AppointmentHistoryView(detail: model.detail, characterName: characterName) }
         .task {
