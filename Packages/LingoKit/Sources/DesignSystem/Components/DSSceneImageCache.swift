@@ -7,14 +7,58 @@ private struct PreparedSceneImage: @unchecked Sendable { let image: UIImage? }
 public enum DSSceneImageCache {
     private static let images: NSCache<NSString, UIImage> = {
         let value = NSCache<NSString, UIImage>()
-        value.totalCostLimit = 48 * 1_024 * 1_024
+        value.totalCostLimit = 64 * 1_024 * 1_024
+        return value
+    }()
+    private static let thumbnails: NSCache<NSString, UIImage> = {
+        let value = NSCache<NSString, UIImage>()
+        value.totalCostLimit = 16 * 1_024 * 1_024
         return value
     }()
     private static var loads: [String: Task<PreparedSceneImage, Never>] = [:]
+    private static var thumbnailLoads: [String: Task<PreparedSceneImage, Never>] = [:]
+
+    public static func cachedUIImage(named name: String) -> UIImage? {
+        images.object(forKey: name as NSString)
+    }
 
     public static func image(named name: String) -> Image {
         if let value = images.object(forKey: name as NSString) { return Image(uiImage: value) }
         return Image(name)
+    }
+
+    public static func cachedThumbnail(named name: String, maxPixelSize: CGFloat = 320) -> UIImage? {
+        let key = thumbnailKey(name: name, maxPixelSize: maxPixelSize)
+        return thumbnails.object(forKey: key as NSString) ?? images.object(forKey: name as NSString)
+    }
+
+    public static func loadThumbnail(named name: String, maxPixelSize: CGFloat = 320) async -> UIImage? {
+        let key = thumbnailKey(name: name, maxPixelSize: maxPixelSize)
+        if let existing = thumbnails.object(forKey: key as NSString) { return existing }
+        let task: Task<PreparedSceneImage, Never>
+        if let inflight = thumbnailLoads[key] {
+            task = inflight
+        } else {
+            task = Task.detached(priority: .userInitiated) {
+                guard let source = UIImage(named: name) else { return PreparedSceneImage(image: nil) }
+                let size = source.size
+                guard size.width > 0, size.height > 0 else { return PreparedSceneImage(image: source) }
+                let scale = min(1, maxPixelSize / max(size.width, size.height))
+                let target = CGSize(
+                    width: max(1, (size.width * scale).rounded()),
+                    height: max(1, (size.height * scale).rounded())
+                )
+                let thumb = source.preparingThumbnail(of: target) ?? source.preparingForDisplay() ?? source
+                return PreparedSceneImage(image: thumb)
+            }
+            thumbnailLoads[key] = task
+        }
+        let value = await task.value
+        thumbnailLoads[key] = nil
+        if let image = value.image, let bitmap = image.cgImage {
+            thumbnails.setObject(image, forKey: key as NSString, cost: bitmap.bytesPerRow * bitmap.height)
+        }
+        return value.image
     }
 
     public static func preload(_ names: [String]) async {
@@ -24,7 +68,7 @@ public enum DSSceneImageCache {
             let task: Task<PreparedSceneImage, Never>
             if let existing = loads[name] { task = existing }
             else {
-                task = Task.detached(priority: .utility) {
+                task = Task.detached(priority: .userInitiated) {
                     PreparedSceneImage(image: UIImage(named: name)?.preparingForDisplay())
                 }
                 loads[name] = task
@@ -34,6 +78,52 @@ public enum DSSceneImageCache {
             if let image = value.image, let bitmap = image.cgImage {
                 images.setObject(image, forKey: name as NSString, cost: bitmap.bytesPerRow * bitmap.height)
             }
+        }
+    }
+
+    public static func preloadThumbnails(_ names: [String], maxPixelSize: CGFloat = 320) async {
+        for name in names {
+            guard !Task.isCancelled else { return }
+            _ = await loadThumbnail(named: name, maxPixelSize: maxPixelSize)
+        }
+    }
+
+    private static func thumbnailKey(name: String, maxPixelSize: CGFloat) -> String {
+        "\(name)@\(Int(maxPixelSize.rounded()))"
+    }
+}
+
+/// Renders a pre-decoded thumbnail off the main thread so dense multi-photo cards
+/// never stall the first frame of a navigation transition.
+public struct DSSceneThumbnailImage: View {
+    private let name: String
+    private let maxPixelSize: CGFloat
+    @State private var loaded: UIImage?
+
+    public init(name: String, maxPixelSize: CGFloat = 320) {
+        self.name = name
+        self.maxPixelSize = maxPixelSize
+        _loaded = State(initialValue: DSSceneImageCache.cachedThumbnail(named: name, maxPixelSize: maxPixelSize))
+    }
+
+    public var body: some View {
+        Group {
+            if let image = loaded ?? DSSceneImageCache.cachedThumbnail(named: name, maxPixelSize: maxPixelSize) {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFill()
+            } else {
+                Color.dsTravelNavy.opacity(0.6)
+            }
+        }
+        .task(id: "\(name)@\(Int(maxPixelSize))") {
+            if let cached = DSSceneImageCache.cachedThumbnail(named: name, maxPixelSize: maxPixelSize) {
+                if loaded !== cached { loaded = cached }
+                return
+            }
+            let decoded = await DSSceneImageCache.loadThumbnail(named: name, maxPixelSize: maxPixelSize)
+            guard !Task.isCancelled else { return }
+            loaded = decoded
         }
     }
 }

@@ -17,6 +17,53 @@ struct AppointmentPhoto: Identifiable {
     ]
 }
 
+private struct PreparedAppointmentPhoto: @unchecked Sendable { let image: UIImage? }
+
+@MainActor
+public enum AppointmentPhotoCache {
+    private static let images: NSCache<NSString, UIImage> = {
+        let value = NSCache<NSString, UIImage>()
+        value.totalCostLimit = 24 * 1_024 * 1_024
+        return value
+    }()
+    private static var loads: [String: Task<PreparedAppointmentPhoto, Never>] = [:]
+
+    public static func cachedImage(id: String) -> UIImage? {
+        images.object(forKey: id as NSString)
+    }
+
+    public static func load(id: String) async -> UIImage? {
+        if let existing = images.object(forKey: id as NSString) { return existing }
+        let task: Task<PreparedAppointmentPhoto, Never>
+        if let inflight = loads[id] {
+            task = inflight
+        } else {
+            task = Task.detached(priority: .userInitiated) {
+                guard let url = Bundle.module.url(forResource: id, withExtension: "jpg", subdirectory: "Photos"),
+                      let raw = UIImage(contentsOfFile: url.path) else {
+                    return PreparedAppointmentPhoto(image: nil)
+                }
+                return PreparedAppointmentPhoto(image: raw.preparingForDisplay() ?? raw)
+            }
+            loads[id] = task
+        }
+        let value = await task.value
+        loads[id] = nil
+        if let image = value.image, let bitmap = image.cgImage {
+            images.setObject(image, forKey: id as NSString, cost: bitmap.bytesPerRow * bitmap.height)
+        }
+        return value.image
+    }
+
+    public static func preload(cityID: String) async {
+        guard cityID == "london" else { return }
+        for photo in AppointmentPhoto.london {
+            guard !Task.isCancelled else { return }
+            _ = await load(id: photo.id)
+        }
+    }
+}
+
 struct AppointmentPhotoView: View {
     let cityID: String
     let cityName: String
@@ -25,31 +72,48 @@ struct AppointmentPhotoView: View {
     var showsPlaceholder = true
     @State private var index = 0
     @State private var credits = false
+    @State private var loadedImage: UIImage?
+    @State private var loadedPhotoID: String?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
 
     private var photos: [AppointmentPhoto] { cityID == "london" ? AppointmentPhoto.london : [] }
+    private var currentPhoto: AppointmentPhoto? { photos.isEmpty ? nil : photos[index % photos.count] }
     private var running: Bool { !paused && !reduceMotion && !credits && scenePhase == .active && photos.count > 1 }
 
     var body: some View {
         GeometryReader { geometry in
+            let activePhoto = currentPhoto
+            let activeImage = activePhoto.flatMap { photo in
+                (loadedPhotoID == photo.id ? loadedImage : nil) ?? AppointmentPhotoCache.cachedImage(id: photo.id)
+            }
             ZStack(alignment: .bottomTrailing) {
                 AppointmentStyle.ink
-                if !photos.isEmpty,
-                   let url = Bundle.module.url(forResource: photos[index % photos.count].id, withExtension: "jpg", subdirectory: "Photos"),
-                   let image = UIImage(contentsOfFile: url.path) {
+                if let activePhoto, let image = activeImage {
                     Image(uiImage: image).resizable().scaledToFill()
                         .frame(width: geometry.size.width, height: geometry.size.height).clipped()
-                        .id(photos[index % photos.count].id).transition(.opacity).accessibilityHidden(true)
+                        .id(activePhoto.id).transition(.opacity).accessibilityHidden(true)
                     LinearGradient(colors: [.black.opacity(0.28), .clear, .black.opacity(0.30)], startPoint: .top, endPoint: .bottom).accessibilityHidden(true)
                     if showsControls {
                         Button { credits = true } label: { Label("照片信息", systemImage: "info.circle").font(.caption).padding(12).frame(minHeight: 44) }
                             .foregroundStyle(.white).background(.black.opacity(0.4), in: Capsule()).padding(12)
                     }
-                } else if showsPlaceholder {
+                } else if activePhoto == nil && showsPlaceholder {
                     VStack(spacing: 10) { Image(systemName: "photo"); Text("\(cityName)城市实拍素材待准备").font(.subheadline) }.foregroundStyle(.white.opacity(0.85)).frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }.frame(width: geometry.size.width, height: geometry.size.height).clipped()
+        }
+        .task(id: currentPhoto?.id) {
+            guard let photo = currentPhoto else { return }
+            if let cached = AppointmentPhotoCache.cachedImage(id: photo.id) {
+                loadedImage = cached
+                loadedPhotoID = photo.id
+                return
+            }
+            let decoded = await AppointmentPhotoCache.load(id: photo.id)
+            guard !Task.isCancelled else { return }
+            loadedImage = decoded
+            loadedPhotoID = photo.id
         }
         .task(id: running) {
             guard running else { return }

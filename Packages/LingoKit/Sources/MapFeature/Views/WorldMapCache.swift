@@ -1,14 +1,16 @@
+import DesignSystem
 import DomainKit
 import MapKit
 import SwiftUI
 
-/// Retains one native renderer per account, including MapKit's camera and tile cache.
+/// Retains one native renderer per account, including MapKit's camera, tile cache and pins.
 @MainActor
 public final class WorldMapCache {
     private var map: MKMapView?
     private weak var warmupHost: UIView?
     private var isInUse = false
     private var warmupTask: Task<Void, Never>?
+    private var pinPreloadTask: Task<Void, Never>?
     private var initialRegionID: String?
     private var hasBeenDisplayed = false
     var selectedRegionID: String?
@@ -27,8 +29,14 @@ public final class WorldMapCache {
         return value
     }
 
-    func warmUp(in host: UIView, region: Region?) {
+    func warmUp(in host: UIView, region: Region?, regions: [Region] = []) {
         warmupHost = host
+        if !regions.isEmpty, pinPreloadTask == nil {
+            let pinNames = regions.map { "city_pin_\($0.id)" }
+            pinPreloadTask = Task {
+                await DSSceneImageCache.preload(pinNames)
+            }
+        }
         guard !isInUse else { return }
         guard map != nil else {
             guard warmupTask == nil else { return }
@@ -38,11 +46,14 @@ public final class WorldMapCache {
                 warmupTask = nil
                 guard let host, !isInUse else { return }
                 _ = prepared(region: region)
-                warmUp(in: host, region: region)
+                warmUp(in: host, region: region, regions: regions)
             }
             return
         }
         let map = prepared(region: region)
+        if !regions.isEmpty, map.annotations.isEmpty {
+            map.addAnnotations(regions.map(RegionAnnotation.init))
+        }
         if !hasBeenDisplayed, let region, initialRegionID != region.id {
             map.setCamera(MKMapCamera(lookingAtCenter: CLLocationCoordinate2D(
                 latitude: region.latitude, longitude: region.longitude),
@@ -75,11 +86,18 @@ public final class WorldMapCache {
     }
 }
 
-/// Mounted behind the app so the initial globe can render before its first presentation.
+/// Mounted behind the app so the initial globe and shaders warm up before first presentation.
 public struct WorldMapWarmupView: UIViewRepresentable {
     private let cache: WorldMapCache
     private let region: Region?
-    public init(cache: WorldMapCache, region: Region?) { self.cache = cache; self.region = region }
+    private let regions: [Region]
+    public init(cache: WorldMapCache, region: Region?, regions: [Region] = []) {
+        self.cache = cache
+        self.region = region
+        self.regions = regions
+    }
     public func makeUIView(context: Context) -> UIView { UIView() }
-    public func updateUIView(_ host: UIView, context: Context) { cache.warmUp(in: host, region: region) }
+    public func updateUIView(_ host: UIView, context: Context) {
+        cache.warmUp(in: host, region: region, regions: regions)
+    }
 }

@@ -102,6 +102,12 @@ struct WorldMapCanvas: UIViewRepresentable {
         }
 
         func installAnnotations(in mapView: MKMapView) {
+            let expectedIDs = Set(parent.regions.map(\.id))
+            let existing = mapView.annotations.compactMap { $0 as? RegionAnnotation }
+            if existing.count == expectedIDs.count && Set(existing.map(\.region.id)) == expectedIDs {
+                annotationsByID = Dictionary(uniqueKeysWithValues: existing.map { ($0.region.id, $0) })
+                return
+            }
             mapView.removeAnnotations(mapView.annotations)
             let annotations = parent.regions.map(RegionAnnotation.init)
             annotationsByID = Dictionary(uniqueKeysWithValues: annotations.map { ($0.region.id, $0) })
@@ -219,7 +225,7 @@ struct WorldMapCanvas: UIViewRepresentable {
     }
 }
 
-private final class RegionAnnotation: NSObject, MKAnnotation {
+final class RegionAnnotation: NSObject, MKAnnotation {
     let region: Region
     let coordinate: CLLocationCoordinate2D
 
@@ -336,7 +342,8 @@ private final class RegionAnnotationView: MKAnnotationView {
         self.presentation = presentation
         renderedSelection = nil
 
-        photoView.image = UIImage(named: "city_pin_\(region.id)")
+        let pinName = "city_pin_\(region.id)"
+        photoView.image = DSSceneImageCache.cachedUIImage(named: pinName) ?? UIImage(named: pinName)
         flagLabel.text = region.flagEmoji
         titleLabel.text = region.nameZh
         lockedOverlay.isHidden = presentation.state != .locked

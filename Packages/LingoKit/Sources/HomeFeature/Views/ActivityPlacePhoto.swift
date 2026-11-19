@@ -10,18 +10,59 @@ private final class PreparedActivityPhoto: @unchecked Sendable {
     init(_ image: UIImage) { self.image = image }
 }
 
+private final class VerifiedPhotoHashes: @unchecked Sendable {
+    static let shared = VerifiedPhotoHashes()
+    private let lock = NSLock()
+    private var verified: Set<String> = []
+
+    func contains(_ key: String) -> Bool {
+        lock.lock()
+        defer { lock.unlock() }
+        return verified.contains(key)
+    }
+
+    func insert(_ key: String) {
+        lock.lock()
+        defer { lock.unlock() }
+        verified.insert(key)
+    }
+}
+
 public struct ActivityPlacePhoto: View {
     @MainActor private static let cache = PhotoCache()
 
     @MainActor private final class PhotoCache {
         let images = NSCache<NSString, UIImage>()
+        let fallbacks = NSCache<NSString, UIImage>()
         var loads: [String: Task<PreparedActivityPhoto?, Never>] = [:]
-        init() { images.totalCostLimit = 64 * 1_024 * 1_024 }
+        init() {
+            images.totalCostLimit = 64 * 1_024 * 1_024
+            fallbacks.totalCostLimit = 64 * 1_024 * 1_024
+        }
         func key(_ photo: BackendActivityPhoto, size: CGSize, fit: Bool) -> String {
-            "\(photo.assetName):\(photo.outputSHA256):\(size):\(fit)"
+            let bucketWidth = Int((size.width / 32).rounded(.up) * 32)
+            let bucketHeight = Int((size.height / 32).rounded(.up) * 32)
+            return "\(photo.assetName):\(photo.outputSHA256):\(bucketWidth)x\(bucketHeight):\(fit)"
+        }
+        private func fallbackKey(_ photo: BackendActivityPhoto, fit: Bool) -> String {
+            "\(photo.assetName):\(photo.outputSHA256):\(fit)"
         }
         func image(_ photo: BackendActivityPhoto, size: CGSize, fit: Bool) -> UIImage? {
             images.object(forKey: key(photo, size: size, fit: fit) as NSString)
+        }
+        /// Returns an exact match or a preloaded bitmap for the same photo so transient
+        /// zoom-transition frames never flash a spinner or re-decode on the first tap.
+        func bestImage(_ photo: BackendActivityPhoto, size: CGSize, fit: Bool) -> (image: UIImage, coversTarget: Bool)? {
+            if let exact = image(photo, size: size, fit: fit) {
+                return (exact, true)
+            }
+            guard let fallback = fallbacks.object(forKey: fallbackKey(photo, fit: fit) as NSString) else {
+                return nil
+            }
+            let pixelWidth = fallback.size.width * fallback.scale
+            let pixelHeight = fallback.size.height * fallback.scale
+            let covers = pixelWidth >= size.width * 0.85 && pixelHeight >= size.height * 0.85
+            return (fallback, covers)
         }
         func load(_ photo: BackendActivityPhoto, size: CGSize, fit: Bool) async -> UIImage? {
             let key = key(photo, size: size, fit: fit)
@@ -30,7 +71,7 @@ public struct ActivityPlacePhoto: View {
             if let existing = loads[key] { task = existing }
             else {
                 let alignment = ActivityPlacePhoto.framing[photo.assetName] ?? "center"
-                task = Task.detached(priority: .utility) {
+                task = Task.detached(priority: .userInitiated) {
                     ActivityPlacePhoto.prepare(photo, pixelSize: size, fit: fit, alignment: alignment)
                 }
                 loads[key] = task
@@ -38,7 +79,14 @@ public struct ActivityPlacePhoto: View {
             let value = await task.value
             loads[key] = nil
             if let image = value?.image, let bitmap = image.cgImage {
-                images.setObject(image, forKey: key as NSString, cost: bitmap.bytesPerRow * bitmap.height)
+                let cost = bitmap.bytesPerRow * bitmap.height
+                images.setObject(image, forKey: key as NSString, cost: cost)
+                let fbKey = fallbackKey(photo, fit: fit) as NSString
+                let existingArea = fallbacks.object(forKey: fbKey).map { $0.size.width * $0.scale * $0.size.height * $0.scale } ?? 0
+                let newArea = CGFloat(bitmap.width * bitmap.height)
+                if newArea >= existingArea {
+                    fallbacks.setObject(image, forKey: fbKey, cost: cost)
+                }
             }
             return value?.image
         }
@@ -46,7 +94,7 @@ public struct ActivityPlacePhoto: View {
 
     public static func preload(_ photos: [BackendActivityPhoto], size: CGSize, scale: CGFloat) async {
         let pixels = CGSize(width: ceil(size.width * scale), height: ceil(size.height * scale))
-        for photo in photos.prefix(3) {
+        for photo in photos.prefix(5) {
             guard !Task.isCancelled else { return }
             _ = await cache.load(photo, size: pixels, fit: false)
         }
@@ -73,10 +121,13 @@ public struct ActivityPlacePhoto: View {
         GeometryReader { geometry in
             let pixelSize = CGSize(width: ceil(geometry.size.width * displayScale),
                                    height: ceil(geometry.size.height * displayScale))
-            let key = Self.cache.key(photo, size: pixelSize, fit: contentMode == .fit)
+            let fit = contentMode == .fit
+            let key = Self.cache.key(photo, size: pixelSize, fit: fit)
+            let cached = Self.cache.bestImage(photo, size: pixelSize, fit: fit)
+            let displayImage = (imageKey == key ? image : nil) ?? cached?.image ?? image
             Group {
-                if let image = (imageKey == key ? image : nil) ?? Self.cache.image(photo, size: pixelSize, fit: contentMode == .fit) {
-                    Image(uiImage: image).resizable().aspectRatio(contentMode: contentMode)
+                if let displayImage {
+                    Image(uiImage: displayImage).resizable().aspectRatio(contentMode: contentMode)
                         .frame(width: geometry.size.width, height: geometry.size.height,
                                alignment: .center).clipped()
                         .accessibilityIdentifier("activities.photo.loaded.\(photo.placeId)")
@@ -89,9 +140,17 @@ public struct ActivityPlacePhoto: View {
                 } else { ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity) }
             }.frame(width: geometry.size.width, height: geometry.size.height)
                 .background(Color.dsTravelNavy.opacity(0.06))
-                .task(id: "\(photo.outputSHA256):\(attempt):\(pixelSize):\(contentMode)") {
+                .task(id: "\(photo.outputSHA256):\(attempt):\(key)") {
+                    if let cached, cached.coversTarget {
+                        if image !== cached.image || imageKey != key {
+                            image = cached.image
+                            imageKey = key
+                            failed = false
+                        }
+                        return
+                    }
                     failed = false
-                    let prepared = await Self.cache.load(photo, size: pixelSize, fit: contentMode == .fit)
+                    let prepared = await Self.cache.load(photo, size: pixelSize, fit: fit)
                     guard !Task.isCancelled else { return }
                     image = prepared
                     imageKey = key
@@ -107,9 +166,15 @@ public struct ActivityPlacePhoto: View {
             guard !photo.assetName.contains("/"), !photo.assetName.contains(".."),
                   let url = Bundle.main.url(forResource: photo.assetName, withExtension: nil, subdirectory: "ActivityPlaces")
                     ?? Bundle.main.url(forResource: photo.assetName, withExtension: nil),
-                  let data = try? Data(contentsOf: url),
-                  SHA256.hash(data: data).map({ String(format: "%02x", $0) }).joined() == photo.outputSHA256,
-                  let source = CGImageSourceCreateWithData(data as CFData, nil) else { return nil }
+                  let data = try? Data(contentsOf: url) else { return nil }
+            let hashKey = "\(photo.assetName):\(photo.outputSHA256)"
+            if !VerifiedPhotoHashes.shared.contains(hashKey) {
+                guard SHA256.hash(data: data).map({ String(format: "%02x", $0) }).joined() == photo.outputSHA256 else {
+                    return nil
+                }
+                VerifiedPhotoHashes.shared.insert(hashKey)
+            }
+            guard let source = CGImageSourceCreateWithData(data as CFData, nil) else { return nil }
             let widthScale = pixelSize.width / CGFloat(photo.width)
             let heightScale = pixelSize.height / CGFloat(photo.height)
             let scale = min(1, fit ? min(widthScale, heightScale) : max(widthScale, heightScale))

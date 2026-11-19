@@ -158,9 +158,7 @@ public struct StoryHubView: View {
     private func artworkStrips(_ artworkNames: [String], width: CGFloat) -> some View {
         HStack(spacing: 0) {
             ForEach(Array(artworkNames.enumerated()), id: \.offset) { _, artworkName in
-                Image(artworkName)
-                    .resizable()
-                    .scaledToFill()
+                DSSceneThumbnailImage(name: artworkName, maxPixelSize: 320)
                     .frame(
                         width: width / CGFloat(max(artworkNames.count, 1)),
                         height: 154

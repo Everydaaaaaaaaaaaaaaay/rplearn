@@ -33,7 +33,7 @@ final class TabSceneTransitionTests: XCTestCase {
         }
     }
 
-    func testSceneTabsReturnToRootOnReselectionAndSwitchBack() {
+    func testSceneTabsPreserveChildAcrossSwitchAndReturnToRootOnReselection() {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
@@ -45,19 +45,26 @@ final class TabSceneTransitionTests: XCTestCase {
         defer { app.terminate() }
 
         for (title, entry) in [("活动", "世界地图"), ("我的", "设置，AI、语音与偏好")] {
+            let tabButton = app.tabBars.buttons[title]
+            XCTAssertTrue(tabButton.waitForExistence(timeout: 15))
+            tabButton.tap()
+            XCTAssertTrue(app.buttons[entry].waitForExistence(timeout: 15))
+            app.buttons[entry].tap()
+            let back = title == "活动"
+                ? app.buttons["返回首页"]
+                : app.navigationBars["设置"].buttons.firstMatch
+            XCTAssertTrue(back.waitForExistence(timeout: 5))
+
+            // 切换到其他标签再切回时，保持子页面位置。
+            app.tabBars.buttons["联系人"].tap()
             app.tabBars.buttons[title].tap()
-            for switchesAway in [false, true] {
-                XCTAssertTrue(app.buttons[entry].waitForExistence(timeout: 15))
-                app.buttons[entry].tap()
-                let back = title == "活动"
-                    ? app.buttons["返回首页"]
-                    : app.navigationBars["设置"].buttons.firstMatch
-                XCTAssertTrue(back.waitForExistence(timeout: 5))
-                if switchesAway { app.tabBars.buttons["联系人"].tap() }
-                app.tabBars.buttons[title].tap()
-                XCTAssertTrue(back.waitForNonExistence(timeout: 5), "点击标签应关闭二级页面")
-                XCTAssertTrue(app.buttons[entry].isHittable, "初始页面入口应恢复可点击")
-            }
+            XCTAssertTrue(back.waitForExistence(timeout: 5), "切回标签应保留原二级页面")
+
+            // 在子页面再次点击当前标签，立即回到首页。
+            app.tabBars.buttons[title].tap()
+            XCTAssertTrue(back.waitForNonExistence(timeout: 5), "再次点击当前标签应回到根页面")
+            XCTAssertTrue(app.buttons[entry].waitForExistence(timeout: 5))
+            XCTAssertTrue(app.buttons[entry].isHittable, "初始页面入口应恢复可点击")
         }
     }
     func testMePagesUseNativeBackAndEdgeSwipe() {
@@ -89,7 +96,7 @@ final class TabSceneTransitionTests: XCTestCase {
         }
     }
 
-    func testContactProfileReturnsToRoot() {
+    func testContactProfilePreservesAcrossSwitchAndReturnsToRootOnReselection() {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
@@ -99,17 +106,21 @@ final class TabSceneTransitionTests: XCTestCase {
         app.launch()
         defer { app.terminate() }
 
-        for switchesAway in [false, true] {
-            let entry = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Oliver")).firstMatch
-            XCTAssertTrue(entry.waitForExistence(timeout: 15))
-            entry.tap()
-            let message = app.buttons["发消息"]
-            XCTAssertTrue(message.waitForExistence(timeout: 5))
-            if switchesAway { app.tabBars.buttons["活动"].tap() }
-            app.tabBars.buttons["联系人"].tap()
-            XCTAssertTrue(message.waitForNonExistence(timeout: 5))
-            XCTAssertTrue(entry.waitForExistence(timeout: 5))
-            XCTAssertTrue(entry.isHittable, "点击标签应返回联系人列表")
-        }
+        let entry = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Oliver")).firstMatch
+        XCTAssertTrue(entry.waitForExistence(timeout: 15))
+        entry.tap()
+        let message = app.buttons["发消息"]
+        XCTAssertTrue(message.waitForExistence(timeout: 5))
+
+        // 切去其他标签再切回，停留在角色资料页。
+        app.tabBars.buttons["活动"].tap()
+        app.tabBars.buttons["联系人"].tap()
+        XCTAssertTrue(message.waitForExistence(timeout: 5), "切回联系人标签应保留当前资料页")
+
+        // 再次点击当前标签，回到联系人列表。
+        app.tabBars.buttons["联系人"].tap()
+        XCTAssertTrue(message.waitForNonExistence(timeout: 5))
+        XCTAssertTrue(entry.waitForExistence(timeout: 5))
+        XCTAssertTrue(entry.isHittable, "再次点击当前标签应返回联系人列表")
     }
 }

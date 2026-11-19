@@ -110,7 +110,14 @@ public struct HomeView: View {
                 .map { DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID) }
             let cities = CityStoryCatalog.chapters.prefix(2)
                 .map { DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID) }
-            await DSSceneImageCache.preload(main + cities)
+            let allStoryStrips = MainlineCatalog.chapters.map {
+                DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID)
+            } + CityStoryCatalog.chapters.map {
+                DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
+            }
+            async let storyThumbnails: Void = DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 320)
+            async let storyCovers: Void = DSSceneImageCache.preload(main + cities)
+            _ = await (storyThumbnails, storyCovers)
             if let cache = deps.presentationCache, let releaseID = deps.activityReleaseID, let gateway = deps.outingGateway {
                 _ = try? await cache.refreshCatalog(releaseID: releaseID, cityID: region.id, gateway: gateway)
             }

@@ -59,7 +59,7 @@ public struct DSSceneBackdrop: View {
 
     public var body: some View {
         GeometryReader { proxy in
-            Image(imageName)
+            DSSceneImageCache.image(named: imageName)
                 .resizable()
                 .scaledToFill()
                 .frame(width: proxy.size.width, height: proxy.size.height)

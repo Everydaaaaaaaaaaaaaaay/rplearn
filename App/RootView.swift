@@ -89,6 +89,7 @@ struct RootView: View {
     @State private var stateRevision = 0
     @State private var shouldRefreshAfterBackground = false
     @State private var isInitialContentReady = false
+    @State private var launchVeilVisible = true
     @State private var completedForcedOnboarding = false
     @State private var completedForcedWelcome = false
     @AppStorage("onboarding.welcome.completed.v1") private var welcomeCompleted = false
@@ -579,30 +580,41 @@ struct RootView: View {
         }
     }
 
+    @ViewBuilder
     private var launchContent: some View {
-        ZStack {
+        Group {
             switch launchPhase {
             case .loading:
                 launchLoading
-                    .transition(.opacity)
             case .welcome:
                 WelcomeJourneyView(dictionary: environment.dictionary, grammar: environment.grammarPoints) {
                     welcomeCompleted = true
                     completedForcedWelcome = true
                 }
-                .transition(.opacity)
             case .signIn:
                 SignInView(session: environment.authSession)
-                    .transition(.opacity)
             case .app:
                 appContent
-                    .transition(.opacity)
             }
         }
-        .animation(
-            reduceMotion ? .easeOut(duration: 0.12) : .smooth(duration: 0.26, extraBounce: 0),
-            value: launchPhase
-        )
+        .overlay {
+            if launchPhase != .loading {
+                Color("BrandLaunchBackground")
+                    .ignoresSafeArea()
+                    .opacity(launchVeilVisible ? 1 : 0)
+                    .allowsHitTesting(false)
+                    .accessibilityHidden(true)
+            }
+        }
+        .onChange(of: launchPhase, initial: true) { _, phase in
+            if phase == .loading {
+                launchVeilVisible = true
+            } else if launchVeilVisible {
+                withAnimation(reduceMotion ? .easeOut(duration: 0.1) : .easeOut(duration: 0.2)) {
+                    launchVeilVisible = false
+                }
+            }
+        }
     }
 
     private var launchLoading: some View {
@@ -656,14 +668,33 @@ struct RootView: View {
                 await cache.refreshLocal(economy: account.economyStore, items: account.itemStore,
                     progress: account.storyProgressStore, ticketStubs: account.ticketStubStore)
                 guard !Task.isCancelled else { return }
-                _ = try? await cache.refreshMainline(using: mainlineClient)
+                if let regionID = cache.profile?.currentRegionID {
+                    let tabBackdrops = [DSCitySceneRole.messages, .contacts, .activities, .profile].map {
+                        DSCitySceneAssets.imageName(for: $0, regionID: regionID)
+                    }
+                    let allStoryStrips = MainlineCatalog.chapters.map {
+                        DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID)
+                    } + CityStoryCatalog.chapters.map {
+                        DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
+                    }
+                    async let backdrops: Void = DSSceneImageCache.preload(tabBackdrops)
+                    async let storyStrips: Void = DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 320)
+                    async let appointments: Void = AppointmentPhotoCache.preload(cityID: regionID)
+                    async let mainline: Void = { _ = try? await cache.refreshMainline(using: mainlineClient) }()
+                    _ = await (backdrops, storyStrips, appointments, mainline)
+                } else {
+                    _ = try? await cache.refreshMainline(using: mainlineClient)
+                }
             }
             .background {
                 if let account = environment.workspace, environment.needsOnboarding == false,
                    let profile = account.journeyPresentation.profile {
+                    // Opacity >= 0.01 prevents CoreAnimation visibility culling so MapKit warms
+                    // its Metal 3D globe shaders behind the opaque tab views before first tap.
                     WorldMapWarmupView(cache: account.worldMapCache,
-                        region: environment.regionCatalog.region(id: profile.currentRegionID))
-                        .opacity(0.001).allowsHitTesting(false).accessibilityHidden(true)
+                        region: environment.regionCatalog.region(id: profile.currentRegionID),
+                        regions: environment.regionCatalog.regions)
+                        .opacity(0.02).allowsHitTesting(false).accessibilityHidden(true)
                 }
             }
             #if DEBUG
@@ -736,8 +767,11 @@ struct RootView: View {
         TabView(selection: Binding(
             get: { selectedTab },
             set: { tab in
-                returnTabToRoot(tab)
-                selectedTab = tab
+                if tab == selectedTab {
+                    returnTabToRoot(tab)
+                } else {
+                    selectedTab = tab
+                }
             }
         )) {
             deferredTab(.messages) { messagesStack }
