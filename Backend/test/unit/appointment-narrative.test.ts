@@ -114,22 +114,23 @@ function detectionInput(): Parameters<AppointmentNarrative["detect"]>[0] {
     userId: "user-1",
     operationId: "detect-1",
     character,
-    serverNow: "2026-11-01T12:00:00Z",
+    serverNow: "2026-11-01T18:00:00Z",
     existing: [],
     messages: [
       {
         id: "user-message",
         version: 3,
         role: "user",
-        content: "Can we meet at the canal in London today at 3pm?",
-        createdAt: "2026-11-01T11:59:00Z",
+        content: "Can we meet at the canal in London tomorrow at 3pm?",
+        createdAt: "2026-11-01T16:59:00Z",
+        serverCreatedAt: "2026-11-01T17:59:00Z",
       },
       {
         id: "character-message",
         version: 1,
         role: "assistant",
-        content: "Yes, let's meet at the canal at 3pm London time today.",
-        createdAt: "2026-11-01T12:00:00Z",
+        content: "Yes, let's meet at the canal at 3pm tomorrow, Beijing time.",
+        createdAt: "2026-11-01T18:00:00Z",
       },
     ],
   };
@@ -138,9 +139,10 @@ const detected = {
   title: "Canal walk",
   cityId: "london",
   cityName: "London",
-  timeZone: "Europe/London",
+  timeZone: "Asia/Shanghai",
   placeName: "Canal",
-  localStartsAt: "2026-11-01T15:00:00",
+  localStartsAt: "2026-11-03T15:00:00",
+  timeReferenceMessageId: "user-message",
   durationMinutes: 60,
   evidence: [
     { messageId: "user-message", version: 3 },
@@ -375,10 +377,35 @@ describe("appointment detection evidence", () => {
     const { service, requests } = harness([{ appointment: detected }, accept]);
     expect(await service.detect(detectionInput())).toEqual(detected);
     expect(requests[0]?.messages[1]?.content).toContain("Europe/London");
+    expect(requests[0]?.messages[1]?.content).toContain('"appointmentTimeZone":"Asia/Shanghai"');
+    expect(requests[0]?.messages[1]?.content).toContain('"appointmentLocalSentAt":"2026-11-02T01:59:00"');
     expect(requests[0]?.messages[0]?.content).toContain("和{character.name}一起{agreed activity}");
     expect(requests[0]?.messages[0]?.content).toContain("和Ruby一起看电影");
     expect(requests[0]?.messages[0]?.content).toContain("和{character.name}在{placeName}见面");
     expect(requests[1]?.messages[1]?.content).toContain("user-message");
+  });
+  it("uses the timezone when the cited proposal was sent, even if the user later changes timezones", async () => {
+    const input = detectionInput();
+    input.messages = input.messages.map((message) => message.role === "user"
+      ? { ...message, userTimeZone: "America/Los_Angeles" }
+      : message);
+    input.messages.push({
+      id: "follow-up", version: 1, role: "user", content: "Sounds good.",
+      createdAt: "2026-11-01T18:01:00Z", userTimeZone: "Asia/Shanghai",
+    });
+    const proposal = { ...detected, timeZone: "America/Los_Angeles" };
+    const { service } = harness([{ appointment: proposal }, accept]);
+    expect(await service.detect(input)).toEqual(proposal);
+    const mismatch = harness([{ appointment: { ...proposal, timeZone: "Europe/London" } }]);
+    expect(await mismatch.service.detect(input)).toBeNull();
+    expect(mismatch.requests).toHaveLength(1);
+  });
+  it("computes tomorrow from the Beijing calendar day before auditing the UTC-date boundary", async () => {
+    const wrongUtcDay = { ...detected, relativeDay: 1, localStartsAt: "2026-11-02T15:00:00" };
+    const { service, requests } = harness([{ appointment: wrongUtcDay }, accept]);
+    expect(await service.detect(detectionInput())).toEqual({ ...detected, relativeDay: 1 });
+    expect(requests[1]?.messages[1]?.content).toContain('"userLocalStartsAt":"2026-11-03T15:00:00"');
+    expect(requests[1]?.messages[1]?.content).not.toContain("2026-11-01T17:59:00Z");
   });
   it.each([
     "one-sided invitation",
@@ -675,10 +702,10 @@ it("anchors relative dates to immutable server save times rather than client pay
   const { service, requests } = harness([{ appointment: null }]);
   await service.detect(input);
   const data = JSON.parse(requests[0]?.messages[1]?.content ?? "{}") as {
-    messages: { createdAt: string }[];
+    messages: { appointmentLocalSentAt: string }[];
   };
   expect(
-    data.messages.every((message) => message.createdAt === "2026-11-01T12:00:00Z"),
+    data.messages.every((message) => message.appointmentLocalSentAt === "2026-11-01T20:00:00"),
   ).toBe(true);
   expect(requests[0]?.messages[1]?.content).not.toContain("2099-01-01");
 });

@@ -374,6 +374,7 @@ export class ChatRepository {
         sharedVoiceLeaseId: old.protected_payload.sharedVoiceLeaseId ?? null,
         voiceReceiptVersion: old.protected_payload.voiceReceiptVersion,
         contextMemoryIds: old.protected_payload.contextMemoryIds,
+        userTimeZone: old.protected_payload.userTimeZone,
         deliveryOrigin: old.protected_payload.deliveryOrigin,
         replyToMessageIds: old.protected_payload.replyToMessageIds,
         orderIndex: old.sequence,

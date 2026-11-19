@@ -214,6 +214,7 @@ const messagePayload = z
     sharedVoiceLeaseId: uuid.nullable().optional(),
     voiceReceiptVersion: z.literal(1).nullable().optional(),
     contextMemoryIds: z.array(uuid).max(20).nullable().optional(),
+    userTimeZone: z.string().min(1).max(100).optional(),
     replyToMessageIds: z.array(uuid).max(20).nullable().optional(),
     deliveryOrigin: z.literal("proactive").optional(),
     learningOrigin: learningMessageOriginSchema.nullable().optional(),

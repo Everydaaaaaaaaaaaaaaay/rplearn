@@ -7,6 +7,7 @@ export interface Appointment {
   cityId: string;
   cityName: string;
   timeZone: string;
+  userTimeZone?: string;
   placeName: string;
   startsAt: string;
   endsAt: string;
@@ -34,6 +35,7 @@ export interface AppointmentTimelineEvent {
   placeName: string;
   startsAt: string;
   timeZone: string;
+  userTimeZone?: string;
 }
 export interface AppointmentBlock {
   id: string;
@@ -86,6 +88,7 @@ export interface AppointmentChoice extends AppointmentCommand {
 export interface AppointmentMessage {
   /** Immutable server save time; relative dates must use this over client payload timestamps. */
   serverCreatedAt?: string;
+  userTimeZone?: string;
   id: string;
   version: number;
   role: "user" | "assistant";
@@ -127,6 +130,8 @@ export interface DetectedAppointment {
   timeZone: string;
   placeName: string;
   localStartsAt: string;
+  timeReferenceMessageId: string;
+  relativeDay?: number | undefined;
   durationMinutes: number;
   evidence: { messageId: string; version: number }[];
   replacesAppointmentId?: string | undefined;

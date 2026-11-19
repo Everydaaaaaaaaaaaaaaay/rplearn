@@ -89,6 +89,8 @@ export const detectionSchema = z
         timeZone: text(100),
         placeName: text(200),
         localStartsAt: z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/),
+        timeReferenceMessageId: text(200),
+        relativeDay: z.number().int().min(0).max(2).optional(),
         durationMinutes: z.number().int().min(10).max(240),
         evidence: z
           .array(

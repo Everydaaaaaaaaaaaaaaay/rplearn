@@ -69,6 +69,7 @@ export function appointmentMessages(
         kind: z.enum(["text", "voice"]),
         isInterrupted: z.boolean().optional(),
         createdAt: z.string(),
+        userTimeZone: z.string().optional(),
       })
       .safeParse(record.payload);
     if (!parsed.success || parsed.data.isInterrupted) return [];
@@ -79,6 +80,7 @@ export function appointmentMessages(
         role: parsed.data.role,
         content: parsed.data.text,
         createdAt: parsed.data.createdAt,
+        ...(parsed.data.userTimeZone ? { userTimeZone: parsed.data.userTimeZone } : {}),
         serverCreatedAt: record.createdAt,
       },
     ];

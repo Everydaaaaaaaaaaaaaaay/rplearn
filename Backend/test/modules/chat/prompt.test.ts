@@ -17,6 +17,22 @@ function record(id: string, payload: unknown): ContentRecord {
 const persona = record("character", { card: { name: "Friend", regionId: "london" } });
 
 describe("shared conversation prompt", () => {
+  it("anchors scheduling in the sender's timezone and keeps the character clock for roleplay", () => {
+    const message = {
+      ...record("invite", {
+        role: "user", text: "Tomorrow at seven?", userTimeZone: "Asia/Shanghai",
+      }),
+      createdAt: "2026-11-05T17:00:00Z",
+    };
+    const prompt = conversationPrompt(persona, [], [message], ["invite"], {}, false, {
+      now: new Date("2026-11-05T17:02:00Z"),
+    });
+    expect(prompt[0]?.content).toContain('"characterTimeZone":"Europe/London"');
+    expect(prompt[0]?.content).toContain('"appointmentTimeZone":"Asia/Shanghai"');
+    expect(prompt[0]?.content).toContain('"appointmentLocalSentAt":"2026-11-06T01:00:00"');
+    expect(prompt[0]?.content).toContain('friend\'s timezone');
+  });
+
   it("does not reintroduce forgotten facts through old summaries or message history", () => {
     const memories = [
       record("summary", {

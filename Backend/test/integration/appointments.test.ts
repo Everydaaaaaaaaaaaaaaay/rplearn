@@ -72,12 +72,13 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         ],
       }),
     };
-    async function detectNew() {
+    async function detectNew(zone = "Europe/London", localStartsAt = "2026-11-01T12:00:00") {
       messages = [
         {
           id: randomUUID(),
           version: 1,
           role: "user",
+          userTimeZone: zone,
           content: "Meet at the canal today at noon?",
           createdAt: new Date(clock.getTime() + 1_000).toISOString(),
           serverCreatedAt: new Date(clock.getTime() - 2_000).toISOString(),
@@ -95,9 +96,10 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         title: "Canal walk",
         cityId: "london",
         cityName: "London",
-        timeZone: "Europe/London",
+        timeZone: zone,
         placeName: "Canal",
-        localStartsAt: "2026-11-01T12:00:00",
+        localStartsAt,
+        timeReferenceMessageId: messages[0]!.id,
         durationMinutes: 60,
         evidence: messages.map((m) => ({ messageId: m.id, version: m.version })),
       };
@@ -164,6 +166,18 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       });
       expect((await service.list(other)).appointments).toHaveLength(0);
     });
+    it("converts a Beijing agreement to an absolute entry window in London", async () => {
+      const appointment = await detectNew("Asia/Shanghai", "2026-11-01T20:00:00");
+      expect(appointment).toMatchObject({
+        timeZone: "Europe/London",
+        userTimeZone: "Asia/Shanghai",
+        startsAt: "2026-11-01T12:00:00.000Z",
+        windowOpensAt: "2026-11-01T11:30:00.000Z",
+        windowClosesAt: "2026-11-01T14:00:00.000Z",
+        timelineEvents: [{ userTimeZone: "Asia/Shanghai", startsAt: "2026-11-01T12:00:00.000Z" }],
+      });
+      expect((await service.start(user, appointment.id, command(appointment))).session?.blocks).toHaveLength(1);
+    });
     it("rejects unilateral confirmation and nonexistent DST", async () => {
       await detectNew();
       messages = messages.map((m) => ({ ...m, id: randomUUID() }));
@@ -175,6 +189,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).rejects.toMatchObject({ code: "APPOINTMENT_UNCONFIRMED" });
       messages = messages.map((m) => ({ ...m, id: randomUUID() }));
       detection!.evidence = messages.map((m) => ({ messageId: m.id, version: 1 }));
+      detection!.timeReferenceMessageId = messages[0]!.id;
       detection!.localStartsAt = "2027-03-28T01:30:00";
       await expect(
         service.detect(user, { characterId, conversationId }),
@@ -203,6 +218,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         content: m.role === "user" ? "Can we move it to 1pm?" : "Yes, 1pm works.",
       }));
       detection!.evidence = messages.map((m) => ({ messageId: m.id, version: 1 }));
+      detection!.timeReferenceMessageId = messages[0]!.id;
       const changed = await service.detect(user, { characterId, conversationId });
       const replacement = changed.appointments[0]!;
       expect(replacement.startsAt).toBe("2026-11-01T13:00:00.000Z");
@@ -238,6 +254,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         detection!.placeName = "Park";
         detection!.localStartsAt = localStartsAt;
         detection!.evidence = messages.map((m) => ({ messageId: m.id, version: 1 }));
+        detection!.timeReferenceMessageId = messages[0]!.id;
         const changed = await service.detect(user, { characterId, conversationId });
         expect(changed.appointments[0]!.timelineEvents).toEqual([
           expect.objectContaining({
@@ -277,6 +294,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       clock = new Date("2026-11-01T12:00:00Z");
       messages = messages.map((m) => ({ ...m, id: randomUUID() }));
       detection!.evidence = messages.map((m) => ({ messageId: m.id, version: 1 }));
+      detection!.timeReferenceMessageId = messages[0]!.id;
       let release!: () => void, entered!: () => void;
       const wait = new Promise<void>((r) => (release = r)),
         active = new Promise<void>((r) => (entered = r));
@@ -306,6 +324,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
     it("does not invalidate or duplicate confirmation when metadata revisions arrive during detection", async () => {
       await detectNew();
       messages = messages.map((m) => ({ ...m, id: randomUUID() }));
+      detection!.timeReferenceMessageId = messages[0]!.id;
       detection!.evidence = messages.map((m) => ({
         messageId: m.id,
         version: m.version,

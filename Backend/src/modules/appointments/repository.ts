@@ -1,4 +1,5 @@
 import { currentAppointmentMemory } from "./memory-state.js";
+import { appointmentMessageClocks } from "../../shared/appointment-clock.js";
 import { AppError } from "../../shared/errors.js";
 import { createHash, randomUUID } from "node:crypto";
 import type { TransactionSql } from "postgres";
@@ -29,6 +30,8 @@ import {
 } from "./state.js";
 const json = (value: unknown) => JSON.stringify(value);
 const hash = (value: unknown) => createHash("sha256").update(json(value)).digest("hex");
+const detectionDigest = (messages: AppointmentMessage[]) =>
+  hash([appointmentMessageFacts(messages), messages.map((message) => message.userTimeZone ?? null)]);
 interface Row {
   snapshot: Appointment;
   session: AppointmentSession | null;
@@ -148,10 +151,10 @@ export class AppointmentRepository {
       !source.messages.some((m) => m.role === "assistant")
     )
       return await this.list(userId);
-    const digest = hash(appointmentMessageFacts(source.messages));
+    const digest = detectionDigest(source.messages);
     // Stable message facts reuse the same AI receipt even if annotations advance resource revisions.
     const operationId = stableId(
-      `detect:${userId}:${input.characterId}:${input.conversationId}:${digest}`,
+      `detect-user-clock:${userId}:${input.characterId}:${input.conversationId}:${digest}`,
     );
     const existing = (await this.list(userId)).appointments
       .filter((a) => a.characterId === input.characterId)
@@ -199,11 +202,14 @@ export class AppointmentRepository {
         return await this.list(userId);
       }
       validateEvidence(detected.evidence, prepared.context.messages);
-      if (
-        detected.cityId !== source.character.cityId ||
-        detected.timeZone !== source.character.timeZone
-      )
-        appointmentError("APPOINTMENT_CITY_UNCLEAR", "请确认旅伴所在城市与时区。", 422);
+      if (detected.cityId !== source.character.cityId)
+        appointmentError("APPOINTMENT_CITY_UNCLEAR", "请确认旅伴所在城市。", 422);
+      const messageIndex = prepared.context.messages.findIndex((message) =>
+        message.id === detected.timeReferenceMessageId);
+      const clock = appointmentMessageClocks(prepared.context.messages)[messageIndex];
+      if (clock?.appointmentTimeZone !== detected.timeZone ||
+        !detected.evidence.some((message) => message.messageId === detected.timeReferenceMessageId))
+        appointmentError("APPOINTMENT_TIME_UNCLEAR", "请按你的时区确认约定的日期和时间。", 422);
       const startsAt = resolveAppointmentTime(
           detected.localStartsAt,
           detected.timeZone,
@@ -245,7 +251,7 @@ export class AppointmentRepository {
             "APPOINTMENT_EVIDENCE_CHANGED",
             "消息版本已变化，请重新确认。",
           );
-        if (hash(appointmentMessageFacts(current)) !== digest)
+        if (detectionDigest(current) !== digest)
           appointmentError(
             "APPOINTMENT_EVIDENCE_CHANGED",
             "对话已有新消息，请重新检测约定。",
@@ -297,7 +303,8 @@ export class AppointmentRepository {
           title: detected.title,
           cityId: detected.cityId,
           cityName: detected.cityName,
-          timeZone: detected.timeZone,
+          timeZone: source.character.timeZone,
+          userTimeZone: detected.timeZone,
           placeName: detected.placeName,
           startsAt,
           endsAt: new Date(start + detected.durationMinutes * 60_000).toISOString(),
@@ -797,7 +804,7 @@ function appendTimelineEvent(
   occurredAt: string,
   messageId?: string,
 ): Appointment {
-  const { id, title, placeName, startsAt, timeZone } = appointment;
+  const { id, title, placeName, startsAt, timeZone, userTimeZone } = appointment;
   const event: AppointmentTimelineEvent = {
     id: stableId(`appointment-timeline:${id}:${kind}`),
     kind,
@@ -808,6 +815,7 @@ function appendTimelineEvent(
     placeName,
     startsAt,
     timeZone,
+    ...(userTimeZone ? { userTimeZone } : {}),
   };
   return {
     ...appointment,
