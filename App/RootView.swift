@@ -46,6 +46,7 @@ struct RootView: View {
         let id = UUID()
         let appointmentID: UUID?
         var testView: AppointmentListView? = nil
+        var liveTest = false
     }
     @State private var visitedTabs: Set<AppTab> = []
     @State private var messagesPath = NavigationPath()
@@ -853,7 +854,11 @@ struct RootView: View {
             })
         let close = { appointmentPresentation = nil }
         #if DEBUG
-        if let testView = presentation.testView {
+        if presentation.liveTest {
+            LiveAppointmentTestView(dictionary: environment.dictionary, grammar: environment.grammarPoints,
+                speech: environment.speech, onClose: close)
+                .dictionaryPopupServices(DictionaryPopupServices(examples: .init(translate: { _ in nil })))
+        } else if let testView = presentation.testView {
             testView.dictionaryPopupServices(DictionaryPopupServices(examples: .init(translate: { _ in nil })))
         } else if bypassesAuthenticationForUITesting && (ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" || usesTabDesignPreview) {
             if ProcessInfo.processInfo.environment["UI_TEST_APPOINTMENT_SCENARIO"] == "summary-design" {
@@ -1202,11 +1207,11 @@ struct RootView: View {
             )
             #if DEBUG
             .confirmationDialog("测试原生赴约", isPresented: $showsAppointmentTestScenarios, titleVisibility: .visible) {
-                Button("完整赴约") { startAppointmentTest("confirmed") }
-                Button("断线恢复") { startAppointmentTest("reconnect") }
-                Button("回执丢失重试") { startAppointmentTest("retry") }
+                Button("真实赴约") { appointmentPresentation = .init(appointmentID: nil, liveTest: true) }
+                Button("模拟断线恢复") { startAppointmentTest("reconnect") }
+                Button("模拟回执丢失") { startAppointmentTest("retry") }
             } message: {
-                Text("测试使用独立资料，退出后可从头开始。")
+                Text("真实赴约使用独立测试账号和服务端剧情。模拟场景用于验证重试交互。")
             }
             #endif
 

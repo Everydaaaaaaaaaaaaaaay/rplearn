@@ -24,8 +24,8 @@ public struct AppointmentListView: View {
     @State private var openedInitial = false
     @Environment(\.scenePhase) private var scenePhase
 
-    public init(client: BackendClient, currentCityID: String, storageNamespace: String, initialAppointmentID: UUID? = nil, readingServices: AppointmentReadingServices? = nil, settle: (@Sendable (UUID) async throws -> Void)? = nil, onClose: (() -> Void)? = nil, characterName: @escaping (UUID) -> String, characterCards: [UUID: CharacterCard] = [:], onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {
-        self.init(service: client, currentCityID: currentCityID, storageNamespace: storageNamespace, initialAppointmentID: initialAppointmentID, readingServices: readingServices, settle: settle, onClose: onClose, characterName: characterName, characterCards: characterCards, onChat: onChat, onMemory: onMemory)
+    public init(client: BackendClient, currentCityID: String, storageNamespace: String, initialAppointmentID: UUID? = nil, readingServices: AppointmentReadingServices? = nil, settle: (@Sendable (UUID) async throws -> Void)? = nil, onClose: (() -> Void)? = nil, backLabel: String = "返回活动", characterName: @escaping (UUID) -> String, characterCards: [UUID: CharacterCard] = [:], onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {
+        self.init(service: client, currentCityID: currentCityID, storageNamespace: storageNamespace, initialAppointmentID: initialAppointmentID, readingServices: readingServices, settle: settle, onClose: onClose, backLabel: backLabel, characterName: characterName, characterCards: characterCards, onChat: onChat, onMemory: onMemory)
     }
 
     init(service: any AppointmentServing, currentCityID: String, storageNamespace: String, initialAppointmentID: UUID? = nil, readingServices: AppointmentReadingServices? = nil, settle: (@Sendable (UUID) async throws -> Void)? = nil, onClose: (() -> Void)? = nil, backLabel: String = "返回活动", characterName: @escaping (UUID) -> String, characterCards: [UUID: CharacterCard] = [:], onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {

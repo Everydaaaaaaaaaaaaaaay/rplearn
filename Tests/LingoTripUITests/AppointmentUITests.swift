@@ -20,7 +20,35 @@ final class AppointmentUITests: XCTestCase {
 
     override func tearDown() async throws { app.terminate() }
 
-    func testSettingsOpensNativeAppointmentTest() {
+    func testSettingsOpensLiveAppointmentWithoutFallingBackToFixture() {
+        openAppointmentTestMenu()
+        app.buttons["真实赴约"].tap()
+        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "独立测试账号")).firstMatch.waitForExistence(timeout: 8))
+        XCTAssertFalse(app.buttons["appointment.start"].exists)
+        app.buttons["返回设置"].tap()
+        XCTAssertTrue(app.buttons["settings.test-appointments"].waitForExistence(timeout: 8))
+    }
+
+    func testSettingsOpensNativeAppointmentRecoverySimulation() {
+        let entry = openAppointmentTestMenu()
+        app.buttons["模拟断线恢复"].tap()
+        let retry = app.buttons["appointment.retry"]
+        XCTAssertTrue(retry.waitForExistence(timeout: 8))
+        retry.tap()
+
+        let start = app.buttons["appointment.start"]
+        let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: start)
+        XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 8), .completed)
+        start.tap()
+        XCTAssertTrue(app.buttons["appointment.next"].waitForExistence(timeout: 8))
+        app.buttons["暂停并返回约定"].tap()
+        XCTAssertTrue(app.buttons["appointment.resume"].waitForExistence(timeout: 8))
+        app.buttons["返回设置"].tap()
+        XCTAssertTrue(entry.waitForExistence(timeout: 8))
+    }
+
+    @discardableResult
+    private func openAppointmentTestMenu() -> XCUIElement {
         app.launchEnvironment["UI_TEST_TAB"] = "me"
         app.launch()
         let settings = app.buttons["me.settings"]
@@ -29,16 +57,7 @@ final class AppointmentUITests: XCTestCase {
         let entry = app.buttons["settings.test-appointments"]
         reveal(entry)
         entry.tap()
-        app.buttons["完整赴约"].tap()
-
-        let start = app.buttons["appointment.start"]
-        XCTAssertTrue(start.waitForExistence(timeout: 10))
-        start.tap()
-        XCTAssertTrue(app.buttons["appointment.next"].waitForExistence(timeout: 8))
-        app.buttons["暂停并返回约定"].tap()
-        XCTAssertTrue(app.buttons["appointment.resume"].waitForExistence(timeout: 8))
-        app.buttons["返回设置"].tap()
-        XCTAssertTrue(entry.waitForExistence(timeout: 8))
+        return entry
     }
 
     func testNativeSummaryDesignPreview() {
