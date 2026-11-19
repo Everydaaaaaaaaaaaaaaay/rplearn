@@ -42,7 +42,11 @@ struct RootView: View {
     @State private var appointmentCityID = ""
     @State private var appointmentCharacters: [UUID: CharacterDTO] = [:]
     @State private var memoryCharacterID: UUID?
-    private struct AppointmentPresentation: Identifiable { let id = UUID(); let appointmentID: UUID? }
+    private struct AppointmentPresentation: Identifiable {
+        let id = UUID()
+        let appointmentID: UUID?
+        var testView: AppointmentListView? = nil
+    }
     @State private var visitedTabs: Set<AppTab> = []
     @State private var messagesPath = NavigationPath()
     @State private var contactsPath = NavigationPath()
@@ -68,6 +72,7 @@ struct RootView: View {
     #if DEBUG
     @State private var captureCharacter: CharacterDTO?
     @State private var showsCitySceneGallery = false
+    @State private var showsAppointmentTestScenarios = false
     #endif
     @State private var onboardingPreviewMode: OnboardingPreviewMode?
     @State private var placementCompletionRevision = 0
@@ -848,7 +853,9 @@ struct RootView: View {
             })
         let close = { appointmentPresentation = nil }
         #if DEBUG
-        if bypassesAuthenticationForUITesting && (ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" || usesTabDesignPreview) {
+        if let testView = presentation.testView {
+            testView.dictionaryPopupServices(DictionaryPopupServices(examples: .init(translate: { _ in nil })))
+        } else if bypassesAuthenticationForUITesting && (ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" || usesTabDesignPreview) {
             if ProcessInfo.processInfo.environment["UI_TEST_APPOINTMENT_SCENARIO"] == "summary-design" {
                 AppointmentSummaryDesignPreview(onClose: close)
             } else {
@@ -1130,6 +1137,27 @@ struct RootView: View {
         #endif
     }
 
+    private var appointmentTestAction: (@MainActor () -> Void)? {
+        #if DEBUG
+        { showsAppointmentTestScenarios = true }
+        #else
+        nil
+        #endif
+    }
+
+    #if DEBUG
+    private func startAppointmentTest(_ scenario: String) {
+        let reading = (try? ModelContainerFactory.makeContainer(inMemory: true)).map { container in
+            AppointmentReadingServices(dictionary: environment.dictionary, grammar: environment.grammarPoints,
+                favorites: FavoritesStore(modelContainer: container), speech: environment.speech)
+        }
+        let close = { appointmentPresentation = nil }
+        let test = AppointmentListView.previewFixture(scenario: scenario, readingServices: reading,
+            onClose: close, backLabel: "返回设置", onChat: { _ in close() }, onMemory: { _ in close() })
+        appointmentPresentation = AppointmentPresentation(appointmentID: nil, testView: test)
+    }
+    #endif
+
     private func openMe(_ destination: MeDestination) {
         mePath.append(destination)
     }
@@ -1169,8 +1197,18 @@ struct RootView: View {
                 onOpenTutorial: { introductionMode = .tutorial },
                 onTestInitialPlacement: initialPlacementTestAction,
                 onTestFirstLoginFlow: firstLoginTestAction,
+                onTestAppointments: appointmentTestAction,
                 onOpenLearningTrial: learningTrialAction
             )
+            #if DEBUG
+            .confirmationDialog("测试原生赴约", isPresented: $showsAppointmentTestScenarios, titleVisibility: .visible) {
+                Button("完整赴约") { startAppointmentTest("confirmed") }
+                Button("断线恢复") { startAppointmentTest("reconnect") }
+                Button("回执丢失重试") { startAppointmentTest("retry") }
+            } message: {
+                Text("测试使用独立资料，退出后可从头开始。")
+            }
+            #endif
 
         case .photoCredits:
             CityScenePhotoCreditsView()

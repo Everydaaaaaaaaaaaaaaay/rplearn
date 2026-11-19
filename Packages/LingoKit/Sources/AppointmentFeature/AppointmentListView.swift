@@ -12,6 +12,7 @@ public struct AppointmentListView: View {
     private let onChat: (UUID) -> Void
     private let onMemory: (UUID) -> Void
     private let onClose: (() -> Void)?
+    private let backLabel: String
     private let cache: AppointmentCache
     private let readingServices: AppointmentReadingServices?
     private let settle: (@Sendable (UUID) async throws -> Void)?
@@ -27,18 +28,19 @@ public struct AppointmentListView: View {
         self.init(service: client, currentCityID: currentCityID, storageNamespace: storageNamespace, initialAppointmentID: initialAppointmentID, readingServices: readingServices, settle: settle, onClose: onClose, characterName: characterName, characterCards: characterCards, onChat: onChat, onMemory: onMemory)
     }
 
-    init(service: any AppointmentServing, currentCityID: String, storageNamespace: String, initialAppointmentID: UUID? = nil, readingServices: AppointmentReadingServices? = nil, settle: (@Sendable (UUID) async throws -> Void)? = nil, onClose: (() -> Void)? = nil, characterName: @escaping (UUID) -> String, characterCards: [UUID: CharacterCard] = [:], onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {
+    init(service: any AppointmentServing, currentCityID: String, storageNamespace: String, initialAppointmentID: UUID? = nil, readingServices: AppointmentReadingServices? = nil, settle: (@Sendable (UUID) async throws -> Void)? = nil, onClose: (() -> Void)? = nil, backLabel: String = "返回活动", characterName: @escaping (UUID) -> String, characterCards: [UUID: CharacterCard] = [:], onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {
         self.service = service; self.currentCityID = currentCityID; self.initialAppointmentID = initialAppointmentID
         self.characterName = characterName; self.characterCards = characterCards
         self.onChat = onChat; self.onMemory = onMemory
         self.cache = AppointmentCaches.account(storageNamespace)
         self.readingServices = readingServices; self.settle = settle; self.onClose = onClose
+        self.backLabel = backLabel
     }
 
     public var body: some View {
         NavigationStack(path: $path) {
             AppointmentPage(cityID: currentCityID, cityName: BackendAppointment.cityDisplayName(id: currentCityID, fallback: currentCityID),
-                            backLabel: "返回活动", onBack: onClose) {
+                            backLabel: backLabel, onBack: onClose) {
                 Group {
                     if loading && appointments.isEmpty { ProgressView("正在查看约定…") }
                     else if appointments.isEmpty {

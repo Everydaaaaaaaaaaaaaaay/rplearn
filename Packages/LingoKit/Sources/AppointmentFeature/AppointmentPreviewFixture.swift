@@ -14,8 +14,8 @@ extension AppointmentListView {
                                           personality: "", avatarAssetName: "avatar_oliver")]
     }
 
-    public static func previewFixture(scenario: String = "confirmed", readingServices: AppointmentReadingServices? = nil, onClose: (() -> Void)? = nil, onChat: @escaping (UUID) -> Void = { _ in }, onMemory: @escaping (UUID) -> Void = { _ in }) -> AppointmentListView {
-        AppointmentListView(service: AppointmentPreviewService(scenario: scenario), currentCityID: "london", storageNamespace: "debug-fixture-\(UUID().uuidString)", initialAppointmentID: scenario == "list" ? nil : previewAppointmentID, readingServices: readingServices, onClose: onClose, characterName: { _ in "Oliver" }, characterCards: previewCharacterCards, onChat: onChat, onMemory: onMemory)
+    public static func previewFixture(scenario: String = "confirmed", readingServices: AppointmentReadingServices? = nil, onClose: (() -> Void)? = nil, backLabel: String = "返回活动", onChat: @escaping (UUID) -> Void = { _ in }, onMemory: @escaping (UUID) -> Void = { _ in }) -> AppointmentListView {
+        AppointmentListView(service: AppointmentPreviewService(scenario: scenario), currentCityID: "london", storageNamespace: "debug-fixture-\(UUID().uuidString)", initialAppointmentID: scenario == "list" ? nil : previewAppointmentID, readingServices: readingServices, onClose: onClose, backLabel: backLabel, characterName: { _ in "Oliver" }, characterCards: previewCharacterCards, onChat: onChat, onMemory: onMemory)
     }
 }
 
@@ -73,7 +73,6 @@ actor AppointmentPreviewService: AppointmentServing {
 
     func appointmentCommand(_ id: UUID, action: BackendAppointmentAction, request: BackendAppointmentCommand) async throws -> BackendAppointmentDetail {
         if let receipt = receipts[request.commandId] { return receipt }
-        if scenario == "retry" && !failed { failed = true; throw BackendClientError.transport("Local fixture lost response") }
         if scenario == "conflict" && !failed { failed = true; throw BackendClientError.api(code: "APPOINTMENT_VERSION_CONFLICT", message: "Local fixture conflict", requestID: nil, status: 409) }
         if scenario == "offline" { failed = true; throw BackendClientError.transport("Local fixture offline") }
         var appointment = value["appointment"] as! [String: Any]
@@ -93,7 +92,13 @@ actor AppointmentPreviewService: AppointmentServing {
         }
         appointment["revision"] = (appointment["revision"] as! Int) + 1
         value["appointment"] = appointment
-        let detail = try decoded(); receipts[request.commandId] = detail; return detail
+        let detail = try decoded()
+        receipts[request.commandId] = detail
+        if scenario == "retry" && !failed {
+            failed = true
+            throw BackendClientError.transport("Local fixture lost response after saving")
+        }
+        return detail
     }
 
     private func decoded() throws -> BackendAppointmentDetail {

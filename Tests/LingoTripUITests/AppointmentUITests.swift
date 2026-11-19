@@ -20,6 +20,27 @@ final class AppointmentUITests: XCTestCase {
 
     override func tearDown() async throws { app.terminate() }
 
+    func testSettingsOpensNativeAppointmentTest() {
+        app.launchEnvironment["UI_TEST_TAB"] = "me"
+        app.launch()
+        let settings = app.buttons["me.settings"]
+        reveal(settings)
+        settings.tap()
+        let entry = app.buttons["settings.test-appointments"]
+        reveal(entry)
+        entry.tap()
+        app.buttons["完整赴约"].tap()
+
+        let start = app.buttons["appointment.start"]
+        XCTAssertTrue(start.waitForExistence(timeout: 10))
+        start.tap()
+        XCTAssertTrue(app.buttons["appointment.next"].waitForExistence(timeout: 8))
+        app.buttons["暂停并返回约定"].tap()
+        XCTAssertTrue(app.buttons["appointment.resume"].waitForExistence(timeout: 8))
+        app.buttons["返回设置"].tap()
+        XCTAssertTrue(entry.waitForExistence(timeout: 8))
+    }
+
     func testNativeSummaryDesignPreview() {
         app.launchEnvironment["UI_TEST_APPOINTMENT_SCENARIO"] = "summary-design"
         app.launch()

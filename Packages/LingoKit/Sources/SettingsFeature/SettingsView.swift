@@ -29,6 +29,7 @@ public struct SettingsView: View {
     private let onOpenIntroduction: (@MainActor () -> Void)?
     private let onTestInitialPlacement: (@MainActor () -> Void)?
     private let onTestFirstLoginFlow: (@MainActor () -> Void)?
+    private let onTestAppointments: (@MainActor () -> Void)?
     private let onOpenLearningTrial: (@MainActor () -> Void)?
     @State private var testState: TestState = .idle
     @State private var profile: UserProfileDTO?
@@ -56,6 +57,7 @@ public struct SettingsView: View {
         onOpenTutorial: (@MainActor () -> Void)? = nil,
         onTestInitialPlacement: (@MainActor () -> Void)? = nil,
         onTestFirstLoginFlow: (@MainActor () -> Void)? = nil,
+        onTestAppointments: (@MainActor () -> Void)? = nil,
         onOpenLearningTrial: (@MainActor () -> Void)? = nil
     ) {
         _proactiveMessagesEnabled = AppStorage(
@@ -75,6 +77,7 @@ public struct SettingsView: View {
         self.onOpenTutorial = onOpenTutorial
         self.onTestInitialPlacement = onTestInitialPlacement
         self.onTestFirstLoginFlow = onTestFirstLoginFlow
+        self.onTestAppointments = onTestAppointments
         self.onOpenLearningTrial = onOpenLearningTrial
     }
 
@@ -120,6 +123,15 @@ public struct SettingsView: View {
                             .buttonStyle(.plain)
                             .padding(.horizontal, DSSpacing.lg)
                             .accessibilityIdentifier("settings.test-first-login")
+                            paperSectionDivider
+                        }
+                        if let onTestAppointments {
+                            Button(action: onTestAppointments) {
+                                settingsLinkLabel("测试原生赴约", systemImage: "calendar.badge.checkmark")
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, DSSpacing.lg)
+                            .accessibilityIdentifier("settings.test-appointments")
                             paperSectionDivider
                         }
                         if let onOpenTutorial {
