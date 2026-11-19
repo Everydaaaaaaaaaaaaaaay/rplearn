@@ -52,8 +52,9 @@ public struct ActivitiesView: View {
 
     public var body: some View {
         ZStack {
-            if let placeCatalog, activity == nil {
-                CityPlacesView(cityName: cityName, catalog: placeCatalog, onBack: onClose,
+            if let placeCatalog {
+                CityPlacesView(cityName: cityName, catalog: placeCatalog, showsChrome: activity == nil,
+                    onBack: onClose,
                     onJournal: { readRecords(); showsJournal = true }, onSelect: { place in
                         guard resumableOuting == nil else { return }
                         do {

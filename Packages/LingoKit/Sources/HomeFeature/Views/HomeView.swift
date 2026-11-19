@@ -9,6 +9,7 @@ public struct HomeView: View {
     private let reloadToken: Int
     private let isVisible: Bool
     private let activityNamespace: String
+    private let transitionNamespace: Namespace.ID?
     private let onInitialLoad: @MainActor () -> Void
     private let onOpenDestination: @MainActor (HomeDestination) -> Void
     private let onOpenAppointment: (@MainActor (UUID) -> Void)?
@@ -24,7 +25,8 @@ public struct HomeView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     public init(deps: HomeDependencies, reloadToken: Int = 0, isVisible: Bool = true,
-                activityNamespace: String = "", onInitialLoad: @escaping @MainActor () -> Void = {},
+                activityNamespace: String = "", transitionNamespace: Namespace.ID? = nil,
+                onInitialLoad: @escaping @MainActor () -> Void = {},
                 onOpenDestination: @escaping @MainActor (HomeDestination) -> Void = { _ in },
                 onOpenAppointment: (@MainActor (UUID) -> Void)? = nil) {
         self.deps = deps
@@ -33,6 +35,7 @@ public struct HomeView: View {
         self.reloadToken = reloadToken
         self.isVisible = isVisible
         self.activityNamespace = activityNamespace
+        self.transitionNamespace = transitionNamespace
         self.onInitialLoad = onInitialLoad
         self.onOpenDestination = onOpenDestination
         self.onOpenAppointment = onOpenAppointment
@@ -164,11 +167,13 @@ public struct HomeView: View {
         .background(Color.dsTravelNavy)
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         .overlay { RoundedRectangle(cornerRadius: 24, style: .continuous).strokeBorder(.white.opacity(0.5), lineWidth: 0.8) }
+        .matchedHomeTransitionSource(id: .activities, in: transitionNamespace, cornerRadius: 24)
     }
 
     private var appointmentEntrance: some View {
         HomeAppointmentEntrance(model: appointments, onOpenAppointment: onOpenAppointment,
             onOpenDestination: onOpenDestination)
+            .matchedHomeTransitionSource(id: .appointments, in: transitionNamespace, cornerRadius: 22)
     }
 
     @ViewBuilder private var secondaryEntrances: some View {
@@ -203,6 +208,7 @@ public struct HomeView: View {
         }
         .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityLabel("剧情，\(storySubtitle)")
         .contextMenu { if let storyCover { Button("照片信息") { creditedPhoto = storyCover.photo } } }
+        .matchedHomeTransitionSource(id: .stories, in: transitionNamespace, cornerRadius: 22)
     }
 
     private var mapEntrance: some View {
@@ -225,6 +231,7 @@ public struct HomeView: View {
             .contentShape(RoundedRectangle(cornerRadius: 22))
         }
         .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityLabel("世界地图")
+        .matchedHomeTransitionSource(id: .map, in: transitionNamespace, cornerRadius: 22)
     }
 
     private func reloadProfile() async {
@@ -259,4 +266,22 @@ public struct HomeView: View {
         } catch { /* The activity destination provides its progress recovery controls. */ }
     }
 
+}
+
+private extension View {
+    @ViewBuilder
+    func matchedHomeTransitionSource(
+        id: HomeDestination,
+        in namespace: Namespace.ID?,
+        cornerRadius: CGFloat
+    ) -> some View {
+        if let namespace {
+            matchedTransitionSource(id: id, in: namespace) { configuration in
+                configuration
+                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            }
+        } else {
+            self
+        }
+    }
 }

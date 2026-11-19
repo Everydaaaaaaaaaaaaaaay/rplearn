@@ -20,6 +20,7 @@ struct CityOutingView: View {
     @State private var word: TokenSelection?
     @State private var credits: BackendActivityPhoto?
     @State private var confirmsEnding = false
+    @State private var revealsSheet = false
     private let ink = Color.dsTravelNavy
 
     var body: some View {
@@ -56,6 +57,8 @@ struct CityOutingView: View {
                     }.padding(24)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(CityPlacesView.paper.opacity(0.97), in: RoundedRectangle(cornerRadius: 28))
+                        .offset(y: (revealsSheet || reduceMotion) ? 0 : 28)
+                        .opacity((revealsSheet || reduceMotion) ? 1 : 0)
                 }.padding(.horizontal, 16).padding(.bottom, 24)
                     .frame(maxWidth: 620).frame(maxWidth: .infinity)
             }.scrollBounceBehavior(.basedOnSize)
@@ -69,6 +72,12 @@ struct CityOutingView: View {
         .background {
             ActivityPlacePhoto(photo: model.snapshot?.photo ?? model.archive.place.photo)
                 .ignoresSafeArea().accessibilityHidden(true)
+        }
+        .onAppear {
+            guard !revealsSheet else { return }
+            withAnimation(reduceMotion ? nil : .smooth(duration: 0.34, extraBounce: 0)) {
+                revealsSheet = true
+            }
         }
         .task {
             #if DEBUG

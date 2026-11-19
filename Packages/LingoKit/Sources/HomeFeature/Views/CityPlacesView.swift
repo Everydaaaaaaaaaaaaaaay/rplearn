@@ -4,6 +4,7 @@ import SwiftUI
 struct CityPlacesView: View {
     let cityName: String
     let catalog: BackendActivityCatalog
+    var showsChrome: Bool = true
     let onBack: () -> Void
     let onJournal: () -> Void
     let onSelect: (BackendActivityPlace) -> Void
@@ -12,6 +13,7 @@ struct CityPlacesView: View {
 
     var body: some View {
         ActivitySceneBrowser(cityName: cityName, places: catalog.places,
+                            showsChrome: showsChrome,
                             onBack: onBack, onJournal: onJournal, onSelect: onSelect,
                             resumeTitle: resumeTitle, onResume: onResume)
     }

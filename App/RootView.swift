@@ -45,23 +45,31 @@ struct RootView: View {
     private struct AppointmentPresentation: Identifiable {
         let id = UUID()
         let appointmentID: UUID?
+        var usesHomeZoomSource = false
         var testView: AppointmentListView? = nil
         var liveTest = false
     }
+    private struct HomeRootRoute: Hashable {
+        let destination: HomeDestination
+    }
+    private struct HomeChatRoute: Hashable {
+        let character: CharacterDTO
+        func hash(into hasher: inout Hasher) { hasher.combine(character.id) }
+        static func == (lhs: Self, rhs: Self) -> Bool { lhs.character.id == rhs.character.id }
+    }
+    @Namespace private var homeTransitionNamespace
     @State private var visitedTabs: Set<AppTab> = []
     @State private var messagesPath = NavigationPath()
     @State private var contactsPath = NavigationPath()
     @State private var messagesNavigationRevision = 0
     @State private var contactsNavigationRevision = 0
     @State private var homePath = NavigationPath()
-    @State private var activeHomeDestination: HomeDestination?
     @State private var mePath: [MeDestination] = []
     @State private var activationError: String?
     @State private var showSubscription = false
     @State private var showLondonEpisode = false
     @State private var activityJourney = ActivityJourneyCoordinator()
     @State private var activeSceneActivity: SceneActivity?
-    @State private var activeActivityChat: CharacterDTO?
     @State private var showPlacementTest = false
     @State private var showEnglishJourney = false
     @State private var showOnboardingPlacement = false
@@ -124,19 +132,23 @@ struct RootView: View {
             _mePath = State(initialValue: [.subscription])
         }
         if requested == "map" {
-            _activeHomeDestination = State(initialValue: .map)
+            var path = NavigationPath()
+            path.append(HomeRootRoute(destination: .map))
+            _homePath = State(initialValue: path)
         } else if ["places-preview", "world-preview"].contains(requested ?? "") || ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
-            _activeHomeDestination = State(initialValue: .activities)
+            var path = NavigationPath()
+            path.append(HomeRootRoute(destination: .activities))
+            _homePath = State(initialValue: path)
         } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "mainline" {
             var path = NavigationPath()
+            path.append(HomeRootRoute(destination: .stories))
             path.append(HomeDestination.mainline)
             _homePath = State(initialValue: path)
-            _activeHomeDestination = State(initialValue: .stories)
         } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "cityStories" {
             var path = NavigationPath()
+            path.append(HomeRootRoute(destination: .stories))
             path.append(HomeDestination.cityStories)
             _homePath = State(initialValue: path)
-            _activeHomeDestination = State(initialValue: .stories)
         }
         #endif
         #if DEBUG
@@ -209,7 +221,12 @@ struct RootView: View {
                 appointmentCityID = ""
             }
             .fullScreenCover(item: $appointmentPresentation) { presentation in
-                appointmentPage(presentation)
+                if presentation.usesHomeZoomSource {
+                    appointmentPage(presentation)
+                        .navigationTransition(.zoom(sourceID: HomeDestination.appointments, in: homeTransitionNamespace))
+                } else {
+                    appointmentPage(presentation)
+                }
             }
             .overlay(alignment: .topTrailing) { onboardingPreviewExit }
             #if DEBUG
@@ -319,7 +336,7 @@ struct RootView: View {
                 #endif
                 await reloadUnreadCount()
                 if environment.needsOnboarding != nil,
-                   selectedTab != .home || activeHomeDestination != nil || !homePath.isEmpty {
+                   selectedTab != .home || !homePath.isEmpty {
                     isInitialContentReady = true
                 }
                 await refreshProactiveMessagesAfterInterfaceSettles(
@@ -432,7 +449,7 @@ struct RootView: View {
             .onChange(of: activeUserID) { _, _ in
                 activityJourney.reset()
                 activeSceneActivity = nil
-                activeActivityChat = nil
+                homePath = NavigationPath()
             }
             .onReceive(NotificationCenter.default.publisher(for: .memoryKnowledgeDidChange)) { _ in
                 Task { await environment.workspace?.proactiveMessages.learnerProfileDidChange() }
@@ -763,9 +780,7 @@ struct RootView: View {
             contactsPath = NavigationPath()
             contactsNavigationRevision += 1
         case .home:
-            homePath = NavigationPath()
-            activeHomeDestination = nil
-            activeActivityChat = nil
+            if !homePath.isEmpty { homePath = NavigationPath() }
         case .me:
             showPlacementTest = false
             showEnglishJourney = false
@@ -786,56 +801,65 @@ struct RootView: View {
         HomeView(
             deps: homeDeps,
             reloadToken: stateRevision,
-            isVisible: selectedTab == .home && activeHomeDestination == nil && appointmentPresentation == nil,
+            isVisible: selectedTab == .home && homePath.isEmpty && appointmentPresentation == nil,
             activityNamespace: activityStorageNamespace,
+            transitionNamespace: homeTransitionNamespace,
             onInitialLoad: {
                 guard environment.needsOnboarding == false else { return }
                 isInitialContentReady = true
             },
             onOpenDestination: openHomeDestination,
-            onOpenAppointment: { appointmentPresentation = AppointmentPresentation(appointmentID: $0) }
+            onOpenAppointment: {
+                appointmentPresentation = AppointmentPresentation(appointmentID: $0, usesHomeZoomSource: true)
+            }
         )
         .id("home-root")
     }
 
     private var homeStack: some View {
-        SceneNavigationContainer(
-            isPresentingDestination: activeHomeDestination != nil,
-            navigationTitle: activeHomeDestination?.navigationTitle ?? "",
-            onBack: closeHomeDestination,
-            navigationPath: $homePath,
-            showsNavigationBar: activeHomeDestination != .map
-                && (activeHomeDestination != .activities || activeActivityChat != nil),
-            backLabel: activeActivityChat == nil ? "返回" : "返回城市活动",
-            rootIgnoresSafeArea: false
-        ) {
+        NavigationStack(path: $homePath) {
             homeRootContent
-        } destination: {
-            Group {
-                if let destination = activeHomeDestination {
-                    homeDestinationView(destination)
-                        .id(destination)
+                .toolbar(.hidden, for: .navigationBar)
+                .navigationDestination(for: HomeRootRoute.self) { route in
+                    homeDestinationView(route.destination)
+                        .id(route.destination)
+                        .navigationTitle(route.destination.navigationTitle)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar(route.destination == .stories ? .visible : .hidden, for: .navigationBar)
+                        .navigationTransition(.zoom(sourceID: route.destination, in: homeTransitionNamespace))
                 }
-            }
-            .navigationDestination(for: MainlineChapter.self) { chapter in
-                storyView(storyID: chapter.storyID)
-            }
-            .navigationDestination(for: CityStoryChapter.self) { chapter in
-                storyView(storyID: chapter.storyID)
-            }
-            .navigationDestination(for: HomeDestination.self) { destination in
-                switch destination {
-                case .mainline:
-                    MainlineListView(deps: homeDeps) { chapter in
-                        homePath.append(chapter)
+                .navigationDestination(for: HomeDestination.self) { destination in
+                    switch destination {
+                    case .mainline:
+                        MainlineListView(deps: homeDeps) { chapter in
+                            homePath.append(chapter)
+                        }
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar(.visible, for: .navigationBar)
+                    case .cityStories:
+                        CityStoryListView(deps: homeDeps) { chapter in
+                            homePath.append(chapter)
+                        }
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar(.visible, for: .navigationBar)
+                    case .map, .stories, .activities, .appointments:
+                        EmptyView()
                     }
-                case .cityStories:
-                    CityStoryListView(deps: homeDeps) { chapter in
-                        homePath.append(chapter)
-                    }
-                case .map, .stories, .activities, .appointments:
-                    EmptyView()
                 }
+                .navigationDestination(for: MainlineChapter.self) { chapter in
+                    storyView(storyID: chapter.storyID)
+                }
+                .navigationDestination(for: CityStoryChapter.self) { chapter in
+                    storyView(storyID: chapter.storyID)
+                }
+                .navigationDestination(for: HomeChatRoute.self) { route in
+                    ChatView(character: route.character, deps: chatDeps)
+                }
+        }
+        .onChange(of: homePath.isEmpty) { _, isEmpty in
+            if isEmpty, activeSceneActivity != nil, !activityJourney.isPreparing {
+                activityJourney.reset()
+                activeSceneActivity = nil
             }
         }
     }
@@ -891,8 +915,10 @@ struct RootView: View {
                 Task { @MainActor in
                     guard let character = try? await environment.rosterStore.character(id: id) else { return }
                     selectedTab = .home
-                    activeHomeDestination = .activities
-                    activeActivityChat = character
+                    var path = NavigationPath()
+                    path.append(HomeRootRoute(destination: .activities))
+                    path.append(HomeChatRoute(character: character))
+                    homePath = path
                 }
             }, onMemory: { characterID in
                 appointmentPresentation = nil
@@ -958,30 +984,20 @@ struct RootView: View {
                 ).id(activeUserID?.uuidString ?? "inactive"))
             }
             #endif
-            return AnyView(ZStack {
+            return AnyView(
                 ActivitiesView(
                     journey: activityJourney,
                     deps: homeDeps,
                     storageNamespace: activityStorageNamespace,
-                    isVisible: selectedTab == .home && !showLondonEpisode && activeActivityChat == nil,
+                    isVisible: selectedTab == .home && !showLondonEpisode && homePath.count == 1,
                     activity: $activeSceneActivity,
                     onClose: closeHomeDestination,
                     onChat: { character in
-                        withAnimation(sceneContentAnimation) { activeActivityChat = character }
+                        homePath.append(HomeChatRoute(character: character))
                     }
                 )
                 .id(activeUserID?.uuidString ?? "inactive")
-                .opacity(activeActivityChat == nil ? 1 : 0)
-                .allowsHitTesting(activeActivityChat == nil)
-                .accessibilityHidden(activeActivityChat != nil)
-                if let character = activeActivityChat {
-                    // Use the existing scene navigation host, not a nested stack
-                    // whose toolbar is suppressed by the outer photographic page.
-                    ChatView(character: character, deps: chatDeps)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .transition(.opacity)
-                }
-            })
+            )
         case .map:
             return AnyView(MapView(
                 deps: mapDeps,
@@ -993,14 +1009,11 @@ struct RootView: View {
 
     private func openHomeDestination(_ destination: HomeDestination) {
         if destination == .appointments {
-            appointmentPresentation = AppointmentPresentation(appointmentID: nil)
+            appointmentPresentation = AppointmentPresentation(appointmentID: nil, usesHomeZoomSource: true)
             return
         }
-        guard activeHomeDestination == nil else { return }
-        homePath = NavigationPath()
-        withAnimation(sceneContentAnimation) {
-            activeHomeDestination = destination
-        }
+        guard homePath.isEmpty else { return }
+        homePath.append(HomeRootRoute(destination: destination))
     }
 
     private var activityStorageNamespace: String {
@@ -1018,24 +1031,19 @@ struct RootView: View {
         return activeUserID?.uuidString ?? "inactive"
     }
     private func closeHomeDestination() {
-        guard activeHomeDestination != nil else { return }
-        withAnimation(sceneContentAnimation) {
-            if activeActivityChat != nil {
-                activeActivityChat = nil
-                return
-            }
-            if activeHomeDestination == .activities, activeSceneActivity != nil {
-                if activityJourney.isPreparing {
-                    activeHomeDestination = nil
-                } else {
+        guard !homePath.isEmpty else { return }
+        if activeSceneActivity != nil {
+            if activityJourney.isPreparing {
+                homePath.removeLast()
+            } else {
+                withAnimation(reduceMotion ? .easeOut(duration: 0.14) : .smooth(duration: 0.30, extraBounce: 0)) {
                     activityJourney.reset()
                     activeSceneActivity = nil
                 }
-                return
             }
-            activeHomeDestination = nil
-            homePath = NavigationPath()
+            return
         }
+        homePath.removeLast()
     }
     private var messagesStack: some View {
         ZStack {
@@ -1165,11 +1173,6 @@ struct RootView: View {
 
     private func openMe(_ destination: MeDestination) {
         mePath.append(destination)
-    }
-
-    /// 与原生 Tab 快速切换相同的轻量交叉淡化，不再表达左右层级位移。
-    private var sceneContentAnimation: Animation {
-        DSSceneTransition.animation(reduceMotion: reduceMotion)
     }
 
     @ViewBuilder

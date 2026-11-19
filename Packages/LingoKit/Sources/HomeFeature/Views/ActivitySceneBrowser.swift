@@ -6,6 +6,7 @@ import SwiftUI
 public struct ActivitySceneBrowser: View {
     let cityName: String
     let places: [BackendActivityPlace]
+    let showsChrome: Bool
     let onBack: () -> Void
     let onChooseCity: (() -> Void)?
     let onJournal: (() -> Void)?
@@ -15,6 +16,7 @@ public struct ActivitySceneBrowser: View {
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
+    @Namespace private var photoZoomNamespace
     @State private var selection = 0
     @State private var credits: BackendActivityPhoto?
     @State private var original: BackendActivityPhoto?
@@ -22,12 +24,14 @@ public struct ActivitySceneBrowser: View {
         places.indices.contains(selection) ? places[selection] : places.first
     }
 
-    public init(cityName: String, places: [BackendActivityPlace], onBack: @escaping () -> Void,
+    public init(cityName: String, places: [BackendActivityPlace], showsChrome: Bool = true,
+                onBack: @escaping () -> Void,
                 onChooseCity: (() -> Void)? = nil, onJournal: (() -> Void)? = nil,
                 onSelect: @escaping (BackendActivityPlace) -> Void,
                 resumeTitle: String? = nil, onResume: @escaping () -> Void = {}) {
         self.cityName = cityName
         self.places = places
+        self.showsChrome = showsChrome
         self.onBack = onBack
         self.onChooseCity = onChooseCity
         self.onJournal = onJournal
@@ -49,74 +53,79 @@ public struct ActivitySceneBrowser: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .ignoresSafeArea()
+            .matchedTransitionSource(id: "original-photo", in: photoZoomNamespace)
             .accessibilityIdentifier("activities.scene.pager")
 
-            LinearGradient(stops: [
-                .init(color: .black.opacity(0.46), location: 0),
-                .init(color: .clear, location: 0.3),
-                .init(color: .clear, location: 0.5),
-                .init(color: .black.opacity(0.68), location: 1),
-            ], startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea().allowsHitTesting(false).accessibilityHidden(true)
+            Group {
+                LinearGradient(stops: [
+                    .init(color: .black.opacity(0.46), location: 0),
+                    .init(color: .clear, location: 0.3),
+                    .init(color: .clear, location: 0.5),
+                    .init(color: .black.opacity(0.68), location: 1),
+                ], startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea().allowsHitTesting(false).accessibilityHidden(true)
 
-            if places.count > 1 {
-                HStack {
-                    sceneArrow(forward: false)
-                    Spacer()
-                    sceneArrow(forward: true)
-                }.padding(.horizontal, 12)
-            }
-
-            VStack(spacing: 0) {
-                header
-                Spacer(minLength: 24)
-                if let place {
-                    VStack(spacing: 12) {
-                        Text(place.titleZh)
-                            .font(.system(.largeTitle, design: .serif, weight: .regular))
-                            .tracking(1.5).lineSpacing(8)
-                            .multilineTextAlignment(.center)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .accessibilityIdentifier("activities.scene.title.\(place.id)")
-                            .accessibilityValue("第 \(selection + 1) 个，共 \(places.count) 个场景")
-                            .accessibilityAdjustableAction { direction in
-                                switch direction {
-                                case .increment: move(forward: true)
-                                case .decrement: move(forward: false)
-                                @unknown default: break
-                                }
-                            }
-                        if let resumeTitle {
-                            Text(resumeTitle).font(.subheadline).multilineTextAlignment(.center)
-                                .foregroundStyle(.white.opacity(0.85))
-                        }
-                    }
-                    .frame(maxWidth: 560)
-                    .padding(.horizontal, 36).padding(.bottom, 32)
-                    .shadow(color: .black.opacity(0.18), radius: 6, y: 2)
-
-                    Button {
-                        if resumeTitle != nil { onResume() }
-                        else { onSelect(place) }
-                    } label: {
-                        Text(resumeTitle == nil ? "去这里逛逛" : "继续上次外出")
-                            .font(.body.weight(.medium)).tracking(2)
-                            .padding(.horizontal, 32).padding(.vertical, 19)
-                            .frame(minWidth: 230, minHeight: 58)
-                            .foregroundStyle(.white)
-                            .overlay { Capsule().strokeBorder(.white, lineWidth: 1) }
-                            .contentShape(Capsule())
-                    }
-                    .buttonStyle(DSSceneEntranceButtonStyle())
-                    .accessibilityIdentifier(resumeTitle == nil
-                        ? "activities.place.\(place.id)" : "activities.resumePlaceOuting")
-                    .padding(.horizontal, 28).padding(.bottom, 26)
-                } else {
-                    ContentUnavailableView("暂无可去的地点", systemImage: "mappin")
-                    Spacer()
+                if places.count > 1 {
+                    HStack {
+                        sceneArrow(forward: false)
+                        Spacer()
+                        sceneArrow(forward: true)
+                    }.padding(.horizontal, 12)
                 }
+
+                VStack(spacing: 0) {
+                    header
+                    Spacer(minLength: 24)
+                    if let place {
+                        VStack(spacing: 12) {
+                            Text(place.titleZh)
+                                .font(.system(.largeTitle, design: .serif, weight: .regular))
+                                .tracking(1.5).lineSpacing(8)
+                                .multilineTextAlignment(.center)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .accessibilityIdentifier("activities.scene.title.\(place.id)")
+                                .accessibilityValue("第 \(selection + 1) 个，共 \(places.count) 个场景")
+                                .accessibilityAdjustableAction { direction in
+                                    switch direction {
+                                    case .increment: move(forward: true)
+                                    case .decrement: move(forward: false)
+                                    @unknown default: break
+                                    }
+                                }
+                            if let resumeTitle {
+                                Text(resumeTitle).font(.subheadline).multilineTextAlignment(.center)
+                                    .foregroundStyle(.white.opacity(0.85))
+                            }
+                        }
+                        .frame(maxWidth: 560)
+                        .padding(.horizontal, 36).padding(.bottom, 32)
+                        .shadow(color: .black.opacity(0.18), radius: 6, y: 2)
+
+                        Button {
+                            if resumeTitle != nil { onResume() }
+                            else { onSelect(place) }
+                        } label: {
+                            Text(resumeTitle == nil ? "去这里逛逛" : "继续上次外出")
+                                .font(.body.weight(.medium)).tracking(2)
+                                .padding(.horizontal, 32).padding(.vertical, 19)
+                                .frame(minWidth: 230, minHeight: 58)
+                                .foregroundStyle(.white)
+                                .overlay { Capsule().strokeBorder(.white, lineWidth: 1) }
+                                .contentShape(Capsule())
+                        }
+                        .buttonStyle(DSSceneEntranceButtonStyle())
+                        .accessibilityIdentifier(resumeTitle == nil
+                            ? "activities.place.\(place.id)" : "activities.resumePlaceOuting")
+                        .padding(.horizontal, 28).padding(.bottom, 26)
+                    } else {
+                        ContentUnavailableView("暂无可去的地点", systemImage: "mappin")
+                        Spacer()
+                    }
+                }
+                .dynamicTypeSize(...DynamicTypeSize.accessibility2)
             }
-            .dynamicTypeSize(...DynamicTypeSize.accessibility2)
+            .opacity(showsChrome ? 1 : 0)
+            .animation(reduceMotion ? .easeOut(duration: 0.14) : .smooth(duration: 0.28, extraBounce: 0), value: showsChrome)
         }
         .foregroundStyle(.white).tint(.white)
         .task(id: selection) {
@@ -131,7 +140,10 @@ public struct ActivitySceneBrowser: View {
             ActivityPhotoCredits(photo: $0)
                 .foregroundStyle(Color.dsPaperInk).tint(Color.dsPaperInk)
         }
-        .fullScreenCover(item: $original) { OriginalPhoto(photo: $0) }
+        .fullScreenCover(item: $original) { photo in
+            OriginalPhoto(photo: photo)
+                .navigationTransition(.zoom(sourceID: "original-photo", in: photoZoomNamespace))
+        }
     }
 
     private var header: some View {
