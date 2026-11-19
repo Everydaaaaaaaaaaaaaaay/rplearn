@@ -239,11 +239,22 @@ public final class ChatViewModel {
     public private(set) var appointments: [BackendAppointment] = []
     public private(set) var appointmentNotice: String?
     public private(set) var checkingAppointments = false
+    @ObservationIgnored private var needsAppointmentRefresh = false
 
     public func refreshAppointments(detect: Bool = false) async {
-        guard !checkingAppointments, let conversation, let refresh = deps.refreshAppointments else { return }
+        guard let conversation, let refresh = deps.refreshAppointments else { return }
+        if checkingAppointments {
+            if !detect { needsAppointmentRefresh = true }
+            return
+        }
         checkingAppointments = true
-        defer { checkingAppointments = false }
+        defer {
+            checkingAppointments = false
+            if needsAppointmentRefresh {
+                needsAppointmentRefresh = false
+                Task { await refreshAppointments() }
+            }
+        }
         do {
             let records = try await refresh(character.id, conversation.id, detect).filter { $0.characterId == character.id }
             if records != timelineAppointments {

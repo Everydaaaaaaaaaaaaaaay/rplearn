@@ -8,6 +8,10 @@ final class AppointmentModel {
         didSet {
             let ordered = detail?.session?.blocks.sorted { $0.sequence < $1.sequence } ?? []
             if blocks != ordered { blocks = ordered }
+            if let previous = oldValue?.appointment, let current = detail?.appointment,
+               previous.timelineEvents != current.timelineEvents {
+                NotificationCenter.default.post(name: .chatAppointmentsDidChange, object: current.characterId)
+            }
         }
     }
     private(set) var blocks: [BackendAppointmentBlock] = []

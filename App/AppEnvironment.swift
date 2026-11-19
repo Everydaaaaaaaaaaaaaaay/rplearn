@@ -377,6 +377,7 @@ final class AppEnvironment {
         )
         if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
            ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] != "1",
+           ProcessInfo.processInfo.environment["UI_TEST_CHAT_TIMELINE_WORKFLOW"] != "1",
            let ruby = try await account.rosterStore.allCharacters().first(where: { $0.card.regionID == "melbourne" && $0.isMainCharacter }) {
             let conversation = try await account.chatStore.openConversation(characterID: ruby.id)
             var lines: [(MessageRole, String)] = [
