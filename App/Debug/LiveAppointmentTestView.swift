@@ -71,14 +71,18 @@ struct LiveAppointmentTestView: View {
         guard session == nil else { return }
         failure = nil
         do {
-            let credentials = KeychainAuthCredentialStore(keychain: KeychainStore(service: "com.lingotrip.debug.appointment-test"))
+            let configuration = BackendConfiguration.live
+            let keychainService = "com.lingotrip.debug.appointment-test"
+            let endpoint = configuration.baseURL.absoluteString
+            let service = endpoint == "https://rplearn.haruyuki.cn" ? keychainService : "\(keychainService).\(endpoint)"
+            let credentials = KeychainAuthCredentialStore(keychain: KeychainStore(service: service))
             let ticket = FileManager.default.temporaryDirectory.appendingPathComponent("appointment-test-session.json")
             if FileManager.default.fileExists(atPath: ticket.path) {
                 let credential = try JSONDecoder().decode(StoredAuthCredential.self, from: Data(contentsOf: ticket))
                 try credentials.save(credential)
                 try FileManager.default.removeItem(at: ticket)
             }
-            let client = BackendClient(configuration: .live, credentialStore: credentials)
+            let client = BackendClient(configuration: configuration, credentialStore: credentials)
             guard let identity = try await client.restoreSession() else {
                 failure = "这台设备还没有可用的独立测试账号。账号内的真实约定可以从「活动 → 赴约」进入。"
                 return

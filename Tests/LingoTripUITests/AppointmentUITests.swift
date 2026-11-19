@@ -47,6 +47,108 @@ final class AppointmentUITests: XCTestCase {
         XCTAssertTrue(entry.waitForExistence(timeout: 8))
     }
 
+    func testNativeAppointmentCustomBranchThroughBackend() throws {
+        guard let endpoint = ProcessInfo.processInfo.environment["LINGOTRIP_APPOINTMENT_E2E_URL"] else {
+            throw XCTSkip("Provide the test backend URL and provision a confirmed appointment in the simulator.")
+        }
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = endpoint
+        openAppointmentTestMenu()
+        app.buttons["真实赴约"].tap()
+
+        let start = app.buttons["appointment.start"]
+        XCTAssertTrue(start.waitForExistence(timeout: 30), "The live test account must have an appointment.")
+        let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: start)
+        XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 15), .completed)
+        start.tap()
+        let opening = readBackendBlock()
+        let choices = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "appointment.choice."))
+        let originalChoices = choices.allElementsBoundByIndex.map(\.label)
+        XCTAssertGreaterThanOrEqual(originalChoices.count, 2)
+        capture("backend-appointment-opening")
+
+        let input = "Could we make a tiny paper theatre with a folding curtain?"
+        let editor = actionInput
+        reveal(editor)
+        editor.tap()
+        editor.typeText(input)
+        let send = app.buttons["appointment.sendInput"]
+        waitForKeyboardAndSend(send)
+        XCTAssertTrue(send.isEnabled)
+        send.tap()
+        let changed = NSPredicate { _, _ in !editor.exists || self.app.buttons["appointment.retry"].exists }
+        let submitted = XCTNSPredicateExpectation(predicate: changed, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [submitted], timeout: 175), .completed)
+        XCTAssertFalse(app.buttons["appointment.retry"].exists, "The backend needs to accept the custom action.")
+
+        let continuation = readBackendBlock()
+        let nextChoices = choices.allElementsBoundByIndex.map(\.label)
+        XCTAssertFalse(opening.isEmpty)
+        XCTAssertNotEqual(continuation, opening)
+        XCTAssertGreaterThanOrEqual(nextChoices.count, 2)
+        XCTAssertNotEqual(nextChoices, originalChoices)
+        let paperTheatre = #"(?i)theat(?:re|er)|stage|curtain|剧场|舞台|幕布"#
+        XCTAssertNotNil(continuation.joined(separator: " ").range(of: paperTheatre, options: .regularExpression))
+        XCTAssertNotNil(nextChoices.joined(separator: " ").range(of: paperTheatre, options: .regularExpression))
+        capture("backend-appointment-custom-branch")
+        openHistoryAndAssert(input, attachment: "backend-appointment-custom-history")
+
+        app.buttons["暂停并返回约定"].tap()
+        let resume = app.buttons["appointment.resume"]
+        XCTAssertTrue(resume.waitForExistence(timeout: 15))
+        resume.tap()
+        XCTAssertTrue(editor.waitForExistence(timeout: 10))
+        XCTAssertEqual(choices.allElementsBoundByIndex.map(\.label), nextChoices)
+
+        app.buttons["阅读选项"].tap()
+        app.buttons["今天就到这里"].tap()
+        let summary = app.buttons["appointment.summary"]
+        _ = readBackendBlock(waitingForEnding: true)
+        XCTAssertTrue(summary.exists)
+        summary.tap()
+        let affinity = app.staticTexts["appointment.affinity"]
+        XCTAssertTrue(affinity.waitForExistence(timeout: 45), "The completed appointment must settle.")
+        let savedInput = app.staticTexts.matching(NSPredicate(format: "label == %@", input))
+        reveal(savedInput.firstMatch)
+        XCTAssertEqual(savedInput.count, 1)
+        capture("backend-appointment-settled-summary")
+
+        app.buttons["appointment.back"].tap()
+        XCTAssertTrue(summary.waitForExistence(timeout: 10))
+        app.buttons["暂停并返回约定"].tap()
+        let reopen = app.buttons["appointment.openSummary"]
+        XCTAssertTrue(reopen.waitForExistence(timeout: 15))
+        reopen.tap()
+        reveal(savedInput.firstMatch)
+        XCTAssertEqual(savedInput.count, 1)
+        XCTAssertFalse(editor.exists)
+    }
+
+    private func readBackendBlock(waitingForEnding: Bool = false) -> [String] {
+        let next = app.buttons["appointment.next"]
+        let summary = app.buttons["appointment.summary"]
+        let line = app.scrollViews["appointment.readerScroll"].staticTexts
+            .matching(NSPredicate(format: "label MATCHES %@", #".*[\p{Han}].*"#)).firstMatch
+        let ready = NSPredicate { _, _ in
+            next.exists || summary.exists || (!waitingForEnding && self.actionInput.exists)
+                || self.app.buttons["appointment.retry"].exists
+        }
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: ready, object: nil)], timeout: 175), .completed)
+        XCTAssertFalse(app.buttons["appointment.retry"].exists, "The backend needs to deliver a story block.")
+        var lines: [String] = []
+        for _ in 0..<8 {
+            XCTAssertTrue(line.waitForExistence(timeout: 8))
+            lines.append(line.label)
+            if summary.exists || (!waitingForEnding && actionInput.exists) { return lines }
+            let prior = line.label
+            XCTAssertTrue(next.exists)
+            next.tap()
+            let moved = NSPredicate { _, _ in (line.exists && line.label != prior) || !next.exists }
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: moved, object: nil)], timeout: 8), .completed)
+        }
+        XCTFail("The story block did not reach its choices or ending.")
+        return lines
+    }
+
     @discardableResult
     private func openAppointmentTestMenu() -> XCUIElement {
         app.launchEnvironment["UI_TEST_TAB"] = "me"
