@@ -89,6 +89,13 @@ const relationshipSignal = {
   reasonZh: "尊重对方选择",
 };
 const accept = { accepted: true, issues: [] };
+const storyAccept = {
+  development: null,
+  immediateDecision: "Whether to sit or walk.",
+  pacingIssue: null,
+  dialogueIssue: null,
+  continuityIssues: [],
+};
 const reject = (issue: string) => ({ accepted: false, issues: [issue] });
 function harness(responses: unknown[]) {
   const requests: AiRequestInput[] = [];
@@ -159,7 +166,7 @@ describe("appointment narrative acceptance", () => {
     input.appointment.timeZone = zone;
     input.appointment.startsAt = startsAt;
     input.appointment.endsAt = new Date(Date.parse(startsAt) + 30 * 60000).toISOString();
-    const { service, requests } = harness([candidate(), accept]);
+    const { service, requests } = harness([candidate(), storyAccept]);
     await service.generate(input);
     for (const request of requests) {
       const data = JSON.parse(request.messages[1]?.content ?? "{}") as {
@@ -169,7 +176,7 @@ describe("appointment narrative acceptance", () => {
     }
   });
   it("accepts one jointly generated beat/choice block and allocates identities server-side", async () => {
-    const { service, requests } = harness([candidate(), accept]);
+    const { service, requests } = harness([candidate(), storyAccept]);
     const first = await service.generate(context());
     expect(first.block.sequence).toBe(0);
     expect(first.block.id).toMatch(/^[0-9a-f-]{36}$/);
@@ -180,7 +187,7 @@ describe("appointment narrative acceptance", () => {
       "appointment_review",
     ]);
     expect(new Set(requests.map((request) => request.operationId)).size).toBe(2);
-    const repeat = harness([candidate(), accept]);
+    const repeat = harness([candidate(), storyAccept]);
     expect(await repeat.service.generate(context())).toEqual(first);
   });
 
@@ -199,12 +206,73 @@ describe("appointment narrative acceptance", () => {
     };
     proposed.outcome =
       "Oliver proposes using phones to draw boats, awaiting your agreement.";
-    const { service, requests } = harness([proposed, accept]);
+    const { service, requests } = harness([
+      proposed,
+      { ...storyAccept, immediateDecision: "Whether to draw on the phone instead." },
+    ]);
     const result = await service.generate(input);
     expect(result.outcome).toContain("boats");
     expect(requests[0]?.messages[1]?.content).toContain(input.action.input);
     expect(requests[1]?.messages[1]?.content).toContain(proposed.outcome);
-    expect(requests[1]?.messages[0]?.content).toMatch(/causal|causality/i);
+    expect(requests[1]?.messages[0]?.content).toMatch(/plays out after the first answer/i);
+  });
+
+  it("repairs a thin refusal scene without dropping the viable part of a custom choice", async () => {
+    const input = context();
+    input.session.blocks = [acceptedBlock("previous", 0)];
+    input.action = { input: "I sit down to draw. Will you pose for me?", custom: true, finish: false };
+    const thin = {
+      ...candidate(),
+      beats: [{ speaker: "character", english: "I prefer not to pose.", chinese: "我不太想当模特。" }],
+      outcome: "Oliver declined to pose.",
+    };
+    const developed = {
+      ...thin,
+      beats: [
+        { speaker: "character", english: "Me? No. That boat's been stuck there all morning, though.", chinese: "画我啊？算了吧。那艘船倒是在那儿卡了一上午了。" },
+        { speaker: "narrator", english: "Oliver points to a narrowboat in the shallows. The engine sputters, and a gull hops off the roof.", chinese: "Oliver 指了指搁在浅水里的窄船。发动机突突响了两声，一只海鸥从船顶跳开。" },
+        { speaker: "narrator", english: "The stern finally swings free. Oliver leans forward to see what was holding it.", chinese: "船尾终于转了过来。Oliver 探身去看刚才是什么卡住了船。" },
+      ],
+      choices: [
+        { english: "Draw the boat as it turns.", chinese: "画下船转过来的样子。" },
+        { english: "Look at what caught the boat.", chinese: "看看船刚才被什么卡住了。" },
+      ],
+      outcome: "Oliver declined to pose, pointed out a grounded boat, and watched it come free.",
+    };
+    const thinAudit = { ...storyAccept, immediateDecision: null };
+    const developedAudit = {
+      ...thinAudit,
+      development: "Oliver points out the stuck boat, then it comes free.",
+    };
+    const { service, requests } = harness([thin, thinAudit, developed, developedAudit]);
+    const result = await service.generate(input);
+    expect(result.block.beats).toEqual(developed.beats);
+    expect(result.block.sequence).toBe(1);
+    expect(requests[2]?.messages[1]?.content).toContain("Show a consequence that plays out");
+    expect(requests[2]?.messages[1]?.content).toContain('"previousCandidate":null');
+    expect(requests[2]?.messages[1]?.content).toContain(input.action.input);
+    expect(requests[3]?.messages[1]?.content).toContain(developed.outcome);
+    expect(input.session.blocks).toEqual([acceptedBlock("previous", 0)]);
+  });
+
+  it("requires a rewrite for a dialogue issue even when pacing and continuity pass", async () => {
+    const lecture = {
+      ...candidate(),
+      beats: [{
+        speaker: "character",
+        english: "We can eat, but don't interpret that as a sign of relationship progress.",
+        chinese: "可以先吃饭，但不要将其解读为关系有了进展。",
+      }],
+    };
+    const issue = "Rewrite the relationship advisory as an ordinary spoken response.";
+    const { service, requests } = harness([
+      lecture,
+      { ...storyAccept, dialogueIssue: issue },
+      candidate(),
+      storyAccept,
+    ]);
+    expect((await service.generate(context())).block.beats).toEqual(candidate().beats);
+    expect(requests[2]?.messages[1]?.content).toContain(issue);
   });
 
   it.each([
@@ -228,9 +296,9 @@ describe("appointment narrative acceptance", () => {
       const before = structuredClone(input);
       const { service, requests } = harness([
         candidate(),
-        reject(issue),
+        { ...storyAccept, continuityIssues: [issue] },
         candidate(),
-        reject(issue),
+        { ...storyAccept, continuityIssues: [issue] },
       ]);
       await expect(service.generate(input)).rejects.toMatchObject({
         code: "APPOINTMENT_NARRATIVE_REJECTED",
@@ -246,7 +314,7 @@ describe("appointment narrative acceptance", () => {
     const { service, requests } = harness([
       { ...candidate(), background: "admin", affinity: 100, id: "forged" },
       candidate(),
-      accept,
+      storyAccept,
     ]);
     const result = await service.generate(context());
     expect(result.block).not.toHaveProperty("affinity");
@@ -269,7 +337,7 @@ describe("appointment narrative acceptance", () => {
       [invalid, /beats\.0\.speaker/i],
       [untranslated, /beats\.0\.chinese.*translate/i],
     ] as const) {
-      const { service, requests } = harness([draft, candidate(), accept]);
+      const { service, requests } = harness([draft, candidate(), storyAccept]);
       await service.generate(context());
       const repair = JSON.parse(requests[1]?.messages[1]?.content ?? "{}") as {
         repair: { issues: string[] };
@@ -283,8 +351,21 @@ describe("appointment narrative acceptance", () => {
   it("rejects a continuation on explicit finish; a repaired natural goodbye can end immediately", async () => {
     const input = context();
     input.action = { input: "I want to go home.", custom: true, finish: true };
-    const { service } = harness([candidate(), candidate(true), accept]);
+    const { service } = harness([candidate(), candidate(true), storyAccept]);
     expect((await service.generate(input)).block.ending).toBe(true);
+  });
+
+  it("can infer a continuation from choices when the writer omits the ending flag", async () => {
+    const { service, requests } = harness([{ ...candidate(), ending: undefined }, storyAccept]);
+    expect((await service.generate(context())).block.ending).toBe(false);
+    expect(requests).toHaveLength(2);
+    const missingEnding = harness([
+      { ...candidate(true), ending: undefined },
+      candidate(true),
+      storyAccept,
+    ]);
+    expect((await missingEnding.service.generate(context())).block.ending).toBe(true);
+    expect(missingEnding.requests).toHaveLength(3);
   });
 
   it("supports a story longer than ten blocks and requires a natural ending at the cost boundary", async () => {
@@ -295,14 +376,14 @@ describe("appointment narrative acceptance", () => {
       id: `block-${String(sequence)}`,
       sequence,
     }));
-    const long = harness([candidate(), accept]);
+    const long = harness([candidate(), storyAccept]);
     expect((await long.service.generate(input)).block.ending).toBe(false);
     input.session.blocks = Array.from({ length: 47 }, (_, sequence) => ({
       ...block,
       id: `block-${String(sequence)}`,
       sequence,
     }));
-    const atLimit = harness([candidate(), candidate(true), accept]);
+    const atLimit = harness([candidate(), candidate(true), storyAccept]);
     expect((await atLimit.service.generate(input)).block.ending).toBe(true);
   });
 
@@ -320,7 +401,7 @@ describe("appointment narrative acceptance", () => {
         chinese: "文".repeat(900),
       })),
     };
-    const { service, requests } = harness([oversized, candidate(), accept]);
+    const { service, requests } = harness([oversized, candidate(), storyAccept]);
     expect((await service.generate(context())).block.beats).toHaveLength(1);
     expect(requests.map((request) => request.task)).toEqual([
       "appointment_story",
@@ -364,11 +445,13 @@ describe("appointment narrative acceptance", () => {
       },
     ];
     input.action = { input: "Let's draw a boat", custom: true, finish: false };
-    const { service, requests } = harness([candidate(), accept]);
+    const { service, requests } = harness([candidate(), storyAccept]);
     await service.generate(input);
     const payload = requests[0]?.messages[1]?.content;
     expect(payload).not.toContain("Unselected fantasy path");
     expect(payload).toContain("Oliver proposes drawing on phones");
+    expect(requests[1]?.messages[1]?.content).toContain('"previousOptions"');
+    expect(requests[1]?.messages[1]?.content).toContain("Unselected fantasy path");
   });
 });
 
@@ -655,7 +738,7 @@ describe("accepted-path summary review", () => {
 it("uses only the service-funded story route for explicit recovery of a previously failed generation", async () => {
   const input = context();
   input.serviceFundedRetry = true;
-  const { service, requests } = harness([candidate(), accept]);
+  const { service, requests } = harness([candidate(), storyAccept]);
   await service.generate(input);
   expect(requests[0]?.task).toBe("appointment_story_retry");
 });
@@ -677,7 +760,7 @@ it("ends naturally before full accepted history exceeds the runtime input budget
     outcome: "a".repeat(1000),
     createdAt: "2026-11-01T12:00:00Z",
   }));
-  const { service, requests } = harness([candidate(true), accept]);
+  const { service, requests } = harness([candidate(true), storyAccept]);
   expect((await service.generate(input)).block.ending).toBe(true);
   const body = JSON.parse(requests[0]?.messages[1]?.content ?? "{}") as {
     mustEnd: boolean;

@@ -13,9 +13,12 @@ import {
   narrativeFailure,
   parseCandidate,
   semanticAuditSchema,
+  storyAuditSchema,
   storyCandidateSchema,
 } from "./narrative-policy.js";
 import { reviewAppointment } from "./review.js";
+
+const STORY_STAGE = "story-v3";
 
 const DETECT_INSTRUCTION = `${WORLD_POLICY}
 Name the appointment with the exact concise Chinese format "和{character.name}一起{agreed activity}". Preserve the character's canonical name. Use a concrete everyday verb phrase taken from the actual agreement, for example "和Ruby一起看电影", "和Oliver一起散步" or "和Ruby一起喝咖啡". If only a meeting was agreed and no activity was specified, use "和{character.name}在{placeName}见面". Keep the title factual and brief, with no literary atmosphere, emotional promises, invented activity, quotation marks or subtitle.
@@ -139,7 +142,7 @@ export function createAppointmentNarrative(
       let issues: string[] = [];
       let previousCandidate: unknown = null;
       for (let attempt = 0; attempt < 2; attempt++) {
-        const stage = attempt === 0 ? "story-v2" : "story-v2-repair";
+        const stage = attempt === 0 ? STORY_STAGE : `${STORY_STAGE}-repair`;
         const content = await appointmentJson(ai, {
           userId: input.userId,
           operationId: input.operationId,
@@ -147,7 +150,7 @@ export function createAppointmentNarrative(
           task: input.serviceFundedRetry
             ? "appointment_story_retry"
             : "appointment_story",
-          ...(attempt === 0 ? {} : { parentStage: "story-v2" }),
+          ...(attempt === 0 ? {} : { parentStage: STORY_STAGE }),
           instruction: STORY_INSTRUCTION,
           data:
             attempt === 0
@@ -158,7 +161,7 @@ export function createAppointmentNarrative(
                     issues,
                     previousCandidate,
                     instruction:
-                      "Correct only the specified failures; all original boundaries still apply.",
+                      "Write a fresh version of the scene from the accepted history and original action. Fix the listed problems together, including choices and both languages. Keep the accepted facts and boundaries. The rejected draft is not history.",
                   },
                 },
           maxOutputTokens: 3000,
@@ -187,23 +190,42 @@ export function createAppointmentNarrative(
           continue;
         }
         const audit = parseCandidate(
-          semanticAuditSchema,
+          storyAuditSchema,
           await appointmentJson(ai, {
             userId: input.userId,
             operationId: input.operationId,
             stage: `${stage}-audit`,
             task: "appointment_review",
             instruction: STORY_AUDIT_INSTRUCTION,
-            data: { ...base, candidate },
+            data: {
+              ...base,
+              previousOptions: input.session.blocks.at(-1)?.choices.map(
+                ({ english, chinese }) => ({ english, chinese }),
+              ) ?? [],
+              candidate,
+            },
             maxOutputTokens: 1000,
           }),
         );
-        if (!audit?.accepted) {
-          issues = audit?.issues ?? [
+        if (!audit) {
+          issues = [
             "Independent semantic audit did not produce a valid acceptance.",
           ];
           continue;
         }
+        issues = [...audit.continuityIssues];
+        if (audit.dialogueIssue) issues.push(audit.dialogueIssue);
+        if (audit.pacingIssue) issues.push(audit.pacingIssue);
+        const needsDevelopment =
+          !candidate.ending && !audit.development && !audit.immediateDecision;
+        if (needsDevelopment && !audit.pacingIssue) {
+          issues.push(
+            "Show a consequence that plays out before the next choice, or stop at a decision that genuinely needs the user's answer.",
+          );
+        }
+        // A stalled draft can anchor the writer to the very scene it needs to move past.
+        if (audit.pacingIssue || needsDevelopment) previousCandidate = null;
+        if (issues.length > 0) continue;
         return {
           block: {
             id: appointmentAiId(input.operationId, "block"),
