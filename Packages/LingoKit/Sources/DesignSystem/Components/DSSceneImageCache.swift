@@ -12,7 +12,7 @@ public enum DSSceneImageCache {
     }()
     private static let thumbnails: NSCache<NSString, UIImage> = {
         let value = NSCache<NSString, UIImage>()
-        value.totalCostLimit = 16 * 1_024 * 1_024
+        value.totalCostLimit = 32 * 1_024 * 1_024
         return value
     }()
     private static var loads: [String: Task<PreparedSceneImage, Never>] = [:]
@@ -41,12 +41,13 @@ public enum DSSceneImageCache {
         } else {
             task = Task.detached(priority: .userInitiated) {
                 guard let source = UIImage(named: name) else { return PreparedSceneImage(image: nil) }
-                let size = source.size
-                guard size.width > 0, size.height > 0 else { return PreparedSceneImage(image: source) }
-                let scale = min(1, maxPixelSize / max(size.width, size.height))
+                let pixelWidth = source.cgImage.map { CGFloat($0.width) } ?? (source.size.width * source.scale)
+                let pixelHeight = source.cgImage.map { CGFloat($0.height) } ?? (source.size.height * source.scale)
+                guard pixelWidth > 0, pixelHeight > 0 else { return PreparedSceneImage(image: source) }
+                let scale = min(1, maxPixelSize / max(pixelWidth, pixelHeight))
                 let target = CGSize(
-                    width: max(1, (size.width * scale).rounded()),
-                    height: max(1, (size.height * scale).rounded())
+                    width: max(1, (pixelWidth * scale).rounded()),
+                    height: max(1, (pixelHeight * scale).rounded())
                 )
                 let thumb = source.preparingThumbnail(of: target) ?? source.preparingForDisplay() ?? source
                 return PreparedSceneImage(image: thumb)

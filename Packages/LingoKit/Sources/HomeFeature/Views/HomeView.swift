@@ -115,8 +115,8 @@ public struct HomeView: View {
             } + CityStoryCatalog.chapters.map {
                 DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
             }
-            async let storyThumbnails: Void = DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 320)
-            async let storyCovers: Void = DSSceneImageCache.preload(main + cities)
+            async let storyThumbnails: Void = DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 200)
+            async let storyCovers: Void = DSSceneImageCache.preloadThumbnails(main + cities, maxPixelSize: 720)
             _ = await (storyThumbnails, storyCovers)
             if let cache = deps.presentationCache, let releaseID = deps.activityReleaseID, let gateway = deps.outingGateway {
                 _ = try? await cache.refreshCatalog(releaseID: releaseID, cityID: region.id, gateway: gateway)

@@ -678,7 +678,7 @@ struct RootView: View {
                         DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
                     }
                     async let backdrops: Void = DSSceneImageCache.preload(tabBackdrops)
-                    async let storyStrips: Void = DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 320)
+                    async let storyStrips: Void = DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 200)
                     async let appointments: Void = AppointmentPhotoCache.preload(cityID: regionID)
                     async let mainline: Void = { _ = try? await cache.refreshMainline(using: mainlineClient) }()
                     _ = await (backdrops, storyStrips, appointments, mainline)

@@ -100,8 +100,8 @@ struct StoryCoverFlow: View {
         }
         .background(Color.black)
         .task(id: selectedID) {
-            let nearby = items.dropFirst(max(0, selectedIndex - 1)).prefix(3).map(\.artworkName)
-            await DSSceneImageCache.preload(nearby)
+            let nearby = items.dropFirst(max(0, selectedIndex - 1)).prefix(4).map(\.artworkName)
+            await DSSceneImageCache.preloadThumbnails(nearby, maxPixelSize: 720)
         }
         .accessibilityIdentifier(accessibilityIdentifier)
         .onAppear {
@@ -253,9 +253,7 @@ private struct StoryPoster: View {
 
     var body: some View {
         ZStack {
-            DSSceneImageCache.image(named: item.artworkName)
-                .resizable()
-                .scaledToFill()
+            DSSceneThumbnailImage(name: item.artworkName, maxPixelSize: 720)
                 .frame(width: width, height: height)
                 .clipped()
                 .saturation(item.isDimmed ? 0.18 : 0.9)
