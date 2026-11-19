@@ -151,6 +151,126 @@ final class AppointmentUITests: XCTestCase {
         capture("backend-appointment-recovered-review")
     }
 
+    func testCustomAppointmentFromChatThroughSummary() throws {
+        struct Scenario: Decodable {
+            let email: String
+            let password: String
+            let companion: String
+            let invitation: String
+            let actions: [String]
+            let expectedPlacePattern: String?
+        }
+        guard let json = ProcessInfo.processInfo.environment["LINGOTRIP_APPOINTMENT_JOURNEY"] else {
+            throw XCTSkip("Provide an isolated backend and a scenario with a test account, companion, invitation and actions.")
+        }
+        let scenario = try JSONDecoder().decode(Scenario.self, from: Data(json.utf8))
+        XCTAssertFalse(scenario.actions.isEmpty)
+        let networkMonitor = try configureAppointmentBackend()
+        defer { removeUIInterruptionMonitor(networkMonitor) }
+        app.launchEnvironment["UI_TEST_REQUIRE_AUTHENTICATION"] = "1"
+        app.launchEnvironment["UI_TEST_TAB"] = "contacts"
+        app.launch()
+
+        let emailDisclosure = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label == %@", "使用邮箱登录或注册")
+        ).firstMatch
+        XCTAssertTrue(emailDisclosure.waitForExistence(timeout: 30))
+        reveal(emailDisclosure)
+        emailDisclosure.tap()
+        let email = app.textFields["邮箱"]
+        let password = app.secureTextFields["密码"]
+        reveal(email)
+        email.tap()
+        email.typeText(scenario.email)
+        reveal(password, aboveKeyboard: true)
+        password.tap()
+        password.typeText(scenario.password)
+        let login = app.buttons["auth.submitCredentials"]
+        reveal(login, aboveKeyboard: true)
+        login.tap()
+        XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 30))
+        let deferSave = app.buttons.matching(NSPredicate(format: "label IN %@", ["以后", "Not Now"])).firstMatch
+        if deferSave.waitForExistence(timeout: 3) { deferSave.tap() }
+
+        let companion = app.buttons.matching(
+            NSPredicate(format: "label BEGINSWITH %@", scenario.companion)
+        ).firstMatch
+        XCTAssertTrue(companion.wait(for: \.isHittable, toEqual: true, timeout: 40))
+        companion.tap()
+        let composer = app.descendants(matching: .any)["chat.composer"].firstMatch
+        if !composer.waitForExistence(timeout: 3) {
+            let message = app.descendants(matching: .any).matching(
+                NSPredicate(format: "label == %@", "发消息")
+            ).firstMatch
+            let profileLoaded = message.waitForExistence(timeout: 8)
+            if !profileLoaded { capture("appointment-journey-contact") }
+            XCTAssertTrue(profileLoaded, app.debugDescription)
+            message.tap()
+        }
+        XCTAssertTrue(composer.waitForExistence(timeout: 15))
+        composer.tap()
+        composer.typeText(scenario.invitation)
+        let send = app.buttons["chat.send"]
+        waitForKeyboardAndSend(send)
+        XCTAssertTrue(send.isEnabled)
+        send.tap()
+        XCTAssertTrue(send.wait(for: \.isEnabled, toEqual: false, timeout: 6), "The chat composer should clear the sent draft.")
+        let agreement = app.buttons.matching(identifier: "chat.timeline.event").matching(
+            NSPredicate(format: "label CONTAINS %@ AND label CONTAINS %@", scenario.companion, "约好了")
+        ).firstMatch
+        XCTAssertTrue(agreement.waitForExistence(timeout: 110), "The normal chat flow should confirm the invitation after the companion replies.")
+        capture("appointment-journey-chat")
+        agreement.tap()
+        let start = app.buttons["appointment.start"]
+        XCTAssertTrue(start.waitForExistence(timeout: 25))
+        if let pattern = scenario.expectedPlacePattern {
+            let place = app.staticTexts.matching(NSPredicate(format: "label MATCHES[c] %@", ".*(?:\(pattern)).*")).firstMatch
+            XCTAssertTrue(place.waitForExistence(timeout: 10), "The detail should display the place chosen in chat.")
+        }
+        let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: start)
+        XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 20), .completed)
+        reveal(start)
+        start.tap()
+        var precedingBlock = readBackendBlock()
+
+        for (index, action) in scenario.actions.enumerated() {
+            let editor = actionInput
+            XCTAssertTrue(editor.exists)
+            reveal(editor)
+            editor.tap()
+            editor.typeText(action)
+            let submit = app.buttons["appointment.sendInput"]
+            waitForKeyboardAndSend(submit)
+            submit.tap()
+            let submitted = XCTNSPredicateExpectation(
+                predicate: NSPredicate { _, _ in !editor.exists || self.app.buttons["appointment.retry"].exists },
+                object: nil
+            )
+            XCTAssertEqual(XCTWaiter.wait(for: [submitted], timeout: 175), .completed)
+            XCTAssertFalse(app.buttons["appointment.retry"].exists)
+            let continuation = readBackendBlock()
+            XCTAssertNotEqual(continuation, precedingBlock, "The custom action should advance the story.")
+            precedingBlock = continuation
+            capture("appointment-journey-action-\(index + 1)")
+        }
+        let summary = app.buttons["appointment.summary"]
+        if !summary.exists {
+            app.buttons["阅读选项"].tap()
+            app.buttons["今天就到这里"].tap()
+            _ = readBackendBlock(waitingForEnding: true)
+        }
+        XCTAssertTrue(summary.exists)
+        summary.tap()
+        XCTAssertTrue(app.staticTexts["appointment.affinity"].waitForExistence(timeout: 55))
+        for action in scenario.actions {
+            let saved = app.staticTexts.matching(NSPredicate(format: "label == %@", action))
+            XCTAssertTrue(saved.firstMatch.waitForExistence(timeout: 15))
+            reveal(saved.firstMatch)
+            XCTAssertEqual(saved.count, 1)
+        }
+        capture("appointment-journey-summary")
+    }
+
     private func configureAppointmentBackend() throws -> NSObjectProtocol {
         guard let endpoint = ProcessInfo.processInfo.environment["LINGOTRIP_APPOINTMENT_E2E_URL"] else {
             throw XCTSkip("Provide an isolated test backend URL and provision the test device.")

@@ -60,6 +60,15 @@ Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时
 `Scripts/test-ui.sh -only-testing:LingoTripUITests/<Suite>/<test>` 运行指定 UI 路径。
 二者均按需执行，不追加到每次修改的默认门禁。
 
+赴约全路径可用 `Scripts/test-ui.sh -parallel-testing-enabled NO -only-testing:LingoTripUITests/AppointmentUITests/testCustomAppointmentFromChatThroughSummary`。
+将 `TEST_RUNNER_LINGOTRIP_APPOINTMENT_E2E_URL` 指向隔离后端，并通过
+`TEST_RUNNER_LINGOTRIP_APPOINTMENT_JOURNEY` 传入 JSON，其中 `email`、`password`、`companion` 和
+`invitation` 为字符串，`actions` 是非空字符串数组。可选的 `expectedPlacePattern` 支持匹配地点名称
+及其译法。测试账号需已建档并拥有指定联系人，
+邀约文本写明角色所在城市的地点、当地日期时间和活动，时间安排在当前可赴约窗口内。
+测试从邮箱登录后经联系人进入聊天，发送邀约，通过真实回复生成的约定进入赴约，
+依次填写自定义行动，再检查回顾结算和历史原文。用不同邀约和行动重复执行时使用新的测试账号及独立测试 App。
+
 ## 重测和专项
 
 - 关系压力测试的 10,000 个输入使用固定种子。一轮通过即可；排查时序不稳定才显式设置
