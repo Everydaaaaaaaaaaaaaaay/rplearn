@@ -55,7 +55,12 @@ struct AppointmentReaderView: View {
             await readingServices.speech.speakAndWait(request)
         }
         .onDisappear { Task { await readingServices?.speech.stopSpeaking(); await model.persistReading() } }
-        .onChange(of: scenePhase) { _, phase in if phase != .active { Task { await model.persistReading() } } }
+        .onChange(of: scenePhase) { _, phase in
+            Task {
+                if phase == .active { await model.refreshAfterConnectionFailure() }
+                else { await model.persistReading() }
+            }
+        }
     }
 
     private var canNarrate: Bool {
@@ -154,8 +159,8 @@ struct AppointmentReaderView: View {
                         }
                     }
                     if model.submitting { ProgressView("正在继续…").tint(ink).font(.subheadline) }
-                    if let error = model.error { AppointmentErrorView(message: error, loading: model.submitting) { Task { if model.pending != nil { await model.retry() } else { await model.load() } } } }
-                    else if model.pending != nil && !model.submitting { Text("上次回应已保留。"); Button("重试原回应") { Task { await model.retry() } } }
+                    if let error = model.error { AppointmentErrorView(message: error, loading: model.loading || model.submitting) { Task { if model.pending != nil { await model.retry() } else { await model.load() } } } }
+                    else if model.pending != nil && !model.loading && !model.submitting { Text("上次回应已保留。"); Button("重试原回应") { Task { await model.retry() } } }
                     if showsComposer { customActionInput }
                 }.frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 4)
             }

@@ -136,6 +136,37 @@ struct AppointmentModelTests {
         #expect(commands == 0)
     }
 
+    @Test("An already-open card cannot replace a lost-receipt command from another view")
+    func protectsPendingCommandAcrossModels() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let id = AppointmentListView.previewAppointmentID
+        let service = LostResponseService(fixture: AppointmentPreviewService(scenario: "active"))
+        let cache = AppointmentCache(namespace: "race", directory: directory)
+        let first = AppointmentModel(id: id, service: service, cache: cache)
+        let stale = AppointmentModel(id: id, service: service, cache: cache)
+        await first.load()
+        await stale.load()
+
+        await first.submit(action: .choice, input: "The original choice")
+        let original = try #require(first.pending)
+        first.draft = "An unsent note"
+        await first.refreshAfterConnectionFailure()
+        #expect(first.detail?.session?.decisions.map(\.input) == ["The original choice"])
+        #expect(first.pending == original)
+        #expect(first.draft == "An unsent note")
+
+        await stale.submit(action: .choice, input: "A later choice")
+        #expect(await service.requests == [original.request])
+        #expect(try await cache.pending(id) == original)
+        #expect(stale.pending == original)
+
+        await stale.retry()
+        #expect(await service.requests == [original.request, original.request])
+        #expect(stale.detail?.session?.decisions.map(\.input) == ["The original choice"])
+        #expect(try await cache.pending(id) == nil)
+    }
+
     @Test("A confirmed appointment refresh distinguishes network and sign-in failures and recovers on retry")
     func refreshConfirmedAppointment() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -160,8 +191,10 @@ struct AppointmentModelTests {
         #expect(model.detail == cached)
         #expect(model.error?.contains("重新登录") == true)
 
-        await service.fail(with: nil)
+        await service.disconnect()
         await model.load()
+        await service.fail(with: nil)
+        await model.refreshAfterConnectionFailure()
         #expect(model.error == nil)
         #expect(!model.offline)
         let fresh = try #require(model.detail)

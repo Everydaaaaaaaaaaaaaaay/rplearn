@@ -62,6 +62,10 @@ actor AppointmentPreviewService: AppointmentServing {
 
     func appointment(_ id: UUID) async throws -> BackendAppointmentDetail {
         if scenario == "offline" && failed { throw BackendClientError.transport("Local fixture offline") }
+        if scenario == "reconnect" && !failed {
+            failed = true
+            throw BackendClientError.transport("Local fixture connection interrupted")
+        }
         let detail = try decoded()
         if scenario == "before-window" { value["serverNow"] = "2026-11-01T14:30:00Z" }
         return detail

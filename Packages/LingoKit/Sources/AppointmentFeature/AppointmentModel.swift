@@ -26,6 +26,7 @@ final class AppointmentModel {
     private let service: any AppointmentServing
     private let cache: AppointmentCache
     private let settle: (@Sendable (UUID) async throws -> Void)?
+    @ObservationIgnored private var connectionFailed = false
     var settling = false
 
     init(id: UUID, service: any AppointmentServing, cache: AppointmentCache, settle: (@Sendable (UUID) async throws -> Void)? = nil) {
@@ -37,24 +38,35 @@ final class AppointmentModel {
     var beat: BackendAppointmentBeat? { guard let block, block.beats.indices.contains(beatIndex) else { return nil }; return block.beats[beatIndex] }
     var isLastBeat: Bool { beatIndex >= (block?.beats.count ?? 0) - 1 }
     var isLatestBlock: Bool { block?.id == blocks.last?.id }
-    var mayRespond: Bool { isLatestBlock && isLastBeat && detail?.appointment.status == "in_progress" && block?.ending == false && pending == nil && !submitting && !offline }
+    var mayRespond: Bool { isLatestBlock && isLastBeat && detail?.appointment.status == "in_progress" && block?.ending == false && pending == nil && !loading && !submitting && !offline }
 
-    func load() async {
-        guard !loading else { return }
+    func refreshAfterConnectionFailure() async {
+        guard connectionFailed else { return }
+        await load(settleReview: false)
+    }
+
+    func load(settleReview: Bool = true) async {
+        guard !loading, !submitting else { return }
         loading = true
         defer { loading = false }
         do {
-            let reading = try await cache.reading(id)
-            cursor = reading.cursor; draft = reading.draft
+            if detail == nil {
+                let reading = try await cache.reading(id)
+                cursor = reading.cursor; draft = reading.draft
+                detail = try await cache.detail(id)
+            }
             pending = try await cache.pending(id)
-            if detail == nil { detail = try await cache.detail(id) }
             let fresh = try await service.appointment(id)
             detail = try await cache.saveDetail(fresh)
+            pending = try await cache.pending(id)
+            connectionFailed = false
             offline = false; error = nil
             normalizeCursor()
-            await settleIfPending()
+            if settleReview { await settleIfPending() }
         } catch {
             guard !Task.isCancelled else { return }
+            if case .transport? = error as? BackendClientError { connectionFailed = true }
+            else { connectionFailed = false }
             offline = true
             self.error = refreshFailureMessage(error)
             normalizeCursor()
@@ -82,28 +94,34 @@ final class AppointmentModel {
     }
 
     func submit(action: BackendAppointmentAction, choiceID: String? = nil, input: String? = nil, finish: Bool? = nil) async {
-        guard !submitting, !offline, let detail else { return }
-        // A pending operation is never replaced by a new command after a lost response.
-        if pending != nil { await retry(); return }
+        guard !loading, !submitting, !offline, pending == nil, let detail else { return }
+        submitting = true
+        defer { submitting = false }
         let command = AppointmentPendingCommand(appointmentID: id, action: action, request: .init(commandId: UUID(), expectedRevision: detail.appointment.revision, choiceId: choiceID, input: input, finish: finish))
         do {
-            try await cache.savePending(command)
-            pending = command
+            let retained = try await cache.savePending(command)
+            pending = retained
+            guard retained == command else {
+                error = "上次操作已保留，请先重试原操作。"
+                return
+            }
             await transmit(command)
         } catch { self.error = "未能保存这次回应，请重试。回应尚未发送。" }
     }
 
     func retry() async {
-        guard let pending, !submitting else { return }
+        guard let pending, !loading, !submitting else { return }
+        submitting = true
+        defer { submitting = false }
         await transmit(pending)
     }
 
     private func transmit(_ command: AppointmentPendingCommand) async {
-        submitting = true; error = nil
-        defer { submitting = false }
+        error = nil
         do {
             let accepted = try await service.appointmentCommand(id, action: command.action, request: command.request)
             let retained = try await cache.saveDetail(accepted, acknowledging: command.request.commandId)
+            connectionFailed = false
             detail = retained; pending = try await cache.pending(id); offline = false
             if command.action == .choice {
                 if pending == nil { draft = "" }
@@ -115,12 +133,14 @@ final class AppointmentModel {
             await persistReading()
             await settleIfPending()
         } catch let failure as BackendClientError {
+            if case .transport = failure { connectionFailed = true }
             if case .api(let code, let message, _, let status) = failure,
                status == 409,
                ["APPOINTMENT_VERSION_CONFLICT", "APPOINTMENT_WRONG_CITY", "APPOINTMENT_OUTSIDE_WINDOW", "APPOINTMENT_CLOSED", "APPOINTMENT_NOT_STARTED"].contains(code) {
                 do {
                     let accepted = try await service.appointment(id)
                     detail = try await cache.saveDetail(accepted, acknowledging: command.request.commandId)
+                    connectionFailed = false
                     pending = try await cache.pending(id); offline = false; normalizeCursor()
                     error = code == "APPOINTMENT_VERSION_CONFLICT" ? "这次约定已在另一处更新。这里已载入实际发生的进展，请查看后继续。" : message
                 } catch { self.error = "进度已更新，暂时无法同步。请联网重试原回应。" }

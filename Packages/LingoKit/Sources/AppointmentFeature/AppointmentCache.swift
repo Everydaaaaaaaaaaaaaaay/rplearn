@@ -75,8 +75,14 @@ actor AppointmentCache {
         return retained
     }
 
-    func savePending(_ pending: AppointmentPendingCommand) throws {
-        var state = try snapshot(); state.pending[pending.appointmentID.uuidString] = pending; try persist(state)
+    @discardableResult
+    func savePending(_ pending: AppointmentPendingCommand) throws -> AppointmentPendingCommand {
+        var state = try snapshot()
+        let key = pending.appointmentID.uuidString
+        if let existing = state.pending[key] { return existing }
+        state.pending[key] = pending
+        try persist(state)
+        return pending
     }
 
     func clearPending(_ id: UUID) throws {

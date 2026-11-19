@@ -21,6 +21,7 @@ public struct AppointmentListView: View {
     @State private var loading = false
     @State private var message: String?
     @State private var openedInitial = false
+    @Environment(\.scenePhase) private var scenePhase
 
     public init(client: BackendClient, currentCityID: String, storageNamespace: String, initialAppointmentID: UUID? = nil, readingServices: AppointmentReadingServices? = nil, settle: (@Sendable (UUID) async throws -> Void)? = nil, onClose: (() -> Void)? = nil, characterName: @escaping (UUID) -> String, characterCards: [UUID: CharacterCard] = [:], onChat: @escaping (UUID) -> Void, onMemory: @escaping (UUID) -> Void) {
         self.init(service: client, currentCityID: currentCityID, storageNamespace: storageNamespace, initialAppointmentID: initialAppointmentID, readingServices: readingServices, settle: settle, onClose: onClose, characterName: characterName, characterCards: characterCards, onChat: onChat, onMemory: onMemory)
@@ -87,6 +88,9 @@ public struct AppointmentListView: View {
             }
             .refreshable { await load() }
             .onChange(of: path) { _, value in if value.isEmpty { Task { await load() } } }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active, path.isEmpty, message != nil { Task { await load() } }
+            }
             .task { await load() }
         }
         .environment(\.appointmentCharacterCards, characterCards)
@@ -116,6 +120,7 @@ private struct AppointmentCardView: View {
     @State private var model: AppointmentModel
     @State private var confirmCancel = false
     @State private var photoCredits = false
+    @Environment(\.scenePhase) private var scenePhase
     let currentCityID: String
     let characterName: (UUID) -> String
     let onChat: (UUID) -> Void
@@ -157,6 +162,9 @@ private struct AppointmentCardView: View {
         .padding(.vertical, 22).frame(maxWidth: .infinity, alignment: .leading)
         .overlay(alignment: .bottom) { Rectangle().fill(AppointmentStyle.ink.opacity(0.09)).frame(height: 0.5) }
         .task(id: item.revision) { await model.load() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { Task { await model.refreshAfterConnectionFailure() } }
+        }
         .sheet(isPresented: $photoCredits) {
             AppointmentPhotoCreditsView(cityID: appointment.cityId, cityName: appointment.displayCityName)
         }
@@ -172,7 +180,7 @@ private struct AppointmentCardView: View {
             if appointment.status == "confirmed" {
                 Button("商量改期", systemImage: "bubble.left") { onChat(appointment.characterId) }
                 Button("取消约定", systemImage: "calendar.badge.minus", role: .destructive) { confirmCancel = true }
-                    .disabled(model.detail == nil || model.offline || model.submitting || model.pending != nil)
+                    .disabled(model.detail == nil || model.offline || model.loading || model.submitting || model.pending != nil)
             }
         } label: {
             Image(systemName: "ellipsis").font(.system(size: 18, weight: .medium))

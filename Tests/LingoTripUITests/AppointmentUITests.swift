@@ -51,6 +51,22 @@ final class AppointmentUITests: XCTestCase {
         XCTAssertTrue(app.buttons["appointment.next"].waitForExistence(timeout: 8))
     }
 
+    func testFailedReadRecoversWhenReturningToAppointments() {
+        launch("reconnect")
+        let retry = app.buttons["appointment.retry"]
+        XCTAssertTrue(retry.waitForExistence(timeout: 8))
+        let start = app.buttons["appointment.start"]
+        XCTAssertFalse(start.isEnabled)
+
+        XCUIDevice.shared.press(.home)
+        XCTAssertTrue(app.wait(for: .runningBackground, timeout: 6))
+        app.activate()
+        let available = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: start)
+        XCTAssertEqual(XCTWaiter.wait(for: [available], timeout: 8), .completed)
+        XCTAssertFalse(retry.exists)
+        XCTAssertFalse(app.buttons["appointment.next"].exists)
+    }
+
     func testConfirmedCustomBilingualPathPauseFinishAndReadOnlySummary() throws {
         launch("list")
         let start = app.buttons["appointment.start"]
