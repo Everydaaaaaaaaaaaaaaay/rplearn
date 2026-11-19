@@ -117,7 +117,7 @@ export function createAppointmentNarrative(
       let issues: string[] = [];
       let previousCandidate: unknown = null;
       for (let attempt = 0; attempt < 2; attempt++) {
-        const stage = attempt === 0 ? "story" : "story-repair";
+        const stage = attempt === 0 ? "story-v2" : "story-v2-repair";
         const content = await appointmentJson(ai, {
           userId: input.userId,
           operationId: input.operationId,
@@ -125,7 +125,7 @@ export function createAppointmentNarrative(
           task: input.serviceFundedRetry
             ? "appointment_story_retry"
             : "appointment_story",
-          ...(attempt === 0 ? {} : { parentStage: "story" }),
+          ...(attempt === 0 ? {} : { parentStage: "story-v2" }),
           instruction: STORY_INSTRUCTION,
           data:
             attempt === 0
@@ -139,16 +139,27 @@ export function createAppointmentNarrative(
                       "Correct only the specified failures; all original boundaries still apply.",
                   },
                 },
-          maxOutputTokens: 5000,
+          maxOutputTokens: 3000,
         });
-        const candidate = parseCandidate(storyCandidateSchema, content);
-        previousCandidate = candidate;
-        if (!candidate) {
+        let draft: unknown;
+        try {
+          draft = JSON.parse(content);
+        } catch {
+          previousCandidate = null;
           issues = [
-            "Output violates the strict story JSON schema; no resource IDs, score fields or unknown fields are allowed. Return the required shape.",
+            "Invalid story JSON. Keep dialogue as plain speech without surrounding quotations, close every JSON string with a straight double quote, and return the complete JSON object.",
           ];
           continue;
         }
+        const parsed = storyCandidateSchema.safeParse(draft);
+        if (!parsed.success) {
+          previousCandidate = null;
+          issues = parsed.error.issues.slice(0, 4).map((issue) =>
+            `${issue.path.join(".") || "story"}: ${issue.message}`);
+          continue;
+        }
+        const candidate = parsed.data;
+        previousCandidate = candidate;
         if (base.mustEnd && !candidate.ending) {
           issues = ["This block must end with a natural goodbye and no choices."];
           continue;
@@ -162,7 +173,7 @@ export function createAppointmentNarrative(
             task: "appointment_review",
             instruction: STORY_AUDIT_INSTRUCTION,
             data: { ...base, candidate },
-            maxOutputTokens: 1800,
+            maxOutputTokens: 1000,
           }),
         );
         if (!audit?.accepted) {

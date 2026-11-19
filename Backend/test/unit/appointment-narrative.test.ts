@@ -255,6 +255,29 @@ describe("appointment narrative acceptance", () => {
     ]);
   });
 
+  it("feeds malformed dialogue JSON and invalid field paths back to the story writer", async () => {
+    const malformed = '{"beats":[{"chinese":"她看向海面。“这么早？”}]}';
+    const invalid = { ...candidate(), beats: [{ speaker: "npc", english: "Hello", chinese: "你好" }] };
+    const untranslated = {
+      ...candidate(),
+      beats: [{ speaker: "character", english: "Get home safe.", chinese: "Get home safe." }],
+    };
+    for (const [draft, reason] of [
+      [malformed, /Invalid story JSON.*dialogue/i],
+      [invalid, /beats\.0\.speaker/i],
+      [untranslated, /beats\.0\.chinese.*translate/i],
+    ] as const) {
+      const { service, requests } = harness([draft, candidate(), accept]);
+      await service.generate(context());
+      const repair = JSON.parse(requests[1]?.messages[1]?.content ?? "{}") as {
+        repair: { issues: string[] };
+      };
+      expect(repair.repair.issues.join(" ")).toMatch(reason);
+      expect(requests[1]?.task).toBe("appointment_story");
+      expect(requests[2]?.task).toBe("appointment_review");
+    }
+  });
+
   it("rejects a continuation on explicit finish; a repaired natural goodbye can end immediately", async () => {
     const input = context();
     input.action = { input: "I want to go home.", custom: true, finish: true };
@@ -429,7 +452,7 @@ describe("accepted-path summary review", () => {
     const { service } = harness([review, accept]);
     expect(await service.review(completed())).toEqual(review);
   });
-  it("resolves distinct short decision/block references to accepted immutable evidence before audit", async () => {
+  it("audits with the writer's short references and returns accepted immutable evidence", async () => {
     const proposed = { ...review,
       signals: [{ ...review.signals[0], evidenceDecisionIds: ["D1"] }],
       memories: [{ ...review.memories[0], evidenceBlockIds: ["B2"] }],
@@ -437,7 +460,9 @@ describe("accepted-path summary review", () => {
     const { service, requests } = harness([proposed, accept]);
     expect(await service.review(completed())).toEqual(review);
     expect(requests[0]?.messages[1]?.content).toContain('"id":"D1"');
-    expect(requests[1]?.messages[1]?.content).toContain('"evidenceDecisionIds":["decision-1"]');
+    expect(requests[1]?.messages[1]?.content).toContain('"evidenceDecisionIds":["D1"]');
+    expect(requests[1]?.messages[1]?.content).toContain('"resultBlockId":"B2"');
+    expect(requests[1]?.messages[1]?.content).not.toContain('"decision-1"');
   });
   it("bounds a verbose display reason without changing any reviewed score dimensions", async () => {
     const reasonZh = "提议之前先征得旅伴同意并为旅伴保留独立选择的空间";
