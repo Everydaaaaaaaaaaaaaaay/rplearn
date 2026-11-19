@@ -48,10 +48,30 @@ final class AppointmentUITests: XCTestCase {
     }
 
     func testNativeAppointmentCustomBranchThroughBackend() throws {
-        guard let endpoint = ProcessInfo.processInfo.environment["LINGOTRIP_APPOINTMENT_E2E_URL"] else {
-            throw XCTSkip("Provide the test backend URL and provision a confirmed appointment in the simulator.")
+        try configureAppointmentBackend()
+        let networkMonitor = addUIInterruptionMonitor(withDescription: "Test app network access") { alert in
+            if alert.label.contains("使用无线数据") {
+                let buttons = alert.buttons.allElementsBoundByIndex
+                let wifi = buttons.filter { button in
+                    let label = button.label
+                    return label.contains("无线局域网") || label.localizedCaseInsensitiveContains("WLAN")
+                        || label.localizedCaseInsensitiveContains("Wi-Fi")
+                }
+                let wifiOnly = wifi.first { !$0.label.contains("蜂窝") }
+                guard let allow = wifiOnly ?? wifi.first ?? buttons.first(where: { $0.label == "允许" }) else {
+                    XCTFail("No network-access option found: \(buttons.map(\.label))")
+                    return false
+                }
+                allow.tap()
+                return true
+            }
+            if alert.label.contains("本地网络"), alert.buttons["允许"].exists {
+                alert.buttons["允许"].tap()
+                return true
+            }
+            return false
         }
-        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = endpoint
+        defer { removeUIInterruptionMonitor(networkMonitor) }
         openAppointmentTestMenu()
         app.buttons["真实赴约"].tap()
 
@@ -121,6 +141,41 @@ final class AppointmentUITests: XCTestCase {
         reveal(savedInput.firstMatch)
         XCTAssertEqual(savedInput.count, 1)
         XCTAssertFalse(editor.exists)
+    }
+
+    func testNativeAppointmentReviewRecoversThroughBackend() throws {
+        try configureAppointmentBackend()
+        openAppointmentTestMenu()
+        app.buttons["真实赴约"].tap()
+
+        let reopen = app.buttons["appointment.openSummary"]
+        XCTAssertTrue(reopen.waitForExistence(timeout: 35), "Provision the device with the completed test appointment.")
+        reopen.tap()
+        let input = "Could we make a tiny paper theatre with a folding curtain?"
+        let savedInput = app.staticTexts.matching(NSPredicate(format: "label == %@", input))
+        reveal(savedInput.firstMatch)
+        XCTAssertEqual(savedInput.count, 1)
+        XCTAssertFalse(actionInput.exists)
+
+        let affinity = app.staticTexts["appointment.affinity"]
+        let retry = app.buttons["重试整理回顾"]
+        let ready = NSPredicate { _, _ in affinity.exists || (retry.exists && retry.isEnabled) }
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: ready, object: nil)], timeout: 45), .completed)
+        if !affinity.exists {
+            reveal(retry)
+            retry.tap()
+        }
+        XCTAssertTrue(affinity.waitForExistence(timeout: 45), "The completed appointment should settle after review is retried.")
+        reveal(savedInput.firstMatch)
+        XCTAssertEqual(savedInput.count, 1)
+        capture("backend-appointment-recovered-review")
+    }
+
+    private func configureAppointmentBackend() throws {
+        guard let endpoint = ProcessInfo.processInfo.environment["LINGOTRIP_APPOINTMENT_E2E_URL"] else {
+            throw XCTSkip("Provide an isolated test backend URL and provision the test device.")
+        }
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = endpoint
     }
 
     private func readBackendBlock(waitingForEnding: Bool = false) -> [String] {
