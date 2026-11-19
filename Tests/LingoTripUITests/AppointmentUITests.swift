@@ -48,29 +48,7 @@ final class AppointmentUITests: XCTestCase {
     }
 
     func testNativeAppointmentCustomBranchThroughBackend() throws {
-        try configureAppointmentBackend()
-        let networkMonitor = addUIInterruptionMonitor(withDescription: "Test app network access") { alert in
-            if alert.label.contains("使用无线数据") {
-                let buttons = alert.buttons.allElementsBoundByIndex
-                let wifi = buttons.filter { button in
-                    let label = button.label
-                    return label.contains("无线局域网") || label.localizedCaseInsensitiveContains("WLAN")
-                        || label.localizedCaseInsensitiveContains("Wi-Fi")
-                }
-                let wifiOnly = wifi.first { !$0.label.contains("蜂窝") }
-                guard let allow = wifiOnly ?? wifi.first ?? buttons.first(where: { $0.label == "允许" }) else {
-                    XCTFail("No network-access option found: \(buttons.map(\.label))")
-                    return false
-                }
-                allow.tap()
-                return true
-            }
-            if alert.label.contains("本地网络"), alert.buttons["允许"].exists {
-                alert.buttons["允许"].tap()
-                return true
-            }
-            return false
-        }
+        let networkMonitor = try configureAppointmentBackend()
         defer { removeUIInterruptionMonitor(networkMonitor) }
         openAppointmentTestMenu()
         app.buttons["真实赴约"].tap()
@@ -144,7 +122,8 @@ final class AppointmentUITests: XCTestCase {
     }
 
     func testNativeAppointmentReviewRecoversThroughBackend() throws {
-        try configureAppointmentBackend()
+        let networkMonitor = try configureAppointmentBackend()
+        defer { removeUIInterruptionMonitor(networkMonitor) }
         openAppointmentTestMenu()
         app.buttons["真实赴约"].tap()
 
@@ -153,6 +132,7 @@ final class AppointmentUITests: XCTestCase {
         reopen.tap()
         let input = "Could we make a tiny paper theatre with a folding curtain?"
         let savedInput = app.staticTexts.matching(NSPredicate(format: "label == %@", input))
+        XCTAssertTrue(savedInput.firstMatch.waitForExistence(timeout: 20))
         reveal(savedInput.firstMatch)
         XCTAssertEqual(savedInput.count, 1)
         XCTAssertFalse(actionInput.exists)
@@ -171,11 +151,33 @@ final class AppointmentUITests: XCTestCase {
         capture("backend-appointment-recovered-review")
     }
 
-    private func configureAppointmentBackend() throws {
+    private func configureAppointmentBackend() throws -> NSObjectProtocol {
         guard let endpoint = ProcessInfo.processInfo.environment["LINGOTRIP_APPOINTMENT_E2E_URL"] else {
             throw XCTSkip("Provide an isolated test backend URL and provision the test device.")
         }
         app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = endpoint
+        return addUIInterruptionMonitor(withDescription: "Test app network access") { alert in
+            if alert.label.contains("使用无线数据") {
+                let buttons = alert.buttons.allElementsBoundByIndex
+                let wifi = buttons.filter { button in
+                    let label = button.label
+                    return label.contains("无线局域网") || label.localizedCaseInsensitiveContains("WLAN")
+                        || label.localizedCaseInsensitiveContains("Wi-Fi")
+                }
+                let wifiOnly = wifi.first { !$0.label.contains("蜂窝") }
+                guard let allow = wifiOnly ?? wifi.first ?? buttons.first(where: { $0.label == "允许" }) else {
+                    XCTFail("No network-access option found: \(buttons.map(\.label))")
+                    return false
+                }
+                allow.tap()
+                return true
+            }
+            if alert.label.contains("本地网络"), alert.buttons["允许"].exists {
+                alert.buttons["允许"].tap()
+                return true
+            }
+            return false
+        }
     }
 
     private func readBackendBlock(waitingForEnding: Bool = false) -> [String] {

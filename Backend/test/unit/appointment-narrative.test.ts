@@ -479,13 +479,53 @@ describe("accepted-path summary review", () => {
     },
   );
   it("rejects invented real preferences and emotional user claims in the independent summary audit", async () => {
-    const { service } = harness([
+    const issue = "One drawing action does not establish a lifelong hobby";
+    const { service, requests } = harness([
       review,
-      reject("One drawing action does not establish a lifelong hobby"),
+      reject(issue),
+      review,
+      reject(issue),
     ]);
     await expect(service.review(completed())).rejects.toMatchObject({
       code: "APPOINTMENT_REVIEW_REJECTED",
     });
+    expect(requests).toHaveLength(4);
+  });
+
+  it("repairs unsupported social ratings using audit feedback and requires acceptance of the revised summary", async () => {
+    const input = completed();
+    const draft = {
+      ...review,
+      signals: [{ ...review.signals[0], evidenceDecisionIds: ["D1"] }],
+      memories: [{ ...review.memories[0], evidenceBlockIds: ["B2"] }],
+    };
+    const issue = "Ordinary participation does not establish a positive relationship signal.";
+    const corrected = {
+      ...draft,
+      signals: [],
+      relationshipSignal: Object.fromEntries(
+        Object.entries(relationshipSignal).map(([key, value]) => [
+          key,
+          typeof value === "number" ? 0 : "",
+        ]),
+      ),
+    };
+    const { service, requests } = harness([draft, reject(issue), corrected, accept]);
+
+    await expect(service.review(input)).resolves.toMatchObject({
+      signals: [],
+      memories: review.memories,
+      relationshipSignal: corrected.relationshipSignal,
+    });
+    expect(requests).toHaveLength(4);
+    expect(JSON.parse(requests[2]?.messages[1]?.content ?? "{}")).toMatchObject({
+      repair: { issues: [issue], previousCandidate: draft },
+    });
+    expect(JSON.parse(requests[3]?.messages[1]?.content ?? "{}")).toMatchObject({
+      candidate: { signals: [], relationshipSignal: corrected.relationshipSignal },
+    });
+    expect(new Set(requests.map((request) => request.operationId)).size).toBe(4);
+    expect(input.session).toEqual(completed().session);
   });
   it.each([
     { ...relationshipSignal, respect: -1.01 },
