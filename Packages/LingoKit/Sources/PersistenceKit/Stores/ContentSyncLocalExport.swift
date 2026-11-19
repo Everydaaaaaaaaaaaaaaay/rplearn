@@ -106,7 +106,9 @@ extension ContentSyncStore {
                             speechReviewJson: entity.speechReviewJSON,
                             text: entity.text,
                             tokenEstimate: entity.tokenEstimate,
-                            translationZh: entity.translationZh
+                            translationZh: entity.translationZh,
+                            timelineEvents: entity.timelineEventsJSON.map { ChatMessageTimelineEvent.decode($0) },
+                            replyToMessageIds: entity.replyToMessageIDs
                         )
                     )
                 )

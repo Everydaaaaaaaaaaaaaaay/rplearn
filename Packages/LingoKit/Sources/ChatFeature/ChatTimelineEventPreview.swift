@@ -14,6 +14,7 @@ public enum ChatTimelineEventPreview {
         (.assistant, "Okay, now I’m definitely coming.")
     ]
 
+    @MainActor
     static func event(after message: MessageDTO) -> ChatTimelineEvent? {
         switch message.orderIndex {
         case 1: ChatTimelineEvent(kind: .memory, title: "Ruby 记住了你的话")

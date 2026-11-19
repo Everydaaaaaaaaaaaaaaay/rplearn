@@ -95,6 +95,15 @@ struct ChatTranscriptView: View {
                             event
                         }
                         #endif
+                        if let event = viewModel.timelineEvents[message.id] {
+                            ChatTimelineEvent(event, name: viewModel.character.card.name)
+                        }
+                        if let appointments = viewModel.appointmentTimeline[message.id] {
+                            ForEach(appointments) { row in
+                                ChatTimelineEvent(row.event, name: viewModel.character.card.name,
+                                                  action: deps.onOpenAppointment.map { open in { open(row.appointmentID) } })
+                            }
+                        }
                     }
                     if viewModel.streamingText != nil {
                         MessageBubble(
@@ -145,6 +154,7 @@ struct ChatTranscriptView: View {
                 .anchorPreference(key: ChatTranscriptBoundsKey.self, value: .bounds) { $0 }
             }
             .accessibilityIdentifier("chat.messages")
+            .modifier(ChatTimelineUpdates(viewModel: viewModel))
             .scrollPosition($messageScrollPosition)
             .defaultScrollAnchor(.bottom, for: .initialOffset)
             .defaultScrollAnchor(.bottom, for: .alignment)
@@ -493,5 +503,21 @@ struct ChatTranscriptView: View {
                 )
             }
         }
+    }
+}
+
+private struct ChatTimelineUpdates: ViewModifier {
+    let viewModel: ChatViewModel
+
+    func body(content: Content) -> some View {
+        content
+            .onReceive(NotificationCenter.default.publisher(for: .chatTimelineDidChange)) { event in
+                guard event.object as? UUID == viewModel.conversation?.id else { return }
+                Task { await viewModel.reloadMessages() }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .chatAppointmentsDidChange)) { event in
+                guard event.object as? UUID == viewModel.character.id else { return }
+                Task { await viewModel.refreshAppointments() }
+            }
     }
 }

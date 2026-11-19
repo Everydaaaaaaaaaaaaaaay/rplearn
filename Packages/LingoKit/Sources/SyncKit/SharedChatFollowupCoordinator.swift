@@ -52,6 +52,10 @@ public struct SharedChatFollowupCoordinator: Sendable {
       guard let character = try await rosterStore.character(id: job.characterId) else { continue }
       let all = try await chatStore.messages(conversationID: job.conversationId)
       guard let message = all.first(where: { $0.id == job.messageId }) else { continue }
+      let reply = try await chatStore.replyText(after: message, conversationID: job.conversationId)
+      if let mood = ChatTimelineEvidence.mood(reply: reply) {
+        try await chatStore.addTimelineEvents(messageID: message.id, events: [mood])
+      }
       let cutoff = try await memoryStore.extractionCutoff(characterID: character.id)
       let history = all.filter {
         $0.orderIndex <= message.orderIndex && (cutoff == nil || $0.createdAt > cutoff!)
@@ -78,21 +82,40 @@ public struct SharedChatFollowupCoordinator: Sendable {
       if message.coachReviewJSON == nil
         || !RelationshipEngine.hasEvaluated(messageID: message.id, in: character.relationship)
       {
+        var events: [ChatMessageTimelineEvent] = []
         let review = try await service.evaluate(
           claim.request, operationID: claim.operationId, userText: message.text)
         try Task.checkCancellation()
-        try await service.apply(
+        let relationship = try await service.apply(
           review: review, character: character, history: history, userMessage: message,
           source: message.kind == .voice ? .voiceChat : .textChat, at: message.createdAt)
         let latestCutoff = try await memoryStore.extractionCutoff(characterID: character.id)
         if extract && (latestCutoff == nil || message.createdAt > latestCutoff!) {
-          var keys = Set<String>()
-          let facts = (review.memoryFacts ?? []).compactMap { $0.record(from: message) }.filter {
-            keys.insert($0.key).inserted
-          }
-          try await memoryStore.applyFacts(
+          let facts = (review.memoryFacts ?? []).compactMap { $0.record(from: message) }
+          let changes = try await memoryStore.applyFacts(
             characterID: character.id, records: facts, sourceIndex: message.orderIndex + 1)
+          if let first = changes.first { events.append(ChatTimelineEvidence.memory(first)) }
         }
+        if !events.contains(where: { $0.kind == .memory }), ChatTimelineEvidence.hasRecallCue(reply),
+           let recall = ChatTimelineEvidence.recalledMemory(
+             reply: reply, userMessage: message,
+             memories: try await memoryStore.memories(characterID: character.id, tier: .long)) {
+          events.append(recall)
+        }
+        if let relationship {
+          // A version conflict can replay the turn onto a newer relationship.
+          // Read the accepted receipt before describing its change in chat.
+          try await synchronize()
+          if let snapshot = try await rosterStore.character(id: character.id)?.relationship,
+             let receipt = snapshot.recentEvents.last(where: { $0.id == message.id }) {
+            if snapshot == relationship.snapshot {
+              events.append(relationship.event)
+            } else if abs(receipt.delta) >= 0.15 {
+              events.append(.init(kind: .relationship, state: "affinity", delta: receipt.delta))
+            }
+          }
+        }
+        try await chatStore.addTimelineEvents(messageID: message.id, events: events)
         if let json = CoachService.encode(review.coachReview) {
           try await chatStore.setCoachReview(messageID: message.id, json: json)
         }

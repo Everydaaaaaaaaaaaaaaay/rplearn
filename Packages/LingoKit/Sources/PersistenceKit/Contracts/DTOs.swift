@@ -200,6 +200,8 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
     public var learningOrigin: LearningChatOrigin?
     public var translationZh: String?
     public var isInterrupted: Bool
+    public var timelineEvents: [ChatMessageTimelineEvent]
+    public var replyToMessageIDs: [UUID]
     public var createdAt: Date
 
     public init(
@@ -218,6 +220,8 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         learningOrigin: LearningChatOrigin? = nil,
         translationZh: String? = nil,
         isInterrupted: Bool = false,
+        timelineEvents: [ChatMessageTimelineEvent] = [],
+        replyToMessageIDs: [UUID] = [],
         createdAt: Date = .now
     ) {
         self.id = id
@@ -235,6 +239,8 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         self.learningOrigin = learningOrigin
         self.translationZh = translationZh
         self.isInterrupted = isInterrupted
+        self.timelineEvents = timelineEvents
+        self.replyToMessageIDs = replyToMessageIDs
         self.createdAt = createdAt
     }
 }

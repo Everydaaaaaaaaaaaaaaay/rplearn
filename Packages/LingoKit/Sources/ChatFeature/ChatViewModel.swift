@@ -21,7 +21,21 @@ public final class ChatViewModel {
     let deps: ChatDependencies
 
     public internal(set) var conversation: ConversationDTO?
-    public internal(set) var messages: [MessageDTO] = []
+    public internal(set) var messages: [MessageDTO] = [] {
+        didSet {
+            guard messages != oldValue else { return }
+            timelineEvents = ChatTimelineEventPolicy.ordinaryEvents(in: messages)
+            rebuildAppointmentTimeline()
+        }
+    }
+    private(set) var timelineEvents: [UUID: ChatMessageTimelineEvent] = [:]
+    struct AppointmentTimelineRow: Identifiable, Equatable {
+        let appointmentID: UUID
+        let event: BackendAppointmentTimelineEvent
+        var id: String { event.id }
+    }
+    private(set) var appointmentTimeline: [UUID: [AppointmentTimelineRow]] = [:]
+    private var timelineAppointments: [BackendAppointment] = []
     /// 角色已经进入可见输入阶段；空字符串显示输入指示，nil 表示当前没有回复。
     public private(set) var streamingText: String?
     public private(set) var isStreaming = false
@@ -231,8 +245,13 @@ public final class ChatViewModel {
         checkingAppointments = true
         defer { checkingAppointments = false }
         do {
-            appointments = try await refresh(character.id, conversation.id, detect)
-                .filter { $0.characterId == character.id && $0.status != "cancelled" && $0.status != "expired" }
+            let records = try await refresh(character.id, conversation.id, detect).filter { $0.characterId == character.id }
+            if records != timelineAppointments {
+                timelineAppointments = records
+                rebuildAppointmentTimeline()
+            }
+            appointments = records
+                .filter { $0.status != "cancelled" && $0.status != "expired" }
                 .sorted {
                     let priority: (BackendAppointment) -> Int = { $0.status == "in_progress" ? 0 : $0.status == "confirmed" ? 1 : 2 }
                     if priority($0) != priority($1) { return priority($0) < priority($1) }
@@ -246,6 +265,31 @@ public final class ChatViewModel {
                     : "约定暂时没有同步成功，可以稍后再整理。"
             }
         }
+    }
+
+    private func rebuildAppointmentTimeline() {
+        guard let conversationID = conversation?.id, !timelineAppointments.isEmpty else {
+            if !appointmentTimeline.isEmpty { appointmentTimeline = [:] }
+            return
+        }
+        var result: [UUID: [AppointmentTimelineRow]] = [:]
+        var seen = Set<String>()
+        let messageIDs = Set(messages.map(\.id))
+        for appointment in timelineAppointments {
+            for event in appointment.timelineEvents ?? [] where seen.insert(event.id).inserted {
+                let anchor: UUID?
+                if let cited = event.messageId, messageIDs.contains(cited) {
+                    anchor = cited
+                } else if event.conversationId == conversationID, let date = AppointmentDisplayTime.date(event.occurredAt) {
+                    anchor = messages.last(where: { $0.role != .coach && $0.createdAt <= date })?.id
+                } else {
+                    anchor = nil
+                }
+                guard let anchor else { continue }
+                result[anchor, default: []].append(.init(appointmentID: appointment.id, event: event))
+            }
+        }
+        appointmentTimeline = result.mapValues { $0.sorted { ($0.event.occurredAt, $0.id) < ($1.event.occurredAt, $1.id) } }
     }
 
     private func inspectAppointmentAgreement() {
@@ -521,12 +565,17 @@ public final class ChatViewModel {
         let spokenText = spokenText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !spokenText.isEmpty else { return }
         do {
-            _ = try await persistAssistantReply(
+            let delivered = try await persistAssistantReply(
                 conversationID: conversation.id,
                 text: spokenText,
                 interrupted: interrupted,
                 learningSource: interrupted ? nil : realtimeLearningSource
             )
+            if !interrupted, let first = delivered.first,
+               let input = messages.last(where: { $0.role == .user && $0.orderIndex < first.orderIndex }),
+               let mood = ChatTimelineEvidence.mood(reply: delivered.map(\.text).joined(separator: "\n")) {
+                try? await deps.chatStore.addTimelineEvents(messageID: input.id, events: [mood])
+            }
             Task { await deps.learningChat?.messageSaved(characterID: character.id) }
             Task { [weak self] in
                 await self?.grantMainlineTicketIfEligible(conversationID: conversation.id)
@@ -654,10 +703,16 @@ public final class ChatViewModel {
         let relationship = RelationshipService(llm: deps.llm, rosterStore: deps.rosterStore)
         let chatStore = deps.chatStore
         let character = character
+        let conversationID = conversation?.id
         // 点评延后到主回复之后执行，但输入语境必须停在这条用户消息，不能把后生成的回复倒灌到它前面。
         let history = messages.filter { $0.orderIndex <= message.orderIndex }
         let memoryStore = deps.memoryStore
         Task(priority: .utility) { [weak self] in
+            let reply: String
+            if let conversationID {
+                reply = (try? await chatStore.replyText(after: message, conversationID: conversationID)) ?? ""
+            } else { reply = "" }
+            var events = [ChatTimelineEvidence.mood(reply: reply)].compactMap { $0 }
             let extractMemory = MemoryFact.shouldExtract(message.text)
             let existing = extractMemory ? ((try? await memoryStore.memories(characterID: character.id, tier: .long, includingArchived: true)) ?? []) : []
             let context = existing.filter { $0.record?.edited != true }.suffix(4).compactMap {
@@ -667,24 +722,33 @@ public final class ChatViewModel {
             let reviewHistory = history.filter { historyCutoff == nil || $0.createdAt > historyCutoff! }
             let result: InteractionReview
             do {
-                result = try await relationship.reviewInteractionAndApply(
-                    character: character, history: reviewHistory, userMessage: message,
-                    source: source, memoryContext: context, extractMemory: extractMemory
-                )
+                result = try await relationship.evaluate(character: character, history: reviewHistory,
+                    userMessage: message, memoryContext: context, extractMemory: extractMemory)
+                if let settlement = try await relationship.apply(review: result, character: character,
+                    history: reviewHistory, userMessage: message, source: source) {
+                    events.append(settlement.event)
+                }
             } catch {
                 Log.app.warning("互动审阅失败，本轮跳过辅助点评：\(error.localizedDescription)")
                 try? await relationship.recordContact(characterID: character.id, message: message)
+                try? await chatStore.addTimelineEvents(messageID: message.id, events: events)
                 return
             }
             let cutoff = try? await memoryStore.extractionCutoff(characterID: character.id)
             if extractMemory && (cutoff == nil || message.createdAt > cutoff!) {
-                var keys = Set<String>()
                 let records = (result.memoryFacts ?? []).compactMap { $0.record(from: message) }
-                    .filter { keys.insert($0.key).inserted }
                 do {
-                    try await memoryStore.applyFacts(characterID: character.id, records: records, sourceIndex: message.orderIndex + 1)
+                    let changes = try await memoryStore.applyFacts(characterID: character.id, records: records, sourceIndex: message.orderIndex + 1)
+                    if let first = changes.first { events.append(ChatTimelineEvidence.memory(first)) }
                 } catch { Log.app.warning("记忆更新保存失败：\(error.localizedDescription)") }
             }
+            if !events.contains(where: { $0.kind == .memory }), ChatTimelineEvidence.hasRecallCue(reply),
+               let memories = try? await memoryStore.memories(characterID: character.id, tier: .long),
+               let recall = ChatTimelineEvidence.recalledMemory(reply: reply, userMessage: message, memories: memories) {
+                events.append(recall)
+            }
+            do { try await chatStore.addTimelineEvents(messageID: message.id, events: events) }
+            catch { Log.app.warning("聊天事件保存失败：\(error.localizedDescription)") }
             if result.coachReview.hasIssues, let json = CoachService.encode(result.coachReview) {
                 try? await chatStore.setCoachReview(messageID: message.id, json: json)
             }
@@ -1427,7 +1491,13 @@ public final class ChatViewModel {
         let reviewed = sharedReviewMessages.values.filter { state.coveredMessageIDs.contains($0.id) }
         for message in reviewed {
             sharedReviewMessages[message.id] = nil
-            if !state.durableFollowups {
+            if state.durableFollowups {
+                if let reply = try? await deps.chatStore.replyText(after: message, conversationID: state.conversationID),
+                   let mood = ChatTimelineEvidence.mood(reply: reply) {
+                    do { try await deps.chatStore.addTimelineEvents(messageID: message.id, events: [mood]) }
+                    catch { Log.app.warning("聊天情绪提示保存失败：\(error.localizedDescription)") }
+                }
+            } else {
                 runInteractionReview(for: message, source: message.kind == .voice ? .voiceChat : .textChat)
             }
         }
@@ -1500,9 +1570,11 @@ public final class ChatViewModel {
         }
     }
 
-    private func reloadMessages() async {
+    func reloadMessages() async {
         guard let conversation else { return }
-        messages = (try? await deps.chatStore.messages(conversationID: conversation.id)) ?? messages
+        if let refreshed = try? await deps.chatStore.messages(conversationID: conversation.id), refreshed != messages {
+            messages = refreshed
+        }
     }
 
 }

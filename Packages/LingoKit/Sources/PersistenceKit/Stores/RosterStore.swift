@@ -449,12 +449,20 @@ public actor RosterStore {
         replayInput: RelationshipReplayInput? = nil,
         mutation: @Sendable (RelationshipSnapshot) -> RelationshipSnapshot
     ) throws -> RelationshipSnapshot {
+        try mutateRelationshipWithPrevious(characterID: characterID, replayInput: replayInput, mutation: mutation).after
+    }
+
+    public func mutateRelationshipWithPrevious(
+        characterID: UUID,
+        replayInput: RelationshipReplayInput? = nil,
+        mutation: @Sendable (RelationshipSnapshot) -> RelationshipSnapshot
+    ) throws -> (before: RelationshipSnapshot, after: RelationshipSnapshot) {
         guard let entity = try fetchEntity(id: characterID) else {
             throw RosterError.characterNotFound
         }
         let current = Self.relationship(from: entity)
         let updated = mutation(current)
-        guard updated != current else { return current }
+        guard updated != current else { return (current, current) }
 
         entity.relationshipJSON = updated.encodedJSON()
         do {
@@ -470,7 +478,7 @@ public actor RosterStore {
                 object: characterID
             )
         }
-        return updated
+        return (current, updated)
     }
 
     /// 在角色 actor 内原子推进当前用户专属的成长分支。

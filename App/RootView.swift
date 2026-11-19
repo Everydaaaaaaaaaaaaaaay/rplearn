@@ -4,6 +4,7 @@ import BackendKit
 import BillingKit
 import ChatFeature
 import LearningFeature
+import LLMKit
 import CoreKit
 import DesignSystem
 import DictKit
@@ -1377,13 +1378,22 @@ struct RootView: View {
 
     private var chatDeps: ChatDependencies {
         let regionCatalog = environment.regionCatalog
+        var llm: any LLMClient = environment.llmRouter
+        var replyDelayScale = 1.0
+        #if DEBUG
+        if bypassesAuthenticationForUITesting,
+           ProcessInfo.processInfo.environment["UI_TEST_CHAT_TIMELINE_WORKFLOW"] == "1" {
+            llm = DebugChatTimelineProvider()
+            replyDelayScale = 0
+        }
+        #endif
         var dependencies = ChatDependencies(
             accessClient: environment.backendClient,
             onShowAccess: { showSubscription = true },
             chatStore: environment.chatStore,
             rosterStore: environment.rosterStore,
             favorites: environment.favoritesStore,
-            llm: environment.llmRouter,
+            llm: llm,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
@@ -1398,7 +1408,8 @@ struct RootView: View {
             regionName: { regionID in
                 regionCatalog.region(id: regionID)?.nameZh
                     ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
-            }
+            },
+            replyDelayScale: replyDelayScale
         )
         if !bypassesAuthenticationForUITesting {
             dependencies.sharedGrammarAnalysis = environment.sharedGrammarAnalyzer

@@ -5,6 +5,46 @@ import Testing
 
 @Suite("ContentSyncStore")
 struct ContentSyncStoreTests {
+    @Test("Timeline evidence survives reopening and an older client update")
+    func timelineEvidenceSurvivesReopening() async throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appending(path: "chat.store")
+        let mood = ChatMessageTimelineEvent(kind: .mood, state: "sad", strength: 2)
+        let conversationID: UUID
+        let messageID: UUID
+        do {
+            let container = try ModelContainerFactory.makeContainer(storeURL: url)
+            let sync = ContentSyncStore(modelContainer: container)
+            let chat = ChatStore(modelContainer: container)
+            let roster = RosterStore(modelContainer: container)
+            try await sync.activateOwner(userID: UUID())
+            let character = try await roster.addCharacter(card: characterCard(name: "Ruby"), difficulty: .junior3, isFriend: true)
+            conversationID = try await chat.openConversation(characterID: character).id
+            messageID = try await chat.appendMessage(conversationID: conversationID, role: .user, text: "Are you okay?").id
+            _ = try await chat.appendMessage(conversationID: conversationID, role: .assistant, text: "I feel sad.")
+            for mutation in try await sync.takePending() {
+                try await sync.complete(commandID: mutation.commandID, record: remote(from: mutation, version: 1))
+            }
+            try await chat.addTimelineEvents(messageID: messageID, events: [mood])
+            try await chat.addTimelineEvents(messageID: messageID, events: [.init(kind: .mood, state: "angry", strength: 3)])
+            let pending = try #require(try await sync.takePending().first)
+            let json = try #require(pending.payloadJSON)
+            var fields = try #require(JSONSerialization.jsonObject(with: Data(json.utf8)) as? [String: Any])
+            #expect(fields["timelineEvents"] != nil)
+            fields.removeValue(forKey: "timelineEvents")
+            let older = remote(type: .message, id: pending.resourceID, parentID: pending.parentID,
+                payload: String(decoding: try JSONSerialization.data(withJSONObject: fields), as: UTF8.self), version: 2)
+            try await sync.apply(records: [older], nextCursor: "older-client")
+        }
+        let reopened = ChatStore(modelContainer: try ModelContainerFactory.makeContainer(storeURL: url))
+        let stored = try await reopened.messages(conversationID: conversationID)
+        #expect(stored.count == 2)
+        #expect(stored.first(where: { $0.id == messageID })?.timelineEvents == [mood])
+        #expect(try await reopened.conversationSummaries().first?.unreadCount == 1)
+    }
+
     @Test("已读回执保留毫秒，同步不能把读过的回复变回未读")
     func conversationReadReceiptSurvivesOlderRemoteSnapshot() async throws {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)

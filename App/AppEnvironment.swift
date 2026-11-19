@@ -682,6 +682,9 @@ final class AccountWorkspace {
                 let text = messages.suffix(12).map(\.text).joined(separator: " ").lowercased()
                 if ["meet", "tomorrow", "tonight", "coffee", "cafe", "café", "see you", "o'clock", "约", "明天", "后天", "周末", "见面", "咖啡", "下午", "上午", "晚上", "改期"].contains(where: text.contains) {
                     _ = try await backend.detectAppointments(characterID: character.id, conversationID: conversationID)
+                    await MainActor.run {
+                        NotificationCenter.default.post(name: .chatAppointmentsDidChange, object: character.id)
+                    }
                 }
             }))
         await journeyPresentation.refreshLocal(economy: economyStore, items: itemStore,

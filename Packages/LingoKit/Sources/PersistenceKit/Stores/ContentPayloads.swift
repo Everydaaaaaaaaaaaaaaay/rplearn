@@ -123,6 +123,8 @@ struct ContentMessagePayload: Codable {
     let text: String
     let tokenEstimate: Int
     let translationZh: String?
+    var timelineEvents: [ChatMessageTimelineEvent]? = nil
+    var replyToMessageIds: [UUID]? = nil
 }
 
 struct ContentFavoritePayload: Codable {

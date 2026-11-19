@@ -533,13 +533,19 @@ public struct RelationshipService: Sendable {
         return review
     }
 
+    public struct TimelineSettlement: Sendable {
+        public let event: ChatMessageTimelineEvent
+        public let snapshot: RelationshipSnapshot
+    }
+
+    @discardableResult
     public func apply(review: InteractionReview, character: CharacterDTO, history: [MessageDTO], userMessage: MessageDTO,
-                      source: RelationshipEventRecord.Source, at date: Date = .now) async throws {
+                      source: RelationshipEventRecord.Source, at date: Date = .now) async throws -> TimelineSettlement? {
         let calendar = RelationshipCalendar.forRegionID(character.card.regionID)
         let replayInput = try RelationshipReplay.reviewed(review.relationship, source: source,
             messageID: userMessage.id, messageCreatedAt: userMessage.createdAt,
             messageOrderIndex: userMessage.orderIndex, at: date, calendar: calendar)
-        try await rosterStore.mutateRelationship(characterID: character.id, replayInput: replayInput) { latest in
+        let settlement = try await rosterStore.mutateRelationshipWithPrevious(characterID: character.id, replayInput: replayInput) { latest in
             guard !RelationshipEngine.hasEvaluated(messageID: userMessage.id, in: latest) else {
                 return latest
             }
@@ -567,6 +573,10 @@ public struct RelationshipService: Sendable {
                 at: date
             )
         }
+        guard let receipt = settlement.after.recentEvents.last(where: { $0.id == userMessage.id }),
+              let event = ChatTimelineEvidence.relationship(before: settlement.before, after: settlement.after,
+                                                            receipt: receipt, confidence: review.relationship.confidence) else { return nil }
+        return .init(event: event, snapshot: settlement.after)
     }
 
     public func recordContact(

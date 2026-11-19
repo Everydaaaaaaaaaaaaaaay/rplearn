@@ -244,6 +244,14 @@ extension ContentSyncStore {
         entity.translationZh = payload.translationZh
         entity.isInterrupted = payload.isInterrupted
         entity.learningOriginJSON = try payload.learningOrigin?.encodedJSON()
+        if let events = payload.timelineEvents, !events.isEmpty {
+            let remoteKinds = Set(events.map(\.kind))
+            let localOnly = ChatMessageTimelineEvent.decode(entity.timelineEventsJSON).filter { !remoteKinds.contains($0.kind) }
+            entity.timelineEventsJSON = try ChatMessageTimelineEvent.encode(events + localOnly)
+        }
+        if let replyIDs = payload.replyToMessageIds, !replyIDs.isEmpty {
+            entity.replyToMessageIDsJSON = String(decoding: try JSONEncoder().encode(replyIDs), as: UTF8.self)
+        }
         entity.createdAt = payload.createdAt
         try upsertMetadata(record, localKey: record.resourceID)
     }

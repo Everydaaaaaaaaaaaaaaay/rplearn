@@ -478,6 +478,38 @@ public actor ChatStore {
         try modelContext.save()
     }
 
+    public func addTimelineEvents(messageID: UUID, events: [ChatMessageTimelineEvent]) throws {
+        guard !events.isEmpty, let message = try fetchMessage(id: messageID),
+              let conversationID = message.conversation?.conversationID else { return }
+        let existing = ChatMessageTimelineEvent.decode(message.timelineEventsJSON)
+        var kinds = Set(existing.map(\.kind))
+        let additional = events.filter { kinds.insert($0.kind).inserted }
+        guard !additional.isEmpty else { return }
+        do {
+            message.timelineEventsJSON = try ChatMessageTimelineEvent.encode(existing + additional)
+            try journal(message)
+            try modelContext.save()
+        } catch {
+            modelContext.rollback()
+            throw error
+        }
+        Task { @MainActor in
+            NotificationCenter.default.post(name: .chatTimelineDidChange, object: conversationID)
+        }
+    }
+
+    public func replyText(after message: MessageDTO, conversationID: UUID) throws -> String {
+        let all = try messages(conversationID: conversationID)
+        let linked = all.filter { $0.role == .assistant && !$0.isInterrupted && $0.replyToMessageIDs.contains(message.id) }
+        if !linked.isEmpty { return linked.map(\.text).joined(separator: "\n") }
+        return all
+            .drop(while: { $0.orderIndex <= message.orderIndex })
+            .prefix(while: { $0.role != .user })
+            .filter { $0.role == .assistant && !$0.isInterrupted && $0.replyToMessageIDs.isEmpty }
+            .map(\.text)
+            .joined(separator: "\n")
+    }
+
     /// Reuse an exact sentence's persisted translation within this user's store.
     /// Do not share private chat text through a global/cloud dictionary cache.
     public func cachedTranslation(for sentence: String) throws -> String? {
@@ -800,7 +832,9 @@ public actor ChatStore {
                     speechReviewJson: message.speechReviewJSON,
                     text: message.text,
                     tokenEstimate: message.tokenEstimate,
-                    translationZh: message.translationZh
+                    translationZh: message.translationZh,
+                    timelineEvents: message.timelineEventsJSON.map { ChatMessageTimelineEvent.decode($0) },
+                    replyToMessageIds: message.replyToMessageIDs
                 )
             )
         )
@@ -841,6 +875,8 @@ public actor ChatStore {
             learningOrigin: LearningChatOrigin.decode(json: entity.learningOriginJSON),
             translationZh: entity.translationZh,
             isInterrupted: entity.isInterrupted,
+            timelineEvents: ChatMessageTimelineEvent.decode(entity.timelineEventsJSON),
+            replyToMessageIDs: entity.replyToMessageIDs ?? [],
             createdAt: entity.createdAt
         )
     }

@@ -1,5 +1,9 @@
 import Foundation
 
+public extension Notification.Name {
+    static let chatAppointmentsDidChange = Notification.Name("LingoTrip.chatAppointmentsDidChange")
+}
+
 public struct BackendAppointment: Codable, Sendable, Hashable, Identifiable {
     public let id: UUID
     public let characterId: UUID
@@ -14,6 +18,7 @@ public struct BackendAppointment: Codable, Sendable, Hashable, Identifiable {
     public let windowClosesAt: String
     public let status: String
     public let revision: Int
+    public let timelineEvents: [BackendAppointmentTimelineEvent]?
 
     public func displayTitle(companionName: String) -> String {
         let name = companionName.replacingOccurrences(of: " · 本地演示", with: "")
@@ -63,6 +68,18 @@ public struct BackendAppointment: Codable, Sendable, Hashable, Identifiable {
         default: fallback
         }
     }
+}
+
+public struct BackendAppointmentTimelineEvent: Codable, Sendable, Hashable, Identifiable {
+    public let id: String
+    public let kind: String
+    public let occurredAt: String
+    public let conversationId: UUID
+    public let messageId: UUID?
+    public let title: String
+    public let placeName: String
+    public let startsAt: String
+    public let timeZone: String
 }
 
 public struct BackendAppointmentList: Codable, Sendable, Hashable {

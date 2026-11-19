@@ -365,39 +365,7 @@ public struct ChatView: View {
                 AppleTranslationHost(translator: composerAppleTranslator)
             }
         }
-        .task {
-            // 整句翻译优先云端 LLM；离线、额度或供应商失败时回退 Apple 端上翻译。
-            viewModel.translationFallback = { [appleTranslator] text in
-                return await appleTranslator.translate(text)
-            }
-            await viewModel.load()
-            guard !Task.isCancelled else { return }
-            autoReadReady = true
-            autoReadQueue.configure(enabled: shouldAutoRead, existingIDs: viewModel.messages.map(\.id))
-            #if DEBUG
-            // Screenshot-only presentation of seeded reviews in the isolated marketing workspace.
-            if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
-               ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
-               ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1",
-               ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_COACHES"] == "1" {
-                expandedCoachMessageIDs = Set(viewModel.messages.filter {
-                    CoachService.decode(fromJSON: $0.coachReviewJSON)?.hasIssues == true
-                }.map(\.id))
-            }
-            if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
-               ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
-               ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_DICTIONARY"] == "1",
-               let message = viewModel.messages.first(where: { $0.text.contains("cosy") }),
-               let token = TokenCache.tokens(for: message.text, cacheKey: message.id.uuidString).first(where: { $0.word == "cosy" }) {
-                try? await Task.sleep(for: .seconds(1))
-                wordSelection = TokenSelection(contextID: message.id.uuidString, tokenID: token.id, word: "cosy")
-            }
-            #endif
-            markVisibleConversationRead()
-            #if DEBUG
-            await viewModel.playMarketingCaptureReply()
-            #endif
-        }
+        .task { await loadConversation() }
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()
         }
@@ -423,6 +391,40 @@ public struct ChatView: View {
             markVisibleConversationRead()
         }
         .dsTabBarHidden()
+    }
+
+    private func loadConversation() async {
+        // 整句翻译优先云端 LLM；离线、额度或供应商失败时回退 Apple 端上翻译。
+        viewModel.translationFallback = { [appleTranslator] text in
+            return await appleTranslator.translate(text)
+        }
+        await viewModel.load()
+        guard !Task.isCancelled else { return }
+        autoReadReady = true
+        autoReadQueue.configure(enabled: shouldAutoRead, existingIDs: viewModel.messages.map(\.id))
+        #if DEBUG
+        // Screenshot-only presentation of seeded reviews in the isolated marketing workspace.
+        if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
+           ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+           ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1",
+           ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_COACHES"] == "1" {
+            expandedCoachMessageIDs = Set(viewModel.messages.filter {
+                CoachService.decode(fromJSON: $0.coachReviewJSON)?.hasIssues == true
+            }.map(\.id))
+        }
+        if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
+           ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+           ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_DICTIONARY"] == "1",
+           let message = viewModel.messages.first(where: { $0.text.contains("cosy") }),
+           let token = TokenCache.tokens(for: message.text, cacheKey: message.id.uuidString).first(where: { $0.word == "cosy" }) {
+            try? await Task.sleep(for: .seconds(1))
+            wordSelection = TokenSelection(contextID: message.id.uuidString, tokenID: token.id, word: "cosy")
+        }
+        #endif
+        markVisibleConversationRead()
+        #if DEBUG
+        await viewModel.playMarketingCaptureReply()
+        #endif
     }
 
     @ToolbarContentBuilder
