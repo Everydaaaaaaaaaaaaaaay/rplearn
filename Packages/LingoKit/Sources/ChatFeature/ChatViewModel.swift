@@ -268,7 +268,7 @@ public final class ChatViewModel {
                     if priority($0) != priority($1) { return priority($0) < priority($1) }
                     return $0.status == "completed" ? $0.startsAt > $1.startsAt : $0.startsAt < $1.startsAt
                 }
-            appointmentNotice = detect && appointments.isEmpty ? "还没有说定的约定。请在聊天里确认当地日期、时间和地点。" : nil
+            appointmentNotice = detect && appointments.isEmpty ? "还没有说定的约定。请在聊天里按你的时区确认日期和时间，并说定地点。" : nil
         } catch {
             if detect {
                 appointmentNotice = (error as? BackendClientError)?.code == "LOGIN_REQUIRED"

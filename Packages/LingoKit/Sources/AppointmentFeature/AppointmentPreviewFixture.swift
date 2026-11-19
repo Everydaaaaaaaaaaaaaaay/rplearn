@@ -35,6 +35,7 @@ actor AppointmentPreviewService: AppointmentServing {
                 "characterId": AppointmentListView.previewCharacterID.uuidString,
                 "title": "和Oliver一起散步",
                 "cityId": "london", "cityName": "伦敦", "timeZone": "Europe/London",
+                "userTimeZone": "Asia/Shanghai",
                 "placeName": "南岸（本地演示）",
                 "startsAt": "2026-11-01T15:00:00Z", "endsAt": "2026-11-01T16:00:00Z",
                 "windowOpensAt": "2026-11-01T14:30:00Z", "windowClosesAt": "2026-11-01T17:00:00Z",

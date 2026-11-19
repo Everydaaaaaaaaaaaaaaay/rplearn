@@ -107,6 +107,7 @@ struct ContentMessagePayload: Codable {
     var sharedVoiceLeaseId: UUID? = nil
     var voiceReceiptVersion: Int? = nil
     var contextMemoryIds: [UUID]? = nil
+    var userTimeZone: String? = nil
     var deliveryOrigin: String? = nil
     var learningOrigin: LearningChatOrigin? = nil
     var audioAssetId: UUID? = nil

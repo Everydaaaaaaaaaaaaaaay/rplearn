@@ -11,6 +11,7 @@ public struct BackendAppointment: Codable, Sendable, Hashable, Identifiable {
     public let cityId: String
     public let cityName: String
     public let timeZone: String
+    public let userTimeZone: String?
     public let placeName: String
     public let startsAt: String
     public let endsAt: String
@@ -80,6 +81,7 @@ public struct BackendAppointmentTimelineEvent: Codable, Sendable, Hashable, Iden
     public let placeName: String
     public let startsAt: String
     public let timeZone: String
+    public let userTimeZone: String?
 }
 
 public struct BackendAppointmentList: Codable, Sendable, Hashable {

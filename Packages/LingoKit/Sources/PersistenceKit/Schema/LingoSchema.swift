@@ -250,6 +250,7 @@ extension LingoSchema {
         /// 口语点评（语音消息）。
         public var speechReviewJSON: String?
         public var learningOriginJSON: String?
+        public var userTimeZone: String?
         public var timelineEventsJSON: String?
         public var replyToMessageIDsJSON: String?
         /// 整句翻译缓存。

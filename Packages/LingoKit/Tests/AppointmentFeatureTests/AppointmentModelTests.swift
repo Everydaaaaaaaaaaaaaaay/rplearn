@@ -25,14 +25,15 @@ struct AppointmentModelTests {
 
     }
 
-    @Test("Beijing is primary, local time respects summer time and shows a different local date")
+    @Test("Appointment dates, timeline and entry windows use the user's timezone")
     func appointmentDisplayTimes() {
-        #expect(AppointmentDisplayTime.beijing("2026-11-01T15:00:00Z") == "Sun, 1 Nov 2026 · 23:00")
-        #expect(AppointmentDisplayTime.local("2026-11-01T15:00:00Z", city: "伦敦", timeZone: "Europe/London") == "伦敦 15:00")
-        #expect(AppointmentDisplayTime.local("2026-07-01T07:30:00.000Z", city: "伦敦", timeZone: "Europe/London") == "伦敦 8:30")
-        #expect(AppointmentDisplayTime.beijing("2026-12-31T17:00:00Z") == "Fri, 1 Jan 2027 · 01:00")
-        #expect(AppointmentDisplayTime.local("2026-12-31T17:00:00Z", city: "伦敦", timeZone: "Europe/London") == "伦敦 31 Dec 2026 17:00")
-        #expect(AppointmentDisplayTime.beijingWindow(opens: "2026-11-01T15:30:00Z", closes: "2026-11-01T18:00:00Z") == "Sun, 1 Nov 2026 · 23:30–2 Nov 2026 02:00")
+        let beijing = AppointmentDisplayTime.userZone("Asia/Shanghai")
+        let vancouver = AppointmentDisplayTime.userZone("America/Vancouver")
+        #expect(AppointmentDisplayTime.zoneLabel(beijing) == "北京时间")
+        #expect(AppointmentDisplayTime.scheduled("2026-12-31T17:00:00Z", zone: beijing) == "Fri, 1 Jan 2027 · 01:00")
+        #expect(AppointmentDisplayTime.scheduled("2026-12-31T17:00:00Z", zone: vancouver) == "Thu, 31 Dec 2026 · 09:00")
+        #expect(AppointmentDisplayTime.timeline("2026-12-31T17:00:00Z", zone: beijing)?.hasSuffix("01:00") == true)
+        #expect(AppointmentDisplayTime.window(opens: "2026-11-01T15:30:00Z", closes: "2026-11-01T18:00:00Z", zone: beijing) == "Sun, 1 Nov 2026 · 23:30–2 Nov 2026 02:00")
     }
 
     @Test("Lost responses retry the original command across model recreation without branching")

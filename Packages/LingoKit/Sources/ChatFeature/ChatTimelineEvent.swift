@@ -123,16 +123,9 @@ extension ChatTimelineEvent {
     }
 
     init?(_ event: BackendAppointmentTimelineEvent, name: String, action: (() -> Void)?) {
-        let time: String
-        if let date = AppointmentDisplayTime.date(event.startsAt), let zone = TimeZone(identifier: event.timeZone) {
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "zh_CN")
-            formatter.timeZone = zone
-            formatter.dateFormat = "M月d日 EEE HH:mm"
-            time = formatter.string(from: date)
-        } else {
-            time = ""
-        }
+        let zone = AppointmentDisplayTime.userZone(event.userTimeZone)
+        let time = AppointmentDisplayTime.timeline(event.startsAt, zone: zone)
+            .map { "\($0) \(AppointmentDisplayTime.zoneLabel(zone))" } ?? ""
         let text: String
         switch event.kind {
         case "confirmed": text = "和 \(name) 约好了\(time.isEmpty ? "" : " · " + time)"

@@ -244,6 +244,7 @@ extension ContentSyncStore {
         entity.translationZh = payload.translationZh
         entity.isInterrupted = payload.isInterrupted
         entity.learningOriginJSON = try payload.learningOrigin?.encodedJSON()
+        entity.userTimeZone = payload.userTimeZone
         if let events = payload.timelineEvents, !events.isEmpty {
             let remoteKinds = Set(events.map(\.kind))
             let localOnly = ChatMessageTimelineEvent.decode(entity.timelineEventsJSON).filter { !remoteKinds.contains($0.kind) }

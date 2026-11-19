@@ -48,11 +48,14 @@ struct HomeAppointmentEntrance: View {
                 }
                 VStack(alignment: .leading, spacing: 6) {
                     if let appointment {
+                        let zone = AppointmentDisplayTime.userZone(appointment.userTimeZone)
+                        let date = AppointmentDisplayTime.scheduled(appointment.startsAt, zone: zone)
+                        let zoneLabel = AppointmentDisplayTime.zoneLabel(zone)
                         Text(appointment.status == "in_progress" ? "继续赴约" : "赴约")
                             .font(.caption).foregroundStyle(Color.dsSceneTextTertiary)
                         Text(appointment.displayTitle(companionName: companion?.displayName ?? "旅伴"))
                             .font(.body.weight(.medium)).fixedSize(horizontal: false, vertical: true)
-                        Text("\(AppointmentDisplayTime.beijing(appointment.startsAt)) 北京时间 · \(appointment.displayCityName) \(appointment.placeName)")
+                        Text("\(date) \(zoneLabel) · \(appointment.displayCityName) \(appointment.placeName)")
                             .font(.caption).foregroundStyle(Color.dsSceneTextSecondary)
                             .fixedSize(horizontal: false, vertical: true)
                     } else {

@@ -254,9 +254,12 @@ private struct AppointmentCardView: View {
             .disabled(!canEnter || model.loading || model.submitting || model.offline || model.pending != nil)
             .accessibilityIdentifier("appointment.start")
             if model.detail != nil, model.offline || !canEnter {
+                let zone = AppointmentDisplayTime.userZone(appointment.userTimeZone)
+                let label = AppointmentDisplayTime.zoneLabel(zone)
+                let window = AppointmentDisplayTime.window(opens: appointment.windowOpensAt, closes: appointment.windowClosesAt, zone: zone)
                 Text(appointment.cityId != currentCityID
                      ? "切换到\(appointment.cityName)后赴约"
-                     : "可赴约时段（北京时间）\n\(AppointmentDisplayTime.beijingWindow(opens: appointment.windowOpensAt, closes: appointment.windowClosesAt))")
+                     : "可赴约时段（\(label)）\n\(window)")
                     .font(.footnote).foregroundStyle(AppointmentStyle.ink.opacity(0.65))
                     .accessibilityIdentifier("appointment.entryWindow")
             }

@@ -322,6 +322,7 @@ public actor ChatStore {
             createdAt: createdAt
         )
         message.learningOriginJSON = try learningOrigin?.encodedJSON()
+        if role == .user { message.userTimeZone = TimeZone.autoupdatingCurrent.identifier }
         message.conversation = conversation
         modelContext.insert(message)
         conversation.lastMessageAt = max(conversation.lastMessageAt, createdAt)
@@ -818,6 +819,7 @@ public actor ChatStore {
                     sharedVoiceLeaseId: sharedVoiceLeaseID,
                     voiceReceiptVersion: sharedVoiceLeaseID == nil ? nil : 1,
                     contextMemoryIds: contextMemoryIDs,
+                    userTimeZone: message.userTimeZone,
                     deliveryOrigin: deliveryOrigin,
                     learningOrigin: LearningChatOrigin.decode(json: message.learningOriginJSON),
                     audioAssetId: media?.isRemoteReady == true ? media?.assetID : nil,

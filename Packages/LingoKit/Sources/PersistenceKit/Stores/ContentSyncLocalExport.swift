@@ -93,6 +93,7 @@ extension ContentSyncStore {
                     parentID: parent.uuidString.lowercased(),
                     payloadJSON: try ContentMutationJournal.encode(
                         ContentMessagePayload(
+                            userTimeZone: entity.userTimeZone,
                             learningOrigin: LearningChatOrigin.decode(json: entity.learningOriginJSON),
                             audioAssetId: media?.isRemoteReady == true ? media?.assetID : nil,
                             audioDuration: entity.audioDuration,

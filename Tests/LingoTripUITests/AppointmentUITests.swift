@@ -358,6 +358,7 @@ final class AppointmentUITests: XCTestCase {
             .matching(NSPredicate(format: "label == %@", "未到赴约时段")).firstMatch
         XCTAssertTrue(waiting.waitForExistence(timeout: 8))
         XCTAssertFalse(waiting.isEnabled)
+        XCTAssertEqual(app.staticTexts["appointment.userTime"].label, "北京时间，Sun, 1 Nov 2026 · 23:00")
         let refresh = app.buttons["appointment.details.refresh"]
         XCTAssertTrue(refresh.waitForExistence(timeout: 8))
         XCTAssertLessThan(refresh.frame.midX, app.buttons["appointment.details.options"].frame.midX)
@@ -404,8 +405,7 @@ final class AppointmentUITests: XCTestCase {
         capture("appointment-photo-credits")
         app.buttons["返回约定"].tap()
         reveal(start)
-        XCTAssertEqual(app.staticTexts["appointment.beijingTime"].label, "北京时间，Sun, 1 Nov 2026 · 23:00")
-        XCTAssertEqual(app.staticTexts["appointment.localTime"].label, "伦敦 15:00")
+        XCTAssertEqual(app.staticTexts["appointment.userTime"].label, "北京时间，Sun, 1 Nov 2026 · 23:00")
         XCTAssertFalse(app.staticTexts["设备时间"].exists)
         XCTAssertTrue(start.isEnabled)
         XCTAssertGreaterThanOrEqual(start.frame.height, 44)

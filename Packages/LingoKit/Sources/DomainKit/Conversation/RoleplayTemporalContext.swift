@@ -45,6 +45,7 @@ enum RoleplayTemporalContext {
         在 \(regionID)，现在是 \(displayDate(date, timeZone: calendar.timeZone))，属于\(dayPeriod(hour))。
         用户设备时间是 \(displayDate(date, timeZone: userTimeZone))；这不能证明其实际所在位置。
         区分你的当地时间和用户的时间。询问用户的早晨、用餐或一天情况时，以用户设备时间为准。
+        和用户约时间或改期时，没注明时区的日期和时间按用户时区理解并确认。用户明确提及另一个时区时，换算到用户时区并保留同一个时刻，拿不准就问清楚。
         正午就是中午，不代表下午已经过去。不要回顾性询问用户尚未经历的时段。
         你通常的当地作息类型是 \(profile?.rhythm.rawValue ?? "daytime")。睡眠、工作、用餐和休闲应符合该作息和职业。
         在通常睡觉时段回复只是短暂例外，不代表你经常整夜工作或社交。
