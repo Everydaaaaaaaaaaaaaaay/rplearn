@@ -29,12 +29,15 @@
 | 同步、离线、冲突、墓碑 | 重试幂等；失败不丢 Outbox；回执身份匹配；坏回执恢复待发送；墓碑阻止旧数据复活 | `ContentSyncStoreTests`、`BackendContentSyncCoordinatorTests`；后端 `content`、`sync`；进程 E2E | 两台真实设备同时编辑、登出/强杀时仍在飞行的请求 |
 | 本地持久化与迁移 | 旧角色/消息/记忆迁移后内容和 ID 不变；失败保留原库 | `SchemaMigrationTests`、各 Store 测试 | 真实历史库版本、磁盘满、系统强杀；内存 Store 重开 ViewModel 不等于进程重启 |
 | 语音媒体 | 上传校验、授权下载、消息墓碑确认后删除、重试队列和账号隔离 | `VoiceMediaCoordinatorTests`、`VoiceMediaQueueStoreTests`、`object-store`；可选后端 `media` 集成 | 需要隔离 S3 服务验证端到端上传/下载；缺少服务时注明未测 |
-| 导出、删除账号、后台任务、运维 | 导出包含本人内容；删除撤销凭据并清关联；任务租约/重试可恢复；日志不泄露隐私 | 后端 `account`、`jobs`、`audit`、`infrastructure` 集成；`backend-process` E2E；迁移/日志单测 | 真实邮件、对象删除、Apple 撤销；线上备份恢复与告警演练 |
+| 导出、删除账号、后台任务、运维 | 导出包含本人内容；删除撤销凭据并清关联；任务租约/重试可恢复；日志不泄露隐私 | 后端 `account`、`jobs`、`audit`、`infrastructure` 集成；`backend-process` E2E；迁移/日志单测 | 真实邮件、对象删除、Apple 撤销；在独立环境演练备份恢复与告警 |
 
 客户端测试位于 `Packages/LingoKit/Tests`，UI 测试位于 `Tests/LingoTripUITests`。
 后端默认单测位于 `Backend/test`，数据库和进程测试分别位于 `integration`、`e2e`。
 
 ## 按需执行
+
+所有测试、演练和真实模型验收在本地或独立非生产环境执行。验收客户端与工具使用隔离的 API、
+数据和测试账号。生产发布仅核对整包切换结果与服务健康。
 
 1. **日常改动**：按矩阵选受到影响的测试。纯格式化/算法用单测；涉及落库与失败恢复时选流程测试。
    示例：`Scripts/test.sh -only-testing:LingoTripTests/ChatWorkflowTests`。

@@ -20,6 +20,16 @@ For assets, start with the nearest manifest or README.
 - PostgreSQL is authoritative; Redis is disposable. Provider secrets stay server-side.
 - Preserve user data and historical migrations. Never delete a database to fix a failure.
 
+## Production release boundary
+
+Standing owner rule (2026-11-19): never run tests, builds, temporary validation scripts,
+test-account provisioning, or live AI evaluations on production or against its APIs or data.
+Run verification locally or in a separate non-production environment. Cross-compile
+the complete release artifact locally for the production platform before uploading it.
+Production release work is limited to uploading the complete package and switching it
+through the supported deployment entry point, with its release health checks and rollback.
+Inspect service status, health, and logs read-only when diagnosing incidents.
+
 ## Verify and finish
 
 Choose checks for the changed behavior and risk; stop when evidence is sufficient.
@@ -36,13 +46,14 @@ A brief verification note in the commit or final reply is sufficient for small U
 Docs-only changes need diff/link/command checks, not an app build. Use Xcode-hosted
 Swift tests (`Scripts/test.sh -only-testing:...`, or the focused scripts in the development
 guide); do not run `swift build` inside `Packages/LingoKit`. Local unit tests need no
-repeated approval. Database tests require an isolated environment; live AI evaluations,
-production probes and deployments require the corresponding task authorization.
+repeated approval. Database tests require an isolated environment. Live AI evaluations
+require task authorization and an isolated non-production backend.
 
-Standing owner authorization (2026-09-11): after completing backend changes and
-relevant checks, deploy them to production and verify the affected online behavior
-without asking again, unless the user explicitly defers deployment. Preserve data
-and rollback readiness. Backend deployment does not publish an iOS App Store build.
+Standing owner authorization (2026-09-11, scope updated 2026-11-19): after completing
+backend changes and relevant non-production checks, switch the complete package in
+production without asking again, unless the user explicitly defers deployment.
+Confirm the activated version and release health. Preserve data and rollback readiness.
+Publish iOS App Store builds through the separate iOS release process.
 
 For new or changed photographic assets, use `docs/activity-scene-visual-acceptance.md`
 and keep a per-version asset record. For small UI changes over existing photographs,

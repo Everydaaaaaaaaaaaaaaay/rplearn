@@ -90,7 +90,12 @@ cd /opt/lingotrip/backend
 
 ## 发布
 
-发布包在开发机编译，只包含 `dist`、当前迁移基线和生产依赖清单：
+自 2026-11-19 起，生产环境只接收完整发布包并通过正式入口切换版本。测试、验收、演练和临时
+探针在本地或独立非生产环境执行，包括需要真实模型的用例。生产故障排查使用只读状态、
+健康检查与日志。旧发布记录中的线上验收和单项导入步骤按这条规则处理。
+
+开发机按生产系统与架构交叉编译、构建和打包，准备可直接运行的发布产物和所需预构建依赖。
+已有与版本匹配的生产依赖缓存时，可用现有打包脚本生成版本包并上传。
 
 ```bash
 cd Backend
@@ -102,17 +107,15 @@ ssh root@<server> \
 
 线上运维脚本安装在 `/opt/lingotrip/ops/native-server`，与发布目录分开；旧 `/opt/lingotrip/backend` 链接可能指向已清理的历史目录，不能作为发布入口。发布包在独立临时目录编译，不携带已删除源码的旧编译产物或 macOS 资源分叉文件。
 
-部署脚本会安装内容寻址的生产依赖、执行数据库迁移、收紧运行时权限、原子切换
+正式发布入口要求已有匹配的预构建生产依赖，随后执行包内数据库迁移、收紧运行时权限、原子切换
 `/opt/lingotrip/current`，然后重启 API 和 Worker 并检查 readiness。应用启动失败会切回
 上一个发布目录；数据库结构不自动回滚。
 
 默认保留已有发布目录，不在切换后集中清理旧文件。只有另行确认回滚保留范围后，才可设置
-`DEPLOY_PRUNE_RELEASES=1` 恢复旧的保留最近五个目录行为。故障恢复发布使用
-`DEPLOY_REQUIRE_CACHED_DEPENDENCIES=1`：缓存缺失时停止，不临时在线安装依赖。
-生产更新统一经过`maintenance.sh`，直接调用`deploy.sh`也会转入该入口。生产题库CLI检测实际
-cgroup与内存限制，普通SSH直接运行会拒绝。入口使用跨发布/导入的统一锁和固定systemd单元名，
-即使终端断开也不会解除资源边界。已有健康版本是更新前提；没有可验证回滚版本时拒绝切换，
-首次建站需先单独完成底版初始化。
+`DEPLOY_PRUNE_RELEASES=1` 恢复旧的保留最近五个目录行为。正式发布入口固定启用
+`DEPLOY_REQUIRE_CACHED_DEPENDENCIES=1`。缺少匹配依赖时停止切换，在本地补齐目标平台产物。
+生产更新统一经过 `maintenance.sh deploy`，使用发布锁和固定 systemd 单元。切换前要求当前版本健康
+且可验证回滚。首次建站需先单独完成底版初始化。
 
 维护门槛：可用内存至少384MiB、空闲磁盘至少512MiB、readiness正常，且没有持续内存/I/O阻塞。
 维护任务上限256MiB、Node堆128MiB、swap为0、CPU50%、磁盘读写各2MB/s（2,000,000字节/秒）、总时限10分钟。
@@ -120,16 +123,7 @@ cgroup与内存限制，普通SSH直接运行会拒绝。入口使用跨发布/�
 超时或OOM通过`ExecStopPost`恢复先前程序版本，不回退用户数据库。恢复后还须检查公网健康。
 正常更新不改变内核参数，不为通过门槛临时扩大配额或关闭业务。
 
-```bash
-sudo /opt/lingotrip/ops/native-server/maintenance.sh catalog-validate
-sudo /opt/lingotrip/ops/native-server/maintenance.sh bank-validate
-sudo /opt/lingotrip/ops/native-server/maintenance.sh catalog-publish <完整目录哈希>
-sudo /opt/lingotrip/ops/native-server/maintenance.sh bank-publish <完整题库哈希>
-```
-
-正式目录仍逐个校验所有媒体字节和审核记录，但不在返回对象中保留所有媒体Buffer；上传前再次
-读取和验证，防止校验后替换。目录哈希和原子事务保持不变。CLI把阶段、耗时、RSS写入stderr，
-stdout仍为原JSON结果；发布事务有5秒锁等待、30秒单语句及事务空闲超时。
+目录和题库的校验、试导入及验收也在独立环境完成。新内容随对应的完整发布包上线切换。
 
 `lingotrip-resource-sampler.timer`每分钟采集`/proc`资源信息与主要进程的RSS、CPU和磁盘增量，
 不采集参数、环境变量或业务内容。文件位于`/var/log/lingotrip/resources.jsonl`，每份4MiB、
