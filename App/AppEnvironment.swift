@@ -1,6 +1,7 @@
 import AVFoundation
 import BackendKit
 import BillingKit
+import ChatFeature
 import CoreKit
 import DesignSystem
 import DictKit
@@ -399,6 +400,9 @@ final class AppEnvironment {
             }
             if ProcessInfo.processInfo.environment["UI_TEST_CHAT_SCROLL_HISTORY"] == "1" {
                 lines = (1...30).map { (.assistant, "River walk note \($0). The wind picked up beside the bridge.") } + lines
+            }
+            if ProcessInfo.processInfo.environment["UI_TEST_CHAT_TIMELINE_EVENTS"] == "1" {
+                lines = ChatTimelineEventPreview.lines
             }
             for (index, line) in lines.enumerated() {
                 _ = try await account.chatStore.appendMessage(conversationID: conversation.id,

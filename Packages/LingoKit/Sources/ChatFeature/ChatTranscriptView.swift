@@ -90,6 +90,11 @@ struct ChatTranscriptView: View {
                                 value: highlightedMessageID
                             )
                             .padding(.horizontal, chatMessageInset)
+                        #if DEBUG
+                        if deps.showsTimelineEventPreview, let event = ChatTimelineEventPreview.event(after: message) {
+                            event
+                        }
+                        #endif
                     }
                     if viewModel.streamingText != nil {
                         MessageBubble(

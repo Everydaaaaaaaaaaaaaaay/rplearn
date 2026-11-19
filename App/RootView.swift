@@ -1467,6 +1467,9 @@ struct RootView: View {
             && bypassesAuthenticationForUITesting
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1"
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_MOTION"] == "1"
+        dependencies.showsTimelineEventPreview = bypassesAuthenticationForUITesting
+            && ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1"
+            && ProcessInfo.processInfo.environment["UI_TEST_CHAT_TIMELINE_EVENTS"] == "1"
         #endif
         return dependencies
     }
