@@ -33,6 +33,24 @@ final class AppointmentUITests: XCTestCase {
         XCTAssertTrue(app.buttons["home.appointments"].waitForExistence(timeout: 5))
     }
 
+    func testRefreshBeforeEntryWindowDoesNotStartAppointment() {
+        launch("before-window")
+        let refresh = app.buttons.matching(identifier: "appointment.start")
+            .matching(NSPredicate(format: "label == %@", "刷新赴约状态")).firstMatch
+        XCTAssertTrue(refresh.waitForExistence(timeout: 8))
+        let window = app.staticTexts["appointment.entryWindow"]
+        reveal(window)
+        XCTAssertTrue(window.label.contains("北京时间"))
+
+        refresh.tap()
+        let start = app.buttons.matching(identifier: "appointment.start")
+            .matching(NSPredicate(format: "label == %@", "去赴约")).firstMatch
+        XCTAssertTrue(start.waitForExistence(timeout: 8))
+        XCTAssertFalse(app.buttons["appointment.next"].exists)
+        start.tap()
+        XCTAssertTrue(app.buttons["appointment.next"].waitForExistence(timeout: 8))
+    }
+
     func testConfirmedCustomBilingualPathPauseFinishAndReadOnlySummary() throws {
         launch("list")
         let start = app.buttons["appointment.start"]

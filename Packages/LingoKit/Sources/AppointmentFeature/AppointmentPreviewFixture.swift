@@ -40,7 +40,7 @@ actor AppointmentPreviewService: AppointmentServing {
                 "windowOpensAt": "2026-11-01T14:30:00Z", "windowClosesAt": "2026-11-01T17:00:00Z",
                 "status": completed ? "completed" : active ? "in_progress" : "confirmed", "revision": active || completed ? 1 : 0
             ],
-            "serverNow": "2026-11-01T15:00:00Z",
+            "serverNow": scenario == "before-window" ? "2026-11-01T14:29:59Z" : "2026-11-01T15:00:00Z",
             "session": NSNull(), "summary": NSNull()
         ]
         if active || completed {
@@ -62,7 +62,9 @@ actor AppointmentPreviewService: AppointmentServing {
 
     func appointment(_ id: UUID) async throws -> BackendAppointmentDetail {
         if scenario == "offline" && failed { throw BackendClientError.transport("Local fixture offline") }
-        return try decoded()
+        let detail = try decoded()
+        if scenario == "before-window" { value["serverNow"] = "2026-11-01T14:30:00Z" }
+        return detail
     }
 
     func appointmentCommand(_ id: UUID, action: BackendAppointmentAction, request: BackendAppointmentCommand) async throws -> BackendAppointmentDetail {

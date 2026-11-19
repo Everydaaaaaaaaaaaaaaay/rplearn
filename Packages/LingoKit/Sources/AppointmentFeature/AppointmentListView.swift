@@ -192,11 +192,13 @@ private struct AppointmentCardView: View {
                 .buttonStyle(AppointmentPrimaryButtonStyle()).disabled(model.detail == nil)
                 .accessibilityIdentifier("appointment.resume")
         } else if appointment.status == "confirmed" {
-            Button(model.submitting ? "正在开始…" : "去赴约") {
+            let canEnter = model.detail.map { AppointmentTime.entryAvailable($0, cityID: currentCityID) } ?? false
+            let checksWindow = !model.offline && model.detail != nil && appointment.cityId == currentCityID && !canEnter
+            Button {
                 Task {
                     // Refresh the server clock and status when entering from a long-lived list.
                     await model.load()
-                    guard let detail = model.detail, !model.offline else { return }
+                    guard !checksWindow, let detail = model.detail, !model.offline else { return }
                     if detail.appointment.status == "completed" || detail.appointment.status == "finishing" {
                         onOpen(model, .summary)
                     } else if detail.session != nil {
@@ -206,15 +208,24 @@ private struct AppointmentCardView: View {
                         if model.detail?.session != nil { onOpen(model, .reader) }
                     }
                 }
+            } label: {
+                if model.submitting {
+                    Text("正在开始…")
+                } else if model.loading {
+                    Text("正在同步…")
+                } else {
+                    Text(checksWindow ? "刷新赴约状态" : "去赴约")
+                }
             }
             .buttonStyle(AppointmentPrimaryButtonStyle())
             .disabled(model.loading || model.submitting || model.offline || model.detail == nil || model.pending != nil || appointment.cityId != currentCityID)
             .accessibilityIdentifier("appointment.start")
-            if let detail = model.detail, !AppointmentTime.entryAvailable(detail, cityID: currentCityID) {
+            if model.detail != nil, model.offline || !canEnter {
                 Text(appointment.cityId != currentCityID
                      ? "切换到\(appointment.cityName)后赴约"
-                     : "可赴约时段 · \(AppointmentDisplayTime.beijingWindow(opens: appointment.windowOpensAt, closes: appointment.windowClosesAt))")
+                     : "可赴约时段（北京时间）\n\(AppointmentDisplayTime.beijingWindow(opens: appointment.windowOpensAt, closes: appointment.windowClosesAt))")
                     .font(.footnote).foregroundStyle(AppointmentStyle.ink.opacity(0.65))
+                    .accessibilityIdentifier("appointment.entryWindow")
             }
         } else {
             Button("回聊天商量下次") { onChat(appointment.characterId) }
@@ -230,7 +241,7 @@ struct AppointmentErrorView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(message).font(.subheadline).fixedSize(horizontal: false, vertical: true)
-            Button(loading ? "正在接上…" : "重试") { retry() }.disabled(loading).frame(minHeight: 44).accessibilityIdentifier("appointment.retry")
+            Button(loading ? "正在重试…" : "重试") { retry() }.disabled(loading).frame(minHeight: 44).accessibilityIdentifier("appointment.retry")
         }.accessibilityElement(children: .contain)
     }
 }

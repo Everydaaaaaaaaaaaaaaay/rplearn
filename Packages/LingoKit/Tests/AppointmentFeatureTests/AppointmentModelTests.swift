@@ -136,6 +136,39 @@ struct AppointmentModelTests {
         #expect(commands == 0)
     }
 
+    @Test("A confirmed appointment refresh distinguishes network and sign-in failures and recovers on retry")
+    func refreshConfirmedAppointment() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let id = AppointmentListView.previewAppointmentID
+        let service = OfflineService(scenario: "confirmed")
+        let cache = AppointmentCache(namespace: "refresh", directory: directory)
+        var cached = try await service.appointment(id)
+        cached.serverNow = "2026-11-01T14:29:59Z"
+        try await cache.saveDetail(cached)
+
+        let model = AppointmentModel(id: id, service: service, cache: cache)
+        await service.disconnect()
+        await model.load()
+        #expect(model.offline)
+        #expect(model.detail == cached)
+        #expect(model.error?.contains("无法连接赴约服务") == true)
+        #expect(model.error?.contains("离线回看") == false)
+
+        await service.fail(with: .signedOut)
+        await model.load()
+        #expect(model.detail == cached)
+        #expect(model.error?.contains("重新登录") == true)
+
+        await service.fail(with: nil)
+        await model.load()
+        #expect(model.error == nil)
+        #expect(!model.offline)
+        let fresh = try #require(model.detail)
+        #expect(fresh.serverNow != cached.serverNow)
+        #expect(AppointmentTime.entryAvailable(fresh, cityID: "london"))
+    }
+
     @Test("A frozen idempotent receipt cannot replace a newer accepted path after restart")
     func olderReceiptAfterNewerPath() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -205,13 +238,15 @@ private actor ConcurrentChoiceService: AppointmentServing {
 }
 
 private actor OfflineService: AppointmentServing {
-    let fixture = AppointmentPreviewService(scenario: "active")
-    private var offline = false
+    let fixture: AppointmentPreviewService
+    private var failure: BackendClientError?
     var commands = 0
-    func disconnect() { offline = true }
+    init(scenario: String = "active") { fixture = AppointmentPreviewService(scenario: scenario) }
+    func disconnect() { failure = .transport("Offline fixture") }
+    func fail(with error: BackendClientError?) { failure = error }
     func appointments() async throws -> BackendAppointmentList { try await fixture.appointments() }
     func appointment(_ id: UUID) async throws -> BackendAppointmentDetail {
-        if offline { throw BackendClientError.transport("Offline fixture") }
+        if let failure { throw failure }
         return try await fixture.appointment(id)
     }
     func appointmentCommand(_ id: UUID, action: BackendAppointmentAction, request: BackendAppointmentCommand) async throws -> BackendAppointmentDetail {

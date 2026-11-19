@@ -54,9 +54,30 @@ final class AppointmentModel {
             normalizeCursor()
             await settleIfPending()
         } catch {
+            guard !Task.isCancelled else { return }
             offline = true
-            self.error = detail == nil ? "这次约定暂时无法载入，请重试。" : "当前为离线回看。联网刷新后才能继续回应。"
+            self.error = refreshFailureMessage(error)
             normalizeCursor()
+        }
+    }
+
+    private func refreshFailureMessage(_ failure: Error) -> String {
+        switch failure as? BackendClientError {
+        case .transport:
+            let guidance = "暂时无法连接赴约服务。请检查网络或代理设置后重试。"
+            if detail?.session != nil { return guidance + "已保存的经历仍可回看。" }
+            if detail != nil { return guidance + "当前显示上次同步的约定。" }
+            return guidance
+        case .signedOut, .api(_, _, _, 401):
+            return "登录已失效，请重新登录后同步这次约定。"
+        case .api("APPOINTMENT_NOT_FOUND", _, _, _):
+            return "这次约定已无法读取，请返回约定列表刷新。"
+        case .invalidResponse:
+            return "暂时无法读取赴约服务返回的资料，请重试。"
+        case .api:
+            return "赴约服务暂时无法同步这次约定，请重试。"
+        case nil:
+            return "本机暂时无法读取或保存这次约定，请重试。"
         }
     }
 
