@@ -56,9 +56,13 @@ final class AppointmentUITests: XCTestCase {
 
     func testRefreshBeforeEntryWindowDoesNotStartAppointment() {
         launch("before-window")
-        let refresh = app.buttons.matching(identifier: "appointment.start")
-            .matching(NSPredicate(format: "label == %@", "刷新赴约状态")).firstMatch
+        let waiting = app.buttons.matching(identifier: "appointment.start")
+            .matching(NSPredicate(format: "label == %@", "未到赴约时段")).firstMatch
+        XCTAssertTrue(waiting.waitForExistence(timeout: 8))
+        XCTAssertFalse(waiting.isEnabled)
+        let refresh = app.buttons["appointment.details.refresh"]
         XCTAssertTrue(refresh.waitForExistence(timeout: 8))
+        XCTAssertLessThan(refresh.frame.midX, app.buttons["appointment.details.options"].frame.midX)
         let window = app.staticTexts["appointment.entryWindow"]
         reveal(window)
         XCTAssertTrue(window.label.contains("北京时间"))
@@ -67,6 +71,7 @@ final class AppointmentUITests: XCTestCase {
         let start = app.buttons.matching(identifier: "appointment.start")
             .matching(NSPredicate(format: "label == %@", "去赴约")).firstMatch
         XCTAssertTrue(start.waitForExistence(timeout: 8))
+        XCTAssertTrue(start.isEnabled)
         XCTAssertFalse(app.buttons["appointment.next"].exists)
         start.tap()
         XCTAssertTrue(app.buttons["appointment.next"].waitForExistence(timeout: 8))

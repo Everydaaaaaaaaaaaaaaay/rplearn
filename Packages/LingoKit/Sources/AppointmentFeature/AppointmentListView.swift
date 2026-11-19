@@ -144,10 +144,11 @@ private struct AppointmentCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            HStack {
+            HStack(spacing: 0) {
                 Text(AppointmentTime.status(appointment)).font(.caption)
                     .foregroundStyle(AppointmentStyle.ink.opacity(0.6))
                 Spacer()
+                refreshButton
                 options
             }
             AppointmentIdentityView(appointment: appointment, name: characterName(appointment.characterId))
@@ -174,6 +175,26 @@ private struct AppointmentCardView: View {
             Button("取消约定", role: .destructive) { Task { await model.submit(action: .cancel) } }
             Button("保留约定", role: .cancel) { }
         } message: { Text("取消不会扣好感，之后可以在聊天里重新约定。") }
+    }
+
+    private var refreshButton: some View {
+        Button {
+            Task { await model.load(settleReview: false) }
+        } label: {
+            Group {
+                if model.loading {
+                    ProgressView().controlSize(.small)
+                } else {
+                    Image(systemName: "arrow.clockwise").font(.system(size: 16, weight: .medium))
+                }
+            }
+            .frame(width: 44, height: 44)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .disabled(model.loading || model.submitting)
+        .accessibilityLabel("刷新约定")
+        .accessibilityIdentifier("appointment.details.refresh")
     }
 
     private var options: some View {
@@ -203,12 +224,16 @@ private struct AppointmentCardView: View {
                 .accessibilityIdentifier("appointment.resume")
         } else if appointment.status == "confirmed" {
             let canEnter = model.detail.map { AppointmentTime.entryAvailable($0, cityID: currentCityID) } ?? false
-            let checksWindow = !model.offline && model.detail != nil && appointment.cityId == currentCityID && !canEnter
+            let waitingForWindow = !canEnter && !model.offline && model.detail.map { detail in
+                guard let now = AppointmentDisplayTime.date(detail.serverNow),
+                      let opens = AppointmentDisplayTime.date(appointment.windowOpensAt) else { return false }
+                return now < opens
+            } == true
             Button {
                 Task {
                     // Refresh the server clock and status when entering from a long-lived list.
                     await model.load()
-                    guard !checksWindow, let detail = model.detail, !model.offline else { return }
+                    guard let detail = model.detail, !model.offline else { return }
                     if detail.appointment.status == "completed" || detail.appointment.status == "finishing" {
                         onOpen(model, .summary)
                     } else if detail.session != nil {
@@ -221,14 +246,12 @@ private struct AppointmentCardView: View {
             } label: {
                 if model.submitting {
                     Text("正在开始…")
-                } else if model.loading {
-                    Text("正在同步…")
                 } else {
-                    Text(checksWindow ? "刷新赴约状态" : "去赴约")
+                    Text(waitingForWindow ? "未到赴约时段" : "去赴约")
                 }
             }
             .buttonStyle(AppointmentPrimaryButtonStyle())
-            .disabled(model.loading || model.submitting || model.offline || model.detail == nil || model.pending != nil || appointment.cityId != currentCityID)
+            .disabled(!canEnter || model.loading || model.submitting || model.offline || model.pending != nil)
             .accessibilityIdentifier("appointment.start")
             if model.detail != nil, model.offline || !canEnter {
                 Text(appointment.cityId != currentCityID
