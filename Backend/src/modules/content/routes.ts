@@ -189,6 +189,27 @@ const conversationPayload = z
 
 const messagePayload = z
   .object({
+    timelineEvents: z
+      .array(
+        z
+          .object({
+            kind: z.enum(["memory", "relationship", "mood"]),
+            state: z
+              .string()
+              .regex(/^[a-zA-Z]+$/)
+              .max(40),
+            secondary: z
+              .string()
+              .regex(/^[a-zA-Z]+$/)
+              .max(40)
+              .optional(),
+            strength: z.number().int().min(1).max(3).optional(),
+            delta: z.number().min(-150).max(150).optional(),
+          })
+          .strict(),
+      )
+      .max(3)
+      .optional(),
     sharedPredecessorId: uuid.nullable().optional(),
     sharedVoiceLeaseId: uuid.nullable().optional(),
     voiceReceiptVersion: z.literal(1).nullable().optional(),
@@ -244,27 +265,32 @@ const favoritePayload = z
   })
   .strict();
 
-const memoryPayload = z.preprocess((input) => {
-  if (input === null || typeof input !== "object" || Array.isArray(input)) return input;
-  const legacy = input as Record<string, unknown>;
-  if (legacy.source !== "appointment") return input;
-  // Early server-written appointment memories used values outside the public sync contract.
-  // Normalize only those exact legacy sentinels; retain content, provenance, and all valid values.
-  return {
-    ...legacy,
-    importance: legacy.importance === 7 ? 5 : legacy.importance,
-    sourceUpToIndex: legacy.sourceUpToIndex === -1 ? 0 : legacy.sourceUpToIndex,
-  };
-}, z.object({
-    content: z.string().trim().min(1).max(4_000),
-    createdAt: isoDate,
-    importance: z.number().int().min(1).max(5),
-    schemaVersion: z.union([z.literal(1), z.literal(2)]),
-    source: z.enum(["chat", "story", "activity", "appointment"]).optional(),
-    sourceUpToIndex: z.number().int().min(0),
-    tier: z.enum(["short", "mid", "long"]),
-  })
-  .strict());
+const memoryPayload = z.preprocess(
+  (input) => {
+    if (input === null || typeof input !== "object" || Array.isArray(input))
+      return input;
+    const legacy = input as Record<string, unknown>;
+    if (legacy.source !== "appointment") return input;
+    // Early server-written appointment memories used values outside the public sync contract.
+    // Normalize only those exact legacy sentinels; retain content, provenance, and all valid values.
+    return {
+      ...legacy,
+      importance: legacy.importance === 7 ? 5 : legacy.importance,
+      sourceUpToIndex: legacy.sourceUpToIndex === -1 ? 0 : legacy.sourceUpToIndex,
+    };
+  },
+  z
+    .object({
+      content: z.string().trim().min(1).max(4_000),
+      createdAt: isoDate,
+      importance: z.number().int().min(1).max(5),
+      schemaVersion: z.union([z.literal(1), z.literal(2)]),
+      source: z.enum(["chat", "story", "activity", "appointment"]).optional(),
+      sourceUpToIndex: z.number().int().min(0),
+      tier: z.enum(["short", "mid", "long"]),
+    })
+    .strict(),
+);
 
 const storyProgressPayload = z
   .object({

@@ -17,6 +17,7 @@ import type {
   AppointmentSession,
   AppointmentSettlementWriter,
   AppointmentSummary,
+  AppointmentTimelineEvent,
 } from "./contracts.js";
 import {
   appointmentError,
@@ -56,13 +57,10 @@ export class AppointmentRepository {
   static async chatContext(sql: TransactionSql, userId: string, characterId: string) {
     const rows = await sql<Row[]>`select snapshot,summary from app.appointments
       where user_id=${userId} and character_id=${characterId} order by created_at desc limit 20`;
+    const now = new Date();
     return rows.map(({ snapshot, summary }) => ({
-      ...snapshot,
-      status:
-        snapshot.status === "confirmed" &&
-        Date.parse(snapshot.windowClosesAt) < Date.now()
-          ? "expired"
-          : snapshot.status,
+      ...narrativeSnapshot(snapshot),
+      status: windowExpired(snapshot, now) ? "expired" : snapshot.status,
       ...(snapshot.status === "completed" && summary
         ? { memories: summary.memories }
         : {}),
@@ -78,18 +76,20 @@ export class AppointmentRepository {
     if (!row) appointmentError("APPOINTMENT_NOT_FOUND", "找不到这次约定。", 404);
     return row;
   }
-  private detailRow(row: Row): AppointmentDetail {
-    const appointment = { ...row.snapshot };
-    if (
-      appointment.status === "confirmed" &&
-      this.now().getTime() > Date.parse(appointment.windowClosesAt)
-    )
-      appointment.status = "expired";
+  private detailRow(row: Row, now = this.now()): AppointmentDetail {
+    const appointment = windowExpired(row.snapshot, now)
+      ? appendTimelineEvent(
+          { ...row.snapshot, status: "expired" },
+          "expired",
+          row.conversation_id,
+          new Date(row.snapshot.windowClosesAt).toISOString(),
+        )
+      : row.snapshot;
     return {
       appointment,
       session: row.session,
       summary: row.summary,
-      serverNow: this.now().toISOString(),
+      serverNow: now.toISOString(),
     };
   }
   private async projectDetail(
@@ -110,9 +110,10 @@ export class AppointmentRepository {
     const rows = await this.database.sql<
       Row[]
     >`select snapshot,session,summary,conversation_id,evidence from app.appointments where user_id=${userId} order by created_at desc limit 200`;
+    const now = this.now();
     return {
-      appointments: rows.map((r) => this.detailRow(r).appointment),
-      serverNow: this.now().toISOString(),
+      appointments: rows.map((r) => this.detailRow(r, now).appointment),
+      serverNow: now.toISOString(),
     };
   }
   async detail(userId: string, id: string) {
@@ -152,9 +153,9 @@ export class AppointmentRepository {
     const operationId = stableId(
       `detect:${userId}:${input.characterId}:${input.conversationId}:${digest}`,
     );
-    const existing = (await this.list(userId)).appointments.filter(
-      (a) => a.characterId === input.characterId,
-    );
+    const existing = (await this.list(userId)).appointments
+      .filter((a) => a.characterId === input.characterId)
+      .map(narrativeSnapshot);
     const token = randomUUID();
     const prepared = await this.database.sql.begin(async (sql) => {
       await this.lock(sql, userId, operationId);
@@ -262,11 +263,14 @@ export class AppointmentRepository {
         const [previous] =
           await sql`select id from app.appointments where user_id=${userId} and character_id=${input.characterId} and evidence_hash=${evidenceHash}`;
         if (previous) return;
+        const now = this.now();
+        let replaced: Appointment | undefined;
         if (detected.replacesAppointmentId) {
           const old = await this.saved(sql, userId, detected.replacesAppointmentId);
           if (
             old.snapshot.characterId !== input.characterId ||
-            old.snapshot.status !== "confirmed"
+            old.snapshot.status !== "confirmed" ||
+            windowExpired(old.snapshot, now)
           )
             appointmentError(
               "APPOINTMENT_RESCHEDULE_CONFLICT",
@@ -279,6 +283,7 @@ export class AppointmentRepository {
               "改期需要双方新的确认消息。",
               422,
             );
+          replaced = old.snapshot;
           const cancelled = {
             ...old.snapshot,
             status: "cancelled",
@@ -286,7 +291,7 @@ export class AppointmentRepository {
           };
           await sql`update app.appointments set snapshot=${json(cancelled)}::jsonb,updated_at=now() where id=${old.snapshot.id}`;
         }
-        const appointment: Appointment = {
+        let appointment: Appointment = {
           id: randomUUID(),
           characterId: input.characterId,
           title: detected.title,
@@ -301,6 +306,15 @@ export class AppointmentRepository {
           status: "confirmed",
           revision: 0,
         };
+        const kind = replaced ? replacementKind(replaced, appointment) : "confirmed";
+        if (kind)
+          appointment = appendTimelineEvent(
+            appointment,
+            kind,
+            input.conversationId,
+            now.toISOString(),
+            latestEvidenceMessage(evidence)?.id,
+          );
         await sql`insert into app.appointments(id,user_id,character_id,conversation_id,evidence_hash,evidence,snapshot) values(${appointment.id},${userId},${input.characterId},${input.conversationId},${evidenceHash},${json(evidence)}::jsonb,${json(appointment)}::jsonb)`;
       });
       await this.database
@@ -357,13 +371,19 @@ export class AppointmentRepository {
           "另一个设备已更新故事，请先刷新。",
         );
       if (kind === "cancel") {
-        if (row.snapshot.status !== "confirmed")
+        const now = this.now();
+        if (row.snapshot.status !== "confirmed" || windowExpired(row.snapshot, now))
           appointmentError("APPOINTMENT_CLOSED", "约定已结束。");
-        row.snapshot = {
-          ...row.snapshot,
-          status: "cancelled",
-          revision: row.snapshot.revision + 1,
-        };
+        row.snapshot = appendTimelineEvent(
+          {
+            ...row.snapshot,
+            status: "cancelled",
+            revision: row.snapshot.revision + 1,
+          },
+          "cancelled",
+          row.conversation_id,
+          now.toISOString(),
+        );
         await sql`update app.appointment_operations set status='failed',lease_token=null,lease_until=null where appointment_id=${id} and status='running'`;
         await this.save(sql, userId, row);
         const response = this.detailRow(row);
@@ -391,7 +411,7 @@ export class AppointmentRepository {
       let context: AppointmentGenerationContext = previous?.context ?? {
         userId,
         operationId: input.commandId,
-        appointment: row.snapshot,
+        appointment: narrativeSnapshot(row.snapshot),
         character: await this.context.character(sql, userId, row.snapshot.characterId),
         session,
         action: kind === "choice" ? resolveAction(session, input) : null,
@@ -440,6 +460,7 @@ export class AppointmentRepository {
           id: stableId(`block:${id}:${input.commandId}`),
           sequence: session.blocks.length,
         };
+        const occurredAt = this.now().toISOString();
         if (prepared.context.action) {
           const previousBlock = session.blocks.at(-1);
           if (!previousBlock)
@@ -450,7 +471,7 @@ export class AppointmentRepository {
             input: prepared.context.action.input,
             custom: prepared.context.action.custom,
             outcome: draft.outcome,
-            createdAt: this.now().toISOString(),
+            createdAt: occurredAt,
           });
         }
         session.blocks.push(block);
@@ -460,13 +481,27 @@ export class AppointmentRepository {
           status: block.ending ? "completed" : "in_progress",
           revision: row.snapshot.revision + 1,
         };
-        if (block.ending)
+        if (kind === "start")
+          row.snapshot = appendTimelineEvent(
+            row.snapshot,
+            "started",
+            row.conversation_id,
+            occurredAt,
+          );
+        if (block.ending) {
+          row.snapshot = appendTimelineEvent(
+            row.snapshot,
+            "completed",
+            row.conversation_id,
+            occurredAt,
+          );
           row.summary = {
             title: row.snapshot.title,
             reflection: "正在根据已发生的经历整理总结。",
             affinity: { status: "pending", reason: "关系审阅与结算尚未完成。" },
             memories: [],
           };
+        }
         await this.save(sql, userId, row);
         const response = this.detailRow(row);
         await sql`update app.appointment_operations set status='completed',response=${json(response)}::jsonb,lease_until=null where user_id=${userId} and command_id=${input.commandId} and lease_token=${token}`;
@@ -524,7 +559,7 @@ export class AppointmentRepository {
       return {
         userId,
         operationId,
-        appointment: row.snapshot,
+        appointment: narrativeSnapshot(row.snapshot),
         session: row.session,
         character: await this.context.character(sql, userId, row.snapshot.characterId),
         action: null,
@@ -716,6 +751,70 @@ export class AppointmentRepository {
     });
   }
 }
+function narrativeSnapshot(appointment: Appointment) {
+  const snapshot = { ...appointment };
+  delete snapshot.timelineEvents;
+  return snapshot;
+}
+
+function windowExpired(appointment: Appointment, now: Date) {
+  return (
+    appointment.status === "confirmed" &&
+    now.getTime() > Date.parse(appointment.windowClosesAt)
+  );
+}
+
+function latestEvidenceMessage(evidence: AppointmentMessage[]) {
+  const timestamp = (message: AppointmentMessage) =>
+    Date.parse(message.serverCreatedAt ?? message.createdAt);
+  return evidence.reduce<AppointmentMessage | undefined>(
+    (latest, message) =>
+      !latest || timestamp(message) >= timestamp(latest) ? message : latest,
+    undefined,
+  );
+}
+
+function replacementKind(previous: Appointment, replacement: Appointment) {
+  const timeChanged =
+    Date.parse(previous.startsAt) !== Date.parse(replacement.startsAt) ||
+    Date.parse(previous.endsAt) !== Date.parse(replacement.endsAt) ||
+    previous.timeZone !== replacement.timeZone;
+  const normalizePlace = (place: string) =>
+    place.trim().replace(/\s+/g, " ").toLowerCase();
+  const placeChanged =
+    previous.cityId !== replacement.cityId ||
+    normalizePlace(previous.placeName) !== normalizePlace(replacement.placeName);
+  if (timeChanged && placeChanged) return "rescheduledAndRelocated";
+  if (timeChanged) return "rescheduled";
+  if (placeChanged) return "relocated";
+  return undefined;
+}
+
+function appendTimelineEvent(
+  appointment: Appointment,
+  kind: AppointmentTimelineEvent["kind"],
+  conversationId: string,
+  occurredAt: string,
+  messageId?: string,
+): Appointment {
+  const { id, title, placeName, startsAt, timeZone } = appointment;
+  const event: AppointmentTimelineEvent = {
+    id: stableId(`appointment-timeline:${id}:${kind}`),
+    kind,
+    conversationId,
+    occurredAt,
+    ...(messageId ? { messageId } : {}),
+    title,
+    placeName,
+    startsAt,
+    timeZone,
+  };
+  return {
+    ...appointment,
+    timelineEvents: [...(appointment.timelineEvents ?? []), event],
+  };
+}
+
 export function stableId(value: string) {
   const hex = createHash("sha256").update(value).digest("hex");
   return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-5${hex.slice(13, 16)}-a${hex.slice(17, 20)}-${hex.slice(20, 32)}`;

@@ -14,6 +14,26 @@ export interface Appointment {
   windowClosesAt: string;
   status: "confirmed" | "in_progress" | "completed" | "cancelled" | "expired";
   revision: number;
+  timelineEvents?: AppointmentTimelineEvent[];
+}
+export interface AppointmentTimelineEvent {
+  id: string;
+  kind:
+    | "confirmed"
+    | "rescheduled"
+    | "relocated"
+    | "rescheduledAndRelocated"
+    | "cancelled"
+    | "expired"
+    | "started"
+    | "completed";
+  occurredAt: string;
+  conversationId: string;
+  messageId?: string;
+  title: string;
+  placeName: string;
+  startsAt: string;
+  timeZone: string;
 }
 export interface AppointmentBlock {
   id: string;

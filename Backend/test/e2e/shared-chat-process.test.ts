@@ -374,6 +374,47 @@ describe.runIf(process.env.RUN_E2E_TESTS === "true")(
         expect(
           await db.sql`select 1 from app.credit_operations where user_id=${user} and task='conversation' and status='settled'`,
         ).toHaveLength(1);
+
+        const input = done.records.find((record) => record.resourceId === first);
+        if (!input) throw new Error("Missing accepted input");
+        const timelineEvents = [{ kind: "memory", state: "remembered" }];
+        const annotate = async (token: string, version: number, payload: object) => {
+          const response = await request(token, "/v1/content/commands", {
+            commands: [
+              {
+                commandId: randomUUID(),
+                expectedVersion: version,
+                operation: "upsert",
+                resourceType: "message",
+                resourceId: first,
+                parentId: conversation,
+                payload,
+              },
+            ],
+          });
+          expect(response.status).toBe(200);
+          const result = (await response.json()) as { results: { status: string }[] };
+          expect(result.results[0]?.status).toBe("applied");
+        };
+        await annotate(a, input.version, {
+          ...(input.payload as object),
+          timelineEvents,
+        });
+        const fromOtherDevice = (await state(b)).records.find(
+          (record) => record.resourceId === first,
+        );
+        if (!fromOtherDevice) throw new Error("Missing input on the other device");
+        expect(fromOtherDevice.payload).toMatchObject({ timelineEvents });
+        await annotate(b, fromOtherDevice.version, {
+          ...(input.payload as object),
+          translationZh: "先到的消息",
+        });
+        const final = await state(a);
+        expect(
+          final.records.find((record) => record.resourceId === first)?.payload,
+        ).toMatchObject({ timelineEvents, translationZh: "先到的消息" });
+        expect(final.lastSequence).toBe(done.lastSequence);
+        expect(providerCalls).toBe(1);
       },
       warmTurnLimit + 5_000,
     );

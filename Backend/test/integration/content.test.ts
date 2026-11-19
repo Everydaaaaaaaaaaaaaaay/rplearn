@@ -284,6 +284,48 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
       lastReadAt: readAt,
     });
 
+    const writeMessage = async (version: number, payload: object) => {
+      const response = await app.inject({
+        headers: headers(),
+        method: "POST",
+        payload: {
+          commands: [
+            {
+              ...commands[2],
+              expectedVersion: version,
+              commandId: newEntityId(),
+              payload,
+            },
+          ],
+        },
+        url: "/v1/content/commands",
+      });
+      expect(response.statusCode).toBe(200);
+      const result = response.json<{ results: readonly ContentCommandResult[] }>()
+        .results[0];
+      if (result?.status !== "applied") throw new Error("Missing message receipt");
+      return result.record;
+    };
+    const mood = { kind: "mood", state: "sad", strength: 2 };
+    const marked = await writeMessage(1, {
+      ...commands[2].payload,
+      timelineEvents: [mood],
+    });
+    const translated = await writeMessage(marked.version, {
+      ...commands[2].payload,
+      translationZh: "你好",
+    });
+    expect(translated.payload).toMatchObject({
+      timelineEvents: [mood],
+      translationZh: "你好",
+    });
+    const memory = { kind: "memory", state: "remembered" };
+    const updated = await writeMessage(translated.version, {
+      ...commands[2].payload,
+      timelineEvents: [{ ...mood, state: "angry" }, memory],
+    });
+    expect(updated.payload).toMatchObject({ timelineEvents: [mood, memory] });
+
     const conflict = await app.inject({
       headers: headers(),
       method: "POST",
@@ -442,7 +484,7 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
         commands: [
           {
             commandId: newEntityId(),
-            expectedVersion: 1,
+            expectedVersion: updated.version,
             operation: "delete",
             resourceId: messageId,
             resourceType: "message",
@@ -456,7 +498,7 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
     ).toMatchObject({
       record: {
         deletedAt: expect.any(String) as string,
-        version: 2,
+        version: updated.version + 1,
       },
       status: "applied",
     });

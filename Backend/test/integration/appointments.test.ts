@@ -79,7 +79,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           version: 1,
           role: "user",
           content: "Meet at the canal today at noon?",
-          createdAt: clock.toISOString(),
+          createdAt: new Date(clock.getTime() + 1_000).toISOString(),
+          serverCreatedAt: new Date(clock.getTime() - 2_000).toISOString(),
         },
         {
           id: randomUUID(),
@@ -87,6 +88,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           role: "assistant",
           content: "Yes, noon at the canal.",
           createdAt: clock.toISOString(),
+          serverCreatedAt: new Date(clock.getTime() - 1_000).toISOString(),
         },
       ];
       detection = {
@@ -143,9 +145,20 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
     });
     it("deduplicates exact mutual evidence and enforces owner isolation", async () => {
       const a = await detectNew();
-      expect(
-        (await service.detect(user, { characterId, conversationId })).appointments,
-      ).toHaveLength(1);
+      expect(a.timelineEvents).toEqual([
+        expect.objectContaining({
+          kind: "confirmed",
+          conversationId,
+          messageId: messages[1]!.id,
+          occurredAt: clock.toISOString(),
+          title: a.title,
+          placeName: a.placeName,
+          startsAt: a.startsAt,
+          timeZone: a.timeZone,
+        }),
+      ]);
+      const replay = await service.detect(user, { characterId, conversationId });
+      expect(replay.appointments).toEqual([a]);
       await expect(service.detail(other, a.id)).rejects.toMatchObject({
         code: "APPOINTMENT_NOT_FOUND",
       });
@@ -181,6 +194,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect((await service.detail(user, original.id)).appointment.status).toBe(
         "confirmed",
       );
+      expect(
+        (await service.detail(user, original.id)).appointment.timelineEvents,
+      ).toEqual(original.timelineEvents);
       messages = messages.map((m) => ({
         ...m,
         id: randomUUID(),
@@ -188,11 +204,55 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       }));
       detection!.evidence = messages.map((m) => ({ messageId: m.id, version: 1 }));
       const changed = await service.detect(user, { characterId, conversationId });
-      expect(changed.appointments[0]!.startsAt).toBe("2026-11-01T13:00:00.000Z");
-      expect((await service.detail(user, original.id)).appointment.status).toBe(
-        "cancelled",
+      const replacement = changed.appointments[0]!;
+      expect(replacement.startsAt).toBe("2026-11-01T13:00:00.000Z");
+      expect(replacement.timelineEvents).toEqual([
+        expect.objectContaining({
+          kind: "rescheduled",
+          messageId: messages[1]!.id,
+          startsAt: replacement.startsAt,
+          placeName: "Canal",
+        }),
+      ]);
+      const superseded = (await service.detail(user, original.id)).appointment;
+      expect(superseded.status).toBe("cancelled");
+      expect(superseded.timelineEvents).toEqual(original.timelineEvents);
+      expect(await service.detect(user, { characterId, conversationId })).toEqual(
+        changed,
       );
     });
+    it.each([
+      ["relocated", "2026-11-01T12:00:00", "2026-11-01T12:00:00.000Z"],
+      ["rescheduledAndRelocated", "2026-11-01T13:00:00", "2026-11-01T13:00:00.000Z"],
+    ])(
+      "records a mutually agreed replacement as %s",
+      async (kind, localStartsAt, startsAt) => {
+        const original = await detectNew();
+        messages = messages.map((m) => ({
+          ...m,
+          id: randomUUID(),
+          content: "The park instead.",
+        }));
+        detection!.replacesAppointmentId = original.id;
+        detection!.title = "Park walk";
+        detection!.placeName = "Park";
+        detection!.localStartsAt = localStartsAt;
+        detection!.evidence = messages.map((m) => ({ messageId: m.id, version: 1 }));
+        const changed = await service.detect(user, { characterId, conversationId });
+        expect(changed.appointments[0]!.timelineEvents).toEqual([
+          expect.objectContaining({
+            kind,
+            conversationId,
+            title: "Park walk",
+            placeName: "Park",
+            startsAt,
+          }),
+        ]);
+        const superseded = (await service.detail(user, original.id)).appointment;
+        expect(superseded.timelineEvents).toEqual(original.timelineEvents);
+        expect(superseded.timelineEvents?.[0]?.placeName).toBe("Canal");
+      },
+    );
     it("freezes detector input and server clock for durable retries and prevents stale acceptance", async () => {
       await detectNew();
       messages = messages.map((m) => ({ ...m, id: randomUUID() }));
@@ -420,6 +480,13 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(next.session!.decisions[0]?.input).toBe(choose.input);
       expect(next.session!.blocks[0]).toEqual(opened.session!.blocks[0]);
       expect(await service.choose(user, a.id, choose)).toEqual(next);
+      expect(opened.appointment.timelineEvents?.map(({ kind }) => kind)).toEqual([
+        "confirmed",
+        "started",
+      ]);
+      expect(next.appointment.timelineEvents).toEqual(
+        opened.appointment.timelineEvents,
+      );
       await expect(
         service.choose(user, a.id, { ...choose, input: "different" }),
       ).rejects.toMatchObject({ code: "APPOINTMENT_COMMAND_CONFLICT" });
@@ -452,14 +519,24 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       await expect(service.start(user, a.id, command(a))).rejects.toMatchObject({
         code: "APPOINTMENT_OPERATION_PENDING",
       });
-      const cancelled = await service.cancel(user, a.id, command(a));
+      const cancel = command(a);
+      const cancelled = await service.cancel(user, a.id, cancel);
       release();
       await expect(pending).rejects.toMatchObject({
         code: "APPOINTMENT_VERSION_CONFLICT",
       });
       gate = null;
       expect(cancelled.appointment.status).toBe("cancelled");
-      expect((await service.detail(user, a.id)).session).toBeNull();
+      expect(cancelled.appointment.timelineEvents?.map(({ kind }) => kind)).toEqual([
+        "confirmed",
+        "cancelled",
+      ]);
+      expect(await service.cancel(user, a.id, cancel)).toEqual(cancelled);
+      const detail = await service.detail(user, a.id);
+      expect(detail.session).toBeNull();
+      expect(detail.appointment.timelineEvents).toEqual(
+        cancelled.appointment.timelineEvents,
+      );
       const next = await detectNew(),
         opened = await service.start(user, next.id, command(next));
       await expect(
@@ -491,17 +568,60 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         return originalReview(context);
       };
       ending = true;
-      const complete = await service.choose(user, a.id, {
+      const finish = {
         ...command(opened.appointment),
-        finish: true,
-      });
+        finish: true as const,
+      };
+      const complete = await service.choose(user, a.id, finish);
       ending = false;
       expect(complete.summary!.affinity.status).toBe("pending");
       const seed = await service.settlementSeed(user, a.id);
       expect(seed.settled).toBe(false);
       expect(attempts).toHaveLength(2);
       expect(attempts[0]).not.toBe(attempts[1]);
+      expect(complete.appointment.timelineEvents?.map(({ kind }) => kind)).toEqual([
+        "confirmed",
+        "started",
+        "completed",
+      ]);
+      expect(
+        (await service.choose(user, a.id, finish)).appointment.timelineEvents,
+      ).toEqual(complete.appointment.timelineEvents);
       narrative.review = originalReview;
+    });
+    it("projects one expiration at the entry deadline on repeated reads of a legacy snapshot", async () => {
+      const a = await detectNew();
+      await runtime.database
+        .sql`update app.appointments set snapshot=snapshot-'timelineEvents' where id=${a.id}`;
+      try {
+        clock = new Date(a.windowClosesAt);
+        const open = (await service.detail(user, a.id)).appointment;
+        expect(open.status).toBe("confirmed");
+        expect(open.timelineEvents).toBeUndefined();
+        clock = new Date(clock.getTime() + 1_000);
+        const expired = (await service.detail(user, a.id)).appointment;
+        expect(expired.status).toBe("expired");
+        expect(expired.timelineEvents).toEqual([
+          expect.objectContaining({
+            kind: "expired",
+            conversationId,
+            occurredAt: a.windowClosesAt,
+            placeName: a.placeName,
+            startsAt: a.startsAt,
+          }),
+        ]);
+        expect(expired.timelineEvents?.[0]?.messageId).toBeUndefined();
+        await expect(
+          service.cancel(user, a.id, command(expired)),
+        ).rejects.toMatchObject({
+          code: "APPOINTMENT_CLOSED",
+        });
+        expect(
+          (await service.list(user)).appointments.find(({ id }) => id === a.id),
+        ).toEqual(expired);
+      } finally {
+        clock = new Date("2026-11-01T12:00:00Z");
+      }
     });
     it("recovers a finalized upstream failure under a fresh service-funded ID without accepting a second branch", async () => {
       const a = await detectNew(),
@@ -585,7 +705,10 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toEqual(result.summary);
       const memory = result.summary!.memories[0]!;
       const [originalRecord] = await runtime.database.sql<
-        { payload: { content: string; importance: number; sourceUpToIndex: number }; created_at: string }[]
+        {
+          payload: { content: string; importance: number; sourceUpToIndex: number };
+          created_at: string;
+        }[]
       >`select payload,created_at::text from app.content_records where user_id=${user} and resource_id=${memory.id}`;
       expect(originalRecord!.payload.importance).toBeGreaterThanOrEqual(1);
       expect(originalRecord!.payload.importance).toBeLessThanOrEqual(5);

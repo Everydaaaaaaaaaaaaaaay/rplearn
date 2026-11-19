@@ -425,6 +425,25 @@ export class ContentRepository {
       throw versionConflict(existing);
     }
     let payload = command.payload;
+    if (existing?.deletedAt === null && command.resourceType === "message") {
+      interface TimelineEntry {
+        kind: string;
+      }
+      const previous =
+        (existing.payload as { timelineEvents?: TimelineEntry[] }).timelineEvents ?? [];
+      const incoming =
+        (command.payload as { timelineEvents?: TimelineEntry[] }).timelineEvents ?? [];
+      if (previous.length || incoming.length) {
+        const events = new Map<string, TimelineEntry>();
+        for (const event of [...previous, ...incoming]) {
+          if (!events.has(event.kind)) events.set(event.kind, event);
+        }
+        payload = {
+          ...(command.payload as Record<string, unknown>),
+          timelineEvents: [...events.values()],
+        };
+      }
+    }
     if (existing?.deletedAt === null && command.resourceType === "conversation") {
       const previous = (existing.payload as { lastReadAt?: string | null }).lastReadAt;
       const incoming = (command.payload as { lastReadAt?: string | null }).lastReadAt;
