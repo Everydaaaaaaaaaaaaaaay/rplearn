@@ -115,17 +115,31 @@ final class AppEnvironment {
         let speech = AdaptiveSpeechService(audioSession: audioSession)
         self.speech = speech
 
+        let backendConfiguration = bootstrapAuthentication ? BackendConfiguration.live
+            : BackendConfiguration(baseURL: URL(string: "http://127.0.0.1:9")!, requestTimeout: 1)
+        var mainKeychainService = "com.lingotrip.app"
+        #if DEBUG
+        let isProvisionedAppointmentTest = BackendConfiguration.appointmentTestURL == backendConfiguration.baseURL
+        if isProvisionedAppointmentTest {
+            mainKeychainService = "com.lingotrip.debug.appointment-test.login.\(backendConfiguration.baseURL.absoluteString)"
+        }
+        #endif
         let keychain = KeychainStore(service: bootstrapAuthentication
-            ? "com.lingotrip.app" : "com.lingotrip.onboarding-preview.\(UUID().uuidString)")
+            ? mainKeychainService : "com.lingotrip.onboarding-preview.\(UUID().uuidString)")
         self.keychain = keychain
         if bootstrapAuthentication { LLMSettingsStore.purgeLegacyClientConfiguration(keychain: keychain) }
         let credentials: any AuthCredentialStore = bootstrapAuthentication
             ? KeychainAuthCredentialStore(keychain: keychain) : PreviewAuthCredentials()
         let guestCredentials: any AuthCredentialStore = bootstrapAuthentication
             ? KeychainAuthCredentialStore(keychain: keychain, isGuest: true) : PreviewAuthCredentials()
+        #if DEBUG
+        if bootstrapAuthentication, isProvisionedAppointmentTest {
+            try? AppointmentTestSessionTicket.importIfPresent("appointment-test-login.json", into: credentials)
+            UserDefaults.standard.set(true, forKey: "onboarding.welcome.completed.v1")
+        }
+        #endif
         let backendClient = BackendClient(
-            configuration: bootstrapAuthentication ? .live
-                : BackendConfiguration(baseURL: URL(string: "http://127.0.0.1:9")!, requestTimeout: 1),
+            configuration: backendConfiguration,
             credentialStore: credentials,
             guestCredentialStore: guestCredentials,
             guestInstallationKey: bootstrapAuthentication

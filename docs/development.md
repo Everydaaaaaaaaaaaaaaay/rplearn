@@ -69,6 +69,12 @@ Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时
 测试从邮箱登录后经联系人进入聊天，发送邀约，通过真实回复生成的约定进入赴约，
 依次填写自定义行动，再检查回顾结算和历史原文。用不同邀约和行动重复执行时使用新的测试账号及独立测试 App。
 
+手动真机赴约测试使用 Debug 包 `com.tiantian.lingotrip.appointmente2e`。构建时将
+`LINGOTRIP_APPOINTMENT_TEST_BACKEND` 指向可从真机访问的隔离 HTTPS 后端。将普通登录与设置页
+「真实赴约」的两个独立会话分别装入测试包容器的 `tmp/appointment-test-login.json` 和
+`tmp/appointment-test-session.json`。App 首次读取后将会话存入各自的钥匙串，并移除导入文件。
+「活动 → 赴约」可直接赴已确认的约，「信息」可从聊天发起新约。
+
 ## 重测和专项
 
 - 关系压力测试的 10,000 个输入使用固定种子。一轮通过即可；排查时序不稳定才显式设置

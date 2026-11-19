@@ -14,11 +14,30 @@ public struct BackendConfiguration: Sendable, Equatable {
     }
 
     static func live(environment: [String: String]) -> BackendConfiguration {
-        if let override = environment["LINGOTRIP_BACKEND_URL"],
-           let url = URL(string: override)
-        {
-            return BackendConfiguration(baseURL: url)
+        let overrideURL = environment["LINGOTRIP_BACKEND_URL"].flatMap(URL.init(string:))
+        #if DEBUG
+        if isAppointmentTestBuild {
+            if let url = appointmentTestURL ?? overrideURL, url.host?.lowercased() != "rplearn.haruyuki.cn" {
+                return BackendConfiguration(baseURL: url)
+            }
+            return BackendConfiguration(baseURL: URL(string: "http://127.0.0.1:9")!, requestTimeout: 1)
         }
-        return BackendConfiguration(baseURL: URL(string: "https://rplearn.haruyuki.cn")!)
+        #endif
+        return BackendConfiguration(baseURL: overrideURL ?? URL(string: "https://rplearn.haruyuki.cn")!)
     }
+
+    #if DEBUG
+    private static var isAppointmentTestBuild: Bool {
+        Bundle.main.bundleIdentifier == "com.tiantian.lingotrip.appointmente2e"
+    }
+
+    public static var appointmentTestURL: URL? {
+        guard isAppointmentTestBuild,
+              let value = Bundle.main.object(forInfoDictionaryKey: "LingoTripAppointmentTestBackend") as? String,
+              let url = URL(string: value),
+              url.scheme == "https", let host = url.host,
+              host.lowercased() != "rplearn.haruyuki.cn" else { return nil }
+        return url
+    }
+    #endif
 }

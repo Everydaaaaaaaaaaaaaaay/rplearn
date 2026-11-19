@@ -118,10 +118,12 @@ targets:
         SWIFT_VERSION: "6.0"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        LINGOTRIP_DISPLAY_NAME: "咕游记"
     info:
       path: build/Generated-Info.plist
       properties:
-        CFBundleDisplayName: "咕游记"
+        CFBundleDisplayName: $(LINGOTRIP_DISPLAY_NAME)
+        LingoTripAppointmentTestBackend: $(LINGOTRIP_APPOINTMENT_TEST_BACKEND)
         CFBundleName: "Coovingo"
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)

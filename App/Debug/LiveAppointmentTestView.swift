@@ -8,6 +8,16 @@ import SpeechKit
 import SwiftUI
 import SyncKit
 
+enum AppointmentTestSessionTicket {
+    static func importIfPresent(_ name: String, into credentials: any AuthCredentialStore) throws {
+        let file = FileManager.default.temporaryDirectory.appendingPathComponent(name)
+        guard FileManager.default.fileExists(atPath: file.path) else { return }
+        let credential = try JSONDecoder().decode(StoredAuthCredential.self, from: Data(contentsOf: file))
+        try credentials.save(credential)
+        try FileManager.default.removeItem(at: file)
+    }
+}
+
 /// Runs the normal appointment API with its own credentials and local stores.
 struct LiveAppointmentTestView: View {
     let dictionary: DictDatabase
@@ -72,16 +82,14 @@ struct LiveAppointmentTestView: View {
         failure = nil
         do {
             let configuration = BackendConfiguration.live
-            let keychainService = "com.lingotrip.debug.appointment-test"
-            let endpoint = configuration.baseURL.absoluteString
-            let service = endpoint == "https://rplearn.haruyuki.cn" ? keychainService : "\(keychainService).\(endpoint)"
-            let credentials = KeychainAuthCredentialStore(keychain: KeychainStore(service: service))
-            let ticket = FileManager.default.temporaryDirectory.appendingPathComponent("appointment-test-session.json")
-            if FileManager.default.fileExists(atPath: ticket.path) {
-                let credential = try JSONDecoder().decode(StoredAuthCredential.self, from: Data(contentsOf: ticket))
-                try credentials.save(credential)
-                try FileManager.default.removeItem(at: ticket)
+            guard configuration.baseURL.host != "rplearn.haruyuki.cn" else {
+                failure = "这个构建连接正式服务。请打开单独安装的「咕游记·赴约测试」。"
+                return
             }
+            let keychainService = "com.lingotrip.debug.appointment-test"
+            let service = "\(keychainService).\(configuration.baseURL.absoluteString)"
+            let credentials = KeychainAuthCredentialStore(keychain: KeychainStore(service: service))
+            try AppointmentTestSessionTicket.importIfPresent("appointment-test-session.json", into: credentials)
             let client = BackendClient(configuration: configuration, credentialStore: credentials)
             guard let identity = try await client.restoreSession() else {
                 failure = "这台设备还没有可用的独立测试账号。账号内的真实约定可以从「活动 → 赴约」进入。"
