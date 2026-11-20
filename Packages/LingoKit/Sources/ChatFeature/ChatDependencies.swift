@@ -27,10 +27,14 @@ public final class ChatTutorialSession {
 public struct ChatTutorialConfiguration: Sendable {
     public let session: ChatTutorialSession
     public let focus: String?
+    public let preparedTranslations: [String: String]
     public let onEvent: @MainActor @Sendable (String) -> Void
-    public init(session: ChatTutorialSession, focus: String? = nil,
+    public init(session: ChatTutorialSession, focus: String? = nil, preparedTranslations: [String: String] = [:],
                 onEvent: @escaping @MainActor @Sendable (String) -> Void) {
-        self.session = session; self.focus = focus; self.onEvent = onEvent
+        self.session = session
+        self.focus = focus
+        self.preparedTranslations = preparedTranslations
+        self.onEvent = onEvent
     }
 }
 

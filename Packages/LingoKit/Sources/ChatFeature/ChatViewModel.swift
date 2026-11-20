@@ -327,7 +327,8 @@ public final class ChatViewModel {
         errorMessage = nil
         defer { translatingMessageIDs.remove(message.id) }
 
-        var translation = try? await deps.chatStore.cachedTranslation(for: text)
+        var translation = deps.tutorial?.preparedTranslations[text]
+        if translation == nil { translation = try? await deps.chatStore.cachedTranslation(for: text) }
         var cloudError: Error?
         if translation == nil {
             do {

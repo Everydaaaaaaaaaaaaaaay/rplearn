@@ -40,6 +40,9 @@ extension ChatTranscriptView {
                     .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20))
                     .overlay { RoundedRectangle(cornerRadius: 20).stroke(Color.dsBorder, lineWidth: 0.5) }
                     .shadow(color: .black.opacity(0.18), radius: 16, y: 6)
+                    .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
+                        deps.tutorial?.focus == "chat.bubble" ? ["chat.bubbleMenu": anchor] : [:]
+                    }
                     .offset(x: min(max(12, leading), max(12, viewport.size.width - width - 12)),
                             y: min(top, max(8, viewport.size.height - height - 8)))
                     .accessibilityIdentifier("chat.bubbleMenu")

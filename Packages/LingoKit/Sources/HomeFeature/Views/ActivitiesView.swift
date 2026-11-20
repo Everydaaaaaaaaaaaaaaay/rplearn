@@ -9,6 +9,8 @@ public struct ActivitiesView: View {
     let journey: ActivityJourneyCoordinator
     let deps: HomeDependencies
     let storageNamespace: String
+    let storage: UserDefaults
+    let onCompleteOuting: (() -> Void)?
     let isVisible: Bool
     let onClose: () -> Void
     let onChat: (CharacterDTO) -> Void
@@ -29,7 +31,9 @@ public struct ActivitiesView: View {
 
     public init(journey: ActivityJourneyCoordinator, deps: HomeDependencies, storageNamespace: String, isVisible: Bool,
                 onClose: @escaping () -> Void,
-                onChat: @escaping (CharacterDTO) -> Void) {
+                onChat: @escaping (CharacterDTO) -> Void,
+                storage: UserDefaults = .standard,
+                onCompleteOuting: (() -> Void)? = nil) {
         self.journey = journey
         self.deps = deps
         if let profile = deps.presentationCache?.profile,
@@ -42,6 +46,8 @@ public struct ActivitiesView: View {
             }
         }
         self.storageNamespace = storageNamespace
+        self.storage = storage
+        self.onCompleteOuting = onCompleteOuting
         self.isVisible = isVisible
         self.onClose = onClose
         self.onChat = onChat
@@ -55,7 +61,7 @@ public struct ActivitiesView: View {
                     onJournal: { readRecords(); showsJournal = true }, onSelect: { place in
                         guard resumableOuting == nil else { return }
                         do {
-                            if let saved = try CityOutingArchive.load(namespace: storageNamespace), saved.needsContinuation {
+                            if let saved = try CityOutingArchive.load(namespace: storageNamespace, defaults: storage), saved.needsContinuation {
                                 openPlaceArchive(saved)
                                 return
                             }
@@ -67,13 +73,18 @@ public struct ActivitiesView: View {
                         guard let region = deps.regionCatalog.region(id: placeCatalog.cityId),
                               let gateway = deps.outingGateway else { return }
                         journey.preparePlace(archive: .init(place: place, releaseID: placeCatalog.releaseId),
-                            region: region, deps: deps, namespace: storageNamespace, gateway: gateway)
+                            region: region, deps: deps, namespace: storageNamespace, gateway: gateway, storage: storage)
                     }, resumeTitle: resumableOuting.map { "继续上次在\($0.place.titleZh)的外出" },
                     onResume: { if let archive = resumableOuting { openPlaceArchive(archive) } })
                     .allowsHitTesting(!journey.hasOpenOuting).accessibilityHidden(journey.hasOpenOuting)
             }
             if let outing = journey.cityOuting {
-                CityOutingView(model: outing, isVisible: isVisible, onBack: { journey.reset() }, onChat: onChat)
+                CityOutingView(model: outing, isVisible: isVisible, showsTutorialGuidance: onCompleteOuting != nil,
+                    onBack: { journey.reset() }, onChat: onChat, onFinish: {
+                        let completed = outing.snapshot?.status == .completed
+                        journey.reset()
+                        if completed { onCompleteOuting?() }
+                    })
                     .id(outing.archive.runID).transition(.opacity)
             } else if cityID == nil || contextError != nil {
                 VStack(spacing: 16) {
@@ -235,14 +246,14 @@ public struct ActivitiesView: View {
                 cityID = local.cityId
                 readRecords()
             }
-            let cached = try CityOutingArchive.load(namespace: storageNamespace)
+            let cached = try CityOutingArchive.load(namespace: storageNamespace, defaults: storage)
             resumableOuting = cached?.needsContinuation == true ? cached : nil
             if resumableOuting == nil, let active = try? await gateway.activeOuting() {
                 try Task.checkCancellation()
                 guard !journey.hasOpenOuting else { return }
                 try PlaceOutingProgress.validate(active)
                 let restored = CityOutingArchive(restoring: active)
-                try restored.save(namespace: storageNamespace)
+                try restored.save(namespace: storageNamespace, defaults: storage)
                 resumableOuting = restored
             }
             try Task.checkCancellation()
@@ -289,15 +300,15 @@ public struct ActivitiesView: View {
               let region = deps.regionCatalog.region(id: archive.snapshot?.cityId ?? archive.place.photo.cityId) else {
             contextError = "这次外出的城市暂不可用，请稍后重试。"; return
         }
-        journey.preparePlace(archive: archive, region: region, deps: deps, namespace: storageNamespace, gateway: gateway)
+        journey.preparePlace(archive: archive, region: region, deps: deps, namespace: storageNamespace, gateway: gateway, storage: storage)
         cityID = region.id
         cityName = region.nameZh
     }
     private func readRecords() {
         guard let cityID else { return }
         do {
-            records = try ActivityJournal(namespace: storageNamespace, city: cityID).records()
-            recoveries = try CityOutingArchive.recoveries(namespace: storageNamespace)
+            records = try ActivityJournal(namespace: storageNamespace, city: cityID, defaults: storage).records()
+            recoveries = try CityOutingArchive.recoveries(namespace: storageNamespace, defaults: storage)
                 .filter { $0.snapshot?.cityId == cityID }
             journalError = nil
         } catch {

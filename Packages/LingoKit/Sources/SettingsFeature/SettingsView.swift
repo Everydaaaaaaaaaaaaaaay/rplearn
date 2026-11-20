@@ -25,6 +25,7 @@ public struct SettingsView: View {
     private let speech: any SpeechService
     private let onProactiveMessagesChanged: @MainActor (Bool) -> Void
     private let onOpenPhotoCredits: (@MainActor () -> Void)?
+    private let onOpenTutorial: (@MainActor () -> Void)?
     private let onOpenIntroduction: (@MainActor () -> Void)?
     private let onTestInitialPlacement: (@MainActor () -> Void)?
     private let onTestFirstLoginFlow: (@MainActor () -> Void)?
@@ -53,6 +54,7 @@ public struct SettingsView: View {
         onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in },
         onOpenPhotoCredits: (@MainActor () -> Void)? = nil,
         onOpenIntroduction: (@MainActor () -> Void)? = nil,
+        onOpenTutorial: (@MainActor () -> Void)? = nil,
         onTestInitialPlacement: (@MainActor () -> Void)? = nil,
         onTestFirstLoginFlow: (@MainActor () -> Void)? = nil,
         onTestAppointments: (@MainActor () -> Void)? = nil,
@@ -72,6 +74,7 @@ public struct SettingsView: View {
         self.onProactiveMessagesChanged = onProactiveMessagesChanged
         self.onOpenPhotoCredits = onOpenPhotoCredits
         self.onOpenIntroduction = onOpenIntroduction
+        self.onOpenTutorial = onOpenTutorial
         self.onTestInitialPlacement = onTestInitialPlacement
         self.onTestFirstLoginFlow = onTestFirstLoginFlow
         self.onTestAppointments = onTestAppointments
@@ -129,6 +132,15 @@ public struct SettingsView: View {
                             .buttonStyle(.plain)
                             .padding(.horizontal, DSSpacing.lg)
                             .accessibilityIdentifier("settings.test-appointments")
+                            paperSectionDivider
+                        }
+                        if let onOpenTutorial {
+                            Button(action: onOpenTutorial) {
+                                settingsLinkLabel("上手练习", systemImage: "hand.tap")
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, DSSpacing.lg)
+                            .accessibilityIdentifier("settings.tutorial")
                             paperSectionDivider
                         }
                         if let onOpenIntroduction {

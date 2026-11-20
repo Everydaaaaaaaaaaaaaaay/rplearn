@@ -21,6 +21,7 @@ final class CityOutingModel: ObservableObject {
     let region: Region
     let deps: HomeDependencies
     private let namespace: String
+    private let storage: UserDefaults
     private let gateway: any OutingGateway
     private var requestTask: Task<Void, Never>?
     private var syncTask: Task<Void, Never>?
@@ -44,9 +45,9 @@ final class CityOutingModel: ObservableObject {
     }
 
     init(archive: CityOutingArchive, region: Region, deps: HomeDependencies,
-         namespace: String, gateway: any OutingGateway) {
+         namespace: String, gateway: any OutingGateway, storage: UserDefaults = .standard) {
         self.archive = archive; self.region = region; self.deps = deps
-        self.namespace = namespace; self.gateway = gateway
+        self.namespace = namespace; self.gateway = gateway; self.storage = storage
         snapshot = archive.snapshot; pendingCount = archive.pending.count
         speechQueue = SpeechPlaybackQueue(speech: deps.speech)
     }
@@ -60,7 +61,7 @@ final class CityOutingModel: ObservableObject {
             if snapshot?.beatIndex == -1, snapshot?.mode != .solitude { enqueue(.read, beatIndex: 0) }
             return
         }
-        do { try archive.save(namespace: namespace) }
+        do { try archive.save(namespace: namespace, defaults: storage) }
         catch { self.error = "外出记录暂时无法保存，请重试。"; return }
         busy = true
         requestTask = Task {
@@ -82,7 +83,7 @@ final class CityOutingModel: ObservableObject {
                     throw PlaceOutingProgress.ProgressError.invalidContent
                 }
                 var next = archive; next.snapshot = result
-                try next.save(namespace: namespace)
+                try next.save(namespace: namespace, defaults: storage)
                 archive = next; snapshot = result
                 if ![.completed, .abandoned].contains(result.status), result.mode != .solitude, result.beatIndex == -1 {
                     enqueue(.read, beatIndex: 0)
@@ -99,10 +100,10 @@ final class CityOutingModel: ObservableObject {
         try PlaceOutingProgress.validate(active)
         guard ![.completed, .abandoned].contains(active.status),
               deps.regionCatalog.region(id: active.cityId) != nil else { throw PlaceOutingProgress.ProgressError.invalidContent }
-        if let current = try CityOutingArchive.load(namespace: namespace), current.runID == archive.runID,
+        if let current = try CityOutingArchive.load(namespace: namespace, defaults: storage), current.runID == archive.runID,
            current.snapshot == nil, current.pending.isEmpty, current.cancelled != true {
             // Only replace the unaccepted draft. The place list will open the saved outing in its original scene.
-            try CityOutingArchive(restoring: active).save(namespace: namespace)
+            try CityOutingArchive(restoring: active).save(namespace: namespace, defaults: storage)
         }
         hasRecoverableOuting = true
         error = "另一台设备已有外出进度，请返回地点页恢复。"
@@ -130,7 +131,7 @@ final class CityOutingModel: ObservableObject {
         if snapshot != nil { enqueue(.abandon); recordCompletionIfNeeded(); return }
         requestTask?.cancel()
         archive.cancelled = true
-        do { try archive.save(namespace: namespace) }
+        do { try archive.save(namespace: namespace, defaults: storage) }
         catch { self.error = "出发状态暂未保存，请重试。" }
         // The next place-list load checks the server's active session in case a cancelled request reached it.
     }
@@ -141,7 +142,7 @@ final class CityOutingModel: ObservableObject {
             let operation = BackendOutingOperation(expectedRevision: snapshot.revision, type: type, beatIndex: beatIndex, choiceID: choiceID)
             let result = try PlaceOutingProgress.apply(operation, to: snapshot)
             var next = archive; next.snapshot = result; next.pending.append(operation)
-            try next.save(namespace: namespace)
+            try next.save(namespace: namespace, defaults: storage)
             archive = next; self.snapshot = result; pendingCount = next.pending.count
             error = nil
             flush()
@@ -167,7 +168,7 @@ final class CityOutingModel: ObservableObject {
                         guard response == snapshot else { throw PlaceOutingProgress.ProgressError.staleRevision }
                         next.snapshot = response
                     }
-                    try next.save(namespace: namespace)
+                    try next.save(namespace: namespace, defaults: storage)
                     archive = next; pendingCount = next.pending.count
                 }
                 synchronizationMessage = nil
@@ -196,9 +197,9 @@ final class CityOutingModel: ObservableObject {
                       result.releaseId == archive.releaseID else { throw PlaceOutingProgress.ProgressError.invalidContent }
                 // Preserve the divergent local choices as a separate, read-only recovery copy.
                 let recovery = CityOutingArchive.key(namespace: namespace) + ".conflict." + UUID().uuidString
-                UserDefaults.standard.set(try JSONEncoder().encode(archive), forKey: recovery)
+                storage.set(try JSONEncoder().encode(archive), forKey: recovery)
                 var next = archive; next.snapshot = result; next.pending = []
-                try next.save(namespace: namespace)
+                try next.save(namespace: namespace, defaults: storage)
                 archive = next; snapshot = result; pendingCount = 0; conflict = false
                 synchronizationMessage = nil; error = nil
                 if result.mode != .solitude && result.beatIndex == -1 { enqueue(.read, beatIndex: 0) }
@@ -209,7 +210,7 @@ final class CityOutingModel: ObservableObject {
 
     private func recordCompletionIfNeeded() {
         guard let snapshot, [.completed, .abandoned].contains(snapshot.status) else { return }
-        do { _ = try ActivityJournal(namespace: namespace, city: snapshot.cityId).endPlaceOuting(snapshot) }
+        do { _ = try ActivityJournal(namespace: namespace, city: snapshot.cityId, defaults: storage).endPlaceOuting(snapshot) }
         catch { self.error = "外出已结束，足迹暂未保存。重试会保留原有记录。" }
     }
     func retry() { if let status = snapshot?.status, [.completed, .abandoned].contains(status) { recordCompletionIfNeeded() } else { start() } }

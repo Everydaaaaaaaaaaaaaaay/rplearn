@@ -72,7 +72,11 @@ struct RootView: View {
     @State private var showPlacementTest = false
     @State private var showEnglishJourney = false
     @State private var showOnboardingPlacement = false
-    @State private var showsIntroduction = false
+    private enum IntroductionMode: String, Identifiable {
+        case introduction, tutorial
+        var id: String { rawValue }
+    }
+    @State private var introductionMode: IntroductionMode?
     #if DEBUG
     @State private var captureCharacter: CharacterDTO?
     @State private var showsCitySceneGallery = false
@@ -722,15 +726,20 @@ struct RootView: View {
             .fullScreenCover(item: $onboardingPreviewMode) { mode in
                 OnboardingPreviewView(mode: mode)
             }
-            .fullScreenCover(isPresented: $showsIntroduction) {
-                JourneyIntroductionView(deps: OnboardingDependencies(
-                    economyStore: environment.economyStore,
-                    profileCommands: profileCommands,
-                    rosterStore: environment.rosterStore,
-                    scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
-                    dictionary: environment.dictionary,
-                    grammarPoints: environment.grammarPoints
-                ))
+            .fullScreenCover(item: $introductionMode) { mode in
+                switch mode {
+                case .introduction:
+                    JourneyIntroductionView(deps: OnboardingDependencies(
+                        economyStore: environment.economyStore,
+                        profileCommands: profileCommands,
+                        rosterStore: environment.rosterStore,
+                        scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
+                        dictionary: environment.dictionary,
+                        grammarPoints: environment.grammarPoints
+                    ))
+                case .tutorial:
+                    TutorialReplayView(environment: environment)
+                }
             }
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
@@ -744,7 +753,8 @@ struct RootView: View {
                         grammarPoints: environment.grammarPoints
                     ),
                     placementCompletionRevision: placementCompletionRevision,
-                    onRequestPlacement: { showOnboardingPlacement = true }
+                    onRequestPlacement: { showOnboardingPlacement = true },
+                    tutorial: tutorialPresenter
                 ) { character in
                     #if DEBUG
                     if ProcessInfo.processInfo.environment[
@@ -1251,7 +1261,8 @@ struct RootView: View {
                     Task { await environment.proactiveMessages.setEnabled(enabled) }
                 },
                 onOpenPhotoCredits: { openMe(.photoCredits) },
-                onOpenIntroduction: { showsIntroduction = true },
+                onOpenIntroduction: { introductionMode = .introduction },
+                onOpenTutorial: { introductionMode = .tutorial },
                 onTestInitialPlacement: initialPlacementTestAction,
                 onTestFirstLoginFlow: firstLoginTestAction,
                 onTestAppointments: appointmentTestAction,
@@ -1469,6 +1480,12 @@ struct RootView: View {
             presentationCache: environment.workspace?.journeyPresentation,
             mapCache: environment.workspace?.worldMapCache
         )
+    }
+
+    private var tutorialPresenter: TutorialPresenter {
+        { character, finish in
+            AnyView(ProductionTutorialView(character: character, environment: environment, onFinish: finish))
+        }
     }
 
     private var chatDeps: ChatDependencies {

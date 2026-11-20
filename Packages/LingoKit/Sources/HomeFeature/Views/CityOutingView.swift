@@ -10,8 +10,10 @@ import SwiftUI
 struct CityOutingView: View {
     @ObservedObject var model: CityOutingModel
     let isVisible: Bool
+    let showsTutorialGuidance: Bool
     let onBack: () -> Void
     let onChat: (CharacterDTO) -> Void
+    let onFinish: () -> Void
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
@@ -155,6 +157,10 @@ struct CityOutingView: View {
                         }.lineSpacing(6)
                             .foregroundStyle(beat.speaker == "narrator" ? ink.opacity(0.72) : ink)
                             .padding(.leading, beat.speaker == "narrator" ? 12 : 0)
+                            .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
+                                showsTutorialGuidance && stage == model.chapters.count - 1 && index == snapshot.beatIndex
+                                    ? ["activity.latestBeat": anchor] : [:]
+                            }
                             .accessibilityIdentifier("activities.placeBeat.\(stage).\(index)")
                     }
                 }
@@ -176,6 +182,9 @@ struct CityOutingView: View {
                         .background(.white, in: RoundedRectangle(cornerRadius: 18))
                 }.buttonStyle(DSSceneEntranceButtonStyle()).disabled(model.conflict)
                     .accessibilityIdentifier("activities.choice.\(index)")
+                    .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
+                        showsTutorialGuidance ? ["activity.controls.\(index)": anchor] : [:]
+                    }
             }
         } else {
             Button { model.advance() } label: {
@@ -184,6 +193,9 @@ struct CityOutingView: View {
                 .buttonStyle(.borderedProminent).controlSize(.large)
                 .disabled(model.conflict || (snapshot.status == .reserved && snapshot.beatIndex == model.currentBeats.count - 1))
                 .accessibilityIdentifier("activities.action.next")
+                .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
+                    showsTutorialGuidance ? ["activity.controls.next": anchor] : [:]
+                }
         }
     }
     private func lookup(_ text: String, key: String) -> some View {
@@ -197,6 +209,9 @@ struct CityOutingView: View {
             if let character = model.character, character.isFriend {
                 Button { onChat(character) } label: { Text("继续聊天").foregroundStyle(.white) }
                     .buttonStyle(.borderedProminent).controlSize(.large)
+                    .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
+                        showsTutorialGuidance ? ["activity.controls.contact": anchor] : [:]
+                    }
             } else {
                 Button { model.addFriend() } label: {
                     Text(model.pendingCount > 0 ? "同步完成后可添加好友" : "加为好友").foregroundStyle(.white)
@@ -204,9 +219,15 @@ struct CityOutingView: View {
                     .buttonStyle(.borderedProminent).controlSize(.large)
                     .disabled(model.pendingCount > 0 || model.contactBusy)
                     .accessibilityIdentifier("activities.encounter.addFriend")
+                    .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
+                        showsTutorialGuidance ? ["activity.controls.contact": anchor] : [:]
+                    }
             }
         }
         if let message = model.contactMessage { Text(message).font(.caption) }
-        Button("回到城市地点", action: onBack).frame(minHeight: 44).accessibilityIdentifier("activities.action.finish")
+        Button("回到城市地点", action: onFinish).frame(minHeight: 44).accessibilityIdentifier("activities.action.finish")
+            .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
+                showsTutorialGuidance ? ["activity.controls.finish": anchor] : [:]
+            }
     }
 }

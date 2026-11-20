@@ -42,12 +42,15 @@ public struct OnboardingFlowView: View {
         case calibration
         case story
         case selection
+        case tutorial
     }
 
     private let deps: OnboardingDependencies
     private let placementCompletionRevision: Int
     private let onRequestPlacement: () -> Void
+    private let tutorial: TutorialPresenter?
     private let onComplete: (CharacterDTO) async -> Bool
+    @State private var tutorialCharacter: CharacterDTO?
 
     @State private var phase: Phase = .loading
     @State private var profile: UserProfileDTO?
@@ -61,11 +64,13 @@ public struct OnboardingFlowView: View {
         deps: OnboardingDependencies,
         placementCompletionRevision: Int = 0,
         onRequestPlacement: @escaping () -> Void,
+        tutorial: TutorialPresenter? = nil,
         onComplete: @escaping (CharacterDTO) async -> Bool
     ) {
         self.deps = deps
         self.placementCompletionRevision = placementCompletionRevision
         self.onRequestPlacement = onRequestPlacement
+        self.tutorial = tutorial
         self.onComplete = onComplete
         _placementOfferDismissed = AppStorage(
             wrappedValue: false,
@@ -125,8 +130,18 @@ public struct OnboardingFlowView: View {
                         .transition(.opacity)
                 }
             case .selection:
-                CharacterSelectView(characters: characters, onSelect: onComplete)
-                    .transition(stepTransition)
+                CharacterSelectView(characters: characters) { character in
+                    guard tutorial != nil else { return await onComplete(character) }
+                    tutorialCharacter = character
+                    withAnimation(stepAnimation) { phase = .tutorial }
+                    return true
+                }
+                .transition(stepTransition)
+            case .tutorial:
+                if let tutorial, let character = tutorialCharacter {
+                    tutorial(character, { await onComplete(character) })
+                        .transition(stepTransition)
+                }
             }
         }
         .task {

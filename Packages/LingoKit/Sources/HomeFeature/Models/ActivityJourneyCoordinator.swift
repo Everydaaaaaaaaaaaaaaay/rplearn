@@ -18,9 +18,9 @@ public final class ActivityJourneyCoordinator {
     public var isPreparing: Bool { cityOuting?.isPreparing == true }
     public var hasOpenOuting: Bool { cityOuting != nil }
 
-    func preparePlace(archive: CityOutingArchive, region: Region, deps: HomeDependencies, namespace: String, gateway: any OutingGateway) {
+    func preparePlace(archive: CityOutingArchive, region: Region, deps: HomeDependencies, namespace: String, gateway: any OutingGateway, storage: UserDefaults = .standard) {
         guard cityOuting?.isRunning != true else { return }
-        let next = CityOutingModel(archive: archive, region: region, deps: deps, namespace: namespace, gateway: gateway)
+        let next = CityOutingModel(archive: archive, region: region, deps: deps, namespace: namespace, gateway: gateway, storage: storage)
         cityOuting = next; resultWasSeen = false
         observation = next.objectWillChange.sink { [weak self] in
             Task { @MainActor [weak self] in self?.refresh() }
