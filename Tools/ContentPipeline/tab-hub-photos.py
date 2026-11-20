@@ -13,8 +13,9 @@ from activity_photo_quality import has_screen_resolution, display_scale
 ROOT = Path(__file__).resolve().parents[2]
 RECORD = ROOT / 'Assets/TabHubScenes/2026-11-16-v1'
 MANIFEST = ROOT / 'App/Resources/hub-scene-photos.json'
-ASSETS = ROOT / 'App/Assets.xcassets'
-REMOTE_ASSETS = ROOT / 'App/RemoteCityBackdrops.xcassets'
+BACKDROP_SOURCES = ROOT / 'Assets/CityBackdropSources'
+ASSETS = BACKDROP_SOURCES / 'Starter.xcassets'
+REMOTE_ASSETS = BACKDROP_SOURCES / 'RemoteCityBackdrops.xcassets'
 
 
 def source_key(value):

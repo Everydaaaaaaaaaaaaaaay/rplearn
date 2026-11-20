@@ -48,9 +48,10 @@ targets:
     postBuildScripts:
       - name: Remove Stale Slim Bundle Resources
         script: |
+          bundle="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH"
+          rm -f -- "$bundle"/scene-*-v2.jpg
           if [ -n "${LINGOTRIP_CONTENT_RESOURCE_EXCLUSIONS:-}" ]; then
             [ -n "${LINGOTRIP_CONTENT_ASSET_BASE_URL:-}" ] || exit 1
-            bundle="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH"
             for filename in $LINGOTRIP_CONTENT_RESOURCE_EXCLUSIONS; do
               case "$filename" in
                 *.xcassets) ;;
@@ -64,7 +65,9 @@ targets:
       Debug: Config/Signing.Debug.xcconfig
       Release: Config/Signing.xcconfig
     sources:
-      - App
+      - path: App
+        excludes:
+          - Resources/ActivityPlacesGallery
       - path: Assets/Brand/Mascots/ui-pack-v1/GuyujiMascots.xcassets
         buildPhase: resources
     dependencies:

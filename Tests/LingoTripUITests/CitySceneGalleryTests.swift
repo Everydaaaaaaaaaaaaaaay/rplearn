@@ -150,6 +150,13 @@ final class CitySceneGalleryTests: XCTestCase {
         XCTAssertTrue(entrance.waitForExistence(timeout: 20))
         entrance.tap()
         assertScene("capetown-bo-kaap")
+        app.buttons["activities.scene.more"].tap()
+        app.buttons["查看全图"].tap()
+        let closeOriginal = app.buttons["sceneGallery.original.close"]
+        XCTAssertTrue(closeOriginal.waitForExistence(timeout: 8))
+        XCTAssertTrue(app.images["activities.photo.loaded.capetown-bo-kaap"].firstMatch.waitForExistence(timeout: 8))
+        capture("downloaded-capetown-full-photo")
+        closeOriginal.tap()
         app.buttons["activities.scene.next"].tap()
         assertScene("capetown-sea-point")
         capture("downloaded-capetown")

@@ -192,14 +192,18 @@ public struct ActivityPlacePhoto: View {
               !photo.assetName.contains("/"), !photo.assetName.contains("..") else { return nil }
         let bundled = Bundle.main.url(forResource: photo.assetName, withExtension: nil, subdirectory: "ActivityPlaces")
             ?? Bundle.main.url(forResource: photo.assetName, withExtension: nil)
-        let url: URL?
+        let url: URL
         if let bundled { url = bundled }
-        else { url = try? await DownloadableContent.file(for: "photo/" + photo.assetName) }
-        guard let url else { return nil }
+        else {
+            guard let approved = try? await DownloadableContent.file(
+                for: "photo/" + photo.assetName, matchingSourceSHA256: photo.outputSHA256
+            ) else { return nil }
+            url = approved
+        }
         return autoreleasepool {
             guard let data = try? Data(contentsOf: url) else { return nil }
             let hashKey = "\(photo.assetName):\(photo.outputSHA256)"
-            if !VerifiedPhotoHashes.shared.contains(hashKey) {
+            if bundled != nil, !VerifiedPhotoHashes.shared.contains(hashKey) {
                 guard SHA256.hash(data: data).map({ String(format: "%02x", $0) }).joined() == photo.outputSHA256 else {
                     return nil
                 }

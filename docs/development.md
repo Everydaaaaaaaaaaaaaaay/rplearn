@@ -208,9 +208,11 @@ python3 Tools/ContentPipeline/ios-content-packs.py --output build/ios-content-pu
 python3 -m http.server 18765 --bind 127.0.0.1 --directory build/ios-content-public
 ```
 
-本机预览可用 `LINGOTRIP_CONTENT_ASSET_BASE_URL=http://127.0.0.1:18765 Scripts/preview.sh build world-preview`。选中地图城市时先预取第一张活动实景和活动页背景，剧情目录预取当前可读章节的首幕，阅读期间预取下一幕。城市页面先显示同一地点的低分辨率背景预览，再加载高清原图。
+本机预览可用 `LINGOTRIP_CONTENT_ASSET_BASE_URL=http://127.0.0.1:18765 Scripts/preview.sh build world-preview`。选中地图城市时先预取第一张活动实景和活动页背景，剧情目录预取当前可读章节的首幕，阅读期间预取下一幕。城市页面先显示同一地点的低分辨率背景预览，再加载全分辨率显示图。
 
-发布时将导出的文件放到公开、不可变的 HTTPS 静态目录，再用同一个目录地址设置 `LINGOTRIP_CONTENT_ASSET_BASE_URL` 执行 `Scripts/archive.sh`。文件名包含指纹，内容更新新增文件并保留仍由已发布 App 引用的旧文件。变量留空时构建全量资源版。修改入包图后通过 `python3 Tools/ContentPipeline/ios-content-packs.py --update` 更新指纹和对应的预览图。
+发布时将导出的文件放到公开、不可变的 HTTPS 静态目录，再用同一个目录地址设置 `LINGOTRIP_CONTENT_ASSET_BASE_URL` 执行 `Scripts/archive.sh`。文件名包含指纹，内容更新新增文件并保留仍由已发布 App 引用的旧文件。变量留空时构建全量资源版。
+
+城市摄影修改后，先用 Google `cwebp` 和 `python3 Tools/ContentPipeline/encode-city-display-images.py` 重新生成同分辨率显示文件，再用 `python3 Tools/ContentPipeline/ios-content-packs.py --update` 更新指纹和预览图。活动实景同时校验世界清单记录的原图指纹和显示文件自己的指纹。逐图选档与像素对照见[城市编码验收](verification/ios-city-webp-2026-11-20.md)。
 
 ### 真实学习实测入口
 
