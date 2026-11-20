@@ -578,6 +578,7 @@ public struct LondonEpisodeView: View {
     nonisolated private static func artURL(_ name: String) -> URL? {
         Bundle.main.url(forResource: name, withExtension: "png")
             ?? Bundle.main.url(forResource: name, withExtension: "jpg")
+            ?? Bundle.main.url(forResource: name, withExtension: "webp")
     }
 
     private func artwork(for candidate: EpisodeSession) async throws -> EpisodeArtwork {

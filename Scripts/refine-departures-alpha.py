@@ -44,7 +44,10 @@ for asset in production['assets']:
         restore = np.array(mask) > 0
         pixels[restore, :3] = raw[restore]
         pixels[restore, 3] = 255
-    Image.fromarray(pixels).save(target, optimize=True)
+    if target.suffix == '.webp':
+        Image.fromarray(pixels).save(target, lossless=True, exact=True, method=6)
+    else:
+        Image.fromarray(pixels).save(target, optimize=True)
     asset['sha256'] = hashlib.sha256(target.read_bytes()).hexdigest()
     if asset['sha256'] != previous_hash:
         asset['status'] = 'processed-awaiting-review'

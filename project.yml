@@ -119,6 +119,15 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         LINGOTRIP_DISPLAY_NAME: "咕游记"
+      configs:
+        Release:
+          EXCLUDED_SOURCE_FILE_NAMES:
+            - marketing-victor.png
+            - marketing-mabel.png
+            - learning-preview.wav
+            - place-outing-preview.json
+            - "preview-london-*.jpg"
+            - city-scene-gallery.json
     info:
       path: build/Generated-Info.plist
       properties:

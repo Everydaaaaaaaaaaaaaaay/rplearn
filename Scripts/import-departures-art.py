@@ -47,6 +47,9 @@ for record in records.values():
         continue
     suffix = ".png" if record["kind"] == "sprite" else ".jpg"
     target = root / "App/Resources/StoryArt/Departures" / ("dp_" + record["id"] + suffix)
+    compact_target = target.with_suffix(".webp")
+    if suffix == ".png" and compact_target.is_file():
+        target = compact_target
     raw = root / record["raw_path"]
     if not target.exists():
         if record["kind"] == "sprite":

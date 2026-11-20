@@ -68,8 +68,8 @@ for color, suffix in [('#182332', 'dark'), ('#f5f1e9', 'light')]:
     sheets(items, f'alpha-{suffix}')
 
 def resolve(name):
-    matches = list((ROOT / 'App/Resources/StoryArt').rglob(name + '.png'))
-    matches += list((ROOT / 'App/Resources/StoryArt').rglob(name + '.jpg'))
+    art = ROOT / 'App/Resources/StoryArt'
+    matches = [path for extension in ('.png', '.jpg', '.webp') for path in art.rglob(name + extension)]
     if len(matches) == 1:
         return Image.open(matches[0]).convert('RGBA')
     return None
