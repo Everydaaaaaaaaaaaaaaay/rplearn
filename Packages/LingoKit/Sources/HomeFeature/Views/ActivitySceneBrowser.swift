@@ -45,16 +45,10 @@ public struct ActivitySceneBrowser: View {
             Color.dsTravelNavy.ignoresSafeArea()
             TabView(selection: $selection) {
                 ForEach(Array(places.enumerated()), id: \.element.id) { index, item in
-                    Group {
-                        if abs(index - selection) <= 1 {
-                            ActivityPlacePhoto(photo: item.photo)
-                        } else {
-                            Color.dsTravelNavy
-                        }
-                    }
-                    .ignoresSafeArea()
-                    .accessibilityHidden(index != selection)
-                    .tag(index)
+                    ActivityPlacePhoto(photo: item.photo, loadsImage: abs(index - selection) <= 1)
+                        .ignoresSafeArea()
+                        .accessibilityHidden(index != selection)
+                        .tag(index)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))

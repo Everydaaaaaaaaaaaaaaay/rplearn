@@ -121,6 +121,7 @@ public struct ActivityPlacePhoto: View {
 
     let photo: BackendActivityPhoto
     let contentMode: ContentMode
+    let loadsImage: Bool
     @State private var image: UIImage?
     @State private var imageKey: String?
     @State private var failed = false
@@ -132,9 +133,10 @@ public struct ActivityPlacePhoto: View {
               let values = try? JSONDecoder().decode([String: String].self, from: data) else { return [:] }
         return values
     }()
-    public init(photo: BackendActivityPhoto, contentMode: ContentMode = .fill) {
+    public init(photo: BackendActivityPhoto, contentMode: ContentMode = .fill, loadsImage: Bool = true) {
         self.photo = photo
         self.contentMode = contentMode
+        self.loadsImage = loadsImage
     }
     public var body: some View {
         GeometryReader { geometry in
@@ -156,10 +158,15 @@ public struct ActivityPlacePhoto: View {
                         Text("照片暂时未能打开").font(.caption)
                         Button("重试") { attempt += 1 }.font(.caption.weight(.semibold))
                     }.frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else { ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity) }
+                } else if loadsImage {
+                    ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    Color.dsTravelNavy
+                }
             }.frame(width: geometry.size.width, height: geometry.size.height)
                 .background(Color.dsTravelNavy.opacity(0.06))
-                .task(id: "\(photo.outputSHA256):\(attempt):\(key)") {
+                .task(id: "\(loadsImage):\(photo.outputSHA256):\(attempt):\(key)") {
+                    guard loadsImage else { return }
                     if let cached, cached.coversTarget {
                         if image !== cached.image || imageKey != key {
                             image = cached.image
