@@ -333,11 +333,11 @@ export class AppointmentRepository {
       throw error;
     }
   }
-  async start(userId: string, id: string, input: AppointmentCommand) {
-    return this.mutate(userId, id, input, "start");
+  async start(userId: string, id: string, input: AppointmentCommand, paragraphScenes = false) {
+    return this.mutate(userId, id, input, "start", paragraphScenes);
   }
-  async choose(userId: string, id: string, input: AppointmentChoice) {
-    return this.mutate(userId, id, input, "choice");
+  async choose(userId: string, id: string, input: AppointmentChoice, paragraphScenes = false) {
+    return this.mutate(userId, id, input, "choice", paragraphScenes);
   }
   async cancel(userId: string, id: string, input: AppointmentCommand) {
     return this.mutate(userId, id, input, "cancel");
@@ -347,6 +347,7 @@ export class AppointmentRepository {
     id: string,
     input: AppointmentChoice,
     kind: "start" | "choice" | "cancel",
+    paragraphScenes = false,
   ): Promise<AppointmentDetail> {
     const requestHash = hash({ id, kind, input }),
       token = randomUUID();
@@ -418,6 +419,7 @@ export class AppointmentRepository {
       let context: AppointmentGenerationContext = previous?.context ?? {
         userId,
         operationId: input.commandId,
+        paragraphScenes,
         appointment: narrativeSnapshot(row.snapshot),
         character: await this.context.character(sql, userId, row.snapshot.characterId),
         session,

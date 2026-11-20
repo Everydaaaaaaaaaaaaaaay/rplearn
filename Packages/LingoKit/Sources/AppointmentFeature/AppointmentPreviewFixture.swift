@@ -27,7 +27,7 @@ actor AppointmentPreviewService: AppointmentServing {
 
     init(scenario: String) {
         self.scenario = scenario
-        let active = ["active", "retry", "offline", "conflict"].contains(scenario)
+        let active = ["active", "retry", "offline", "conflict", "paragraph-pages"].contains(scenario)
         let completed = ["completed", "pending", "zero", "negative"].contains(scenario)
         value = [
             "appointment": [
@@ -45,7 +45,8 @@ actor AppointmentPreviewService: AppointmentServing {
             "session": NSNull(), "summary": NSNull()
         ]
         if active || completed {
-            value["session"] = ["id": "a0000000-0000-4000-8000-000000000003", "blocks": [Self.block(index: 0, ending: false)], "decisions": []] as [String: Any]
+            let opening = scenario == "paragraph-pages" ? Self.paragraphScene() : Self.block(index: 0, ending: false)
+            value["session"] = ["id": "a0000000-0000-4000-8000-000000000003", "blocks": [opening], "decisions": []] as [String: Any]
         }
         if completed {
             value["summary"] = Self.summary(scenario: scenario)
@@ -113,6 +114,31 @@ actor AppointmentPreviewService: AppointmentServing {
             ["speaker": "character", "english": ending ? "I'm glad we had this little bit of time. See you around." : response.map { "You suggested: “\($0)”. Let's talk through how we could do that." } ?? "We could follow the river, or find somewhere to sit. What would you prefer?", "chinese": ending ? "很高兴我们有了这一小段相处的时间。回头见。" : response.map { "你提议「\($0)」。我们可以商量怎样安排。" } ?? "我们可以沿河走走，也可以找个地方坐下。你想怎样？"]
          ],
          "choices": ending ? [] : [["id": "walk", "english": "Shall we walk along the water?", "chinese": "沿着水边走走吧？"], ["id": "quiet", "english": "Let's sit quietly for a moment.", "chinese": "安静坐一会吧。"]]]
+    }
+
+    private static func paragraphScene() -> [String: Any] {
+        let paragraphs = [
+            ("narrator", "Oliver catches the corner of a folded map before it slips off the bench.", "长椅上的地图快被吹走，Oliver 伸手按住一角。"),
+            ("character", "Hang on. That's my dad's handwriting.", "等一下。这是我爸的字。"),
+            ("narrator", "He opens the map along a worn crease. A date is written in the margin in blue ink.", "他沿着磨白的折痕摊开地图。边上用蓝墨水写着一个日期。"),
+            ("character", "Nineteen ninety-six. He got lost here on his first day in London.", "一九九六年。他来伦敦第一天就在这儿迷路了。"),
+            ("narrator", "Oliver traces a line to the river. It crosses the water where the map shows no bridge.", "Oliver 顺着线找到河边。线从水上穿过去，那儿没画桥。"),
+            ("character", "He swore there was a crossing. We argued about it for years.", "他死活说那儿能过河。我跟他争了好几年。"),
+            ("narrator", "A boat slows below the railing. Someone on deck coils a rope beside a stack of folding chairs.", "栏杆下有条船慢了下来。甲板上有人在收绳子，旁边摞着几把折叠椅。"),
+            ("character", "Wait. Maybe he meant a boat.", "哎，等等。他说的会不会是船？"),
+            ("narrator", "The boat pulls up at the steps. A crew member lifts the gate for two people waiting with bicycles.", "船靠上台阶。一名船员打开小门，让两个推自行车的人上去。"),
+            ("narrator", "Oliver folds back the corner of the map. Under the date, in much smaller letters, is the word ferry.", "Oliver 把地图折角翻开。日期下边有一排更小的字，写着渡船。"),
+            ("character", "He even wrote it down. I'm never hearing the end of this.", "他还写下来了。这下够他念我一辈子了。"),
+            ("narrator", "He takes out his phone. At the steps, the crew member waves to the people still on the path.", "他摸出手机。台阶那边，船员朝还在步道上的人招手。"),
+        ]
+        var scene = block(index: 0, ending: false)
+        scene["presentation"] = "paragraphs"
+        scene["beats"] = paragraphs.map { ["speaker": $0.0, "english": $0.1, "chinese": $0.2] }
+        scene["choices"] = [
+            ["id": "walk", "english": "Check where the boat is going.", "chinese": "过去问问船开去哪儿。"],
+            ["id": "quiet", "english": "Let him send his dad a picture first.", "chinese": "先让他给爸爸拍张照。"],
+        ]
+        return scene
     }
 
     private static func summary(scenario: String) -> [String: Any] {

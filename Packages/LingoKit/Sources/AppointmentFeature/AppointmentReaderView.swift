@@ -48,13 +48,16 @@ struct AppointmentReaderView: View {
         .task(id: narrationIdentity) {
             guard let readingServices else { return }
             await readingServices.speech.stopSpeaking()
-            guard canNarrate, let beat = model.beat, let characterID = model.detail?.appointment.characterId else { return }
-            let characterRequest = beat.speaker == "character"
-                ? await readingServices.characterNarration(characterID, beat.english) : nil
-            guard !Task.isCancelled else { return }
-            let request = AppointmentNarration.request(for: beat, characterName: characterName(characterID),
-                                                      characterRequest: characterRequest)
-            await readingServices.speech.speakAndWait(request)
+            guard canNarrate, let characterID = model.detail?.appointment.characterId else { return }
+            for beat in model.pageBeats {
+                guard !Task.isCancelled else { return }
+                let characterRequest = beat.speaker == "character"
+                    ? await readingServices.characterNarration(characterID, beat.english) : nil
+                guard !Task.isCancelled else { return }
+                let request = AppointmentNarration.request(for: beat, characterName: characterName(characterID),
+                                                          characterRequest: characterRequest)
+                await readingServices.speech.speakAndWait(request)
+            }
         }
         .onDisappear { Task { await readingServices?.speech.stopSpeaking(); await model.persistReading() } }
         .onChange(of: scenePhase) { _, phase in
@@ -119,16 +122,20 @@ struct AppointmentReaderView: View {
     }
 
     private func panel(maxHeight: CGFloat) -> some View {
-        VStack(alignment: .leading, spacing: 0) {
+        let page = model.pageBeats
+        let paragraphPages = model.usesParagraphPages
+        return VStack(alignment: .leading, spacing: 0) {
             if !inputFocused {
                 HStack {
-                    if model.beat?.speaker == "character", let item = model.detail?.appointment {
-                        AppointmentAvatarView(characterID: item.characterId, name: characterName(item.characterId))
-                        Text(characterName(item.characterId)).font(.caption.weight(.medium))
-                            .foregroundStyle(ink.opacity(0.65)).lineLimit(2)
-                    } else {
-                        Label("旁白", systemImage: "text.alignleft").font(.caption.weight(.medium))
-                            .foregroundStyle(ink.opacity(0.65))
+                    if !paragraphPages {
+                        if page.first?.speaker == "character", let item = model.detail?.appointment {
+                            AppointmentAvatarView(characterID: item.characterId, name: characterName(item.characterId))
+                            Text(characterName(item.characterId)).font(.caption.weight(.medium))
+                                .foregroundStyle(ink.opacity(0.65)).lineLimit(2)
+                        } else {
+                            Label("旁白", systemImage: "text.alignleft").font(.caption.weight(.medium))
+                                .foregroundStyle(ink.opacity(0.65))
+                        }
                     }
                     Spacer()
                     Button(translation ? "中 / EN" : "EN") { translation.toggle() }.font(.caption.weight(.medium)).frame(minWidth: 52, minHeight: 44).accessibilityLabel(translation ? "隐藏中文翻译" : "显示中文翻译")
@@ -137,14 +144,12 @@ struct AppointmentReaderView: View {
             }
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    if let beat = model.beat {
-                        if readingServices != nil {
-                            TappableText(tokens: TokenCache.tokens(for: beat.english, cacheKey: "appointment-\(model.block?.id ?? "")-\(model.beatIndex)"), contextID: "appointment-\(model.id)-\(model.block?.id ?? "")-\(model.beatIndex)", textColor: ink, selection: wordSelection, onSelect: { wordSelection = $0 })
-                                .font(.body).lineSpacing(6).accessibilityIdentifier("appointment.line")
-                        } else { Text(beat.english).font(.body).lineSpacing(6).textSelection(.enabled).accessibilityIdentifier("appointment.line") }
-                        if translation { Text(beat.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.77)).lineSpacing(5).fixedSize(horizontal: false, vertical: true) }
+                    ForEach(page.indices, id: \.self) { index in
+                        let beginsSpeech = paragraphPages && page[index].speaker == "character"
+                            && (index == page.startIndex || page[index - 1].speaker != "character")
+                        paragraph(page[index], index: index, showsSpeaker: beginsSpeech, grouped: paragraphPages)
                     }
-                    if model.isLastBeat && model.isLatestBlock && model.block?.ending == false && model.detail?.appointment.status == "in_progress" {
+                    if model.isLastPage && model.isLatestBlock && model.block?.ending == false && model.detail?.appointment.status == "in_progress" {
                         ForEach(model.block?.choices ?? []) { choice in
                             Button { Task { await model.submit(action: .choice, choiceID: choice.id) } } label: {
                                 HStack(alignment: .top, spacing: 12) {
@@ -176,9 +181,9 @@ struct AppointmentReaderView: View {
                 HStack {
                     if readingServices != nil { Text("轻点英文可查词").font(.caption2).foregroundStyle(ink.opacity(0.6)) }
                     Spacer()
-                    if model.isLastBeat && model.isLatestBlock && model.block?.ending == true {
+                    if model.isLastPage && model.isLatestBlock && model.block?.ending == true {
                         Button("查看这次回顾") { summary = true }.font(.subheadline.weight(.semibold)).frame(minHeight: 48).accessibilityIdentifier("appointment.summary")
-                    } else if !model.isLastBeat || !model.isLatestBlock {
+                    } else if !model.isLastPage || !model.isLatestBlock {
                         Button { wordSelection = nil; Task { await model.advance() } } label: { Label("继续", systemImage: "arrow.right").font(.subheadline.weight(.medium)).frame(minWidth: 72, minHeight: 44) }.accessibilityIdentifier("appointment.next")
                     }
                 }.padding(.top, 8)
@@ -190,8 +195,35 @@ struct AppointmentReaderView: View {
         .environment(\.colorScheme, .light)
     }
 
+    private func paragraph(_ beat: BackendAppointmentBeat, index: Int, showsSpeaker: Bool, grouped: Bool) -> some View {
+        let paragraphID = "appointment-\(model.block?.id ?? "")-\(index)"
+        return VStack(alignment: .leading, spacing: grouped ? 7 : 16) {
+            if showsSpeaker, let characterID = model.detail?.appointment.characterId {
+                Text(characterName(characterID))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(ink.opacity(0.65))
+                    .accessibilityAddTraits(.isHeader)
+            }
+            if readingServices != nil {
+                TappableText(tokens: TokenCache.tokens(for: beat.english, cacheKey: paragraphID),
+                             contextID: "\(model.id)-\(paragraphID)", textColor: ink,
+                             selection: wordSelection, onSelect: { wordSelection = $0 })
+                    .font(.body).lineSpacing(6).accessibilityIdentifier("appointment.line")
+            } else {
+                Text(beat.english).font(.body).lineSpacing(6).textSelection(.enabled)
+                    .accessibilityIdentifier("appointment.line")
+            }
+            if translation {
+                Text(beat.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.77))
+                    .lineSpacing(5).fixedSize(horizontal: false, vertical: true)
+                    .accessibilityIdentifier("appointment.translation")
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
     private var showsComposer: Bool {
-        model.isLastBeat && model.isLatestBlock && model.block?.ending == false && model.detail?.appointment.status == "in_progress"
+        model.isLastPage && model.isLatestBlock && model.block?.ending == false && model.detail?.appointment.status == "in_progress"
     }
 
     private var canSubmitCustomAction: Bool {

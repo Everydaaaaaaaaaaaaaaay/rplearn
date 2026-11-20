@@ -275,6 +275,49 @@ describe("appointment narrative acceptance", () => {
     expect(requests[2]?.messages[1]?.content).toContain(issue);
   });
 
+  it("expands an ordinary short draft and accepts up to thirty bilingual paragraphs for paged readers", async () => {
+    const input = { ...context(), paragraphScenes: true };
+    const drafts = [31, 30].map((count) => ({
+      ...candidate(),
+      beats: Array.from({ length: count }, (_, index) => ({
+        speaker: "narrator" as const,
+        english: `A new observation at the canal, paragraph ${String(index + 1)}.`,
+        chinese: `沿运河注意到的新细节，第 ${String(index + 1)} 段。`,
+      })),
+    }));
+    const audit = { ...storyAccept, development: "The walk reaches the lock.", immediateDecision: null };
+    for (const [initial, feedback] of [
+      [[candidate(), audit], "10–18 distinct natural paragraphs"],
+      [[drafts[0]], "beats"],
+    ] as const) {
+      const { service, requests } = harness([...initial, drafts[1], audit]);
+      const { block } = await service.generate(input);
+      expect(block.presentation).toBe("paragraphs");
+      expect(block.beats).toHaveLength(30);
+      expect(requests[0]?.maxOutputTokens).toBe(4500);
+      const repair = requests.find((request) => request.parentOperationId);
+      expect(repair?.maxOutputTokens).toBe(2400);
+      expect(repair?.messages[1]?.content).toContain(feedback);
+    }
+  });
+
+  it("allows an immediate choice or a short goodbye in paragraph mode", async () => {
+    const input = { ...context(), paragraphScenes: true };
+    const decision = harness([candidate(), storyAccept]);
+    expect((await decision.service.generate(input)).block.beats).toHaveLength(1);
+    const goodbye = harness([candidate(true), { ...storyAccept, immediateDecision: null }]);
+    expect((await goodbye.service.generate(input)).block).toMatchObject({ ending: true, choices: [] });
+  });
+
+  it("accepts a complete eight-paragraph rewrite after asking for a fuller scene", async () => {
+    const input = { ...context(), paragraphScenes: true };
+    const compact = { ...candidate(), beats: Array.from({ length: 8 }, () => candidate().beats[0]) };
+    const audit = { ...storyAccept, development: "Oliver walks to the lock and finds the boat.", immediateDecision: null };
+    const { service, requests } = harness([compact, audit, compact, audit]);
+    expect((await service.generate(input)).block.beats).toHaveLength(8);
+    expect(requests).toHaveLength(4);
+  });
+
   it.each([
     "identity rewrite",
     "invented past",

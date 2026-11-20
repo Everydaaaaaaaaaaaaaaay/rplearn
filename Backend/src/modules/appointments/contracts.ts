@@ -44,6 +44,7 @@ export interface AppointmentBlock {
   beats: { speaker: "narrator" | "character"; english: string; chinese: string }[];
   choices: { id: string; english: string; chinese: string }[];
   ending: boolean;
+  presentation?: "paragraphs";
 }
 export interface AppointmentDecision {
   id: string;
@@ -139,6 +140,7 @@ export interface DetectedAppointment {
 export interface AppointmentGenerationContext {
   serviceFundedRetry?: boolean;
   recoveryAttempt?: number;
+  paragraphScenes?: boolean;
   userId: string;
   operationId: string;
   appointment: Appointment;
@@ -197,11 +199,13 @@ export interface AppointmentService {
     userId: string,
     id: string,
     input: AppointmentCommand,
+    paragraphScenes?: boolean,
   ): Promise<AppointmentDetail>;
   choose(
     userId: string,
     id: string,
     input: AppointmentChoice,
+    paragraphScenes?: boolean,
   ): Promise<AppointmentDetail>;
   cancel(
     userId: string,

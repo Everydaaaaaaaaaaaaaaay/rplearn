@@ -69,7 +69,17 @@ it("authenticates all reads and mutations, rejects malformed commands and keeps 
   expect(service.start).toHaveBeenCalledWith(id, id, {
     commandId,
     expectedRevision: 0,
-  });
+  }, false);
+  expect((await app.inject({
+    method: "POST",
+    url: `/v1/appointments/${id}/start?reading=paragraphs`,
+    headers,
+    payload: { commandId, expectedRevision: 0 },
+  })).statusCode).toBe(200);
+  expect(service.start).toHaveBeenLastCalledWith(id, id, {
+    commandId,
+    expectedRevision: 0,
+  }, true);
   expect(
     (
       await app.inject({

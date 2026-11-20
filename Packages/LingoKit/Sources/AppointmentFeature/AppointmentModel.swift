@@ -35,10 +35,15 @@ final class AppointmentModel {
 
     var block: BackendAppointmentBlock? { blocks.first { $0.id == cursor?.blockID } ?? blocks.last }
     var beatIndex: Int { min(max(cursor?.beatIndex ?? 0, 0), max((block?.beats.count ?? 1) - 1, 0)) }
-    var beat: BackendAppointmentBeat? { guard let block, block.beats.indices.contains(beatIndex) else { return nil }; return block.beats[beatIndex] }
-    var isLastBeat: Bool { beatIndex >= (block?.beats.count ?? 0) - 1 }
+    var usesParagraphPages: Bool { block?.presentation == "paragraphs" }
+    private var pageEndIndex: Int { min(beatIndex + (usesParagraphPages ? 4 : 1), block?.beats.count ?? 0) }
+    var pageBeats: ArraySlice<BackendAppointmentBeat> {
+        guard let block else { return [] }
+        return block.beats[beatIndex..<pageEndIndex]
+    }
+    var isLastPage: Bool { pageEndIndex >= (block?.beats.count ?? 0) }
     var isLatestBlock: Bool { block?.id == blocks.last?.id }
-    var mayRespond: Bool { isLatestBlock && isLastBeat && detail?.appointment.status == "in_progress" && block?.ending == false && pending == nil && !loading && !submitting && !offline }
+    var mayRespond: Bool { isLatestBlock && isLastPage && detail?.appointment.status == "in_progress" && block?.ending == false && pending == nil && !loading && !submitting && !offline }
 
     func refreshAfterConnectionFailure() async {
         guard connectionFailed else { return }
@@ -150,7 +155,7 @@ final class AppointmentModel {
 
     func advance() async {
         guard let block else { return }
-        if !isLastBeat { cursor = .init(blockID: block.id, beatIndex: beatIndex + 1) }
+        if !isLastPage { cursor = .init(blockID: block.id, beatIndex: pageEndIndex) }
         else if let index = blocks.firstIndex(where: { $0.id == block.id }), blocks.indices.contains(index + 1) {
             cursor = .init(blockID: blocks[index + 1].id, beatIndex: 0)
         }

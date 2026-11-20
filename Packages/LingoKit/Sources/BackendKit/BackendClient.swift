@@ -373,13 +373,14 @@ public actor BackendClient {
         method: String,
         body: Request,
         authenticated: Bool = true,
-        idempotencyKey: UUID? = nil
+        idempotencyKey: UUID? = nil,
+        queryItems: [URLQueryItem] = []
     ) async throws -> Response {
         try await request(
             path: path,
             method: method,
             body: try encoder.encode(body),
-            queryItems: [],
+            queryItems: queryItems,
             authenticated: authenticated,
             idempotencyKey: idempotencyKey,
             retryAfterUnauthorized: authenticated

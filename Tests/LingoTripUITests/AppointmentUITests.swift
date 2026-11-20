@@ -303,8 +303,8 @@ final class AppointmentUITests: XCTestCase {
     private func readBackendBlock(waitingForEnding: Bool = false) -> [String] {
         let next = app.buttons["appointment.next"]
         let summary = app.buttons["appointment.summary"]
-        let line = app.scrollViews["appointment.readerScroll"].staticTexts
-            .matching(NSPredicate(format: "label MATCHES %@", #".*[\p{Han}].*"#)).firstMatch
+        let paragraphs = app.scrollViews["appointment.readerScroll"].staticTexts.matching(identifier: "appointment.translation")
+        let line = paragraphs.firstMatch
         let ready = NSPredicate { _, _ in
             next.exists || summary.exists || (!waitingForEnding && self.actionInput.exists)
                 || self.app.buttons["appointment.retry"].exists
@@ -314,7 +314,7 @@ final class AppointmentUITests: XCTestCase {
         var lines: [String] = []
         for _ in 0..<8 {
             XCTAssertTrue(line.waitForExistence(timeout: 8))
-            lines.append(line.label)
+            lines.append(contentsOf: paragraphs.allElementsBoundByIndex.map(\.label))
             if summary.exists || (!waitingForEnding && actionInput.exists) { return lines }
             let prior = line.label
             XCTAssertTrue(next.exists)
@@ -374,6 +374,28 @@ final class AppointmentUITests: XCTestCase {
         XCTAssertFalse(app.buttons["appointment.next"].exists)
         start.tap()
         XCTAssertTrue(app.buttons["appointment.next"].waitForExistence(timeout: 8))
+    }
+
+    func testParagraphScenePaginatesBeforeOfferingChoices() {
+        launch("paragraph-pages")
+        let resume = app.buttons["appointment.resume"]
+        reveal(resume)
+        resume.tap()
+        let next = app.buttons["appointment.next"]
+        XCTAssertTrue(next.waitForExistence(timeout: 8))
+        assertInsideScreen(next)
+        XCTAssertFalse(actionInput.exists)
+        capture("appointment-paragraph-scene")
+        let paragraphs = readBackendBlock()
+        XCTAssertEqual(paragraphs.count, 12)
+        XCTAssertTrue(paragraphs.first?.contains("地图") == true)
+        XCTAssertTrue(paragraphs.last?.contains("招手") == true)
+        XCTAssertFalse(next.exists)
+        let choice = app.buttons["appointment.choice.walk"]
+        reveal(choice)
+        XCTAssertTrue(choice.isHittable)
+        XCTAssertTrue(actionInput.exists)
+        capture("appointment-paragraph-scene-choices")
     }
 
     func testFailedReadRecoversWhenReturningToAppointments() {
@@ -563,7 +585,7 @@ final class AppointmentUITests: XCTestCase {
         app.launch()
         let action: String
         switch scenario {
-        case "active", "retry", "offline", "conflict": action = "appointment.resume"
+        case "active", "retry", "offline", "conflict", "paragraph-pages": action = "appointment.resume"
         case "completed", "zero", "negative", "pending": action = "appointment.openSummary"
         default: action = "appointment.start"
         }

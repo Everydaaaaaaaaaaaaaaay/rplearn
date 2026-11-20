@@ -57,6 +57,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
             ],
             choices: ending ? [] : [{ id: "walk", english: "Walk", chinese: "散步" }],
             ending,
+            ...(context.paragraphScenes ? { presentation: "paragraphs" as const } : {}),
           },
           outcome: "We walked along the canal.",
         };
@@ -488,7 +489,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const a = await detectNew(),
         input = command(a),
         before = generationCount;
-      const opened = await service.start(user, a.id, input);
+      const opened = await service.start(user, a.id, input, true);
+      expect(opened.session?.blocks[0]?.presentation).toBe("paragraphs");
       expect(await service.start(user, a.id, input)).toEqual(opened);
       expect(generationCount).toBe(before + 1);
       const choose = {
@@ -496,9 +498,10 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         input: "Change topic and walk quietly",
       };
       const next = await service.choose(user, a.id, choose);
+      expect(next.session?.blocks[1]?.presentation).toBeUndefined();
       expect(next.session!.decisions[0]?.input).toBe(choose.input);
       expect(next.session!.blocks[0]).toEqual(opened.session!.blocks[0]);
-      expect(await service.choose(user, a.id, choose)).toEqual(next);
+      expect(await service.choose(user, a.id, choose, true)).toEqual(next);
       expect(opened.appointment.timelineEvents?.map(({ kind }) => kind)).toEqual([
         "confirmed",
         "started",

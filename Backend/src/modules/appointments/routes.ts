@@ -11,6 +11,7 @@ const command = z.object({
   expectedRevision: z.number().int().nonnegative(),
 });
 const params = z.object({ id: uuid });
+const reader = z.object({ reading: z.literal("paragraphs").optional() });
 function allowNarrativeWait(request: FastifyRequest): void {
   // Generation and independent review can exceed the ordinary 30-second idle limit.
   // Node restores its normal timeout on the next keep-alive request. No global limit is changed.
@@ -85,11 +86,11 @@ export function registerAppointmentRoutes(
           : parse(command.strict(), request.body);
       if (kind !== "cancel") allowNarrativeWait(request);
       reply.header("cache-control", "no-store");
+      if (kind === "cancel") return service.cancel(actor.userId, id, body);
+      const paragraphScenes = reader.safeParse(request.query).data?.reading === "paragraphs";
       return kind === "start"
-        ? service.start(actor.userId, id, body)
-        : kind === "cancel"
-          ? service.cancel(actor.userId, id, body)
-          : service.choose(actor.userId, id, body);
+        ? service.start(actor.userId, id, body, paragraphScenes)
+        : service.choose(actor.userId, id, body, paragraphScenes);
     });
   app.get("/v1/appointments/:id/settlement", async (request, reply) => {
     const actor = await authenticateRequest(request, auth);

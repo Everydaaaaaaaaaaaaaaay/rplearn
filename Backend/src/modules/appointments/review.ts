@@ -53,7 +53,8 @@ export async function reviewAppointment(
 ): Promise<AppointmentReview> {
   if (!input.session.blocks.at(-1)?.ending)
     throw narrativeFailure("APPOINTMENT_REVIEW_REJECTED");
-  const context = acceptedContext(input);
+  const paragraphHistory = input.session.blocks.some(({ presentation }) => presentation === "paragraphs");
+  const context = acceptedContext(input, paragraphHistory);
   const blockReferences = new Map(input.session.blocks.map((block, index) => [block.id, `B${String(index + 1)}`]));
   const resultBlockReferences = new Map(
     input.session.blocks.slice(0, -1).map((block, index) => [block.id, `B${String(index + 2)}`]),
@@ -61,19 +62,24 @@ export async function reviewAppointment(
   const decisionReferences = new Map(input.session.decisions.map((decision, index) => [decision.id, `D${String(index + 1)}`]));
   const canonicalBlocks = new Map([...blockReferences].map(([id, reference]) => [reference, id]));
   const canonicalDecisions = new Map([...decisionReferences].map(([id, reference]) => [reference, id]));
-  const reviewContext = {
-    ...context,
-    session: {
-      ...context.session,
-      blocks: context.session.blocks.map((block) => ({ ...block, id: blockReferences.get(block.id) })),
-      decisions: context.session.decisions.map((decision) => ({
-        ...decision, id: decisionReferences.get(decision.id),
-        blockId: blockReferences.get(decision.blockId),
-        resultBlockId: resultBlockReferences.get(decision.blockId),
-        technicalOnly: isTechnicalOnlyAction(decision.input),
-      })),
-    },
+  const reviewSession = {
+    blocks: context.session.blocks.map((block) => ({
+      ...(paragraphHistory ? { location: block.location, beats: block.beats } : block),
+      id: blockReferences.get(block.id),
+    })),
+    decisions: context.session.decisions.map((decision) => ({
+      ...(paragraphHistory ? { input: decision.input } : decision),
+      id: decisionReferences.get(decision.id),
+      blockId: blockReferences.get(decision.blockId),
+      resultBlockId: resultBlockReferences.get(decision.blockId),
+      technicalOnly: isTechnicalOnlyAction(decision.input),
+    })),
   };
+  // The recap needs the transcript and its evidence IDs. The persona and scheduling
+  // metadata used by the writer would take budget away from reviewing the scene.
+  const reviewContext = paragraphHistory
+    ? { character: { name: context.character.name }, session: reviewSession }
+    : { ...context, session: { ...context.session, ...reviewSession } };
   const readable = (text: string) => text.replace(/\b[BD]\d+\b/g, (reference) => {
     if (!canonicalDecisions.has(reference) && !canonicalBlocks.has(reference)) return reference;
     const chinese = /\p{Script=Han}/u.test(text);
@@ -83,7 +89,11 @@ export async function reviewAppointment(
   let repair: { issues: string[]; previousCandidate: AppointmentReview } | undefined;
   // Expired review leases can retain operation IDs across a deployment.
   // Use new stage IDs for the revised prompts to avoid conflicts with old receipts.
-  for (const stage of ["summary-v3", "summary-v3-repair"]) {
+  const summaryStage = paragraphHistory ? "summary-v4-paragraphs" : "summary-v3";
+  const instruction = paragraphHistory
+    ? SUMMARY_INSTRUCTION + "\nA rating needs a qualifying act by the user in a cited decision. Do not rate the companion's speech, boundary, or reaction. For routine participation and ordinary proposals use the neutral result."
+    : SUMMARY_INSTRUCTION;
+  for (const stage of [summaryStage, summaryStage + "-repair"]) {
     const proposed = parseCandidate(
       appointmentReviewSchema,
       await appointmentJson(ai, {
@@ -91,9 +101,11 @@ export async function reviewAppointment(
         operationId: input.operationId,
         stage,
         task: "appointment_review",
-        instruction: repair ? SUMMARY_INSTRUCTION + "\n" + SUMMARY_REPAIR : SUMMARY_INSTRUCTION,
-        data: repair ? { ...reviewContext, repair } : reviewContext,
-        maxOutputTokens: 1600,
+        instruction: repair ? instruction + "\n" + SUMMARY_REPAIR : instruction,
+        data: repair
+          ? { ...reviewContext, repair: paragraphHistory ? { issues: repair.issues } : repair }
+          : reviewContext,
+        maxOutputTokens: paragraphHistory ? 850 : 1600,
       }),
     );
     if (!proposed) throw narrativeFailure("APPOINTMENT_REVIEW_REJECTED");
@@ -137,7 +149,7 @@ export async function reviewAppointment(
         task: "appointment_review",
         instruction: SUMMARY_AUDIT,
         data: { acceptedContext: reviewContext, candidate: proposed },
-        maxOutputTokens: 800,
+        maxOutputTokens: paragraphHistory ? 450 : 800,
       }),
     );
     if (!audit) break;

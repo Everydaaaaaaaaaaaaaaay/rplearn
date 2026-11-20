@@ -41,6 +41,12 @@ extension BackendClient: AppointmentServing {
     }
 
     public func appointmentCommand(_ id: UUID, action: BackendAppointmentAction, request: BackendAppointmentCommand) async throws -> BackendAppointmentDetail {
-        try await send(path: "/v1/appointments/\(id.uuidString.lowercased())/\(action.endpoint)", method: "POST", body: request, idempotencyKey: request.commandId)
+        try await send(
+            path: "/v1/appointments/\(id.uuidString.lowercased())/\(action.endpoint)",
+            method: "POST",
+            body: request,
+            idempotencyKey: request.commandId,
+            queryItems: action == .cancel ? [] : [URLQueryItem(name: "reading", value: "paragraphs")]
+        )
     }
 }

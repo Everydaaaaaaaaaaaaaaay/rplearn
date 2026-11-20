@@ -115,6 +115,7 @@ public struct BackendAppointmentBlock: Codable, Sendable, Hashable, Identifiable
     public let beats: [BackendAppointmentBeat]
     public let choices: [BackendAppointmentChoice]
     public let ending: Bool
+    public let presentation: String?
 }
 
 public struct BackendAppointmentBeat: Codable, Sendable, Hashable {

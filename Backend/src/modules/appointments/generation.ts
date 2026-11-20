@@ -3,6 +3,9 @@ import type { AiService } from "../ai/service.js";
 import type { AppointmentNarrative } from "./contracts.js";
 import {
   MAX_APPOINTMENT_BLOCKS,
+  MIN_SCENE_PARAGRAPHS,
+  PARAGRAPH_SCENE_AUDIT,
+  PARAGRAPH_SCENE_INSTRUCTION,
   WORLD_POLICY,
   STORY_INSTRUCTION,
   STORY_AUDIT_INSTRUCTION,
@@ -12,13 +15,12 @@ import {
   detectionSchema,
   narrativeFailure,
   parseCandidate,
+  paragraphSceneSchema,
   semanticAuditSchema,
   storyAuditSchema,
   storyCandidateSchema,
 } from "./narrative-policy.js";
 import { reviewAppointment } from "./review.js";
-
-const STORY_STAGE = "story-v3";
 
 const DETECT_INSTRUCTION = `${WORLD_POLICY}
 Name the appointment with the exact concise Chinese format "和{character.name}一起{agreed activity}". Preserve the character's canonical name. Use a concrete everyday verb phrase taken from the actual agreement, for example "和Ruby一起看电影", "和Oliver一起散步" or "和Ruby一起喝咖啡". If only a meeting was agreed and no activity was specified, use "和{character.name}在{placeName}见面". Keep the title factual and brief, with no literary atmosphere, emotional promises, invented activity, quotation marks or subtitle.
@@ -130,19 +132,32 @@ export function createAppointmentNarrative(
         input.session.blocks.at(-1)?.ending
       )
         throw narrativeFailure();
+      const paragraphScenes = input.paragraphScenes === true;
+      const storyStage = paragraphScenes ? "story-v4-paragraphs" : "story-v3";
+      const history = acceptedContext(input, paragraphScenes);
       const base = {
-        acceptedContext: acceptedContext(input),
+        acceptedContext: history,
         action: input.action,
         mustEnd:
           input.action?.finish === true ||
-          JSON.stringify(acceptedContext(input)).length > 400_000 ||
+          JSON.stringify(history).length > 400_000 ||
           input.session.blocks.length === MAX_APPOINTMENT_BLOCKS - 1,
         maxBlocks: MAX_APPOINTMENT_BLOCKS,
       };
       let issues: string[] = [];
       let previousCandidate: unknown = null;
       for (let attempt = 0; attempt < 2; attempt++) {
-        const stage = attempt === 0 ? STORY_STAGE : `${STORY_STAGE}-repair`;
+        const stage = attempt === 0 ? storyStage : `${storyStage}-repair`;
+        let outputTokens = 3000;
+        let instruction = STORY_INSTRUCTION;
+        if (paragraphScenes) {
+          outputTokens = attempt === 0 && !input.serviceFundedRetry ? 4500 : 2400;
+          if (base.mustEnd) outputTokens = 900;
+          instruction = PARAGRAPH_SCENE_INSTRUCTION;
+          if (attempt > 0) {
+            instruction += "\nWrite a fresh scene that resolves the editorial issues in repair. If the prior decision was repeated, carry out a new consequence and end at a different decision. Retain the original user action and approved history.";
+          }
+        }
         const content = await appointmentJson(ai, {
           userId: input.userId,
           operationId: input.operationId,
@@ -150,21 +165,21 @@ export function createAppointmentNarrative(
           task: input.serviceFundedRetry
             ? "appointment_story_retry"
             : "appointment_story",
-          ...(attempt === 0 ? {} : { parentStage: STORY_STAGE }),
-          instruction: STORY_INSTRUCTION,
+          ...(attempt === 0 ? {} : { parentStage: storyStage }),
+          instruction,
           data:
             attempt === 0
               ? base
               : {
                   ...base,
-                  repair: {
+                  repair: paragraphScenes ? { issues } : {
                     issues,
                     previousCandidate,
                     instruction:
                       "Write a fresh version of the scene from the accepted history and original action. Fix the listed problems together, including choices and both languages. Keep the accepted facts and boundaries. The rejected draft is not history.",
                   },
                 },
-          maxOutputTokens: 3000,
+          maxOutputTokens: outputTokens,
         });
         let draft: unknown;
         try {
@@ -176,7 +191,7 @@ export function createAppointmentNarrative(
           ];
           continue;
         }
-        const parsed = storyCandidateSchema.safeParse(draft);
+        const parsed = (paragraphScenes ? paragraphSceneSchema : storyCandidateSchema).safeParse(draft);
         if (!parsed.success) {
           previousCandidate = null;
           issues = parsed.error.issues.slice(0, 4).map((issue) =>
@@ -196,7 +211,9 @@ export function createAppointmentNarrative(
             operationId: input.operationId,
             stage: `${stage}-audit`,
             task: "appointment_review",
-            instruction: STORY_AUDIT_INSTRUCTION,
+            instruction: paragraphScenes
+              ? STORY_AUDIT_INSTRUCTION + "\n" + PARAGRAPH_SCENE_AUDIT
+              : STORY_AUDIT_INSTRUCTION,
             data: {
               ...base,
               previousOptions: input.session.blocks.at(-1)?.choices.map(
@@ -204,7 +221,7 @@ export function createAppointmentNarrative(
               ) ?? [],
               candidate,
             },
-            maxOutputTokens: 1000,
+            maxOutputTokens: paragraphScenes ? 650 : 1000,
           }),
         );
         if (!audit) {
@@ -218,13 +235,21 @@ export function createAppointmentNarrative(
         if (audit.pacingIssue) issues.push(audit.pacingIssue);
         const needsDevelopment =
           !candidate.ending && !audit.development && !audit.immediateDecision;
-        if (needsDevelopment && !audit.pacingIssue) {
+        // Give an ordinary short scene one rewrite. A complete, audited repair
+        // just below the target does not need another generation attempt.
+        const belowSceneTarget = paragraphScenes && !candidate.ending &&
+          candidate.beats.length < MIN_SCENE_PARAGRAPHS && !audit.immediateDecision;
+        const tooShort = belowSceneTarget &&
+          (attempt === 0 || candidate.beats.length < MIN_SCENE_PARAGRAPHS - 2 || !audit.development);
+        if (tooShort && !audit.pacingIssue) {
+          issues.push(`Develop the scene through ${String(MIN_SCENE_PARAGRAPHS)}–18 distinct natural paragraphs before the next choice. There is no immediate decision preventing further action.`);
+        } else if (needsDevelopment && !audit.pacingIssue) {
           issues.push(
             "Show a consequence that plays out before the next choice, or stop at a decision that genuinely needs the user's answer.",
           );
         }
         // A stalled draft can anchor the writer to the very scene it needs to move past.
-        if (audit.pacingIssue || needsDevelopment) previousCandidate = null;
+        if (audit.pacingIssue || needsDevelopment || tooShort) previousCandidate = null;
         if (issues.length > 0) continue;
         return {
           block: {
@@ -232,6 +257,7 @@ export function createAppointmentNarrative(
             sequence: input.session.blocks.length,
             location: candidate.location,
             beats: candidate.beats,
+            ...(paragraphScenes ? { presentation: "paragraphs" as const } : {}),
             ending: candidate.ending,
             choices: candidate.choices.map((choice, index) => ({
               ...choice,

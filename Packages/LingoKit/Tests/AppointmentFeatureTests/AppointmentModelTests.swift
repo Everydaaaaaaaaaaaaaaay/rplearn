@@ -137,6 +137,29 @@ struct AppointmentModelTests {
         #expect(commands == 0)
     }
 
+    @Test("A scene keeps its paragraph position and unlocks choices on the last page")
+    func paragraphPagesResume() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let service = AppointmentPreviewService(scenario: "paragraph-pages")
+        let cache = AppointmentCache(namespace: "paragraphs", directory: directory)
+        let id = AppointmentListView.previewAppointmentID
+        let first = AppointmentModel(id: id, service: service, cache: cache)
+        await first.load()
+        #expect(first.pageBeats.indices == 0..<4)
+        #expect(!first.mayRespond)
+        await first.advance()
+        #expect(first.pageBeats.indices == 4..<8)
+
+        let reopened = AppointmentModel(id: id, service: service, cache: cache)
+        await reopened.load()
+        #expect(reopened.pageBeats == first.pageBeats)
+        #expect(!reopened.mayRespond)
+        await reopened.advance()
+        #expect(reopened.pageBeats.indices == 8..<12)
+        #expect(reopened.mayRespond)
+    }
+
     @Test("An already-open card cannot replace a lost-receipt command from another view")
     func protectsPendingCommandAcrossModels() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
