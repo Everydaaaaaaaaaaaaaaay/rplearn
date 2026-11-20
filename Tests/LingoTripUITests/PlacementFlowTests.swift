@@ -108,7 +108,7 @@ final class PlacementFlowTests: XCTestCase {
             skip.tap()
         }
         XCTAssertTrue(app.staticTexts["还需要一些作答信息"].waitForExistence(timeout: 5))
-        XCTAssertFalse(app.buttons["placement.apply"].exists)
+        XCTAssertTrue(app.buttons["placement.apply"].isHittable)
         XCTAssertTrue(app.buttons["placement.chooseLevel"].exists)
         let image = XCTAttachment(screenshot: app.screenshot())
         image.name = "全部跳过不强制定级"; image.lifetime = .keepAlways; add(image)
@@ -121,7 +121,11 @@ final class PlacementFlowTests: XCTestCase {
         try saveEvidence(app, name: "skip-manual-level")
         app.buttons["返回水平校准"].tap()
         XCTAssertTrue(app.staticTexts["还需要一些作答信息"].waitForExistence(timeout: 5))
-        XCTAssertFalse(app.buttons["placement.apply"].exists)
+        let apply = app.buttons["placement.apply"]
+        XCTAssertTrue(apply.isHittable)
+        apply.tap()
+        XCTAssertTrue(app.staticTexts["还需要一些作答信息"].waitForNonExistence(timeout: 5))
+        XCTAssertFalse(app.alerts["确认切换英语水平"].exists)
     }
 
     private func saveEvidence(_ app: XCUIApplication, name: String) throws {

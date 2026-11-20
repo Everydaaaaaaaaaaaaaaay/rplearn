@@ -28,7 +28,7 @@ extension PlacementTestView {
                         ? (result.answeredCount < 8
                            ? "本次题量较少，这是一个初步的学习起点建议。先从合适的内容开始，之后可以再调整。"
                            : "建议从这个难度开始学习。结果只用于安排学习内容，你也可以按实际体验调整。")
-                        : "本次有效作答较少，暂不推荐新水平。可以重新测评，或直接选择适合自己的英语水平。")
+                        : "本次有效作答较少，暂不推荐新水平。你可以沿用当前水平，也可以手动调整。")
                         .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
                         .fixedSize(horizontal: false, vertical: true)
                     }
@@ -42,24 +42,34 @@ extension PlacementTestView {
                             detail: result.hasSufficientEvidence ? "可采用建议，也可以自行选择。" : "当前水平未改变，可自行选择。",
                             recommendedLevel: result.hasSufficientEvidence ? result.difficultyLevel : nil)
                     }
-                    if let errorMessage { Text(errorMessage).font(.caption).foregroundStyle(Color.dsDanger) }
-                    if result.hasSufficientEvidence {
-                        Button { applySelectedLevel(testResult: result) } label: {
-                            if isApplying { ProgressView().tint(.white) }
-                            else { Text("应用 \(selectedLevel.displayName)") }
-                        }
-                        .buttonStyle(.dsWorkbenchAction).disabled(isApplying)
-                        .accessibilityIdentifier("placement.apply")
-                    }
-                    Button("重新测评") { start() }
-                        .buttonStyle(.dsAction(.secondary, fullWidth: true)).disabled(isApplying)
-                        .accessibilityIdentifier("placement.restart")
                     Text("这是学习难度建议，不代表学历或任何考试认证。")
                         .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
                 }
                 .frame(maxWidth: 560).padding(DSSpacing.lg).frame(maxWidth: .infinity)
             }
             .placementScrollEdgeBlend()
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                VStack(spacing: DSSpacing.sm) {
+                    if let errorMessage {
+                        Text(errorMessage).font(.caption).foregroundStyle(Color.dsDanger)
+                    }
+                    Button { applySelectedLevel(testResult: result) } label: {
+                        if isApplying { ProgressView().tint(.white) }
+                        else { Text("应用\(selectedLevel.displayName)") }
+                    }
+                    .buttonStyle(.dsWorkbenchAction)
+                    .accessibilityIdentifier("placement.apply")
+                    Button("重新测评") { start() }
+                        .buttonStyle(.dsAction(.secondary, fullWidth: true))
+                        .accessibilityIdentifier("placement.restart")
+                }
+                .disabled(isApplying)
+                .frame(maxWidth: 560)
+                .padding(.horizontal, DSSpacing.lg)
+                .padding(.vertical, DSSpacing.sm)
+                .frame(maxWidth: .infinity)
+                .background(.regularMaterial)
+            }
         } else { loadingView }
     }
 
@@ -346,10 +356,11 @@ extension PlacementTestView {
     }
 
     func applySelectedLevel(testResult: PlacementResult?) {
+        let preserveSource = testResult?.hasSufficientEvidence == false
         let testResult = testResult.flatMap { $0.hasSufficientEvidence ? $0 : nil }
         let level = selectedLevel
         guard level != currentLevel else {
-            saveSelectedLevel(level: level, testResult: testResult)
+            saveSelectedLevel(level: level, testResult: testResult, preserveSource: preserveSource)
             return
         }
         isApplying = true; errorMessage = nil
@@ -364,16 +375,18 @@ extension PlacementTestView {
         }
     }
 
-    func saveSelectedLevel(level: DifficultyLevel, testResult: PlacementResult?) {
+    func saveSelectedLevel(level: DifficultyLevel, testResult: PlacementResult?, preserveSource: Bool = false) {
         isApplying = true
         errorMessage = nil
         Task {
             do {
                 let updated = try await deps.profileCommands.updateProfile { profile in
+                    if profile.difficultyLevel != level || !preserveSource {
+                        profile.proficiencySource = testResult?.difficultyLevel == level
+                            ? .placement
+                            : .selfReported
+                    }
                     profile.difficultyLevel = level
-                    profile.proficiencySource = testResult?.difficultyLevel == level
-                        ? .placement
-                        : .selfReported
                     if let testResult {
                         profile.placementScore = testResult.score
                         profile.placementCompletedAt = .now
