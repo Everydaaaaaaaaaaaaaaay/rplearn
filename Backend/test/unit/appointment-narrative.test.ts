@@ -305,8 +305,15 @@ describe("appointment narrative acceptance", () => {
     const input = { ...context(), paragraphScenes: true };
     const decision = harness([candidate(), storyAccept]);
     expect((await decision.service.generate(input)).block.beats).toHaveLength(1);
-    const goodbye = harness([candidate(true), { ...storyAccept, immediateDecision: null }]);
+    const goodbyeAudit = { ...storyAccept, immediateDecision: null };
+    const goodbye = harness([
+      candidate(true),
+      { ...goodbyeAudit, continuityIssues: ["Remove the unchosen gesture."] },
+      candidate(true),
+      goodbyeAudit,
+    ]);
     expect((await goodbye.service.generate(input)).block).toMatchObject({ ending: true, choices: [] });
+    expect(goodbye.requests[2]?.maxOutputTokens).toBe(900);
   });
 
   it("accepts a complete eight-paragraph rewrite after asking for a fuller scene", async () => {

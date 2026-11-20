@@ -19,6 +19,7 @@ import {
   semanticAuditSchema,
   storyAuditSchema,
   storyCandidateSchema,
+  type StoryCandidate,
 } from "./narrative-policy.js";
 import { reviewAppointment } from "./review.js";
 
@@ -145,14 +146,16 @@ export function createAppointmentNarrative(
         maxBlocks: MAX_APPOINTMENT_BLOCKS,
       };
       let issues: string[] = [];
-      let previousCandidate: unknown = null;
+      let previousCandidate: StoryCandidate | null = null;
       for (let attempt = 0; attempt < 2; attempt++) {
         const stage = attempt === 0 ? storyStage : `${storyStage}-repair`;
         let outputTokens = 3000;
         let instruction = STORY_INSTRUCTION;
         if (paragraphScenes) {
           outputTokens = attempt === 0 && !input.serviceFundedRetry ? 4500 : 2400;
-          if (base.mustEnd) outputTokens = 900;
+          // A custom goodbye is only recognized after drafting. Its repair needs
+          // the same small reservation as the explicit Finish action.
+          if (base.mustEnd || previousCandidate?.ending) outputTokens = 900;
           instruction = PARAGRAPH_SCENE_INSTRUCTION;
           if (attempt > 0) {
             instruction += "\nWrite a fresh scene that resolves the editorial issues in repair. If the prior decision was repeated, carry out a new consequence and end at a different decision. Retain the original user action and approved history.";
