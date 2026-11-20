@@ -234,6 +234,7 @@ export function createCreditService(
         messages: readonly AiMessage[];
         maxOutputTokens: number;
         parentOperationId?: string;
+        requiredAppointmentStep?: boolean;
       },
     ): Promise<{ replay: boolean; result: unknown }> => {
       // Preserve idempotent replay even if the original model has since left the
@@ -350,10 +351,16 @@ export function createCreditService(
           billingScope === "service" ? rate.auxiliaryRate : RATE_SCALE,
         );
         const budgetAmount = applyCreditRate(amount, rate.auxiliaryRate);
+        // A completed appointment or an admitted story still needs its audited
+        // service steps. Track their real costs in the same ledger.
+        const requiredAppointmentStep = request.requiredAppointmentStep === true &&
+          (request.task === "appointment_review" ||
+            request.task === "appointment_story_retry" ||
+            (request.task === "appointment_story" && request.parentOperationId !== undefined));
         if (
           billingScope === "user"
             ? rateUnits > 0 && available.remaining <= 0n
-            : rate.auxiliaryRate > 0 && budgetAmount > available.remaining
+            : !requiredAppointmentStep && rate.auxiliaryRate > 0 && budgetAmount > available.remaining
         )
           throw new AppError({
             code:

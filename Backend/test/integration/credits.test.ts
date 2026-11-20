@@ -139,6 +139,48 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       >`select billing_scope from app.credit_operations where user_id=${user} and operation_id=any(${[retry, repair]}::uuid[])`;
       expect(scopes.map((row) => row.billing_scope)).toEqual(["service", "service"]);
     });
+    it("finishes an admitted appointment with one credit and a spent auxiliary budget", async () => {
+      const user = await actor();
+      const previous = newEntityId();
+      const auxiliary = newEntityId();
+      const story = { ...req, task: "appointment_story" };
+      const background = { ...req, task: "coach_review" };
+      await credits.reserve(user, previous, previous, story);
+      await credits.reserve(user, auxiliary, auxiliary, background);
+      await runtime.database.sql`update app.credit_operations set status='settled',
+        settled_units=case when operation_id=${previous} then 99000000 else 75000000 end
+        where user_id=${user} and operation_id=any(${[previous, auxiliary]}::uuid[])`;
+      expect((await credits.snapshot(user)).remaining).toBe(1);
+
+      const last = newEntityId();
+      await credits.reserve(user, last, last, story);
+      await credits.dispatch(user, last);
+      await credits.finish(user, last, usage, { content: "Story draft" }, "story", req.model);
+      const paid = await credits.snapshot(user);
+      expect(paid.remaining).toBe(0);
+
+      const audit = { ...req, task: "appointment_review" };
+      const stages = [
+        { ...audit, requiredAppointmentStep: true },
+        { ...story, parentOperationId: last, requiredAppointmentStep: true },
+        { ...audit, requiredAppointmentStep: true },
+        { ...audit, requiredAppointmentStep: true },
+      ];
+      for (const stage of stages) {
+        const id = newEntityId();
+        await expect(credits.reserve(user, id, id, stage)).resolves.toMatchObject({ replay: false });
+        await credits.dispatch(user, id);
+        await credits.finish(user, id, usage, { content: "Audited result" }, "stage", req.model);
+        expect((await credits.reserve(user, id, id, stage)).replay).toBe(true);
+      }
+      expect((await credits.snapshot(user)).used).toBe(paid.used);
+      await expect(credits.reserve(user, newEntityId(), "next", story))
+        .rejects.toMatchObject({ code: "CREDITS_EXHAUSTED" });
+      await expect(credits.reserve(user, newEntityId(), "detection-review", audit))
+        .rejects.toMatchObject({ code: "AUXILIARY_BUDGET_EXHAUSTED" });
+      await expect(credits.reserve(user, newEntityId(), "background", { ...background, requiredAppointmentStep: true }))
+        .rejects.toMatchObject({ code: "AUXILIARY_BUDGET_EXHAUSTED" });
+    });
     it.each([false, true])(
       "empty output is a failed, service-funded operation (stream=%s)",
       async (streaming) => {

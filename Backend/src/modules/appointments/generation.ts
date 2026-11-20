@@ -134,6 +134,7 @@ export function createAppointmentNarrative(
       )
         throw narrativeFailure();
       const paragraphScenes = input.paragraphScenes === true;
+      const canFinishAdmittedRequest = !input.serviceFundedRetry || input.recoveryAttempt === 1;
       const storyStage = paragraphScenes ? "story-v5-paragraphs" : "story-v4";
       const history = acceptedContext(input, paragraphScenes);
       const base = {
@@ -169,6 +170,7 @@ export function createAppointmentNarrative(
             ? "appointment_story_retry"
             : "appointment_story",
           ...(attempt === 0 ? {} : { parentStage: storyStage }),
+          requiredAppointmentStep: canFinishAdmittedRequest && (attempt > 0 || input.serviceFundedRetry === true),
           instruction,
           data:
             attempt === 0
@@ -217,6 +219,7 @@ export function createAppointmentNarrative(
             instruction: paragraphScenes
               ? STORY_AUDIT_INSTRUCTION + "\n" + PARAGRAPH_SCENE_AUDIT
               : STORY_AUDIT_INSTRUCTION,
+            requiredAppointmentStep: canFinishAdmittedRequest,
             data: {
               ...base,
               previousOptions: input.session.blocks.at(-1)?.choices.map(

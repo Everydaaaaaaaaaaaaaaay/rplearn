@@ -186,6 +186,8 @@ describe("appointment narrative acceptance", () => {
       "appointment_story",
       "appointment_review",
     ]);
+    expect(requests[0]?.requiredAppointmentStep).toBeUndefined();
+    expect(requests[1]?.requiredAppointmentStep).toBe(true);
     expect(new Set(requests.map((request) => request.operationId)).size).toBe(2);
     const repeat = harness([candidate(), storyAccept]);
     expect(await repeat.service.generate(context())).toEqual(first);
@@ -576,6 +578,11 @@ describe("appointment detection evidence", () => {
 });
 
 describe("accepted-path summary review", () => {
+  const acceptReview = { recapAccepted: true, relationship: "accept", issues: [] };
+  const neutralReview = { recapAccepted: true, relationship: "neutral", issues: [] };
+  const rejectRecap = (issue: string) => ({
+    recapAccepted: false, relationship: "accept", issues: [issue],
+  });
   function completed() {
     const input = context();
     input.session.blocks = [
@@ -609,15 +616,29 @@ describe("accepted-path summary review", () => {
     relationshipSignal,
   };
   it("returns evidence signals and shared experience candidates without inventing a score", async () => {
-    const { service } = harness([review, accept]);
+    const { service } = harness([review, acceptReview]);
     expect(await service.review(completed())).toEqual(review);
+  });
+  it("keeps an audited recap and memories when the only correction is a verified neutral rating", async () => {
+    const { service, requests } = harness([review, neutralReview]);
+    const settled = await service.review(completed());
+    expect(settled.reflection).toBe(review.reflection);
+    expect(settled.memories).toEqual(review.memories);
+    expect(settled.signals).toEqual([]);
+    expect(settled.relationshipSignal).toEqual(
+      Object.fromEntries(Object.entries(relationshipSignal).map(([key, value]) =>
+        [key, typeof value === "number" ? 0 : ""],
+      )),
+    );
+    expect(requests).toHaveLength(2);
+    expect(requests.every(({ requiredAppointmentStep }) => requiredAppointmentStep)).toBe(true);
   });
   it("audits with the writer's short references and returns accepted immutable evidence", async () => {
     const proposed = { ...review,
       signals: [{ ...review.signals[0], evidenceDecisionIds: ["D1"] }],
       memories: [{ ...review.memories[0], evidenceBlockIds: ["B2"] }],
     };
-    const { service, requests } = harness([proposed, accept]);
+    const { service, requests } = harness([proposed, acceptReview]);
     expect(await service.review(completed())).toEqual(review);
     expect(requests[0]?.messages[1]?.content).toContain('"id":"D1"');
     expect(requests[1]?.messages[1]?.content).toContain('"evidenceDecisionIds":["D1"]');
@@ -626,11 +647,11 @@ describe("accepted-path summary review", () => {
   });
   it("bounds a verbose display reason without changing any reviewed score dimensions", async () => {
     const reasonZh = "提议之前先征得旅伴同意并为旅伴保留独立选择的空间";
-    const { service } = harness([{ ...review, relationshipSignal: { ...relationshipSignal, reasonZh } }, accept]);
+    const { service } = harness([{ ...review, relationshipSignal: { ...relationshipSignal, reasonZh } }, acceptReview]);
     expect((await service.review(completed())).relationshipSignal).toEqual({ ...relationshipSignal, reasonZh: Array.from(reasonZh).slice(0, 20).join("") });
   });
   it("renders known review references as readable response/section labels without changing evidence or scores", async () => {
-    const { service } = harness([{ ...review, reflection: "D1中提供休息，见B2。" }, accept]);
+    const { service } = harness([{ ...review, reflection: "D1中提供休息，见B2。" }, acceptReview]);
     const result = await service.review(completed());
     expect(result.reflection).toBe("回应1中提供休息，见片段2。");
     expect(result.signals).toEqual(review.signals);
@@ -667,9 +688,9 @@ describe("accepted-path summary review", () => {
     const issue = "One drawing action does not establish a lifelong hobby";
     const { service, requests } = harness([
       review,
-      reject(issue),
+      rejectRecap(issue),
       review,
-      reject(issue),
+      rejectRecap(issue),
     ]);
     await expect(service.review(completed())).rejects.toMatchObject({
       code: "APPOINTMENT_REVIEW_REJECTED",
@@ -695,7 +716,7 @@ describe("accepted-path summary review", () => {
         ]),
       ),
     };
-    const { service, requests } = harness([draft, reject(issue), corrected, accept]);
+    const { service, requests } = harness([draft, { ...acceptReview, relationship: "repair", issues: [issue] }, corrected, acceptReview]);
 
     await expect(service.review(input)).resolves.toMatchObject({
       signals: [],
@@ -756,7 +777,7 @@ describe("accepted-path summary review", () => {
         reasonZh: "拒绝后仍威胁施压",
       },
     };
-    const { service } = harness([negative, accept]);
+    const { service } = harness([negative, acceptReview]);
     expect((await service.review(input)).relationshipSignal?.boundaryHarm).toBe(0.6);
   });
   it("does not treat pure system manipulation as social harm even if a draft reviewer tries to", async () => {
@@ -778,7 +799,7 @@ describe("accepted-path summary review", () => {
       ],
       relationshipSignal: { ...relationshipSignal, respect: -0.3, boundaryHarm: 0.3 },
     };
-    const { service } = harness([penalty, accept]);
+    const { service } = harness([penalty, acceptReview]);
     await expect(service.review(input)).rejects.toMatchObject({
       code: "APPOINTMENT_REVIEW_REJECTED",
     });

@@ -1,5 +1,6 @@
 import type { AiService } from "../ai/service.js";
 import type { AppointmentGenerationContext, AppointmentReview } from "./contracts.js";
+import { z } from "zod";
 import {
   WORLD_POLICY,
   acceptedContext,
@@ -8,7 +9,6 @@ import {
   isTechnicalOnlyAction,
   narrativeFailure,
   parseCandidate,
-  semanticAuditSchema,
 } from "./narrative-policy.js";
 
 const REVIEW_EVIDENCE_POLICY = `${WORLD_POLICY}
@@ -22,7 +22,25 @@ Return only JSON {reflection:string,signals:[{type:"warmth"|"respect"|"support"|
 const SUMMARY_REPAIR = "Address the audit findings using the original transcript and the same D/B references. Drop unsupported detail or ratings, including an entire memory if needed. Keep the corrected recap brief. Return complete JSON.";
 
 const SUMMARY_AUDIT = `${REVIEW_EVIDENCE_POLICY}
-Independently check every claim, memory and social observation against the transcript. One memory may cite multiple blocks; judge their combined evidence and linked decisions. Accept supported paraphrases, compact recaps and neutral results. Flag only concrete unsupported claims, ratings, or evidence references. Return only JSON {accepted:boolean,issues:string[]}. List at most four actionable issues using the same D/B references. If accepted, issues is empty.`;
+Return only JSON {recapAccepted:boolean,relationship:"accept"|"neutral"|"repair",issues:string[]}. Make the two decisions independently.
+recapAccepted: Check the reflection and each proposed memory and citation for concrete discrepancies. One memory may cite multiple blocks; judge their combined evidence. A problem with a rating does not affect this answer.
+relationship: First look for a qualifying act by the user in the original decisions, before considering the writer's ratings. If there is none, return "neutral" even when the writer proposed several ratings. A request followed by a refusal alone does not establish pressure. Asking about someone's work and leaving politely are normal participation. If there is qualifying evidence, return "accept" for accurate, cited ratings and "repair" for unsupported or missing ratings.
+issues: Give up to four brief corrections for an inaccurate recap or "repair" rating. Otherwise use [].`;
+
+const reviewAuditSchema = z.object({
+  recapAccepted: z.boolean(),
+  relationship: z.enum(["accept", "neutral", "repair"]),
+  issues: z.array(z.string().trim().min(1).max(500)).max(4),
+}).strict().refine((audit) => {
+  const needsRepair = !audit.recapAccepted || audit.relationship === "repair";
+  return needsRepair === (audit.issues.length > 0);
+});
+
+const neutralRelationshipSignal = {
+  warmth: 0, responsiveness: 0, respect: 0, empathy: 0, reciprocity: 0,
+  disclosure: 0, resonance: 0, engagement: 0, boundaryHarm: 0, repair: 0,
+  significance: 0, confidence: 0, reasonZh: "",
+};
 
 function hasOnlyAcceptedEvidence(
   candidate: AppointmentReview,
@@ -86,29 +104,36 @@ export async function reviewAppointment(
     const kind = reference.startsWith("D") ? (chinese ? "回应" : "response ") : (chinese ? "片段" : "section ");
     return kind + reference.slice(1);
   });
-  let repair: { issues: string[]; previousCandidate: AppointmentReview } | undefined;
+  let repair: { issues: string[]; previousCandidate: AppointmentReview; neutral: boolean } | undefined;
   // Expired review leases can retain operation IDs across a deployment.
   // Use new stage IDs for the revised prompts to avoid conflicts with old receipts.
-  const summaryStage = paragraphHistory ? "summary-v4-paragraphs" : "summary-v3";
+  const summaryStage = paragraphHistory ? "summary-v6-paragraphs" : "summary-v6";
   const instruction = paragraphHistory
     ? SUMMARY_INSTRUCTION + "\nA rating needs a qualifying act by the user in a cited decision. Do not rate the companion's speech, boundary, or reaction. For routine participation and ordinary proposals use the neutral result."
     : SUMMARY_INSTRUCTION;
   for (const stage of [summaryStage, summaryStage + "-repair"]) {
-    const proposed = parseCandidate(
+    const draft = parseCandidate(
       appointmentReviewSchema,
       await appointmentJson(ai, {
         userId: input.userId,
         operationId: input.operationId,
         stage,
         task: "appointment_review",
-        instruction: repair ? instruction + "\n" + SUMMARY_REPAIR : instruction,
+        requiredAppointmentStep: true,
+        instruction: repair
+          ? instruction + "\n" + SUMMARY_REPAIR +
+            (repair.neutral ? "\nThe independent audit found no qualifying user act. Keep the relationship neutral and correct only the recap." : "")
+          : instruction,
         data: repair
           ? { ...reviewContext, repair: paragraphHistory ? { issues: repair.issues } : repair }
           : reviewContext,
         maxOutputTokens: paragraphHistory ? 850 : 1600,
       }),
     );
-    if (!proposed) throw narrativeFailure("APPOINTMENT_REVIEW_REJECTED");
+    if (!draft) throw narrativeFailure("APPOINTMENT_REVIEW_REJECTED");
+    const proposed = repair?.neutral
+      ? { ...draft, signals: [], relationshipSignal: neutralRelationshipSignal }
+      : draft;
     const candidate = {
       ...proposed,
       signals: proposed.signals.map((signal) => ({
@@ -141,33 +166,40 @@ export async function reviewAppointment(
     if (candidate.signals.length === 0 && observationValues.some((value) => value !== 0))
       throw narrativeFailure("APPOINTMENT_REVIEW_REJECTED");
     const audit = parseCandidate(
-      semanticAuditSchema,
+      reviewAuditSchema,
       await appointmentJson(ai, {
         userId: input.userId,
         operationId: input.operationId,
         stage: stage + "-audit",
         task: "appointment_review",
+        requiredAppointmentStep: true,
         instruction: SUMMARY_AUDIT,
         data: { acceptedContext: reviewContext, candidate: proposed },
         maxOutputTokens: paragraphHistory ? 450 : 800,
       }),
     );
     if (!audit) break;
-    if (audit.accepted) {
+    if (audit.recapAccepted && audit.relationship !== "repair") {
+      const neutral = audit.relationship === "neutral";
       return {
         ...candidate,
+        signals: neutral ? [] : candidate.signals,
         reflection: readable(candidate.reflection),
         memories: candidate.memories.map((memory) => ({
           ...memory,
           content: readable(memory.content),
         })),
-        relationshipSignal: {
+        relationshipSignal: neutral ? neutralRelationshipSignal : {
           ...candidate.relationshipSignal,
           reasonZh: Array.from(readable(candidate.relationshipSignal.reasonZh)).slice(0, 20).join(""),
         },
       };
     }
-    repair = { issues: audit.issues, previousCandidate: proposed };
+    repair = {
+      issues: audit.issues,
+      previousCandidate: proposed,
+      neutral: audit.relationship === "neutral",
+    };
   }
   throw narrativeFailure("APPOINTMENT_REVIEW_REJECTED");
 }

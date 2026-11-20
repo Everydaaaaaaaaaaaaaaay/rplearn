@@ -26,6 +26,7 @@ export type AiRequestInput = Readonly<{
   learningChat?: LearningChatContext;
   operationId?: string;
   parentOperationId?: string;
+  requiredAppointmentStep?: boolean;
   voiceLeaseId?: string;
   maxOutputTokens?: number;
   messages: readonly AiMessage[];
@@ -300,6 +301,7 @@ export function createAiService(
       model: route.model,
       messages: input.messages,
       maxOutputTokens: limits.maxOutputTokens,
+      ...(input.requiredAppointmentStep === true ? { requiredAppointmentStep: true } : {}),
       ...(input.parentOperationId === undefined
         ? {}
         : { parentOperationId: input.parentOperationId }),

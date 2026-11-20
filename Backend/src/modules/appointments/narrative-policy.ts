@@ -249,6 +249,7 @@ export async function appointmentJson(
     instruction: string;
     data: unknown;
     parentStage?: string;
+    requiredAppointmentStep?: boolean;
     maxOutputTokens: number;
   },
 ): Promise<string> {
@@ -260,6 +261,7 @@ export async function appointmentJson(
       : { parentOperationId: appointmentAiId(input.operationId, input.parentStage) }),
     responseFormat: "json_object",
     maxOutputTokens: input.maxOutputTokens,
+    ...(input.requiredAppointmentStep === true ? { requiredAppointmentStep: true } : {}),
     messages: [
       { role: "system", content: input.instruction },
       { role: "user", content: JSON.stringify(input.data) },
