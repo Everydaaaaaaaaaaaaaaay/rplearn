@@ -64,6 +64,33 @@ struct EditorialEpisodeTests {
         #expect(allOutcomes.count == pathCount)
     }
 
+    @Test("新版开场、对话和分支使用与现场相符的角色镜头")
+    func authoredCharacterShots() throws {
+        func load(_ chapterID: String) throws -> StoryEpisode {
+            let resource = try #require(DepartureStoryIdentity.currentEditions[chapterID])
+            let url = try #require(Bundle.main.url(forResource: resource, withExtension: "json"))
+            return try StoryEpisode.load(data: Data(contentsOf: url))
+        }
+        func shot(_ episode: StoryEpisode, _ nodeID: String) throws -> StoryEpisode.Shot {
+            let node = try #require(episode.node(nodeID))
+            return try #require(episode.shots[node.shot])
+        }
+
+        let london = try load("departures_london_v1")
+        #expect(try shot(london, "start").actors.isEmpty)
+        #expect(try shot(london, "start_2").actors.map(\.asset) == ["dp_oliver_welcome"])
+        #expect(try shot(london, "inside_7").actors.map(\.asset) == ["dp_oliver_manuscript"])
+        #expect(try shot(london, "list_4").actors.map(\.id) == ["Nora", "Oliver"])
+        #expect(try shot(london, "read_window").background == "dp_oliver_listening")
+
+        let singapore = try load("departures_mainline_singapore_v1")
+        #expect(try shot(singapore, "start_2").background == "dp_mei_dinner")
+        #expect(try shot(singapore, "eat_end_2").background == "dp_singapore_outside")
+
+        let auckland = try load("departures_city_auckland_v1")
+        #expect(try shot(auckland, "drawer_3").actors.map(\.id) == ["Peter"])
+    }
+
     @Test("中间版 v2 续读、已读、奖励和新版切换均保留")
     func intermediateEditions() throws {
         for (original, olderEditions) in DepartureStoryIdentity.previousEditions {

@@ -209,6 +209,22 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertTrue(app.buttons["story.cities"].isHittable)
     }
 
+    func testCurrentLondonCharacterArtwork() {
+        app.launchEnvironment["UI_TEST_DEPARTURE_RESOURCE"] = "departures_london_v2"
+        app.launchEnvironment["UI_TEST_PERSISTENCE_NAMESPACE"] = UUID().uuidString
+        app.launch()
+        let next = app.buttons["episode.next"]
+        XCTAssertTrue(next.waitForExistence(timeout: 15))
+        XCTAssertTrue(app.staticTexts["雨刚下过，Oliver 的书店门外，路面还亮着。"].exists)
+        next.tap()
+        XCTAssertTrue(app.staticTexts["你找到了。我差点就把那套鸽子路线发给你。"].waitForExistence(timeout: 5))
+        screenshot("london-current-exterior-oliver")
+        let manuscript = app.staticTexts["我写的。原本想今晚试着念念。"]
+        for _ in 0..<10 where !manuscript.exists { next.tap() }
+        XCTAssertTrue(manuscript.waitForExistence(timeout: 5))
+        screenshot("london-current-manuscript-oliver")
+    }
+
     func testDepartureCollectionArtworkAndChoices() {
         let chapters = [
             "mainline_melbourne", "mainline_newyork", "mainline_capetown", "mainline_singapore",

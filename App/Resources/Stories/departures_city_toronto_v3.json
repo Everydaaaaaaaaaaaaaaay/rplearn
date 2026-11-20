@@ -20,6 +20,28 @@
     "order": {
       "background": "dp_toronto_order",
       "actors": []
+    },
+    "maya": {
+      "background": "dp_toronto_flat",
+      "actors": [
+        {
+          "id": "Maya",
+          "asset": "dp_maya_welcome",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
+    },
+    "sam": {
+      "background": "dp_toronto_flat",
+      "actors": [
+        {
+          "id": "Sam",
+          "asset": "dp_sam_apology",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
     }
   },
   "nodes": [
@@ -37,7 +59,7 @@
       "id": "start_2",
       "act": 0,
       "location": "多伦多 · 三个蛋糕",
-      "shot": "flat",
+      "shot": "maya",
       "speaker": "Maya",
       "text": "Well, at least nobody's going home hungry.",
       "translation": "好，至少谁也不会饿着回去。",
@@ -47,7 +69,7 @@
       "id": "start_3",
       "act": 0,
       "location": "多伦多 · 三个蛋糕",
-      "shot": "flat",
+      "shot": "sam",
       "speaker": "Sam",
       "text": "Your message said, 'Just bring yourself.'",
       "translation": "你的消息说“人来就好”。",
@@ -57,7 +79,7 @@
       "id": "start_4",
       "act": 0,
       "location": "多伦多 · 三个蛋糕",
-      "shot": "flat",
+      "shot": "maya",
       "speaker": "旁白",
       "text": "Maya reads her phone twice. She turns it away from Sam.",
       "translation": "Maya 把手机看了两遍，又把屏幕转开，不给 Sam 看。",
@@ -67,7 +89,7 @@
       "id": "start_5",
       "act": 0,
       "location": "多伦多 · 三个蛋糕",
-      "shot": "flat",
+      "shot": "maya",
       "speaker": "Maya",
       "text": "The food plan went to my work group.",
       "translation": "带菜那条发到工作群了。",
@@ -77,7 +99,7 @@
       "id": "start_6",
       "act": 0,
       "location": "多伦多 · 三个蛋糕",
-      "shot": "flat",
+      "shot": "sam",
       "speaker": "Sam",
       "text": "That explains why your manager offered a meeting room.",
       "translation": "噢！我还说你老板怎么突然给咱们找会议室呢。",
@@ -87,7 +109,7 @@
       "id": "start_7",
       "act": 0,
       "location": "多伦多 · 三个蛋糕",
-      "shot": "flat",
+      "shot": "maya",
       "speaker": "Maya",
       "text": "Rice and eggs here. Or noodles delivered. I'll treat.",
       "translation": "家里有饭和鸡蛋。也能点面。我请。",
@@ -97,7 +119,7 @@
       "id": "start_8",
       "act": 0,
       "location": "多伦多 · 三个蛋糕",
-      "shot": "flat",
+      "shot": "sam",
       "speaker": "旁白",
       "text": "Sam has already found the cake knife.",
       "translation": "Sam 已经找到蛋糕刀了。",
@@ -107,7 +129,7 @@
       "id": "first",
       "act": 0,
       "location": "多伦多 · 三个蛋糕",
-      "shot": "flat",
+      "shot": "maya",
       "speaker": "你的选择",
       "text": "What would you like for dinner?",
       "translation": "晚饭你想吃什么？",

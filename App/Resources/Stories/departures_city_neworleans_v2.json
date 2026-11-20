@@ -27,6 +27,17 @@
     "music": {
       "background": "dp_neworleans_music",
       "actors": []
+    },
+    "calvin": {
+      "background": "dp_neworleans_room",
+      "actors": [
+        {
+          "id": "Calvin",
+          "asset": "dp_calvin_listen",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
     }
   },
   "nodes": [
@@ -44,7 +55,7 @@
       "id": "start_2",
       "act": 0,
       "location": "新奥尔良 · 小场演出前",
-      "shot": "room",
+      "shot": "calvin",
       "speaker": "Calvin",
       "text": "This one says, 'Something for getting through Thursday.'",
       "translation": "这有张写着“来点歌，帮我熬过星期四”。",
@@ -54,7 +65,7 @@
       "id": "start_3",
       "act": 0,
       "location": "新奥尔良 · 小场演出前",
-      "shot": "room",
+      "shot": "calvin",
       "speaker": "你",
       "text": "It's Saturday.",
       "translation": "今天星期六。",
@@ -64,7 +75,7 @@
       "id": "start_4",
       "act": 0,
       "location": "新奥尔良 · 小场演出前",
-      "shot": "room",
+      "shot": "calvin",
       "speaker": "Calvin",
       "text": "Some Thursdays take their time leaving.",
       "translation": "有些星期四，需要花点时间才会离开。",
@@ -74,7 +85,7 @@
       "id": "start_5",
       "act": 0,
       "location": "新奥尔良 · 小场演出前",
-      "shot": "room",
+      "shot": "june",
       "speaker": "旁白",
       "text": "A woman at the back raises her hand.",
       "translation": "后排一位女士举起手。",
@@ -84,7 +95,7 @@
       "id": "start_6",
       "act": 0,
       "location": "新奥尔良 · 小场演出前",
-      "shot": "room",
+      "shot": "june",
       "speaker": "June",
       "text": "Mine. And nothing that sounds like a slow funeral.",
       "translation": "我写的！先说好，别给我来葬礼上那种慢歌。",
@@ -94,7 +105,7 @@
       "id": "start_7",
       "act": 0,
       "location": "新奥尔良 · 小场演出前",
-      "shot": "room",
+      "shot": "calvin",
       "speaker": "旁白",
       "text": "Calvin turns over the ballad on his music stand.",
       "translation": "Calvin 把谱架上的抒情曲翻了过去。",
@@ -104,7 +115,7 @@
       "id": "start_8",
       "act": 0,
       "location": "新奥尔良 · 小场演出前",
-      "shot": "room",
+      "shot": "calvin",
       "speaker": "Calvin",
       "text": "Right. I've got one ready. It can wait.",
       "translation": "行。我本来挑好了一首，先不弹了。",
@@ -171,7 +182,7 @@
       "id": "rhythm_3",
       "act": 0,
       "location": "新奥尔良 · 小场演出前",
-      "shot": "music",
+      "shot": "calvin",
       "speaker": "Calvin",
       "text": "Wait. Show us the speed with your hand.",
       "translation": "等会儿。你用手拍给我们听，想要多快？",
@@ -292,7 +303,7 @@
       "id": "piano_7",
       "act": 0,
       "location": "新奥尔良 · 小场演出前",
-      "shot": "music",
+      "shot": "calvin",
       "speaker": "Calvin",
       "text": "I'll take the next slip after this.",
       "translation": "等这首弹完，我再收下一张。",

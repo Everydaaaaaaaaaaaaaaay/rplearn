@@ -31,6 +31,17 @@
     "compare": {
       "background": "dp_nairobi_compare",
       "actors": []
+    },
+    "zuri": {
+      "background": "dp_nairobi_room",
+      "actors": [
+        {
+          "id": "Zuri",
+          "asset": "dp_zuri_work",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
     }
   },
   "nodes": [
@@ -38,7 +49,7 @@
       "id": "start",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "room",
+      "shot": "wanjiku",
       "speaker": "旁白",
       "text": "Wanjiku has drawn a copy of her aunt's old cloth bag.",
       "translation": "Wanjiku 照着阿姨那只旧布包，画了个新包的样子。",
@@ -48,7 +59,7 @@
       "id": "start_2",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "room",
+      "shot": "zuri",
       "speaker": "Zuri",
       "text": "Did hers have a pocket? I can't see one here.",
       "translation": "她那只有口袋吗？你这儿没画。",
@@ -68,7 +79,7 @@
       "id": "start_4",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "room",
+      "shot": "wanjiku",
       "speaker": "Wanjiku",
       "text": "Could we shorten the handles? She carries it like this.",
       "translation": "提手能不能弄短点？她平时就这么拎。",
@@ -78,7 +89,7 @@
       "id": "start_5",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "room",
+      "shot": "zuri",
       "speaker": "Zuri",
       "text": "That short, two fingers would take all the weight.",
       "translation": "再短就只能用两根手指勾着了。装满了多勒啊。",
@@ -88,7 +99,7 @@
       "id": "start_6",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "room",
+      "shot": "wanjiku",
       "speaker": "旁白",
       "text": "Wanjiku keeps her hand curled over the paper handle.",
       "translation": "Wanjiku 手指还弯着，搁在画出来的提手上。",
@@ -98,7 +109,7 @@
       "id": "start_7",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "room",
+      "shot": "zuri",
       "speaker": "Zuri",
       "text": "I've enough red to do one side. We could try that.",
       "translation": "红的倒够做一面。可以先比比看。",
@@ -246,7 +257,7 @@
       "id": "wait_3",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "wanjiku",
+      "shot": "zuri",
       "speaker": "Zuri",
       "text": "Turn your brightness up. Hold it next to the fabric.",
       "translation": "亮度调高点。手机就挨着这块布。",
@@ -276,7 +287,7 @@
       "id": "wait_6",
       "act": 0,
       "location": "内罗毕 · 午后的工作室",
-      "shot": "wanjiku",
+      "shot": "zuri",
       "speaker": "Zuri",
       "text": "Ask her to lend you the bag. We can look in daylight.",
       "translation": "要不问她借一天？拿来咱们放窗边看。",
