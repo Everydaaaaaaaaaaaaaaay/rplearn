@@ -15,7 +15,6 @@ public struct OnboardingDependencies: Sendable {
 
     public let grammarPoints: GrammarPointStore
     public let scriptURL: URL
-    public let tutorial: TutorialPresenter
 
     public init(
         economyStore: EconomyStore,
@@ -23,8 +22,7 @@ public struct OnboardingDependencies: Sendable {
         rosterStore: RosterStore,
         scriptURL: URL,
         dictionary: DictDatabase,
-        grammarPoints: GrammarPointStore,
-        tutorial: @escaping TutorialPresenter
+        grammarPoints: GrammarPointStore
     ) {
         self.economyStore = economyStore
         self.profileCommands = profileCommands
@@ -33,7 +31,6 @@ public struct OnboardingDependencies: Sendable {
         self.grammarPoints = grammarPoints
 
         self.scriptURL = scriptURL
-        self.tutorial = tutorial
     }
 }
 
@@ -45,7 +42,6 @@ public struct OnboardingFlowView: View {
         case calibration
         case story
         case selection
-        case tutorial
     }
 
     private let deps: OnboardingDependencies
@@ -53,7 +49,6 @@ public struct OnboardingFlowView: View {
     private let onRequestPlacement: () -> Void
     private let onComplete: (CharacterDTO) async -> Bool
 
-    @State private var tutorialCharacter: CharacterDTO?
     @State private var phase: Phase = .loading
     @State private var profile: UserProfileDTO?
     @State private var player: StoryPlayer?
@@ -130,19 +125,8 @@ public struct OnboardingFlowView: View {
                         .transition(.opacity)
                 }
             case .selection:
-                CharacterSelectView(characters: characters) { character in
-                    tutorialCharacter = character
-                    withAnimation(stepAnimation) {
-                        phase = .tutorial
-                    }
-                    return true
-                }
-                .transition(stepTransition)
-            case .tutorial:
-                if let character = tutorialCharacter {
-                    deps.tutorial(character, { await onComplete(character) })
-                        .transition(stepTransition)
-                }
+                CharacterSelectView(characters: characters, onSelect: onComplete)
+                    .transition(stepTransition)
             }
         }
         .task {
@@ -572,27 +556,17 @@ struct CharacterSelectView: View {
 /// 只读重看入口：不重置档案、不重新选角，也不写入正式聊天。
 public struct JourneyIntroductionView: View {
     private let deps: OnboardingDependencies
-    @State private var showsTutorial: Bool
     @State private var showsStory = false
     @State private var player: StoryPlayer?
     @State private var characters: [CharacterDTO] = []
     @State private var loadFailed = false
     @Environment(\.dismiss) private var dismiss
 
-    public init(deps: OnboardingDependencies, startsWithTutorial: Bool = false) {
-        self.deps = deps
-        _showsTutorial = State(initialValue: startsWithTutorial)
-    }
+    public init(deps: OnboardingDependencies) { self.deps = deps }
 
     public var body: some View {
         Group {
-            if showsTutorial {
-                if let character = characters.first {
-                    deps.tutorial(character, { dismiss(); return true })
-                } else if loadFailed {
-                    ContentUnavailableView("暂时无法打开练习", systemImage: "book.closed")
-                } else { ProgressView() }
-            } else if !showsStory {
+            if !showsStory {
                 WelcomeJourneyView(dictionary: deps.dictionary, grammar: deps.grammarPoints) { showsStory = true }
             } else if let player {
                 ChatStoryView(player: player, characters: characters, deps: deps) { dismiss() }
@@ -603,23 +577,17 @@ public struct JourneyIntroductionView: View {
             }
         }
         .overlay(alignment: .topTrailing) {
-            if !showsTutorial || loadFailed {
-                Button("关闭", systemImage: "xmark", action: { dismiss() })
-                    .labelStyle(.iconOnly)
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.circle)
-                    .accessibilityIdentifier("introduction.close")
-                    .padding(.trailing, 16)
-                    .padding(.top, 8)
-            }
+            Button("关闭", systemImage: "xmark", action: { dismiss() })
+                .labelStyle(.iconOnly)
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.circle)
+                .accessibilityIdentifier("introduction.close")
+                .padding(.trailing, 16)
+                .padding(.top, 8)
         }
         .task {
             do {
                 characters = try await deps.rosterStore.allCharacters().filter(\.isMainCharacter)
-                if showsTutorial {
-                    loadFailed = characters.isEmpty
-                    return
-                }
                 let script = try StoryScript.load(from: deps.scriptURL)
                 let loaded = StoryPlayer(script: script)
                 loaded.advance()

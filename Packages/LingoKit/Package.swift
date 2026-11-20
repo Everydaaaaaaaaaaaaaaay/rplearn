@@ -103,7 +103,6 @@ let featureTargets: [Target] = [
         module("CoreKit"),
         module("DictKit"),
         module("DomainKit"),
-        module("LLMKit"),
         module("PersistenceKit"),
         module("SpeechKit"),
     ]),

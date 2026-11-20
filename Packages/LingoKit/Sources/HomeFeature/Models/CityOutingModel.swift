@@ -29,10 +29,6 @@ final class CityOutingModel: ObservableObject {
     private var speechIDs: [String: UUID] = [:]
     private var autoRead = true
 
-    var activity: SceneActivity {
-        .init(id: archive.place.id, scene: .park, title: archive.place.titleZh, symbol: "mappin.and.ellipse",
-              introduction: "去这里走走，看看今天会发生什么。", steps: [], closing: "把这一刻留在旅途中。")
-    }
     var isPreparing: Bool { archive.cancelled != true && snapshot == nil && busy }
     var isRunning: Bool { archive.cancelled != true && (pendingCount > 0 || (snapshot.map { ![.completed, .abandoned].contains($0.status) } ?? true)) }
     var chapters: [EncounterChapter] { snapshot.map(PlaceOutingProgress.chapters) ?? [] }

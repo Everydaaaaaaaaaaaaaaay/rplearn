@@ -98,34 +98,4 @@ struct ActivityJournal {
         defaults.set(try JSONEncoder().encode(Archive(version: 1, records: saved)), forKey: key)
         return saved
     }
-    @discardableResult
-    func completeSolitude(_ activity: SceneActivity, runID: UUID, date: Date = Date()) throws -> [ActivityRecord] {
-        var saved = try records()
-        guard !saved.contains(where: { $0.id == runID }) else { return saved }
-        saved.append(.init(id: runID, activityID: activity.id, title: activity.solitude.title,
-            date: date, choices: [], solitudeStory: activity.solitude.story))
-        defaults.set(try JSONEncoder().encode(Archive(version: 1, records: saved)), forKey: key)
-        return saved
-    }
-    @discardableResult
-    func complete(_ activity: SceneActivity, selections: [Int], runID: UUID, date: Date = Date(),
-                  characterID: UUID? = nil, characterName: String? = nil, responses: [String] = [], chapters: [EncounterChapter]? = nil) throws -> [ActivityRecord] {
-        let isReunion = chapters?.count == 1 && chapters?.first?.choices.isEmpty == true && selections.isEmpty
-        guard isReunion || selections.count == activity.steps.count,
-              zip(activity.steps, selections).allSatisfy({ $0.choices.indices.contains($1) })
-        else { throw JournalError.invalidCompletion }
-        var saved = try records()
-        guard !saved.contains(where: { $0.id == runID }) else { return saved }
-        let choices = zip(activity.steps, selections).enumerated().map { stepIndex, pair in
-            let (step, index) = pair
-            let choice = step.choices[index]
-            return ActivityRecord.Selection(context: step.context, question: step.question, english: choice.english,
-                                            chinese: choice.chinese, response: responses.indices.contains(stepIndex)
-                                                ? "\(responses[stepIndex])\n\(choice.response)" : choice.response)
-        }
-        saved.append(.init(id: runID, activityID: activity.id, title: chapters?.first?.title ?? activity.title, date: date, choices: choices,
-                           chapters: chapters, characterID: characterID, characterName: characterName))
-        defaults.set(try JSONEncoder().encode(Archive(version: 1, records: saved)), forKey: key)
-        return saved
-    }
 }

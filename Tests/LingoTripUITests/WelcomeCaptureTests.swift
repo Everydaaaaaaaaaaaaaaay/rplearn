@@ -35,11 +35,11 @@ final class WelcomeCaptureTests: XCTestCase {
             app.terminate()
             app.launchEnvironment["UI_TEST_TAB"] = "home"
             app.launchEnvironment["UI_TEST_HOME_DESTINATION"] = "activities"
-            app.launchEnvironment["UI_TEST_SOCIAL_FIXTURE"] = "1"
+            app.launchEnvironment["UI_TEST_WORLD_GATEWAY"] = "1"
             app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
             app.launch()
-            XCTAssertTrue(app.buttons["activities.tab.park"].waitForExistence(timeout: 15))
-            XCTAssertTrue(app.buttons["activities.scene.park-seat"].waitForExistence(timeout: 8))
+            XCTAssertTrue(app.images["activities.photo.loaded.london-southbank"].waitForExistence(timeout: 15))
+            XCTAssertTrue(app.buttons["activities.place.london-southbank"].waitForExistence(timeout: 8))
             capture("welcome-activity-\(suffix)", app)
             app.terminate()
             app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "0"

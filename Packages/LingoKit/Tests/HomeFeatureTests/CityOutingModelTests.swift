@@ -3,7 +3,6 @@ import DictKit
 import DomainKit
 import Foundation
 import Observation
-import LLMKit
 import PersistenceKit
 import SpeechKit
 import Testing
@@ -27,8 +26,8 @@ struct CityOutingModelTests {
         } onChange: {
             changes.withLock { $0 += 1 }
         }
-        coordinator.start()
         let outing = try #require(coordinator.cityOuting)
+        outing.start()
         outing.advance()
         try await settle { outing.pendingCount == 0 }
         coordinator.setViewing(true)
@@ -84,11 +83,11 @@ struct CityOutingModelTests {
         return HomeDependencies(economyStore: economy, itemStore: ItemStore(modelContainer: container),
             ticketStubStore: TicketStubStore(modelContainer: container), storyProgress: StoryProgressStore(modelContainer: container),
             regionCatalog: try RegionCatalog(url: #require(Bundle.main.url(forResource: "regions", withExtension: "json"))),
-            rosterStore: RosterStore(modelContainer: container), chatStore: ChatStore(modelContainer: container),
+            rosterStore: RosterStore(modelContainer: container),
             favorites: FavoritesStore(modelContainer: container),
             dictionary: try DictDatabase(databaseURL: #require(Bundle.main.url(forResource: "learner_dictionary", withExtension: "sqlite"))),
             grammarPoints: try GrammarPointStore(url: #require(Bundle.main.url(forResource: "grammar_points", withExtension: "json"))),
-            speech: SilentSpeech(), llm: MockLLMProvider(completeHandler: { _ in throw BackendClientError.invalidResponse }))
+            speech: SilentSpeech())
     }
     private func settle(_ condition: () -> Bool) async throws {
         let deadline = ContinuousClock.now.advanced(by: .seconds(10))

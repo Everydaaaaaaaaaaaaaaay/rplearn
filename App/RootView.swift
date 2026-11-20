@@ -69,15 +69,10 @@ struct RootView: View {
     @State private var showSubscription = false
     @State private var showLondonEpisode = false
     @State private var activityJourney = ActivityJourneyCoordinator()
-    @State private var activeSceneActivity: SceneActivity?
     @State private var showPlacementTest = false
     @State private var showEnglishJourney = false
     @State private var showOnboardingPlacement = false
-    private enum IntroductionMode: String, Identifiable {
-        case introduction, tutorial
-        var id: String { rawValue }
-    }
-    @State private var introductionMode: IntroductionMode?
+    @State private var showsIntroduction = false
     #if DEBUG
     @State private var captureCharacter: CharacterDTO?
     @State private var showsCitySceneGallery = false
@@ -450,7 +445,6 @@ struct RootView: View {
             }
             .onChange(of: activeUserID) { _, _ in
                 activityJourney.reset()
-                activeSceneActivity = nil
                 homePath = NavigationPath()
                 allowsWorldMapWarmup = false
             }
@@ -652,7 +646,6 @@ struct RootView: View {
             || processEnvironment["UI_TEST_ONBOARDING_WELCOME"] != nil
             || processEnvironment["UI_TEST_ONBOARDING_SELECTION"] == "1"
             || processEnvironment["UI_TEST_ONBOARDING_STORY"] == "1"
-            || processEnvironment["UI_TEST_SOCIAL_FIXTURE"] == "1"
         #else
         return false
         #endif
@@ -729,16 +722,15 @@ struct RootView: View {
             .fullScreenCover(item: $onboardingPreviewMode) { mode in
                 OnboardingPreviewView(mode: mode)
             }
-            .fullScreenCover(item: $introductionMode) { mode in
+            .fullScreenCover(isPresented: $showsIntroduction) {
                 JourneyIntroductionView(deps: OnboardingDependencies(
                     economyStore: environment.economyStore,
                     profileCommands: profileCommands,
                     rosterStore: environment.rosterStore,
                     scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
                     dictionary: environment.dictionary,
-                    grammarPoints: environment.grammarPoints,
-                    tutorial: tutorialPresenter
-                ), startsWithTutorial: mode == .tutorial)
+                    grammarPoints: environment.grammarPoints
+                ))
             }
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
@@ -749,8 +741,7 @@ struct RootView: View {
                         rosterStore: environment.rosterStore,
                         scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
                         dictionary: environment.dictionary,
-                        grammarPoints: environment.grammarPoints,
-                        tutorial: tutorialPresenter
+                        grammarPoints: environment.grammarPoints
                     ),
                     placementCompletionRevision: placementCompletionRevision,
                     onRequestPlacement: { showOnboardingPlacement = true }
@@ -929,9 +920,8 @@ struct RootView: View {
                 }
         }
         .onChange(of: homePath.isEmpty) { _, isEmpty in
-            if isEmpty, activeSceneActivity != nil, !activityJourney.isPreparing {
+            if isEmpty, activityJourney.hasOpenOuting, !activityJourney.isPreparing {
                 activityJourney.reset()
-                activeSceneActivity = nil
             }
         }
     }
@@ -1046,23 +1036,12 @@ struct RootView: View {
                 homePath.append(chapter)
             })
         case .activities:
-            #if DEBUG
-            if !isPlaceOutingPreview, !isWorldOutingPreview,
-               ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] != "1",
-               CityActivityRelease.bundled() == nil {
-                return AnyView(DebugCitySceneGallery(
-                    currentCityID: { try await environment.economyStore.profile().currentRegionID },
-                    onClose: closeHomeDestination
-                ).id(activeUserID?.uuidString ?? "inactive"))
-            }
-            #endif
             return AnyView(
                 ActivitiesView(
                     journey: activityJourney,
                     deps: homeDeps,
                     storageNamespace: activityStorageNamespace,
                     isVisible: selectedTab == .home && !showLondonEpisode && homePath.count == 1,
-                    activity: $activeSceneActivity,
                     onClose: closeHomeDestination,
                     onChat: { character in
                         homePath.append(HomeChatRoute(character: character))
@@ -1104,13 +1083,12 @@ struct RootView: View {
     }
     private func closeHomeDestination() {
         guard !homePath.isEmpty else { return }
-        if activeSceneActivity != nil {
+        if activityJourney.hasOpenOuting {
             if activityJourney.isPreparing {
                 homePath.removeLast()
             } else {
                 withAnimation(reduceMotion ? .easeOut(duration: 0.14) : .smooth(duration: 0.30, extraBounce: 0)) {
                     activityJourney.reset()
-                    activeSceneActivity = nil
                 }
             }
             return
@@ -1273,8 +1251,7 @@ struct RootView: View {
                     Task { await environment.proactiveMessages.setEnabled(enabled) }
                 },
                 onOpenPhotoCredits: { openMe(.photoCredits) },
-                onOpenIntroduction: { introductionMode = .introduction },
-                onOpenTutorial: { introductionMode = .tutorial },
+                onOpenIntroduction: { showsIntroduction = true },
                 onTestInitialPlacement: initialPlacementTestAction,
                 onTestFirstLoginFlow: firstLoginTestAction,
                 onTestAppointments: appointmentTestAction,
@@ -1428,19 +1405,26 @@ struct RootView: View {
             storyProgress: environment.storyProgressStore,
             regionCatalog: environment.regionCatalog,
             rosterStore: environment.rosterStore,
-            chatStore: environment.chatStore,
             favorites: environment.favoritesStore,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
-            llm: environment.llmRouter,
             mainline: mainlineClient,
             npcRegistry: isPlaceOutingPreview ? nil : environment.backendClient,
             outingGateway: placeOutingGateway,
             activityReleaseID: placeOutingReleaseID,
             appointments: homeAppointmentService,
-            presentationCache: environment.workspace?.journeyPresentation
+            presentationCache: activityPresentationCache
         )
+    }
+
+    private var activityPresentationCache: JourneyPresentationCache? {
+        #if DEBUG
+        if isPlaceOutingPreview, ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_CATALOG_RETRY"] == "1" {
+            return nil
+        }
+        #endif
+        return environment.workspace?.journeyPresentation
     }
 
     private var isPlaceOutingPreview: Bool {
@@ -1468,7 +1452,6 @@ struct RootView: View {
     private var placeOutingReleaseID: String? {
         #if DEBUG
         if isPlaceOutingPreview { return "debug-places-preview-v1" }
-        if bypassesAuthenticationForUITesting, ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1" { return nil }
         #endif
         return CityActivityRelease.bundled()?.releaseId
     }
@@ -1486,12 +1469,6 @@ struct RootView: View {
             presentationCache: environment.workspace?.journeyPresentation,
             mapCache: environment.workspace?.worldMapCache
         )
-    }
-
-    private var tutorialPresenter: TutorialPresenter {
-        { character, finish in
-            AnyView(ProductionTutorialView(character: character, environment: environment, onFinish: finish))
-        }
     }
 
     private var chatDeps: ChatDependencies {

@@ -19,6 +19,7 @@ actor DebugPlaceOutingGateway: OutingGateway {
         var receipts: [UUID: BackendOuting] = [:]
     }
     private var state: State
+    private var didFailInitialCatalog = false
     private let storageKey: String
     init(allCities: Bool = false) {
         self.allCities = allCities
@@ -41,6 +42,11 @@ actor DebugPlaceOutingGateway: OutingGateway {
         return try JSONDecoder().decode(Fixture.self, from: data)
     }
     func activityCatalog(releaseID: String?) async throws -> BackendActivityCatalog? {
+        if !allCities, ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_CATALOG_RETRY"] == "1",
+           !didFailInitialCatalog {
+            didFailInitialCatalog = true
+            throw BackendClientError.transport("目录暂时离线")
+        }
         let content = try fixture()
         return allCities ? content.catalogs?.first { $0.cityId == (ProcessInfo.processInfo.environment["UI_TEST_SCENE_CITY"] ?? "london") } : content.catalog
     }

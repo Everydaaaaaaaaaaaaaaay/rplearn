@@ -120,6 +120,23 @@ final class CitySceneGalleryTests: XCTestCase {
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 8))
         capture("home-activity-newyork-story")
     }
+
+    func testCatalogErrorRetriesIntoTheCurrentActivityScenes() {
+        app.launchEnvironment["UI_TEST_TAB"] = "places-preview"
+        app.launchEnvironment["UI_TEST_ACTIVITY_CATALOG_RETRY"] = "1"
+        app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
+        app.launch()
+
+        let entrance = app.buttons["home.activities"]
+        XCTAssertTrue(entrance.waitForExistence(timeout: 20))
+        entrance.tap()
+        let retry = app.buttons["activities.catalog.retry"]
+        XCTAssertTrue(retry.waitForExistence(timeout: 15))
+        XCTAssertFalse(app.buttons["activities.tab.park"].exists)
+        retry.tap()
+        assertScene("london-bloomsbury-cafe")
+        XCTAssertFalse(retry.exists)
+    }
     func testLargeTextCreditsOriginalAndFifthPlace() {
         app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
