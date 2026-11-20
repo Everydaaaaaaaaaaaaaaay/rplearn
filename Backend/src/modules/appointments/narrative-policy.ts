@@ -268,7 +268,76 @@ export async function appointmentJson(
   return completion.content;
 }
 
-/** Retain every accepted paragraph and decision. Long scenes only need one rendering of past prose. */
+function nonEmptyString(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim().length > 0 ? value.trim() : undefined;
+}
+
+function nonEmptyStringArray(value: unknown, limit = 8): string[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const items = value
+    .filter((entry): entry is string => typeof entry === "string" && entry.trim().length > 0)
+    .map((entry) => entry.trim())
+    .slice(0, limit);
+  return items.length > 0 ? items : undefined;
+}
+
+/** Distills the synced character payload into the persona, voice and relationship facts a writer needs. */
+export function characterProfile(persona: unknown): unknown {
+  if (!persona || typeof persona !== "object" || Array.isArray(persona)) return persona;
+  const raw = persona as Record<string, unknown>;
+  const card = raw.card && typeof raw.card === "object" && !Array.isArray(raw.card)
+    ? (raw.card as Record<string, unknown>)
+    : null;
+  if (!card) return persona;
+
+  const voiceRaw = card.personaVoice && typeof card.personaVoice === "object" && !Array.isArray(card.personaVoice)
+    ? (card.personaVoice as Record<string, unknown>)
+    : null;
+  const voice = voiceRaw
+    ? {
+        ...(nonEmptyStringArray(voiceRaw.values, 6) ? { values: nonEmptyStringArray(voiceRaw.values, 6) } : {}),
+        ...(nonEmptyStringArray(voiceRaw.flaws, 4) ? { flaws: nonEmptyStringArray(voiceRaw.flaws, 4) } : {}),
+        ...(nonEmptyStringArray(voiceRaw.conversationalHabits, 6)
+          ? { conversationalHabits: nonEmptyStringArray(voiceRaw.conversationalHabits, 6) }
+          : {}),
+        ...(nonEmptyStringArray(voiceRaw.boundaries, 5) ? { boundaries: nonEmptyStringArray(voiceRaw.boundaries, 5) } : {}),
+        ...(nonEmptyStringArray(voiceRaw.anchorLines, 5) ? { anchorLines: nonEmptyStringArray(voiceRaw.anchorLines, 5) } : {}),
+      }
+    : null;
+
+  const settingHistory = Array.isArray(card.settingHistory) ? card.settingHistory : [];
+  const latestSetting = settingHistory.at(-1);
+  const settingNote = latestSetting && typeof latestSetting === "object"
+    ? nonEmptyString((latestSetting as Record<string, unknown>).explanationZh)
+    : undefined;
+
+  const relationship = raw.relationship && typeof raw.relationship === "object" && !Array.isArray(raw.relationship)
+    ? raw.relationship
+    : undefined;
+
+  return {
+    ...(nonEmptyString(card.name) ? { name: nonEmptyString(card.name) } : {}),
+    ...(typeof card.age === "number" ? { age: card.age } : {}),
+    ...(nonEmptyString(card.gender) ? { gender: nonEmptyString(card.gender) } : {}),
+    ...(nonEmptyString(card.nationality) ? { nationality: nonEmptyString(card.nationality) } : {}),
+    ...(nonEmptyString(card.hometown) ? { hometown: nonEmptyString(card.hometown) } : {}),
+    ...(nonEmptyString(card.occupation) ? { occupation: nonEmptyString(card.occupation) } : {}),
+    ...(nonEmptyStringArray(card.languages, 5) ? { languages: nonEmptyStringArray(card.languages, 5) } : {}),
+    ...(nonEmptyString(card.appearance) ? { appearance: nonEmptyString(card.appearance) } : {}),
+    ...(nonEmptyString(card.personality) ? { personality: nonEmptyString(card.personality) } : {}),
+    ...(nonEmptyString(card.speechStyle) ? { speechStyle: nonEmptyString(card.speechStyle) } : {}),
+    ...(nonEmptyStringArray(card.hobbies, 8) ? { hobbies: nonEmptyStringArray(card.hobbies, 8) } : {}),
+    ...(nonEmptyString(card.background) ? { background: nonEmptyString(card.background) } : {}),
+    ...(nonEmptyString(card.signature) ? { signature: nonEmptyString(card.signature) } : {}),
+    ...(voice && Object.keys(voice).length > 0 ? { voice } : {}),
+    ...(settingNote ? { settingNote } : {}),
+    ...(typeof raw.isFriend === "boolean" ? { isFriend: raw.isFriend } : {}),
+    ...(relationship ? { relationship } : {}),
+    ...(nonEmptyString(raw.difficulty) ? { learnerEnglishLevel: nonEmptyString(raw.difficulty) } : {}),
+  };
+}
+
+/** Retain every accepted paragraph and decision. Long scenes keep bilingual text on the latest block for English voice continuity. */
 export function acceptedContext(input: AppointmentGenerationContext, chineseHistory = false) {
   const localTime = (instant: string) => {
     const parts = new Intl.DateTimeFormat("en-CA", {
@@ -281,6 +350,7 @@ export function acceptedContext(input: AppointmentGenerationContext, chineseHist
   };
   const localStartsAt = localTime(input.appointment.startsAt);
   const hour = Number(localStartsAt.slice(11, 13));
+  const lastBlockIndex = input.session.blocks.length - 1;
   return {
     appointment: input.appointment,
     temporalAnchor: {
@@ -289,14 +359,20 @@ export function acceptedContext(input: AppointmentGenerationContext, chineseHist
       localEndsAt: localTime(input.appointment.endsAt),
       startPeriod: hour < 6 ? "overnight" : hour < 12 ? "morning" : hour < 18 ? "afternoon" : hour < 22 ? "evening" : "night",
     },
-    character: input.character,
+    character: {
+      ...input.character,
+      persona: characterProfile(input.character.persona),
+    },
+    ...(input.agreementExcerpt && input.agreementExcerpt.length > 0
+      ? { agreementExcerpt: input.agreementExcerpt }
+      : {}),
     session: {
       id: input.session.id,
-      blocks: input.session.blocks.map(({ id, sequence, location, beats, ending }) => ({
+      blocks: input.session.blocks.map(({ id, sequence, location, beats, ending }, index) => ({
         id,
         sequence,
         location,
-        beats: chineseHistory
+        beats: chineseHistory && index < lastBlockIndex
           ? beats.map(({ speaker, chinese }) => speaker === "character" ? `角色：${chinese}` : chinese)
           : beats,
         ending,
@@ -310,12 +386,19 @@ export const WORLD_POLICY = `This is an in-app fictional travel companion appoin
 
 const storyFields = 'location:string,beats:[{speaker:"narrator"|"character",chinese:string,english:string}],choices:[{chinese:string,english:string}],ending:boolean';
 const storyInstruction = (pacing: string, maxBeats: number, maxCharacters: number, output: string) => `${WORLD_POLICY}
-Write one playable scene between choices. Decide first what will actually happen on this page. Continue from the last accepted beat: carry out what the user chose, show its consequence, then let someone act on that consequence or let it change the next moment. End at a new decision that actually needs the user's input. If a custom response skips the previous question, develop the scene through the companion's actions or a consequence around them before posing another choice. Reformulating the previous question is not progress. ${pacing} A glance, a pause, and a question are still one reaction even on separate pages.
+Write one playable, genuinely enjoyable scene between choices. Decide first what actually happens on this page. Continue from the last accepted beat: carry out what the user chose, show its consequence, then let someone act on that consequence or let a small unexpected turn reshape the next moment. End at a new decision that genuinely needs the user's input. If a custom response skips the previous question, develop the scene through the companion's actions or something happening around them before posing another choice. Reformulating the previous question is not progress. ${pacing} A glance, a pause, and a question are still one reaction even on separate pages.
 Separate what the user explicitly does from what they merely propose. Follow a viable detour as fully as a suggested choice. If they say to leave an activity for later, set it aside for this scene. A refusal can take one line, with the rest of the scene given to what actually happens next. If the companion agrees to get food, they can check at the counter, take a look at what's left, or get in line themselves while the user remains free to choose. If they don't agree to get food, develop something else already in motion at the scene. Take some action before the next menu. Don't fill the page with another negotiation about the same plan, even when the latest user action is a new question about the relationship. Keep prior refusals and practical limits unless the character visibly makes an exception. Play make-believe inside its frame. Let something happen during a silence and give it time to land.
-Ground the opening in the agreed place, activity, and temporalAnchor.localStartsAt in the appointment's time zone. Use the anchor precisely if naming an exact time. Do not infer actual weather, light, opening hours, access or stock from the clock, city or image. Small plausible details are welcome in the fiction.
-For an ordinary activity the user proposes doing now and the companion accepts, you may show the routine steps implied by that shared decision. If both are getting food now, show a plausible walk to the nearby counter or the companion checking for seats. Don't ask whether to go again unless a new detail changes the decision. A pending invitation, a counteroffer, or a plan for later is not agreement to go now. Do not invent the user's purchase, words, feelings, touch, or further consent. Show travel or a plausible passage of time before arrival. The location field describes where the block ends. Keep details about the destination hypothetical until established visibility. Avoid inventing directions or distances when they are unknown. Established objects and permissions carry over. When a user refers to something previously named, act on that reference without silently adding new commitments. For instance, someone matching an established drink order hasn't ordered the extra snack the companion just picked for themselves. When a material or access is unknown, use what is at hand, check, or make an offer instead of producing the perfect prop out of nowhere.
-Write dialogue an actor could say out loud here. The character can be abrupt, silly, irritated, shy, or distracted as the moment warrants. A refusal can be a plain no. One short answer can carry a boundary without quoting the request back, explaining relationship expectations or making the user prove they can act normally. Leave some reactions unsaid and let the next action carry them. Humour can come from what happens here; dry humour does not require a sarcastic jab in every exchange. 先把中文写成成稿，再给同一段配英文。中文台词就按当下真人会说的话写，可以有半句、停顿、改口。一句「我没这个打算」也能拒绝。旁白写眼前发生的事。少用直译句式、揣摩双方情绪的套话，或反复写同一个人扬下巴、挑眉、点头。两种语言的事实和语气要一致。 In character beats use plain speech without surrounding quotation marks. Put actions and description in narrator beats.
-Let an existing detail, a particular habit, or the agreed activity drive the next development. Show what happens through specific actions, objects and interruptions. Use simple physical detail in place of narrating why a look, gesture, or remark matters. A character's occupation can shape what they notice without becoming a metaphor for every reaction. Vary how scenes end. Do not require a joke, twist, heartfelt revelation or moral. Offer two or three concise choices with different consequences at this particular decision. Staying quiet or keeping on with the chosen activity can be an option where appropriate. Keep custom input open. If the user clearly wants to leave, or mustEnd is true, give a brief natural goodbye with zero choices. One or two beats usually suffice. Do not invent their next destination or reason.
+Ground the opening in the agreed place, activity, agreementExcerpt (when present), and temporalAnchor.localStartsAt in the appointment's time zone. Use the anchor precisely if naming an exact time. Do not claim real-world live weather forecasts or contradict temporalAnchor.startPeriod, and do not infer guaranteed opening hours or stock from the clock or image; within the fiction, welcome grounded everyday sensory texture (ambient sound, smell, warmth, street rhythm, tiny human quirks of the venue) so the place feels lived-in rather than blank.
+For an ordinary activity the user proposes doing now and the companion accepts, show the routine steps implied by that shared decision without re-asking for confirmation unless a new detail changes the plan. A pending invitation, a counteroffer, or a plan for later is not agreement to go now. Do not invent the user's purchase, words, feelings, touch, or further consent. Show travel or a plausible passage of time before arrival. The location field describes where the block ends. Keep details about an unvisited destination hypothetical until established visibility. Established objects and permissions carry over without silently adding new commitments. When a material or access is unknown, improvise with what is at hand, check, or offer instead of conjuring a magic prop out of nowhere.
+CHARACTER FIDELITY (NO OOC): Embody acceptedContext.character.persona faithfully in every line, reaction, habit, and choice of topic — especially personality, speechStyle, voice (values, flaws, conversationalHabits, boundaries, anchorLines), occupation, hobbies, background, and relationship closeness. Let their real temperament lead: if this character is reserved, dry, pragmatic, or plain-spoken, keep them authentically understated rather than forcing cheerfulness or comedy; if they are warm, teasing, playful, or fast-talking, let that real energy come through. Use their regional slang, pet phrases, or occupational eye naturally and sparingly — never as caricature, and never flatten them into a generic polite AI or therapy-speak narrator. Keep refusals and boundaries true to their voice: one plain, human line works better than a lecture about relationship expectations.
+PROSE & DIALOGUE CRAFT (ALIVE, HUMAN, SPOKEN — NEVER COLD CCTV LOGS):
+- Avoid flat, clinical "action-report" narration (do not chain robotic sentences like "He walked to the bench. He sat down. He looked at the water. He held his cup."). Give narrator paragraphs warmth, lively rhythm, expressive detail, and a light touch of observational humor or emotional atmosphere — the feel of a well-written contemporary short story rather than a stage-direction checklist or purple melodrama.
+- Let genuine conversation, character quirks, small curiosities, playful friction, and shared discoveries carry the heart of the scene instead of padding narrator paragraphs with repetitive micro-gestures (avoid repeating the same chin-tilt, eyebrow raise, or nod).
+- Write spoken, living language in BOTH English and Chinese, matching the same facts, warmth, and emotional color rather than literal word-for-word translation:
+  * English dialogue should sound like an actor or real friend in that city speaking out loud — natural contractions, half-thoughts, interruptions, dry aside or warmth matching speechStyle and anchorLines, naturally clear for learnerEnglishLevel without becoming childish or textbook-formal.
+  * 中文旁白与台词都要像地道、有呼吸感的现代中文：台词口语化、自然带语气（可以有停顿、改口、轻调侃或随口一说），旁白有画面感、温度与节奏感。避免书面腔、翻译腔和AI套话（如「迈步走向」「片刻之后」「神情略显」「露出一丝微笑」「不禁」「空气中弥漫着」「这听起来像是一个很棒的主意」）。
+- In character beats use plain speech without surrounding quotation marks. Put actions, atmosphere, and narration in narrator beats.
+Vary how scenes unfold and end. Do not force a moral or melodramatic revelation. Offer two or three concise, genuinely appealing choices that sound like real things a friend would want to say or try right here, with distinct tones or consequences. Staying quiet or sticking with the moment can be an option where appropriate. Keep custom input open. If the user clearly wants to leave, or mustEnd is true, give a brief natural goodbye true to the character's voice with zero choices (one or two beats usually suffice; do not invent their next destination or reason).
 ${output} The hard ceilings are 1-${String(maxBeats)} beats, 1600 characters per beat text, 200 for location, 1000 for outcome, and 240 per choice text; any continuation requires 2-4 distinct choices; whole beat/choice/outcome text at most ${String(maxCharacters)} characters. No IDs, images, resource references, affinity numbers, statistics, or identity updates.`;
 
 export const STORY_INSTRUCTION = storyInstruction(
@@ -325,19 +408,19 @@ export const STORY_INSTRUCTION = storyInstruction(
   `Return ONLY complete JSON {outcome:string,${storyFields}}. Write outcome first as a one-sentence account of the actual turn in the scene, then depict that turn on the page. At an immediate decision or ending, state the decision or ending plainly.`,
 );
 export const PARAGRAPH_SCENE_INSTRUCTION = storyInstruction(
-  `Use ${String(MIN_SCENE_PARAGRAPHS)}–18 beats for an ordinary continuation, including a quiet scene or a refusal. A scene may reach ${String(MAX_SCENE_PARAGRAPHS)} when several connected developments earn the space. Before returning, count the entries in beats. Use fewer than ${String(MIN_SCENE_PARAGRAPHS)} only for a natural ending or a choice the user genuinely must make right now. Each beat is one natural paragraph of either narration or speech, usually one to three sentences. Carry the action through its first consequence and what comes of it. For example, if someone hears a strange sound, let them trace it and find out what it changes. Keep the user's stated actions and limits throughout. Avoid breaking up one reaction or filling space with a speech. Prior paragraphs are in Chinese, with companion dialogue marked 角色：. Write each new paragraph in both languages.`,
+  `Use ${String(MIN_SCENE_PARAGRAPHS)}–18 beats for an ordinary continuation, including a quiet scene or a refusal. A scene may reach ${String(MAX_SCENE_PARAGRAPHS)} when several connected developments earn the space. Before returning, count the entries in beats. Use fewer than ${String(MIN_SCENE_PARAGRAPHS)} only for a natural ending or a choice the user genuinely must make right now. Each beat is one natural paragraph of either narration or speech, usually one to three sentences. Carry the action through its first consequence and what comes of it, letting natural dialogue and vivid small moments carry the rhythm rather than stretching thin physical gestures. Keep the user's stated actions and limits throughout. Avoid breaking up one reaction or filling space with a lecture. Earlier blocks are summarized in Chinese (with companion dialogue marked 角色：) while the most recent block keeps both languages so you preserve the character's live English voice. Write each new paragraph in both languages.`,
   MAX_SCENE_PARAGRAPHS,
   MAX_SCENE_CHARACTERS,
   `Return ONLY complete JSON {${storyFields},outcome:string}. Write outcome last as one sentence stating what actually happened in the beats. Keep small unresolved details out of the outcome and never claim a plan was carried out unless the beats show it.`,
 );
 
 export const PARAGRAPH_SCENE_AUDIT = `For a continuation under ${String(MIN_SCENE_PARAGRAPHS)} paragraphs, set immediateDecision only if the next event could not develop on the page without that answer. A question at the end, a refusal, or the mere presence of choices does not qualify. Check that longer scenes progress through connected events without padding.
-Only identify blockers in dialogueIssue and continuityIssues. Leave dialogueIssue null if a person in this scene could plausibly say the line and any edit would be minor polish. Never put observations that pass a check into an issue field. Keep each issue to one sentence.`;
+Only identify blockers in dialogueIssue and continuityIssues. Leave dialogueIssue null if a person matching this character's persona could plausibly speak and act this way here and any edit would be minor polish. Never put observations that pass a check into an issue field. Keep each issue to one sentence.`;
 
 export const STORY_AUDIT_INSTRUCTION = `${WORLD_POLICY}
-Review the candidate against the actual latest action and the last accepted beat. Return ONLY JSON {development:string|null,immediateDecision:string|null,pacingIssue:string|null,dialogueIssue:string|null,continuityIssues:string[]}. Review each field separately. Use concise concrete feedback the writer can act on.
+Review the candidate against the actual latest action, acceptedContext.character.persona, and the last accepted beat. Return ONLY JSON {development:string|null,immediateDecision:string|null,pacingIssue:string|null,dialogueIssue:string|null,continuityIssues:string[]}. Review each field separately. Use concise concrete feedback the writer can act on.
 1. development: Name the consequence the scene plays out after the first answer to the user. For example, the character discovers the source of a sound they were trying to identify. Restating dinner plans, promising to do something later, walking in the same direction as before, and gestures between lines are not developments by themselves. Use null if you cannot point to one in the actual beats.
 2. immediateDecision: If progress would require guessing a new choice for the user, name exactly which choice is needed now. Use null when the scene can still develop through the companion's own actions, an agreed action, or an event around them. A menu after repeating a standing offer is not an immediate decision.
 3. pacingIssue: Compare the decision in the next menu to previousOptions (unselected suggestions, not story facts). Flag a repeated decision after the user takes a different action, including when choices are paraphrased or one extra choice was added. The same activity can continue when something happens that changes what the user can do. Check each part of a mixed action: if the character refuses one part, could the viable part or an independent event play out on the page? Flag restated refusals and logistics, even with new scenery or passing time. Flag a postponed activity immediately brought back for discussion. Check for distinct next actions that follow from this particular scene and respect silence and past refusals. A clear goodbye can end briefly with zero choices. Use null when pacing and choices work.
-4. dialogueIssue: Read both languages as plain spoken dialogue. Flag clear translation errors, lecturing speeches explaining a relationship policy, belittling the user as abnormal under cover of banter, or stock emotional analysis that replaces interaction. Quote the phrase and say what to change. Keep overt discomfort, plain refusals, and particular speech habits. Use null for dialogue that sounds plausible here, including ordinary rough phrasing or a line you would only polish slightly.
-5. continuityIssues: Check the exact time when named, starting activity and place, location at the end, plausible travel and visibility, item availability, identity, consent, user agency, and continuity with accepted history. Check that both languages and the outcome agree on what happened. Accept a concise paraphrase that preserves the practical meaning. If the user proposes an ordinary activity now and the companion accepts, allow the routine steps it implies without redundant confirmation. Flag additional unchosen actions or reactions, reversals of boundaries, treating make-believe as real, or inferred real weather or daylight. Accept an ordinary reading of an ambiguous reference when the preceding exchange supports it. An optional new detail does not require the user to accept it, and a promised item need not be delivered within the same block. Enforce a natural ending when mustEnd or the user clearly says goodbye. List only concrete discrepancies that must change. Never list an observation you consider valid, a question of taste, or a check the draft passes. Use [] if there are no discrepancies.`;
+4. dialogueIssue: Read both languages aloud against acceptedContext.character.persona (personality, speechStyle, voice, boundaries, relationship). Flag: (a) clear out-of-character (OOC) drift that contradicts the persona or slips into generic AI-assistant / therapy-speak / lecturing speeches about relationship policy; (b) robotic, cold CCTV-log narration (chains of dry mechanical action reports with no warmth or rhythm) or stiff textbook/translationese Chinese or English; (c) clear translation errors or belittling the user as abnormal under cover of banter. Quote the phrase and say what to change. Accept naturally dry, reserved, plain-spoken, or awkward phrasing whenever it fits THIS character's persona. Use null when the voice and prose read naturally here and any edit would be minor polish.
+5. continuityIssues: Check the exact time when named, starting activity and place, location at the end, plausible travel and visibility, item availability, identity, consent, user agency, and continuity with accepted history. Check that both languages and the outcome agree on what happened. Accept a concise paraphrase that preserves the practical meaning. If the user proposes an ordinary activity now and the companion accepts, allow the routine steps it implies without redundant confirmation. Flag additional unchosen actions or reactions, reversals of boundaries, treating make-believe as real, or claimed live real-world weather forecasts. Accept an ordinary reading of an ambiguous reference when the preceding exchange supports it. An optional new detail does not require the user to accept it, and a promised item need not be delivered within the same block. Enforce a natural ending when mustEnd or the user clearly says goodbye. List only concrete discrepancies that must change. Never list an observation you consider valid, a question of taste, or a check the draft passes. Use [] if there are no discrepancies.`;

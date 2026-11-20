@@ -842,3 +842,85 @@ it("anchors relative dates to immutable server save times rather than client pay
   ).toBe(true);
   expect(requests[0]?.messages[1]?.content).not.toContain("2099-01-01");
 });
+
+it("distills synced character persona, forwards agreement excerpt, and preserves latest English voice in paragraph mode", async () => {
+  const input = { ...context(), paragraphScenes: true };
+  input.character = {
+    ...character,
+    persona: {
+      schemaVersion: 2,
+      difficulty: "intermediate",
+      isFriend: true,
+      proactiveMessagesEnabled: true,
+      relationship: { stage: "close_friend", warmth: 0.7 },
+      card: {
+        name: "Oliver Bennett",
+        age: 24,
+        gender: "male",
+        nationality: "British",
+        occupation: "二手书店店员",
+        appearance: "乱蓬蓬的棕发",
+        personality: "典型英式冷幽默，嘴上爱损人但心肠很软",
+        speechStyle: "爱用 mate、cheers、to be fair 这类口头语",
+        hobbies: ["阿森纳球迷", "收集旧版企鹅经典"],
+        background: "住在北伦敦",
+        avatarAssetName: "avatar_oliver",
+        readingVoice: { supertonicVoice: "M5" },
+        personaVoice: {
+          values: ["honesty"],
+          flaws: ["overthinks"],
+          conversationalHabits: ["dry asides"],
+          boundaries: ["no sudden intimacy"],
+          anchorLines: ["To be fair, that's better than my usual luck."],
+        },
+      },
+    },
+  };
+  input.agreementExcerpt = [
+    { role: "user", content: "Wanna check out that canal bookshop at 3?" },
+    { role: "assistant", content: "Cheers mate, 3 works—I'll show you the cramped poetry corner." },
+  ];
+  input.session.blocks = [
+    acceptedBlock("block-0", 0),
+    acceptedBlock("block-1", 1),
+  ];
+  const { service, requests } = harness([candidate(), storyAccept]);
+  await service.generate(input);
+
+  const writerSystem = requests[0]?.messages[0]?.content ?? "";
+  const auditorSystem = requests[1]?.messages[0]?.content ?? "";
+  expect(writerSystem).toMatch(/CHARACTER FIDELITY \(NO OOC\)/);
+  expect(writerSystem).toMatch(/authentically understated/i);
+  expect(writerSystem).toMatch(/CCTV/i);
+  expect(auditorSystem).toMatch(/out-of-character \(OOC\)/i);
+
+  const payload = JSON.parse(requests[0]?.messages[1]?.content ?? "{}") as {
+    acceptedContext: {
+      character: { persona: Record<string, unknown> };
+      agreementExcerpt?: { role: string; content: string }[];
+      session: { blocks: { beats: unknown[] }[] };
+    };
+  };
+  expect(payload.acceptedContext.character.persona).toMatchObject({
+    name: "Oliver Bennett",
+    personality: "典型英式冷幽默，嘴上爱损人但心肠很软",
+    speechStyle: "爱用 mate、cheers、to be fair 这类口头语",
+    learnerEnglishLevel: "intermediate",
+    isFriend: true,
+    relationship: { stage: "close_friend", warmth: 0.7 },
+    voice: {
+      anchorLines: ["To be fair, that's better than my usual luck."],
+      boundaries: ["no sudden intimacy"],
+    },
+  });
+  expect(payload.acceptedContext.character.persona).not.toHaveProperty("avatarAssetName");
+  expect(payload.acceptedContext.character.persona).not.toHaveProperty("readingVoice");
+  expect(payload.acceptedContext.character.persona).not.toHaveProperty("schemaVersion");
+  expect(payload.acceptedContext.agreementExcerpt).toEqual(input.agreementExcerpt);
+  // Older block stays compact Chinese; latest block retains English dialogue for voice continuity.
+  expect(typeof payload.acceptedContext.session.blocks[0]?.beats[0]).toBe("string");
+  expect(payload.acceptedContext.session.blocks[1]?.beats[0]).toMatchObject({
+    speaker: "character",
+    english: "Would you like to sit by the canal?",
+  });
+});

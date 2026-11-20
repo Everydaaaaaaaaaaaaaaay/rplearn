@@ -32,6 +32,20 @@ const json = (value: unknown) => JSON.stringify(value);
 const hash = (value: unknown) => createHash("sha256").update(json(value)).digest("hex");
 const detectionDigest = (messages: AppointmentMessage[]) =>
   hash([appointmentMessageFacts(messages), messages.map((message) => message.userTimeZone ?? null)]);
+function agreementExcerpt(evidence: unknown): { role: "user" | "assistant"; content: string }[] | undefined {
+  if (!Array.isArray(evidence)) return undefined;
+  const excerpt: { role: "user" | "assistant"; content: string }[] = evidence
+    .flatMap((entry): { role: "user" | "assistant"; content: string }[] => {
+      if (!entry || typeof entry !== "object") return [];
+      const item = entry as { role?: unknown; content?: unknown };
+      const role = item.role;
+      if ((role !== "user" && role !== "assistant") || typeof item.content !== "string") return [];
+      const content = item.content.trim().slice(0, 400);
+      return content ? [{ role, content }] : [];
+    })
+    .slice(-6);
+  return excerpt.length > 0 ? excerpt : undefined;
+}
 interface Row {
   snapshot: Appointment;
   session: AppointmentSession | null;
@@ -416,12 +430,14 @@ export class AppointmentRepository {
       } else if (row.snapshot.status !== "in_progress" || !row.session)
         appointmentError("APPOINTMENT_NOT_STARTED", "请先进入约定。");
       const session = row.session ?? { id: randomUUID(), blocks: [], decisions: [] };
+      const excerpt = agreementExcerpt(row.evidence);
       let context: AppointmentGenerationContext = previous?.context ?? {
         userId,
         operationId: input.commandId,
         paragraphScenes,
         appointment: narrativeSnapshot(row.snapshot),
         character: await this.context.character(sql, userId, row.snapshot.characterId),
+        ...(excerpt ? { agreementExcerpt: excerpt } : {}),
         session,
         action: kind === "choice" ? resolveAction(session, input) : null,
       };

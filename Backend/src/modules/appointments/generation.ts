@@ -134,7 +134,7 @@ export function createAppointmentNarrative(
       )
         throw narrativeFailure();
       const paragraphScenes = input.paragraphScenes === true;
-      const storyStage = paragraphScenes ? "story-v4-paragraphs" : "story-v3";
+      const storyStage = paragraphScenes ? "story-v5-paragraphs" : "story-v4";
       const history = acceptedContext(input, paragraphScenes);
       const base = {
         acceptedContext: history,

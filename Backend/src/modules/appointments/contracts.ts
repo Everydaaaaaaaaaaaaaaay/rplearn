@@ -145,6 +145,7 @@ export interface AppointmentGenerationContext {
   operationId: string;
   appointment: Appointment;
   character: AppointmentCharacter;
+  agreementExcerpt?: { role: "user" | "assistant"; content: string }[];
   session: AppointmentSession;
   action: { input: string; custom: boolean; finish: boolean } | null;
 }
