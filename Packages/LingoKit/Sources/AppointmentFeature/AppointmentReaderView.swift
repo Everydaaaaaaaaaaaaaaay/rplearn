@@ -48,16 +48,14 @@ struct AppointmentReaderView: View {
         .task(id: narrationIdentity) {
             guard let readingServices else { return }
             await readingServices.speech.stopSpeaking()
-            guard canNarrate, let characterID = model.detail?.appointment.characterId else { return }
-            for beat in model.pageBeats {
-                guard !Task.isCancelled else { return }
-                let characterRequest = beat.speaker == "character"
-                    ? await readingServices.characterNarration(characterID, beat.english) : nil
-                guard !Task.isCancelled else { return }
-                let request = AppointmentNarration.request(for: beat, characterName: characterName(characterID),
-                                                          characterRequest: characterRequest)
-                await readingServices.speech.speakAndWait(request)
-            }
+            guard canNarrate, !Task.isCancelled, let beat = model.beat,
+                  let characterID = model.detail?.appointment.characterId else { return }
+            let characterRequest = beat.speaker == "character"
+                ? await readingServices.characterNarration(characterID, beat.english) : nil
+            guard !Task.isCancelled else { return }
+            let request = AppointmentNarration.request(for: beat, characterName: characterName(characterID),
+                                                       characterRequest: characterRequest)
+            await readingServices.speech.speakAndWait(request)
         }
         .onDisappear { Task { await readingServices?.speech.stopSpeaking(); await model.persistReading() } }
         .onChange(of: scenePhase) { _, phase in
@@ -122,21 +120,11 @@ struct AppointmentReaderView: View {
     }
 
     private func panel(maxHeight: CGFloat) -> some View {
-        let page = model.pageBeats
-        let paragraphPages = model.usesParagraphPages
+        let beat = model.beat
         return VStack(alignment: .leading, spacing: 0) {
             if !inputFocused {
                 HStack {
-                    if !paragraphPages {
-                        if page.first?.speaker == "character", let item = model.detail?.appointment {
-                            AppointmentAvatarView(characterID: item.characterId, name: characterName(item.characterId))
-                            Text(characterName(item.characterId)).font(.caption.weight(.medium))
-                                .foregroundStyle(ink.opacity(0.65)).lineLimit(2)
-                        } else {
-                            Label("旁白", systemImage: "text.alignleft").font(.caption.weight(.medium))
-                                .foregroundStyle(ink.opacity(0.65))
-                        }
-                    }
+                    if let beat { speakerHeader(for: beat) }
                     Spacer()
                     Button(translation ? "中 / EN" : "EN") { translation.toggle() }.font(.caption.weight(.medium)).frame(minWidth: 52, minHeight: 44).accessibilityLabel(translation ? "隐藏中文翻译" : "显示中文翻译")
                 }
@@ -144,11 +132,7 @@ struct AppointmentReaderView: View {
             }
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    ForEach(page.indices, id: \.self) { index in
-                        let beginsSpeech = paragraphPages && page[index].speaker == "character"
-                            && (index == page.startIndex || page[index - 1].speaker != "character")
-                        paragraph(page[index], index: index, showsSpeaker: beginsSpeech, grouped: paragraphPages)
-                    }
+                    if let beat { paragraph(beat) }
                     if model.isLastPage && model.isLatestBlock && model.block?.ending == false && model.detail?.appointment.status == "in_progress" {
                         ForEach(model.block?.choices ?? []) { choice in
                             Button { Task { await model.submit(action: .choice, choiceID: choice.id) } } label: {
@@ -195,15 +179,30 @@ struct AppointmentReaderView: View {
         .environment(\.colorScheme, .light)
     }
 
-    private func paragraph(_ beat: BackendAppointmentBeat, index: Int, showsSpeaker: Bool, grouped: Bool) -> some View {
-        let paragraphID = "appointment-\(model.block?.id ?? "")-\(index)"
-        return VStack(alignment: .leading, spacing: grouped ? 7 : 16) {
-            if showsSpeaker, let characterID = model.detail?.appointment.characterId {
-                Text(characterName(characterID))
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(ink.opacity(0.65))
-                    .accessibilityAddTraits(.isHeader)
+    private func speakerHeader(for beat: BackendAppointmentBeat) -> some View {
+        let characterID = beat.speaker == "character" ? model.detail?.appointment.characterId : nil
+        let name = characterID.map(characterName) ?? "Narrator"
+        return HStack(spacing: 8) {
+            Group {
+                if let characterID {
+                    AppointmentAvatarView(characterID: characterID, name: name, size: 32)
+                } else {
+                    AvatarBadge(name: name, tint: ink, size: 32)
+                }
             }
+            .accessibilityHidden(true)
+            Text(name)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(ink.opacity(0.8))
+                .lineLimit(2)
+                .accessibilityAddTraits(.isHeader)
+                .accessibilityIdentifier("appointment.speaker")
+        }
+    }
+
+    private func paragraph(_ beat: BackendAppointmentBeat) -> some View {
+        let paragraphID = "appointment-\(model.block?.id ?? "")-\(model.beatIndex)"
+        return VStack(alignment: .leading, spacing: 16) {
             if readingServices != nil {
                 TappableText(tokens: TokenCache.tokens(for: beat.english, cacheKey: paragraphID),
                              contextID: "\(model.id)-\(paragraphID)", textColor: ink,
@@ -216,7 +215,7 @@ struct AppointmentReaderView: View {
             if translation {
                 Text(beat.chinese).font(.subheadline).foregroundStyle(ink.opacity(0.77))
                     .lineSpacing(5).fixedSize(horizontal: false, vertical: true)
-                    .accessibilityIdentifier("appointment.translation")
+                    .accessibilityIdentifier("appointment.translation.\(paragraphID)")
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

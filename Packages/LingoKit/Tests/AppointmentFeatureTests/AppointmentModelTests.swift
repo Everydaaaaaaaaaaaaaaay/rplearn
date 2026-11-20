@@ -146,18 +146,24 @@ struct AppointmentModelTests {
         let id = AppointmentListView.previewAppointmentID
         let first = AppointmentModel(id: id, service: service, cache: cache)
         await first.load()
-        #expect(first.pageBeats.indices == 0..<4)
+        #expect(first.beatIndex == 0)
+        #expect(first.beat == first.block?.beats.first)
         #expect(!first.mayRespond)
-        await first.advance()
-        #expect(first.pageBeats.indices == 4..<8)
+        for index in 1...4 {
+            await first.advance()
+            #expect(first.beatIndex == index)
+        }
 
         let reopened = AppointmentModel(id: id, service: service, cache: cache)
         await reopened.load()
-        #expect(reopened.pageBeats == first.pageBeats)
+        #expect(reopened.beatIndex == 4)
+        #expect(reopened.beat == first.beat)
         #expect(!reopened.mayRespond)
-        await reopened.advance()
-        #expect(reopened.pageBeats.indices == 8..<12)
-        #expect(reopened.mayRespond)
+        for index in 5...11 {
+            await reopened.advance()
+            #expect(reopened.beatIndex == index)
+            #expect(reopened.mayRespond == (index == 11))
+        }
     }
 
     @Test("An already-open card cannot replace a lost-receipt command from another view")

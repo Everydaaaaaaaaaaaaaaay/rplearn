@@ -303,7 +303,8 @@ final class AppointmentUITests: XCTestCase {
     private func readBackendBlock(waitingForEnding: Bool = false) -> [String] {
         let next = app.buttons["appointment.next"]
         let summary = app.buttons["appointment.summary"]
-        let paragraphs = app.scrollViews["appointment.readerScroll"].staticTexts.matching(identifier: "appointment.translation")
+        let paragraphs = app.scrollViews["appointment.readerScroll"].staticTexts
+            .matching(NSPredicate(format: "identifier BEGINSWITH %@", "appointment.translation."))
         let line = paragraphs.firstMatch
         let ready = NSPredicate { _, _ in
             next.exists || summary.exists || (!waitingForEnding && self.actionInput.exists)
@@ -312,14 +313,15 @@ final class AppointmentUITests: XCTestCase {
         XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: ready, object: nil)], timeout: 175), .completed)
         XCTAssertFalse(app.buttons["appointment.retry"].exists, "The backend needs to deliver a story block.")
         var lines: [String] = []
-        for _ in 0..<8 {
+        for _ in 0..<30 {
             XCTAssertTrue(line.waitForExistence(timeout: 8))
-            lines.append(contentsOf: paragraphs.allElementsBoundByIndex.map(\.label))
+            XCTAssertEqual(paragraphs.count, 1)
+            lines.append(line.label)
             if summary.exists || (!waitingForEnding && actionInput.exists) { return lines }
-            let prior = line.label
+            let prior = line.identifier
             XCTAssertTrue(next.exists)
             next.tap()
-            let moved = NSPredicate { _, _ in (line.exists && line.label != prior) || !next.exists }
+            let moved = NSPredicate { _, _ in line.exists && line.identifier != prior }
             XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: moved, object: nil)], timeout: 8), .completed)
         }
         XCTFail("The story block did not reach its choices or ending.")
@@ -385,10 +387,16 @@ final class AppointmentUITests: XCTestCase {
         XCTAssertTrue(next.waitForExistence(timeout: 8))
         assertInsideScreen(next)
         XCTAssertFalse(actionInput.exists)
-        capture("appointment-paragraph-scene")
+        let speaker = app.staticTexts["appointment.speaker"]
+        XCTAssertEqual(speaker.label, "Narrator")
+        capture("appointment-narrator-paragraph")
+        next.tap()
+        let characterSpeaking = XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Oliver"), object: speaker)
+        XCTAssertEqual(XCTWaiter.wait(for: [characterSpeaking], timeout: 8), .completed)
+        capture("appointment-character-paragraph")
         let paragraphs = readBackendBlock()
-        XCTAssertEqual(paragraphs.count, 12)
-        XCTAssertTrue(paragraphs.first?.contains("地图") == true)
+        XCTAssertEqual(paragraphs.count, 11)
+        XCTAssertTrue(paragraphs.first?.contains("我爸的字") == true)
         XCTAssertTrue(paragraphs.last?.contains("招手") == true)
         XCTAssertFalse(next.exists)
         let choice = app.buttons["appointment.choice.walk"]
