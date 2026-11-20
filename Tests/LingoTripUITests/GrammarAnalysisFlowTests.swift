@@ -28,8 +28,24 @@ final class GrammarAnalysisFlowTests: XCTestCase {
         let attachment = XCTAttachment(screenshot: app.screenshot()); attachment.name = "grammar-direct-tab-success"; attachment.lifetime = .keepAlways; add(attachment)
     }
 
-    func testRetryAndLocalButtonShareTheSameSuccessfulAnalysis() {
-        let app = openAnalysis(mode: "retry")
+    func testFirstTransportFailureRecoversWithoutAnotherTap() {
+        assertAutomaticRecovery(mode: "retry")
+    }
+
+    func testInvalidFirstResponseIsRegeneratedWithoutAnotherTap() {
+        assertAutomaticRecovery(mode: "invalid-output")
+    }
+
+    private func assertAutomaticRecovery(mode: String) {
+        let app = openAnalysis(mode: mode)
+        defer { app.terminate() }
+        app.segmentedControls["GrammarAnalysisSourcePicker"].buttons["AI 解析"].tap()
+        XCTAssertTrue(app.staticTexts["感叹句中的省略"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["重新解析"].exists)
+    }
+
+    func testRateLimitKeepsManualRetryAndSuccessIsCachedAcrossTabs() {
+        let app = openAnalysis(mode: "manual")
         defer { app.terminate() }
         let picker = app.segmentedControls["GrammarAnalysisSourcePicker"]
         picker.buttons["AI 解析"].tap()

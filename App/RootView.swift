@@ -1512,8 +1512,10 @@ struct RootView: View {
         #if DEBUG
         if bypassesAuthenticationForUITesting,
            ProcessInfo.processInfo.environment["UI_TEST_GRAMMAR_FIXTURE"] != nil {
-            dependencies.sharedGrammarAnalysis = { sentence, level in
-                try await DebugGrammarAnalysisFixture.shared.analyze(sentence: sentence, level: level)
+            dependencies.sharedGrammarAnalysis = { sentence, _ in
+                try await SharedGrammarRequest.analyze { operationID in
+                    try await DebugGrammarAnalysisFixture.shared.analyze(sentence: sentence, operationID: operationID)
+                }
             }
         }
         #endif
