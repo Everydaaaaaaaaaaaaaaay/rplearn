@@ -305,8 +305,8 @@ export function characterProfile(persona: unknown): unknown {
       }
     : null;
 
-  const settingHistory = Array.isArray(card.settingHistory) ? card.settingHistory : [];
-  const latestSetting = settingHistory.at(-1);
+  const settingHistory: unknown[] = Array.isArray(card.settingHistory) ? card.settingHistory : [];
+  const latestSetting: unknown = settingHistory.at(-1);
   const settingNote = latestSetting && typeof latestSetting === "object"
     ? nonEmptyString((latestSetting as Record<string, unknown>).explanationZh)
     : undefined;
