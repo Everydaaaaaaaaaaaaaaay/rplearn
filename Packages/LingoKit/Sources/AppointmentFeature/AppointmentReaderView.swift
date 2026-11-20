@@ -187,7 +187,7 @@ struct AppointmentReaderView: View {
                 if let characterID {
                     AppointmentAvatarView(characterID: characterID, name: name, size: 32)
                 } else {
-                    AvatarBadge(name: name, tint: ink, size: 32)
+                    AvatarBadge(name: "旁", tint: ink, size: 32)
                 }
             }
             .accessibilityHidden(true)
