@@ -137,6 +137,23 @@ final class CitySceneGalleryTests: XCTestCase {
         assertScene("london-bloomsbury-cafe")
         XCTAssertFalse(retry.exists)
     }
+
+    func testNonStarterCityLoadsActivityPhotos() {
+        app.launchEnvironment["UI_TEST_TAB"] = "home"
+        app.launchEnvironment["UI_TEST_WORLD_GATEWAY"] = "1"
+        app.launchEnvironment["UI_TEST_SCENE_CITY"] = "capetown"
+        app.launchEnvironment["UI_TEST_CITY_TAB_REGION"] = "capetown"
+        app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
+        app.launch()
+
+        let entrance = app.buttons["home.activities"]
+        XCTAssertTrue(entrance.waitForExistence(timeout: 20))
+        entrance.tap()
+        assertScene("capetown-bo-kaap")
+        app.buttons["activities.scene.next"].tap()
+        assertScene("capetown-sea-point")
+        capture("downloaded-capetown")
+    }
     func testLargeTextCreditsOriginalAndFifthPlace() {
         app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()

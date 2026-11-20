@@ -1,4 +1,6 @@
+import CoreKit
 import SwiftUI
+import UIKit
 
 public enum DSCitySceneRole: String, Sendable, Codable {
     case messages
@@ -51,6 +53,7 @@ public struct DSSceneBackdrop: View {
 
     private let imageName: String
     private let tone: Tone
+    @State private var downloaded: (name: String, image: UIImage)?
 
     public init(imageName: String, tone: Tone) {
         self.imageName = imageName
@@ -59,7 +62,7 @@ public struct DSSceneBackdrop: View {
 
     public var body: some View {
         GeometryReader { proxy in
-            DSSceneImageCache.image(named: imageName)
+            backdropImage
                 .resizable()
                 .scaledToFill()
                 .frame(width: proxy.size.width, height: proxy.size.height)
@@ -68,6 +71,16 @@ public struct DSSceneBackdrop: View {
         }
         .ignoresSafeArea()
         .accessibilityHidden(true)
+        .task(id: imageName) {
+            guard DownloadableContent.contains("backdrop/" + imageName),
+                  let image = await DSSceneImageCache.loadUIImage(named: imageName), !Task.isCancelled else { return }
+            downloaded = (imageName, image)
+        }
+    }
+
+    private var backdropImage: Image {
+        if let downloaded, downloaded.name == imageName { return Image(uiImage: downloaded.image) }
+        return DSSceneImageCache.image(named: imageName)
     }
 
     private var atmosphericWash: some View {

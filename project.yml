@@ -45,6 +45,21 @@ targets:
       - name: Verify Bundled Voice Models
         script: '"$SRCROOT/Scripts/verify-bundled-voice-models.sh" "$DERIVED_FILE_DIR/bundled-voice-models.verified"'
         basedOnDependencyAnalysis: false
+    postBuildScripts:
+      - name: Remove Stale Slim Bundle Resources
+        script: |
+          if [ -n "${LINGOTRIP_CONTENT_RESOURCE_EXCLUSIONS:-}" ]; then
+            [ -n "${LINGOTRIP_CONTENT_ASSET_BASE_URL:-}" ] || exit 1
+            bundle="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH"
+            for filename in $LINGOTRIP_CONTENT_RESOURCE_EXCLUSIONS; do
+              case "$filename" in
+                *.xcassets) ;;
+                ''|.|..|*[!a-zA-Z0-9_.-]*) exit 1 ;;
+                *) rm -f -- "$bundle/$filename" ;;
+              esac
+            done
+          fi
+        basedOnDependencyAnalysis: false
     configFiles:
       Debug: Config/Signing.Debug.xcconfig
       Release: Config/Signing.xcconfig
@@ -119,9 +134,11 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         LINGOTRIP_DISPLAY_NAME: "咕游记"
+        EXCLUDED_SOURCE_FILE_NAMES: $(LINGOTRIP_CONTENT_RESOURCE_EXCLUSIONS)
       configs:
         Release:
           EXCLUDED_SOURCE_FILE_NAMES:
+            - "$(LINGOTRIP_CONTENT_RESOURCE_EXCLUSIONS)"
             - marketing-victor.png
             - marketing-mabel.png
             - tutorial-elliot.png
@@ -136,6 +153,7 @@ targets:
       properties:
         CFBundleDisplayName: $(LINGOTRIP_DISPLAY_NAME)
         LingoTripAppointmentTestBackend: $(LINGOTRIP_APPOINTMENT_TEST_BACKEND)
+        LingoTripContentAssetBaseURL: $(LINGOTRIP_CONTENT_ASSET_BASE_URL)
         CFBundleName: "Coovingo"
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)

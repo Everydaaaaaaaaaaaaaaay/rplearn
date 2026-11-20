@@ -1,4 +1,5 @@
 import BackendKit
+import CoreKit
 import CryptoKit
 import DesignSystem
 import ImageIO
@@ -83,7 +84,7 @@ public struct ActivityPlacePhoto: View {
             else {
                 let alignment = ActivityPlacePhoto.framing[photo.assetName] ?? "center"
                 task = Task.detached(priority: .userInitiated) {
-                    ActivityPlacePhoto.prepare(photo, pixelSize: size, fit: fit, alignment: alignment)
+                    await ActivityPlacePhoto.prepare(photo, pixelSize: size, fit: fit, alignment: alignment)
                 }
                 loads[key] = task
             }
@@ -109,7 +110,7 @@ public struct ActivityPlacePhoto: View {
         guard !items.isEmpty else { return }
         for (photo, key, alignment) in items {
             guard !Task.isCancelled else { return }
-            let prepared = ActivityPlacePhoto.prepare(photo, pixelSize: pixels, fit: false, alignment: alignment)
+            let prepared = await ActivityPlacePhoto.prepare(photo, pixelSize: pixels, fit: false, alignment: alignment)
             await MainActor.run {
                 if let image = prepared?.image {
                     cache.store(image, for: photo, key: key, fit: false)
@@ -186,13 +187,17 @@ public struct ActivityPlacePhoto: View {
     }
 
     private nonisolated static func prepare(_ photo: BackendActivityPhoto, pixelSize: CGSize,
-                                           fit: Bool, alignment: String) -> PreparedActivityPhoto? {
-        guard pixelSize.width > 0, pixelSize.height > 0, photo.width > 0, photo.height > 0 else { return nil }
+                                           fit: Bool, alignment: String) async -> PreparedActivityPhoto? {
+        guard pixelSize.width > 0, pixelSize.height > 0, photo.width > 0, photo.height > 0,
+              !photo.assetName.contains("/"), !photo.assetName.contains("..") else { return nil }
+        let bundled = Bundle.main.url(forResource: photo.assetName, withExtension: nil, subdirectory: "ActivityPlaces")
+            ?? Bundle.main.url(forResource: photo.assetName, withExtension: nil)
+        let url: URL?
+        if let bundled { url = bundled }
+        else { url = try? await DownloadableContent.file(for: "photo/" + photo.assetName) }
+        guard let url else { return nil }
         return autoreleasepool {
-            guard !photo.assetName.contains("/"), !photo.assetName.contains(".."),
-                  let url = Bundle.main.url(forResource: photo.assetName, withExtension: nil, subdirectory: "ActivityPlaces")
-                    ?? Bundle.main.url(forResource: photo.assetName, withExtension: nil),
-                  let data = try? Data(contentsOf: url) else { return nil }
+            guard let data = try? Data(contentsOf: url) else { return nil }
             let hashKey = "\(photo.assetName):\(photo.outputSHA256)"
             if !VerifiedPhotoHashes.shared.contains(hashKey) {
                 guard SHA256.hash(data: data).map({ String(format: "%02x", $0) }).joined() == photo.outputSHA256 else {

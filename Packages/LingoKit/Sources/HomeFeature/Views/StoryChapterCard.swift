@@ -1,4 +1,6 @@
+import CoreKit
 import DesignSystem
+import DomainKit
 import SwiftUI
 
 /// 剧情目录共用的封面数据。业务页负责计算权限与进度，封面流只负责舞台呈现。
@@ -109,6 +111,12 @@ struct StoryCoverFlow: View {
             } onCancel: {
                 preloadTask.cancel()
             }
+        }
+        .task(id: selectedItem?.isEnabled == true ? selectedItem?.id : nil, priority: .utility) {
+            guard let item = selectedItem, item.isEnabled else { return }
+            do { try await Task.sleep(for: .milliseconds(250)) } catch { return }
+            let readingID = DepartureStoryIdentity.readingEditions(for: item.id).last ?? item.id
+            await DownloadableContent.prefetchOpening(readingID)
         }
         .accessibilityIdentifier(accessibilityIdentifier)
         .onAppear {

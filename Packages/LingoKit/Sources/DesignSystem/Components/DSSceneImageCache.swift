@@ -1,3 +1,4 @@
+import CoreKit
 import SwiftUI
 import UIKit
 
@@ -24,7 +25,29 @@ public enum DSSceneImageCache {
 
     public static func image(named name: String) -> Image {
         if let value = images.object(forKey: name as NSString) { return Image(uiImage: value) }
+        if DownloadableContent.contains("backdrop/" + name),
+           let preview = UIImage(named: name + "_preview") { return Image(uiImage: preview) }
         return Image(name)
+    }
+
+    public static func loadUIImage(named name: String) async -> UIImage? {
+        if let image = cachedUIImage(named: name) { return image }
+        if let task = loads[name] { return await task.value.image }
+        let task = Task.detached(priority: .userInitiated) {
+            if let local = UIImage(named: name) {
+                return PreparedSceneImage(image: local.preparingForDisplay() ?? local)
+            }
+            guard let url = try? await DownloadableContent.file(for: "backdrop/" + name),
+                  let image = UIImage(contentsOfFile: url.path) else { return PreparedSceneImage(image: nil) }
+            return PreparedSceneImage(image: image.preparingForDisplay() ?? image)
+        }
+        loads[name] = task
+        let decoded = await task.value
+        loads[name] = nil
+        if let image = decoded.image, let bitmap = image.cgImage {
+            images.setObject(image, forKey: name as NSString, cost: bitmap.bytesPerRow * bitmap.height)
+        }
+        return decoded.image
     }
 
     public static func cachedThumbnail(named name: String, maxPixelSize: CGFloat = 320) -> UIImage? {
@@ -39,19 +62,7 @@ public enum DSSceneImageCache {
         if let inflight = thumbnailLoads[key] {
             task = inflight
         } else {
-            task = Task.detached(priority: .userInitiated) {
-                guard let source = UIImage(named: name) else { return PreparedSceneImage(image: nil) }
-                let pixelWidth = source.cgImage.map { CGFloat($0.width) } ?? (source.size.width * source.scale)
-                let pixelHeight = source.cgImage.map { CGFloat($0.height) } ?? (source.size.height * source.scale)
-                guard pixelWidth > 0, pixelHeight > 0 else { return PreparedSceneImage(image: source) }
-                let scale = min(1, maxPixelSize / max(pixelWidth, pixelHeight))
-                let target = CGSize(
-                    width: max(1, (pixelWidth * scale).rounded()),
-                    height: max(1, (pixelHeight * scale).rounded())
-                )
-                let thumb = source.preparingThumbnail(of: target) ?? source.preparingForDisplay() ?? source
-                return PreparedSceneImage(image: thumb)
-            }
+            task = Task.detached(priority: .userInitiated) { decodeThumbnail(named: name, maxPixelSize: maxPixelSize) }
             thumbnailLoads[key] = task
         }
         let value = await task.value
@@ -62,20 +73,10 @@ public enum DSSceneImageCache {
         return value.image
     }
 
-    public nonisolated static func preload(_ names: [String]) async {
-        let missing = await MainActor.run {
-            names.filter { images.object(forKey: $0 as NSString) == nil }
-        }
-        guard !missing.isEmpty else { return }
-        for name in missing {
+    public static func preload(_ names: [String]) async {
+        for name in names {
             guard !Task.isCancelled else { return }
-            let decoded = PreparedSceneImage(image: UIImage(named: name)?.preparingForDisplay())
-            await MainActor.run {
-                if let image = decoded.image, let bitmap = image.cgImage,
-                   images.object(forKey: name as NSString) == nil {
-                    images.setObject(image, forKey: name as NSString, cost: bitmap.bytesPerRow * bitmap.height)
-                }
-            }
+            _ = await loadUIImage(named: name)
             await Task.yield()
         }
     }
@@ -100,7 +101,9 @@ public enum DSSceneImageCache {
     }
 
     private nonisolated static func decodeThumbnail(named name: String, maxPixelSize: CGFloat) -> PreparedSceneImage {
-        guard let source = UIImage(named: name) else { return PreparedSceneImage(image: nil) }
+        guard let source = UIImage(named: name) ?? UIImage(named: name + "_preview") else {
+            return PreparedSceneImage(image: nil)
+        }
         let pixelWidth = source.cgImage.map { CGFloat($0.width) } ?? (source.size.width * source.scale)
         let pixelHeight = source.cgImage.map { CGFloat($0.height) } ?? (source.size.height * source.scale)
         guard pixelWidth > 0, pixelHeight > 0 else { return PreparedSceneImage(image: source) }

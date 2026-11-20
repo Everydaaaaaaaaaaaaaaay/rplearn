@@ -99,6 +99,7 @@ let featureTargets: [Target] = [
         module("BackendKit"),
     ]),
     feature("HomeFeature", dependencies: [
+        module("CoreKit"),
         module("BackendKit"),
         module("CoreKit"),
         module("DictKit"),
@@ -144,6 +145,7 @@ let featureTargets: [Target] = [
         module("PersistenceKit"),
     ]),
     feature("MapFeature", dependencies: [
+        module("CoreKit"),
         module("DomainKit"),
         module("PersistenceKit"),
     ]),

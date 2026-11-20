@@ -1,3 +1,4 @@
+import CoreKit
 import DesignSystem
 import DomainKit
 import MapKit
@@ -126,6 +127,9 @@ public struct MapView: View {
         }
         .dsTabBarHidden(flight != nil)
         .onChange(of: selectedRegionID) { _, value in deps.mapCache?.selectedRegionID = value }
+        .task(id: selectedRegionID, priority: .utility) {
+            if let selectedRegionID { await DownloadableContent.prefetchCity(selectedRegionID) }
+        }
     }
 
     private var interactiveMap: some View {

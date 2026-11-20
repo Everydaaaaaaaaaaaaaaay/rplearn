@@ -86,8 +86,11 @@ public struct LondonEpisodeView: View {
                     ContentUnavailableView {
                         Label("故事暂时无法载入", systemImage: "book.closed")
                     } description: {
-                        Text("剧情或美术资源缺失。请返回后重试。")
-                    } actions: { Button("返回剧情") { dismiss() } }
+                        Text("剧情或美术资源暂时未能读取。")
+                    } actions: {
+                        Button("重试") { Task { await load() } }
+                        Button("返回剧情") { dismiss() }
+                    }
                     .foregroundStyle(paper)
                 } else {
                     ProgressView("正在打开这一页…").tint(paper).foregroundStyle(paper)
@@ -116,6 +119,7 @@ public struct LondonEpisodeView: View {
         }
         .preferredColorScheme(.dark)
         .task { await load() }
+        .task(id: session?.nodeID, priority: .utility) { await preloadNextArtwork() }
         .task(id: autoplayIdentity) { await autoplay() }
         .onChange(of: audioIdentity, initial: true) { _, _ in updateAudio() }
         .overlay {
@@ -516,6 +520,10 @@ public struct LondonEpisodeView: View {
             return true
         } catch is CancellationError {
             return false
+        } catch is DownloadableContent.Failure {
+            automatic = false
+            operationError = "下一页图片暂时未能下载，请重试刚才的操作。"
+            return false
         } catch {
             automatic = false
             operationError = "进度未能保存，请重试刚才的操作。当前阅读位置已保留。"
@@ -593,8 +601,16 @@ public struct LondonEpisodeView: View {
                     images[name] = bundled.preparingThumbnail(of: CGSize(width: 854, height: 1280)) ?? bundled
                     continue
                 }
-                guard let url = Self.artURL(name),
-                      let source = CGImageSourceCreateWithURL(url as CFURL, nil),
+                let url: URL
+                if let bundled = Self.artURL(name) { url = bundled }
+                else {
+                    guard let downloaded = try? await DownloadableContent.file(for: "story/" + name) else {
+                        try Task.checkCancellation()
+                        throw DownloadableContent.Failure.unavailable
+                    }
+                    url = downloaded
+                }
+                guard let source = CGImageSourceCreateWithURL(url as CFURL, nil),
                       let cg = CGImageSourceCreateThumbnailAtIndex(source, 0, [
                         kCGImageSourceCreateThumbnailFromImageAlways: true,
                         kCGImageSourceThumbnailMaxPixelSize: 1280,
@@ -607,8 +623,26 @@ public struct LondonEpisodeView: View {
         }.value
     }
 
+    private func preloadNextArtwork() async {
+        guard let session else { return }
+        let candidates: [EpisodeSession]
+        if let choices = session.current.choices {
+            candidates = choices.map { choice in
+                var candidate = session
+                candidate.choose(choice.id)
+                return candidate
+            }
+        } else {
+            var candidate = session
+            candidates = candidate.advance() ? [candidate] : []
+        }
+        let names = Set(candidates.flatMap { [$0.shot.background] + $0.shot.actors.map(\.asset) })
+        await DownloadableContent.prefetch(names.sorted().map { "story/" + $0 })
+    }
+
     private func load() async {
         guard session == nil else { return }
+        loadError = false
         do {
             let editions = DepartureStoryIdentity.readingEditions(for: resourceName)
             var progressByEdition: [String: StoryProgressDTO] = [:]
@@ -636,7 +670,8 @@ public struct LondonEpisodeView: View {
             // Validate references up front; decode only the current and outgoing
             // shot, so richer chapters do not grow the player's memory budget.
             for name in episode.assetNames {
-                guard Self.artURL(name) != nil || UIImage(named: name) != nil else { throw CocoaError(.fileNoSuchFile) }
+                guard Self.artURL(name) != nil || DownloadableContent.contains("story/" + name)
+                        || UIImage(named: name) != nil else { throw CocoaError(.fileNoSuchFile) }
             }
             let progress = progressByEdition[activeResourceName]
             completionSettled = progress?.isCompleted == true
@@ -668,6 +703,7 @@ public struct LondonEpisodeView: View {
                 art = try await artwork(for: candidate).images
                 session = candidate
             }
+        } catch is CancellationError {
         } catch { loadError = true }
     }
 }

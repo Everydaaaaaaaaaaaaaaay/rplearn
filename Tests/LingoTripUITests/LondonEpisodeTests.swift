@@ -225,6 +225,18 @@ final class LondonEpisodeTests: XCTestCase {
         screenshot("london-current-manuscript-oliver")
     }
 
+    func testNonStarterStoryLoadsArtworkAndAdvances() {
+        app.launchEnvironment["UI_TEST_DEPARTURE_RESOURCE"] = "departures_city_capetown_v2"
+        app.launchEnvironment["UI_TEST_PERSISTENCE_NAMESPACE"] = UUID().uuidString
+        app.launch()
+        let next = app.buttons["episode.next"]
+        XCTAssertTrue(next.waitForExistence(timeout: 20))
+        XCTAssertTrue(app.staticTexts["Amina 摊上多了三个箱子，把她的画挡了个严实。"].exists)
+        next.tap()
+        XCTAssertTrue(app.staticTexts["他说借个桌角。你还看得见桌角吗？"].waitForExistence(timeout: 10))
+        screenshot("downloaded-capetown-artwork")
+    }
+
     func testDepartureCollectionArtworkAndChoices() {
         let chapters = [
             "mainline_melbourne", "mainline_newyork", "mainline_capetown", "mainline_singapore",

@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RECORD = ROOT / 'Assets/TabHubScenes/2026-11-16-v1'
 MANIFEST = ROOT / 'App/Resources/hub-scene-photos.json'
 ASSETS = ROOT / 'App/Assets.xcassets'
+REMOTE_ASSETS = ROOT / 'App/RemoteCityBackdrops.xcassets'
 
 
 def source_key(value):
@@ -93,6 +94,7 @@ def main():
     assert len({source_key(photo['sourceURL']) for photo in photos}) == len(photos), 'Duplicate source photograph'
     assert len({photo['sourceSHA256'] for photo in photos}) == len(photos), 'Duplicate downloaded image'
     compiled = []
+    starters = {card['regionID'] for card in json.loads((ROOT / 'App/Resources/main_characters.json').read_text())['characters']}
     for photo in photos:
         assert photo['cityID'] == places[photo['id']]['cityId']
         assert photo['reviewNotes'] and photo['cityEvidence'] and photo['placementNotes']
@@ -101,7 +103,8 @@ def main():
         for name in ['sourceURL', 'licenseURL']:
             assert urlparse(photo[name]).scheme == 'https' and urlparse(photo[name]).netloc
         asset = f'{photo["role"]}_{photo["cityID"]}_glass'
-        destination = ASSETS / f'{asset}.imageset' / f'{asset}.jpg'
+        catalog_path = ASSETS if photo['cityID'] in starters else REMOTE_ASSETS
+        destination = catalog_path / f'{asset}.imageset' / f'{asset}.jpg'
         if args.build:
             photo.update(render(photo, destination))
             contents = {'images': [{'filename': destination.name, 'idiom': 'universal'}], 'info': {'author': 'xcode', 'version': 1}}

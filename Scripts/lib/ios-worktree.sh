@@ -203,6 +203,30 @@ lingotrip_boot_simulator() {
   xcrun simctl bootstatus "$udid" -b
 }
 
+lingotrip_content_build_settings() {
+  local origin="${LINGOTRIP_CONTENT_ASSET_BASE_URL:-}"
+  local exclusions=""
+  if [[ -n "$origin" ]]; then
+    python3 - "$origin" "$1" <<'PY'
+from urllib.parse import urlsplit
+import sys
+url = urlsplit(sys.argv[1])
+local_preview = sys.argv[2] == 'preview' and url.scheme == 'http' and url.hostname in {
+    '127.0.0.1', 'localhost', '::1',
+}
+if not url.hostname or url.username or url.password or url.query or url.fragment or (
+    url.scheme != 'https' and not local_preview
+):
+    sys.exit('请使用不带认证信息的 HTTPS 静态资源地址。模拟器预览也可使用本机 HTTP。')
+PY
+    exclusions="$(python3 "$LINGOTRIP_REPO_ROOT/Tools/ContentPipeline/ios-content-packs.py" --exclusions)"
+  fi
+  LINGOTRIP_CONTENT_BUILD_SETTINGS=(
+    "LINGOTRIP_CONTENT_ASSET_BASE_URL=$origin"
+    "LINGOTRIP_CONTENT_RESOURCE_EXCLUSIONS=$exclusions"
+  )
+}
+
 lingotrip_xcodebuild() {
   local scheme="$1"
   local udid="$2"
@@ -233,6 +257,8 @@ lingotrip_xcodebuild() {
     COMPILER_INDEX_STORE_ENABLE="${LINGOTRIP_INDEX_STORE_ENABLE:-NO}"
     -quiet
   )
+  lingotrip_content_build_settings preview
+  xcodebuild_arguments+=("${LINGOTRIP_CONTENT_BUILD_SETTINGS[@]}")
   if lingotrip_package_cache_ready; then
     # 完整缓存只读取 Package.resolved，避免每次构建访问远端或与其他工作树争用。
     xcodebuild_arguments+=(

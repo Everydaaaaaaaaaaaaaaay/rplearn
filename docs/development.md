@@ -199,6 +199,19 @@ LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh
 
 顶部城市名打开十五城选择，每城 3–5 处全屏实景。左右滑动或点两侧箭头切换地点，底部为「去这里逛逛」胶囊按钮。右上角更多菜单可打开完整照片及摄影许可。预览按钮显示剧情接入进度，实际外出样板使用 `places-preview`。此入口使用 Debug 免登录工作区，内容来自本地已校验的图片包。场景清单、逐图来源及验收范围见[城市场景 v2](../Assets/Activities/CityPlaces-v2/README.md)。
 
+### iOS 图片分包
+
+地图、城市活动和剧情共用静态图片目录，文件名包含内容 SHA256。首次读取核对文件大小和指纹，同一文件并发请求合并，已下载图片优先从本机读取。图片缓存上限 220 MiB，iOS 清理或淘汰后可重新下载。伦敦、墨尔本、纽约的实景、页面背景和首个主线美术随包提供，离线词典、朗读模型、剧情文本和预制配音也随包提供。
+
+```sh
+python3 Tools/ContentPipeline/ios-content-packs.py --output build/ios-content-public
+python3 -m http.server 18765 --bind 127.0.0.1 --directory build/ios-content-public
+```
+
+本机预览可用 `LINGOTRIP_CONTENT_ASSET_BASE_URL=http://127.0.0.1:18765 Scripts/preview.sh build world-preview`。选中地图城市时先预取第一张活动实景和活动页背景，剧情目录预取当前可读章节的首幕，阅读期间预取下一幕。城市页面先显示同一地点的低分辨率背景预览，再加载高清原图。
+
+发布时将导出的文件放到公开、不可变的 HTTPS 静态目录，再用同一个目录地址设置 `LINGOTRIP_CONTENT_ASSET_BASE_URL` 执行 `Scripts/archive.sh`。文件名包含指纹，内容更新新增文件并保留仍由已发布 App 引用的旧文件。变量留空时构建全量资源版。修改入包图后通过 `python3 Tools/ContentPipeline/ios-content-packs.py --update` 更新指纹和对应的预览图。
+
 ### 真实学习实测入口
 
 Debug App 的「我的 → 设置」中有「学习实测 · 切换档位做题」。也可以直接启动：

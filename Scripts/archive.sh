@@ -18,6 +18,7 @@ if [[ ! "$lingotrip_build_number" =~ ^[1-9][0-9]*$ ]]; then
 fi
 
 echo "正在归档 LingoTrip ${lingotrip_marketing_version} (${lingotrip_build_number})"
+lingotrip_content_build_settings release
 
 xcodebuild archive \
   -project LingoTrip.xcodeproj \
@@ -26,6 +27,7 @@ xcodebuild archive \
   -destination "generic/platform=iOS" \
   -derivedDataPath "$LINGOTRIP_DERIVED_DATA_PATH" \
   -clonedSourcePackagesDirPath "$LINGOTRIP_SOURCE_PACKAGES_PATH" \
+  "${LINGOTRIP_CONTENT_BUILD_SETTINGS[@]}" \
   MARKETING_VERSION="$lingotrip_marketing_version" \
   CURRENT_PROJECT_VERSION="$lingotrip_build_number"
 
