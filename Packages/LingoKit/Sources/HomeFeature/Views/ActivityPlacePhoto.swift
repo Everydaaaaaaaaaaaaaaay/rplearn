@@ -64,6 +64,17 @@ public struct ActivityPlacePhoto: View {
             let covers = pixelWidth >= size.width * 0.85 && pixelHeight >= size.height * 0.85
             return (fallback, covers)
         }
+        func store(_ image: UIImage, for photo: BackendActivityPhoto, key: String, fit: Bool) {
+            guard let bitmap = image.cgImage else { return }
+            let cost = bitmap.bytesPerRow * bitmap.height
+            images.setObject(image, forKey: key as NSString, cost: cost)
+            let fbKey = fallbackKey(photo, fit: fit) as NSString
+            let existingArea = fallbacks.object(forKey: fbKey).map { $0.size.width * $0.scale * $0.size.height * $0.scale } ?? 0
+            let newArea = CGFloat(bitmap.width * bitmap.height)
+            if newArea >= existingArea {
+                fallbacks.setObject(image, forKey: fbKey, cost: cost)
+            }
+        }
         func load(_ photo: BackendActivityPhoto, size: CGSize, fit: Bool) async -> UIImage? {
             let key = key(photo, size: size, fit: fit)
             if let image = images.object(forKey: key as NSString) { return image }
@@ -78,25 +89,33 @@ public struct ActivityPlacePhoto: View {
             }
             let value = await task.value
             loads[key] = nil
-            if let image = value?.image, let bitmap = image.cgImage {
-                let cost = bitmap.bytesPerRow * bitmap.height
-                images.setObject(image, forKey: key as NSString, cost: cost)
-                let fbKey = fallbackKey(photo, fit: fit) as NSString
-                let existingArea = fallbacks.object(forKey: fbKey).map { $0.size.width * $0.scale * $0.size.height * $0.scale } ?? 0
-                let newArea = CGFloat(bitmap.width * bitmap.height)
-                if newArea >= existingArea {
-                    fallbacks.setObject(image, forKey: fbKey, cost: cost)
-                }
+            if let image = value?.image {
+                store(image, for: photo, key: key, fit: fit)
             }
             return value?.image
         }
     }
 
-    public static func preload(_ photos: [BackendActivityPhoto], size: CGSize, scale: CGFloat) async {
+    public nonisolated static func preload(_ photos: [BackendActivityPhoto], size: CGSize, scale: CGFloat, limit: Int = 2) async {
         let pixels = CGSize(width: ceil(size.width * scale), height: ceil(size.height * scale))
-        for photo in photos.prefix(5) {
+        let items: [(BackendActivityPhoto, String, String)] = await MainActor.run {
+            photos.prefix(limit).compactMap { photo in
+                if cache.image(photo, size: pixels, fit: false) != nil { return nil }
+                let key = cache.key(photo, size: pixels, fit: false)
+                let alignment = ActivityPlacePhoto.framing[photo.assetName] ?? "center"
+                return (photo, key, alignment)
+            }
+        }
+        guard !items.isEmpty else { return }
+        for (photo, key, alignment) in items {
             guard !Task.isCancelled else { return }
-            _ = await cache.load(photo, size: pixels, fit: false)
+            let prepared = ActivityPlacePhoto.prepare(photo, pixelSize: pixels, fit: false, alignment: alignment)
+            await MainActor.run {
+                if let image = prepared?.image {
+                    cache.store(image, for: photo, key: key, fit: false)
+                }
+            }
+            await Task.yield()
         }
     }
 

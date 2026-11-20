@@ -33,7 +33,7 @@ public final class WorldMapCache {
         warmupHost = host
         if !regions.isEmpty, pinPreloadTask == nil {
             let pinNames = regions.map { "city_pin_\($0.id)" }
-            pinPreloadTask = Task {
+            pinPreloadTask = Task.detached(priority: .utility) {
                 await DSSceneImageCache.preload(pinNames)
             }
         }
@@ -41,8 +41,8 @@ public final class WorldMapCache {
         guard map != nil else {
             guard warmupTask == nil else { return }
             warmupTask = Task { @MainActor [weak self, weak host] in
-                await Task.yield()
-                guard let self else { return }
+                try? await Task.sleep(for: .milliseconds(250))
+                guard let self, !Task.isCancelled else { return }
                 warmupTask = nil
                 guard let host, !isInUse else { return }
                 _ = prepared(region: region)

@@ -62,34 +62,58 @@ public enum DSSceneImageCache {
         return value.image
     }
 
-    public static func preload(_ names: [String]) async {
-        for name in names {
+    public nonisolated static func preload(_ names: [String]) async {
+        let missing = await MainActor.run {
+            names.filter { images.object(forKey: $0 as NSString) == nil }
+        }
+        guard !missing.isEmpty else { return }
+        for name in missing {
             guard !Task.isCancelled else { return }
-            if images.object(forKey: name as NSString) != nil { continue }
-            let task: Task<PreparedSceneImage, Never>
-            if let existing = loads[name] { task = existing }
-            else {
-                task = Task.detached(priority: .userInitiated) {
-                    PreparedSceneImage(image: UIImage(named: name)?.preparingForDisplay())
+            let decoded = PreparedSceneImage(image: UIImage(named: name)?.preparingForDisplay())
+            await MainActor.run {
+                if let image = decoded.image, let bitmap = image.cgImage,
+                   images.object(forKey: name as NSString) == nil {
+                    images.setObject(image, forKey: name as NSString, cost: bitmap.bytesPerRow * bitmap.height)
                 }
-                loads[name] = task
             }
-            let value = await task.value
-            loads[name] = nil
-            if let image = value.image, let bitmap = image.cgImage {
-                images.setObject(image, forKey: name as NSString, cost: bitmap.bytesPerRow * bitmap.height)
-            }
+            await Task.yield()
         }
     }
 
-    public static func preloadThumbnails(_ names: [String], maxPixelSize: CGFloat = 320) async {
-        for name in names {
+    public nonisolated static func preloadThumbnails(_ names: [String], maxPixelSize: CGFloat = 320) async {
+        let missing = await MainActor.run {
+            names.filter { cachedThumbnail(named: $0, maxPixelSize: maxPixelSize) == nil }
+        }
+        guard !missing.isEmpty else { return }
+        for name in missing {
             guard !Task.isCancelled else { return }
-            _ = await loadThumbnail(named: name, maxPixelSize: maxPixelSize)
+            let decoded = decodeThumbnail(named: name, maxPixelSize: maxPixelSize)
+            let key = thumbnailKey(name: name, maxPixelSize: maxPixelSize)
+            await MainActor.run {
+                if let image = decoded.image, let bitmap = image.cgImage,
+                   thumbnails.object(forKey: key as NSString) == nil {
+                    thumbnails.setObject(image, forKey: key as NSString, cost: bitmap.bytesPerRow * bitmap.height)
+                }
+            }
+            await Task.yield()
         }
     }
 
-    private static func thumbnailKey(name: String, maxPixelSize: CGFloat) -> String {
+    private nonisolated static func decodeThumbnail(named name: String, maxPixelSize: CGFloat) -> PreparedSceneImage {
+        guard let source = UIImage(named: name) else { return PreparedSceneImage(image: nil) }
+        let pixelWidth = source.cgImage.map { CGFloat($0.width) } ?? (source.size.width * source.scale)
+        let pixelHeight = source.cgImage.map { CGFloat($0.height) } ?? (source.size.height * source.scale)
+        guard pixelWidth > 0, pixelHeight > 0 else { return PreparedSceneImage(image: source) }
+        let scale = min(1, maxPixelSize / max(pixelWidth, pixelHeight))
+        let target = CGSize(
+            width: max(1, (pixelWidth * scale).rounded()),
+            height: max(1, (pixelHeight * scale).rounded())
+        )
+        let thumb = source.preparingThumbnail(of: target) ?? source.preparingForDisplay() ?? source
+        return PreparedSceneImage(image: thumb)
+    }
+
+    private nonisolated static func thumbnailKey(name: String, maxPixelSize: CGFloat) -> String {
         "\(name)@\(Int(maxPixelSize.rounded()))"
     }
 }

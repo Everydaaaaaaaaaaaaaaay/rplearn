@@ -99,13 +99,15 @@ public struct HomeView: View {
         .task(id: reloadKey) { if isVisible { await reloadProfile() } }
         .task(id: reloadKey) { if isVisible { await reloadOuting() } }
         .task(id: reloadKey) { if isVisible { await appointments.reload(using: deps) } }
-        .task(id: currentRegion?.id) {
+        .task(id: currentRegion?.id, priority: .utility) {
             guard let region = currentRegion else { return }
-            let window = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+            // Wait for the hub's first frame to settle before starting speculative background work.
+            do { try await Task.sleep(for: .milliseconds(350)) } catch { return }
+            guard !Task.isCancelled else { return }
+            let windowSize = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
                 .flatMap(\.windows).first(where: \.isKeyWindow)
-            if let window {
-                await ActivityPlacePhoto.preload(places.map(\.photo), size: window.bounds.size, scale: window.screen.scale)
-            }
+                .map { ($0.bounds.size, $0.screen.scale) }
+            let placePhotos = places.map(\.photo)
             let main = MainlineCatalog.journey(starterRegionID: profile?.starterRegionID).stops.prefix(2)
                 .map { DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID) }
             let cities = CityStoryCatalog.chapters.prefix(2)
@@ -115,11 +117,22 @@ public struct HomeView: View {
             } + CityStoryCatalog.chapters.map {
                 DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
             }
-            async let storyThumbnails: Void = DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 200)
-            async let storyCovers: Void = DSSceneImageCache.preloadThumbnails(main + cities, maxPixelSize: 720)
-            _ = await (storyThumbnails, storyCovers)
+            let bgTask = Task.detached(priority: .utility) {
+                if let (size, scale) = windowSize {
+                    await ActivityPlacePhoto.preload(placePhotos, size: size, scale: scale, limit: 2)
+                }
+                guard !Task.isCancelled else { return }
+                await DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 200)
+                guard !Task.isCancelled else { return }
+                await DSSceneImageCache.preloadThumbnails(main + cities, maxPixelSize: 720)
+            }
             if let cache = deps.presentationCache, let releaseID = deps.activityReleaseID, let gateway = deps.outingGateway {
                 _ = try? await cache.refreshCatalog(releaseID: releaseID, cityID: region.id, gateway: gateway)
+            }
+            await withTaskCancellationHandler {
+                await bgTask.value
+            } onCancel: {
+                bgTask.cancel()
             }
         }
         .sheet(isPresented: $showsBackgroundCredits) { DSHubPhotoCreditsView(cityID: currentRegion?.id ?? "london") }

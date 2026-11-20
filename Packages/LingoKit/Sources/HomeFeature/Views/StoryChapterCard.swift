@@ -99,9 +99,16 @@ struct StoryCoverFlow: View {
             .frame(width: proxy.size.width, height: proxy.size.height)
         }
         .background(Color.black)
-        .task(id: selectedID) {
+        .task(id: selectedID, priority: .utility) {
             let nearby = items.dropFirst(max(0, selectedIndex - 1)).prefix(4).map(\.artworkName)
-            await DSSceneImageCache.preloadThumbnails(nearby, maxPixelSize: 720)
+            let preloadTask = Task.detached(priority: .utility) {
+                await DSSceneImageCache.preloadThumbnails(nearby, maxPixelSize: 720)
+            }
+            await withTaskCancellationHandler {
+                await preloadTask.value
+            } onCancel: {
+                preloadTask.cancel()
+            }
         }
         .accessibilityIdentifier(accessibilityIdentifier)
         .onAppear {

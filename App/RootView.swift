@@ -89,6 +89,7 @@ struct RootView: View {
     @State private var stateRevision = 0
     @State private var shouldRefreshAfterBackground = false
     @State private var isInitialContentReady = false
+    @State private var allowsWorldMapWarmup = false
     @State private var launchVeilVisible = true
     @State private var completedForcedOnboarding = false
     @State private var completedForcedWelcome = false
@@ -451,6 +452,7 @@ struct RootView: View {
                 activityJourney.reset()
                 activeSceneActivity = nil
                 homePath = NavigationPath()
+                allowsWorldMapWarmup = false
             }
             .onReceive(NotificationCenter.default.publisher(for: .memoryKnowledgeDidChange)) { _ in
                 Task { await environment.workspace?.proactiveMessages.learnerProfileDidChange() }
@@ -668,29 +670,48 @@ struct RootView: View {
                 await cache.refreshLocal(economy: account.economyStore, items: account.itemStore,
                     progress: account.storyProgressStore, ticketStubs: account.ticketStubStore)
                 guard !Task.isCancelled else { return }
-                if let regionID = cache.profile?.currentRegionID {
-                    let tabBackdrops = [DSCitySceneRole.messages, .contacts, .activities, .profile].map {
-                        DSCitySceneAssets.imageName(for: $0, regionID: regionID)
+                _ = try? await cache.refreshMainline(using: mainlineClient)
+            }
+            .task(id: "lazy-warmup-\(accountID)-\(selectedTab == .home || visitedTabs.contains(.home))-\(isInitialContentReady)", priority: .utility) {
+                guard isInitialContentReady,
+                      environment.needsOnboarding == false,
+                      let account = environment.workspace,
+                      account.userID == accountID else { return }
+                let isHomeActive = selectedTab == .home || visitedTabs.contains(.home)
+                // Keep cold launch 100% dedicated to first-screen entry; warm up lazily after settling.
+                do { try await Task.sleep(for: .milliseconds(isHomeActive ? 600 : 1_400)) }
+                catch { return }
+                guard !Task.isCancelled, environment.workspace === account else { return }
+                if let regionID = account.journeyPresentation.profile?.currentRegionID {
+                    let inactiveRoles: [DSCitySceneRole] = switch selectedTab {
+                    case .messages: [.contacts, .activities, .profile]
+                    case .contacts: [.messages, .activities, .profile]
+                    case .home: [.messages, .contacts, .profile]
+                    case .me: [.messages, .contacts, .activities]
                     }
-                    let allStoryStrips = MainlineCatalog.chapters.map {
-                        DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID)
-                    } + CityStoryCatalog.chapters.map {
-                        DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
+                    let backdrops = inactiveRoles.map { DSCitySceneAssets.imageName(for: $0, regionID: regionID) }
+                    let bgWarmup = Task.detached(priority: .utility) {
+                        await DSSceneImageCache.preload(backdrops)
+                        guard !Task.isCancelled else { return }
+                        await AppointmentPhotoCache.preload(cityID: regionID, limit: 1)
                     }
-                    async let backdrops: Void = DSSceneImageCache.preload(tabBackdrops)
-                    async let storyStrips: Void = DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 200)
-                    async let appointments: Void = AppointmentPhotoCache.preload(cityID: regionID)
-                    async let mainline: Void = { _ = try? await cache.refreshMainline(using: mainlineClient) }()
-                    _ = await (backdrops, storyStrips, appointments, mainline)
-                } else {
-                    _ = try? await cache.refreshMainline(using: mainlineClient)
+                    if isHomeActive {
+                        allowsWorldMapWarmup = true
+                    }
+                    await withTaskCancellationHandler {
+                        await bgWarmup.value
+                    } onCancel: {
+                        bgWarmup.cancel()
+                    }
+                } else if isHomeActive {
+                    allowsWorldMapWarmup = true
                 }
             }
             .background {
-                if let account = environment.workspace, environment.needsOnboarding == false,
+                if allowsWorldMapWarmup,
+                   let account = environment.workspace, environment.needsOnboarding == false,
                    let profile = account.journeyPresentation.profile {
-                    // Opacity >= 0.01 prevents CoreAnimation visibility culling so MapKit warms
-                    // its Metal 3D globe shaders behind the opaque tab views before first tap.
+                    // Mount lazily after the Activity tab settles so MapKit never slows cold launch.
                     WorldMapWarmupView(cache: account.worldMapCache,
                         region: environment.regionCatalog.region(id: profile.currentRegionID),
                         regions: environment.regionCatalog.regions)

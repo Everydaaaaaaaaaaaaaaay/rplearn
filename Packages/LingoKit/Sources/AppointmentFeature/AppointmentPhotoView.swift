@@ -55,11 +55,28 @@ public enum AppointmentPhotoCache {
         return value.image
     }
 
-    public static func preload(cityID: String) async {
+    public nonisolated static func preload(cityID: String, limit: Int = 1) async {
         guard cityID == "london" else { return }
-        for photo in AppointmentPhoto.london {
+        let missing = await MainActor.run {
+            AppointmentPhoto.london.prefix(limit).map(\.id).filter { images.object(forKey: $0 as NSString) == nil }
+        }
+        guard !missing.isEmpty else { return }
+        for id in missing {
             guard !Task.isCancelled else { return }
-            _ = await load(id: photo.id)
+            let decoded: PreparedAppointmentPhoto
+            if let url = Bundle.module.url(forResource: id, withExtension: "jpg", subdirectory: "Photos"),
+               let raw = UIImage(contentsOfFile: url.path) {
+                decoded = PreparedAppointmentPhoto(image: raw.preparingForDisplay() ?? raw)
+            } else {
+                decoded = PreparedAppointmentPhoto(image: nil)
+            }
+            await MainActor.run {
+                if let image = decoded.image, let bitmap = image.cgImage,
+                   images.object(forKey: id as NSString) == nil {
+                    images.setObject(image, forKey: id as NSString, cost: bitmap.bytesPerRow * bitmap.height)
+                }
+            }
+            await Task.yield()
         }
     }
 }

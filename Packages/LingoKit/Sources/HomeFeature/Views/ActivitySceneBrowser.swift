@@ -45,10 +45,16 @@ public struct ActivitySceneBrowser: View {
             Color.dsTravelNavy.ignoresSafeArea()
             TabView(selection: $selection) {
                 ForEach(Array(places.enumerated()), id: \.element.id) { index, item in
-                    ActivityPlacePhoto(photo: item.photo)
-                        .ignoresSafeArea()
-                        .accessibilityHidden(index != selection)
-                        .tag(index)
+                    Group {
+                        if abs(index - selection) <= 1 {
+                            ActivityPlacePhoto(photo: item.photo)
+                        } else {
+                            Color.dsTravelNavy
+                        }
+                    }
+                    .ignoresSafeArea()
+                    .accessibilityHidden(index != selection)
+                    .tag(index)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
@@ -128,12 +134,16 @@ public struct ActivitySceneBrowser: View {
             .animation(reduceMotion ? .easeOut(duration: 0.14) : .smooth(duration: 0.28, extraBounce: 0), value: showsChrome)
         }
         .foregroundStyle(.white).tint(.white)
-        .task(id: selection) {
+        .task(id: selection, priority: .utility) {
             let window = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
                 .flatMap(\.windows).first(where: \.isKeyWindow)
             guard let window else { return }
-            await ActivityPlacePhoto.preload(Array(places.dropFirst(selection).prefix(2)).map(\.photo),
-                size: window.bounds.size, scale: window.screen.scale)
+            let size = window.bounds.size
+            let scale = window.screen.scale
+            let upcoming = Array(places.dropFirst(selection).prefix(2)).map(\.photo)
+            await Task.detached(priority: .utility) {
+                await ActivityPlacePhoto.preload(upcoming, size: size, scale: scale, limit: 2)
+            }.value
         }
         .onChange(of: places.map(\.id)) { _, _ in selection = 0 }
         .sheet(item: $credits) {
