@@ -148,9 +148,8 @@ public struct MyPageView: View {
         .refreshable { await reload(); await creditBalance.reload(using: accessClient) }
         .background {
             DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .profile, regionID: profile?.currentRegionID), tone: .cool)
-                .overlay { Color.black.opacity(0.22).ignoresSafeArea() }
                 .overlay(alignment: .top) {
-                    LinearGradient(colors: [.black.opacity(0.48), .clear],
+                    LinearGradient(colors: [.black.opacity(0.22), .clear],
                         startPoint: .top, endPoint: .bottom)
                         .frame(height: 280).ignoresSafeArea(edges: .top)
                 }
