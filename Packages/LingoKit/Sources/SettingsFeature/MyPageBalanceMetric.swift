@@ -33,7 +33,7 @@ struct MyPageCreditMetric: View {
     let balance: MyPageCreditBalance
     var body: some View {
         MyPageBalanceMetric(title: "AI 积分", value: balance.displayValue,
-            isLoaded: balance.credits != nil, identifier: "me.credits")
+            isLoaded: balance.credits != nil, identifier: "me.credits", symbol: "sparkles", candy: .grape)
     }
 }
 
@@ -42,19 +42,33 @@ struct MyPageBalanceMetric: View {
     let value: String
     let isLoaded: Bool
     let identifier: String
+    let symbol: String
+    let candy: PuffCandy
     @ScaledMetric(relativeTo: .title2) private var hubBalanceHeight: CGFloat = 28
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(value)
-                .font(isLoaded ? .title2.weight(.semibold) : .subheadline.weight(.medium))
-                .foregroundStyle(isLoaded ? Color.dsSceneTextPrimary : Color.dsSceneTextSecondary)
-                .monospacedDigit()
-                .lineLimit(1).minimumScaleFactor(0.75)
-                .frame(minHeight: hubBalanceHeight, alignment: .bottomLeading)
-            Text(title).font(.caption).foregroundStyle(Color.dsSceneTextSecondary)
+        HStack(spacing: 10) {
+            Image(systemName: symbol)
+                .font(.system(size: 16, weight: .heavy))
+                .foregroundStyle(candy.deep)
+                .frame(width: 34, height: 34)
+                .background(Puff.Palette.card, in: Circle())
+            VStack(alignment: .leading, spacing: 1) {
+                Text(value)
+                    .font(isLoaded ? .puff(.title3, .heavy) : .puff(.subheadline, .bold))
+                    .foregroundStyle(isLoaded ? Puff.Palette.ink : Puff.Palette.inkSoft)
+                    .monospacedDigit()
+                    .contentTransition(.numericText())
+                    .lineLimit(1).minimumScaleFactor(0.75)
+                    .frame(minHeight: hubBalanceHeight, alignment: .leading)
+                Text(title)
+                    .font(.puff(.caption, .bold))
+                    .foregroundStyle(Puff.Palette.inkSoft)
+            }
         }
+        .padding(Puff.Space.s)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .background(candy.wash, in: RoundedRectangle(cornerRadius: Puff.Radius.medium, style: .continuous))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(title)，\(value)")
         .accessibilityIdentifier(identifier)

@@ -20,14 +20,47 @@ public extension View {
             resetToken: resetToken
         ))
     }
+
+    /// 没有搜索的页头，可放一个右侧圆形操作按钮。
+    func puffPageHeader(
+        title: String,
+        subtitle: String? = nil,
+        trailing: PuffHeaderAction? = nil
+    ) -> some View {
+        modifier(PuffPageHeaderModifier(
+            title: title,
+            subtitle: subtitle,
+            text: nil,
+            prompt: "",
+            resetToken: 0,
+            trailing: trailing
+        ))
+    }
+}
+
+/// 页头右侧的圆形图标按钮。
+public struct PuffHeaderAction {
+    let systemImage: String
+    let label: String
+    let identifier: String?
+    let action: @MainActor () -> Void
+
+    public init(systemImage: String, label: String, identifier: String? = nil, action: @escaping @MainActor () -> Void) {
+        self.systemImage = systemImage
+        self.label = label
+        self.identifier = identifier
+        self.action = action
+    }
 }
 
 private struct PuffPageHeaderModifier: ViewModifier {
     let title: String
     let subtitle: String?
-    @Binding var text: String
+    /// 为 nil 时页头不提供搜索。
+    let text: Binding<String>?
     let prompt: String
     let resetToken: Int
+    var trailing: PuffHeaderAction?
 
     @State private var isSearching = false
     @FocusState private var isFocused: Bool
@@ -85,9 +118,11 @@ private struct PuffPageHeaderModifier: ViewModifier {
         .onChange(of: resetToken) {
             isFocused = false
             isSearching = false
-            text = ""
+            text?.wrappedValue = ""
         }
     }
+
+    private var searchText: String { text?.wrappedValue ?? "" }
 
     private var animation: Animation {
         Puff.Motion.resolve(Puff.Motion.bouncy, reduceMotion: reduceMotion)
@@ -104,7 +139,12 @@ private struct PuffPageHeaderModifier: ViewModifier {
                 titleBlock
                     .transition(.opacity.combined(with: .offset(x: -12)))
                 Spacer(minLength: Puff.Space.xs)
-                openButton
+                if let trailing {
+                    trailingButton(trailing)
+                }
+                if text != nil {
+                    openButton
+                }
             }
         }
         .frame(minHeight: 52)
@@ -154,10 +194,24 @@ private struct PuffPageHeaderModifier: ViewModifier {
         .accessibilityIdentifier("sceneSearch.open")
     }
 
+    private func trailingButton(_ trailing: PuffHeaderAction) -> some View {
+        Button(action: trailing.action) {
+            Image(systemName: trailing.systemImage)
+                .font(.system(size: 18, weight: .heavy, design: .rounded))
+                .foregroundStyle(Puff.Palette.inkSoft)
+                .frame(width: 46, height: 46)
+                .background(Puff.Palette.cloud, in: Circle())
+                .contentShape(Circle())
+        }
+        .buttonStyle(.puffSquish)
+        .accessibilityLabel(trailing.label)
+        .accessibilityIdentifier(trailing.identifier ?? "")
+    }
+
     private var closeButton: some View {
         Button {
             isFocused = false
-            text = ""
+            text?.wrappedValue = ""
             withAnimation(animation) { isSearching = false }
         } label: {
             Image(systemName: "xmark")
@@ -177,7 +231,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 17, weight: .heavy, design: .rounded))
                 .foregroundStyle(PuffCandy.sky.deep)
-            TextField(prompt, text: $text)
+            TextField(prompt, text: text ?? .constant(""))
                 .font(.puff(.body, .semibold))
                 .foregroundStyle(Puff.Palette.ink)
                 .tint(PuffCandy.sky.base)
@@ -192,9 +246,9 @@ private struct PuffPageHeaderModifier: ViewModifier {
                     guard !Task.isCancelled, isSearching else { return }
                     isFocused = true
                 }
-            if !text.isEmpty {
+            if !searchText.isEmpty {
                 Button {
-                    text = ""
+                    text?.wrappedValue = ""
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                         .font(.system(size: 18))
@@ -207,7 +261,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
             }
         }
         .padding(.leading, 14)
-        .padding(.trailing, text.isEmpty ? 14 : 4)
+        .padding(.trailing, searchText.isEmpty ? 14 : 4)
         .frame(maxWidth: .infinity, minHeight: 46)
         .background {
             searchShape
@@ -218,7 +272,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
             searchShape
                 .strokeBorder(isFocused ? PuffCandy.sky.base : .clear, lineWidth: 2)
         }
-        .animation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: reduceMotion), value: text.isEmpty)
+        .animation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: reduceMotion), value: searchText.isEmpty)
         .animation(Puff.Motion.resolve(Puff.Motion.press, reduceMotion: reduceMotion), value: isFocused)
     }
 }

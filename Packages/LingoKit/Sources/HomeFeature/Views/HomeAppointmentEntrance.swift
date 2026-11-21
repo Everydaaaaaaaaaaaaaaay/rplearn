@@ -39,37 +39,48 @@ struct HomeAppointmentEntrance: View {
             if let appointment, let onOpenAppointment { onOpenAppointment(appointment.id) }
             else { onOpenDestination(.appointments) }
         } label: {
-            HStack(spacing: 14) {
+            HStack(spacing: Puff.Space.s) {
                 if let companion {
-                    AvatarBadge(name: companion.displayName, size: 48, imageName: companion.card.avatarAssetName,
-                                remoteURL: companion.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
+                    PuffAvatar(name: companion.displayName, size: 52, imageName: companion.card.avatarAssetName,
+                               remoteURL: companion.card.avatarRemoteURL.flatMap(URL.init(string:)))
                 } else {
-                    Image(systemName: "calendar").font(.system(size: 25, weight: .regular)).frame(width: 48, height: 48)
+                    PuffIconBubble("calendar", candy: .bubblegum, size: 52)
                 }
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 4) {
                     if let appointment {
                         let zone = AppointmentDisplayTime.userZone(appointment.userTimeZone)
                         let date = AppointmentDisplayTime.scheduled(appointment.startsAt, zone: zone)
                         let zoneLabel = AppointmentDisplayTime.zoneLabel(zone)
-                        Text(appointment.status == "in_progress" ? "继续赴约" : "赴约")
-                            .font(.caption).foregroundStyle(Color.dsSceneTextTertiary)
+                        PuffTag(appointment.status == "in_progress" ? "继续赴约" : "赴约",
+                                systemImage: "heart.fill", candy: .bubblegum)
                         Text(appointment.displayTitle(companionName: companion?.displayName ?? "旅伴"))
-                            .font(.body.weight(.medium)).fixedSize(horizontal: false, vertical: true)
+                            .font(.puff(.headline, .heavy))
+                            .foregroundStyle(Puff.Palette.ink)
+                            .fixedSize(horizontal: false, vertical: true)
                         Text("\(date) \(zoneLabel) · \(appointment.displayCityName) \(appointment.placeName)")
-                            .font(.caption).foregroundStyle(Color.dsSceneTextSecondary)
+                            .font(.puff(.caption, .semibold))
+                            .foregroundStyle(Puff.Palette.inkSoft)
                             .fixedSize(horizontal: false, vertical: true)
                     } else {
-                        Text("赴约").font(.body.weight(.medium))
+                        Text("赴约")
+                            .font(.puff(.headline, .heavy))
+                            .foregroundStyle(Puff.Palette.ink)
                     }
-                    if model.appointmentError { Text("约定暂未更新，进入后可重试").font(.caption).foregroundStyle(Color.dsSceneTextSecondary) }
+                    if model.appointmentError {
+                        Text("约定暂未更新")
+                            .font(.puff(.caption, .bold))
+                            .foregroundStyle(Puff.Palette.cherry)
+                    }
                 }
                 Spacer(minLength: 0)
-                Image(systemName: "chevron.right").font(.system(size: 12, weight: .medium)).foregroundStyle(Color.dsSceneTextTertiary)
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 13, weight: .heavy, design: .rounded))
+                    .foregroundStyle(Puff.Palette.inkFaint)
             }
-            .padding(18).frame(maxWidth: .infinity, alignment: .leading)
-            .dsSceneGlass(radius: 22, interactive: true, legibility: .frosted)
-            .contentShape(RoundedRectangle(cornerRadius: 22))
+            .padding(Puff.Space.m)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityIdentifier("home.appointments")
+        .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.large))
+        .accessibilityIdentifier("home.appointments")
     }
 }

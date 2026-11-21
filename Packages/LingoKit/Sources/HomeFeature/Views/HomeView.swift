@@ -18,11 +18,10 @@ public struct HomeView: View {
     @State private var completedStories: Set<String> = []
     @State private var profileError = false
     @State private var resumableTitle: String?
-    @State private var cityEntranceButtonWidth: CGFloat?
     @State private var appointments = HomeAppointmentPresentation()
-    @State private var showsBackgroundCredits = false
-    @State private var creditedPhoto: BackendActivityPhoto?
+    @State private var hasEntered = false
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(deps: HomeDependencies, reloadToken: Int = 0, isVisible: Bool = true,
                 activityNamespace: String = "", transitionNamespace: Namespace.ID? = nil,
@@ -52,9 +51,9 @@ public struct HomeView: View {
     }
     private var reloadKey: String { "\(reloadToken)-\(isVisible)" }
     private var places: [BackendActivityPlace] { CityActivityRelease.bundled()?.places(in: currentRegion?.id ?? "") ?? [] }
-    private var cover: BackendActivityPlace? { places.first { $0.category == "park" } ?? places.first }
-    private var storyCover: BackendActivityPlace? {
-        places.first { $0.category == "bookshop" } ?? places.first { $0.id != cover?.id }
+    private var nextStoryRegionID: String? {
+        MainlineCatalog.journey(starterRegionID: profile?.starterRegionID).stops
+            .first(where: { !completedStories.contains($0.chapter.storyID) })?.regionID
     }
     private var storySubtitle: String {
         let journey = MainlineCatalog.journey(starterRegionID: profile?.starterRegionID)
@@ -63,39 +62,36 @@ public struct HomeView: View {
     }
 
     public var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                if let region = currentRegion {
-                    VStack(spacing: 16) {
-                        cityEntrance(region)
-                            .frame(height: dynamicTypeSize.isAccessibilitySize ? 420 : min(340, max(260, geometry.size.height * 0.49)))
-                        appointmentEntrance
-                        secondaryEntrances
-                    }
-                    .padding(.horizontal, 16).padding(.top, 8).padding(.bottom, 24)
-                } else if profileError {
-                    ContentUnavailableView {
-                        Label("旅程暂时无法读取", systemImage: "arrow.clockwise")
-                    } actions: {
-                        Button("重试") { Task { await reloadProfile() } }
-                    }
-                    .padding(24).dsSceneGlass(legibility: .frosted).padding(16)
-                } else {
-                    ProgressView("正在读取旅程").padding(24).dsSceneGlass(legibility: .frosted).padding(16)
+        ScrollView {
+            if let region = currentRegion {
+                VStack(spacing: Puff.Space.m) {
+                    cityEntrance(region)
+                        .puffEntrance(index: 0, isShown: hasEntered)
+                    appointmentEntrance
+                        .puffEntrance(index: 1, isShown: hasEntered)
+                    secondaryEntrances
+                        .puffEntrance(index: 2, isShown: hasEntered)
                 }
+                .padding(.horizontal, Puff.Space.m).padding(.top, 2).padding(.bottom, Puff.Space.xl)
+            } else if profileError {
+                PuffEmptyState("旅程暂时无法读取", mood: .curious) {
+                    Button("重试") { Task { await reloadProfile() } }
+                        .buttonStyle(PuffCandyButtonStyle(.sky))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.top, 60)
+            } else {
+                PuffLoadingDots()
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 120)
             }
-            .scrollBounceBehavior(.basedOnSize)
-            .refreshable { await reloadProfile(); await reloadOuting(); await appointments.reload(using: deps) }
         }
-        .background {
-            DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .activities, regionID: currentRegion?.id), tone: .cool)
-                .accessibilityIdentifier("home.background.\(currentRegion?.id ?? "loading")")
-        }
-        .safeAreaInset(edge: .top, spacing: 0) {
-            DSHubHeader(title: "活动", symbol: "ellipsis", actionLabel: "背景照片与许可") { showsBackgroundCredits = true }
-        }
-        .foregroundStyle(Color.dsSceneTextPrimary)
-        .toolbar(.hidden, for: .navigationBar).dsSceneTabBarBackground()
+        .scrollBounceBehavior(.basedOnSize)
+        .refreshable { await reloadProfile(); await reloadOuting(); await appointments.reload(using: deps) }
+        .background(Puff.Palette.page.ignoresSafeArea())
+        .puffPageHeader(title: "活动")
+        .onChange(of: currentRegion?.id) { startEntranceIfNeeded() }
+        .onAppear { if currentRegion != nil { startEntranceIfNeeded() } }
         .task(id: reloadKey) { if isVisible { await reloadProfile() } }
         .task(id: reloadKey) { if isVisible { await reloadOuting() } }
         .task(id: reloadKey) { if isVisible { await appointments.reload(using: deps) } }
@@ -135,123 +131,139 @@ public struct HomeView: View {
                 bgTask.cancel()
             }
         }
-        .sheet(isPresented: $showsBackgroundCredits) { DSHubPhotoCreditsView(cityID: currentRegion?.id ?? "london") }
-        .sheet(item: $creditedPhoto) { ActivityPhotoCredits(photo: $0) }
     }
 
+    private func startEntranceIfNeeded() {
+        guard !hasEntered else { return }
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(40))
+            hasEntered = true
+        }
+    }
+
+    /// 城市卡通全景 + 城市名 + “出去走走”。
     private func cityEntrance(_ region: Region) -> some View {
-        ZStack(alignment: .bottomLeading) {
-            if let cover { ActivityPlacePhoto(photo: cover.photo) }
-            LinearGradient(colors: [.black.opacity(0.08), .clear, .black.opacity(0.64)], startPoint: .top, endPoint: .bottom)
-                .allowsHitTesting(false)
-            VStack(alignment: .trailing, spacing: 16) {
-                HStack {
-                    Text("城市活动").font(.subheadline.weight(.medium)).tracking(1)
-                    Spacer()
-                    if let cover {
-                        Button { creditedPhoto = cover.photo } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }
-                            .accessibilityLabel("场景照片信息")
-                    }
-                }
-                Spacer(minLength: 24)
-                VStack(spacing: 16) {
+        let layout = dynamicTypeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: Puff.Space.s))
+            : AnyLayout(HStackLayout(alignment: .center, spacing: Puff.Space.s))
+        return PuffSceneCard(
+            regionID: region.id,
+            viewport: .center,
+            sceneHeight: dynamicTypeSize.isAccessibilitySize ? 160 : 196,
+            isActive: isVisible
+        ) {
+            layout {
+                VStack(alignment: .leading, spacing: 4) {
                     Text(region.nameZh)
-                        .font(.system(.largeTitle, design: .serif, weight: .regular)).tracking(3)
-                        .fixedSize()
-                        .frame(width: cityEntranceButtonWidth)
+                        .font(.puff(.largeTitle, .heavy))
+                        .foregroundStyle(Puff.Palette.ink)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
                         .accessibilityLabel("当前驻地，\(region.countryNameZh)，\(region.nameZh)")
                         .accessibilityIdentifier("home.cityName")
                     if let resumableTitle {
-                        Text("上次停留在\(resumableTitle)").font(.subheadline)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .frame(width: cityEntranceButtonWidth)
+                        PuffTag(resumableTitle, systemImage: "clock.arrow.circlepath", candy: .tangerine)
+                            .accessibilityLabel("上次停留在\(resumableTitle)")
                     }
-                    Button { onOpenDestination(.activities) } label: {
-                        Text("出去走走")
-                            .font(.body.weight(.medium)).tracking(1.5)
-                            .padding(.horizontal, 24).padding(.vertical, 12)
-                            .frame(minHeight: 48)
-                            .overlay { Capsule().strokeBorder(.white, lineWidth: 1) }
-                            .contentShape(Capsule())
-                    }
-                    .buttonStyle(DSSceneEntranceButtonStyle())
-                    .accessibilityIdentifier("home.activities")
-                    .onGeometryChange(for: CGFloat.self) { geometry in
-                        geometry.size.width
-                    } action: { cityEntranceButtonWidth = $0 }
                 }
-                .multilineTextAlignment(.center)
+                if !dynamicTypeSize.isAccessibilitySize { Spacer(minLength: 0) }
+                Button { onOpenDestination(.activities) } label: {
+                    Label("出去走走", systemImage: "figure.walk")
+                        .labelStyle(.titleAndIcon)
+                }
+                .buttonStyle(PuffCandyButtonStyle(.sky))
+                .accessibilityLabel("出去走走")
+                .accessibilityIdentifier("home.activities")
             }
-            .padding(24).foregroundStyle(.white)
         }
-        .background(Color.dsTravelNavy)
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-        .overlay { RoundedRectangle(cornerRadius: 24, style: .continuous).strokeBorder(.white.opacity(0.5), lineWidth: 0.8) }
-        .matchedHomeTransitionSource(id: .activities, in: transitionNamespace, cornerRadius: 24)
+        .matchedHomeTransitionSource(id: .activities, in: transitionNamespace, cornerRadius: Puff.Radius.huge)
     }
 
     private var appointmentEntrance: some View {
         HomeAppointmentEntrance(model: appointments, onOpenAppointment: onOpenAppointment,
             onOpenDestination: onOpenDestination)
-            .matchedHomeTransitionSource(id: .appointments, in: transitionNamespace, cornerRadius: 22)
+            .matchedHomeTransitionSource(id: .appointments, in: transitionNamespace, cornerRadius: Puff.Radius.large)
     }
 
     @ViewBuilder private var secondaryEntrances: some View {
         if dynamicTypeSize.isAccessibilitySize {
-            VStack(spacing: 16) {
-                storyEntrance.frame(minHeight: 220)
-                mapEntrance.frame(minHeight: 190)
+            VStack(spacing: Puff.Space.m) {
+                storyEntrance
+                mapEntrance
             }
         } else {
-            GeometryReader { geometry in
-                HStack(spacing: 14) {
-                    storyEntrance.frame(width: (geometry.size.width - 14) * 0.59)
-                    mapEntrance
-                }
-            }.frame(height: 156)
+            HStack(alignment: .top, spacing: Puff.Space.s) {
+                storyEntrance
+                mapEntrance
+            }
+            .fixedSize(horizontal: false, vertical: true)
         }
     }
 
+    /// 剧情：下一站城市的小卡通画。
     private var storyEntrance: some View {
         Button { onOpenDestination(.stories) } label: {
-            ZStack(alignment: .bottomLeading) {
-                if let storyCover { ActivityPlacePhoto(photo: storyCover.photo) }
-                LinearGradient(colors: [.clear, .black.opacity(0.76)], startPoint: .top, endPoint: .bottom)
-                VStack(alignment: .leading, spacing: 7) {
-                    Text("剧情").font(.body.weight(.medium))
-                    Text(storySubtitle).font(.caption).foregroundStyle(.white.opacity(0.85))
+            VStack(alignment: .leading, spacing: 0) {
+                PuffCityScene(regionID: nextStoryRegionID ?? currentRegion?.id, viewport: .east, isActive: isVisible)
+                    .frame(height: 92)
+                    .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.large - 6, style: .continuous))
+                    .padding([.horizontal, .top], 6)
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: 6) {
+                        Image(systemName: "book.fill")
+                            .font(.system(size: 14, weight: .heavy))
+                            .foregroundStyle(PuffCandy.grape.deep)
+                        Text("剧情")
+                            .font(.puff(.headline, .heavy))
+                            .foregroundStyle(Puff.Palette.ink)
+                    }
+                    Text(storySubtitle)
+                        .font(.puff(.caption, .bold))
+                        .foregroundStyle(Puff.Palette.inkSoft)
+                        .lineLimit(2)
                         .fixedSize(horizontal: false, vertical: true)
-                }.padding(18).foregroundStyle(.white)
+                }
+                .padding(.horizontal, Puff.Space.s)
+                .padding(.vertical, Puff.Space.s)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.dsTravelNavy)
-            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
-        .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityLabel("剧情，\(storySubtitle)")
-        .contextMenu { if let storyCover { Button("照片信息") { creditedPhoto = storyCover.photo } } }
-        .matchedHomeTransitionSource(id: .stories, in: transitionNamespace, cornerRadius: 22)
+        .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.large))
+        .accessibilityLabel("剧情，\(storySubtitle)")
+        .matchedHomeTransitionSource(id: .stories, in: transitionNamespace, cornerRadius: Puff.Radius.large)
     }
 
     private var mapEntrance: some View {
         Button { onOpenDestination(.map) } label: {
-            ZStack(alignment: .topTrailing) {
-                Image(systemName: "globe.europe.africa").font(.system(size: 76, weight: .ultraLight))
-                    .foregroundStyle(Color.dsSceneTextTertiary.opacity(0.22)).padding(.top, 12).padding(.trailing, 12)
-                VStack(alignment: .leading, spacing: 7) {
-                    Spacer(minLength: 24)
-                    HStack(spacing: 2) {
-                        Text("世界地图").font(.title3.weight(.medium))
-                        Spacer(minLength: 0)
-                        Image(systemName: "arrow.up.right").font(.system(size: 11))
-                            .foregroundStyle(Color.dsSceneTextSecondary)
-                    }
-                }.padding(18)
+            VStack(alignment: .leading, spacing: 0) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: Puff.Radius.large - 6, style: .continuous)
+                        .fill(PuffCandy.sky.wash)
+                    Image(systemName: "globe.europe.africa.fill")
+                        .font(.system(size: 52, weight: .regular))
+                        .foregroundStyle(PuffCandy.sky.base, PuffCandy.mint.base)
+                        .symbolRenderingMode(.palette)
+                        .symbolEffect(.bounce, value: hasEntered)
+                }
+                .frame(height: 92)
+                .padding([.horizontal, .top], 6)
+                HStack(spacing: 6) {
+                    Image(systemName: "map.fill")
+                        .font(.system(size: 14, weight: .heavy))
+                        .foregroundStyle(PuffCandy.sky.deep)
+                    Text("世界地图")
+                        .font(.puff(.headline, .heavy))
+                        .foregroundStyle(Puff.Palette.ink)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                }
+                .padding(Puff.Space.s)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .dsSceneGlass(radius: 22, interactive: true, legibility: .frosted)
-            .contentShape(RoundedRectangle(cornerRadius: 22))
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
-        .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityLabel("世界地图")
-        .matchedHomeTransitionSource(id: .map, in: transitionNamespace, cornerRadius: 22)
+        .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.large))
+        .accessibilityLabel("世界地图")
+        .matchedHomeTransitionSource(id: .map, in: transitionNamespace, cornerRadius: Puff.Radius.large)
     }
 
     private func reloadProfile() async {

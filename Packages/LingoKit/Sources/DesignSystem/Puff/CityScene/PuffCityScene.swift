@@ -7,12 +7,14 @@ import SwiftUI
 public struct PuffCityScene: View {
     public enum Viewport: Sendable, Equatable {
         case west
+        case center
         case east
         case full
 
         var range: ClosedRange<CGFloat> {
             switch self {
             case .west: 0...360
+            case .center: 150...510
             case .east: 360...720
             case .full: 0...720
             }

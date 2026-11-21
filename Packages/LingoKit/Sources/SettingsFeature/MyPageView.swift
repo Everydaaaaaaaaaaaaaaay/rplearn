@@ -37,6 +37,7 @@ public struct MyPageView: View {
     @State private var creditBalance = MyPageCreditBalance()
     @State private var profile: UserProfileDTO?
     @State private var occupiedFriendSlots = 0
+    @State private var hasEntered = false
 
     private var presentation: MyPagePresentation {
         MyPagePresentation(
@@ -89,10 +90,14 @@ public struct MyPageView: View {
                 hubContent
             }
         }
-        .background(Color.dsBackground.ignoresSafeArea())
+        .background(Puff.Palette.page.ignoresSafeArea())
         .task(id: "\(reloadToken)-\(isVisible)") {
             guard isVisible else { return }
             await reload()
+            if !hasEntered {
+                try? await Task.sleep(for: .milliseconds(40))
+                hasEntered = true
+            }
             if section == nil { await creditBalance.reload(using: accessClient) }
         }
         .task(id: selectedAvatar) {
@@ -121,84 +126,88 @@ public struct MyPageView: View {
 
     private var hubContent: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: Puff.Space.m) {
                 hubProfile
+                    .puffEntrance(index: 0, isShown: hasEntered)
                 hubGroup("英语旅程") { hubLearning }
+                    .puffEntrance(index: 1, isShown: hasEntered)
                 hubGroup("会员与资产") { hubMembership }
+                    .puffEntrance(index: 2, isShown: hasEntered)
                 hubGroup("常用") {
                     VStack(spacing: 0) {
                         Button(action: onOpenFavorites) {
-                            hubRow("收藏夹", symbol: "bookmark")
+                            hubRow("收藏夹", symbol: "bookmark.fill", candy: .bubblegum)
                         }
                         .accessibilityIdentifier("me.favorites")
                         hubDivider
                         Button(action: onOpenSettings) {
-                            hubRow("设置", symbol: "gearshape")
+                            hubRow("设置", symbol: "gearshape.fill", candy: .sky)
                         }
                         .accessibilityLabel("设置，AI、语音与偏好")
                         .accessibilityIdentifier("me.settings")
                     }
-                    .dsSceneGlass(radius: 24, legibility: .frosted)
+                    .buttonStyle(.puffRow)
+                    .padding(.vertical, 6)
+                    .puffCard(radius: Puff.Radius.huge)
                 }
+                .puffEntrance(index: 3, isShown: hasEntered)
             }
-            .buttonStyle(DSSceneEntranceButtonStyle())
-            .padding(.horizontal, 20).padding(.top, 12).padding(.bottom, 28)
+            .padding(.horizontal, Puff.Space.m).padding(.top, 2).padding(.bottom, Puff.Space.xl)
         }
         .scrollBounceBehavior(.basedOnSize)
         .refreshable { await reload(); await creditBalance.reload(using: accessClient) }
-        .background {
-            DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .profile, regionID: profile?.currentRegionID), tone: .cool)
-                .overlay(alignment: .top) {
-                    LinearGradient(colors: [.black.opacity(0.22), .clear],
-                        startPoint: .top, endPoint: .bottom)
-                        .frame(height: 280).ignoresSafeArea(edges: .top)
-                }
-                .accessibilityIdentifier("me.background.\(profile?.currentRegionID ?? "loading")")
-        }
-        .safeAreaInset(edge: .top, spacing: 0) {
-            DSHubHeader(title: "我的")
-        }
-        .foregroundStyle(Color.dsSceneTextPrimary)
-        .toolbar(.hidden, for: .navigationBar).dsSceneTabBarBackground()
+        .puffPageHeader(title: "我的")
     }
 
     private func hubGroup<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: Puff.Space.xs) {
             Text(title)
-                .font(.subheadline.weight(.medium))
-                .tracking(1)
-                .foregroundStyle(.white)
-                .shadow(color: .black.opacity(0.8), radius: 4, y: 1)
-                .padding(.horizontal, 6)
+                .font(.puff(.subheadline, .heavy))
+                .foregroundStyle(Puff.Palette.inkSoft)
+                .padding(.horizontal, Puff.Space.xs)
                 .accessibilityAddTraits(.isHeader)
             content()
         }
     }
 
+    /// 个人卡片：所在城市的卡通画上探出头像。
     private var hubProfile: some View {
         Button(action: onOpenAccount) {
-            HStack(spacing: 16) {
-                UserAvatar(name: presentation.displayName, size: 70)
-                    .overlay { Circle().strokeBorder(.white.opacity(0.32), lineWidth: 1) }
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(presentation.displayName).font(.title.weight(.semibold))
-                        .fixedSize(horizontal: false, vertical: true)
-                    if !cityName.isEmpty {
-                        Label(cityName, systemImage: "mappin")
-                            .font(.subheadline).foregroundStyle(.white.opacity(0.94))
+            VStack(spacing: 0) {
+                PuffCityScene(regionID: profile?.currentRegionID, viewport: .east, isActive: isVisible)
+                    .frame(height: 96)
+                    .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.huge - 6, style: .continuous))
+                    .padding([.horizontal, .top], 6)
+                HStack(alignment: .bottom, spacing: Puff.Space.s) {
+                    UserAvatar(name: presentation.displayName, size: 78)
+                        .padding(5)
+                        .background(Puff.Palette.card, in: Circle())
+                        .offset(y: -6)
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(presentation.displayName)
+                            .font(.puff(.title2, .heavy))
+                            .foregroundStyle(Puff.Palette.ink)
+                            .fixedSize(horizontal: false, vertical: true)
+                        HStack(spacing: 6) {
+                            if !cityName.isEmpty {
+                                PuffTag(cityName, systemImage: "location.fill", candy: .sky)
+                            }
+                            PuffTag(presentation.accountBadgeTitle, systemImage: "crown.fill", candy: .sunny)
+                        }
                     }
+                    .padding(.bottom, Puff.Space.m)
+                    Spacer(minLength: Puff.Space.xs)
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 13, weight: .heavy, design: .rounded))
+                        .foregroundStyle(Puff.Palette.inkFaint)
+                        .padding(.bottom, Puff.Space.l)
                 }
-                Spacer(minLength: 8)
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 13, weight: .medium))
-                    .foregroundStyle(.white.opacity(0.8))
+                .padding(.horizontal, Puff.Space.m)
+                .padding(.top, -34)
             }
-            .foregroundStyle(.white)
-            .shadow(color: .black.opacity(0.24), radius: 6, y: 2)
-            .padding(.horizontal, 6).padding(.vertical, 12)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .contentShape(Rectangle())
         }
+        .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.huge))
         .accessibilityIdentifier("me.profile")
         .accessibilityValue(cityName)
         .accessibilityLabel("个人资料，\(presentation.displayName)，\(presentation.accountBadgeTitle)，已认识 \(occupiedFriendSlots) 位旅途朋友")
@@ -206,25 +215,27 @@ public struct MyPageView: View {
 
     private var hubLearning: some View {
         Button(action: onCalibrateLevel) {
-            HStack(spacing: 14) {
-                hubIcon("book.pages")
-                VStack(alignment: .leading, spacing: 6) {
+            HStack(spacing: Puff.Space.s) {
+                PuffIconBubble("book.pages.fill", candy: .grape, size: 44)
+                VStack(alignment: .leading, spacing: 4) {
                     Text(profile?.difficultyLevel.displayName ?? "英语旅程")
-                        .font(.title3.weight(.medium))
+                        .font(.puff(.headline, .heavy))
+                        .foregroundStyle(Puff.Palette.ink)
                     if let profile {
                         Text(profile.learningGoalsDisplayName)
-                            .font(.subheadline).foregroundStyle(Color.dsSceneTextSecondary)
+                            .font(.puff(.subheadline, .semibold))
+                            .foregroundStyle(Puff.Palette.inkSoft)
                             .fixedSize(horizontal: false, vertical: true)
                     }
-                    Text(presentation.placementSummary)
-                        .font(.caption).foregroundStyle(Color.dsSceneTextTertiary)
+                    PuffTag(presentation.placementSummary, systemImage: "chart.bar.fill", candy: .grape)
                 }
                 Spacer(minLength: 0)
                 hubChevron
             }
-            .padding(18).frame(maxWidth: .infinity, alignment: .leading)
-            .dsSceneGlass(radius: 24, interactive: true, legibility: .frosted)
+            .padding(Puff.Space.m)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.huge))
         .accessibilityLabel("英语旅程，\(profile?.difficultyLevel.displayName ?? "读取中")，\(profile?.learningGoalsDisplayName ?? "")，\(presentation.placementSummary)")
         .accessibilityIdentifier("me.learning")
     }
@@ -232,74 +243,74 @@ public struct MyPageView: View {
     private var hubMembership: some View {
         VStack(spacing: 0) {
             Button(action: onOpenSubscription) {
-                HStack(spacing: 14) {
-                    hubIcon("crown")
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(presentation.accountBadgeTitle).font(.headline.weight(.medium))
-                        Text("会员订阅").font(.caption).foregroundStyle(Color.dsSceneTextSecondary)
+                HStack(spacing: Puff.Space.s) {
+                    PuffIconBubble("crown.fill", candy: .sunny, size: 44)
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(presentation.accountBadgeTitle)
+                            .font(.puff(.headline, .heavy))
+                            .foregroundStyle(Puff.Palette.ink)
+                        Text("会员订阅")
+                            .font(.puff(.caption, .bold))
+                            .foregroundStyle(Puff.Palette.inkSoft)
                     }
-                    Spacer(minLength: 8)
-                    Text("管理").font(.subheadline.weight(.medium))
-                        .padding(.horizontal, 14).padding(.vertical, 8)
-                        .background(Color.dsSceneTextPrimary.opacity(0.06), in: Capsule())
+                    Spacer(minLength: Puff.Space.xs)
+                    Text("管理")
+                        .font(.puff(.subheadline, .heavy))
+                        .foregroundStyle(PuffCandy.sunny.deep)
+                        .padding(.horizontal, 14).padding(.vertical, 7)
+                        .background(PuffCandy.sunny.wash, in: Capsule())
                 }
-                .padding(18).frame(maxWidth: .infinity, alignment: .leading)
+                .padding(Puff.Space.m)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .contentShape(Rectangle())
             }
+            .buttonStyle(.puffRow)
             .accessibilityLabel("会员订阅，\(presentation.accountBadgeTitle)，管理会员")
             .accessibilityIdentifier("me.subscription")
 
-            Rectangle().fill(Color.dsSceneTextPrimary.opacity(0.12)).frame(height: 0.5)
-                .padding(.horizontal, 18)
             hubBalanceLayout {
-                MyPageBalanceMetric(title: "金币", value: profile.map { $0.coins.formatted() } ?? "—", isLoaded: profile != nil, identifier: "me.coinBalance")
+                MyPageBalanceMetric(title: "金币", value: profile.map { $0.coins.formatted() } ?? "—", isLoaded: profile != nil,
+                                    identifier: "me.coinBalance", symbol: "circle.circle.fill", candy: .sunny)
                 if accessClient != nil {
-                    Rectangle().fill(Color.dsSceneTextPrimary.opacity(0.12))
-                        .frame(width: dynamicTypeSize.isAccessibilitySize ? nil : 0.5,
-                               height: dynamicTypeSize.isAccessibilitySize ? 0.5 : 36)
                     MyPageCreditMetric(balance: creditBalance)
                 }
             }
-            .padding(.horizontal, 22).padding(.vertical, 18)
+            .padding(.horizontal, Puff.Space.s)
+            .padding(.bottom, Puff.Space.s)
         }
-        .dsSceneGlass(radius: 24, legibility: .frosted)
+        .puffCard(radius: Puff.Radius.huge)
     }
 
     private var hubBalanceLayout: AnyLayout {
         if dynamicTypeSize.isAccessibilitySize {
-            return AnyLayout(VStackLayout(alignment: .leading, spacing: 16))
+            return AnyLayout(VStackLayout(alignment: .leading, spacing: Puff.Space.xs))
         }
-        return AnyLayout(HStackLayout(alignment: .top, spacing: 20))
+        return AnyLayout(HStackLayout(alignment: .top, spacing: Puff.Space.xs))
     }
 
-    private func hubIcon(_ symbol: String) -> some View {
-        Image(systemName: symbol)
-            .font(.system(size: 19, weight: .regular))
-            .foregroundStyle(Color.dsSceneTextSecondary)
-            .frame(width: 36, height: 36)
-            .background(Color.dsSceneTextPrimary.opacity(0.05), in: RoundedRectangle(cornerRadius: 11))
-            .accessibilityHidden(true)
-    }
-
-    private func hubRow(_ title: String, symbol: String) -> some View {
-        HStack(spacing: 14) {
-            hubIcon(symbol)
-            Text(title).font(.body).fixedSize(horizontal: false, vertical: true)
-            Spacer(minLength: 8)
+    private func hubRow(_ title: String, symbol: String, candy: PuffCandy) -> some View {
+        HStack(spacing: Puff.Space.s) {
+            PuffIconBubble(symbol, candy: candy, size: 40)
+            Text(title)
+                .font(.puff(.headline, .heavy))
+                .foregroundStyle(Puff.Palette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+            Spacer(minLength: Puff.Space.xs)
             hubChevron
         }
-        .padding(.horizontal, 18).padding(.vertical, 12).frame(minHeight: 60)
+        .padding(.horizontal, Puff.Space.m).padding(.vertical, 10).frame(minHeight: 64)
         .contentShape(Rectangle())
     }
 
     private var hubChevron: some View {
-        Image(systemName: "chevron.right").font(.system(size: 12, weight: .medium))
-            .foregroundStyle(Color.dsSceneTextTertiary)
+        Image(systemName: "chevron.right")
+            .font(.system(size: 13, weight: .heavy, design: .rounded))
+            .foregroundStyle(Puff.Palette.inkFaint)
     }
 
     private var hubDivider: some View {
-        Rectangle().fill(Color.dsSceneTextPrimary.opacity(0.12)).frame(height: 0.5)
-            .padding(.leading, 68).padding(.trailing, 18)
+        Rectangle().fill(Puff.Palette.line).frame(height: 1)
+            .padding(.leading, Puff.Space.m + 40 + Puff.Space.s).padding(.trailing, Puff.Space.m)
     }
 
     private func avatarPicker(size: CGFloat) -> some View {
@@ -309,9 +320,11 @@ public struct MyPageView: View {
             avatar
                 .overlay(alignment: .bottomTrailing) {
                     Image(systemName: "camera.fill")
-                        .font(.system(size: 12, weight: .semibold))
-                        .foregroundStyle(Color.dsSkyDeep)
-                        .padding(6).background(.regularMaterial, in: Circle())
+                        .font(.system(size: 12, weight: .heavy))
+                        .foregroundStyle(.white)
+                        .padding(7)
+                        .background(PuffCandy.sky.base, in: Circle())
+                        .overlay { Circle().strokeBorder(Puff.Palette.card, lineWidth: 2) }
                 }
                 .overlay { if saving { ProgressView() } }
         }
@@ -331,77 +344,87 @@ public struct MyPageView: View {
 
 extension MyPageView {
     private func detailPage(_ section: MyPageSection) -> some View {
-        ZStack {
-            DSWorkbenchBackdrop(focus: section == .account ? .profile : .subscription)
-            ScrollView {
-                VStack(alignment: .leading, spacing: DSSpacing.lg) {
-                    if section == .account {
-                        DSWorkbenchPaperSheet {
-                            VStack(alignment: .leading, spacing: DSSpacing.lg) {
-                                HStack(spacing: DSSpacing.md) {
-                                    avatarPicker(size: 72)
-                                    VStack(alignment: .leading, spacing: 8) {
-                                        Text(presentation.displayName)
-                                            .font(.title2.bold())
-                                            .fixedSize(horizontal: false, vertical: true)
-                                        Text(presentation.accountBadgeTitle)
-                                            .font(.subheadline)
-                                            .foregroundStyle(Color.dsPaperInkSecondary)
-                                        Text("已认识 \(occupiedFriendSlots) 位旅途朋友")
-                                            .font(.footnote)
-                                            .foregroundStyle(Color.dsPaperInkSecondary)
-                                    }
-                                    Spacer(minLength: 0)
-                                }
-                                Divider()
-                                NavigationLink {
-                                    AccountSecurityView(session: authSession)
-                                } label: {
-                                    HStack {
-                                        Label("账号与安全", systemImage: "person.badge.key.fill")
-                                        Spacer()
-                                        Image(systemName: "chevron.right").font(.caption.weight(.semibold))
-                                    }
-                                    .frame(minHeight: 44)
-                                }
-                                Link(destination: URL(string: "https://qm.qq.com/q/Ft5ajqgxOw")!) {
-                                    HStack(spacing: DSSpacing.sm) {
-                                        Image(systemName: "person.2.fill")
-                                        VStack(alignment: .leading, spacing: 4) {
-                                            Text("加入测试群")
-                                            Text("咕游记Coovingo测试 · 群号 1104063286")
-                                                .font(.footnote)
-                                                .foregroundStyle(Color.dsPaperInkSecondary)
-                                                .fixedSize(horizontal: false, vertical: true)
-                                        }
-                                        Spacer(minLength: 0)
-                                        Image(systemName: "arrow.up.right")
-                                            .font(.caption.weight(.semibold))
-                                    }
-                                    .frame(minHeight: 44)
-                                }
-                                .accessibilityIdentifier("profile.testGroup")
-                                Button(role: .destructive) {
-                                    Task { await authSession.logout() }
-                                } label: {
-                                    Label("退出登录", systemImage: "rectangle.portrait.and.arrow.right")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .frame(minHeight: 44)
-                                }
-                                .buttonStyle(.plain)
-                                .foregroundStyle(.red)
-                            }
+        ScrollView {
+            VStack(alignment: .leading, spacing: Puff.Space.m) {
+                if section == .account {
+                    HStack(spacing: Puff.Space.m) {
+                        avatarPicker(size: 76)
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(presentation.displayName)
+                                .font(.puff(.title2, .heavy))
+                                .foregroundStyle(Puff.Palette.ink)
+                                .fixedSize(horizontal: false, vertical: true)
+                            PuffTag(presentation.accountBadgeTitle, systemImage: "crown.fill", candy: .sunny)
+                            Text("已认识 \(occupiedFriendSlots) 位旅途朋友")
+                                .font(.puff(.footnote, .semibold))
+                                .foregroundStyle(Puff.Palette.inkSoft)
                         }
+                        Spacer(minLength: 0)
                     }
+                    .padding(Puff.Space.m)
+                    .puffCard(radius: Puff.Radius.huge)
+
+                    VStack(spacing: 0) {
+                        NavigationLink {
+                            AccountSecurityView(session: authSession)
+                        } label: {
+                            accountRow("账号与安全", symbol: "person.badge.key.fill", candy: .sky)
+                        }
+                        Rectangle().fill(Puff.Palette.line).frame(height: 1)
+                            .padding(.leading, Puff.Space.m + 40 + Puff.Space.s).padding(.trailing, Puff.Space.m)
+                        Link(destination: URL(string: "https://qm.qq.com/q/Ft5ajqgxOw")!) {
+                            accountRow("加入测试群", detail: "咕游记Coovingo测试 · 群号 1104063286",
+                                       symbol: "person.2.fill", candy: .mint, external: true)
+                        }
+                        .accessibilityIdentifier("profile.testGroup")
+                    }
+                    .buttonStyle(.puffRow)
+                    .padding(.vertical, 6)
+                    .puffCard(radius: Puff.Radius.huge)
+
+                    Button(role: .destructive) {
+                        Task { await authSession.logout() }
+                    } label: {
+                        Label("退出登录", systemImage: "rectangle.portrait.and.arrow.right")
+                            .font(.puff(.headline, .heavy))
+                            .foregroundStyle(Puff.Palette.cherry)
+                            .frame(maxWidth: .infinity, minHeight: 52)
+                    }
+                    .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.large))
                 }
-                .foregroundStyle(Color.dsPaperInk)
-                .frame(maxWidth: 620)
-                .padding(DSSpacing.lg)
-                .padding(.bottom, DSSpacing.lg)
-                .frame(maxWidth: .infinity)
             }
-            .scrollIndicators(.hidden)
-            .refreshable { await reload() }
+            .frame(maxWidth: 620)
+            .padding(.horizontal, Puff.Space.m)
+            .padding(.top, Puff.Space.xs)
+            .padding(.bottom, Puff.Space.xl)
+            .frame(maxWidth: .infinity)
         }
+        .scrollIndicators(.hidden)
+        .refreshable { await reload() }
+    }
+
+    private func accountRow(
+        _ title: String, detail: String? = nil, symbol: String, candy: PuffCandy, external: Bool = false
+    ) -> some View {
+        HStack(spacing: Puff.Space.s) {
+            PuffIconBubble(symbol, candy: candy, size: 40)
+            VStack(alignment: .leading, spacing: 3) {
+                Text(title)
+                    .font(.puff(.headline, .heavy))
+                    .foregroundStyle(Puff.Palette.ink)
+                if let detail {
+                    Text(detail)
+                        .font(.puff(.footnote, .semibold))
+                        .foregroundStyle(Puff.Palette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            Spacer(minLength: 0)
+            Image(systemName: external ? "arrow.up.right" : "chevron.right")
+                .font(.system(size: 13, weight: .heavy, design: .rounded))
+                .foregroundStyle(Puff.Palette.inkFaint)
+        }
+        .padding(.horizontal, Puff.Space.m).padding(.vertical, 10).frame(minHeight: 64)
+        .contentShape(Rectangle())
     }
 }

@@ -822,7 +822,7 @@ struct RootView: View {
         .onChange(of: selectedTab) { previous, current in
             visitedTabs.formUnion([previous, current])
         }
-        .tint(.dsSky)
+        .tint(PuffCandy.sky.base)
         .background {
             if #available(iOS 27.0, *) {
                 TabSceneTransitionInstaller()

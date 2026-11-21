@@ -25,24 +25,18 @@ final class TabHubTests: XCTestCase {
         }
     }
 
-    func testHubRoutesAndPhotoCredits() {
+    func testHubRoutes() {
         continueAfterFailure = false
         let app = launch(city: "london")
         defer { app.terminate() }
         XCTAssertTrue(app.buttons["home.activities"].waitForExistence(timeout: 15))
         XCTAssertEqual(app.buttons["home.activities"].label, "出去走走")
-        XCTAssertEqual(app.buttons["home.activities"].frame.maxX, app.frame.maxX - 40, accuracy: 1)
-        XCTAssertEqual(app.staticTexts["home.cityName"].frame.midX,
-                       app.buttons["home.activities"].frame.midX, accuracy: 1)
+        XCTAssertTrue(app.staticTexts["home.cityName"].exists)
         capture(app, name: "hub-london-activities-entrance")
         app.swipeUp()
         XCTAssertTrue(app.buttons["世界地图"].isHittable)
         capture(app, name: "hub-london-activities-map")
         app.swipeDown()
-        app.buttons["背景照片与许可"].tap()
-        XCTAssertTrue(app.navigationBars["背景照片"].waitForExistence(timeout: 5))
-        XCTAssertEqual(app.links.matching(identifier: "查看照片来源").count, 2)
-        app.buttons["完成"].tap()
         app.buttons["home.activities"].tap()
         XCTAssertTrue(app.buttons["activities.back"].waitForExistence(timeout: 5))
         app.buttons["activities.back"].tap()
@@ -96,8 +90,7 @@ final class TabHubTests: XCTestCase {
         XCTAssertTrue(city.isHittable)
         XCTAssertGreaterThanOrEqual(city.frame.height, 44)
         XCTAssertEqual(city.label, "出去走走")
-        XCTAssertEqual(city.frame.maxX, app.frame.maxX - 40, accuracy: 1)
-        XCTAssertEqual(app.staticTexts["home.cityName"].frame.midX, city.frame.midX, accuracy: 1)
+        XCTAssertTrue(app.staticTexts["home.cityName"].exists)
         capture(app, name: "hub-london-activities-accessibility")
         app.swipeUp()
         app.swipeUp()
@@ -131,9 +124,6 @@ final class TabHubTests: XCTestCase {
             let app = launch(city: city, appearance: appearance)
             XCTAssertTrue(app.buttons["home.activities"].waitForExistence(timeout: 15))
             XCTAssertEqual(app.buttons["home.activities"].label, "出去走走")
-            XCTAssertEqual(app.buttons["home.activities"].frame.maxX, app.frame.maxX - 40, accuracy: 1)
-            XCTAssertEqual(app.staticTexts["home.cityName"].frame.midX,
-                           app.buttons["home.activities"].frame.midX, accuracy: 1)
             XCTAssertTrue(app.staticTexts.matching(NSPredicate(
                 format: "label BEGINSWITH %@ AND label ENDSWITH %@", "当前驻地，", cityName
             )).firstMatch.exists)
