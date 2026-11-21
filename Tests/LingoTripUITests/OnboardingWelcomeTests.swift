@@ -199,11 +199,14 @@ final class OnboardingWelcomeTests: XCTestCase {
         let choice = app.buttons["activities.choice.0"]
         let backToPlaces = app.buttons["activities.action.finish"]
         XCTAssertTrue(next.waitForExistence(timeout: 8))
+        let portrait = app.descendants(matching: .any)["activities.encounter.avatar"].firstMatch
+        XCTAssertTrue(portrait.waitForExistence(timeout: 3))
+        XCTAssertEqual(portrait.label, "Elliot Shaw")
         captureScreen(named: "tutorial-current-encounter")
         for _ in 0..<24 {
-            if backToPlaces.isHittable { break }
-            if choice.isHittable { choice.tap() }
-            else if next.isHittable && next.isEnabled { next.tap() }
+            if backToPlaces.exists && backToPlaces.isHittable { break }
+            if choice.exists && choice.isHittable { choice.tap() }
+            else if next.exists && next.isHittable && next.isEnabled { next.tap() }
             else { app.swipeUp() }
         }
         XCTAssertTrue(backToPlaces.isHittable)

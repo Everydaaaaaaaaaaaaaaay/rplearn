@@ -215,6 +215,12 @@ final class CityOutingModel: ObservableObject {
     }
     func retry() { if let status = snapshot?.status, [.completed, .abandoned].contains(status) { recordCompletionIfNeeded() } else { start() } }
 
+    func bundledAvatarName(for characterID: UUID) -> String? {
+        let name = "avatar_outing_\(characterID.uuidString.lowercased())"
+        guard Bundle.main.url(forResource: name, withExtension: "webp") != nil else { return nil }
+        return "\(name).webp"
+    }
+
     private func prepareLocalCharacter() async {
         guard let npc = snapshot?.npc else { return }
         do {
@@ -224,8 +230,10 @@ final class CityOutingModel: ObservableObject {
                 return
             }
             let profile = try await deps.economyStore.profile()
+            var card = PublicNPCAdapter.characterCard(from: npc)
+            if npc.avatar == nil { card.avatarAssetName = bundledAvatarName(for: npc.id) }
             let id = try await deps.rosterStore.addCharacter(characterID: npc.id, travelerID: npc.travelerId,
-                card: PublicNPCAdapter.characterCard(from: npc), difficulty: profile.difficultyLevel, isFriend: false)
+                card: card, difficulty: profile.difficultyLevel, isFriend: false)
             try await CityActivityRelease.bundled()?.migrateContacts(in: deps.rosterStore, characterID: id)
             character = try await deps.rosterStore.character(id: id)
         } catch { contactMessage = "人物资料暂未保存，故事进度仍会保留。" }

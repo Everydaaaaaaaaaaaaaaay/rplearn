@@ -135,7 +135,10 @@ struct CityOutingView: View {
     @ViewBuilder private func story(_ snapshot: BackendOuting) -> some View {
         if let npc = snapshot.npc {
             HStack(spacing: 12) {
-                AvatarBadge(name: npc.card.name, size: 44, remoteURL: npc.avatar?.url, usesPendingPlaceholder: true)
+                AvatarBadge(name: npc.card.name, size: 44,
+                    imageName: model.bundledAvatarName(for: npc.id),
+                    remoteURL: npc.avatar?.url, usesPendingPlaceholder: true)
+                    .accessibilityIdentifier("activities.encounter.avatar")
                 VStack(alignment: .leading, spacing: 4) {
                     Text(model.character?.displayName ?? npc.card.name).font(.headline)
                     Text(npc.card.occupation).font(.caption).foregroundStyle(ink.opacity(0.6))

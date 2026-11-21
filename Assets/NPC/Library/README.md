@@ -11,3 +11,5 @@
 - `v1`、`v2`：只读的早期规划与来源凭据，标签多为创作目标，部分图片已被淘汰或迁入 v3。禁止导入生产；旧生成规划脚本已移除，避免误用。
 
 施工、审核、测试、导出步骤见 `Tools/ArtPipeline/README.md`。生成使用内置 imagegen，每幅一调用；原始输出路径保存在对应 `.receipt.json`，项目消费图片全部保存在本仓库。2026-09-06 已部署到线上 HTTPS 静态服务并导入数据库，部署与验证记录见 `docs/npc-library/deployment-2026-09-06.md`。
+
+上手练习使用伦敦、纽约和墨尔本各地点在随包目录里的首个相遇角色。iOS 的 14 张离线缩略图位于 `App/Resources/Avatars`，文件名中的 UUID 是角色 ID。源图按活动世界 `world.json` 中的 `avatarId` 从 v3 图录查找，并核对 `avatarSHA256` 和圆裁验收记录。使用 `cwebp -q 90 -m 6 -resize 192 192 -metadata none` 输出，总计 94,400 字节。正式相遇仍优先显示服务器给出的同一角色头像。
