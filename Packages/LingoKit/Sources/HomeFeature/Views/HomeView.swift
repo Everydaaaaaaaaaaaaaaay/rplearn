@@ -73,7 +73,7 @@ public struct HomeView: View {
                 }
                 .padding(.horizontal, Puff.Space.m).padding(.top, 2).padding(.bottom, Puff.Space.xl)
             } else if profileError {
-                PuffEmptyState("旅程暂时无法读取", mood: .curious) {
+                PuffEmptyState("旅程暂时无法读取", bird: .gaga, pose: .pout) {
                     Button("重试") { Task { await reloadProfile() } }
                         .buttonStyle(PuffCandyButtonStyle(.sky))
                 }

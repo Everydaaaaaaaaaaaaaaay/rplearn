@@ -12,16 +12,24 @@ public enum BrandMascotPose: CaseIterable, Equatable, Sendable {
     case encouragement
     case achievement
 
-    var assetName: String {
+    /// 由程序化绘制的咕咕、嘎嘎表现每个品牌姿态。
+    var puffBird: PuffMascot.Bird {
         switch self {
-        case .greeting: "mascot_gugu_welcome"
-        case .guide: "mascot_gugu_explore"
-        case .coach: "mascot_gaga_think"
-        case .celebrate: "mascot_gugu_celebrate"
-        case .resting: "mascot_gugu_rest"
-        case .reminder: "mascot_gaga_pout"
-        case .encouragement: "mascot_gaga_care"
-        case .achievement: "mascot_gaga_proud"
+        case .greeting, .guide, .celebrate, .resting: .gugu
+        case .coach, .reminder, .encouragement, .achievement: .gaga
+        }
+    }
+
+    var puffPose: PuffMascot.Pose {
+        switch self {
+        case .greeting: .wave
+        case .guide: .point
+        case .coach: .thinking
+        case .celebrate: .celebrate
+        case .resting: .sleepy
+        case .reminder: .pout
+        case .encouragement: .care
+        case .achievement: .proud
         }
     }
 
@@ -79,7 +87,7 @@ public enum DSCoachPersona: CaseIterable, Equatable, Sendable {
     }
 }
 
-/// 品牌吉祥物的统一渲染入口，只使用当前 2D 动作资源包。
+/// 品牌吉祥物的统一渲染入口：程序化绘制的咕咕与嘎嘎（蓬蓬设计）。
 public struct BrandMascotView: View {
     private let pose: BrandMascotPose
     private let size: CGFloat
@@ -96,19 +104,10 @@ public struct BrandMascotView: View {
     }
 
     public var body: some View {
-        Image(pose.assetName)
-            .renderingMode(.original)
-            .resizable()
-            .interpolation(.high)
-            .antialiased(true)
-            .scaledToFit()
-            .frame(width: size, height: size)
-            .shadow(
-                color: showsShadow ? Color.dsBrandInk.opacity(0.16) : .clear,
-                radius: size * 0.07,
-                y: size * 0.035
-            )
+        PuffMascot(pose.puffBird, pose: pose.puffPose, size: size, showsShadow: showsShadow)
+            .accessibilityElement()
             .accessibilityLabel(pose.accessibilityLabel)
+            .accessibilityAddTraits(.isImage)
     }
 }
 

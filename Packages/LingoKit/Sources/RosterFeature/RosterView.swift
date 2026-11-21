@@ -266,7 +266,8 @@ public struct RosterView: View {
         if searchResults.isEmpty {
             PuffEmptyState(
                 isTravelerIDQuery && didFinishTravelerLookup ? "没有找到这个旅伴" : "没有找到联系人",
-                mood: .curious
+                bird: .gaga,
+                pose: .curious
             )
             .frame(maxWidth: .infinity)
             .padding(.top, Puff.Space.l)
@@ -452,7 +453,7 @@ public struct RosterView: View {
     }
 
     private var emptyState: some View {
-        PuffEmptyState("还没有好友", mood: .happy)
+        PuffEmptyState("还没有好友", pose: .wave)
             .frame(maxWidth: .infinity)
             .padding(.top, 60)
     }

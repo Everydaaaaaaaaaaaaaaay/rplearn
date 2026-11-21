@@ -238,106 +238,12 @@ public struct PuffFilterBar<Value: Hashable>: View {
     }
 }
 
-// MARK: - 小云朵伙伴
+// MARK: - 空状态
 
-/// 程序化绘制的“小云”：会眨眼、轻轻上下浮动。用于空状态和加载。
-public struct PuffCloudBuddy: View {
-    public enum Mood: Sendable {
-        case happy
-        case curious
-        case sleepy
-    }
-
-    private let mood: Mood
-    private let size: CGFloat
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-
-    public init(_ mood: Mood = .happy, size: CGFloat = 120) {
-        self.mood = mood
-        self.size = size
-    }
-
-    public var body: some View {
-        TimelineView(.animation(minimumInterval: 1.0 / 30, paused: reduceMotion)) { timeline in
-            let time = reduceMotion ? 0 : timeline.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 3_600)
-            Canvas { context, canvasSize in
-                draw(context, canvasSize, time: time)
-            }
-        }
-        .frame(width: size, height: size * 0.82)
-        .accessibilityHidden(true)
-    }
-
-    private func draw(_ context: GraphicsContext, _ canvasSize: CGSize, time: TimeInterval) {
-        let unit = canvasSize.width / 100
-        let bob = CGFloat(sin(time * 2.1)) * 2.4 * unit
-        let squash = 1 + CGFloat(sin(time * 4.2)) * 0.012
-        var context = context
-        context.translateBy(x: canvasSize.width / 2, y: canvasSize.height * 0.56 + bob)
-        context.scaleBy(x: unit * squash, y: unit / squash)
-
-        // 地面阴影随浮动变大变小。
-        let shadowWidth = 52 - bob / unit * 2
-        context.fill(
-            Path(ellipseIn: CGRect(x: -shadowWidth / 2, y: 30 - bob / unit, width: shadowWidth, height: 6)),
-            with: .color(Color(red: 0.62, green: 0.7, blue: 0.88).opacity(0.22))
-        )
-
-        // 合并成一个外轮廓，描边时不会露出内部重叠的圆。
-        let body = Path(roundedRect: CGRect(x: -40, y: -6, width: 80, height: 32), cornerRadius: 16, style: .continuous)
-            .union(Path(ellipseIn: CGRect(x: -36, y: -26, width: 36, height: 36)))
-            .union(Path(ellipseIn: CGRect(x: -12, y: -38, width: 42, height: 42)))
-            .union(Path(ellipseIn: CGRect(x: 14, y: -20, width: 28, height: 28)))
-        context.fill(body.offsetBy(dx: 0, dy: 4), with: .color(Color(red: 0.86, green: 0.9, blue: 0.98)))
-        context.fill(body, with: .color(.white))
-        context.stroke(body, with: .color(Color(red: 0.84, green: 0.88, blue: 0.97)), lineWidth: 1.4)
-
-        let ink = Color(red: 0.17, green: 0.19, blue: 0.32)
-        let blink = time.truncatingRemainder(dividingBy: 3.8) < 0.14
-        for side in [-1.0, 1.0] as [CGFloat] {
-            let eye = CGPoint(x: side * 12, y: 0)
-            switch mood {
-            case .sleepy:
-                var lid = Path()
-                lid.move(to: CGPoint(x: eye.x - 4.5, y: eye.y))
-                lid.addQuadCurve(to: CGPoint(x: eye.x + 4.5, y: eye.y), control: CGPoint(x: eye.x, y: eye.y + 4))
-                context.stroke(lid, with: .color(ink), style: StrokeStyle(lineWidth: 2.2, lineCap: .round))
-            default:
-                let height: CGFloat = blink ? 1.4 : (mood == .curious ? 9 : 8)
-                context.fill(Path(ellipseIn: CGRect(x: eye.x - 3.6, y: eye.y - height / 2, width: 7.2, height: height)), with: .color(ink))
-                if !blink {
-                    context.fill(Path(ellipseIn: CGRect(x: eye.x - 1.6, y: eye.y - height / 2 + 1.2, width: 2.6, height: 2.6)), with: .color(.white))
-                }
-            }
-            context.fill(
-                Path(ellipseIn: CGRect(x: eye.x + side * 4 - 5, y: eye.y + 6, width: 10, height: 5)),
-                with: .color(Color(red: 1, green: 0.6, blue: 0.7).opacity(0.55))
-            )
-        }
-        var mouth = Path()
-        switch mood {
-        case .happy:
-            mouth.move(to: CGPoint(x: -5, y: 7))
-            mouth.addQuadCurve(to: CGPoint(x: 5, y: 7), control: CGPoint(x: 0, y: 13))
-            context.stroke(mouth, with: .color(ink), style: StrokeStyle(lineWidth: 2.2, lineCap: .round))
-        case .curious:
-            context.fill(Path(ellipseIn: CGRect(x: -2.6, y: 7, width: 5.2, height: 5.6)), with: .color(ink))
-        case .sleepy:
-            mouth.move(to: CGPoint(x: -3, y: 9))
-            mouth.addQuadCurve(to: CGPoint(x: 3, y: 9), control: CGPoint(x: 0, y: 11))
-            context.stroke(mouth, with: .color(ink), style: StrokeStyle(lineWidth: 2, lineCap: .round))
-            let float = CGFloat((time * 0.8).truncatingRemainder(dividingBy: 1))
-            context.draw(
-                Text("z").font(.system(size: 9 + float * 5, weight: Puff.Weight.icon, design: .rounded)).foregroundColor(Color(red: 0.55, green: 0.62, blue: 0.85).opacity(1 - Double(float))),
-                at: CGPoint(x: 30 + float * 8, y: -30 - float * 14)
-            )
-        }
-    }
-}
-
-/// 空状态：小云 + 标题 + 说明 + 可选操作。
+/// 空状态：咕咕或嘎嘎 + 标题 + 可选说明与操作。
 public struct PuffEmptyState<Actions: View>: View {
-    private let mood: PuffCloudBuddy.Mood
+    private let bird: PuffMascot.Bird
+    private let pose: PuffMascot.Pose
     private let title: String
     private let message: String?
     private let actions: Actions
@@ -345,18 +251,20 @@ public struct PuffEmptyState<Actions: View>: View {
     public init(
         _ title: String,
         message: String? = nil,
-        mood: PuffCloudBuddy.Mood = .happy,
+        bird: PuffMascot.Bird = .gugu,
+        pose: PuffMascot.Pose = .wave,
         @ViewBuilder actions: () -> Actions = { EmptyView() }
     ) {
         self.title = title
         self.message = message
-        self.mood = mood
+        self.bird = bird
+        self.pose = pose
         self.actions = actions()
     }
 
     public var body: some View {
         VStack(spacing: Puff.Space.s) {
-            PuffCloudBuddy(mood, size: 120)
+            PuffMascot(bird, pose: pose, size: 124)
             VStack(spacing: 6) {
                 Text(title)
                     .font(.puff(.title3, Puff.Weight.title))

@@ -232,7 +232,7 @@ public struct FavoritesView: View {
 
     private var emptyNotebook: some View {
         ScrollView {
-            PuffEmptyState("还没有收藏", mood: .happy) {
+            PuffEmptyState("还没有收藏", bird: .gaga, pose: .care) {
                 Button(action: onBrowseConversations) {
                     Label("去对话看看", systemImage: "bubble.left.and.bubble.right.fill")
                 }
@@ -245,7 +245,7 @@ public struct FavoritesView: View {
 
     private var noResultsPanel: some View {
         ScrollView {
-            PuffEmptyState("没有找到相关收藏", mood: .curious)
+            PuffEmptyState("没有找到相关收藏", bird: .gaga, pose: .thinking)
                 .frame(maxWidth: .infinity)
                 .padding(.top, 60)
         }

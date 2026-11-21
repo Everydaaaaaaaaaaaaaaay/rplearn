@@ -137,7 +137,7 @@ public struct ConversationListView: View {
                     .transition(.opacity)
             } else if rows.isEmpty {
                 ScrollView {
-                    PuffEmptyState("还没有消息", mood: .sleepy)
+                    PuffEmptyState("还没有消息", pose: .sleepy)
                     .padding(.top, 80)
                     .frame(maxWidth: .infinity)
                     .puffEntrance(index: 0, isShown: hasEntered)
@@ -380,11 +380,11 @@ public struct ConversationListView: View {
     @ViewBuilder
     private var filteredEmptyState: some View {
         if isSearching {
-            PuffEmptyState("没有找到“\(normalizedSearchText)”", mood: .curious)
+            PuffEmptyState("没有找到“\(normalizedSearchText)”", bird: .gaga, pose: .curious)
         } else if filter == .unread {
-            PuffEmptyState("没有未读消息", mood: .happy)
+            PuffEmptyState("没有未读消息", pose: .celebrate)
         } else {
-            PuffEmptyState("还没有特别关心", mood: .curious)
+            PuffEmptyState("还没有特别关心", bird: .gaga, pose: .care)
         }
     }
 

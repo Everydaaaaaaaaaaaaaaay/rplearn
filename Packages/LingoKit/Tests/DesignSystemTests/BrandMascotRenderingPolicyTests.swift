@@ -3,22 +3,15 @@ import Foundation
 import Testing
 
 struct BrandMascotRenderingPolicyTests {
-    @Test("全部品牌姿态只映射到新版动作资源")
-    func poseAssetMapping() {
-        let names = Set(BrandMascotPose.allCases.map(\.assetName))
-
-        #expect(names.count == 8)
-        #expect(names == [
-            "mascot_gugu_welcome",
-            "mascot_gugu_celebrate",
-            "mascot_gugu_explore",
-            "mascot_gugu_rest",
-            "mascot_gaga_pout",
-            "mascot_gaga_proud",
-            "mascot_gaga_care",
-            "mascot_gaga_think",
-        ])
-        #expect(names.allSatisfy { $0.hasPrefix("mascot_") })
+    @Test("品牌姿态映射到程序化绘制的咕咕与嘎嘎，八种姿态各不相同")
+    func posePuffMapping() {
+        #expect(Set(BrandMascotPose.allCases.map { "\($0.puffBird)-\($0.puffPose)" }).count == 8)
+        for pose in BrandMascotPose.allCases {
+            #expect(pose.puffBird.name == pose.characterName)
+        }
+        #expect(BrandMascotPose.greeting.puffPose == .wave)
+        #expect(BrandMascotPose.resting.puffPose == .sleepy)
+        #expect(BrandMascotPose.coach.puffPose == .thinking)
     }
 
     @Test("双吉祥物姿态使用正确角色名")

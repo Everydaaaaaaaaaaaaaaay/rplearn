@@ -80,7 +80,7 @@ public struct ActivitySceneBrowser: View {
                             .padding(.horizontal, Puff.Space.m)
                             .padding(.bottom, Puff.Space.m)
                     } else {
-                        PuffEmptyState("暂无可去的地点", mood: .curious)
+                        PuffEmptyState("暂无可去的地点", pose: .point)
                             .puffCard(radius: Puff.Radius.huge)
                             .padding(Puff.Space.m)
                         Spacer()
