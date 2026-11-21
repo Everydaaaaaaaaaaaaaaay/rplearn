@@ -3,6 +3,19 @@
 这是按需速查表，不是每次修改前的必读清单。选择能证明本次行为正确的最小验证；已通过后，
 只有新修改、失败或未解决的风险才需要追加检查。历史校准记录和阶段验收不构成日常提交门禁。
 
+## 小任务快速路径
+
+按 2026-11-17 的速度优先要求，文案、字号、对齐、图标和简单入口调整采用以下流程。
+
+1. 检查 Git 状态，只读取相关代码，直接修改。
+2. iOS 使用 `Scripts/preview.sh build <页面>` 一次完成增量构建、安装和启动。已有最新成功构建时使用 `preview`。
+3. 在当前模拟器简短查看受影响页面，入口变更直接点击确认。发现问题后修复并复查对应位置。
+4. 检查差异并创建聚焦提交，最终回复简述改动和验证。
+
+UI 自动化、多设备、明暗模式、大字号、架构检查按具体改动风险选用。照片沿用时复用素材证据，
+小型 UI 改动的验证结果记在提交或最终回复中。新增或修改照片、视频等素材时保留对应版本记录。
+复用当前模拟器和构建缓存，重启设备用于解决实际环境污染或运行故障。
+
 ## 查找入口
 
 | 任务 | 入口 |
@@ -47,6 +60,21 @@ Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时
 `Scripts/test-ui.sh -only-testing:LingoTripUITests/<Suite>/<test>` 运行指定 UI 路径。
 二者均按需执行，不追加到每次修改的默认门禁。
 
+赴约全路径可用 `Scripts/test-ui.sh -parallel-testing-enabled NO -only-testing:LingoTripUITests/AppointmentUITests/testCustomAppointmentFromChatThroughSummary`。
+将 `TEST_RUNNER_LINGOTRIP_APPOINTMENT_E2E_URL` 指向隔离后端，并通过
+`TEST_RUNNER_LINGOTRIP_APPOINTMENT_JOURNEY` 传入 JSON，其中 `email`、`password`、`companion` 和
+`invitation` 为字符串，`actions` 是非空字符串数组。可选的 `expectedPlacePattern` 支持匹配地点名称
+及其译法。测试账号需已建档并拥有指定联系人，
+邀约文本写明角色所在城市的地点、用户时区下的日期时间和活动，时间安排在当前可赴约窗口内。
+测试从邮箱登录后经联系人进入聊天，发送邀约，通过真实回复生成的约定进入赴约，
+依次填写自定义行动，再检查回顾结算和历史原文。用不同邀约和行动重复执行时使用新的测试账号及独立测试 App。
+
+手动真机赴约测试使用 Debug 包 `com.tiantian.lingotrip.appointmente2e`。构建时将
+`LINGOTRIP_APPOINTMENT_TEST_BACKEND` 指向可从真机访问的隔离 HTTPS 后端。将普通登录与设置页
+「真实赴约」的两个独立会话分别装入测试包容器的 `tmp/appointment-test-login.json` 和
+`tmp/appointment-test-session.json`。App 首次读取后将会话存入各自的钥匙串，并移除导入文件。
+「活动 → 赴约」可直接赴已确认的约，「信息」可从聊天发起新约。
+
 ## 重测和专项
 
 - 关系压力测试的 10,000 个输入使用固定种子。一轮通过即可；排查时序不稳定才显式设置
@@ -55,8 +83,11 @@ Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时
   不再把“专项后全量 + 后端 + Release”当固定序列。
 - 本地单元测试使用 mocks/内存夹具，可直接运行、修复与复测。集成/E2E 需要隔离的
   PostgreSQL/Redis，部分媒体测试还需 MinIO；现有 `RUN_*` 开关仍需显式开启。
-- 线上 AI 评测使用生产网关、会消耗额度，仅在对应评测任务中启用。Swift Live 套件
-  默认标记为跳过，不计入通过数量。普通 CI 不运行线上评测或生产就绪探测。
+- 功能验收、端到端测试和真实模型评测均使用本地或独立非生产环境。正式主机、API 和数据
+  不用于测试、构建或造数。真实模型评测需要对应任务授权。Swift Live 套件默认跳过，
+  跳过项不计入通过数量。
+- 发布产物在本地按生产目标平台交叉编译和打包。生产侧通过正式入口执行整包切换及其健康
+  检查与回滚。具体流程见[后端发布文档](backend/DEPLOYMENT.md#发布)。
 - 图库覆盖实验、Blender 拟合和词典审校只在对应资产任务运行。已验收且哈希不变的资产可复用
   原审核；改图后复核新字节，发布保留完整性、许可、路径与永久身份约束。
 - iOS 脚本已有模型校验缓存和构建锁，轻量对话测试不读取语音模型。遇到源码接口存在但
@@ -64,7 +95,9 @@ Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时
 
 ## Device Hub 与免登录预览
 
-动效测试入口：“我的 → 学习实测 → 动效预览 → 升星与晋升特效”。正式题库加载期间也可进入。预览直接使用正式角色学习页，显示当前城市的学习背景、所选旅伴、档位、聊天进度和挑战记录；不再使用独立深色舞台。顶部“播放升星”将星星飞入卡片里的实际星槽，设置菜单可选择 0 / 3 / 8 颗起始星或运行多星边界测试，学士帽按钮播放晋升揭晓。页面遵循系统明暗外观与减少动态效果设置。进度服务独立留在内存，播放使用正式回到学习页后的奖励展示路径，不写入账号。
+设置页的“测试初次水平测评”直接打开正式测评第一题；“测试首次登录完整流程”从登录成功后的学习档案开始，依次经过测评、开场剧情、选旅伴、上手练习和主页面。两个入口均使用独立内存档案及隔离的偏好设置，不读取登录凭证，也不访问生产服务；右上角“结束测试”返回原设置页，再次进入从头开始。正式首次建档提交后同样直接进入测评，无需再点测评邀请或介绍页按钮。
+
+动效测试入口：“我的 → 设置 → 学习实测 → 动效预览 → 升星与晋升特效”。正式题库加载期间也可进入。预览直接使用正式角色学习页，显示当前城市的学习背景、所选旅伴、档位、聊天进度和挑战记录；不再使用独立深色舞台。顶部“播放升星”将星星飞入卡片里的实际星槽，设置菜单可选择 0 / 3 / 8 颗起始星或运行多星边界测试，学士帽按钮播放晋升揭晓。页面遵循系统明暗外观与减少动态效果设置。进度服务独立留在内存，播放使用正式回到学习页后的奖励展示路径，不写入账号。
 
 ```bash
 Scripts/preview.sh build achievement-preview   # 构建、安装并打开动效控制页
@@ -102,6 +135,11 @@ Scripts/preview.sh preview home           # 已构建/测试后：只安装和�
 `AppEnvironment.activateUITestWorkspace()`，使用内存数据和本地角色；重启后测试数据重置。
 若已有真实登录态，不会强行替换账号；不要清空钥匙串或数据库来制造测试条件。
 此方式只用于页面预览，不能验证真实登录、在线 AI 或同步。Release 不支持该入口。
+
+跨进程断点测试可额外设置 `UI_TEST_PERSISTENCE_NAMESPACE=<新 UUID>`，让免登录 Debug
+工作区使用独立临时 SwiftData 存储。仅同一 UUID 的重启复用这份测试数据，不读取账号数据库；
+普通预览仍使用内存。`LondonEpisodeTests/testReadingRouteAndResume` 使用此入口，并等待
+选择后的下一页出现，确认真实断点已保存后再终止进程。
 
 挑战长题面可使用 `SIMCTL_CHILD_UI_TEST_LEARNING_UNIT_JSON` 传入服务端 `publicUnit` 导出的公开单元 JSON，
 再以 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION_ID` 指定题目；不指定 ID 时沿用 `UI_TEST_LEARNING_QUESTION` 题型选择。
@@ -151,9 +189,34 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 此入口仍是只读工程夹具，不计学习进度，不代表正式听力材料已经审核发布。
 检查词块题；题型可选 `choice`、`arrange`、`matching`、`completion`。正式内容、听力和联网结算另行验收。
 
+### 十五城静态场景预览
+
+普通首页「城市活动」使用当前驻地的新版目录。已有同城目录可用于弱网浏览，目录无法读取时提供「重试」。Debug 的 `scenes-preview` 专用入口提供跨城照片检查。
+
+```sh
+LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build scenes-preview
+```
+
+顶部城市名打开十五城选择，每城 3–5 处全屏实景。左右滑动或点两侧箭头切换地点，底部为「去这里逛逛」胶囊按钮。右上角更多菜单可打开完整照片及摄影许可。预览按钮显示剧情接入进度，实际外出样板使用 `places-preview`。此入口使用 Debug 免登录工作区，内容来自本地已校验的图片包。场景清单、逐图来源及验收范围见[城市场景 v2](../Assets/Activities/CityPlaces-v2/README.md)。
+
+### iOS 图片分包
+
+地图、城市活动和剧情共用静态图片目录，文件名包含内容 SHA256。首次读取核对文件大小和指纹，同一文件并发请求合并，已下载图片优先从本机读取。图片缓存上限 220 MiB，iOS 清理或淘汰后可重新下载。伦敦、墨尔本、纽约的实景、页面背景和首个主线美术随包提供，离线词典、朗读模型、剧情文本和预制配音也随包提供。
+
+```sh
+python3 Tools/ContentPipeline/ios-content-packs.py --output build/ios-content-public
+python3 -m http.server 18765 --bind 127.0.0.1 --directory build/ios-content-public
+```
+
+本机预览可用 `LINGOTRIP_CONTENT_ASSET_BASE_URL=http://127.0.0.1:18765 Scripts/preview.sh build world-preview`。选中地图城市时先预取第一张活动实景和活动页背景，剧情目录预取当前可读章节的首幕，阅读期间预取下一幕。城市页面先显示同一地点的低分辨率背景预览，再加载全分辨率显示图。
+
+发布时将导出的文件放到公开、不可变的 HTTPS 静态目录，再用同一个目录地址设置 `LINGOTRIP_CONTENT_ASSET_BASE_URL` 执行 `Scripts/archive.sh`。文件名包含指纹，内容更新新增文件并保留仍由已发布 App 引用的旧文件。变量留空时构建全量资源版。
+
+城市摄影修改后，先用 Google `cwebp` 和 `python3 Tools/ContentPipeline/encode-city-display-images.py` 重新生成同分辨率显示文件，再用 `python3 Tools/ContentPipeline/ios-content-packs.py --update` 更新指纹和预览图。活动实景同时校验世界清单记录的原图指纹和显示文件自己的指纹。逐图选档与像素对照见[城市编码验收](verification/ios-city-webp-2026-11-20.md)。
+
 ### 真实学习实测入口
 
-Debug App 的「我的」底部有「学习实测 · 切换档位做题」。也可以直接启动：
+Debug App 的「我的 → 设置」中有「学习实测 · 切换档位做题」。也可以直接启动：
 
 ```bash
 Scripts/preview.sh build learning-test   # 源码改变后构建、安装并进入真实登录流程
@@ -218,3 +281,13 @@ Scripts/preview.sh preview learning-test # 已构建后复用产物
 
 相同题面清洁规则作用于共用组件：文章编号和重复标题仅在呈现层处理；听力、配对、词块及短填空也复用精确文本去重，
 只合并相同的说明/设问/材料，不省略不同的题意、作答限制、媒体或评分信息。
+
+### 新版城市地点活动预览
+
+`Scripts/preview.sh build places-preview` 打开独立的伦敦三地点样板；已构建后使用 `preview places-preview`。
+仅在免登录 Debug 内存账号注入本机外出服务，不调用正式分配或好友接口。
+照片来自带署名与许可的伦敦实拍，来源见 `Assets/Activities/CityPlaces-v1/preview-photos.json`。
+咖啡馆提供 Alex 的七节点四结尾故事；书店与公园提供独处短篇。这是界面与状态机样板，不能代表十五城内容已发布。
+外出记录使用 `debug.place-outing.preview.v1.manual` 命名空间，重启继续；界面测试通过独立 UUID 隔离。
+`CityPlaceOutingTests` 定向检查实际分支、暂停返回、杀进程恢复、足迹、照片许可与最大辅助字号独处结尾。
+正式入口由配套 `activity-world-release.json` 控制。完整十五城离线游玩预览使用 `Scripts/preview.sh preview world-preview`，通过 `UI_TEST_SCENE_CITY` 指定城市。线上内容与原生迁移验证见活动系统施工进度记录。

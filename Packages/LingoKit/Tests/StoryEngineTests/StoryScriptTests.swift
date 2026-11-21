@@ -11,6 +11,20 @@ struct StoryScriptTests {
         """.utf8)
     }
 
+    @Test("重复节点返回校验错误，不因 Dictionary 初始化直接崩溃")
+    func duplicateNode() {
+        #expect(throws: StoryScript.ValidationError.duplicateNode("a")) {
+            try StoryScript.load(from: makeJSON(#"{"id":"a","type":"end"},{"id":"a","type":"end"}"#))
+        }
+    }
+
+    @Test("纯自动分支循环在加载时拒绝，避免主线程死循环")
+    func automaticCycle() {
+        #expect(throws: StoryScript.ValidationError.automaticCycle("a")) {
+            try StoryScript.load(from: makeJSON(#"{"id":"a","type":"branch","flag":"x","ifTrue":"a","ifFalse":"a"}"#))
+        }
+    }
+
     @Test("合法脚本可加载")
     func validScript() throws {
         let json = makeJSON("""

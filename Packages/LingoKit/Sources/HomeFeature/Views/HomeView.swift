@@ -1,460 +1,307 @@
+import BackendKit
 import DesignSystem
 import DomainKit
 import PersistenceKit
 import SwiftUI
 
-/// 首页聚合 Hub：用真实门厅物件承载世界地图、剧情和城市活动三个入口。
 public struct HomeView: View {
     private let deps: HomeDependencies
     private let reloadToken: Int
+    private let isVisible: Bool
+    private let activityNamespace: String
+    private let transitionNamespace: Namespace.ID?
     private let onInitialLoad: @MainActor () -> Void
     private let onOpenDestination: @MainActor (HomeDestination) -> Void
+    private let onOpenAppointment: (@MainActor (UUID) -> Void)?
 
-    @State private var spatialPhotoReady = false
-    @State private var profile: UserProfileDTO?
+    @State private var loadedProfile: UserProfileDTO?
     @State private var completedStories: Set<String> = []
-    @State private var touchedSceneEntry: HomeSceneEntryID?
-    @StateObject private var sceneActions = DSSceneActionCoordinator<HomeSceneEntryID>()
-
-    @Environment(\.colorScheme) private var colorScheme
+    @State private var profileError = false
+    @State private var resumableTitle: String?
+    @State private var cityEntranceButtonWidth: CGFloat?
+    @State private var appointments = HomeAppointmentPresentation()
+    @State private var showsBackgroundCredits = false
+    @State private var creditedPhoto: BackendActivityPhoto?
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    private var sceneLayout: HomeDepartureSceneLayout {
-        .forRegion(currentRegion?.id)
-    }
-
-    public init(
-        deps: HomeDependencies,
-        reloadToken: Int = 0,
-        onInitialLoad: @escaping @MainActor () -> Void = {},
-        onOpenDestination: @escaping @MainActor (HomeDestination) -> Void = { _ in }
-    ) {
+    public init(deps: HomeDependencies, reloadToken: Int = 0, isVisible: Bool = true,
+                activityNamespace: String = "", transitionNamespace: Namespace.ID? = nil,
+                onInitialLoad: @escaping @MainActor () -> Void = {},
+                onOpenDestination: @escaping @MainActor (HomeDestination) -> Void = { _ in },
+                onOpenAppointment: (@MainActor (UUID) -> Void)? = nil) {
         self.deps = deps
+        _loadedProfile = State(initialValue: deps.presentationCache?.profile)
+        _completedStories = State(initialValue: deps.presentationCache?.completed ?? [])
         self.reloadToken = reloadToken
+        self.isVisible = isVisible
+        self.activityNamespace = activityNamespace
+        self.transitionNamespace = transitionNamespace
         self.onInitialLoad = onInitialLoad
         self.onOpenDestination = onOpenDestination
+        self.onOpenAppointment = onOpenAppointment
     }
+
+    private var profile: UserProfileDTO? { deps.presentationCache?.profile ?? loadedProfile }
 
     private var currentRegion: Region? {
         #if DEBUG
-        if let requestedRegionID = ProcessInfo.processInfo.environment["UI_TEST_REGION"],
-           let requestedRegion = deps.regionCatalog.region(id: requestedRegionID)
-        {
-            return requestedRegion
-        }
+        if let requested = ProcessInfo.processInfo.environment["UI_TEST_REGION"],
+           let region = deps.regionCatalog.region(id: requested) { return region }
         #endif
         return profile.flatMap { deps.regionCatalog.region(id: $0.currentRegionID) }
     }
+    private var reloadKey: String { "\(reloadToken)-\(isVisible)" }
+    private var places: [BackendActivityPlace] { CityActivityRelease.bundled()?.places(in: currentRegion?.id ?? "") ?? [] }
+    private var cover: BackendActivityPlace? { places.first { $0.category == "park" } ?? places.first }
+    private var storyCover: BackendActivityPlace? {
+        places.first { $0.category == "bookshop" } ?? places.first { $0.id != cover?.id }
+    }
+    private var storySubtitle: String {
+        let journey = MainlineCatalog.journey(starterRegionID: profile?.starterRegionID)
+        guard let next = journey.stops.first(where: { !completedStories.contains($0.chapter.storyID) }) else { return "出发之后 · 已完成" }
+        return "下一站 · \(deps.regionCatalog.region(id: next.regionID)?.nameZh ?? next.chapter.title)"
+    }
 
     public var body: some View {
-        Group {
-            if dynamicTypeSize.isAccessibilitySize {
-                accessibleContent
-            } else {
-                departureScene
-            }
-        }
-        .toolbar(.hidden, for: .navigationBar)
-        .task(id: reloadToken) { await reload() }
-        .onDisappear(perform: sceneActions.cancel)
-    }
-
-    private var departureScene: some View {
-        GeometryReader { proxy in
-            let widthScale = proxy.size.width / HomeDepartureCanvas.width
-            let placement = HomeDepartureCanvas.placement(in: proxy.size)
-            let sceneScale = placement.scale
-            let horizontalInset = placement.horizontalInset
-            // 画布不足以覆盖视口时背景和 Metal 同步延伸；短屏先为底栏留空间，
-            // 不再把底部可点击入口缩到标签栏后面。
-            let canvasHeight = placement.height
-
-            DSSceneSpatialScene { proposedCamera in
-                let camera = spatialPhotoReady ? proposedCamera : .zero
-                ZStack(alignment: .topLeading) {
-                    if sceneScale < widthScale {
-                        compactHeightBackdrop(size: proxy.size)
+        GeometryReader { geometry in
+            ScrollView {
+                if let region = currentRegion {
+                    VStack(spacing: 16) {
+                        cityEntrance(region)
+                            .frame(height: dynamicTypeSize.isAccessibilitySize ? 420 : min(340, max(260, geometry.size.height * 0.49)))
+                        appointmentEntrance
+                        secondaryEntrances
                     }
-
-                    departureCanvas(height: canvasHeight, camera: camera)
-                        .frame(
-                            width: HomeDepartureCanvas.width,
-                            height: canvasHeight,
-                            alignment: .topLeading
-                        )
-                        .dynamicTypeSize(...DynamicTypeSize.xLarge)
-                        .scaleEffect(sceneScale, anchor: .topLeading)
-                        .offset(x: horizontalInset)
+                    .padding(.horizontal, 16).padding(.top, 8).padding(.bottom, 24)
+                } else if profileError {
+                    ContentUnavailableView {
+                        Label("旅程暂时无法读取", systemImage: "arrow.clockwise")
+                    } actions: {
+                        Button("重试") { Task { await reloadProfile() } }
+                    }
+                    .padding(24).dsSceneGlass(legibility: .frosted).padding(16)
+                } else {
+                    ProgressView("正在读取旅程").padding(24).dsSceneGlass(legibility: .frosted).padding(16)
                 }
-                .frame(
-                    width: proxy.size.width,
-                    height: proxy.size.height,
-                    alignment: .topLeading
-                )
             }
-            .id(sceneLayout.assetName)
-            .background { compactHeightBackdrop(size: proxy.size) }
-            .clipped()
+            .scrollBounceBehavior(.basedOnSize)
+            .refreshable { await reloadProfile(); await reloadOuting(); await appointments.reload(using: deps) }
         }
-        .ignoresSafeArea(edges: [.top, .bottom])
-        .dsSceneTabBarBackground()
-    }
-
-    private func compactHeightBackdrop(size: CGSize) -> some View {
-        Image(sceneLayout.assetName, bundle: .main)
-            .resizable()
-            .scaledToFill()
-            .frame(width: size.width, height: size.height, alignment: .top)
-            .clipped()
-            .blur(radius: 5)
-            .overlay(Color.black.opacity(colorScheme == .dark ? 0.26 : 0.04))
-            .accessibilityHidden(true)
-            .allowsHitTesting(false)
-    }
-
-    /// 背景、入口、光效和命中范围都在这张 402pt 参考画布中；运行时只整体缩放。
-    private func departureCanvas(height: CGFloat, camera: CGSize) -> some View {
-        let width = HomeDepartureCanvas.width
-        let layout = sceneLayout
-        let geometry = HomeSpatialGeometry(assetName: layout.assetName)
-        let size = CGSize(width: width, height: height)
-
-        return ZStack(alignment: .topLeading) {
-            sceneBackground(width: width, height: height, camera: camera)
-
-            HomeDepartureMetalView(
-                layout: layout,
-                flag: currentRegion.map { flag($0.countryCode) },
-                cityName: currentRegion?.nameZh,
-                storySubtitle: storySubtitle,
-                pressedEntry: touchedSceneEntry ?? sceneActions.pressedHotspot,
-                reduceMotion: reduceMotion,
-                camera: camera
-            )
-            .frame(width: width, height: height)
-            .accessibilityHidden(true)
-            .allowsHitTesting(false)
-
-            #if DEBUG
-            if perspectiveDebugEnabled {
-                HomePerspectiveDebugOverlay(layout: layout)
-                    .frame(width: width, height: height)
-                    .accessibilityHidden(true)
-                    .allowsHitTesting(false)
-            }
-            #endif
-
-            if let currentRegion {
-                HomeSceneHitTarget()
-                .frame(width: layout.location.hitSize.width, height: layout.location.hitSize.height)
-                .position(
-                    x: width * geometry.project(CGPoint(x: layout.location.center.x, y: layout.location.center.y), camera: camera, size: size).x,
-                    y: height * geometry.project(CGPoint(x: layout.location.center.x, y: layout.location.center.y), camera: camera, size: size).y
-                )
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel("当前驻地，\(currentRegion.countryNameZh)，\(currentRegion.nameZh)")
-            }
-
-            Button {
-                openSceneEntry(.map, destination: .map)
-            } label: {
-                HomePerspectiveHitTarget(
-                    quad: geometry.project(layout.map.projectedRegion(size: layout.map.hitSize).photoQuad, camera: camera, size: size)
-                )
-            }
-            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .map, pressedEntry: $touchedSceneEntry))
-            .frame(width: width, height: height)
-            .accessibilityLabel("世界地图")
-            .accessibilityHint("查看城市并开始旅行")
-
-            Button {
-                openSceneEntry(.story, destination: .stories)
-            } label: {
-                HomePerspectiveHitTarget(
-                    quad: geometry.project(layout.story.projectedRegion(size: layout.story.hitSize).photoQuad, camera: camera, size: size)
-                )
-            }
-            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .story, pressedEntry: $touchedSceneEntry))
-            .frame(width: width, height: height)
-            .accessibilityLabel("剧情，\(storySubtitle)")
-            .accessibilityHint("查看主线与城市剧情")
-
-            Button {
-                openSceneEntry(.activities, destination: .activities)
-            } label: {
-                HomePerspectiveHitTarget(
-                    quad: geometry.project(layout.activities.projectedRegion(size: layout.activities.hitSize).photoQuad, camera: camera, size: size)
-                )
-            }
-            .buttonStyle(HomeScenePressReportingButtonStyle(entry: .activities, pressedEntry: $touchedSceneEntry))
-            .frame(width: width, height: height)
-            .accessibilityLabel("城市活动")
-            .accessibilityHint("参加当地活动并认识旅途朋友")
+        .background {
+            DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .activities, regionID: currentRegion?.id), tone: .cool)
+                .accessibilityIdentifier("home.background.\(currentRegion?.id ?? "loading")")
         }
-        .frame(width: width, height: height, alignment: .topLeading)
-        .scaleEffect(HomeSpatialGeometry.coverageScale(camera: camera, size: size))
-    }
-
-    private func sceneBackground(width: CGFloat, height: CGFloat, camera: CGSize) -> some View {
-        ZStack {
-            Image(sceneLayout.assetName, bundle: .main)
-                .resizable()
-                .frame(width: width, height: height)
-
-            DSSceneLayeredPhoto(assetName: sceneLayout.assetName, camera: camera,
-                              size: CGSize(width: width, height: height),
-                              backgroundDepth: HomeSpatialGeometry.backgroundDepth,
-                              layers: HomeSpatialGeometry(assetName: sceneLayout.assetName).layers) { ready in
-                spatialPhotoReady = ready
-            }
-            .id(sceneLayout.assetName)
-
-            Color.black.opacity(colorScheme == .dark ? 0.22 : 0.015)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            DSHubHeader(title: "活动", symbol: "ellipsis", actionLabel: "背景照片与许可") { showsBackgroundCredits = true }
         }
-        .frame(width: width, height: height)
-        .accessibilityHidden(true)
-        .allowsHitTesting(false)
-    }
-
-    private var accessibleContent: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: DSSpacing.md) {
-                if let currentRegion {
-                    Label(
-                        "当前驻地：\(currentRegion.nameZh)",
-                        systemImage: "location.fill"
-                    )
-                    .font(.title2.bold())
-                    .accessibilityLabel("当前驻地，\(currentRegion.countryNameZh)，\(currentRegion.nameZh)")
+        .foregroundStyle(Color.dsSceneTextPrimary)
+        .toolbar(.hidden, for: .navigationBar).dsSceneTabBarBackground()
+        .task(id: reloadKey) { if isVisible { await reloadProfile() } }
+        .task(id: reloadKey) { if isVisible { await reloadOuting() } }
+        .task(id: reloadKey) { if isVisible { await appointments.reload(using: deps) } }
+        .task(id: currentRegion?.id, priority: .utility) {
+            guard let region = currentRegion else { return }
+            // Wait for the hub's first frame to settle before starting speculative background work.
+            do { try await Task.sleep(for: .milliseconds(350)) } catch { return }
+            guard !Task.isCancelled else { return }
+            let windowSize = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+                .flatMap(\.windows).first(where: \.isKeyWindow)
+                .map { ($0.bounds.size, $0.screen.scale) }
+            let placePhotos = places.map(\.photo)
+            let main = MainlineCatalog.journey(starterRegionID: profile?.starterRegionID).stops.prefix(2)
+                .map { DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID) }
+            let cities = CityStoryCatalog.chapters.prefix(2)
+                .map { DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID) }
+            let allStoryStrips = MainlineCatalog.chapters.map {
+                DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID)
+            } + CityStoryCatalog.chapters.map {
+                DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
+            }
+            let bgTask = Task.detached(priority: .utility) {
+                if let (size, scale) = windowSize {
+                    await ActivityPlacePhoto.preload(placePhotos, size: size, scale: scale, limit: 2)
                 }
-
-                accessibleLink(
-                    entry: .map,
-                    destination: .map,
-                    title: "世界地图",
-                    subtitle: "查看城市并开始旅行",
-                    systemImage: "map"
-                )
-                accessibleLink(
-                    entry: .story,
-                    destination: .stories,
-                    title: "剧情",
-                    subtitle: storySubtitle,
-                    systemImage: "waveform.path.ecg.rectangle"
-                )
-                accessibleLink(
-                    entry: .activities,
-                    destination: .activities,
-                    title: "城市活动",
-                    subtitle: "参加当地活动并认识旅途朋友",
-                    systemImage: "figure.walk.motion"
-                )
+                guard !Task.isCancelled else { return }
+                await DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 200)
+                guard !Task.isCancelled else { return }
+                await DSSceneImageCache.preloadThumbnails(main + cities, maxPixelSize: 720)
             }
-            .padding(DSSpacing.md)
+            if let cache = deps.presentationCache, let releaseID = deps.activityReleaseID, let gateway = deps.outingGateway {
+                _ = try? await cache.refreshCatalog(releaseID: releaseID, cityID: region.id, gateway: gateway)
+            }
+            await withTaskCancellationHandler {
+                await bgTask.value
+            } onCancel: {
+                bgTask.cancel()
+            }
         }
-        .refreshable { await reload() }
-        .background(Color.dsBackground)
+        .sheet(isPresented: $showsBackgroundCredits) { DSHubPhotoCreditsView(cityID: currentRegion?.id ?? "london") }
+        .sheet(item: $creditedPhoto) { ActivityPhotoCredits(photo: $0) }
     }
 
-    private func accessibleLink(
-        entry: HomeSceneEntryID,
-        destination: HomeDestination,
-        title: String,
-        subtitle: String,
-        systemImage: String
-    ) -> some View {
-        Button {
-            openSceneEntry(entry, destination: destination)
-        } label: {
-            HStack(spacing: DSSpacing.sm) {
-                Image(systemName: systemImage)
-                    .font(.title2)
-                    .frame(width: 42)
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(title)
-                        .font(.headline)
-                    Text(subtitle)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+    private func cityEntrance(_ region: Region) -> some View {
+        ZStack(alignment: .bottomLeading) {
+            if let cover { ActivityPlacePhoto(photo: cover.photo) }
+            LinearGradient(colors: [.black.opacity(0.08), .clear, .black.opacity(0.64)], startPoint: .top, endPoint: .bottom)
+                .allowsHitTesting(false)
+            VStack(alignment: .trailing, spacing: 16) {
+                HStack {
+                    Text("城市活动").font(.subheadline.weight(.medium)).tracking(1)
+                    Spacer()
+                    if let cover {
+                        Button { creditedPhoto = cover.photo } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }
+                            .accessibilityLabel("场景照片信息")
+                    }
                 }
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .foregroundStyle(.secondary)
+                Spacer(minLength: 24)
+                VStack(spacing: 16) {
+                    Text(region.nameZh)
+                        .font(.system(.largeTitle, design: .serif, weight: .regular)).tracking(3)
+                        .fixedSize()
+                        .frame(width: cityEntranceButtonWidth)
+                        .accessibilityLabel("当前驻地，\(region.countryNameZh)，\(region.nameZh)")
+                        .accessibilityIdentifier("home.cityName")
+                    if let resumableTitle {
+                        Text("上次停留在\(resumableTitle)").font(.subheadline)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .frame(width: cityEntranceButtonWidth)
+                    }
+                    Button { onOpenDestination(.activities) } label: {
+                        Text("出去走走")
+                            .font(.body.weight(.medium)).tracking(1.5)
+                            .padding(.horizontal, 24).padding(.vertical, 12)
+                            .frame(minHeight: 48)
+                            .overlay { Capsule().strokeBorder(.white, lineWidth: 1) }
+                            .contentShape(Capsule())
+                    }
+                    .buttonStyle(DSSceneEntranceButtonStyle())
+                    .accessibilityIdentifier("home.activities")
+                    .onGeometryChange(for: CGFloat.self) { geometry in
+                        geometry.size.width
+                    } action: { cityEntranceButtonWidth = $0 }
+                }
+                .multilineTextAlignment(.center)
             }
-            .frame(maxWidth: .infinity, minHeight: 56)
-            .contentShape(Rectangle())
+            .padding(24).foregroundStyle(.white)
         }
-        .buttonStyle(.plain)
-        .dsSurface(.elevated)
+        .background(Color.dsTravelNavy)
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .overlay { RoundedRectangle(cornerRadius: 24, style: .continuous).strokeBorder(.white.opacity(0.5), lineWidth: 0.8) }
+        .matchedHomeTransitionSource(id: .activities, in: transitionNamespace, cornerRadius: 24)
     }
 
-    private func openSceneEntry(
-        _ entry: HomeSceneEntryID,
-        destination: HomeDestination
-    ) {
-        sceneActions.perform(for: entry) {
-            onOpenDestination(destination)
+    private var appointmentEntrance: some View {
+        HomeAppointmentEntrance(model: appointments, onOpenAppointment: onOpenAppointment,
+            onOpenDestination: onOpenDestination)
+            .matchedHomeTransitionSource(id: .appointments, in: transitionNamespace, cornerRadius: 22)
+    }
+
+    @ViewBuilder private var secondaryEntrances: some View {
+        if dynamicTypeSize.isAccessibilitySize {
+            VStack(spacing: 16) {
+                storyEntrance.frame(minHeight: 220)
+                mapEntrance.frame(minHeight: 190)
+            }
+        } else {
+            GeometryReader { geometry in
+                HStack(spacing: 14) {
+                    storyEntrance.frame(width: (geometry.size.width - 14) * 0.59)
+                    mapEntrance
+                }
+            }.frame(height: 156)
         }
     }
 
-    private var mainlineJourney: MainlineJourney {
-        MainlineCatalog.journey(starterRegionID: profile?.starterRegionID)
-    }
-
-    private var storySubtitle: String {
-        guard let nextStop = mainlineJourney.stops.first(where: {
-            !completedStories.contains($0.chapter.storyID)
-        }) else {
-            return "出发之后 · 已完成"
+    private var storyEntrance: some View {
+        Button { onOpenDestination(.stories) } label: {
+            ZStack(alignment: .bottomLeading) {
+                if let storyCover { ActivityPlacePhoto(photo: storyCover.photo) }
+                LinearGradient(colors: [.clear, .black.opacity(0.76)], startPoint: .top, endPoint: .bottom)
+                VStack(alignment: .leading, spacing: 7) {
+                    Text("剧情").font(.body.weight(.medium))
+                    Text(storySubtitle).font(.caption).foregroundStyle(.white.opacity(0.85))
+                        .fixedSize(horizontal: false, vertical: true)
+                }.padding(18).foregroundStyle(.white)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.dsTravelNavy)
+            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         }
-        let cityName = deps.regionCatalog.region(id: nextStop.regionID)?.nameZh ?? nextStop.chapter.title
-        return "下一站 · \(cityName)"
+        .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityLabel("剧情，\(storySubtitle)")
+        .contextMenu { if let storyCover { Button("照片信息") { creditedPhoto = storyCover.photo } } }
+        .matchedHomeTransitionSource(id: .stories, in: transitionNamespace, cornerRadius: 22)
     }
 
-    private func reload() async {
-        async let loadedProfile = try? deps.economyStore.profile()
-        async let loadedCompleted = try? deps.storyProgress.completedStoryIDs()
+    private var mapEntrance: some View {
+        Button { onOpenDestination(.map) } label: {
+            ZStack(alignment: .topTrailing) {
+                Image(systemName: "globe.europe.africa").font(.system(size: 76, weight: .ultraLight))
+                    .foregroundStyle(Color.dsSceneTextTertiary.opacity(0.22)).padding(.top, 12).padding(.trailing, 12)
+                VStack(alignment: .leading, spacing: 7) {
+                    Spacer(minLength: 24)
+                    HStack(spacing: 2) {
+                        Text("世界地图").font(.title3.weight(.medium))
+                        Spacer(minLength: 0)
+                        Image(systemName: "arrow.up.right").font(.system(size: 11))
+                            .foregroundStyle(Color.dsSceneTextSecondary)
+                    }
+                }.padding(18)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .dsSceneGlass(radius: 22, interactive: true, legibility: .frosted)
+            .contentShape(RoundedRectangle(cornerRadius: 22))
+        }
+        .buttonStyle(DSSceneEntranceButtonStyle()).accessibilityLabel("世界地图")
+        .matchedHomeTransitionSource(id: .map, in: transitionNamespace, cornerRadius: 22)
+    }
 
-        profile = await loadedProfile
-        completedStories = await loadedCompleted ?? []
+    private func reloadProfile() async {
+        do {
+            async let loadedProfile = deps.economyStore.profile()
+            async let completed = deps.storyProgress.completedStoryIDs()
+            let (newProfile, completedIDs) = try await (loadedProfile, completed)
+            guard !Task.isCancelled else { return }
+            self.loadedProfile = newProfile
+            if let cache = deps.presentationCache {
+                await cache.refreshLocal(economy: deps.economyStore, items: deps.itemStore,
+                    progress: deps.storyProgress, ticketStubs: deps.ticketStubStore)
+            }
+            completedStories = DepartureStoryIdentity.catalogCompletionIDs(completedIDs)
+            profileError = currentRegion == nil
+        } catch is CancellationError {
+        } catch { profileError = true }
         onInitialLoad()
     }
 
-    private func flag(_ countryCode: String) -> String {
-        countryCode.uppercased().unicodeScalars.reduce(into: "") { result, scalar in
-            if let value = Unicode.Scalar(0x1F1E6 + scalar.value - Unicode.Scalar("A").value) {
-                result.unicodeScalars.append(value)
+    private func reloadOuting() async {
+        do {
+            if !activityNamespace.isEmpty,
+               let archive = try CityOutingArchive.load(namespace: activityNamespace), archive.needsContinuation {
+                resumableTitle = archive.hasEnded ? nil : archive.place.titleZh
+                return
             }
-        }
+            let active = try await deps.outingGateway?.activeOuting()
+            guard !Task.isCancelled else { return }
+            resumableTitle = active?.placeTitleZh
+        } catch is CancellationError {
+        } catch { /* The activity destination provides its progress recovery controls. */ }
     }
 
-    #if DEBUG
-    private var perspectiveDebugEnabled: Bool {
-        ProcessInfo.processInfo.environment["HOME_PERSPECTIVE_DEBUG"] == "1"
-    }
-    #endif
 }
 
-/// GPU 层只画视觉，透明 SwiftUI 入口继续提供原生导航、命中语义与即时按压状态。
-private struct HomeSceneHitTarget: View {
-    var body: some View {
-        Rectangle()
-            .fill(Color.white.opacity(0.001))
-            .contentShape(Rectangle())
-    }
-}
-
-private struct HomePerspectiveHitTarget: View {
-    let quad: HomePerspectiveQuad
-
-    var body: some View {
-        HomeNormalizedQuadShape(quad: quad)
-            .fill(Color.white.opacity(0.001))
-            .contentShape(HomeNormalizedQuadShape(quad: quad))
-    }
-}
-
-private struct HomeNormalizedQuadShape: Shape {
-    let quad: HomePerspectiveQuad
-
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: point(quad.topLeft, in: rect))
-        path.addLine(to: point(quad.topRight, in: rect))
-        path.addLine(to: point(quad.bottomRight, in: rect))
-        path.addLine(to: point(quad.bottomLeft, in: rect))
-        path.closeSubpath()
-        return path
-    }
-
-    private func point(_ normalized: CGPoint, in rect: CGRect) -> CGPoint {
-        CGPoint(
-            x: rect.minX + normalized.x * rect.width,
-            y: rect.minY + normalized.y * rect.height
-        )
-    }
-}
-
-#if DEBUG
-private struct HomePerspectiveDebugOverlay: View {
-    let layout: HomeDepartureSceneLayout
-
-    var body: some View {
-        Canvas { context, size in
-            drawSurface(layout.location.projectedRegion().surface, color: .yellow, context: &context, size: size)
-            drawSurface(layout.map.projectedRegion().surface, color: .cyan, context: &context, size: size)
-            drawSurface(layout.activities.projectedRegion().surface, color: .orange, context: &context, size: size)
-            drawRegion(layout.location.projectedRegion(), color: .yellow, context: &context, size: size)
-            drawRegion(layout.map.projectedRegion(), color: .cyan, context: &context, size: size)
-            drawRegion(layout.story.projectedRegion(), color: .cyan, context: &context, size: size)
-            drawRegion(layout.activities.projectedRegion(), color: .orange, context: &context, size: size)
-        }
-    }
-
-    private func drawSurface(
-        _ surface: HomePhotoSurface,
-        color: Color,
-        context: inout GraphicsContext,
-        size: CGSize
-    ) {
-        let path = path(surface.quad, size: size)
-        context.stroke(path, with: .color(color.opacity(0.92)), lineWidth: 1.2)
-        let poseLabel = String(
-            format: "%@  P %.0f°  Y %.0f°  R %.0f°",
-            surface.pose.name,
-            surface.pose.pitch,
-            surface.pose.yaw,
-            surface.pose.roll
-        )
-        let text = Text(poseLabel)
-        .font(.system(size: 8, weight: .semibold, design: .rounded))
-        .foregroundStyle(color)
-        let label = context.resolve(text)
-        let anchor = CGPoint(
-            x: surface.quad.topLeft.x * size.width,
-            y: surface.quad.topLeft.y * size.height - 7
-        )
-        context.draw(label, at: anchor, anchor: .bottomLeading)
-    }
-
-    private func drawRegion(
-        _ region: HomeProjectedRegion,
-        color: Color,
-        context: inout GraphicsContext,
-        size: CGSize
-    ) {
-        context.stroke(
-            path(region.photoQuad, size: size),
-            with: .color(color.opacity(0.78)),
-            style: StrokeStyle(lineWidth: 0.8, dash: [3, 2])
-        )
-    }
-
-    private func path(_ quad: HomePerspectiveQuad, size: CGSize) -> Path {
-        var path = Path()
-        let points = quad.points.map { CGPoint(x: $0.x * size.width, y: $0.y * size.height) }
-        guard let first = points.first else { return path }
-        path.move(to: first)
-        points.dropFirst().forEach { path.addLine(to: $0) }
-        path.closeSubpath()
-        return path
-    }
-}
-#endif
-
-private struct HomeScenePressReportingButtonStyle: ButtonStyle {
-    let entry: HomeSceneEntryID
-    @Binding var pressedEntry: HomeSceneEntryID?
-
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .onChange(of: configuration.isPressed) { _, isPressed in
-                if isPressed {
-                    pressedEntry = entry
-                } else if pressedEntry == entry {
-                    pressedEntry = nil
-                }
+private extension View {
+    @ViewBuilder
+    func matchedHomeTransitionSource(
+        id: HomeDestination,
+        in namespace: Namespace.ID?,
+        cornerRadius: CGFloat
+    ) -> some View {
+        if let namespace {
+            matchedTransitionSource(id: id, in: namespace) { configuration in
+                configuration
+                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
             }
+        } else {
+            self
+        }
     }
 }

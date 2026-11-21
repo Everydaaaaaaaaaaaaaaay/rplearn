@@ -48,8 +48,21 @@ extension BackendDictionaryExampleTranslationResolver {
                     translation: DictExampleTranslation(sentenceZhHans: $0.sentenceZhHans,
                         contextualMeaningZhHans: $0.contextualMeaningZhHans))
             }
-        }) { request in await self.resolve(request) }
+        }) { request in
+            // These short examples appear in the first practice lookup.
+            if request.lemma == "more", let translation = Self.firstPracticeExamples[request.sentence] {
+                return DictExampleTranslation(sentenceZhHans: translation)
+            }
+            return await self.resolve(request)
+        }
     }
+
+    private static let firstPracticeExamples = [
+        "more land": "更多土地",
+        "a hall with more seats": "座位更多的大厅",
+        "more interesting": "更有趣",
+        "he works more now": "他现在干的活比以前多了。",
+    ]
 
     func resolve(_ request: DictExampleTranslationRequest) async -> DictExampleTranslation? {
         guard !request.lemma.isEmpty, !request.partOfSpeech.isEmpty,

@@ -8,11 +8,13 @@ import Observation
 @MainActor @Observable
 public final class NarrativeAudioPlayer {
     public private(set) var completedID: String?
+    public private(set) var unavailableID: String?
     @ObservationIgnored private let speech: any SpeechService
     @ObservationIgnored private let audioSession: AudioSessionCoordinator
     @ObservationIgnored private var generation = 0
     @ObservationIgnored private var playback: Task<Void, Never>?
     @ObservationIgnored private var stopping: Task<Void, Never>?
+    @ObservationIgnored private var stopNeedsDeactivation = false
     @ObservationIgnored private var preparedPlayer: AVAudioPlayer?
     @ObservationIgnored private var preparedIdentity: (id: String, url: URL)?
     @ObservationIgnored private var pausedCompletedID: String?
@@ -21,11 +23,16 @@ public final class NarrativeAudioPlayer {
     @ObservationIgnored private var page: AVAudioPlayer?
     @ObservationIgnored private var sounds: Task<(Data, Data), Never>?
     @ObservationIgnored private let soundEffects: Bool
+    @ObservationIgnored private let playbackTimeout: Duration?
+    @ObservationIgnored private let stopTimeout: Duration
 
-    public init(speech: any SpeechService, audioSession: AudioSessionCoordinator, soundEffects: Bool = true) {
+    public init(speech: any SpeechService, audioSession: AudioSessionCoordinator, soundEffects: Bool = true,
+                playbackTimeout: Duration? = nil, stopTimeout: Duration = .seconds(3)) {
         self.speech = speech
         self.audioSession = audioSession
         self.soundEffects = soundEffects
+        self.playbackTimeout = playbackTimeout
+        self.stopTimeout = stopTimeout
     }
 
     public func play(id: String, request: SpeechRequest?, rainVolume: Float, pageTurn: Bool = true, prepared: PreparedNarration? = nil) {
@@ -76,9 +83,11 @@ public final class NarrativeAudioPlayer {
                     playedPrepared = player.play()
                     if playedPrepared {
                         NotificationCenter.default.post(name: .speechPlaybackDidBegin, object: nil)
+                        let deadline = ContinuousClock.now.advanced(by: self.playbackTimeout ?? .seconds(max(10, player.duration + 5)))
                         // Track real playback completion, including the authored
                         // final beat. Cancellation never publishes a completion.
                         while player.isPlaying {
+                            guard ContinuousClock.now < deadline else { throw URLError(.timedOut) }
                             try await Task.sleep(for: .milliseconds(20))
                             guard self.generation == token else { return }
                         }
@@ -92,7 +101,17 @@ public final class NarrativeAudioPlayer {
                 // Coalesce extremely quick skips without delaying the visual response.
                 do { try await Task.sleep(for: .milliseconds(100)) } catch { return }
                 guard self.generation == token else { return }
-                await self.speech.speakAndWait(request)
+                let timeout = self.playbackTimeout ?? .seconds(max(20, Double(request.text.split(whereSeparator: \.isWhitespace).count) * 0.8 + 10))
+                let speech = self.speech
+                do {
+                    try await AsyncDeadline.run(timeout: timeout) { await speech.speakAndWait(request) }
+                } catch {
+                    guard !Task.isCancelled, self.generation == token else { return }
+                    self.cancelPlayback(preserveRain: rainVolume > 0)
+                    // Preserve the failure signal after cancelling audio; never claim a natural finish.
+                    self.unavailableID = id
+                    return
+                }
             }
             guard !Task.isCancelled, self.generation == token else { return }
             self.preparedPlayer = nil
@@ -120,6 +139,7 @@ public final class NarrativeAudioPlayer {
     private func cancelPlayback(preserveRain: Bool) {
         generation &+= 1
         completedID = nil
+        unavailableID = nil
         playback?.cancel()
         playback = nil
         if !preserveRain { rain?.pause() }
@@ -127,13 +147,19 @@ public final class NarrativeAudioPlayer {
         preparedPlayer?.stop()
         preparedPlayer = nil
         preparedIdentity = nil
-        let previous = stopping
+        stopNeedsDeactivation = stopNeedsDeactivation || !preserveRain
+        // Rapid page changes share the same stop barrier; they must not queue one
+        // timeout per skipped page behind a missing engine callback.
+        guard stopping == nil else { return }
         let speech = speech
         let audioSession = audioSession
-        stopping = Task {
-            await previous?.value
-            await speech.stopSpeaking()
-            if !preserveRain { await audioSession.deactivate() }
+        let timeout = stopTimeout
+        stopping = Task { [weak self] in
+            try? await AsyncDeadline.run(timeout: timeout) { await speech.stopSpeaking() }
+            guard let self else { return }
+            if stopNeedsDeactivation { await audioSession.deactivate() }
+            stopNeedsDeactivation = false
+            stopping = nil
         }
     }
 

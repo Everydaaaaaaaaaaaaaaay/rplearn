@@ -1198,5 +1198,77 @@
     "difficulty": 2.65,
     "discrimination": 1.4,
     "explanationZh": "缺少证据能否支持反面结论，取决于按理是否应该观察到该证据。"
+  },
+  {
+    "id": "v25",
+    "skill": "vocabulary",
+    "format": "wordMeaning",
+    "prompt": "哪个单词表示“猫”？",
+    "context": null,
+    "options": ["cat", "dog", "book", "bus"],
+    "correctIndex": 0,
+    "difficulty": -3.0,
+    "discrimination": 1.3,
+    "explanationZh": "cat 表示“猫”，其余选项分别表示狗、书和公共汽车。"
+  },
+  {
+    "id": "g25",
+    "skill": "grammar",
+    "format": "grammarForm",
+    "prompt": "选择合适的词：I ____ a student.",
+    "context": null,
+    "options": ["am", "is", "are", "be"],
+    "correctIndex": 0,
+    "difficulty": -2.95,
+    "discrimination": 1.3,
+    "explanationZh": "主语为 I 时，be 动词使用 am。"
+  },
+  {
+    "id": "r25",
+    "skill": "reading",
+    "format": "readingDetail",
+    "prompt": "Amy 几岁？",
+    "context": "Hi! I'm Amy. I'm ten.",
+    "options": ["Ten", "Two", "Five", "Eight"],
+    "correctIndex": 0,
+    "difficulty": -2.9,
+    "discrimination": 1.3,
+    "explanationZh": "短文中的 I’m ten 表示 Amy 十岁。"
+  },
+  {
+    "id": "v26",
+    "skill": "vocabulary",
+    "format": "wordMeaning",
+    "prompt": "哪个单词表示“水”？",
+    "context": null,
+    "options": ["water", "bread", "chair", "car"],
+    "correctIndex": 0,
+    "difficulty": -2.75,
+    "discrimination": 1.3,
+    "explanationZh": "water 表示“水”。"
+  },
+  {
+    "id": "g26",
+    "skill": "grammar",
+    "format": "grammarForm",
+    "prompt": "选择合适的词：She ____ my friend.",
+    "context": null,
+    "options": ["is", "am", "are", "be"],
+    "correctIndex": 0,
+    "difficulty": -2.7,
+    "discrimination": 1.3,
+    "explanationZh": "主语 She 为第三人称单数，be 动词使用 is。"
+  },
+  {
+    "id": "r26",
+    "skill": "reading",
+    "format": "noticeReading",
+    "prompt": "这张便条让 Tom 做什么？",
+    "context": "Tom, please bring your book. — Mum",
+    "options": ["Bring his book", "Buy a bag", "Open the door", "Drink some milk"],
+    "correctIndex": 0,
+    "difficulty": -2.65,
+    "discrimination": 1.3,
+    "explanationZh": "便条中的 please bring your book 表示“请带上你的书”。"
   }
 ]

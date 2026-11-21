@@ -1,0 +1,586 @@
+{
+  "id": "departures_mainline_melbourne_v3",
+  "version": 3,
+  "title": "留给自己的一个下午",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "墨尔本 · 被删掉的开头",
+    "咖啡凉下来之前"
+  ],
+  "shots": {
+    "form": {
+      "background": "dp_ruby_application",
+      "actors": []
+    },
+    "lane": {
+      "background": "dp_melbourne_lane",
+      "actors": []
+    },
+    "reply": {
+      "background": "dp_ruby_cafe_reply",
+      "actors": []
+    },
+    "phone": {
+      "background": "dp_ruby_cafe_talk",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "reply",
+      "speaker": "旁白",
+      "text": "Ruby brings two coffees. One has a leaf. One has a blob.",
+      "translation": "Ruby 端来两杯咖啡。一杯上面拉了片叶子，另一杯上面是个圆疙瘩。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "Yours is a seal. I can see it now.",
+      "translation": "你那杯是海豹。我刚看出来。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "The application on her laptop is due tonight.",
+      "translation": "她电脑上那份申请，今晚就截止。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "Marine research project. I could actually get in.",
+      "translation": "是做海洋研究的。我说不定真能选上。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She shows you the opening, then hides it with her hand.",
+      "translation": "她给你看开头，又用手遮住。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "'I've always been passionate.' Could be fish. Or toast.",
+      "translation": "“我一直充满热情。”对鱼行，对吐司也行。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "phone",
+      "speaker": "旁白",
+      "text": "A shift request pops up. She types 'Can't', then hits send.",
+      "translation": "有人问她能不能顶班。她打了个“去不了”，直接发了。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "phone",
+      "speaker": "Ruby",
+      "text": "I nearly said yes. A shift would be easier than this.",
+      "translation": "我差点就答应了。顶班比写这个省心。",
+      "next": "start_9"
+    },
+    {
+      "id": "start_9",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "reply",
+      "speaker": "你",
+      "text": "And our walk?",
+      "translation": "那咱们散步呢？",
+      "next": "start_10"
+    },
+    {
+      "id": "start_10",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "I haven't finished. An hour, if I stop coming up with jobs.",
+      "translation": "还没写完。我要是能别给自己找事做，一个钟头吧。",
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "你的选择",
+      "text": "How would you like to spend the afternoon?",
+      "translation": "你想怎么过这个下午？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I can stay twenty minutes. Show me the difficult bit.",
+          "translation": "我能再坐二十分钟。给我看看难在哪儿。",
+          "next": "stay",
+          "flags": {
+            "first_a": true
+          },
+          "review": {
+            "context": "Ruby 说写申请还得一个钟头，原定的散步得改。",
+            "outcome": "你在咖啡馆留了二十分钟，再选听她念草稿或陪她安静写。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll take this with me. I still want to go out.",
+          "translation": "咖啡我拿着。我还是想出去走走。",
+          "next": "leave",
+          "flags": {
+            "first_a": false
+          },
+          "review": {
+            "context": "Ruby 还得写申请，你原本也有空出去散步。",
+            "outcome": "Ruby 给咖啡扣好杯盖，提议明天下午再见。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stay",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She sets a twenty-minute timer and opens a beach photo.",
+      "translation": "她给手机设了个二十分钟的闹钟，点开一张海滩照片。",
+      "next": "stay_2"
+    },
+    {
+      "id": "stay_2",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "Port Phillip Bay. Same patch, two Saturdays running.",
+      "translation": "菲利普港湾。连着两个周六，同一块沙滩。",
+      "next": "stay_3"
+    },
+    {
+      "id": "stay_3",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "Small bottle caps fill a bucket beside her boots.",
+      "translation": "她靴子旁的桶里，全是小瓶盖。",
+      "next": "stay_4"
+    },
+    {
+      "id": "stay_4",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "We cleared it. A week later, more of these.",
+      "translation": "那天都捡干净了。隔一周过去一看，又全是瓶盖。",
+      "next": "stay_5"
+    },
+    {
+      "id": "stay_5",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "I kept wondering if they'd come in on the tide.",
+      "translation": "我就想，会不会是涨潮给带过来的。",
+      "next": "stay_6"
+    },
+    {
+      "id": "stay_6",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She drags the photo beside the first line, then zooms in.",
+      "translation": "她把照片拖到第一行旁边，放大了看。",
+      "next": "stay_7"
+    },
+    {
+      "id": "stay_7",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "I counted them. I nearly left that out.",
+      "translation": "我当时还数了呢。差点就没写这件事。",
+      "next": "second_stay"
+    },
+    {
+      "id": "second_stay",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "form",
+      "speaker": "你的选择",
+      "text": "Listen to a draft, or leave her to write?",
+      "translation": "听听草稿，还是让她自己写一会儿？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Read it out. Start at the bucket.",
+          "translation": "念念看。从那只桶开始。",
+          "next": "draft",
+          "flags": {
+            "second_stay_a": true
+          },
+          "review": {
+            "context": "Ruby 想起自己在菲利普港湾两次清理同一片沙滩。",
+            "outcome": "你听她念瓶盖草稿。闹钟响时，她正赶着把刚想起来的一句写下。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll read here. Keep going when you're ready.",
+          "translation": "我就在旁边看看自己的东西。你接着写。",
+          "next": "quiet",
+          "flags": {
+            "second_stay_a": false
+          },
+          "review": {
+            "context": "Ruby 开始写申请，你离开前还有二十分钟。",
+            "outcome": "Ruby 请店员再留一会儿你的空杯子。闹钟响后，你把杯子端去柜台，她接着写。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "draft",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "We found thirty-seven bottle caps. The next week, forty.",
+      "translation": "那周捡了三十七个瓶盖。第二周，四十个。",
+      "next": "draft_2"
+    },
+    {
+      "id": "draft_2",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "I wanted to know if the tide had brought them in.",
+      "translation": "我想知道，那些瓶盖是不是涨潮带来的。",
+      "next": "draft_3"
+    },
+    {
+      "id": "draft_3",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She reads the line again. This time she keeps the numbers.",
+      "translation": "她把这一行又念了一遍，这回没把那两个数删掉。",
+      "next": "draft_4"
+    },
+    {
+      "id": "draft_4",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "They'll probably ask why I counted them.",
+      "translation": "他们说不定会问我，好好的我数它干吗。",
+      "next": "draft_5"
+    },
+    {
+      "id": "draft_5",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She has her mouth open to answer when the timer goes off.",
+      "translation": "她张了嘴正要答，闹钟响了。",
+      "next": "draft_6"
+    },
+    {
+      "id": "draft_6",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "Ruby",
+      "text": "I'd better type this bit, or it'll go.",
+      "translation": "这句得先写下来，我一会儿就忘。",
+      "next": "draft_7"
+    },
+    {
+      "id": "draft_7",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "You leave with her still typing the answer.",
+      "translation": "你走的时候，她还在打刚才要说的那句。",
+      "ending": true,
+      "experienceID": "RB311"
+    },
+    {
+      "id": "quiet",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "You read beside her. The grinder comes on in bursts.",
+      "translation": "你坐在她旁边看自己的东西。磨豆机响一阵，停一阵。",
+      "next": "quiet_2"
+    },
+    {
+      "id": "quiet_2",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She types until a server reaches for your empty cup.",
+      "translation": "她一直在打字。店员过来伸手收你的空杯子。",
+      "next": "quiet_3"
+    },
+    {
+      "id": "quiet_3",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "Could we keep that a little longer?",
+      "translation": "先别收这杯，行吗？再放一会儿。",
+      "next": "quiet_4"
+    },
+    {
+      "id": "quiet_4",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She deletes a line. The server leaves the cup where it is.",
+      "translation": "她删掉一行字。店员把杯子留在原处。",
+      "next": "quiet_5"
+    },
+    {
+      "id": "quiet_5",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "reply",
+      "speaker": "旁白",
+      "text": "The timer goes. You slip a finger through the empty handle.",
+      "translation": "闹钟响了。你把手指伸进空杯的把手里。",
+      "next": "quiet_6"
+    },
+    {
+      "id": "quiet_6",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "I know it's empty. I just like having you there.",
+      "translation": "我知道喝完了。我就是想你再坐会儿。",
+      "next": "quiet_7"
+    },
+    {
+      "id": "quiet_7",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "You drop off the cup and head out. She keeps typing.",
+      "translation": "你把空杯送回柜台，出了门。Ruby 接着打字。",
+      "ending": true,
+      "experienceID": "RB312"
+    },
+    {
+      "id": "leave",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "reply",
+      "speaker": "旁白",
+      "text": "Ruby finds a lid, leaving the laptop where it is.",
+      "translation": "Ruby 找了个杯盖，没再挪电脑。",
+      "next": "leave_2"
+    },
+    {
+      "id": "leave_2",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "I knew I was behind when I made you coffee.",
+      "translation": "给你做咖啡的时候，我就知道今天怕是走不了了。",
+      "next": "leave_3"
+    },
+    {
+      "id": "leave_3",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "reply",
+      "speaker": "旁白",
+      "text": "The lid clicks on. She presses the edge a second time.",
+      "translation": "杯盖咔一声扣好了。她沿着边又按了一圈。",
+      "next": "leave_4"
+    },
+    {
+      "id": "leave_4",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "Tomorrow at four, here? I'll be off shift.",
+      "translation": "明天四点，这儿？那时我下班了。",
+      "next": "second_leave"
+    },
+    {
+      "id": "second_leave",
+      "act": 0,
+      "location": "墨尔本 · 被删掉的开头",
+      "shot": "reply",
+      "speaker": "你的选择",
+      "text": "Would you like to choose another day?",
+      "translation": "你想现在另约一天吗？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Tomorrow at four. Put the laptop away first.",
+          "translation": "明天四点。你到时候把电脑先收好。",
+          "next": "tomorrow",
+          "flags": {
+            "second_leave_a": true
+          },
+          "review": {
+            "context": "Ruby 提议次日下午四点在咖啡馆见。",
+            "outcome": "你俩约好四点在咖啡馆门口见。今天你先带咖啡出去。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's leave it for now. I'll head out.",
+          "translation": "先放放吧。我出门了。",
+          "next": "open",
+          "flags": {
+            "second_leave_a": false
+          },
+          "review": {
+            "context": "Ruby 提议约第二天，你还不想定。",
+            "outcome": "你拿着咖啡离开。Ruby 没再提时间，打开申请表接着写。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tomorrow",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "phone",
+      "speaker": "Ruby",
+      "text": "Four. I'll meet you out front, laptop away.",
+      "translation": "四点。我到门口等你，电脑先收起来。",
+      "next": "tomorrow_2"
+    },
+    {
+      "id": "tomorrow_2",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "She writes 'out front' beside four in her calendar.",
+      "translation": "她在日历里记了四点，又在后面添上“门口”。",
+      "next": "tomorrow_3"
+    },
+    {
+      "id": "tomorrow_3",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "phone",
+      "speaker": "你",
+      "text": "And no coffee first. We'll actually get moving.",
+      "translation": "那也先别做咖啡了。来了咱们就走。",
+      "next": "tomorrow_4"
+    },
+    {
+      "id": "tomorrow_4",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "Okay. I can make coffee after.",
+      "translation": "行。走完回来再做。",
+      "next": "tomorrow_5"
+    },
+    {
+      "id": "tomorrow_5",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "lane",
+      "speaker": "旁白",
+      "text": "A tram goes by. You step out with today's coffee.",
+      "translation": "电车从门口过去。你端着今天这杯出了门。",
+      "ending": true,
+      "experienceID": "RB321"
+    },
+    {
+      "id": "open",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "reply",
+      "speaker": "Ruby",
+      "text": "Okay. I'll leave it.",
+      "translation": "好。那就先放放。",
+      "next": "open_2"
+    },
+    {
+      "id": "open_2",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "reply",
+      "speaker": "旁白",
+      "text": "She rises halfway, then pulls her chair back in.",
+      "translation": "她站起来一半，又把椅子拉了回去。",
+      "next": "open_3"
+    },
+    {
+      "id": "open_3",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "form",
+      "speaker": "旁白",
+      "text": "The door clicks shut. Ruby clicks into the next box.",
+      "translation": "门咔一声合上。Ruby 点开申请表的下一栏。",
+      "next": "open_4"
+    },
+    {
+      "id": "open_4",
+      "act": 1,
+      "location": "咖啡凉下来之前",
+      "shot": "lane",
+      "speaker": "旁白",
+      "text": "At the crossing, you hold the cup in both hands.",
+      "translation": "等过马路的时候，你把两只手都拢到杯子上。",
+      "ending": true,
+      "experienceID": "RB322"
+    }
+  ]
+}

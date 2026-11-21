@@ -28,12 +28,14 @@ public struct MemoryDebugView: View {
         memoryStore: MemoryStore,
         rosterStore: RosterStore,
         economyStore: EconomyStore,
-        memoryService: MemoryService
+        memoryService: MemoryService,
+        initialCharacterID: UUID? = nil
     ) {
         self.memoryStore = memoryStore
         self.rosterStore = rosterStore
         self.economyStore = economyStore
         self.memoryService = memoryService
+        _selectedID = State(initialValue: initialCharacterID)
     }
 
     public var body: some View {
@@ -90,9 +92,10 @@ public struct MemoryDebugView: View {
             ToolbarItem(placement: .principal) {
                 Text("记忆档案")
                     .font(.headline.weight(.heavy))
-                    .foregroundStyle(Color.dsBrandCream)
-                    .shadow(color: Color.dsFoilGold.opacity(0.46), radius: 5)
-                    .shadow(color: Color.black.opacity(0.78), radius: 1.4, y: 1)
+                    .foregroundStyle(Color.dsHologramIvory)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color.dsTravelNavy.opacity(0.94), in: RoundedRectangle(cornerRadius: 10))
                     .accessibilityAddTraits(.isHeader)
             }
 

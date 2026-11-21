@@ -11,127 +11,66 @@ extension PlacementTestView {
         if let result {
             ScrollView {
                 VStack(spacing: DSSpacing.lg) {
-                    BrandMascotView(
-                        pose: .celebrate,
-                        size: 112,
-                        showsShadow: true
-                    )
-
-                    VStack(spacing: 5) {
-                        Text("校准完成")
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(Color.dsSkyDeep)
-                        Text(result.difficultyLevel.displayName)
-                            .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                        Text("完成 \(result.answeredCount) 道 · 测试建议水平")
-                            .font(.caption)
-                            .foregroundStyle(Color.dsPaperInkSecondary)
-                    }
-
-                    VStack(spacing: DSSpacing.md) {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text("综合校准")
-                                    .font(.caption)
-                                    .foregroundStyle(Color.dsPaperInkSecondary)
-                                Text("\(result.score) / 100")
-                                    .font(.title2.bold().monospacedDigit())
-                            }
-                            Spacer()
-                            VStack(alignment: .trailing, spacing: 3) {
-                                Text("90% 估计区间")
-                                    .font(.caption)
-                                    .foregroundStyle(Color.dsPaperInkSecondary)
-                                Text("\(result.scoreRange.lowerBound)–\(result.scoreRange.upperBound)")
-                                    .font(.headline.monospacedDigit())
-                            }
+                    BrandMascotView(pose: .celebrate, size: 104, showsShadow: true)
+                    VStack(spacing: 8) {
+                        Text("测评完成").font(.subheadline.weight(.semibold)).foregroundStyle(Color.dsSkyDeep)
+                        Text(result.hasSufficientEvidence ? result.difficultyLevel.displayName : "还需要一些作答信息")
+                            .font(.system(.title, design: .rounded, weight: .bold))
+                            .multilineTextAlignment(.center)
+                        Text("已答 \(result.answeredCount) 题 · 正确 \(result.correctCount) 题 · 跳过 \(result.skippedCount) 题")
+                            .font(.caption).foregroundStyle(Color.dsPaperInkSecondary)
+                        if result.stopReason == .threeMistakes {
+                            Text("累计答错 3 次，本次测评已结束。")
+                                .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
                         }
 
-                        Divider()
-
-                        HStack {
-                            Label("判断稳定度", systemImage: "checkmark.seal")
-                                .font(.subheadline.weight(.semibold))
-                            Spacer()
-                            Text(
-                                "\(result.confidenceLabel) · "
-                                    + "\(Int((result.levelConfidence * 100).rounded()))%"
-                            )
-                            .font(.subheadline.monospacedDigit())
-                            .foregroundStyle(Color.dsSkyDeep)
-                        }
-
-                        HStack {
-                            Label("CSE 参考", systemImage: "flag")
-                                .font(.subheadline.weight(.semibold))
-                            Spacer()
-                            Text("\(result.difficultyLevel.cseReference) · 非认证")
-                                .font(.subheadline)
-                                .foregroundStyle(Color.dsPaperInkSecondary)
-                        }
-
-                        HStack {
-                            Label("CEFR 辅助参考", systemImage: "globe.europe.africa")
-                                .font(.subheadline.weight(.semibold))
-                            Spacer()
-                            Text("\(result.referenceLevel.rawValue) · 非认证")
-                                .font(.subheadline)
-                                .foregroundStyle(Color.dsPaperInkSecondary)
-                        }
-
-                        Divider()
-
-                        ForEach(result.skillResults) { skillResult in
-                            skillResultRow(skillResult)
-                        }
-                    }
-                    .placementPaperPanel(padding: DSSpacing.lg)
-
-                    DSWorkbenchPaperSheet(padding: 0) {
-                        levelSelectionButton(
-                            title: "最终应用水平",
-                            detail: selectedLevel == result.difficultyLevel
-                                ? "当前采用测试建议；你也可以自由选择其他水平。"
-                                : "你选择了不同于测试建议的水平。",
-                            recommendedLevel: result.difficultyLevel
-                        )
-                    }
-
-                    Text(
-                        "年级结果表示人教版一年级起点教材的学习进度估计；四六级结果表示相近学习难度。"
-                            + "这是用于调整学习内容的短测，不代表通过任何官方考试。"
-                            + "测试结果只是建议，最终应用哪个水平由你决定，也可以稍后再次修改。"
-                    )
-                        .font(.footnote)
-                        .foregroundStyle(Color.dsPaperInkSecondary)
+                        Text(result.hasSufficientEvidence
+                        ? (result.answeredCount < 8
+                           ? "本次题量较少，这是一个初步的学习起点建议。先从合适的内容开始，之后可以再调整。"
+                           : "建议从这个难度开始学习。结果只用于安排学习内容，你也可以按实际体验调整。")
+                        : "本次有效作答较少，暂不推荐新水平。你可以沿用当前水平，也可以手动调整。")
+                        .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
                         .fixedSize(horizontal: false, vertical: true)
-
-                    if let errorMessage {
-                        Text(errorMessage)
-                            .font(.caption)
-                            .foregroundStyle(Color.dsDanger)
                     }
-
-                    Button {
-                        applySelectedLevel(testResult: result)
-                    } label: {
-                        if isApplying {
-                            ProgressView().tint(.white)
-                        } else {
-                            Text("应用 \(selectedLevel.displayName)")
-                        }
+                    .placementPaperPanel()
+                    .accessibilityIdentifier("placement.result")
+                    VStack(spacing: DSSpacing.md) {
+                        ForEach(result.skillResults) { skillResultRow($0) }
+                    }.placementPaperPanel(padding: DSSpacing.lg)
+                    DSWorkbenchPaperSheet(padding: 0) {
+                        levelSelectionButton(title: "最终应用水平",
+                            detail: result.hasSufficientEvidence ? "可采用建议，也可以自行选择。" : "当前水平未改变，可自行选择。",
+                            recommendedLevel: result.hasSufficientEvidence ? result.difficultyLevel : nil)
                     }
-                    .buttonStyle(.dsWorkbenchAction)
-                    .disabled(isApplying)
+                    Text("这是学习难度建议，不代表学历或任何考试认证。")
+                        .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
                 }
-                .frame(maxWidth: 560)
-                .padding(DSSpacing.lg)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: 560).padding(DSSpacing.lg).frame(maxWidth: .infinity)
             }
             .placementScrollEdgeBlend()
-        } else {
-            loadingView
-        }
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                VStack(spacing: DSSpacing.sm) {
+                    if let errorMessage {
+                        Text(errorMessage).font(.caption).foregroundStyle(Color.dsDanger)
+                    }
+                    Button { applySelectedLevel(testResult: result) } label: {
+                        if isApplying { ProgressView().tint(.white) }
+                        else { Text("应用\(selectedLevel.displayName)") }
+                    }
+                    .buttonStyle(.dsWorkbenchAction)
+                    .accessibilityIdentifier("placement.apply")
+                    Button("重新测评") { start() }
+                        .buttonStyle(.dsAction(.secondary, fullWidth: true))
+                        .accessibilityIdentifier("placement.restart")
+                }
+                .disabled(isApplying)
+                .frame(maxWidth: 560)
+                .padding(.horizontal, DSSpacing.lg)
+                .padding(.vertical, DSSpacing.sm)
+                .frame(maxWidth: .infinity)
+                .background(.regularMaterial)
+            }
+        } else { loadingView }
     }
 
     var failureView: some View {
@@ -275,10 +214,10 @@ extension PlacementTestView {
             }
         }
         .buttonStyle(.plain)
-        .disabled(
-            selectedOriginalIndex != nil
-                || (currentQuestion?.skill == .listening && listeningPlayCount == 0)
-        )
+        .disabled(currentQuestion?.skill == .listening && listeningPlayCount == 0)
+        .accessibilityIdentifier("placement.option.\(originalIndex)")
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityRemoveTraits(isSelected ? [] : .isSelected)
     }
 
     func skillResultRow(_ result: PlacementSkillResult) -> some View {
@@ -286,12 +225,13 @@ extension PlacementTestView {
             Label(result.skill.displayName, systemImage: skillIcon(result.skill))
                 .font(.subheadline.weight(.semibold))
                 .frame(width: 118, alignment: .leading)
-            ProgressView(value: result.accuracy)
-                .tint(.dsSky)
-            Text("\(result.correct)/\(result.total)")
+            if result.total > 0 {
+                ProgressView(value: result.accuracy).tint(.dsSky)
+            } else { Spacer() }
+            Text(result.total > 0 ? "\(result.correct)/\(result.total)" : "未作答")
                 .font(.caption.monospacedDigit())
                 .foregroundStyle(Color.dsPaperInkSecondary)
-                .frame(width: 34, alignment: .trailing)
+                .frame(width: 48, alignment: .trailing)
         }
     }
 
@@ -305,7 +245,7 @@ extension PlacementTestView {
     func prepare(force: Bool) async {
         if force {
             questions = []
-            engine = nil
+            session = nil
             questionBankError = nil
             phase = .loading
         }
@@ -319,14 +259,19 @@ extension PlacementTestView {
                 questions = try await Task.detached(priority: .userInitiated) {
                     try PlacementQuestionBank.load(from: questionBankURL)
                 }.value
-                engine = AdaptivePlacementEngine(priorLevel: profile.difficultyLevel)
+                session = PlacementSession(questions: questions, priorLevel: profile.difficultyLevel)
                 questionBankError = nil
             } catch {
                 questions = []
-                engine = nil
+                session = nil
                 questionBankError = "测试题库暂时无法载入，你仍可直接选择并应用水平。"
             }
             errorMessage = nil
+            if startsWithQuestions {
+                if !questions.isEmpty { start() }
+                else { phase = .introduction }
+                return
+            }
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_PLACEMENT_QUESTION"] == "1" {
                 start()
@@ -349,80 +294,73 @@ extension PlacementTestView {
     }
 
     func start() {
-        guard let engine,
-              let question = engine.nextQuestion(in: questions)
-        else { return }
-        currentQuestion = question
-        optionOrder = Array(question.options.indices).shuffled()
-        selectedOriginalIndex = nil
-        listeningPlayCount = 0
-        withAnimation(reduceMotion ? nil : .snappy) {
-            phase = .question
-        }
+        guard !questions.isEmpty else { errorMessage = "题库暂时不可用，请重新载入或直接选择水平。"; return }
+        stopQuestionAudio()
+        session = PlacementSession(questions: questions, priorLevel: currentLevel)
+        guard session?.current != nil else { return }
+        result = nil; errorMessage = nil
+        withAnimation(reduceMotion ? nil : .snappy) { phase = .question }
     }
 
     func select(_ originalIndex: Int) {
-        guard selectedOriginalIndex == nil,
-              let question = currentQuestion,
-              var updatedEngine = engine
-        else { return }
-        selectedOriginalIndex = originalIndex
+        session?.select(originalIndex)
+        Haptics.impact(.light)
+    }
+
+    func previousQuestion() {
+        guard session?.canGoBack == true else { return }
+        stopQuestionAudio()
+        session?.goBack()
+    }
+
+    func advanceQuestion(skipping: Bool) {
+        guard var updated = session else { return }
+        if skipping { updated.skip() }
+        else { guard updated.confirm() else { return } }
+        stopQuestionAudio()
+        session = updated
+        if updated.isComplete {
+            let outcome = updated.engine.result()
+            result = outcome
+            selectedLevel = outcome.hasSufficientEvidence ? outcome.difficultyLevel : currentLevel
+            withAnimation(reduceMotion ? nil : .snappy) { phase = .result }
+        }
+    }
+
+    func stopQuestionAudio() {
+        listeningGeneration = UUID()
         listeningPlayer.stop()
         isListeningAudioLoading = false; isListeningAudioPlaying = false
-        Haptics.impact(.light)
-        Task { await deps.speech.stopSpeaking() }
-
-        Task {
-            if !reduceMotion {
-                try? await Task.sleep(for: .milliseconds(220))
-            }
-            updatedEngine.record(question: question, selectedIndex: originalIndex)
-            engine = updatedEngine
-            if updatedEngine.shouldStop
-                || updatedEngine.nextQuestion(in: questions) == nil
-            {
-                result = updatedEngine.result()
-                selectedLevel = result?.difficultyLevel ?? currentLevel
-                await deps.speech.stopSpeaking()
-                withAnimation(reduceMotion ? nil : .snappy) {
-                    phase = .result
-                }
-                return
-            }
-            guard let next = updatedEngine.nextQuestion(in: questions) else { return }
-            withAnimation(reduceMotion ? nil : .snappy) {
-                currentQuestion = next
-                optionOrder = Array(next.options.indices).shuffled()
-                selectedOriginalIndex = nil
-                listeningPlayCount = 0
-            }
-        }
+        errorMessage = nil
     }
 
     func playListeningQuestion(_ question: PlacementQuestion) {
         guard PlacementListeningPolicy.canPlay(currentCount: listeningPlayCount),
               !isListeningAudioLoading, let text = question.audioText else { return }
         isListeningAudioLoading = true
+        let generation = listeningGeneration
         Task {
             await deps.speech.stopSpeaking()
-            guard currentQuestion?.id == question.id else { isListeningAudioLoading = false; return }
+            guard generation == listeningGeneration, currentQuestion?.id == question.id else { return }
             listeningPlayer.play(text: text, question: question.prompt, completedPlays: listeningPlayCount, started: {
-                guard currentQuestion?.id == question.id else { return }
+                guard generation == listeningGeneration, currentQuestion?.id == question.id else { return }
                 isListeningAudioPlaying = true
                 Haptics.impact(.light)
             }, completed: { success in
-                guard currentQuestion?.id == question.id else { return }
+                guard generation == listeningGeneration, currentQuestion?.id == question.id else { return }
                 isListeningAudioLoading = false; isListeningAudioPlaying = false
-                if success { listeningPlayCount += 1 }
-                else { errorMessage = "听力音频暂时无法播放，请重试。" }
+                if success { session?.recordListeningPlay() }
+                else { errorMessage = "听力音频暂时无法播放，可以重试或跳过本题。" }
             })
         }
     }
 
     func applySelectedLevel(testResult: PlacementResult?) {
+        let preserveSource = testResult?.hasSufficientEvidence == false
+        let testResult = testResult.flatMap { $0.hasSufficientEvidence ? $0 : nil }
         let level = selectedLevel
         guard level != currentLevel else {
-            saveSelectedLevel(level: level, testResult: testResult)
+            saveSelectedLevel(level: level, testResult: testResult, preserveSource: preserveSource)
             return
         }
         isApplying = true; errorMessage = nil
@@ -437,16 +375,18 @@ extension PlacementTestView {
         }
     }
 
-    func saveSelectedLevel(level: DifficultyLevel, testResult: PlacementResult?) {
+    func saveSelectedLevel(level: DifficultyLevel, testResult: PlacementResult?, preserveSource: Bool = false) {
         isApplying = true
         errorMessage = nil
         Task {
             do {
                 let updated = try await deps.profileCommands.updateProfile { profile in
+                    if profile.difficultyLevel != level || !preserveSource {
+                        profile.proficiencySource = testResult?.difficultyLevel == level
+                            ? .placement
+                            : .selfReported
+                    }
                     profile.difficultyLevel = level
-                    profile.proficiencySource = testResult?.difficultyLevel == level
-                        ? .placement
-                        : .selfReported
                     if let testResult {
                         profile.placementScore = testResult.score
                         profile.placementCompletedAt = .now
@@ -457,7 +397,7 @@ extension PlacementTestView {
                 if usesNativeNavigation {
                     currentLevel = updated.difficultyLevel
                     selectedLevel = updated.difficultyLevel
-                    engine = AdaptivePlacementEngine(priorLevel: updated.difficultyLevel)
+                    session = questions.isEmpty ? nil : PlacementSession(questions: questions, priorLevel: updated.difficultyLevel)
                     phase = .introduction
                 }
                 onComplete(updated)

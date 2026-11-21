@@ -40,7 +40,18 @@ public actor ContentSyncSignal {
 enum ContentMutationJournal {
     static func encode<T: Encodable>(_ payload: T) throws -> String {
         let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .iso8601
+        if payload is ContentConversationPayload {
+            // Server replies already arrive with millisecond precision.
+            // Truncating a read receipt to seconds makes that reply unread again.
+            encoder.dateEncodingStrategy = .custom { date, encoder in
+                let formatter = ISO8601DateFormatter()
+                formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+                var value = encoder.singleValueContainer()
+                try value.encode(formatter.string(from: date))
+            }
+        } else {
+            encoder.dateEncodingStrategy = .iso8601
+        }
         encoder.outputFormatting = [.sortedKeys]
         return String(decoding: try encoder.encode(payload), as: UTF8.self)
     }
@@ -50,7 +61,9 @@ enum ContentMutationJournal {
         resourceType: ContentResourceKind,
         resourceID: String,
         parentID: String?,
-        payloadJSON: String
+        payloadJSON: String,
+        relationshipReplayInput: RelationshipReplayInput? = nil,
+        relationshipChanged: Bool = false
     ) throws {
         guard let owner = try owner(in: context) else { return }
         let pending = try pendingMutations(
@@ -59,16 +72,25 @@ enum ContentMutationJournal {
             resourceType: resourceType,
             resourceID: resourceID
         )
+        // A released request may already have committed remotely. Its command ID
+        // must keep the original wire payload until we receive the receipt.
         if let coalescible = pending.last,
            !coalescible.isInFlight,
+           coalescible.attemptCount == 0,
+           coalescible.lastErrorCode == nil,
            coalescible.operationRaw == ContentMutationOperation.upsert.rawValue
         {
             coalescible.parentID = parentID
             coalescible.payloadJSON = payloadJSON
             coalescible.lastErrorCode = nil
+            if let input = relationshipReplayInput {
+                var inputs = try RelationshipReplayInput.decodeList(coalescible.relationshipReplayJSON)
+                if !inputs.contains(where: { $0.messageID == input.messageID }) { inputs.append(input) }
+                coalescible.relationshipReplayJSON = try RelationshipReplayInput.encodeList(inputs)
+            }
+            if relationshipChanged && relationshipReplayInput == nil { coalescible.relationshipReplayComplete = false }
         } else {
-            context.insert(
-                ContentOutboxEntity(
+            let mutation = ContentOutboxEntity(
                     ownerUserID: owner.userID,
                     resourceType: resourceType,
                     resourceID: resourceID,
@@ -82,7 +104,11 @@ enum ContentMutationJournal {
                         pending: pending
                     )
                 )
-            )
+            mutation.relationshipReplayComplete = !relationshipChanged || relationshipReplayInput != nil
+            if let input = relationshipReplayInput {
+                mutation.relationshipReplayJSON = try RelationshipReplayInput.encodeList([input])
+            }
+            context.insert(mutation)
         }
         signal()
     }

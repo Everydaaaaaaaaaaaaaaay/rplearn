@@ -120,6 +120,17 @@ public struct CityScenePhotoCreditsView: View {
                 Link("Pixabay Content License",
                      destination: URL(string: "https://pixabay.com/service/license-summary/")!)
             }
+            Section("活动首页与我的") {
+                ForEach(DSHubScenePhotos.photos) { photo in
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("\(photo.cityName) · \(photo.placement)").font(.subheadline)
+                        Text(photo.title).font(.footnote).foregroundStyle(.secondary)
+                        Text("\(photo.author) · \(photo.license)").font(.footnote).foregroundStyle(.secondary)
+                        Link("查看照片来源", destination: photo.sourceURL)
+                        Link("查看使用许可", destination: photo.licenseURL)
+                    }
+                }
+            }
             citySections
             licenseSection
         }

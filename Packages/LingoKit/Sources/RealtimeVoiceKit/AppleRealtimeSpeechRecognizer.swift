@@ -9,26 +9,30 @@ import SpeechKit
 private final class AppleSpeechInputRuntime: @unchecked Sendable {
     private let lock = NSLock()
     private var request: SFSpeechAudioBufferRecognitionRequest?
-    private let receiveLevel: @Sendable (Double) -> Void
+    private var generation = UUID()
+    private let gate = SpeechAudioGate(mode: .conversation)
+    private let receiveActivity: @Sendable (UUID, SpeechActivityDetector.Activity) -> Void
 
-    init(receiveLevel: @escaping @Sendable (Double) -> Void) {
-        self.receiveLevel = receiveLevel
+    init(receiveActivity: @escaping @Sendable (UUID, SpeechActivityDetector.Activity) -> Void) {
+        self.receiveActivity = receiveActivity
     }
 
-    func replaceRequest(_ request: SFSpeechAudioBufferRecognitionRequest?) {
+    var hasDetectedSpeech: Bool { gate.hasDetectedSpeech }
+
+    func replaceRequest(_ request: SFSpeechAudioBufferRecognitionRequest?, generation: UUID? = nil) {
         lock.lock()
+        if let generation { self.generation = generation; gate.resetTurn() }
         self.request = request
         lock.unlock()
     }
 
     func receive(_ buffer: AVAudioPCMBuffer) {
         lock.lock()
-        request?.append(buffer)
+        guard let request else { lock.unlock(); return }
+        let generation = generation
+        let activity = gate.receive(buffer) { request.append($0) }
         lock.unlock()
-
-        guard let channel = buffer.floatChannelData?[0] else { return }
-        let samples = UnsafeBufferPointer(start: channel, count: Int(buffer.frameLength))
-        receiveLevel(AudioLevelMeter.level(samples: samples))
+        receiveActivity(generation, activity)
     }
 }
 
@@ -66,7 +70,6 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
     private var prefersOnDeviceRecognition = true
     private var activeRequestUsesOnDeviceRecognition = false
     private var speechGateOpen = false
-    private var consecutiveVoiceChunks = 0
     private var latestTranscript = ""
 
     public init(
@@ -112,8 +115,8 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
                 throw RealtimeVoiceError.audioInputUnavailable
             }
 
-            let runtime = AppleSpeechInputRuntime { [weak self] level in
-                Task { @MainActor [weak self] in self?.receiveAudioLevel(level) }
+            let runtime = AppleSpeechInputRuntime { [weak self] generation, activity in
+                Task { @MainActor [weak self] in self?.receiveAudioActivity(activity, generation: generation) }
             }
             inputNode.installTap(
                 onBus: 0,
@@ -188,7 +191,7 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
             && recognizer.supportsOnDeviceRecognition
         request.requiresOnDeviceRecognition = activeRequestUsesOnDeviceRecognition
         recognitionRequest = request
-        runtime?.replaceRequest(request)
+        runtime?.replaceRequest(request, generation: generation)
 
         recognitionTask = recognizer.recognitionTask(
             with: request,
@@ -226,7 +229,7 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         guard generation == recognitionGeneration, isRunning, !isMuted else { return }
         let normalized = transcript?
             .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        if !normalized.isEmpty {
+        if !normalized.isEmpty, runtime?.hasDetectedSpeech == true {
             latestTranscript = normalized
             if !isFinal { onTranscription?(.init(text: normalized, isFinal: false)) }
         }
@@ -249,9 +252,12 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
     }
 
     private func completeRecognitionTurn(_ text: String) {
+        let hadSpeech = runtime?.hasDetectedSpeech == true
         stopRecognitionTask()
         resetSpeechGate()
-        if !text.isEmpty { onTranscription?(.init(text: text, isFinal: true)) }
+        // A noise-triggered turn can have no recognized words. Explicitly end it
+        // so the session can return to listening instead of waiting indefinitely.
+        if hadSpeech { onTranscription?(.init(text: text, isFinal: true)) }
         scheduleRecognitionRestart()
     }
 
@@ -279,22 +285,16 @@ public final class AppleRealtimeSpeechRecognizer: RealtimeSpeechInput {
         latestTranscript = ""
     }
 
-    private func receiveAudioLevel(_ level: Double) {
-        guard isRunning, !isMuted else { return }
-        onLevel?(level)
-        if level >= 0.07 {
-            consecutiveVoiceChunks += 1
-        } else if level < 0.035 {
-            consecutiveVoiceChunks = 0
-        }
-        guard !speechGateOpen, consecutiveVoiceChunks >= 2 else { return }
+    private func receiveAudioActivity(_ activity: SpeechActivityDetector.Activity, generation: UUID) {
+        guard isRunning, !isMuted, recognitionGeneration == generation else { return }
+        onLevel?(activity.level)
+        guard !speechGateOpen, activity.didStartSpeech else { return }
         speechGateOpen = true
         onSpeechStarted?()
     }
 
     private func resetSpeechGate() {
         speechGateOpen = false
-        consecutiveVoiceChunks = 0
     }
 
     private func teardown() async {

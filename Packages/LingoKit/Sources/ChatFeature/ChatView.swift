@@ -14,14 +14,20 @@ import UIKit
 public struct ChatView: View {
     @State private var learningRegionID: String?
     @State var viewModel: ChatViewModel
-    @State private var learningSelected = false
+    @State var learningSelected = false
     @GestureState(resetTransaction: Transaction(animation: .interactiveSpring(duration: 0.28, extraBounce: 0)))
     private var learningTranslation: CGFloat = 0
     #if DEBUG
     @State private var fillingLearning = false
     @State private var learningDebugError: String?
     #endif
-    @State private var autoReadEnabled = false
+    @AppStorage("chat.autoReadEnabled") private var autoReadEnabled = true
+    @State var showsChatFunctions = false
+    @State private var opensAppointmentsAfterSettings = false
+    @State private var appointmentAfterSettings: UUID?
+    @State var inputDockHeight: CGFloat = 0
+    @AppStorage("chat.keyboardHeight.portrait") private var portraitKeyboardHeight = 346.0
+    @AppStorage("chat.keyboardHeight.landscape") private var landscapeKeyboardHeight = 216.0
     @State private var autoReadReady = false
     @State var autoReadQueue: ChatAutoReadQueue
     @Environment(\.scenePhase) private var scenePhase
@@ -30,30 +36,34 @@ public struct ChatView: View {
     @State var grammarAnalysis: GrammarAnalysisRequest?
     @State var grammarAICache: [UUID: AIGrammarAnalysis] = [:]
     @State var expandedCoachMessageIDs: Set<UUID> = []
-    @State var transcriptVisibleMessageIDs: Set<UUID> = []
     @State var composerTranslation = ComposerTranslationModel()
     @State var composerAppleTranslator = AppleTranslator(sourceLanguage: "zh-Hans", targetLanguage: "en", requestTimeout: .seconds(20))
     @State var chineseRecorder: VoiceRecorder
-    @State var chineseRecordingTask: Task<Void, Never>?
     @State var isVoiceMode = false
     @State var recorder: VoiceRecorder
     @State var voicePlayer: VoiceMessagePlayer
-    @State var showSimulatorInjection = false
-    @State var simulatorInjectionText = ""
     @State var appleTranslator = AppleTranslator()
     @State var showsRealtimeConversation = false
     @State private var accessAfterVoice = false
-    @State var isNearConversationBottom = true
-    @State private var followsComposerResize = true
-    @State private var isUserScrollingMessages = false
-    @State var unseenIncomingMessageCount = 0
-    @State var knownLatestMessageID: UUID?
     @State var showsContactDetails = false
     @State var highlightedMessageID: UUID?
-    /// 软件键盘是否占据屏幕底部；键盘占据时输入栏不再补底部安全区。
-    @State private var isKeyboardVisible = false
-    @FocusState var isTextInputFocused: Bool
-    @FocusState var isChineseInputFocused: Bool
+    @State var bubbleMenuMessage: MessageDTO?
+    enum ComposerFocus: Hashable { case english, chinese }
+    @FocusState var composerFocus: ComposerFocus?
+    var isTextInputFocused: Bool {
+        get { composerFocus == .english }
+        nonmutating set {
+            if newValue { composerFocus = .english }
+            else if composerFocus == .english { composerFocus = nil }
+        }
+    }
+    var isChineseInputFocused: Bool {
+        get { composerFocus == .chinese }
+        nonmutating set {
+            if newValue { composerFocus = .chinese }
+            else if composerFocus == .chinese { composerFocus = nil }
+        }
+    }
     @Environment(\.accessibilityReduceMotion) var reduceMotion
     @Environment(\.dismiss) var dismiss
     let deps: ChatDependencies
@@ -72,32 +82,134 @@ public struct ChatView: View {
         self.deps = deps
     }
 
+    var inputDockAnimation: Animation {
+        reduceMotion ? .easeOut(duration: 0.15) : .interactiveSpring(response: 0.28, dampingFraction: 1)
+    }
+
+    private var chatWindow: UIWindow? {
+        UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+            .flatMap(\.windows).first(where: \.isKeyWindow)
+    }
+
+    var preferredKeyboardHeight: CGFloat {
+        let landscape = chatWindow.map { $0.bounds.width > $0.bounds.height } ?? false
+        return CGFloat(landscape ? landscapeKeyboardHeight : portraitKeyboardHeight)
+    }
+
     private func chatPage(bottomInset: CGFloat) -> some View {
-        messageList
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                inputBar(bottomInset: isKeyboardVisible ? 0 : bottomInset)
-                    .disabled(learningSelected)
+        VStack(spacing: 0) {
+            ChatTranscriptView(viewModel: viewModel, deps: deps, voicePlayer: voicePlayer,
+                autoReadQueue: autoReadQueue, wordSelection: $wordSelection,
+                grammarTermSelection: $grammarTermSelection, grammarAnalysis: $grammarAnalysis,
+                expandedCoachMessageIDs: $expandedCoachMessageIDs, highlightedMessageID: $highlightedMessageID,
+                bubbleMenuMessage: $bubbleMenuMessage, composerFocus: $composerFocus,
+                showsChatFunctions: showsChatFunctions, dismissChatInput: dismissChatInput)
+            ChatComposerView(viewModel: viewModel, composerTranslation: composerTranslation,
+                deps: deps, bottomInset: bottomInset, autoReadQueue: autoReadQueue,
+                recorder: recorder, chineseRecorder: chineseRecorder, voicePlayer: voicePlayer,
+                composerAppleTranslator: composerAppleTranslator, composerFocus: $composerFocus,
+                showsChatFunctions: $showsChatFunctions, inputDockHeight: $inputDockHeight,
+                isVoiceMode: $isVoiceMode, showsRealtimeConversation: $showsRealtimeConversation,
+                learningSelected: $learningSelected, preferredKeyboardHeight: preferredKeyboardHeight,
+                inputDockAnimation: inputDockAnimation, dismissChatInput: dismissChatInput)
+                .disabled(learningSelected)
+                .layoutPriority(1)
+        }
+        .ignoresSafeArea(.container, edges: .bottom)
+    }
+
+    func dismissChatInput() {
+        guard showsChatFunctions || inputDockHeight > 0 || composerFocus != nil else { return }
+        withAnimation(inputDockAnimation) {
+            showsChatFunctions = false
+            inputDockHeight = 0
+            composerFocus = nil
+        }
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+
+    private func updateKeyboard(_ notification: Notification) {
+        // The function panel owns the dock until it hands that space to the keyboard.
+        guard !showsChatFunctions else { return }
+        let height: CGFloat
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            height = 0
+        } else {
+            guard let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+                  let window = chatWindow else { return }
+            let localFrame = window.convert(frame, from: window.screen.coordinateSpace)
+            let overlap = localFrame.intersection(window.bounds)
+            // Floating and external keyboards do not reserve the bottom of the conversation.
+            height = !overlap.isEmpty && localFrame.maxY >= window.bounds.maxY - 1
+                && overlap.width >= window.bounds.width - 1 ? (overlap.height.rounded()) : 0
+            if height > 0 {
+                guard composerFocus != nil else { return }
+                if window.bounds.width > window.bounds.height {
+                    if landscapeKeyboardHeight != height { landscapeKeyboardHeight = height }
+                } else if portraitKeyboardHeight != height {
+                    portraitKeyboardHeight = height
+                }
             }
-            .ignoresSafeArea(.container, edges: .bottom)
+        }
+        guard height != inputDockHeight else { return }
+        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.25
+        let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int ?? 7
+        let animation: Animation
+        switch curve {
+        case 0: animation = .easeInOut(duration: duration)
+        case 1: animation = .easeIn(duration: duration)
+        case 2: animation = .easeOut(duration: duration)
+        case 3: animation = .linear(duration: duration)
+        default: animation = .interpolatingSpring(duration: max(0.2, duration), bounce: 0)
+        }
+        withAnimation(reduceMotion ? .easeOut(duration: 0.15) : animation) {
+            inputDockHeight = height
+        }
+        if height == 0 { bubbleMenuMessage = nil }
     }
 
     public var body: some View {
         GeometryReader { proxy in
-            if let learningPage = deps.learningPage {
-                ChatLearningPager(learningSelected: $learningSelected, translation: $learningTranslation,
-                                  enabled: recorder.state == .idle && chineseRecorder.state == .idle && wordSelection == nil && grammarTermSelection == nil && !showsRealtimeConversation) {
-                    chatPage(bottomInset: proxy.safeAreaInsets.bottom)
-                } learning: {
-                    learningPage(viewModel.character, learningSelected)
-                        .environment(\.dsLearningBackdropProvided, true)
+            // Reserve the keyboard and function panel through one layout height.
+            // Native keyboard avoidance would apply the same movement a second time.
+            let bottomInset = chatWindow?.safeAreaInsets.bottom ?? proxy.safeAreaInsets.bottom
+            Group {
+                if let learningPage = deps.learningPage {
+                    ChatLearningPager(learningSelected: $learningSelected, translation: $learningTranslation,
+                                      enabled: recorder.state == .idle && chineseRecorder.state == .idle && wordSelection == nil && grammarTermSelection == nil && !showsRealtimeConversation) {
+                        chatPage(bottomInset: bottomInset)
+                    } learning: {
+                        learningPage(viewModel.character, learningSelected, openChatSettings)
+                            .environment(\.dsLearningBackdropProvided, true)
+                    }
+                } else {
+                    chatPage(bottomInset: bottomInset)
                 }
-            } else {
-                chatPage(bottomInset: proxy.safeAreaInsets.bottom)
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)) { notification in
+                updateKeyboard(notification)
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { notification in
+                updateKeyboard(notification)
             }
         }
+        .ignoresSafeArea(learningSelected ? [] : [.keyboard, .container], edges: .bottom)
+        .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { _ in
+            if showsChatFunctions { inputDockHeight = preferredKeyboardHeight }
+        }
+        .onChange(of: recorder.state) { _, state in
+            if case .recording = state { voicePlayer.stop() }
+            switch state {
+            case .recording, .transcribing: viewModel.composerRecordingChanged(true)
+            default: viewModel.composerRecordingChanged(false)
+            }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase != .active { voicePlayer.stop() }
+        }
         .onChange(of: learningSelected) { _, selected in
-            isTextInputFocused = false; isChineseInputFocused = false
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            bubbleMenuMessage = nil
+            dismissChatInput()
             if selected {
                 voicePlayer.stop()
             } else {
@@ -116,17 +228,8 @@ public struct ChatView: View {
         }
         .dsQuickNotice($viewModel.quickNotice)
         .background {
-            GeometryReader { viewport in
-                // Share the gesture state rather than copying progress through onChange:
-                // keyboard dismissal and gesture reset must resolve to the same final page.
-                let reveal = (learningSelected ? 1 : 0) - learningTranslation / max(viewport.size.width, 1)
-                ZStack {
-                    Color.dsBackground
-                    DSLearningSceneBackdrop(regionID: learningRegionID)
-                        .opacity(min(1, max(0, reveal)))
-                }
-            }
-            .animation(reduceMotion ? nil : .interactiveSpring(duration: 0.28, extraBounce: 0), value: learningSelected)
+            ChatLearningBackdrop(regionID: learningRegionID, learningSelected: learningSelected,
+                translation: $learningTranslation)
         }
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
@@ -136,12 +239,6 @@ public struct ChatView: View {
             guard notification.object as? UUID == viewModel.character.id else { return }
             Task { await viewModel.refreshCharacter() }
         }
-        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-            isKeyboardVisible = true
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-            isKeyboardVisible = false
-        }
         #if DEBUG
         .alert("无法填满挑战进度", isPresented: Binding(get: { learningDebugError != nil }, set: { if !$0 { learningDebugError = nil } })) {
             Button("知道了", role: .cancel) { learningDebugError = nil }
@@ -150,94 +247,35 @@ public struct ChatView: View {
         .toolbarBackground(learningSelected ? .hidden : .automatic, for: .navigationBar)
         .toolbarColorScheme(learningSelected ? .dark : nil, for: .navigationBar)
         .tint(learningSelected ? .white : .accentColor)
+        .toolbarRole(.editor)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                if !learningSelected {
-                    TimelineView(.periodic(from: .now, by: 15)) { context in
-                        let presence = viewModel.presence(at: context.date)
-                        ChatTitleView(
-                            title: viewModel.character.displayName,
-                            subtitle: chatStatus(presence, at: context.date)
-                        ) {
-                            ZStack(alignment: .bottomTrailing) {
-                                AvatarBadge(
-                                    name: viewModel.character.displayName,
-                                    size: 32,
-                                    imageName: viewModel.character.card.avatarAssetName,
-                                    remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                                    usesPendingPlaceholder: true
-                                )
-                                Circle()
-                                    .fill(presenceColor(presence))
-                                    .frame(width: 9, height: 9)
-                                    .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1.5) }
-                                    .accessibilityHidden(true)
-                            }
-                        }
-                        .accessibilityElement(children: .combine)
+            chatIdentityToolbar
+            if learningSelected {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button { learningSelected = false } label: {
+                        Image(systemName: "bubble.left.and.bubble.right").frame(width: 44, height: 44)
                     }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("返回聊天")
                 }
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                HStack(spacing: 0) {
-                    if learningSelected {
-                        Button { learningSelected = false } label: {
-                            Image(systemName: "bubble.left.and.bubble.right").frame(width: 44, height: 44)
-                        }.accessibilityLabel("返回聊天")
+            } else {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button { autoReadEnabled.toggle() } label: {
+                        Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
                     }
-                    if !learningSelected {
-                        Button {
-                            isTextInputFocused = false
-                            voicePlayer.stop()
-                            showsRealtimeConversation = true
-                        } label: {
-                            Image(systemName: "phone.fill").frame(width: 44, height: 44)
-                        }.accessibilityLabel("与\(viewModel.character.card.name)实时语音对话")
-                        Menu {
-                            Button {
-                                autoReadEnabled.toggle()
-                            } label: {
-                                Label(autoReadEnabled ? "关闭自动朗读" : "开启自动朗读", systemImage: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
-                            }
-                            .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
-                            .accessibilityIdentifier("chat.autoRead")
-                            Button {
-                                isTextInputFocused = false
-                                voicePlayer.stop()
-                                showsContactDetails = true
-                            } label: { Label("聊天设置", systemImage: "person.crop.circle") }
-                            #if DEBUG
-                            if let fill = deps.debugFillLearning {
-                                Divider()
-                                Button {
-                                    fillingLearning = true
-                                    Task {
-                                        defer { fillingLearning = false }
-                                        do {
-                                            try await fill(viewModel.character.id)
-                                            learningSelected = true
-                                            NotificationCenter.default.post(name: .roleplayConversationDidChange, object: viewModel.character.id)
-                                        } catch { learningDebugError = error.localizedDescription }
-                                    }
-                                } label: { Label("填满挑战进度（开发者）", systemImage: "hammer") }
-                                .disabled(fillingLearning || recorder.state != .idle || chineseRecorder.state != .idle)
-                                .accessibilityIdentifier("chat.debugFillLearning")
-                            }
-                            #endif
-                        } label: {
-                            Image(systemName: "ellipsis.circle").frame(width: 44, height: 44)
-                        }.accessibilityLabel("更多聊天操作").accessibilityIdentifier("chat.more")
-                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(autoReadEnabled ? "关闭自动朗读" : "开启自动朗读")
+                    .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+                    .accessibilityIdentifier("chat.autoRead")
                 }
-                .buttonStyle(.plain)
+                ToolbarItem(placement: .topBarTrailing) { chatSettingsAction }
             }
         }
-        .accessibilityAction(named: "聊天设置") {
-            isTextInputFocused = false
-            voicePlayer.stop()
-            showsContactDetails = true
-        }
+
+        .accessibilityAction(named: "聊天设置", openChatSettings)
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -257,7 +295,7 @@ public struct ChatView: View {
         .sheet(item: $grammarAnalysis) { request in
             GrammarAnalysisSheet(
                 request: request,
-                service: GrammarAnalysisService(llm: deps.llm),
+                service: GrammarAnalysisService(llm: deps.llm, sharedAnalysis: deps.sharedGrammarAnalysis),
                 initialAIAnalysis: grammarAICache[request.id],
                 dictionary: deps.dictionary,
                 grammar: deps.grammarPoints,
@@ -290,12 +328,24 @@ public struct ChatView: View {
                 onRequestAccess: { accessAfterVoice = true }
             )
         }
-        .sheet(isPresented: $showsContactDetails) {
+        .sheet(isPresented: $showsContactDetails, onDismiss: {
+            guard opensAppointmentsAfterSettings else { return }
+            opensAppointmentsAfterSettings = false
+            let appointmentID = appointmentAfterSettings
+            appointmentAfterSettings = nil
+            deps.onOpenAppointment?(appointmentID)
+        }) {
             NavigationStack {
                 ChatContactDetailsView(
                     viewModel: viewModel,
                     deps: deps,
+                    onOpenAppointment: { appointmentID in
+                        appointmentAfterSettings = appointmentID
+                        opensAppointmentsAfterSettings = true
+                        showsContactDetails = false
+                    },
                     onSelectMessage: { messageID in
+                        learningSelected = false
                         highlightedMessageID = messageID
                         showsContactDetails = false
                     },
@@ -315,40 +365,7 @@ public struct ChatView: View {
                 AppleTranslationHost(translator: composerAppleTranslator)
             }
         }
-        .task {
-            // 整句翻译优先云端 LLM；离线、额度或供应商失败时回退 Apple 端上翻译。
-            viewModel.translationFallback = { [appleTranslator] text in
-                return await appleTranslator.translate(text)
-            }
-            await viewModel.load()
-            guard !Task.isCancelled else { return }
-            autoReadReady = true
-            autoReadQueue.configure(enabled: shouldAutoRead, existingIDs: viewModel.messages.map(\.id))
-            #if DEBUG
-            // Screenshot-only presentation of seeded reviews in the isolated marketing workspace.
-            if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
-               ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
-               ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1",
-               ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_COACHES"] == "1" {
-                expandedCoachMessageIDs = Set(viewModel.messages.filter {
-                    CoachService.decode(fromJSON: $0.coachReviewJSON)?.hasIssues == true
-                }.map(\.id))
-            }
-            if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
-               ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
-               ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_DICTIONARY"] == "1",
-               let message = viewModel.messages.first(where: { $0.text.contains("cosy") }),
-               let token = TokenCache.tokens(for: message.text, cacheKey: message.id.uuidString).first(where: { $0.word == "cosy" }) {
-                try? await Task.sleep(for: .seconds(1))
-                wordSelection = TokenSelection(contextID: message.id.uuidString, tokenID: token.id, word: "cosy")
-            }
-            #endif
-            knownLatestMessageID = viewModel.messages.last?.id
-            markVisibleConversationRead()
-            #if DEBUG
-            await viewModel.playMarketingCaptureReply()
-            #endif
-        }
+        .task { await loadConversation() }
         .onChange(of: viewModel.messages.last?.id) {
             markVisibleConversationRead()
         }
@@ -362,17 +379,142 @@ public struct ChatView: View {
             autoReadQueue.synchronize(from: previous, to: current)
         }
         .onDisappear {
+            voicePlayer.stop()
+            viewModel.stopSharedObservation()
             autoReadReady = false
             autoReadQueue.configure(enabled: false, existingIDs: viewModel.messages.map(\.id))
             appleTranslator.cancelAll()
             isChineseInputFocused = false
             composerTranslation.cancel()
             composerAppleTranslator.cancelAll()
-            chineseRecordingTask?.cancel()
             Task { await chineseRecorder.cancelRecording() }
             markVisibleConversationRead()
         }
         .dsTabBarHidden()
+    }
+
+    private func loadConversation() async {
+        // 整句翻译优先云端 LLM；离线、额度或供应商失败时回退 Apple 端上翻译。
+        viewModel.translationFallback = { [appleTranslator] text in
+            return await appleTranslator.translate(text)
+        }
+        await viewModel.load()
+        guard !Task.isCancelled else { return }
+        autoReadReady = true
+        autoReadQueue.configure(enabled: shouldAutoRead, existingIDs: viewModel.messages.map(\.id))
+        #if DEBUG
+        // Screenshot-only presentation of seeded reviews in the isolated marketing workspace.
+        if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
+           ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+           ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1",
+           ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_COACHES"] == "1" {
+            expandedCoachMessageIDs = Set(viewModel.messages.filter {
+                CoachService.decode(fromJSON: $0.coachReviewJSON)?.hasIssues == true
+            }.map(\.id))
+        }
+        if ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "chat",
+           ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
+           ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_DICTIONARY"] == "1",
+           let message = viewModel.messages.first(where: { $0.text.contains("cosy") }),
+           let token = TokenCache.tokens(for: message.text, cacheKey: message.id.uuidString).first(where: { $0.word == "cosy" }) {
+            try? await Task.sleep(for: .seconds(1))
+            wordSelection = TokenSelection(contextID: message.id.uuidString, tokenID: token.id, word: "cosy")
+        }
+        #endif
+        markVisibleConversationRead()
+        #if DEBUG
+        await viewModel.playMarketingCaptureReply()
+        #endif
+    }
+
+    @ToolbarContentBuilder
+    private var chatIdentityToolbar: some ToolbarContent {
+        if !learningSelected {
+            // The principal item is sized in the space between the native back
+            // button and trailing controls. A leading item shares the back group.
+            ToolbarItem(placement: .principal) { chatIdentity }
+        }
+    }
+
+    private var chatIdentity: some View {
+        TimelineView(.periodic(from: .now, by: 15)) { context in
+            let presence = viewModel.presence(at: context.date)
+            let status = chatStatus(presence, at: context.date)
+            let shortStatus = presence.state == .offline && !viewModel.isStreaming ? "离线" : status
+            let city = deps.regionName(viewModel.character.card.regionID)
+            let localTime = ChatHeaderStatus.localTime(at: context.date, timeZoneIdentifier: presence.timeZoneIdentifier)
+            Button(action: openChatSettings) {
+                HStack(spacing: 9) {
+                    AvatarBadge(name: viewModel.character.displayName, size: 34,
+                        imageName: viewModel.character.card.avatarAssetName,
+                        remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                        usesPendingPlaceholder: true)
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text(viewModel.character.displayName).font(.subheadline.bold())
+                            .lineLimit(1).minimumScaleFactor(0.75)
+                        HStack(spacing: 5) {
+                            Circle().fill(presenceColor(presence)).frame(width: 7, height: 7)
+                            ViewThatFits(in: .horizontal) {
+                                Text("\(status) · \(city) \(localTime)").fixedSize()
+                                Text("\(shortStatus) · \(city) \(localTime)").fixedSize()
+                                Text("\(shortStatus) · \(localTime)")
+                            }
+                        }
+                        .font(.caption2).foregroundStyle(.secondary)
+                        .monospacedDigit()
+                        .lineLimit(1).allowsTightening(true).minimumScaleFactor(0.7)
+                    }
+                }
+            }
+            .buttonStyle(.plain)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("\(viewModel.character.displayName)，\(status)，\(city)当地时间 \(localTime)")
+            .accessibilityHint("打开聊天设置")
+            .accessibilityAddTraits(.isButton)
+            .accessibilityIdentifier("chat.identity")
+        }
+    }
+
+    private var chatSettingsButton: some View {
+        Button(action: openChatSettings) {
+            Image(systemName: "slider.horizontal.3")
+                .frame(width: 44, height: 44)
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("聊天设置")
+        .accessibilityIdentifier("chat.settings")
+    }
+
+    @ViewBuilder
+    private var chatSettingsAction: some View {
+        #if DEBUG
+        if let fill = deps.debugFillLearning {
+            chatSettingsButton.contextMenu {
+                Button {
+                    fillingLearning = true
+                    Task {
+                        defer { fillingLearning = false }
+                        do {
+                            try await fill(viewModel.character.id)
+                            learningSelected = true
+                            NotificationCenter.default.post(name: .roleplayConversationDidChange, object: viewModel.character.id)
+                        } catch { learningDebugError = error.localizedDescription }
+                    }
+                } label: { Label("填满挑战进度（开发者）", systemImage: "hammer") }
+                .disabled(fillingLearning || recorder.state != .idle || chineseRecorder.state != .idle)
+                .accessibilityIdentifier("chat.debugFillLearning")
+            }
+        } else { chatSettingsButton }
+        #else
+        chatSettingsButton
+        #endif
+    }
+
+    func openChatSettings() {
+        dismissChatInput()
+        voicePlayer.stop()
+        showsContactDetails = true
     }
 
     private var autoReadSnapshot: ChatAutoReadQueue.Snapshot {
@@ -392,9 +534,10 @@ public struct ChatView: View {
         default: recording = false
         }
         return autoReadReady && autoReadEnabled && !learningSelected && scenePhase == .active
-            && !showsRealtimeConversation && !showsContactDetails && !recording
+            && !showsRealtimeConversation && !showsContactDetails && !showsChatFunctions && !recording
             && wordSelection == nil && grammarTermSelection == nil && grammarAnalysis == nil
             && voicePlayer.playingFileName == nil
+            && voicePlayer.loadingMessageID == nil
     }
 
     private func markVisibleConversationRead() {
@@ -407,7 +550,6 @@ public struct ChatView: View {
         ChatHeaderStatus.text(
             presence: presence,
             at: date,
-            regionName: deps.regionName(viewModel.character.card.regionID),
             isStreaming: viewModel.isStreaming
         )
     }
@@ -420,428 +562,4 @@ public struct ChatView: View {
         }
     }
 
-    private var messageList: some View {
-        GeometryReader { viewport in
-            messageList(viewportHeight: viewport.size.height)
-        }
-    }
-
-    private func messageList(viewportHeight: CGFloat) -> some View {
-        ScrollViewReader { proxy in
-            ZStack(alignment: .bottomTrailing) {
-                ScrollView {
-                    LazyVStack(spacing: 0) {
-                        ForEach(Array(viewModel.messages.enumerated()), id: \.element.id) { index, message in
-                            if ChatTimelinePolicy.shouldShowTimeMarker(
-                                in: viewModel.messages,
-                                at: index
-                            ) {
-                                timeMarker(for: message.createdAt)
-                                    .padding(.top, index == 0 ? 2 : 12)
-                                    .padding(.bottom, 6)
-                            }
-                            messageRow(message, at: index)
-                                .id(message.id)
-                                .accessibilityElement(children: .contain)
-                                .accessibilityIdentifier(message.id == viewModel.messages.last?.id ? "chat.message.latest" : "chat.message.\(message.id)")
-                                .padding(.top, messageTopSpacing(at: index))
-                                .background(
-                                    highlightedMessageID == message.id
-                                        ? Color.dsSky.opacity(0.14)
-                                        : Color.clear,
-                                    in: RoundedRectangle(cornerRadius: DSRadius.card)
-                                )
-                                .animation(
-                                    reduceMotion ? nil : .easeInOut(duration: 0.2),
-                                    value: highlightedMessageID
-                                )
-                        }
-                        if viewModel.streamingText != nil {
-                            MessageBubble(
-                                side: .incoming,
-                                groupPosition: streamingGroupPosition,
-                                leadingAccessory: {
-                                    incomingAvatar(isVisible: true)
-                                }
-                            ) {
-                                TypingIndicator()
-                            }
-                            .id("streaming")
-                            .padding(.top, streamingTopSpacing)
-                            .transition(.opacity)
-                        }
-                        if let error = viewModel.errorMessage {
-                            if error.contains("额度") || error.contains("登录") || error.contains("语音体验") {
-                                Button("查看用量与权益", action: deps.onShowAccess)
-                                    .font(.footnote.weight(.semibold))
-                            }
-                            Label(error, systemImage: "exclamationmark.triangle.fill")
-                                .font(.footnote)
-                                .foregroundStyle(Color.dsDanger)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 8)
-                                .background(.regularMaterial, in: Capsule())
-                                .padding(.top, 8)
-                        }
-                        if viewModel.canRetryUnansweredReply {
-                            Button("重试回复", systemImage: "arrow.clockwise") {
-                                viewModel.retryUnansweredReply()
-                            }
-                            .font(.footnote.weight(.semibold))
-                            .padding(.vertical, 8)
-                        }
-                        Color.clear
-                            .frame(height: 1)
-                            .id("conversation-bottom")
-                    }
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 10)
-                    // Fill short/empty conversations so blank taps land inside scroll content.
-                    .frame(minHeight: max(0, viewportHeight), alignment: .bottom)
-                    .background {
-                        keyboardDismissBackdrop
-                    }
-                }
-                .accessibilityIdentifier("chat.messages")
-                .defaultScrollAnchor(.bottom)
-                .defaultScrollAnchor(.bottom, for: .sizeChanges)
-                .scrollBounceBehavior(.always)
-                .scrollDismissesKeyboard(.interactively)
-                // 短会话没有足够滚动范围时，系统的交互式收起不会开始；
-                // 兜底手势仅挂在消息区，避免与输入框争抢首触。
-                .simultaneousGesture(messageListKeyboardDismissGesture)
-                .background(Color.dsBackground)
-                .onScrollGeometryChange(for: Bool.self) { geometry in
-                    geometry.contentSize.height - geometry.visibleRect.maxY < 96
-                } action: { _, isNearBottom in
-                    isNearConversationBottom = isNearBottom
-                    if isUserScrollingMessages { followsComposerResize = isNearBottom }
-                    if isNearBottom {
-                        unseenIncomingMessageCount = 0
-                    }
-                }
-                // Follow the actual laid-out viewport, not the mode toggle before layout.
-                // Keep this intent separate from proximity: shrinking the viewport can
-                // temporarily move the bottom outside the visible rect.
-                .onScrollGeometryChange(for: CGSize.self) { geometry in
-                    CGSize(width: geometry.containerSize.width,
-                           height: geometry.containerSize.height - geometry.contentInsets.top - geometry.contentInsets.bottom)
-                } action: { old, new in
-                    guard old != new, followsComposerResize else { return }
-                    proxy.scrollTo("conversation-bottom", anchor: .bottom)
-                }
-                .onScrollPhaseChange { _, phase in
-                    isUserScrollingMessages = phase == .tracking || phase == .interacting || phase == .decelerating
-                    if isUserScrollingMessages { followsComposerResize = isNearConversationBottom }
-                }
-                .onChange(of: viewModel.streamingText) {
-                    guard isNearConversationBottom else { return }
-                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
-                    }
-                }
-                .onChange(of: viewModel.messages.last?.id) {
-                    guard let last = viewModel.messages.last else {
-                        knownLatestMessageID = nil
-                        return
-                    }
-                    guard knownLatestMessageID != last.id else { return }
-                    let isInitialHistory = knownLatestMessageID == nil
-                    knownLatestMessageID = last.id
-                    if isInitialHistory {
-                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
-                        return
-                    }
-                    if isNearConversationBottom || last.role == .user {
-                        followsComposerResize = true
-                        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                            proxy.scrollTo("conversation-bottom", anchor: .bottom)
-                        }
-                    } else if last.role == .assistant {
-                        unseenIncomingMessageCount += 1
-                    }
-                }
-                .onChange(of: isTextInputFocused || isChineseInputFocused) {
-                    viewModel.composerFocusChanged(isTextInputFocused || isChineseInputFocused)
-                    guard isTextInputFocused || isChineseInputFocused else { return }
-                    followsComposerResize = true
-                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
-                    }
-                }
-                .onChange(of: composerTranslation.isOpen) {
-                    guard followsComposerResize else { return }
-                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                        proxy.scrollTo("conversation-bottom", anchor: .bottom)
-                    }
-                }
-                .onChange(of: highlightedMessageID) { _, messageID in
-                    guard let messageID else { return }
-                    followsComposerResize = false
-                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                        proxy.scrollTo(messageID, anchor: .center)
-                    }
-                    Task { @MainActor in
-                        try? await Task.sleep(for: .seconds(2))
-                        guard highlightedMessageID == messageID else { return }
-                        highlightedMessageID = nil
-                    }
-                }
-
-                if !isNearConversationBottom {
-                    Button {
-                        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
-                            proxy.scrollTo("conversation-bottom", anchor: .bottom)
-                        }
-                        followsComposerResize = true
-                        isNearConversationBottom = true
-                        unseenIncomingMessageCount = 0
-                    } label: {
-                        Label(
-                            unseenIncomingMessageCount > 0
-                                ? "\(unseenIncomingMessageCount) 条新消息"
-                                : "回到底部",
-                            systemImage: "arrow.down"
-                        )
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(Color.dsSkyDeep)
-                        .padding(.horizontal, 12)
-                        .frame(minHeight: 36)
-                        .background(.regularMaterial, in: Capsule())
-                        .overlay { Capsule().stroke(Color.dsBorder, lineWidth: 0.5) }
-                        .shadow(color: .black.opacity(0.1), radius: 8, y: 3)
-                    }
-                    .buttonStyle(.plain)
-                    .padding(.trailing, 12)
-                    .padding(.bottom, 12)
-                    .accessibilityHint("跳转到会话中的最新消息")
-                }
-            }
-        }
-    }
-
-    /// Background-only hit target: word taps and bubble menus remain in the foreground.
-    private var keyboardDismissBackdrop: some View {
-        Color.dsBackground
-            .contentShape(Rectangle())
-            .onTapGesture {
-                isTextInputFocused = false
-                isChineseInputFocused = false
-            }
-            .accessibilityHidden(true)
-    }
-
-    private var messageListKeyboardDismissGesture: some Gesture {
-        DragGesture()
-            .onChanged { value in
-                guard isTextInputFocused || isChineseInputFocused, value.translation.height > 0 else { return }
-                isTextInputFocused = false
-                isChineseInputFocused = false
-            }
-    }
-
-    private func messageTopSpacing(at index: Int) -> CGFloat {
-        guard index > 0 else { return 0 }
-        if ChatTimelinePolicy.shouldShowTimeMarker(in: viewModel.messages, at: index) {
-            return 0
-        }
-        let previous = viewModel.messages[index - 1]
-        let current = viewModel.messages[index]
-        guard previous.role != .coach, current.role != .coach else { return 10 }
-        return ChatTimelinePolicy.canGroup(previous, current) ? 3 : 12
-    }
-
-    private var streamingTopSpacing: CGFloat {
-        viewModel.messages.last?.role == .assistant ? 3 : 12
-    }
-
-    @ViewBuilder
-    private func messageRow(_ message: MessageDTO, at index: Int) -> some View {
-        let groupPosition = displayedGroupPosition(at: index)
-        switch message.role {
-        case .user:
-            VStack(alignment: .trailing, spacing: 4) {
-                HStack(alignment: .bottom, spacing: 6) {
-                    userMessageBubble(message, groupPosition: groupPosition)
-                    outgoingAvatar(
-                        isVisible: ChatTimelinePolicy.showsOutgoingAvatar(
-                            in: viewModel.messages,
-                            at: index
-                        )
-                    )
-                }
-                translationFootnote(message, alignment: .trailing)
-                deliveryReceipt(at: index)
-                coachCard(message)
-            }
-        case .assistant:
-            VStack(alignment: .leading, spacing: 4) {
-                MessageBubble(
-                    side: .incoming,
-                    groupPosition: groupPosition,
-                    leadingAccessory: {
-                        incomingAvatar(
-                            isVisible: ChatTimelinePolicy.showsIncomingAvatar(
-                                in: viewModel.messages,
-                                at: index,
-                                hasTypingContinuation: viewModel.isStreaming
-                            )
-                        )
-                    },
-                    contextMenu: {
-                        bubbleMenu(message)
-                    }
-                ) {
-                    tappableText(message, textColor: nil)
-                }
-                .environment(\.tutorialBubbleFocused, deps.tutorial?.focus == "chat.bubble"
-                    && message.id == viewModel.messages.last(where: { $0.role == .assistant })?.id)
-                .accessibilityAction(named: "语法解析") {
-                    presentGrammarAnalysis(for: message)
-                }
-                translationFootnote(message, alignment: .leading)
-                if message.isInterrupted {
-                    Button {
-                        Task { await viewModel.retryInterrupted(messageID: message.id) }
-                    } label: {
-                        Label("回复中断，点击重试", systemImage: "arrow.clockwise")
-                            .font(.footnote)
-                    }
-                    .buttonStyle(.borderless)
-                }
-            }
-        case .coach:
-            // storyLine：剧情/系统通知（居中提示）；纯教练消息不占位
-            if message.kind == .storyLine {
-                Label(message.text, systemImage: "sparkles")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 7)
-                    .background(.thinMaterial, in: Capsule())
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 4)
-                    .accessibilityHint("系统消息，\(ChatTimelinePolicy.exactTimeText(for: message.createdAt))")
-            }
-        }
-    }
-
-    private func displayedGroupPosition(at index: Int) -> MessageBubbleGroupPosition {
-        let position = ChatTimelinePolicy.groupPosition(in: viewModel.messages, at: index)
-        guard viewModel.isStreaming,
-              index == viewModel.messages.indices.last,
-              viewModel.messages[index].role == .assistant
-        else { return position }
-
-        return switch position {
-        case .single: .first
-        case .last: .middle
-        case .first, .middle: position
-        }
-    }
-
-    private var streamingGroupPosition: MessageBubbleGroupPosition {
-        guard viewModel.messages.last?.role == .assistant else { return .single }
-        return .last
-    }
-
-    private func timeMarker(for date: Date) -> some View {
-        Text(ChatTimelinePolicy.timeMarkerText(for: date))
-            .font(.caption2.weight(.semibold))
-            .foregroundStyle(.secondary)
-            .monospacedDigit()
-            .padding(.horizontal, 10)
-            .padding(.vertical, 5)
-            .background(Color.secondary.opacity(0.08), in: Capsule())
-            .frame(maxWidth: .infinity)
-            .accessibilityLabel("会话时间，\(ChatTimelinePolicy.exactTimeText(for: date))")
-    }
-
-    @ViewBuilder
-    private func incomingAvatar(isVisible: Bool) -> some View {
-        if isVisible {
-            AvatarBadge(
-                name: viewModel.character.displayName,
-                size: 30,
-                imageName: viewModel.character.card.avatarAssetName,
-                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                usesPendingPlaceholder: true
-            )
-        } else {
-            Color.clear
-                .frame(width: 30, height: 30)
-                .accessibilityHidden(true)
-        }
-    }
-
-    @ViewBuilder
-    private func outgoingAvatar(isVisible: Bool) -> some View {
-        if isVisible {
-            UserAvatar(size: 30)
-        } else {
-            Color.clear
-                .frame(width: 30, height: 30)
-                .accessibilityHidden(true)
-        }
-    }
-
-    @ViewBuilder
-    private func deliveryReceipt(at index: Int) -> some View {
-        if let receipt = ChatTimelinePolicy.deliveryReceipt(
-            in: viewModel.messages,
-            at: index,
-            isReplying: viewModel.isStreaming
-        ) {
-            Label(receipt.label, systemImage: receipt.systemImage)
-                .font(.caption2.weight(.medium))
-                .foregroundStyle(receipt == .read ? Color.dsSkyDeep : Color.secondary)
-                .padding(.trailing, 4)
-                .transition(.opacity)
-                .accessibilityLabel("消息\(receipt.label)")
-        }
-    }
-
-    /// 长按菜单仅保留消息级操作；单词收藏统一收敛到释义弹窗。
-    @ViewBuilder
-    func bubbleMenu(_ message: MessageDTO) -> some View {
-        if message.role == .assistant, !message.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            Button {
-                presentGrammarAnalysis(for: message)
-            } label: {
-                Label("语法解析", systemImage: "text.book.closed")
-            }
-        }
-        Button {
-            UIPasteboard.general.string = message.text
-        } label: {
-            Label("复制", systemImage: "doc.on.doc")
-        }
-        Button {
-            Task { await viewModel.translate(message: message) }
-        } label: {
-            Label("翻译", systemImage: "character.book.closed.zh")
-        }
-        Button {
-            deps.tutorial?.onEvent("manualPlayback")
-            let stopped = autoReadQueue.interrupt()
-            Task { await stopped?.value; await viewModel.speak(message: message) }
-        } label: {
-            Label("播放", systemImage: "speaker.wave.2")
-        }
-        if message.kind == .voice {
-            Button {
-                if transcriptVisibleMessageIDs.contains(message.id) {
-                    transcriptVisibleMessageIDs.remove(message.id)
-                } else {
-                    transcriptVisibleMessageIDs.insert(message.id)
-                }
-            } label: {
-                Label(
-                    transcriptVisibleMessageIDs.contains(message.id) ? "隐藏文字" : "查看文字",
-                    systemImage: "text.bubble"
-                )
-            }
-        }
-    }
 }

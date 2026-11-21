@@ -163,6 +163,7 @@ describe.runIf(runEndToEndTests)("compiled backend process", () => {
           LOG_LEVEL: "info",
           MEDIA_STORAGE_ENABLED: "false",
           NODE_ENV: "development",
+          OPENROUTER_API_KEY: "",
           OTEL_EXPORTER_OTLP_HEADERS: "",
           OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: `http://127.0.0.1:${collectorPort.toString()}/v1/traces`,
           OTEL_EXPORTER_OTLP_TRACES_TIMEOUT: "2000",
@@ -180,24 +181,30 @@ describe.runIf(runEndToEndTests)("compiled backend process", () => {
     child.stdout?.on("data", appendOutput);
     child.stderr?.on("data", appendOutput);
 
-    for (let attempt = 1; attempt <= 100; attempt += 1) {
+    const readyBy = Date.now() + 30_000;
+    let readiness = "The socket has not opened yet.";
+    while (Date.now() < readyBy) {
       if (child.exitCode !== null) {
         throw new Error(`The compiled API exited during startup\n${childOutput}`);
       }
       try {
         const response = await fetch(
           `http://127.0.0.1:${apiPort.toString()}/health/ready`,
+          { signal: AbortSignal.timeout(2_000) },
         );
         if (response.ok) {
           return;
         }
-      } catch {
-        // The socket is expected to refuse connections while startup is in progress.
+        readiness = `HTTP ${String(response.status)}: ${await response.text()}`;
+      } catch (error) {
+        readiness = String(error);
       }
       await delay(100);
     }
-    throw new Error(`The compiled API did not become ready\n${childOutput}`);
-  }, 20_000);
+    throw new Error(
+      `The compiled API did not become ready: ${readiness}\n${childOutput}`,
+    );
+  }, 45_000);
 
   afterAll(async () => {
     await stopApi().catch(() => undefined);

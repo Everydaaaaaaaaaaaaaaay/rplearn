@@ -8,6 +8,36 @@ struct NPCAttentionPolicyTests {
     private let policy = NPCAttentionPolicy.standard
     private let referenceDate = Date(timeIntervalSince1970: 1_800_000_000)
 
+    @Test("共享服务端与客户端使用同一持久消息时序样本")
+    func sharedServerTimingFixture() throws {
+        let date = Date(timeIntervalSince1970: 1788433200)
+        let plan = policy.makeReplyPlan(attention: .focused,
+            userMessageID: try #require(UUID(uuidString: "4f4a0464-8c15-43d7-9dfb-30b98df72673")), sentAt: date)
+        #expect(abs(plan.generationStartsAt.timeIntervalSince(date) - 1.2) < 0.00001)
+        #expect(abs(plan.typingStartsAt.timeIntervalSince(date) - 4.027807) < 0.00001)
+        #expect(abs(plan.firstBubbleAt.timeIntervalSince(date) - 6.138114) < 0.00001)
+    }
+
+    @Test("共享服务端作息样本覆盖城市、四种作息与夏令时切换")
+    func sharedServerPresenceFixtures() throws {
+        let cases: [(String, NPCActivityRhythm, String, NPCAttentionLevel)] = [
+            ("Europe/London", .daytime, "2026-09-03T11:00:00Z", .offline),
+            ("Europe/London", .daytime, "2026-03-29T10:00:00Z", .online),
+            ("America/New_York", .nightOwl, "2026-11-01T10:00:00Z", .offline),
+            ("Australia/Melbourne", .earlyBird, "2026-10-04T03:00:00Z", .online),
+            ("Africa/Nairobi", .irregular, "2026-09-03T01:00:00Z", .offline),
+        ]
+        for (zone, rhythm, timestamp, expected) in cases {
+            let date = try #require(ISO8601DateFormatter().date(from: timestamp))
+            var npc = character(rhythm: rhythm, focusMinutes: 7)
+            npc.metAt = date.addingTimeInterval(-30 * 86400)
+            npc.card.activityProfile = .init(timeZoneIdentifier: zone, rhythm: rhythm)
+            let message = MessageDTO(id: try #require(UUID(uuidString: "4f4a0464-8c15-43d7-9dfb-30b98df72673")),
+                role: .user, kind: .text, text: "Are you there?", orderIndex: 1, createdAt: date)
+            #expect(policy.replyPlan(for: npc, userMessage: message, history: []).attention == expected)
+        }
+    }
+
     @Test("四档首气泡延迟严格落在产品区间且阶段有序")
     func replyRangesAndStageOrdering() throws {
         let ranges: [(NPCAttentionLevel, ClosedRange<TimeInterval>)] = [

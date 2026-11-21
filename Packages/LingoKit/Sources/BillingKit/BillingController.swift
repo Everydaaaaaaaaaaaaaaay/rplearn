@@ -22,7 +22,7 @@ public final class BillingController {
         case .loading: "正在加载订阅方案…"
         case .available: ""
         case .empty: "App Store 尚未提供这些商品，当前暂不可购买。"
-        case .unavailable: "购买服务尚未开通，当前无法付款。"
+        case .unavailable: "会员订阅尚未开放，开放后将显示 App Store 价格。"
         case .failed: "订阅方案加载未完成，请重新加载。"
         }
     }
@@ -99,7 +99,7 @@ public final class BillingController {
         catalogState = .loading
         do {
             try await refreshCatalogAndEntitlements()
-            try await reconcileCurrentTransactions()
+            if purchasesEnabled { try await reconcileCurrentTransactions() }
             try await refreshEntitlements()
             lastError = nil
         } catch {
@@ -179,6 +179,11 @@ public final class BillingController {
         )
         // 权益展示不依赖 App Store 商品目录是否暂时可达。
         try await apply(snapshot)
+        guard purchasesEnabled else {
+            products = []
+            catalogState = .unavailable
+            return
+        }
         let metadata = try await storefront.loadProducts(
             ids: Set(catalogByProductID.keys)
         )
@@ -199,7 +204,7 @@ public final class BillingController {
             )
         }
         .sorted(by: Self.productOrder)
-        catalogState = !purchasesEnabled ? .unavailable : products.isEmpty ? .empty : .available
+        catalogState = products.isEmpty ? .empty : .available
     }
 
     private func refreshEntitlements() async throws {

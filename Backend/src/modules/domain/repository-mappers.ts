@@ -20,6 +20,7 @@ export type ProfileRow = Readonly<{
   has_completed_onboarding: boolean;
   has_completed_profile_setup: boolean;
   learning_goal: LearningGoal;
+  learning_goals: readonly LearningGoal[] | null;
   placement_completed_at: string | null;
   placement_score: number | null;
   proficiency_source: ProficiencySource;
@@ -44,6 +45,7 @@ export function mapProfile(
     hasCompletedOnboarding: row.has_completed_onboarding,
     hasCompletedProfileSetup: row.has_completed_profile_setup,
     learningGoal: row.learning_goal,
+    learningGoals: row.learning_goals ?? [row.learning_goal],
     placementCompletedAt:
       row.placement_completed_at === null
         ? null

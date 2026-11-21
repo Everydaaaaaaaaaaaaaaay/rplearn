@@ -1,12 +1,16 @@
+import AVFoundation
 import BackendKit
 import BillingKit
+import ChatFeature
 import CoreKit
 import DesignSystem
 import DictKit
 import DomainKit
 import Foundation
+import HomeFeature
 import LLMKit
 import MediaKit
+import MapFeature
 import PersistenceKit
 import SpeechKit
 import SwiftData
@@ -44,10 +48,12 @@ final class AppEnvironment {
         guard resources == nil else { return }
         let startedAt = ContinuousClock.now
         resources = await resourcesTask.value
+        Task { await refreshSharedGrammarLibrary() }
         Log.app.info("启动耗时：等待随包资源 \(String(describing: startedAt.duration(to: .now)), privacy: .public)")
     }
 
     private(set) var workspace: AccountWorkspace?
+    var onboardingPreviewMode: OnboardingPreviewMode?
 
     var modelContainer: ModelContainer { requiredWorkspace.modelContainer }
     var accountCacheStore: AccountCacheStore { requiredWorkspace.accountCacheStore }
@@ -73,6 +79,11 @@ final class AppEnvironment {
     var billing: BillingController { requiredWorkspace.billing }
     var economyService: EconomyService { requiredWorkspace.economyService }
 
+    private var guestOutingChoiceAccountID: UUID?
+    var guestOutingChoiceRequired = false
+    var guestOutingProgressConflict = false
+    var adoptGuestServerProgress = false
+    var guestOutingToKeep: String?
     /// nil = 尚未加载；true = 需要走首启引导。
     var needsOnboarding: Bool?
     let audioSession: AudioSessionCoordinator
@@ -86,13 +97,15 @@ final class AppEnvironment {
         return workspace
     }
 
-    init() {
+    init(bootstrapAuthentication: Bool = true) {
         // 文件读取与解码不占用主线程；同时允许账号恢复独立进行。
         resourcesTask = Task.detached(priority: .userInitiated) {
             let bundle = Bundle.main
             return LaunchResources(
                 dictionary: try! DictDatabase(databaseURL: bundle.url(forResource: "learner_dictionary", withExtension: "sqlite")!),
-                grammarPoints: try! GrammarPointStore(url: bundle.url(forResource: "grammar_points", withExtension: "json")!),
+                grammarPoints: try! GrammarPointStore(url: bundle.url(forResource: "grammar_points", withExtension: "json")!,
+                    sharedCacheURL: FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+                        .appendingPathComponent("LingoTrip/SharedGrammar/v1.json")),
                 regionCatalog: try! RegionCatalog(url: bundle.url(forResource: "regions", withExtension: "json")!)
             )
         }
@@ -102,18 +115,39 @@ final class AppEnvironment {
         let speech = AdaptiveSpeechService(audioSession: audioSession)
         self.speech = speech
 
-        let keychain = KeychainStore()
+        let backendConfiguration = bootstrapAuthentication ? BackendConfiguration.live
+            : BackendConfiguration(baseURL: URL(string: "http://127.0.0.1:9")!, requestTimeout: 1)
+        var mainKeychainService = "com.lingotrip.app"
+        #if DEBUG
+        let isProvisionedAppointmentTest = BackendConfiguration.appointmentTestURL == backendConfiguration.baseURL
+        if isProvisionedAppointmentTest {
+            mainKeychainService = "com.lingotrip.debug.appointment-test.login.\(backendConfiguration.baseURL.absoluteString)"
+        }
+        #endif
+        let keychain = KeychainStore(service: bootstrapAuthentication
+            ? mainKeychainService : "com.lingotrip.onboarding-preview.\(UUID().uuidString)")
         self.keychain = keychain
-        LLMSettingsStore.purgeLegacyClientConfiguration(keychain: keychain)
+        if bootstrapAuthentication { LLMSettingsStore.purgeLegacyClientConfiguration(keychain: keychain) }
+        let credentials: any AuthCredentialStore = bootstrapAuthentication
+            ? KeychainAuthCredentialStore(keychain: keychain) : PreviewAuthCredentials()
+        let guestCredentials: any AuthCredentialStore = bootstrapAuthentication
+            ? KeychainAuthCredentialStore(keychain: keychain, isGuest: true) : PreviewAuthCredentials()
+        #if DEBUG
+        if bootstrapAuthentication, isProvisionedAppointmentTest {
+            try? AppointmentTestSessionTicket.importIfPresent("appointment-test-login.json", into: credentials)
+            UserDefaults.standard.set(true, forKey: "onboarding.welcome.completed.v1")
+        }
+        #endif
         let backendClient = BackendClient(
-            configuration: .live,
-            credentialStore: KeychainAuthCredentialStore(keychain: keychain),
-            guestCredentialStore: KeychainAuthCredentialStore(keychain: keychain, isGuest: true),
-            guestInstallationKey: try? GuestInstallationStore(keychain: keychain).loadOrCreate()
+            configuration: backendConfiguration,
+            credentialStore: credentials,
+            guestCredentialStore: guestCredentials,
+            guestInstallationKey: bootstrapAuthentication
+                ? try? GuestInstallationStore(keychain: keychain).loadOrCreate() : nil
         )
         self.backendClient = backendClient
-        let deviceID =
-            (try? DeviceIdentifierStore(keychain: keychain).loadOrCreate())
+        let deviceID = (bootstrapAuthentication
+            ? try? DeviceIdentifierStore(keychain: keychain).loadOrCreate() : nil)
             ?? UUID().uuidString.lowercased()
         let version =
             Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
@@ -135,7 +169,7 @@ final class AppEnvironment {
         )
 
         Log.app.info("AppEnvironment initialized")
-        Task { await authSession.bootstrap() }
+        if bootstrapAuthentication { Task { await authSession.bootstrap() } }
     }
 
     /// 首启引导数据：确保用户档案存在并导入 3 主角色（幂等），并判定是否需要首启引导。
@@ -143,12 +177,20 @@ final class AppEnvironment {
         let startedAt = ContinuousClock.now
         defer { Log.app.info("启动耗时：账号工作区 \(String(describing: startedAt.duration(to: .now)), privacy: .public)") }
         needsOnboarding = nil
+        if guestOutingChoiceAccountID != identity.userID {
+            guestOutingProgressConflict = false
+            guestOutingChoiceRequired = false
+            adoptGuestServerProgress = false
+            guestOutingToKeep = nil
+        }
         await deactivateAccount()
 
         let defaults = UserDefaults.standard
         let legacyOwnerID = defaults.string(forKey: "backend.state.cached-owner.v1")
             .flatMap(UUID.init(uuidString:))
         let legacyWasGuest = defaults.bool(forKey: "backend.state.guest-owner.v1")
+        let guestImportKey = "lingotrip.guest-journey-import.v1." + identity.userID.uuidString
+        let pendingGuestNamespaces = defaults.stringArray(forKey: guestImportKey)
         let preparation = try await Task.detached(priority: .userInitiated) {
             try AccountStoreLocation.prepare(
                 for: identity.userID,
@@ -162,6 +204,12 @@ final class AppEnvironment {
             try ModelContainerFactory.makeContainer(storeURL: storeURL)
         }.value
         Log.app.info("启动耗时：打开账号数据库 \(String(describing: databaseStartedAt.duration(to: .now)), privacy: .public)")
+        let legacyGuestContainer: ModelContainer? = try await Task.detached(priority: .userInitiated) {
+            let legacyURL = URL.applicationSupportDirectory.appending(path: "default.store")
+            guard !preparation.importedLegacyStore, (legacyWasGuest || pendingGuestNamespaces != nil),
+                  FileManager.default.fileExists(atPath: legacyURL.path) else { return nil }
+            return try ModelContainerFactory.makeContainer(storeURL: legacyURL)
+        }.value
         let account = await AccountWorkspace(
             userID: identity.userID,
             modelContainer: container,
@@ -173,35 +221,60 @@ final class AppEnvironment {
 
         do {
             let shouldCaptureGuestProfile: Bool
-            if preparation.importedLegacyStore {
+            if pendingGuestNamespaces != nil || legacyGuestContainer != nil {
+                shouldCaptureGuestProfile = true
+            } else if preparation.importedLegacyStore {
                 shouldCaptureGuestProfile = await account.userState.shouldCaptureGuestProfileForImport()
             } else {
                 shouldCaptureGuestProfile = false
             }
-            let guestProfile = shouldCaptureGuestProfile
-                ? try? await account.economyStore.profile()
-                : nil
+            let guestContainer = legacyGuestContainer ?? container
+            let guestEconomy = EconomyStore(modelContainer: guestContainer)
+            let guestRoster = RosterStore(modelContainer: guestContainer)
+            let guestContent = ContentSyncStore(modelContainer: guestContainer)
+            let guestProfile = shouldCaptureGuestProfile ? try await guestEconomy.profile() : nil
+            let guestRecords = legacyGuestContainer != nil ? try await guestContent.guestRecords() : nil
             let hasGuestNPCs = guestProfile != nil
-                ? try await account.rosterStore.allCharacters().contains(where: { !$0.isMainCharacter })
-                : false
+                ? try await guestRoster.allCharacters().contains(where: { !$0.isMainCharacter }) : false
             if let guestProfile,
                guestProfile.hasCompletedProfileSetup
                     || guestProfile.hasCompletedOnboarding
                     || hasGuestNPCs {
-                try await account.contentSyncStore.archiveGuestJourneyIfNeeded(
+                let sourceNamespaces = pendingGuestNamespaces ?? [legacyOwnerID?.uuidString, "inactive"].compactMap { $0 }
+                defaults.set(sourceNamespaces, forKey: guestImportKey)
+                try await guestContent.archiveGuestJourneyIfNeeded(
                     profile: guestProfile,
                     beforeLogin: true
                 )
                 do {
                     try await account.userState.activateAnonymous(
                         legacyProfile: guestProfile,
-                        completedStories: try await account.storyProgressStore.completedStoryIDs(),
-                        hadStarterTicket: try await account.itemStore.hasTicket(source: .quest)
+                        completedStories: try await StoryProgressStore(modelContainer: guestContainer).completedStoryIDs(),
+                        hadStarterTicket: try await ItemStore(modelContainer: guestContainer).hasTicket(source: .quest)
                     )
                 } catch let error as BackendClientError where error.code == "GUEST_ALREADY_CLAIMED" || error == .signedOut {
                     // The claim endpoint below verifies whether this is the same destination account.
                 }
-                try await backendClient.claimGuestJourney()
+                try await ActivityGuestJourney.prepareForClaim(namespaces: [identity.userID.uuidString], gateway: backendClient,
+                    adoptServerProgress: guestOutingChoiceAccountID == identity.userID && adoptGuestServerProgress)
+                do {
+                    let anonymous = try await backendClient.anonymousClient()
+                    try await ActivityGuestJourney.prepareForClaim(namespaces: sourceNamespaces, gateway: anonymous,
+                        adoptServerProgress: guestOutingChoiceAccountID == identity.userID && adoptGuestServerProgress)
+                } catch let error as BackendClientError where error.code == "GUEST_ALREADY_CLAIMED" || error == .signedOut {
+                    // A successful claim may have lost its response. The claim below checks its owner.
+                }
+                guestOutingProgressConflict = false
+                do {
+                    try await backendClient.claimGuestJourney(keepOuting: guestOutingChoiceAccountID == identity.userID ? guestOutingToKeep : nil)
+                    guestOutingChoiceRequired = false
+                } catch let error as BackendClientError where error.code == "OUTING_MERGE_CHOICE_REQUIRED" {
+                    guestOutingChoiceAccountID = identity.userID
+                    guestOutingChoiceRequired = true
+                    throw error
+                }
+                try await ActivityGuestJourney.mergeAfterClaim(from: sourceNamespaces, into: identity.userID.uuidString,
+                                                               gateway: backendClient)
             }
             let stateStartedAt = ContinuousClock.now
             let activation = try await account.userState.activate(userID: identity.userID, preferCache: true)
@@ -214,12 +287,27 @@ final class AppEnvironment {
             try await importMainCharacters(into: account)
             let contentStartedAt = ContinuousClock.now
             let contentActivation = try await account.contentSync.activate(userID: identity.userID, preferCache: true)
+            if let guestRecords { try await account.contentSyncStore.importGuestRecords(guestRecords) }
+            try await CityActivityRelease.bundled()?.migrateContacts(in: account.rosterStore)
             Log.app.info("启动耗时：内容激活 \(String(describing: contentStartedAt.duration(to: .now)), privacy: .public)，路径 \(String(describing: contentActivation), privacy: .public)")
             try await reconcileMainCharacters(profile: profile)
             await account.voiceMedia.activate(userID: identity.userID)
+            defaults.removeObject(forKey: guestImportKey)
+            guestOutingToKeep = nil
+            guestOutingChoiceAccountID = nil
+            guestOutingProgressConflict = false
+            adoptGuestServerProgress = false
             needsOnboarding = !profile.hasCompletedOnboarding
             return activation
         } catch {
+            if (error as? BackendClientError)?.code == "OUTING_CONFLICT" {
+                guestOutingChoiceAccountID = identity.userID
+                guestOutingProgressConflict = true
+            }
+            if let progress = error as? PlaceOutingProgress.ProgressError, case .staleRevision = progress {
+                guestOutingChoiceAccountID = identity.userID
+                guestOutingProgressConflict = true
+            }
             await deactivateAccount()
             throw error
         }
@@ -227,6 +315,10 @@ final class AppEnvironment {
 
     func deactivateAccount() async {
         needsOnboarding = nil
+        if onboardingPreviewMode != nil {
+            workspace = nil
+            return
+        }
         guard let current = workspace else { return }
         current.billing.deactivate()
         await current.learningChat.deactivate()
@@ -236,14 +328,42 @@ final class AppEnvironment {
         workspace = nil
     }
 
+    /// Replays the real post-login flow in an isolated, disposable account.
+    func activateOnboardingPreviewWorkspace() async throws -> UUID {
+        if let workspace { return workspace.userID }
+        let userID = UUID()
+        let container = try await Task.detached(priority: .userInitiated) {
+            try ModelContainerFactory.makeContainer(inMemory: true)
+        }.value
+        let account = await AccountWorkspace(userID: userID, modelContainer: container,
+            backend: backendClient, llm: llmRouter)
+        try await importMainCharacters(into: account)
+        let profile = try await account.economyStore.profile()
+        try await account.rosterStore.configureMainCharacters(
+            unlockedRegionIDs: Set(MainlineCatalog.journeys.map(\.starterRegionID)),
+            difficulty: profile.difficultyLevel)
+        try Task.checkCancellation()
+        workspace = account
+        needsOnboarding = onboardingPreviewMode == .completeFlow
+        return userID
+    }
+
     #if DEBUG
-    /// UI screenshots and interaction tests use an explicit in-memory fixture. Production builds
-    /// have no signed-out workspace and therefore cannot enter the application as a guest.
+    /// UI tests normally use memory. A UUID namespace opts into an isolated temporary store
+    /// only for tests that must verify process relaunch; it never opens an account store.
     func activateUITestWorkspace() async throws -> UUID {
         if let workspace { return workspace.userID }
         let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef01234567f0")!
+        let persistenceID = ProcessInfo.processInfo.environment["UI_TEST_PERSISTENCE_NAMESPACE"].flatMap(UUID.init(uuidString:))
         let container = try await Task.detached(priority: .userInitiated) {
-            try ModelContainerFactory.makeContainer(inMemory: true)
+            if let persistenceID {
+                let folder = FileManager.default.temporaryDirectory
+                    .appendingPathComponent("LingoTrip-UI-Tests", isDirectory: true)
+                    .appendingPathComponent(persistenceID.uuidString, isDirectory: true)
+                try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+                return try ModelContainerFactory.makeContainer(storeURL: folder.appendingPathComponent("workspace.store"))
+            }
+            return try ModelContainerFactory.makeContainer(inMemory: true)
         }.value
         let account = await AccountWorkspace(
             userID: userID,
@@ -254,6 +374,11 @@ final class AppEnvironment {
         try Task.checkCancellation()
         workspace = account
         try await importMainCharacters(into: account)
+        if ["places-preview", "world-preview"].contains(ProcessInfo.processInfo.environment["UI_TEST_TAB"] ?? "") {
+            _ = try await account.economyStore.updateProfile {
+                $0.currentRegionID = ProcessInfo.processInfo.environment["UI_TEST_SCENE_CITY"] ?? "london"
+            }
+        }
         // Exercise the real profile-driven backgrounds without touching a persisted account.
         if let regionID = ProcessInfo.processInfo.environment["UI_TEST_CITY_TAB_REGION"],
            regionCatalog.region(id: regionID) != nil {
@@ -266,6 +391,7 @@ final class AppEnvironment {
         )
         if ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1",
            ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] != "1",
+           ProcessInfo.processInfo.environment["UI_TEST_CHAT_TIMELINE_WORKFLOW"] != "1",
            let ruby = try await account.rosterStore.allCharacters().first(where: { $0.card.regionID == "melbourne" && $0.isMainCharacter }) {
             let conversation = try await account.chatStore.openConversation(characterID: ruby.id)
             var lines: [(MessageRole, String)] = [
@@ -287,13 +413,39 @@ final class AppEnvironment {
             } else if ProcessInfo.processInfo.environment["UI_TEST_RUNTIME_EXAMPLES"] == "1" {
                 lines = [(.assistant, "Murmuration was the word we discussed today.")]
             }
+            if ProcessInfo.processInfo.environment["UI_TEST_CHAT_SCROLL_HISTORY"] == "1" {
+                lines = (1...30).map { (.assistant, "River walk note \($0). The wind picked up beside the bridge.") } + lines
+            }
+            if ProcessInfo.processInfo.environment["UI_TEST_CHAT_TIMELINE_EVENTS"] == "1" {
+                lines = ChatTimelineEventPreview.lines
+            }
             for (index, line) in lines.enumerated() {
                 _ = try await account.chatStore.appendMessage(conversationID: conversation.id,
                     role: line.0, text: line.1, createdAt: Date().addingTimeInterval(Double(index - lines.count) * 60))
             }
+            if let path = ProcessInfo.processInfo.environment["UI_TEST_VOICE_CAPTURE_FILE"] {
+                let source = URL(fileURLWithPath: path)
+                let audio = try AVAudioFile(forReading: source)
+                let fileName = "CA970000-0000-4000-8000-000000000002.caf"
+                VoiceMessageStorage.delete(fileName: fileName)
+                try FileManager.default.copyItem(at: source, to: VoiceMessageStorage.url(for: fileName))
+                _ = try await account.chatStore.appendMessage(
+                    conversationID: conversation.id, role: .user, kind: .voice,
+                    text: "Could we meet at the café by the river tomorrow?",
+                    audioFileName: fileName,
+                    audioDuration: Double(audio.length) / audio.processingFormat.sampleRate
+                )
+                _ = try await account.chatStore.appendMessage(
+                    conversationID: conversation.id, role: .assistant, text: "Sure! Shall we say three?")
+            }
         }
         if ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1" {
             try await seedMarketingCapture(into: account)
+        }
+        if ProcessInfo.processInfo.environment["UI_TEST_GRAMMAR_FIXTURE"] != nil,
+           let ruby = try await account.rosterStore.allCharacters().first(where: { $0.card.regionID == "melbourne" && $0.isMainCharacter }) {
+            let conversation = try await account.chatStore.openConversation(characterID: ruby.id)
+            _ = try await account.chatStore.appendMessage(conversationID: conversation.id, role: .assistant, text: "Amazing!")
         }
         needsOnboarding = ProcessInfo.processInfo.environment["UI_TEST_SKIP_ONBOARDING"] != "1"
         return userID
@@ -335,6 +487,7 @@ final class AppEnvironment {
     }
 
     func refreshProactiveMessages(requestAuthorization: Bool) async {
+        guard onboardingPreviewMode == nil else { return }
         guard needsOnboarding == false else { return }
         await proactiveMessages.activate(
             scope: proactiveMessageScope,
@@ -353,6 +506,7 @@ final class AppEnvironment {
                     difficulty: profile.difficultyLevel
                 )
             }
+            if onboardingPreviewMode != nil { return }
             await proactiveMessages.learnerProfileDidChange()
             if needsOnboarding == false {
                 await refreshProactiveMessages(requestAuthorization: false)
@@ -399,6 +553,8 @@ final class AppEnvironment {
 /// from the previously active account while a new account is loading.
 @MainActor
 final class AccountWorkspace {
+    let journeyPresentation = JourneyPresentationCache()
+    let worldMapCache = WorldMapCache()
     let userID: UUID
     let userAvatar: UserAvatarStore
     let modelContainer: ModelContainer
@@ -526,7 +682,35 @@ final class AccountWorkspace {
             economyStore: economyStore,
             itemStore: itemStore
         )
+        await self.contentSync.configureFollowups(SharedChatFollowupCoordinator(
+            backend: backend, chatStore: chatStore, rosterStore: rosterStore,
+            memoryStore: stores.memoryStore, economyStore: economyStore, llm: llm,
+            afterReply: { character, conversationID in
+                if character.isMainCharacter,
+                   let conversation = try await chatStore.conversation(id: conversationID), conversation.turnCount >= 3,
+                   try await itemStore.hasTicket(source: .quest) == false,
+                   try await userState.claimStarterTicket() {
+                    try await chatStore.appendStarterTicketNoticeIfNeeded(conversationID: conversationID)
+                }
+                let messages = try await chatStore.messages(conversationID: conversationID)
+                let text = messages.suffix(12).map(\.text).joined(separator: " ").lowercased()
+                if ["meet", "tomorrow", "tonight", "coffee", "cafe", "café", "see you", "o'clock", "约", "明天", "后天", "周末", "见面", "咖啡", "下午", "上午", "晚上", "改期"].contains(where: text.contains) {
+                    _ = try await backend.detectAppointments(characterID: character.id, conversationID: conversationID)
+                    await MainActor.run {
+                        NotificationCenter.default.post(name: .chatAppointmentsDidChange, object: character.id)
+                    }
+                }
+            }))
+        await journeyPresentation.refreshLocal(economy: economyStore, items: itemStore,
+            progress: storyProgressStore, ticketStubs: ticketStubStore)
     }
+}
+
+/// Preview clients never load, persist or remove a real sign-in credential.
+private struct PreviewAuthCredentials: AuthCredentialStore {
+    func load() throws -> StoredAuthCredential? { nil }
+    func remove() throws {}
+    func save(_ credential: StoredAuthCredential) throws {}
 }
 
 /// 在后台创建仓库的 ModelContext，避免后续 actor 查询仍排队到主线程。

@@ -1,0 +1,119 @@
+{
+  "date": "2026-10-31",
+  "feature": "Shared grammar analysis and reviewed local-library growth",
+  "behavior": [
+    "The AI tab, local fallback button and retry use one stable SwiftUI task and observable loading model.",
+    "Cancellation does not surface as failure; generation tokens reject stale results and successful analysis is reused.",
+    "Registered users call the typed grammar endpoint; compatible server rollback falls back on HTTP 404.",
+    "AI produces sentence-specific analysis separately from generic reusable proposals.",
+    "Canonical IDs, normalized structural fingerprints, independent semantic review and serialized catalog-revision checks prevent duplicate publication.",
+    "Uncertain proposals and proposals reviewed against a changed catalog remain unpublished.",
+    "Catalog prompts are bounded; analysis prioritizes relevant rules and independent publication review scans all batches.",
+    "Background review retries use distinct attempt operation IDs, stable within each attempt; review costs use the service budget.",
+    "Reviewed shared rules persist on PostgreSQL, sync into an atomically saved on-device cache and remain usable offline."
+  ],
+  "privacy": {
+    "publicLibrary": "Generic rules and newly generated examples only; the source sentence is not a catalog field.",
+    "reviewQueue": "Encrypted generic proposal, fingerprints and audit identifiers; no original chat sentence field."
+  },
+  "checks": {
+    "hostedSwift": [
+      {
+        "passed": 6,
+        "log": "build/grammar-ios-tests.log"
+      },
+      {
+        "passed": 21,
+        "log": "build/grammar-client-verification.log"
+      },
+      {
+        "passed": 5,
+        "log": "build/grammar-canonical-decoding.log"
+      }
+    ],
+    "ui": {
+      "passed": 2,
+      "tests": [
+        "GrammarAnalysisFlowTests/testDirectAITabSucceedsAfterLocalMiss",
+        "GrammarAnalysisFlowTests/testRetryAndLocalButtonShareTheSameSuccessfulAnalysis"
+      ],
+      "logs": [
+        "build/grammar-direct-ui.log",
+        "build/grammar-retry-ui.log"
+      ],
+      "screenshot": "build/grammar-ui-accepted/481797E1-87A6-49BE-8BFC-99258D800D48.png",
+      "provider": "Deterministic Debug fixtures; not a live-provider claim"
+    },
+    "backendUnit": {
+      "passed": 34,
+      "log": "build/grammar-unit-final.log"
+    },
+    "isolatedDatabase": {
+      "passed": 17,
+      "report": "build/grammar-final-database-verification/report.json",
+      "includes": [
+        "Concurrent reconciliation",
+        "Single durable review job",
+        "Revision quarantine",
+        "Encrypted queue to independent review to catalog reuse",
+        "Service-funded review billing"
+      ]
+    },
+    "static": [
+      "Backend typecheck, focused ESLint, architecture and build passed",
+      "iOS architecture and git diff checks passed"
+    ],
+    "preview": {
+      "installed": true,
+      "simulator": "659893A7-0822-43F4-8DA1-4A92E9C78814",
+      "command": "Scripts/preview.sh preview messages",
+      "log": "build/grammar-final-preview.log",
+      "screenshot": "build/grammar-final-preview.png",
+      "computerUse": "Device Hub app tree available but its captured screen is blank; verified native screenshot and targeted XCTest interactions instead."
+    }
+  },
+  "production": {
+    "status": "passed",
+    "release": "grammar-20261031-v2",
+    "rollbackRelease": "grammar-compat-20261031-v1",
+    "appliedMigrations": 45,
+    "health": "API and worker active; readiness status ready; deployment resource observation passed",
+    "publicCatalog": {
+      "url": "https://rplearn.haruyuki.cn/v1/grammar/catalog",
+      "status": 200,
+      "points": 101,
+      "uniqueIDs": 101,
+      "evidence": "build/grammar-public-online-catalog.json"
+    },
+    "unauthenticatedAnalysisStatus": 401,
+    "liveProbe": {
+      "input": "Fixed generic English sentences; synthetic UUID actor without email, identity or login session; locked after verification",
+      "knownRule": "I have already finished my homework. → present-perfect",
+      "newRule": "I do appreciate your help. → independently reviewed emphatic do / does / did",
+      "sharedID": "shared-dfffdd1908258239a2adf460ac792d1a",
+      "counts": {
+        "before": 100,
+        "afterReview": 101,
+        "afterReuse": 101,
+        "sharedConcepts": 1,
+        "uniqueSharedIdentities": 1,
+        "uniqueSharedPatterns": 1
+      },
+      "reuse": "Follow-up analysis returned the same shared canonical ID and learnedPoints for local persistence.",
+      "billing": "Successful grammar_library_review settled under service scope; normal grammar analyses settled under user scope.",
+      "evidence": "build/grammar-online-final.json"
+    },
+    "encounteredAndResolved": [
+      "The first staging archive contained nonportable sparse metadata; extraction stopped before switching service. Portable archives preserved file bytes.",
+      "The first independent review had AI_UPSTREAM_UNAVAILABLE. Attempt-specific idempotency keys fixed the retry lock; the same synthetic job then succeeded on attempt 4. Its original pending usage audit was preserved."
+    ],
+    "releaseArchives": [
+      "build/grammar-compat-portable.tar.gz",
+      "build/grammar-release-v2-portable.tar.gz"
+    ]
+  },
+  "limits": [
+    "Semantic equivalence is reviewed conservatively; this is not a claim of mathematically infallible AI deduplication.",
+    "The simulator preview is an iOS Debug install, not an App Store release."
+  ]
+}

@@ -4,6 +4,52 @@
 Caddy 是唯一公网入口；`PUBLIC_HOST` 提供 App API，`ADMIN_HOST` 仅提供受管理员鉴权保护的
 AI 控制台。API、Worker、PostgreSQL 17、Redis、MinIO 和 Mailpit 均只在本机监听。
 
+## 2026-11-05 多设备共享聊天发布
+
+已激活 `shared-chat-20261105-v4-ef30a26fc0f2`，后端源码 `ef30a26fc0f2`。
+发布包 SHA-256 为 `7af37d28194e650efae5d49418b2c49e7b0d86ae17d09be54e2ba60763e65387`。
+先发布 `shared-chat-compat-20261105-bfbb6b13`，再追加 0047/0048 迁移，迁移总数为 49。
+兼容回退已通过实际 49 条迁移的启动校验，原赴约版本与历次发布目录保留。
+发布使用原生维护入口及现有资源上限，并通过稳定观察。
+
+两个独立登录会话经过公网 API 和当前真实模型验证，覆盖并发消息、延迟到达、丢失确认重放、
+一致历史、明确回复覆盖、重试回执与跨账号隔离。最终两次模型生成对应两笔已结算记录，
+未确认记录为零。初轮暴露的 JSON-null 账本判断和 Node 250ms 建连窗口已修复。
+API/Worker/Caddy active，公网 readiness 正常。六个合成测试账号已锁定且会话撤销，
+早期测试遗留的未确认生成已停止，内容与账本证据保留。
+
+账号启用共享协议后，旧客户端的独立聊天生成接口返回 `CHAT_PROTOCOL_REQUIRED`，需要升级客户端。
+新版 iOS 已安装预览模拟器，公网端到端使用独立 HTTP 会话。验证范围及本地测试结果见
+[实现与验收记录](../superpowers/plans/2026-11-05-shared-chat-ordering.md)。
+
+## 2026-11-01 赴约系统发布
+
+当前版本 `appointments-20261101-v7`（后端源码 `5474b97d`），上一版本 v6 和原业务兼容回退
+`appointments-compat-20261101-v1` 保留。迁移 0046 仅新增赴约表及 AI 路由，迁移总数 46→47；
+先发布兼容回退再执行迁移，原库及迁移历史保留。完整备份和各轮原始验证记录位于受限目录
+`/opt/lingotrip/backups/appointments-20261101-v1/`。
+
+53 项真实线上业务检查通过，包含实际模型回复建约、自由输入、失败恢复、Swift 算法结算和
+记忆遗忘；实际 v7 审核能拒绝已知的行为切换／双语矛盾样本。额外未通过的生成样章未入正式路径，
+不承诺所有输入一次生成成功。API／Worker／Caddy active，readiness 正常，4 个测试账号已锁定、
+会话已撤销；新版活动世界保持未启用。未发布 iOS App Store 构建。
+备份／归档哈希、适用回退、定向检查与未测项见[发布记录](../verification/appointment-backend-release-20261101.json)。
+
+## 2026-10-31 活动后端基础发布
+
+已激活 `857bc77b59a3`，可回退到 `activity-compat-20261031-v1`；原 `grammar-20261031-v2` 保留。
+迁移 0045 仅新增城市地点外出、快照、回执与保底表。先发布精确迁移兼容回退版本，再执行迁移，
+回退程序已通过实际 46 条迁移记录的兼容校验。完整数据库备份位于服务器受限目录
+`/opt/lingotrip/backups/activities-20261031-857bc77b59a3/`。
+
+两次发布均经维护资源限制和稳定观察；18 项线上校验通过，API/Worker/Caddy active，readiness 正常。
+旧版相遇及重试仍正常，现有语法库保留。尚未导入或启用新版活动世界，未完成内容继续关闭；
+iOS App Store 版本未发布。验证范围、归档/备份哈希及未测项见
+[发布记录](../verification/activity-backend-release-20261031.json)。
+
+macOS 打包现使用普通 PAX 文件条目，避免 BSD tar 的 GNU.sparse 元数据造成 Linux 解包失败；
+保留普通文件内容与权限，作者草稿、资源分叉不入包。
+
 ## 2026-10-07 恢复后重新上线
 
 当前线上版本为`2677fe38`，维护资源保护与每分钟资源留档已上线；正式内容保持738道公共题、
@@ -44,7 +90,12 @@ cd /opt/lingotrip/backend
 
 ## 发布
 
-发布包在开发机编译，只包含 `dist`、当前迁移基线和生产依赖清单：
+自 2026-11-19 起，生产环境只接收完整发布包并通过正式入口切换版本。测试、验收、演练和临时
+探针在本地或独立非生产环境执行，包括需要真实模型的用例。生产故障排查使用只读状态、
+健康检查与日志。旧发布记录中的线上验收和单项导入步骤按这条规则处理。
+
+开发机按生产系统与架构交叉编译、构建和打包，准备可直接运行的发布产物和所需预构建依赖。
+已有与版本匹配的生产依赖缓存时，可用现有打包脚本生成版本包并上传。
 
 ```bash
 cd Backend
@@ -56,17 +107,15 @@ ssh root@<server> \
 
 线上运维脚本安装在 `/opt/lingotrip/ops/native-server`，与发布目录分开；旧 `/opt/lingotrip/backend` 链接可能指向已清理的历史目录，不能作为发布入口。发布包在独立临时目录编译，不携带已删除源码的旧编译产物或 macOS 资源分叉文件。
 
-部署脚本会安装内容寻址的生产依赖、执行数据库迁移、收紧运行时权限、原子切换
+正式发布入口要求已有匹配的预构建生产依赖，随后执行包内数据库迁移、收紧运行时权限、原子切换
 `/opt/lingotrip/current`，然后重启 API 和 Worker 并检查 readiness。应用启动失败会切回
 上一个发布目录；数据库结构不自动回滚。
 
 默认保留已有发布目录，不在切换后集中清理旧文件。只有另行确认回滚保留范围后，才可设置
-`DEPLOY_PRUNE_RELEASES=1` 恢复旧的保留最近五个目录行为。故障恢复发布使用
-`DEPLOY_REQUIRE_CACHED_DEPENDENCIES=1`：缓存缺失时停止，不临时在线安装依赖。
-生产更新统一经过`maintenance.sh`，直接调用`deploy.sh`也会转入该入口。生产题库CLI检测实际
-cgroup与内存限制，普通SSH直接运行会拒绝。入口使用跨发布/导入的统一锁和固定systemd单元名，
-即使终端断开也不会解除资源边界。已有健康版本是更新前提；没有可验证回滚版本时拒绝切换，
-首次建站需先单独完成底版初始化。
+`DEPLOY_PRUNE_RELEASES=1` 恢复旧的保留最近五个目录行为。正式发布入口固定启用
+`DEPLOY_REQUIRE_CACHED_DEPENDENCIES=1`。缺少匹配依赖时停止切换，在本地补齐目标平台产物。
+生产更新统一经过 `maintenance.sh deploy`，使用发布锁和固定 systemd 单元。切换前要求当前版本健康
+且可验证回滚。首次建站需先单独完成底版初始化。
 
 维护门槛：可用内存至少384MiB、空闲磁盘至少512MiB、readiness正常，且没有持续内存/I/O阻塞。
 维护任务上限256MiB、Node堆128MiB、swap为0、CPU50%、磁盘读写各2MB/s（2,000,000字节/秒）、总时限10分钟。
@@ -74,16 +123,7 @@ cgroup与内存限制，普通SSH直接运行会拒绝。入口使用跨发布/�
 超时或OOM通过`ExecStopPost`恢复先前程序版本，不回退用户数据库。恢复后还须检查公网健康。
 正常更新不改变内核参数，不为通过门槛临时扩大配额或关闭业务。
 
-```bash
-sudo /opt/lingotrip/ops/native-server/maintenance.sh catalog-validate
-sudo /opt/lingotrip/ops/native-server/maintenance.sh bank-validate
-sudo /opt/lingotrip/ops/native-server/maintenance.sh catalog-publish <完整目录哈希>
-sudo /opt/lingotrip/ops/native-server/maintenance.sh bank-publish <完整题库哈希>
-```
-
-正式目录仍逐个校验所有媒体字节和审核记录，但不在返回对象中保留所有媒体Buffer；上传前再次
-读取和验证，防止校验后替换。目录哈希和原子事务保持不变。CLI把阶段、耗时、RSS写入stderr，
-stdout仍为原JSON结果；发布事务有5秒锁等待、30秒单语句及事务空闲超时。
+目录和题库的校验、试导入及验收也在独立环境完成。新内容随对应的完整发布包上线切换。
 
 `lingotrip-resource-sampler.timer`每分钟采集`/proc`资源信息与主要进程的RSS、CPU和磁盘增量，
 不采集参数、环境变量或业务内容。文件位于`/var/log/lingotrip/resources.jsonl`，每份4MiB、

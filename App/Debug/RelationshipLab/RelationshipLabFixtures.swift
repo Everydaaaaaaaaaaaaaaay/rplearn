@@ -339,6 +339,7 @@ enum RelationshipLabFixtures {
 extension RelationshipEventRecord.Source {
     var labTitle: String {
         switch self {
+        case .appointment: "赴约"
         case .textChat: "文字"
         case .voiceChat: "语音"
         case .sharedActivity: "活动"

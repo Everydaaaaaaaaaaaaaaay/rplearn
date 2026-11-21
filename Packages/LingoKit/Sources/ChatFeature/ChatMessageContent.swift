@@ -9,7 +9,7 @@ import SpeechKit
 import SwiftUI
 import Translation
 
-extension ChatView {
+extension ChatTranscriptView {
 // MARK: - 教练纠错
 
     /// 本条消息的点评。落库后仍按原文复核一次，历史误存的上文旧错句不再显示。
@@ -28,6 +28,7 @@ extension ChatView {
                 side: .outgoing,
                 groupPosition: groupPosition,
                 leadingAccessory: { coachButton(message) },
+                onMenuRequest: { presentBubbleMenu(message, frame: $0) },
                 contextMenu: { bubbleMenu(message) }
             ) {
                 tappableText(message, textColor: .white)
@@ -36,6 +37,7 @@ extension ChatView {
             MessageBubble(
                 side: .outgoing,
                 groupPosition: groupPosition,
+                onMenuRequest: { presentBubbleMenu(message, frame: $0) },
                 contextMenu: { bubbleMenu(message) }
             ) {
                 tappableText(message, textColor: .white)
@@ -135,18 +137,14 @@ extension ChatView {
                     transcript: message.text,
                     hasAudio: message.audioFileName != nil || message.audioAssetID != nil
                 ),
-                isPlaying: voicePlayer.playingFileName != nil && voicePlayer.playingFileName == message.audioFileName,
+                isPlaying: voicePlayer.playingMessageID == message.id,
+                isLoading: voicePlayer.loadingMessageID == message.id,
+                playbackFailed: voicePlayer.failedMessageID == message.id,
                 showTranscript: transcriptVisibleMessageIDs.contains(message.id),
                 textColor: textColor,
-                onTogglePlay: {
-                    Task {
-                        guard let fileName = await viewModel.localVoiceFile(for: message) else {
-                            return
-                        }
-                        await voicePlayer.togglePlay(fileName: fileName)
-                    }
-                }
+                onTogglePlay: { toggleVoicePlayback(message) }
             )
+            .accessibilityIdentifier("chat.voice.\(message.id.uuidString)")
         } else {
             let displayText = message.role == .assistant
                 ? RoleplayReplyFormatter.streamingPreview(from: message.text)
@@ -165,6 +163,17 @@ extension ChatView {
                 selection: wordSelection,
                 onSelect: selectWord
             )
+        }
+    }
+
+    func toggleVoicePlayback(_ message: MessageDTO) {
+        let stopped = autoReadQueue.interrupt()
+        Task {
+            await voicePlayer.togglePlay(messageID: message.id) {
+                await stopped?.value
+                await deps.speech.stopSpeaking()
+                return await viewModel.localVoiceFile(for: message)
+            }
         }
     }
 
@@ -204,6 +213,9 @@ extension ChatView {
         )
     }
 
+}
+
+extension ChatView {
     /// 词典未收录时的 AI 简释兜底（fast 档）。
     var aiWordFallback: @Sendable (String) async -> String? {
         deps.lookupAIWordFallback

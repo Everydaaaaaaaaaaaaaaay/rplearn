@@ -1,0 +1,678 @@
+{
+  "id": "departures_mainline_capetown_v2",
+  "version": 2,
+  "title": "故事是谁的",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "开普敦 · 印好的标题",
+    "照片里的那一站",
+    "开门以后"
+  ],
+  "shots": {
+    "room": {
+      "background": "dp_capetown_workshop",
+      "actors": []
+    },
+    "host": {
+      "background": "dp_capetown_workshop",
+      "actors": [
+        {
+          "id": "Amara",
+          "asset": "dp_amara_offer",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "cards": {
+      "background": "dp_capetown_workshop",
+      "actors": [
+        {
+          "id": "Amara",
+          "asset": "dp_amara_cards",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "together": {
+      "background": "dp_capetown_captions",
+      "actors": []
+    },
+    "amina": {
+      "background": "dp_capetown_workshop",
+      "actors": [
+        {
+          "id": "Amina",
+          "asset": "dp_amina_boundary",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "jonas": {
+      "background": "dp_capetown_workshop",
+      "actors": [
+        {
+          "id": "Jonas",
+          "asset": "dp_jonas_apology",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "printed": {
+      "background": "dp_capetown_cards_local",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "host",
+      "speaker": "旁白",
+      "text": "Amara unrolls a title above the neighbourhood photographs.",
+      "translation": "Amara 把印好的标题展开，挂在社区照片上方。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "host",
+      "speaker": "Amara",
+      "text": "'The Best Years of Our Lives.' Too much?",
+      "translation": "“我们最好的那些年。”是不是有点过了？",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "Good years for who?",
+      "translation": "谁的好日子？",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "host",
+      "speaker": "旁白",
+      "text": "Amara stops smoothing the paper.",
+      "translation": "Amara 的手还按在纸上，没再往下抹。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "One photo shows their street, with the mountain behind it.",
+      "translation": "有张照片拍的是他们那条老街，后面就是山。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "host",
+      "speaker": "Amara",
+      "text": "Your old street. Jonas says they'll know it without a label.",
+      "translation": "你们以前那条街。Jonas 说牌子都不用挂，大家就认得。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "I know it. I was trying very hard to leave it.",
+      "translation": "我认得。那时候，我正拼了命地想离开。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "jonas",
+      "speaker": "Jonas",
+      "text": "I said they'd know the street. Not that title.",
+      "translation": "我说的是街，没说这几个字。",
+      "next": "start_9"
+    },
+    {
+      "id": "start_9",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "room",
+      "speaker": "旁白",
+      "text": "People are outside. One end of the title is stuck fast.",
+      "translation": "外头已经有人了。标题的一头还贴得死死的。",
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "cards",
+      "speaker": "你的选择",
+      "text": "Which part of their story do you ask about?",
+      "translation": "你想先听谁讲讲这条街？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Amina, what were you leaving for?",
+          "translation": "Amina，那时你为什么离开？",
+          "next": "bag",
+          "flags": {
+            "first_a": true
+          },
+          "review": {
+            "context": "Amina 对“最好的岁月”这个展览标题有异议。",
+            "outcome": "她讲起去参加学徒面试的事。她数了三遍车费，身上的钱只够坐一趟。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Jonas, is that your front step?",
+          "translation": "Jonas，那是你家门前的台阶吗？",
+          "next": "step",
+          "flags": {
+            "first_a": false
+          },
+          "review": {
+            "context": "Jonas 认得老街，却没同意这个展览标题。",
+            "outcome": "他讲起积水的台阶和找钥匙的旧习惯，也发现自己路过时还会下意识去找小店的灯。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bag",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "A job interview. I borrowed a bag with a good zip.",
+      "translation": "去面试。借了个包，拉链好使。",
+      "next": "bag_2"
+    },
+    {
+      "id": "bag_2",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "I counted the fare three times. One wrong bus and I was stuck.",
+      "translation": "车费我数了三遍。坐错一趟，我就没钱再坐一遍了。",
+      "next": "bag_3"
+    },
+    {
+      "id": "bag_3",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "jonas",
+      "speaker": "Jonas",
+      "text": "I thought you were coming back from shopping.",
+      "translation": "我以为你刚买完东西回来。",
+      "next": "bag_4"
+    },
+    {
+      "id": "bag_4",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "You always thought I was on my way home.",
+      "translation": "你总觉得我是往家走。",
+      "next": "bag_5"
+    },
+    {
+      "id": "bag_5",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "jonas",
+      "speaker": "旁白",
+      "text": "Jonas looks again. His finger stops at the front step.",
+      "translation": "Jonas 又凑近看了看，手指停在门前的台阶上。",
+      "next": "bag_6"
+    },
+    {
+      "id": "bag_6",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "I got the apprenticeship. I didn't hurry back.",
+      "translation": "那个学徒的活儿我后来拿到了。我没急着回来。",
+      "next": "title"
+    },
+    {
+      "id": "step",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "jonas",
+      "speaker": "Jonas",
+      "text": "Mine. The top step held water after every rain.",
+      "translation": "是啊，我家的。一下雨，最上面那级就一汪水。",
+      "next": "step_2"
+    },
+    {
+      "id": "step_2",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "jonas",
+      "speaker": "Jonas",
+      "text": "I'd stand there looking for my key. Same pocket, always.",
+      "translation": "我总站那儿找钥匙。明明一直放同一个口袋。",
+      "next": "step_3"
+    },
+    {
+      "id": "step_3",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "You used to blame the coat.",
+      "translation": "你以前总怪外套。",
+      "next": "step_4"
+    },
+    {
+      "id": "step_4",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "jonas",
+      "speaker": "Jonas",
+      "text": "I still blame the coat.",
+      "translation": "现在也怪。",
+      "next": "step_5"
+    },
+    {
+      "id": "step_5",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "jonas",
+      "speaker": "旁白",
+      "text": "He points to a little shop at the edge of the picture.",
+      "translation": "他指了指照片边上那家小店。",
+      "next": "step_6"
+    },
+    {
+      "id": "step_6",
+      "act": 0,
+      "location": "开普敦 · 印好的标题",
+      "shot": "jonas",
+      "speaker": "Jonas",
+      "text": "The shop's gone. I still look for its light sometimes.",
+      "translation": "店早没了。有时候路过，我还会往那儿看，看灯亮没亮。",
+      "next": "title"
+    },
+    {
+      "id": "title",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "host",
+      "speaker": "Amara",
+      "text": "I wrote the title. I wanted it to look like an occasion.",
+      "translation": "标题是我写的。我就是想让它看起来像个展。",
+      "next": "title_2"
+    },
+    {
+      "id": "title_2",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "host",
+      "speaker": "旁白",
+      "text": "She pulls the tape. The paper tears at one corner.",
+      "translation": "她扯下胶带。纸的一角撕破了。",
+      "next": "title_3"
+    },
+    {
+      "id": "title_3",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "jonas",
+      "speaker": "Jonas",
+      "text": "The street name would have done.",
+      "translation": "写街名就够了。",
+      "next": "title_4"
+    },
+    {
+      "id": "title_4",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "With something underneath. Or they'll make up the rest.",
+      "translation": "底下还是得写两句。不然他们自己就给你编齐了。",
+      "next": "title_5"
+    },
+    {
+      "id": "title_5",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "host",
+      "speaker": "旁白",
+      "text": "Amara sets down two blank cards. Someone tries the door.",
+      "translation": "Amara 放下两张空白卡。外头有人拉了一下门。",
+      "next": "second"
+    },
+    {
+      "id": "second",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "cards",
+      "speaker": "你的选择",
+      "text": "How would you like to help arrange it?",
+      "translation": "你想怎么帮忙布置？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Keep the photo. Put their words beside it.",
+          "translation": "留下照片，把他们的话放在旁边。",
+          "next": "captions",
+          "flags": {
+            "second_a": true
+          },
+          "review": {
+            "context": "印好的概括性标题已撤下，两个人仍对老街有不同感受。",
+            "outcome": "两人各写一句。Jonas 觉得 Amina 的话重，她没改。来的人先读两张卡，再抬头看他们。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let them introduce the photo when visitors arrive.",
+          "translation": "让他们在来客面前各自讲讲这张照片。",
+          "next": "hand",
+          "flags": {
+            "second_a": false
+          },
+          "review": {
+            "context": "两人的记忆落在照片的不同细节上。",
+            "outcome": "来客以为 Amina 也怀念老街。她当场纠正，看到对方打开本子，又决定哪一部分可以留下。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "captions",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "printed",
+      "speaker": "旁白",
+      "text": "Amina writes 'a place to leave'. Jonas writes 'the way home'.",
+      "translation": "Amina 写“想离开的地方”。Jonas 写“回家的路”。",
+      "next": "captions_2"
+    },
+    {
+      "id": "captions_2",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "jonas",
+      "speaker": "Jonas",
+      "text": "That's a bit harsh, isn't it?",
+      "translation": "你这句说得也太重了吧。",
+      "next": "captions_3"
+    },
+    {
+      "id": "captions_3",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "Those years were hard on me.",
+      "translation": "那几年我过得也够呛啊。",
+      "next": "captions_4"
+    },
+    {
+      "id": "captions_4",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "printed",
+      "speaker": "旁白",
+      "text": "He looks at her card, then moves his closer to the step.",
+      "translation": "他看看她的卡，把自己那张移得更靠近台阶。",
+      "next": "captions_5"
+    },
+    {
+      "id": "captions_5",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "printed",
+      "speaker": "Amara",
+      "text": "No room for the street name. I'll get the door.",
+      "translation": "街名没地方写了。行，我去开门。",
+      "next": "captions_6"
+    },
+    {
+      "id": "captions_6",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "printed",
+      "speaker": "旁白",
+      "text": "The first visitor reads both cards before looking up.",
+      "translation": "第一个来的人先把两张卡都读了，这才抬头。",
+      "next": "close_captions"
+    },
+    {
+      "id": "hand",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "together",
+      "speaker": "旁白",
+      "text": "Amara opens the door. The blank cards stay on the table.",
+      "translation": "Amara 开了门。空白卡还搁在桌上。",
+      "next": "hand_2"
+    },
+    {
+      "id": "hand_2",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "together",
+      "speaker": "Amina",
+      "text": "I'll answer if they ask. Just don't hand me a mic.",
+      "translation": "有人问我就答。千万别给我递话筒。",
+      "next": "hand_3"
+    },
+    {
+      "id": "hand_3",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "together",
+      "speaker": "Jonas",
+      "text": "That's the shop. He sold sweets one at a time.",
+      "translation": "就这家店。那老板一颗一颗地卖糖。",
+      "next": "hand_4"
+    },
+    {
+      "id": "hand_4",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "together",
+      "speaker": "旁白",
+      "text": "A visitor tells Amina, 'You must miss it too.'",
+      "translation": "有个来客对 Amina 说：“你肯定也挺想这条街的。”",
+      "next": "hand_5"
+    },
+    {
+      "id": "hand_5",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "together",
+      "speaker": "旁白",
+      "text": "She starts to nod. Then she looks at him.",
+      "translation": "Amina 下意识要点头。点到一半，她抬眼看他。",
+      "next": "hand_6"
+    },
+    {
+      "id": "hand_6",
+      "act": 1,
+      "location": "照片里的那一站",
+      "shot": "together",
+      "speaker": "Amina",
+      "text": "Miss it? I used to count out the fare just to get away.",
+      "translation": "想这条街？我那时候数着钱，就盼能坐上车走。",
+      "next": "close_hand"
+    },
+    {
+      "id": "close_captions",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "printed",
+      "speaker": "旁白",
+      "text": "Another visitor bends to read Amina's card.",
+      "translation": "又一个来客弯下腰，凑近去读 Amina 那张卡。",
+      "branch": {
+        "flag": "first_a",
+        "yes": "end_captions_a",
+        "no": "end_captions_b"
+      }
+    },
+    {
+      "id": "end_captions_a",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "amina",
+      "speaker": "旁白",
+      "text": "Amina counts the old fare on her fingers once more.",
+      "translation": "Amina 用手指又数了一遍那趟车费。",
+      "next": "end_captions_a_2"
+    },
+    {
+      "id": "end_captions_a_2",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "Huh. I still remember the fare.",
+      "translation": "啧，这钱我居然还记得。",
+      "next": "end_captions_a_3"
+    },
+    {
+      "id": "end_captions_a_3",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "amina",
+      "speaker": "旁白",
+      "text": "The visitor waits. Amina lowers her hand.",
+      "translation": "来客还在等。Amina 垂下手，没接着往下讲。",
+      "ending": true,
+      "experienceID": "CM2CAPTIONSA"
+    },
+    {
+      "id": "end_captions_b",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "jonas",
+      "speaker": "旁白",
+      "text": "Jonas reaches for his coat pocket while he talks.",
+      "translation": "Jonas 说话时，手又伸向外套口袋。",
+      "next": "end_captions_b_2"
+    },
+    {
+      "id": "end_captions_b_2",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "Key still there?",
+      "translation": "钥匙还在？",
+      "next": "end_captions_b_3"
+    },
+    {
+      "id": "end_captions_b_3",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "jonas",
+      "speaker": "旁白",
+      "text": "He pats the other pocket before he answers.",
+      "translation": "他又摸了摸另一边，才回答。",
+      "ending": true,
+      "experienceID": "CM2CAPTIONSB"
+    },
+    {
+      "id": "close_hand",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "amina",
+      "speaker": "旁白",
+      "text": "The visitor takes out a notebook. Amina sees his pen.",
+      "translation": "那人拿出个本子。Amina 看了一眼他手里的笔。",
+      "branch": {
+        "flag": "first_a",
+        "yes": "end_hand_a",
+        "no": "end_hand_b"
+      }
+    },
+    {
+      "id": "end_hand_a",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "amina",
+      "speaker": "旁白",
+      "text": "Amina counts the fare on her fingers. His pen hovers.",
+      "translation": "Amina 掰着指头数车费。他的笔一直悬着。",
+      "next": "end_hand_a_2"
+    },
+    {
+      "id": "end_hand_a_2",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "You can write that number down. Leave the rest out.",
+      "translation": "那个数你可以记。剩下的就别写了。",
+      "next": "end_hand_a_3"
+    },
+    {
+      "id": "end_hand_a_3",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "amina",
+      "speaker": "旁白",
+      "text": "He writes a number. The line beneath it stays blank.",
+      "translation": "他记下一个数。底下那行还是空的。",
+      "ending": true,
+      "experienceID": "CM2HANDA"
+    },
+    {
+      "id": "end_hand_b",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "jonas",
+      "speaker": "旁白",
+      "text": "Jonas feels for his key. This time he finds it.",
+      "translation": "Jonas 摸了摸口袋。这回钥匙就在里头。",
+      "next": "end_hand_b_2"
+    },
+    {
+      "id": "end_hand_b_2",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "amina",
+      "speaker": "Amina",
+      "text": "You can write about the shop. I need some air.",
+      "translation": "小店可以写。我出去透口气。",
+      "next": "end_hand_b_3"
+    },
+    {
+      "id": "end_hand_b_3",
+      "act": 2,
+      "location": "开门以后",
+      "shot": "jonas",
+      "speaker": "旁白",
+      "text": "Jonas lets go of his key and holds the door for her.",
+      "translation": "Jonas 松开钥匙，伸手给她撑住了门。",
+      "ending": true,
+      "experienceID": "CM2HANDB"
+    }
+  ]
+}

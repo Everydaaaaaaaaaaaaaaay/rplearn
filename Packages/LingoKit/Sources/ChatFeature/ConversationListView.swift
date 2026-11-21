@@ -9,44 +9,38 @@ import SwiftUI
 public struct ConversationListView: View {
     private let deps: ChatDependencies
     private let reloadToken: Int
+    private let resetToken: Int
+    private struct ReloadKey: Hashable {
+        let token: Int
+        let notificationRevision: Int
+        let visible: Bool
+    }
 
     @State private var rows: [ConversationListRow] = []
     @State private var isLoading = true
     @State private var isVisible = false
     @State private var reloadGeneration = UUID()
+    @State private var notificationRevision = 0
     @State private var searchText = ""
     @State private var currentRegionID = "london"
     @State private var selectedConversationID: UUID?
+    @State private var hasPublishedUnreadCount = false
     @AppStorage private var persistedUnreadCount: Int
 
-    public init(accountID: UUID, deps: ChatDependencies, reloadToken: Int = 0) {
+    public init(accountID: UUID, deps: ChatDependencies, reloadToken: Int = 0, resetToken: Int = 0) {
         _persistedUnreadCount = AppStorage(
             wrappedValue: 0,
             ProactiveMessagePreferences.unreadCountKey(for: accountID)
         )
         self.deps = deps
         self.reloadToken = reloadToken
+        self.resetToken = resetToken
     }
 
     private var visibleRows: [ConversationListRow] {
-        let searched = searchText.isEmpty
+        searchText.isEmpty
             ? rows
             : rows.filter { $0.character.card.name.localizedCaseInsensitiveContains(searchText) }
-        return searched.sorted {
-            let lhsPinned = $0.summary?.isPinned ?? false
-            let rhsPinned = $1.summary?.isPinned ?? false
-            if lhsPinned != rhsPinned { return lhsPinned }
-            switch ($0.summary, $1.summary) {
-            case (.some(let lhs), .some(let rhs)):
-                return lhs.lastMessageAt > rhs.lastMessageAt
-            case (.some, .none):
-                return true
-            case (.none, .some):
-                return false
-            case (.none, .none):
-                return $0.friendOrder < $1.friendOrder
-            }
-        }
     }
 
     public var body: some View {
@@ -62,17 +56,29 @@ public struct ConversationListView: View {
             // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
             .onAppear { isVisible = true }
             .onDisappear { isVisible = false }
-            .task(id: reloadToken) { await reload() }
+            .task(id: ReloadKey(token: reloadToken, notificationRevision: notificationRevision, visible: isVisible)) {
+                if isVisible { await reload() }
+            }
+            .onChange(of: resetToken) {
+                selectedConversationID = nil
+                searchText = ""
+            }
             .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { _ in
                 guard isVisible else { return }
-                Task { await reload() }
+                notificationRevision += 1
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .rosterContactDidChange)) { _ in
+                guard isVisible else { return }
+                notificationRevision += 1
             }
             .refreshable { await reload() }
             .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { _ in
-                Task { await reload() }
+                guard isVisible else { return }
+                notificationRevision += 1
             }
             .onReceive(NotificationCenter.default.publisher(for: ConversationReadState.didChange)) { _ in
-                Task { await reload() }
+                guard isVisible else { return }
+                notificationRevision += 1
             }
             .onReceive(
                 NotificationCenter.default.publisher(for: .rosterFavoriteDidChange)
@@ -99,7 +105,7 @@ public struct ConversationListView: View {
     private var searchAdaptedContent: some View {
         if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
             sceneContent
-                .dsSceneSearch(text: $searchText, title: "信息", prompt: "搜索信息")
+                .dsSceneSearch(text: $searchText, title: "信息", prompt: "搜索信息", resetToken: resetToken)
         } else {
             sceneContent
                 .safeAreaInset(edge: .top, spacing: 0) {
@@ -352,7 +358,8 @@ public struct ConversationListView: View {
             let (friends, summaries) = try await (loadedFriends, loadedSummaries)
             guard !Task.isCancelled, reloadGeneration == generation else { return }
             if let profile { currentRegionID = profile.currentRegionID }
-            rows = ConversationListProjection.rows(friends: friends, summaries: summaries)
+            let loadedRows = ConversationListProjection.rows(friends: friends, summaries: summaries)
+            if rows != loadedRows { rows = loadedRows }
             updateUnreadCount()
         } catch {
             // 下拉刷新可重试；不以错误页打断导航。
@@ -360,9 +367,14 @@ public struct ConversationListView: View {
     }
 
     private func updateUnreadCount() {
-        persistedUnreadCount = rows.reduce(into: 0) { total, row in
+        let count = rows.reduce(into: 0) { total, row in
             guard let summary = row.summary else { return }
             total += summary.unreadCount
+        }
+        if !hasPublishedUnreadCount || persistedUnreadCount != count {
+            // Publish the first loaded snapshot, even when it matches the default zero.
+            persistedUnreadCount = count
+            hasPublishedUnreadCount = true
         }
     }
 
@@ -406,6 +418,7 @@ public struct ConversationListView: View {
             friendOrder: row.friendOrder,
             summary: summary
         )
+        rows = ConversationListProjection.sorted(rows)
     }
 }
 

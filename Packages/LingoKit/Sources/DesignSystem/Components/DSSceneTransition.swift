@@ -1,13 +1,12 @@
 import SwiftUI
 
-/// Shared cross-dissolve for Home, My and photographic scene activities.
+/// Shared cross-dissolve for tabs and photographic scene transitions.
 public enum DSSceneTransition {
     public static func duration(reduceMotion: Bool) -> TimeInterval {
-        reduceMotion ? 0.10 : 0.18
+        reduceMotion ? 0.09 : 0.15
     }
 
     public static func animation(reduceMotion: Bool) -> Animation {
-        let duration = duration(reduceMotion: reduceMotion)
-        return reduceMotion ? .easeOut(duration: duration) : .easeInOut(duration: duration)
+        .easeOut(duration: duration(reduceMotion: reduceMotion))
     }
 }

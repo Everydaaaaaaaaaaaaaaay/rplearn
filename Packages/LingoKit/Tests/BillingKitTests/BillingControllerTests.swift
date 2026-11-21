@@ -24,9 +24,14 @@ struct BillingControllerTests {
     }
 
     private actor BillingTransport: BackendTransport {
+        private var applePurchasesEnabled = true
         private var subscribed = false
         private(set) var requestCount = 0
         private(set) var submittedIdempotencyKeys: [String] = []
+
+        func setPurchasesEnabled(_ enabled: Bool) {
+            applePurchasesEnabled = enabled
+        }
 
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
             requestCount += 1
@@ -49,6 +54,7 @@ struct BillingControllerTests {
                 return json(
                     """
                     {
+                      "applePurchasesEnabled":\(applePurchasesEnabled),
                       "products":[
                         {
                           "featureFlags":{"friendSlotLimit":10},
@@ -132,6 +138,8 @@ struct BillingControllerTests {
         private(set) var finished: [UInt64] = []
         private var cancelsCatalog = false
         private var emptyCatalog = false
+        private(set) var catalogRequestCount = 0
+        private(set) var transactionRequestCount = 0
         func configureCatalog(cancelled: Bool = false, empty: Bool = false) {
             cancelsCatalog = cancelled
             emptyCatalog = empty
@@ -142,7 +150,8 @@ struct BillingControllerTests {
         }
 
         func currentTransactions() async throws -> [StorefrontTransaction] {
-            transactions
+            transactionRequestCount += 1
+            return transactions
         }
 
         func finish(transactionID: UInt64) async {
@@ -150,6 +159,7 @@ struct BillingControllerTests {
         }
 
         func loadProducts(ids: Set<String>) async throws -> [StoreProductMetadata] {
+            catalogRequestCount += 1
             if cancelsCatalog { throw CancellationError() }
             if emptyCatalog { return [] }
             return ids.map {
@@ -275,6 +285,40 @@ struct BillingControllerTests {
         await storefront.configureCatalog(empty: true)
         await fixture.controller.synchronize(showLoading: true)
         #expect(fixture.controller.catalogState == .empty)
+    }
+
+    @Test("内购关闭时显示尚未开放，重试不请求商店，开放后恢复加载")
+    @MainActor
+    func disabledPurchasesAreNotReportedAsPriceFailure() async throws {
+        let userID = UUID()
+        let transport = BillingTransport()
+        await transport.setPurchasesEnabled(false)
+        let storefront = FakeStorefront(transactions: [])
+        await storefront.configureCatalog(cancelled: true)
+        let fixture = try makeController(userID: userID, transport: transport, storefront: storefront)
+        await fixture.controller.activate(identity: AuthIdentity(sessionID: UUID(), userID: userID))
+        await fixture.controller.synchronize()
+
+        #expect(fixture.controller.catalogState == .unavailable)
+        #expect(fixture.controller.catalogStatusMessage == "会员订阅尚未开放，开放后将显示 App Store 价格。")
+        #expect(fixture.controller.lastError == nil)
+        #expect(fixture.controller.products.isEmpty)
+        #expect(!fixture.controller.purchasesEnabled)
+        #expect(await storefront.catalogRequestCount == 0)
+        #expect(await storefront.transactionRequestCount == 0)
+        #expect(try await fixture.economy.profile().friendSlotLimit == 5)
+
+        await transport.setPurchasesEnabled(true)
+        await storefront.configureCatalog()
+        await fixture.controller.synchronize()
+        #expect(fixture.controller.catalogState == .available)
+        #expect(fixture.controller.offeredProducts.count == 2)
+
+        await transport.setPurchasesEnabled(false)
+        await fixture.controller.synchronize()
+        #expect(fixture.controller.catalogState == .unavailable)
+        #expect(fixture.controller.products.isEmpty)
+        fixture.controller.deactivate()
     }
 
     @Test("启动可复用会员状态而不等待商品网络请求")

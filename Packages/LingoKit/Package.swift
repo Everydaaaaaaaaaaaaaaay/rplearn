@@ -60,6 +60,7 @@ let domainTargets: [Target] = [
     .target(
         name: "DomainKit",
         dependencies: [
+            module("BackendKit"),
             module("CoreKit"),
             module("LLMKit"),
             module("DictKit"),
@@ -70,8 +71,10 @@ let domainTargets: [Target] = [
     .target(
         name: "SyncKit",
         dependencies: [
+            module("CoreKit"),
             module("BackendKit"),
             module("DomainKit"),
+            module("LLMKit"),
             module("PersistenceKit"),
         ]
     ),
@@ -90,16 +93,17 @@ func feature(
 }
 
 let featureTargets: [Target] = [
+    feature("AppointmentFeature", dependencies: [module("BackendKit"), module("CoreKit"), module("DictKit"), module("PersistenceKit"), module("SpeechKit")], resources: [.copy("Resources/Photos")]),
     feature("LearningFeature", dependencies: [module("BackendKit"), module("CoreKit"), module("DomainKit"), module("LLMKit"), module("PersistenceKit"), module("SpeechKit")]),
     feature("AuthFeature", dependencies: [
         module("BackendKit"),
     ]),
     feature("HomeFeature", dependencies: [
+        module("CoreKit"),
         module("BackendKit"),
         module("CoreKit"),
         module("DictKit"),
         module("DomainKit"),
-        module("LLMKit"),
         module("PersistenceKit"),
         module("SpeechKit"),
     ]),
@@ -141,6 +145,7 @@ let featureTargets: [Target] = [
         module("PersistenceKit"),
     ]),
     feature("MapFeature", dependencies: [
+        module("CoreKit"),
         module("DomainKit"),
         module("PersistenceKit"),
     ]),

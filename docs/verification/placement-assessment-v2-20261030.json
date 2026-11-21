@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-30",
+  "change": "从基础开始的入学测评：累计三错结束、回退、确认与跳过",
+  "rules": {
+    "startDifficulty": -3.0,
+    "selfReportedLevelDoesNotRaiseStartingDifficulty": true,
+    "maximumQuestionsIncludingSkips": 20,
+    "maximumCumulativeMistakes": 3,
+    "difficultyNeverDecreases": true,
+    "maximumDifficultyStep": 0.5,
+    "maximumListeningQuestions": 2,
+    "listeningCandidateSlots": [
+      8,
+      16
+    ],
+    "skip": "不计错、不更新能力估计，计入20题上限",
+    "confirm": "选项先作为草稿，仅确认后计分；听力至少完成一次播放才可确认，但始终可以跳过",
+    "previous": "保留草稿、选项顺序和播放次数；修改已确认答案会重新计分并失效后续依赖路径",
+    "insufficientEvidence": "少于3题实际作答不推荐新水平、不展示应用建议按钮，手选列表也不展示建议标记",
+    "provisionalResult": "少于8题的建议明确标记为初步建议；未答技能显示未作答；保存水平沿用现有确认和进度保留流程"
+  },
+  "questionBank": {
+    "total": 102,
+    "originalQuestionsPreserved": 96,
+    "newFoundationQuestions": 6,
+    "listeningPoolPreserved": 24,
+    "originalContentEqualityChecked": true
+  },
+  "calibrationLimits": "题目难度参数为手工标注；300次模拟验证单调性和流程约束，尚非独立真人样本的心理测量标定。结果仅为学习难度建议，不是考试认证。",
+  "verification": {
+    "hostedCoreTests": {
+      "passed": 18,
+      "failed": 0,
+      "suite": "LingoTripTests/AdaptivePlacementEngineTests",
+      "syntheticLearners": 300,
+      "resultBundle": "build/DerivedData/VerificationResults/20261030T142919Z-13278.xcresult"
+    },
+    "uiTests": [
+      {
+        "name": "PlacementFlowTests/testConfirmationBackAndThreeMistakes",
+        "passed": 1,
+        "failed": 0,
+        "resultBundle": "build/DerivedData/VerificationResults/20261030T143955Z-17776.xcresult",
+        "evidence": "build/placement-v2-accepted/confirmation/"
+      },
+      {
+        "name": "PlacementFlowTests/testSkipDoesNotForceAPlacementOrRequireAudio",
+        "passed": 1,
+        "failed": 0,
+        "resultBundle": "build/DerivedData/VerificationResults/20261030T145155Z-20158.xcresult",
+        "evidence": "build/placement-v2-accepted/skip/",
+        "checks": [
+          "最多20次跳过后结束",
+          "无需播放音频即可跳过",
+          "无应用建议按钮",
+          "手选列表无建议标记",
+          "手选返回后仍不推荐新水平"
+        ]
+      }
+    ],
+    "architecture": "Scripts/check-architecture.sh --ios: passed",
+    "diffCheck": "git diff --check: passed",
+    "visualReview": {
+      "device": "iPhone 18 Pro / iOS 27.0",
+      "method": "Computer Use尝试后因捕获不稳定，使用XCTest真实交互与原生模拟器截图复核",
+      "question": "build/placement-v2-accepted/confirmation/question.png",
+      "threeMistakes": "build/placement-v2-accepted/confirmation/three-mistakes-result.png",
+      "insufficientEvidence": "build/placement-v2-accepted/skip/skip-completed.png"
+    },
+    "latestPreviewInstalled": true
+  },
+  "backendChanged": false,
+  "photographicAssetsChanged": false,
+  "appStorePublished": false
+}

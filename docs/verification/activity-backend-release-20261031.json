@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-31",
+  "feature": "Place-bound activity backend foundation",
+  "release": "857bc77b59a3",
+  "previousRelease": "grammar-20261031-v2",
+  "rollbackRelease": "activity-compat-20261031-v1",
+  "status": "passed",
+  "activation": "No activity world imported or enabled; old production activity flow retained",
+  "backup": {
+    "serverDirectory": "/opt/lingotrip/backups/activities-20261031-857bc77b59a3",
+    "format": "PostgreSQL custom-format logical backup; pg_restore inventory verified",
+    "sha256": "b8c10605dcc7538ab73bda57200d5d68dc50f6c747bdba5c0aa0a2fd3b39992f"
+  },
+  "archives": {
+    "releaseSHA256": "b3b3b0c0321b030b361f5e83da25a7b5fc1881a1158a2f6d49d0e094ade31f00",
+    "rollbackSHA256": "12ae61ff3a6e4fd0ad903490d879af7b76239fbd33045cbe0ab0b7aa782cff68"
+  },
+  "migration": {
+    "before": 45,
+    "after": 46,
+    "added": "0045_place_outings.sql",
+    "sha256": "754294e982590017a100d35349923686b0d0efc066d61601b86c421062fe570e",
+    "scope": "Four additive tables and indexes; no old NPC, relationship or message deletion"
+  },
+  "production": {
+    "publicNPCs": 202,
+    "messages": 837,
+    "activityWorlds": 0,
+    "services": {
+      "api": "active",
+      "worker": "active",
+      "caddy": "active"
+    },
+    "rollbackTransactionOpen": false,
+    "lockedProbeAccounts": 2,
+    "activeProbeSessions": 0,
+    "finalAvailableMiB": 541.07421875,
+    "finalResourceFailures": []
+  },
+  "compatibility": {
+    "productionRuntimeDiffRestrictedToTask": true,
+    "existingGrammarCatalogPreserved": true,
+    "actualMigrationInventoryAcceptedByRollbackProgram": true,
+    "fullRollbackSwitchDrill": false
+  },
+  "probe": {
+    "date": "2026-10-31T10:23:01.664Z",
+    "actor": "f898be5a-ae4a-4bfc-bd9b-b35bdf542525",
+    "scope": "synthetic account, no email or real user content, no AI calls",
+    "checks": [
+      {
+        "name": "rollback program accepts actual migration inventory",
+        "passed": true
+      },
+      {
+        "name": "migration inventory count",
+        "passed": true
+      },
+      {
+        "name": "public readiness",
+        "passed": true
+      },
+      {
+        "name": "existing grammar catalog status",
+        "passed": true
+      },
+      {
+        "name": "existing grammar catalog still complete",
+        "passed": true
+      },
+      {
+        "name": "v2 anonymous access rejected",
+        "passed": true
+      },
+      {
+        "name": "authorized catalog remains gated",
+        "passed": true
+      },
+      {
+        "name": "no initial active outing",
+        "passed": true
+      },
+      {
+        "name": "missing outing status",
+        "passed": true
+      },
+      {
+        "name": "missing outing error",
+        "passed": true
+      },
+      {
+        "name": "unpublished world status",
+        "passed": true
+      },
+      {
+        "name": "unpublished world error",
+        "passed": true
+      },
+      {
+        "name": "invalid branch rejected",
+        "passed": true
+      },
+      {
+        "name": "legacy authored encounter status",
+        "passed": true
+      },
+      {
+        "name": "legacy local NPC still available",
+        "passed": true
+      },
+      {
+        "name": "legacy retry keeps same result",
+        "passed": true
+      },
+      {
+        "name": "draft start did not reserve or import content",
+        "passed": true
+      },
+      {
+        "name": "legacy retry counted once",
+        "passed": true
+      }
+    ],
+    "status": "passed",
+    "probeAccountLocked": true
+  },
+  "notes": [
+    "Initial online probe stopped after the expected missing-outing 404 because it assumed a nested error body. The probe was corrected to the existing flat error contract and rerun successfully. Both synthetic accounts are locked and have no active sessions.",
+    "Normal startup resource pressure subsided within the existing observation period. Resource limits were not loosened; both deployments passed the stability observation.",
+    "The original BSD tar archive had 24 sparse members. A portable archive was deployed; the packaging script was fixed and all 2387 file hashes were preserved.",
+    "No live AI generation or evaluation was performed. No credentials, bearer tokens, full environment files, or real user content are included in this record."
+  ]
+}

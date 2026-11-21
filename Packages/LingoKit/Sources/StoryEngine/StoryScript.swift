@@ -10,7 +10,12 @@ public struct StoryScript: Sendable, Equatable {
     public init(id: String, start: String, nodes: [StoryNode]) throws {
         self.id = id
         self.start = start
-        self.nodes = Dictionary(uniqueKeysWithValues: nodes.map { ($0.id, $0) })
+        self.nodes = [:]
+        for node in nodes {
+            guard self.nodes.updateValue(node, forKey: node.id) == nil else {
+                throw ValidationError.duplicateNode(node.id)
+            }
+        }
         try validate()
     }
 
@@ -35,6 +40,8 @@ public struct StoryScript: Sendable, Equatable {
         case danglingReference(from: String, to: String)
         case unreachableNodes([String])
         case emptyChoice(String)
+        case duplicateNode(String)
+        case automaticCycle(String)
     }
 
     private func validate() throws {
@@ -61,6 +68,24 @@ public struct StoryScript: Sendable, Equatable {
         let unreachable = Set(nodes.keys).subtracting(visited)
         guard unreachable.isEmpty else {
             throw ValidationError.unreachableNodes(unreachable.sorted())
+        }
+        // Automatic branch/reward cycles otherwise spin on the UI executor.
+        var checked = Set<String>()
+        for root in nodes.keys {
+            var visiting = Set<String>()
+            var stack: [(String, Bool)] = [(root, false)]
+            while let (id, exiting) = stack.popLast() {
+                if exiting { visiting.remove(id); checked.insert(id); continue }
+                guard !checked.contains(id), let node = nodes[id] else { continue }
+                let targets: [String]
+                switch node.payload {
+                case .branch, .reward: targets = node.referencedNodeIDs
+                default: checked.insert(id); continue
+                }
+                guard visiting.insert(id).inserted else { throw ValidationError.automaticCycle(id) }
+                stack.append((id, true))
+                stack.append(contentsOf: targets.map { ($0, false) })
+            }
         }
     }
 

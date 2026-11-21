@@ -206,7 +206,7 @@ public actor ChatStore {
         modelContext.insert(message)
         conversation.lastMessageAt = message.createdAt
         conversation.turnCount += 1
-        try journal(message)
+        try journal(message, deliveryOrigin: "proactive")
         try journal(conversation)
         try modelContext.save()
         return dto(from: message)
@@ -237,7 +237,7 @@ public actor ChatStore {
         message.text = cleanedReplacement
         message.tokenEstimate = TokenEstimator.estimate(cleanedReplacement)
         conversation.lastMessageAt = message.createdAt
-        try journal(message)
+        try journal(message, deliveryOrigin: "proactive")
         try journal(conversation)
         try modelContext.save()
         return dto(from: message)
@@ -283,10 +283,23 @@ public actor ChatStore {
         modelContext.insert(message)
         conversation.lastMessageAt = max(conversation.lastMessageAt, message.createdAt)
         conversation.turnCount += 1
-        try journal(message)
+        try journal(message, deliveryOrigin: "proactive")
         try journal(conversation)
         try modelContext.save()
         return dto(from: message)
+    }
+
+    public static let starterTicketNotice = "🎫 主办方送来一张通用机票！之后可以在地图里用它解锁新的城市。"
+
+    public func appendStarterTicketNoticeIfNeeded(conversationID: UUID) throws {
+        let role = MessageRole.coach.rawValue
+        let kind = MessageKind.storyLine.rawValue
+        let text = Self.starterTicketNotice
+        let existing = try modelContext.fetchCount(FetchDescriptor<MessageEntity>(predicate: #Predicate {
+            $0.roleRaw == role && $0.kindRaw == kind && $0.text == text
+        }))
+        guard existing == 0 else { return }
+        try appendMessage(conversationID: conversationID, role: .coach, kind: .storyLine, text: text)
     }
 
     /// 追加一条消息，返回落库后的 DTO（orderIndex 自动递增）。
@@ -301,7 +314,10 @@ public actor ChatStore {
         audioDuration: Double? = nil,
         tokenEstimate: Int = 0,
         createdAt: Date = .now,
-        learningOrigin: LearningChatOrigin? = nil
+        learningOrigin: LearningChatOrigin? = nil,
+        sharedVoiceLeaseID: UUID? = nil,
+        contextMemoryIDs: [UUID]? = nil,
+        sharedOrdering: Bool = false
     ) throws -> MessageDTO {
         guard let conversation = try fetchConversation(id: conversationID) else {
             throw ChatError.conversationNotFound
@@ -319,13 +335,19 @@ public actor ChatStore {
             createdAt: createdAt
         )
         message.learningOriginJSON = try learningOrigin?.encodedJSON()
+        if role == .user { message.userTimeZone = TimeZone.autoupdatingCurrent.identifier }
         message.conversation = conversation
         modelContext.insert(message)
         conversation.lastMessageAt = max(conversation.lastMessageAt, createdAt)
         if role == .assistant {
             conversation.turnCount += 1
         }
-        try journal(message)
+        let predecessor =
+            sharedOrdering
+            ? conversation.messages.filter { $0.roleRaw == "user" && $0.messageID != message.messageID }.max {
+                $0.orderIndex < $1.orderIndex
+            }?.messageID : nil
+        try journal(message, sharedVoiceLeaseID: sharedVoiceLeaseID, sharedPredecessorID: predecessor, contextMemoryIDs: contextMemoryIDs)
         try journal(conversation)
         try modelContext.save()
         return dto(from: message)
@@ -468,6 +490,38 @@ public actor ChatStore {
         message.coachReviewJSON = json
         try journal(message)
         try modelContext.save()
+    }
+
+    public func addTimelineEvents(messageID: UUID, events: [ChatMessageTimelineEvent]) throws {
+        guard !events.isEmpty, let message = try fetchMessage(id: messageID),
+              let conversationID = message.conversation?.conversationID else { return }
+        let existing = ChatMessageTimelineEvent.decode(message.timelineEventsJSON)
+        var kinds = Set(existing.map(\.kind))
+        let additional = events.filter { kinds.insert($0.kind).inserted }
+        guard !additional.isEmpty else { return }
+        do {
+            message.timelineEventsJSON = try ChatMessageTimelineEvent.encode(existing + additional)
+            try journal(message)
+            try modelContext.save()
+        } catch {
+            modelContext.rollback()
+            throw error
+        }
+        Task { @MainActor in
+            NotificationCenter.default.post(name: .chatTimelineDidChange, object: conversationID)
+        }
+    }
+
+    public func replyText(after message: MessageDTO, conversationID: UUID) throws -> String {
+        let all = try messages(conversationID: conversationID)
+        let linked = all.filter { $0.role == .assistant && !$0.isInterrupted && $0.replyToMessageIDs.contains(message.id) }
+        if !linked.isEmpty { return linked.map(\.text).joined(separator: "\n") }
+        return all
+            .drop(while: { $0.orderIndex <= message.orderIndex })
+            .prefix(while: { $0.role != .user })
+            .filter { $0.role == .assistant && !$0.isInterrupted && $0.replyToMessageIDs.isEmpty }
+            .map(\.text)
+            .joined(separator: "\n")
     }
 
     /// Reuse an exact sentence's persisted translation within this user's store.
@@ -761,7 +815,10 @@ public actor ChatStore {
         )
     }
 
-    private func journal(_ message: MessageEntity) throws {
+    private func journal(
+        _ message: MessageEntity, sharedVoiceLeaseID: UUID? = nil, sharedPredecessorID: UUID? = nil,
+        deliveryOrigin: String? = nil, contextMemoryIDs: [UUID]? = nil
+    ) throws {
         guard let conversationID = message.conversation?.conversationID else { return }
         let media = try voiceMediaLink(messageID: message.messageID)
         try ContentMutationJournal.upsert(
@@ -771,6 +828,12 @@ public actor ChatStore {
             parentID: conversationID.uuidString.lowercased(),
             payloadJSON: try ContentMutationJournal.encode(
                 ContentMessagePayload(
+                    sharedPredecessorId: sharedPredecessorID,
+                    sharedVoiceLeaseId: sharedVoiceLeaseID,
+                    voiceReceiptVersion: sharedVoiceLeaseID == nil ? nil : 1,
+                    contextMemoryIds: contextMemoryIDs,
+                    userTimeZone: message.userTimeZone,
+                    deliveryOrigin: deliveryOrigin,
                     learningOrigin: LearningChatOrigin.decode(json: message.learningOriginJSON),
                     audioAssetId: media?.isRemoteReady == true ? media?.assetID : nil,
                     audioDuration: message.audioDuration,
@@ -784,7 +847,9 @@ public actor ChatStore {
                     speechReviewJson: message.speechReviewJSON,
                     text: message.text,
                     tokenEstimate: message.tokenEstimate,
-                    translationZh: message.translationZh
+                    translationZh: message.translationZh,
+                    timelineEvents: message.timelineEventsJSON.map { ChatMessageTimelineEvent.decode($0) },
+                    replyToMessageIds: message.replyToMessageIDs
                 )
             )
         )
@@ -825,6 +890,8 @@ public actor ChatStore {
             learningOrigin: LearningChatOrigin.decode(json: entity.learningOriginJSON),
             translationZh: entity.translationZh,
             isInterrupted: entity.isInterrupted,
+            timelineEvents: ChatMessageTimelineEvent.decode(entity.timelineEventsJSON),
+            replyToMessageIDs: entity.replyToMessageIDs ?? [],
             createdAt: entity.createdAt
         )
     }

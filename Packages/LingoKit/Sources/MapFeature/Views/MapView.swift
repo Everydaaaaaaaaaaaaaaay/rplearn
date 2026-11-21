@@ -1,3 +1,4 @@
+import CoreKit
 import DesignSystem
 import DomainKit
 import MapKit
@@ -27,6 +28,9 @@ public struct MapView: View {
         onBack: (@MainActor () -> Void)? = nil
     ) {
         self.deps = deps
+        _profile = State(initialValue: deps.presentationCache?.profile)
+        _tickets = State(initialValue: deps.presentationCache?.tickets ?? [])
+        _selectedRegionID = State(initialValue: deps.mapCache?.selectedRegionID)
         self.reloadToken = reloadToken
         self.onBack = onBack
     }
@@ -122,10 +126,16 @@ public struct MapView: View {
             presentDebugFlightIfRequested()
         }
         .dsTabBarHidden(flight != nil)
+        .onChange(of: selectedRegionID) { _, value in deps.mapCache?.selectedRegionID = value }
+        .task(id: selectedRegionID, priority: .utility) {
+            if let selectedRegionID { await DownloadableContent.prefetchCity(selectedRegionID) }
+        }
     }
 
     private var interactiveMap: some View {
         WorldMapCanvas(
+            cache: deps.mapCache,
+            initialRegion: currentRegion,
             regions: deps.regionCatalog.regions,
             presentations: mapRegionPresentations,
             selectedRegionID: selectedRegionID,
@@ -308,8 +318,8 @@ public struct MapView: View {
     private func reload() async {
         async let loadedProfile = try? deps.economyStore.profile()
         async let loadedTickets = try? deps.itemStore.unconsumedTickets()
-        profile = await loadedProfile
-        tickets = await loadedTickets ?? []
+        if let value = await loadedProfile { profile = value }
+        if let value = await loadedTickets { tickets = value }
         if selectedRegionID == nil {
             #if DEBUG
             if let regionID = ProcessInfo.processInfo.environment["UI_TEST_MAP_SELECTED"],
@@ -319,7 +329,7 @@ public struct MapView: View {
                 return
             }
             #endif
-            resetOverview()
+            if deps.mapCache?.hasCamera != true { resetOverview() }
         }
     }
 

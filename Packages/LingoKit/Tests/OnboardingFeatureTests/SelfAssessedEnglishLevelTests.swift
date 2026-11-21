@@ -4,13 +4,14 @@ import Testing
 
 @Suite("自评英语等级")
 struct SelfAssessedEnglishLevelTests {
-    @Test("六档描述映射到由浅入深的代表等级")
+    @Test("七档能力自评映射到由浅入深的代表等级")
     func mapsToRepresentativeDifficultyLevels() {
         #expect(SelfAssessedEnglishLevel.starting.difficultyLevel == .primary3)
         #expect(SelfAssessedEnglishLevel.foundation.difficultyLevel == .primary6)
         #expect(SelfAssessedEnglishLevel.everyday.difficultyLevel == .junior3)
         #expect(SelfAssessedEnglishLevel.independent.difficultyLevel == .senior3)
         #expect(SelfAssessedEnglishLevel.confident.difficultyLevel == .undergraduate)
+        #expect(SelfAssessedEnglishLevel.proficient.difficultyLevel == .postgraduate)
         #expect(SelfAssessedEnglishLevel.advanced.difficultyLevel == .advanced)
     }
 
@@ -28,8 +29,15 @@ struct SelfAssessedEnglishLevelTests {
             #expect(selfAssessment == .independent)
         case .undergraduate:
             #expect(selfAssessment == .confident)
-        case .postgraduate, .advanced:
+        case .postgraduate:
+            #expect(selfAssessment == .proficient)
+        case .advanced:
             #expect(selfAssessment == .advanced)
         }
+    }
+
+    @Test("每个自评起点均能稳定回显，不将六级与雅思进阶合并", arguments: SelfAssessedEnglishLevel.allCases)
+    func representativeLevelsRoundTrip(_ level: SelfAssessedEnglishLevel) {
+        #expect(SelfAssessedEnglishLevel.closest(to: level.difficultyLevel) == level)
     }
 }

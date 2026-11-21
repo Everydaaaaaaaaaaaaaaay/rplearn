@@ -23,6 +23,7 @@ enum MeDestination: Hashable {
 extension HomeDestination {
     var navigationTitle: String {
         switch self {
+        case .appointments: "赴约"
         case .map: ""
         case .stories: "剧情"
         case .mainline: "主线剧情"

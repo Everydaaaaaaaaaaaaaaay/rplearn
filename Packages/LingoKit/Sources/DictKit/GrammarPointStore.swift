@@ -42,23 +42,39 @@ public struct GrammarMatch: Sendable, Equatable {
     public var spanTokenIDs: [Int]
 }
 
-public struct GrammarPointStore: Sendable {
-    private let pointsByTrigger: [String: [GrammarPoint]]
-    private let pointsByID: [String: GrammarPoint]
-    public let allPoints: [GrammarPoint]
+public final class GrammarPointStore: @unchecked Sendable {
+    private struct Snapshot {
+        let pointsByTrigger: [String: [GrammarPoint]]
+        let pointsByID: [String: GrammarPoint]
+        let allPoints: [GrammarPoint]
+    }
+    private let lock = NSLock()
+    private var snapshot: Snapshot
+    private let seedIDs: Set<String>
+    private let sharedCacheURL: URL?
+    public var allPoints: [GrammarPoint] { lock.withLock { snapshot.allPoints } }
 
-    public init(url: URL) throws {
+    public convenience init(url: URL, sharedCacheURL: URL? = nil) throws {
         struct File: Decodable {
             let points: [GrammarPoint]
         }
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let file = try decoder.decode(File.self, from: Data(contentsOf: url))
-        self.init(points: file.points)
+        self.init(points: file.points, sharedCacheURL: sharedCacheURL)
     }
 
-    public init(points: [GrammarPoint]) {
-        allPoints = points
+    public init(points: [GrammarPoint], sharedCacheURL: URL? = nil) {
+        self.sharedCacheURL = sharedCacheURL
+        seedIDs = Set(points.map(\.id))
+        snapshot = Self.makeSnapshot(points)
+        if let sharedCacheURL, let data = try? Data(contentsOf: sharedCacheURL),
+           data.count < 4_000_000, let cached = try? JSONDecoder().decode([GrammarPoint].self, from: data) {
+            mergeSharedPoints(cached)
+        }
+    }
+
+    private static func makeSnapshot(_ points: [GrammarPoint]) -> Snapshot {
         var byTrigger: [String: [GrammarPoint]] = [:]
         var byID: [String: GrammarPoint] = [:]
         for point in points {
@@ -67,16 +83,59 @@ public struct GrammarPointStore: Sendable {
                 byTrigger[trigger.lowercased(), default: []].append(point)
             }
         }
-        pointsByTrigger = byTrigger
-        pointsByID = byID
+        return Snapshot(pointsByTrigger: byTrigger, pointsByID: byID, allPoints: points)
+    }
+
+    /// Only the server's reviewed, generic catalog is accepted; bundled rules remain authoritative.
+    public func mergeSharedPoints(_ incoming: [GrammarPoint]) {
+        lock.withLock {
+            var merged = snapshot.allPoints
+            var ids = Set(merged.map(\.id))
+            for point in incoming.prefix(2000) where !seedIDs.contains(point.id) && !ids.contains(point.id) {
+                guard Self.validSharedPoint(point), merged.count < seedIDs.count + 2000 else { continue }
+                let signature = Self.patternIdentity(point)
+                guard !merged.contains(where: { Self.patternIdentity($0) == signature }) else { continue }
+                ids.insert(point.id)
+                merged.append(point)
+            }
+            guard merged.count != snapshot.allPoints.count else { return }
+            snapshot = Self.makeSnapshot(merged)
+            if let sharedCacheURL, let data = try? JSONEncoder().encode(merged.filter { !seedIDs.contains($0.id) }) {
+                try? FileManager.default.createDirectory(at: sharedCacheURL.deletingLastPathComponent(), withIntermediateDirectories: true)
+                try? data.write(to: sharedCacheURL, options: .atomic)
+            }
+        }
+    }
+
+    private static func patternIdentity(_ point: GrammarPoint) -> String {
+        (point.patterns ?? []).map { p in
+            p.steps.map { $0.split(separator: "|").sorted().joined(separator: "|") }.joined(separator: "+")
+                + ":" + p.maximumGaps.map(String.init).joined(separator: ",")
+        }.sorted().joined(separator: ";")
+    }
+
+    private static func validSharedPoint(_ p: GrammarPoint) -> Bool {
+        guard p.id.range(of: "^shared-[a-f0-9]{32}$", options: .regularExpression) != nil,
+              !p.title.isEmpty, p.title.count <= 100, !p.explanationZh.isEmpty, p.explanationZh.count <= 1200,
+              (1...12).contains(p.triggers.count), (1...3).contains(p.examples.count),
+              p.examples.allSatisfy({ !$0.en.isEmpty && $0.en.count <= 300 && !$0.zh.isEmpty && $0.zh.count <= 300 }),
+              let patterns = p.patterns, (1...4).contains(patterns.count) else { return false }
+        let stepPattern = "^(?:<(?:word|gerund|past-participle|comparative)>|[a-z]+(?:'[a-z]+)?(?:\\|[a-z]+(?:'[a-z]+)?)*)$"
+        return p.triggers.allSatisfy { $0.range(of: "^[a-z]+(?:'[a-z]+)?$", options: .regularExpression) != nil } && patterns.allSatisfy { pattern in
+            (2...8).contains(pattern.steps.count) && pattern.maximumGaps.count == pattern.steps.count - 1 &&
+            pattern.maximumGaps.allSatisfy { (0...4).contains($0) } &&
+            pattern.steps.allSatisfy { $0.range(of: stepPattern, options: .regularExpression) != nil } &&
+            pattern.steps.contains { !$0.hasPrefix("<") } &&
+            (pattern.highlightedSteps?.allSatisfy { $0 >= 0 && $0 < pattern.steps.count } ?? true)
+        }
     }
 
     public func points(forTrigger word: String) -> [GrammarPoint] {
-        pointsByTrigger[word.lowercased()] ?? []
+        lock.withLock { snapshot.pointsByTrigger[word.lowercased()] ?? [] }
     }
 
     public func point(id: String) -> GrammarPoint? {
-        pointsByID[id]
+        lock.withLock { snapshot.pointsByID[id] }
     }
 
     /// 在一段已分词文本中查找完整语法结构。

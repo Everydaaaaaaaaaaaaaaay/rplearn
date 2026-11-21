@@ -5,6 +5,22 @@ import PersistenceKit
 
 @Suite("Conversation list projection")
 struct ConversationListProjectionTests {
+    @Test("目录快照已按置顶、最后消息和初始好友顺序排好")
+    func snapshotOrdersPinnedAndRecentConversationsBeforePlaceholders() {
+        let friends = ["Oliver", "Ruby", "Marcus", "Alex"].map { character(id: UUID(), name: $0) }
+        let summaries = [
+            ConversationSummaryDTO(conversationID: UUID(), characterID: friends[0].id,
+                characterName: "Oliver", avatarAssetName: nil, lastMessageText: "Hello",
+                lastMessageAt: Date(timeIntervalSince1970: 200)),
+            ConversationSummaryDTO(conversationID: UUID(), characterID: friends[1].id,
+                characterName: "Ruby", avatarAssetName: nil, lastMessageText: "Hello",
+                lastMessageAt: Date(timeIntervalSince1970: 100), isPinned: true)
+        ]
+        let rows = ConversationListProjection.rows(friends: friends, summaries: summaries)
+        #expect(rows.map(\.id) == [friends[1].id, friends[0].id, friends[2].id, friends[3].id])
+        #expect(ConversationListProjection.sorted(rows) == rows)
+    }
+
     @Test("尚未开聊的初始好友仍出现在消息列表")
     func includesFriendsWithoutConversation() {
         let friends = [

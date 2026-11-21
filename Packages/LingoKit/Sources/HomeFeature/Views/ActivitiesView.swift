@@ -1,87 +1,122 @@
 import DesignSystem
+import BackendKit
 import DomainKit
 import PersistenceKit
 import SwiftUI
 
-/// Production entry: a scene, never a category/route list. App owns the current
-/// action so its existing left-edge gesture returns exactly one level.
+/// City scene selection and reading share the app-owned outing coordinator.
 public struct ActivitiesView: View {
-    @ObservedObject var journey: ActivityJourneyCoordinator
+    let journey: ActivityJourneyCoordinator
     let deps: HomeDependencies
     let storageNamespace: String
+    let storage: UserDefaults
+    let onCompleteOuting: (() -> Void)?
     let isVisible: Bool
-    @Binding var activity: SceneActivity?
     let onClose: () -> Void
     let onChat: (CharacterDTO) -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var scene: ActivitySceneID = .park
     @State private var cityID: String?
     @State private var cityName = ""
     @State private var records: [ActivityRecord] = []
     @State private var contextError: String?
     @State private var journalError: String?
     @State private var showsJournal = false
+    @State private var recoveries: [CityOutingArchive] = []
     @State private var recentPeople: [CharacterDTO] = []
+    @State private var placeCatalog: BackendActivityCatalog?
+    @State private var resumableOuting: CityOutingArchive?
+    @State private var automaticallyRestoreOuting = true
+    @State private var loadRevision = 0
 
     public init(journey: ActivityJourneyCoordinator, deps: HomeDependencies, storageNamespace: String, isVisible: Bool,
-                activity: Binding<SceneActivity?>, onClose: @escaping () -> Void,
-                onChat: @escaping (CharacterDTO) -> Void) {
+                onClose: @escaping () -> Void,
+                onChat: @escaping (CharacterDTO) -> Void,
+                storage: UserDefaults = .standard,
+                onCompleteOuting: (() -> Void)? = nil) {
         self.journey = journey
         self.deps = deps
+        if let profile = deps.presentationCache?.profile,
+           let region = deps.regionCatalog.region(id: profile.currentRegionID) {
+            _cityName = State(initialValue: region.nameZh)
+            if let releaseID = deps.activityReleaseID {
+                let catalog = deps.presentationCache?.catalog(releaseID: releaseID, cityID: region.id)
+                _placeCatalog = State(initialValue: catalog)
+                _cityID = State(initialValue: catalog == nil ? nil : region.id)
+            }
+        }
         self.storageNamespace = storageNamespace
+        self.storage = storage
+        self.onCompleteOuting = onCompleteOuting
         self.isVisible = isVisible
-        _activity = activity
         self.onClose = onClose
         self.onChat = onChat
     }
 
     public var body: some View {
         ZStack {
-            ActivitySceneView(isVisible: isVisible && !showsJournal && activity == nil,
-                              showsInterface: activity == nil,
-                              scene: $scene, cityName: cityName,
-                              completedCount: records.count,
-                              onClose: onClose, onJournal: { showsJournal = true }) { selected in
-                guard let cityID, let region = deps.regionCatalog.region(id: cityID) else { return }
-                journey.prepare(activity: selected, region: region, deps: deps, namespace: storageNamespace)
-                activity = journey.activeActivity
+            if let placeCatalog, contextError == nil {
+                CityPlacesView(cityName: cityName, catalog: placeCatalog, showsChrome: !journey.hasOpenOuting,
+                    onBack: onClose,
+                    onJournal: { readRecords(); showsJournal = true }, onSelect: { place in
+                        guard resumableOuting == nil else { return }
+                        do {
+                            if let saved = try CityOutingArchive.load(namespace: storageNamespace, defaults: storage), saved.needsContinuation {
+                                openPlaceArchive(saved)
+                                return
+                            }
+                        } catch {
+                            cityID = nil
+                            contextError = "上次外出进度暂时无法读取，请重试。"
+                            return
+                        }
+                        guard let region = deps.regionCatalog.region(id: placeCatalog.cityId),
+                              let gateway = deps.outingGateway else { return }
+                        journey.preparePlace(archive: .init(place: place, releaseID: placeCatalog.releaseId),
+                            region: region, deps: deps, namespace: storageNamespace, gateway: gateway, storage: storage)
+                    }, resumeTitle: resumableOuting.map {
+                        $0.hasEnded ? "同步上次外出" : "继续上次在\($0.place.titleZh)的外出"
+                    },
+                    onResume: { if let archive = resumableOuting { openPlaceArchive(archive) } })
+                    .allowsHitTesting(!journey.hasOpenOuting).accessibilityHidden(journey.hasOpenOuting)
             }
-            .allowsHitTesting(activity == nil && cityID != nil)
-            .accessibilityHidden(cityID == nil || activity != nil)
-
-            if let activity, let cityID, let model = journey.model {
-                ActivityActionView(model: model, journey: journey, deps: deps, isVisible: isVisible,
-                                   onBack: onClose) { selections, runID, character, responses in
-                    let journal = ActivityJournal(namespace: storageNamespace, city: cityID, defaults: journalDefaults)
-                    if model.isSolitude {
-                        records = try journal.completeSolitude(activity, runID: runID)
-                    } else {
-                        records = try journal.complete(model.activity, selections: selections, runID: runID,
-                            characterID: character?.id, characterName: character?.card.name, responses: responses, chapters: model.chapters)
-                    }
-                    deps.tutorial?.onEvent("ending")
-                }
-                .id(activity.id)
-                .transition(.opacity)
-            }
-            if cityID == nil {
+            if let outing = journey.cityOuting {
+                CityOutingView(model: outing, isVisible: isVisible, showsTutorialGuidance: onCompleteOuting != nil,
+                    onBack: {
+                        if outing.archive.hasEnded {
+                            resumableOuting = outing.archive.needsContinuation ? outing.archive : nil
+                        }
+                        journey.reset()
+                    }, onChat: onChat, onFinish: {
+                        let completed = outing.snapshot?.status == .completed
+                        resumableOuting = outing.archive.needsContinuation ? outing.archive : nil
+                        journey.reset()
+                        if completed { onCompleteOuting?() }
+                    })
+                    .id(outing.archive.runID).transition(.opacity)
+            } else if cityID == nil || contextError != nil {
                 VStack(spacing: 16) {
                     if let contextError {
                         Text(contextError)
-                        Button("重试") { Task { await loadContext() } }
+                        Button("重试") { loadRevision += 1 }
+                            .accessibilityIdentifier("activities.catalog.retry")
                     } else { ProgressView("正在打开场景") }
                     Button("返回首页", action: onClose)
                 }
                 .padding(28).background(.regularMaterial, in: RoundedRectangle(cornerRadius: 24))
             }
         }
-        .animation(DSSceneTransition.animation(reduceMotion: reduceMotion), value: activity?.id)
+        .animation(DSSceneTransition.animation(reduceMotion: reduceMotion), value: journey.hasOpenOuting)
         .onAppear { journey.setViewing(isVisible) }
         .onDisappear { journey.setViewing(false) }
         .onChange(of: isVisible) { _, visible in journey.setViewing(visible) }
-        .task(id: storageNamespace) { await loadContext() }
-        .onChange(of: showsJournal) { _, presented in deps.tutorial?.onEvent(presented ? "presented" : "dismissed") }
+        .task(id: loadRevision) { await loadContext() }
+        .onChange(of: journey.hasOpenOuting) { _, isOpen in
+            if !isOpen {
+                automaticallyRestoreOuting = false
+                loadRevision += 1
+            }
+        }
         .sheet(isPresented: $showsJournal) {
             NavigationStack {
                 ScrollView {
@@ -113,12 +148,41 @@ public struct ActivitiesView: View {
                             ContentUnavailableView("还没有行动记录", systemImage: "book.closed",
                                 description: Text("完成场景中的行动后，你的选择会留在这里。"))
                         }
+                        if !recoveries.isEmpty {
+                            DisclosureGroup("合并与冲突前的本机记录") {
+                                ForEach(Array(recoveries.enumerated()), id: \.offset) { _, archive in
+                                    if let snapshot = archive.snapshot {
+                                        DisclosureGroup(archive.place.titleZh) {
+                                            Text("已保留的本机阅读进度").font(.caption).foregroundStyle(.secondary)
+                                            if snapshot.mode == .solitude { Text(snapshot.solitude.chinese) }
+                                            ForEach(Array(PlaceOutingProgress.chapters(snapshot).enumerated()), id: \.offset) { stage, chapter in
+                                                ForEach(Array(chapter.beats.enumerated()), id: \.offset) { index, beat in
+                                                    if stage < PlaceOutingProgress.chapters(snapshot).count - 1 || index <= snapshot.beatIndex {
+                                                        Text(beat.english).padding(.top, 8)
+                                                        Text(beat.chinese).font(.caption).foregroundStyle(.secondary)
+                                                    }
+                                                }
+                                                if snapshot.choices.indices.contains(stage),
+                                                   let index = Int(snapshot.choices[stage].split(separator: ":").last ?? ""),
+                                                   chapter.choices.indices.contains(index) {
+                                                    Text("你的选择：" + chapter.choices[index].chinese).font(.subheadline)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         ForEach(records.reversed()) { record in
                             VStack(alignment: .leading, spacing: 12) {
                                 HStack {
                                     Text(record.title).font(.headline)
                                     Spacer()
                                     Text(record.date, style: .date).font(.caption).foregroundStyle(.secondary)
+                                }
+                                if let place = record.placeTitle {
+                                    Text(place + (record.endedEarly == true ? " · 提前结束" : ""))
+                                        .font(.caption).foregroundStyle(.secondary)
                                 }
                                 if let story = record.solitudeStory { Text(story).lineSpacing(5) }
                                 if let name = record.characterName {
@@ -164,57 +228,96 @@ public struct ActivitiesView: View {
 
     @MainActor private func loadContext() async {
         contextError = nil
-        if let model = journey.model, model.started {
-            cityID = model.region.id
-            cityName = model.region.nameZh
-            readRecords()
+        if let outing = journey.cityOuting {
+            cityID = outing.region.id; cityName = outing.region.nameZh
+            readRecords(); return
+        }
+        guard let releaseID = deps.activityReleaseID, let gateway = deps.outingGateway else {
+            contextError = "城市地点暂未准备好，请稍后重试。"
             return
         }
         do {
-            var profile = try await deps.economyStore.profile()
-            #if DEBUG
-            if ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1",
-               ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] != nil {
-                // The App uses an empty, in-memory container for this fixture.
-                // Seed its city without invoking production account activation.
-                profile = try await deps.economyStore.updateProfile {
-                    $0.currentRegionID = "london"
-                    $0.hasCompletedOnboarding = true
-                }
-            }
-            #endif
-            guard !Task.isCancelled else { return }
-            guard deps.regionCatalog.region(id: profile.currentRegionID) != nil else {
-                contextError = "没有找到当前城市，请返回首页后重试。"
+            let profile = try await deps.economyStore.profile()
+            try Task.checkCancellation()
+            guard let region = deps.regionCatalog.region(id: profile.currentRegionID) else {
+                contextError = "没有找到当前城市，请重试。"
                 return
             }
-            #if DEBUG
-            if ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1",
-               ProcessInfo.processInfo.environment["UI_TEST_NATIVE_CAPTURE"] == "encounter",
-               ProcessInfo.processInfo.environment["UI_TEST_SOCIAL_FIXTURE"] == "1",
-               let selected = SceneActivity.catalog.first(where: { $0.id == "park-route" }),
-               let region = deps.regionCatalog.region(id: profile.currentRegionID) {
-                journey.prepare(activity: selected, region: region, deps: deps, namespace: storageNamespace)
-                activity = journey.activeActivity
-                journey.start()
+            cityName = region.nameZh
+            if placeCatalog?.cityId != region.id || placeCatalog?.releaseId != releaseID {
+                placeCatalog = nil
+                cityID = nil
             }
-            #endif
-            cityID = profile.currentRegionID
-            cityName = deps.regionCatalog.region(id: profile.currentRegionID)?.nameZh ?? "当前城市"
+            if let local = deps.presentationCache?.catalog(releaseID: releaseID, cityID: region.id)
+                ?? CityActivityRelease.bundled().flatMap({ $0.releaseId == releaseID ? $0.catalog(in: region.id) : nil }) {
+                placeCatalog = local
+                cityID = local.cityId
+                readRecords()
+            }
+            let cached = try CityOutingArchive.load(namespace: storageNamespace, defaults: storage)
+            resumableOuting = cached?.needsContinuation == true ? cached : nil
+            if resumableOuting == nil, let active = try? await gateway.activeOuting() {
+                try Task.checkCancellation()
+                guard !journey.hasOpenOuting else { return }
+                try PlaceOutingProgress.validate(active)
+                let restored = CityOutingArchive(restoring: active)
+                try restored.save(namespace: storageNamespace, defaults: storage)
+                resumableOuting = restored
+            }
+            try Task.checkCancellation()
+            guard !journey.hasOpenOuting else { return }
+            if automaticallyRestoreOuting, let archive = resumableOuting {
+                automaticallyRestoreOuting = false
+                openPlaceArchive(archive); readRecords(); return
+            }
+            let remote: BackendActivityCatalog?
+            do {
+                if let cache = deps.presentationCache {
+                    remote = try await cache.refreshCatalog(releaseID: releaseID, cityID: region.id, gateway: gateway)
+                } else {
+                    remote = try await gateway.activityCatalog(releaseID: releaseID)
+                }
+                try Task.checkCancellation()
+                if let remote {
+                    try CityActivityRelease.validate(remote)
+                    guard remote.releaseId == releaseID, remote.cityId == region.id else {
+                        throw PlaceOutingProgress.ProgressError.invalidContent
+                    }
+                    placeCatalog = remote
+                    cityID = region.id
+                }
+            } catch where !Task.isCancelled && placeCatalog != nil {
+                // An already downloaded catalog remains usable during a refresh failure.
+            }
+            try Task.checkCancellation()
+            guard placeCatalog != nil else {
+                cityID = nil
+                contextError = "城市地点暂未准备好，请稍后重试。"
+                return
+            }
+            automaticallyRestoreOuting = false
             readRecords()
+        } catch is CancellationError {
         } catch {
+            cityID = nil
             contextError = "城市信息暂时无法读取，请重试。"
         }
     }
-    private var journalDefaults: UserDefaults {
-        guard deps.tutorial != nil else { return .standard }
-        return UserDefaults(suiteName: "lingotrip.tutorial.\(storageNamespace)") ?? .standard
+    @MainActor private func openPlaceArchive(_ archive: CityOutingArchive) {
+        guard let gateway = deps.outingGateway,
+              let region = deps.regionCatalog.region(id: archive.snapshot?.cityId ?? archive.place.photo.cityId) else {
+            contextError = "这次外出的城市暂不可用，请稍后重试。"; return
+        }
+        journey.preparePlace(archive: archive, region: region, deps: deps, namespace: storageNamespace, gateway: gateway, storage: storage)
+        cityID = region.id
+        cityName = region.nameZh
     }
-
     private func readRecords() {
         guard let cityID else { return }
         do {
-            records = try ActivityJournal(namespace: storageNamespace, city: cityID, defaults: journalDefaults).records()
+            records = try ActivityJournal(namespace: storageNamespace, city: cityID, defaults: storage).records()
+            recoveries = try CityOutingArchive.recoveries(namespace: storageNamespace, defaults: storage)
+                .filter { $0.snapshot?.cityId == cityID }
             journalError = nil
         } catch {
             journalError = "原有记录暂时无法读取，已保留原数据。请重试；读取恢复前不会覆盖保存。"

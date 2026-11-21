@@ -15,7 +15,6 @@ public struct OnboardingDependencies: Sendable {
 
     public let grammarPoints: GrammarPointStore
     public let scriptURL: URL
-    public let tutorial: TutorialPresenter
 
     public init(
         economyStore: EconomyStore,
@@ -23,8 +22,7 @@ public struct OnboardingDependencies: Sendable {
         rosterStore: RosterStore,
         scriptURL: URL,
         dictionary: DictDatabase,
-        grammarPoints: GrammarPointStore,
-        tutorial: @escaping TutorialPresenter
+        grammarPoints: GrammarPointStore
     ) {
         self.economyStore = economyStore
         self.profileCommands = profileCommands
@@ -33,7 +31,6 @@ public struct OnboardingDependencies: Sendable {
         self.grammarPoints = grammarPoints
 
         self.scriptURL = scriptURL
-        self.tutorial = tutorial
     }
 }
 
@@ -51,9 +48,10 @@ public struct OnboardingFlowView: View {
     private let deps: OnboardingDependencies
     private let placementCompletionRevision: Int
     private let onRequestPlacement: () -> Void
+    private let tutorial: TutorialPresenter?
     private let onComplete: (CharacterDTO) async -> Bool
-
     @State private var tutorialCharacter: CharacterDTO?
+
     @State private var phase: Phase = .loading
     @State private var profile: UserProfileDTO?
     @State private var player: StoryPlayer?
@@ -65,12 +63,14 @@ public struct OnboardingFlowView: View {
         accountID: UUID,
         deps: OnboardingDependencies,
         placementCompletionRevision: Int = 0,
-        onRequestPlacement: @escaping () -> Void = {},
+        onRequestPlacement: @escaping () -> Void,
+        tutorial: TutorialPresenter? = nil,
         onComplete: @escaping (CharacterDTO) async -> Bool
     ) {
         self.deps = deps
         self.placementCompletionRevision = placementCompletionRevision
         self.onRequestPlacement = onRequestPlacement
+        self.tutorial = tutorial
         self.onComplete = onComplete
         _placementOfferDismissed = AppStorage(
             wrappedValue: false,
@@ -78,11 +78,25 @@ public struct OnboardingFlowView: View {
         )
     }
 
+    private var stepAnimation: Animation {
+        DSAnimation.resolve(DSAnimation.scene, reduceMotion: reduceMotion)
+    }
+
+    private var stepTransition: AnyTransition {
+        reduceMotion
+            ? .opacity
+            : .asymmetric(
+                insertion: .move(edge: .trailing).combined(with: .opacity),
+                removal: .move(edge: .leading).combined(with: .opacity)
+            )
+    }
+
     public var body: some View {
-        Group {
+        ZStack {
             switch phase {
             case .loading:
                 onboardingLoading
+                    .transition(.opacity)
             case .profile:
                 if let profile {
                     LearnerProfileSetupView(
@@ -90,38 +104,43 @@ public struct OnboardingFlowView: View {
                         profileCommands: deps.profileCommands
                     ) { updated in
                         self.profile = updated
-                        withAnimation(reduceMotion ? nil : .snappy) {
+                        withAnimation(stepAnimation) {
                             phase = .calibration
                         }
                     }
+                    .transition(stepTransition)
                 } else {
                     onboardingLoading
+                        .transition(.opacity)
                 }
             case .calibration:
-                PlacementCalibrationChoiceView(
-                    onStart: onRequestPlacement,
-                    onSkip: continueWithSelfAssessment
-                )
+                onboardingLoading
+                    .transition(.opacity)
+                    .task { onRequestPlacement() }
             case .story:
                 if let player {
                     ChatStoryView(player: player, characters: characters, deps: deps) {
-                        withAnimation(reduceMotion ? nil : .snappy) {
+                        withAnimation(stepAnimation) {
                             phase = .selection
                         }
                     }
+                    .transition(stepTransition)
                 } else {
                     onboardingLoading
+                        .transition(.opacity)
                 }
             case .selection:
                 CharacterSelectView(characters: characters) { character in
+                    guard tutorial != nil else { return await onComplete(character) }
                     tutorialCharacter = character
-                    phase = .tutorial
+                    withAnimation(stepAnimation) { phase = .tutorial }
                     return true
                 }
-                    .transition(reduceMotion ? .opacity : .move(edge: .trailing).combined(with: .opacity))
+                .transition(stepTransition)
             case .tutorial:
-                if let character = tutorialCharacter {
-                    deps.tutorial(character, { await onComplete(character) })
+                if let tutorial, let character = tutorialCharacter {
+                    tutorial(character, { await onComplete(character) })
+                        .transition(stepTransition)
                 }
             }
         }
@@ -136,7 +155,9 @@ public struct OnboardingFlowView: View {
             }
             characters = (try? await deps.rosterStore.allCharacters().filter(\.isMainCharacter)) ?? []
             if phase == .loading, let profile {
-                phase = destination(for: profile)
+                withAnimation(reduceMotion ? .easeOut(duration: 0.12) : .smooth(duration: 0.26, extraBounce: 0)) {
+                    phase = destination(for: profile)
+                }
             }
             #if DEBUG
             if ProcessInfo.processInfo.environment["UI_TEST_ONBOARDING_SELECTION"] == "1" {
@@ -154,11 +175,11 @@ public struct OnboardingFlowView: View {
         .onChange(of: placementCompletionRevision) { oldValue, newValue in
             guard oldValue != newValue else { return }
             placementOfferDismissed = true
+            withAnimation(stepAnimation) {
+                phase = .story
+            }
             Task {
                 profile = try? await deps.economyStore.profile()
-                withAnimation(reduceMotion ? nil : .snappy) {
-                    phase = .story
-                }
             }
         }
     }
@@ -176,13 +197,6 @@ public struct OnboardingFlowView: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.secondary)
             }
-        }
-    }
-
-    private func continueWithSelfAssessment() {
-        placementOfferDismissed = true
-        withAnimation(reduceMotion ? nil : .snappy) {
-            phase = .story
         }
     }
 
@@ -217,97 +231,6 @@ public struct OnboardingFlowView: View {
         }
     }
     #endif
-}
-
-/// 建档与剧情之间只出现一次的可选校准，不把测评包装成强制门槛。
-private struct PlacementCalibrationChoiceView: View {
-    let onStart: () -> Void
-    let onSkip: () -> Void
-
-    var body: some View {
-        ZStack {
-            LinearGradient(
-                colors: [Color.dsSky.opacity(0.1), Color.dsBackground],
-                startPoint: .top,
-                endPoint: .center
-            )
-            .ignoresSafeArea()
-
-            ScrollView {
-                VStack(spacing: DSSpacing.xl) {
-                    HStack(alignment: .top, spacing: DSSpacing.md) {
-                        BrandMascotView(pose: .guide, size: 104, showsShadow: false)
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("要不要再校准一下？")
-                                .font(.system(.title2, design: .rounded, weight: .bold))
-                            Text("这是可选项，自评结果已经可以直接开始。")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                        }
-                        Spacer(minLength: 0)
-                    }
-
-                    VStack(spacing: 0) {
-                        calibrationRow(
-                            icon: "slider.horizontal.3",
-                            title: "题目会动态调整",
-                            detail: "答对会变难，答错会回到更合适的位置"
-                        )
-                        Divider().padding(.leading, 52)
-                        calibrationRow(
-                            icon: "clock",
-                            title: "约 3–5 分钟",
-                            detail: "通常 8–12 题，可随时退出"
-                        )
-                        Divider().padding(.leading, 52)
-                        calibrationRow(
-                            icon: "person.2",
-                            title: "马上影响角色对话",
-                            detail: "问题长度、词汇和引导方式会随结果调整"
-                        )
-                    }
-                    .dsSurface(.grouped, padding: 0)
-
-                    VStack(spacing: DSSpacing.sm) {
-                        Button("答几题，更准确") {
-                            onStart()
-                        }
-                        .buttonStyle(.dsActionPrimary)
-
-                        Button("先按自评结果开始") {
-                            onSkip()
-                        }
-                        .buttonStyle(.dsAction(.secondary))
-                    }
-                }
-                .frame(maxWidth: 560)
-                .padding(DSSpacing.lg)
-                .frame(maxWidth: .infinity)
-            }
-        }
-    }
-
-    private func calibrationRow(
-        icon: String,
-        title: String,
-        detail: String
-    ) -> some View {
-        HStack(spacing: DSSpacing.sm) {
-            Image(systemName: icon)
-                .foregroundStyle(Color.dsSkyDeep)
-                .frame(width: 36, height: 36)
-                .background(Color.dsSky.opacity(0.1), in: RoundedRectangle(cornerRadius: 10))
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .font(.subheadline.weight(.semibold))
-                Text(detail)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-            Spacer()
-        }
-        .padding(DSSpacing.sm)
-    }
 }
 
 /// 聊天皮肤的剧情播放：复用剧情引擎，气泡逐条点击推进。
@@ -648,27 +571,17 @@ struct CharacterSelectView: View {
 /// 只读重看入口：不重置档案、不重新选角，也不写入正式聊天。
 public struct JourneyIntroductionView: View {
     private let deps: OnboardingDependencies
-    @State private var showsTutorial: Bool
     @State private var showsStory = false
     @State private var player: StoryPlayer?
     @State private var characters: [CharacterDTO] = []
     @State private var loadFailed = false
     @Environment(\.dismiss) private var dismiss
 
-    public init(deps: OnboardingDependencies, startsWithTutorial: Bool = false) {
-        self.deps = deps
-        _showsTutorial = State(initialValue: startsWithTutorial)
-    }
+    public init(deps: OnboardingDependencies) { self.deps = deps }
 
     public var body: some View {
         Group {
-            if showsTutorial {
-                if let character = characters.first {
-                    deps.tutorial(character, { dismiss(); return true })
-                } else if loadFailed {
-                    ContentUnavailableView("暂时无法打开练习", systemImage: "book.closed")
-                } else { ProgressView() }
-            } else if !showsStory {
+            if !showsStory {
                 WelcomeJourneyView(dictionary: deps.dictionary, grammar: deps.grammarPoints) { showsStory = true }
             } else if let player {
                 ChatStoryView(player: player, characters: characters, deps: deps) { dismiss() }
@@ -679,23 +592,17 @@ public struct JourneyIntroductionView: View {
             }
         }
         .overlay(alignment: .topTrailing) {
-            if !showsTutorial || loadFailed {
-                Button("关闭", systemImage: "xmark", action: { dismiss() })
-                    .labelStyle(.iconOnly)
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.circle)
-                    .accessibilityIdentifier("introduction.close")
-                    .padding(.trailing, 16)
-                    .padding(.top, 8)
-            }
+            Button("关闭", systemImage: "xmark", action: { dismiss() })
+                .labelStyle(.iconOnly)
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.circle)
+                .accessibilityIdentifier("introduction.close")
+                .padding(.trailing, 16)
+                .padding(.top, 8)
         }
         .task {
             do {
                 characters = try await deps.rosterStore.allCharacters().filter(\.isMainCharacter)
-                if showsTutorial {
-                    loadFailed = characters.isEmpty
-                    return
-                }
                 let script = try StoryScript.load(from: deps.scriptURL)
                 let loaded = StoryPlayer(script: script)
                 loaded.advance()

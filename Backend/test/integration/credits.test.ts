@@ -53,6 +53,134 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         await runtime.database.sql`delete from app.users where id=${id}`;
       await runtime.close();
     });
+    it("pending model results retain uncertainty for both SQL NULL and JSON null", async () => {
+      const user = await actor(),
+        operation = newEntityId(),
+        unused = newEntityId();
+      await credits.reserve(user, operation, operation, req);
+      expect(await credits.operationPending(user, operation)).toBe(true);
+      await credits.dispatch(user, operation);
+      await credits.finish(user, operation, null);
+      expect(await credits.operationPending(user, operation)).toBe(true);
+      expect(await credits.completedResult(user, operation)).toBeNull();
+      await credits.finish(
+        user,
+        operation,
+        usage,
+        { content: "Recovered reply" },
+        "provider",
+        req.model,
+      );
+      expect(await credits.operationPending(user, operation)).toBe(false);
+      expect(await credits.completedResult(user, operation)).toEqual({
+        content: "Recovered reply",
+      });
+      await credits.reserve(user, unused, unused, req);
+      await credits.finish(user, unused, null);
+      expect(await credits.operationPending(user, unused)).toBe(false);
+    });
+
+    it("appointment recovery and its one repair stay on the service budget", async () => {
+      const user = await actor(),
+        original = newEntityId(),
+        retry = newEntityId(),
+        repair = newEntityId();
+      await credits.reserve(user, original, "appointment-first", {
+        ...req,
+        task: "appointment_story",
+      });
+      await credits.dispatch(user, original);
+      await credits.finish(
+        user,
+        original,
+        usage,
+        {
+          content: "semantically rejected draft",
+        },
+        "provider-original",
+        req.model,
+      );
+      const used = (await credits.snapshot(user)).used;
+      const [paid] = await runtime.database.sql<
+        { billing_scope: string; settled_units: string }[]
+      >`select billing_scope,settled_units::text from app.credit_operations where user_id=${user} and operation_id=${original}`;
+      expect(paid?.billing_scope).toBe("user");
+      expect(BigInt(paid?.settled_units ?? "0")).toBeGreaterThan(0n);
+      await credits.reserve(user, retry, "appointment-retry", {
+        ...req,
+        task: "appointment_story_retry",
+      });
+      await credits.dispatch(user, retry);
+      await credits.finish(
+        user,
+        retry,
+        usage,
+        { content: "reviewed draft" },
+        "provider-retry",
+        req.model,
+      );
+      await credits.reserve(user, repair, "appointment-repair", {
+        ...req,
+        task: "appointment_story_retry",
+        parentOperationId: retry,
+      });
+      await credits.dispatch(user, repair);
+      await credits.finish(
+        user,
+        repair,
+        usage,
+        { content: "repaired draft" },
+        "provider-repair",
+        req.model,
+      );
+      expect((await credits.snapshot(user)).used).toBe(used);
+      const scopes = await runtime.database.sql<
+        { billing_scope: string }[]
+      >`select billing_scope from app.credit_operations where user_id=${user} and operation_id=any(${[retry, repair]}::uuid[])`;
+      expect(scopes.map((row) => row.billing_scope)).toEqual(["service", "service"]);
+    });
+    it("finishes an admitted appointment with one credit and a spent auxiliary budget", async () => {
+      const user = await actor();
+      const previous = newEntityId();
+      const auxiliary = newEntityId();
+      const story = { ...req, task: "appointment_story" };
+      const background = { ...req, task: "coach_review" };
+      await credits.reserve(user, previous, previous, story);
+      await credits.reserve(user, auxiliary, auxiliary, background);
+      await runtime.database.sql`update app.credit_operations set status='settled',
+        settled_units=case when operation_id=${previous} then 99000000 else 75000000 end
+        where user_id=${user} and operation_id=any(${[previous, auxiliary]}::uuid[])`;
+      expect((await credits.snapshot(user)).remaining).toBe(1);
+
+      const last = newEntityId();
+      await credits.reserve(user, last, last, story);
+      await credits.dispatch(user, last);
+      await credits.finish(user, last, usage, { content: "Story draft" }, "story", req.model);
+      const paid = await credits.snapshot(user);
+      expect(paid.remaining).toBe(0);
+
+      const audit = { ...req, task: "appointment_review" };
+      const stages = [
+        { ...audit, requiredAppointmentStep: true },
+        { ...story, parentOperationId: last, requiredAppointmentStep: true },
+        { ...audit, requiredAppointmentStep: true },
+        { ...audit, requiredAppointmentStep: true },
+      ];
+      for (const stage of stages) {
+        const id = newEntityId();
+        await expect(credits.reserve(user, id, id, stage)).resolves.toMatchObject({ replay: false });
+        await credits.dispatch(user, id);
+        await credits.finish(user, id, usage, { content: "Audited result" }, "stage", req.model);
+        expect((await credits.reserve(user, id, id, stage)).replay).toBe(true);
+      }
+      expect((await credits.snapshot(user)).used).toBe(paid.used);
+      await expect(credits.reserve(user, newEntityId(), "next", story))
+        .rejects.toMatchObject({ code: "CREDITS_EXHAUSTED" });
+      await expect(credits.reserve(user, newEntityId(), "detection-review", audit))
+        .rejects.toMatchObject({ code: "AUXILIARY_BUDGET_EXHAUSTED" });
+      await expect(credits.reserve(user, newEntityId(), "background", { ...background, requiredAppointmentStep: true }))
+        .rejects.toMatchObject({ code: "AUXILIARY_BUDGET_EXHAUSTED" });
+    });
     it.each([false, true])(
       "empty output is a failed, service-funded operation (stream=%s)",
       async (streaming) => {
@@ -264,6 +392,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         "proactive_message",
         "quiz",
         "speech_feedback",
+        "grammar_library_review",
       ];
       const tinyUsage = {
         inputTokens: 1,

@@ -52,12 +52,15 @@ extension BackendTransport {
 
 public struct URLSessionBackendTransport: BackendTransport {
     private let session: URLSession
+    private let appointmentSession: URLSession
 
     public init(session: URLSession? = nil) {
         if let session {
             self.session = session
+            self.appointmentSession = session
         } else {
             self.session = URLSession(configuration: Self.defaultSessionConfiguration())
+            self.appointmentSession = URLSession(configuration: Self.appointmentSessionConfiguration())
         }
     }
 
@@ -70,8 +73,16 @@ public struct URLSessionBackendTransport: BackendTransport {
         return configuration
     }
 
+    static func appointmentSessionConfiguration() -> URLSessionConfiguration {
+        let configuration = defaultSessionConfiguration()
+        configuration.timeoutIntervalForRequest = AppointmentRequestTiming.requestTimeout
+        configuration.timeoutIntervalForResource = AppointmentRequestTiming.resourceTimeout
+        return configuration
+    }
+
     public func data(for request: URLRequest) async throws -> BackendTransportResponse {
-        let (data, response) = try await session.data(for: request)
+        let selected = AppointmentRequestTiming.needsGenerationWait(request.url?.path ?? "") ? appointmentSession : session
+        let (data, response) = try await selected.data(for: request)
         guard let http = response as? HTTPURLResponse else {
             throw BackendClientError.invalidResponse
         }

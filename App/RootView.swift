@@ -1,8 +1,10 @@
+import AppointmentFeature
 import AuthFeature
 import BackendKit
 import BillingKit
 import ChatFeature
 import LearningFeature
+import LLMKit
 import CoreKit
 import DesignSystem
 import DictKit
@@ -32,23 +34,41 @@ struct RootView: View {
     }
 
     let environment: AppEnvironment
+    var onExitOnboardingPreview: (() -> Void)?
 
     @State private var unreadCount = 0
     @State private var selectedTab: AppTab = .messages
+    @State private var appointmentPresentation: AppointmentPresentation?
+    @State private var appointmentCityID = ""
+    @State private var appointmentCharacters: [UUID: CharacterDTO] = [:]
+    @State private var memoryCharacterID: UUID?
+    private struct AppointmentPresentation: Identifiable {
+        let id = UUID()
+        let appointmentID: UUID?
+        var usesHomeZoomSource = false
+        var testView: AppointmentListView? = nil
+        var liveTest = false
+    }
+    private struct HomeRootRoute: Hashable {
+        let destination: HomeDestination
+    }
+    private struct HomeChatRoute: Hashable {
+        let character: CharacterDTO
+        func hash(into hasher: inout Hasher) { hasher.combine(character.id) }
+        static func == (lhs: Self, rhs: Self) -> Bool { lhs.character.id == rhs.character.id }
+    }
+    @Namespace private var homeTransitionNamespace
     @State private var visitedTabs: Set<AppTab> = []
     @State private var messagesPath = NavigationPath()
     @State private var contactsPath = NavigationPath()
     @State private var messagesNavigationRevision = 0
     @State private var contactsNavigationRevision = 0
     @State private var homePath = NavigationPath()
-    @State private var activeHomeDestination: HomeDestination?
     @State private var mePath: [MeDestination] = []
     @State private var activationError: String?
-    @State private var showUsage = false
+    @State private var showSubscription = false
     @State private var showLondonEpisode = false
-    @StateObject private var activityJourney = ActivityJourneyCoordinator()
-    @State private var activeSceneActivity: SceneActivity?
-    @State private var activeActivityChat: CharacterDTO?
+    @State private var activityJourney = ActivityJourneyCoordinator()
     @State private var showPlacementTest = false
     @State private var showEnglishJourney = false
     @State private var showOnboardingPlacement = false
@@ -59,27 +79,38 @@ struct RootView: View {
     @State private var introductionMode: IntroductionMode?
     #if DEBUG
     @State private var captureCharacter: CharacterDTO?
+    @State private var showsCitySceneGallery = false
+    @State private var showsAppointmentTestScenarios = false
     #endif
+    @State private var onboardingPreviewMode: OnboardingPreviewMode?
     @State private var placementCompletionRevision = 0
     @State private var activeUserID: UUID?
     @State private var stateRevision = 0
     @State private var shouldRefreshAfterBackground = false
     @State private var isInitialContentReady = false
+    @State private var allowsWorldMapWarmup = false
+    @State private var launchVeilVisible = true
     @State private var completedForcedOnboarding = false
     @State private var completedForcedWelcome = false
     @AppStorage("onboarding.welcome.completed.v1") private var welcomeCompleted = false
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    init(environment: AppEnvironment) {
+    init(environment: AppEnvironment, onExitOnboardingPreview: (() -> Void)? = nil) {
         self.environment = environment
+        self.onExitOnboardingPreview = onExitOnboardingPreview
+        if let mode = environment.onboardingPreviewMode {
+            _selectedTab = State(initialValue: mode == .placement ? .me : .messages)
+            _showPlacementTest = State(initialValue: mode == .placement)
+            return
+        }
         #if DEBUG
         let requested = ProcessInfo.processInfo.environment["UI_TEST_TAB"]
         let initial: AppTab = switch requested {
         case "messages": .messages
         case "contacts": .contacts
-        case "home", "map": .home
-        case "me", "subscription", "learning", "favorites", "learning-test": .me
+        case "home", "map", "places-preview", "world-preview", "scenes-preview", "appointments-preview": .home
+        case "me", "settings", "subscription", "learning", "favorites", "learning-test": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
                 ? .messages
@@ -95,23 +126,30 @@ struct RootView: View {
         if requested == "learning-test" {
             _mePath = State(initialValue: [.learningTrial])
         }
+        if requested == "settings" {
+            _mePath = State(initialValue: [.settings])
+        }
         if requested == "subscription" {
             _mePath = State(initialValue: [.subscription])
         }
         if requested == "map" {
-            _activeHomeDestination = State(initialValue: .map)
-        } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
-            _activeHomeDestination = State(initialValue: .activities)
+            var path = NavigationPath()
+            path.append(HomeRootRoute(destination: .map))
+            _homePath = State(initialValue: path)
+        } else if ["places-preview", "world-preview"].contains(requested ?? "") || ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
+            var path = NavigationPath()
+            path.append(HomeRootRoute(destination: .activities))
+            _homePath = State(initialValue: path)
         } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "mainline" {
             var path = NavigationPath()
+            path.append(HomeRootRoute(destination: .stories))
             path.append(HomeDestination.mainline)
             _homePath = State(initialValue: path)
-            _activeHomeDestination = State(initialValue: .stories)
         } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "cityStories" {
             var path = NavigationPath()
+            path.append(HomeRootRoute(destination: .stories))
             path.append(HomeDestination.cityStories)
             _homePath = State(initialValue: path)
-            _activeHomeDestination = State(initialValue: .stories)
         }
         #endif
         #if DEBUG
@@ -124,6 +162,9 @@ struct RootView: View {
             _selectedTab = State(initialValue: .me)
         }
         #endif
+    }
+    private var isOnboardingPreview: Bool {
+        environment.onboardingPreviewMode != nil
     }
     private var showsOnboarding: Binding<Bool> {
         Binding(
@@ -165,7 +206,32 @@ struct RootView: View {
 
     private var configuredRootContent: some View {
         launchContent
+            .onChange(of: isInitialContentReady) { _, ready in
+                #if DEBUG
+                if ready && bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" {
+                    appointmentPresentation = AppointmentPresentation(appointmentID: nil)
+                }
+                if ready && bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "scenes-preview" {
+                    showsCitySceneGallery = true
+                }
+                #endif
+            }
+            .onChange(of: activeUserID) { _, _ in
+                appointmentPresentation = nil
+                appointmentCharacters = [:]
+                appointmentCityID = ""
+            }
+            .fullScreenCover(item: $appointmentPresentation) { presentation in
+                if presentation.usesHomeZoomSource {
+                    appointmentPage(presentation)
+                        .navigationTransition(.zoom(sourceID: HomeDestination.appointments, in: homeTransitionNamespace))
+                } else {
+                    appointmentPage(presentation)
+                }
+            }
+            .overlay(alignment: .topTrailing) { onboardingPreviewExit }
             #if DEBUG
+            .fullScreenCover(isPresented: $showsCitySceneGallery) { DebugCitySceneGallery() }
             .preferredColorScheme(ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_APPEARANCE"].map { $0 == "dark" ? .dark : .light })
             .fullScreenCover(item: $captureCharacter) { character in
                 NavigationStack {
@@ -222,7 +288,27 @@ struct RootView: View {
                     VStack(spacing: 16) {
                         Text("旅程尚未载入").font(.headline)
                         Text(activationError).font(.subheadline)
-                        Button("重试") { Task { await handleAuthenticationPhase() } }
+                        if environment.guestOutingProgressConflict {
+                            Text("本机阅读与选择会保存为可查看的恢复副本。")
+                                .font(.caption).foregroundStyle(.secondary)
+                            Button("采用服务器外出进度，继续认领") {
+                                environment.adoptGuestServerProgress = true
+                                Task { await handleAuthenticationPhase() }
+                            }
+                        } else if environment.guestOutingChoiceRequired {
+                            Text("另一次外出将结束，已读内容与选择会留在足迹中。")
+                                .font(.caption).foregroundStyle(.secondary)
+                            Button("继续游客的外出") {
+                                environment.guestOutingToKeep = "guest"
+                                Task { await handleAuthenticationPhase() }
+                            }
+                            Button("继续账号的外出") {
+                                environment.guestOutingToKeep = "account"
+                                Task { await handleAuthenticationPhase() }
+                            }
+                        } else {
+                            Button("重试") { Task { await handleAuthenticationPhase() } }
+                        }
                         Button("退出此账号") {
                             Task { await environment.authSession.logout() }
                         }
@@ -232,12 +318,9 @@ struct RootView: View {
                     .background(.background)
                 }
             }
-            .sheet(isPresented: $showUsage) {
+            .sheet(isPresented: $showSubscription) {
                 if environment.workspace != nil {
-                    UsageAccessView(
-                        backend: environment.backendClient,
-                        billing: environment.billing
-                    )
+                    myPage(section: .subscription)
                 }
             }
             .task(id: authenticationTaskID) {
@@ -254,7 +337,7 @@ struct RootView: View {
                 #endif
                 await reloadUnreadCount()
                 if environment.needsOnboarding != nil,
-                   selectedTab != .home || activeHomeDestination != nil || !homePath.isEmpty {
+                   selectedTab != .home || !homePath.isEmpty {
                     isInitialContentReady = true
                 }
                 await refreshProactiveMessagesAfterInterfaceSettles(
@@ -366,8 +449,8 @@ struct RootView: View {
             }
             .onChange(of: activeUserID) { _, _ in
                 activityJourney.reset()
-                activeSceneActivity = nil
-                activeActivityChat = nil
+                homePath = NavigationPath()
+                allowsWorldMapWarmup = false
             }
             .onReceive(NotificationCenter.default.publisher(for: .memoryKnowledgeDidChange)) { _ in
                 Task { await environment.workspace?.proactiveMessages.learnerProfileDidChange() }
@@ -396,7 +479,6 @@ struct RootView: View {
             }
             .onReceive(NotificationCenter.default.publisher(for: .rosterContactDidChange)) { _ in
                 guard environment.workspace != nil else { return }
-                stateRevision += 1
                 Task {
                     await environment.refreshProactiveMessages(requestAuthorization: false)
                     await reloadUnreadCount()
@@ -420,6 +502,13 @@ struct RootView: View {
         activationError = nil
         await environment.prepareResources()
         guard !Task.isCancelled else { return }
+        if isOnboardingPreview {
+            do {
+                activeUserID = try await environment.activateOnboardingPreviewWorkspace()
+                stateRevision += 1
+            } catch { activationError = error.localizedDescription }
+            return
+        }
         #if DEBUG
         if bypassesAuthenticationForUITesting,
            case .signedOut = environment.authSession.phase {
@@ -463,35 +552,66 @@ struct RootView: View {
         }
     }
 
+    private enum LaunchScreenPhase: Equatable {
+        case loading
+        case welcome
+        case signIn
+        case app
+    }
+
+    private var launchPhase: LaunchScreenPhase {
+        if !environment.resourcesReady { return .loading }
+        if isOnboardingPreview {
+            return (activeUserID != nil && environment.workspace != nil) ? .app : .loading
+        }
+        if showsWelcome { return .welcome }
+        switch environment.authSession.phase {
+        case .loading:
+            return .loading
+        case .signedOut:
+            if bypassesAuthenticationForUITesting {
+                return (activeUserID != nil && environment.workspace != nil) ? .app : .loading
+            }
+            return .signIn
+        case .signedIn(let identity):
+            return (activeUserID == identity.userID && environment.workspace?.userID == identity.userID)
+                ? .app
+                : .loading
+        }
+    }
+
     @ViewBuilder
     private var launchContent: some View {
-        if !environment.resourcesReady {
-            launchLoading
-        } else if showsWelcome {
-            WelcomeJourneyView(dictionary: environment.dictionary, grammar: environment.grammarPoints) {
-                welcomeCompleted = true
-                completedForcedWelcome = true
-            }
-        } else {
-            switch environment.authSession.phase {
+        Group {
+            switch launchPhase {
             case .loading:
                 launchLoading
-            case .signedOut:
-                if bypassesAuthenticationForUITesting,
-                   activeUserID != nil,
-                   environment.workspace != nil {
-                    appContent
-                } else if bypassesAuthenticationForUITesting {
-                    launchLoading
-                } else {
-                    SignInView(session: environment.authSession)
+            case .welcome:
+                WelcomeJourneyView(dictionary: environment.dictionary, grammar: environment.grammarPoints) {
+                    welcomeCompleted = true
+                    completedForcedWelcome = true
                 }
-            case .signedIn(let identity):
-                if activeUserID == identity.userID,
-                   environment.workspace?.userID == identity.userID {
-                    appContent
-                } else {
-                    launchLoading
+            case .signIn:
+                SignInView(session: environment.authSession)
+            case .app:
+                appContent
+            }
+        }
+        .overlay {
+            if launchPhase != .loading {
+                Color("BrandLaunchBackground")
+                    .ignoresSafeArea()
+                    .opacity(launchVeilVisible ? 1 : 0)
+                    .allowsHitTesting(false)
+                    .accessibilityHidden(true)
+            }
+        }
+        .onChange(of: launchPhase, initial: true) { _, phase in
+            if phase == .loading {
+                launchVeilVisible = true
+            } else if launchVeilVisible {
+                withAnimation(reduceMotion ? .easeOut(duration: 0.1) : .easeOut(duration: 0.2)) {
+                    launchVeilVisible = false
                 }
             }
         }
@@ -520,6 +640,7 @@ struct RootView: View {
     }
 
     private var bypassesAuthenticationForUITesting: Bool {
+        if isOnboardingPreview { return true }
         #if DEBUG
         let processEnvironment = ProcessInfo.processInfo.environment
         if processEnvironment["UI_TEST_REQUIRE_AUTHENTICATION"] == "1" {
@@ -529,7 +650,6 @@ struct RootView: View {
             || processEnvironment["UI_TEST_ONBOARDING_WELCOME"] != nil
             || processEnvironment["UI_TEST_ONBOARDING_SELECTION"] == "1"
             || processEnvironment["UI_TEST_ONBOARDING_STORY"] == "1"
-            || processEnvironment["UI_TEST_SOCIAL_FIXTURE"] == "1"
         #else
         return false
         #endif
@@ -540,6 +660,61 @@ struct RootView: View {
         if let accountID = activeUserID,
            environment.workspace?.userID == accountID {
             tabs
+            .task(id: "destinations-\(accountID)-\(stateRevision)-\(environment.needsOnboarding == false)") {
+                guard environment.needsOnboarding == false, let account = environment.workspace,
+                      account.userID == accountID else { return }
+                let cache = account.journeyPresentation
+                await cache.refreshLocal(economy: account.economyStore, items: account.itemStore,
+                    progress: account.storyProgressStore, ticketStubs: account.ticketStubStore)
+                guard !Task.isCancelled else { return }
+                _ = try? await cache.refreshMainline(using: mainlineClient)
+            }
+            .task(id: "lazy-warmup-\(accountID)-\(selectedTab == .home || visitedTabs.contains(.home))-\(isInitialContentReady)", priority: .utility) {
+                guard isInitialContentReady,
+                      environment.needsOnboarding == false,
+                      let account = environment.workspace,
+                      account.userID == accountID else { return }
+                let isHomeActive = selectedTab == .home || visitedTabs.contains(.home)
+                // Keep cold launch 100% dedicated to first-screen entry; warm up lazily after settling.
+                do { try await Task.sleep(for: .milliseconds(isHomeActive ? 600 : 1_400)) }
+                catch { return }
+                guard !Task.isCancelled, environment.workspace === account else { return }
+                if let regionID = account.journeyPresentation.profile?.currentRegionID {
+                    let inactiveRoles: [DSCitySceneRole] = switch selectedTab {
+                    case .messages: [.contacts, .activities, .profile]
+                    case .contacts: [.messages, .activities, .profile]
+                    case .home: [.messages, .contacts, .profile]
+                    case .me: [.messages, .contacts, .activities]
+                    }
+                    let backdrops = inactiveRoles.map { DSCitySceneAssets.imageName(for: $0, regionID: regionID) }
+                    let bgWarmup = Task.detached(priority: .utility) {
+                        await DSSceneImageCache.preload(backdrops)
+                        guard !Task.isCancelled else { return }
+                        await AppointmentPhotoCache.preload(cityID: regionID, limit: 1)
+                    }
+                    if isHomeActive {
+                        allowsWorldMapWarmup = true
+                    }
+                    await withTaskCancellationHandler {
+                        await bgWarmup.value
+                    } onCancel: {
+                        bgWarmup.cancel()
+                    }
+                } else if isHomeActive {
+                    allowsWorldMapWarmup = true
+                }
+            }
+            .background {
+                if allowsWorldMapWarmup,
+                   let account = environment.workspace, environment.needsOnboarding == false,
+                   let profile = account.journeyPresentation.profile {
+                    // Mount lazily after the Activity tab settles so MapKit never slows cold launch.
+                    WorldMapWarmupView(cache: account.worldMapCache,
+                        region: environment.regionCatalog.region(id: profile.currentRegionID),
+                        regions: environment.regionCatalog.regions)
+                        .opacity(0.02).allowsHitTesting(false).accessibilityHidden(true)
+                }
+            }
             #if DEBUG
             .task(id: "\(accountID.uuidString)-\(stateRevision)-\(environment.needsOnboarding == false)") {
                 // 内存账号可能先挂载、后导入角色；等导入完成，避免冷启动丢失预览展示。
@@ -548,16 +723,23 @@ struct RootView: View {
                 captureCharacter = try? await environment.rosterStore.allCharacters().first { $0.isMainCharacter }
             }
             #endif
+            .fullScreenCover(item: $onboardingPreviewMode) { mode in
+                OnboardingPreviewView(mode: mode)
+            }
             .fullScreenCover(item: $introductionMode) { mode in
-                JourneyIntroductionView(deps: OnboardingDependencies(
-                    economyStore: environment.economyStore,
-                    profileCommands: profileCommands,
-                    rosterStore: environment.rosterStore,
-                    scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
-                    dictionary: environment.dictionary,
-                    grammarPoints: environment.grammarPoints,
-                    tutorial: tutorialPresenter
-                ), startsWithTutorial: mode == .tutorial)
+                switch mode {
+                case .introduction:
+                    JourneyIntroductionView(deps: OnboardingDependencies(
+                        economyStore: environment.economyStore,
+                        profileCommands: profileCommands,
+                        rosterStore: environment.rosterStore,
+                        scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
+                        dictionary: environment.dictionary,
+                        grammarPoints: environment.grammarPoints
+                    ))
+                case .tutorial:
+                    TutorialReplayView(environment: environment)
+                }
             }
             .fullScreenCover(isPresented: showsOnboarding) {
                 OnboardingFlowView(
@@ -568,11 +750,11 @@ struct RootView: View {
                         rosterStore: environment.rosterStore,
                         scriptURL: Bundle.main.url(forResource: "onboarding_chat", withExtension: "json")!,
                         dictionary: environment.dictionary,
-                        grammarPoints: environment.grammarPoints,
-                        tutorial: tutorialPresenter
+                        grammarPoints: environment.grammarPoints
                     ),
                     placementCompletionRevision: placementCompletionRevision,
-                    onRequestPlacement: { showOnboardingPlacement = true }
+                    onRequestPlacement: { showOnboardingPlacement = true },
+                    tutorial: tutorialPresenter
                 ) { character in
                     #if DEBUG
                     if ProcessInfo.processInfo.environment[
@@ -592,6 +774,7 @@ struct RootView: View {
                     )
                     return true
                 }
+                .overlay(alignment: .topTrailing) { onboardingPreviewExit }
                 .interactiveDismissDisabled()
                 .fullScreenCover(isPresented: $showOnboardingPlacement) {
                     placementTestView(isOnboarding: true)
@@ -608,8 +791,9 @@ struct RootView: View {
             set: { tab in
                 if tab == selectedTab {
                     returnTabToRoot(tab)
+                } else {
+                    selectedTab = tab
                 }
-                selectedTab = tab
             }
         )) {
             deferredTab(.messages) { messagesStack }
@@ -659,133 +843,248 @@ struct RootView: View {
         }
     }
 
-    /// 仅重复点击当前标签时返回入口；切换标签保留各自的导航与页面状态。
+    /// 点击事件独立于 selectedTab 的变化，因此重复点击当前标签也会返回入口。
     private func returnTabToRoot(_ tab: AppTab) {
         switch tab {
         case .messages:
-            messagesPath = NavigationPath()
+            if !messagesPath.isEmpty { messagesPath = NavigationPath() }
             messagesNavigationRevision += 1
         case .contacts:
-            contactsPath = NavigationPath()
+            if !contactsPath.isEmpty { contactsPath = NavigationPath() }
             contactsNavigationRevision += 1
         case .home:
-            homePath = NavigationPath()
-            activeHomeDestination = nil
-            activeActivityChat = nil
+            if !homePath.isEmpty { homePath = NavigationPath() }
         case .me:
-            showPlacementTest = false
-            showEnglishJourney = false
-            mePath.removeAll()
+            if showPlacementTest { showPlacementTest = false }
+            if showEnglishJourney { showEnglishJourney = false }
+            if !mePath.isEmpty { mePath.removeAll() }
         }
     }
 
+    private var usesTabDesignPreview: Bool {
+        #if DEBUG
+        bypassesAuthenticationForUITesting
+            && ProcessInfo.processInfo.environment["UI_TEST_TAB_DESIGN_PREVIEW"] == "1"
+        #else
+        false
+        #endif
+    }
+
+    private var homeRootContent: some View {
+        HomeView(
+            deps: homeDeps,
+            reloadToken: stateRevision,
+            isVisible: selectedTab == .home && homePath.isEmpty && appointmentPresentation == nil,
+            activityNamespace: activityStorageNamespace,
+            transitionNamespace: homeTransitionNamespace,
+            onInitialLoad: {
+                guard environment.needsOnboarding == false else { return }
+                isInitialContentReady = true
+            },
+            onOpenDestination: openHomeDestination,
+            onOpenAppointment: {
+                appointmentPresentation = AppointmentPresentation(appointmentID: $0, usesHomeZoomSource: true)
+            }
+        )
+        .id("home-root")
+    }
+
     private var homeStack: some View {
-        SceneNavigationContainer(
-            isPresentingDestination: activeHomeDestination != nil,
-            navigationTitle: activeHomeDestination?.navigationTitle ?? "",
-            onBack: closeHomeDestination,
-            navigationPath: $homePath,
-            showsNavigationBar: activeHomeDestination != .map
-                && (activeHomeDestination != .activities || activeActivityChat != nil),
-            backLabel: activeActivityChat == nil ? "返回" : "返回城市活动"
-        ) {
-            HomeView(
-                deps: homeDeps,
-                reloadToken: stateRevision,
-                onInitialLoad: {
-                    guard environment.needsOnboarding == false else { return }
-                    isInitialContentReady = true
-                },
-                onOpenDestination: openHomeDestination
-            )
-            .id("home-root")
-        } destination: {
-            Group {
-                if let destination = activeHomeDestination {
-                    homeDestinationView(destination)
-                        .id(destination)
+        NavigationStack(path: $homePath) {
+            homeRootContent
+                .toolbar(.hidden, for: .navigationBar)
+                .navigationDestination(for: HomeRootRoute.self) { route in
+                    homeDestinationView(route.destination)
+                        .id(route.destination)
+                        .navigationTitle(route.destination.navigationTitle)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar(route.destination == .stories ? .visible : .hidden, for: .navigationBar)
+                        .navigationTransition(.zoom(sourceID: route.destination, in: homeTransitionNamespace))
                 }
-            }
-            .navigationDestination(for: MainlineChapter.self) { chapter in
-                storyView(storyID: chapter.storyID)
-            }
-            .navigationDestination(for: CityStoryChapter.self) { chapter in
-                storyView(storyID: chapter.storyID)
-            }
-            .navigationDestination(for: HomeDestination.self) { destination in
-                switch destination {
-                case .mainline:
-                    MainlineListView(deps: homeDeps) { chapter in
-                        homePath.append(chapter)
+                .navigationDestination(for: HomeDestination.self) { destination in
+                    switch destination {
+                    case .mainline:
+                        MainlineListView(deps: homeDeps) { chapter in
+                            homePath.append(chapter)
+                        }
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar(.visible, for: .navigationBar)
+                    case .cityStories:
+                        CityStoryListView(deps: homeDeps) { chapter in
+                            homePath.append(chapter)
+                        }
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar(.visible, for: .navigationBar)
+                    case .map, .stories, .activities, .appointments:
+                        EmptyView()
                     }
-                case .cityStories:
-                    CityStoryListView(deps: homeDeps) { chapter in
-                        homePath.append(chapter)
-                    }
-                case .map, .stories, .activities:
-                    EmptyView()
                 }
+                .navigationDestination(for: MainlineChapter.self) { chapter in
+                    storyView(storyID: chapter.storyID)
+                }
+                .navigationDestination(for: CityStoryChapter.self) { chapter in
+                    storyView(storyID: chapter.storyID)
+                }
+                .navigationDestination(for: HomeChatRoute.self) { route in
+                    ChatView(character: route.character, deps: chatDeps)
+                }
+        }
+        .onChange(of: homePath.isEmpty) { _, isEmpty in
+            if isEmpty, activityJourney.hasOpenOuting, !activityJourney.isPreparing {
+                activityJourney.reset()
             }
         }
     }
 
     @ViewBuilder
-    private func homeDestinationView(_ destination: HomeDestination) -> some View {
+    private func appointmentPage(_ presentation: AppointmentPresentation) -> some View {
+        let reading = AppointmentReadingServices(dictionary: environment.dictionary, grammar: environment.grammarPoints,
+            favorites: environment.favoritesStore, speech: environment.speech,
+            characterNarration: { [roster = environment.rosterStore] id, text in
+                guard let character = try? await roster.character(id: id) else { return nil }
+                let hint = SpeechVoiceHint(stableID: character.id.uuidString.lowercased(),
+                    gender: character.card.gender.rawValue, nationality: character.card.nationality,
+                    supertonicVoice: character.card.resolvedReadingVoice)
+                return StoryVoiceCasting.request(text: text, speaker: character.card.name, fallback: hint,
+                    language: AccentMapper.language(forNationality: character.card.nationality))
+            })
+        let close = { appointmentPresentation = nil }
+        #if DEBUG
+        if presentation.liveTest {
+            LiveAppointmentTestView(dictionary: environment.dictionary, grammar: environment.grammarPoints,
+                speech: environment.speech, onClose: close)
+                .dictionaryPopupServices(DictionaryPopupServices(examples: .init(translate: { _ in nil })))
+        } else if let testView = presentation.testView {
+            testView.dictionaryPopupServices(DictionaryPopupServices(examples: .init(translate: { _ in nil })))
+        } else if bypassesAuthenticationForUITesting && (ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "appointments-preview" || usesTabDesignPreview) {
+            if ProcessInfo.processInfo.environment["UI_TEST_APPOINTMENT_SCENARIO"] == "summary-design" {
+                AppointmentSummaryDesignPreview(onClose: close)
+            } else {
+                AppointmentListView.previewFixture(
+                    scenario: ProcessInfo.processInfo.environment["UI_TEST_APPOINTMENT_SCENARIO"] ?? "confirmed",
+                    readingServices: reading, onClose: close,
+                    onChat: { _ in close() }, onMemory: { _ in close() })
+            }
+        } else {
+            liveAppointmentPage(presentation, reading: reading)
+        }
+        #else
+        liveAppointmentPage(presentation, reading: reading)
+        #endif
+    }
+
+    private func liveAppointmentPage(_ presentation: AppointmentPresentation, reading: AppointmentReadingServices) -> some View {
+        let workspace = environment.workspace
+        let coordinator = workspace.map { AppointmentCoordinator(backend: environment.backendClient, sync: $0.contentSync) }
+        return AppointmentListView(client: environment.backendClient, currentCityID: appointmentCityID,
+            storageNamespace: activeUserID?.uuidString ?? "inactive", initialAppointmentID: presentation.appointmentID,
+            readingServices: reading, settle: { id in try await coordinator?.settle(id) },
+            onClose: { appointmentPresentation = nil },
+            characterName: { appointmentCharacters[$0]?.displayName ?? "旅伴" },
+            characterCards: appointmentCharacters.mapValues(\.card),
+            onChat: { id in
+                appointmentPresentation = nil
+                Task { @MainActor in
+                    guard let character = try? await environment.rosterStore.character(id: id) else { return }
+                    selectedTab = .home
+                    var path = NavigationPath()
+                    path.append(HomeRootRoute(destination: .activities))
+                    path.append(HomeChatRoute(character: character))
+                    homePath = path
+                }
+            }, onMemory: { characterID in
+                appointmentPresentation = nil
+                memoryCharacterID = characterID
+                selectedTab = .me
+                openMe(.memory)
+            })
+            .task {
+                let accountID = activeUserID
+                let cityID = try? await environment.economyStore.profile().currentRegionID
+                let characters = try? await environment.rosterStore.allCharacters()
+                guard !Task.isCancelled, activeUserID == accountID else { return }
+                appointmentCityID = cityID ?? ""
+                if let characters {
+                    appointmentCharacters = Dictionary(uniqueKeysWithValues: characters.map { ($0.id, $0) })
+                }
+            }
+            .overlay {
+                if case .signedOut = environment.authSession.phase {
+                    ContentUnavailableView {
+                        Label("登录后保存约定", systemImage: "calendar.badge.clock")
+                    } description: {
+                        Text("约定、共同经历和关系变化会保存在你的账号里。")
+                    } actions: {
+                        Button("前往账号") {
+                            appointmentPresentation = nil
+                            selectedTab = .me
+                            openMe(.account)
+                        }.buttonStyle(.borderedProminent)
+                        Button("返回活动") { appointmentPresentation = nil }
+                            .frame(minHeight: 44)
+                            .accessibilityIdentifier("appointment.signIn.close")
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.dsBackground)
+                }
+            }
+    }
+
+    // Keep each route's concrete type behind the navigation boundary. Combining
+    // every scene in one ViewBuilder crashes Swift's runtime metadata decoder
+    // on device when the story hub is first presented. The caller owns route identity.
+    private func homeDestinationView(_ destination: HomeDestination) -> AnyView {
         switch destination {
+        case .appointments:
+            return AnyView(EmptyView())
         case .stories:
-            StoryHubView(deps: homeDeps)
+            return AnyView(StoryHubView(deps: homeDeps))
         case .mainline:
-            MainlineListView(deps: homeDeps) { chapter in
+            return AnyView(MainlineListView(deps: homeDeps) { chapter in
                 homePath.append(chapter)
-            }
+            })
         case .cityStories:
-            CityStoryListView(deps: homeDeps) { chapter in
+            return AnyView(CityStoryListView(deps: homeDeps) { chapter in
                 homePath.append(chapter)
-            }
+            })
         case .activities:
-            ZStack {
+            return AnyView(
                 ActivitiesView(
                     journey: activityJourney,
                     deps: homeDeps,
                     storageNamespace: activityStorageNamespace,
-                    isVisible: selectedTab == .home && !showLondonEpisode && activeActivityChat == nil,
-                    activity: $activeSceneActivity,
+                    isVisible: selectedTab == .home && !showLondonEpisode && homePath.count == 1,
                     onClose: closeHomeDestination,
                     onChat: { character in
-                        withAnimation(sceneContentAnimation) { activeActivityChat = character }
+                        homePath.append(HomeChatRoute(character: character))
                     }
                 )
                 .id(activeUserID?.uuidString ?? "inactive")
-                .opacity(activeActivityChat == nil ? 1 : 0)
-                .allowsHitTesting(activeActivityChat == nil)
-                .accessibilityHidden(activeActivityChat != nil)
-                if let character = activeActivityChat {
-                    // Use the existing scene navigation host, not a nested stack
-                    // whose toolbar is suppressed by the outer photographic page.
-                    ChatView(character: character, deps: chatDeps)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .transition(.opacity)
-                }
-            }
+            )
         case .map:
-            MapView(
+            return AnyView(MapView(
                 deps: mapDeps,
                 reloadToken: stateRevision,
                 onBack: closeHomeDestination
-            )
+            ))
         }
     }
 
     private func openHomeDestination(_ destination: HomeDestination) {
-        guard activeHomeDestination == nil else { return }
-        homePath = NavigationPath()
-        withAnimation(sceneContentAnimation) {
-            activeHomeDestination = destination
+        if destination == .appointments {
+            appointmentPresentation = AppointmentPresentation(appointmentID: nil, usesHomeZoomSource: true)
+            return
         }
+        guard homePath.isEmpty else { return }
+        homePath.append(HomeRootRoute(destination: destination))
     }
 
     private var activityStorageNamespace: String {
         #if DEBUG
+        if isWorldOutingPreview {
+            return "debug.world-outing.preview.v1." + (ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] ?? "manual")
+        }
+        if isPlaceOutingPreview {
+            return "debug.place-outing.preview.v1." + (ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"] ?? "manual")
+        }
         if let testNamespace = ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_NAMESPACE"], !testNamespace.isEmpty {
             return "ui-test.\(testNamespace)"
         }
@@ -793,24 +1092,18 @@ struct RootView: View {
         return activeUserID?.uuidString ?? "inactive"
     }
     private func closeHomeDestination() {
-        guard activeHomeDestination != nil else { return }
-        withAnimation(sceneContentAnimation) {
-            if activeActivityChat != nil {
-                activeActivityChat = nil
-                return
-            }
-            if activeHomeDestination == .activities, activeSceneActivity != nil {
-                if activityJourney.isPreparing {
-                    activeHomeDestination = nil
-                } else {
+        guard !homePath.isEmpty else { return }
+        if activityJourney.hasOpenOuting {
+            if activityJourney.isPreparing {
+                homePath.removeLast()
+            } else {
+                withAnimation(reduceMotion ? .easeOut(duration: 0.14) : .smooth(duration: 0.30, extraBounce: 0)) {
                     activityJourney.reset()
-                    activeSceneActivity = nil
                 }
-                return
             }
-            activeHomeDestination = nil
-            homePath = NavigationPath()
+            return
         }
+        homePath.removeLast()
     }
     private var messagesStack: some View {
         ZStack {
@@ -818,10 +1111,10 @@ struct RootView: View {
                 ConversationListView(
                     accountID: requiredActiveAccountID,
                     deps: chatDeps,
-                    reloadToken: stateRevision
+                    reloadToken: stateRevision,
+                    resetToken: messagesNavigationRevision
                 )
             }
-            .id(messagesNavigationRevision)
         }
     }
 
@@ -841,6 +1134,7 @@ struct RootView: View {
                         }
                     ),
                     reloadToken: stateRevision,
+                    resetToken: contactsNavigationRevision,
                     chatBuilder: { character in
                         AnyView(ChatView(character: character, deps: chatDeps))
                     },
@@ -855,7 +1149,6 @@ struct RootView: View {
                     }
                 )
             }
-            .id(contactsNavigationRevision)
         }
     }
 
@@ -883,29 +1176,16 @@ struct RootView: View {
             authSession: environment.authSession,
             billing: environment.billing,
             reloadToken: stateRevision,
+            isVisible: selectedTab == .me,
+            regionCatalog: environment.regionCatalog,
             onCalibrateLevel: { showEnglishJourney = true },
             onOpenFavorites: { openMe(.favorites) },
             onOpenSettings: { openMe(.settings) },
-            onOpenMemory: { openMe(.memory) },
             section: section,
             onOpenAccount: { openMe(.account) },
             onOpenSubscription: { openMe(.subscription) }
         )
         .id("me-root")
-        #if DEBUG
-        .safeAreaInset(edge: .bottom) {
-            if section == nil {
-                Button { openMe(.learningTrial) } label: {
-                    Label("学习实测 · 切换档位做题", systemImage: "book.pages")
-                        .font(.subheadline.weight(.semibold)).frame(maxWidth: .infinity).padding(12)
-                }
-                .buttonStyle(.borderedProminent)
-                .padding(.horizontal, 20).padding(.vertical, 8)
-                .background(.regularMaterial)
-                .accessibilityIdentifier("me.learning-trial")
-            }
-        }
-        #endif
     }
 
     private func meNavigationTitle(for destination: MeDestination) -> String {
@@ -922,13 +1202,37 @@ struct RootView: View {
         }
     }
 
-    private func openMe(_ destination: MeDestination) {
-        mePath.append(destination)
+    private var learningTrialAction: (@MainActor () -> Void)? {
+        #if DEBUG
+        { openMe(.learningTrial) }
+        #else
+        nil
+        #endif
     }
 
-    /// 与原生 Tab 快速切换相同的轻量交叉淡化，不再表达左右层级位移。
-    private var sceneContentAnimation: Animation {
-        DSSceneTransition.animation(reduceMotion: reduceMotion)
+    private var appointmentTestAction: (@MainActor () -> Void)? {
+        #if DEBUG
+        { showsAppointmentTestScenarios = true }
+        #else
+        nil
+        #endif
+    }
+
+    #if DEBUG
+    private func startAppointmentTest(_ scenario: String) {
+        let reading = (try? ModelContainerFactory.makeContainer(inMemory: true)).map { container in
+            AppointmentReadingServices(dictionary: environment.dictionary, grammar: environment.grammarPoints,
+                favorites: FavoritesStore(modelContainer: container), speech: environment.speech)
+        }
+        let close = { appointmentPresentation = nil }
+        let test = AppointmentListView.previewFixture(scenario: scenario, readingServices: reading,
+            onClose: close, backLabel: "返回设置", onChat: { _ in close() }, onMemory: { _ in close() })
+        appointmentPresentation = AppointmentPresentation(appointmentID: nil, testView: test)
+    }
+    #endif
+
+    private func openMe(_ destination: MeDestination) {
+        mePath.append(destination)
     }
 
     @ViewBuilder
@@ -958,8 +1262,21 @@ struct RootView: View {
                 },
                 onOpenPhotoCredits: { openMe(.photoCredits) },
                 onOpenIntroduction: { introductionMode = .introduction },
-                onOpenTutorial: { introductionMode = .tutorial }
+                onOpenTutorial: { introductionMode = .tutorial },
+                onTestInitialPlacement: initialPlacementTestAction,
+                onTestFirstLoginFlow: firstLoginTestAction,
+                onTestAppointments: appointmentTestAction,
+                onOpenLearningTrial: learningTrialAction
             )
+            #if DEBUG
+            .confirmationDialog("测试原生赴约", isPresented: $showsAppointmentTestScenarios, titleVisibility: .visible) {
+                Button("真实赴约") { appointmentPresentation = .init(appointmentID: nil, liveTest: true) }
+                Button("模拟断线恢复") { startAppointmentTest("reconnect") }
+                Button("模拟回执丢失") { startAppointmentTest("retry") }
+            } message: {
+                Text("真实赴约使用独立测试账号和服务端剧情。模拟场景用于验证重试交互。")
+            }
+            #endif
 
         case .photoCredits:
             CityScenePhotoCreditsView()
@@ -982,7 +1299,8 @@ struct RootView: View {
                     chatStore: environment.chatStore,
                     memoryStore: environment.memoryStore,
                     economyStore: environment.economyStore
-                )
+                ),
+                initialCharacterID: memoryCharacterID
             )
         }
     }
@@ -1000,9 +1318,7 @@ struct RootView: View {
                 speech: environment.speech,
                 audioSession: environment.audioSession,
                 levelChangeSummary: { [client = environment.backendClient, preview = bypassesAuthenticationForUITesting] level in
-                    #if DEBUG
-                    if preview { return "界面预览：目标水平保留 0 颗星、0 点。此操作仅修改本地预览档案，不写入账号。" }
-                    #endif
+                    if preview { return "测试档案：目标水平保留 0 颗星、0 点。此操作仅修改本次测试档案。" }
                     let journey = try await client.learningJourney()
                     guard let target = journey.levels.first(where: { $0.level == level.rawValue }) else { throw URLError(.cannotParseResponse) }
                     let supply = target.publishedUnitCount == 0 ? "该水平目前没有已发布单元，聊天满条后需等待题库准备。" : "各旅伴的可用挑战以角色学习页为准；题库不足时会保留聊天进度。"
@@ -1011,6 +1327,7 @@ struct RootView: View {
             ),
             usesNativeNavigation: !isOnboarding,
             startsWithLevelSelection: !isOnboarding && chooseLevel,
+            startsWithQuestions: isOnboarding || isOnboardingPreview,
             onComplete: { updated in
                 stateRevision += 1
                 Task {
@@ -1024,11 +1341,36 @@ struct RootView: View {
             onCancel: {
                 if isOnboarding {
                     showOnboardingPlacement = false
+                    placementCompletionRevision += 1
                 } else {
                     showPlacementTest = false; showEnglishJourney = false
                 }
             }
         )
+        .overlay(alignment: .topTrailing) { onboardingPreviewExit }
+    }
+
+    private var initialPlacementTestAction: (@MainActor () -> Void)? {
+        guard !isOnboardingPreview else { return nil }
+        return { onboardingPreviewMode = .placement }
+    }
+
+    private var firstLoginTestAction: (@MainActor () -> Void)? {
+        guard !isOnboardingPreview else { return nil }
+        return { onboardingPreviewMode = .completeFlow }
+    }
+
+    @ViewBuilder
+    private var onboardingPreviewExit: some View {
+        if let onExitOnboardingPreview {
+            Button("结束测试", action: onExitOnboardingPreview)
+                .font(.caption.weight(.semibold))
+                .padding(.horizontal, 10)
+                .frame(minHeight: 44)
+                .background(.regularMaterial, in: Capsule())
+                .padding(8)
+                .accessibilityIdentifier("onboarding-test.exit")
+        }
     }
 
     private var englishJourneyView: some View {
@@ -1060,6 +1402,11 @@ struct RootView: View {
         return environment.backendClient
     }
 
+    private var homeAppointmentService: (any AppointmentServing)? {
+        guard case .signedIn = environment.authSession.phase else { return nil }
+        return environment.backendClient
+    }
+
     private var homeDeps: HomeDependencies {
         HomeDependencies(
             access: journeyAccess,
@@ -1069,15 +1416,55 @@ struct RootView: View {
             storyProgress: environment.storyProgressStore,
             regionCatalog: environment.regionCatalog,
             rosterStore: environment.rosterStore,
-            chatStore: environment.chatStore,
             favorites: environment.favoritesStore,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
-            llm: environment.llmRouter,
             mainline: mainlineClient,
-            npcRegistry: environment.backendClient
+            npcRegistry: isPlaceOutingPreview ? nil : environment.backendClient,
+            outingGateway: placeOutingGateway,
+            activityReleaseID: placeOutingReleaseID,
+            appointments: homeAppointmentService,
+            presentationCache: activityPresentationCache
         )
+    }
+
+    private var activityPresentationCache: JourneyPresentationCache? {
+        #if DEBUG
+        if isPlaceOutingPreview, ProcessInfo.processInfo.environment["UI_TEST_ACTIVITY_CATALOG_RETRY"] == "1" {
+            return nil
+        }
+        #endif
+        return environment.workspace?.journeyPresentation
+    }
+
+    private var isPlaceOutingPreview: Bool {
+        #if DEBUG
+        bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "places-preview"
+        #else
+        false
+        #endif
+    }
+    private var isWorldOutingPreview: Bool {
+        #if DEBUG
+        bypassesAuthenticationForUITesting && (usesTabDesignPreview || ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "world-preview"
+            || ProcessInfo.processInfo.environment["UI_TEST_WORLD_GATEWAY"] == "1")
+        #else
+        false
+        #endif
+    }
+    private var placeOutingGateway: any OutingGateway {
+        #if DEBUG
+        if isPlaceOutingPreview { return DebugPlaceOutingGateway.shared }
+        if isWorldOutingPreview { return DebugPlaceOutingGateway.world }
+        #endif
+        return environment.backendClient
+    }
+    private var placeOutingReleaseID: String? {
+        #if DEBUG
+        if isPlaceOutingPreview { return "debug-places-preview-v1" }
+        #endif
+        return CityActivityRelease.bundled()?.releaseId
     }
 
     private var mapDeps: MapDependencies {
@@ -1089,7 +1476,9 @@ struct RootView: View {
             travelService: travelService,
             economyService: economyService,
             regionCatalog: environment.regionCatalog,
-            storyProgress: environment.storyProgressStore
+            storyProgress: environment.storyProgressStore,
+            presentationCache: environment.workspace?.journeyPresentation,
+            mapCache: environment.workspace?.worldMapCache
         )
     }
 
@@ -1101,13 +1490,22 @@ struct RootView: View {
 
     private var chatDeps: ChatDependencies {
         let regionCatalog = environment.regionCatalog
+        var llm: any LLMClient = environment.llmRouter
+        var replyDelayScale = 1.0
+        #if DEBUG
+        if bypassesAuthenticationForUITesting,
+           ProcessInfo.processInfo.environment["UI_TEST_CHAT_TIMELINE_WORKFLOW"] == "1" {
+            llm = DebugChatTimelineProvider()
+            replyDelayScale = 0
+        }
+        #endif
         var dependencies = ChatDependencies(
             accessClient: environment.backendClient,
-            onShowAccess: { showUsage = true },
+            onShowAccess: { showSubscription = true },
             chatStore: environment.chatStore,
             rosterStore: environment.rosterStore,
             favorites: environment.favoritesStore,
-            llm: environment.llmRouter,
+            llm: llm,
             dictionary: environment.dictionary,
             grammarPoints: environment.grammarPoints,
             speech: environment.speech,
@@ -1122,13 +1520,41 @@ struct RootView: View {
             regionName: { regionID in
                 regionCatalog.region(id: regionID)?.nameZh
                     ?? regionID.replacingOccurrences(of: "_", with: " ").capitalized
-            }
+            },
+            replyDelayScale: replyDelayScale
         )
+        if !bypassesAuthenticationForUITesting {
+            dependencies.sharedGrammarAnalysis = environment.sharedGrammarAnalyzer
+        }
         #if DEBUG
-        if bypassesAuthenticationForUITesting {
-            dependencies.learningPage = { character, visible in AnyView(Self.debugLearningPage(character, isVisible: visible)) }
+        if bypassesAuthenticationForUITesting,
+           ProcessInfo.processInfo.environment["UI_TEST_GRAMMAR_FIXTURE"] != nil {
+            dependencies.sharedGrammarAnalysis = { sentence, _ in
+                try await SharedGrammarRequest.analyze { operationID in
+                    try await DebugGrammarAnalysisFixture.shared.analyze(sentence: sentence, operationID: operationID)
+                }
+            }
         }
         #endif
+        #if DEBUG
+        if bypassesAuthenticationForUITesting {
+            dependencies.learningPage = { character, visible, openSettings in AnyView(Self.debugLearningPage(character, isVisible: visible, onOpenChatSettings: openSettings)) }
+        }
+        #endif
+        dependencies.storyProgress = environment.storyProgressStore
+        if !bypassesAuthenticationForUITesting, case .signedIn = environment.authSession.phase, let workspace = environment.workspace {
+            dependencies.sharedChat = workspace.contentSync
+            let appointments = AppointmentCoordinator(backend: environment.backendClient, sync: workspace.contentSync)
+            dependencies.refreshAppointments = { characterID, conversationID, detect in
+                try await appointments.refresh(characterID: characterID, conversationID: conversationID, detect: detect)
+            }
+            dependencies.appointmentContext = { characterID in
+                (try? await AsyncDeadline.run(timeout: .seconds(3)) { await appointments.context(characterID: characterID) }) ?? nil
+            }
+            dependencies.onOpenAppointment = { id in
+                appointmentPresentation = AppointmentPresentation(appointmentID: id)
+            }
+        }
         dependencies.learningChat = bypassesAuthenticationForUITesting ? nil : environment.workspace?.learningChat
         let backend = environment.backendClient
         let tracker = environment.workspace?.learningChat
@@ -1138,7 +1564,7 @@ struct RootView: View {
         let learningUserState = environment.userState
         let learningWorkspace = environment.workspace
         if !bypassesAuthenticationForUITesting {
-            dependencies.learningPage = { character, visible in
+            dependencies.learningPage = { character, visible, openSettings in
                 AnyView(CharacterLearningView(character: character, service: backend, isVisible: visible,
                     audioSession: learningAudioSession, speech: learningSpeech,
                     currentRegionID: { try? await learningEconomyStore.profile().currentRegionID },
@@ -1149,7 +1575,7 @@ struct RootView: View {
                         guard environment.workspace === learningWorkspace else { throw CancellationError() }
                         let profile = try await learningEconomyStore.profile()
                         await environment.applyLearnerProfile(profile)
-                    }))
+                    }, onOpenChatSettings: openSettings))
             }
         }
         #if DEBUG
@@ -1166,6 +1592,9 @@ struct RootView: View {
             && bypassesAuthenticationForUITesting
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_CAPTURE"] == "1"
             && ProcessInfo.processInfo.environment["UI_TEST_MARKETING_MOTION"] == "1"
+        dependencies.showsTimelineEventPreview = bypassesAuthenticationForUITesting
+            && ProcessInfo.processInfo.environment["UI_TEST_WELCOME_CAPTURE"] == "1"
+            && ProcessInfo.processInfo.environment["UI_TEST_CHAT_TIMELINE_EVENTS"] == "1"
         #endif
         return dependencies
     }
@@ -1191,10 +1620,12 @@ struct RootView: View {
     }
 
     #if DEBUG
-    private static func debugLearningPage(_ character: CharacterDTO, isVisible: Bool = true) -> some View {
+    private static func debugLearningPage(_ character: CharacterDTO, isVisible: Bool = true,
+                                          onOpenChatSettings: (@MainActor @Sendable () -> Void)? = nil) -> some View {
         CharacterLearningView(character: character, service: DebugLearningPreviewService(characterID: character.id,
             roleKey: character.card.name.components(separatedBy: " ").first?.lowercased() ?? "oliver"), isVisible: isVisible,
-            currentRegionID: { ProcessInfo.processInfo.environment["UI_TEST_REGION"] ?? "london" })
+            currentRegionID: { ProcessInfo.processInfo.environment["UI_TEST_REGION"] ?? "london" },
+            onOpenChatSettings: onOpenChatSettings)
             .safeAreaInset(edge: .top, spacing: 0) {
                 Text("界面预览 · 示例进度，不计入账号")
                     .font(.caption).foregroundStyle(.secondary).padding(8).frame(maxWidth: .infinity)
@@ -1246,6 +1677,7 @@ struct RootView: View {
         requestAuthorization: Bool
     ) async {
         guard !Self.disablesBackgroundRefreshForUITesting,
+              !isOnboardingPreview,
               environment.needsOnboarding == false
         else { return }
         do {

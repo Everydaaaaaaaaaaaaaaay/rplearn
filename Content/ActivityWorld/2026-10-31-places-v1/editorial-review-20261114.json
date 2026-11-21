@@ -1,0 +1,3674 @@
+{
+  "version": "2026-11-14",
+  "status": "draft",
+  "worldSHA256": "4a4f96eebb17aa242a9042a344f3d698661f6fd0b99dd8134aa382da038a4e34",
+  "sourceSHA256": "6927a16f2adabb8f75f40e90bf9a1276c0ff7502a0f1d667552b4c1502a4945c",
+  "counts": {
+    "cities": 15,
+    "places": 54,
+    "characters": 200,
+    "assigned": 200,
+    "firstEncounters": 200,
+    "reunions": 200,
+    "firstEncounterNodes": 1400,
+    "firstEncounterBeats": 5600,
+    "playablePaths": 800,
+    "originalBackgroundsVerbatim": 180,
+    "revisedBackgrounds": 20
+  },
+  "cardChanges": {
+    "regionId": 16,
+    "nationality": 9,
+    "hometown": 9,
+    "background": 20
+  },
+  "identityAudit": {
+    "originalCardsEqualSource": true,
+    "idsTravelerIdsAvatarsAndAvatarHashesPreserved": true,
+    "allNonGeographicCoreFieldsPreserved": true,
+    "unchangedActivityProfileFieldsPreserved": true,
+    "fixedBindingsAndPrepareReproductionMatch": true,
+    "eachPlaceHasThreeOrFourPeople": true,
+    "fourAcyclicThreeNodePathsPerNpc": true,
+    "eachCityHasLongTermResidentMajority": true
+  },
+  "cityAudit": [
+    {
+      "cityId": "london",
+      "nameZh": "伦敦",
+      "people": 18,
+      "places": 5,
+      "localConnection": {
+        "grew_up_here": 12,
+        "settled_here": 5,
+        "temporary_stay": 1
+      }
+    },
+    {
+      "cityId": "newyork",
+      "nameZh": "纽约",
+      "people": 18,
+      "places": 5,
+      "localConnection": {
+        "grew_up_here": 12,
+        "settled_here": 4,
+        "temporary_stay": 2
+      }
+    },
+    {
+      "cityId": "singapore",
+      "nameZh": "新加坡",
+      "people": 16,
+      "places": 4,
+      "localConnection": {
+        "grew_up_here": 14,
+        "temporary_stay": 2
+      }
+    },
+    {
+      "cityId": "sydney",
+      "nameZh": "悉尼",
+      "people": 16,
+      "places": 4,
+      "localConnection": {
+        "settled_here": 11,
+        "grew_up_here": 4,
+        "temporary_stay": 1
+      }
+    },
+    {
+      "cityId": "melbourne",
+      "nameZh": "墨尔本",
+      "people": 15,
+      "places": 4,
+      "localConnection": {
+        "grew_up_here": 10,
+        "settled_here": 5
+      }
+    },
+    {
+      "cityId": "toronto",
+      "nameZh": "多伦多",
+      "people": 14,
+      "places": 4,
+      "localConnection": {
+        "settled_here": 10,
+        "grew_up_here": 4
+      }
+    },
+    {
+      "cityId": "vancouver",
+      "nameZh": "温哥华",
+      "people": 14,
+      "places": 4,
+      "localConnection": {
+        "grew_up_here": 3,
+        "settled_here": 11
+      }
+    },
+    {
+      "cityId": "edinburgh",
+      "nameZh": "爱丁堡",
+      "people": 12,
+      "places": 3,
+      "localConnection": {
+        "grew_up_here": 10,
+        "settled_here": 2
+      }
+    },
+    {
+      "cityId": "dublin",
+      "nameZh": "都柏林",
+      "people": 12,
+      "places": 3,
+      "localConnection": {
+        "grew_up_here": 11,
+        "settled_here": 1
+      }
+    },
+    {
+      "cityId": "auckland",
+      "nameZh": "奥克兰",
+      "people": 12,
+      "places": 3,
+      "localConnection": {
+        "grew_up_here": 10,
+        "settled_here": 2
+      }
+    },
+    {
+      "cityId": "capetown",
+      "nameZh": "开普敦",
+      "people": 12,
+      "places": 3,
+      "localConnection": {
+        "grew_up_here": 11,
+        "settled_here": 1
+      }
+    },
+    {
+      "cityId": "manchester",
+      "nameZh": "曼彻斯特",
+      "people": 11,
+      "places": 3,
+      "localConnection": {
+        "grew_up_here": 8,
+        "settled_here": 3
+      }
+    },
+    {
+      "cityId": "neworleans",
+      "nameZh": "新奥尔良",
+      "people": 10,
+      "places": 3,
+      "localConnection": {
+        "grew_up_here": 10
+      }
+    },
+    {
+      "cityId": "nairobi",
+      "nameZh": "内罗毕",
+      "people": 10,
+      "places": 3,
+      "localConnection": {
+        "settled_here": 6,
+        "grew_up_here": 4
+      }
+    },
+    {
+      "cityId": "kingston",
+      "nameZh": "金斯敦",
+      "people": 10,
+      "places": 3,
+      "localConnection": {
+        "grew_up_here": 9,
+        "settled_here": 1
+      }
+    }
+  ],
+  "review": {
+    "initialReviewValidResults": 194,
+    "completeIndividualRound12": 200,
+    "selectedIndividualRound13": 75,
+    "latestModelVerdicts": {
+      "pass": 197,
+      "revise": 3
+    },
+    "completeCityRounds": [
+      2,
+      3
+    ],
+    "citiesPerRound": 15,
+    "patchedPeopleRound1": 174,
+    "patchedPeopleRound2": 71,
+    "manualClarifications": [
+      {
+        "npcId": "84a8c1c6-5dfd-51f3-a6df-823b9e86b3a1",
+        "node": "ab",
+        "beat": 3,
+        "before": {
+          "speaker": "npc",
+          "english": "Apparently they're filming here. I was just telling someone. Did your cousin say what it's called?",
+          "chinese": "听说这里要拍片呢。我刚刚还跟人聊起。你表弟说叫什么名字了吗？"
+        },
+        "after": {
+          "speaker": "npc",
+          "english": "Mrs. Okafor, apparently they're filming here. I was just telling someone. Did your cousin say what it's called?",
+          "chinese": "奥卡福太太，听说这里要拍片呢。我刚刚还跟人聊起。你表弟说叫什么名字了吗？"
+        }
+      },
+      {
+        "npcId": "2b938c2f-0e75-55fc-8adc-037d36a2374f",
+        "node": "aa",
+        "beat": 0,
+        "before": {
+          "speaker": "narrator",
+          "english": "Dwayne brings the book closer and drops his voice so it reaches only the space between you.",
+          "chinese": "德韦恩把书拿近些，压低声音，音量只够你们两人听见。"
+        },
+        "after": {
+          "speaker": "narrator",
+          "english": "Dwayne brings the book of published letters closer. He reads the final line in a voice low enough to reach only you.",
+          "chinese": "德韦恩把那本收录已发表书信的书拿近些，压低声音读最后一句，音量只够你听见。"
+        }
+      },
+      {
+        "npcId": "2b938c2f-0e75-55fc-8adc-037d36a2374f",
+        "node": "bb",
+        "beat": 3,
+        "before": {
+          "speaker": "npc",
+          "english": "I'll keep the sister's reply to myself.",
+          "chinese": "姐姐的回信，我就自己看了。"
+        },
+        "after": {
+          "speaker": "npc",
+          "english": "I'll read the sister's reply quietly. Enjoy the courtyard.",
+          "chinese": "信里那位姐姐的回信，我就默读了。祝你逛庭院愉快。"
+        }
+      },
+      {
+        "npcId": "f59bc418-9cf9-5311-b285-ed936fe36d1d",
+        "node": "reunion",
+        "beat": 1,
+        "before": {
+          "speaker": "npc",
+          "english": "Hello again! My friends and I have confirmed our hike. Everyone's replied, and we've agreed on the route and meeting time.",
+          "chinese": "又见面了！我和朋友们已经确认好徒步安排了。每个人都回复了，路线和集合时间也都说定了。"
+        },
+        "after": {
+          "speaker": "npc",
+          "english": "Hello again! Today my friends and I finished planning a hike. Everyone's replied, and we've agreed on the route and meeting time.",
+          "chinese": "又见面了！今天我和朋友们把徒步安排定好了。每个人都回复了，路线和集合时间也都说定了。"
+        }
+      }
+    ],
+    "alexCorrection": "b 中文 table 统一为桌面，三处英文分号调整为独立句。",
+    "formalPublicationApproval": "pending",
+    "sharedProjection": "作者稿因果说明的中文分号统一为句号，原卡和传记原文保留。"
+  },
+  "geographicDecisions": {
+    "cityChanges": 16,
+    "fictionalNationalityCorrections": 9,
+    "fictionalHometownCorrections": 8,
+    "obsoleteResidenceDescriptorCorrections": 1,
+    "clarifications": 4,
+    "residentMajorityInterpretation": "本地成长和长期定居共同计入长期在地多数。两种经历分别记录，短期停留单列。",
+    "record": "geography-decisions.json"
+  },
+  "people": [
+    {
+      "npcId": "98faa36c-eeab-526a-ba6f-9fd95f732c7d",
+      "name": "Elliot Shaw",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ca6356ff443af2f23c5acaf148f0eea59bca5a9ce06866b522e4b2ca191edbb3",
+      "finalStorySHA256": "bdf31bf1f7b0957d675a7e875b2230ae865af1ece3a7d61dbbf665cdc29d4684",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "cd59614d-51fa-5876-b419-3ec74a60f52f",
+      "name": "Victor Lane",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "a80aca34e1daac431d148b1deec8559622949d7f518da50d906ea1f33b72c3c9",
+      "finalStorySHA256": "b5bbd4a787372a951b85fb4d4d8f5fa7f1ad3a8fd15f6998ac63b6ef8916dc91",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "89f40dc0-8c38-54fb-ad9d-6b2c6fbecee2",
+      "name": "Ted Callaghan",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [
+        {
+          "severity": "minor",
+          "node": "reunion",
+          "quote": "“At Hosier Lane, you spot Ted beside the graffiti-covered wall, holding an unfinished monthly card.”",
+          "reason": "重逢段落里直接把“未完成的月度卡片”作为现场可见物，和前文“来此记录墙面配色”为主的现场动机一致，但若想更稳妥地贴合 causal metadata，可更明确说明这只是随身笔记本里夹着的卡片，而不是在巷内公开制作到一半的卡面，避免读者误解为现场新增工序。",
+          "repair": "把表述改成“his notebook, with an unfinished monthly card tucked inside”之类，明确卡片是随身收纳物，而非现场额外展开的制作场景。"
+        }
+      ],
+      "reviewResultSHA256": "989733963ed8426b1424e1e33d52d1a5f8cb961597973d3cf95371f241d4d6c5",
+      "finalStorySHA256": "45dcc5e92e0d70180b00434387b0a05ec3ec6a9a1204d578c217b81db62bcbce",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "Ted 携带未完成卡片与其兴趣相符，未增加公共设施或现场工序要求。保留正文。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "a8f7daef-e8d1-5886-b1e0-8dcf22658a89",
+      "name": "Jonah Petrov",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "8c2ccae740f3f051061ed9f3318b7da3b0e15c30a2c8e54c52cd4702546a00eb",
+      "finalStorySHA256": "fbf42290678038aebd138127c54e2d718977c2991c60bc159661f875d0e74326",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "eec9d116-939b-5721-b051-5d5ce0693f04",
+      "name": "Mavis Dlamini",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "2a07b1b70102a422f87d9c90ccb3d7fd08303c6856fa5055c32742068478de3f",
+      "finalStorySHA256": "a8f340774b8f47d7faa0c8ef2e57cbdd9131cf408d18f229f161a3e6b7cfb45f",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "ec87cffe-de1d-5ea2-871a-2994833be39b",
+      "name": "Ruth Mercer",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "398d9b3c5247c2ac3076b49cea3045afe0a723564ad1ece85b0d654693f1be2c",
+      "finalStorySHA256": "ac9194e69ee0aa5d2fde7e12b5f2edb242bc06e22acda6bc0fd971dece3bc1a1",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "163306db-8bee-5588-a683-8c22fba02b7e",
+      "name": "Tan Cheng Huat",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "54465f3bfc765ded494a2f45fc08685d06e0e219b9cdf8507f3d7d25b511f70b",
+      "finalStorySHA256": "ec9857dae2279e7d067b5af4883dad19dcc7f580386aa7aff2e3df53081df7b1",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "0fb39a91-5838-5f59-98ae-917af365bafc",
+      "name": "Declan Maher",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "a405384ffde8df4295e634a7479c32312172a99ef2ebe3214fca4006ed011a05",
+      "finalStorySHA256": "8d7cbc5bedc18bc0bc2f0d6d22b9377b84ba0607e19bd1b75eb68320683f91c4",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "家乡字段保留 Drogheda，将旧的 lives in Dublin now 现居描述清理为历史生活。原始卡与都柏林经历归档保留。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "6452a25e-e7bf-575a-b731-2b67a1bcf68a",
+      "name": "Isobel Craig",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "efb9b37ad96eadbb7e55a844579c596df553a05e2d80bfb3e25b7a1f6348523a",
+      "finalStorySHA256": "35ec0c3cd7190432da7d4ec241d5f27af11a10f07d070afb5b07a7c9e467fb7a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "0eb49449-c2d8-53bd-859b-37039e68399c",
+      "name": "Noor Haddad",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "0194412f1b87fbfe7fd68c6646131e7e5ce6c9dd9413d78c7af179f998fc7626",
+      "finalStorySHA256": "95f6bc09dbfc72b62a0d579dac13bf9c3bae866e72d5fa883135ac68ab5a479f",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "e8e1e743-2053-5815-864b-0e0dcb4f7fda",
+      "name": "Mabel Fenwick",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "aeaa285c457296291da8e5ea25d2a89f201c6ec57bc627bd26d5fb33daa926be",
+      "finalStorySHA256": "1b037375b872145a68f3f989bde8255a972f684c829f12da0955edceeb2be321",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4bee3dbe-31d6-55f8-914a-ea95053f2119",
+      "name": "Kevin Mwangi",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "500d46722353acf971e8e6bf69f5037a7374ecd626bdf0ed85a4c96f4d5e24d9",
+      "finalStorySHA256": "6f3509d2bf120f1850925bab844af2f084e8bb39e506096901703b802a614ff2",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "8f9fde7b-87b5-5cd9-af43-af1c5ae5d484",
+      "name": "Beatriz Lunn",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d168ff7d0cbc543d72407d019ba86781826995206e9d22b4e1e59f84653d58fb",
+      "finalStorySHA256": "71cf8a5025e9e80f95afdac03cb5403a2852f7d909c5df7925bef3c20d9b1980",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "9b04e2ac-9581-5850-ba69-70cc012a8cd7",
+      "name": "Rio Castellanos",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "94191be1c6979a64bce19cd8f87b0fe68be1b1fed528d07e20e9a231867d06ea",
+      "finalStorySHA256": "7aedecdcec4de265f7bba2943f01d281aad92027283ca62ec8b7cb9803333b95",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "d443ac8e-83a6-55d7-b224-e74d8d4c6d90",
+      "name": "Camille Broussard",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "afe36e8e3f8248d4f7de007e2a4c8c34dba511d77d58420165dc63bb57025019",
+      "finalStorySHA256": "070ff5ca8fd41f14b9a4b4ac3b3eab24450e93034fd07b5d0ea20dd2a85e6a19",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4c60a692-be68-5e10-af46-09d45cb385cf",
+      "name": "Albert Grimshaw",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "aff18a9eedb9d7e845ace980787f706643f7b1acfff489047b5f5fb22efb92c8",
+      "finalStorySHA256": "382c8e8a6ec3ee62d11adbd5a28434d7ad8d24730f72035c8c121ce3a4043e5b",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "a113fb42-d089-5beb-9a0f-f4b0a9d37b33",
+      "name": "Shanice Rowe",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "920fe7064f08f6421db6061c68e38c042e4e284714cd71aca93999c6b661b7dd",
+      "finalStorySHA256": "571de71011f9152a56f620915f383e05d2acd36fe82fa9131d396e105197cc49",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "70e296e4-8d85-5c7c-8f31-9c8b6d5763ab",
+      "name": "Desmond Achebe",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "072afb40bfb37a29e368870dc46a8686daf460aa6366a56e63df8ffa4bcd003b",
+      "finalStorySHA256": "a48b2c15038063e5c1f1ac6a23d8018d78dbce7beadc2e92196bad43ffdd8c8f",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "5ecf94ea-5d02-5a55-b9ea-b5910b48db89",
+      "name": "Herbert Nussbaum",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "11af9d7903ec39b34ce17af757c6ffa0e30d15e5465a6e710b448c1e199bf126",
+      "finalStorySHA256": "c965c4624011bb0aaa89a4033d165f711f0a5401a3d94bb2761ae3ecf7da4a45",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "dfd4d4c8-955b-5ec7-aa4d-bf4d0fb4de8c",
+      "name": "Nomvula Dlamini",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "cde8b346b6dc2f30f085ce55d64a272bc84b38af64c29abb6759fbb99df2bd86",
+      "finalStorySHA256": "1a03a02aa63b6cb237b78a9f7263bbeea43c28f57704f4f5eb265644b0485974",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "2c943a88-0d88-5559-8e40-963d86cc20d6",
+      "name": "Lim Boon Chye",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "4e500ef7c48f4ba32a9abf81950ce72427754f01699cbec9d7b29bdc067e70c0",
+      "finalStorySHA256": "a5f0755a148667cb43024afc96a5d558795aea21b1af3b431784f2de3c01b1df",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "8b0bf3a5-2dcc-555f-b5c5-3ac8dfd3a30e",
+      "name": "Cian Doyle",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "2a57477c9859a29046ca2624566a171454da02d685dce491cf10dd183d3b5814",
+      "finalStorySHA256": "927e78558091d1e7afd2e2f48c04c13f1dbbcf200dd1b18a1ab191cec1ddd94c",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "9f20994c-0fcb-5350-8328-874c4cbf71b3",
+      "name": "Maya Bell",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "48abd1d1660d20143856ec8052b9d6d96e5cef838133e5a5aed89d3b73dd2c1e",
+      "finalStorySHA256": "ce044e81f605239456aa43823d90185f06c39e35c6159ad3a25de830a29bfaa6",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "0679ce69-7234-58dd-96f6-a5b43d3e8c41",
+      "name": "Alex Rowan",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d74831738cc98a1eeaa3cbd8402f22e480d90dcaea1fdbc693c4dea4a8f3ae49",
+      "finalStorySHA256": "34f388167859c806c9bf0ef552f4014d813665e28d36508f67272d5c74797f56",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "Alex 的 table 中文空间参照已改为桌面。重逢只描述当前地点，未指定旧相遇地点，不能额外编造上次在别处相识。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "cdc5be66-27c4-5868-bf72-ef2a8629b4eb",
+      "name": "Isla Menzies",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "19a7b2b42e5f08bbd10b52a5f3d187ba2d9ceba0dbe21e90c1392035d196d558",
+      "finalStorySHA256": "c863c7d249ff8bdaecfb0e5b26067386aeb61898880a8f5c01a368ff5e0f85b7",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "15146e1f-e5cc-516f-bf80-99d74d406cd3",
+      "name": "Marlowe Trelawney",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "16cffa608a2e1eefc961e91f3a4bb275daee0da49ea97444622143f2e508290b",
+      "finalStorySHA256": "2247127228d557ff9db253c470df7c664c479696ad44e775339c13ba3c07facb",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "59973a3f-58ce-54f5-b7c2-846068107782",
+      "name": "Arthur Pemberton",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "882457c0c1dedc93bbaa76317b504598c7e9697962add7ca4a910cb47a7803a3",
+      "finalStorySHA256": "8521f567c894f9d7ce5cee8aff60c559ecdd43bd3b3746e774f6e70942bca519",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "d45d227c-da45-5a3a-a925-263ac1a105f0",
+      "name": "Wanjiru Kamau",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "c908cdedf750f2f5bcd3dc53bca3dc8275e293a42a7265940b4bd5b048e4b4f0",
+      "finalStorySHA256": "9db2e5db4ad20e5f60a934fbc1e78ed1b45878b91432b38f5f1e0c273fe0a9d4",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "ae904caf-bdab-51b9-b1bb-d5244dc1402b",
+      "name": "Gus Marchetti",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "8e377a7fff4468f3c26be3b1e1677bd08e52f7722f0310614de84fb95794a92a",
+      "finalStorySHA256": "37d05d9bf91d825f9cb210eed9611ecb900808c6c8c84dd69b3488903199609f",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "c552a0a9-594f-5caf-bbcb-c225f2e1d5f2",
+      "name": "Talia Bregman",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "b5c3a50bdaece0881cd64966582a36b59b43de2582d7e4dddc5cdc06e1cc6977",
+      "finalStorySHA256": "c50ff8dbffe3873c8452dbecfeea2ade18df7a33ac41aac5c78917d45eac08a9",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "aa 明确 the woman is Jo，消除主语歧义。重逢保留人脸辨认不确定性。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "06dd4cb6-2d02-566e-9713-330964d77ee6",
+      "name": "Emile Landry",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ef200c5ae49c44ee585d105653e8fe3309b10b66a29b57811e279ddee9f3521c",
+      "finalStorySHA256": "906ef171c891a8f2d779c71e6bb66189864e6fd35d159bbcd947e6d5c67db393",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "d0399b25-d966-5653-8f1c-0b0754941071",
+      "name": "Priya Nandra",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "8959d54193a7504b04f9f172097c366b8b7e929b052b31913de91b8e53641a8f",
+      "finalStorySHA256": "999f7b752dd4b407d119458a948817683ee009523c9859b68fca33cf496f75bf",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "922a07de-76bc-59b5-9d90-10f811686245",
+      "name": "Morgan Vale",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ee7be4f8b4207c2e77b9c837ac8d93453b7dfe5d991c6515470a90f281b07763",
+      "finalStorySHA256": "e7145de4f213bb9116a5a705c78b20d21ff521a263833be27e23b29f940fa4b2",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "ebff7c0c-a009-5d14-8b92-4bd28d94c869",
+      "name": "Marcia Whyte",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d456304a41fd117afb3649c55393e453116354d79bbf48b46adae8ca1b93b18c",
+      "finalStorySHA256": "4304642ec253744adb19ce41c84b6dd066b2366109717ef325a3548a787a188b",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "0cc8b8ef-008d-5f20-9a71-ee3b7b78d0f5",
+      "name": "Robin Castellano",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "982ccf9cfe55bb010c2422e49e6c9d42004b07bbec40e3952c007f1d1f6e0f33",
+      "finalStorySHA256": "72a4f2b8ebb1ffe0fc024243b2a74d38f8b106dbcdccf60ee4f9e3eed00b0086",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "3e3d4672-e8d8-5fbf-9ec4-eb6532897a8c",
+      "name": "Harold Wexler",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "6bdbdfb5df5e932d7c4ae6cf67dcc4c833c57bdec617f869559f13917577fbb4",
+      "finalStorySHA256": "cd897bae63d3e5bc6f4c13c989ef7abba02c780d7b960aecc4974d54bc162930",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "14292fde-ebbe-5457-8179-ae202ae8b89e",
+      "name": "Sasha Petersen",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "5ebe3484c619e147099caabb91bb8c1c7d50487d9781b15454ec8a6f096c132e",
+      "finalStorySHA256": "23c9ab761359a22cc5ee9446ceeb5692ae95564bf245d7a342a60f67b6daa9ea",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "9e2d81a6-505c-5cb1-9dd5-3f31762c9be1",
+      "name": "Daniel Reed",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "0a3677c53bac931688788daacb2f4467415c74e042a8487e38aef8c4da453e0c",
+      "finalStorySHA256": "e4457236f25ef05edcce271a577f6bf1d6c5be9958d8740966ed56c1d2bc57fe",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "64ace4d2-6cb3-5417-87a0-b1f0763db0ff",
+      "name": "Celeste Tan",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "1aad8de2f607a206ee143536fe76cc882bcfb0ce3f460d822ba0bb0a02ab42fa",
+      "finalStorySHA256": "b6999b2ca064022c0d3f624f4e1b4eea6932e6f05e59e79a4074cfda61822c44",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "9211445a-8021-5b23-aecf-9fa4fda31b2c",
+      "name": "Bridie Fahey-Kinsella",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ce931820c1c5a48e65a0f4862330e69c1e455fd1cbc258f382e48560ae2b2f09",
+      "finalStorySHA256": "8232895bf9c72f6ce872e4c70d477dfabade82d4db7eed94115f21e1d4369c30",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "93e4459e-993f-551c-8ffd-ec6d286ad22f",
+      "name": "Ainsley Craig",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "55bb18c248b0618920120a9ab03dd0816f5c8a37295204a5d6e34973a4d4c16f",
+      "finalStorySHA256": "fc480cfbe3693e227fb9b07cfad81c0e947f58799f20ce0c20ab27839f08eb1a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "19a3c078-c70c-5df9-9d53-1fd992abb9f7",
+      "name": "Ingrid Solheim",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ca397bd58b2ebc0485a23550d1a5dad94055e83f36f0f50a87c940ab8ede2a2a",
+      "finalStorySHA256": "1abada6bece728166ded1846a54ed4d7a7513acacb76ab3f1c432873f7779161",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "7b13e77e-553c-56a7-8eb5-84e551f891ec",
+      "name": "Tane Ropata",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "5a20fe97e467954e1646c1632af1012794f38de4e3f8fde07d499cf44e4ef005",
+      "finalStorySHA256": "f6fdd9e27c65de72dea0805fa13187ad3d9e10c989244698eda289069fe12407",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "60423b53-84b7-524c-8194-43809dd24d40",
+      "name": "Brian Otieno",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "694f44f1951abb2274d84c8b8c2a33527931a929b979151316b144eacd18a921",
+      "finalStorySHA256": "39ebb22944c7cc4703e4043f6cae66167516f14596423179a6e245156231d2d4",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "6a3aba49-e01d-52c1-80cb-743ae89ae121",
+      "name": "Devon Marchetti-Lowe",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "035ccf7e0cec1517fa606ccc86e354537652af9f69dade7e1899420a5645fe73",
+      "finalStorySHA256": "faf8d68f887760ceb5c55e8306d26483d5a107a328ed40e358fb0dc352f96528",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "c9863e79-b8cf-578f-a7b9-82fa731145fe",
+      "name": "Simon Holt",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "7e80833f32f7220aa01023cfcf1adc1d922c34f3e730f6963aca1d229732d6f3",
+      "finalStorySHA256": "b3466e45ecec52f70f24b7957ff1bd779ad9c6f7e0996f2fa08568332d8dcb40",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "bd690f08-3341-57f8-b8c4-d1ae61669a89",
+      "name": "Nora Price",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "c2db35af48adca9f5eabc16eee4fe3783ab82269eff19adf0d52123a0579c20a",
+      "finalStorySHA256": "2a3edf5284bfb871319ba59dfce06bc80baab10e95ebd13e7b9d122b64c31e31",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "882ca29c-2cc2-51bf-90e4-0abac02ec1c5",
+      "name": "Barry Whitmore",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "8897273bd82ee2051a6a4079e15fa51d927993ea348b42399de5046b961b09be",
+      "finalStorySHA256": "3dec7df3cbfb66b654dadd72c2192eda7da8d97b3612498703fc53aad7e75062",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "c8437a9d-5139-5bb1-974d-330bdcc1dccc",
+      "name": "Bernadette Toups",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "7e7989c467470e4fcfb1d1d0f285b8116e3ea3e9d1b696fd89d81cf373fa51f8",
+      "finalStorySHA256": "5b20acf7e382b9b0a6d2c978e4c8eb6f65209abc350f339b9665fb673f1114c3",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "c48b20fd-3f78-56b1-bd61-1fe37c860fa4",
+      "name": "Aisha Grant",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "4a86649fd079efbb23a080d5ac8d7a610a50e93ce4729ebe6893ca2b428c602e",
+      "finalStorySHA256": "5782a5633aa809f08a9de8cbb50a09a47c0acf73b3956e9e92a2f7766b898827",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "332cc277-38cd-5a3d-a3d7-cd8592a1eace",
+      "name": "Terence Maddox",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "641c8d01130f5a78a5e1f3b450bb7b4a8610ac9213a0bd251c2965ee0661577d",
+      "finalStorySHA256": "03767bcd8d6c1843414e342f320965ce2c9553dcde3e850377a2ed923a6f243c",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "33d01a28-8e3b-5902-b810-cb2f3e8e9b06",
+      "name": "Marlon Beckford",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "24863edf70a787c7b734e3c464c6ef017f3a0dfa96bb51b3e9763395d6e90f93",
+      "finalStorySHA256": "e8934008e8301b53e9828f5596172a6c0bd09de586503f3671e238f2819d2865",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "1386761e-c94b-5689-b4a9-6616b32848f2",
+      "name": "Walter Bishop",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "3fb53d5880162241e1869caeaa8c30c487212ce1d06767e2ca1e496be3a526c2",
+      "finalStorySHA256": "0cbea846a1b3f0f081c3fbe0fccae828680d266ee47e09ca913de572879851ef",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "270e9326-de6d-5f34-aea9-5204993ce0a6",
+      "name": "Devon Achebe",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "e9beec543d0596787695f98a8fda05c11bd72acfcf11bc930c64ef32c91ade3f",
+      "finalStorySHA256": "ce977e0100bd87551c92fa6dfca940bf8401be6f842ed7d75ed97b5da6da19ea",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "01295c54-ea69-5819-9692-6c24ae5d0de0",
+      "name": "Zintle Mbeki",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "e67e9e9167c4add88ab5fa22ce04e4d3d0dba80ed4261ce9c53d1ca7059461a0",
+      "finalStorySHA256": "d33ecf2a5db3d9b424055992c0eab62dca6d14ff53acea1ba3f0fe639fa5fa69",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "3324d5f5-4950-5493-8e59-24cfe6db4585",
+      "name": "Grace Lim",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "7d3c17695d0afb9bf5f7146c025559e0de1fa4d07f7090a01e4a16690efd54c7",
+      "finalStorySHA256": "282926108a3d57c6fe6679828f89bf2d07519ee0248497a90ef0b29bd09d3978",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "d141233c-49fe-5f76-bf3e-0f1314888cd5",
+      "name": "Aoife Kavanagh",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "9a56601b39659b430f21a69f4a85e9bb655f3ac30dfd6ed4db96417f3cb4a357",
+      "finalStorySHA256": "0f21ffd5f5d2ed4869d1d32edc8b7ba568340764e9c73908e01c12e911651ad4",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "Aoife 的重逢为另一天，等待自己的室友可独立成立。没有为玩家新增约定，保留正文。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "c7a11a1d-0634-5a39-928d-a2b7386def94",
+      "name": "Callum Fraser",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "dd9feeb34e480b66dc95216b007682624b94504280462df36a5d6a0ac5375c5a",
+      "finalStorySHA256": "2f8ef05414d3c86d2a89f51bf71f86a99a279aecaadfdc8eca59d53155709ee4",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "983cb2c1-c0ac-50b9-851a-7502112cf74b",
+      "name": "Bex Whitlam",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "2abb7e35f49ba1c7aa935afcceea2fc9232eba20dca8a2bf3564ef1e52671104",
+      "finalStorySHA256": "4095a644fcb8055adf21f59f09e2c47e4c7a81f279d090959e6869a8d12528b6",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "15e8868a-ac31-525c-8160-807d39eb725a",
+      "name": "Tavita Faleolo",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "5e20c2b3771985e429e7f4555947ef634e0646d810d297cb7117166889d7b01d",
+      "finalStorySHA256": "1f0df88f2cebe372a70b7e495bad8b4bbd3026d304fe5c6948546bead32e644a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "641adeb0-8b94-5589-90f2-29701d73318e",
+      "name": "Achieng Opondo",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "014bbfb2c8fda5b9bd46aced0a7444972435d9ad287c9c5be467afbf6682d4bd",
+      "finalStorySHA256": "670d96ace9eda2a54ab8631fffbcba554391fb82503f40705e55a4d57dea5bc5",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "298e7ce4-205a-5860-96e5-14a34c9738d7",
+      "name": "Gordon Ellery",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "f19af0d319ac03a6a1f4590755a9a511c1e966d14a3532eac163db4e3906ce1e",
+      "finalStorySHA256": "7998eae533958547bda0e02e93e6680b194e0f915ff8bd0a06c532dffb092b80",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "c0a4f340-3f1e-5e2e-a47c-d2671e155637",
+      "name": "Tegan Marsh",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "208b28f4af34b01f7853fac5001de161f9eb3e9575289502f013614cdfba531c",
+      "finalStorySHA256": "d11b51f9a46046a5700a32460bcbbfb3ac1169ac3737d02215a51854fcb2057e",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "7ade0960-ecfc-58f3-936e-5c783fbc0d7b",
+      "name": "Emile Boudreaux",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "81bb16dce800ce451d86fcf8d06d1d741f3ff60e420d5fdf059816c3d6ec52bd",
+      "finalStorySHA256": "7fb617b80b9727a68b408cae87dde13972e038ad25c62a6706472302da350458",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "7fbca9a7-e69b-5505-b5d8-2981105f3386",
+      "name": "Patricia Wroe",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "6e1bb02c28b9ae72a74f25e09cdb013ebee34fb80b02f56dbb59601c18447c38",
+      "finalStorySHA256": "acfb89ec3734c16555850b8571d5598c3fa12184ee2045cf59da1a5403ef62eb",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "2a2a8e5b-0ebc-5d42-b817-ee896328ee4e",
+      "name": "Shanique Peart",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "6a036ad9c738cbdcd7d25922578c5aa7af0d9e113018174988f2ba78ee1bc786",
+      "finalStorySHA256": "349837aed2ec63c754c6aa1579cda5f737f78240f73bef2cbb7b99482cfee346",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f74432d2-289d-5745-a895-65471f39fbfa",
+      "name": "Sunny Aparo",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "c44af3093e4b7ba2ddc5f05e9078a1d216d6679d166cea2b7f2e778e1bbaaa9e",
+      "finalStorySHA256": "aab8ba70fd428f59c7c6d2d4d5a0fa62ddbf81b20e575b2cff073d4614f453e6",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "50b832f4-22fa-5400-b330-586027e96262",
+      "name": "Terrence Boyle",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "0d07dd9cb42757b85b24146eed302c9b6b8f1fa8ff9249151ef074c88ce119d4",
+      "finalStorySHA256": "431cf2f32fff9a31e59371b4374ae6ffedaaee17e5aa59496c1ddaf5bc8085db",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f59bc418-9cf9-5311-b285-ed936fe36d1d",
+      "name": "Nkosi van Wyk",
+      "reviewRound": 13,
+      "modelVerdict": "revise",
+      "modelIssues": [
+        {
+          "severity": "major",
+          "node": "reunion",
+          "quote": "“My friends and I have confirmed our hike. Everyone's replied, and we've agreed on the route and meeting time.” / “All sorted. Now I can enjoy this stretch of the walk.”",
+          "reason": "重逢段把当前关系线从本卡一贯的“烧烤时间确认”改成了“徒步安排已定”。这会削弱与本次故事及旧相遇记录的连续性：当前可见状态一直在处理 braai 群聊，而重逢却突然换成 hiking 结论，像是接到了另一条未铺垫的生活线。虽然徒步本身符合他既有兴趣，但这里的共享历史与当前主题不一致，容易让旧用户误以为重逢沿用的是另一套事件。",
+          "repair": "把重逢的已完成事项改回本次故事中的烧烤/群聊安排，例如说明朋友们已经确定烧烤时间、最后一人已回复，或保留更中性的“我这边的群里总算定下来了”，并确保与四条路径都能自然衔接。"
+        }
+      ],
+      "reviewResultSHA256": "83ce13f4951660844ea6513769c10f14ec64b45e8ced5c7c4e86555d3a9007c6",
+      "finalStorySHA256": "0240c4f8526a963139123c3c0df34e1576436dc876e8ed4edc4ba061e5026e3d",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "重逢是另一天，可以筹备自己与朋友的徒步。补明 Today my friends and I，未把玩家加入行程。无需把不同日期永久冻结为初遇当天的烧烤。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "120c3d34-5794-5147-9467-57e5ff27334d",
+      "name": "Kumaravel Suppiah",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "074b77e0db57dfbf287a3dc41dd284757893bd55c7383620be8decfd4dad937d",
+      "finalStorySHA256": "6a92322ec3219c1d0dd0fa02855dee0efd801c4f11c6f85959c53482679b598a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "9dd2a8cd-6abf-5139-ac7b-b8df60fec08c",
+      "name": "Deirdre O'Connell",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "3d48b8a89b5f6d0e9fc62355283ffe7e7130e87fc25f49274c86244269a05db2",
+      "finalStorySHA256": "a2884c2c5723d6221727ee24cfba49f4c93512fa8ae703053fee84501bf2ceba",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "0c03d095-ca1e-5729-884e-7633e281c62b",
+      "name": "Dougal Menzies",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "0f115d16a89724f9199dbf833906a381525f07fab310d473caecbf8778fe884f",
+      "finalStorySHA256": "cc985e2aa9697a653f79a51332a4cf9fbffd18d62a197375eeed6f2a4034c119",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "b25dd750-1bea-502f-9d09-98fa789cbcc8",
+      "name": "Léa Tremblay",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "3ff176157a8bed969c8db1cc89e0853c6b9ed96b036f573e7beb23c36a297051",
+      "finalStorySHA256": "43552a5c0f1bc3e03b88463546db52ffd9b8c06407687e03e68ec574f45e8887",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "b25175b8-0618-5982-be49-123bfa403116",
+      "name": "Indira Sparrow",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "e6b93cc6df18b835dd0f6fdfb44f9ea23759bf38ae820558eb4be43a5cd5a53f",
+      "finalStorySHA256": "158cb71db0078f309dada271145e07b02303ed11d1e3de25f77f631986debc84",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "8c4a7db2-f922-52ff-b3b2-d0a0b6488ea8",
+      "name": "Nyarai Chirwa",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "31682c8ee7b84a730c614e471901362adcf4e9a10bb269e77df272712c61a49d",
+      "finalStorySHA256": "ce168634bb3a3af4601ffdcdd3e82497c5c3b5414e9998311f7589c9543cd1ff",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "485969fb-dcd9-5df1-ae7d-2ef6e36c8d14",
+      "name": "Sacha Okafor",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "e698fdd5d3e6f26436f04946fbf7416e1d0284cf8b0eda26ddd5750c4a5a29c1",
+      "finalStorySHA256": "f197009d29c2978d2b9b9d4c46c7caf400f2e3c50df2c17afb11d630dfc6d8d4",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "299a4591-5136-5c01-9138-67d89ebcb631",
+      "name": "Warwick Selby",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "25ff43fca926fe1e2df0d605ef350ff409dd04e6841a59b15f762ab8d68b72c8",
+      "finalStorySHA256": "afad38c72009716c02c6b21dc131f285e49aaa8583b7dbdf238e40745d46d44d",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "128d0143-a58f-58c2-965f-a38e772e613d",
+      "name": "Odile Prejean",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "aebda728e91939eabaa983fdfef4265da1f01a637e25c47854bed3af3ef4d197",
+      "finalStorySHA256": "eed30f47ad73d426b23f62d5a7c3d5e9d67adfbb88055afafbc1ee4b7eda6696",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "2914c331-895e-5ea3-bdad-7ab2d7d02119",
+      "name": "Wilf Hartley",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "6a9986b512573d1f913783e47eae988a3da527c8b05cf625e7c3265b68d0f647",
+      "finalStorySHA256": "557a157688d220d669f2dd018dbd3270ed494a8db997302526f5d8f50d272b49",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "2d3c0e4e-84b1-5bc0-8300-2068e688ebca",
+      "name": "Cynthia Bailey",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "96cecf99762d174e85540a4088b460d7670fe4d5f83545c05f92ca36e0010dd9",
+      "finalStorySHA256": "c7d536dca164c51154c56b40e4815b55123fcf0fe84a38c793551dbfbe1080d9",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4b62ba76-e0cb-52da-8fe8-056bd5fe08cc",
+      "name": "Toby Ashworth",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "39a2245448030c810673ccb2e428f1b79ff2bc5efc01448280e1c974ee1d9e65",
+      "finalStorySHA256": "7c026f2e5db5003c3da6e22722289f585977f8386ce5b80747213954324942f4",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "103319e1-cb5f-5cbc-9534-05f8b51863a4",
+      "name": "Dolores Camacho",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "a82d97cb1ae72670f19022cd8e6252cf99aa1b0925dff555ecc43de5bc8690e0",
+      "finalStorySHA256": "f6777baaa1ab49bf25357d03055c51641ef3544dbfc1cde19755c5bfdca7deec",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "d58fa9b0-d2a0-55fb-a157-61588bed9fa0",
+      "name": "Anele Nkosi",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "197d8fe61b5d49bc1d6259a35c44517122039f0fee1f7bb3913c7d70688804a4",
+      "finalStorySHA256": "c04cbd755153e2f0775d1e689fe5d5967ff4337902f1507b9eb9dcf1e532d48e",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "原卡 gender 为 other，同时原人格与传记持续使用 she/her。核心原文和原有代词均保留，不能从标签推导必须改成另一套代词。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "d804e5a5-4b00-5855-83a6-cab8ba00474f",
+      "name": "Tan Kim Seng",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "88355ac6b12781962820aa3b7abb24735a60d34af448476a2b1cc123aefcaf62",
+      "finalStorySHA256": "7e07eaba1a201773e8f044fd18336d4adf1049dbaa86239b972de1348e55f34c",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "fa6eab00-3fb8-50bf-90b2-53a7b997bfc4",
+      "name": "Robin Fahey",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "a3584e9f14568a93debbf90f01d5c48df2d3d49afd356e83e42806a500ca6053",
+      "finalStorySHA256": "fda8f9b778c7408500461a8ac4e0946ea300725f31f96d9311314a2b7fa7d174",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "1d04bcb1-17c1-5a7b-aa68-e2e1305c1e3e",
+      "name": "Ewan Cathcart",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "5a9c1a554dd6698d42864cca0d8fb9467cb2b6daa79d089ad3ef9741909a3270",
+      "finalStorySHA256": "ba8b1262feabe7fe0596cd15f588cf97f84e324c11f40bf44ae0170edfc5b47c",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "d33e66e0-0daf-5d45-b23c-9c72c7d3132a",
+      "name": "Mireille Fontaine",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "08a52d0c11c8d2721c8e056b989ecb978117cc8caed6ac074d74ecebf8a7d87d",
+      "finalStorySHA256": "26a1c43ae65608a4ead56b5935eae31eab1a424966e0964e8fea304cb2768509",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f256e2a5-b123-51d6-95a2-86e9d5a8641f",
+      "name": "Ari Whitcombe",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d00f1be818dd1a5c18b0a2006071fb7a8eaa441648272e93cc687004774fd565",
+      "finalStorySHA256": "ede388803745f8aed5687e14ddbe7edfc7da7f6478c0ac517cf717283e1a36ae",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "e73883f3-942c-5795-9a66-f82f94ed9450",
+      "name": "Wanjiku Mwangi",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "85ba900489d5312090473e72aa54af26457ebc3134b1834bb9e0b7949d46324f",
+      "finalStorySHA256": "9b8aa36bc3c005f8b6bcf430b89d1245ec6d296b5db2872074368623ef16a764",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "84a8c1c6-5dfd-51f3-a6df-823b9e86b3a1",
+      "name": "Rosalind Achterberg",
+      "reviewRound": 13,
+      "modelVerdict": "revise",
+      "modelIssues": [
+        {
+          "severity": "major",
+          "node": "ab",
+          "quote": "\"Apparently they're filming here. I was just telling someone. Did your cousin say what it's called?\"",
+          "reason": "这句把“你表弟/表妹”直接安在玩家身上，等于强行赋予了玩家一个亲属关系。开发规范明确禁止在未建立的共享历史中擅自指定玩家的家庭成员；而且这条支线本应对旧用户也成立，不能要求玩家有“cousin”这一设定。",
+          "repair": "改成不指向玩家亲属的问法，例如：\"Did anyone you know mention what it's called?\" 或 \"Did the person you were talking to say what it's called?\""
+        }
+      ],
+      "reviewResultSHA256": "b9c8724978b6c99b2747c4eff65e43d022a41b9f76d476cf8dfba24fa85bb98a",
+      "finalStorySHA256": "b4beef635f66daa58507b72bde6d394e6a73bddc1d99ef160c4be8294b274f84",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "表弟属于奥卡福太太。前一旁白已明确 Rosalind 转向她，补上直接称呼 Mrs. Okafor，保留人物继续传播传闻的结果。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "72a0f288-91c7-5822-93d8-c5fb30c3ed5d",
+      "name": "Kai Brennan-Tuilagi",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "31a9d6d1590640b61c26a3599839c4207cae2a9ff2c0de5e7a71d269929c7cb7",
+      "finalStorySHA256": "3b5becda2584644d7a6a361881d2836c89cf2e024e4825aff32622017a672854",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "42273aec-8f64-5993-92cd-56ec57ef4afb",
+      "name": "Josephine Beaumont",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "fd779cac9032656beac8720ca24d3493c13d733e4df3ffef20fe7c8d380a4fce",
+      "finalStorySHA256": "60a1e0753b1d924539908c77c5385c38d9d2aef8306939ad037a68a2ab88d428",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "8141f68f-17f2-5a47-be45-d70888425289",
+      "name": "Frankie Osei",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "7b1fa0d9d7416b5cd44963179d9a83a5631c6faf4048206501e5d61cfb3e5aab",
+      "finalStorySHA256": "e691669ab619358e070e3c2659008a824086e438b4a7a3045b7ef9540b5d9697",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4ad4f52c-08a1-56cd-a540-8ee3bef8a9fa",
+      "name": "Marcia Bell",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [
+        {
+          "severity": "minor",
+          "node": "reunion.beats[1]",
+          "quote": "\"Hello, darling. I'm waiting for my sister. Sketched two window designs today. That's enough work while I'm waiting.\"",
+          "reason": "重逢段让她在德文大宅庭院里当场提到“画了两种窗样”，虽不算硬性错误，但与故事设定里她来此是等姐姐散步、而非进行职业工作略有轻微偏移。她可以携带本子或顺手记东西，但这句容易让当前场景显得过于工作化。",
+          "repair": "把重点放在随手记事或无关涂鸦上，例如改成“Jotted a couple of ideas down in my notebook while I waited.”，避免把庭院时刻写成职业工作场景。"
+        }
+      ],
+      "reviewResultSHA256": "627ae4f2c2323701c3e174625c07c363a60b2ac35974153f68d152ba8c23162d",
+      "finalStorySHA256": "29c45104e3a78040241073983d3118510d1dda36a3a86c25383e39d20e157751",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "Althea 等姐姐时随手画窗样属于当天行为，不等于为活动改职业或长期设定。保留正文。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "97bb1059-cfba-5b64-a261-71a77bd08147",
+      "name": "Jesse Palmer",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "1ffaec1d29081d5b34f600afc281b135fd221c4e0f121b9a52a38df5a46bfc0a",
+      "finalStorySHA256": "2a4a126aecccf8d8a8372eb1597af2ef962bb18d7a09631fa608e1e43497af00",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "a5c9d27f-a739-5381-83c8-f371a1db0a94",
+      "name": "Harvey Lindqvist",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d234b6686ac9184817ed7333e91d855e876220ed9298162fd6c63b9e041cf9b0",
+      "finalStorySHA256": "b489db632a20e7c7d8a78d14df7bfcd5c1ad3b0ee14631c1acd3d205713048b1",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "24cad8ee-bc16-55f3-97fa-9ccc24a7b28e",
+      "name": "Thandi Mbeki",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "c183026ef69056cb19bddd6c7a2dafad196925911f8310106b9c89e3ff36177e",
+      "finalStorySHA256": "1449a5e0500ad88af8995082a0bfb1c4aa14f56f45e902f68b0d7d04d3bd4697",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f52fa44b-9258-55b4-8c42-15957c9df121",
+      "name": "Farah Zulkifli",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "4ad51114e36bd8b3767c15b5d1f3ea2b8d22022923c05ddcf9ab534a971c8ed1",
+      "finalStorySHA256": "ce83af5e3ae2860592b62a5c271e54ae0c0892bfd9e30fc1317d779358035597",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4347530a-9373-5f91-9235-f0a780c327a3",
+      "name": "Aoife Brennan",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "5b3b3c560866bba96c625b1a406f5518d2aa727d016101e72d0838491547f9a0",
+      "finalStorySHA256": "a3e1280a7140e7070d6896b218d9f55aae19fc6a6178f0567e11c33ec049ffc3",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "a08f0c39-0dfc-5b1d-925b-605d1c812386",
+      "name": "Eilidh Strachan",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "c10debb0a93200f48742da7d3a130bd2816f5eefa63ca8e365d4b29b584406f5",
+      "finalStorySHA256": "cd64aeb208c5127cf711703227f65ed5499f4128bd5f666a23d6a4efba93ef9d",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4aefbe0c-8f5d-5963-8504-c6ce3d073250",
+      "name": "Ren Osei",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "5d0d7f3ade645b6de7dd02ff56992dfdce3318c7d3d587d73a8732afc61cc28a",
+      "finalStorySHA256": "d2f522b105e2c09ad26000c1cb16cae6963538ea59c851deebeeef5a7f438374",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "677fef83-9fe7-5039-ab30-4c4d290bfda2",
+      "name": "Hemi Whitiora",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "3e8d7f8c50c90360c09fa5b623ae08609d841630bdb756f45ab18e5858bdf72e",
+      "finalStorySHA256": "83acbbe776c877f88eb0e17c3d9ce81d7fb38f2a0c2ceecf6cce070fc2e34ef2",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "2a0b4ee8-b50d-5cf5-9f75-a2f80cc6aaad",
+      "name": "Baraka Kimani",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "b1fc859b500c693f6737b7422b8ba1be07838d27600deff80856736a5058e045",
+      "finalStorySHA256": "542085f40b212bb72cd366b62eb5b2fdc95e9ada09efe45865d34783402971a5",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "cf96dd7e-3de6-5dc9-8c98-90d0d229a23f",
+      "name": "Marisol Duarte",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "3e1cf89607e1793464ce3e4d0f9f30bf39e35606a6ad50f2910082e000af926f",
+      "finalStorySHA256": "011f6adae6a26d22edf9920b6b27c46ecda24bd870c93e6b2845c2f9b316c2aa",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "43d7dbd2-acda-5695-889b-63952df65d33",
+      "name": "Cass Nguyen-Tran",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "4cb4eb4c84a8df6891b6e1d9dfea3db5a8f942fa1b759397a3274340230d5e61",
+      "finalStorySHA256": "f85f623857d117b88805202d441c6743d3d9003fd7b415efc5ca86c18075aa85",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "1035151a-5214-542c-8d89-3d0170aed687",
+      "name": "Odette Landry",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "94e01402b87947a8733a138491be9ab4189c4211de0696547447c52a0cb117e7",
+      "finalStorySHA256": "9cdf622705d9cc4eae17268af6d5d25dbf6d5c561335d88bd28c972bda99f6c5",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "ef7cbd29-ca46-53c4-b918-dc132ab8bbe3",
+      "name": "Kit Draper",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "b67233cf226c261a61b8717cd4a103e6104f07364785b339d421f9e495c7bad4",
+      "finalStorySHA256": "cd4f4a9a22cafc2195467cda6137224ee190a107d67fbd2739c769b15c41737c",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "442e466e-c541-5434-80cc-78ce010898f8",
+      "name": "Yvonne Chambers",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "91966e697c0c8ff3dca04e2d8a01e48446e2251909b097d1df8429a0bb03cecc",
+      "finalStorySHA256": "ae9a96d7e85a38b436d65a982ce149e876314cfb3ab7429750428d033058313a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "873885a8-62e1-5dc0-828e-f985f36a416a",
+      "name": "Alan Prescott",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "af1978a643849f2e5b4fefd4aaab3edde8b399c985573d89db6bad01f0444911",
+      "finalStorySHA256": "319c27176a61d1f7486feef806e109bb29bbba6514fdb81c9e49a7869480e689",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "6ba2be84-b2e6-5d3d-9679-2bb296f372f5",
+      "name": "Theo Marchetti",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d8832866a4bfdf57afc38cae08602fd9c12117380a0a94285d82fe13a033b475",
+      "finalStorySHA256": "9181e6ad54997e1f1eabe5a3353e2f95ba2c0e167ff07999d86595e1af7c396f",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "c822d069-f081-5e23-a0ac-6707f7b03181",
+      "name": "Lwazi Ncube",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "41ca9d3986b25bf9eb0e426533edba1d331271a0a5bae952335fa9c0e8bce1fe",
+      "finalStorySHA256": "b5ecf40a73d06e513fed3d5682cc0e5ee41f32be26329baf1be5a19079cec904",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "9ea3720f-1e40-5287-a2ad-aaf2e5f7d4e2",
+      "name": "Desmond Koh",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "c673e149e2307ada934edefd9e9347fef8b4d52ef06026e9934f52865230ef13",
+      "finalStorySHA256": "6a8133e58ce2c1355e5e7130fddfa9edcaa58bba4f4ff2e0e46a39bf37cf031a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "1febdce6-ca48-5ad3-b489-02be98de23d9",
+      "name": "Ruairi Mac Cormaic",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "1493f6af278431d12bf5f1107f7274fabe3c8ab3892a7e76830e9192234d8273",
+      "finalStorySHA256": "880e825c6bf0ca0600056c534f57d650ff31e59a4ec7a9b0e3f51edde617c3ca",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4d5169aa-5e0a-5c5d-a4a8-8ca0bffcb58a",
+      "name": "Callum Beattie",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ab95edb4e0b1171c86dc55f41183cd71758788a9856f53bbf5c1e0e3fed179dc",
+      "finalStorySHA256": "8f9d9a20d512baca4dfd96dff30ce2f9bad0ada31732ce55dc2b471d3012c37a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "96584dc3-a300-572a-91de-2caab56cdc34",
+      "name": "Soren Baptiste",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "a2b08f034560ddb03a53ab85e8d7e1390170a799d96520c0348b8a8b00a1b1ac",
+      "finalStorySHA256": "0f66ae25672de056282f86ab8c5d61ac7c0a36b2065306d8e43fffc38fe63407",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "1a63fb6b-7eef-536e-a0f9-440519cc397e",
+      "name": "Pippa Ngatai",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "b04c3a28cb6004f63823e86439d1f9663480c6397eab569e39f5cfcbb8078f12",
+      "finalStorySHA256": "f3453ce71f70feefcc389c997cbba2e59eae85825bbf8e78136281439537f250",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "e9bbd6f4-88d9-5a2a-b885-dedde97a7ef3",
+      "name": "Baraka Otieno",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "728efbbd7b6e5461d569b90294ffc0b5890aa9f2619f02cd198e218b3c37ea15",
+      "finalStorySHA256": "2296aa379d85ebb69abcf7a0e118488b0b19f1e000a6597826464a22f15b0c7c",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "18c834d3-f28e-5a7b-a268-f5eabc0d2df6",
+      "name": "Casey Moreau",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ece680f4ac0392f61620521815ce895e0dde260e853e1e9299a22a3a315e0b8f",
+      "finalStorySHA256": "eb05315ee93057c29ee7295cc843830046ee38e63c7f43cfe71e3e6fa2c16879",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f7a77475-487d-54fc-90d6-2d4a26f74bc4",
+      "name": "Declan Vos",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ed0c765aa33f0938d0dc154b09c55d136795b13dbc51632a3eef33c6cf32efb6",
+      "finalStorySHA256": "693d63ad8de5650e2e525b542c398c1d0617d973c3019c71b51aefc927a0358a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "7fa8e5b9-3e79-5df1-afa8-5a8d6ebde9e0",
+      "name": "Reginald Toussaint",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "7b1cb17deff5d5707f69089f2fe16ee1803a64e982411ac8c1c93e44c38ac219",
+      "finalStorySHA256": "1d4974927a8fec39c15a6007181e7a1342f38575bfd6b8e1342d2c1fc22a6c2a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "43f177c0-0f7b-5bf0-ac7b-176ddeada39b",
+      "name": "Patricia Wren",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "74f7be4fb42ca4d40cca51de2ba1506b2231c7d6d3e4a38bc5da7279c4eccabf",
+      "finalStorySHA256": "db3959e537ae95fd763fd12a4bea5071550cce98a05dd527a726b73e0dfccfb7",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "5639368e-8874-5ac2-9db6-d08885fdf6fe",
+      "name": "Cecil Grantley",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "cc58486a1e7fa713cc0f32bb49d1914f4d0304fa403925d0368d2e6180205d87",
+      "finalStorySHA256": "83773e7acd19f0c632e235181581df3f0278b6d09fea289657bce9e41b071dfa",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "1f654848-e2f3-551d-9d68-0f90cde9c016",
+      "name": "Harriet Voss",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ba2cc4a28c0ca2b023123f647785027f748e14dbaff2777a19bada77482c3cb0",
+      "finalStorySHA256": "92f9aa106b32197b09165388e6898c40c75594b6a69b2048d89b28970bcf37cd",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f376c5f6-0aaf-5803-899d-1633c05f2ea8",
+      "name": "Marisol Vega",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "b4d51102423cca89f4e2814433035d9d12da821b97669996d0aa66fc5f557c95",
+      "finalStorySHA256": "bf5b6a294d8b1ac630d131b06fd627df5fa60964ebb51208c25d224b66440cfd",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "a1960237-9f22-5fbe-9fa4-09a9cbe3b1e1",
+      "name": "Sizwe Mahlangu",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "847093929c46d366cc60757db9b165dacc3875a61cbb582bd9330fe730f39fcd",
+      "finalStorySHA256": "d7bcb4a8ebef12c92e9e7f350d08ce3d5db283fbf9067f61501890e6c819ae57",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "39fc99d6-ef69-561f-b87e-9db9d145f9c2",
+      "name": "Ryan Teo",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "c1d08ba773d42f3b2c97e5639329fceee3ac6a227b0f987ac197dec73427a80b",
+      "finalStorySHA256": "33470cdb2be4826dd038e24ab168c6bf754cacd274f30da1f02c1a97a4c8b74c",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "0391d6b4-943a-5406-a638-57d09c45ab35",
+      "name": "Peadar Ó Loinsigh",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "789214ca45435dbc97e0269e9c385cdebf4c06f4912e34995de3a809f049441d",
+      "finalStorySHA256": "f101102544401b04cd813891cf0adab14579b1023cf7d463ac49bec9cbd71072",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "e526003f-1ab2-535e-887d-37f59ba6d80f",
+      "name": "Rowan Blackwood",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "f04d8f3f1a7eb6fc049615bafc0e78e9e8c8fe77c51db1b9bf05da5c9e12b01d",
+      "finalStorySHA256": "3fe91f216c5e256750da8f4d2da15ccac4fa57bbe2a2140969e7169b6201e51e",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "8523937d-bd3a-57b3-a90e-62018b014e0d",
+      "name": "Evald Sandström",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "7c29acf840f0248631e62fa549fd5da37c0c1ed0562a939a33db08b7b4936185",
+      "finalStorySHA256": "4b9b450ff9a932a07cba447f3fcaf4a944699fc4f793709171f3fdc91a3485c5",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "bd5cf7a7-8ae8-53ff-a417-4e7f3f036fdb",
+      "name": "Margaret Ashford",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d7dfcb1c7426b7072e1e8060ee5a30782d0b284af80019c13634936ec674933d",
+      "finalStorySHA256": "53cace4cb585b437c221ee24e7e851d0cd7b74415dee63ec46aec00b0b880405",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "0acea394-6ea5-5a36-8a1e-3764d54d98df",
+      "name": "Zawadi Mutua",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "4f5adb0883e862e37117318f5dd1e1158341ba70c3a69afefa4a5c74a51fca2d",
+      "finalStorySHA256": "b8e5acb6105e502f635d74d6be4ef87c37627dbc34f534fa5e0ae9f3691ce35c",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "Sam 是被直接称呼的老同学，另有同事到场。已把 Sam 放到句首，澄清称呼。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "a0590129-197e-507d-b670-a06fdd164c48",
+      "name": "Aud Thibodeau",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "8fbb2e5b3f57bae7546114e4d6e55fef6b804656e346f1d85f9d473cff39e979",
+      "finalStorySHA256": "b69c3682849be5d84eab946128bc545af06f14386d7a68ab313f687b1f0d6e4e",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "ccc76ab6-3d40-5341-a62f-abf8e4267ba7",
+      "name": "Dulcie Fairweather",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "0ba77eed06c7f890603f18b1d6b42570868c1f6cd1979ab12e342c93825b3f4d",
+      "finalStorySHA256": "c7c0a5d2ae4870452a5d83f1e66b8fa38af33a9c1f36795adb45692ffe4e83c4",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "d473b025-477e-5b86-b062-d9d24aa0f18d",
+      "name": "Remy Toussaint-Bois",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "c8683740c22f6ad975e4283ef70a55ed310d49ecc112586f046449008e9ea40f",
+      "finalStorySHA256": "294aca772010a8d68e25b875bfc54ac5af77ff683ee438832c6c6243488f582d",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "6794e46a-267d-50de-8cbc-90002414cfb6",
+      "name": "Drew Fairhurst",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "2f77a7f62bff58b489be3b79e095af00895eefc87adebcd39a0d16b67815185a",
+      "finalStorySHA256": "52c9b9e52619bea161167d0eecfe8355ab68e43b81bb914217b422fb2ac66202",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "fc45cdac-4426-55f0-ac18-8a89143f750a",
+      "name": "Aubrey Wint",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "65d597558b2c71eeb45f44d0149592653b664d1ecac82fd73deae6113c8f3a5b",
+      "finalStorySHA256": "b03555ad50b6aa85c32c630ce62a91e375f004e484a957125bc76b8e4aed43b8",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "2014eb9e-f0d6-56ac-9e47-a2124a88ccaf",
+      "name": "Billie Hartnett",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ba3ddfc76fa199630eb8a76bebef8420b902db1c959c503bf4dc3d85d3738461",
+      "finalStorySHA256": "6347cf9ba79698efb638118e0e2c5f04dfc05d841257d686b7e99b2ab56d6aef",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "8d6d3e23-2ffe-5d2c-b271-45bd233ef61e",
+      "name": "Marcus Feld",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "558bac9e62617c1ea32831cc35f7958d45a177c029ac984ef513f379ef065e23",
+      "finalStorySHA256": "2dfe23f849968d6c8c3e77ab6cf41275215bed4227c71dcf902b8969017cc940",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "60d8ebcc-80b9-5125-9c52-3b9223faf749",
+      "name": "Naledi Mokoena",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "b41b3bf06d6e68522d480ca43b23c129686e58590412c36c60f6738bbf0695d6",
+      "finalStorySHA256": "5623685dbcb409700251d0c83e25080d6aa683907a26a7f199a64a073ee5e040",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "e2e6c642-7c37-5660-aa53-076156d2d349",
+      "name": "Kelvin Loh",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "a4a06261d35d85918a1a9d0e17fbce40d602b508f59ec670a44bf6c1b3820008",
+      "finalStorySHA256": "026bf1aacdd3c99e3b4dd8e8f4691288fc6aa4190ddb55948d41f21d258799a5",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "7743bb19-3c41-512f-9cdc-20191529f590",
+      "name": "Fionnuala Masterson",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "641905967d3ebac9a1382b36d00bd4f300c10f4d43dd67b628c182f6b5e732f5",
+      "finalStorySHA256": "77db3eb72ea24f89254f4f3a54f3cef1e72a2e5424796d9f62faff9cb47865c2",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "d1781aea-216c-505f-bd05-eb4ac1282948",
+      "name": "Angus Brodie",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "3dbc738c2f7142916cdebd56abc7deed546f83536ee9bf0789255e74a1c32b23",
+      "finalStorySHA256": "0396399a7b4910c0063f5c462bd28600796c9451ea3934dd37be9ded7b01a960",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "88bfb839-e8b0-5c4f-aa76-fe605894765c",
+      "name": "Priya Kaur Sahota",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "fce5918b53c8849e7d630e61cd1f4468eb950e86da24c32029650d74b5ed58f9",
+      "finalStorySHA256": "d39da14fd0642de5f44cd16a9c4980441c15dc0ceadb459e931eb8bd23aa4270",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "cf5c8f86-f819-538e-b1a7-38b3fcb14e60",
+      "name": "Kai Parata",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "fe6e79bb1f306d7ca63aa155d953ea865bf743b70b824acd75e04f751cd7222d",
+      "finalStorySHA256": "25f148dc39b13e2249e1f2ee4f263833bc9db3f6c5da8677984466fa8ec83bfc",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4bc9aa93-4b02-5c80-9f96-4371871f2a3a",
+      "name": "Wanjiru Njoroge",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "3f646032a48b5a34205654c0956d8db2316b595c6741ae6d5b82271200dc0a10",
+      "finalStorySHA256": "6f225715d30c84e8dcd6cce1cb169ccd5f50e86debb364e2ddd51f5e75085565",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "97f3557c-44de-5f32-bebd-890d35321bf7",
+      "name": "Gloria Pemberton",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "a5ba06cd34082d8be7e921893bdd57513c53c26cfd0a41d2042a39608c77953e",
+      "finalStorySHA256": "4a291b18953f30ffd7e8effafb98589803f5f8b7cf84e4169e6cab92392396e5",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "01b287d1-3a1f-5702-9451-d261ee63078e",
+      "name": "Poppy Whitlock",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "52083bc49173a9c781cc20998f0ce69378bcbf11b01a4191d9fa9167c0a43ce5",
+      "finalStorySHA256": "02d83fe747603160997dc48ba5221a6ecc924f5a180a8e12475ed78d2007d9a3",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "325ca5ab-9b99-5304-a41b-186475987fb5",
+      "name": "Yvonne Toups-Landry",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "7d09d98c2a8358681c524d5477ee0811472826a728a299c3140a42962a61e311",
+      "finalStorySHA256": "bc1b5124394cf9e14d9fbbfcf63bae26b775ad4661474899e85f4a42e51d69ae",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "409fee5f-d890-56cb-bb07-e73e81aca2e3",
+      "name": "Rowan Ashby",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "1598c55ac259ea32f7d3940e4305a9fa27287360b7bb5201850dd54cde04ec49",
+      "finalStorySHA256": "4a9ca7085a0787e0bf38a943a07a3a19a94fda533ed698771f0e1283e1e43727",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "b06bd190-b6d7-5202-bc25-948f303dd816",
+      "name": "Kemesha Wint",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d8d81c5055231dac0c42b720934f5cd3938fb56c19f7b782c5af3fa443ba0733",
+      "finalStorySHA256": "3215b540fc14dd81d34ce9a2bbbe23048019a2c9276598d5fe39dc5745834885",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4e6d61d5-fe00-5789-85c6-ed42210f80d2",
+      "name": "Imogen Hartley",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "dca0fe9e623ffb8c5e9fac017927f5bfd2f238b7a610b0441d1883ef28d7e19a",
+      "finalStorySHA256": "33f2823c09d9969d48b1abe09b7836de630951e3e09dbf0f91e31880cfab809e",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "95acb769-3f5c-5fda-8055-f3fbc80f4c79",
+      "name": "Beatrice Ng",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "66beec73df26cad62f2a587f875e5b50a2dba8fd01a4f52ef13c5498793b2439",
+      "finalStorySHA256": "341d33e65bb12bc53c478da1a8ec1a5269607e18ff0de8040dac6d728e13aa1d",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "Beatrice 后续某天的胜利无需与初遇当天的失利相同。She did not give me a point 表示这次赢得实在，无玩家共享赛果前提。保留正文。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "ea626c55-7a75-5989-9766-49cd16b5ab61",
+      "name": "Marisol Ferrante",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "9e3f8dc4807424aec18b60fa342e78f9b1cb7f68c6487b163fbf579fb031fc7b",
+      "finalStorySHA256": "a7a2357e4468d45465562a54815eb72f86caf14d2abe001c5939c5799aaa73b3",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f8112c56-2e2d-55e5-91b3-4fad04a7e8e4",
+      "name": "Pieter van Wyk",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "6c917fe0c2794407ee4368bf4222785115992d90fb5c4f60b613669786042b75",
+      "finalStorySHA256": "db47aa641d191c06f231a097406beafc0b04d313cdf4e83125a954cd1746a42e",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "6fffa4d5-ecf7-5720-8664-83bb4c100464",
+      "name": "Chua Ah Koon",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "eda46ff23ad58ec95cf024ad1544305be473ada9f5a764cfaa942e326d4f63cf",
+      "finalStorySHA256": "6b4f2d2834131c5e3ed8070affc11f3ef6ad0a26dd697242646a9d90c23cca9a",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "ab 未建立 her 的指代，已改为 Seng can give me credit，中文同步。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "43a6ccb7-bd9a-5f5c-a39d-0494c0bc8a16",
+      "name": "Dara Kinsella",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "8c4e63e1af7330d2b85c1e497b62128402b29b3970c31d76483a32fe03186d41",
+      "finalStorySHA256": "cb70fa3153e8d266d2a435bda2337290c315d458fd0a975c43e234cbf95b099c",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "eb5db94d-5735-502d-a99b-2496f54795ef",
+      "name": "Rowan Kessler",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "3467fc0bf646cf4f5f398dd55d77e898463f9d0730a8781a70cef0b35832a346",
+      "finalStorySHA256": "e158b45e514b25694c81ff1b6c50cf65221f5931fee2a54dc1cc15e2deb97325",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f4cea697-593d-583f-a102-5be71865dcd5",
+      "name": "Walter Kambe",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "0530b2e776e40e9a52c7cf409ef8103f9d5afafd0bac6f232a6e911c38d0fcfe",
+      "finalStorySHA256": "650940220d2b7b8152f73a8d06e15b3a45141433ddf7b705567e7795c7b20e59",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "d73b8fae-92ed-5809-98bd-619248f88b83",
+      "name": "Beryl Hutchinson",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "e92f3ab37afb3f40f180274436bd92e70f09e54d4798d5db1a852767b7803454",
+      "finalStorySHA256": "fd95aa51a0c5ab5cb3258b53bfae99500ef2ee3a21b28c0afb6ba639f197248a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f2b8b571-5e84-599e-ae46-da797e2ef417",
+      "name": "Peter Okello",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "b0fe153f7e22ff27f45f4c0613b328cd4989f686086d2c15cad563a7acb5a42c",
+      "finalStorySHA256": "663ecf0e6f7371711a7113e7a3483b64a357d2b388443da37e9f8735312af22f",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "709949ea-2a9e-50ad-bbfc-6a967ccc3be7",
+      "name": "Marcus Delaney",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "6f71441c1ed039b94d834c0a52f31ec7d8c0778489a1f8007b404d2ef278739f",
+      "finalStorySHA256": "8a66c677e80c923bfd4ffc4b6ee28b9a90aa4db6307c3648a68e38d76b76ae45",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "790b7c2c-a99f-54e1-97c8-0ddf14ddfeb2",
+      "name": "Marlowe Ngata-Ihaia",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "240a86f22a956759398037e6f13683bac31d19e4afbf1711bfa8ba8bf04d1323",
+      "finalStorySHA256": "64c727e1214bbd58dfac607dd82bbd7426267f94a3bf2b3b110d7cf70762a7e7",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "573e6ec4-0ec4-5560-942e-bbcec252ae9c",
+      "name": "Emile Gravois",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "9ff4463f2f7d0cb31a0b6af783e9500b442fa6c09483354fc47777c7f6d81459",
+      "finalStorySHA256": "cbbca59e50325946e46852954aeb24956227c42476d2a5bce41f91c51578f26d",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "09430af9-9bd7-5723-bcbd-aa8788af4d20",
+      "name": "Hazel Wroe",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "6077ccc73d597ae8110b78691af279358b53a11a1fbbdce4b35cd7be11953cb7",
+      "finalStorySHA256": "6ea07785178bd6bc1bcad7bac77373a54648df14961ce2f2db2eab50381f6292",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "df0ed0a3-192d-599b-bb79-7d77cb8ad016",
+      "name": "Clive Bennett",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "10a9d30c86b1b87352e56453c75e95a6eb70874e86fdfafcca5965c9b1c1c8fe",
+      "finalStorySHA256": "d3cde46093ec2e1a34ac6de5307510c3662077faa959931487a91270ff40765c",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "ebd1e5f4-8a6a-55b8-9b62-9bf22900d6c1",
+      "name": "Priya Raval",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "8f400d8c9cee43e8230e53364b13aab687414927f1f040c7bcdb70f22b21bed0",
+      "finalStorySHA256": "79b0db6e11a174c581aec46c91f0f55d23ed357bfd20a76442f4dc24c5980327",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "b7ecfa32-fc2c-5494-9f89-12b5df1ea59d",
+      "name": "June Whitfield",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d79c4064d67d3463b6dfe8e7d7083b5fb40f713a36da730c4a0afb7cceeef14d",
+      "finalStorySHA256": "06f5d83d1a2803eecfb77e8d93ab7ded4424cafc50f80d5ec7d45fb66030deb1",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "1f961ed4-37d3-5dd9-aab1-d50618a123ac",
+      "name": "Bernard Ellison",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "1291df99f7825b06d9956c59559af9c8071c03cad1d4eb8ddd1e8f30da635de5",
+      "finalStorySHA256": "137c8999ede7c69d87c6828898e35b542f331fa53451b4a098c87f2e21afc74a",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "48c527fd-b9e5-54a2-8e98-784135c6d2c8",
+      "name": "Eunice Fourie",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "02e2cf49be11cfbca255e51e16f88d38f040a299687dd43a517a60e9b61ea52c",
+      "finalStorySHA256": "0bdb4c366370ac7dd9907d41eb71f66046fbf33507202e5ca38564a7d954c7e9",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f3e8d046-bf87-5601-906e-a5ba2cba4d7a",
+      "name": "Grace Tan",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "5dafbbb80b62dc68f600066a0962051aebf36d2992f747c6c93d644c3cc504f0",
+      "finalStorySHA256": "339c2ab86e130a850e898fa58105ce0545ab8ed8e4624b8732fda5f264a54fc6",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "cc72fc39-0624-5437-acfe-439c963ea4c2",
+      "name": "Saoirse Byrne",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "33eaff38040059dde4edf23bf00494c35bb30c3dc38b5cf77a1a160a68a32699",
+      "finalStorySHA256": "f1cb5aae7e72c68aac2d36460cfcafe05c8e8ad7beae627c4987c6ba55da1bc8",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "6299dbd4-5ac9-5e5b-b922-ab36d080417a",
+      "name": "Callum Wren",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "fc760ed9b3c466acff8ff3789c3a0dbafd3a5c3e26154d2e08b95b3fb6fcb0ab",
+      "finalStorySHA256": "e6ff30af5825f441d27f59b0deed42a9b611e87f9db7c829451f73938f7f26af",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "e45f8318-4f39-59d4-a0a9-80eac9c13210",
+      "name": "Evald Krisjanis",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "09e7dd47d050ad3abe0da750778d7a3324f430e65e8a7dfd185c7a84eefb6f0b",
+      "finalStorySHA256": "2b9c3608bb95e6589c526780740ab3c3a9bf2ee8018986644a583ada77e70a90",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "5cb1a9e3-53f8-5ce1-87db-7f4294970ac8",
+      "name": "Wren Tualagi-Fahey",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "70b3b5a3c53c390dbd9acd8e7e13b0d60c5342b998e27717e0026b54e3f8901c",
+      "finalStorySHA256": "27a009ad5945ee59d96c0f50f5c259b5658d6f27c4cd986deed73e08b42caa81",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4493b26a-00cf-57ac-b106-ae278cc15ccb",
+      "name": "Baraka Onyango",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "2c64c18f30c1f6ce962e973f421eaeb0d479f2b3c67a9b92fedd64769e007944",
+      "finalStorySHA256": "97b9905d04f019c789f9491baf41eb5c07e725f181d76aba15ee0a5f519aeb2c",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "1a8173c1-b136-5ff8-b8d9-642ded5fe230",
+      "name": "Sasha Okafor-Ryan",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "2f8c796d7d6804e8f3b692f3b2af8030092ac779f836e26cdc84cdfa7f8c1977",
+      "finalStorySHA256": "4a347ea2c841471802788e6c07b52a2cf014f2a731188a60fca4eced7d593776",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4c561e73-48b6-509b-824c-087b2bf21138",
+      "name": "Fay Kettering",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "b78524ca5faeae9b004b3a48a7f0403c326d864be7642528df4548ac915d62c5",
+      "finalStorySHA256": "d316736421212a6b7b8ca2468069a6a244fe1dbb465f07a5c7329b9601776707",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "2f1b5abb-2fea-538b-a0a1-cdf4d3f46c92",
+      "name": "René Delacroix-Toups",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "0abcc7170220356182d7b1e7341a9cff77763afad68e0ebb78c8f8c38d75646a",
+      "finalStorySHA256": "d11637e057dc0aa12fb91f716912a3d26c47ae6becdaf9f95d7099d17b2c48e8",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "81e37040-f17e-55b0-96ba-a91ef44ebacf",
+      "name": "Geoffrey Blythe",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "1461d3f5c98dcaec53e34089c0bf50300b6c7017133353bdcf03fc79d8090ad5",
+      "finalStorySHA256": "872cc9c163dfb2da70174fb42370b5c7fdda407678096d25f7b260e18fde5dbe",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "2b938c2f-0e75-55fc-8adc-037d36a2374f",
+      "name": "Dwayne Chambers",
+      "reviewRound": 13,
+      "modelVerdict": "revise",
+      "modelIssues": [
+        {
+          "severity": "major",
+          "node": "aa",
+          "quote": "\"Your sister, I should add, answers her post.\"",
+          "reason": "这里把玩家默认成“有姐姐而且会回信”的人，属于强行补充玩家家族史。原卡没有这项前提，且重逢/分支必须能对所有旧用户成立。",
+          "repair": "改成不指向玩家家属的表达，例如“我只是说，信里的人会回信。”或“总有人会回信的。”"
+        },
+        {
+          "severity": "major",
+          "node": "bb",
+          "quote": "\"I'll keep the sister's reply to myself.\" / \"姐姐的回信，我就自己看了。\"",
+          "reason": "同样在收束段再次默认玩家有姐姐，并把这条私密关系当成双方共享事实，破坏通用重逢兼容性。",
+          "repair": "改成中性说法，例如“我会把回信自己收着。”或“这封回信我就自己看了。”"
+        }
+      ],
+      "reviewResultSHA256": "2344e8554ad47e117cdedb1d100356fae6dd22cd2ea77d91393ac9a4fa275d39",
+      "finalStorySHA256": "57be59ab9869c48f1886af6f7bcfdfdfdcc81b1a01832b12cbd3eddd960ed6aa",
+      "editorDisposition": "context-adjudicated",
+      "editorNote": "姐姐属于已出版信件中的收信人。start 已明示朗读及 that was the letter talking。aa 再明确读书中末句，bb 明确信里那位姐姐，保留原信件声音和边界。",
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "4bf3c242-bf97-57b2-99ba-018c123bd0d6",
+      "name": "Sylvie Bancroft",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "8145e5c81849acf12f2322cf997860d27ec151d030de798f2ac0d89da22fd013",
+      "finalStorySHA256": "54941529770bb883ff2c4ab16314042a32864ff633e450f15ea131123e3eb087",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "37576ad1-374e-5714-a82e-e585846b2b98",
+      "name": "Oscar Brightwell",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "1cf05a62366ec632659cb3ef4e07c5a3519a3c29321c849fce6990c794b42f61",
+      "finalStorySHA256": "afe8edd303ff41f59e59ec17a6124ab5b00507cbaf70398e0d3de0a93a117ca2",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "71189b3e-0531-5544-8faa-73375e88d833",
+      "name": "Frank Delgado",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "299360391d4ea8f2aa3b519d5a7f01cd7ee27d877c7ef4d09e3c0fbffbf2b038",
+      "finalStorySHA256": "7bec0494cb3d0a3d295eb29f1ef0fc2079b52d71f2bcd71bb466801d7f2a6b89",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "40958831-a3ff-54d7-8384-3be215cbee02",
+      "name": "Sipho Dlamini",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "833e49bbfc1fb921294c7007c038896c772bc7090a362153b239965744e20084",
+      "finalStorySHA256": "37b4cb585f41bfca7e933dfe7b70ea132b10b89feb3e2878edc7e38c094a27b3",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "320aba51-a4df-5a6d-a7dc-113d1907b05f",
+      "name": "Vijay Anandan",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ba6bba60d34512be54e0a9c67043f1aa77ca4587779ce5acc7df02e6fe8b322a",
+      "finalStorySHA256": "a13a868851a43e44a9b0f3031f6012e07071cbac0ef5eeac41e2dbe21d2d1309",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "cd530701-f033-5f38-91ea-f061d1f2531d",
+      "name": "Sorcha Ní Riain",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "1228dfa6c2678ae0ecba307296f5765f0cf0707d57d2e166811806fd685b0a59",
+      "finalStorySHA256": "96d80f42e142913258e2b39231eb65b0acfd8a4fc2ccfe6e3bcf95f8b504f034",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "ecf5175c-cca0-5c4b-b085-4ee31cffeb5e",
+      "name": "Fraser Muir",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "a3fd051ca4623f22b2cdcd752dc192cddf133f96dec5fcbf5e4deb3a6a92ce06",
+      "finalStorySHA256": "d0b03570536e84f76d85c73ceb6acd9abf3a70bf8627544fcfbce5153f5dff58",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "46265468-0755-57e3-afcc-dc6a02267c05",
+      "name": "Gordon Aaltonen",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "895e7c4e633525bb28fa0e1ff8917e0177fe97f386cd4369bb9bdad09fa3478b",
+      "finalStorySHA256": "411ff3b74f551077b119b5a9c67bf1d0e4f8c03c48b29902471f754311037439",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "a1fe6d2b-a792-5ef2-b54c-d6617236bcb6",
+      "name": "Ashwin Patel",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "c296d5f6829d96fa1d6fc5bec06ccdc5f7a4085af96b329cf302ba7a33907fa2",
+      "finalStorySHA256": "ea13f552b4b7f7da4f3a9413e48b2cc28667a516e95608b7fb7346b02375623b",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "e65d6fd4-a606-5234-9577-afc62ba07bd1",
+      "name": "Kiptoo Cheruiyot",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d115c60d5ccdd9b8919d96109657d7420ee7d784a012d688ace89e95f75103c2",
+      "finalStorySHA256": "a17d583f5ad0c19dedf99ea7e30d1e8a4784eabb3a2934ce58d8bce45ac60085",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "077ef607-ed2f-531a-8833-6a3c6ea6df02",
+      "name": "Devon Achterberg",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "e31a08e498f93a4f42b408312591d8c1932d8d230157bcca748599f871d9db1d",
+      "finalStorySHA256": "f46d8d93e0e59f48aed5612867eb4ff5f0e39ad4f6f1978650d56172201d6092",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "123b35a5-95d5-5479-926e-8613f49435db",
+      "name": "Jules Ngata",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "76d173695e7b97437b578a3122e6a347dd81386cbb7607664d38cf7e814c593c",
+      "finalStorySHA256": "4c2e146f8d0597d804012b5619ebf254668268961599ceb793be7754b5b770c3",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "824c4bd7-7036-5ed6-85e6-4fa966aeac74",
+      "name": "Emile Fontenot",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "583a2fa4c2f30c74b252dc969fee2549220edab88a4f7b01b35206ece7fc9c93",
+      "finalStorySHA256": "0d3cf2b0b66a65cea50b9610c8c5b6f006ed45389b1d17c45f0b60ec57fcc7e8",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "eb666331-6cf1-5294-80a5-4bf2abcc0310",
+      "name": "Colette Marsh",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "ba198f654750130742f8536f7a2ac4914f4d69b1f06bec9bddfc351bc0aca7d1",
+      "finalStorySHA256": "bdb3599540fe6bcb245027ccdbb5af8d02a760c62d67eaf0e8e62e0ff6ccab41",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "a254f230-2371-5844-8580-ceedda52396e",
+      "name": "Tia Bogle",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "4bace8aa15b931fcb698b3f925eac97f62c03d305f83971167e56f3fa1add87c",
+      "finalStorySHA256": "a9e7b16ce5363653f58633775ac3fb6fdb1883efdd53bdb43e997042dc01bb14",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "45e8eb85-0940-54a0-870f-73c308ac8d86",
+      "name": "Ollie Sandbrook",
+      "reviewRound": 13,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "430a53b5b5fd5444fcff643f3dc1d68a681474d0ae4a2d9bbb7eec77591c0689",
+      "finalStorySHA256": "4b8ba9605a9cc1acfbf4af7d34ae56b52f5e0b16ad8c0293f1a532788ed96240",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "e96c3aac-64aa-5ad0-8521-4aeecf0797a7",
+      "name": "Tobias Marsh",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "6c00d319f927244005dc73a29a391a178d5ed0c07814689cf2eb55ea340b0647",
+      "finalStorySHA256": "e1c83ce78b0fe08eef5a5ab1ff90b1d99481592ce0e4e4459f219afc91925724",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "8b4c2357-5515-59d3-b094-430dd26f1d92",
+      "name": "Beatriz Ocampo",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "53d1d1530b41e0162911c48869132931a940aac7cf77af13e8168bfed1166ba3",
+      "finalStorySHA256": "f92b060b70c05cf992ebee16cb19e869749a46efe7d53261619961af70b64bb5",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "f059153e-3197-5628-840e-8e3ec25a2ba8",
+      "name": "Lebo Mokoena",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "c87faef29a92feb002f4cd60e2d8edc89b389aad4299313eb817f17f1475cdf5",
+      "finalStorySHA256": "a9bdd73e806b8c72905c05cc7a86f7c3590a654bbd265a3c6fb917c8fd58e762",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    },
+    {
+      "npcId": "c9e14798-7987-5676-87ae-07604f9d1b3a",
+      "name": "Jolene Seah",
+      "reviewRound": 12,
+      "modelVerdict": "pass",
+      "modelIssues": [],
+      "reviewResultSHA256": "d05fc5e7f5b59cecb892cab2a09303525fcf1b1eaf150e48a92a79c0e3f7471c",
+      "finalStorySHA256": "b6af7b39b948603a3a8262265c718dceb9d70b8e5aee3cfded4fb0cfeb623c0b",
+      "editorDisposition": "model-review-complete",
+      "editorNote": null,
+      "publicationApproval": "pending"
+    }
+  ],
+  "cityReviews": [
+    {
+      "cityId": "london",
+      "reviewResultSHA256": "2226989d1d721bc019a712636bfa5e529637eccadd2a61b0a960b170c7cba5c5",
+      "overview": "主要重复集中在三处：摊边以确认队序开场；读出私人文字后向陌生人解释；重逢时用小失误或“今天克制住老毛病”完成招呼。保留Alex有明确候人原因的让座、Simon的木偶声反差、Sylvie掉落自绘小岛等人物专属机制，不把正常空间协商一概视为碰撞。以下只调整部分接触与重逢，身份、固定地点及可保留的主线不变。所有重逢均按四拍直线场景实现，不设选择，不依赖新版初遇中的特定结局。",
+      "adoptedFixes": [
+        {
+          "npcId": "0fb39a91-5838-5f59-98ae-917af365bafc",
+          "dimension": "初遇：桌椅空间说明后提供空座",
+          "reason": "Declan以“把自己的椅子转向窗户一点”起话，接着说“你可以坐这儿”；与Alex“提起了包”后说“你可以坐这儿”都以桌椅使用说明建立交谈。Alex的迟到朋友、留座和夜班疲倦结合更紧。",
+          "brief": "把朋友的午饭消息提前到开场。Declan看完手机，主动向附近用户问一个有限的措辞问题：“朋友说‘还是老样子’，这是在问我，还是已经替我决定了？”随即说明自己以前确实很爱那种三明治，现在却不想吃。旁椅始终空着，不转椅、不以邀请入座作为接触理由。保留朋友来接、坐下或站着短聊、迁就回复与诚实回复的后续结构，也不提前强迫他作出决定。"
+        },
+        {
+          "npcId": "c48b20fd-3f78-56b1-bd61-1fe37c860fa4",
+          "dimension": "初遇：市场队序确认",
+          "reason": "Aisha的“你在等这个摊位吗”与Morgan的“你在等着买东西吗”几乎同构，Kevin也用“我没在排队，你可以先过去”起话。保留Morgan以公平队序对照私人计时竞赛的版本，以及Kevin随后明确的人名承诺困境。",
+          "brief": "Aisha站在Jumi Cheese柜台侧边，闻到近处奶酪的气味，向附近用户笑着说：“这里倒不用试香纸，一下就知道自己来买什么了。”她说明只是来买午饭，随后仍把清单折起又打开，承认已经核对两遍。用对眼前气味的轻松评论接触，不询问队序、不移动物品；保留午餐采购、调香只是爱好及拒绝商业化的后续分支。"
+        },
+        {
+          "npcId": "9e2d81a6-505c-5cb1-9dd5-3f31762c9be1",
+          "dimension": "初遇：念出私人文字后澄清不是对旁人说话",
+          "reason": "Daniel先读“一把好勺子的盐”，再解释“我不是在说这本书写得含糊”；Victor也先念旧时刻表再解释“念出声了”，Simon则先说木偶台词再说明“刚才在试一句台词”。保留木偶声与本人声音反差，以及Victor明确征求听故事意愿的区别。",
+          "brief": "Daniel保持菜谱压在笔记本里的状态，主动请附近用户辨认父亲手写用量中的一个字：“能帮我看一个字吗？这里像‘勺’，还是‘把’？只辨字，不用替我判断放多少盐。”他自己持稳纸张，不递出、不要求接手。用户可追问菜谱，也可婉拒；之后仍由他自行查书，保留解释过多、接受结束交谈及收好个人物品的四个结局。"
+        },
+        {
+          "npcId": "98faa36c-eeab-526a-ba6f-9fd95f732c7d",
+          "dimension": "重逢：招呼后展示生活小失误并自评",
+          "reason": "“果酱放多了”“应该少放一勺”与Imogen的“衣服一直穿反了”、Fraser的“只认出了一片叶子”都把新近状态写成小失误再收一句自嘲。保留Imogen以“我也没问”落在字面沟通习惯上的版本。",
+          "brief": "保留自制果酱和树下吃午餐，去掉过量、擦污及后悔。四拍为：他在不挡路处拿着三明治认出用户；简短问好，说明今天带的是自己做的黑莓果酱；他慢慢吃完一口，把包装纸拢好，暂不展开工作话题；他说“今天这点午休归我。见到你真好。”呈现务实但正在享受私人时间的状态，不再用失手证明亲切。"
+        },
+        {
+          "npcId": "ecf5175c-cca0-5c4b-b085-4ee31cffeb5e",
+          "dimension": "重逢：爱好尝试失败后的自嘲收场",
+          "reason": "Fraser的“只认出了一片叶子”“看这么多叶子也够了”，与多人的穿反、重复记录和带出杂物一样，靠一次无伤大雅的失误提供全部重逢内容。",
+          "brief": "保留南岸树下观鸟，但让他正耐心等待，而非看错。四拍为：他放下望远镜认出用户；问好后说明刚见到的小鸟还在枝叶里，自己打算再等一会儿；他把望远镜留在手中，沿步道边缘慢走几步，始终留出通行空间；他说“今天没什么需要边走边解决的，就走走。很高兴见到你。”不要求用户一起等，也不必安排鸟再次出现。"
+        },
+        {
+          "npcId": "9e2d81a6-505c-5cb1-9dd5-3f31762c9be1",
+          "dimension": "重逢：看似重复记录的小错误及现场纠正",
+          "reason": "“同一个书名分别记在了‘星星’和‘天文学’下面”，继而发现“是不同的版本”，仍以疑似搞错、核对、解释完成招呼，落入城市中密集的小失误重逢。",
+          "brief": "改成已经选定天文读物、正在克制解释篇幅的普通状态，而非又一次记错。四拍为：Daniel在同层书桌旁合上一本天文书，认出用户；问好并说自己今天只准备带走一本，已经选好了；他将书单夹进自己的笔记本，手里留着选中的书；他说“理由有三点，不过不必现在逐条讲。很高兴见到你。”不预设用户询问，也不把这次选择写成需要庆祝的改过成果。"
+        },
+        {
+          "npcId": "45e8eb85-0940-54a0-870f-73c308ac8d86",
+          "dimension": "重逢：发现随身杂物后自嘲收拾",
+          "reason": "Ollie以“发现半辆自行车都装在口袋里”起话，再包好零件收起，与其他人的果酱过量、衣服穿反等同样依靠无害疏忽制造熟人感。",
+          "brief": "仍使用自行车零件，但明确是有意带着检查，不是意外翻出口袋。四拍为：他在路径旁草地上将掌心的小零件转过一面，认出用户；问好，说明在家修车修到一半，出来换换脑子；他把零件仔细包好放进拉链口袋，转看天际线；他说“这会儿先不琢磨它，回去再接着修。见到你真好。”不请用户诊断、不强调自己没忘东西，也不引入新的修车成果。"
+        },
+        {
+          "npcId": "c48b20fd-3f78-56b1-bd61-1fe37c860fa4",
+          "dimension": "重逢：在同一市场停看灯饰",
+          "reason": "Aisha“买好午饭了，现在想看看灯”，与Kevin“随便逛逛，结果看那些灯看了五分钟”使用同一可见物、同一停留行为。保留Kevin对剧院灯具的既有兴趣所支撑的版本。",
+          "brief": "让Aisha买好午饭后，在棚下不挡顾客的位置做随身的字谜。四拍为：她拿着折成小块的字谜纸，认出用户；问好，说午饭已经买好，眼下还有一个词没填；她用笔尖停在空格上，想了片刻，却不向用户征答案；她笑说“先空着。午饭不用等它解出来。见到你真好。”保留玩心和把小事想得认真的倾向，不再看灯、不谈拆修，也不安排填错字的笑料。"
+        },
+        {
+          "npcId": "922a07de-76bc-59b5-9d90-10f811686245",
+          "dimension": "重逢：宣布今天停止标志性习惯",
+          "reason": "Morgan的“我没开计时”“今天不赶纪录”，与Lwazi“今天先不问别人喜欢什么”、Maya“今天准备按时走”等，都以主动声明克制老习惯提供当前状态。Lwazi写下自己的答案、Maya实际准备离开已有不同动作结果，优先保留。",
+          "brief": "保留当天没有计时、仍在买奶酪，但不再让戒掉计时成为谈话主题。四拍为：Morgan在Jumi Cheese旁看陈列，认出用户；简短问好，说今天想换一块，不拿平时那种；他们把购物清单折好，继续认真比较眼前的奶酪，不看腕表，也不向用户索取推荐；最后说“今天想吃点不一样的，还没选好。你慢慢看。”用尚未决定的普通购物状态结束，可有温度而不必总结成长。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "newyork",
+      "reviewResultSHA256": "9dcb892f3b74f295a4436405cfdfc2afcbd8891c7da23289723662db61f5931b",
+      "overview": "全城的重复主要集中在四处：多人先对物件自言自语、再向玩家澄清；两次以颜色二选一发起接触；高线重逢连续采用身体不适或提前结束散步；多处重逢用小失误自嘲，或宣布今天不再展示、不再记录来表现变化。建议保留纸机关触袖、播音式问候、苹果登场词、广播剧重名等最贴合人物的实例，只调整部分其他角色。所有身份、经历与地点绑定保持不变；以下重逢方案均为四拍直线场景，无选项，也不依赖玩家记得新版初遇事件。",
+      "adoptedFixes": [
+        {
+          "npcId": "3e3d4672-e8d8-5fbf-9ec4-eb6532897a8c",
+          "dimension": "初遇：颜色二选一式核对",
+          "reason": "Harold的“更偏金色还是橙色”与Jonah的“是红的吧？我一直记成橙色”都是请附近陌生人确认两种相近颜色。Jonah的问题直接服务于家中拼贴和具体记忆，更值得保留。",
+          "brief": "改为对共同可见变化的直接分享：Harold看着岸上游乐设施，对近处玩家说“刚才还只想翻两页，这会儿光倒比节目册好看。”随后报姓名，说明自己临时停下来看看。外套和节目册仍在腿上，不让座、不求评价；玩家仍可选择坐下谈光景，或站着问他是否等人，原有四种收尾可继续使用。"
+        },
+        {
+          "npcId": "ea626c55-7a75-5989-9766-49cd16b5ab61",
+          "dimension": "初遇：随身物件意外朝向玩家",
+          "reason": "“一阵风把书的最后一页掀向你这边”与Dolores的“折翼突然弹向你的袖口”都靠物件意外侵入邻近范围，再由主人处理来建立接触。纸机关的过失复核更贴合Dolores。",
+          "brief": "取消风掀书页。Marisol坐在干涸喷泉台阶上，书一直朝内；她看完末页，主动向近处玩家提出一个有边界的阅读偏好问题：“只问个读书习惯：你会先看结尾吗？我刚看完，内容不会说。”随即介绍自己。保留先读结尾、对悬念爱好者略有偏见及及时止住剧透的剧情；调整选项措辞后，原四种结束方式不变。"
+        },
+        {
+          "npcId": "f376c5f6-0aaf-5803-899d-1633c05f2ea8",
+          "dimension": "初遇：对物件说话后澄清误会",
+          "reason": "“撑开点。你是个包”接“那句话是对包说的”，与Herbert跟字母说话、Terrence解释汤在漫画里、Devon向苹果报幕、Beatriz解释自己在核对点心构成密集的自言自语转搭话。Marisol的包口小故障也额外叠加了轻微失误。",
+          "brief": "改为一次有限的事实询问：Marisol已把笔记本收好，在同一上层平台向附近玩家问“打扰一下，现在几点了？我约了手铃团的人，想确认还要等多久。”不要求查看或接过玩家手机。得到回应后报姓名，边把自己的包整理到身侧边简短口述下一步，露出其思考习惯。玩家可以追问刚收好的是否是速写本，或结束交谈；保留笔记隐私、老师署名及原四路收尾。"
+        },
+        {
+          "npcId": "8d6d3e23-2ffe-5d2c-b271-45bd233ef61e",
+          "dimension": "初遇：向采购物报幕或讲拟人笑话",
+          "reason": "Marcus的“甜菜本身可有意见了”及“总得说给谁听”，与同一市集Devon的“有请苹果登场”都是等同伴时对采购物排练笑话，再寻找路人反应。保留Devon的主动表演，更能承接其负责气氛的习惯。",
+          "brief": "Marcus不再先讲甜菜笑话，而是直接、坦白地征求一次具体视觉反应：袋子贴腿，只在自己身前举起一片叶子，说“我买它主要为了拓印。你第一眼注意的是叶脉，还是边缘？我叫Marcus。”回答后明显看玩家表情，并容易多讲两句。保留等朋友、植物敲拓、拼图职业和索取具体反馈；兴趣路线仍谈叶子用途，拒绝路线仍收住展示并可转谈晚餐，四个结尾只需去除笑话回扣。"
+        },
+        {
+          "npcId": "a8f7daef-e8d1-5886-b1e0-8dcf22658a89",
+          "dimension": "重逢：高线散步提前收场",
+          "reason": "Jonah的“准备往回走了，趁现在还没走烦”，与Dolores的“肩膀累，我就走到这里”、Theo的“这回我打算少走一会儿”连续形成打招呼后解释缩短散步的结构。Dolores的肩膀疲劳与当日体力最具体，予以保留。",
+          "brief": "四拍改为：①Jonah在同侧护栏旁合上装有旧杂志的文件夹，认出玩家；②平静招呼，说今天散步时终于想好了家里拼贴该留哪一块空白；③他没有重新打开文件夹，只望一眼枯草带，神情满足；④说“留着那块空白就对了。好了，我继续走走。”随后沿原步道前行。重点是具体的满足感，不再以疲倦、时间或社交电量结束。"
+        },
+        {
+          "npcId": "6ba2be84-b2e6-5d3d-9679-2bb296f372f5",
+          "dimension": "重逢：穿戴不周的小失误与缩短散步",
+          "reason": "“我这身衣服是照着街面上的天气穿的”随后塞围巾、决定少走，与全城带错眼镜、拧紧杯盖、写错名字一样，都是用小失误自嘲完成重逢，也重复高线另两人的短走收场。",
+          "brief": "四拍改为：①Theo在护栏旁翻着随身迷宫册，认出玩家后放低书；②招呼并说“今天这条路肯定到不了出口，不过我想看它绕到哪里”；③他在分岔处添一小段铅笔线，停下来认真比较两条路；④温和说明“你不用跟我研究，我还想在这儿看一会儿。见到你真好。”保留自愿探索低效路线的固执，不把它写成犯错或专业讲解。"
+        },
+        {
+          "npcId": "1f961ed4-37d3-5dd9-aab1-d50618a123ac",
+          "dimension": "重逢：拿错用品后自嘲并收好",
+          "reason": "“来看这么大的大厅，我却带了副老花镜”接收眼镜，与Clive拧不开杯盖、Harvey把两个反派都叫Frank同属发现小失误、修正、打趣道别。Harvey的重名直接连着广播剧创作，人物专属性更强。",
+          "brief": "保留提前等朋友和看大厅。四拍改为：①Bernard在同一上层平台查看便携相机中的私人照片，认出玩家；②招呼，说照片拍得清楚，但还没拍出自己喜欢这里的原因；③他把相机放低，重新望向整个大厅，暂时没有急着再拍；④说“我再看一会儿。朋友还没到，不赶这一张。”呈现认真而略有不满足的状态，不再出糗，也不展开布线课。"
+        },
+        {
+          "npcId": "df0ed0a3-192d-599b-bb79-7d77cb8ad016",
+          "dimension": "重逢：小物件故障解决后打趣",
+          "reason": "“把这盖子拧得，像是要寄到海外去似的”之后擦手拧开，仍是与带错眼镜、反派重名相同的小失误—修正—自嘲流程。",
+          "brief": "四拍改为：①Clive在营业市集通道边握着已打开的保温杯，认出玩家；②愉快招呼，说家里带来的咖啡已经不烫，正是他喜欢的温度；③他喝一小口，原本要继续推荐，注意到自己还没喝够，便满意地停住；④说“这口值得慢点喝。我先站这儿享受一会儿，你慢慢逛。”突出感官享受与当下兴致，不设置故障，也不要求玩家试喝。"
+        },
+        {
+          "npcId": "8d6d3e23-2ffe-5d2c-b271-45bd233ef61e",
+          "dimension": "重逢：压下展示冲动作为唯一变化",
+          "reason": "Marcus的“像是准备给你介绍一番。随后他收住话头”和“不办展示了”，与Devon“不太想负责活跃气氛”、Marisol Vega“不再往本子里补东西”、Terrence“不打算给它安排任务”共同依赖今天停止惯常行为。保留Devon低电量和Terrence单纯休息的差异，Marcus可有积极而不表演的当前目标。",
+          "brief": "四拍改为：①Marcus在帐篷间通道外核对晚餐清单，认出玩家；②热情招呼，说今晚打算把甜菜和叶子都用上，正在决定先做哪一道；③他在纸上把两个步骤交换顺序，认真看了一遍，露出拿定主意的笑；④说“好了，先弄叶子，甜菜慢慢烤。我还缺一样，去找找。”保持晚餐采购，不再靠克制展示欲收尾，也不向玩家索取食谱或反应。"
+        },
+        {
+          "npcId": "f376c5f6-0aaf-5803-899d-1633c05f2ea8",
+          "dimension": "重逢：收回伸向工具的手并宣布停止自我要求",
+          "reason": "“手刚伸向包口，又收了回来”接“不用每一分钟都证明学到了什么”，与Marcus吸气后压下展示、Cecil想添话却停止、Terrence收起手机不列清单形成相似的冲动—自制—总结。Cecil容纳沉默最直接触及其核心困难，值得保留。",
+          "brief": "四拍改为：①Marisol在同一上层平台等团员，包已收妥，认出玩家；②招呼，说今天轮到自己先到，心里正把排练要带的东西过一遍；③他们低声数到最后一项，摸一下包外确认物品在内，没有拿出笔记本；④轻快地说“都齐了，现在只差人。见到你真好，我在这儿等。”保留等候和口述思考，不宣告克服学习焦虑，也不展开教学。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "singapore",
+      "reviewResultSHA256": "bfd8ec7037feea82b60800d637addfe698e92caca44b014667b5307f7cfe1377",
+      "overview": "最明显的重复是初见时先发生意外干扰，再由人物提醒、解释或收拾，玩家随后选择帮忙或留出空间；另一个跨地点重复是重逢时放下书或手机，以“还是去散步”收尾。保留Kelvin漏水后不愿麻烦人的具体矛盾，以及Wanjiku重逢时工作后不想再看屏幕的疲倦，修复其他较可替换的案例。熟食中心虽然多次出现空椅，但点餐反悔、挪包共享座位、口味免责和介入朋友争论的实际接触不同，不宜一并改写。现有重逢也没有形成大量衣物穿反式的低级失误，不必把正常风吹袖子或谜题修改强行归为同类。",
+      "adoptedFixes": [
+        {
+          "npcId": "2c943a88-0d88-5559-8e40-963d86cc20d6",
+          "dimension": "初见：物件意外侵入玩家脚边后请求腾出空间",
+          "reason": "“旧信封从本子里滑落，掉在你鞋旁”之后等待玩家让位，与Desmond“后退一步”后让路、Kelvin提醒“包底滴水”的开场，都先制造近身小事故，再让玩家处理空间或提供帮助。Kelvin的手忙脚乱直接牵动其不愿求助的核心矛盾，较值得保留。",
+          "brief": "改为共享眼前景象：湖面泛起涟漪，岸边树影随之散开，他合上仍夹着旧信封的速写本，对近旁玩家说：“树没动，水里的倒一直在改。”随后说明自己本来出来走路，却又拿家中盆景的速写比较。接触不需要捡物、让位或帮忙；玩家仍可问画稿或只作简短回应。保留速写、旧信封和原有四个收束：收本继续走、留下擦改、独自看湖、在信封上写提醒后收好。"
+        },
+        {
+          "npcId": "9ea3720f-1e40-5287-a2ad-aaf2e5f7d4e2",
+          "dimension": "初见：拍照分心造成通行干扰后道歉",
+          "reason": "“在公共通道上后退一步”接“我挡着你了吗”，仍是先忽略近旁玩家、再让路补救，与掉信封和漏水形成相近的事故式接触。其真正独特之处是对布局变化的兴奋，不必靠险些挡人才能呈现。",
+          "brief": "让他从一开始就站在不碍通行的位置，手机里已有两张不同构图的住宅立面照片。他主动提出一个有限请求：“愿不愿意只看两张？我想拍出整排房子的感觉，不是替我拍。”不要求玩家懂摄影，也不把手机交出去。他自己很喜欢其中一张，却能接受别人只想经过。保留反复调整构图的当天目标，四个结尾仍分别落在直接告别、展示后收机、再拍一张后走、收机只看立面，不进入私人门阶或院落。"
+        },
+        {
+          "npcId": "e73883f3-942c-5795-9a66-f82f94ed9450",
+          "dimension": "初见：意外打扰后解释设备状况",
+          "reason": "“掌机突然响起一段很响的音乐”接“我还以为已经关掉声音了”，虽然不是碰撞，仍延续了全城数次“先意外影响近旁玩家，再解释并恢复正常”的互动节奏。她邀请别人加入已经开始的游戏，比误触音量更贴合原卡。",
+          "brief": "掌机从一开始就静音。她在下层临水步道栏杆旁玩到一局末段，短暂抬头，向近旁玩家直接邀请：“我只剩最后一条命了。想看它怎么结束，还是接手试一下？”玩家尚未答应，她便顺口用了一个没解释的游戏术语，随后才意识到需要从头说清；这保留其热情先于说明的缺点，而非设备出错。沿用试玩、旁观、收机聊短期来访、直接告别四种结尾，不要求玩家参与，也不把步道变成聚众游戏场所。"
+        },
+        {
+          "npcId": "39fc99d6-ef69-561f-b87e-9db9d145f9c2",
+          "dimension": "重逢：原定消遣超出预期后收起物品、回归看景",
+          "reason": "“本来想读短短一章，结果有三十页”之后夹书签、合书，再说“回家再看”，与Kumaravel“今天先整理到这里。出来走路，还是要走走”以及Wanjiku把掌机留在包里，反复使用中止随身活动来结束重逢。",
+          "brief": "保留湖岸读平装书，但改成他已经安顿下来、正读得投入，不是看错章节长度。重逢严格四拍：旁白写他看见熟人，用手指留住页码；他简短问好，说今天想把这一段读完，可能不太会聊天；旁白写他稍稍合拢书页，抬头认真致意；他祝玩家散步愉快，随后继续阅读。保持平静、略有距离但不失礼的当前状态，不提问、不分支，也不依赖任何旧剧情细节。"
+        },
+        {
+          "npcId": "120c3d34-5794-5147-9467-57e5ff27334d",
+          "dimension": "重逢：手机上的小任务告一段落后宣布应该散步",
+          "reason": "“补完其中一张照片的日期，随后锁屏，收起手机”接“出来走路，还是要走走”，与Ryan合书留待回家、Wanjiku停止屏幕活动的收束同向，削弱了他珍惜照片本身的独特动机。",
+          "brief": "仍让他在下层步道栏杆旁整理旧照片，但当前发现是：一张原本想删的照片里自己站得十分僵直，他现在反而舍不得删。严格四拍：旁白写他浏览相册并认出玩家；他问好，说明这张照片不好看，却很像自己；旁白写他把照片加入保留相册，神情满意，手机仍由自己拿着；他说“不是每张都要拍得自然，认得出那天的自己就好”，温暖告别。不给玩家布置评价任务，不展示未经同意的他人照片，也不再用“该去走路了”否定眼前活动。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "sydney",
+      "reviewResultSHA256": "3d3a71d1ffe6765ba08b738537ad1b573e2f0c06aa3999242d9da33ce574620a",
+      "overview": "全城已有不少有效差异：Talia的认错人直接来自人物核心，Geoffrey的反复确认不同于Kai正常协商标识视线，Cass重逢时的疲倦也不必再加笑料。建议集中修补两类初遇重复，以及重逢中围绕吃东西、物件小窘境和自我约束的相似收尾。保留所有身份与地点绑定，以下重逢替换均为四拍直线场景，不设选项，也不依赖新版初遇中的特定经历。",
+      "adoptedFixes": [
+        {
+          "npcId": "f7a77475-487d-54fc-90d6-2d4a26f74bc4",
+          "dimension": "初遇：随身物件意外侵入玩家空间",
+          "reason": "Declan的“背带松垂的一端甩到了你面前”与Rio的“一张扑克牌……落在你鞋边”都靠物件进入玩家行进范围制造接触。保留Rio：弄丢自己的东西、纸牌兴趣及谨慎请求空间结合得更具体。",
+          "brief": "背带始终收在Declan身前。他已把正面压平，却看不清背面的折痕，向近处玩家提出一个有限请求：“能替我看一眼背面还有没有一折？不方便也没事。”不递包、不要求触摸，也没有甩带或道歉事故。玩家愿意看，他才兴致上来解释触感；玩家转向海湾，他接受并自行处理。保留原有背带话题、看浪、喝水及四个结尾，只调整进入支线的措辞。"
+        },
+        {
+          "npcId": "01b287d1-3a1f-5702-9451-d261ee63078e",
+          "dimension": "初遇：先澄清自言自语并非针对玩家",
+          "reason": "Poppy的“不是在叫你”与Nyarai的“是在说这本食谱，不是在说你”使用同一套接触机制：先抛出一句旁话，再向附近玩家解释。保留Nyarai对含糊食谱步骤的具体不满。",
+          "brief": "Poppy正在给尚未抵达的朋友发送碰头描述。她写完“岩岸旁等”，又开始补充一长串安排，便向近处玩家问：“碰头消息里是不是不用连散步清单也发过去？”她随即把消息删回碰头描述，自报姓名，本子却仍夹在手里。接触来自她正在处理的一次日常沟通，而非误听澄清；保留提前到场、朋友将至、已经列好清单及原有清单／笔记本两条话题，四个结尾无需更换核心事件。"
+        },
+        {
+          "npcId": "123b35a5-95d5-5479-926e-8613f49435db",
+          "dimension": "重逢：吃完一口后才正式打招呼",
+          "reason": "Jules的“嘴里还有食物……嚼完再开口”与Marlowe的“咽下后，才再次抬头看向你”在四拍中安排了几乎相同的进食停顿，最后都落到“见到你真好”。保留Marlowe慢慢吃迟来早餐的低能量状态。",
+          "brief": "改为四拍：①Jules站在邦迪安全路径边，手机停在下一次初级冲浪课的报名页面，认出玩家后招呼；②他说自己已经犹豫了一阵，越等越能想出丢脸的可能；③他自行完成报名，把手机收进口袋，没有要求玩家鼓励或陪同；④他说“报好了。今天先散步，不提前把下一堂课吓完。”呈现主动处理紧张后的轻快，不再用饼干、咀嚼或失礼小插曲完成重逢。"
+        },
+        {
+          "npcId": "9b04e2ac-9581-5850-ba69-70cc012a8cd7",
+          "dimension": "重逢：购物物件的小窘境与自嘲收尾",
+          "reason": "Rio的“很有条理吧”随后发现“sock……也可能是soap”，与Warwick买两版唱片后说“还没开始拎的时候，这理由听起来更充分些”都以购物物件带来的小窘境收尾。Rio还再次重复了初遇中自己的东西管理不好这一面；Warwick主动比较两个录音版本则值得保留。",
+          "brief": "改为四拍：①Rio在市集摊边拿着一个候选拉链袋，认出玩家，简短问好；②说明今天尺寸记得很清楚，但这个袋子的拉链单手拉起来不顺，所以不打算买；③把袋子归还原处，收好尺寸记录，动作从容，不找东西也不出错；④说“尺寸合适也不一定就要买。我再看看，你慢慢逛。”不请玩家评判，不转成职业讲解，用清楚而平静的取舍表现他们实际、尚有距离的一面。"
+        },
+        {
+          "npcId": "882ca29c-2cc2-51bf-90e4-0abac02ec1c5",
+          "dimension": "重逢：宣告收敛选书与安排冲动",
+          "reason": "Barry的“候选就不再往下加了”“不给你派五分钟的任务”，与Mabel的“不急着带书回去”“今天可以空手走”都把重逢写成对初遇冲动的一次自我约束宣告。“五分钟的任务”还只适用于部分新版初遇路径，不适合所有旧联系人。",
+          "brief": "改为四拍：①Barry在原书架旁拿着一本陌生题材的书，另一手正在给Dennis写消息，认出玩家便热情招呼；②他说想让下次碰面多一件新鲜事，准备提议两人各带一本从没读过的书；③他发送消息，随即又开始拟交换阅读的顺序，注意力明显被计划吸走；④说“他还没回。我倒已经把先读哪本排好了。”随后继续查看书目，不给玩家派任务。保留他慷慨又越俎代庖的活力，而不是预设已经学会克制。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "melbourne",
+      "reviewResultSHA256": "d71514714da61d92d71d5047c6fbe714fcbdbd40337475c840f9a78508924bf8",
+      "overview": "全城初遇已具备不少有效差异，主要需要修整三处：物品侵扰后道歉、看手机自语后澄清，以及同一市场里挑袜子犹豫的开场。保留各人的身份、固定地点及主要剧情，不必把所有主动搭话都改成求助。重逢整体已有真实胜利、完成任务、主动离开、安静停留与坚持审美决定等不同状态；Jesse数错叶片是孤立的小失误，尚未形成全城反复出糗的簇，无须仅因它带笑点而替换。所有重逢继续采用四拍、无选项结构，且不依赖新版初遇中的特定经历。",
+      "adoptedFixes": [
+        {
+          "npcId": "1386761e-c94b-5689-b4a9-6616b32848f2",
+          "dimension": "初遇：随身物品侵入他人空间后道歉、收回",
+          "reason": "Walter的“转动摊开的笔记本，短暂挡住了你的一部分视线”与Ted的“肩包碰到了你的手臂”，都以物品侵扰、道歉、收拢物品启动交流。Ted的一次道歉及对反复道歉的不耐烦更贴合其核心人物机制，优先保留。",
+          "brief": "Walter始终把草图本放低，在同层上层书廊观察下方书桌布局。他向附近玩家低声说：“我想把这些排列画进去，又不想把短片画成平面图。”随后说明自己做的是洞洞板定格动画；这是一次具体的创作感想分享，不请玩家评审，也不展示到对方眼前。保留询问动画后进入作品及晚饭工时账的路线；另一入口改为玩家表示只想安静观看，他直接接受。四个初遇结局仍可保留展示完成图、因饭账分歧收尾、合本看景、简短演示逐格转动的差别。重逢不改。"
+        },
+        {
+          "npcId": "37576ad1-374e-5714-a82e-e585846b2b98",
+          "dimension": "初遇：自言自语后向附近陌生人澄清不是针对对方",
+          "reason": "Oscar先说“不是多做一份饭的事”，再解释“不是在跟你说不行”；Jesse先说“又加一组。挺好”，再解释“不是在抱怨”；June数拍后说明“我不是在催谁走”。三者都通过自语及纠正潜在误会开场。保留June具象的舞步记忆和Jesse对加练的直接满意，修改Oscar的搭话方式。",
+          "brief": "Oscar看完静音手机上的携伴请求后，直接向同层附近玩家低声提出一个有限的措辞问题：“只回‘今晚只能你一个人来’，听着很冲吗？”随即补一句：“朋友想带室友吃饭。我只想招待一个人。”不先自语，不假定玩家误解，也不让玩家替他决定是否答应。玩家愿意聊时进入原有晚饭人数与煎锅话题；玩家只想看阅览室时，他收起手机安静观看。保留他不增加客人数的决定，以及原有四个结局的不同收束。重逢仍是当天不赶晚饭、愿意多待一会儿。"
+        },
+        {
+          "npcId": "f74432d2-289d-5745-a895-65471f39fbfa",
+          "dimension": "初遇：袜子摊前犹豫购物，并向附近人分享迟迟未选定",
+          "reason": "Alan说“我跟这些袜子较劲够久了”，Sunny说“本来觉得能慢慢挑，现在又觉得不买袜子也行”，实际开场都是站在袜子陈列前，把普通选购犹豫说给附近的人听。Alan的球队配色将犹豫直接连到嘴硬的忠诚，更值得保留。",
+          "brief": "把Sunny收到朋友购物请求的时点提前：他们刚在B棚服饰摊旁回复完消息，向附近玩家轻声分享：“刚答应替朋友找裤子。我明明早来十分钟，是想自己逛的。”语气是短暂的无奈，不求玩家帮忙，也不暗示玩家做了什么；随后介绍自己、说明正在等朋友。这样接触来自一次刚作出的承诺，而非挑袜子的犹豫。谈朋友的路线再收到裤子的具体要求，继续保留先挑自己的东西或先履约的两个结局；想独处的路线仍可回到随意浏览或留在原处等人。不要写成已经学会拒绝，保留重逢时友好而明确地只打招呼这一独立状态。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "toronto",
+      "reviewResultSHA256": "ff712d4e1d68b262776c86a5937a7c98dc6ab66ce9361ac81d40a450e46fac13",
+      "overview": "全城初遇已具备问路、传闻核实、误认赴约者、录音征求同意和分享现场声音等有效差异。主要重叠是三处以物品或身体侵入邻近空间启动接触，以及多处重逢都用“今天不做惯常的事，只想安静走走”收束。保留Marcus看结构入迷而后退的初遇、Aud无送货任务的慢步重逢等较贴合人物的案例，集中修补其余重复。重逢的小差错尚未形成大规模簇，不把更新清单一概判作犯错；但Gus的准备失误仍可换成更具体的当下动机。所有修改保留身份与地点绑定，重逢均为四拍、无选项，并兼容旧联系人。",
+      "adoptedFixes": [
+        {
+          "npcId": "8f9fde7b-87b5-5cd9-af43-af1c5ae5d484",
+          "dimension": "初遇：意外物理侵入引出提醒与善后",
+          "reason": "“洋葱滚到玩家鞋边”与另两人的“挡住……展示柜”“差点退到你身上”都先制造邻近空间的小干扰，再让陌生人回应。相比之下，Marcus的后退直接表现其观察入迷的盲点，更值得保留。",
+          "brief": "保留Baldwin Street等朋友还借锅、手提食材的情境，取消洋葱滚落。她把锅稳稳放在自己腿侧，因手机收在购物袋深处，向附近玩家问一句现在几点，说明自己在等人取回借锅，不想为了找手机把刚收好的食材全翻出来。当前状态改为从容但手边忙，而非为袋口失误自嘲。接触后仍可自然进入借锅、储物边界与聚餐话题；四个初遇结局继续分别落实交锅、检查采购、处理联络或简短告别。"
+        },
+        {
+          "npcId": "6a3aba49-e01d-52c1-80cb-743ae89ae121",
+          "dimension": "初遇：遮挡邻近空间后主动致歉或让位",
+          "reason": "“购物袋和展开的清单遮住……展示柜”使开场同样依靠无意妨碍旁人，与滚到鞋边的洋葱及向后挪动近人的身体形成同一接触簇；其真正独特的矛盾其实是把休闲排成工作。",
+          "brief": "取消购物袋与清单遮挡。Devon在圣劳伦斯市场节日挂饰下的顾客侧看着自己的时间表，直接向附近玩家问：“逛五金店也要规定结束时间，还算休息吗？”随后说明晚饭食材已经买好，自己却把接下来的洞洞板时间也排死了。语气是对安排的真实犹疑，带一点干幽默，不是请人解决购物问题。保留展示作品、尊重独自浏览、删减安排或照表离开的四种结局，调整最前面的回应衔接即可。"
+        },
+        {
+          "npcId": "1a8173c1-b136-5ff8-b8d9-642ded5fe230",
+          "dimension": "初遇：转身避让成为搭话前提",
+          "reason": "“转身……注意到旁边的你，便让到一侧”及“这里可以过”虽没有真正碰撞，仍与Marcus的“差点退到你身上”共享先发生近身移动、再解释自己的开场节奏。",
+          "brief": "让Sasha从开场就站在湖岸木栈道一侧，不发生转身避让。她望着沿湖延伸的木板，向附近玩家轻声分享：“沿这边走，倒是一直能看着湖。”随后看表，补充自己早到八分钟，想在朋友到达前再走一小段。接触来自眼前景象，而不是道歉或邀人帮忙；她温和、话少，也没有主动招募同行者。保留原有“原地等更省事吗”与简短回应的入口，以及等候、折返、短暂并行和独自行走的四个结局。"
+        },
+        {
+          "npcId": "824c4bd7-7036-5ed6-85e6-4fa966aeac74",
+          "dimension": "重逢：以暂停惯常热情、安静散步表现反差",
+          "reason": "“今天只想安静走一会儿”“颜色照旧，话今天少一点”与Aud的“今天想慢一点”、Marcus的“今天不想研究……出来走走就够”连续采用同一种撤去惯常活动的轻声告别。保留Aud无需赶送货路程的具体松弛感更有辨识度。",
+          "brief": "改为四拍无分支：一，Emile在Baldwin Street散步时认出玩家，手里正拿着自己用皮边料做的小卡套；二，他招呼后愉快地说，紫色配青柠绿不只适合穿在身上，今天这个小东西的配色也让他满意；三，他把卡套收入口袋，抚平外衫，不递给玩家评判，也不开制作课；四，他说自己还想继续走走，带着满足而非收敛热情的状态道别。不要求玩家记得任何前次服装或新剧情。"
+        },
+        {
+          "npcId": "709949ea-2a9e-50ad-bbfc-6a967ccc3be7",
+          "dimension": "重逢：因当天不研究熟悉对象而继续散步",
+          "reason": "“今天不想研究那些小屋怎么拼的了。手冷，出来走走就够”与Emile的“今天只想安静走一会儿”几乎是同一当前状态；又与Sasha无约束地继续走、Aud无送货任务地慢看街道形成连续的低活动收束。",
+          "brief": "保留冬季Trinity Street、白色临时小屋和手冷的状态，改为四拍无分支：一，Marcus戴着手套查看一条篮球邀约，抬头认出玩家；二，他招呼后说明自己正在确认打球时间，想把今天的散步留够，又不让人等；三，他简短回复确认，把手机收好，目光扫过小屋但没有驻足研究；四，他说时间说定就轻松了，随后沿原街面继续走。重点是今天有一件普通而令人期待的安排，不再靠“暂停好奇心”构成整场重逢，也不邀请或默认玩家参加。"
+        },
+        {
+          "npcId": "ae904caf-bdab-51b9-b1bb-d5244dc1402b",
+          "dimension": "重逢：发现小失误后自嘲并凑合收尾",
+          "reason": "“两支铅笔，全钝了”“这回是我准备不周”与Devon Marchetti-Lowe的“饿着肚子进来了。战术失误”都先宣布一个轻微准备失当，再用自嘲完成当前情境。自嘲更贴近后者的核心声音，Gus可保留数字开场而换掉失误。",
+          "brief": "改为四拍无分支：一，Gus在冬季Trinity Street的红砖与白色临时小屋背景前看自己的小画纸，认出玩家；二，他先报“还留了四分钟”，再打招呼，说明今天特意给速写留了一点时间，不想只完成步行计时；三，他戴着手套补上自己画中的最后一条线，把纸收好，过程顺利，没有坏笔或准备不足；四，他满意地说这几分钟值得，接下来继续散步。无需展示成果求评价，也不转成建筑或工作讲解。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "vancouver",
+      "reviewResultSHA256": "b41a00baa7da5daa41a8a8cde48bd13fc1051ddc62e7177864560e5e8333eb06",
+      "overview": "全城已明显减少落物、碰撞式初见，人物原有分支也保留了不同的边界反应。仍有几组实际互动接近：煤气镇两位创作者都请陌生人核验视觉判断；两位录制者都以设备可能摄入玩家开场；两位长者都在收东西时先让行。重逢则集中出现“今天不做惯常爱好，只安静待一会儿”和“发现物件小异常，核验后用笑话结束”。以下只修选中的重复案例，保留更贴合人物的对照项；身份、经历及固定地点均不变。所有重逢替换均为四拍直线场景，不设选项，也不依赖新版初见的具体结果。",
+      "adoptedFixes": [
+        {
+          "npcId": "0eb49449-c2d8-53bd-859b-37039e68399c",
+          "dimension": "初见：设备先涉及玩家，再解释录制边界",
+          "reason": "Noor 的“手机短暂地朝向了你”“我还没拍”，与 Walter 的“已经关了”“不想……把麦克风朝着你”都让玩家先处理自己是否被摄入的问题。Walter 的录音删除、保留和含糊回应后撤退，与人物核心更紧密。",
+          "brief": "改为拍摄前的明确协商：Noor 的手机始终垂在身侧，她说明想把蒸汽钟和玻璃里的餐桌倒影拍进同一张，但这个角度可能带到玩家，先征求是否介意；尚未举机，也不请求玩家挪动或摆姿势。愿意谈构图者仍进入倒影话题，拒绝入镜者仍得到立即尊重，保留现有四结局及她对泛化称赞的反应。接触从事后澄清变成事前商量。"
+        },
+        {
+          "npcId": "15146e1f-e5cc-516f-bf80-99d74d406cd3",
+          "dimension": "初见：以个人绘画项目索取陌生人的视觉验证",
+          "reason": "Marlowe 的“只留这个外轮廓，你还认得出是这座钟吗”，与 Ren 的“我想知道别人第一眼会看到什么”都是展示创作、请玩家核验眼前景物。Ren 对具体证据、快速赞同及改口的反应更依赖这种机制，应保留。",
+          "brief": "保留刻章草图，但不再征求辨识评价。Marlowe 看着钟，把本子合上一半，自言自语说“够了，再添就成报价单了”，随即向近旁玩家补明是在说自己的草图：下班后不想再把每个细节都记全。本子仍低放，既不展示求评，也不挡视线。入口可改为聊这张草图或各自看钟；后续保留工作精确、爱好凭感觉的反差，以及餐桌倒影混入草图的支线和四个结局。"
+        },
+        {
+          "npcId": "96584dc3-a300-572a-91de-2caab56cdc34",
+          "dimension": "初见：桌边物件占用他人空间后纠正",
+          "reason": "Soren 的“发现自己的包占着空椅子，主动收包”，与 Mireille 的“纸袋朝玩家所在方向倾倒，她及时接住并主动道歉”都先制造桌边物件问题，再借纠正动作认识。Mireille 坚持立袋试一个月，直接呈现她把建议扩大成试验的特点。",
+          "brief": "包从开场就收在脚边。玩家来到共用桌旁时，Soren 正常说明旁边的椅子空着，接着坦率补一句自己想保留背朝通道的这个位置，语气轻松而非防备。他随即只顾着夸自己的朝向舒服，没有检查另一位置的体验。这样以共用座位的正常协商接触，而非清理占座；仍可承接坐下、路过，以及被明确告知不适后立即换座的原有四结局。"
+        },
+        {
+          "npcId": "8523937d-bd3a-57b3-a90e-62018b014e0d",
+          "dimension": "初见：收拾随身物件时先让行，再开启聊天",
+          "reason": "Evald 的“请先过。我收这张纸收到一半”，与 Ingrid 的“请过。我收东西的地方选得不太好”具有相同动作顺序。Ingrid 的口琴盒、搭扣及回程时间共同构成更具体的当下状态。",
+          "brief": "订单在接触前已经收入口袋，Evald 不再因收纸停步让行。他站在 Tatlow Walk 一侧，直接提出一个有个人缘由的短聊天邀请：“我出来是为了别再核对那张订单。愿意换个话题聊两句吗？”没有通行问题，也不要求玩家替他排忧。玩家接受后仍进入逐层深入的三连问，拒绝则自然告别，保留现有隐私越界、接受反问及订单困扰的四种收束。"
+        },
+        {
+          "npcId": "4aefbe0c-8f5d-5963-8504-c6ce3d073250",
+          "dimension": "重逢：物件异常被核验后，以小误会笑话收尾",
+          "reason": "Ren 的“眼镜上有个印子。我还以为是在那扇窗户上”，与 Mireille 的“气象站……老说我厨房里在下雨”“厨房是干的”都采用物件异常、核验、轻巧纠错的短结构。Mireille 的电子制作兴趣提供了更独有的生活内容，Ren 不必再承担一次小误认。",
+          "brief": "四拍改为：①Ren 站在店窗外的砖面上，把速写本合好，认出玩家后招呼；②他们看着实景说，今天仍觉得餐桌倒影更抢眼，但不打算再拉个人来核对；③他们认真看了一会儿蒸汽钟，神情投入，并未拿出证据；④他们补一句“钟倒是比我画的好看。这句不用你同意”，随后告别。保留具体判断与温暖的轻微摩擦，不安排失误、修理或玩家作答。"
+        },
+        {
+          "npcId": "f4cea697-593d-583f-a102-5be71865dcd5",
+          "dimension": "重逢：宣布暂停惯常爱好，然后安静看景告别",
+          "reason": "Walter 的“特意没带录音机”“这段不用带回去”，与 Ingrid 的“今天不吹口琴……想安静走一趟”几乎同构，也接近多人的“不考据／不剧透／不复盘”。Ingrid 以沉默作陪本就是核心相处方式，应保留。",
+          "brief": "四拍改为：①Walter 在福溪铺装步道一侧收好刚录完的设备，认出玩家并招呼；②他说今天这一小段水声是留给自己的，不准备做成送人的磁带；③他把机器稳稳裹进叠好的布里，仍听着石岸边的水声，神态自在；④他说“给自己的那盘可以慢慢做，没人等”，温和道别。录制在玩家到来前已结束，不再制造隐私确认，也不暗示朋友疏远或要求玩家收听。"
+        },
+        {
+          "npcId": "8523937d-bd3a-57b3-a90e-62018b014e0d",
+          "dimension": "重逢：提起私人兴趣后，主动声明不展开",
+          "reason": "Evald 的“本想继续解释，却停了一下”“先让它们长”，与 Gordon 的“不剧透”、Odette 的“不……复盘”、Noor 的“今天不考据”共同形成连续的自我收束。保留这些不同程度的短聊即可，不必再让本来容易追问的人也以克制讲解作为唯一新状态。",
+          "brief": "四拍改为：①Evald 在 Tatlow Walk 慢走，认出玩家后靠侧招呼；②他直说今天有点烦，学校用品订单确实在自己手里出了错，已经安排下一次上班时处理；③他摸到口袋里的订单，却没有取出，脸上仍有不快，不把散步写成已经治愈情绪；④他说“出来走走不是认定事情没关系。只是今天能做的已经做了”，然后继续前行。保留责任感与正式口吻，不讲采购知识，也不要求玩家安慰或记得此前谈过订单。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "edinburgh",
+      "reviewResultSHA256": "b740da10959ced154454b278610d90c0e57e46dca7acd6ad4eeef6cc22840ccb",
+      "overview": "全城的问答开场已有实质区别：核对地理题、辨认眼前屋顶和确认回家方向，不必因同为提问而修改。主要重复有两处：部分初见依靠物品意外朝向玩家后致歉；多段重逢则以暂放个人事务、转而安静看景收束。建议只调整两人的初见和两人的重逢。保留电话打扰、试念台词、家庭试味、主动分享淘货等不同接触机制；目前也没有形成需要集中清除的重逢小失误群。",
+      "adoptedFixes": [
+        {
+          "npcId": "93e4459e-993f-551c-8ffd-ec6d286ad22f",
+          "dimension": "初见：随身物品意外侵入后致歉",
+          "reason": "“布袋晃到玩家膝边，因此主动道歉并收回袋子”与麦克风“短暂朝向玩家”后道歉，都把偶然侵入作为陌生人开口的理由。这里最值得保留的是他反复替别人让位、却压下自己不便的状态，而非袋子险些碰人。",
+          "brief": "仍在迪恩村桥边等着继续去姐姐家，布袋从头到尾稳放身前。他刚给两拨行人让过位置，见玩家在附近，主动协商：“我还想看一会儿河。你要也停，这儿可以并排站，不必谁把谁让走。”说完才把勒手的提手换到另一只手，干巴巴补一句自己已经让了两回。接触改成明确表达自身需要的公共空间协商；保留腌菜、展示密封罐和是否继续停留的原有四种收尾，只调整依赖碰撞致歉的承接语。"
+        },
+        {
+          "npcId": "a08f0c39-0dfc-5b1d-925b-605d1c812386",
+          "dimension": "初见：器材误朝玩家后的补救说明",
+          "reason": "“调整防风罩时，麦克风短暂朝向玩家”随后说“抱歉”，与布袋晃近膝边同属先制造无意侵入、再解释自己的活动。采音习惯和录音隐私分支本身则很有辨识度。",
+          "brief": "保留桥边正在进行的河声录制，麦克风始终朝向水面。Eilidh看见附近有人后主动履行告知：“这盏灯表示正在录音。我录的是河水，不过附近说话也可能收进去，先告诉你。”语气平实，不索取安静，也不要求玩家参与。仍可接经常来录音的话题，或接不愿入录音的边界；后者继续采用删除当前片段、保持关机的原逻辑。四种结尾与器材不外借的差异均可保留。"
+        },
+        {
+          "npcId": "cdc5be66-27c4-5868-bf72-ef2a8629b4eb",
+          "dimension": "重逢：搁置个人项目后转向看景",
+          "reason": "“把笔记本放进口袋”并说“点子可以先放着”与Eilidh的“今天没开录音机”、Ewan收手机继续看光线，均以不再处理自己的兴趣项目来获得安静。Isla这一段还重复了她初见中收本休息的收束。",
+          "brief": "重逢改用初学民间舞带来的轻快状态，仍在纪念亭前同层步道边缘，不占通行路线。四拍固定为：她站在原地用脚尖轻点节拍，认出玩家后微笑招呼；她说今天脑子里不是广播剧，而是舞蹈课的一段节奏，自己很喜欢；她停下脚尖，把节拍用两根手指轻敲在合上的本子上；她说“脚步留到上课再跳，这段节奏我先享受着”，随后自行沿步道离开。不写跳错、记不住或邀请玩家教学，不设选择，也不要求记得初见内容。"
+        },
+        {
+          "npcId": "eb5db94d-5735-502d-a99b-2496f54795ef",
+          "dimension": "重逢：以没有任务和时限解释原地看景",
+          "reason": "“没给这趟散步定个结束时间”及“不用把谁安排进哪一条道里”与同城多段重逢一样，靠免除工作或安排后继续看景呈现放松。Ewan已有更具体的明暗边界观察，Eilidh也有正在吃午饭的实际活动，宜保留那些差异。",
+          "brief": "改为他在纪念亭前公共步道一侧检查随身带来的收拢风筝，不展开、不放飞，也不出现缠线或损坏。四拍固定为：他正用手指沿收好的风筝边缘检查，认出玩家便打招呼；他说今天把风筝带出来了，不过带出来不等于非得放；他检查完便把风筝束好，动作从容；他说“今天先带它散个步。我也没有每次出门都要完成的项目”，拿稳后独自沿步道继续走。保留休闲不愿细排计划的态度，不再迷路、不请玩家判断风向，也不设置分支。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "dublin",
+      "reviewResultSHA256": "fd9e8b1f02a87e96332f6417a904b7cb24f5790eccce13896f952d58feaed077",
+      "overview": "全城的主要重复不在职业，而在接触与收束方式：数人借随身物品和通行空间搭话，两位读报刊者向陌生人说明阅读安排后低头继续读，两位人物以被听见的声音起手并致歉；重逢则多次采用“看一会儿自己的东西—决定够了—收好离开”。建议保留与人物最紧密的版本，只调整下列节点。现有重逢没有明显的成串糊涂失误，不必把穿脱外套、擦眼镜等正常动作一概当成事故，也不必给每个人补一次缺点展示。",
+      "adoptedFixes": [
+        {
+          "npcId": "9211445a-8021-5b23-aecf-9fa4fda31b2c",
+          "dimension": "初遇：物品侵入玩家附近空间后启动交谈",
+          "reason": "“报纸吹落在你脚边”与Fionnuala的“袋子伸进了中央过道”都先制造物品造成的空间问题，再让玩家让开或等待。后者直接关联旧窗帘改鞋袋及低估改造难度，更值得保留。",
+          "brief": "报纸始终由Bridie拿稳。她做题后想决定继续停留还是回家，向附近玩家只问一句现在几点，并说明自己做着做着没留意时间。得到回应后，她利落地表示还够再磨一道题，或该回去了，再由玩家选择是否聊填字题。保留茶职业误判、电视剧话题、明确告别和应请求转交报纸的四种收束；删除所有捡纸、让脚边位置的因果。不要让她借问时间催促玩家。"
+        },
+        {
+          "npcId": "1febdce6-ca48-5ad3-b489-02be98de23d9",
+          "dimension": "初遇：向旁人说明阅读安排后立即投入阅读",
+          "reason": "Ruairi说“借这点光看上一页”后低头，与Saoirse说明“一本自读、六本交付”后继续阅读，都是把私人阅读安排告知附近陌生人来启动互动。Saoirse的刊物交接和反复确认数量更贴合其具体动机。",
+          "brief": "Ruairi仍在玻璃顶下、中央过道旁等逛店的朋友。他把已经看完的一份报纸副刊单独折好，主动表示这份自己读完了，玩家想看可以拿去，不拿也没关系；报纸始终不伸入过道，也不直接塞给玩家。说完便安静等回应，不接着推介内容。由这次具体分享进入原有的报纸话题或礼貌告别，保留他聊着聊着又读入神、被直说想聊天后立即放下报纸的差异，以及原有四种结尾。"
+        },
+        {
+          "npcId": "0391d6b4-943a-5406-a638-57d09c45ab35",
+          "dimension": "初遇：声音被听见后致歉，再解释个人爱好",
+          "reason": "“发现你就在听得见的地方，他停了下来”并说“抱歉，没忍住哼出来了”，与Cian对录音说话后解释“抱歉。我是在对录音说话”形成相同的听觉误会入口。Cian的催促直接呈现他对别人控制悬念的不耐烦，应保留。",
+          "brief": "Peadar不再哼曲或致歉。他闲逛时脑中仍盘旋着电影配乐，在店铺一侧停稳，直接向附近玩家征询一个带立场的意见：“电影配乐拆出来单听，是不是反而更好？我看省得画面碍事。”他是想找一点争论的乐趣，不是求知识或做音乐讲解。玩家反驳便接原有换立场、被指出矛盾的线路；玩家问是哪部电影则进入原有具体曲目与轻哼线路，保留四种收束。"
+        },
+        {
+          "npcId": "fa6eab00-3fb8-50bf-90b2-53a7b997bfc4",
+          "dimension": "重逢：宣布今天到此为止，收好兴趣道具离开",
+          "reason": "Robin的“这片就够了—合上文件夹—回家动手”，与Dara的“今天先停在这里—合上本子”和Bridie的“够了—锁屏—继续散步”共享自我叫停的收束。Bridie防剧透及Dara保留地图修改余地，各自已有更鲜明的理由。",
+          "brief": "改为四拍无分支重逢：一，Robin在同岸步道边看完手机，认出玩家便招呼；二，说明朋友刚承认今天的字谜比自己填得慢，这一回是自己赢了；三，他们收起手机，却仍掩不住得意，主动承认今晚大概要把这件事多提几遍；四，笑着补充只得意今晚，随后向玩家道别。重点是赢后的兴奋和靠小较量维系交情，不向玩家追讨赌债，也不要求玩家参加新的赌约。"
+        },
+        {
+          "npcId": "4347530a-9373-5f91-9235-f0a780c327a3",
+          "dimension": "重逢：声明今天无事，只想独处停留",
+          "reason": "Aoife的“今天只出来散步，没带练习页”及“还想在这里待一会儿”，与Sorcha的“今天不太想说话，只是出来走走”同属撤去原有兴趣活动、温和说明独处状态的重逢。Sorcha当天低社交精力与平日冷面玩笑形成更有用的反差。",
+          "brief": "改为四拍无分支重逢：一，Aoife在同岸步道旁认出玩家，手里拿着一张由她主动取出的成品座位卡；二，她明确说这张已经完成，正带回去放到晚餐桌上，语气带着不遮掩的自豪；三，她自行把成品朝玩家展示片刻，再仔细收回文件夹，不要求评价或拍照；四，她说这次不用再改了，向玩家告别后沿同岸步道继续走。无需玩家见过任何练习页，也不宣称玩家曾参与制作；让她对成品的开放与初遇对练习页的边界形成区别。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "auckland",
+      "reviewResultSHA256": "21f3c777ffffaabe0fe57a33684e3087d1e6936dc6e2eda576bc71e37b131ab2",
+      "overview": "本城多数初见已具有独立动机，不宜统一重写。仍有三组值得修整：硬币与购物单落到玩家脚边的意外接触；伊甸山以“已经看够／走够”向陌生人宣布行程的开场；重逢中短暂停看风景便道别，以及用轻微生活失误撑满四拍。建议保留Indira与道具管理直接相关的掉币、Beryl为陪室友而等待的直白，以及Pippa主动不录音的选择，集中修改Kai、Wren和Hemi。其余人物在热情、疲倦、实际任务与陪伴方式上已有可用差异。",
+      "adoptedFixes": [
+        {
+          "npcId": "cf5c8f86-f819-538e-b1a7-38b3fcb14e60",
+          "dimension": "初见接触：物品落到玩家脚边，引出捡拾与解释",
+          "reason": "Kai的“一张折好的购物单……掉在你脚边”与Indira的“一枚硬币……停在你鞋边”都是先用失手侵入玩家近身空间，再靠取回物品启动交谈。Indira的硬币同时连接表演和反复清点，更值得保留。",
+          "brief": "购物单始终拿在Kai手里，比分面朝自己。他们在棚摊旁停下，主动向附近玩家发出一次有边界的邀请：“昨晚问答赛输得我现在还不服。买菜前想来一道快问快答吗？不玩也没事。”随即把纸翻到蔬菜面，说明自己确实还得采购。入口可改为询问昨晚怎么输的，或询问为什么不找朋友再比；继续沿用陌生人挑战、朋友邀战和采购的原有分支，保留四个不同结局，不再需要掉纸、致歉或让开人流来建立接触。"
+        },
+        {
+          "npcId": "5cb1a9e3-53f8-5ce1-87db-7f4294970ac8",
+          "dimension": "初见接触：以看够风景、结束短暂停留的行程宣告搭话",
+          "reason": "Wren先说“今天这点散步就够了。看完就回家”，与Beryl的“我已经看够了”、Arthur的“现在正式开始”都以向附近陌生人宣布自己的观景进度开场。Beryl的宣告具体体现陪伴义务，Arthur另有养蜂书不断抢走注意力；Wren此处的接触理由较薄。",
+          "brief": "改为一个简短的事实请求：Wren做完维修来散步，没留意当前时间，在标示观景区域向附近玩家说：“方便告诉我现在几点吗？我没赶约会，只想知道这趟走了多久。”随后简短介绍自己，并说明再看看火山口就回家。玩家可以回答后追问是不是只出来短走，也可以表示不清楚、转而看城市；他都不要求对方查手机。保留独居话题、被投射为孤独时的生硬反应，以及原有四条结束方向，仅调整必要的入口衔接。"
+        },
+        {
+          "npcId": "5cb1a9e3-53f8-5ce1-87db-7f4294970ac8",
+          "dimension": "重逢：说明今天的步行状态，静看片刻便结束",
+          "reason": "Wren的“特意走慢一点—望了一会儿城市远景—好了，看过瘾了”与Beryl的“歇一会儿再走—安静望向城市—歇够了”在实际互动上高度接近，也与Ari、Pippa收起设备后散步道别的收束形成重复。",
+          "brief": "保留今天没有维修、愿意慢走的情境，改用邻居刚发来的宠物照片承载这次重逢。四拍依次为：他在标示观景区域看手机，认出玩家后爽快招呼；笑着说明邻居发来一张猫的近照，自己正回一句问候；他发完消息，把手机收好，仍留在原处而非立刻退场；说“隔着屏幕看一眼也挺高兴。今天没维修，我还想慢慢走。”不要求玩家看照片，不安排实际接触动物，也不解释独居是否孤独。用轻快的短联系与自在停留，替代又一次计时休息后离开。"
+        },
+        {
+          "npcId": "677fef83-9fe7-5039-ab30-4c4d290bfda2",
+          "dimension": "重逢：以轻微生活失误和当场纠正充当全部情境",
+          "reason": "Hemi的“把外套穿反就出门了—翻回正面—让标签自己待着”与Kai的“买了太多红薯，后悔只带一个袋子—试重量—行，提得住”都采用发现小失算、处理妥当、轻松道别的结构。Kai的负重仍属于当下采购任务，Hemi的穿反外套则几乎可以移给任何人。",
+          "brief": "改为一笔正在确认支付方式的人情账，不依赖任何初遇结局。四拍依次为：周六棚摊旁，Hemi拿着合上的小本，认出玩家并问好；说明今天有人想把约定的一袋蔬菜报酬改成下周代买洋葱，自己并不反对；他们用手机回复，要求先写清数量和交付时间，铅笔仍夹在本上，没有提前销账；收起手机说“怎么付可以商量，先说清楚。我还在这儿等回复，你慢慢逛。”保持平稳、务实和一点干涩，不制造争吵、不讲调解课，也不要求玩家裁决；重逢固定四拍，无选项或分支。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "capetown",
+      "reviewResultSHA256": "cfef4be123f58665c23edaf73091dc499217853c2a2864478312a5755ee86e16",
+      "overview": "全城的主要重复不在职业，而在两类互动：初见多次采用“先自言自语或对手机说话，再发现旁人并解释”；重逢则频繁以“收起本子或手机，宣布今天只散步、时间归自己”收尾。另有两场重逢都靠小失误和自嘲撑起全部四拍。建议保留Sasha的荒诞问题、Sizwe失控的音量、Zintle的身体幽默，以及Eunice明确结束任务的仪式感，集中修改其他案例。Lebo落绳是本城唯一真正的掉物初见，不应仅因属于常见套路就判为城内重复。所有修订均保持原身份、固定地点与公共空间边界；重逢仍为四拍线性场景，不设置选择，也不依赖新版初遇的特定结果。",
+      "adoptedFixes": [
+        {
+          "npcId": "f59bc418-9cf9-5311-b285-ed936fe36d1d",
+          "dimension": "初见接触机制：手机独白后解释",
+          "reason": "“Lunch. No, evening. Hang on, don't send that.”之后“注意到你就在附近，便放下手机”，与Sizwe的“他判了三个点球？”后解释“我是在对着手机说话”，以及Sasha说出怪问题后解释的启动节奏相同。Nkosi的集体决策困境值得保留，但不必再次靠被旁人听见来接触。",
+          "brief": "保留栏杆旁筹备朋友烧烤的情境，改为他有意向附近的人征询一次有限的措辞意见：“打扰一下，群里写‘请今晚前回复’，会不会显得催得太急？不用替我们选时间。”他拿着手机等答复，不递手机，也不先录一段独白。随后说明自己连说“都行”的朋友也反复确认过。这样接触来自他对公平流程的过度斟酌；原有谈烧烤、表达个人偏好、暂缓消息和告辞的四种收尾仍可沿用。"
+        },
+        {
+          "npcId": "d58fa9b0-d2a0-55fb-a157-61588bed9fa0",
+          "dimension": "初见互动结构：邀请陌生人检视随身物并做小判断",
+          "reason": "“这两个箭头，你看得出哪个是后来补的吗？只看笔迹”与Zintle的“你挑，我画”、Sipho翻开袋子询问口袋位置，都以展示随身物、请陌生人完成一个小判断开场。辨认补画箭头还把她对真实街道的兴趣缩成了记录含糊的小麻烦。",
+          "brief": "保留核对电影转弯的剧情，将请求改成不需读图的有限事实询问：她自己看着笔记，主动问“打扰一下，这条街的名字是Wale Street，对吗？我想先把电影里听到的名字核实了，再怪剪辑。”不把本子转给玩家，也不要求判断笔迹。确认或未获确认后，她才说明来看追逐戏中的转弯。原有转谈剧情、继续看草图、独自核对及拒绝同行的四个结局均可保留。"
+        },
+        {
+          "npcId": "24cad8ee-bc16-55f3-97fa-9ccc24a7b28e",
+          "dimension": "重逢当前状态：暂停记录后允许自己只散步",
+          "reason": "“今天特意把笔记本留在家里了。只是出来走走”及“今天不用每件事都留下来”，与Sasha合上本子后说“今天就只是走路。也挺好”几乎完成同一个情绪动作。Sasha从怪问题中休息更贴合其独特初见，宜保留。",
+          "brief": "四拍改为：一，她在栏杆内侧拿着一小块已缝过的风筝布，认出玩家；二，问候后说明今天只确认缝边会不会继续卷，确认完就回去；三，她摊开掌心观察片刻，布边仍向下弯，她没有再翻本子追加说明；四，她平静说“还会卷。今天就确认这一件，回去再决定怎么改。”这是专注、范围明确且尚未解决的检查，不求评价、不授课，也不邀请玩家参与，既呼应原有风筝项目，又不同于放下记录去享受散步。"
+        },
+        {
+          "npcId": "f8112c56-2e2d-55e5-91b3-4fad04a7e8e4",
+          "dimension": "重逢情绪落点：处理完社交安排后收手机享受自己的时间",
+          "reason": "“刚答应去朋友下一次的烤肉聚会”后收起手机，说“今天这点时间归我自己”，与Nkosi确认徒步安排、收起手机后说“现在轮到我好好走这一段”在动作和满足感上高度一致。Nkosi条件明确后终于果断的状态更有对照价值。",
+          "brief": "四拍改为：一，他仍在栏杆内侧歇脚，认出玩家，手机屏幕停在朋友的消息上；二，问候后说自己答应帮一次烤肉聚会，现在正核对究竟需要带哪样东西；三，他认真输入一条只问具体物品的短消息，疲劳仍在，没有得意地宣布自由；四，他抬头说“答应帮忙的这次，我会办好。现在等他把东西说清楚。”让这次重逢呈现可靠地履行一次承诺，而不是再次拒绝默认出席；无需玩家知道任何旧聚会结果。"
+        },
+        {
+          "npcId": "eec9d116-939b-5721-b051-5d5ce0693f04",
+          "dimension": "重逢推进机制：小失误、自嘲、纠正后结束",
+          "reason": "“我刚把内罗毕选到坦桑尼亚去了。这根拇指干得真不怎么样”，随后核对答案并收手机，与Zintle“把自己的袖子夹住了”、解开后夸张活动手腕的重逢，都是以一个无关紧要的失误制造笑点，再立即复原。Zintle的快速动作和身体笑话更具人物专属性。",
+          "brief": "四拍改为：一，Mavis在工艺摊旁看地理问答的答案说明，认出玩家；二，问候后说“今天不赶下一题了。这一题后面讲的距离，比题目有意思”；三，他们仍拿着手机，认真看完说明，偶尔抬眼看看摊上的颜色，不要求玩家答题；四，他们带点兴味地说“分数已经拿到了，我倒想在这一页多待一会儿。”保留地理兴趣和从容语气，把当前状态换成被细节吸引的满足，而非按错、自嘲和退出游戏。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "manchester",
+      "reviewResultSHA256": "f80685f53f33231031feb1112d28701cf178ef25a542852c554ae1f3ec0a4f71",
+      "overview": "全城初见已包含情绪澄清、认错人、摄影征求同意、有限判断题和安静共处协商，不宜仅因人物都带包或停步就一并改写。需要集中处理两处：Afflecks 多人以等亲友兼确认让路开启交流；阅览室腾椅与运河盒盖靠近又重复了物品占用他人空间后搭话。重逢整体已摆脱连续出糗，但午饭难对付与钢笔罢工仍形成“日用品不配合—从容自嘲”的小簇。建议仅修三人，保留其余有用差异，所有身份与地点绑定不变。",
+      "adoptedFixes": [
+        {
+          "npcId": "eb666331-6cf1-5294-80a5-4bf2abcc0310",
+          "dimension": "初见：等亲友与预防性让路叠加",
+          "reason": "Colette 的“你是在等我让路吗？我在等我姐姐”既延续 Wilf、Kit 的等人说明式开场，又与 Frankie 的“我们各留一点地方，可以吗？”同样先协商双方站位。此处收包、挪步没有发生实际碰撞，但互动功能仍显重复。",
+          "brief": "保留等姐姐、下工后想随意逛逛的当前剧情，开场让她已经站在 Church Street 红砖外墙旁、不挡入口。她看着墙面，主动向附近玩家简短分享：“做了一上午细活，今天只想看点不用量尺寸的东西。这面墙就挺好。”接着明确自己只是等姐姐，不把等待当成问题交给玩家。保留聊旧工具、姐姐到场、礼貌离开及迟一拍领会玩笑的四种收束；原排队笑话改为玩家顺着“不量尺寸”打趣，仍可触发她认真理解后才笑的路径。重逢的电台喜剧与真实愉悦不动。"
+        },
+        {
+          "npcId": "43f177c0-0f7b-5bf0-ac7b-176ddeada39b",
+          "dimension": "初见：物品占空间后补救搭话",
+          "reason": "“她的包占着旁边的椅子”继而“你需要这把椅子吗？”与 Drew 的“盒盖差点碰到你”都先让随身物品占用潜在公共空间，再以收回物品建立接触。Drew 后续催人拿模型与其盲点直接相连，更值得保留；Wren 的辩论性格并不需要包占座才能成立。",
+          "brief": "包从一开始就放在她自己的椅下，旁椅空着。她在 Wolfson 阅览室读打印随笔，暂时放下笔，向桌端附近的玩家低声发出一个小范围的辩论邀请：“借你一句判断：喜欢一篇文章，还要找理由反对它，是认真读，还是给自己找事？”补一句“不必坐，我只借一句”，不要求玩家加入。保留 Maureen、茶钱赌约和为喜欢的文章找反对理由的剧情；将原来包是否该占椅的争辩换成这件事的正反意见，仍能分别落到接住玩笑、要求安静、短暂讨论、直接离开的四种结局。她迟半拍才收住的缺点只留在相应路径，不在开场强行展示。"
+        },
+        {
+          "npcId": "4c60a692-be68-5e10-af46-09d45cb385cf",
+          "dimension": "重逢：日用品罢工后的轻巧自嘲",
+          "reason": "Albert 的“这支笔写到一半不干了”与 Terence 的“午饭正跟我较劲呢”都以普通物件不配合起头，再用“错了也不至于留在纸上”或“还得再等一个月”轻巧收尾。后者连接自种自腌的具体生活，前者更像可移植给任何人的小故障。",
+          "brief": "保留阅览室、报纸填字、钢笔和不催答案的慢性子，改成没有故障的主动暂停，严格四拍、无选项：第一拍，他在桌边认出玩家，笔已盖好，填字还空着几格；第二拍，低声招呼并说“今天先留这几个。不查答案”；第三拍，他把报纸折成较小的一块，平放在自己面前，没有急着收拾离开；第四拍，说“还想坐会儿。不必每分钟都填上东西。”呈现他安稳享受未完成状态，不需记得任何新版初遇事件，也不再靠坏笔或自嘲制造趣味。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "neworleans",
+      "reviewResultSHA256": "f973763f0c23309dd7e0bac7f558271812bd6ece4d0160ac00f18d54b937eff9",
+      "overview": "全城初遇已具备有效差异：问时间、拍照征求许可、评论共同景象、音乐停顿确认、主动寒暄、硬币落地、让出陈列空间、禁购见证和限定范围的行程咨询，不宜仅因都拿着随身物品便归为同类。Remy的掉硬币是目前唯一保留的意外接触，Camille的闹钟设错也未形成全城糗事群。主要需要调整的是重逢：一处几乎照搬本人初遇，另一处与同街角色重复“收起事情、今晚优先听音乐”的收束。保留其余人物已有的热情、距离感、边界和节奏。",
+      "adoptedFixes": [
+        {
+          "npcId": "7ade0960-ecfc-58f3-936e-5c783fbc0d7b",
+          "dimension": "重逢重复本人初遇：未问清便答应搬运、原地等朋友",
+          "reason": "初遇是“连柜子多大都没问，我就答应了”，重逢又是“答应的时候，我没问有多重”，两次都以等朋友、抱怨搬运条件不明、继续履约为实际互动，重逢没有新的当前状态。",
+          "brief": "保留初遇更完整的搬柜子情境。重逢改为这一次帮忙临时取消后的空落：四拍依次为，他在广场公共步道边认出玩家，手里刚收到一条消息；招呼后说“本来要帮朋友搬东西，他刚说不用去了。我连手套都带了”；他把露在包口的手套塞回去，给朋友回复“下次需要再叫我”，随后收起手机；最后说“空出半天倒是好事。就是还没想好拿它干什么。”语气有一点松快，也有一点失落，不再自嘲没问重量，不要求玩家安慰或替他安排。四拍直线结束，不设选择，不依赖玩家记得任何搬运旧事。"
+        },
+        {
+          "npcId": "06dd4cb6-2d02-566e-9713-330964d77ee6",
+          "dimension": "同街重逢收束雷同：暂停手头事务，把今晚交给音乐",
+          "reason": "Emile说“今晚不改地图了”并收起笔记本，最后“今晚先听这个”；Odile同样以“今晚终于不接布草工作的电话了”开场，拒接后宣布“今天先把音乐排在前面”。职业与道具不同，但当前转变都是把未完事务搁下、转向音乐。Odile拒接熟人来电更直接触及她的人际依恋，宜保留。",
+          "brief": "保留地图道路画不满意的现有情节，但让重逢停在主动修改且尚未满意的状态。四拍依次为，他在法国人街600街区亮灯的人行道边认出玩家，笔记本仍摊在手里；招呼后说“那段路怎么画都别扭。今晚先不让它通了”；他擦去港口通向内陆的一段线，退开铅笔检查空出来的位置，全程不挡行人；最后干巴巴地说“港口还在。路暂时没有。总比画一条我不想要的强。”随后继续看图，不展示教学，不邀玩家接手，也不再以收本子听音乐结束。使用四拍无分支重逢；不把玩家曾经看过地图作为前提。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "nairobi",
+      "reviewResultSHA256": "a67f9e1cef8c93c6daf1524be37a7fad42ea574ea2a8e4d4779f0b8cc7244f1b",
+      "overview": "初遇已具有较多有效差异，不宜按职业或随身物件归并。仍有三组实际接触机制接近：先让路再解释、征询一句话的听感、澄清招呼并非对玩家而发。重逢中，市场两人的“克制闲逛以保留时间”几乎同构，Peter与Kiptoo也都以拒绝朋友追加安排收束。以下仅修这些局部；保留Achieng的广播剧与木鸟、Baraka Kimani的私下记账，以及其他已成立的温度和距离差异。所有人物身份、经历与固定地点不变，重逢均保持四拍且无分支。",
+      "adoptedFixes": [
+        {
+          "npcId": "60423b53-84b7-524c-8194-43809dd24d40",
+          "dimension": "初遇：让行后以随身物品引出自我说明",
+          "reason": "Brian以“你先过。我把这个收起来”开场，再说“第一，护好书页。第二，让开道路”；Peter也先问“你先过，还是我先穿”，随后列举包内物品。两者实际都是让行礼貌接物品清单，Peter穿外套确有空间协商需要，更适合保留。",
+          "brief": "保留Brian下班收地图本、迟迟未开始散步的剧情，但开场时本子已收好、道路一直畅通。他站在土路边，低声给自己下指令：“本子收好了。现在开始散步。”随后主动向附近玩家补一句：“我下班调度车，散步还得调度自己。”接触来自一次具体的自我催促和主动闲谈，不是让路或整理失误；仍可接玩家询问地图或简短告辞，保留展示地图、接受简短提醒及继续拖延的四种结局。"
+        },
+        {
+          "npcId": "e9bbd6f4-88d9-5a2a-b885-dedde97a7ef3",
+          "dimension": "初遇：向陌生人征询措辞听感",
+          "reason": "他问“‘补痕留着也好看’，听起来像建议，还是像我还不肯听人家的”，与Wanjiru Njoroge问栏目标题“像写规矩还是人的做事方法”同为一句话的听感测试，并都附带“不必参与或解释”的减压声明。栏目标题测试对Wanjiru更具人物专属性。",
+          "brief": "改为他在市场彩绘外墙旁等朋友，包内碟子仍妥善收着。他看着可见墙面，向附近玩家随口说：“墙面我喜欢看颜色，轮到旧碟子，我倒喜欢看用过的痕迹。”接着自行补充：“我朋友不这么想。他那只要修得像新的一样。”不征求玩家裁决，也不先认错；让其审美偏好自然引出朋友的碟子。原有追问、展示、被提醒后短暂辩解再接受要求、礼貌退出等四种结局可保留。"
+        },
+        {
+          "npcId": "0acea394-6ea5-5a36-8a1e-3764d54d98df",
+          "dimension": "初遇：误认交谈对象后的道歉澄清",
+          "reason": "Zawadi以“不好意思，我是在跟你身后的老同学招手”接触玩家，Kiptoo则以“刚才不是在问你”澄清语音消息。两段都靠玩家恰好进入另一场交流的指向范围，再由人物解释对象。Kiptoo的杯子问题更直接呈现其陌生住宅拘谨，宜保留。",
+          "brief": "取消朝玩家身后挥手及道歉。开场让老同学已站在外墙旁，问起排球后顺势提出一起逛；Zawadi语速很快地回：“排球周日再说，今天我另有安排。”同学暂时看向入口，她转向附近玩家，低声但不遮掩地说：“我只告诉他我会在这里。他就把时间也替我约好了。”接触来自她对眼前社交僵局的一句主动旁白，不要求玩家介入。保留玩家追问她是否说清另约他人、直接告辞及后续四种收束，仍展示她自己漏说安排的责任。"
+        },
+        {
+          "npcId": "e9bbd6f4-88d9-5a2a-b885-dedde97a7ef3",
+          "dimension": "重逢：压住闲逛欲望以兑现时间安排",
+          "reason": "Baraka说“今天不逛旧餐具了”“省得回去又晚了”，Wanjiru Kamau说“今天我就不再绕路闲逛了”“把晚上的时间留给自己”。两段都以看向市场、承认诱惑、决定不逛收束；Wanjiru的跳舞时间与自主边界更具体。",
+          "brief": "改为一次不带自我克制的休息，四拍无分支：①他在彩绘外墙旁用自己的杯子喝水，认出玩家；②招呼后说今天工作室的一批活已经做完，终于能慢慢喝这口水；③他转动杯子，外壁小缺口可见，但并不拿它示范修法；④轻松补一句“这个不用交给谁，我自己用着顺手就行”，随后继续短暂停留。不提客户细节，不要求玩家鉴赏或学习，也不依赖任何初遇结果。"
+        },
+        {
+          "npcId": "e65d6fd4-a606-5234-9577-afc62ba07bd1",
+          "dimension": "重逢：朋友擅自追加安排，人物明确拒绝",
+          "reason": "Kiptoo说朋友“先替我安排好了。我没答应”，Peter说同事要求“再绕一趟”，自己“已经回了，今天不行”。虽分别涉及足球和下班，两场实际互动均是读手机、重申拒绝、收机离开。Peter的疲惫与诚实限度更贴合原卡，应保留。",
+          "brief": "保留周日足球群聊，改为熟人圈带来的轻松期待。四拍无分支：①他在森林土路一侧看完消息，抬头认出玩家；②招呼后笑说周日踢球的人刚凑齐，群里已经开始争哪边会赢；③他发出一句简短的赛前打趣，收起手机，神态比看消息前活跃；④说“人还没到场，比分已经吵出来了。周日再看”，转身继续散步。无需玩家知道任何旧事，也不再以拒绝安排或自嘲失误作结。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    },
+    {
+      "cityId": "kingston",
+      "reviewResultSHA256": "131574f0db1cc4b647c3ab52c55609efaa66393a0174b8c05446d13753db1791",
+      "overview": "初见已大体分开：误招手、征求入镜同意、朗读后的澄清、有限的视角问题、共享倒影玩笑、确认耳机漏音、录音说明、排队自嘲与让座，并非同一种接触。吊坠掉落也仅有一例，且紧扣人物对廉价首饰的喜爱，值得保留。主要重复出现在重逢：衣物或纸张的小状况，以及“手又伸过去—停住—收起物品—笑着接受”的自我收束。建议只调整三人的重逢，保留其初见剧情及所有身份、地点绑定；其余安静、低能量或缩短停留的场景各有具体动机，不必一并改写。",
+      "adoptedFixes": [
+        {
+          "npcId": "4ad4f52c-08a1-56cd-a540-8ee3bef8a9fa",
+          "dimension": "重逢：再次以随身物件的小故障制造笑点",
+          "reason": "初见已经用“搭扣辞职了”的吊坠脱落展示幽默，重逢又以“帽檐慢慢又垂了下来，她干脆摘下帽子”完成物件不听使唤的笑话；与全城纸页受风等轻微状况放在一起，也会加重靠小麻烦开场的感觉。保留更贴合彩色玻璃工匠与廉价塑料首饰反差的初见。",
+          "brief": "重逢改为没有故障的闲适等候，固定四拍：①她站在德文大宅庭院路径旁，手持小本子，认出玩家；②招呼后说正在等姐姐，今天随手画了两种窗样，但不打算趁等人的工夫继续干活；③她合上本子，露出腕上鲜亮的廉价首饰，目光转向草坪后的白色老宅；④轻快地说“窗样回去再挑。现在先等我姐姐，今天是出来散步的”，随后道别。保留她对工艺认真、对私人趣味不端架子的差异，不设置求助或评价任务。"
+        },
+        {
+          "npcId": "a254f230-2371-5844-8580-ceedda52396e",
+          "dimension": "重逢：纸张小状况后收起物品的快速复位",
+          "reason": "“一阵风掀起纸页，她用手掌按住”到“等我进了屋再整理”，仍是轻微物件麻烦被迅速解决的结构，与帽檐失控的重逢同类；结尾收起物品又与数人的暂停手头事务重合，未能体现她眼下真正想做什么。",
+          "brief": "改为双手已经休息够、准备去打球的有精神状态，固定四拍：①她坐在海滨凉亭里，球拍袋稳放腿上，认出玩家时正舒展手指；②招呼并说“今天裁样片的活已经做完了，现在想去打球”；③她不忙着起身，先把羽毛球放回袋子侧袋，动作从容，没有掉落或卡住；④提起自己球技仍普通，却很想认真打一场，提袋向步道走去并道别。保留学徒工作和普通水平的羽毛球兴趣，不拿旧称赞追讨委托，也不假定玩家答应过任何事。"
+        },
+        {
+          "npcId": "2b938c2f-0e75-55fc-8adc-037d36a2374f",
+          "dimension": "重逢：伸手欲修改又克制收起的自我收束",
+          "reason": "“手指又摸向绳尾，随后停住”“收进口袋，轻轻笑了一声”，与伊冯娜“手指还搭在包口”后笑着合包的动作节奏接近，也与其他人把手头事务留待下次的收尾叠加。伊冯娜错过空厨房照片的取舍更直接命中其核心矛盾，宜保留；德韦恩可继续送编绳，而不必再次演示克制修改。",
+          "brief": "保留等合唱团朋友和交出编绳的当前安排，改为期待赠礼的四拍：①他在德文大宅庭院路径一侧等人，编好的绳子已经整齐绕好，认出玩家后主动招呼；②说“给团友的，今天带来了，就等他到”，语气明显有兴致；③他把编绳托在掌心看一眼，随后抬头留意路径上的来人，并未检查或返工；④笑说“东西准备好了，人还没到。我再等一会儿”，向玩家道别。让这次重逢呈现他乐于当面赠礼的一面，不追加私人追问，也不要求玩家记得任何新版初见事件。"
+        }
+      ],
+      "finalDisposition": "建议按人物定向修订，正文已完成第二轮 patch。普通动作可以再次出现，正式发布批准另行记录。"
+    }
+  ],
+  "costs": {
+    "basis": "Provider-reported cost where supplied, otherwise token usage at configured public price ceiling. Unknown attempts retain dispatch reservation. This is an estimate, not an invoice.",
+    "usdToCny": 7.2,
+    "deduplicatedAttempts": 1076,
+    "counts": {
+      "provider-receipt": 44,
+      "reserved-upper-bound": 52,
+      "usage-at-price-ceiling": 980
+    },
+    "costsUSD": {
+      "provider-receipt": 0.18731800000000004,
+      "reserved-upper-bound": 0.7920481800000002,
+      "usage-at-price-ceiling": 28.411123749999987
+    },
+    "accountedUpperUSD": 29.390489929999987,
+    "accountedUpperCNY": 211.61152749599992,
+    "unknownAttempts": [
+      {
+        "key": "first-v2-f376c5f6-0aaf-5803-899d-1633c05f2ea8",
+        "upperUSD": 0.010954900000000002,
+        "hasReceipt": false,
+        "status": null
+      },
+      {
+        "key": "first-v2-a5c9d27f-a739-5381-83c8-f371a1db0a94",
+        "upperUSD": 0.010154100000000001,
+        "hasReceipt": false,
+        "status": null
+      },
+      {
+        "key": "first-v2-3e3d4672-e8d8-5fbf-9ec4-eb6532897a8c",
+        "upperUSD": 0.010153,
+        "hasReceipt": false,
+        "status": null
+      },
+      {
+        "key": "first-v2-ea626c55-7a75-5989-9766-49cd16b5ab61",
+        "upperUSD": 0.01024518,
+        "hasReceipt": false,
+        "status": null
+      },
+      {
+        "key": "first-v2-71189b3e-0531-5544-8faa-73375e88d833",
+        "upperUSD": 0.010243200000000001,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-8b4c2357-5515-59d3-b094-430dd26f1d92",
+        "upperUSD": 0.010244960000000001,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-d804e5a5-4b00-5855-83a6-cab8ba00474f",
+        "upperUSD": 0.01067044,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-f52fa44b-9258-55b4-8c42-15957c9df121",
+        "upperUSD": 0.010672420000000002,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-c9e14798-7987-5676-87ae-07604f9d1b3a",
+        "upperUSD": 0.010670220000000001,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-3324d5f5-4950-5493-8e59-24cfe6db4585",
+        "upperUSD": 0.01066978,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-163306db-8bee-5588-a683-8c22fba02b7e",
+        "upperUSD": 0.01068474,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-9ea3720f-1e40-5287-a2ad-aaf2e5f7d4e2",
+        "upperUSD": 0.010678360000000001,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-f3e8d046-bf87-5601-906e-a5ba2cba4d7a",
+        "upperUSD": 0.01067968,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-64ace4d2-6cb3-5417-87a0-b1f0763db0ff",
+        "upperUSD": 0.01068474,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-2c943a88-0d88-5559-8e40-963d86cc20d6",
+        "upperUSD": 0.010633260000000002,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-320aba51-a4df-5a6d-a7dc-113d1907b05f",
+        "upperUSD": 0.010633260000000002,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-39fc99d6-ef69-561f-b87e-9db9d145f9c2",
+        "upperUSD": 0.01063216,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-e2e6c642-7c37-5660-aa53-076156d2d349",
+        "upperUSD": 0.0106326,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-e73883f3-942c-5795-9a66-f82f94ed9450",
+        "upperUSD": 0.01088714,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-fc45cdac-4426-55f0-ac18-8a89143f750a",
+        "upperUSD": 0.010880760000000001,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-120c3d34-5794-5147-9467-57e5ff27334d",
+        "upperUSD": 0.010846660000000001,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-6fffa4d5-ecf7-5720-8664-83bb4c100464",
+        "upperUSD": 0.010848420000000003,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-c0a4f340-3f1e-5e2e-a47c-d2671e155637",
+        "upperUSD": 0.01082994,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-f7a77475-487d-54fc-90d6-2d4a26f74bc4",
+        "upperUSD": 0.010830160000000002,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-123b35a5-95d5-5479-926e-8613f49435db",
+        "upperUSD": 0.01083038,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-01b287d1-3a1f-5702-9451-d261ee63078e",
+        "upperUSD": 0.010835440000000002,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-790b7c2c-a99f-54e1-97c8-0ddf14ddfeb2",
+        "upperUSD": 0.01087834,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-72a0f288-91c7-5822-93d8-c5fb30c3ed5d",
+        "upperUSD": 0.01087438,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-c552a0a9-594f-5caf-bbcb-c225f2e1d5f2",
+        "upperUSD": 0.01087064,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-81e37040-f17e-55b0-96ba-a91ef44ebacf",
+        "upperUSD": 0.01090628,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-9b04e2ac-9581-5850-ba69-70cc012a8cd7",
+        "upperUSD": 0.010726760000000002,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-299a4591-5136-5c01-9138-67d89ebcb631",
+        "upperUSD": 0.01072808,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-8c4a7db2-f922-52ff-b3b2-d0a0b6488ea8",
+        "upperUSD": 0.01075404,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-4c561e73-48b6-509b-824c-087b2bf21138",
+        "upperUSD": 0.010726320000000003,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-e8e1e743-2053-5815-864b-0e0dcb4f7fda",
+        "upperUSD": 0.01064294,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-882ca29c-2cc2-51bf-90e4-0abac02ec1c5",
+        "upperUSD": 0.01061214,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-43d7dbd2-acda-5695-889b-63952df65d33",
+        "upperUSD": 0.010613240000000001,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-ccc76ab6-3d40-5341-a62f-abf8e4267ba7",
+        "upperUSD": 0.010615000000000001,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-95acb769-3f5c-5fda-8055-f3fbc80f4c79",
+        "upperUSD": 0.010789900000000002,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-dfd4d4c8-955b-5ec7-aa4d-bf4d0fb4de8c",
+        "upperUSD": 0.0108108,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v2-b7ecfa32-fc2c-5494-9f89-12b5df1ea59d",
+        "upperUSD": 0.010790120000000002,
+        "hasReceipt": false,
+        "status": null
+      },
+      {
+        "key": "first-v2-4b62ba76-e0cb-52da-8fe8-056bd5fe08cc",
+        "upperUSD": 0.010789900000000002,
+        "hasReceipt": false,
+        "status": null
+      },
+      {
+        "key": "first-v2-89f40dc0-8c38-54fb-ad9d-6b2c6fbecee2",
+        "upperUSD": 0.0107624,
+        "hasReceipt": false,
+        "status": null
+      },
+      {
+        "key": "first-v2-70e296e4-8d85-5c7c-8f31-9c8b6d5763ab",
+        "upperUSD": 0.010769,
+        "hasReceipt": false,
+        "status": null
+      },
+      {
+        "key": "first-v3-98faa36c-eeab-526a-ba6f-9fd95f732c7d",
+        "upperUSD": 0.043617750000000004,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v3-3e3d4672-e8d8-5fbf-9ec4-eb6532897a8c",
+        "upperUSD": 0.0434401,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v3-f2b8b571-5e84-599e-ae46-da797e2ef417",
+        "upperUSD": 0.045427800000000004,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v3-a254f230-2371-5844-8580-ceedda52396e",
+        "upperUSD": 0.043679350000000006,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v4-98faa36c-eeab-526a-ba6f-9fd95f732c7d",
+        "upperUSD": 0.03561195,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v4-3e3d4672-e8d8-5fbf-9ec4-eb6532897a8c",
+        "upperUSD": 0.035292180000000006,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v4-f2b8b571-5e84-599e-ae46-da797e2ef417",
+        "upperUSD": 0.03887004000000001,
+        "hasReceipt": true,
+        "status": 403
+      },
+      {
+        "key": "first-v4-a254f230-2371-5844-8580-ceedda52396e",
+        "upperUSD": 0.035722830000000004,
+        "hasReceipt": true,
+        "status": 403
+      }
+    ]
+  },
+  "privateDataHandling": {
+    "requestEnvelopesAndRawProviderReceiptsExcludedFromGit": true,
+    "credentialsExcludedFromSource": true,
+    "temporaryOpenAIKeyFileRemoved": true
+  },
+  "remaining": [
+    "正式内容编辑批准与发布清单",
+    "所有地点的独处补齐及发布媒体验收状态汇总",
+    "旧联系人的设定版本迁移、可查看说明与新聊天版本时机",
+    "正式活动入口接入与内容在线验证"
+  ],
+  "verification": {
+    "contentCLI": "passed",
+    "manifestHash": "10d23a458e7e76fb3bc31f35c1348f9878a7238c941c89f5a4eb8eed2a75d905",
+    "contentUnitTests": {
+      "passed": 7,
+      "failed": 0
+    },
+    "authoringUnitTests": {
+      "passed": 9,
+      "failed": 0
+    },
+    "repairReplay": {
+      "people": 71,
+      "apiKeyAbsent": true,
+      "ledgerUnchanged": true
+    },
+    "releaseCheck": {
+      "exitCode": 1,
+      "message": "Activity world is still a draft",
+      "expected": true
+    },
+    "formatting": "passed",
+    "diffWhitespace": "passed",
+    "documentationLinks": "passed",
+    "credentialPatternFound": false
+  }
+}

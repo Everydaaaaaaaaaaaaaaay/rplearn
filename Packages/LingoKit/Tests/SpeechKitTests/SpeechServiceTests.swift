@@ -15,7 +15,7 @@ struct SpeechServiceTests {
         #expect(SpeechRequest(text: "ordinary").allowsSystemFallback)
     }
 
-    @Test("英国角色使用 M5/F5，用户和旁白共用 F5")
+    @Test("显式角色选角优先于国籍推断，旁白稳定使用 F5")
     func narratorAndBritishCasting() {
         let narrator = SpeechRequest(text: "A quiet morning.", purpose: .characterDialogue, voiceHint: StoryVoiceCasting.narrator)
         #expect(Supertonic3VoiceCatalog.profile(for: narrator).voiceID == "F5")
@@ -23,10 +23,13 @@ struct SpeechServiceTests {
             for purpose: SpeechPurpose in [.characterDialogue, .realtimeConversation] {
                 let request = SpeechRequest(text: "Hello.", purpose: purpose,
                     voiceHint: SpeechVoiceHint(stableID: "british", gender: gender, nationality: "British", supertonicVoice: .f2))
-                #expect(Supertonic3VoiceCatalog.profile(for: request).voiceID == (gender == "male" ? "M5" : "F5"))
+                #expect(Supertonic3VoiceCatalog.profile(for: request).voiceID == "F2")
+                let automatic = SpeechRequest(text: "Hello.", purpose: purpose,
+                    voiceHint: SpeechVoiceHint(stableID: "british", gender: gender, nationality: "British"))
+                #expect(Supertonic3VoiceCatalog.profile(for: automatic).voiceID == (gender == "male" ? "M5" : "F5"))
             }
         }
-        #expect(StoryVoiceCasting.voice(speaker: "Nora", proposed: .f2) == .f5)
+        #expect(StoryVoiceCasting.voice(speaker: "Nora", proposed: .f5) == .f2)
         #expect(StoryVoiceCasting.voice(speaker: "你", proposed: .m3) == .f5)
         #expect(Supertonic3VoiceCatalog.profile(for: SpeechRequest(text: "Hello")).voiceID == "F5")
         for voice in SupertonicVoice.allCases {

@@ -1,0 +1,918 @@
+{
+  "id": "departures_city_newyork_v2",
+  "version": 2,
+  "title": "等你吃饭的十分钟",
+  "start": "ML00_01",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "纽约 · 十二点四十分",
+    "让午饭继续",
+    "今天或下次"
+  ],
+  "shots": {
+    "lunch": {
+      "background": "dp_newyork_lunch",
+      "actors": []
+    },
+    "meet": {
+      "background": "dp_newyork_lunch",
+      "actors": [
+        {
+          "id": "Marcus",
+          "asset": "dp_marcus_listen",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "evening": {
+      "background": "dp_newyork_evening_phone",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "ML00_01",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "You lift the lid. The food has stopped steaming.",
+      "translation": "你揭开盖子，食物已经不冒热气了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML00_02"
+    },
+    {
+      "id": "ML00_02",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "Marcus calls. It is twelve forty.",
+      "translation": "Marcus 打来电话。十二点四十分了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML00_03"
+    },
+    {
+      "id": "ML00_03",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "I'm still at the shop. I'm sorry.",
+      "translation": "我还在店里。抱歉。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML00_04"
+    },
+    {
+      "id": "ML00_04",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "The stock delivery came while I was on my own.",
+      "translation": "我一个人看店时，补货送来了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML00_05"
+    },
+    {
+      "id": "ML00_05",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "Used records. Half the sleeves had no price.",
+      "translation": "一批二手唱片，一半封套上都没标价。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML00_06"
+    },
+    {
+      "id": "ML00_06",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "The other clerk gets here at one.",
+      "translation": "另一位店员一点才到。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML00_07"
+    },
+    {
+      "id": "ML00_07",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "I said ten minutes. I didn't actually know.",
+      "translation": "我说十分钟，其实当时根本没把握。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML00_08"
+    },
+    {
+      "id": "ML00_08",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "I can leave at one ten. Not before.",
+      "translation": "我一点十分才能走，没法更早。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML00_09"
+    },
+    {
+      "id": "ML00_09",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "Your afternoon appointment is at two.",
+      "translation": "你下午两点还有安排。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML00_10"
+    },
+    {
+      "id": "ML00_10",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "Please eat. Don't let it get worse on my account.",
+      "translation": "先吃吧，别因为我让午饭更难吃。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "ML00_choice"
+    },
+    {
+      "id": "ML00_choice",
+      "act": 0,
+      "location": "纽约 · 十二点四十分",
+      "shot": "lunch",
+      "speaker": "你的选择",
+      "text": "Do you still want to meet today?",
+      "translation": "你今天还想见面吗？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I'll eat. I can meet you at one twenty.",
+          "translation": "我先吃，一点二十还能见。",
+          "next": "ML10_01",
+          "flags": {
+            "ML00": true
+          },
+          "review": {
+            "context": "盖子底下的午饭",
+            "outcome": "你先吃饭，双方约定一点二十短见。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I need to go after lunch. Let's skip today.",
+          "translation": "吃完我就得走，今天算了吧。",
+          "next": "ML20_01",
+          "flags": {
+            "ML00": false
+          },
+          "review": {
+            "context": "盖子底下的午饭",
+            "outcome": "你吃完离开，今天不再见面。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ML10_01",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "I can be there by one twenty. Ten minutes from here.",
+      "translation": "我一点二十能到，从这儿走过去十分钟。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML10_02"
+    },
+    {
+      "id": "ML10_02",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "If I can't leave at one ten, I'll say so.",
+      "translation": "要是一点十分还走不了，我会告诉你。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML10_03"
+    },
+    {
+      "id": "ML10_03",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "You eat. At one ten, a new message arrives.",
+      "translation": "你开始吃饭。一点十分，新消息到了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML10_04"
+    },
+    {
+      "id": "ML10_04",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "Out the door. Keys in hand.",
+      "translation": "出门了，钥匙在手上。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML10_05"
+    },
+    {
+      "id": "ML10_05",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "He arrives at one twenty, carrying no lunch.",
+      "translation": "一点二十他到了，手上没有午饭。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML10_06"
+    },
+    {
+      "id": "ML10_06",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "meet",
+      "speaker": "Marcus",
+      "text": "I kept you waiting. How much time is left?",
+      "translation": "让你等了，你还剩多久？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "ML10_choice"
+    },
+    {
+      "id": "ML10_choice",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "meet",
+      "speaker": "你的选择",
+      "text": "What fits the time you have left?",
+      "translation": "剩下的时间，你想怎么过？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ten minutes. Let's walk to the corner.",
+          "translation": "十分钟，一起走到街角吧。",
+          "next": "ML11_01",
+          "flags": {
+            "ML10": true
+          },
+          "review": {
+            "context": "等待有一个边界",
+            "outcome": "Marcus 陪你走到街角，一点半分开。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "A few minutes here. I don't want to rush.",
+          "translation": "就在这儿坐几分钟，我不想赶。",
+          "next": "ML12_01",
+          "flags": {
+            "ML10": false
+          },
+          "review": {
+            "context": "等待有一个边界",
+            "outcome": "你们在桌边短坐，Marcus 自己另找午饭。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ML11_01",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "Marcus puts his phone in his pocket.",
+      "translation": "Marcus 把手机收进口袋。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML11_02"
+    },
+    {
+      "id": "ML11_02",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "meet",
+      "speaker": "Marcus",
+      "text": "Which way are you going? I'll walk with you.",
+      "translation": "你往哪边走？我陪你走一段。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML11_03"
+    },
+    {
+      "id": "ML11_03",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "You point towards your next stop. He follows your lead.",
+      "translation": "你指向接下来要去的方向，他跟着你走。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML11_04"
+    },
+    {
+      "id": "ML11_04",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "At the corner, a record shop has its door open.",
+      "translation": "到街角时，一家唱片店开着门。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML11_05"
+    },
+    {
+      "id": "ML11_05",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "meet",
+      "speaker": "Marcus",
+      "text": "They put the worst song on to make me leave.",
+      "translation": "他们放了首最难听的歌，肯定是赶我走。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML11_06"
+    },
+    {
+      "id": "ML11_06",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "He hums the next line before he can stop himself.",
+      "translation": "他没忍住，跟着哼出了下一句。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML11_07"
+    },
+    {
+      "id": "ML11_07",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "meet",
+      "speaker": "Marcus",
+      "text": "I know the words. That's worse. See you.",
+      "translation": "我连歌词都记得，这可更糟。回头见。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML11_08"
+    },
+    {
+      "id": "ML11_08",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "He stops at the corner. He doesn't add another block.",
+      "translation": "他走到街角就停下，没有再拉着你多走一个街区。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML11_09"
+    },
+    {
+      "id": "ML11_09",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "meet",
+      "speaker": "旁白",
+      "text": "At one thirty, he waves as you turn the corner.",
+      "translation": "一点半，你转过街角时，他挥挥手。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "ML11"
+    },
+    {
+      "id": "ML12_01",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "Here is good. I need to sit down anyway.",
+      "translation": "这儿就好，我正想坐下。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML12_02"
+    },
+    {
+      "id": "ML12_02",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "He sits opposite you, beside the nearly empty food box.",
+      "translation": "他坐在你对面，旁边的饭盒几乎空了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML12_03"
+    },
+    {
+      "id": "ML12_03",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "Was it worth the queue?",
+      "translation": "这顿饭值得排队吗？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML12_04"
+    },
+    {
+      "id": "ML12_04",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "You show him the last cold chip. He nods.",
+      "translation": "你给他看最后一根冷薯条，他点点头。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML12_05"
+    },
+    {
+      "id": "ML12_05",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "Important evidence. I'll come earlier next time.",
+      "translation": "重要证据。下次我早点来。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML12_06"
+    },
+    {
+      "id": "ML12_06",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "After a few minutes, you pack up and say goodbye.",
+      "translation": "坐了几分钟，你收好东西，和他告别。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML12_07"
+    },
+    {
+      "id": "ML12_07",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "Go on. I'll sort out my own lunch.",
+      "translation": "去吧，我自己找午饭吃。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "ML12"
+    },
+    {
+      "id": "ML20_01",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "Okay. I'll let you get on with your afternoon.",
+      "translation": "好，你照自己的安排过下午吧。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML20_02"
+    },
+    {
+      "id": "ML20_02",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "lunch",
+      "speaker": "Marcus",
+      "text": "And I should have called earlier.",
+      "translation": "我也应该早点打电话。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML20_03"
+    },
+    {
+      "id": "ML20_03",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "lunch",
+      "speaker": "旁白",
+      "text": "You finish eating before you put the box away.",
+      "translation": "你把饭吃完，才收起饭盒。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML20_04"
+    },
+    {
+      "id": "ML20_04",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "That evening, he sends one message.",
+      "translation": "当天晚上，他发来一条消息。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML20_05"
+    },
+    {
+      "id": "ML20_05",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "evening",
+      "speaker": "Marcus",
+      "text": "Would you like to try lunch next week?",
+      "translation": "下周要不要再约顿午饭？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "ML20_06"
+    },
+    {
+      "id": "ML20_06",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "evening",
+      "speaker": "Marcus",
+      "text": "I can check my shifts first.",
+      "translation": "我可以先查好班表。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "ML20_choice"
+    },
+    {
+      "id": "ML20_choice",
+      "act": 1,
+      "location": "让午饭继续",
+      "shot": "evening",
+      "speaker": "你的选择",
+      "text": "Would you like him to check next week?",
+      "translation": "要让他先查查下周的安排吗？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Check first, then send me two times.",
+          "translation": "先查好，再给我两个时间。",
+          "next": "ML21_01",
+          "flags": {
+            "ML20": true
+          },
+          "review": {
+            "context": "今天不见面",
+            "outcome": "Marcus 查班表后给出两个时间，尚未确认。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Not yet. I'll message when I want to plan.",
+          "translation": "先不约，我想安排时会联系你。",
+          "next": "ML22_01",
+          "flags": {
+            "ML20": false
+          },
+          "review": {
+            "context": "今天不见面",
+            "outcome": "Marcus 接受等你主动重新提出安排。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ML21_01",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "evening",
+      "speaker": "Marcus",
+      "text": "Will do. No more guesses about ten minutes.",
+      "translation": "好，不再乱猜什么十分钟。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML21_02"
+    },
+    {
+      "id": "ML21_02",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "Later, he offers Tuesday or Thursday at twelve.",
+      "translation": "后来，他提出周二或周四十二点。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML21_03"
+    },
+    {
+      "id": "ML21_03",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "evening",
+      "speaker": "Marcus",
+      "text": "Those are my days off. Either work for you?",
+      "translation": "那两天我休息。你哪天方便？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML21_04"
+    },
+    {
+      "id": "ML21_04",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "You read the two dates at the end of his message.",
+      "translation": "你又看了看他消息末尾的两个日期。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML21_05"
+    },
+    {
+      "id": "ML21_05",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "His message waits while you open your calendar.",
+      "translation": "你打开日历，那条消息先留着。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "ML21"
+    },
+    {
+      "id": "ML22_01",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "evening",
+      "speaker": "Marcus",
+      "text": "Okay. I'll leave the planning with you.",
+      "translation": "好，等你想安排时再说。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML22_02"
+    },
+    {
+      "id": "ML22_02",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "He sends no new dates.",
+      "translation": "他没有再发新的日期。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML22_03"
+    },
+    {
+      "id": "ML22_03",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "You put the phone down and return to your evening.",
+      "translation": "你放下手机，继续过自己的晚上。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML22_04"
+    },
+    {
+      "id": "ML22_04",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "The food box is washed and drying by the sink.",
+      "translation": "饭盒已经洗净，放在水槽边晾着。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "ML22_05"
+    },
+    {
+      "id": "ML22_05",
+      "act": 2,
+      "location": "今天或下次",
+      "shot": "evening",
+      "speaker": "旁白",
+      "text": "You leave the phone where it is.",
+      "translation": "你没再拿起手机。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "ML22"
+    }
+  ]
+}

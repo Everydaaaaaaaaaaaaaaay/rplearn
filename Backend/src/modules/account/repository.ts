@@ -183,6 +183,10 @@ export class AccountRepository {
           union all select 'chat_delivery',to_jsonb(o)-'user_id' from app.learning_chat_outbox o where user_id=${userId}
           union all select 'chat_turn',to_jsonb(t)-'user_id' from app.learning_chat_turns t where user_id=${userId}
           union all select 'chat_operation',to_jsonb(o)-'user_id' from app.learning_chat_operations o where user_id=${userId}`;
+        const sharedConversations = await sql<JsonRow[]>`
+          select 'session' as "recordType",to_jsonb(s)-'user_id' as payload from app.chat_sessions s where user_id=${userId}
+          union all select 'message',to_jsonb(m)-'user_id'-'protected_payload' from app.chat_messages m where user_id=${userId}
+          union all select 'generation',to_jsonb(g)-'user_id'-'snapshot'-'fence_token'-'lease_until' from app.chat_generations g where user_id=${userId}`;
         const identities = await sql<JsonRow[]>`
           select
             provider,
@@ -429,6 +433,7 @@ export class AccountRepository {
           },
           contentRecords,
           learningRecords,
+          sharedConversations,
           economy: {
             coinLedger,
             tickets,

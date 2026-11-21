@@ -26,14 +26,14 @@ private final class RealtimeConversationCoordinator {
     init(chat: ChatViewModel, deps: ChatDependencies) {
         let character = chat.character
         let conversation = RealtimeVoiceConversationClient(
-            replyStream: { [weak chat] text in
+            scopedReplyStream: { [weak chat] responseID, text in
                 guard let chat else { throw AppError.storage("实时语音会话已结束") }
-                return try await chat.realtimeReplyStream(userText: text)
+                return try await chat.realtimeReplyStream(userText: text, responseID: responseID)
             },
-            saveAssistant: { [weak chat] text, interrupted in
+            scopedSaveAssistant: { [weak chat] responseID, text, interrupted in
                 await chat?.saveRealtimeAssistant(
                     spokenText: text,
-                    interrupted: interrupted
+                    interrupted: interrupted, responseID: responseID
                 )
             }
         )
@@ -255,7 +255,7 @@ struct RealtimeConversationView: View {
         .dsQuickNotice(Binding(get: { coordinator.chat.quickNotice }, set: { coordinator.chat.quickNotice = $0 }))
         .onDisappear { Task { await coordinator.stop() } }
         .alert("语音用量", isPresented: Binding(get: { coordinator.accessError != nil }, set: { if !$0 { coordinator.accessError = nil } })) {
-            Button("查看用量与权益") { onRequestAccess(); endConversation() }
+            Button("查看会员订阅") { onRequestAccess(); endConversation() }
             Button("结束", role: .cancel) { endConversation() }
         } message: { Text(coordinator.accessError ?? "") }
     }
@@ -308,11 +308,7 @@ struct RealtimeConversationView: View {
                         .fill(connectionTint)
                         .frame(width: 6, height: 6)
                     Text(connectionLabel)
-                    if session.elapsedSeconds > 0 {
-                        Text("·")
-                        Text(durationText)
-                            .monospacedDigit()
-                    }
+                    RealtimeCallDuration(session: session)
                 }
                 .font(.caption)
                 .foregroundStyle(.white.opacity(0.62))
@@ -325,59 +321,8 @@ struct RealtimeConversationView: View {
 
     private var livePresence: some View {
         VStack(spacing: 26) {
-            ZStack {
-                ForEach(0..<3, id: \.self) { index in
-                    Circle()
-                        .stroke(
-                            phaseTint.opacity(0.3 - Double(index) * 0.07),
-                            lineWidth: 1.5
-                        )
-                        .frame(
-                            width: 188 + CGFloat(index * 34),
-                            height: 188 + CGFloat(index * 34)
-                        )
-                        .scaleEffect(
-                            reduceMotion
-                                ? 1
-                                : 1 + session.activityLevel * (0.025 + Double(index) * 0.012)
-                        )
-                        .opacity(session.isMuted ? 0.25 : 1)
-                }
-
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: [
-                                .white.opacity(0.18),
-                                phaseTint.opacity(0.42),
-                                phaseTint.opacity(0.1),
-                            ],
-                            center: .topLeading,
-                            startRadius: 4,
-                            endRadius: 112
-                        )
-                    )
-                    .frame(width: 168, height: 168)
-                    .overlay {
-                        Circle().stroke(.white.opacity(0.2), lineWidth: 1)
-                    }
-                    .shadow(color: phaseTint.opacity(0.42), radius: 34)
-                    .scaleEffect(reduceMotion ? 1 : 1 + session.activityLevel * 0.055)
-
-                AvatarBadge(
-                    name: character.card.name, tint: .white, size: 104,
-                    imageName: character.card.avatarAssetName,
-                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                    usesPendingPlaceholder: true
-                )
-                    .shadow(color: .black.opacity(0.2), radius: 16, y: 8)
-            }
-            .animation(
-                reduceMotion ? nil : .easeOut(duration: 0.09),
-                value: session.activityLevel
-            )
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel("\(character.card.name)，\(statusTitle)")
+            RealtimeActivityAvatar(session: session, character: character,
+                phaseTint: phaseTint, statusTitle: statusTitle)
 
             VStack(spacing: 7) {
                 Text(statusTitle)
@@ -634,11 +579,7 @@ struct RealtimeConversationView: View {
         }
     }
 
-    private var durationText: String {
-        let minutes = session.elapsedSeconds / 60
-        let seconds = session.elapsedSeconds % 60
-        return String(format: "%02d:%02d", minutes, seconds)
-    }
+
 
     private func endConversation() {
         Haptics.impact(.medium)
@@ -664,6 +605,83 @@ struct RealtimeConversationView: View {
             }
         @unknown default:
             break
+        }
+    }
+}
+
+/// Only this subtree observes the 80 ms voice activity signal.
+private struct RealtimeActivityAvatar: View {
+    let session: RealtimeVoiceSession
+    let character: CharacterDTO
+    let phaseTint: Color
+    let statusTitle: String
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
+        ZStack {
+            ForEach(0..<3, id: \.self) { index in
+                Circle()
+                    .stroke(
+                        phaseTint.opacity(0.3 - Double(index) * 0.07),
+                        lineWidth: 1.5
+                    )
+                    .frame(
+                        width: 188 + CGFloat(index * 34),
+                        height: 188 + CGFloat(index * 34)
+                    )
+                    .scaleEffect(
+                        reduceMotion
+                            ? 1
+                            : 1 + session.activityLevel * (0.025 + Double(index) * 0.012)
+                    )
+                    .opacity(session.isMuted ? 0.25 : 1)
+            }
+
+            Circle()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            .white.opacity(0.18),
+                            phaseTint.opacity(0.42),
+                            phaseTint.opacity(0.1),
+                        ],
+                        center: .topLeading,
+                        startRadius: 4,
+                        endRadius: 112
+                    )
+                )
+                .frame(width: 168, height: 168)
+                .overlay {
+                    Circle().stroke(.white.opacity(0.2), lineWidth: 1)
+                }
+                .shadow(color: phaseTint.opacity(0.42), radius: 34)
+                .scaleEffect(reduceMotion ? 1 : 1 + session.activityLevel * 0.055)
+
+            AvatarBadge(
+                name: character.card.name, tint: .white, size: 104,
+                imageName: character.card.avatarAssetName,
+                remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                usesPendingPlaceholder: true
+            )
+                .shadow(color: .black.opacity(0.2), radius: 16, y: 8)
+        }
+        .animation(
+            reduceMotion ? nil : .easeOut(duration: 0.09),
+            value: session.activityLevel
+        )
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(character.card.name)，\(statusTitle)")
+    }
+}
+
+private struct RealtimeCallDuration: View {
+    let session: RealtimeVoiceSession
+
+    var body: some View {
+        if session.elapsedSeconds > 0 {
+            Text("·")
+            Text(String(format: "%02d:%02d", session.elapsedSeconds / 60, session.elapsedSeconds % 60))
+                .monospacedDigit()
         }
     }
 }

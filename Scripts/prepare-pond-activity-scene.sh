@@ -4,7 +4,7 @@
 set -euo pipefail
 pond_source="${1:?Pass Mixkit 1202 source video}"
 pond_foreground="${2:?Pass the immutable foreground master}"
-pond_output="App/Resources/ActivityScene"
+pond_output="build/legacy-activity-scenes"
 mkdir -p "$pond_output"
 ffmpeg -v error -y -i "$pond_foreground" -vf 'crop=852:999:0:848' \
   -q:v 2 -frames:v 1 "$pond_output/activity-pond-table.jpg"

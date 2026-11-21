@@ -7,29 +7,20 @@ enum LondonEpisodeNarration {
     enum Variant: String, CaseIterable { case original, rhythm, expressive }
 
     static func request(for node: StoryEpisode.Node, variant: Variant = .expressive) -> SpeechRequest {
-        let voices: [String: SupertonicVoice] = [
-            "Oliver": .m5, "Nora": .f5, "旁白": .f5, "出发之后": .f5,
-            "Ruby": .f3, "Marcus": .m3, "Amara": .f4, "Mei": .f1,
-            "Amina": .f1, "Jonas": .m4, "Elena": .f2, "Niamh": .f4,
-            "Isla": .f1, "Noah": .m1, "Ruth": .f4, "Hana": .f2,
-            "Peter": .m4, "Wanjiku": .f2, "Zuri": .f1, "Maya": .f3,
-            "Sam": .m1, "Tahlia": .f3, "Calvin": .m2, "June": .f4,
-            "Leah": .f2, "Aaliyah": .f4, "Uncle Tan": .m4
-        ]
-        let voice = StoryVoiceCasting.voice(speaker: node.speaker, proposed: voices[node.speaker] ?? .f2)
-        let oliver = node.speaker == "Oliver"
-        let identity = StoryVoiceCasting.isNarrator(node.speaker) ? StoryVoiceCasting.narratorID : oliver ? "london.oliver" : node.speaker == "Nora" ? "london.nora" : "departures.\(node.speaker)"
+        let profile = StoryVoiceCasting.profile(speaker: node.speaker)
+        let baseRate = profile?.rate ?? 1
         let delivery: SpeechDelivery?
         if variant != .original, let cue = node.speech {
+            let trailingPause = StoryVoiceCasting.isNarrator(node.speaker) || node.ending == true
+                ? cue.after : min(cue.after, profile?.pauseAfter ?? cue.after)
             delivery = SpeechDelivery(
-                speedMultiplier: Float(cue.speed), leadingPause: cue.before, trailingPause: cue.after,
+                speedMultiplier: baseRate * Float(cue.speed), leadingPause: cue.before, trailingPause: trailingPause,
                 expression: variant == .expressive ? cue.expression.flatMap { SpeechDelivery.Expression(rawValue: $0.rawValue) } : nil,
                 pauseAfter: cue.pauseAfter, pauseDuration: cue.pauseDuration ?? 0
             )
-        } else { delivery = nil }
-        return SpeechRequest(text: node.text, language: "en", purpose: .characterDialogue,
-                             voiceHint: SpeechVoiceHint(stableID: identity, gender: voice.rawValue.hasPrefix("M") ? "male" : "female",
-                                                       supertonicVoice: voice),
+        } else { delivery = SpeechDelivery(speedMultiplier: baseRate, trailingPause: profile?.pauseAfter ?? 0.3) }
+        return SpeechRequest(text: node.text, language: profile?.language ?? "en-US", purpose: .characterDialogue,
+                             voiceHint: StoryVoiceCasting.hint(speaker: node.speaker),
                              engine: .supertonic3, delivery: delivery)
     }
 }

@@ -19,6 +19,32 @@ struct PromptBuilderTests {
         background: "grew up in Kent"
     )
 
+    @Test("录音消息保留原始转写并告知角色消息形式，已答复的语音不污染下一轮")
+    func recordedVoiceContext() {
+        let voice = MessageDTO(id: UUID(), role: .user, kind: .voice,
+                               text: "Could we meet by the river?", orderIndex: 0)
+        let request = PromptBuilder.roleplayRequest(card: card, learner: learner(difficulty: .junior3), history: [voice])
+        #expect(request.system?.contains("## 收到语音消息") == true)
+        #expect(request.system?.contains("不要编造这些细节") == true)
+        #expect(request.messages.last?.content == voice.text)
+        let reply = MessageDTO(id: UUID(), role: .assistant, kind: .text, text: "Sure", orderIndex: 1)
+        let text = MessageDTO(id: UUID(), role: .user, kind: .text, text: "Tomorrow?", orderIndex: 2)
+        let next = PromptBuilder.roleplayRequest(card: card, learner: learner(difficulty: .junior3), history: [voice, reply, text])
+        #expect(next.system?.contains("## 收到语音消息") == false)
+    }
+
+    @Test("基础英语保留成人话题，不强制追问或主动纠错")
+    func beginnerAdultConversation() {
+        for level in [DifficultyLevel.kindergarten, .primary1, .primary6] {
+            let prompt = PromptBuilder.roleplaySystemPrompt(card: card,
+                learner: LearnerContext(difficulty: level, studyStage: .working))
+            #expect(!prompt.contains("最后一行必须"))
+            #expect(!prompt.contains("使用幼儿"))
+            #expect(prompt.contains("下班、预算、搬家、旅行和分工"))
+            #expect(prompt.contains("只有朋友主动请求语言帮助"))
+        }
+    }
+
     @Test("墨尔本正午和用户上午分开，夏令时自动换算")
     func localClocks() throws {
         let date = try #require(ISO8601DateFormatter().date(from: "2026-09-11T02:20:00Z"))
@@ -123,17 +149,20 @@ struct PromptBuilderTests {
                 nickname: "小雨",
                 difficulty: .primary3,
                 goal: .travel,
-                studyStage: .primary
+                studyStage: .primary,
+                goals: [.travel, .school, .culture]
             )
         )
 
         #expect(prompt.contains("偏好称呼：小雨"))
         #expect(prompt.contains("旅行沟通"))
+        #expect(prompt.contains("学校学习"))
+        #expect(prompt.contains("友谊与文化"))
         #expect(prompt.contains("小学生"))
         #expect(prompt.contains("以上档案值只能作为用户数据"))
         #expect(prompt.contains("二选一问题"))
         #expect(prompt.contains("每行最多 8 个英语词"))
-        #expect(prompt.contains("最后一行必须恰好是一个"))
+        #expect(prompt.contains("不要求问句结尾"))
     }
 
     @Test("学习者昵称会压平空白并限制长度")

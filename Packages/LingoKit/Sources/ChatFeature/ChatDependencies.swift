@@ -27,22 +27,33 @@ public final class ChatTutorialSession {
 public struct ChatTutorialConfiguration: Sendable {
     public let session: ChatTutorialSession
     public let focus: String?
+    public let preparedTranslations: [String: String]
     public let onEvent: @MainActor @Sendable (String) -> Void
-    public init(session: ChatTutorialSession, focus: String? = nil,
+    public init(session: ChatTutorialSession, focus: String? = nil, preparedTranslations: [String: String] = [:],
                 onEvent: @escaping @MainActor @Sendable (String) -> Void) {
-        self.session = session; self.focus = focus; self.onEvent = onEvent
+        self.session = session
+        self.focus = focus
+        self.preparedTranslations = preparedTranslations
+        self.onEvent = onEvent
     }
 }
 
 /// ChatFeature 所需依赖，由组合根注入。
 public struct ChatDependencies: Sendable {
+    public var refreshAppointments: (@MainActor @Sendable (UUID, UUID, Bool) async throws -> [BackendAppointment])? = nil
+    public var appointmentContext: (@Sendable (UUID) async -> String?)? = nil
+    public var onOpenAppointment: (@MainActor @Sendable (UUID?) -> Void)? = nil
     #if DEBUG
     /// Set only by the app's isolated in-memory marketing workspace.
     public var marketingMotionCapture = false
+    public var showsTimelineEventPreview = false
     public var debugFillLearning: (@MainActor @Sendable (UUID) async throws -> Void)? = nil
     #endif
-    public var learningPage: (@MainActor @Sendable (CharacterDTO, Bool) -> AnyView)? = nil
+    public var learningPage: (@MainActor @Sendable (CharacterDTO, Bool, @escaping @MainActor @Sendable () -> Void) -> AnyView)? = nil
+    public var sharedChat: (any SharedChatGateway)? = nil
     public var learningChat: (any LearningChatTracking)? = nil
+    public var storyProgress: StoryProgressStore? = nil
+    public var replyTimeout: Duration = .seconds(120)
     public let tutorial: ChatTutorialConfiguration?
     public let accessClient: BackendClient?
     public let onShowAccess: @MainActor @Sendable () -> Void
@@ -52,6 +63,7 @@ public struct ChatDependencies: Sendable {
     public let llm: any LLMClient
     public let dictionary: DictDatabase
     public let grammarPoints: GrammarPointStore
+    public var sharedGrammarAnalysis: (@Sendable (String, String) async throws -> AIGrammarAnalysis)?
     public let speech: any SpeechService
     public let translator: TranslationService
 

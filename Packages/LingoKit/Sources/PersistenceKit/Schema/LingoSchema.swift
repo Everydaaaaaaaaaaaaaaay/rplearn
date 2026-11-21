@@ -1,9 +1,16 @@
 import Foundation
 import SwiftData
 
+extension LingoSchema.MessageEntity {
+    var replyToMessageIDs: [UUID]? {
+        guard let json = replyToMessageIDsJSON else { return nil }
+        return try? JSONDecoder().decode([UUID].self, from: Data(json.utf8))
+    }
+}
+
 /// 当前 SwiftData Schema。所有写操作收敛到 @ModelActor 仓库，UI 用 @Query 只读。
 public enum LingoSchema: VersionedSchema {
-    public static var versionIdentifier: Schema.Version { Schema.Version(1, 3, 0) }
+    public static var versionIdentifier: Schema.Version { Schema.Version(1, 4, 0) }
 
     public static var models: [any PersistentModel.Type] {
         [
@@ -40,6 +47,7 @@ extension LingoSchema {
         public var difficultyLevelRaw: String
         public var hasCompletedOnboarding: Bool
         public var learningGoalRaw: String
+        public var learningGoalsRaw: [String]? = nil
         public var studyStageRaw: String?
         public var proficiencySourceRaw: String
         public var placementScore: Int?
@@ -242,6 +250,9 @@ extension LingoSchema {
         /// 口语点评（语音消息）。
         public var speechReviewJSON: String?
         public var learningOriginJSON: String?
+        public var userTimeZone: String?
+        public var timelineEventsJSON: String?
+        public var replyToMessageIDsJSON: String?
         /// 整句翻译缓存。
         public var translationZh: String?
         /// 流式中断标记（已收增量落库，气泡提供重试）。

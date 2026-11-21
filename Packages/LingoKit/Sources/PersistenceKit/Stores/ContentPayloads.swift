@@ -24,6 +24,9 @@ struct ContentCharacterPayload: Codable {
         var readingVoice: CharacterReadingVoice? = nil
         var personaVoice: PersonaVoiceProfile? = nil
         var activityProfile: NPCActivityProfile? = nil
+        var settingVersion: Int? = nil
+        var settingReleaseID: String? = nil
+        var settingHistory: [CharacterSettingRevision]? = nil
 
         init(
             age: Int,
@@ -100,6 +103,12 @@ struct ContentConversationPayload: Codable {
 }
 
 struct ContentMessagePayload: Codable {
+    var sharedPredecessorId: UUID? = nil
+    var sharedVoiceLeaseId: UUID? = nil
+    var voiceReceiptVersion: Int? = nil
+    var contextMemoryIds: [UUID]? = nil
+    var userTimeZone: String? = nil
+    var deliveryOrigin: String? = nil
     var learningOrigin: LearningChatOrigin? = nil
     var audioAssetId: UUID? = nil
     let audioDuration: Double?
@@ -115,6 +124,8 @@ struct ContentMessagePayload: Codable {
     let text: String
     let tokenEstimate: Int
     let translationZh: String?
+    var timelineEvents: [ChatMessageTimelineEvent]? = nil
+    var replyToMessageIds: [UUID]? = nil
 }
 
 struct ContentFavoritePayload: Codable {
@@ -145,7 +156,7 @@ struct ContentStoryProgressPayload: Codable {
 
 
 
-struct LocalContentRecord: Codable, Sendable {
+public struct LocalContentRecord: Codable, Sendable {
     let resourceType: ContentResourceKind
     let resourceID: String
     let parentID: String?

@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-30",
+  "change": "移除文字发光、重影和多层阴影，恢复原生清晰文字",
+  "scope": [
+    "水平选择与测评页标题、介绍文字去除阴影，删除整句选择后会先说明切换的影响提示",
+    "照片上的水平选择标题、分组名和介绍使用纸面底卡；顶部标题固定浅底避免深色模式对比不足",
+    "共用场景文字组件改用原生Text，移除重复绘制的泛光、亮边、深色边及父级偏移阴影",
+    "首页Metal文字层只绘制原始字面，不生成或合成文字模糊纹理",
+    "活动页、首页旧状态栏和记忆档案标题去除文字阴影，以底色提供对比"
+  ],
+  "verification": {
+    "hostedTests": {
+      "suite": "LingoTripTests/ActivitySceneGeometryTests",
+      "passed": 5,
+      "failed": 0,
+      "coverage": "入口热区、场景文字像素中心、投影和可用大小",
+      "resultBundle": "build/DerivedData/VerificationResults/20261030T145746Z-22205.xcresult"
+    },
+    "finalBuildAndInstall": "Scripts/preview.sh build learning: passed",
+    "architecture": "Scripts/check-architecture.sh --ios: passed",
+    "diffCheck": "git diff --check: passed",
+    "visualReview": {
+      "device": "iPhone 18 Pro / iOS 27.0",
+      "method": "Computer Use返回空白捕获；使用原生模拟器截图复核，未声称完成Computer Use交互验收",
+      "light": "build/plain-text-accepted/level-selection.png",
+      "dark": "build/plain-text-accepted/level-selection-dark.png",
+      "introduction": "build/plain-text-accepted/introduction-dark.png",
+      "sharedText": "build/plain-text-accepted/me-dark.png",
+      "metalText": "build/plain-text-accepted/home-dark.png"
+    },
+    "leftInSimulator": "英语水平选择页 / 浅色模式"
+  },
+  "backendChanged": false,
+  "photographicAssetsChanged": false
+}

@@ -9,27 +9,52 @@ import SpeechKit
 import SwiftUI
 import Translation
 
-extension ChatView {
-    /// 输入栏。`bottomInset` 是屏幕底部安全区（home indicator）——iOS 26 的 `safeAreaInset`
-    /// 会把安全区算进输入栏自身，iOS 27 不会；为了让输入栏在所有系统上都贴住屏幕底边，
-    /// 这里由输入栏自己带上这段高度（材质一起铺下去，内容仍留在 indicator 之上）。
-    func inputBar(bottomInset: CGFloat) -> some View {
+/// Draft and translation edits are observed within the composer, outside the transcript.
+struct ChatComposerView: View {
+    @Bindable var viewModel: ChatViewModel
+    @Bindable var composerTranslation: ComposerTranslationModel
+    let deps: ChatDependencies
+    let bottomInset: CGFloat
+    let autoReadQueue: ChatAutoReadQueue
+    let recorder: VoiceRecorder
+    let chineseRecorder: VoiceRecorder
+    let voicePlayer: VoiceMessagePlayer
+    let composerAppleTranslator: AppleTranslator
+    @FocusState.Binding var composerFocus: ChatView.ComposerFocus?
+    @Binding var showsChatFunctions: Bool
+    @Binding var inputDockHeight: CGFloat
+    @Binding var isVoiceMode: Bool
+    @Binding var showsRealtimeConversation: Bool
+    @Binding var learningSelected: Bool
+    let preferredKeyboardHeight: CGFloat
+    let inputDockAnimation: Animation
+    let dismissChatInput: () -> Void
+    @State private var chineseRecordingTask: Task<Void, Never>?
+    @State private var showSimulatorInjection = false
+    @State private var simulatorInjectionText = ""
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    private var isChineseInputFocused: Bool {
+        get { composerFocus == .chinese }
+        nonmutating set {
+            if newValue { composerFocus = .chinese }
+            else if composerFocus == .chinese { composerFocus = nil }
+        }
+    }
+
+    var body: some View {
         VStack(spacing: 0) {
-            translatorControls
-                .frame(height: composerTranslation.isOpen ? nil : 0)
-                .opacity(composerTranslation.isOpen ? 1 : 0)
-                .clipped()
-                .allowsHitTesting(composerTranslation.isOpen)
-                .disabled(!composerTranslation.isOpen)
-                .accessibilityHidden(!composerTranslation.isOpen)
+            if composerTranslation.isOpen {
+                translatorControls.transition(.opacity)
+            }
             HStack(spacing: 8) {
                 Button {
                     if composerTranslation.isOpen {
                         toggleChineseRecording()
                         return
                     }
+                    dismissChatInput()
                     withAnimation(.snappy) {
-                        isTextInputFocused = false
                         isVoiceMode.toggle()
                         recorder.resetFailure()
                     }
@@ -75,7 +100,7 @@ extension ChatView {
                         axis: .vertical
                     )
                         .lineLimit(1...4)
-                        .focused($isTextInputFocused)
+                        .focused($composerFocus, equals: .english)
                         .accessibilityIdentifier("chat.composer")
                         // 保留学习者实际输入，避免系统把语法/拼写错误改成另一个词后再送去点评。
                         .autocorrectionDisabled(true)
@@ -95,44 +120,25 @@ extension ChatView {
                             Task { await sendComposerDraft() }
                         }
 
-                    if isTextInputFocused && !composerTranslation.isOpen {
-                        Button {
-                            isTextInputFocused = false
-                        } label: {
-                            Image(systemName: "keyboard.chevron.compact.down")
-                                .font(.system(size: 20))
-                                .frame(width: 32, height: 32)
-                                .contentShape(Rectangle())
-                        }
-                        .accessibilityLabel("收起键盘")
-                        .accessibilityIdentifier("chat.dismissKeyboard")
-                    }
-
                     translatorToggle
-
-                    Button {
-                        Task { await sendComposerDraft() }
-                    } label: {
-                        Image(systemName: "arrow.up")
-                            .font(.system(size: 19, weight: .semibold))
-                            .foregroundStyle(.white)
-                            .frame(width: 30, height: 30)
-                            .background(composerTint, in: Circle())
-                    }
-                    .disabled(
-                        viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                    )
-                    .accessibilityLabel("发送消息")
-                    .accessibilityHint("发送输入框中的英文消息；对方正在输入时也可以继续发送")
                 }
+                composerAction
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
+            ZStack(alignment: .top) {
+                if showsChatFunctions { chatFunctionPanel.transition(.opacity) }
+            }
+            .frame(height: max(0, inputDockHeight - bottomInset), alignment: .top)
+            .clipped()
         }
         .padding(.bottom, max(0, bottomInset))
         .tint(composerTint)
         .background(ComposerPanelSurface(expanded: composerTranslation.isOpen))
         .animation(reduceMotion ? .linear(duration: 0.15) : .spring(response: 0.42, dampingFraction: 0.94), value: composerTranslation.isOpen)
+        .onChange(of: composerFocus) { _, focus in
+            if focus != nil { showsChatFunctions = false }
+        }
         .onChange(of: composerTranslation.source) { old, new in
             if composerTranslation.isOpen { viewModel.composerSourceEdited(from: old, to: new) }
             composerTranslation.cancel()
@@ -143,6 +149,7 @@ extension ChatView {
             composerAppleTranslator.cancelAll()
             if composerTranslation.mode == .instant { translateComposer() }
         }
+        .onDisappear { chineseRecordingTask?.cancel() }
         .onChange(of: chineseRecorder.pendingAutoCapture?.transcript) { _, transcript in
             guard let transcript, composerTranslation.isOpen else { return }
             composerTranslation.source = transcript
@@ -150,24 +157,83 @@ extension ChatView {
         }
     }
 
+    private var composerAction: some View {
+        let sends = composerFocus != nil
+        return Button {
+            if sends {
+                Task { await sendComposerDraft() }
+            } else if showsChatFunctions {
+                // Keep the same reserved height while the system keyboard takes over.
+                showsChatFunctions = false
+                isVoiceMode = false
+                composerFocus = .english
+            } else {
+                withAnimation(inputDockAnimation) {
+                    showsChatFunctions = true
+                    inputDockHeight = preferredKeyboardHeight
+                }
+            }
+        } label: {
+            Image(systemName: sends ? "arrow.up" : "line.3.horizontal")
+                .font(.system(size: sends ? 19 : 22, weight: sends ? .semibold : .medium))
+                .foregroundStyle(sends ? Color.white : Color.primary)
+                .frame(width: 32, height: 32)
+                .background(sends ? composerTint : Color.clear, in: Circle())
+                .contentTransition(.identity)
+                .frame(width: 44, height: 44)
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .disabled(sends && viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        .accessibilityLabel(sends ? "发送消息" : (showsChatFunctions ? "切换到键盘" : "聊天功能"))
+        .accessibilityIdentifier(sends ? "chat.send" : "chat.functions")
+        .accessibilityValue(sends ? "" : (showsChatFunctions ? "展开" : "收起"))
+    }
+
+    private var chatFunctionPanel: some View {
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+            Button {
+                dismissChatInput()
+                voicePlayer.stop()
+                showsRealtimeConversation = true
+            } label: { chatFunctionLabel("打电话", symbol: "phone") }
+            .accessibilityIdentifier("chat.call")
+
+            if deps.learningPage != nil {
+                Button {
+                    dismissChatInput()
+                    learningSelected = true
+                } label: { chatFunctionLabel("学习模式", symbol: "book.closed") }
+                .accessibilityIdentifier("chat.learningMode")
+            }
+
+            Button {
+                dismissChatInput()
+                toggleComposerTranslator()
+            } label: { chatFunctionLabel("翻译器", symbol: "character.bubble") }
+            .accessibilityIdentifier("chat.translationMode")
+        }
+        .buttonStyle(.plain)
+        .padding(.horizontal, 16).padding(.top, 12).padding(.bottom, 16)
+        .accessibilityIdentifier("chat.functions.panel")
+    }
+
+    private func chatFunctionLabel(_ title: String, symbol: String) -> some View {
+        VStack(spacing: 7) {
+            Image(systemName: symbol).font(.system(size: 23))
+                .frame(width: 48, height: 48)
+                .background(composerTint.opacity(0.1), in: RoundedRectangle(cornerRadius: 14))
+            Text(title).font(.caption).foregroundStyle(.primary)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity, minHeight: 76)
+        .contentShape(Rectangle())
+    }
+
     private var composerTint: Color { composerTranslation.isOpen ? Color(red: 0.49, green: 0.35, blue: 0.91) : .dsSky }
 
     private var translatorToggle: some View {
-        Button {
-            isChineseInputFocused = false
-            composerTranslation.cancel()
-            composerAppleTranslator.cancelAll()
-            chineseRecordingTask?.cancel()
-            Task {
-                await chineseRecorder.cancelRecording()
-                await recorder.cancelRecording()
-            }
-            withAnimation(reduceMotion ? nil : .spring(response: 0.48, dampingFraction: 0.94)) {
-                composerTranslation.isOpen.toggle()
-                isVoiceMode = false
-            }
-            if composerTranslation.isOpen && composerTranslation.mode == .instant { translateComposer() }
-        } label: {
+        Button(action: toggleComposerTranslator) {
             ZStack {
                 Circle().fill(composerTint.opacity(0.12))
                 BrandMascotView(pose: composerTranslation.isOpen ? .achievement : .greeting, size: 49)
@@ -183,6 +249,28 @@ extension ChatView {
         .buttonStyle(.plain)
         .accessibilityLabel(composerTranslation.isOpen ? "收起翻译器" : "打开翻译器")
         .accessibilityIdentifier("chat.translator.toggle")
+    }
+
+    private func toggleComposerTranslator() {
+        // Transfer focus before hiding the source field. Closing the translator
+        // must not resign the keyboard that the learner is already using.
+        if composerTranslation.isOpen {
+            if composerFocus != nil { composerFocus = .english }
+        } else if composerFocus == .chinese {
+            composerFocus = nil
+        }
+        composerTranslation.cancel()
+        composerAppleTranslator.cancelAll()
+        chineseRecordingTask?.cancel()
+        Task {
+            await chineseRecorder.cancelRecording()
+            await recorder.cancelRecording()
+        }
+        withAnimation(reduceMotion ? nil : .spring(response: 0.48, dampingFraction: 0.94)) {
+            composerTranslation.isOpen.toggle()
+            isVoiceMode = false
+        }
+        if composerTranslation.isOpen && composerTranslation.mode == .instant { translateComposer() }
     }
 
     private var translatorControls: some View {
@@ -207,7 +295,7 @@ extension ChatView {
                 TextField(isChineseRecording ? "正在听，请说中文…" : "输入中文，或者说中文…",
                           text: $composerTranslation.source, axis: .vertical)
                     .font(.body).foregroundStyle(Color.primary)
-                    .focused($isChineseInputFocused)
+                    .focused($composerFocus, equals: .chinese)
                     .submitLabel(.done)
                     .onSubmit { isChineseInputFocused = false }
                     .lineLimit(1...2)

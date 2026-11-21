@@ -5,6 +5,12 @@ extension ContentSyncStore {
 // MARK: - Remote apply
 
     func apply(_ record: RemoteContentRecord) throws {
+        // A direct conversation snapshot can arrive ahead of the global change feed.
+        if let current = try metadata(resourceType: record.resourceType, resourceID: record.resourceID),
+            current.version > record.version
+        {
+            return
+        }
         if record.deletedAt != nil {
             try deleteLocal(record)
             try upsertMetadata(
@@ -41,7 +47,8 @@ extension ContentSyncStore {
             .flatMap { CharacterCard.decode(fromJSON: $0.cardJSON)?.readingVoice }
         let existingActivityProfile = try character(id: id)
             .flatMap { CharacterCard.decode(fromJSON: $0.cardJSON)?.activityProfile }
-        let card = CharacterCard(
+        let existingCard = try character(id: id).flatMap { CharacterCard.decode(fromJSON: $0.cardJSON) }
+        var card = CharacterCard(
             name: payload.card.name,
             age: payload.card.age,
             gender: CharacterGender(rawValue: payload.card.gender) ?? .other,
@@ -66,6 +73,16 @@ extension ContentSyncStore {
             // persona field. This also keeps rolling-version sync from repeatedly downgrading it.
             activityProfile: payload.card.activityProfile ?? existingActivityProfile
         )
+        card.settingVersion = payload.card.settingVersion
+        card.settingReleaseID = payload.card.settingReleaseID
+        card.settingHistory = payload.card.settingHistory
+        if let existingCard {
+            if (existingCard.settingVersion ?? 0) > (card.settingVersion ?? 0) { card = existingCard }
+            else if existingCard.settingVersion == card.settingVersion,
+                    (existingCard.settingHistory?.count ?? 0) > (card.settingHistory?.count ?? 0) {
+                card.settingHistory = existingCard.settingHistory
+            }
+        }
         let entity = try character(id: id) ?? {
             let created = CharacterEntity(
                 characterID: id,
@@ -161,7 +178,9 @@ extension ContentSyncStore {
         entity.isEncounterSession = payload.isEncounterSession
         entity.isArchived = payload.isArchived
         entity.isPinned = payload.isPinned ?? false
-        entity.lastReadAt = payload.lastReadAt
+        if let readAt = payload.lastReadAt, readAt > (entity.lastReadAt ?? .distantPast) {
+            entity.lastReadAt = readAt
+        }
         try upsertMetadata(record, localKey: record.resourceID)
     }
 
@@ -225,6 +244,15 @@ extension ContentSyncStore {
         entity.translationZh = payload.translationZh
         entity.isInterrupted = payload.isInterrupted
         entity.learningOriginJSON = try payload.learningOrigin?.encodedJSON()
+        entity.userTimeZone = payload.userTimeZone
+        if let events = payload.timelineEvents, !events.isEmpty {
+            let remoteKinds = Set(events.map(\.kind))
+            let localOnly = ChatMessageTimelineEvent.decode(entity.timelineEventsJSON).filter { !remoteKinds.contains($0.kind) }
+            entity.timelineEventsJSON = try ChatMessageTimelineEvent.encode(events + localOnly)
+        }
+        if let replyIDs = payload.replyToMessageIds, !replyIDs.isEmpty {
+            entity.replyToMessageIDsJSON = String(decoding: try JSONEncoder().encode(replyIDs), as: UTF8.self)
+        }
         entity.createdAt = payload.createdAt
         try upsertMetadata(record, localKey: record.resourceID)
     }

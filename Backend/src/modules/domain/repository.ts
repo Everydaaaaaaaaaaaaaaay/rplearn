@@ -31,6 +31,32 @@ const MAINLINE_REGION_IDS = new Set([
 export class DomainRepository {
   constructor(private readonly resource: DatabaseResource) {}
 
+  /** Outing reservation and travel share the domain lock and profile row lock. */
+  async lockActivityLocation(sql: TransactionSql, userId: string) {
+    await sql`select pg_advisory_xact_lock(hashtextextended(${`domain:${userId}`},0))`;
+    const [row] = await sql<{ cityId: string; starterCityId: string }[]>`
+      select current_region_id as "cityId",starter_region_id as "starterCityId"
+      from app.user_profiles where user_id=${userId} for update`;
+    if (!row)
+      throw new AppError({
+        code: "PROFILE_NOT_READY",
+        message: "请先完成个人档案设置。",
+        statusCode: 409,
+      });
+    return row;
+  }
+
+  async chatLearner(
+    sql: TransactionSql,
+    userId: string,
+  ): Promise<Record<string, unknown>> {
+    const [profile] =
+      await sql`select difficulty,display_name,learning_goals,study_stage from app.user_profiles where user_id=${userId}`;
+    const tickets =
+      await sql`select 1 from app.inventory_items where user_id=${userId} and source='story' limit 1`;
+    return { ...profile, hasStoryTicket: tickets.length > 0 };
+  }
+
   async currentDifficulty(
     sql: TransactionSql,
     userId: string,
@@ -157,6 +183,7 @@ export class DomainRepository {
           has_completed_onboarding,
           has_completed_profile_setup,
           learning_goal,
+          learning_goals::text[] as learning_goals,
           placement_completed_at,
           placement_score,
           proficiency_source,
@@ -480,9 +507,16 @@ export class DomainRepository {
                 has_completed_profile_setup
               ),
               learning_goal = coalesce(
-                ${patch.learningGoal ?? null},
+                ${patch.learningGoals?.[0] ?? patch.learningGoal ?? null},
                 learning_goal
               )::app.learning_goal,
+              learning_goals = case
+                when ${patch.learningGoals !== undefined} then
+                  array(select jsonb_array_elements_text(${JSON.stringify(patch.learningGoals ?? [])}::jsonb))::app.learning_goal[]
+                when ${patch.learningGoal !== undefined} then
+                  array[${patch.learningGoal ?? null}::app.learning_goal]
+                else learning_goals
+              end,
               placement_completed_at = coalesce(
                 ${patch.placementCompletedAt ?? null}::timestamptz,
                 placement_completed_at
@@ -514,6 +548,7 @@ export class DomainRepository {
             has_completed_onboarding,
             has_completed_profile_setup,
             learning_goal,
+            learning_goals::text[] as learning_goals,
             placement_completed_at,
             placement_score,
             proficiency_source,

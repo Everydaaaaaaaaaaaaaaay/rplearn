@@ -97,31 +97,31 @@ public enum MainlineCatalog {
         storyID: "departures_london_v1",
         regionID: "london",
         title: "空着的那把椅子",
-        subtitle: "一页没念过的文字，以及一个由你陪伴的决定。"
+        subtitle: "Oliver 带来一页小说，还没决定让谁听见。"
     )
     public static let melbourne = MainlineChapter(
         storyID: "departures_mainline_melbourne_v1",
         regionID: "melbourne",
         title: "留给自己的一个下午",
-        subtitle: "Ruby 已经答应了所有人，却还没答应自己。"
+        subtitle: "申请今晚截止，Ruby 却还在改第一句话。"
     )
     public static let newYork = MainlineChapter(
         storyID: "departures_mainline_newyork_v1",
         regionID: "newyork",
         title: "没有挂上的那张照片",
-        subtitle: "Marcus 最满意的照片，遇到了一个明确的“不”。"
+        subtitle: "Marcus 最满意的照片，要从展墙上撤下来。"
     )
     public static let capeTown = MainlineChapter(
         storyID: "departures_mainline_capetown_v1",
         regionID: "capetown",
         title: "故事是谁的",
-        subtitle: "一场小型社区展览，不打算用一个声音代表所有人。"
+        subtitle: "展览标题已经印好，曾住在那里的人却不认同。"
     )
     public static let singapore = MainlineChapter(
         storyID: "departures_mainline_singapore_v1",
         regionID: "singapore",
         title: "下次见面的办法",
-        subtitle: "旅程接近尾声，你想留下一个真正可以兑现的约定。"
+        subtitle: "行李占了一张椅子，Mei 还在加菜。"
     )
 
     public static let chapters: [MainlineChapter] = [
@@ -175,7 +175,7 @@ public enum MainlineCatalog {
         availableSideRegionIDs: [String]
     ) -> JourneyMapGuidance {
         let journey = journey(starterRegionID: starterRegionID)
-        if let stop = journey.stops.first(where: { !completedStoryIDs.contains($0.chapter.storyID) }) {
+        if let stop = journey.stops.first(where: { !DepartureStoryIdentity.catalogCompletionIDs(completedStoryIDs).contains($0.chapter.storyID) }) {
             if stop.regionID == currentRegionID {
                 return .continueStory(chapter: stop.chapter, objective: stop.objective)
             }
@@ -224,7 +224,7 @@ public enum MainlineCatalog {
     ) -> Set<String> {
         var regionIDs = Set([journey(starterRegionID: starterRegionID).starterRegionID])
         for chapter in [london, melbourne, newYork]
-        where completedStoryIDs.contains(chapter.storyID) || completedStoryIDs.contains(DepartureStoryIdentity.rewardID(for: chapter.storyID) ?? chapter.storyID) {
+        where DepartureStoryIdentity.catalogCompletionIDs(completedStoryIDs).contains(chapter.storyID) || completedStoryIDs.contains(DepartureStoryIdentity.rewardID(for: chapter.storyID) ?? chapter.storyID) {
             regionIDs.insert(chapter.regionID)
         }
         return regionIDs

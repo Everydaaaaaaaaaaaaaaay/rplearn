@@ -40,6 +40,7 @@ public struct PendingContentMutation: Sendable, Equatable {
     public let payloadJSON: String?
     public let resourceID: String
     public let resourceType: ContentResourceKind
+    public let relationshipReplayInputs: [RelationshipReplayInput]
 }
 
 @ModelActor
@@ -50,6 +51,8 @@ public actor ContentSyncStore {
         case invalidPayload
         case missingParent
         case unknownResource
+        case relationshipReplayRequired
+        case conflictRetryLimit
     }
 
     public nonisolated static var guestArchiveURL: URL {
@@ -89,6 +92,22 @@ public actor ContentSyncStore {
                 predicate: #Predicate { $0.ownerUserID == userID && $0.isInFlight }
             ))
             for mutation in pending { mutation.isInFlight = false }
+            // Older builds could reuse a submitted ID after editing a conversation.
+            // Keep the edit and its expected version; the server still checks for
+            // a version conflict before applying it under a fresh command ID.
+            let conflict = "IDEMPOTENCY_KEY_CONFLICT"
+            let conversation = ContentResourceKind.conversation.rawValue
+            let upsert = ContentMutationOperation.upsert.rawValue
+            let blockedConversations = try modelContext.fetch(FetchDescriptor<ContentOutboxEntity>(
+                predicate: #Predicate {
+                    $0.ownerUserID == userID && $0.resourceTypeRaw == conversation
+                        && $0.operationRaw == upsert && $0.lastErrorCode == conflict
+                }
+            ))
+            for mutation in blockedConversations {
+                mutation.commandID = UUID()
+                mutation.lastErrorCode = nil
+            }
         }
         try modelContext.save()
         recoveredOwnerID = userID
@@ -150,11 +169,28 @@ public actor ContentSyncStore {
         try modelContext.save()
     }
 
+    /// A conversation snapshot has no global sync cursor. Preserve local pending edits
+    /// while applying canonical server identity, ordering and reply coverage.
+    public func applySharedChat(records: [RemoteContentRecord], coveredMessageIDs: Set<UUID>) throws {
+        guard let owner = try owner() else { throw SyncStoreError.invalidPayload }
+        let userID = owner.userID
+        let pending = try modelContext.fetch(
+            FetchDescriptor<ContentOutboxEntity>(predicate: #Predicate { $0.ownerUserID == userID }))
+        let keys = Set(pending.map { $0.resourceTypeRaw + ":" + $0.resourceID })
+        for record in records where !keys.contains(record.resourceType.rawValue + ":" + record.resourceID) {
+            try apply(record)
+        }
+        for id in coveredMessageIDs {
+            if let message = try message(id: id), message.roleRaw == "user" { message.isInterrupted = false }
+        }
+        try modelContext.save()
+    }
+
     public func syncCursor() throws -> String? {
         try owner()?.syncCursor
     }
 
-    public func takePending(limit: Int = 50) throws -> [PendingContentMutation] {
+    public func takePending(limit: Int = 50, serialPerResource: Bool = false) throws -> [PendingContentMutation] {
         guard let owner = try owner() else { return [] }
         let userID = owner.userID
         var descriptor = FetchDescriptor<ContentOutboxEntity>(
@@ -165,8 +201,26 @@ public actor ContentSyncStore {
             }
         )
         descriptor.sortBy = [SortDescriptor(\.createdAt)]
-        descriptor.fetchLimit = max(1, min(limit, 100))
-        let entities = try modelContext.fetch(descriptor)
+        let batchLimit = max(1, min(limit, 100))
+        let entities: [ContentOutboxEntity]
+        if serialPerResource {
+            // Later versions are contingent on the previous command succeeding. Sending both in one
+            // batch could let the later expectedVersion match a concurrent write after the first failed.
+            var all = FetchDescriptor<ContentOutboxEntity>(predicate: #Predicate { $0.ownerUserID == userID })
+            all.sortBy = [SortDescriptor(\.createdAt)]
+            var seen = Set<String>()
+            var selected: [ContentOutboxEntity] = []
+            for candidate in try modelContext.fetch(all) {
+                let key = candidate.resourceTypeRaw + ":" + candidate.resourceID
+                guard seen.insert(key).inserted else { continue }
+                if !candidate.isInFlight && candidate.lastErrorCode == nil { selected.append(candidate) }
+                if selected.count == batchLimit { break }
+            }
+            entities = selected
+        } else {
+            descriptor.fetchLimit = batchLimit
+            entities = try modelContext.fetch(descriptor)
+        }
         for entity in entities {
             entity.isInFlight = true
             entity.attemptCount += 1
@@ -192,10 +246,15 @@ public actor ContentSyncStore {
     public func reject(
         commandID: UUID,
         code: String,
-        current: RemoteContentRecord?
+        current: RemoteContentRecord?,
+        replayRelationship: RelationshipReplayClosure? = nil
     ) throws {
         guard let failed = try outbox(commandID: commandID) else { return }
         if code == "CONTENT_VERSION_CONFLICT", let current {
+            if current.resourceType == .character {
+                try reconcileCharacter(failed: failed, current: current, replayRelationship: replayRelationship)
+                return
+            }
             let desiredOperation = ContentMutationOperation(rawValue: failed.operationRaw)
             let desiredPayload = failed.payloadJSON
             let desiredParent = failed.parentID
@@ -238,6 +297,76 @@ public actor ContentSyncStore {
             failed.lastErrorCode = code
         }
         try modelContext.save()
+    }
+
+    private func reconcileCharacter(failed: ContentOutboxEntity, current: RemoteContentRecord,
+                                    replayRelationship: RelationshipReplayClosure?) throws {
+        let ownerID = failed.ownerUserID
+        let typeRaw = failed.resourceTypeRaw
+        let resourceID = failed.resourceID
+        let pending = try pendingForResource(ownerUserID: ownerID,
+            resourceTypeRaw: typeRaw, resourceID: resourceID)
+        guard let desired = pending.last else { return }
+        let desiredParent = desired.parentID
+        let desiredOperation = ContentMutationOperation(rawValue: desired.operationRaw)
+        if desiredOperation == .delete {
+            do {
+                for command in pending { modelContext.delete(command) }
+                try apply(current)
+                modelContext.insert(ContentOutboxEntity(ownerUserID: ownerID, resourceType: .character,
+                    resourceID: resourceID, parentID: nil, operation: .delete, payloadJSON: nil,
+                    expectedVersion: current.version))
+                try modelContext.save()
+            } catch {
+                modelContext.rollback()
+                throw error
+            }
+            return
+        }
+        do {
+            guard current.deletedAt == nil, let desiredJSON = desired.payloadJSON else {
+                throw SyncStoreError.relationshipReplayRequired
+            }
+            var inputs: [RelationshipReplayInput] = []
+            var seen = Set<UUID>()
+            for command in pending {
+                for input in try RelationshipReplayInput.decodeList(command.relationshipReplayJSON)
+                where seen.insert(input.messageID).inserted { inputs.append(input) }
+            }
+            let json = try ContentRelationshipReconciliation.reconcile(currentJSON: current.payloadJSON,
+                desiredJSON: desiredJSON, inputs: inputs,
+                evidenceComplete: pending.allSatisfy { $0.relationshipReplayComplete == true }, replay: replayRelationship)
+            let reconciled = RemoteContentRecord(createdAt: current.createdAt, deletedAt: nil,
+                parentID: desiredParent, payloadJSON: json, resourceID: current.resourceID,
+                resourceType: .character, updatedAt: current.updatedAt, version: current.version)
+            for command in pending { modelContext.delete(command) }
+            try apply(reconciled)
+            let replacement = ContentOutboxEntity(ownerUserID: ownerID, resourceType: .character,
+                resourceID: resourceID, parentID: desiredParent, operation: .upsert, payloadJSON: json,
+                expectedVersion: current.version)
+            replacement.relationshipReplayJSON = try RelationshipReplayInput.encodeList(inputs)
+            replacement.relationshipReplayComplete = true
+            modelContext.insert(replacement)
+            try modelContext.save()
+        } catch {
+            // Preserve the original exact payload and evidence for recovery; exclude it from automatic retries.
+            // A legacy snapshot cannot safely be converted into invented signal deltas.
+            modelContext.rollback()
+            for command in try pendingForResource(ownerUserID: ownerID, resourceTypeRaw: typeRaw, resourceID: resourceID) {
+                command.isInFlight = false
+                command.lastErrorCode = "RELATIONSHIP_REPLAY_REQUIRED"
+            }
+            try modelContext.save()
+            throw SyncStoreError.relationshipReplayRequired
+        }
+    }
+
+    public func assertNoStalledRelationshipReplay() throws {
+        let code = "RELATIONSHIP_REPLAY_REQUIRED"
+        let count = try modelContext.fetchCount(FetchDescriptor<ContentOutboxEntity>(
+            predicate: #Predicate { $0.lastErrorCode == code }
+        ))
+        if count > 0 { throw SyncStoreError.relationshipReplayRequired }
     }
 
     public func resetInFlight(commandIDs: [UUID]) throws {

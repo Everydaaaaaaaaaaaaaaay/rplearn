@@ -5,14 +5,16 @@ import PersistenceKit
 public struct LearnerContext: Sendable, Equatable {
     public let nickname: String?
     public let difficulty: DifficultyLevel
-    public let goal: LearningGoal
+    public let goals: [LearningGoal]
+    public var goal: LearningGoal { goals[0] }
     public let studyStage: StudyStage?
 
     public init(
         nickname: String? = nil,
         difficulty: DifficultyLevel,
         goal: LearningGoal = .dailyConversation,
-        studyStage: StudyStage? = nil
+        studyStage: StudyStage? = nil,
+        goals: [LearningGoal]? = nil
     ) {
         let compactNickname = nickname?
             .components(separatedBy: .whitespacesAndNewlines)
@@ -21,7 +23,7 @@ public struct LearnerContext: Sendable, Equatable {
         let normalizedNickname = compactNickname.map { String($0.prefix(40)) }
         self.nickname = normalizedNickname?.isEmpty == false ? normalizedNickname : nil
         self.difficulty = difficulty
-        self.goal = goal
+        self.goals = LearningGoal.normalized(goals ?? [goal])
         self.studyStage = studyStage
     }
 
@@ -30,7 +32,8 @@ public struct LearnerContext: Sendable, Equatable {
             nickname: profile.displayName,
             difficulty: profile.difficultyLevel,
             goal: profile.learningGoal,
-            studyStage: profile.studyStage
+            studyStage: profile.studyStage,
+            goals: profile.learningGoals
         )
     }
 

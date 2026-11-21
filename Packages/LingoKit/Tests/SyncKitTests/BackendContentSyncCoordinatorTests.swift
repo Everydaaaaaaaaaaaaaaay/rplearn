@@ -46,6 +46,7 @@ struct BackendContentSyncCoordinatorTests {
         private(set) var pullCount = 0
         func holdPulls() { shouldHoldPulls = true }
         func waitingPulls() -> Int { heldPulls.count }
+        func releaseNextPull() { if !heldPulls.isEmpty { heldPulls.removeFirst().resume() } }
         func releasePulls() {
             shouldHoldPulls = false
             let waiting = heldPulls; heldPulls.removeAll()
@@ -173,6 +174,101 @@ struct BackendContentSyncCoordinatorTests {
     private actor CompletionFlag {
         private(set) var done = false
         func finish() { done = true }
+    }
+
+    @Test("连续前台同步不会落在上一轮收尾间隙而无人启动")
+    func backToBackForegroundSynchronization() async throws {
+        let user = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let backend = BackendClient(configuration: .init(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: user), transport: ContentTransport())
+        let coordinator = BackendContentSyncCoordinator(backend: backend,
+            store: ContentSyncStore(modelContainer: try ModelContainerFactory.makeContainer(inMemory: true)))
+        _ = try await coordinator.activate(userID: user)
+        for _ in 0..<20 {
+            try await AsyncDeadline.run(timeout: .milliseconds(500)) { try await coordinator.synchronizeAndWait() }
+        }
+        await coordinator.deactivate()
+    }
+
+    @Test("前台只等待包含其消息的下一轮同步，不被后续持续同步饿死")
+    func waiterDoesNotRequireGlobalQuiescence() async throws {
+        let user = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = ContentTransport()
+        let backend = BackendClient(configuration: .init(baseURL: URL(string: "https://api.example.com")!), credentialStore: MemoryCredentials(userID: user), transport: transport)
+        let coordinator = BackendContentSyncCoordinator(backend: backend,
+            store: ContentSyncStore(modelContainer: try ModelContainerFactory.makeContainer(inMemory: true)))
+        _ = try await coordinator.activate(userID: user)
+        let before = await transport.pullCount
+        await transport.holdPulls()
+        let owner = Task { try await coordinator.synchronize() }
+        for _ in 0..<100 {
+            if await transport.waitingPulls() > 0 { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        let waiter = Task { try await coordinator.synchronizeAndWait() }
+        try await Task.sleep(for: .milliseconds(20))
+        await transport.releaseNextPull()
+        for _ in 0..<100 {
+            if await transport.pullCount >= before + 2, await transport.waitingPulls() > 0 { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        try await coordinator.synchronize() // A third background pass is now needed.
+        await transport.releaseNextPull()
+        do { try await AsyncDeadline.run(timeout: .milliseconds(500)) { try await waiter.value } }
+        catch { Issue.record("Foreground waiter was starved by later synchronization: \(error)") }
+        await transport.releasePulls()
+        try await owner.value
+        await coordinator.deactivate()
+    }
+
+    @Test("前台取消同步等待立即返回，不中断共享同步或丢失数据")
+    func cancelledWaiterDoesNotHang() async throws {
+        let user = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = ContentTransport()
+        let backend = BackendClient(configuration: .init(baseURL: URL(string: "https://api.example.com")!), credentialStore: MemoryCredentials(userID: user), transport: transport)
+        let store = ContentSyncStore(modelContainer: try ModelContainerFactory.makeContainer(inMemory: true))
+        let coordinator = BackendContentSyncCoordinator(backend: backend, store: store)
+        _ = try await coordinator.activate(userID: user)
+        await transport.holdPulls()
+        let initial = Task { try await coordinator.synchronize() }
+        for _ in 0..<100 {
+            if await transport.waitingPulls() > 0 { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        let waiter = Task { try await coordinator.synchronizeAndWait() }
+        try await Task.sleep(for: .milliseconds(20))
+        waiter.cancel()
+        do {
+            try await AsyncDeadline.run(timeout: .milliseconds(500)) { try await waiter.value }
+            Issue.record("Expected cancellation")
+        } catch { #expect(error is CancellationError) }
+        await transport.releasePulls()
+        try await initial.value
+        await coordinator.deactivate()
+    }
+
+    @Test("冷启动读取学习周期不等待被阻塞的全量内容同步")
+    func coldCycleDoesNotBlockLocalSend() async throws {
+        let user = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
+        let transport = ContentTransport(), character = UUID(), cycle = UUID()
+        await transport.setLearningCycle(cycle, revision: 1)
+        let backend = BackendClient(configuration: .init(baseURL: URL(string: "https://api.example.com")!), credentialStore: MemoryCredentials(userID: user), transport: transport)
+        let content = BackendContentSyncCoordinator(backend: backend, store: ContentSyncStore(modelContainer: try ModelContainerFactory.makeContainer(inMemory: true)))
+        _ = try await content.activate(userID: user)
+        await transport.holdPulls()
+        let initial = Task { try await content.synchronize() }
+        for _ in 0..<100 {
+            if await transport.waitingPulls() > 0 { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        let suite = "cold-cycle.\(UUID().uuidString)"
+        defer { UserDefaults.standard.removePersistentDomain(forName: suite) }
+        let learning = LearningChatCoordinator(accountID: user, backend: backend, contentSync: content, defaultsSuiteName: suite)
+        let origin = try await AsyncDeadline.run(timeout: .milliseconds(500)) { await learning.userOrigin(characterID: character) }
+        #expect(origin == .user(cycleID: cycle))
+        await transport.releasePulls()
+        try await initial.value
+        await content.deactivate()
     }
     @Test("需要持久化保证的调用等待进行中的同步及下一轮，不提前放行模型请求")
     func waitsForInFlightSynchronization() async throws {

@@ -418,11 +418,11 @@ private final class HomePerspectiveMetalRenderer {
         image: UIImage,
         material: DSHologramEffectMetrics
     ) -> ArtworkTextures? {
-        guard let face = makeTexture(image),
-              let commandBuffer = commandQueue.makeCommandBuffer()
-        else {
-            return nil
+        guard let face = makeTexture(image) else { return nil }
+        guard material.rendersEffects else {
+            return ArtworkTextures(face: face, blurredByRadius: [:])
         }
+        guard let commandBuffer = commandQueue.makeCommandBuffer() else { return nil }
 
         let radii: Set<CGFloat> = [
             DSHologramMaterial.footprintRadius,
@@ -487,84 +487,85 @@ private final class HomePerspectiveMetalRenderer {
                                  Float(camera.height / max(canvasSize.height, 1)),
                                  0, 0)
         )
-        // DSHologramSurface 的大半径落影。低透明度只负责说明标牌离开了承载面，
-        // 不再用一份偏移的完整字形模拟深度。
-        drawEffect(
-            vertex: &vertex,
-            offset: item.footprintOffset.scaled(by: shadowCompression),
-            canvasSize: canvasSize,
-            color: SIMD3(0, 0, 0),
-            opacity: Float(DSHologramMaterial.footprintOpacity),
-            radius: DSHologramMaterial.footprintRadius,
-            textures: item.textures,
-            press: press,
-            encoder: encoder
-        )
+        // Text uses only its face texture; decorative effects belong to icons.
+        if item.material.rendersEffects {
+            // Decorative icon depth and glow are separate from the plain text layer.
+            drawEffect(
+                vertex: &vertex,
+                offset: item.footprintOffset.scaled(by: shadowCompression),
+                canvasSize: canvasSize,
+                color: SIMD3(0, 0, 0),
+                opacity: Float(DSHologramMaterial.footprintOpacity),
+                radius: DSHologramMaterial.footprintRadius,
+                textures: item.textures,
+                press: press,
+                encoder: encoder
+            )
 
-        // 极薄的挤出边与文字/图标自身的深色接触边共同建立实体厚度。
-        drawEffect(
-            vertex: &vertex,
-            offset: item.extrusionOffset.scaled(by: shadowCompression),
-            canvasSize: canvasSize,
-            color: SIMD3(0, 0, 0),
-            opacity: Float(DSHologramMaterial.extrusionOpacity),
-            radius: DSHologramMaterial.extrusionRadius,
-            textures: item.textures,
-            press: press,
-            encoder: encoder
-        )
-        drawEffect(
-            vertex: &vertex,
-            offset: item.material.depthEdgeOffset,
-            canvasSize: canvasSize,
-            color: SIMD3(0, 0, 0),
-            opacity: Float(item.material.depthEdgeOpacity),
-            radius: item.material.depthEdgeRadius,
-            textures: item.textures,
-            press: press,
-            encoder: encoder
-        )
+            // Keep the existing icon extrusion and contact edge.
+            drawEffect(
+                vertex: &vertex,
+                offset: item.extrusionOffset.scaled(by: shadowCompression),
+                canvasSize: canvasSize,
+                color: SIMD3(0, 0, 0),
+                opacity: Float(DSHologramMaterial.extrusionOpacity),
+                radius: DSHologramMaterial.extrusionRadius,
+                textures: item.textures,
+                press: press,
+                encoder: encoder
+            )
+            drawEffect(
+                vertex: &vertex,
+                offset: item.material.depthEdgeOffset,
+                canvasSize: canvasSize,
+                color: SIMD3(0, 0, 0),
+                opacity: Float(item.material.depthEdgeOpacity),
+                radius: item.material.depthEdgeRadius,
+                textures: item.textures,
+                press: press,
+                encoder: encoder
+            )
 
-        // 与“我的”页相同的两级溢光：外层宽而淡，内层窄而克制。它们都先于
-        // 不透明核心绘制，所以不会把笔画正面洗亮、洗糊。
-        let glowColor = SIMD3(
-            Float(DSHologramMaterial.glowRed),
-            Float(DSHologramMaterial.glowGreen),
-            Float(DSHologramMaterial.glowBlue)
-        )
-        drawEffect(
-            vertex: &vertex,
-            offset: .zero,
-            canvasSize: canvasSize,
-            color: glowColor,
-            opacity: Float(item.material.outerGlowOpacity) * Self.sceneGlowExposure,
-            radius: item.material.outerGlowRadius,
-            textures: item.textures,
-            press: press,
-            encoder: encoder
-        )
-        drawEffect(
-            vertex: &vertex,
-            offset: .zero,
-            canvasSize: canvasSize,
-            color: glowColor,
-            opacity: Float(item.material.innerGlowOpacity) * Self.sceneGlowExposure,
-            radius: item.material.innerGlowRadius,
-            textures: item.textures,
-            press: press,
-            encoder: encoder
-        )
-        drawEffect(
-            vertex: &vertex,
-            offset: item.material.edgeLightOffset,
-            canvasSize: canvasSize,
-            color: SIMD3(1, 1, 1),
-            opacity: Float(item.material.edgeLightOpacity) * Self.sceneEdgeLightExposure,
-            radius: item.material.edgeLightRadius,
-            textures: item.textures,
-            press: press,
-            encoder: encoder
-        )
+            // Retain the shared two-level icon glow.
+            let glowColor = SIMD3(
+                Float(DSHologramMaterial.glowRed),
+                Float(DSHologramMaterial.glowGreen),
+                Float(DSHologramMaterial.glowBlue)
+            )
+            drawEffect(
+                vertex: &vertex,
+                offset: .zero,
+                canvasSize: canvasSize,
+                color: glowColor,
+                opacity: Float(item.material.outerGlowOpacity) * Self.sceneGlowExposure,
+                radius: item.material.outerGlowRadius,
+                textures: item.textures,
+                press: press,
+                encoder: encoder
+            )
+            drawEffect(
+                vertex: &vertex,
+                offset: .zero,
+                canvasSize: canvasSize,
+                color: glowColor,
+                opacity: Float(item.material.innerGlowOpacity) * Self.sceneGlowExposure,
+                radius: item.material.innerGlowRadius,
+                textures: item.textures,
+                press: press,
+                encoder: encoder
+            )
+            drawEffect(
+                vertex: &vertex,
+                offset: item.material.edgeLightOffset,
+                canvasSize: canvasSize,
+                color: SIMD3(1, 1, 1),
+                opacity: Float(item.material.edgeLightOpacity) * Self.sceneEdgeLightExposure,
+                radius: item.material.edgeLightRadius,
+                textures: item.textures,
+                press: press,
+                encoder: encoder
+            )
+        }
 
         vertex.transform.y = 0
         vertex.transform.z = Float(pressedOffset / max(canvasSize.height, 1))

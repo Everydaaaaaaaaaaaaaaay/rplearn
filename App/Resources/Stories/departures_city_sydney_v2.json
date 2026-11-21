@@ -1,0 +1,317 @@
+{
+  "id": "departures_city_sydney_v2",
+  "version": 2,
+  "title": "多坐一站",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "悉尼 · 渡轮码头",
+    "靠岸以后"
+  ],
+  "shots": {
+    "wharf": {
+      "background": "dp_sydney_wharf",
+      "actors": []
+    },
+    "tahlia": {
+      "background": "dp_sydney_wharf",
+      "actors": [
+        {
+          "id": "Tahlia",
+          "asset": "dp_tahlia_gesture",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "crossing": {
+      "background": "dp_sydney_ferry",
+      "actors": []
+    },
+    "shore": {
+      "background": "dp_sydney_shore",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "wharf",
+      "speaker": "旁白",
+      "text": "Tahlia meets you at Circular Quay after her shift.",
+      "translation": "下班后，Tahlia 在环形码头和你碰面。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "tahlia",
+      "speaker": "Tahlia",
+      "text": "Cremorne Point? I brought a towel for the harbour pool.",
+      "translation": "去克雷蒙角吗？我带了毛巾，想去那儿游一会儿。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "tahlia",
+      "speaker": "你",
+      "text": "I have a call home in an hour.",
+      "translation": "我一小时后要给家里打电话。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "tahlia",
+      "speaker": "旁白",
+      "text": "Tahlia checks the return time. Boarding has just started.",
+      "translation": "Tahlia 看了眼回程。那边刚开始上船。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "tahlia",
+      "speaker": "Tahlia",
+      "text": "We can get there and back. We'd have to skip the swim.",
+      "translation": "坐过去再回来够。游泳就算了。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "tahlia",
+      "speaker": "你",
+      "text": "Can you see the pool from the ferry?",
+      "translation": "从船上看得见那个泳池吗？",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "tahlia",
+      "speaker": "Tahlia",
+      "text": "Sometimes. Look for the white fence as we go past.",
+      "translation": "有时能。经过那边你找找白色的栏杆。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "tahlia",
+      "speaker": "旁白",
+      "text": "She tucks a corner of the towel back into her bag.",
+      "translation": "毛巾露出了一角，她把它塞回包里。",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "tahlia",
+      "speaker": "你的选择",
+      "text": "Boarding is nearly over.",
+      "translation": "那边就快上完人了。",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Let's catch the ferry. Show me where the pool is.",
+          "translation": "走吧，上船。你指给我看泳池在哪儿。",
+          "next": "ferry",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "往返来得及，时间不够下船去游泳。",
+            "outcome": "经过泳池时，有个游泳的人朝船挥手。你和 Tahlia 拿毛巾挥了回去。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's stay here. Tell me about your first swim there.",
+          "translation": "留这儿吧。你头一回去那儿游泳是什么时候？",
+          "next": "shore",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "你一小时后要给家里打电话，也可以在码头边坐一会儿。",
+            "outcome": "Tahlia 讲起第一次带着毛巾白跑一趟。她留下多坐了一会儿，把毛巾铺到潮湿的长椅上。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ferry",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "旁白",
+      "text": "Spray hits your shoe at the rail. You duck into the cabin.",
+      "translation": "栏杆外溅来一股水，打湿了你一只鞋。你赶紧回到船舱。",
+      "next": "ferry_2"
+    },
+    {
+      "id": "ferry_2",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "Tahlia",
+      "text": "Sit here. See that white fence by the water?",
+      "translation": "坐这儿。看见水边那圈白栏杆了吗？",
+      "next": "ferry_3"
+    },
+    {
+      "id": "ferry_3",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "旁白",
+      "text": "The ferry lifts on a wake. The fence drops out of sight.",
+      "translation": "船被浪托起来，白栏杆一下从窗里消失了。",
+      "next": "ferry_4"
+    },
+    {
+      "id": "ferry_4",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "你",
+      "text": "There it is again. Is that swimmer waving at us?",
+      "translation": "又看见了。池边那人是在朝我们挥手吗？",
+      "next": "ferry_5"
+    },
+    {
+      "id": "ferry_5",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "旁白",
+      "text": "The swimmer waves again. Tahlia yanks her towel free.",
+      "translation": "那人又挥了一下手。Tahlia 一把从包里扯出毛巾。",
+      "next": "ferry_6"
+    },
+    {
+      "id": "ferry_6",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "Tahlia",
+      "text": "Grab an end. Let's see if they can spot us.",
+      "translation": "你抓这头。看人家能不能看见。",
+      "next": "ferry_7"
+    },
+    {
+      "id": "ferry_7",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "crossing",
+      "speaker": "旁白",
+      "text": "You shake the towel in the window. The swimmer waves back.",
+      "translation": "你俩拿着毛巾在窗边晃。池边那人又挥了挥手。",
+      "next": "ferry_8"
+    },
+    {
+      "id": "ferry_8",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "wharf",
+      "speaker": "旁白",
+      "text": "Back at the quay, you call home with one sock in your hand.",
+      "translation": "回到码头，你手里攥着一只湿袜子，给家里打电话。",
+      "ending": true,
+      "experienceID": "SY2A"
+    },
+    {
+      "id": "shore",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "Tahlia",
+      "text": "This is the towel I took the first time I went out there.",
+      "translation": "我头一回去，就带的这条毛巾。",
+      "next": "shore_2"
+    },
+    {
+      "id": "shore_2",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "Tahlia",
+      "text": "Forgot my swimmers. I sat there like I was just warming up.",
+      "translation": "忘了带泳衣。坐那儿装热身呢。",
+      "next": "shore_3"
+    },
+    {
+      "id": "shore_3",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "你",
+      "text": "How long did you keep that up?",
+      "translation": "你装了多久？",
+      "next": "shore_4"
+    },
+    {
+      "id": "shore_4",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "Tahlia",
+      "text": "Till the lights came on. I finally swam the next morning.",
+      "translation": "一直坐到路灯亮了。第二天一早才真下水。",
+      "next": "shore_5"
+    },
+    {
+      "id": "shore_5",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "旁白",
+      "text": "The ferry backs out. Its engine swallows her next words.",
+      "translation": "渡轮往外倒。她刚要说下一句，就被引擎声盖过去了。",
+      "next": "shore_6"
+    },
+    {
+      "id": "shore_6",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "旁白",
+      "text": "Your call reminder buzzes. Tahlia is still looking out.",
+      "translation": "通话提醒振了一下。Tahlia 还在往海那边看。",
+      "next": "shore_7"
+    },
+    {
+      "id": "shore_7",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "Tahlia",
+      "text": "Go on. I'll sit here a bit longer.",
+      "translation": "打吧。我想在这儿再坐一会儿。",
+      "next": "shore_8"
+    },
+    {
+      "id": "shore_8",
+      "act": 0,
+      "location": "悉尼 · 渡轮码头",
+      "shot": "shore",
+      "speaker": "旁白",
+      "text": "She spreads the towel across the damp end of the bench.",
+      "translation": "长椅一头有点湿，她把毛巾铺在那里。",
+      "ending": true,
+      "experienceID": "SY2B"
+    }
+  ]
+}

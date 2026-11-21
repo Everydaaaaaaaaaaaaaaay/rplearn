@@ -279,3 +279,9 @@ export function createBillingService(
     },
   };
 }
+
+/** Authoritative subscription projection within the conversation transaction. */
+export function createBillingChatContext(database: DatabaseResource) {
+  const repository = new BillingRepository(database);
+  return { subscriptionTier: repository.chatTier.bind(repository) };
+}

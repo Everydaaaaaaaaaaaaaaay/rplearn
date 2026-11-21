@@ -1,0 +1,718 @@
+{
+  "id": "departures_mainline_newyork_v2",
+  "version": 2,
+  "title": "没有挂上的那张照片",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "纽约 · 没有挂上的照片",
+    "修理店打烊前",
+    "展览那天"
+  ],
+  "shots": {
+    "gallery": {
+      "background": "dp_newyork_gallery_clear",
+      "actors": []
+    },
+    "print": {
+      "background": "dp_newyork_gallery_clear",
+      "actors": [
+        {
+          "id": "Marcus",
+          "asset": "dp_marcus_print",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "talk": {
+      "background": "dp_newyork_gallery_clear",
+      "actors": [
+        {
+          "id": "Marcus",
+          "asset": "dp_marcus_listen",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "repair": {
+      "background": "dp_newyork_repair",
+      "actors": []
+    },
+    "visit": {
+      "background": "dp_newyork_visit",
+      "actors": []
+    },
+    "elena": {
+      "background": "dp_newyork_repair",
+      "actors": [
+        {
+          "id": "Elena",
+          "asset": "dp_elena_explain",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "gallery_elena": {
+      "background": "dp_newyork_gallery_clear",
+      "actors": [
+        {
+          "id": "Elena",
+          "asset": "dp_elena_explain",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "gallery",
+      "speaker": "旁白",
+      "text": "Marcus has cleared a space in the middle of the prints.",
+      "translation": "桌上全是照片。Marcus 偏偏把最中间空了出来。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "Elena's portrait was going here. Best thing I've shot.",
+      "translation": "这儿本来要挂 Elena 那张。那是我拍得最好的一张。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "旁白",
+      "text": "Her message says she'd rather it wasn't in the show.",
+      "translation": "她发来消息，说不希望照片出现在展览里。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "She agreed to the picture. I assumed the rest.",
+      "translation": "她是答应让我拍。我就当她也答应我展出了。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "你",
+      "text": "Have you answered?",
+      "translation": "回了吗？",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "I typed 'of course'. I haven't hit send. Look at me.",
+      "translation": "我打了句“当然”。现在还没发。你看我这人。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "旁白",
+      "text": "He reads it again, sends the reply, and removes the print.",
+      "translation": "他又看了一眼手机，点发送，抽走那张照片。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "Sent. I'm still looking at the space where it went.",
+      "translation": "发了。我怎么还盯着那块地方。",
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "print",
+      "speaker": "你的选择",
+      "text": "What would you like to look at now?",
+      "translation": "接下来，你想看看什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Look through the other prints with him.",
+          "translation": "和他一起翻翻其他照片。",
+          "next": "prints",
+          "flags": {
+            "first_a": true
+          },
+          "review": {
+            "context": "Marcus 撤下了 Elena 的肖像，展览中间空出一块。",
+            "outcome": "你陪 Marcus 翻照片，看到他一度以为那张手套能顶上，还是把它放回去了。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Ask why this one mattered so much.",
+          "translation": "问问为什么这一张这么重要。",
+          "next": "meaning",
+          "flags": {
+            "first_a": false
+          },
+          "review": {
+            "context": "Marcus 决定尊重 Elena 的选择，却还舍不得那张肖像。",
+            "outcome": "你们聊到柜台上的划痕和手上的光。他为等那一刻连着几天起早。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "prints",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "print",
+      "speaker": "旁白",
+      "text": "He tries a mechanic, then a pair of paint-stained hands.",
+      "translation": "他拿修车工那张试了试，又换成一双沾着颜料的手。",
+      "next": "prints_2"
+    },
+    {
+      "id": "prints_2",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "print",
+      "speaker": "Marcus",
+      "text": "Too dark. Too close. That's just a good glove picture.",
+      "translation": "这张太暗，那张太近。剩下这张，也就手套拍得好。",
+      "next": "prints_3"
+    },
+    {
+      "id": "prints_3",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "print",
+      "speaker": "你",
+      "text": "Hold that one further back a second.",
+      "translation": "那张。拿远点我再看看。",
+      "next": "prints_4"
+    },
+    {
+      "id": "prints_4",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "print",
+      "speaker": "旁白",
+      "text": "He sets down the glove print so hard the others slip.",
+      "translation": "他放下手套那张，手一重，底下几张也滑了出去。",
+      "next": "prints_5"
+    },
+    {
+      "id": "prints_5",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "print",
+      "speaker": "Marcus",
+      "text": "I'll pick them up. I thought that one might work.",
+      "translation": "我捡。刚才有那么一下，我真觉得这张行。",
+      "next": "visit"
+    },
+    {
+      "id": "meaning",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "She built that counter thirty years ago. See the scratches?",
+      "translation": "那柜台是她三十年前自己做的。你看，上面全是划痕。",
+      "next": "meaning_2"
+    },
+    {
+      "id": "meaning_2",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "And the light hit her hands exactly right.",
+      "translation": "光又刚好打在她手上。",
+      "next": "meaning_3"
+    },
+    {
+      "id": "meaning_3",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "你",
+      "text": "Your voice changed when you got to the light.",
+      "translation": "你刚说到光的时候，口气都变了。",
+      "next": "meaning_4"
+    },
+    {
+      "id": "meaning_4",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "Yeah. I got there early three mornings for it.",
+      "translation": "嗯。就为那一下，我连着三天起了个大早。",
+      "next": "meaning_5"
+    },
+    {
+      "id": "meaning_5",
+      "act": 0,
+      "location": "纽约 · 没有挂上的照片",
+      "shot": "talk",
+      "speaker": "旁白",
+      "text": "He turns the portrait over and rests a hand on the back.",
+      "translation": "他把肖像翻扣过来，手在相纸背面停了一会儿。",
+      "next": "visit"
+    },
+    {
+      "id": "visit",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "visit",
+      "speaker": "旁白",
+      "text": "The next afternoon, Elena collects her own paper print.",
+      "translation": "第二天下午，Elena 来拿她要的那张照片。",
+      "next": "visit_2"
+    },
+    {
+      "id": "visit_2",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "visit",
+      "speaker": "Elena",
+      "text": "For my daughter. She likes seeing me away from a till.",
+      "translation": "给我女儿的。她喜欢看我没站在收银机后面的样子。",
+      "next": "visit_3"
+    },
+    {
+      "id": "visit_3",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "visit",
+      "speaker": "Marcus",
+      "text": "I've taken your photo out of the show.",
+      "translation": "你那张我已经撤了。",
+      "next": "visit_4"
+    },
+    {
+      "id": "visit_4",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "visit",
+      "speaker": "Elena",
+      "text": "Good. Hold this lamp while I find the bag, will you?",
+      "translation": "好。帮我拿着这灯，我找个袋子。",
+      "next": "visit_5"
+    },
+    {
+      "id": "visit_5",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "visit",
+      "speaker": "旁白",
+      "text": "Its old shade has a small burn along the rim.",
+      "translation": "旧灯罩边缘有一小道烧痕。",
+      "next": "visit_6"
+    },
+    {
+      "id": "visit_6",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "visit",
+      "speaker": "Elena",
+      "text": "Owner wanted a new one. I said, try a bulb first.",
+      "translation": "客人想换盏新的。我说你先换个灯泡看看。",
+      "next": "visit_7"
+    },
+    {
+      "id": "visit_7",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "visit",
+      "speaker": "旁白",
+      "text": "Marcus turns it towards the light, then catches himself.",
+      "translation": "Marcus 把灯转向光亮处，又停住了。",
+      "next": "visit_8"
+    },
+    {
+      "id": "visit_8",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "visit",
+      "speaker": "Marcus",
+      "text": "I already know where I'd hang a photo of that lamp.",
+      "translation": "这盏要是拍下来，我都知道照片该挂哪儿了。",
+      "next": "second"
+    },
+    {
+      "id": "second",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "elena",
+      "speaker": "你的选择",
+      "text": "What do you suggest before the shop closes?",
+      "translation": "修理店快关门了，你提议什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ask about a picture of the lamp for the show.",
+          "translation": "问问能否拍灯，放进展览。",
+          "next": "lamp",
+          "flags": {
+            "second_a": true
+          },
+          "review": {
+            "context": "Marcus 看见一盏灯，已经在想能挂在哪里。",
+            "outcome": "灯是顾客的，开幕前来不及征求同意。Marcus 放下拍灯的念头。展出时有个观众径直走过空处。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Help finish packing. Leave the wall for tonight.",
+          "translation": "帮忙把灯装好，展墙今晚先放一边。",
+          "next": "pack",
+          "flags": {
+            "second_a": false
+          },
+          "review": {
+            "context": "Elena 得把修好的灯装回袋子，自己的肖像也要带回家。",
+            "outcome": "你们一起把灯包好。Elena 问起地址，后来亲自来展览，看的是另一张照片。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lamp",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "elena",
+      "speaker": "Elena",
+      "text": "It's a customer's lamp. I can't ask them till tomorrow.",
+      "translation": "这灯是顾客的。我明天才能问人家。",
+      "next": "lamp_2"
+    },
+    {
+      "id": "lamp_2",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "elena",
+      "speaker": "Marcus",
+      "text": "Too late to get it on the wall. Okay. I'll leave it.",
+      "translation": "那这张赶不上开幕了。行，我不拍了。",
+      "next": "lamp_3"
+    },
+    {
+      "id": "lamp_3",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "elena",
+      "speaker": "旁白",
+      "text": "He holds the bag open while Elena lowers the lamp in.",
+      "translation": "他撑开袋口，Elena 把灯放进去。",
+      "next": "lamp_4"
+    },
+    {
+      "id": "lamp_4",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "elena",
+      "speaker": "Elena",
+      "text": "Careful. That's the part I couldn't fix.",
+      "translation": "当心，那块我没给修好。",
+      "next": "lamp_5"
+    },
+    {
+      "id": "lamp_5",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "elena",
+      "speaker": "Marcus",
+      "text": "Oh. I thought you'd left it like that.",
+      "translation": "哦。我还当你是特意留着的。",
+      "next": "show_lamp"
+    },
+    {
+      "id": "pack",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "repair",
+      "speaker": "旁白",
+      "text": "You hold the bag. Marcus folds paper round the shade.",
+      "translation": "你撑好袋子，Marcus 把纸折在灯罩周围。",
+      "next": "pack_2"
+    },
+    {
+      "id": "pack_2",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "elena",
+      "speaker": "Elena",
+      "text": "My girl bought a frame a size too big for this print.",
+      "translation": "我女儿给这张买了个相框，买大了一号。",
+      "next": "pack_3"
+    },
+    {
+      "id": "pack_3",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "elena",
+      "speaker": "Marcus",
+      "text": "I can print it bigger. It looks different on a wall.",
+      "translation": "我能给你印大点。挂墙上看还挺不一样。",
+      "next": "pack_4"
+    },
+    {
+      "id": "pack_4",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "elena",
+      "speaker": "Elena",
+      "text": "Leave it. Where's your show, by the way?",
+      "translation": "就这么大吧。对了，你那个展在哪儿？",
+      "next": "pack_5"
+    },
+    {
+      "id": "pack_5",
+      "act": 1,
+      "location": "修理店打烊前",
+      "shot": "repair",
+      "speaker": "旁白",
+      "text": "He writes the address on the back of a spare receipt.",
+      "translation": "他找了张空收据，把地址写在背面。",
+      "next": "show_pack"
+    },
+    {
+      "id": "show_lamp",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery",
+      "speaker": "旁白",
+      "text": "At the opening, Marcus spaces out the prints he kept.",
+      "translation": "开幕那天，Marcus 把留下的几张照片分开挂。",
+      "next": "show_lamp_2"
+    },
+    {
+      "id": "show_lamp_2",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery",
+      "speaker": "旁白",
+      "text": "A visitor walks past the middle of the wall without stopping.",
+      "translation": "有个人从墙中间走过去，没停。",
+      "next": "show_lamp_3"
+    },
+    {
+      "id": "show_lamp_3",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "I still think it was the strongest picture.",
+      "translation": "我还是觉得，那张最好。",
+      "next": "show_lamp_4"
+    },
+    {
+      "id": "show_lamp_4",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "talk",
+      "speaker": "你",
+      "text": "I know.",
+      "translation": "我知道。",
+      "next": "show_lamp_5"
+    },
+    {
+      "id": "show_lamp_5",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery",
+      "speaker": "旁白",
+      "text": "He straightens a frame that is already straight.",
+      "translation": "他扶正一只原本就挂得很正的相框。",
+      "next": "close_lamp"
+    },
+    {
+      "id": "close_lamp",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery",
+      "speaker": "旁白",
+      "text": "Someone by the door calls his name.",
+      "translation": "门口有人叫他的名字。",
+      "branch": {
+        "flag": "first_a",
+        "yes": "end_lamp_a",
+        "no": "end_lamp_b"
+      }
+    },
+    {
+      "id": "end_lamp_a",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "They'll ask about the gloves. I'll start there.",
+      "translation": "待会儿要是问到手套，就先说那张吧。",
+      "next": "end_lamp_a_2"
+    },
+    {
+      "id": "end_lamp_a_2",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery",
+      "speaker": "旁白",
+      "text": "He goes over. Nobody stops in front of the gap.",
+      "translation": "他过去打招呼。那面墙的空处前还是没人停。",
+      "ending": true,
+      "experienceID": "NM2LAMPA"
+    },
+    {
+      "id": "end_lamp_b",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "Wait, did that person even look at the wall?",
+      "translation": "等会儿，刚走过去那位看墙了没？",
+      "next": "end_lamp_b_2"
+    },
+    {
+      "id": "end_lamp_b_2",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery",
+      "speaker": "旁白",
+      "text": "He waits for an answer, still holding the frame.",
+      "translation": "他捏着相框的一角，等你回答。",
+      "ending": true,
+      "experienceID": "NM2LAMPB"
+    },
+    {
+      "id": "show_pack",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery_elena",
+      "speaker": "旁白",
+      "text": "At closing on opening day, Elena comes in, apron still on.",
+      "translation": "开幕那天快关门时，Elena 来了，围裙都还没脱。",
+      "next": "show_pack_2"
+    },
+    {
+      "id": "show_pack_2",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery_elena",
+      "speaker": "旁白",
+      "text": "She stops by the mechanic's print and leans in.",
+      "translation": "她在修车工那张前面停住，凑近了看。",
+      "next": "show_pack_3"
+    },
+    {
+      "id": "show_pack_3",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "I thought that one came out too dark.",
+      "translation": "我还觉得这张拍暗了。",
+      "next": "show_pack_4"
+    },
+    {
+      "id": "show_pack_4",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery_elena",
+      "speaker": "你",
+      "text": "She's looking at his apron.",
+      "translation": "她看的好像是他的围裙。",
+      "next": "show_pack_5"
+    },
+    {
+      "id": "show_pack_5",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery_elena",
+      "speaker": "旁白",
+      "text": "Elena rubs at a mark on her own apron with her thumb.",
+      "translation": "Elena 用拇指搓了搓自己围裙上的一处印子。",
+      "next": "close_pack"
+    },
+    {
+      "id": "close_pack",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery_elena",
+      "speaker": "旁白",
+      "text": "She asks whether the mechanic ever saw the print.",
+      "translation": "她问 Marcus，那位修车工看过这张吗。",
+      "branch": {
+        "flag": "first_a",
+        "yes": "end_pack_a",
+        "no": "end_pack_b"
+      }
+    },
+    {
+      "id": "end_pack_a",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "He has. I'll bring him a copy next time.",
+      "translation": "看过。下次我给他带张纸的。",
+      "next": "end_pack_a_2"
+    },
+    {
+      "id": "end_pack_a_2",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery",
+      "speaker": "旁白",
+      "text": "Elena nods and heads out, past the gap on the wall.",
+      "translation": "Elena 点点头，沿着那面空了一块的墙走出去。",
+      "ending": true,
+      "experienceID": "NM2PACKA"
+    },
+    {
+      "id": "end_pack_b",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "talk",
+      "speaker": "Marcus",
+      "text": "He has. He asked me to print one for his sister.",
+      "translation": "看过。他还想给他姐姐印一张。",
+      "next": "end_pack_b_2"
+    },
+    {
+      "id": "end_pack_b_2",
+      "act": 2,
+      "location": "展览那天",
+      "shot": "gallery_elena",
+      "speaker": "旁白",
+      "text": "She looks a little longer. The middle of the wall stays bare.",
+      "translation": "Elena 站那儿又看了一会儿。墙中间依然空着。",
+      "ending": true,
+      "experienceID": "NM2PACKB"
+    }
+  ]
+}

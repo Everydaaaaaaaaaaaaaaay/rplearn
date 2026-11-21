@@ -1,0 +1,828 @@
+{
+  "version": 1,
+  "episodes": [
+    {
+      "source": "docs/story-preparation-2026-10-31/01-ruby-afternoon.md",
+      "sourceSHA256": "4ff4d944b927739b22d4ffd6cfed23a926f2ebedfce45668b8fd5036d1990347",
+      "catalogID": "departures_mainline_melbourne_v1",
+      "id": "departures_mainline_melbourne_v2",
+      "city": "melbourne",
+      "subtitle": "申请今晚截止，散步却是两个人早就说好的。",
+      "acts": [
+        "墨尔本 · 收班之后",
+        "坐在一起的二十分钟",
+        "各自的下午"
+      ],
+      "shots": {
+        "cafe": {
+          "background": "dp_melbourne_cafe",
+          "actors": []
+        },
+        "phone": {
+          "background": "dp_ruby_cafe_talk",
+          "actors": []
+        },
+        "form": {
+          "background": "dp_ruby_application",
+          "actors": []
+        },
+        "submit": {
+          "background": "dp_ruby_submit",
+          "actors": []
+        },
+        "lane": {
+          "background": "dp_melbourne_lane",
+          "actors": []
+        },
+        "walk": {
+          "background": "dp_melbourne_lane",
+          "actors": [
+            {
+              "id": "Ruby",
+              "asset": "dp_ruby_open",
+              "x": 0.5,
+              "scale": 1
+            }
+          ]
+        },
+        "reply": {
+          "background": "dp_ruby_cafe_reply",
+          "actors": []
+        }
+      },
+      "scenes": {
+        "RB00": {
+          "shot": "reply",
+          "act": 0,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "你陪 Ruby 留下二十分钟。",
+            "你决定保留自己的下午，Ruby 接受今天不散步。"
+          ],
+          "before": [
+            [
+              "旁白",
+              "A tram bell fades beyond the café door.",
+              "咖啡馆门外，一阵电车铃声渐渐远去。"
+            ]
+          ],
+          "cuts": [
+            {
+              "from": 0,
+              "shot": "cafe"
+            },
+            {
+              "from": 2,
+              "shot": "reply"
+            }
+          ],
+          "question": [
+            "How would you like to spend your afternoon?",
+            "你想怎么安排这个下午？"
+          ],
+          "replace": [
+            {
+              "english": "And this form needs to go in tonight.",
+              "with": [
+                "My marine project application is due tonight.",
+                "我的海洋项目申请今晚截止。"
+              ]
+            }
+          ],
+          "insertAfter": [
+            {
+              "english": "My marine project application is due tonight.",
+              "lines": [
+                [
+                  "Ruby",
+                  "I'd get to help with research, not just clean-ups.",
+                  "这样就能参与研究，不只是清理海滩。"
+                ],
+                [
+                  "Ruby",
+                  "I've filled in my name. That's about it.",
+                  "我只填了名字，差不多就这些。"
+                ]
+              ]
+            }
+          ]
+        },
+        "RB10": {
+          "shot": "form",
+          "act": 1,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "Ruby 读出有关瓶盖的开头，申请还没提交。",
+            "你们各做各的事，二十分钟后各自继续。"
+          ],
+          "insertAfter": [
+            {
+              "english": "She finds a photo from a beach clean-up.",
+              "lines": [
+                [
+                  "Ruby",
+                  "Port Phillip Bay. We went back the next week.",
+                  "菲利普港湾，我们下一周又去了。"
+                ],
+                [
+                  "Ruby",
+                  "Same patch of sand. More bottle caps.",
+                  "同一片沙滩，又捡到了瓶盖。"
+                ],
+                [
+                  "Ruby",
+                  "I want to know what keeps bringing them back.",
+                  "我想弄清是什么不断把它们带回来。"
+                ]
+              ]
+            }
+          ],
+          "question": [
+            "How would you like to spend these twenty minutes?",
+            "这二十分钟，你想怎么待着？"
+          ]
+        },
+        "RB11": {
+          "shot": "form",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6,
+          "insertAfter": [
+            {
+              "english": "I wanted to know where they came from.",
+              "lines": [
+                [
+                  "旁白",
+                  "She deletes 'passionate' and keeps the beach in the form.",
+                  "她删掉“充满热情”，把海滩的经历留在表里。"
+                ],
+                [
+                  "Ruby",
+                  "It wasn't a lovely day out. But I went back.",
+                  "那可不是什么美好的郊游，但我又去了。"
+                ]
+              ]
+            }
+          ]
+        },
+        "RB12": {
+          "shot": "form",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6,
+          "insertAfter": [
+            {
+              "english": "For a while, there is only typing and café noise.",
+              "lines": [
+                [
+                  "旁白",
+                  "The grinder starts. She waits, then reads her line again.",
+                  "磨豆机响起来，她等了一会儿，又读了一遍自己写的话。"
+                ]
+              ]
+            }
+          ]
+        },
+        "RB20": {
+          "shot": "reply",
+          "act": 1,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "双方约好故事内明天下午四点再见。",
+            "这次没有定下新的散步日期。"
+          ],
+          "question": [
+            "Would you like to choose another day?",
+            "你想现在另选一天吗？"
+          ]
+        },
+        "RB21": {
+          "shot": "lane",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        },
+        "RB22": {
+          "shot": "lane",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        }
+      }
+    },
+    {
+      "source": "docs/story-preparation-2026-10-31/02-marcus-lunch.md",
+      "sourceSHA256": "80a9946a911dde366871641c3b53ee6be30b1d2ab6adda4cb8eb6e323d8a7481",
+      "catalogID": "departures_city_newyork_v1",
+      "id": "departures_city_newyork_v2",
+      "city": "newyork",
+      "subtitle": "一顿迟到的午饭，不必占满你的下午。",
+      "acts": [
+        "纽约 · 十二点四十分",
+        "让午饭继续",
+        "今天或下次"
+      ],
+      "shots": {
+        "lunch": {
+          "background": "dp_newyork_lunch",
+          "actors": []
+        },
+        "meet": {
+          "background": "dp_newyork_lunch",
+          "actors": [
+            {
+              "id": "Marcus",
+              "asset": "dp_marcus_listen",
+              "x": 0.5,
+              "scale": 1
+            }
+          ]
+        },
+        "evening": {
+          "background": "dp_newyork_evening_phone",
+          "actors": []
+        }
+      },
+      "scenes": {
+        "ML00": {
+          "shot": "lunch",
+          "act": 0,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "你先吃饭，双方约定一点二十短见。",
+            "你吃完离开，今天不再见面。"
+          ],
+          "insertAfter": [
+            {
+              "english": "The stock delivery came while I was on my own.",
+              "lines": [
+                [
+                  "Marcus",
+                  "Used records. Half the sleeves had no price.",
+                  "一批二手唱片，一半封套上都没标价。"
+                ],
+                [
+                  "Marcus",
+                  "The other clerk gets here at one.",
+                  "另一位店员一点才到。"
+                ]
+              ]
+            }
+          ],
+          "question": [
+            "Do you still want to meet today?",
+            "你今天还想见面吗？"
+          ]
+        },
+        "ML10": {
+          "shot": "meet",
+          "act": 1,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "Marcus 陪你走到街角，一点半分开。",
+            "你们在桌边短坐，Marcus 自己另找午饭。"
+          ],
+          "cuts": [
+            {
+              "from": 0,
+              "shot": "lunch"
+            },
+            {
+              "from": 4,
+              "shot": "meet"
+            }
+          ],
+          "question": [
+            "What fits the time you have left?",
+            "剩下的时间，你想怎么过？"
+          ]
+        },
+        "ML11": {
+          "shot": "meet",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6,
+          "insertAfter": [
+            {
+              "english": "Which way are you going? I'll walk with you.",
+              "lines": [
+                [
+                  "旁白",
+                  "You point towards your next stop. He follows your lead.",
+                  "你指向接下来要去的方向，他跟着你走。"
+                ]
+              ]
+            },
+            {
+              "english": "I know the words. That's worse. See you.",
+              "lines": [
+                [
+                  "旁白",
+                  "He stops at the corner. He doesn't add another block.",
+                  "他走到街角就停下，没有再拉着你多走一个街区。"
+                ]
+              ]
+            }
+          ]
+        },
+        "ML12": {
+          "shot": "lunch",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        },
+        "ML20": {
+          "shot": "evening",
+          "act": 1,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "Marcus 查班表后给出两个时间，尚未确认。",
+            "Marcus 接受等你主动重新提出安排。"
+          ],
+          "cuts": [
+            {
+              "from": 0,
+              "shot": "lunch"
+            },
+            {
+              "from": 3,
+              "shot": "evening"
+            }
+          ],
+          "replace": [
+            {
+              "english": "Okay. I won't ask you to fit around the delivery.",
+              "with": [
+                "Okay. I'll let you get on with your afternoon.",
+                "好，你照自己的安排过下午吧。"
+              ]
+            }
+          ],
+          "question": [
+            "Would you like him to check next week?",
+            "要让他先查查下周的安排吗？"
+          ]
+        },
+        "ML21": {
+          "shot": "evening",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        },
+        "ML22": {
+          "shot": "evening",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        }
+      }
+    },
+    {
+      "source": "docs/story-preparation-2026-10-31/03-singapore-goodbye.md",
+      "sourceSHA256": "c6700defb8c836c5362bbb181fce0dc51e3787d4b3ae44ef400142fcea082cc2",
+      "catalogID": "departures_mainline_singapore_v1",
+      "id": "departures_mainline_singapore_v2",
+      "city": "singapore",
+      "subtitle": "说定一次联系，或好好吃完今晚这顿饭。",
+      "acts": [
+        "新加坡 · 最后一晚",
+        "一张餐桌两地时钟",
+        "走到街角之前"
+      ],
+      "shots": {
+        "night": {
+          "background": "dp_singapore_hawker_night",
+          "actors": []
+        },
+        "dinner": {
+          "background": "dp_mei_dinner",
+          "actors": []
+        },
+        "note": {
+          "background": "dp_singapore_private",
+          "actors": []
+        },
+        "photo": {
+          "background": "dp_singapore_photo",
+          "actors": []
+        },
+        "farewell": {
+          "background": "dp_singapore_outside",
+          "actors": []
+        }
+      },
+      "scenes": {
+        "SG00": {
+          "shot": "dinner",
+          "act": 0,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "你提出一次简短通话，具体时间仍需确认。",
+            "你只表达今晚的感谢，不要求下一次安排。"
+          ],
+          "before": [
+            [
+              "旁白",
+              "Fans turn above the hawker tables. A shutter rattles down.",
+              "熟食中心的吊扇转着，一个摊位正拉下卷帘。"
+            ]
+          ],
+          "question": [
+            "Would you like to plan a call?",
+            "你想约一次通话，还是只说声谢谢？"
+          ]
+        },
+        "SG10": {
+          "shot": "dinner",
+          "act": 1,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "双方说定故事内周二新加坡时间十九点通话。",
+            "双方暂不确认周二，等到家再商量。"
+          ],
+          "insertAfter": [
+            {
+              "english": "That time fits. The call would be twenty minutes.",
+              "lines": [
+                [
+                  "Mei",
+                  "Just tea. I don't need a slide show.",
+                  "就喝茶聊聊，不用给我放幻灯片。"
+                ]
+              ]
+            }
+          ],
+          "question": [
+            "Book it now, or wait until you get home?",
+            "现在定下来，还是到家后再商量？"
+          ]
+        },
+        "SG11": {
+          "shot": "dinner",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        },
+        "SG12": {
+          "shot": "dinner",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6,
+          "insertAfter": [
+            {
+              "english": "You finish dinner without looking for another date.",
+              "lines": [
+                [
+                  "旁白",
+                  "A cleaner passes. Mei stacks the empty bowls.",
+                  "清洁人员走过，Mei 把空碗叠起来。"
+                ]
+              ]
+            }
+          ]
+        },
+        "SG20": {
+          "shot": "dinner",
+          "act": 1,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "双方同意拍一张只留给两人的合照。",
+            "你们收起手机，把今晚的饭慢慢吃完。"
+          ],
+          "question": [
+            "What would you like before you go?",
+            "离开之前，你想做什么？"
+          ]
+        },
+        "SG21": {
+          "shot": "night",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6,
+          "insertAfter": [
+            {
+              "english": "Yes. Just for us, though.",
+              "lines": [
+                [
+                  "Mei",
+                  "I don't want to post every goodbye.",
+                  "我不想把每一次告别都发到网上。"
+                ]
+              ]
+            }
+          ]
+        },
+        "SG22": {
+          "shot": "dinner",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        }
+      }
+    },
+    {
+      "source": "docs/story-preparation-2026-10-31/04-toronto-dinner.md",
+      "sourceSHA256": "1c896b6bc73d1105e51214f9daf6106acbf37cdd7a751cee69a4116577068ada",
+      "catalogID": "departures_city_toronto_v1",
+      "id": "departures_city_toronto_v2",
+      "city": "toronto",
+      "subtitle": "三份蛋糕，一顿还没着落的晚饭。",
+      "acts": [
+        "多伦多 · 一间公寓的晚饭",
+        "厨房与订单",
+        "蛋糕切开之前"
+      ],
+      "shots": {
+        "flat": {
+          "background": "dp_toronto_flat",
+          "actors": []
+        },
+        "maya": {
+          "background": "dp_toronto_flat",
+          "actors": [
+            {
+              "id": "Maya",
+              "asset": "dp_maya_welcome",
+              "x": 0.5,
+              "scale": 1
+            }
+          ]
+        },
+        "sam": {
+          "background": "dp_toronto_flat",
+          "actors": [
+            {
+              "id": "Sam",
+              "asset": "dp_sam_apology",
+              "x": 0.5,
+              "scale": 1
+            }
+          ]
+        },
+        "cook": {
+          "background": "dp_toronto_cook",
+          "actors": []
+        },
+        "order": {
+          "background": "dp_toronto_order",
+          "actors": []
+        },
+        "dessert": {
+          "background": "dp_toronto_dessert",
+          "actors": []
+        }
+      },
+      "scenes": {
+        "TO00": {
+          "shot": "flat",
+          "act": 0,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "你们选择现有食材做饭，每个人能参与到不同程度。",
+            "大家一起核对菜单与总价，没有替用户付款。"
+          ],
+          "replace": [
+            {
+              "english": "I've got rice, beans and vegetables. Or we order.",
+              "with": [
+                "Rice, eggs and vegetables. Or we can order.",
+                "有米饭、鸡蛋和蔬菜，也可以点餐。"
+              ]
+            }
+          ],
+          "before": [
+            [
+              "旁白",
+              "The lift hums beyond Maya's flat. Shoes crowd the door.",
+              "Maya 公寓门外电梯嗡嗡作响，门口摆满了鞋子。"
+            ]
+          ],
+          "question": [
+            "Cook here, or order together?",
+            "在家做，还是一起点餐？"
+          ]
+        },
+        "TO10": {
+          "shot": "flat",
+          "act": 1,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "你摆桌，Maya 和 Sam 准备饭菜。",
+            "你只陪着聊天，其他人照自己的分工准备。"
+          ],
+          "replace": [
+            {
+              "english": "I'll wash the vegetables. It's my best dish.",
+              "with": [
+                "I'll get the vegetables ready. My best dish.",
+                "我来备蔬菜，这是我的拿手菜。"
+              ]
+            }
+          ],
+          "question": [
+            "How would you like to join in?",
+            "你想怎么参与这顿饭？"
+          ]
+        },
+        "TO11": {
+          "shot": "cook",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        },
+        "TO12": {
+          "shot": "flat",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        },
+        "TO20": {
+          "shot": "order",
+          "act": 1,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "你接受 Maya 自愿请客，没有欠下一次补偿。",
+            "你自愿支付已说明的九加元，其余由 Maya 支付。"
+          ],
+          "question": [
+            "Ready to order?",
+            "订单清楚了，怎么回应？"
+          ]
+        },
+        "TO21": {
+          "shot": "order",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6,
+          "cuts": [
+            { "from": 4, "shot": "flat" }
+          ],
+          "appendBeforeLast": [
+            [
+              "Maya",
+              "I'll get the buzzer. You keep the cake safe.",
+              "门禁我去应，你们看好蛋糕。"
+            ]
+          ]
+        },
+        "TO22": {
+          "shot": "order",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6,
+          "cuts": [
+            { "from": 4, "shot": "flat" }
+          ]
+        }
+      }
+    },
+    {
+      "source": "docs/story-preparation-2026-10-31/05-auckland-workbench.md",
+      "sourceSHA256": "dfe53c3715b791f9521ece7789003dfaf5d94bad5092a1246b481d8fbe18a71c",
+      "catalogID": "departures_city_auckland_v1",
+      "id": "departures_city_auckland_v2",
+      "city": "auckland",
+      "subtitle": "工具回来了，今天还做不完所有事。",
+      "acts": [
+        "奥克兰 · 海港旁的维修桌",
+        "十分钟能做什么",
+        "把自己的东西带回家"
+      ],
+      "shots": {
+        "workshop": {
+          "background": "dp_auckland_repair",
+          "actors": []
+        },
+        "hana": {
+          "background": "dp_auckland_repair",
+          "actors": [
+            {
+              "id": "Hana",
+              "asset": "dp_hana_explain",
+              "x": 0.5,
+              "scale": 1
+            }
+          ]
+        },
+        "drawer": {
+          "background": "dp_auckland_repair",
+          "actors": [
+            {
+              "id": "Peter",
+              "asset": "dp_peter_drawer",
+              "x": 0.5,
+              "scale": 1
+            }
+          ]
+        },
+        "learn": {
+          "background": "dp_auckland_joint",
+          "actors": []
+        },
+        "later": {
+          "background": "dp_auckland_finished_drawer",
+          "actors": []
+        }
+      },
+      "scenes": {
+        "AK00": {
+          "shot": "workshop",
+          "act": 0,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "你愿意帮 Peter 记下抽屉的情况。",
+            "你留在架子这一边，不承担 Peter 的维修。"
+          ],
+          "before": [
+            [
+              "旁白",
+              "A ferry horn drifts in from the harbour.",
+              "海港那边传来一声渡轮汽笛。"
+            ]
+          ],
+          "insertAfter": [
+            {
+              "english": "Not today. I need to finish this shelf.",
+              "lines": [
+                [
+                  "Hana",
+                  "I've booked this bench until lunch. Then it's their turn.",
+                  "这张工作台我只约到午饭，之后轮到别人。"
+                ]
+              ]
+            }
+          ],
+          "question": [
+            "What would you like to do while you're here?",
+            "在这里，你想做点什么？"
+          ]
+        },
+        "AK10": {
+          "shot": "hana",
+          "act": 1,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "Hana 标记位置，Peter 带抽屉和记录回家。",
+            "Peter 带问题记录与抽屉回家，尚未修理。"
+          ],
+          "question": [
+            "What would help Peter next time?",
+            "想帮 Peter 为下次留下什么？"
+          ]
+        },
+        "AK11": {
+          "shot": "workshop",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        },
+        "AK12": {
+          "shot": "workshop",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        },
+        "AK20": {
+          "shot": "hana",
+          "act": 1,
+          "speed": 1.0,
+          "after": 0.35,
+          "outcomes": [
+            "你短暂扶住架子，由 Hana 自己检查。",
+            "你坐下来聊天，没有参与维修。"
+          ],
+          "question": [
+            "Would you like to help, or sit with her?",
+            "你想搭把手，还是坐着陪她？"
+          ]
+        },
+        "AK21": {
+          "shot": "workshop",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        },
+        "AK22": {
+          "shot": "workshop",
+          "act": 2,
+          "speed": 0.98,
+          "after": 0.6
+        }
+      }
+    }
+  ]
+}

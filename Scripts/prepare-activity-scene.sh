@@ -4,7 +4,7 @@
 set -euo pipefail
 activity_source="${1:?Pass the licensed Mixkit 4831 source video}"
 activity_foreground="${2:?Pass the one-shot foreground image}"
-activity_output="App/Resources/ActivityScene"
+activity_output="build/legacy-activity-scenes"
 activity_tmp="$(mktemp -d)"
 trap 'rm -r "$activity_tmp"' EXIT
 mkdir -p "$activity_output"

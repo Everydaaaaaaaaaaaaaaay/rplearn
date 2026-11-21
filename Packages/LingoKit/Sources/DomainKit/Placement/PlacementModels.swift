@@ -17,7 +17,7 @@ public enum PlacementSkill: String, Codable, CaseIterable, Sendable {
     }
 }
 
-/// 听力题的重听次数策略。每道题独立计数，切换题目后重置。
+/// 听力题每题独立计数；返回已看过的题目时保留播放次数。
 public enum PlacementListeningPolicy {
     public static let maximumPlayCount = 2
 
@@ -220,19 +220,22 @@ public struct PlacementResponse: Sendable, Equatable {
     public let format: PlacementQuestionFormat
     public let wasCorrect: Bool
     public let difficulty: Double
+    public let wasSkipped: Bool
 
     public init(
         questionID: String,
         skill: PlacementSkill,
         format: PlacementQuestionFormat,
         wasCorrect: Bool,
-        difficulty: Double
+        difficulty: Double,
+        wasSkipped: Bool = false
     ) {
         self.questionID = questionID
         self.skill = skill
         self.format = format
         self.wasCorrect = wasCorrect
         self.difficulty = difficulty
+        self.wasSkipped = wasSkipped
     }
 }
 
@@ -259,6 +262,10 @@ public enum PlacementReferenceLevel: String, Sendable, Equatable {
     case c2 = "C2"
 }
 
+public enum PlacementStopReason: String, Sendable, Equatable {
+    case threeMistakes, questionLimit, questionBankExhausted
+}
+
 public struct PlacementResult: Sendable, Equatable {
     public let ability: Double
     public let standardError: Double
@@ -269,6 +276,11 @@ public struct PlacementResult: Sendable, Equatable {
     public let referenceLevel: PlacementReferenceLevel
     public let answeredCount: Int
     public let skillResults: [PlacementSkillResult]
+    public let skippedCount: Int
+    public let mistakeCount: Int
+    public let stopReason: PlacementStopReason
+    public var hasSufficientEvidence: Bool { answeredCount >= 3 }
+    public var correctCount: Int { answeredCount - mistakeCount }
 
     public init(
         ability: Double,
@@ -279,7 +291,10 @@ public struct PlacementResult: Sendable, Equatable {
         difficultyLevel: DifficultyLevel,
         referenceLevel: PlacementReferenceLevel,
         answeredCount: Int,
-        skillResults: [PlacementSkillResult]
+        skillResults: [PlacementSkillResult],
+        skippedCount: Int = 0,
+        mistakeCount: Int = 0,
+        stopReason: PlacementStopReason = .questionLimit
     ) {
         self.ability = ability
         self.standardError = standardError
@@ -290,6 +305,9 @@ public struct PlacementResult: Sendable, Equatable {
         self.referenceLevel = referenceLevel
         self.answeredCount = answeredCount
         self.skillResults = skillResults
+        self.skippedCount = skippedCount
+        self.mistakeCount = mistakeCount
+        self.stopReason = stopReason
     }
 
     public var confidenceLabel: String {

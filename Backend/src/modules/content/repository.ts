@@ -4,6 +4,7 @@ import { AppError } from "../../shared/errors.js";
 import { appendSyncChange } from "../../infrastructure/sync-change-writer.js";
 import type {
   ContentCommand,
+  ContentCommandGuard,
   ContentCommitObserver,
   ContentDeleteCommand,
   ContentRecord,
@@ -72,6 +73,7 @@ export class ContentRepository {
   constructor(
     private readonly database: DatabaseResource,
     private readonly observer?: ContentCommitObserver,
+    private readonly beforeCommand?: ContentCommandGuard,
   ) {}
 
   async readRecord(
@@ -176,11 +178,17 @@ export class ContentRepository {
         return JSON.parse(receipt.response_text) as ContentRecord;
       }
 
-      const record =
+      await this.beforeCommand?.(sql, userId, command);
+      const previous =
+        this.observer && command.resourceType === "conversation"
+          ? await this.readRecord(sql, userId, command.resourceType, command.resourceId)
+          : undefined;
+      let record =
         command.operation === "upsert"
           ? await this.upsert(sql, userId, command)
           : await this.delete(sql, userId, command);
-      if (this.observer) await this.observer(sql, userId, record);
+      if (this.observer)
+        record = (await this.observer(sql, userId, record, previous)) ?? record;
       await appendSyncChange(sql, {
         commandId: command.commandId,
         eventType: `content.${command.resourceType}.${command.operation}`,
@@ -207,6 +215,198 @@ export class ContentRepository {
     });
   }
 
+  async sharedRecords(
+    sql: TransactionSql,
+    userId: string,
+    type: ContentResourceType,
+    parentId: string | null,
+    limit = 2_000_000_000,
+  ): Promise<ContentRecord[]> {
+    const rows = await sql<
+      ContentRow[]
+    >`select resource_type,resource_id,parent_id,payload::text as payload_text,
+      version,created_at,updated_at,deleted_at from app.content_records
+      where user_id=${userId} and resource_type=${type} and parent_id is not distinct from ${parentId} and deleted_at is null
+      order by created_at desc,resource_id limit ${limit}`;
+    return rows.map(mapRecord);
+  }
+
+  async sharedMessages(
+    sql: TransactionSql,
+    userId: string,
+    conversationId: string,
+    after: number,
+    limit: number,
+  ): Promise<ContentRecord[]> {
+    const rows = await sql<
+      ContentRow[]
+    >`select resource_type,resource_id,parent_id,payload::text as payload_text,
+      version,created_at,updated_at,deleted_at from app.content_records
+      where user_id=${userId} and resource_type='message' and parent_id=${conversationId} and deleted_at is null
+      and (payload->>'orderIndex')::integer>${after}
+      order by (payload->>'orderIndex')::integer,resource_id limit ${limit}`;
+    return rows.map(mapRecord);
+  }
+
+  async sharedWrite(
+    sql: TransactionSql,
+    userId: string,
+    type: ContentResourceType,
+    id: string,
+    parentId: string | null,
+    payload: Record<string, unknown>,
+  ): Promise<ContentRecord> {
+    const [row] = await sql<
+      ContentRow[]
+    >`insert into app.content_records(user_id,resource_type,resource_id,parent_id,payload)
+      values(${userId},${type},${id},${parentId},${JSON.stringify(payload)}::jsonb)
+      on conflict(user_id,resource_type,resource_id) do update set parent_id=excluded.parent_id,payload=excluded.payload,
+      version=app.content_records.version+1,updated_at=now()
+      returning resource_type,resource_id,parent_id,payload::text as payload_text,version,created_at,updated_at,deleted_at`;
+    if (!row) throw new Error("ChatContentWriteFailed");
+    const record = mapRecord(row);
+    await appendSyncChange(sql, {
+      userId,
+      commandId: crypto.randomUUID(),
+      eventType: `content.${type}.upsert`,
+      payload: record,
+    });
+    return record;
+  }
+
+  async sharedRewrite(
+    sql: TransactionSql,
+    userId: string,
+    record: ContentRecord,
+    parentId: string | null,
+    payload: Record<string, unknown>,
+  ): Promise<ContentRecord> {
+    await sql`update app.content_records set parent_id=${parentId},payload=${JSON.stringify(payload)}::jsonb
+      where user_id=${userId} and resource_type=${record.resourceType} and resource_id=${record.resourceId}`;
+    return { ...record, parentId, payload };
+  }
+
+  async appointmentMessages(
+    sql: TransactionSql,
+    userId: string,
+    conversationId: string,
+  ): Promise<ContentRecord[]> {
+    const rows = await sql<
+      ContentRow[]
+    >`select resource_type,resource_id,parent_id,payload::text as payload_text,version,created_at,updated_at,deleted_at
+      from app.content_records where user_id=${userId} and resource_type='message' and parent_id=${conversationId} and deleted_at is null
+      order by created_at desc,resource_id desc limit 80`;
+    const bounded: ContentRecord[] = [];
+    let characters = 0;
+    for (const row of rows) {
+      const record = mapRecord(row);
+      const size = JSON.stringify(record.payload).length;
+      if (characters + size > 120_000) break;
+      bounded.push(record);
+      characters += size;
+    }
+    return bounded.reverse();
+  }
+
+  async appointmentProofMessages(
+    sql: TransactionSql,
+    userId: string,
+    conversationId: string,
+    evidenceIds: string[],
+  ): Promise<ContentRecord[]> {
+    const rows = await sql<
+      ContentRow[]
+    >`select resource_type,resource_id,parent_id,payload::text as payload_text,version,created_at,updated_at,deleted_at
+      from app.content_records where user_id=${userId} and resource_type='message' and parent_id=${conversationId}
+      and (resource_id=any(${evidenceIds}::text[]) or payload->'learningOrigin'->>'operationId' in (
+        select payload->'learningOrigin'->>'operationId' from app.content_records
+        where user_id=${userId} and resource_type='message' and parent_id=${conversationId} and resource_id=any(${evidenceIds}::text[])
+      )) order by created_at,resource_id`;
+    return rows.map(mapRecord);
+  }
+
+  async appointmentRelationship(
+    sql: TransactionSql,
+    userId: string,
+    characterId: string,
+    expectedVersion: number,
+    relationship: Record<string, unknown>,
+    commandId: string,
+  ) {
+    const record = await this.lockRecord(sql, userId, "character", characterId);
+    if (record?.deletedAt !== null || record.version !== expectedVersion)
+      throw versionConflict(record);
+    const payload = { ...(record.payload as Record<string, unknown>), relationship };
+    const next = await this.upsert(sql, userId, {
+      commandId,
+      operation: "upsert",
+      resourceType: "character",
+      resourceId: characterId,
+      parentId: null,
+      expectedVersion,
+      payload,
+    });
+    await appendSyncChange(sql, {
+      userId,
+      commandId,
+      eventType: "content.character.upsert",
+      payload: next,
+    });
+    return next;
+  }
+
+  async appointmentMemory(
+    sql: TransactionSql,
+    userId: string,
+    characterId: string,
+    memoryId: string,
+    content: string,
+    appointmentId: string,
+    commandId: string,
+    evidence?: string,
+    eventDate?: string,
+  ) {
+    // Stable ID means a replay never recreates an edited or forgotten memory.
+    const previous = await this.readRecord(sql, userId, "memory", memoryId);
+    if (previous) return;
+    const now = new Date().toISOString();
+    const metadata = {
+      key: `appointment.${appointmentId}.${memoryId}`,
+      text: content,
+      status: "active",
+      evidence: evidence ?? `appointment:${appointmentId}`,
+      messageID: appointmentId,
+      observedAt: Date.now() / 1000 - 978307200,
+      eventDate: eventDate ?? now.slice(0, 10),
+      archived: false,
+      forgotten: false,
+      edited: false,
+    };
+    const next = await this.upsert(sql, userId, {
+      commandId,
+      operation: "upsert",
+      resourceType: "memory",
+      resourceId: memoryId,
+      parentId: characterId,
+      expectedVersion: 0,
+      payload: {
+        content: "@lingotrip-memory-v2:" + JSON.stringify(metadata),
+        createdAt: now,
+        importance: 5,
+        source: "appointment",
+        schemaVersion: 2,
+        sourceUpToIndex: 0,
+        tier: "long",
+      },
+    });
+    await appendSyncChange(sql, {
+      userId,
+      commandId,
+      eventType: "content.memory.upsert",
+      payload: next,
+    });
+  }
+
   private async upsert(
     sql: TransactionSql,
     userId: string,
@@ -223,6 +423,90 @@ export class ContentRepository {
       (existing !== undefined && existing.version !== command.expectedVersion)
     ) {
       throw versionConflict(existing);
+    }
+    let payload = command.payload;
+    if (existing?.deletedAt === null && command.resourceType === "message") {
+      interface TimelineEntry {
+        kind: string;
+      }
+      const previous =
+        (existing.payload as { timelineEvents?: TimelineEntry[] }).timelineEvents ?? [];
+      const incoming =
+        (command.payload as { timelineEvents?: TimelineEntry[] }).timelineEvents ?? [];
+      if (previous.length || incoming.length) {
+        const events = new Map<string, TimelineEntry>();
+        for (const event of [...previous, ...incoming]) {
+          if (!events.has(event.kind)) events.set(event.kind, event);
+        }
+        payload = {
+          ...(command.payload as Record<string, unknown>),
+          timelineEvents: [...events.values()],
+        };
+      }
+    }
+    if (existing?.deletedAt === null && command.resourceType === "conversation") {
+      const previous = (existing.payload as { lastReadAt?: string | null }).lastReadAt;
+      const incoming = (command.payload as { lastReadAt?: string | null }).lastReadAt;
+      // Whole-second receipts from older clients, or a write from an earlier
+      // device snapshot, must not make an already-read reply unread again.
+      if (
+        typeof previous === "string" &&
+        Number.isFinite(Date.parse(previous)) &&
+        (typeof incoming !== "string" || Date.parse(previous) > Date.parse(incoming))
+      ) {
+        payload = {
+          ...(command.payload as Record<string, unknown>),
+          lastReadAt: previous,
+        };
+      }
+    }
+    if (existing && command.resourceType === "character") {
+      const previous = (
+        existing.payload as { relationship?: { settledAppointmentIDs?: string[] } }
+      ).relationship;
+      const incoming = (
+        command.payload as { relationship?: { settledAppointmentIDs?: string[] } }
+      ).relationship;
+      const carried = new Set(
+        (incoming?.settledAppointmentIDs ?? []).map((id) => id.toLowerCase()),
+      );
+      if (
+        (previous?.settledAppointmentIDs ?? []).some(
+          (id) => !carried.has(id.toLowerCase()),
+        )
+      )
+        throw versionConflict(existing);
+      const previousCard = (existing.payload as { card: Record<string, unknown> }).card;
+      const incomingCard = (command.payload as { card: Record<string, unknown> }).card;
+      const previousVersion = (previousCard.settingVersion as number | undefined) ?? 0;
+      if (previousVersion > 0) {
+        const card = { ...incomingCard };
+        if (
+          previousVersion > ((incomingCard.settingVersion as number | undefined) ?? 0)
+        ) {
+          for (const key of [
+            "nationality",
+            "hometown",
+            "regionId",
+            "background",
+            "settingVersion",
+            "settingReleaseID",
+          ])
+            card[key] = previousCard[key];
+        }
+        const incomingHistory =
+          (incomingCard.settingHistory as unknown[] | undefined) ?? [];
+        const carriedHistory = new Set(
+          incomingHistory.map((revision) => JSON.stringify(revision)),
+        );
+        card.settingHistory = [
+          ...((previousCard.settingHistory as unknown[] | undefined) ?? []).filter(
+            (revision) => !carriedHistory.has(JSON.stringify(revision)),
+          ),
+          ...incomingHistory,
+        ];
+        payload = { ...(command.payload as Record<string, unknown>), card };
+      }
     }
     await this.requireParent(sql, userId, command.resourceType, command.parentId);
     await this.requireReadyMediaAsset(sql, userId, command);
@@ -245,7 +529,7 @@ export class ContentRepository {
               ${command.resourceType}::app.content_resource_type,
               ${command.resourceId},
               ${command.parentId},
-              ${JSON.stringify(command.payload)}::jsonb
+              ${JSON.stringify(payload)}::jsonb
             )
             returning
               resource_type,
@@ -260,7 +544,7 @@ export class ContentRepository {
         : await sql<ContentRow[]>`
             update app.content_records
             set parent_id = ${command.parentId},
-                payload = ${JSON.stringify(command.payload)}::jsonb,
+                payload = ${JSON.stringify(payload)}::jsonb,
                 version = version + 1,
                 deleted_at = null,
                 updated_at = now()

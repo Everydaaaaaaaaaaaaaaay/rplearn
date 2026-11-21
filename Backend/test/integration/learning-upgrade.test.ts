@@ -51,7 +51,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const conversation = randomUUID();
       const message = randomUUID();
       await sql`insert into app.users(id) values(${user})`;
-      await sql`insert into app.user_profiles(user_id,difficulty,display_name) values(${user},'senior2','保留档案')`;
+      await sql`insert into app.user_profiles(user_id,difficulty,display_name,learning_goal) values(${user},'senior2','保留档案','travel')`;
       const records = [
         {
           type: "character",
@@ -93,8 +93,10 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       await sql`insert into app.unit_learning_messages(user_id,message_id,character_id,character_count) values(${user},${message},${character},1000)`;
       await sql`insert into app.unit_learning_templates(id,role_key,grade,source,payload) values('old.unit','oliver',1,'authored','{}')`;
       await sql`insert into app.unit_learning_attempts(id,user_id,character_id,template_id,grade) values(${randomUUID()},${user},${character},'old.unit',1)`;
-      const profileBefore =
-        await sql`select to_jsonb(p)-'quiz_globally_enabled' as profile from app.user_profiles p where user_id=${user}`;
+      const [profileBefore] = await sql<
+        { profile: Record<string, unknown> }[]
+      >`select to_jsonb(p)-'quiz_globally_enabled' as profile from app.user_profiles p where user_id=${user}`;
+      if (!profileBefore) throw new Error("缺少升级前的用户档案。");
       const contentBefore =
         await sql`select * from app.content_records where user_id=${user} order by resource_id`;
       const retiredQuizId = randomUUID();
@@ -133,7 +135,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       }
       expect(
         await sql`select to_jsonb(p)-'quiz_globally_enabled' as profile from app.user_profiles p where user_id=${user}`,
-      ).toEqual(profileBefore);
+      ).toEqual([{ profile: { ...profileBefore.profile, learning_goals: null } }]);
       expect(
         await sql`select * from app.content_records where user_id=${user} order by resource_id`,
       ).toEqual(contentBefore);

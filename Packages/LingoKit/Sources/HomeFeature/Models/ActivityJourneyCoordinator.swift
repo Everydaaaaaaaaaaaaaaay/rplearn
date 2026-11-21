@@ -1,59 +1,52 @@
 import Combine
+import BackendKit
 import DomainKit
 import Foundation
+import Observation
 
 /// App-owned lifetime: Tab/navigation disappearance never owns an action request.
 @MainActor
-public final class ActivityJourneyCoordinator: ObservableObject {
-    @Published private(set) var model: SocialEncounterModel?
-    @Published public private(set) var hasUnreadResult = false
-    private var observation: AnyCancellable?
-    private var deadlineTask: Task<Void, Never>?
-    private var viewing = false
-    private var resultWasSeen = false
+@Observable
+public final class ActivityJourneyCoordinator {
+    private(set) var cityOuting: CityOutingModel?
+    public private(set) var hasUnreadResult = false
+    @ObservationIgnored private var observation: AnyCancellable?
+    @ObservationIgnored private var viewing = false
+    @ObservationIgnored private var resultWasSeen = false
     public init() {}
 
-    public var isPreparing: Bool { model?.started == true && model?.canReveal == false }
-    public var isRunning: Bool { model?.started == true && model?.completed == false }
-    public var activeActivity: SceneActivity? { model?.activity }
+    public var isPreparing: Bool { cityOuting?.isPreparing == true }
+    public var hasOpenOuting: Bool { cityOuting != nil }
 
-    func prepare(activity: SceneActivity, region: Region, deps: HomeDependencies, namespace: String) {
-        if model?.started == true { return }
-        let next = SocialEncounterModel(activity: activity, region: region, deps: deps, namespace: namespace)
-        resultWasSeen = false
-        model = next
+    func preparePlace(archive: CityOutingArchive, region: Region, deps: HomeDependencies, namespace: String, gateway: any OutingGateway, storage: UserDefaults = .standard) {
+        guard cityOuting?.isRunning != true else { return }
+        let next = CityOutingModel(archive: archive, region: region, deps: deps, namespace: namespace, gateway: gateway, storage: storage)
+        cityOuting = next; resultWasSeen = false
         observation = next.objectWillChange.sink { [weak self] in
             Task { @MainActor [weak self] in self?.refresh() }
         }
     }
-    func start() {
-        guard let model else { return }
-        model.start()
-        guard let deadline = model.revealAt, deadlineTask == nil else { return }
-        deadlineTask = Task { [weak self] in
-            try? await Task.sleep(for: .seconds(max(0, deadline.timeIntervalSinceNow)))
-            guard !Task.isCancelled else { return }
-            self?.refresh()
-        }
-    }
+
     func setViewing(_ visible: Bool) {
         viewing = visible
-        if visible { hasUnreadResult = false }
-        else { model?.stopSpeech() }
+        if visible { setUnreadResult(false) }
+        else { cityOuting?.stopSpeech() }
         refresh()
     }
     private func refresh() {
-        if let model, model.canReveal {
-            if viewing { resultWasSeen = true; hasUnreadResult = false }
-            else if !resultWasSeen { hasUnreadResult = true }
+        if cityOuting?.snapshot != nil {
+            if viewing { resultWasSeen = true; setUnreadResult(false) }
+            else if !resultWasSeen { setUnreadResult(true) }
         }
-        objectWillChange.send()
+    }
+    private func setUnreadResult(_ value: Bool) {
+        guard hasUnreadResult != value else { return }
+        hasUnreadResult = value
     }
     public func reset() {
         observation = nil
-        deadlineTask?.cancel(); deadlineTask = nil
-        model?.pause(); model = nil
-        hasUnreadResult = false
+        cityOuting?.pause(); cityOuting = nil
+        setUnreadResult(false)
         resultWasSeen = false
     }
 }

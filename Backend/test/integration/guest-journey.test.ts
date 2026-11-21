@@ -125,8 +125,23 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       await domain.completeOnboarding(guest.userId, newEntityId(), {
         starterRegionId: "london",
       });
-      await domain.completeStory(guest.userId, newEntityId(), "mainline_london");
-      await domain.completeStory(guest.userId, newEntityId(), "mainline_london_2");
+      const firstReward = await domain.completeStory(
+        guest.userId,
+        newEntityId(),
+        "mainline_london",
+      );
+      const secondReward = await domain.completeStory(
+        guest.userId,
+        newEntityId(),
+        "mainline_london_2",
+      );
+      const earnedCoins = firstReward.rewardCoins + secondReward.rewardCoins;
+      const guestProfile = (await domain.getSnapshot(guest.userId)).profile;
+      await domain.updateProfile(guest.userId, newEntityId(), {
+        expectedVersion: guestProfile.version,
+        hasCompletedProfileSetup: true,
+        learningGoals: ["travel", "work"],
+      });
       await domain.claimStarterTicket(guest.userId, newEntityId());
       expect(
         (
@@ -150,14 +165,18 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           hasCompletedOnboarding: false,
         }),
       ).rejects.toMatchObject({ code: "ONBOARDING_STATE_READ_ONLY" });
-      expect((await domain.getSnapshot(guest.userId)).profile.coins).toBe(220);
+      expect((await domain.getSnapshot(guest.userId)).profile.coins).toBe(earnedCoins);
       const accountId = newEntityId();
       ids.push(accountId);
       await runtime.database.sql`insert into app.users (id) values (${accountId})`;
       await domain.completeOnboarding(accountId, newEntityId(), {
         starterRegionId: "melbourne",
       });
-      await domain.completeStory(accountId, newEntityId(), "mainline_london");
+      const accountReward = await domain.completeStory(
+        accountId,
+        newEntityId(),
+        "mainline_melbourne",
+      );
       await domain.claimStarterTicket(accountId, newEntityId());
       const account = await auth.loginFederated(accountId, 0, device, {});
       const claim = {
@@ -169,7 +188,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect((await app.inject(claim)).json()).toEqual({ claimed: true });
       expect((await app.inject(claim)).json()).toEqual({ claimed: true });
       const inherited = await domain.getSnapshot(accountId);
-      expect(inherited.profile.coins).toBe(220);
+      expect(inherited.profile.coins).toBe(accountReward.rewardCoins + earnedCoins);
+      expect(inherited.profile.learningGoals).toEqual(["travel", "work"]);
       expect(inherited.profile.starterRegionId).toBe("melbourne");
       expect(inherited.tickets).toHaveLength(1);
       const relations = await runtime.database.sql<

@@ -96,7 +96,8 @@ struct MemoryServiceTests {
         for message in ["Hello there!", "How are you?", "That sounds nice.", "The weather is good."] {
             #expect(!MemoryFact.shouldExtract(message))
         }
-        for message in ["I live in Melbourne.", "I no longer drink coffee.", "My interview was rescheduled.", "我打算下周去面试。"] {
+        for message in ["I live in Melbourne.", "I no longer drink coffee.", "I like tea.", "I meant Milan.",
+                        "More specifically, it's in Milan.", "My interview was rescheduled.", "我打算下周去面试。"] {
             #expect(MemoryFact.shouldExtract(message))
         }
     }
@@ -114,15 +115,94 @@ struct MemoryServiceTests {
         #expect(try await f.memoryStore.memories(characterID: UUID(), tier: .long).isEmpty)
     }
 
+    @Test("已保存的用户消息产生一次记忆事件，重复事实不产生事件")
+    func committedMemoryChangeReportsOnlyTheFirstSave() async throws {
+        let f = try await makeFixture()
+        let original = try await applyGroundedFact(f, message: "I like tea.", fact: "Friend likes tea.")
+        #expect(original.changes.map(\.kind) == [.remembered])
+        #expect(original.changes.first?.messageID == original.record.messageID)
+        #expect(original.changes.first?.memoryKey == original.record.key)
+        #expect(try await f.memoryStore.applyFacts(characterID: f.characterID, records: [original.record], sourceIndex: 1).isEmpty)
+
+        let intermediate = try await f.chatStore.appendMessage(conversationID: f.conversationID, role: .user,
+            text: "I like coffee.")
+        let lateFact = try #require(MemoryFact(key: original.record.key, text: "Friend likes coffee.", status: "active",
+            evidence: intermediate.text, eventDate: nil).record(from: intermediate))
+        let repeated = try await applyGroundedFact(f, message: "I still like tea.", fact: " Friend likes  tea ")
+        #expect(repeated.changes.isEmpty)
+        #expect(try await f.memoryStore.applyFacts(characterID: f.characterID,
+            records: [lateFact], sourceIndex: intermediate.orderIndex + 1).isEmpty)
+        let stored = try #require(await f.memoryStore.memories(characterID: f.characterID, tier: .long).first)
+        #expect(stored.record?.messageID == repeated.record.messageID)
+        #expect(stored.content == original.record.text)
+    }
+
+    @Test("明确的用户原话区分补充、更正和普通更新")
+    func committedMemoryChangeUsesEvidenceForItsLabel() async throws {
+        let f = try await makeFixture()
+        _ = try await applyGroundedFact(f, message: "I like tea.", fact: "Friend likes tea.")
+        let detail = try await applyGroundedFact(f, message: "More specifically, I like tea with milk.",
+            fact: "Friend likes tea with milk.")
+        #expect(detail.changes.map(\.kind) == [.refined])
+
+        let correction = try await applyGroundedFact(f, message: "I was wrong: I don't like tea; I like coffee.",
+            fact: "Friend likes coffee.")
+        #expect(correction.changes.map(\.kind) == [.corrected])
+
+        let change = try await applyGroundedFact(f, message: "I was wrong about the match. I prefer cocoa now.",
+            fact: "Friend prefers cocoa.")
+        #expect(change.changes.map(\.kind) == [.updated])
+        #expect(try await f.memoryStore.applyFacts(characterID: f.characterID, records: [correction.record], sourceIndex: 3).isEmpty)
+    }
+
+    @Test("不存在的消息、缺乏证据和同一键的冲突事实都不会产生事件")
+    func conflictingOrUngroundedFactsDoNotProduceChanges() async throws {
+        let f = try await makeFixture()
+        let message = try await f.chatStore.appendMessage(conversationID: f.conversationID, role: .user,
+            text: "I like tea and I like coffee.")
+        let memoryKey = "user.drink.preference"
+        let first = MemoryRecord(key: memoryKey, text: "Friend likes tea.", evidence: "I like tea",
+            messageID: message.id, observedAt: message.createdAt)
+        let second = MemoryRecord(key: memoryKey, text: "Friend likes coffee.", evidence: "I like coffee",
+            messageID: message.id, observedAt: message.createdAt)
+        #expect(try await f.memoryStore.applyFacts(characterID: f.characterID, records: [first, second], sourceIndex: 1).isEmpty)
+
+        var missingSource = first
+        missingSource.messageID = UUID()
+        #expect(try await f.memoryStore.applyFacts(characterID: f.characterID, records: [missingSource], sourceIndex: 1).isEmpty)
+
+        var missingEvidence = first
+        missingEvidence.evidence = "I like cocoa"
+        #expect(try await f.memoryStore.applyFacts(characterID: f.characterID, records: [missingEvidence], sourceIndex: 1).isEmpty)
+
+        var blankFact = first
+        blankFact.text = "  "
+        #expect(try await f.memoryStore.applyFacts(characterID: f.characterID, records: [blankFact], sourceIndex: 1).isEmpty)
+        #expect(try await f.memoryStore.memories(characterID: f.characterID, tier: .long).isEmpty)
+    }
+
+    private func applyGroundedFact(
+        _ fixture: Fixture, message: String, fact: String, key: String = "user.drink.preference"
+    ) async throws -> (record: MemoryRecord, changes: [CommittedChatMemoryChange]) {
+        let source = try await fixture.chatStore.appendMessage(conversationID: fixture.conversationID, role: .user, text: message)
+        let candidate = MemoryFact(key: key, text: fact, status: "active", evidence: message, eventDate: nil)
+        let record = try #require(candidate.record(from: source))
+        let changes = try await fixture.memoryStore.applyFacts(characterID: fixture.characterID,
+            records: [record], sourceIndex: source.orderIndex + 1)
+        return (record, changes)
+    }
+
     @Test("遗忘清除正文、隔离旧摘要，并阻止迟到结果重新写入")
     func forgettingPreventsResurrection() async throws {
         let f = try await makeFixture()
-        let record = MemoryRecord(key: "user.drink.preference", text: "Friend likes coffee.", observedAt: .distantPast)
-        try await f.memoryStore.applyFacts(characterID: f.characterID, records: [record], sourceIndex: 1)
+        let original = try await applyGroundedFact(f, message: "I like coffee.", fact: "Friend likes coffee.")
+        #expect(original.changes.map(\.kind) == [.remembered])
         try await seedShorts(f, count: 2)
         let stored = try #require(await f.memoryStore.memories(characterID: f.characterID, tier: .long).first)
         try await f.memoryStore.updateMemory(id: stored.id, forgotten: true)
-        try await f.memoryStore.applyFacts(characterID: f.characterID, records: [record], sourceIndex: 1)
+        #expect(try await f.memoryStore.applyFacts(characterID: f.characterID, records: [original.record], sourceIndex: 1).isEmpty)
+        let repeatAfterForget = try await applyGroundedFact(f, message: "I like tea.", fact: "Friend likes tea.")
+        #expect(repeatAfterForget.changes.isEmpty)
         #expect(try await f.memoryStore.memories(characterID: f.characterID, tier: .long).isEmpty)
         #expect(try await f.memoryStore.memories(characterID: f.characterID, tier: .short, includingArchived: true).count == 2)
         let service = MemoryService(llm: MockLLMProvider(), chatStore: f.chatStore, memoryStore: f.memoryStore)
@@ -135,12 +215,13 @@ struct MemoryServiceTests {
     @Test("手动纠正优先于模型，归档历史仍可按话题召回")
     func editedAndArchivedFacts() async throws {
         let f = try await makeFixture()
-        let record = MemoryRecord(key: "user.pet.name", text: "Friend's dog is called Milo.", observedAt: .distantPast)
-        try await f.memoryStore.applyFacts(characterID: f.characterID, records: [record], sourceIndex: 1)
+        let key = "user.pet.name"
+        _ = try await applyGroundedFact(f, message: "My dog is called Milo.", fact: "Friend's dog is called Milo.", key: key)
         let stored = try #require(await f.memoryStore.memories(characterID: f.characterID, tier: .long).first)
         try await f.memoryStore.updateMemory(id: stored.id, text: "Friend's dog is called Miko.", archived: true)
-        var wrong = record; wrong.observedAt = .distantFuture
-        try await f.memoryStore.applyFacts(characterID: f.characterID, records: [wrong], sourceIndex: 2)
+        let conflicting = try await applyGroundedFact(f, message: "My dog is called Milo.",
+            fact: "Friend's dog is called Milo.", key: key)
+        #expect(conflicting.changes.isEmpty)
         let service = MemoryService(llm: MockLLMProvider(), chatStore: f.chatStore, memoryStore: f.memoryStore)
         let context = await service.memorySections(characterID: f.characterID, query: "dog Miko")
         #expect(context.joined().contains("Miko"))
@@ -481,6 +562,21 @@ struct MemoryServiceTests {
         await service.maintainTiers(characterID: fixture.characterID, characterName: "Memo")
         #expect(try await fixture.memoryStore.count(characterID: fixture.characterID, tier: .short) == 8)
         #expect(try await fixture.memoryStore.count(characterID: fixture.characterID, tier: .mid) == 0)
+    }
+
+    @Test("共享聊天的语义召回使用稳定同步编号")
+    func sharedRecallUsesStableResourceIDs() async throws {
+        let fixture = try await makeFixture()
+        try await fixture.memoryStore.addMemories(characterID: fixture.characterID, tier: .long,
+            facts: [.init(content: "My sister lives in Bristol", importance: 4)], sourceUpToIndex: 0)
+        let service = MemoryService(llm: MockLLMProvider(), chatStore: fixture.chatStore,
+            memoryStore: fixture.memoryStore, economyStore: fixture.economyStore)
+        let first = await service.contextMemoryIDs(characterID: fixture.characterID, query: "Where does my sister live?")
+        let second = await service.contextMemoryIDs(characterID: fixture.characterID, query: "Where does my sister live?")
+        #expect(first.count == 1)
+        #expect(first == second)
+        let memories = try await fixture.memoryStore.memories(characterID: fixture.characterID, tier: .long)
+        #expect(first == (try await fixture.memoryStore.contextResourceIDs(for: memories)))
     }
 
     @Test("long 超配额按重要度裁剪（Free long=5）")

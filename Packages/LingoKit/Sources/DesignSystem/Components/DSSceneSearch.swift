@@ -3,8 +3,8 @@ import SwiftUI
 public extension View {
     /// Own the header geometry and focus together: native minimized search can retain
     /// an expanded toolbar item after dismissal on iOS 27.
-    func dsSceneSearch(text: Binding<String>, title: String, prompt: String) -> some View {
-        modifier(DSSceneSearchModifier(text: text, title: title, prompt: prompt))
+    func dsSceneSearch(text: Binding<String>, title: String, prompt: String, resetToken: Int = 0) -> some View {
+        modifier(DSSceneSearchModifier(text: text, title: title, prompt: prompt, resetToken: resetToken))
     }
 }
 
@@ -12,6 +12,7 @@ private struct DSSceneSearchModifier: ViewModifier {
     @Binding var text: String
     let title: String
     let prompt: String
+    let resetToken: Int
 
     @State private var isPresented = false
     @FocusState private var isFocused: Bool
@@ -50,6 +51,11 @@ private struct DSSceneSearchModifier: ViewModifier {
             }
             .onDisappear {
                 isFocused = false
+            }
+            .onChange(of: resetToken) {
+                isFocused = false
+                isPresented = false
+                text = ""
             }
     }
 

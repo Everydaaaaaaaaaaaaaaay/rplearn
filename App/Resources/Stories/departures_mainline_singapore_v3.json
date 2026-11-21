@@ -1,0 +1,693 @@
+{
+  "id": "departures_mainline_singapore_v3",
+  "version": 3,
+  "title": "下次见面的办法",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "新加坡 · 最后一顿晚饭",
+    "还没说完的话",
+    "路口的灯"
+  ],
+  "shots": {
+    "night": {
+      "background": "dp_singapore_hawker_night",
+      "actors": []
+    },
+    "dinner": {
+      "background": "dp_mei_dinner",
+      "actors": []
+    },
+    "farewell": {
+      "background": "dp_singapore_outside",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "night",
+      "speaker": "旁白",
+      "text": "Your bag occupies a chair beneath the hawker centre fans.",
+      "translation": "熟食中心的吊扇下，你的行李袋占着一张椅子。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Your bag picked a good seat. Right under the fan.",
+      "translation": "你这包还挺会挑座，正对着风扇。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She sets down two bowls, then a third small plate.",
+      "translation": "她端来两碗吃的，转身又拿回来一小碟。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "你",
+      "text": "Who's that for?",
+      "translation": "这碟谁的？",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Us. I forgot you can't take leftovers this time.",
+      "translation": "就咱俩。哎，我忘了你这回带不了剩的。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She moves it between you, avoiding the bag strap.",
+      "translation": "她把小碟挪到中间，避开行李带。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "I kept seeing things I still wanted you to try.",
+      "translation": "排着队呢，又看见一样你还没吃过的。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "Behind her, a stallholder washes the last cooking pot.",
+      "translation": "她身后，摊主正在洗最后一只锅。",
+      "next": "start_9"
+    },
+    {
+      "id": "start_9",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Did you find a home for all the receipts in your bag?",
+      "translation": "你那一包小票，最后塞哪儿了？",
+      "next": "start_10"
+    },
+    {
+      "id": "start_10",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "你",
+      "text": "The side pocket's splitting at the bottom.",
+      "translation": "侧面那只兜，底下都快撑开线了。",
+      "next": "start_11"
+    },
+    {
+      "id": "start_11",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Oh, that pocket. Turn it towards the chair.",
+      "translation": "那只啊。朝椅背放，省得漏一地。",
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "你的选择",
+      "text": "Do you bring up next week or stay with dinner?",
+      "translation": "你现在聊聊下周，还是想先把这顿饭吃好？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Could we have tea on a call next week?",
+          "translation": "下周能不能视频喝杯茶？",
+          "next": "call",
+          "flags": {
+            "first_a": true
+          },
+          "review": {
+            "context": "你即将离开，新加坡的这顿晚饭还没吃完。",
+            "outcome": "你提出远程喝茶，Mei 给出时间，是否确认由你决定。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Slide the plate over. Let's eat this while it's hot.",
+          "translation": "把碟子往中间推。咱们趁热吃。",
+          "next": "goodbye",
+          "flags": {
+            "first_a": false
+          },
+          "review": {
+            "context": "Mei 多点了一小碟，旁边的摊已经开始收碗。",
+            "outcome": "你们分着吃那碟菜。隔壁桌开始收拾时，Mei 说你们这桌还没吃完。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "call",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Tuesday? I get off at six. Seven here works.",
+      "translation": "周二呢？六点下班，我这边七点行。",
+      "next": "call_2"
+    },
+    {
+      "id": "call_2",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "You check the time back home. You should be in by then.",
+      "translation": "你看了眼时差。那个点你应该已经到家了。",
+      "next": "call_3"
+    },
+    {
+      "id": "call_3",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "I'll bring tea. You can show me a very boring wall.",
+      "translation": "我带茶。你给我看堵特别无聊的墙就行。",
+      "next": "call_4"
+    },
+    {
+      "id": "call_4",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "你",
+      "text": "A wall?",
+      "translation": "墙？",
+      "next": "call_5"
+    },
+    {
+      "id": "call_5",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "I don't know what your room looks like yet.",
+      "translation": "我还不知道你房间什么样。",
+      "next": "call_6"
+    },
+    {
+      "id": "call_6",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "A drop slips off her spoon and back into the soup.",
+      "translation": "一滴汤从她勺沿滑下去，又掉回碗里。",
+      "next": "second_call"
+    },
+    {
+      "id": "second_call",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "你的选择",
+      "text": "Would you like to settle the call now?",
+      "translation": "你想现在把通话定下来吗？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Tuesday, seven your time. Tea and a wall.",
+          "translation": "周二，你那里七点。茶，还有墙。",
+          "next": "book",
+          "flags": {
+            "second_call_a": true
+          },
+          "review": {
+            "context": "Mei 提议她那里周二晚上七点。",
+            "outcome": "你们约好视频喝茶，还说到你到时可以给她看看窗外。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's check when I'm home. I don't know my week yet.",
+          "translation": "我到家再看吧。下周还没确定。",
+          "next": "wait",
+          "flags": {
+            "second_call_a": false
+          },
+          "review": {
+            "context": "Mei 提出周二通话，你回家后的安排还没定。",
+            "outcome": "你们把通话先放着。到了街口，她提醒你把快掉小票的包转个面。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "book",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "I've put it in. Just tea, then.",
+      "translation": "记上了。到时就喝杯茶。",
+      "next": "book_2"
+    },
+    {
+      "id": "book_2",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She locks her phone and picks up her chopsticks again.",
+      "translation": "她把手机锁了屏，重新拿起筷子。",
+      "next": "book_3"
+    },
+    {
+      "id": "book_3",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Can you sit by the window when you call?",
+      "translation": "到时候你能坐窗边吗？",
+      "next": "book_4"
+    },
+    {
+      "id": "book_4",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "你",
+      "text": "Sure. I'll show you what's outside.",
+      "translation": "行啊，到时候给你看看外头。",
+      "next": "book_5"
+    },
+    {
+      "id": "book_5",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She reaches for the last piece and splits it with you.",
+      "translation": "她夹起最后一块，分了一半给你。",
+      "next": "book_end"
+    },
+    {
+      "id": "book_end",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "night",
+      "speaker": "旁白",
+      "text": "At the corner, you lift the bag onto your shoulder.",
+      "translation": "到了街口，你把包甩到肩上。",
+      "next": "book_end_2"
+    },
+    {
+      "id": "book_end_2",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "farewell",
+      "speaker": "Mei",
+      "text": "Don't buy tea just for me, okay? Use what you've got.",
+      "translation": "你别特地买茶啊，家里有啥就喝啥。",
+      "next": "book_end_3"
+    },
+    {
+      "id": "book_end_3",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "farewell",
+      "speaker": "旁白",
+      "text": "She waves while you're still waiting for the light.",
+      "translation": "你还在等红灯，她先冲你挥了挥手。",
+      "ending": true,
+      "experienceID": "SG311"
+    },
+    {
+      "id": "wait",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "All right. Let's eat before this gets cold.",
+      "translation": "嗯。趁没凉，接着吃吧。",
+      "next": "wait_2"
+    },
+    {
+      "id": "wait_2",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She puts down her phone without adding it to the calendar.",
+      "translation": "她放下手机，没往日历上记。",
+      "next": "wait_3"
+    },
+    {
+      "id": "wait_3",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "I don't usually order this much for two.",
+      "translation": "平时就两个人，我哪会点这么多。",
+      "next": "wait_4"
+    },
+    {
+      "id": "wait_4",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "你",
+      "text": "You noticed?",
+      "translation": "你也知道啊。",
+      "next": "wait_5"
+    },
+    {
+      "id": "wait_5",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Halfway through ordering. I kept going.",
+      "translation": "点到一半就知道了。手没停。",
+      "next": "wait_6"
+    },
+    {
+      "id": "wait_6",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "There is one last dumpling under the noodles.",
+      "translation": "面条下面，还藏着最后一个饺子。",
+      "next": "wait_end"
+    },
+    {
+      "id": "wait_end",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "farewell",
+      "speaker": "旁白",
+      "text": "Outside, Mei walks as far as the corner with you.",
+      "translation": "出去后，Mei 陪你走到街角。",
+      "next": "wait_end_2"
+    },
+    {
+      "id": "wait_end_2",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "farewell",
+      "speaker": "Mei",
+      "text": "Turn your bag round. A receipt's sticking out.",
+      "translation": "包转过去。小票都露出来了。",
+      "next": "wait_end_3"
+    },
+    {
+      "id": "wait_end_3",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "night",
+      "speaker": "旁白",
+      "text": "You turn the bag. When you look up, she's walking back.",
+      "translation": "你把包转了个面。再抬头，她已经往回走了。",
+      "ending": true,
+      "experienceID": "SG312"
+    },
+    {
+      "id": "goodbye",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Try the pale dip. The red one nearly made me cry.",
+      "translation": "蘸浅的那碟。红的刚才差点把我辣哭。",
+      "next": "goodbye_2"
+    },
+    {
+      "id": "goodbye_2",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "Mei slides the dips across, then wipes her eyes.",
+      "translation": "Mei 把两碟蘸料推过来，这才拿纸巾擦眼睛。",
+      "next": "goodbye_3"
+    },
+    {
+      "id": "goodbye_3",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "I usually get here after this stall has shut.",
+      "translation": "我平时下班来，这摊早收了。",
+      "next": "goodbye_4"
+    },
+    {
+      "id": "goodbye_4",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "你",
+      "text": "Here. I've left you another piece.",
+      "translation": "喏，我还给你留了一块。",
+      "next": "goodbye_5"
+    },
+    {
+      "id": "goodbye_5",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "The stallholder clears the table next to yours.",
+      "translation": "摊主把隔壁桌的碗叠起来了。",
+      "next": "goodbye_6"
+    },
+    {
+      "id": "goodbye_6",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "We're still eating here, Uncle.",
+      "translation": "叔叔，我们这桌还在吃啊。",
+      "next": "second_goodbye"
+    },
+    {
+      "id": "second_goodbye",
+      "act": 0,
+      "location": "新加坡 · 最后一顿晚饭",
+      "shot": "dinner",
+      "speaker": "你的选择",
+      "text": "There is still a little time before you leave.",
+      "translation": "该走了。还能再坐一小会儿。",
+      "choices": [
+        {
+          "id": "a",
+          "text": "One photo together? Just for us.",
+          "translation": "一起拍张照？就自己留着。",
+          "next": "photo",
+          "flags": {
+            "second_goodbye_a": true
+          },
+          "review": {
+            "context": "摊主开始收碗，你们还可以在这里坐一会儿。",
+            "outcome": "你们留下一张袖口带汤渍的合照。到了街口，Mei 请你把刚才那张发给她。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's finish what's on the plate. Phones down.",
+          "translation": "手机先放一放。把这碟吃完吧。",
+          "next": "eat",
+          "flags": {
+            "second_goodbye_a": false
+          },
+          "review": {
+            "context": "你们还没吃完小碟，也还没到非走不可的时候。",
+            "outcome": "你们分完最后几块。到了街口，Mei 只说了一句一路顺风，等你过了马路才走。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "photo",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "All right. Just keep it between us.",
+      "translation": "行。就咱俩留着。",
+      "next": "photo_2"
+    },
+    {
+      "id": "photo_2",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "You open the camera. She notices the soup on her sleeve.",
+      "translation": "你打开相机。她注意到袖子上的汤。",
+      "next": "photo_3"
+    },
+    {
+      "id": "photo_3",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "Wait. My sleeve. Oh, go ahead.",
+      "translation": "等下，袖子……算了，拍吧。",
+      "next": "photo_4"
+    },
+    {
+      "id": "photo_4",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "You take it while she's still turning back to you.",
+      "translation": "她脸还没转过来，你就按下去了。",
+      "next": "photo_5"
+    },
+    {
+      "id": "photo_5",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She reaches for another shot, then picks up her chopsticks.",
+      "translation": "她手都朝手机伸出去了，又收回来，拿起筷子。",
+      "next": "photo_end"
+    },
+    {
+      "id": "photo_end",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "farewell",
+      "speaker": "Mei",
+      "text": "Send me the one we took, okay?",
+      "translation": "有空把刚拍那张发我啊。",
+      "next": "photo_end_2"
+    },
+    {
+      "id": "photo_end_2",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "farewell",
+      "speaker": "旁白",
+      "text": "At the corner, your strap slips. She catches it.",
+      "translation": "到街口，你那根包带往下滑，被她一把抄住了。",
+      "next": "photo_end_3"
+    },
+    {
+      "id": "photo_end_3",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "farewell",
+      "speaker": "Mei",
+      "text": "Got it? Right. Go on.",
+      "translation": "拿稳了？行，走吧。",
+      "ending": true,
+      "experienceID": "SG321"
+    },
+    {
+      "id": "eat",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "You put the phones away. Mei turns the plate round.",
+      "translation": "你们收好手机。Mei 把碟子转了个方向。",
+      "next": "eat_2"
+    },
+    {
+      "id": "eat_2",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "Mei",
+      "text": "You have the big one. I want the crunchy bit.",
+      "translation": "大的你吃。小的那个脆，我要那个。",
+      "next": "eat_3"
+    },
+    {
+      "id": "eat_3",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "She pushes yours over and takes hers, crumbs and all.",
+      "translation": "她把大的拨给你，小的连碎渣一块夹走。",
+      "next": "eat_4"
+    },
+    {
+      "id": "eat_4",
+      "act": 1,
+      "location": "还没说完的话",
+      "shot": "dinner",
+      "speaker": "旁白",
+      "text": "You eat without talking until the plate's empty.",
+      "translation": "你俩没再说话，一直吃到碟子空了。",
+      "next": "eat_end"
+    },
+    {
+      "id": "eat_end",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "farewell",
+      "speaker": "旁白",
+      "text": "At the corner, she looks as if she might add something.",
+      "translation": "到了街口，Mei 张了张嘴。",
+      "next": "eat_end_2"
+    },
+    {
+      "id": "eat_end_2",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "farewell",
+      "speaker": "Mei",
+      "text": "Safe trip.",
+      "translation": "一路顺风。",
+      "next": "eat_end_3"
+    },
+    {
+      "id": "eat_end_3",
+      "act": 2,
+      "location": "路口的灯",
+      "shot": "farewell",
+      "speaker": "旁白",
+      "text": "She stays until you have crossed, then turns back.",
+      "translation": "她等你过了马路，才转身往回走。",
+      "ending": true,
+      "experienceID": "SG322"
+    }
+  ]
+}

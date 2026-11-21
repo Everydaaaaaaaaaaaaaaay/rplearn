@@ -22,7 +22,12 @@ legacy = json.loads((ROOT / 'Assets/Stories/London/manifest.json').read_text())
 assets += [dict(a, kind=a.get('kind', 'sprite' if a.get('has_alpha') else 'background')) for a in legacy['assets']]
 usage = {}
 scripts = []
-for path in sorted((ROOT / 'App/Resources/Stories').glob('departures_*_v1.json')):
+stories = ROOT / 'App/Resources/Stories'
+catalog = json.loads((stories / 'departures_catalog.json').read_text())
+current_editions = catalog['currentEditions']
+for chapter in catalog['chapters']:
+    resource = current_editions.get(chapter['id'], chapter['id'])
+    path = stories / (resource + '.json')
     episode = json.loads(path.read_text())
     scripts.append((path.stem, episode))
     for node in episode['nodes']:
@@ -63,8 +68,8 @@ for color, suffix in [('#182332', 'dark'), ('#f5f1e9', 'light')]:
     sheets(items, f'alpha-{suffix}')
 
 def resolve(name):
-    matches = list((ROOT / 'App/Resources/StoryArt').rglob(name + '.png'))
-    matches += list((ROOT / 'App/Resources/StoryArt').rglob(name + '.jpg'))
+    art = ROOT / 'App/Resources/StoryArt'
+    matches = [path for extension in ('.png', '.jpg', '.webp') for path in art.rglob(name + extension)]
     if len(matches) == 1:
         return Image.open(matches[0]).convert('RGBA')
     return None

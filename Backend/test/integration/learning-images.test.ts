@@ -9,7 +9,7 @@ import { LearningEngineRepository } from "../../src/modules/learning/engine-repo
 import { createLearningService } from "../../src/modules/learning/service.js";
 import { registerLearningRoutes } from "../../src/modules/learning/routes.js";
 import { learningImageFixture } from "../helpers/learning-images.js";
-import { learningFixture } from "../helpers/learning.js";
+import { freshLearningFixture } from "../helpers/learning.js";
 import { integrationConfig } from "../helpers/integration.js";
 
 describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
@@ -22,7 +22,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
     const users = [randomUUID(), randomUUID()];
     const tokens: string[] = [];
     const characterId = randomUUID();
-    const unit = learningFixture(`test.image.${randomUUID()}`);
+    const unit = freshLearningFixture(`test.image.${randomUUID()}`);
     const assets = [
       learningImageFixture(60),
       learningImageFixture(120),

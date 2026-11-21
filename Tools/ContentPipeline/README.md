@@ -35,3 +35,30 @@ GLM 5.3 Flash, minimal reasoning, Parasail preference with fallback, provider pr
 The initial repair runner asked the model to repeat the whole character card, causing unnecessary retries when fields changed. The final runner preserves the original card in code and sends review instructions again on every repair attempt. First repair stories were recovered and manually edited for this delivered sample. Raw envelopes remain in the private experiment directory, not Git; generated review HTML is also outside Git.
 
 Scaling to 200 still needs global deduplication, fuller semantic review, story coverage by scene/action, repeat-encounter handling, versioned import and client caching. One candidate per avatar must not overwrite previously bound public identities. No production deployment or device install is needed for this content-only pilot.
+
+## Place-bound activity world authoring
+
+The current source is `Content/ActivityWorld/2026-10-31-places-v1/`. Its fixed assignments determine identity, city, nationality and place before model requests. The writer receives the original card, exact photograph space facts and the other characters at that place. Named bilingual scene fields compile into the existing seven-node graph with four beats per node. The model does not allocate identities or invent graph edges.
+
+```sh
+node Tools/ContentPipeline/activity-world-author.mjs prepare \
+  Content/ActivityWorld/2026-10-31-places-v1/world.json /private/activity-world-output
+node --env-file=/private/openai.env Tools/ContentPipeline/activity-world-author.mjs stories \
+  /private/activity-world-output/input.json /private/activity-world-output
+node --env-file=/private/openai.env Tools/ContentPipeline/activity-world-author.mjs review \
+  /private/activity-world-output/input.json /private/activity-world-output
+node --env-file=/private/openai.env Tools/ContentPipeline/activity-world-author.mjs diversity \
+  /private/activity-world-output/input.json /private/activity-world-output
+node Tools/ContentPipeline/assemble-activity-world.mjs \
+  Content/ActivityWorld/2026-10-31-places-v1/world.json \
+  Content/ActivityWorld/2026-10-31-places-v1/assignments.json \
+  /private/activity-world-output /private/activity-world-output/world-draft.json
+```
+
+Use `OPENAI_API_KEY` in a private environment file. Node 24's `--use-env-proxy` uses an existing proxy configuration when needed. Requests use OpenAI Responses with `store: false` and strict structured output. The author uses GPT-6.1 Sol and the independent model review uses GPT-5.4 mini. The runner defaults to a CNY 200 admission bound at USD/CNY 7.2. An explicit `authoringCapCNY` in the private input can change that operational bound, validated by the provider. The 2026-11-14 final repair pass used CNY 250. These are operator-chosen scheduling bounds, with actual estimated usage recorded separately. Native-provider token usage is reserved at the configured published price ceiling, with the cost basis explicitly labelled. This is an estimate for admission, not a provider invoice. Older pilot callers retain their own configured budgets and the CNY 35 default.
+
+Keep request bodies, response envelopes, ledgers, environment files and generated previews outside Git. Reuse an existing output directory only for unchanged inputs, since receipt hashes reject changed requests. A `revisions.json` map can select a specific replacement result receipt for assembly. Keep the world a draft through generation and model review. Run the backend content validator against the assembled file and original library, then perform editorial continuity and cross-character review. Assembly has no database or activation dependency.
+
+`review` examines all paths and the reunion for one person. `diversity` compares a whole city, including contact mechanisms, present states and reunion incidents. Curated repair input supplies `repairs` with exact `npcId` values and concrete instructions, plus a new `repairRound`. The `repair` phase replaces a complete candidate. The `patch` phase returns only changed nodes or reunion fields, uses null for unchanged fields, and compiles them into a complete receipt. Both phases store replacement receipts in `revisions.json`. Re-review selected revised people with `selectedIds` and a new `reviewRound`. These stages record evidence without granting automatic editorial approval.
+
+The reviewer and assembler use the same `activity-world-editorial.mjs` projection for preserved biographies, curated migration notices and legacy-compatible reunion framing. Model flags require editorial adjudication. Original-card pronouns, a vocative addressed to another character, and quoted published letters must be read in context. Reunions can occur on another day with a new independent goal. Offline checks use `node --test Tools/ContentPipeline/library-provider.test.mjs Tools/ContentPipeline/activity-world-editorial.test.mjs`.

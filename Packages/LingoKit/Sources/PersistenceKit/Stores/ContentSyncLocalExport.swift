@@ -32,6 +32,9 @@ extension ContentSyncStore {
             )
             cardPayload.readingVoice = card?.resolvedReadingVoice
             cardPayload.activityProfile = card?.activityProfile
+            cardPayload.settingVersion = card?.settingVersion
+            cardPayload.settingReleaseID = card?.settingReleaseID
+            cardPayload.settingHistory = card?.settingHistory
             let payload = ContentCharacterPayload(
                 card: cardPayload,
                 difficulty: entity.difficultyLevelRaw,
@@ -90,6 +93,7 @@ extension ContentSyncStore {
                     parentID: parent.uuidString.lowercased(),
                     payloadJSON: try ContentMutationJournal.encode(
                         ContentMessagePayload(
+                            userTimeZone: entity.userTimeZone,
                             learningOrigin: LearningChatOrigin.decode(json: entity.learningOriginJSON),
                             audioAssetId: media?.isRemoteReady == true ? media?.assetID : nil,
                             audioDuration: entity.audioDuration,
@@ -103,7 +107,9 @@ extension ContentSyncStore {
                             speechReviewJson: entity.speechReviewJSON,
                             text: entity.text,
                             tokenEstimate: entity.tokenEstimate,
-                            translationZh: entity.translationZh
+                            translationZh: entity.translationZh,
+                            timelineEvents: entity.timelineEventsJSON.map { ChatMessageTimelineEvent.decode($0) },
+                            replyToMessageIds: entity.replyToMessageIDs
                         )
                     )
                 )

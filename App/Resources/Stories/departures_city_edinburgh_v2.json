@@ -1,0 +1,283 @@
+{
+  "id": "departures_city_edinburgh_v2",
+  "version": 2,
+  "title": "只剩一张票",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "爱丁堡 · 开演前",
+    "两种晚上的结尾"
+  ],
+  "shots": {
+    "ticket": {
+      "background": "dp_edinburgh_theatre",
+      "actors": [
+        {
+          "id": "Isla",
+          "asset": "dp_isla_ticket",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    },
+    "after": {
+      "background": "dp_edinburgh_after",
+      "actors": []
+    },
+    "moon": {
+      "background": "dp_edinburgh_moon",
+      "actors": []
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "ticket",
+      "speaker": "旁白",
+      "text": "At the Fringe box office, Isla holds one returned ticket.",
+      "translation": "艺穗节售票处，Isla 拿到一张退票。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "ticket",
+      "speaker": "Isla",
+      "text": "They had one. I bought it before I thought to ask for two.",
+      "translation": "就一张。我一着急先买了，买完才想起来咱们俩呢。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "ticket",
+      "speaker": "你",
+      "text": "Is this the one you've wanted since last summer?",
+      "translation": "就是你从去年夏天念叨的那场？",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "ticket",
+      "speaker": "Isla",
+      "text": "Yeah. I checked for returns six times just today.",
+      "translation": "对。光今天我就刷了六回退票。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "ticket",
+      "speaker": "旁白",
+      "text": "She tucks the ticket away, then pulls it out again.",
+      "translation": "她刚把票塞进口袋，又拿了出来。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "ticket",
+      "speaker": "Isla",
+      "text": "The one next door has two seats. We'd miss this one, though.",
+      "translation": "隔壁还有两个位子。那这场就赶不上了。",
+      "next": "pick"
+    },
+    {
+      "id": "pick",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "ticket",
+      "speaker": "你的选择",
+      "text": "Which evening would you like?",
+      "translation": "你想怎么过今晚？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Take that one. I'll find another show. Meet afterwards.",
+          "translation": "你去看这场。我找别的，散场再碰面。",
+          "next": "apart",
+          "flags": {
+            "pick_a": true
+          },
+          "review": {
+            "context": "Isla 刷了一天退票，抢到了期待很久的那场，可票只有一张。",
+            "outcome": "Isla 不喜欢梦醒的结尾，你看的那场投影却坏了。散场后她还在找一位演员的名字。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's try the one next door together.",
+          "translation": "那就一起去看隔壁那场吧。",
+          "next": "together",
+          "flags": {
+            "pick_a": false
+          },
+          "review": {
+            "context": "隔壁还有两个位子，进去就会错过 Isla 原本想看的那场。",
+            "outcome": "Isla 把票还给窗口。你们盯了半场纸板月亮，它一直没掉。另一场已散场，Isla 还是想自己看结尾。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "apart",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "after",
+      "speaker": "旁白",
+      "text": "You meet outside. Isla is still holding her programme open.",
+      "translation": "散场碰头时，Isla 手里的节目单还摊着。",
+      "next": "apart_2"
+    },
+    {
+      "id": "apart_2",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "after",
+      "speaker": "Isla",
+      "text": "All of that was a dream. They even made her say it twice.",
+      "translation": "前面那些全是她做的梦。还特地让她说了两遍。",
+      "next": "apart_3"
+    },
+    {
+      "id": "apart_3",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "after",
+      "speaker": "你",
+      "text": "Mine didn't have an ending.",
+      "translation": "我看的那场没结尾。",
+      "next": "apart_4"
+    },
+    {
+      "id": "apart_4",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "after",
+      "speaker": "Isla",
+      "text": "Did they cut it short?",
+      "translation": "临时砍掉了？",
+      "next": "apart_5"
+    },
+    {
+      "id": "apart_5",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "after",
+      "speaker": "你",
+      "text": "The projector died. He kept pointing at a blank wall.",
+      "translation": "投影仪坏了。他还在那儿指，墙上什么都没有。",
+      "next": "apart_6"
+    },
+    {
+      "id": "apart_6",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "after",
+      "speaker": "旁白",
+      "text": "Isla laughs once and runs a finger down the cast list.",
+      "translation": "Isla 笑了一声，手指还顺着演员名单往下划。",
+      "next": "apart_7"
+    },
+    {
+      "id": "apart_7",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "after",
+      "speaker": "Isla",
+      "text": "Wait. I want the name of the woman with the suitcase.",
+      "translation": "等会儿，我看看拎箱子那个女演员叫什么。",
+      "ending": true,
+      "experienceID": "ED2A"
+    },
+    {
+      "id": "together",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "moon",
+      "speaker": "旁白",
+      "text": "Isla gives it back. Next door, a cardboard moon hangs askew.",
+      "translation": "Isla 把那张票还给窗口。隔壁台上的纸板月亮挂得有点歪。",
+      "next": "together_2"
+    },
+    {
+      "id": "together_2",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "moon",
+      "speaker": "Isla",
+      "text": "That string's doing more work than the lead actor.",
+      "translation": "那根绳子比主演干的活还多。",
+      "next": "together_3"
+    },
+    {
+      "id": "together_3",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "moon",
+      "speaker": "你",
+      "text": "If it falls, we clap.",
+      "translation": "掉下来咱们就鼓掌。",
+      "next": "together_4"
+    },
+    {
+      "id": "together_4",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "moon",
+      "speaker": "旁白",
+      "text": "Halfway through, Isla checks it during a love speech.",
+      "translation": "台上正深情告白呢，Isla 又抬头去看月亮。",
+      "next": "together_5"
+    },
+    {
+      "id": "together_5",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "moon",
+      "speaker": "旁白",
+      "text": "The moon stays up. You are both slightly disappointed.",
+      "translation": "月亮没掉下来。你们都有一点失望。",
+      "next": "together_6"
+    },
+    {
+      "id": "together_6",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "moon",
+      "speaker": "Isla",
+      "text": "I've still got the ticket page for the other one open.",
+      "translation": "我还没关那场的售票页。",
+      "next": "together_7"
+    },
+    {
+      "id": "together_7",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "moon",
+      "speaker": "旁白",
+      "text": "The lights come up. The other listing says 'Show ended'.",
+      "translation": "灯一亮。她再看一眼，另一场已经显示“演出结束”了。",
+      "next": "together_8"
+    },
+    {
+      "id": "together_8",
+      "act": 0,
+      "location": "爱丁堡 · 开演前",
+      "shot": "moon",
+      "speaker": "Isla",
+      "text": "If you find out the ending, don't tell me yet.",
+      "translation": "你要是知道结尾了，先别告诉我。",
+      "ending": true,
+      "experienceID": "ED2B"
+    }
+  ]
+}

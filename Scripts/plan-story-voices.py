@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build a word-preserving production plan from all shipped playable scripts.
-Direction and casting are authored in data/story-voice-directions.json.
+Read the shared shipped cast and data/story-voice-directions.json performance cues.
 """
 import argparse, hashlib, json, re, unicodedata
 from pathlib import Path
@@ -32,6 +32,9 @@ def split(text, breath=False):
 
 def build():
     directions = json.loads((ROOT/'Scripts/data/story-voice-directions.json').read_text())
+    cast_profiles = json.loads((ROOT/'App/Resources/StoryVoices/story-voice-cast.json').read_text())['cast']
+    cast_by_speaker = {alias: profile for name, profile in cast_profiles.items()
+                       for alias in [name] + profile['aliases']}
     clips=[]; silent=[]
     paths=sorted((ROOT/'App/Resources/Stories').glob('*.json'))
     for path in paths:
@@ -44,13 +47,15 @@ def build():
             if speaker in ['你','你的选择'] or node.get('choices') or re.search(r'[\u3400-\u9fff]',text):
                 silent.append(dict(story=story_id,node=node['id'],reason='player/choice' if speaker in ['你','你的选择'] or node.get('choices') else 'unsupported-Chinese'))
                 continue
-            role=speaker if speaker in directions['cast'] else path.stem+'/'+speaker
-            cast=directions['cast'][role]
+            role=speaker
+            cast=cast_by_speaker[speaker]
             cue=dict(directions['scenes'].get(path.stem,dict(intention='自然场景对话',gapAfter=.35)))
             if node.get('speech'):
                 authored=node['speech'];cue.update(rate=authored['speed'],gapAfter=authored['after'],intention=authored['intention'],breath=authored.get('expression')=='breath')
             cue.update(directions['overrides'].get(key,{}))
-            rate=cue.get('rate',cast['rate'])
+            rate=min(1.12,max(.88,cast['rate'] * cue.get('rate',1)))
+            if speaker not in ('旁白', '出发之后') and not node.get('ending'):
+                cue['gapAfter']=min(cue['gapAfter'],cast['pauseAfter'])
             pause=(node.get('speech') or {}).get('pauseAfter')
             if pause and text.startswith(pause) and len(pause)<len(text):
                 chunks=split(pause,cue.get('breath',False))+split(text[len(pause):].strip())

@@ -52,10 +52,15 @@ public struct StoryVoiceLibrary: Sendable {
         entries = result
     }
 
-    public func clip(story: String, node: String, speaker: String, text: String) -> PreparedNarration? {
+    public func clip(story: String, node: String, speaker: String, text: String,
+                     matching request: SpeechRequest? = nil) -> PreparedNarration? {
         guard let entry = entries[story + "/" + node], entry.speaker == speaker, entry.sourceText == text else { return nil }
         guard let voice = SupertonicVoice(rawValue: entry.voice),
               StoryVoiceCasting.voice(speaker: speaker, proposed: voice) == voice else { return nil }
+        if let request {
+            guard request.voiceHint?.supertonicVoice == voice,
+                  abs(entry.rate - (request.delivery?.speedMultiplier ?? 1)) < 0.005 else { return nil }
+        }
         let url = directory.appendingPathComponent(entry.file)
         // Small compressed per-page files. A damaged/missing package must never
         // play stale speech or make auto mode wait for an impossible completion.
@@ -65,12 +70,7 @@ public struct StoryVoiceLibrary: Sendable {
 
     public func request(story: String, node: String, speaker: String, text: String) -> SpeechRequest? {
         guard let entry = entries[story + "/" + node], entry.speaker == speaker, entry.sourceText == text else { return nil }
-        return SpeechRequest(text: text, language: "en", purpose: .characterDialogue,
-            voiceHint: SpeechVoiceHint(
-                stableID: StoryVoiceCasting.isNarrator(speaker) ? StoryVoiceCasting.narratorID : speaker,
-                gender: entry.voice.hasPrefix("M") ? "male" : "female",
-                supertonicVoice: StoryVoiceCasting.voice(speaker: speaker, proposed: SupertonicVoice(rawValue: entry.voice) ?? .f2)),
-            engine: .supertonic3, delivery: SpeechDelivery(speedMultiplier: entry.rate))
+        return StoryVoiceCasting.request(text: text, speaker: speaker)
     }
 
     private static func digest(_ data: Data) -> String {

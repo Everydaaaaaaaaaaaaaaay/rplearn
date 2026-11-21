@@ -1,3 +1,4 @@
+import BackendKit
 import CoreKit
 import DesignSystem
 import DomainKit
@@ -20,7 +21,21 @@ public final class ChatViewModel {
     let deps: ChatDependencies
 
     public internal(set) var conversation: ConversationDTO?
-    public internal(set) var messages: [MessageDTO] = []
+    public internal(set) var messages: [MessageDTO] = [] {
+        didSet {
+            guard messages != oldValue else { return }
+            timelineEvents = ChatTimelineEventPolicy.ordinaryEvents(in: messages)
+            rebuildAppointmentTimeline()
+        }
+    }
+    private(set) var timelineEvents: [UUID: ChatMessageTimelineEvent] = [:]
+    struct AppointmentTimelineRow: Identifiable, Equatable {
+        let appointmentID: UUID
+        let event: BackendAppointmentTimelineEvent
+        var id: String { event.id }
+    }
+    private(set) var appointmentTimeline: [UUID: [AppointmentTimelineRow]] = [:]
+    private var timelineAppointments: [BackendAppointment] = []
     /// 角色已经进入可见输入阶段；空字符串显示输入指示，nil 表示当前没有回复。
     public private(set) var streamingText: String?
     public private(set) var isStreaming = false
@@ -31,18 +46,100 @@ public final class ChatViewModel {
     public var draft = "" {
         didSet {
             if draft != oldValue {
-                composerActivity.recordEdit(from: oldValue, to: draft, at: deps.now())
+                recordComposerEdit(from: oldValue, to: draft)
             }
         }
     }
     private var composerActivity = RoleplayComposerActivity()
 
     func composerSourceEdited(from old: String, to new: String) {
-        composerActivity.recordEdit(from: old, to: new, at: deps.now())
+        recordComposerEdit(from: old, to: new)
     }
 
     public func composerFocusChanged(_ focused: Bool) {
         composerActivity.focusChanged(focused, at: deps.now())
+        if !focused { queueSharedComposer(.blurred, remaining: 5) }
+    }
+
+    private func recordComposerEdit(from old: String, to new: String) {
+        let previous = composerActivity.editedAt
+        composerActivity.recordEdit(from: old, to: new, at: deps.now())
+        if composerActivity.editedAt != previous {
+            queueSharedComposer(.edited, remaining: 25)
+            pauseTypingForComposer()
+        }
+    }
+
+    private func pauseTypingForComposer() {
+        if isStreaming {
+            isStreaming = false
+            streamingText = nil
+            isWaitingForUserBurst = true
+            typingBeganAt = nil
+            if !usesSharedChat, let plan = pendingReplyPlan {
+                replyYieldTask?.cancel()
+                let cycle = replyCycleID
+                replyYieldTask = Task { [weak self] in
+                    guard let self else { return }
+                    do { try await waitForUserToFinish(plan: plan) } catch { return }
+                    beginTyping(cycleID: cycle)
+                }
+            }
+        }
+    }
+
+    private struct ComposerEvent {
+        let sequence: Int
+        let activity: SharedComposerActivity
+        let expiresAt: Date
+    }
+    private let sharedComposerSessionID = UUID()
+    private var sharedComposerSequence = 0
+    private var pendingComposerEvent: ComposerEvent?
+    private var composerReportTask: Task<Void, Never>?
+    private var voiceCompositionTask: Task<Void, Never>?
+
+    public func composerRecordingChanged(_ active: Bool) {
+        voiceCompositionTask?.cancel()
+        composerActivity.voiceActivityChanged(recording: active, at: deps.now())
+        queueSharedComposer(active ? .edited : .blurred, remaining: active ? 25 : 5)
+        guard active else { voiceCompositionTask = nil; return }
+        pauseTypingForComposer()
+        voiceCompositionTask = Task { [weak self] in
+            while !Task.isCancelled {
+                do { try await Task.sleep(for: .seconds(10)) } catch { return }
+                guard let self else { return }
+                self.composerActivity.voiceActivityChanged(recording: true, at: self.deps.now())
+                self.queueSharedComposer(.edited, remaining: 25)
+            }
+        }
+    }
+
+    private func queueSharedComposer(_ activity: SharedComposerActivity, remaining: TimeInterval = 0) {
+        guard usesSharedChat else { return }
+        sharedComposerSequence += 1
+        pendingComposerEvent = .init(sequence: sharedComposerSequence, activity: activity,
+                                     expiresAt: deps.now().addingTimeInterval(remaining))
+        flushSharedComposer()
+    }
+
+    private func flushSharedComposer() {
+        guard composerReportTask == nil, let event = pendingComposerEvent,
+              let gateway = deps.sharedChat, let conversation else { return }
+        composerReportTask = Task { [weak self] in
+            guard let self else { return }
+            let remaining = max(0, event.expiresAt.timeIntervalSince(deps.now()))
+            do {
+                let accepted = try await gateway.reportSharedComposer(conversationID: conversation.id,
+                    sessionID: sharedComposerSessionID, sequence: event.sequence,
+                    activity: event.activity, remaining: remaining)
+                if accepted, pendingComposerEvent?.sequence == event.sequence { pendingComposerEvent = nil }
+            } catch { /* The observer retries the same event within its original deadline. */ }
+            composerReportTask = nil
+            if let pendingComposerEvent, pendingComposerEvent.sequence != event.sequence {
+                flushSharedComposer()
+            }
+        }
     }
 
     func userTurnHandoffDate(after message: MessageDTO) -> Date {
@@ -82,8 +179,19 @@ public final class ChatViewModel {
         }
     }
 
+    private var sharedPageVisible = false
+    private var sharedObserver: Task<Void, Never>?
+    private var sharedSnapshot: SharedChatSnapshot?
+    private var sharedReviewMessages: [UUID: MessageDTO] = [:]
+    private var sharedReplyError = false
+    private var noticedMessageIDs: Set<UUID> = []
+    private var usesSharedChat: Bool { deps.sharedChat != nil }
+
+    func hasRead(_ messageID: UUID) -> Bool { noticedMessageIDs.contains(messageID) }
+
     private var realtimeLearningSource: LearningReplySource?
     private var replyTask: Task<Void, Never>?
+    private var replyYieldTask: Task<Void, Never>?
     private let replyOwnerID = UUID()
     private var replyCycleID = UUID()
     private var pendingReplyPlan: NPCReplyPlan?
@@ -97,11 +205,21 @@ public final class ChatViewModel {
     }
 
     public func load() async {
+        sharedPageVisible = true
         await refreshCharacter()
         do {
             let conversation = try await deps.chatStore.openConversation(characterID: character.id)
             self.conversation = conversation
-            self.messages = try await deps.chatStore.messages(conversationID: conversation.id)
+            self.messages = Self.visibleMessages(try await deps.chatStore.messages(conversationID: conversation.id))
+            if let gateway = deps.sharedChat {
+                do {
+                    let state = try await gateway.openSharedConversation(characterID: character.id)
+                    try await acceptSharedState(state)
+                } catch {
+                    errorMessage = "会话暂未同步，恢复连接后会继续。"
+                }
+                startSharedObservation()
+            }
             if let profile = try? await deps.economyStore.profile() {
                 learnerDifficulty = profile.difficultyLevel
             }
@@ -115,6 +233,81 @@ public final class ChatViewModel {
             Log.app.error("openConversation 失败：\(error)")
         }
         await deps.learningChat?.refresh(characterID: character.id)
+        await refreshAppointments()
+    }
+
+    public private(set) var appointments: [BackendAppointment] = []
+    public private(set) var appointmentNotice: String?
+    public private(set) var checkingAppointments = false
+    @ObservationIgnored private var needsAppointmentRefresh = false
+
+    public func refreshAppointments(detect: Bool = false) async {
+        guard let conversation, let refresh = deps.refreshAppointments else { return }
+        if checkingAppointments {
+            if !detect { needsAppointmentRefresh = true }
+            return
+        }
+        checkingAppointments = true
+        defer {
+            checkingAppointments = false
+            if needsAppointmentRefresh {
+                needsAppointmentRefresh = false
+                Task { await refreshAppointments() }
+            }
+        }
+        do {
+            let records = try await refresh(character.id, conversation.id, detect).filter { $0.characterId == character.id }
+            if records != timelineAppointments {
+                timelineAppointments = records
+                rebuildAppointmentTimeline()
+            }
+            appointments = records
+                .filter { $0.status != "cancelled" && $0.status != "expired" }
+                .sorted {
+                    let priority: (BackendAppointment) -> Int = { $0.status == "in_progress" ? 0 : $0.status == "confirmed" ? 1 : 2 }
+                    if priority($0) != priority($1) { return priority($0) < priority($1) }
+                    return $0.status == "completed" ? $0.startsAt > $1.startsAt : $0.startsAt < $1.startsAt
+                }
+            appointmentNotice = detect && appointments.isEmpty ? "还没有说定的约定。请在聊天里按你的时区确认日期和时间，并说定地点。" : nil
+        } catch {
+            if detect {
+                appointmentNotice = (error as? BackendClientError)?.code == "LOGIN_REQUIRED"
+                    ? "请先登录账号，再把聊天中的计划保存为约定。"
+                    : "约定暂时没有同步成功，可以稍后再整理。"
+            }
+        }
+    }
+
+    private func rebuildAppointmentTimeline() {
+        guard let conversationID = conversation?.id, !timelineAppointments.isEmpty else {
+            if !appointmentTimeline.isEmpty { appointmentTimeline = [:] }
+            return
+        }
+        var result: [UUID: [AppointmentTimelineRow]] = [:]
+        var seen = Set<String>()
+        let messageIDs = Set(messages.map(\.id))
+        for appointment in timelineAppointments {
+            for event in appointment.timelineEvents ?? [] where seen.insert(event.id).inserted {
+                let anchor: UUID?
+                if let cited = event.messageId, messageIDs.contains(cited) {
+                    anchor = cited
+                } else if event.conversationId == conversationID, let date = AppointmentDisplayTime.date(event.occurredAt) {
+                    anchor = messages.last(where: { $0.role != .coach && $0.createdAt <= date })?.id
+                } else {
+                    anchor = nil
+                }
+                guard let anchor else { continue }
+                result[anchor, default: []].append(.init(appointmentID: appointment.id, event: event))
+            }
+        }
+        appointmentTimeline = result.mapValues { $0.sorted { ($0.event.occurredAt, $0.id) < ($1.event.occurredAt, $1.id) } }
+    }
+
+    private func inspectAppointmentAgreement() {
+        let context = messages.suffix(12).map(\.text).joined(separator: " ").lowercased()
+        let cues = ["meet", "tomorrow", "tonight", "coffee", "cafe", "café", "see you", "o'clock", "约", "明天", "后天", "周末", "见面", "咖啡", "下午", "上午", "晚上", "改期"]
+        guard cues.contains(where: context.contains) else { return }
+        Task { [weak self] in await self?.refreshAppointments(detect: true) }
     }
 
     /// 正在翻译中的消息（气泡下方转圈）。
@@ -134,7 +327,8 @@ public final class ChatViewModel {
         errorMessage = nil
         defer { translatingMessageIDs.remove(message.id) }
 
-        var translation = try? await deps.chatStore.cachedTranslation(for: text)
+        var translation = deps.tutorial?.preparedTranslations[text]
+        if translation == nil { translation = try? await deps.chatStore.cachedTranslation(for: text) }
         var cloudError: Error?
         if translation == nil {
             do {
@@ -206,6 +400,7 @@ public final class ChatViewModel {
         Haptics.impact(.light)
         draft = ""
         composerActivity.didSend()
+        queueSharedComposer(.sent)
         if !(await send(userText: text)) {
             deps.tutorial?.session.releaseFailedMessage()
             if draft.isEmpty { draft = originalDraft }
@@ -214,6 +409,8 @@ public final class ChatViewModel {
 
     /// 发送语音消息：气泡为语音条，发给 LLM 的是转写文本，同样走教练审核。
     public func sendVoice(capture: VoiceRecorder.Capture) async {
+        composerActivity.didSend()
+        queueSharedComposer(.sent)
         guard let conversation else { return }
         guard reserveTutorialMessage() else {
             if let file = capture.fileName { VoiceMessageStorage.delete(fileName: file) }
@@ -231,19 +428,21 @@ public final class ChatViewModel {
                 audioFileName: capture.fileName,
                 audioDuration: capture.duration,
                 tokenEstimate: TokenEstimator.estimate(capture.transcript),
-                learningOrigin: await deps.learningChat?.userOrigin(characterID: character.id)
+                learningOrigin: await userLearningOrigin(),
+                contextMemoryIDs: usesSharedChat ? await memoryService.contextMemoryIDs(characterID: character.id, query: capture.transcript) : nil,
+                sharedOrdering: usesSharedChat
             )
             if let sourceFileName = capture.fileName {
-                // 语音发送是常用本地能力；仅在账号云空间已激活时追加备份。
-                if await deps.voiceMedia.isCloudBackupAvailable {
-                    do {
-                        _ = try await deps.voiceMedia.enqueue(
-                            messageID: messageID,
-                            sourceFileName: sourceFileName
-                        )
-                    } catch {
-                        errorMessage = "语音已保存在本机，云端备份暂未完成。"
-                        Log.app.warning("语音云端排队失败：\(String(describing: type(of: error)))")
+                Task { [weak self] in
+                    guard let self else { return }
+                    // Backup must not delay the visible message or its reply.
+                    if await deps.voiceMedia.isCloudBackupAvailable {
+                        do {
+                            _ = try await deps.voiceMedia.enqueue(messageID: messageID, sourceFileName: sourceFileName)
+                        } catch {
+                            if errorMessage == nil { errorMessage = "语音已保存在本机，云端备份暂未完成。" }
+                            Log.app.warning("语音云端排队失败：\(String(describing: type(of: error)))")
+                        }
                     }
                 }
             }
@@ -261,9 +460,12 @@ public final class ChatViewModel {
     /// 实时语音回合：端侧终稿只发送为文本，并继续复用当前低成本流式 LLM。
     /// 该方法先持久化用户话轮，再返回纯文本增量；应用不向 LLM 上传音频。
     var voiceLeaseID: UUID?
+    private var sharedVoiceInputs: [UUID: UUID] = [:]
+    private var earlyVoiceReceipts: [UUID: (text: String, interrupted: Bool)] = [:]
+    private var legacyVoiceResponseID = UUID()
 
     public func realtimeReplyStream(
-        userText: String
+        userText: String, responseID: UUID? = nil
     ) async throws -> AsyncThrowingStream<String, Error> {
         guard let conversation else {
             throw AppError.storage("聊天尚未加载")
@@ -276,12 +478,19 @@ public final class ChatViewModel {
         guard reserveTutorialMessage() else { throw AppError.storage("请先完成教程再和朋友聊天吧～") }
         var persisted = false
         defer { if !persisted { deps.tutorial?.session.releaseFailedMessage() } }
+        let responseID = responseID ?? legacyVoiceResponseID
+        let origin = await userLearningOrigin()
+        let recall = usesSharedChat ? await memoryService.contextMemoryIDs(characterID: character.id, query: text) : nil
+        try Task.checkCancellation()
         let userMessage = try await deps.chatStore.appendMessage(
             conversationID: conversation.id,
             role: .user,
             text: text,
             tokenEstimate: TokenEstimator.estimate(text),
-            learningOrigin: await deps.learningChat?.userOrigin(characterID: character.id)
+            learningOrigin: origin,
+            sharedVoiceLeaseID: usesSharedChat ? voiceLeaseID : nil,
+            contextMemoryIDs: recall,
+            sharedOrdering: usesSharedChat
         )
         persisted = true
         try await deps.chatStore.setReplyInterrupted(userMessageID: userMessage.id, interrupted: true)
@@ -289,10 +498,27 @@ public final class ChatViewModel {
         messages.sort { $0.orderIndex < $1.orderIndex }
         notifyConversationChanged()
 
+        if let gateway = deps.sharedChat {
+            sharedVoiceInputs[responseID] = userMessage.id
+            if let early = earlyVoiceReceipts.removeValue(forKey: responseID) {
+                await saveRealtimeAssistant(spokenText: early.text, interrupted: early.interrupted, responseID: responseID)
+            }
+            sharedReviewMessages[userMessage.id] = userMessage
+            startSharedObservation()
+            try await gateway.uploadSharedMessages()
+            return sharedVoiceStream(
+                gateway: gateway, conversationID: conversation.id, userMessageID: userMessage.id)
+        }
         try Task.checkCancellation()
         realtimeLearningSource = nil
-        var request = await makeRoleplayRequest(voiceMode: true)
-        request.learningChat = try await deps.learningChat?.prepareReply(conversationID: conversation.id, userMessage: userMessage)
+        let tracker = deps.learningChat
+        var request = try await AsyncDeadline.run(timeout: deps.replyTimeout) { [self] in
+            var request = await makeRoleplayRequest(voiceMode: true)
+            try Task.checkCancellation()
+            request.learningChat = try await tracker?.prepareReply(conversationID: conversation.id, userMessage: userMessage)
+            try Task.checkCancellation()
+            return request
+        }
         try Task.checkCancellation()
         realtimeLearningSource = request.learningChat.map { LearningReplySource(context: $0, operationID: request.operationID) }
         try Task.checkCancellation()
@@ -328,19 +554,46 @@ public final class ChatViewModel {
     }
 
     /// 保存模型实际生成的语音字幕；被用户插话截断时保留中断标记。
-    public func saveRealtimeAssistant(spokenText: String, interrupted: Bool) async {
+    public func saveRealtimeAssistant(spokenText: String, interrupted: Bool, responseID: UUID? = nil) async {
+        if usesSharedChat {
+            let responseID = responseID ?? legacyVoiceResponseID
+            guard let conversation, let gateway = deps.sharedChat else { return }
+            guard let inputID = sharedVoiceInputs.removeValue(forKey: responseID) else {
+                earlyVoiceReceipts[responseID] = (spokenText, interrupted)
+                return
+            }
+            if responseID == legacyVoiceResponseID { legacyVoiceResponseID = UUID() }
+            do {
+                try await gateway.recordSharedVoiceReceipt(conversationID: conversation.id, userMessageID: inputID,
+                                                           text: spokenText, interrupted: interrupted)
+            } catch {
+                Log.app.warning("通话收听记录等待同步：\(error.localizedDescription)")
+            }
+            await reloadMessages()
+            notifyConversationChanged()
+            return
+        }
         guard let conversation else { return }
         let spokenText = spokenText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !spokenText.isEmpty else { return }
         do {
-            _ = try await persistAssistantReply(
+            let delivered = try await persistAssistantReply(
                 conversationID: conversation.id,
                 text: spokenText,
                 interrupted: interrupted,
                 learningSource: interrupted ? nil : realtimeLearningSource
             )
+            if !interrupted, let first = delivered.first,
+               let input = messages.last(where: { $0.role == .user && $0.orderIndex < first.orderIndex }),
+               let mood = ChatTimelineEvidence.mood(reply: delivered.map(\.text).joined(separator: "\n")) {
+                try? await deps.chatStore.addTimelineEvents(messageID: input.id, events: [mood])
+            }
             Task { await deps.learningChat?.messageSaved(characterID: character.id) }
-            await grantMainlineTicketIfEligible(conversationID: conversation.id)
+            Task { [weak self] in
+                await self?.grantMainlineTicketIfEligible(conversationID: conversation.id)
+                await self?.reloadMessages()
+                self?.notifyConversationChanged()
+            }
             await reloadMessages()
             notifyConversationChanged()
 
@@ -361,8 +614,9 @@ public final class ChatViewModel {
     }
 
     public func refreshMessages() async {
+        if usesSharedChat { startSharedObservation() }
         await reloadMessages()
-        if messages.last?.role == .assistant, errorMessage == "上次回复未完成，点重试继续。" {
+        if latestDialogueMessage?.role == .assistant, errorMessage == "上次回复未完成，点重试继续。" {
             errorMessage = nil
         }
     }
@@ -377,7 +631,9 @@ public final class ChatViewModel {
     }
 
     public func cancelPendingReply() {
-        replyTask?.cancel()
+        sharedObserver?.cancel()
+        sharedObserver = nil
+        cancelReplyProducer()
         replyTask = nil
         replyCycleID = UUID()
         pendingReplyPlan = nil
@@ -390,10 +646,13 @@ public final class ChatViewModel {
 
     public func localVoiceFile(for message: MessageDTO) async -> String? {
         do {
+            // 云端备份可能已将原始文件移入账号目录，先取得最新媒体引用。
+            await reloadMessages()
+            let current = messages.first(where: { $0.id == message.id }) ?? message
             let fileName = try await deps.voiceMedia.localFile(
                 messageID: message.id,
-                assetID: message.audioAssetID,
-                existingFileName: message.audioFileName
+                assetID: current.audioAssetID,
+                existingFileName: current.audioFileName
             )
             await reloadMessages()
             return fileName
@@ -412,6 +671,14 @@ public final class ChatViewModel {
         scheduleAssistantReply(after: "", preferredDelay: 0.45, replacing: messageID)
     }
 
+    private func userLearningOrigin() async -> LearningChatOrigin? {
+        guard let tracker = deps.learningChat else { return nil }
+        let characterID = character.id
+        return try? await AsyncDeadline.run(timeout: .seconds(5)) {
+            await tracker.userOrigin(characterID: characterID)
+        }
+    }
+
     private func send(userText: String) async -> Bool {
         guard let conversation else {
             errorMessage = "聊天尚未加载，请稍后重试。"
@@ -424,7 +691,9 @@ public final class ChatViewModel {
                 role: .user,
                 text: userText,
                 tokenEstimate: TokenEstimator.estimate(userText),
-                learningOrigin: await deps.learningChat?.userOrigin(characterID: character.id)
+                learningOrigin: await userLearningOrigin(),
+                contextMemoryIDs: usesSharedChat ? await memoryService.contextMemoryIDs(characterID: character.id, query: userText) : nil,
+                sharedOrdering: usesSharedChat
             )
             await reloadMessages()
             notifyConversationChanged()
@@ -446,10 +715,16 @@ public final class ChatViewModel {
         let relationship = RelationshipService(llm: deps.llm, rosterStore: deps.rosterStore)
         let chatStore = deps.chatStore
         let character = character
+        let conversationID = conversation?.id
         // 点评延后到主回复之后执行，但输入语境必须停在这条用户消息，不能把后生成的回复倒灌到它前面。
         let history = messages.filter { $0.orderIndex <= message.orderIndex }
         let memoryStore = deps.memoryStore
         Task(priority: .utility) { [weak self] in
+            let reply: String
+            if let conversationID {
+                reply = (try? await chatStore.replyText(after: message, conversationID: conversationID)) ?? ""
+            } else { reply = "" }
+            var events = [ChatTimelineEvidence.mood(reply: reply)].compactMap { $0 }
             let extractMemory = MemoryFact.shouldExtract(message.text)
             let existing = extractMemory ? ((try? await memoryStore.memories(characterID: character.id, tier: .long, includingArchived: true)) ?? []) : []
             let context = existing.filter { $0.record?.edited != true }.suffix(4).compactMap {
@@ -459,24 +734,33 @@ public final class ChatViewModel {
             let reviewHistory = history.filter { historyCutoff == nil || $0.createdAt > historyCutoff! }
             let result: InteractionReview
             do {
-                result = try await relationship.reviewInteractionAndApply(
-                    character: character, history: reviewHistory, userMessage: message,
-                    source: source, memoryContext: context, extractMemory: extractMemory
-                )
+                result = try await relationship.evaluate(character: character, history: reviewHistory,
+                    userMessage: message, memoryContext: context, extractMemory: extractMemory)
+                if let settlement = try await relationship.apply(review: result, character: character,
+                    history: reviewHistory, userMessage: message, source: source) {
+                    events.append(settlement.event)
+                }
             } catch {
                 Log.app.warning("互动审阅失败，本轮跳过辅助点评：\(error.localizedDescription)")
                 try? await relationship.recordContact(characterID: character.id, message: message)
+                try? await chatStore.addTimelineEvents(messageID: message.id, events: events)
                 return
             }
             let cutoff = try? await memoryStore.extractionCutoff(characterID: character.id)
             if extractMemory && (cutoff == nil || message.createdAt > cutoff!) {
-                var keys = Set<String>()
                 let records = (result.memoryFacts ?? []).compactMap { $0.record(from: message) }
-                    .filter { keys.insert($0.key).inserted }
                 do {
-                    try await memoryStore.applyFacts(characterID: character.id, records: records, sourceIndex: message.orderIndex + 1)
+                    let changes = try await memoryStore.applyFacts(characterID: character.id, records: records, sourceIndex: message.orderIndex + 1)
+                    if let first = changes.first { events.append(ChatTimelineEvidence.memory(first)) }
                 } catch { Log.app.warning("记忆更新保存失败：\(error.localizedDescription)") }
             }
+            if !events.contains(where: { $0.kind == .memory }), ChatTimelineEvidence.hasRecallCue(reply),
+               let memories = try? await memoryStore.memories(characterID: character.id, tier: .long),
+               let recall = ChatTimelineEvidence.recalledMemory(reply: reply, userMessage: message, memories: memories) {
+                events.append(recall)
+            }
+            do { try await chatStore.addTimelineEvents(messageID: message.id, events: events) }
+            catch { Log.app.warning("聊天事件保存失败：\(error.localizedDescription)") }
             if result.coachReview.hasIssues, let json = CoachService.encode(result.coachReview) {
                 try? await chatStore.setCoachReview(messageID: message.id, json: json)
             }
@@ -490,7 +774,20 @@ public final class ChatViewModel {
         replacing messageID: UUID? = nil,
         userMessage explicitUserMessage: MessageDTO? = nil
     ) {
-        replyTask?.cancel()
+        if usesSharedChat {
+            if let explicitUserMessage { sharedReviewMessages[explicitUserMessage.id] = explicitUserMessage }
+            errorMessage = nil
+            isWaitingForUserBurst = true
+            startSharedObservation()
+            Task { [weak self] in
+                guard let self, let gateway = self.deps.sharedChat else { return }
+                do { try await gateway.uploadSharedMessages() } catch {
+                    self.errorMessage = "消息已保存在本机，连接恢复后会继续发送。"
+                }
+            }
+            return
+        }
+        cancelReplyProducer()
         retryingMessageID = messageID
         guard let anchorMessage = explicitUserMessage
             ?? messages.last(where: { $0.role == .user })
@@ -523,7 +820,7 @@ public final class ChatViewModel {
     }
 
     private func restartPendingReply(using plan: NPCReplyPlan) {
-        replyTask?.cancel()
+        cancelReplyProducer()
         replyCycleID = UUID()
         let cycleID = replyCycleID
         pendingReplyPlan = plan
@@ -557,25 +854,58 @@ public final class ChatViewModel {
         }
     }
 
+    private func cancelReplyProducer() {
+        replyTask?.cancel()
+        replyYieldTask?.cancel()
+        replyYieldTask = nil
+        if let conversation, let plan = pendingReplyPlan {
+            NPCReplyLeaseRegistry.shared.release(conversationID: conversation.id,
+                ownerID: replyOwnerID, cycleID: replyCycleID, messageID: plan.userMessageID)
+        }
+    }
+
+    private var latestDialogueMessage: MessageDTO? {
+        messages.last { $0.role == .user || $0.role == .assistant }
+    }
+
     public var canRetryUnansweredReply: Bool {
-        !isStreaming && !isWaitingForUserBurst && messages.last?.role == .user
-            && messages.last?.isInterrupted == true && !hasActiveReplyProducer
+        if usesSharedChat { return sharedReplyError && !isStreaming && !isWaitingForUserBurst }
+        return !isStreaming && !isWaitingForUserBurst && latestDialogueMessage?.role == .user
+            && latestDialogueMessage?.isInterrupted == true && !hasActiveReplyProducer
     }
 
     private var hasActiveReplyProducer: Bool {
-        guard let conversation, let latest = messages.last else { return false }
+        guard let conversation, let latest = latestDialogueMessage else { return false }
         return NPCReplyLeaseRegistry.shared.contains(conversationID: conversation.id, messageID: latest.id)
     }
 
     public func retryUnansweredReply() {
-        guard canRetryUnansweredReply, let latest = messages.last else { return }
+        if let gateway = deps.sharedChat, let conversation {
+            guard canRetryUnansweredReply else { return }
+            sharedReplyError = false
+            isWaitingForUserBurst = true
+            Task { [weak self] in
+                do {
+                    try await gateway.uploadSharedMessages()
+                    try await gateway.retrySharedReply(conversationID: conversation.id, commandID: UUID())
+                    self?.startSharedObservation()
+                } catch {
+                    self?.errorMessage = "回复状态核对失败，请稍后重试。"
+                    self?.isWaitingForUserBurst = false
+                    self?.sharedReplyError = true
+                }
+            }
+            return
+        }
+        guard canRetryUnansweredReply, let latest = latestDialogueMessage else { return }
         scheduleAssistantReply(after: latest.text, preferredDelay: 0.45, userMessage: latest)
     }
 
     private func resumePendingReplyIfNeeded() {
+        guard !usesSharedChat else { return }
         guard replyTask == nil,
               conversation?.isArchived == false,
-              let latest = messages.last,
+              let latest = latestDialogueMessage,
               latest.role == .user
         else { return }
         // The persisted interruption marker is also a crash-recovery checkpoint.
@@ -595,7 +925,7 @@ public final class ChatViewModel {
                     try Task.checkCancellation()
                     await reloadMessages()
                     guard replyCycleID == observerCycle else { return }
-                    if messages.last?.role == .user, messages.last?.isInterrupted == true {
+                    if latestDialogueMessage?.role == .user, latestDialogueMessage?.isInterrupted == true {
                         errorMessage = "上次回复未完成，点重试继续。"
                     }
                 } catch { }
@@ -624,6 +954,7 @@ public final class ChatViewModel {
 
     private func beginTyping(cycleID: UUID) {
         guard cycleID == replyCycleID, !Task.isCancelled else { return }
+        if let messageID = pendingReplyPlan?.userMessageID { noticedMessageIDs.insert(messageID) }
         if typingBeganAt == nil {
             typingBeganAt = deps.now()
         }
@@ -696,6 +1027,24 @@ public final class ChatViewModel {
                 messageID: plan.userMessageID
             )
         }
+        let watchdog = Task { [weak self] in
+            guard let self else { return }
+            do { try await Task.sleep(for: deps.replyTimeout) } catch { return }
+            guard cycleID == replyCycleID else { return }
+            replyTask?.cancel()
+            clearReplyState(cycleID: cycleID)
+            replyCycleID = UUID()
+            errorMessage = "回复等待超时，点重试继续；你的消息已保留。"
+            NPCReplyLeaseRegistry.shared.release(conversationID: conversation.id,
+                ownerID: replyOwnerID, cycleID: cycleID, messageID: plan.userMessageID)
+            try? await deps.chatStore.setReplyInterrupted(userMessageID: plan.userMessageID, interrupted: true)
+            if let last = latestDialogueMessage, last.role == .assistant,
+               let user = messages.first(where: { $0.id == plan.userMessageID }), last.orderIndex > user.orderIndex {
+                try? await deps.chatStore.updateMessageText(messageID: last.id, text: last.text, isInterrupted: true)
+            }
+            await reloadMessages()
+        }
+        defer { watchdog.cancel() }
         guard await isStillLatestUnanswered(plan: plan, conversationID: conversation.id) else {
             clearReplyState(cycleID: cycleID)
             return
@@ -706,6 +1055,7 @@ public final class ChatViewModel {
             guard let self else { return }
             do {
                 try await wait(until: plan.typingStartsAt)
+                try await waitForUserToFinish(plan: plan)
                 try Task.checkCancellation()
             } catch {
                 return
@@ -719,6 +1069,10 @@ public final class ChatViewModel {
             }
         }
 
+        do { try await deps.chatStore.setReplyInterrupted(userMessageID: plan.userMessageID, interrupted: true) }
+        catch { errorMessage = "回复状态未能保存，请重试。"; return }
+        await reloadMessages()
+        guard cycleID == replyCycleID, !Task.isCancelled else { return }
         let memoryService = self.memoryService
         var request = await makeRoleplayRequest(
             voiceMode: false
@@ -737,8 +1091,6 @@ public final class ChatViewModel {
                 request.learningChat = try await deps.learningChat?.prepareReply(conversationID: conversation.id, userMessage: userMessage)
             }
             try Task.checkCancellation()
-            try await deps.chatStore.setReplyInterrupted(userMessageID: plan.userMessageID, interrupted: true)
-            await reloadMessages()
             for try await event in await deps.llm.stream(request) {
                 try Task.checkCancellation()
                 guard cycleID == replyCycleID else { throw CancellationError() }
@@ -886,7 +1238,11 @@ public final class ChatViewModel {
                 let source: RelationshipEventRecord.Source = userMessage.kind == .voice ? .voiceChat : .textChat
                 runInteractionReview(for: userMessage, source: source)
             }
-            await grantMainlineTicketIfEligible(conversationID: conversation.id)
+            Task { [weak self] in
+                await self?.grantMainlineTicketIfEligible(conversationID: conversation.id)
+                await self?.reloadMessages()
+                self?.notifyConversationChanged()
+            }
             // 回复完成后检查记忆压缩触发（后台，不阻塞 UI）
             let conversationID = conversation.id
             let characterName = character.card.name
@@ -936,6 +1292,7 @@ public final class ChatViewModel {
             try Task.checkCancellation()
             guard cycleID == replyCycleID else { throw CancellationError() }
             try await waitForUserToFinish(plan: plan)
+            beginTyping(cycleID: cycleID)
             let delay = RoleplayTypingPace.standard.delay(
                 for: text,
                 messageIndex: index,
@@ -983,7 +1340,10 @@ public final class ChatViewModel {
                 await self?.reloadMessages()
             }
         }
-        if !delivered.isEmpty { Task { await deps.learningChat?.messageSaved(characterID: character.id) } }
+        if !delivered.isEmpty {
+            Task { await deps.learningChat?.messageSaved(characterID: character.id) }
+            inspectAppointmentAgreement()
+        }
         return delivered
     }
 
@@ -1021,6 +1381,7 @@ public final class ChatViewModel {
         for message in messages {
             await annotateKeywords(message: message, text: message.text)
         }
+        inspectAppointmentAgreement()
         return messages
     }
 
@@ -1064,20 +1425,172 @@ public final class ChatViewModel {
         guard (try? await deps.itemStore.hasTicket(source: .quest)) == false else { return }
         do {
             guard try await deps.progression.claimStarterTicket() else { return }
-            _ = try await deps.chatStore.appendMessage(
-                conversationID: conversationID,
-                role: .coach,
-                kind: .storyLine,
-                text: "🎫 主办方送来一张通用机票！之后可以在地图里用它解锁新的城市。"
-            )
+            try await deps.chatStore.appendStarterTicketNoticeIfNeeded(conversationID: conversationID)
         } catch {
             Log.app.warning("主线机票发放失败：\(error)")
         }
     }
 
-    private func reloadMessages() async {
-        guard let conversation else { return }
-        messages = (try? await deps.chatStore.messages(conversationID: conversation.id)) ?? messages
+    public func stopSharedObservation() {
+        voiceCompositionTask?.cancel()
+        voiceCompositionTask = nil
+        queueSharedComposer(.inactive)
+        sharedPageVisible = false
+        // Finish the originating device's existing coaching/memory work when the
+        // user navigates away, without affecting the durable server producer.
+        guard sharedReviewMessages.isEmpty || sharedReplyError else { return }
+        sharedObserver?.cancel()
+        sharedObserver = nil
     }
 
+    private func startSharedObservation() {
+        guard sharedObserver == nil, let gateway = deps.sharedChat else { return }
+        sharedObserver = Task { [self] in
+            while !Task.isCancelled {
+                do {
+                    let state: SharedChatSnapshot
+                    if let snapshot = self.sharedSnapshot {
+                        state = try await gateway.refreshSharedConversation(
+                            conversationID: snapshot.conversationID)
+                    } else {
+                        state = try await gateway.openSharedConversation(characterID: self.character.id)
+                    }
+                    try Task.checkCancellation()
+                    try await self.acceptSharedState(state)
+                    self.flushSharedComposer()
+                } catch is CancellationError { return } catch BackendClientError.signedOut {
+                    sharedObserver = nil
+                    return
+                } catch { errorMessage = "会话连接暂时中断，正在重新同步。" }
+                do { try await Task.sleep(for: .milliseconds(800)) } catch { return }
+            }
+        }
+    }
+
+    private func acceptSharedState(_ state: SharedChatSnapshot) async throws {
+        sharedSnapshot = state
+        guard let canonical = try await deps.chatStore.conversation(id: state.conversationID) else {
+            throw AppError.storage("会话尚未同步")
+        }
+        conversation = canonical
+        await reloadMessages()
+        let status = state.generation?.status
+        let active = status == "queued" || status == "dispatched"
+        if status == "dispatched", let ids = state.generation?.inputMessageIDs {
+            noticedMessageIDs.formUnion(ids)
+        }
+        if active, let plan = state.generation?.replyPlan,
+           let attention = NPCAttentionLevel(rawValue: plan.attention) {
+            pendingReplyPlan = .init(userMessageID: plan.userMessageID, attention: attention,
+                noticedAt: plan.noticedAt, generationStartsAt: plan.generationStartsAt,
+                typingStartsAt: plan.typingStartsAt, firstBubbleAt: plan.firstBubbleAt,
+                continuingConversation: plan.continuingConversation)
+        } else if !active { pendingReplyPlan = nil }
+        let localYield = messages.last(where: { $0.role == .user }).map {
+            deps.replyDelayScale > 0 && userTurnHandoffDate(after: $0) > deps.now()
+        } ?? false
+        isStreaming = status == "dispatched" && (state.generation?.phase ?? "typing") == "typing" && !localYield
+        isWaitingForUserBurst = active && !isStreaming
+        streamingText = isStreaming ? "" : nil
+        sharedReplyError = status == "failed" || status == "uncertain"
+        errorMessage =
+            status == "uncertain" ? "上次回复状态未确认。重试会重新生成，可能再次计费。" : (sharedReplyError ? "上次回复未完成，点重试继续。" : nil)
+        let reviewed = sharedReviewMessages.values.filter { state.coveredMessageIDs.contains($0.id) }
+        for message in reviewed {
+            sharedReviewMessages[message.id] = nil
+            if state.durableFollowups {
+                if let reply = try? await deps.chatStore.replyText(after: message, conversationID: state.conversationID),
+                   let mood = ChatTimelineEvidence.mood(reply: reply) {
+                    do { try await deps.chatStore.addTimelineEvents(messageID: message.id, events: [mood]) }
+                    catch { Log.app.warning("聊天情绪提示保存失败：\(error.localizedDescription)") }
+                }
+            } else {
+                runInteractionReview(for: message, source: message.kind == .voice ? .voiceChat : .textChat)
+            }
+        }
+        if !reviewed.isEmpty {
+            await grantMainlineTicketIfEligible(conversationID: state.conversationID)
+            Task { await deps.learningChat?.messageSaved(characterID: character.id) }
+            inspectAppointmentAgreement()
+            let memoryService = self.memoryService
+            let character = self.character
+            Task(priority: .utility) {
+                guard !state.durableFollowups else { return }
+                await memoryService.compressIfNeeded(
+                    conversationID: state.conversationID, characterName: character.card.name,
+                    characterRegionID: character.card.regionID)
+            }
+        }
+        notifyConversationChanged()
+        if !sharedPageVisible && (sharedReviewMessages.isEmpty || sharedReplyError) {
+            stopSharedObservation()
+        }
+    }
+
+    private func sharedVoiceStream(gateway: any SharedChatGateway, conversationID: UUID, userMessageID: UUID)
+        -> AsyncThrowingStream<String, Error>
+    {
+        AsyncThrowingStream { continuation in
+            let task = Task { [weak self] in
+                let deadline = ContinuousClock.now.advanced(by: .seconds(120))
+                var generationID: UUID?
+                var emitted = ""
+                do {
+                    while ContinuousClock.now < deadline {
+                        try Task.checkCancellation()
+                        let state = try await gateway.sharedReply(
+                            conversationID: conversationID, userMessageID: userMessageID)
+                        await self?.reloadMessages()
+                        if let generation = state.generation,
+                            generation.inputMessageIDs.contains(userMessageID)
+                        {
+                            if let generationID, generationID != generation.id {
+                                throw AppError.storage("回复已重新开始，请重试")
+                            }
+                            generationID = generation.id
+                            guard generation.partialText.hasPrefix(emitted) else {
+                                throw AppError.storage("回复状态已更新，请重试")
+                            }
+                            let delta = String(generation.partialText.dropFirst(emitted.count))
+                            if !delta.isEmpty {
+                                continuation.yield(delta)
+                                emitted = generation.partialText
+                            }
+                            if generation.status == "failed" || generation.status == "uncertain" {
+                                throw AppError.storage("通话回复未完成，请重试")
+                            }
+                            if generation.status == "completed" {
+                                continuation.finish()
+                                return
+                            }
+                        }
+                        if state.coveredMessageIDs.contains(userMessageID), !emitted.isEmpty {
+                            continuation.finish()
+                            return
+                        }
+                        try await Task.sleep(for: .milliseconds(250))
+                    }
+                    throw AppError.storage("通话回复等待超时，文字回复会继续同步")
+                } catch { continuation.finish(throwing: error) }
+            }
+            continuation.onTermination = { _ in task.cancel() }
+        }
+    }
+
+    func reloadMessages() async {
+        guard let conversation else { return }
+        guard let stored = try? await deps.chatStore.messages(conversationID: conversation.id) else { return }
+        let refreshed = Self.visibleMessages(stored)
+        if refreshed != messages { messages = refreshed }
+    }
+
+    private static func visibleMessages(_ messages: [MessageDTO]) -> [MessageDTO] {
+        var hasStarterTicketNotice = false
+        return messages.filter { message in
+            guard message.role == .coach, message.kind == .storyLine,
+                  message.text == ChatStore.starterTicketNotice else { return true }
+            defer { hasStarterTicketNotice = true }
+            return !hasStarterTicketNotice
+        }
+    }
 }

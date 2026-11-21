@@ -17,6 +17,11 @@ public struct StoryHubView: View {
 
     public init(deps: HomeDependencies) {
         self.deps = deps
+        _profile = State(initialValue: deps.presentationCache?.profile)
+        _completed = State(initialValue: deps.presentationCache?.completed ?? [])
+        _cityUnlockProgress = State(initialValue: CityStoryUnlockProgress(
+            profile: deps.presentationCache?.profile, availableTickets: deps.presentationCache?.tickets ?? [],
+            ticketStubs: deps.presentationCache?.stubs ?? []))
     }
 
     private var journey: MainlineJourney {
@@ -78,7 +83,6 @@ public struct StoryHubView: View {
         .background(Color.dsBackground)
         .navigationTitle("剧情")
         .task { await reload() }
-        .onAppear { Task { await reload() } }
     }
 
     private func categoryCard(
@@ -154,9 +158,7 @@ public struct StoryHubView: View {
     private func artworkStrips(_ artworkNames: [String], width: CGFloat) -> some View {
         HStack(spacing: 0) {
             ForEach(Array(artworkNames.enumerated()), id: \.offset) { _, artworkName in
-                Image(artworkName)
-                    .resizable()
-                    .scaledToFill()
+                DSSceneThumbnailImage(name: artworkName, maxPixelSize: 200)
                     .frame(
                         width: width / CGFloat(max(artworkNames.count, 1)),
                         height: 154
@@ -170,13 +172,22 @@ public struct StoryHubView: View {
     }
 
     private func reload() async {
+        if let cache = deps.presentationCache {
+            await cache.refreshLocal(economy: deps.economyStore, items: deps.itemStore,
+                progress: deps.storyProgress, ticketStubs: deps.ticketStubStore)
+            guard !Task.isCancelled else { return }
+            profile = cache.profile
+            completed = cache.completed
+            cityUnlockProgress = CityStoryUnlockProgress(profile: cache.profile, availableTickets: cache.tickets, ticketStubs: cache.stubs)
+            return
+        }
         async let loadedProfile = try? deps.economyStore.profile()
         async let loadedCompleted = try? deps.storyProgress.completedStoryIDs()
         async let loadedTickets = try? deps.itemStore.unconsumedTickets()
         async let loadedStubs = try? deps.ticketStubStore.all()
         let resolvedProfile = await loadedProfile
         profile = resolvedProfile
-        completed = await loadedCompleted ?? []
+        completed = DepartureStoryIdentity.catalogCompletionIDs(await loadedCompleted ?? [])
         cityUnlockProgress = CityStoryUnlockProgress(
             profile: resolvedProfile,
             availableTickets: await loadedTickets ?? [],

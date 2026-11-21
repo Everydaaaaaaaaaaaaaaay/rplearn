@@ -1,4 +1,29 @@
+import { createBillingChatContext } from "./modules/billing/service.js";
+import { createAppointmentChatContext } from "./modules/appointments/service.js";
+import { configureOutboundNetworking } from "./infrastructure/network.js";
+import { createDomainChatContext } from "./modules/domain/service.js";
+import { createChatService, sharedChatCoverage } from "./modules/chat/service.js";
+import { registerChatRoutes } from "./modules/chat/routes.js";
+import {
+  createChatGeneration,
+  createChatRecovery,
+} from "./modules/chat/ai-generation.js";
+import { createChatContentService } from "./modules/content/service.js";
+import { AppError } from "./shared/errors.js";
+import { createAppointmentService } from "./modules/appointments/service.js";
+import { registerAppointmentRoutes } from "./modules/appointments/routes.js";
+import { createAppointmentNarrative } from "./modules/appointments/generation.js";
+import {
+  appointmentCharacter,
+  appointmentMessages,
+  verifyAppointmentEvidence,
+} from "./modules/appointments/context.js";
+import { createAppointmentContentService } from "./modules/content/service.js";
 import { registerLearningBankConsole } from "./modules/learning/bank-console.js";
+import { SharedGrammarRepository } from "./modules/grammar/repository.js";
+import { createGrammarService } from "./modules/grammar/service.js";
+import { registerGrammarRoutes } from "./modules/grammar/routes.js";
+import { loadGrammarSeed } from "./modules/grammar/seed.js";
 import { loadPromotionCourses } from "./modules/learning/promotion-content.js";
 import { fileURLToPath } from "node:url";
 import { loadGenerationBlueprints } from "./modules/learning/generation-content.js";
@@ -53,6 +78,7 @@ import { registerDomainRoutes } from "./modules/domain/routes.js";
 import {
   createDomainService,
   createDomainLearningContext,
+  createDomainActivityContext,
 } from "./modules/domain/service.js";
 import { createSyncCursorCodec } from "./modules/sync/cursor.js";
 import { registerSyncRoutes } from "./modules/sync/routes.js";
@@ -73,6 +99,8 @@ import { registerMediaRoutes } from "./modules/media/routes.js";
 import { createMediaService } from "./modules/media/service.js";
 import { registerNpcRoutes } from "./modules/npc/routes.js";
 import { createNpcService } from "./modules/npc/service.js";
+import { createOutingService } from "./modules/npc/outing-service.js";
+import { registerOutingRoutes } from "./modules/npc/outing-routes.js";
 import { DictionaryExampleGenerationRepository } from "./modules/dictionary-translation/generation-repository.js";
 import { createDictionaryExampleGenerationService } from "./modules/dictionary-translation/generation-service.js";
 import { createJobPayloadCipher } from "./modules/jobs/crypto.js";
@@ -84,6 +112,7 @@ import { registerDictionaryTranslationAdminRoutes } from "./modules/dictionary-t
 import { createDictionaryTranslationService } from "./modules/dictionary-translation/service.js";
 
 async function main(): Promise<void> {
+  configureOutboundNetworking();
   let config: ReturnType<typeof loadConfig>;
 
   try {
@@ -180,7 +209,7 @@ async function main(): Promise<void> {
   const learningChat = createLearningChatService(
     dependencies.database,
     learningContext,
-    learningContent,
+    { ...learningContent, sharedCoverage: sharedChatCoverage },
   );
   const learningService = createLearningService(
     dependencies.database,
@@ -210,9 +239,35 @@ async function main(): Promise<void> {
     createDeepSeekClient(config),
     { catalog: aiCatalog, openRouter, chatObserver: learningChat },
   );
+  const sharedChat = createChatService(
+    dependencies.database,
+    {
+      ...createChatContentService(dependencies.database),
+      ...createDomainChatContext(dependencies.database),
+      ...createBillingChatContext(dependencies.database),
+      ...createAppointmentChatContext(),
+      onMessage: learningChat.enqueue,
+      onAdopt: learningChat.adoptConversation,
+    },
+    {
+      generate: createChatGeneration(aiService),
+      ...createChatRecovery(aiService),
+    },
+  );
+  registerChatRoutes(app, authService, sharedChat);
   registerAiRoutes(app, authService, aiService, {
     guestAccessEnabled: false,
+    beforeConversation: sharedChat.assertLegacyAllowed,
   });
+  registerGrammarRoutes(
+    app,
+    authService,
+    createGrammarService(
+      new SharedGrammarRepository(dependencies.database, await loadGrammarSeed()),
+      aiService,
+      createJobPayloadCipher(config),
+    ),
+  );
   const dictionaryTranslationService = createDictionaryTranslationService(
     config,
     dependencies.database,
@@ -294,10 +349,84 @@ async function main(): Promise<void> {
     dependencies.database,
     createContentCursorCodec(config.authTokenHashPepper),
     syncCursor,
-    learningChat.enqueue,
+    async (sql, userId, record, previous) => {
+      const accepted = await sharedChat.observe(sql, userId, record, previous);
+      await learningChat.enqueue(sql, userId, accepted);
+      return accepted;
+    },
+    sharedChat.beforeCommand,
   );
   registerContentRoutes(app, authService, contentService);
+  const appointmentContent = createAppointmentContentService(dependencies.database);
+  const appointmentLocation = createDomainActivityContext(dependencies.database);
+  registerAppointmentRoutes(
+    app,
+    authService,
+    createAppointmentService(
+      dependencies.database,
+      {
+        character: async (sql, userId, id) =>
+          appointmentCharacter(await appointmentContent.character(sql, userId, id)),
+        messages: async (sql, userId, characterId, conversationId) =>
+          appointmentMessages(
+            await appointmentContent.conversation(sql, userId, conversationId),
+            characterId,
+            await learningChat.verifiedAppointmentMessages(
+              sql,
+              userId,
+              characterId,
+              conversationId,
+              await appointmentContent.messages(sql, userId, conversationId),
+            ),
+          ),
+        verifyEvidence: async (sql, userId, conversationId, evidence) => {
+          const conversation = await appointmentContent.conversation(
+            sql,
+            userId,
+            conversationId,
+          );
+          if (conversation?.deletedAt !== null || !conversation.parentId)
+            throw new AppError({
+              code: "APPOINTMENT_EVIDENCE_CHANGED",
+              message: "确认约定的对话已移除，请重新确认。",
+              statusCode: 409,
+            });
+          const records = await appointmentContent.proofMessages(
+            sql,
+            userId,
+            conversationId,
+            evidence.map((message) => message.id),
+          );
+          const verified = await learningChat.verifiedAppointmentMessages(
+            sql,
+            userId,
+            conversation.parentId,
+            conversationId,
+            records,
+          );
+          const byId = new Map(verified.map((record) => [record.resourceId, record]));
+          verifyAppointmentEvidence(
+            evidence.map((message) => byId.get(message.id)),
+            conversationId,
+            evidence,
+          );
+        },
+        city: async (sql, userId) =>
+          (await appointmentLocation.lock(sql, userId)).cityId,
+      },
+      createAppointmentNarrative(aiService),
+      appointmentContent,
+    ),
+  );
   registerNpcRoutes(app, authService, createNpcService(dependencies.database));
+  registerOutingRoutes(
+    app,
+    authService,
+    createOutingService(
+      dependencies.database,
+      createDomainActivityContext(dependencies.database),
+    ),
+  );
   if (mediaObjectStore !== undefined) {
     registerMediaRoutes(
       app,

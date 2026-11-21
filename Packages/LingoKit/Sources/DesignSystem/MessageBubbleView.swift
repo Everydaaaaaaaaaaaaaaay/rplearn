@@ -20,6 +20,8 @@ public struct MessageBubble<Content: View>: View {
     private let groupPosition: MessageBubbleGroupPosition
     private let leadingAccessory: AnyView?
     private let contextMenuContent: AnyView?
+    private var onMenuRequest: ((CGRect) -> Void)?
+    @State private var surfaceAnchor = BubbleSurfaceAnchor.Reference()
     private let content: Content
 
     public init(
@@ -38,6 +40,7 @@ public struct MessageBubble<Content: View>: View {
     public init<Menu: View>(
         side: Side,
         groupPosition: MessageBubbleGroupPosition = .single,
+        onMenuRequest: ((CGRect) -> Void)? = nil,
         @ViewBuilder contextMenu: () -> Menu,
         @ViewBuilder content: () -> Content
     ) {
@@ -45,6 +48,7 @@ public struct MessageBubble<Content: View>: View {
         self.groupPosition = groupPosition
         self.leadingAccessory = nil
         self.contextMenuContent = AnyView(contextMenu())
+        self.onMenuRequest = onMenuRequest
         self.content = content()
     }
 
@@ -69,6 +73,7 @@ public struct MessageBubble<Content: View>: View {
         side: Side,
         groupPosition: MessageBubbleGroupPosition = .single,
         @ViewBuilder leadingAccessory: () -> Accessory,
+        onMenuRequest: ((CGRect) -> Void)? = nil,
         @ViewBuilder contextMenu: () -> Menu,
         @ViewBuilder content: () -> Content
     ) {
@@ -76,6 +81,7 @@ public struct MessageBubble<Content: View>: View {
         self.groupPosition = groupPosition
         self.leadingAccessory = AnyView(leadingAccessory())
         self.contextMenuContent = AnyView(contextMenu())
+        self.onMenuRequest = onMenuRequest
         self.content = content()
     }
 
@@ -100,7 +106,16 @@ public struct MessageBubble<Content: View>: View {
 
     @ViewBuilder
     private var interactiveBubble: some View {
-        if let contextMenuContent {
+        if let onMenuRequest {
+            bubbleSurface
+                .background { BubbleSurfaceAnchor(reference: surfaceAnchor) }
+                .highPriorityGesture(LongPressGesture(minimumDuration: 0.45).onEnded { _ in
+                    if let frame = surfaceAnchor.frame { onMenuRequest(frame) }
+                })
+                .accessibilityAction(named: "消息操作") {
+                    if let frame = surfaceAnchor.frame { onMenuRequest(frame) }
+                }
+        } else if let contextMenuContent {
             bubbleSurface
                 .contextMenu { contextMenuContent }
         } else {
@@ -201,6 +216,28 @@ public struct MessageBubble<Content: View>: View {
         }
     }
 
+}
+
+/// Read the live bubble position only when its menu opens. Scrolling and keyboard
+/// animation never write geometry back into SwiftUI state.
+private struct BubbleSurfaceAnchor: UIViewRepresentable {
+    @MainActor final class Reference {
+        weak var view: UIView?
+        var frame: CGRect? { view.map { $0.convert($0.bounds, to: nil) } }
+    }
+
+    let reference: Reference
+
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        view.isUserInteractionEnabled = false
+        reference.view = view
+        return view
+    }
+
+    func updateUIView(_ view: UIView, context: Context) {
+        reference.view = view
+    }
 }
 
 /// 「正在输入」三点动画。

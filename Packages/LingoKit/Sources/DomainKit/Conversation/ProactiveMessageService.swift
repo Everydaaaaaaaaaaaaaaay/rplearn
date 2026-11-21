@@ -63,7 +63,7 @@ public struct ProactiveMessageService: Sendable {
             do {
                 output = try await llm.complete(request)
             } catch {
-                // LLMRouter 已经对网络和限流错误重试；此处不再重复轰炸服务端。
+                // 网络和限流错误交给编排层稍后重试。
                 Log.llm.warning("主动消息生成失败，本轮不写入并保留稍后重试机会：\(error)")
                 return nil
             }
@@ -143,7 +143,7 @@ public struct ProactiveMessageService: Sendable {
 
         朋友的偏好称呼是 \(learner.nickname ?? "未提供")，只在自然时使用。
         朋友是一位中国英语学习者，水平为：\(PromptBuilder.languageGuidance(for: learner.difficulty))
-        可选学习兴趣：\(PromptBuilder.goalDescription(learner.goal))。
+        可选学习兴趣：\(PromptBuilder.goalDescriptions(learner.goals))。
         当前生活或学习阶段：\(PromptBuilder.stageDescription(learner.studyStage))。
         \(PromptBuilder.interactionGuidance(for: learner.difficulty))
         把水平作为理解难度的上限，不是使用难词的理由。即使朋友水平高，也默认用高频英语口语，不刻意展示习语或生僻词。

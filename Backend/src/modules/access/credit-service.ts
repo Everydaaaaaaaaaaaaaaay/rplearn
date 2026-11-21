@@ -41,6 +41,10 @@ const SERVICE_TASKS = [
   "proactive_message",
   "quiz",
   "speech_feedback",
+  "grammar_library_review",
+  "appointment_detection",
+  "appointment_story_retry",
+  "appointment_review",
 ] as const;
 const serviceTaskSet = new Set<string>(SERVICE_TASKS);
 const SERVICE_DAILY_LIMIT_CREDITS = {
@@ -163,6 +167,22 @@ export function createCreditService(
 ) {
   const book = loadCreditPriceBook();
   return {
+    operationPending: async (userId: string, operationId: string): Promise<boolean> => {
+      const rows =
+        await database.sql`select 1 from app.credit_operations where user_id=${userId} and operation_id=${operationId} and status in ('dispatched','pending','reserved') and (result is null or result='null'::jsonb)`;
+      return rows.length > 0;
+    },
+    completedResult: async (
+      userId: string,
+      operationId: string,
+    ): Promise<{ content: string } | null> => {
+      const [row] = await database.sql<
+        { result: { content?: unknown } | null }[]
+      >`select result from app.credit_operations where user_id=${userId} and operation_id=${operationId}`;
+      return typeof row?.result?.content === "string" && row.result.content.trim()
+        ? { content: row.result.content }
+        : null;
+    },
     snapshot: (userId: string): Promise<CreditSnapshot> =>
       database.sql.begin(async (sql) => {
         const ctx = await context(sql, userId),
@@ -214,6 +234,7 @@ export function createCreditService(
         messages: readonly AiMessage[];
         maxOutputTokens: number;
         parentOperationId?: string;
+        requiredAppointmentStep?: boolean;
       },
     ): Promise<{ replay: boolean; result: unknown }> => {
       // Preserve idempotent replay even if the original model has since left the
@@ -285,10 +306,19 @@ export function createCreditService(
         }
         if (request.parentOperationId !== undefined) {
           const [parent] =
-            await sql`select 1 from app.credit_operations where user_id=${userId} and operation_id=${request.parentOperationId} and task='conversation' and result is not null and completed_at>now()-interval '5 minutes'`;
+            await sql`select 1 from app.credit_operations where user_id=${userId} and operation_id=${request.parentOperationId} and task=${request.task === "conversation" ? "conversation" : request.task === "appointment_story_retry" ? "appointment_story_retry" : "appointment_story"} and result is not null and completed_at>now()-case when ${request.task === "conversation"} then interval '5 minutes' else interval '30 minutes' end`;
           const [repair] =
-            await sql`select 1 from app.credit_operations where user_id=${userId} and parent_operation_id=${request.parentOperationId}`;
-          if (!parent || repair || request.task !== "conversation")
+            await sql`select 1 from app.credit_operations where user_id=${userId} and parent_operation_id=${request.parentOperationId} and task=${request.task}`;
+          if (
+            !parent ||
+            repair ||
+            ![
+              "conversation",
+              "appointment_story",
+              "appointment_story_retry",
+              "appointment_review",
+            ].includes(request.task)
+          )
             reject("REPAIR_NOT_ALLOWED", "此回复不能再次修复。");
         }
         const price =
@@ -303,7 +333,11 @@ export function createCreditService(
           request.messages,
           request.maxOutputTokens,
         );
-        const billingScope = billingScopeForTask(request.task);
+        const billingScope =
+          request.parentOperationId !== undefined &&
+          request.task.startsWith("appointment_")
+            ? "service"
+            : billingScopeForTask(request.task);
         const rate = await effectiveCreditRate(sql, userId);
         const rateUnits = billingScope === "user" ? rate.rate : RATE_SCALE;
         const limit =
@@ -317,10 +351,16 @@ export function createCreditService(
           billingScope === "service" ? rate.auxiliaryRate : RATE_SCALE,
         );
         const budgetAmount = applyCreditRate(amount, rate.auxiliaryRate);
+        // A completed appointment or an admitted story still needs its audited
+        // service steps. Track their real costs in the same ledger.
+        const requiredAppointmentStep = request.requiredAppointmentStep === true &&
+          (request.task === "appointment_review" ||
+            request.task === "appointment_story_retry" ||
+            (request.task === "appointment_story" && request.parentOperationId !== undefined));
         if (
           billingScope === "user"
             ? rateUnits > 0 && available.remaining <= 0n
-            : rate.auxiliaryRate > 0 && budgetAmount > available.remaining
+            : !requiredAppointmentStep && rate.auxiliaryRate > 0 && budgetAmount > available.remaining
         )
           throw new AppError({
             code:

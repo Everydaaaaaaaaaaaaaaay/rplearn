@@ -29,6 +29,7 @@ public actor BackendUserStateCoordinator:
         let hasCompletedOnboarding: Bool?
         let hasCompletedProfileSetup: Bool?
         let learningGoal: String?
+        let learningGoals: [String]?
         let placementCompletedAt: String?
         let placementScore: Int?
         let proficiencySource: String?
@@ -67,6 +68,7 @@ public actor BackendUserStateCoordinator:
     private var currentUserID: UUID?
     private var snapshot: BackendSyncSnapshot?
     private var isImportingGuest = false
+    private var starterTicketClaim: Task<Bool, Error>?
 
     public init(
         backend: BackendClient,
@@ -151,7 +153,7 @@ public actor BackendUserStateCoordinator:
         return try await updateProfile { profile in
             profile.displayName = guestProfile.displayName
             profile.difficultyLevel = guestProfile.difficultyLevel
-            profile.learningGoal = guestProfile.learningGoal
+            profile.learningGoals = guestProfile.learningGoals
             profile.studyStage = guestProfile.studyStage
             profile.proficiencySource = guestProfile.proficiencySource
             profile.placementScore = guestProfile.placementScore
@@ -245,6 +247,8 @@ public actor BackendUserStateCoordinator:
             learningGoal: desired.learningGoal.rawValue
                 == (current.learningGoal ?? LearningGoal.dailyConversation.rawValue)
                 ? nil : desired.learningGoal.rawValue,
+            learningGoals: desired.learningGoals == map(current).learningGoals
+                ? nil : desired.learningGoals.map(\.rawValue),
             placementCompletedAt: desired.placementCompletedAt.flatMap { date in
                 current.placementCompletedAt == Self.isoString(date) ? nil : Self.isoString(date)
             },
@@ -261,6 +265,7 @@ public actor BackendUserStateCoordinator:
             || patch.hasCompletedOnboarding != nil
             || patch.hasCompletedProfileSetup != nil
             || patch.learningGoal != nil
+            || patch.learningGoals != nil
             || patch.placementCompletedAt != nil
             || patch.placementScore != nil
             || patch.proficiencySource != nil
@@ -277,6 +282,7 @@ public actor BackendUserStateCoordinator:
             onboardingValue,
             patch.hasCompletedProfileSetup.map { String($0) } ?? "-",
             patch.learningGoal ?? "-",
+            patch.learningGoals?.joined(separator: ",") ?? "-",
             patch.placementCompletedAt ?? "-",
             patch.placementScore.map { String($0) } ?? "-",
             patch.proficiencySource ?? "-",
@@ -335,6 +341,19 @@ public actor BackendUserStateCoordinator:
     }
 
     public func claimStarterTicket() async throws -> Bool {
+        // The foreground reply and its durable follow-up can reach this actor
+        // while the same idempotent command is awaiting the server.
+        if let starterTicketClaim {
+            _ = try await starterTicketClaim.value
+            return false
+        }
+        let claim = Task { try await performStarterTicketClaim() }
+        starterTicketClaim = claim
+        defer { starterTicketClaim = nil }
+        return try await claim.value
+    }
+
+    private func performStarterTicketClaim() async throws -> Bool {
         let intent = "progression:starter-ticket-v1"
         let commandID = pendingCommandID(for: intent)
         do {
@@ -587,7 +606,8 @@ public actor BackendUserStateCoordinator:
             placementCompletedAt: profile.placementCompletedAt.flatMap {
                 try? parseDate($0)
             },
-            hasCompletedProfileSetup: profile.hasCompletedProfileSetup ?? false
+            hasCompletedProfileSetup: profile.hasCompletedProfileSetup ?? false,
+            learningGoals: profile.learningGoals?.compactMap(LearningGoal.init(rawValue:))
         )
     }
 

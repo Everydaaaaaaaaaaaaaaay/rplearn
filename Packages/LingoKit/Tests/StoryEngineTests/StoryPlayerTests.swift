@@ -92,4 +92,21 @@ struct StoryPlayerTests {
         player.advance()
         #expect(player.history.map(\.text) == ["bye"])
     }
+
+    @Test("旧断点不存在时从开场恢复，不停留在无响应状态")
+    func staleCheckpoint() throws {
+        let player = StoryPlayer(script: try makeScript(), resumeFrom: "retired-node")
+        player.advance()
+        #expect(player.history.map(\.text) == ["one"])
+    }
+
+    @Test("台词循环快进会停止且不误发完结奖励")
+    func cyclicFastForward() throws {
+        let script = try StoryScript(id: "loop", start: "a", nodes: [
+            .init(id: "a", payload: .line(speaker: "A", text: "one", bg: nil, sprite: nil, next: "a"))])
+        let player = StoryPlayer(script: script)
+        player.skipToNextChoiceOrEnd()
+        #expect(player.error == .cycle("a"))
+        #expect(!player.isFinished && player.history.count == 1)
+    }
 }

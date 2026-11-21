@@ -66,6 +66,14 @@ export type DomainService = Readonly<{
 
 const STARTER_REGION_IDS = new Set(["london", "melbourne", "newyork"]);
 
+export function createDomainActivityContext(database: DatabaseResource) {
+  const repository = new DomainRepository(database);
+  return {
+    lock: (sql: TransactionSql, userId: string) =>
+      repository.lockActivityLocation(sql, userId),
+  };
+}
+
 function command(commandId: string, route: string, payload: unknown): CommandIdentity {
   return {
     commandId,
@@ -186,4 +194,10 @@ export function createDomainLearningContext(database: DatabaseResource) {
     ) =>
       repository.promoteDifficulty(sql, userId, requestId, from, to, expectedVersion),
   };
+}
+
+/** Read-only learner context for the server-owned conversation producer. */
+export function createDomainChatContext(database: DatabaseResource) {
+  const repository = new DomainRepository(database);
+  return { learner: repository.chatLearner.bind(repository) };
 }

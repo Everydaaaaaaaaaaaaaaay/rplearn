@@ -30,6 +30,7 @@ export type SyncCommand =
         hasCompletedOnboarding?: boolean;
         hasCompletedProfileSetup?: boolean;
         learningGoal?: LearningGoal;
+        learningGoals?: readonly LearningGoal[];
         placementCompletedAt?: string;
         placementScore?: number;
         proficiencySource?: ProficiencySource;

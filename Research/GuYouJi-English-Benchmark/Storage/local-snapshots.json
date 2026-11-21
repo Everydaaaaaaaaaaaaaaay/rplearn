@@ -1,6 +1,6 @@
 {
-  "updated_on": "2026-10-15",
-  "status": "two_recent_full_snapshots_plus_verified_deduplicated_historical_archive_same_host_only",
+  "updated_on": "2026-11-17",
+  "status": "local_backups_retired_by_owner_request",
   "snapshots": [
     {
       "snapshot_id": "2026-10-12T162852.062798+0000-00f3e787",
@@ -14283,5 +14283,13 @@
     "current_unique_contents": 12223,
     "current_unique_bytes": 3350086799,
     "same_host_only": true
+  },
+  "local_backup_retirement": {
+    "requested_on": "2026-11-17",
+    "path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch",
+    "owner_instruction": "删除本机研究备份，保持软件正常开发",
+    "payload_availability": "removed",
+    "historical_registry_records_retained": true,
+    "publication_packaging_uses_current_sources": true
   }
 }

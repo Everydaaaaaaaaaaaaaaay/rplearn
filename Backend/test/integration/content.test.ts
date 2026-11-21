@@ -131,6 +131,16 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
             hobbies: ["books"],
             name: "Alice",
             nationality: "British",
+            settingVersion: 1,
+            settingReleaseID: "places-v1",
+            settingHistory: [
+              {
+                releaseID: "places-v1",
+                explanationZh: "现居资料澄清",
+                previousCardJSON: "{}",
+                appliedAt: now,
+              },
+            ],
             occupation: "Guide",
             personality: "Warm",
             activityProfile: {
@@ -242,6 +252,80 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
     });
     expect(replay.json<unknown>()).toEqual(uploadBody);
 
+    const conversation = commands[1];
+    const readAt = "2026-11-18T19:00:00.865Z";
+    const updateRead = async (version: number, lastReadAt: string | null) => {
+      const response = await app.inject({
+        headers: headers(),
+        method: "POST",
+        payload: {
+          commands: [
+            {
+              ...conversation,
+              commandId: newEntityId(),
+              expectedVersion: version,
+              payload: { ...conversation.payload, lastReadAt },
+            },
+          ],
+        },
+        url: "/v1/content/commands",
+      });
+      expect(response.statusCode).toBe(200);
+      const result = response.json<{ results: readonly ContentCommandResult[] }>()
+        .results[0];
+      expect(result?.status).toBe("applied");
+      if (result?.status !== "applied") throw new Error("Missing conversation receipt");
+      return result.record;
+    };
+    const read = await updateRead(1, readAt);
+    const oldDevice = await updateRead(read.version, "2026-11-18T19:00:00Z");
+    expect(oldDevice.payload).toMatchObject({ lastReadAt: readAt });
+    expect((await updateRead(oldDevice.version, null)).payload).toMatchObject({
+      lastReadAt: readAt,
+    });
+
+    const writeMessage = async (version: number, payload: object) => {
+      const response = await app.inject({
+        headers: headers(),
+        method: "POST",
+        payload: {
+          commands: [
+            {
+              ...commands[2],
+              expectedVersion: version,
+              commandId: newEntityId(),
+              payload,
+            },
+          ],
+        },
+        url: "/v1/content/commands",
+      });
+      expect(response.statusCode).toBe(200);
+      const result = response.json<{ results: readonly ContentCommandResult[] }>()
+        .results[0];
+      if (result?.status !== "applied") throw new Error("Missing message receipt");
+      return result.record;
+    };
+    const mood = { kind: "mood", state: "sad", strength: 2 };
+    const marked = await writeMessage(1, {
+      ...commands[2].payload,
+      timelineEvents: [mood],
+    });
+    const translated = await writeMessage(marked.version, {
+      ...commands[2].payload,
+      translationZh: "你好",
+    });
+    expect(translated.payload).toMatchObject({
+      timelineEvents: [mood],
+      translationZh: "你好",
+    });
+    const memory = { kind: "memory", state: "remembered" };
+    const updated = await writeMessage(translated.version, {
+      ...commands[2].payload,
+      timelineEvents: [{ ...mood, state: "angry" }, memory],
+    });
+    expect(updated.payload).toMatchObject({ timelineEvents: [mood, memory] });
+
     const conflict = await app.inject({
       headers: headers(),
       method: "POST",
@@ -325,6 +409,16 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
       firstPage.records.find((record) => record.resourceId === characterId)?.payload,
     ).toMatchObject({
       card: {
+        settingVersion: 1,
+        settingReleaseID: "places-v1",
+        settingHistory: [
+          {
+            releaseID: "places-v1",
+            explanationZh: "现居资料澄清",
+            previousCardJSON: "{}",
+            appliedAt: now,
+          },
+        ],
         activityProfile: {
           focusDurationMinutes: 8,
           rhythm: "earlyBird",
@@ -390,7 +484,7 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
         commands: [
           {
             commandId: newEntityId(),
-            expectedVersion: 1,
+            expectedVersion: updated.version,
             operation: "delete",
             resourceId: messageId,
             resourceType: "message",
@@ -404,9 +498,46 @@ describe.runIf(runIntegrationTests)("cross-platform user content", () => {
     ).toMatchObject({
       record: {
         deletedAt: expect.any(String) as string,
-        version: 2,
+        version: updated.version + 1,
       },
       status: "applied",
+    });
+    const legacyCard: Record<string, unknown> = {
+      ...commands[0].payload.card,
+      regionId: "newyork",
+    };
+    delete legacyCard.settingVersion;
+    delete legacyCard.settingReleaseID;
+    delete legacyCard.settingHistory;
+    const legacyUpdate = await app.inject({
+      headers: headers(),
+      method: "POST",
+      url: "/v1/content/commands",
+      payload: {
+        commands: [
+          {
+            ...commands[0],
+            commandId: newEntityId(),
+            expectedVersion: 1,
+            payload: { ...commands[0].payload, card: legacyCard },
+          },
+        ],
+      },
+    });
+    expect(
+      legacyUpdate.json<{ results: readonly ContentCommandResult[] }>().results[0],
+    ).toMatchObject({
+      status: "applied",
+      record: {
+        payload: {
+          card: {
+            regionId: "london",
+            settingVersion: 1,
+            settingReleaseID: "places-v1",
+            settingHistory: commands[0].payload.card.settingHistory,
+          },
+        },
+      },
     });
   }, 30_000);
 });

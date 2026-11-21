@@ -72,6 +72,12 @@ const profileCommandSchema = z.object({
       hasCompletedOnboarding: z.boolean().optional(),
       hasCompletedProfileSetup: z.boolean().optional(),
       learningGoal: learningGoalSchema.optional(),
+      learningGoals: z
+        .array(learningGoalSchema)
+        .min(1)
+        .max(7)
+        .refine((goals) => new Set(goals).size === goals.length, "Goals must be unique")
+        .optional(),
       placementCompletedAt: z.iso.datetime({ offset: true }).optional(),
       placementScore: z.number().int().min(0).max(100).optional(),
       proficiencySource: proficiencySourceSchema.optional(),
@@ -84,11 +90,19 @@ const profileCommandSchema = z.object({
         value.hasCompletedOnboarding !== undefined ||
         value.hasCompletedProfileSetup !== undefined ||
         value.learningGoal !== undefined ||
+        value.learningGoals !== undefined ||
         value.placementCompletedAt !== undefined ||
         value.placementScore !== undefined ||
         value.proficiencySource !== undefined ||
         value.studyStage !== undefined,
       "At least one profile field must be updated",
+    )
+    .refine(
+      (value) =>
+        value.learningGoals === undefined ||
+        value.learningGoal === undefined ||
+        value.learningGoal === value.learningGoals[0],
+      "Legacy goal must match the first selected goal",
     ),
   type: z.literal("profile.update"),
 });

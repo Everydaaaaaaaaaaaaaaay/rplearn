@@ -137,6 +137,10 @@ function requestBody(request: AiProviderRequest, stream: boolean): unknown {
       "proactive_message",
       "coach_review",
       "memory_summary",
+      "appointment_detection",
+      "appointment_story",
+      "appointment_story_retry",
+      "appointment_review",
     ].includes(request.route.task) && request.route.model.startsWith("z-ai/glm-")
       ? { reasoning: { effort: "minimal" } }
       : {}),

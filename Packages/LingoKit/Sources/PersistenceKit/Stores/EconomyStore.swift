@@ -26,6 +26,7 @@ public actor EconomyStore {
         entity.difficultyLevelRaw = profile.difficultyLevel.rawValue
         entity.hasCompletedOnboarding = profile.hasCompletedOnboarding
         entity.learningGoalRaw = profile.learningGoal.rawValue
+        entity.learningGoalsRaw = profile.learningGoals.map(\.rawValue)
         entity.studyStageRaw = profile.studyStage?.rawValue
         entity.proficiencySourceRaw = profile.proficiencySource.rawValue
         entity.placementScore = profile.placementScore
@@ -103,6 +104,7 @@ public actor EconomyStore {
         entity.difficultyLevelRaw = profile.difficultyLevel.rawValue
         entity.hasCompletedOnboarding = profile.hasCompletedOnboarding
         entity.learningGoalRaw = profile.learningGoal.rawValue
+        entity.learningGoalsRaw = profile.learningGoals.map(\.rawValue)
         entity.studyStageRaw = profile.studyStage?.rawValue
         entity.proficiencySourceRaw = profile.proficiencySource.rawValue
         entity.placementScore = profile.placementScore
@@ -169,7 +171,8 @@ public actor EconomyStore {
             proficiencySource: ProficiencySource(rawValue: entity.proficiencySourceRaw) ?? .selfReported,
             placementScore: entity.placementScore,
             placementCompletedAt: entity.placementCompletedAt,
-            hasCompletedProfileSetup: entity.hasCompletedProfileSetup
+            hasCompletedProfileSetup: entity.hasCompletedProfileSetup,
+            learningGoals: entity.learningGoalsRaw?.compactMap(LearningGoal.init(rawValue:))
         )
     }
 }

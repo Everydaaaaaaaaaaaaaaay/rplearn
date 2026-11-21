@@ -76,6 +76,13 @@ public enum LearningGoal: String, Sendable, Codable, CaseIterable {
     case work
     case culture
 
+    /// Preserve selection order while keeping a usable fallback for legacy profiles.
+    public static func normalized(_ goals: [LearningGoal]) -> [LearningGoal] {
+        var unique: [LearningGoal] = []
+        for goal in goals where !unique.contains(goal) { unique.append(goal) }
+        return unique.isEmpty ? [.dailyConversation] : unique
+    }
+
     public var displayName: String {
         switch self {
         case .dailyConversation: "日常交流"

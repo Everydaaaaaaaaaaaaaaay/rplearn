@@ -73,6 +73,8 @@ struct ChatWorkflowTests {
 
         func tasks() -> [LLMTask] { requestedTasks }
         func setResponse(_ text: String) { response = text }
+        func setStreamDelay(_ milliseconds: Int) { streamDelayMilliseconds = milliseconds }
+        func setFailure(_ failed: Bool) { fails = failed }
         func failTranslations() { translationResult = nil }
         func completeTranslations(with text: String) { translationResult = text }
     }
@@ -105,6 +107,7 @@ struct ChatWorkflowTests {
     private func fixture(_ provider: Provider = Provider(),
                          now: @escaping @Sendable () -> Date = { .now },
                          replyDelayScale: Double = 0,
+                         replyTimeout: Duration = .seconds(120),
                          tutorial: ChatTutorialConfiguration? = nil,
                          learning: (any LearningChatTracking)? = nil) async throws -> Fixture {
         let container = try ModelContainerFactory.makeContainer(inMemory: true)
@@ -126,11 +129,173 @@ struct ChatWorkflowTests {
             now: now, replyDelayScale: replyDelayScale
         )
         deps.learningChat = learning
+        deps.replyTimeout = replyTimeout
         let id = try await roster.addCharacter(card: CharacterCard(name: "Workflow Friend", age: 25, gender: .female, nationality: "British", regionID: "london", occupation: "writer", hobbies: ["books"], appearance: "green coat", personality: "kind"), difficulty: .junior3, isFriend: true)
         let model = ChatViewModel(character: try #require(try await roster.character(id: id)), deps: deps)
         await model.load()
         return Fixture(model: model, deps: deps)
     }
+    private actor SharedGatewayFixture: SharedChatGateway {
+        let store: ChatStore
+        let characterID: UUID
+        var covered: Set<UUID> = []
+        var generation: SharedChatSnapshot.Generation?
+        let defersReply: Bool
+        private(set) var composerEvents: [SharedComposerActivity] = []
+        init(store: ChatStore, characterID: UUID, defersReply: Bool = false) {
+            self.defersReply = defersReply
+            self.store = store
+            self.characterID = characterID
+        }
+        func openSharedConversation(characterID: UUID) async throws -> SharedChatSnapshot {
+            try await snapshot()
+        }
+        func refreshSharedConversation(conversationID: UUID) async throws -> SharedChatSnapshot {
+            try await snapshot()
+        }
+        func sharedReply(conversationID: UUID, userMessageID: UUID) async throws -> SharedChatSnapshot {
+            try await snapshot()
+        }
+        func uploadSharedMessages() async throws {
+            let conversation = try await store.openConversation(characterID: characterID)
+            let pending = try await store.messages(conversationID: conversation.id).filter {
+                $0.role == .user && !covered.contains($0.id)
+            }
+            guard !pending.isEmpty else { return }
+            if defersReply {
+                generation = .init(id: UUID(), status: "queued", partialText: "",
+                                   inputMessageIDs: pending.map(\.id), phase: "waiting")
+                return
+            }
+            covered.formUnion(pending.map(\.id))
+            let generationID = UUID()
+            _ = try await store.appendMessage(
+                conversationID: conversation.id, role: .assistant, text: "One shared server reply.")
+            for message in pending {
+                try await store.setReplyInterrupted(userMessageID: message.id, interrupted: false)
+            }
+            generation = .init(
+                id: generationID, status: "completed", partialText: "One shared server reply.",
+                inputMessageIDs: pending.map(\.id))
+        }
+        func retrySharedReply(conversationID: UUID, commandID: UUID) async throws {
+            try await uploadSharedMessages()
+        }
+        func reportSharedComposer(conversationID: UUID, sessionID: UUID, sequence: Int,
+                                  activity: SharedComposerActivity, remaining: TimeInterval) async throws -> Bool {
+            composerEvents.append(activity)
+            return true
+        }
+        func setPhase(_ phase: String, at date: Date) {
+            guard let generation, let user = generation.inputMessageIDs.last else { return }
+            self.generation = .init(id: generation.id, status: "dispatched", partialText: "Already generated text",
+                inputMessageIDs: generation.inputMessageIDs, phase: phase,
+                replyPlan: .init(userMessageID: user, attention: "focused", noticedAt: date,
+                    generationStartsAt: date, typingStartsAt: date, firstBubbleAt: date,
+                    continuingConversation: true))
+        }
+        private func snapshot() async throws -> SharedChatSnapshot {
+            let conversation = try await store.openConversation(characterID: characterID)
+            let messages = try await store.messages(conversationID: conversation.id)
+            return .init(
+                conversationID: conversation.id, lastSequence: messages.count, generation: generation,
+                coveredMessageIDs: covered)
+        }
+    }
+
+    @Test("共享会话只观察服务端回复，关闭及重开不会启动本地模型")
+    func sharedConversationHasNoLocalReplyProducer() async throws {
+        let provider = Provider()
+        let f = try await fixture(provider)
+        let gateway = SharedGatewayFixture(store: f.deps.chatStore, characterID: f.model.character.id)
+        var dependencies = f.deps
+        dependencies.sharedChat = gateway
+        let model = ChatViewModel(character: f.model.character, deps: dependencies)
+        await model.load()
+        model.draft = "Hello from this device."
+        await model.sendDraft()
+        for _ in 0..<100 {
+            if model.messages.contains(where: { $0.role == .assistant }) { break }
+            try await Task.sleep(for: .milliseconds(25))
+        }
+        #expect(model.messages.filter { $0.role == .assistant }.count == 1)
+        #expect(await provider.tasks().contains(.conversation) == false)
+        model.cancelPendingReply()
+        let reopened = ChatViewModel(character: model.character, deps: dependencies)
+        await reopened.load()
+        #expect(reopened.messages.filter { $0.role == .assistant }.count == 1)
+        #expect(await provider.tasks().contains(.conversation) == false)
+        reopened.cancelPendingReply()
+    }
+
+    @Test("共享回复按服务端阶段展示，有效编辑立刻让步且不调用本地模型")
+    func sharedReplyRespectsTypingAndComposerActivity() async throws {
+        let provider = Provider()
+        let clock = TestClock()
+        let f = try await fixture(provider, now: { clock.now() }, replyDelayScale: 1)
+        let gateway = SharedGatewayFixture(store: f.deps.chatStore, characterID: f.model.character.id, defersReply: true)
+        var dependencies = f.deps
+        dependencies.sharedChat = gateway
+        let model = ChatViewModel(character: f.model.character, deps: dependencies)
+        defer { model.cancelPendingReply() }
+        await model.load()
+        model.draft = "Hello there"
+        await model.sendDraft()
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(model.isWaitingForUserBurst)
+        #expect(!model.isStreaming)
+        let user = try #require(model.messages.last(where: { $0.role == .user }))
+        clock.set(user.createdAt.addingTimeInterval(20))
+        await gateway.setPhase("preparing", at: user.createdAt)
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(!model.isStreaming)
+        await gateway.setPhase("typing", at: user.createdAt)
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(model.isStreaming)
+        #expect(model.streamingText == "")
+        model.composerFocusChanged(true)
+        model.draft = "I"
+        #expect(model.isStreaming)
+        model.draft = "what"
+        #expect(!model.isStreaming)
+        #expect(model.isWaitingForUserBurst)
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(!model.isStreaming)
+        #expect(await gateway.composerEvents.contains(.edited))
+        model.composerFocusChanged(false)
+        clock.set(user.createdAt.addingTimeInterval(26))
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(model.isStreaming)
+        #expect(await gateway.composerEvents.contains(.blurred))
+        #expect(await provider.tasks().contains(.conversation) == false)
+        model.composerRecordingChanged(true)
+        #expect(!model.isStreaming)
+        model.composerRecordingChanged(false)
+        model.stopSharedObservation()
+        try await Task.sleep(for: .milliseconds(50))
+        #expect(await gateway.composerEvents.contains(.inactive))
+    }
+
+    @Test("共享语音读取已落库回复，保存字幕不会复制助手消息")
+    func sharedVoiceUsesTheSamePersistedReply() async throws {
+        let provider = Provider()
+        let f = try await fixture(provider)
+        var dependencies = f.deps
+        dependencies.sharedChat = SharedGatewayFixture(
+            store: f.deps.chatStore, characterID: f.model.character.id)
+        let model = ChatViewModel(character: f.model.character, deps: dependencies)
+        await model.load()
+        var text = ""
+        for try await delta in try await model.realtimeReplyStream(userText: "Voice from this device.") {
+            text += delta
+        }
+        #expect(text == "One shared server reply.")
+        await model.saveRealtimeAssistant(spokenText: text, interrupted: false)
+        #expect(model.messages.filter { $0.role == .assistant }.count == 1)
+        #expect(await provider.tasks().contains(.conversation) == false)
+        model.cancelPendingReply()
+    }
+
     private actor LearningTracker: LearningChatTracking {
         let cycle = UUID()
         private(set) var preparations: [UUID] = []
@@ -211,6 +376,48 @@ struct ChatWorkflowTests {
     }
     private func normalized(_ value: String) -> String {
         value.split(whereSeparator: \.isWhitespace).joined(separator: " ")
+    }
+
+    @Test("回复超时释放忙碌状态和会话租约，可重试且丢弃旧请求迟到结果")
+    func timeoutRecoversAndLateReplyCannotOverwriteRetry() async throws {
+        let provider = Provider(response: "Obsolete reply", streamDelayMilliseconds: 1_500)
+        let f = try await fixture(provider, replyTimeout: .milliseconds(200))
+        f.model.draft = "Please answer."
+        await f.model.sendDraft()
+        try await settle(f.model)
+        #expect(f.model.errorMessage?.contains("超时") == true)
+        #expect(f.model.canRetryUnansweredReply)
+        #expect(f.model.messages.filter { $0.role == .user }.count == 1)
+        await provider.setStreamDelay(0)
+        await provider.setResponse("The new complete reply.")
+        f.model.retryUnansweredReply()
+        try await settle(f.model)
+        #expect(f.model.messages.last?.text == "The new complete reply.")
+        #expect(!f.model.canRetryUnansweredReply && f.model.errorMessage == nil)
+        try await Task.sleep(for: .milliseconds(1_550))
+        await f.model.refreshMessages()
+        #expect(!f.model.messages.contains { $0.text.contains("Obsolete") })
+    }
+
+    @Test("后台奖励提示插入末尾后，未回复的用户消息仍能恢复和重试")
+    func coachNoticeCannotHideReplyRecovery() async throws {
+        let provider = Provider(response: "", fails: true)
+        let f = try await fixture(provider)
+        f.model.draft = "A message that needs a reply."
+        await f.model.sendDraft()
+        try await settle(f.model)
+        let conversation = try #require(f.model.conversation)
+        _ = try await f.deps.chatStore.appendMessage(conversationID: conversation.id,
+            role: .coach, kind: .storyLine, text: "A background reward arrived.")
+        let reopened = await f.reopen()
+        #expect(reopened.canRetryUnansweredReply)
+        await provider.setFailure(false)
+        await provider.setResponse("A recovered answer.")
+        reopened.retryUnansweredReply()
+        try await settle(reopened)
+        #expect(reopened.messages.last?.text == "A recovered answer.")
+        #expect(reopened.messages.contains { $0.text == "A background reward arrived." })
+        #expect(reopened.messages.filter { $0.role == .user }.count == 1)
     }
 
     @Test("教程五条额度跨页面共用，文字、语音和通话不能绕过，不可删除好友")
@@ -678,12 +885,14 @@ struct ChatWorkflowTests {
         f.model.draft = "Received the order, madam"
         await f.model.sendDraft()
         try await settle(f.model)
+        let conversationID = try #require(f.model.conversation?.id)
         for _ in 0..<50 {
-            if await provider.tasks().filter { $0 == .coachReview }.count >= 2 { break }
+            let stored = try await f.deps.chatStore.messages(conversationID: conversationID)
+            let firstReviewSaved = stored.first(where: { $0.role == .user })?.coachReviewJSON != nil
+            if firstReviewSaved, await provider.tasks().filter({ $0 == .coachReview }).count >= 2 { break }
             try await Task.sleep(for: .milliseconds(20))
         }
 
-        let conversationID = try #require(f.model.conversation?.id)
         let saved = try await f.deps.chatStore.messages(conversationID: conversationID)
         let userMessages = saved.filter { $0.role == .user }
         #expect(userMessages.count == 2)

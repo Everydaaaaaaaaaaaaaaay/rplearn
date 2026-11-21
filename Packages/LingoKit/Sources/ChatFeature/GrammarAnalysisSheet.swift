@@ -46,10 +46,7 @@ struct GrammarAnalysisSheet: View {
 
     let onAIAnalysis: @MainActor (AIGrammarAnalysis) -> Void
 
-    @State private var aiAnalysis: AIGrammarAnalysis?
-    @State private var isLoadingAI = false
-    @State private var errorMessage: String?
-    @State private var selectedSource: GrammarAnalysisSource = .local
+    @State private var model: GrammarAnalysisModel
     @State private var wordSelection: TokenSelection?
     @State private var favoriteGrammarPointIDs: Set<String> = []
     @State private var updatingGrammarPointIDs: Set<String> = []
@@ -78,7 +75,7 @@ struct GrammarAnalysisSheet: View {
         self.aiFallback = aiFallback
 
         self.onAIAnalysis = onAIAnalysis
-        _aiAnalysis = State(initialValue: initialAIAnalysis)
+        _model = State(initialValue: GrammarAnalysisModel(analysis: initialAIAnalysis))
     }
 
     var body: some View {
@@ -87,7 +84,7 @@ struct GrammarAnalysisSheet: View {
                 VStack(alignment: .leading, spacing: 16) {
                     sentenceCard
                     sourcePicker
-                    if selectedSource == .ai {
+                    if model.source == .ai {
                         aiContent
                     } else {
                         localContent
@@ -112,9 +109,12 @@ struct GrammarAnalysisSheet: View {
             onSpeak: onSpeak,
             favoriteActions: favoriteActions,
             aiFallback: aiFallback)
-        .onChange(of: selectedSource) { _, source in
-            guard source == .ai, aiAnalysis == nil else { return }
-            Task { await loadAIAnalysis() }
+        .task(id: "\(request.id)-\(model.source)-\(model.retryRevision)") {
+            guard model.source == .ai else { return }
+            let service = service, sentence = request.sentence, level = request.learnerLevel
+            if let result = await model.load(using: { try await service.analyze(sentence: sentence, learnerLevel: level) }) {
+                onAIAnalysis(result)
+            }
         }
         .task(id: request.id) {
             await reloadGrammarFavorites()
@@ -122,7 +122,7 @@ struct GrammarAnalysisSheet: View {
     }
 
     private var sourcePicker: some View {
-        Picker("解析来源", selection: $selectedSource) {
+        Picker("解析来源", selection: $model.source) {
             ForEach(GrammarAnalysisSource.allCases) { source in
                 Text(source.rawValue).tag(source)
             }
@@ -188,7 +188,7 @@ struct GrammarAnalysisSheet: View {
 
     @ViewBuilder
     private var aiContent: some View {
-        if let aiAnalysis {
+        if let aiAnalysis = model.analysis {
             VStack(alignment: .leading, spacing: 12) {
                 sourceHeader(
                     title: "AI 独立解析",
@@ -203,7 +203,7 @@ struct GrammarAnalysisSheet: View {
                     aiPointCard(point, number: index + 1)
                 }
             }
-        } else if isLoadingAI {
+        } else if model.isLoading {
             VStack(spacing: 12) {
                 BrandMascotView(pose: .coach, size: 104, showsShadow: false)
                 ProgressView("嘎嘎正在分析句子…")
@@ -214,13 +214,13 @@ struct GrammarAnalysisSheet: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 24)
-        } else if let errorMessage {
+        } else if let errorMessage = model.error {
             VStack(alignment: .leading, spacing: 12) {
                 Label(errorMessage, systemImage: "exclamationmark.triangle")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Button("重新解析") {
-                    Task { await loadAIAnalysis() }
+                    model.retryRevision += 1
                 }
                 .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
             }
@@ -237,7 +237,7 @@ struct GrammarAnalysisSheet: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Button("开始 AI 解析") {
-                    Task { await loadAIAnalysis() }
+                    model.retryRevision += 1
                 }
                 .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
             }
@@ -247,10 +247,9 @@ struct GrammarAnalysisSheet: View {
 
     private func selectAIAnalysis() {
         withAnimation(DSAnimation.snappy) {
-            selectedSource = .ai
+            model.source = .ai
         }
-        guard aiAnalysis == nil else { return }
-        Task { await loadAIAnalysis() }
+
     }
 
     private func sourceHeader(
@@ -424,6 +423,7 @@ struct GrammarAnalysisSheet: View {
 
     /// AI 语法点没有本地 ID，以内容的稳定 FNV-1a 摘要作为收藏键。
     private func aiGrammarPointID(_ point: AIGrammarAnalysis.Point) -> String {
+        if let id = point.canonicalPointID { return id }
         var hash: UInt64 = 14_695_981_039_346_656_037
         for byte in "\(point.title)|\(point.pattern)".utf8 {
             hash ^= UInt64(byte)
@@ -432,24 +432,7 @@ struct GrammarAnalysisSheet: View {
         return "ai-\(String(hash, radix: 16))"
     }
 
-    @MainActor
-    private func loadAIAnalysis() async {
-        guard !isLoadingAI else { return }
-        isLoadingAI = true
-        errorMessage = nil
-        do {
-            let analysis = try await service.analyze(
-                sentence: request.sentence,
-                learnerLevel: request.learnerLevel
-            )
-            aiAnalysis = analysis
-            onAIAnalysis(analysis)
-        } catch {
-            Log.llm.error("语法解析失败：\(error.localizedDescription)")
-            errorMessage = GrammarAnalysisErrorPresentation.message(for: error)
-        }
-        isLoadingAI = false
-    }
+
 }
 
 enum GrammarAnalysisErrorPresentation {

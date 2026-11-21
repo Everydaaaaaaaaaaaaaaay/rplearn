@@ -125,6 +125,8 @@ final class LearningAchievementUITests: XCTestCase {
 
     func testPreviewIsReachableFromLearningTrial() {
         let app = launch(tab: "me")
+        let settings = app.buttons["设置，AI、语音与偏好"]
+        XCTAssertTrue(settings.waitForExistence(timeout: 12)); settings.tap()
         let entry = app.buttons["me.learning-trial"]
         XCTAssertTrue(entry.waitForExistence(timeout: 12)); reveal(entry, in: app); entry.tap()
         let preview = app.buttons["learning.trial.achievement-preview"]

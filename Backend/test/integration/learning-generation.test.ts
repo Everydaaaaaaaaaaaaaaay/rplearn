@@ -8,6 +8,7 @@ import { LearningGenerationRepository } from "../../src/modules/learning/generat
 import { createLearningGenerationProcessor } from "../../src/modules/learning/generation-processor.js";
 import { LearningEngineRepository } from "../../src/modules/learning/engine-repository.js";
 import { contentHash } from "../../src/modules/learning/content.js";
+import { learningPolicy } from "../../src/modules/learning/policy.js";
 
 describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共学习补库事务", () => {
   let database: DatabaseResource;
@@ -103,7 +104,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共学习补库
         attempt: null,
       });
       expect((await engine.read(user0, (s) => s.character(char0))).characters).toBe(
-        1000,
+        learningPolicy.characterThreshold,
       );
       await expect(
         repository.publish(

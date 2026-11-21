@@ -55,15 +55,24 @@ public struct RealtimeVoiceConversationClient: Sendable {
         _ interrupted: Bool
     ) async -> Void
 
-    public let replyStream: ReplyStream
-    public let saveAssistant: SaveAssistant
+    public typealias ScopedReplyStream = @MainActor @Sendable (UUID, String) async throws -> AsyncThrowingStream<String, Error>
+    public typealias ScopedSaveAssistant = @MainActor @Sendable (UUID, String, Bool) async -> Void
+    private let scopedReplyStream: ScopedReplyStream
+    private let scopedSaveAssistant: ScopedSaveAssistant
 
-    public init(
-        replyStream: @escaping ReplyStream,
-        saveAssistant: @escaping SaveAssistant
-    ) {
-        self.replyStream = replyStream
-        self.saveAssistant = saveAssistant
+    public init(replyStream: @escaping ReplyStream, saveAssistant: @escaping SaveAssistant) {
+        self.scopedReplyStream = { _, text in try await replyStream(text) }
+        self.scopedSaveAssistant = { _, text, interrupted in await saveAssistant(text, interrupted) }
+    }
+    public init(scopedReplyStream: @escaping ScopedReplyStream, scopedSaveAssistant: @escaping ScopedSaveAssistant) {
+        self.scopedReplyStream = scopedReplyStream
+        self.scopedSaveAssistant = scopedSaveAssistant
+    }
+    @MainActor public func replyStream(_ text: String, responseID: UUID = UUID()) async throws -> AsyncThrowingStream<String, Error> {
+        try await scopedReplyStream(responseID, text)
+    }
+    @MainActor public func saveAssistant(_ text: String, _ interrupted: Bool, responseID: UUID = UUID()) async {
+        await scopedSaveAssistant(responseID, text, interrupted)
     }
 }
 
@@ -80,7 +89,7 @@ public protocol RealtimeSpeechInput: AnyObject {
     func stop() async
 }
 
-/// Apple Speech 流式识别的累计文本。
+/// Apple Speech 流式识别的累计文本。空 final 表示已检测回合结束但没有可用文字。
 public struct RealtimeTranscription: Sendable, Equatable {
     public let text: String
     public let isFinal: Bool
@@ -105,9 +114,13 @@ public protocol RealtimeSpeechOutput: AnyObject {
 /// partial 长时间不再变化时的兜底端点，避免系统识别漏报 final 让一轮对话永远悬挂。
 public struct VoiceTurnPolicy: Sendable, Equatable {
     public var fallbackEndOfTurnDelay: Duration
+    /// Only bounds time without new recognized words, never the full utterance.
+    public var maximumTranscriptStall: Duration
 
-    public init(fallbackEndOfTurnDelay: Duration = .milliseconds(1_150)) {
+    public init(fallbackEndOfTurnDelay: Duration = .milliseconds(1_150),
+                maximumTranscriptStall: Duration = .seconds(6)) {
         self.fallbackEndOfTurnDelay = fallbackEndOfTurnDelay
+        self.maximumTranscriptStall = maximumTranscriptStall
     }
 }
 

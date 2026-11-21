@@ -1,0 +1,45 @@
+{
+  "baseRelease": "shared-chat-20261105-v4-ef30a26fc0f2",
+  "release": "activity-residents-20261114-v2-c8b29ac2",
+  "changedFiles": [
+    "dist/modules/npc/activity-world-content.js"
+  ],
+  "sha256": "302f8d62bbf32be5d76b48c090bdc04ae48fd1de967e6a9d3b5911d919222e7c",
+  "preservedMigrations": 49,
+  "archiveSHA256": "1ba61af9ef8e33051bfc6d19713191f2db6536348da5ddd73d6bb9e86c184c56",
+  "verification": {
+    "checkedAt": "2026-11-14T09:31:34.378Z",
+    "settledMajorityAccepted": true,
+    "visitorMajorityRejected": true,
+    "noDatabaseImport": true
+  },
+  "publicReadiness": "ready",
+  "services": {
+    "api": "active",
+    "worker": "active",
+    "caddy": "active"
+  },
+  "contentActivation": "No activity world imported or activated.",
+  "deploymentRecovery": {
+    "firstAttempt": "Workspace package had 47 migrations. Production had 49. Readiness rejected it and automatically restored the previous release.",
+    "secondAttempt": "Production-based package changed only the compiled content validator. Original dist/config/migrations and newer shared-chat functionality were preserved.",
+    "resourceGate": "First dispatch of the production-based package was deferred by I/O pressure. A later retry passed maintenance observation."
+  },
+  "localChecks": {
+    "contentTests": 7,
+    "typecheck": "passed",
+    "focusedESLint": "passed"
+  },
+  "openRouterRecovery": {
+    "checkedAt": "2026-11-14T10:24:49.985Z",
+    "metadataStatus": 200,
+    "limitUSD": 15,
+    "remainingUSD": 9.968808244,
+    "probeStatus": 200,
+    "finishReason": "stop",
+    "returnedOK": true,
+    "costUSD": 2.205e-05,
+    "errorCode": null,
+    "context": "Initial authoring exhausted the existing production key lifetime limit. Owner raised the cumulative limit from USD 5 to USD 15. A minimal completion verified recovery for the same credential used by 14 active runtime routes. Subsequent authoring uses a separate OpenAI key."
+  }
+}

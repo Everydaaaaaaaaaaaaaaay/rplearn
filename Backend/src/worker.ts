@@ -1,3 +1,13 @@
+import { createBillingChatContext } from "./modules/billing/service.js";
+import { createAppointmentChatContext } from "./modules/appointments/service.js";
+import { configureOutboundNetworking } from "./infrastructure/network.js";
+import { createDomainChatContext } from "./modules/domain/service.js";
+import { createChatService, sharedChatCoverage } from "./modules/chat/service.js";
+import {
+  createChatGeneration,
+  createChatRecovery,
+} from "./modules/chat/ai-generation.js";
+import { createChatContentService } from "./modules/content/service.js";
 import { fileURLToPath } from "node:url";
 import { loadGenerationBlueprints } from "./modules/learning/generation-content.js";
 import { LearningGenerationRepository } from "./modules/learning/generation-repository.js";
@@ -40,6 +50,7 @@ import { createDictionaryTranslationProcessor } from "./modules/dictionary-trans
 import { createNpcService } from "./modules/npc/service.js";
 
 async function main(): Promise<void> {
+  configureOutboundNetworking();
   let config: ReturnType<typeof loadConfig>;
   try {
     config = loadConfig();
@@ -87,14 +98,42 @@ async function main(): Promise<void> {
     new AiCatalogRepository(database),
     openRouter,
   );
+  const learningContent = createContentReadService(database);
+  const learningProfile = createDomainLearningContext(database);
+  const learningChat = createLearningChatService(
+    database,
+    {
+      profile: learningProfile.difficulty,
+      character: async (sql, userId, characterId) =>
+        learningRoleKey(await learningContent.character(sql, userId, characterId)),
+    },
+    { ...learningContent, sharedCoverage: sharedChatCoverage },
+  );
   const aiService = createAiService(
     config,
     database,
     redis,
     createBillingService(database),
     createDeepSeekClient(config),
-    { catalog: aiCatalog, openRouter },
+    { catalog: aiCatalog, openRouter, chatObserver: learningChat },
   );
+  const sharedChat = createChatService(
+    database,
+    {
+      ...createChatContentService(database),
+      ...createDomainChatContext(database),
+      ...createBillingChatContext(database),
+      ...createAppointmentChatContext(),
+      onMessage: learningChat.enqueue,
+      onAdopt: learningChat.adoptConversation,
+    },
+    {
+      generate: createChatGeneration(aiService),
+      ...createChatRecovery(aiService),
+    },
+  );
+  const chatTasks = new Set<Promise<void>>();
+  let nextChatPollAt = 0;
   const dictionaryTranslationProcessor = createDictionaryTranslationProcessor(
     database,
     {
@@ -138,20 +177,14 @@ async function main(): Promise<void> {
       : { processMediaDelete: mediaService.processDeletion }),
     processDictionaryTranslation: dictionaryTranslationProcessor.process,
     processDictionaryExamples: dictionaryExampleProcessor.process,
+    processGrammarReview: createGrammarService(
+      new SharedGrammarRepository(database, await loadGrammarSeed()),
+      aiService,
+      createJobPayloadCipher(config),
+    ).curate,
     repository: new JobRepository(database),
     workerId,
   });
-  const learningContent = createContentReadService(database);
-  const learningProfile = createDomainLearningContext(database);
-  const learningChat = createLearningChatService(
-    database,
-    {
-      profile: learningProfile.difficulty,
-      character: async (sql, userId, characterId) =>
-        learningRoleKey(await learningContent.character(sql, userId, characterId)),
-    },
-    learningContent,
-  );
   const learningGeneration = config.learningGenerationEnabled
     ? createLearningGenerationProcessor(
         new LearningGenerationRepository(database),
@@ -185,6 +218,19 @@ async function main(): Promise<void> {
     await assertMigrationsCurrent(database);
     logger.info({ workerId }, "Worker started");
     while (!controller.signal.aborted) {
+      if (chatTasks.size < 4 && Date.now() >= nextChatPollAt) {
+        nextChatPollAt = Date.now() + 250;
+        const task = sharedChat
+          .processNext()
+          .then(() => undefined)
+          .catch(() => {
+            logger.error("共享会话回复暂未完成，等待恢复");
+          })
+          .finally(() => {
+            chatTasks.delete(task);
+          });
+        chatTasks.add(task);
+      }
       if (
         learningGeneration &&
         !learningGenerationTask &&
@@ -242,7 +288,7 @@ async function main(): Promise<void> {
       }
 
       try {
-        await delay(config.jobPollIntervalMs, undefined, {
+        await delay(Math.min(config.jobPollIntervalMs, 250), undefined, {
           signal: controller.signal,
         });
       } catch (error) {
@@ -253,6 +299,7 @@ async function main(): Promise<void> {
     }
   } finally {
     await learningGenerationTask;
+    await Promise.allSettled(chatTasks);
     await Promise.allSettled([redis.close(), database.close()]);
     logger.info({ workerId }, "Worker stopped");
     await shutdownTelemetry();
@@ -265,3 +312,6 @@ void main().catch((error: unknown) => {
   );
   process.exitCode = 1;
 });
+import { SharedGrammarRepository } from "./modules/grammar/repository.js";
+import { createGrammarService } from "./modules/grammar/service.js";
+import { loadGrammarSeed } from "./modules/grammar/seed.js";

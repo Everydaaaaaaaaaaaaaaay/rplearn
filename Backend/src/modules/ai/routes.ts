@@ -24,7 +24,16 @@ const aiRequestSchema = z.object({
     .min(1)
     .max(100),
   responseFormat: z.enum(["text", "json_object"]).default("text"),
-  task: z.string().regex(/^[a-z][a-z0-9_]{1,63}$/),
+  task: z
+    .string()
+    .regex(/^[a-z][a-z0-9_]{1,63}$/)
+    .refine(
+      (task) =>
+        task !== "grammar_analysis" &&
+        task !== "grammar_library_review" &&
+        !task.startsWith("appointment_"),
+      "Use the corresponding business endpoint",
+    ),
 });
 const guestDeviceIdSchema = z
   .string()
@@ -86,7 +95,10 @@ export function registerAiRoutes(
   app: FastifyInstance,
   authService: AuthService,
   aiService: AiService,
-  options: Readonly<{ guestAccessEnabled: boolean }> = {
+  options: Readonly<{
+    guestAccessEnabled: boolean;
+    beforeConversation?: (userId: string) => Promise<void>;
+  }> = {
     guestAccessEnabled: false,
   },
 ): void {
@@ -117,6 +129,7 @@ export function registerAiRoutes(
     async (request) => {
       const userId = await userIdFor(request);
       const body = parse(aiRequestSchema, request.body);
+      if (body.task === "conversation") await options.beforeConversation?.(userId);
       const started = performance.now();
       const result = await aiService.complete(userId, {
         ...(body.maxOutputTokens === undefined
@@ -159,6 +172,7 @@ export function registerAiRoutes(
     async (request, reply) => {
       const userId = await userIdFor(request);
       const body = parse(aiRequestSchema, request.body);
+      if (body.task === "conversation") await options.beforeConversation?.(userId);
       const started = performance.now();
       const cancellation = new AbortController();
       request.raw.once("aborted", () => {

@@ -22,6 +22,27 @@ struct StoryVoiceLibraryTests {
         return (folder, url)
     }
 
+    @Test("旧旁白声线不能用于 Nora，预制语速也要匹配当前请求")
+    func currentCastingAndRate() throws {
+        let (folder, url) = try fixture()
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let original = try StoryVoiceLibrary(manifestURL: url)
+        let faster = SpeechRequest(text: "One page.", purpose: .characterDialogue,
+            voiceHint: StoryVoiceCasting.hint(speaker: "Oliver"),
+            delivery: SpeechDelivery(speedMultiplier: 1.06))
+        #expect(original.clip(story: "test", node: "line", speaker: "Oliver", text: "One page.", matching: faster) == nil)
+        var manifest = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any])
+        var clips = try #require(manifest["clips"] as? [[String: Any]])
+        clips[0]["speaker"] = "Nora"
+        clips[0]["sourceSHA256"] = digest(Data("Nora\nOne page.".utf8))
+        clips[0]["voice"] = "F5"
+        manifest["clips"] = clips
+        try JSONSerialization.data(withJSONObject: manifest).write(to: url)
+        let library = try StoryVoiceLibrary(manifestURL: url)
+        #expect(library.clip(story: "test", node: "line", speaker: "Nora", text: "One page.") == nil)
+        #expect(library.request(story: "test", node: "line", speaker: "Nora", text: "One page.")?.voiceHint?.supertonicVoice == .f2)
+    }
+
     @Test("绑定剧本、节点、说话人和原文，错配或损坏资源不播放")
     func bindingAndIntegrity() throws {
         let (folder, url) = try fixture()

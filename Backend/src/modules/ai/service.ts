@@ -26,6 +26,7 @@ export type AiRequestInput = Readonly<{
   learningChat?: LearningChatContext;
   operationId?: string;
   parentOperationId?: string;
+  requiredAppointmentStep?: boolean;
   voiceLeaseId?: string;
   maxOutputTokens?: number;
   messages: readonly AiMessage[];
@@ -37,6 +38,12 @@ export type AiRequestInput = Readonly<{
 type StoredCompletion = Omit<AiCompletion, "usage"> & { usage: AiUsage | null };
 
 export type AiService = Readonly<{
+  operationPending: (userId: string, operationId: string) => Promise<boolean>;
+  completedResult: (
+    userId: string,
+    operationId: string,
+    restoreLearning?: boolean,
+  ) => Promise<{ content: string } | null>;
   complete: (
     userId: string,
     input: AiRequestInput,
@@ -244,10 +251,18 @@ export function createAiService(
       await access.assertVoiceLease(userId, input.voiceLeaseId);
     }
     const operationId = input.operationId ?? randomUUID();
-    if (input.parentOperationId !== undefined && input.task !== "conversation")
+    if (
+      input.parentOperationId !== undefined &&
+      ![
+        "conversation",
+        "appointment_story",
+        "appointment_story_retry",
+        "appointment_review",
+      ].includes(input.task)
+    )
       throw new AppError({
         code: "REPAIR_NOT_ALLOWED",
-        message: "Only conversations support a linked repair.",
+        message: "This task does not support a linked repair.",
         statusCode: 400,
       });
     const hash = createHash("sha256")
@@ -286,6 +301,7 @@ export function createAiService(
       model: route.model,
       messages: input.messages,
       maxOutputTokens: limits.maxOutputTokens,
+      ...(input.requiredAppointmentStep === true ? { requiredAppointmentStep: true } : {}),
       ...(input.parentOperationId === undefined
         ? {}
         : { parentOperationId: input.parentOperationId }),
@@ -357,6 +373,13 @@ export function createAiService(
   };
 
   return {
+    completedResult: async (userId, operationId, restoreLearning = false) => {
+      const result = await credits.completedResult(userId, operationId);
+      if (result && restoreLearning)
+        await options.chatObserver?.complete(userId, operationId, result.content);
+      return result;
+    },
+    operationPending: credits.operationPending,
     complete: async (userId, input) => {
       const prepared = await prepare(userId, input);
       if (prepared.replay) {

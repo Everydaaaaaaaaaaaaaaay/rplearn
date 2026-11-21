@@ -9,6 +9,7 @@ import {
   AUTH_PASSWORD_RESET_JOB,
   DICTIONARY_EXAMPLE_TRANSLATION_JOB,
   DICTIONARY_EXAMPLE_GENERATION_JOB,
+  GRAMMAR_LIBRARY_REVIEW_JOB,
   MEDIA_DELETE_JOB,
   type ClaimedJob,
   type JobEmailNotifier,
@@ -49,6 +50,7 @@ const OBSERVABLE_JOB_TYPES: ReadonlySet<string> = new Set([
   AUTH_PASSWORD_RESET_JOB,
   DICTIONARY_EXAMPLE_TRANSLATION_JOB,
   DICTIONARY_EXAMPLE_GENERATION_JOB,
+  GRAMMAR_LIBRARY_REVIEW_JOB,
   MEDIA_DELETE_JOB,
 ]);
 
@@ -75,6 +77,7 @@ type JobWorkerDependencies = Readonly<{
     payload: z.infer<typeof dictionaryExamplesPayloadSchema>,
     attempt: number,
   ) => Promise<void>;
+  processGrammarReview?: (payload: unknown, attempt: number) => Promise<void>;
   processDictionaryTranslation?: (
     payload: z.infer<typeof dictionaryTranslationPayloadSchema>,
   ) => Promise<void>;
@@ -96,6 +99,11 @@ export class JobWorker {
   private async dispatch(job: ClaimedJob): Promise<void> {
     const payload = this.dependencies.cipher.open(job);
     switch (job.type) {
+      case GRAMMAR_LIBRARY_REVIEW_JOB:
+        if (this.dependencies.processGrammarReview === undefined)
+          throw new Error("GrammarReviewHandlerUnavailable");
+        await this.dependencies.processGrammarReview(payload, job.attempts);
+        return;
       case AUTH_EMAIL_VERIFICATION_JOB: {
         const email = authEmailPayloadSchema.parse(payload);
         await this.dependencies.notifier.sendEmailVerification(

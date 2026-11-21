@@ -178,11 +178,11 @@ public actor BackendClient {
     }
 
     /// The server deduplicates claims; a retry can never transfer this journey to a second account.
-    public func claimGuestJourney() async throws {
+    public func claimGuestJourney(keepOuting: String? = nil) async throws {
         guard let guestInstallationKey else { return }
-        struct Claim: Encodable, Sendable { let installationKey: String }
+        struct Claim: Encodable, Sendable { let installationKey: String; let keepOuting: String? }
         struct Result: Decodable, Sendable { let claimed: Bool }
-        let _: Result = try await send(path: "/v1/auth/guest/claim", method: "POST", body: Claim(installationKey: guestInstallationKey))
+        let _: Result = try await send(path: "/v1/auth/guest/claim", method: "POST", body: Claim(installationKey: guestInstallationKey, keepOuting: keepOuting))
     }
 
     public func restoreSession() async throws -> AuthIdentity? {
@@ -373,13 +373,14 @@ public actor BackendClient {
         method: String,
         body: Request,
         authenticated: Bool = true,
-        idempotencyKey: UUID? = nil
+        idempotencyKey: UUID? = nil,
+        queryItems: [URLQueryItem] = []
     ) async throws -> Response {
         try await request(
             path: path,
             method: method,
             body: try encoder.encode(body),
-            queryItems: [],
+            queryItems: queryItems,
             authenticated: authenticated,
             idempotencyKey: idempotencyKey,
             retryAfterUnauthorized: authenticated
@@ -518,7 +519,7 @@ public actor BackendClient {
         additionalHeaders: [String: String] = [:],
         retryAfterUnauthorized: Bool
     ) async throws -> Data {
-        guard path.hasPrefix("/v1/") else {
+        guard path.hasPrefix("/v1/") || path.hasPrefix("/v2/") else {
             throw BackendClientError.invalidResponse
         }
         let request = try await makeRequest(
@@ -584,7 +585,9 @@ public actor BackendClient {
         }
         var request = URLRequest(
             url: url,
-            timeoutInterval: configuration.requestTimeout
+            timeoutInterval: AppointmentRequestTiming.needsGenerationWait(path)
+                ? max(configuration.requestTimeout, AppointmentRequestTiming.requestTimeout)
+                : path == "/v1/grammar/analysis" ? max(configuration.requestTimeout, 75) : configuration.requestTimeout
         )
         request.httpMethod = method
         request.httpBody = body

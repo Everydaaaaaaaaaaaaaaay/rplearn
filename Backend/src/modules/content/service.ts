@@ -8,6 +8,8 @@ import { ContentRepository } from "./repository.js";
 import { stripLegacyContentCommand } from "./legacy-compatibility.js";
 import type {
   ContentCommand,
+  ContentResourceType,
+  ContentCommandGuard,
   ContentCommandResult,
   ContentPage,
   ContentCommitObserver,
@@ -36,8 +38,9 @@ export function createContentService(
   contentCursor: ContentCursorCodec,
   syncCursor: SyncCursorCodec,
   observer?: ContentCommitObserver,
+  beforeCommand?: ContentCommandGuard,
 ): ContentService {
-  const repository = new ContentRepository(database, observer);
+  const repository = new ContentRepository(database, observer, beforeCommand);
   return {
     executeCommands: async (userId, commands) => {
       const results: ContentCommandResult[] = [];
@@ -119,5 +122,83 @@ export function createContentReadService(database: DatabaseResource) {
       repository.readRecord(sql, userId, "character", id),
     conversation: (sql: TransactionSql, userId: string, id: string) =>
       repository.readRecord(sql, userId, "conversation", id),
+  };
+}
+
+/** Appointment assembly uses the content owner for reads and atomic sync writes. */
+export function createAppointmentContentService(database: DatabaseResource) {
+  const repository = new ContentRepository(database);
+  return {
+    readMemory: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "memory", id),
+    proofMessages: (
+      sql: TransactionSql,
+      userId: string,
+      conversationId: string,
+      evidenceIds: string[],
+    ) => repository.appointmentProofMessages(sql, userId, conversationId, evidenceIds),
+    message: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "message", id),
+    character: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "character", id),
+    conversation: (sql: TransactionSql, userId: string, id: string) =>
+      repository.readRecord(sql, userId, "conversation", id),
+    messages: (sql: TransactionSql, userId: string, conversationId: string) =>
+      repository.appointmentMessages(sql, userId, conversationId),
+    relationship: (
+      sql: TransactionSql,
+      userId: string,
+      characterId: string,
+      expectedVersion: number,
+      relationship: Record<string, unknown>,
+      commandId: string,
+    ) =>
+      repository.appointmentRelationship(
+        sql,
+        userId,
+        characterId,
+        expectedVersion,
+        relationship,
+        commandId,
+      ),
+    memory: (
+      sql: TransactionSql,
+      userId: string,
+      characterId: string,
+      memoryId: string,
+      content: string,
+      appointmentId: string,
+      commandId: string,
+      evidence?: string,
+      eventDate?: string,
+    ) =>
+      repository.appointmentMemory(
+        sql,
+        userId,
+        characterId,
+        memoryId,
+        content,
+        appointmentId,
+        commandId,
+        evidence,
+        eventDate,
+      ),
+  };
+}
+
+/** Shared conversations use the content owner for transaction-scoped reads and sync writes. */
+export function createChatContentService(database: DatabaseResource) {
+  const repository = new ContentRepository(database);
+  return {
+    read: (
+      sql: TransactionSql,
+      userId: string,
+      type: ContentResourceType,
+      id: string,
+    ) => repository.readRecord(sql, userId, type, id),
+    list: repository.sharedRecords.bind(repository),
+    messages: repository.sharedMessages.bind(repository),
+    write: repository.sharedWrite.bind(repository),
+    rewrite: repository.sharedRewrite.bind(repository),
   };
 }

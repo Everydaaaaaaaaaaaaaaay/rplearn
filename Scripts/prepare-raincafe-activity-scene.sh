@@ -4,7 +4,7 @@
 set -euo pipefail
 
 rain_source="${1:?Pass the licensed Pexels 33741230 source video}"
-rain_output="App/Resources/ActivityScene"
+rain_output="build/legacy-activity-scenes"
 mkdir -p "$rain_output"
 
 # Keep the fixed vertical camera and native timing. The full first frame is the

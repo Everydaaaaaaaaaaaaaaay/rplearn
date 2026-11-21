@@ -1,5 +1,7 @@
 # Persistent character reading voices — 2026-09-20
 
+2026-11-12 的剧情选角、节奏与实播更新见[当前剧情声线记录](story-casting-20261112.md)。
+
 ## Behavior
 
 CharacterCard now carries optional Codable `readingVoice`, resolved and persisted

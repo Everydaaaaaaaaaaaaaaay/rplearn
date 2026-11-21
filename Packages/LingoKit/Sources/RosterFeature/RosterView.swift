@@ -19,12 +19,17 @@ public struct RosterView: View {
 
     private let deps: RosterDependencies
     private let reloadToken: Int
+    private let resetToken: Int
+    private struct LoadKey: Hashable {
+        let token: Int
+        let visible: Bool
+    }
     private let chatBuilder: @MainActor (CharacterDTO) -> AnyView
     private let callBuilder: (@MainActor (CharacterDTO) -> AnyView)?
 
     @State private var lastReplies: [UUID: Date] = [:]
     @State private var pendingPlans: [UUID: NPCReplyPlan] = [:]
-    @State private var presenceDate = Date.now
+    @State private var isVisible = false
     @State private var friends: [CharacterDTO] = []
     @State private var formerContacts: [CharacterDTO] = []
     @State private var profile: UserProfileDTO?
@@ -34,16 +39,19 @@ public struct RosterView: View {
     @State private var travelerMatch: CharacterDTO?
     @State private var didFinishTravelerLookup = false
     @State private var expandedSections = Set(ContactSection.allCases)
+    @State private var selectedContact: CharacterDTO?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
         deps: RosterDependencies,
         reloadToken: Int = 0,
+        resetToken: Int = 0,
         chatBuilder: @escaping @MainActor (CharacterDTO) -> AnyView,
         callBuilder: (@MainActor (CharacterDTO) -> AnyView)? = nil
     ) {
         self.deps = deps
         self.reloadToken = reloadToken
+        self.resetToken = resetToken
         self.chatBuilder = chatBuilder
         self.callBuilder = callBuilder
     }
@@ -93,23 +101,37 @@ public struct RosterView: View {
         searchAdaptedContent
             .navigationTitle("联系人")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(isPresented: Binding(
+                get: { selectedContact != nil },
+                set: { if !$0 { selectedContact = nil } }
+            )) {
+                if let selectedContact { contactDestination(selectedContact) }
+            }
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
-            .task(id: reloadToken) { await reload() }
-            .task {
-                while !Task.isCancelled {
-                    presenceDate = .now
-                    do { try await Task.sleep(for: .seconds(15)) } catch { return }
-                }
+            .onAppear { isVisible = true }
+            .onDisappear { isVisible = false }
+            .task(id: LoadKey(token: reloadToken, visible: isVisible)) {
+                if isVisible { await reload() }
             }
-            .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { _ in
-                Task { await reloadPresence() }
+            .onChange(of: resetToken) {
+                selectedContact = nil
+                searchText = ""
+                expandedSections = Set(ContactSection.allCases)
+                travelerMatch = nil
+                didFinishTravelerLookup = false
             }
-            .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { _ in
-                Task {
-                    friends = (try? await deps.rosterStore.friends()) ?? friends
-                    formerContacts = (try? await deps.rosterStore.formerContacts()) ?? formerContacts
-                }
+            .onReceive(NotificationCenter.default.publisher(for: .rosterContactDidChange)) { _ in
+                guard isVisible else { return }
+                Task { await reload() }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { note in
+                guard isVisible else { return }
+                Task { await reloadPresence(characterID: note.object as? UUID) }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { note in
+                guard isVisible, let characterID = note.object as? UUID else { return }
+                Task { await refreshCharacter(characterID) }
             }
             .task(id: normalizedSearchText) { await lookupTravelerIDIfNeeded() }
             .overlay {
@@ -130,7 +152,7 @@ public struct RosterView: View {
     private var searchAdaptedContent: some View {
         if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
             sceneContent
-                .dsSceneSearch(text: $searchText, title: "联系人", prompt: "搜索联系人")
+                .dsSceneSearch(text: $searchText, title: "联系人", prompt: "搜索联系人", resetToken: resetToken)
         } else {
             sceneContent
                 .safeAreaInset(edge: .top, spacing: 0) {
@@ -400,8 +422,19 @@ public struct RosterView: View {
     }
 
     private func friendLink(_ character: CharacterDTO) -> some View {
-        NavigationLink {
-            CharacterProfileView(
+        Button {
+            selectedContact = character
+        } label: {
+            RosterContactRowLabel(character: character,
+                lastAssistantMessageAt: lastReplies[character.id],
+                pendingReplyPlan: pendingPlans[character.id])
+        }
+        .buttonStyle(RosterContactRowButtonStyle())
+        .accessibilityHint("打开联系人详情")
+    }
+
+    private func contactDestination(_ character: CharacterDTO) -> some View {
+        CharacterProfileView(
                 character: character,
                 regionName: deps.regionName(character.card.regionID),
                 rosterStore: deps.rosterStore,
@@ -414,84 +447,7 @@ public struct RosterView: View {
                 },
                 chatBuilder: chatBuilder,
                 callBuilder: callBuilder
-            )
-        } label: {
-            HStack(spacing: DSSpacing.sm) {
-                AvatarBadge(
-                    name: character.displayName,
-                    size: 56,
-                    imageName: character.card.avatarAssetName,
-                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                    usesPendingPlaceholder: true
-                )
-                    .accessibilityHidden(true)
-
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(character.displayName)
-                        .font(.system(.title2, design: .rounded, weight: .bold))
-                        .foregroundStyle(scenePrimaryText)
-                        .lineLimit(1)
-                        .layoutPriority(1)
-                    HStack(spacing: 5) {
-                        if character.contactStatus != .removed {
-                            Circle()
-                                .fill(presenceDotColor(character))
-                                .frame(width: 6, height: 6)
-                                .accessibilityHidden(true)
-                        }
-                        Text(friendStatus(character))
-                            .font(.footnote.weight(.medium))
-                            .foregroundStyle(sceneSecondaryText)
-                            .lineLimit(1)
-                            .truncationMode(.tail)
-                    }
-                }
-
-                Spacer(minLength: 0)
-            }
-            .padding(.horizontal, DSSpacing.md)
-            .padding(.vertical, DSSpacing.sm)
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(RosterContactRowButtonStyle())
-        .accessibilityLabel("\(character.card.name)，\(friendStatus(character))")
-        .accessibilityHint("打开联系人详情")
-    }
-
-    private func contactPresence(_ character: CharacterDTO) -> NPCPresenceState {
-        NPCAttentionPolicy.standard.presence(
-            for: character, at: presenceDate,
-            lastAssistantMessageAt: lastReplies[character.id],
-            pendingReplyPlan: pendingPlans[character.id]
-        ).state
-    }
-
-    private func presenceDotColor(_ character: CharacterDTO) -> Color {
-        switch contactPresence(character) {
-        case .online: Color(red: 0.55, green: 0.90, blue: 0.65)
-        case .recentlyActive: Color(red: 0.96, green: 0.77, blue: 0.40)
-        case .offline: Color(white: 0.66)
-        }
-    }
-
-    private func friendStatus(_ character: CharacterDTO) -> String {
-        if character.contactStatus == .removed {
-            return "过往联系人 · 可重新添加"
-        }
-        let state = contactPresence(character)
-        let status = switch state {
-        case .online: "在线"
-        case .recentlyActive: "近期在线"
-        case .offline: "离线"
-        }
-        let occupation: String
-        switch character.isMainCharacter ? character.card.avatarAssetName : nil {
-        case "avatar_oliver": occupation = "Bookshop assistant & aspiring novelist"
-        case "avatar_ruby": occupation = "Barista, marine biology student & surf instructor"
-        case "avatar_marcus": occupation = "Street photographer & record shop assistant"
-        default: occupation = character.card.occupation
-        }
-        return "\(status) | \(character.card.nationality) · \(occupation)"
+        )
     }
 
     private var emptyState: some View {
@@ -531,24 +487,40 @@ public struct RosterView: View {
         await registerPendingPublicNPCs()
     }
 
-    private func reloadPresence() async {
+    private func reloadPresence(characterID: UUID? = nil) async {
         guard let store = deps.chatStore,
               let summaries = try? await store.conversationSummaries() else { return }
         var replies: [UUID: Date] = [:]
         var plans: [UUID: NPCReplyPlan] = [:]
-        for summary in summaries {
+        let characters = Dictionary((friends + formerContacts).map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+        for summary in summaries where characterID == nil || summary.characterID == characterID {
             replies[summary.characterID] = summary.assistantMessageDates.last
             if summary.lastMessageRole == .user,
-               let character = (friends + formerContacts).first(where: { $0.id == summary.characterID }),
+               let character = characters[summary.characterID],
                let history = try? await store.messages(conversationID: summary.conversationID),
                let user = history.last, user.role == .user, !user.isInterrupted {
                 plans[character.id] = NPCAttentionPolicy.standard.replyPlan(
                     for: character, userMessage: user, history: history)
             }
         }
-        lastReplies = replies
-        pendingPlans = plans
-        presenceDate = .now
+        if let characterID {
+            if lastReplies[characterID] != replies[characterID] { lastReplies[characterID] = replies[characterID] }
+            if pendingPlans[characterID] != plans[characterID] { pendingPlans[characterID] = plans[characterID] }
+        } else {
+            if lastReplies != replies { lastReplies = replies }
+            if pendingPlans != plans { pendingPlans = plans }
+        }
+    }
+
+    private func refreshCharacter(_ id: UUID) async {
+        guard let character = try? await deps.rosterStore.character(id: id), isVisible else { return }
+        if let index = friends.firstIndex(where: { $0.id == id }), friends[index] != character {
+            friends[index] = character
+        }
+        if let index = formerContacts.firstIndex(where: { $0.id == id }), formerContacts[index] != character {
+            formerContacts[index] = character
+        }
+        if travelerMatch?.id == id, travelerMatch != character { travelerMatch = character }
     }
 
     private func registerPendingPublicNPCs() async {

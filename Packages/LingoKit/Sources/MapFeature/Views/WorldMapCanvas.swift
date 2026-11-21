@@ -19,6 +19,8 @@ struct MapViewportRequest {
 /// momentum. SwiftUI receives only settled selections and travel actions, never per-frame camera
 /// updates.
 struct WorldMapCanvas: UIViewRepresentable {
+    let cache: WorldMapCache?
+    let initialRegion: Region?
     let regions: [Region]
     let presentations: [String: MapRegionPresentation]
     let selectedRegionID: String?
@@ -32,8 +34,20 @@ struct WorldMapCanvas: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView(frame: .zero)
+        let mapView = cache?.acquire(region: initialRegion) ?? Self.preparedMapView()
         mapView.delegate = context.coordinator
+        context.coordinator.installAnnotations(in: mapView)
+        return mapView
+    }
+
+    static func dismantleUIView(_ mapView: MKMapView, coordinator: Coordinator) {
+        guard mapView.delegate === coordinator else { return }
+        mapView.delegate = nil
+        coordinator.parent.cache?.release(mapView)
+    }
+
+    static func preparedMapView() -> MKMapView {
+        let mapView = MKMapView(frame: .zero)
         mapView.isScrollEnabled = true
         mapView.isZoomEnabled = true
         mapView.isPitchEnabled = true
@@ -64,7 +78,6 @@ struct WorldMapCanvas: UIViewRepresentable {
             RegionAnnotationView.self,
             forAnnotationViewWithReuseIdentifier: RegionAnnotationView.reuseIdentifier
         )
-        context.coordinator.installAnnotations(in: mapView)
         return mapView
     }
 
@@ -89,6 +102,13 @@ struct WorldMapCanvas: UIViewRepresentable {
         }
 
         func installAnnotations(in mapView: MKMapView) {
+            let expectedIDs = Set(parent.regions.map(\.id))
+            let existing = mapView.annotations.compactMap { $0 as? RegionAnnotation }
+            if existing.count == expectedIDs.count && Set(existing.map(\.region.id)) == expectedIDs {
+                annotationsByID = Dictionary(uniqueKeysWithValues: existing.map { ($0.region.id, $0) })
+                return
+            }
+            mapView.removeAnnotations(mapView.annotations)
             let annotations = parent.regions.map(RegionAnnotation.init)
             annotationsByID = Dictionary(uniqueKeysWithValues: annotations.map { ($0.region.id, $0) })
             mapView.addAnnotations(annotations)
@@ -205,7 +225,7 @@ struct WorldMapCanvas: UIViewRepresentable {
     }
 }
 
-private final class RegionAnnotation: NSObject, MKAnnotation {
+final class RegionAnnotation: NSObject, MKAnnotation {
     let region: Region
     let coordinate: CLLocationCoordinate2D
 
@@ -235,6 +255,7 @@ private final class RegionAnnotationView: MKAnnotationView {
     private var region: Region?
     private var presentation = MapRegionPresentation(state: .locked, hasUsableTicket: false)
     private var onTravel: (() -> Void)?
+    private var renderedSelection: Bool?
 
     override init(annotation: (any MKAnnotation)?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -258,6 +279,7 @@ private final class RegionAnnotationView: MKAnnotationView {
     override func prepareForReuse() {
         super.prepareForReuse()
         region = nil
+        renderedSelection = nil
         onTravel = nil
         markerAccessibilityView.onActivate = nil
         actionButton.isHidden = true
@@ -310,18 +332,24 @@ private final class RegionAnnotationView: MKAnnotationView {
         onSelect: @escaping () -> Void,
         onTravel: @escaping () -> Void
     ) {
+        self.onTravel = onTravel
+        markerAccessibilityView.onActivate = onSelect
+        guard self.region != region || self.presentation != presentation else {
+            applySelection(isSelected)
+            return
+        }
         self.region = region
         self.presentation = presentation
-        self.onTravel = onTravel
+        renderedSelection = nil
 
-        photoView.image = UIImage(named: "city_pin_\(region.id)")
+        let pinName = "city_pin_\(region.id)"
+        photoView.image = DSSceneImageCache.cachedUIImage(named: pinName) ?? UIImage(named: pinName)
         flagLabel.text = region.flagEmoji
         titleLabel.text = region.nameZh
         lockedOverlay.isHidden = presentation.state != .locked
 
         markerAccessibilityView.accessibilityLabel = "\(region.nameZh)，\(presentation.state.accessibilityText)"
         markerAccessibilityView.accessibilityHint = "轻点选择城市，拖动可继续移动地图"
-        markerAccessibilityView.onActivate = onSelect
 
         updateBadge()
         updateActionConfiguration()
@@ -460,6 +488,8 @@ private final class RegionAnnotationView: MKAnnotationView {
     }
 
     private func applySelection(_ selected: Bool) {
+        guard renderedSelection != selected else { return }
+        renderedSelection = selected
         actionButton.isHidden = !selected
         actionButton.accessibilityElementsHidden = !selected
         layer.zPosition = selected ? 10 : 0

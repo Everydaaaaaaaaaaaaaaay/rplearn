@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-31",
+  "issue": "Closing the composer translator could dismiss the keyboard instead of transferring input to the normal composer.",
+  "fixes": [
+    "Use one optional ComposerFocus state for both English and Chinese fields, with direct transfer to English when closing an active translator.",
+    "Hide the source controls through visibility, hit testing and accessibility without disabling the focused subtree during responder transfer.",
+    "Only user-driven message scrolling participates in interactive keyboard dismissal; composer resizing and programmatic scrolling do not."
+  ],
+  "verification": {
+    "translator": {
+      "passed": 1,
+      "failed": 0,
+      "log": "build/translator-focus-verified.log",
+      "xcresult": "build/DerivedData/VerificationResults/20261030T183254Z-74984.xcresult",
+      "checks": [
+        "Focus transfers from Chinese to English, preserves draft and accepts typing without another tap.",
+        "Keyboard and composer position remain stable after mode animation and further typing.",
+        "Closing while English has focus keeps the keyboard.",
+        "Closing with the keyboard deliberately hidden leaves it hidden."
+      ],
+      "reviewedScreenshot": "build/translator-focus-verified-attachments/BC7481C0-9837-43D1-81D6-29ED87F658DC.png"
+    },
+    "regression": {
+      "acceptedTests": [
+        "ChatKeyboardTests/testBubbleMenuPreservesKeyboardAndDraft",
+        "ChatKeyboardTests/testDismissKeyboardPreservesDraft"
+      ],
+      "xcresult": "build/DerivedData/VerificationResults/20261030T182858Z-74260.xcresult",
+      "note": "These two routes passed on final product code. The translator position assertion in that run sampled its initial position before keyboard layout stabilized; the final translator run waits for the initial keyboard layout and passes the corrected assertion."
+    },
+    "preview": {
+      "script": "Scripts/preview.sh preview messages",
+      "status": "installed-and-launched",
+      "simulator": "659893A7-0822-43F4-8DA1-4A92E9C78814",
+      "log": "build/translator-focus-preview.log"
+    },
+    "diffCheck": "passed"
+  },
+  "limits": [
+    "Local Debug fixture only; no live translation, AI requests or production data.",
+    "Device Hub screen capture was unavailable in this session; native UI test screenshots were inspected."
+  ]
+}

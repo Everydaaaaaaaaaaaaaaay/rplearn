@@ -25,7 +25,7 @@ public actor AudioSessionCoordinator {
             try session.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
             try session.setActive(true)
         case .record:
-            try session.setCategory(.playAndRecord, mode: .spokenAudio, options: [.defaultToSpeaker, .duckOthers])
+            try session.setCategory(.playAndRecord, mode: .voiceChat, options: [.defaultToSpeaker, .duckOthers, .allowBluetoothHFP])
             try session.setActive(true)
         case .conversation:
             try session.setCategory(

@@ -27,6 +27,13 @@ public struct NPCActivityProfile: Sendable, Codable, Equatable {
     }
 }
 
+public struct CharacterSettingRevision: Sendable, Codable, Equatable {
+    public let releaseID: String
+    public let explanationZh: String
+    public let previousCardJSON: String
+    public let appliedAt: Date
+}
+
 /// 角色卡：定义角色的全部设定，用于 AI 角色扮演与形象展示。
 /// 既是 main_characters.json 的解码目标，也是 AI 随机生成角色的结构化输出格式，
 /// 原始 JSON 存入 CharacterEntity.cardJSON 供 prompt 复渲染。
@@ -60,6 +67,9 @@ public struct CharacterCard: Sendable, Codable, Equatable {
     }
     public var personaVoice: PersonaVoiceProfile?
     public var activityProfile: NPCActivityProfile?
+    public var settingVersion: Int?
+    public var settingReleaseID: String?
+    public var settingHistory: [CharacterSettingRevision]?
 
     public init(
         name: String,
@@ -190,6 +200,8 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
     public var learningOrigin: LearningChatOrigin?
     public var translationZh: String?
     public var isInterrupted: Bool
+    public var timelineEvents: [ChatMessageTimelineEvent]
+    public var replyToMessageIDs: [UUID]
     public var createdAt: Date
 
     public init(
@@ -208,6 +220,8 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         learningOrigin: LearningChatOrigin? = nil,
         translationZh: String? = nil,
         isInterrupted: Bool = false,
+        timelineEvents: [ChatMessageTimelineEvent] = [],
+        replyToMessageIDs: [UUID] = [],
         createdAt: Date = .now
     ) {
         self.id = id
@@ -225,6 +239,8 @@ public struct MessageDTO: Sendable, Equatable, Identifiable {
         self.learningOrigin = learningOrigin
         self.translationZh = translationZh
         self.isInterrupted = isInterrupted
+        self.timelineEvents = timelineEvents
+        self.replyToMessageIDs = replyToMessageIDs
         self.createdAt = createdAt
     }
 }
@@ -279,7 +295,19 @@ public struct UserProfileDTO: Codable, Sendable, Equatable {
     public var unlockedRegionIDs: [String]
     public var difficultyLevel: DifficultyLevel
     public var hasCompletedOnboarding: Bool
-    public var learningGoal: LearningGoal
+    private var selectedLearningGoals: [LearningGoal]
+    public var learningGoals: [LearningGoal] {
+        get { selectedLearningGoals }
+        set { selectedLearningGoals = LearningGoal.normalized(newValue) }
+    }
+    /// Compatibility for callers that explicitly set a single goal.
+    public var learningGoal: LearningGoal {
+        get { selectedLearningGoals[0] }
+        set { selectedLearningGoals = [newValue] }
+    }
+    public var learningGoalsDisplayName: String {
+        learningGoals.map(\.displayName).joined(separator: "、")
+    }
     public var studyStage: StudyStage?
     public var proficiencySource: ProficiencySource
     public var placementScore: Int?
@@ -301,7 +329,8 @@ public struct UserProfileDTO: Codable, Sendable, Equatable {
         proficiencySource: ProficiencySource = .selfReported,
         placementScore: Int? = nil,
         placementCompletedAt: Date? = nil,
-        hasCompletedProfileSetup: Bool = false
+        hasCompletedProfileSetup: Bool = false,
+        learningGoals: [LearningGoal]? = nil
     ) {
         self.displayName = displayName
         self.currentRegionID = currentRegionID
@@ -312,11 +341,60 @@ public struct UserProfileDTO: Codable, Sendable, Equatable {
         self.unlockedRegionIDs = unlockedRegionIDs
         self.difficultyLevel = difficultyLevel
         self.hasCompletedOnboarding = hasCompletedOnboarding
-        self.learningGoal = learningGoal
+        self.selectedLearningGoals = LearningGoal.normalized(learningGoals ?? [learningGoal])
         self.studyStage = studyStage
         self.proficiencySource = proficiencySource
         self.placementScore = placementScore
         self.placementCompletedAt = placementCompletedAt
         self.hasCompletedProfileSetup = hasCompletedProfileSetup
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case displayName, currentRegionID, starterRegionID, coins, subscriptionTier
+        case friendSlotLimit, unlockedRegionIDs, difficultyLevel, hasCompletedOnboarding
+        case learningGoal, learningGoals, studyStage, proficiencySource
+        case placementScore, placementCompletedAt, hasCompletedProfileSetup
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.displayName = try container.decode(String.self, forKey: .displayName)
+        self.currentRegionID = try container.decode(String.self, forKey: .currentRegionID)
+        self.starterRegionID = try container.decodeIfPresent(String.self, forKey: .starterRegionID)
+        self.coins = try container.decode(Int.self, forKey: .coins)
+        self.subscriptionTier = try container.decode(SubscriptionTier.self, forKey: .subscriptionTier)
+        self.friendSlotLimit = try container.decode(Int.self, forKey: .friendSlotLimit)
+        self.unlockedRegionIDs = try container.decode([String].self, forKey: .unlockedRegionIDs)
+        self.difficultyLevel = try container.decode(DifficultyLevel.self, forKey: .difficultyLevel)
+        self.hasCompletedOnboarding = try container.decode(Bool.self, forKey: .hasCompletedOnboarding)
+        self.studyStage = try container.decodeIfPresent(StudyStage.self, forKey: .studyStage)
+        self.proficiencySource = try container.decode(ProficiencySource.self, forKey: .proficiencySource)
+        self.placementScore = try container.decodeIfPresent(Int.self, forKey: .placementScore)
+        self.placementCompletedAt = try container.decodeIfPresent(Date.self, forKey: .placementCompletedAt)
+        self.hasCompletedProfileSetup = try container.decode(Bool.self, forKey: .hasCompletedProfileSetup)
+        let legacy = try container.decodeIfPresent(LearningGoal.self, forKey: .learningGoal) ?? .dailyConversation
+        selectedLearningGoals = LearningGoal.normalized(
+            try container.decodeIfPresent([LearningGoal].self, forKey: .learningGoals) ?? [legacy]
+        )
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(displayName, forKey: .displayName)
+        try container.encode(currentRegionID, forKey: .currentRegionID)
+        try container.encodeIfPresent(starterRegionID, forKey: .starterRegionID)
+        try container.encode(coins, forKey: .coins)
+        try container.encode(subscriptionTier, forKey: .subscriptionTier)
+        try container.encode(friendSlotLimit, forKey: .friendSlotLimit)
+        try container.encode(unlockedRegionIDs, forKey: .unlockedRegionIDs)
+        try container.encode(difficultyLevel, forKey: .difficultyLevel)
+        try container.encode(hasCompletedOnboarding, forKey: .hasCompletedOnboarding)
+        try container.encodeIfPresent(studyStage, forKey: .studyStage)
+        try container.encode(proficiencySource, forKey: .proficiencySource)
+        try container.encodeIfPresent(placementScore, forKey: .placementScore)
+        try container.encodeIfPresent(placementCompletedAt, forKey: .placementCompletedAt)
+        try container.encode(hasCompletedProfileSetup, forKey: .hasCompletedProfileSetup)
+        try container.encode(learningGoal, forKey: .learningGoal)
+        try container.encode(learningGoals, forKey: .learningGoals)
     }
 }

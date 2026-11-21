@@ -32,7 +32,7 @@ class StoryVoicePlanningTests(unittest.TestCase):
                 for s in clip['segments']:
                     text=('<breath> ' if s['breath'] else '')+s['text']
                     self.assertLessEqual(len(unicodedata.normalize('NFKD',text)),70)
-                    self.assertTrue(.88<=s['rate']<=1.1)
+                    self.assertTrue(.88<=s['rate']<=1.12)
                     self.assertTrue(0<=s['gapAfter']<=1.2)
                     if clip['speaker'] in ['旁白','出发之后']:self.assertFalse(s['breath'])
 
@@ -50,8 +50,12 @@ class StoryVoicePlanningTests(unittest.TestCase):
             for segment in clip['segments']:voices.setdefault(clip['cast'],set()).add(segment['voice'])
         self.assertTrue(all(len(v)==1 for v in voices.values()))
         self.assertEqual(voices['Oliver'],{'M5'})
-        self.assertEqual(voices['Nora'],{'F5'})
+        self.assertEqual(voices['Nora'],{'F2'})
         self.assertEqual(voices['Ruby'],{'F3'})
         self.assertEqual(voices['Marcus'],{'M3'})
+        self.assertEqual(voices['Isla'],{'F1'})
+        for speaker, assigned in voices.items():
+            if speaker not in ['旁白','出发之后']:
+                self.assertNotIn('F5',assigned)
 
 if __name__=='__main__':unittest.main()

@@ -5,6 +5,110 @@ import Testing
 
 @Suite("ContentSyncStore")
 struct ContentSyncStoreTests {
+    @Test("Timeline evidence survives reopening and an older client update")
+    func timelineEvidenceSurvivesReopening() async throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appending(path: "chat.store")
+        let mood = ChatMessageTimelineEvent(kind: .mood, state: "sad", strength: 2)
+        let conversationID: UUID
+        let messageID: UUID
+        do {
+            let container = try ModelContainerFactory.makeContainer(storeURL: url)
+            let sync = ContentSyncStore(modelContainer: container)
+            let chat = ChatStore(modelContainer: container)
+            let roster = RosterStore(modelContainer: container)
+            try await sync.activateOwner(userID: UUID())
+            let character = try await roster.addCharacter(card: characterCard(name: "Ruby"), difficulty: .junior3, isFriend: true)
+            conversationID = try await chat.openConversation(characterID: character).id
+            messageID = try await chat.appendMessage(conversationID: conversationID, role: .user, text: "Are you okay?").id
+            _ = try await chat.appendMessage(conversationID: conversationID, role: .assistant, text: "I feel sad.")
+            for mutation in try await sync.takePending() {
+                try await sync.complete(commandID: mutation.commandID, record: remote(from: mutation, version: 1))
+            }
+            try await chat.addTimelineEvents(messageID: messageID, events: [mood])
+            try await chat.addTimelineEvents(messageID: messageID, events: [.init(kind: .mood, state: "angry", strength: 3)])
+            let pending = try #require(try await sync.takePending().first)
+            let json = try #require(pending.payloadJSON)
+            var fields = try #require(JSONSerialization.jsonObject(with: Data(json.utf8)) as? [String: Any])
+            #expect(fields["timelineEvents"] != nil)
+            fields.removeValue(forKey: "timelineEvents")
+            let older = remote(type: .message, id: pending.resourceID, parentID: pending.parentID,
+                payload: String(decoding: try JSONSerialization.data(withJSONObject: fields), as: UTF8.self), version: 2)
+            try await sync.apply(records: [older], nextCursor: "older-client")
+        }
+        let reopened = ChatStore(modelContainer: try ModelContainerFactory.makeContainer(storeURL: url))
+        let stored = try await reopened.messages(conversationID: conversationID)
+        #expect(stored.count == 2)
+        #expect(stored.first(where: { $0.id == messageID })?.timelineEvents == [mood])
+        #expect(try await reopened.conversationSummaries().first?.unreadCount == 1)
+    }
+
+    @Test("已读回执保留毫秒，同步不能把读过的回复变回未读")
+    func conversationReadReceiptSurvivesOlderRemoteSnapshot() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let sync = ContentSyncStore(modelContainer: container)
+        let chat = ChatStore(modelContainer: container)
+        let roster = RosterStore(modelContainer: container)
+        try await sync.activateOwner(userID: UUID())
+        let character = try await roster.addCharacter(
+            card: characterCard(name: "Read receipt"), difficulty: .junior3, isFriend: true)
+        let conversation = try await chat.openConversation(characterID: character)
+        let messageAt = Date(timeIntervalSince1970: 1_795_000_000.865)
+        _ = try await chat.appendMessage(conversationID: conversation.id, role: .assistant,
+            text: "Already seen", createdAt: messageAt)
+        for mutation in try await sync.takePending() {
+            try await sync.complete(commandID: mutation.commandID, record: remote(from: mutation, version: 1))
+        }
+        try await chat.markRead(conversationID: conversation.id, at: messageAt)
+        let pending = try #require(try await sync.takePending().first)
+        let data = Data(try #require(pending.payloadJSON).utf8)
+        var fields = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        #expect(fields["lastReadAt"] as? String == "2026-11-18T11:06:40.865Z")
+        fields["lastReadAt"] = "2026-11-18T11:06:40Z"
+        let stale = remote(type: .conversation, id: pending.resourceID, parentID: pending.parentID,
+            payload: String(decoding: try JSONSerialization.data(withJSONObject: fields), as: UTF8.self), version: 2)
+        try await sync.apply(records: [stale], nextCursor: "stale-read")
+        #expect(try await chat.conversationSummaries().first?.unreadCount == 0)
+    }
+
+    @Test("共享会话快照保留全局游标，迟到的同步事件不能回退服务器顺序")
+    func sharedSnapshotDoesNotAdvanceCursorOrRegressOrder() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let sync = ContentSyncStore(modelContainer: container)
+        let roster = RosterStore(modelContainer: container)
+        let chat = ChatStore(modelContainer: container)
+        try await sync.activateOwner(userID: UUID())
+        let characterID = try await roster.addCharacter(
+            card: characterCard(name: "Shared friend"), difficulty: .junior3, isFriend: true)
+        let conversation = try await chat.openConversation(characterID: characterID)
+        let message = try await chat.appendMessage(
+            conversationID: conversation.id, role: .user, text: "Accepted text", sharedOrdering: true)
+        let pending = try await sync.takePending(limit: 100)
+        let messageMutation = try #require(
+            pending.first { $0.resourceID == message.id.uuidString.lowercased() })
+        let stale = remote(from: messageMutation, version: 1)
+        for mutation in pending {
+            try await sync.complete(commandID: mutation.commandID, record: remote(from: mutation, version: 1))
+        }
+        try await sync.apply(records: [], nextCursor: "unchanged-global-cursor")
+        var payload = try #require(
+            JSONSerialization.jsonObject(with: Data(stale.payloadJSON.utf8)) as? [String: Any])
+        payload["orderIndex"] = 99
+        let canonical = RemoteContentRecord(
+            createdAt: stale.createdAt, deletedAt: nil, parentID: stale.parentID,
+            payloadJSON: String(decoding: try JSONSerialization.data(withJSONObject: payload), as: UTF8.self),
+            resourceID: stale.resourceID,
+            resourceType: .message, updatedAt: .now, version: 2)
+        try await sync.applySharedChat(records: [canonical], coveredMessageIDs: [message.id])
+        #expect(try await sync.syncCursor() == "unchanged-global-cursor")
+        #expect(try await chat.messages(conversationID: conversation.id).first?.orderIndex == 99)
+        try await sync.apply(records: [stale], nextCursor: "next-global-cursor")
+        #expect(try await chat.messages(conversationID: conversation.id).first?.orderIndex == 99)
+        #expect(try await chat.messages(conversationID: conversation.id).first?.isInterrupted == false)
+    }
+
     @Test("磁盘库重新打开后恢复未确认上传，保留原操作 ID")
     func recoversInFlightAfterReopeningDiskStore() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent("sync-restart-\(UUID().uuidString)")
@@ -80,6 +184,65 @@ struct ContentSyncStoreTests {
             record: remote(from: second, version: 2)
         )
         #expect(try await sync.takePending().isEmpty)
+    }
+
+    @Test("回执丢失后修改置顶，重试保留原操作和原内容")
+    func editedConversationKeepsUnacknowledgedUploadImmutable() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let sync = ContentSyncStore(modelContainer: container)
+        let roster = RosterStore(modelContainer: container)
+        let chat = ChatStore(modelContainer: container)
+        try await sync.activateOwner(userID: UUID())
+        let character = try await roster.addCharacter(
+            card: characterCard(name: "Pinned after retry"), difficulty: .junior3, isFriend: true)
+        let conversation = try await chat.openConversation(characterID: character)
+        let initial = try await sync.takePending()
+        let attempted = try #require(initial.first { $0.resourceType == .conversation })
+        for mutation in initial where mutation.commandID != attempted.commandID {
+            try await sync.complete(commandID: mutation.commandID, record: remote(from: mutation, version: 1))
+        }
+        try await sync.resetInFlight(commandIDs: [attempted.commandID])
+
+        try await chat.setPinned(conversationID: conversation.id, isPinned: true)
+
+        let retry = try #require(try await sync.takePending(serialPerResource: true).first)
+        #expect(retry.commandID == attempted.commandID)
+        #expect(retry.payloadJSON == attempted.payloadJSON)
+        try await sync.complete(commandID: retry.commandID, record: remote(from: attempted, version: 1))
+        let update = try #require(try await sync.takePending(serialPerResource: true).first)
+        #expect(update.commandID != attempted.commandID)
+        #expect(update.expectedVersion == 1)
+        let payload = try #require(update.payloadJSON)
+        let record = try JSONSerialization.jsonObject(with: Data(payload.utf8)) as? [String: Any]
+        #expect(record?["isPinned"] as? Bool == true)
+    }
+
+    @Test("已卡住的会话更新在下次打开账号时用新编号恢复")
+    func recoversRejectedConversationWithoutDroppingTheEdit() async throws {
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let user = UUID()
+        let sync = ContentSyncStore(modelContainer: container)
+        try await sync.activateOwner(userID: user)
+        let character = try await RosterStore(modelContainer: container).addCharacter(
+            card: characterCard(name: "Retry the pinned update"), difficulty: .junior3, isFriend: true)
+        let chat = ChatStore(modelContainer: container)
+        let conversation = try await chat.openConversation(characterID: character)
+        for mutation in try await sync.takePending() {
+            try await sync.complete(commandID: mutation.commandID, record: remote(from: mutation, version: 1))
+        }
+        try await chat.setPinned(conversationID: conversation.id, isPinned: true)
+        let submitted = try #require(try await sync.takePending().first)
+        try await sync.reject(commandID: submitted.commandID, code: "IDEMPOTENCY_KEY_CONFLICT", current: nil)
+
+        let reopened = ContentSyncStore(modelContainer: container)
+        try await reopened.activateOwner(userID: user)
+        let retry = try #require(try await reopened.takePending(serialPerResource: true).first)
+        #expect(retry.commandID != submitted.commandID)
+        #expect(retry.expectedVersion == submitted.expectedVersion)
+        #expect(retry.payloadJSON == submitted.payloadJSON)
+        try await reopened.complete(commandID: retry.commandID, record: remote(from: retry, version: 2))
+        #expect(try await reopened.unresolvedErrorCount() == 0)
+        #expect(try await chat.conversation(id: conversation.id)?.isPinned == true)
     }
 
     @Test("远端角色、会话与消息可以重建干净设备")
@@ -243,6 +406,9 @@ struct ContentSyncStoreTests {
         )
         var localCard = characterCard(name: "Alice")
         localCard.activityProfile = expectedProfile
+        localCard.settingVersion = 1
+        localCard.settingReleaseID = "places-v1"
+        localCard.regionID = "newyork"
         let characterID = try await roster.addCharacter(
             card: localCard,
             difficulty: .junior3,
@@ -283,6 +449,30 @@ struct ContentSyncStoreTests {
         )
 
         #expect(try await roster.character(id: characterID)?.card.activityProfile == expectedProfile)
+        #expect(try await roster.character(id: characterID)?.card.settingReleaseID == "places-v1")
+        #expect(try await roster.character(id: characterID)?.card.regionID == "newyork")
+    }
+
+    @Test func importsGuestIntoExistingAccountIdempotentlyAndPreservesRemovedContacts() async throws {
+        let accountContainer = try ModelContainerFactory.makeContainer(inMemory: true)
+        let guestContainer = try ModelContainerFactory.makeContainer(inMemory: true)
+        let account = ContentSyncStore(modelContainer: accountContainer)
+        let guest = ContentSyncStore(modelContainer: guestContainer)
+        let roster = RosterStore(modelContainer: accountContainer)
+        let guestRoster = RosterStore(modelContainer: guestContainer)
+        try await account.activateOwner(userID: UUID())
+        let id = UUID(), newID = UUID()
+        let card = characterCard(name: "Alice")
+        _ = try await roster.addCharacter(characterID: id, card: card, difficulty: .junior3, isFriend: true)
+        try await roster.removeFriend(characterID: id)
+        _ = try await guestRoster.addCharacter(characterID: id, card: card, difficulty: .junior3, isFriend: true)
+        _ = try await guestRoster.addCharacter(characterID: newID, card: characterCard(name: "Bob"), difficulty: .junior3, isFriend: true)
+        let incoming = try await guest.guestRecords()
+        for _ in 0..<2 { try await account.importGuestRecords(incoming) }
+        #expect(try await roster.allCharacters().count == 2)
+        #expect(try await roster.character(id: id)?.contactStatus == .removed)
+        #expect(try await roster.character(id: id)?.isFriend == false)
+        #expect(try await roster.character(id: newID)?.isFriend == true)
     }
 
     private func characterCard(name: String) -> CharacterCard {

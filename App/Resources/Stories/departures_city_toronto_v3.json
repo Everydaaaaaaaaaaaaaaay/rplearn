@@ -1,0 +1,554 @@
+{
+  "id": "departures_city_toronto_v3",
+  "version": 3,
+  "title": "谁带了主菜",
+  "start": "start",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "多伦多 · 三个蛋糕",
+    "终于有饭吃了"
+  ],
+  "shots": {
+    "flat": {
+      "background": "dp_toronto_flat",
+      "actors": []
+    },
+    "cook": {
+      "background": "dp_toronto_cook",
+      "actors": []
+    },
+    "order": {
+      "background": "dp_toronto_order",
+      "actors": []
+    },
+    "maya": {
+      "background": "dp_toronto_flat",
+      "actors": [
+        {
+          "id": "Maya",
+          "asset": "dp_maya_welcome",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
+    },
+    "sam": {
+      "background": "dp_toronto_flat",
+      "actors": [
+        {
+          "id": "Sam",
+          "asset": "dp_sam_apology",
+          "x": 0.53,
+          "scale": 1
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "flat",
+      "speaker": "旁白",
+      "text": "Four people. Three cakes. No dinner.",
+      "translation": "四个人。三个蛋糕。没有晚饭。",
+      "next": "start_2"
+    },
+    {
+      "id": "start_2",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "maya",
+      "speaker": "Maya",
+      "text": "Well, at least nobody's going home hungry.",
+      "translation": "好，至少谁也不会饿着回去。",
+      "next": "start_3"
+    },
+    {
+      "id": "start_3",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "sam",
+      "speaker": "Sam",
+      "text": "Your message said, 'Just bring yourself.'",
+      "translation": "你的消息说“人来就好”。",
+      "next": "start_4"
+    },
+    {
+      "id": "start_4",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "maya",
+      "speaker": "旁白",
+      "text": "Maya reads her phone twice. She turns it away from Sam.",
+      "translation": "Maya 把手机看了两遍，又把屏幕转开，不给 Sam 看。",
+      "next": "start_5"
+    },
+    {
+      "id": "start_5",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "maya",
+      "speaker": "Maya",
+      "text": "The food plan went to my work group.",
+      "translation": "带菜那条发到工作群了。",
+      "next": "start_6"
+    },
+    {
+      "id": "start_6",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "sam",
+      "speaker": "Sam",
+      "text": "That explains why your manager offered a meeting room.",
+      "translation": "噢！我还说你老板怎么突然给咱们找会议室呢。",
+      "next": "start_7"
+    },
+    {
+      "id": "start_7",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "maya",
+      "speaker": "Maya",
+      "text": "Rice and eggs here. Or noodles delivered. I'll treat.",
+      "translation": "家里有饭和鸡蛋。也能点面。我请。",
+      "next": "start_8"
+    },
+    {
+      "id": "start_8",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "sam",
+      "speaker": "旁白",
+      "text": "Sam has already found the cake knife.",
+      "translation": "Sam 已经找到蛋糕刀了。",
+      "next": "first"
+    },
+    {
+      "id": "first",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "maya",
+      "speaker": "你的选择",
+      "text": "What would you like for dinner?",
+      "translation": "晚饭你想吃什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Eggs and rice sound good. Let's cook.",
+          "translation": "鸡蛋米饭就挺好。做饭吧。",
+          "next": "cook",
+          "flags": {
+            "first_a": true
+          },
+          "review": {
+            "context": "大家都带了甜点，桌上没主菜。",
+            "outcome": "大家确认能吃现有食材，开火做鸡蛋饭。三盒蛋糕还占着桌子。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'd like noodles. Let's look at the menu.",
+          "translation": "我想吃面。看看菜单吧。",
+          "next": "order",
+          "flags": {
+            "first_a": false
+          },
+          "review": {
+            "context": "现有食材有限，Maya 愿意请大家点餐。",
+            "outcome": "大家选好两大盒面，总价三十六加元，可接受请客或自愿分担九加元。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cook",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "Everyone checks the ingredients. Maya puts the pan on.",
+      "translation": "大家看过食材都说能吃，Maya 把锅架上去。",
+      "next": "cook_2"
+    },
+    {
+      "id": "cook_2",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "cook",
+      "speaker": "Sam",
+      "text": "I can do vegetables. That's mostly cutting, right?",
+      "translation": "我来弄菜！就切一切，是吧？",
+      "next": "cook_3"
+    },
+    {
+      "id": "cook_3",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "cook",
+      "speaker": "Maya",
+      "text": "Good. Smaller pieces than last time, please.",
+      "translation": "对。别切成你上回那种大块就行。",
+      "next": "cook_4"
+    },
+    {
+      "id": "cook_4",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "Three cakes occupy the space where the plates should go.",
+      "translation": "盘子该放的位置，正被三只蛋糕占着。",
+      "next": "cook_5"
+    },
+    {
+      "id": "cook_5",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "cook",
+      "speaker": "Maya",
+      "text": "Could you clear the table? Or get some music on?",
+      "translation": "能帮我把桌子腾一下吗？或者找首歌放？",
+      "next": "second_cook"
+    },
+    {
+      "id": "second_cook",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "cook",
+      "speaker": "你的选择",
+      "text": "How do you want to help in the kitchen?",
+      "translation": "你想怎么搭把手？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I'll move the cakes to make room for dinner.",
+          "translation": "我把蛋糕挪挪，给晚饭腾块地方。",
+          "next": "table",
+          "flags": {
+            "second_cook_a": true
+          },
+          "review": {
+            "context": "锅已经上火，蛋糕把桌子占了。",
+            "outcome": "蛋糕盒一角塌了。你和 Maya 合力把她做的蛋糕挪到大盘里，大家用小碗盛饭。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll choose something to cook to.",
+          "translation": "我来挑做饭的歌。",
+          "next": "music",
+          "flags": {
+            "second_cook_a": false
+          },
+          "review": {
+            "context": "菜在锅边等着，厨房还没放歌。",
+            "outcome": "Sam 提前唱到副歌，Maya 没赶上翻鸡蛋。她把焦的那块盛给了自己。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "table",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "You lift a cake box. One corner gives under your hand.",
+      "translation": "你抬起一盒蛋糕。底下有个角突然塌了。",
+      "next": "table_2"
+    },
+    {
+      "id": "table_2",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "Maya",
+      "text": "That's the one I made. Hold it level. I left the base loose.",
+      "translation": "我做的那盒！端平，底下那块板我忘了固定。",
+      "next": "table_3"
+    },
+    {
+      "id": "table_3",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "Sam puts down two hot serving bowls of rice and eggs.",
+      "translation": "Sam 端着两大碗热乎的鸡蛋饭过来，赶紧搁下。",
+      "next": "table_4"
+    },
+    {
+      "id": "table_4",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "Sam",
+      "text": "Here. The big plate. Can you slide it under the cake?",
+      "translation": "拿这个，大盘子。能垫到蛋糕底下吗？",
+      "next": "table_5"
+    },
+    {
+      "id": "table_5",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "You hold the box. Maya slides the cake onto the plate.",
+      "translation": "你端住盒子。Maya 贴着盘沿，把蛋糕慢慢推过去。",
+      "next": "table_6"
+    },
+    {
+      "id": "table_6",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "The cake gets the big plate. Dinner goes in the small bowls.",
+      "translation": "最大的盘子保住了蛋糕。大家拿小碗盛饭。",
+      "ending": true,
+      "experienceID": "TO311"
+    },
+    {
+      "id": "music",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "The song starts. Sam sings louder than the speaker.",
+      "translation": "歌一响，Sam 就跟着唱，比音箱还响。",
+      "next": "music_2"
+    },
+    {
+      "id": "music_2",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "Maya",
+      "text": "When he gets to the chorus, remind me about the eggs.",
+      "translation": "他唱到副歌叫我一声啊！我好翻鸡蛋！",
+      "next": "music_3"
+    },
+    {
+      "id": "music_3",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "He reaches the chorus early. Maya grabs the pan.",
+      "translation": "Sam 提前唱进了副歌。Maya 一把抄起锅。",
+      "next": "music_4"
+    },
+    {
+      "id": "music_4",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "Sam",
+      "text": "That's the short version.",
+      "translation": "我唱的是短版嘛！",
+      "next": "music_5"
+    },
+    {
+      "id": "music_5",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "旁白",
+      "text": "The eggs catch at one edge. Maya serves that bit herself.",
+      "translation": "鸡蛋一边有点焦。Maya 把那块盛给自己。",
+      "next": "music_6"
+    },
+    {
+      "id": "music_6",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "cook",
+      "speaker": "Maya",
+      "text": "Next song, no edits.",
+      "translation": "下一首，不准剪。",
+      "ending": true,
+      "experienceID": "TO312"
+    },
+    {
+      "id": "order",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "Two noodle boxes suit everyone. The total is C$36.",
+      "translation": "两大盒面，大家都能吃。总价三十六加元。",
+      "next": "order_2"
+    },
+    {
+      "id": "order_2",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "order",
+      "speaker": "Maya",
+      "text": "My treat. Or nine each, if you'd like to share.",
+      "translation": "我来付。想一起摊的话，一个人九加元。",
+      "next": "order_3"
+    },
+    {
+      "id": "order_3",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "order",
+      "speaker": "Sam",
+      "text": "Will there be room for cake after noodles?",
+      "translation": "吃完面还有地方装蛋糕吗？",
+      "next": "order_4"
+    },
+    {
+      "id": "order_4",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "order",
+      "speaker": "Maya",
+      "text": "Let's get something hot first. I'm starving.",
+      "translation": "先来点热的。我快饿扁了。",
+      "next": "second_order"
+    },
+    {
+      "id": "second_order",
+      "act": 0,
+      "location": "多伦多 · 三个蛋糕",
+      "shot": "order",
+      "speaker": "你的选择",
+      "text": "How would you like to answer?",
+      "translation": "你想怎么回应？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Thanks for dinner. I'll get the plates.",
+          "translation": "谢谢你请客。我去拿盘子。",
+          "next": "treat",
+          "flags": {
+            "second_order_a": true
+          },
+          "review": {
+            "context": "两盒面共三十六加元。Maya 愿意请客。",
+            "outcome": "Maya 付钱，你拿盘子。Sam 给蛋糕排名，辩到一半就来餐了。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll put in my nine dollars.",
+          "translation": "我出自己的九加元。",
+          "next": "share",
+          "flags": {
+            "second_order_a": false
+          },
+          "review": {
+            "context": "两盒面共三十六加元。愿意分担的人可以出九加元。",
+            "outcome": "你付九加元，Maya 付二十七加元。Sam 让忙了一晚的 Maya 坐下，把第一盒热面端给了她。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "treat",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "Maya pays. You bring plates to the table.",
+      "translation": "Maya 付了钱。你把盘子拿到桌上。",
+      "next": "treat_2"
+    },
+    {
+      "id": "treat_2",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "order",
+      "speaker": "Sam",
+      "text": "We should rank the cakes while we wait.",
+      "translation": "等餐时，咱们该给蛋糕排个名。",
+      "next": "treat_3"
+    },
+    {
+      "id": "treat_3",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "Sam reaches for the knife. Maya moves it behind her cup.",
+      "translation": "Sam 伸手拿刀。Maya 把刀拨到自己杯子后面。",
+      "next": "treat_4"
+    },
+    {
+      "id": "treat_4",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "order",
+      "speaker": "Maya",
+      "text": "With your eyes! Put the knife down till dinner gets here.",
+      "translation": "光看！刀放下，等饭到了再切。",
+      "next": "treat_5"
+    },
+    {
+      "id": "treat_5",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "The buzzer cuts him off halfway through his final argument.",
+      "translation": "Sam 最后一条理由还没说完，门铃就响了。",
+      "ending": true,
+      "experienceID": "TO321"
+    },
+    {
+      "id": "share",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "You pay C$9. Maya pays the other C$27 and places the order.",
+      "translation": "你付了九加元。Maya 付剩下的二十七，下单。",
+      "next": "share_2"
+    },
+    {
+      "id": "share_2",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "order",
+      "speaker": "Sam",
+      "text": "You haven't sat down since we got here.",
+      "translation": "我们来这么久，你都没坐过吧？",
+      "next": "share_3"
+    },
+    {
+      "id": "share_3",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "order",
+      "speaker": "Maya",
+      "text": "I got home ten minutes before you lot. Just let me sit.",
+      "translation": "我也就比你们早到家十分钟。让我坐会儿。",
+      "next": "share_4"
+    },
+    {
+      "id": "share_4",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "Sam pulls up a chair for her. She sinks into it.",
+      "translation": "Sam 给她拉了把椅子。Maya 一下坐了进去。",
+      "next": "share_5"
+    },
+    {
+      "id": "share_5",
+      "act": 1,
+      "location": "终于有饭吃了",
+      "shot": "order",
+      "speaker": "旁白",
+      "text": "When the food comes, he opens the first carton beside her.",
+      "translation": "面送到了，Sam 在她旁边掀开第一盒。",
+      "ending": true,
+      "experienceID": "TO322"
+    }
+  ]
+}

@@ -129,6 +129,7 @@ describe.runIf(runIntegrationTests)("cross-device synchronization", () => {
           commandId,
           payload: {
             displayName: "第二台设备",
+            learningGoals: ["school", "exam"],
             expectedVersion: bootstrap.state.profile.version,
           },
           type: "profile.update",
@@ -197,6 +198,30 @@ describe.runIf(runIntegrationTests)("cross-device synchronization", () => {
     expect(refreshed.json<{ state: UserSnapshot }>().state.profile.displayName).toBe(
       "第二台设备",
     );
+
+    expect(
+      refreshed.json<{ state: UserSnapshot }>().state.profile.learningGoals,
+    ).toEqual(["school", "exam"]);
+    expect(refreshed.json<{ state: UserSnapshot }>().state.profile.learningGoal).toBe(
+      "school",
+    );
+    for (const learningGoals of [[], ["travel", "travel"], ["invalid"]]) {
+      const invalid = await app.inject({
+        headers: headers(),
+        method: "POST",
+        url: "/v1/sync/commands",
+        payload: {
+          commands: [
+            {
+              commandId: newEntityId(),
+              type: "profile.update",
+              payload: { expectedVersion: 1, learningGoals },
+            },
+          ],
+        },
+      });
+      expect(invalid.statusCode).toBe(400);
+    }
 
     const tamperedCursor = `${page.nextCursor.slice(0, -1)}x`;
     const tampered = await app.inject({

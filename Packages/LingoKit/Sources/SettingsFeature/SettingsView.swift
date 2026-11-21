@@ -27,6 +27,10 @@ public struct SettingsView: View {
     private let onOpenPhotoCredits: (@MainActor () -> Void)?
     private let onOpenTutorial: (@MainActor () -> Void)?
     private let onOpenIntroduction: (@MainActor () -> Void)?
+    private let onTestInitialPlacement: (@MainActor () -> Void)?
+    private let onTestFirstLoginFlow: (@MainActor () -> Void)?
+    private let onTestAppointments: (@MainActor () -> Void)?
+    private let onOpenLearningTrial: (@MainActor () -> Void)?
     @State private var testState: TestState = .idle
     @State private var profile: UserProfileDTO?
     @State private var voiceReports: [VoiceReport] = []
@@ -50,7 +54,11 @@ public struct SettingsView: View {
         onProactiveMessagesChanged: @escaping @MainActor (Bool) -> Void = { _ in },
         onOpenPhotoCredits: (@MainActor () -> Void)? = nil,
         onOpenIntroduction: (@MainActor () -> Void)? = nil,
-        onOpenTutorial: (@MainActor () -> Void)? = nil
+        onOpenTutorial: (@MainActor () -> Void)? = nil,
+        onTestInitialPlacement: (@MainActor () -> Void)? = nil,
+        onTestFirstLoginFlow: (@MainActor () -> Void)? = nil,
+        onTestAppointments: (@MainActor () -> Void)? = nil,
+        onOpenLearningTrial: (@MainActor () -> Void)? = nil
     ) {
         _proactiveMessagesEnabled = AppStorage(
             wrappedValue: true,
@@ -67,6 +75,10 @@ public struct SettingsView: View {
         self.onOpenPhotoCredits = onOpenPhotoCredits
         self.onOpenIntroduction = onOpenIntroduction
         self.onOpenTutorial = onOpenTutorial
+        self.onTestInitialPlacement = onTestInitialPlacement
+        self.onTestFirstLoginFlow = onTestFirstLoginFlow
+        self.onTestAppointments = onTestAppointments
+        self.onOpenLearningTrial = onOpenLearningTrial
     }
 
     public var body: some View {
@@ -86,6 +98,42 @@ public struct SettingsView: View {
                         paperSectionDivider
                         servicePanel
                         paperSectionDivider
+                        if let onOpenLearningTrial {
+                            Button(action: onOpenLearningTrial) {
+                                settingsLinkLabel("学习实测 · 切换档位做题", systemImage: "book.pages")
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, DSSpacing.lg)
+                            .accessibilityIdentifier("me.learning-trial")
+                            paperSectionDivider
+                        }
+                        if let onTestInitialPlacement {
+                            Button(action: onTestInitialPlacement) {
+                                settingsLinkLabel("测试初次水平测评", systemImage: "checklist")
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, DSSpacing.lg)
+                            .accessibilityIdentifier("settings.test-initial-placement")
+                            paperSectionDivider
+                        }
+                        if let onTestFirstLoginFlow {
+                            Button(action: onTestFirstLoginFlow) {
+                                settingsLinkLabel("测试首次登录完整流程", systemImage: "point.topleft.down.to.point.bottomright.curvepath")
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, DSSpacing.lg)
+                            .accessibilityIdentifier("settings.test-first-login")
+                            paperSectionDivider
+                        }
+                        if let onTestAppointments {
+                            Button(action: onTestAppointments) {
+                                settingsLinkLabel("测试原生赴约", systemImage: "calendar.badge.checkmark")
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, DSSpacing.lg)
+                            .accessibilityIdentifier("settings.test-appointments")
+                            paperSectionDivider
+                        }
                         if let onOpenTutorial {
                             Button(action: onOpenTutorial) {
                                 settingsLinkLabel("上手练习", systemImage: "hand.tap")

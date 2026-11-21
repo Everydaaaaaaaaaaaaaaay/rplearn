@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-31",
+  "scope": [
+    "Voice messages",
+    "Chinese voice input",
+    "Realtime voice input and barge-in"
+  ],
+  "changes": [
+    "Ordinary recording uses the voiceChat audio-session mode, Bluetooth HFP support and system voice processing, with acoustic filtering retained if processing is unavailable.",
+    "A shared 20 ms acoustic detector filters low-frequency rumble and high-crossing-rate hiss, adapts to background energy and requires 120 ms of valid activity in a bounded confirmation window.",
+    "A bounded copied onset buffer retains approximately 280 ms of pre-roll; noise-only buffers are not forwarded to Apple Speech.",
+    "Recognition partials and finals require acoustic speech evidence before reaching the chat session.",
+    "Quiet but confirmed speech keeps the endpoint alive, independent of the old waveform-display threshold.",
+    "Recognition turn IDs and recording generation IDs reject stale callbacks; old finalization timeouts cannot complete a later recording."
+  ],
+  "parameters": {
+    "analysisFrameMs": 20,
+    "confirmationMs": 120,
+    "candidateWindowMs": 220,
+    "maximumCandidateGapMs": 40,
+    "releaseMs": 280,
+    "preRollMs": 280,
+    "speechBandHz": [
+      120,
+      3800
+    ]
+  },
+  "verification": {
+    "hostedTests": {
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "log": "build/speech-noise-final-verification.log",
+      "result": "build/DerivedData/VerificationResults/20261030T170705Z-49786.xcresult",
+      "tree": "build/speech-noise-final-tests-tree.json",
+      "suites": [
+        "SpeechActivityDetectorTests",
+        "VoiceRecorderTests",
+        "AudioLevelMeterTests",
+        "RealtimeVoiceSessionTests"
+      ],
+      "covers": [
+        "Synthetic silence, 55 Hz vibration and deterministic broadband noise at 8 / 16 / 44.1 / 48 kHz",
+        "Repeated brief impacts",
+        "Quiet speech-shaped harmonic signals over 256 / 1024 / 4096 sample taps",
+        "Brief speech-shaped answers",
+        "Copied onset preservation and per-turn evidence reset",
+        "Old recording callbacks ignored",
+        "Confirmed quiet speech defers end-of-turn",
+        "Existing interruption, mute, finalization and persistence behavior"
+      ]
+    },
+    "architecture": "build/speech-noise-architecture.log: passed",
+    "diffCheck": "passed",
+    "preview": {
+      "command": "Scripts/preview.sh preview messages",
+      "installed": true,
+      "simulator": "659893A7-0822-43F4-8DA1-4A92E9C78814",
+      "log": "build/speech-noise-preview.log",
+      "screenshot": "build/speech-noise-preview.png",
+      "computerUse": "Device Hub tree was accessible, but capture was white; native simctl screenshot confirmed the app instead."
+    }
+  },
+  "limits": [
+    "These are acoustic gate and orchestration regression tests using generated signals, not a measured microphone false-positive rate.",
+    "Real-device acoustic validation with room noise, short/quiet utterances, speaker playback and Bluetooth remains pending; nearby background speech or music is not guaranteed to be distinguished from the user."
+  ],
+  "deployment": "iOS code only; latest Debug build installed in simulator; no backend deployment or App Store release."
+}

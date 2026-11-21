@@ -27,15 +27,20 @@ final class HomeCitySceneTests: XCTestCase {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_WELCOME_CAPTURE"] = "1"
+        app.launchEnvironment["UI_TEST_WORLD_GATEWAY"] = "1"
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
         app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
         app.launchEnvironment["UI_TEST_TAB"] = "home"
         app.launchEnvironment["UI_TEST_REGION"] = id
+        app.launchEnvironment["UI_TEST_CITY_TAB_REGION"] = id
+        app.launchEnvironment["UI_TEST_ACTIVITY_NAMESPACE"] = UUID().uuidString
         app.launch()
         defer { app.terminate() }
         let map = app.buttons["世界地图"]
         XCTAssertTrue(map.waitForExistence(timeout: 15))
         XCTAssertTrue(map.isHittable)
-        XCTAssertTrue(app.buttons["城市活动"].isHittable)
+        XCTAssertTrue(app.buttons["home.activities"].isHittable)
         let story = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "剧情，")).firstMatch
         XCTAssertTrue(story.isHittable)
         let location = app.descendants(matching: .any).matching(
@@ -83,7 +88,7 @@ final class HomeCitySceneTests: XCTestCase {
         XCTAssertTrue(app.navigationBars["剧情"].waitForExistence(timeout: 4))
         app.navigationBars.buttons.firstMatch.tap()
         XCTAssertTrue(map.waitForExistence(timeout: 4))
-        openEntry(app.buttons["城市活动"])
+        openEntry(app.buttons["home.activities"])
         let activitiesBack = app.buttons["activities.back"]
         XCTAssertTrue(activitiesBack.waitForExistence(timeout: 4))
         activitiesBack.tap()

@@ -196,6 +196,10 @@ describe("OpenRouter client", () => {
       "proactive_message",
       "coach_review",
       "memory_summary",
+      "appointment_detection",
+      "appointment_story",
+      "appointment_story_retry",
+      "appointment_review",
     ]) {
       await client.complete({
         ...request(),

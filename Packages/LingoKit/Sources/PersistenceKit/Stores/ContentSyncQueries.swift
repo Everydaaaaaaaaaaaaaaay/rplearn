@@ -154,7 +154,8 @@ extension ContentSyncStore {
             parentID: entity.parentID,
             payloadJSON: entity.payloadJSON,
             resourceID: entity.resourceID,
-            resourceType: type
+            resourceType: type,
+            relationshipReplayInputs: try RelationshipReplayInput.decodeList(entity.relationshipReplayJSON)
         )
     }
 

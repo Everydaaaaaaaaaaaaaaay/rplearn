@@ -26,7 +26,10 @@ struct SpeechDeliveryTests {
             let untagged = directed.synthesisSegments.map(\.text).joined(separator: " ")
                 .replacingOccurrences(of: "<breath> ", with: "")
             #expect(untagged == node.text)
-            if node.speech == nil { #expect(directed.delivery == nil) }
+            if node.speech == nil {
+                #expect(directed.delivery?.speedMultiplier == (StoryVoiceCasting.profile(speaker: node.speaker)?.rate ?? 1))
+                #expect(directed.delivery?.expression == nil)
+            }
         }
         let breath = LondonEpisodeNarration.request(for: try #require(story.node("two_ways")))
         #expect(breath.voiceHint?.supertonicVoice == .m5)
@@ -36,24 +39,59 @@ struct SpeechDeliveryTests {
         #expect(narrator.delivery?.trailingPause == 0.55)
     }
 
-    @Test("新故事所有英文配音随包，原文、选角与真实音频能解码")
+    @Test("全部正式版本逐角色选声，Ruby 的节奏不会退回旁白")
+    func allStoryCasting() throws {
+        let url = try #require(Bundle.main.url(forResource: "departures_catalog", withExtension: "json"))
+        let catalog = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any])
+        let chapters = try #require(catalog["chapters"] as? [[String: String]])
+        let editions = try #require(catalog["currentEditions"] as? [String: String])
+        let resources = chapters.compactMap { $0["id"] } + Array(editions.values)
+        #expect(StoryVoiceCasting.profiles.count == 26)
+        for resource in resources {
+            let episodeURL = try #require(Bundle.main.url(forResource: resource, withExtension: "json"))
+            let story = try StoryEpisode.load(data: Data(contentsOf: episodeURL))
+            for node in story.nodes where node.choices == nil && node.speaker != "你" {
+                let profile = try #require(StoryVoiceCasting.profile(speaker: node.speaker))
+                let request = LondonEpisodeNarration.request(for: node)
+                #expect(Supertonic3VoiceCatalog.profile(for: request).voiceID == profile.voice.rawValue)
+                #expect(request.language == profile.language)
+                if !StoryVoiceCasting.isNarrator(node.speaker) { #expect(profile.voice != .f5) }
+                if node.speaker == "Ruby" {
+                    #expect(request.voiceHint?.supertonicVoice == .f3)
+                    #expect((request.delivery?.speedMultiplier ?? 1) > 1)
+                    if node.ending != true { #expect((request.delivery?.trailingPause ?? 0) <= 0.24) }
+                }
+                if node.speaker == "Oliver" { #expect(request.voiceHint?.supertonicVoice == .m5) }
+            }
+        }
+    }
+
+    @Test("可用预制音频能解码，过时选角使用当前角色请求")
     @MainActor func preparedCollection() throws {
         let library = try #require(StoryVoiceLibrary.bundled)
         let catalogURL = try #require(Bundle.main.url(forResource: "departures_catalog", withExtension: "json"))
         let file = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: catalogURL)) as? [String: Any])
         let chapters = try #require(file["chapters"] as? [[String: String]])
+        var preparedCount = 0
+        var fallbackCount = 0
         for chapter in chapters {
             let resource = try #require(chapter["id"])
             let url = try #require(Bundle.main.url(forResource: resource, withExtension: "json"))
             let episode = try StoryEpisode.load(data: Data(contentsOf: url))
             for node in episode.nodes where node.choices == nil && node.speaker != "你" {
-                let clip = try #require(library.clip(story: episode.id, node: node.id, speaker: node.speaker, text: node.text))
-                let decoded = try AVAudioPlayer(contentsOf: clip.url)
-                #expect(abs(decoded.duration - clip.seconds) < 0.1)
+                let request = LondonEpisodeNarration.request(for: node)
+                if let clip = library.clip(story: episode.id, node: node.id, speaker: node.speaker,
+                                           text: node.text, matching: request) {
+                    preparedCount += 1
+                    let decoded = try AVAudioPlayer(contentsOf: clip.url)
+                    #expect(abs(decoded.duration - clip.seconds) < 0.1)
+                } else { fallbackCount += 1 }
                 #expect(library.request(story: episode.id, node: node.id, speaker: node.speaker, text: node.text)?.voiceHint?.supertonicVoice
-                        == LondonEpisodeNarration.request(for: node).voiceHint?.supertonicVoice)
+                        == request.voiceHint?.supertonicVoice)
             }
         }
+        #expect(preparedCount > 0)
+        #expect(fallbackCount > 0)
     }
 
     @Test("精确停顿只切完整句子，错误锚点不吞字")

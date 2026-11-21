@@ -1,7 +1,7 @@
 import Foundation
 import PersistenceKit
 
-struct ConversationListRow: Identifiable {
+struct ConversationListRow: Identifiable, Equatable {
     let character: CharacterDTO
     let friendOrder: Int
     let summary: ConversationSummaryDTO?
@@ -39,6 +39,24 @@ enum ConversationListProjection {
             )
         }
         rows.append(contentsOf: placeholders)
-        return rows
+        return sorted(rows)
+    }
+
+    static func sorted(_ rows: [ConversationListRow]) -> [ConversationListRow] {
+        rows.sorted {
+            let lhsPinned = $0.summary?.isPinned ?? false
+            let rhsPinned = $1.summary?.isPinned ?? false
+            if lhsPinned != rhsPinned { return lhsPinned }
+            switch ($0.summary, $1.summary) {
+            case (.some(let lhs), .some(let rhs)):
+                return lhs.lastMessageAt > rhs.lastMessageAt
+            case (.some, .none):
+                return true
+            case (.none, .some):
+                return false
+            case (.none, .none):
+                return $0.friendOrder < $1.friendOrder
+            }
+        }
     }
 }

@@ -16,6 +16,7 @@ const profileRow: ProfileRow = {
   has_completed_onboarding: false,
   has_completed_profile_setup: false,
   learning_goal: "dailyConversation",
+  learning_goals: null,
   placement_completed_at: null,
   placement_score: null,
   proficiency_source: "selfReported",
@@ -29,6 +30,16 @@ const profileRow: ProfileRow = {
 const legacyProfileSchema = z.object({ quizGloballyEnabled: z.boolean() });
 
 describe("旧版客户端用户资料响应兼容", () => {
+  it("projects a legacy selection and returns every new selection", () => {
+    expect(mapProfile(profileRow, []).learningGoals).toEqual(["dailyConversation"]);
+    expect(
+      mapProfile(
+        { ...profileRow, learning_goal: "work", learning_goals: ["work", "travel"] },
+        [],
+      ),
+    ).toMatchObject({ learningGoal: "work", learningGoals: ["work", "travel"] });
+  });
+
   it.each([false, true])("建档状态为 %s 时仍可解码旅程快照", (completed) => {
     const profile = mapProfile(
       {

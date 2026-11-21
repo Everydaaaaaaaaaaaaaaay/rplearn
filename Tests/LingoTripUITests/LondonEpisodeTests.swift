@@ -49,6 +49,7 @@ final class LondonEpisodeTests: XCTestCase {
     }
 
     func testReadingRouteAndResume() {
+        app.launchEnvironment["UI_TEST_PERSISTENCE_NAMESPACE"] = UUID().uuidString
         app.launch()
         XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
         XCTAssertGreaterThan(app.buttons["episode.history"].frame.minY, 50)
@@ -63,6 +64,8 @@ final class LondonEpisodeTests: XCTestCase {
         advanceUntil("episode.choice.private")
         screenshot("london-03-choice")
         app.buttons["episode.choice.private"].tap()
+        // The next page is shown only after the real checkpoint write completes.
+        XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 5))
 
         app.terminate()
         app.launchEnvironment["UI_TEST_EPISODE_FRESH"] = "0"
@@ -97,7 +100,7 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertTrue(app.buttons["继续阅读"].waitForExistence(timeout: 3))
         app.buttons["继续阅读"].tap()
         app.buttons["episode.finish"].tap()
-        XCTAssertFalse(app.buttons["episode.close"].waitForExistence(timeout: 1))
+        XCTAssertTrue(app.buttons["episode.close"].waitForNonExistence(timeout: 5))
     }
 
     func testLeadingEdgeReturnsAndHistoryPauses() {
@@ -172,6 +175,10 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertFalse(app.staticTexts["十五城故事集"].exists)
         XCTAssertFalse(app.staticTexts["前六篇默认开放；每累计一张机票再开放三篇。机票使用后不会回锁，已开放剧情可在当前位置直接开始。"].exists)
         screenshot("story-city-theater-cover-flow")
+        app.buttons["story.chapter.departures_city_london_v1"].tap()
+        XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
+        app.buttons["episode.close"].tap()
+        XCTAssertTrue(app.buttons["story.chapter.departures_city_london_v1"].waitForExistence(timeout: 5))
         app.swipeLeft()
         let secondCityCounter = app.staticTexts.matching(
             NSPredicate(format: "label CONTAINS %@", "第 2 场")
@@ -191,6 +198,43 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertTrue(london.waitForExistence(timeout: 10))
         london.tap()
         XCTAssertTrue(app.buttons["episode.next"].waitForExistence(timeout: 15))
+        app.buttons["episode.close"].tap()
+        XCTAssertTrue(london.waitForExistence(timeout: 5))
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(app.buttons["story.mainline"].waitForExistence(timeout: 5))
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(story.waitForExistence(timeout: 5))
+        story.tap()
+        XCTAssertTrue(app.buttons["story.mainline"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["story.cities"].isHittable)
+    }
+
+    func testCurrentLondonCharacterArtwork() {
+        app.launchEnvironment["UI_TEST_DEPARTURE_RESOURCE"] = "departures_london_v2"
+        app.launchEnvironment["UI_TEST_PERSISTENCE_NAMESPACE"] = UUID().uuidString
+        app.launch()
+        let next = app.buttons["episode.next"]
+        XCTAssertTrue(next.waitForExistence(timeout: 15))
+        XCTAssertTrue(app.staticTexts["雨刚下过，Oliver 的书店门外，路面还亮着。"].exists)
+        next.tap()
+        XCTAssertTrue(app.staticTexts["你找到了。我差点就把那套鸽子路线发给你。"].waitForExistence(timeout: 5))
+        screenshot("london-current-exterior-oliver")
+        let manuscript = app.staticTexts["我写的。原本想今晚试着念念。"]
+        for _ in 0..<10 where !manuscript.exists { next.tap() }
+        XCTAssertTrue(manuscript.waitForExistence(timeout: 5))
+        screenshot("london-current-manuscript-oliver")
+    }
+
+    func testNonStarterStoryLoadsArtworkAndAdvances() {
+        app.launchEnvironment["UI_TEST_DEPARTURE_RESOURCE"] = "departures_city_capetown_v2"
+        app.launchEnvironment["UI_TEST_PERSISTENCE_NAMESPACE"] = UUID().uuidString
+        app.launch()
+        let next = app.buttons["episode.next"]
+        XCTAssertTrue(next.waitForExistence(timeout: 20))
+        XCTAssertTrue(app.staticTexts["Amina 摊上多了三个箱子，把她的画挡了个严实。"].exists)
+        next.tap()
+        XCTAssertTrue(app.staticTexts["他说借个桌角。你还看得见桌角吗？"].waitForExistence(timeout: 10))
+        screenshot("downloaded-capetown-artwork")
     }
 
     func testDepartureCollectionArtworkAndChoices() {

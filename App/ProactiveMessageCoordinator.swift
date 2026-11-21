@@ -46,6 +46,7 @@ final class ProactiveMessageCoordinator {
 
     private nonisolated static let notificationPrefix = "lingotrip.proactive."
     private static let pendingKeyPrefix = "lingotrip.proactive.pending."
+    private static let generationRetryDelay: TimeInterval = 5 * 60
     private let accountID: UUID
     private let rosterStore: RosterStore
     private let chatStore: ChatStore
@@ -177,7 +178,7 @@ final class ProactiveMessageCoordinator {
                    existing.text,
                    for: .introduction
                ),
-               let replacement = await messageService.generate(
+               let replacement = await generateMessage(
                    for: character,
                    learner: learner,
                    occasion: .introduction
@@ -194,7 +195,7 @@ final class ProactiveMessageCoordinator {
             guard (try? await chatStore.needsInitialMessage(characterID: character.id)) == true else {
                 continue
             }
-            guard let text = await messageService.generate(
+            guard let text = await generateMessage(
                 for: character,
                 learner: learner,
                 occasion: .introduction,
@@ -326,7 +327,7 @@ final class ProactiveMessageCoordinator {
             guard let selection else { break }
             let character = selection.character
             let recentMessages = selection.messages
-            guard let text = await messageService.generate(
+            guard let text = await generateMessage(
                 for: character,
                 learner: learner,
                 occasion: .checkIn,
@@ -347,6 +348,33 @@ final class ProactiveMessageCoordinator {
             )
         }
         return pending
+    }
+
+    private func generateMessage(
+        for character: CharacterDTO,
+        learner: LearnerContext,
+        occasion: ProactiveMessageService.Occasion,
+        recentMessages: [MessageDTO] = [],
+        scheduledFor deliveryDate: Date = .now
+    ) async -> String? {
+        // All refresh triggers share the same quota as foreground chat. Persist
+        // the cooldown so swapping accounts or relaunching cannot repeat a failure.
+        let retryKey = "\(Self.pendingKeyPrefix)retry-after.\(accountID.uuidString.lowercased())"
+        guard scope != "inactive", !Task.isCancelled,
+              defaults.double(forKey: retryKey) <= Date.now.timeIntervalSince1970
+        else { return nil }
+        let text = await messageService.generate(
+            for: character,
+            learner: learner,
+            occasion: occasion,
+            recentMessages: recentMessages,
+            scheduledFor: deliveryDate
+        )
+        guard !Task.isCancelled else { return nil }
+        if text == nil {
+            defaults.set(Date.now.timeIntervalSince1970 + Self.generationRetryDelay, forKey: retryKey)
+        }
+        return text
     }
 
     private func currentLearnerContext() async -> LearnerContext {

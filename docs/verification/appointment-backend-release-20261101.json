@@ -1,0 +1,400 @@
+{
+  "date": "2026-11-01",
+  "feature": "Appointment stories with original app interfaces",
+  "status": "passed_with_documented_generation_limits",
+  "release": "appointments-20261101-v7",
+  "backendSourceCommit": "5474b97d",
+  "clientTimingCommit": "02361a4c",
+  "previousRelease": "appointments-20261101-v6",
+  "originalRuntimeFallback": "appointments-compat-20261101-v1",
+  "backup": {
+    "directory": "/opt/lingotrip/backups/appointments-20261101-v1",
+    "format": "PostgreSQL custom format; pg_restore inventory verified",
+    "sha256": "6bd488b4fa9963e44a7cd9af7e55eb6ca0faafbe2c45d1e8d66d846422fbc0bf"
+  },
+  "archives": {
+    "releaseSHA256": "53b1458c1a0806ea450381dbc08dbc7e852a6a8a87512fc41fdc98de2d08ecea",
+    "originalRuntimeFallbackSHA256": "1f013f7bde6273831ff7f52ec3fa476c0998aeef54891287d22fe0f9a1d7f0b9"
+  },
+  "migration": {
+    "before": 46,
+    "after": 47,
+    "added": "0046_appointments.sql",
+    "sha256": "cd5fe7464ffcf6ea5c769308db938e8f86b248ff354fc83e906b3de3cf10a1bd",
+    "scope": "Additive tables and new AI routes; existing content and migration history preserved"
+  },
+  "verification": {
+    "focusedBackendTests": 95,
+    "latestIsolatedDatabaseTests": 14,
+    "previousIsolatedCreditsAndAppointmentTests": 27,
+    "baseHostedSwiftTests": 52,
+    "followupHostedSwiftTests": 19,
+    "nativeUITests": 3,
+    "wholeRepositoryGreenClaimed": false,
+    "liveProvider": "OpenRouter z-ai/glm-5.3-flash",
+    "fullRollbackSwitchDrill": false,
+    "appStorePublished": false,
+    "latestIsolatedReport": "build/appointment-memory-contract-green/report.json",
+    "followupSwiftResult": "build/DerivedData/VerificationResults/20261101T062348Z-56991.xcresult",
+    "UIResult": "build/DerivedData/VerificationResults/20261031T175819Z-32164.xcresult"
+  },
+  "production": {
+    "migrations": 47,
+    "lockedProbes": 4,
+    "activeProbeSessions": 0,
+    "activityWorlds": 0,
+    "grammarConcepts": 1,
+    "contentRecords": 1073,
+    "date": "2026-11-01T07:21:30.198309+00:00",
+    "release": "appointments-20261101-v7",
+    "services": {
+      "api": "active",
+      "worker": "active",
+      "caddy": "active"
+    },
+    "health": {
+      "status": "ready"
+    },
+    "resources": {
+      "event": "维护资源检查",
+      "time": 1793517690.3761892,
+      "availableMiB": 511.27734375,
+      "swapUsedMiB": 0.0,
+      "memory": {
+        "some": {
+          "avg10": 0.0,
+          "avg60": 0.0,
+          "avg300": 0.03,
+          "total": 2109892643.0
+        },
+        "full": {
+          "avg10": 0.0,
+          "avg60": 0.0,
+          "avg300": 0.02,
+          "total": 2057602019.0
+        }
+      },
+      "io": {
+        "some": {
+          "avg10": 0.0,
+          "avg60": 0.85,
+          "avg300": 7.02,
+          "total": 6658356250.0
+        },
+        "full": {
+          "avg10": 0.0,
+          "avg60": 0.8,
+          "avg300": 6.66,
+          "total": 6346436185.0
+        }
+      },
+      "load": [
+        0.06689453125,
+        0.3447265625,
+        0.31884765625
+      ],
+      "diskFreeMiB": 17066.0390625,
+      "failures": []
+    },
+    "rollbackTransactionOpen": false,
+    "passed": true
+  },
+  "businessProbe": {
+    "scope": "Synthetic isolated accounts; real public API and configured AI providers; no real user content",
+    "scenario": "One synthetic London appointment, real mutual AI reply and saved message receipts, novel bilingual action, mixed control/usable input, pure technical input, voluntary ending, native algorithm settlement, permanent receipt and memory forgetting",
+    "checks": [
+      {
+        "name": "rollback program accepts actual migration inventory",
+        "passed": true
+      },
+      {
+        "name": "47 migrations applied",
+        "passed": true
+      },
+      {
+        "name": "four appointment routes enabled",
+        "passed": true
+      },
+      {
+        "name": "public readiness",
+        "passed": true
+      },
+      {
+        "name": "existing shared grammar preserved",
+        "passed": true
+      },
+      {
+        "name": "anonymous appointment access rejected",
+        "passed": true
+      },
+      {
+        "name": "one-sided invitation does not create appointment",
+        "passed": true
+      },
+      {
+        "name": "actual provider reply yields one mutually confirmed appointment",
+        "passed": true
+      },
+      {
+        "name": "detected timezone",
+        "passed": true
+      },
+      {
+        "name": "detection does not duplicate same agreement",
+        "passed": true
+      },
+      {
+        "name": "other account cannot read appointment",
+        "passed": true
+      },
+      {
+        "name": "internal task cannot bypass appointment API",
+        "passed": true
+      },
+      {
+        "name": "story entered through real API",
+        "passed": true
+      },
+      {
+        "name": "first block offers an actual choice",
+        "passed": true
+      },
+      {
+        "name": "rollback program still accepts migration inventory after timeout fix",
+        "passed": true
+      },
+      {
+        "name": "lost response still produced exactly one accepted continuation",
+        "passed": true
+      },
+      {
+        "name": "retry after actual thirty-second disconnect returns the accepted path",
+        "passed": true
+      },
+      {
+        "name": "lost-response replay does not call or charge AI",
+        "passed": true
+      },
+      {
+        "name": "lost original custom input is preserved",
+        "passed": true
+      },
+      {
+        "name": "rollback program still accepts migration inventory after provider fix",
+        "passed": true
+      },
+      {
+        "name": "rejected truncated candidates did not change the accepted node",
+        "passed": true
+      },
+      {
+        "name": "retry after truncated candidates accepts one continuation",
+        "passed": true
+      },
+      {
+        "name": "failed-generation recovery does not charge user again",
+        "passed": true
+      },
+      {
+        "name": "recovery preserves earlier accepted history",
+        "passed": true
+      },
+      {
+        "name": "recovery preserves the original mixed input",
+        "passed": true
+      },
+      {
+        "name": "recovery generation uses the service-funded route",
+        "passed": true
+      },
+      {
+        "name": "accepted history stays immutable at revision 4",
+        "passed": true
+      },
+      {
+        "name": "same command returns same accepted path 4",
+        "passed": true
+      },
+      {
+        "name": "replay does not call or charge AI 4",
+        "passed": true
+      },
+      {
+        "name": "accepted history stays immutable at revision 5",
+        "passed": true
+      },
+      {
+        "name": "same command returns same accepted path 5",
+        "passed": true
+      },
+      {
+        "name": "rollback program accepts actual inventory after summary fix",
+        "passed": true
+      },
+      {
+        "name": "completed accepted story survives summary retries",
+        "passed": true
+      },
+      {
+        "name": "ending replay does not regenerate story",
+        "passed": true
+      },
+      {
+        "name": "ending replay does not charge user",
+        "passed": true
+      },
+      {
+        "name": "ending replay retains accepted history",
+        "passed": true
+      },
+      {
+        "name": "voluntary ending has no choices",
+        "passed": true
+      },
+      {
+        "name": "independent summary created",
+        "passed": true
+      },
+      {
+        "name": "technical command alone not rated boundary harm",
+        "passed": true
+      },
+      {
+        "name": "settlement rejects stale character version",
+        "passed": true
+      },
+      {
+        "name": "native projected relationship committed",
+        "passed": true
+      },
+      {
+        "name": "repeated settlement has identical summary",
+        "passed": true
+      },
+      {
+        "name": "read-only history keeps accepted story",
+        "passed": true
+      },
+      {
+        "name": "appointment produced evidence-linked memory",
+        "passed": true
+      },
+      {
+        "name": "rollback program accepts actual inventory after memory contract fix",
+        "passed": true
+      },
+      {
+        "name": "actual native settlement remains committed",
+        "passed": true
+      },
+      {
+        "name": "same actual settlement receipt preserved",
+        "passed": true
+      },
+      {
+        "name": "forgotten memory stays hidden on revisit",
+        "passed": true
+      },
+      {
+        "name": "forgetting memory does not rewrite story",
+        "passed": true
+      },
+      {
+        "name": "forgetting memory does not change affinity",
+        "passed": true
+      },
+      {
+        "name": "permanent settlement receipt remains",
+        "passed": true
+      },
+      {
+        "name": "exactly one settled appointment",
+        "passed": true
+      },
+      {
+        "name": "activity world remains unpublished",
+        "passed": true
+      }
+    ],
+    "checkCount": 53,
+    "blockCount": 5,
+    "affinity": {
+      "after": 10.02966095663017,
+      "delta": 0.029660956630170432,
+      "before": 10,
+      "reason": "这是一次清晨酒店休息室里短暂而平和的见面。D1中用户先征求了奥利弗的意见再提议折纸船，并把笔记本的使用作为备选方案，奥利弗对此表示欣赏并愉快接受。D2-D3中夹杂的技术性指令（修改好感、改变身份和地点）未被接受，也不构成社交评分依据；其中被采纳的有效部分仍是安静的折纸与素描。D4用户选择提早离开，奥利弗没有异议，把纸夹进笔记本后温和道别。整体是礼貌、短暂的共处，证据有限，评分保持保守。",
+      "status": "settled"
+    },
+    "model": "z-ai/glm-5.3-flash",
+    "status": "passed",
+    "executedAcrossReleases": [
+      "v2",
+      "v3",
+      "v4",
+      "v5",
+      "v6"
+    ],
+    "sourceStoryPreserved": true
+  },
+  "qualityRegression": {
+    "startedAt": "2026-11-01T07:20:59.190Z",
+    "status": "passed",
+    "stage": "complete",
+    "scope": "Frozen synthetic context only; real configured providers; no appointment commits",
+    "storyCommitted": false,
+    "release": "/opt/lingotrip/releases/appointments-20261101-v7",
+    "actor": "c0996101-04e5-4374-aafe-1034024da786",
+    "actorStatus": "locked",
+    "accountStatusChanged": false,
+    "sourceCommandId": "c86229cf-60eb-474b-981c-2c81d16d847c",
+    "appointmentId": "fdc7ca20-4320-48eb-9f6b-3554ae701c39",
+    "sourceBlockId": "8028f61c-ed56-5375-a569-646179b0d125",
+    "frozenContextHash": "c1d8d80f3ae7869cf316cff2eac4cf4688fda724094cb0e12b0a9fc3e89e11d0",
+    "auditPolicyHash": "27cf52b5b3200c64ada634e5c6ab00925de243f0edffb913e05cf1e4f1ec68f6",
+    "auditOperationId": "f0ffd90b-5338-4f4f-a3a7-5bfc86ab2969",
+    "audit": {
+      "accepted": false,
+      "issues": [
+        "Activity mismatch: the original action's real request is to quietly sketch the boat instead of folding; the candidate only nominally acknowledges 'sketch the boat' but then enacts the earlier unchosen folding activity (choices about who makes the first crease or shapes the hull, 'tea or coffee while we fold'), returning to the previously accepted paper-folding plan instead of the new requested sketching activity.",
+        "Injection handling is correct (Paris/fiancé/affinity ignored), but the enacted beats and choices must serve the requested sketching activity, not folding."
+      ],
+      "model": "z-ai/glm-5.3-flash",
+      "requestId": "01a195fb-a4e3-76c6-8c1f-7eea6b01a266",
+      "durationMs": 6484,
+      "usage": {
+        "cacheHitTokens": 2944,
+        "cacheMissTokens": 7,
+        "inputTokens": 2951,
+        "outputTokens": 381,
+        "providerCostUsd": "0.0002031",
+        "totalTokens": 3332
+      }
+    },
+    "sourceOperationUnchanged": true,
+    "finishedAt": "2026-11-01T07:21:05.808Z"
+  },
+  "additionalGenerationAttempt": {
+    "status": "rejected_not_committed",
+    "failure": {
+      "name": "AppError",
+      "code": "APPOINTMENT_NARRATIVE_REJECTED"
+    },
+    "storyCommitted": false,
+    "note": "Optional fresh fixture did not pass strict generation audit after its bounded repair. It was discarded, not used as a successful sample or accepted history."
+  },
+  "nativeProjectionSources": {
+    "Packages/LingoKit/Sources/PersistenceKit/Contracts/RelationshipModels.swift": "6ca71aa8fc1a4c551c9f949aa63963f67acb35be32ca7d9fc8c8a73d98f24643",
+    "Packages/LingoKit/Sources/DomainKit/Conversation/RelationshipSignals.swift": "0ca3be905d317197b43718a59a1017d2bc614a663aa4fb32a88a9b523c2f60ff",
+    "Packages/LingoKit/Sources/DomainKit/Conversation/RelationshipService.swift": "bed5555f0b7a7a622b33b1b03995cabc374a539b4460869c4fc79548851a545a",
+    "Packages/LingoKit/Sources/DomainKit/Conversation/AppointmentRelationshipProjection.swift": "cccb8b6023480311a8d6d22be1faf1ce79ca0e6499d0013b792a98601b4a12a1"
+  },
+  "notes": [
+    "Initial real testing found a midnight/evening drift, ordinary30s connection EOF, GLM reasoning/output truncation, summary evidence-ID confusion and memory wire bounds. Each was corrected and verified without rewriting accepted stories or deleting data.",
+    "One deployment attempt stopped at the resource precheck before unpacking; the same limits were retained and a later quiet-window attempt passed. Startup pressure subsided within the existing observation policy.",
+    "Business checks preserve actual failed-command recovery: a real lost response replayed one accepted block without new generation/charges, and failed generation recovery used service funds.",
+    "Earlier probe assertions were corrected: live serverNow is not immutable story state, and pending summary retries may add service-funded review calls without regenerating or charging a story.",
+    "Human review found a mixed-input sketch/fold contradiction accepted by an earlier audit. Current v7 real audit rejects that exact frozen block. The older accepted test history remains unchanged; no claim that every generated story or adversarial input succeeds on the first try.",
+    "Only three London photos are prepared; other cities explicitly show photos pending. Native screenshots use local demo transport and are not live-provider evidence.",
+    "No account tokens, provider credentials, environment files or real user content are included. All four synthetic probe accounts are locked and their sessions revoked."
+  ]
+}

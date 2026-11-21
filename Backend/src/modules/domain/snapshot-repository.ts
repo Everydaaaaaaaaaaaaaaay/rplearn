@@ -33,6 +33,7 @@ export async function loadDomainSnapshot(
       has_completed_onboarding,
       has_completed_profile_setup,
       learning_goal,
+      learning_goals::text[] as learning_goals,
       placement_completed_at,
       placement_score,
       proficiency_source,

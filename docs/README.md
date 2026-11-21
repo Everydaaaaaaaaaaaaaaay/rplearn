@@ -12,13 +12,16 @@
 | 模块、账号与同步边界 | [架构](architecture.md) |
 | 登录入口、账号隔离与订阅 | [账号与定价策略](account-access-and-pricing-policy-2026-09-10.md)；商店价格配置不等于已生效 |
 | 城市与剧情 | [旅行设计](journey-design.md)、[出发之后](departures-collection.md)、[剧情美术验收](verification/departures-art.md) |
+| 成人生活剧情方向（首批五篇 v2） | [现有质量与逐篇取舍](adult-life-story-review-2026-10-31.md)、[八篇文稿与自审](story-preparation-2026-10-31/README.md)、[生产与验证](verification/adult-life-stories-20261031.md) |
 | 场景与活动 | [必要视觉验收](activity-scene-visual-acceptance.md)及其中最新记录、[相遇流程](activity-encounter-journey-plan.md) |
-| 视觉与语音 | [设计系统](design-system.md)、[实时语音](realtime-voice.md) |
+| 活动系统重构（规划） | [城市地点与固定相遇施工方案](activity-system-rebuild-plan-2026-10-31.md) |
+| 视觉与语音 | [设计系统](design-system.md)、[统一视觉历史稿（已撤回）](design/unified-native-2026-10-31/README.md)、[实时语音](realtime-voice.md) |
 | 对话成长原生原型 | [入口、规则、循环记录与验证边界](learning-program/conversation-prototype-2026-09-22.md) |
 | 角色单元挑战与全局英语旅程（规划） | [实施总纲](learning-program/unit-learning-plan-2026-09-26.md)、[架构](learning-program/unit-learning-architecture-2026-09-26.md)、[内容](learning-program/unit-learning-content-2026-09-26.md)、[体验](learning-program/unit-learning-experience-2026-09-26.md) |
 | 公共题库与任意角色组卷 | [规则、管理与发布回退](learning-program/shared-question-bank-2026-10-06.md) |
 | 学习系统历史资料（旧方案已撤下） | [历史研究](learning-program/README.md)、[历史工作流](learning-program/workflow.md)、[进度账本](learning-program/status.md) |
 | NPC 与关系 | [人物多样性](npc-persona-diversity.md)、[关系系统](relationship-system.md) |
+| 赴约互动故事 | [实装与验证状态（已部署）](appointments-implementation-2026-11-01.md)、[机制分析与实施设计](appointment-story-design-2026-10-30.md)、[城市照片准备](design/appointments-2026-10-31/handoff.md) |
 | 积分与成本 | [模型积分](model-credits.md)、[成本评测](user-cost-evaluation.md) |
 | 部署与模型运营 | [部署](backend/DEPLOYMENT.md)、[AI 控制面](backend/AI_CONTROL_PLANE.md)；仅在对应任务使用 |
 

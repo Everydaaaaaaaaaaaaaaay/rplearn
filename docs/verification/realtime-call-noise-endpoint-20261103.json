@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-03",
+  "scope": "Realtime voice calls: acoustic gating and end-of-user-turn recovery. Dictation/voice-message gate defaults unchanged.",
+  "causes": [
+    "A candidate sound prevented the adaptive noise floor from updating, so stationary voice-band noise could remain classified as speech.",
+    "Every speech-gated positive audio level renewed the turn silence deadline without a limit on stalled ASR content.",
+    "Detected speech without recognized text never armed a session fallback or notified the session of an empty completed recognition turn."
+  ],
+  "changes": [
+    "Conversation-only stationary background adaptation uses fifty 20 ms frames and learns stable energy even after the gate opens; preserves modulation/quiet speech behavior and retains background calibration across recognition turns.",
+    "Use independent silence and ASR-progress deadlines. The normal proficiency-specific 1.0–1.8 s silence delay remains; default maximum no-progress wait is 6 s, not an utterance duration limit.",
+    "Track high-water marks for recognized word/letter-digit counts; repeated hypotheses, case and punctuation changes do not indefinitely reset progress.",
+    "Arm recovery on detected speech even before a partial transcript. An empty final returns a detected input turn to listening without invoking the conversation client.",
+    "Cancel/reset endpoint evidence on restart, suspend, mute and completed input. Request finalization once per turn; existing Apple 500 ms finalization fallback remains."
+  ],
+  "verification": {
+    "hostedTests": {
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "suites": [
+        "RealtimeVoiceSessionTests",
+        "SpeechActivityDetectorTests"
+      ],
+      "log": "build/call-noise-endpoint-tests.log",
+      "xcresult": "build/DerivedData/VerificationResults/20261103T124532Z-22630.xcresult",
+      "coverage": [
+        "Stationary mid-frequency tones after genuine speech at 16/48 kHz; calibration survives turn reset.",
+        "Stationary band-limited random noise.",
+        "Quiet modulated 3-second speech across three tap sizes and trailing silence.",
+        "Continuous false-positive activity and repeatedly revised partial text cannot wait indefinitely.",
+        "Empty noise turn returns to listening, never calls AI, and permits the next real answer.",
+        "Genuine new words extend a long turn beyond the no-progress limit.",
+        "Existing barge-in, mute, endpoint, cancellation, hangup and admitted-response lifecycle cases."
+      ]
+    },
+    "preview": {
+      "status": "installed-and-launched",
+      "script": "Scripts/preview.sh preview messages",
+      "simulator": "659893A7-0822-43F4-8DA1-4A92E9C78814",
+      "log": "build/call-noise-preview.log",
+      "computerUse": "Opened the preview chat in Device Hub through AX. Device Hub screenshot was blank and call toolbar was not exposed; no physical microphone/call acoustic acceptance claimed."
+    },
+    "diffCheck": "passed"
+  },
+  "limits": [
+    "Deterministic synthetic PCM and injected recognition/playback fixtures; no real room, speaker echo, Bluetooth or live ASR accuracy measurement.",
+    "No live AI calls, production data changes, backend deployment or App Store publication."
+  ]
+}

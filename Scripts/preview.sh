@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 复用当前 Debug 产物，以内存测试账号进入模拟器供交互检查。
+# 安装当前 Debug 产物，进入预览或连接本机隔离后端。
 set -euo pipefail
 
 if [[ -z "${DEVELOPER_DIR:-}" ]]; then
@@ -21,16 +21,25 @@ cd "$LINGOTRIP_REPO_ROOT"
 mode="${1:-preview}"
 case "$mode" in
   help|--help|-h)
-    echo "用法：Scripts/preview.sh [preview|build|status] [messages|contacts|home|map|me|subscription|learning|learning-test|role-learning|unit-challenge|practice-preview|achievement-preview|promotion-preview]"
+    echo "用法：Scripts/preview.sh [preview|build|status] [messages|contacts|home|map|me|settings|subscription|learning|learning-test|role-learning|unit-challenge|practice-preview|achievement-preview|promotion-preview|places-preview|world-preview|scenes-preview|appointments-preview]"
     echo "preview 复用 Debug 构建并免登录启动；build 先增量构建；status 只读设备与产物。"
+    echo "LINGOTRIP_SIMULATOR_BACKEND_URL=http://127.0.0.1:<端口> Scripts/preview.sh connected  安装当前构建并进入正常登录流程。"
     exit 0
     ;;
-  preview|build|status) ;;
+  preview|build|status|connected) ;;
   *) echo "错误：不支持的命令：$mode" >&2; exit 1 ;;
 esac
+if [[ "$mode" == connected ]]; then
+  backend_url="${LINGOTRIP_SIMULATOR_BACKEND_URL:-}"
+  if [[ ! "$backend_url" =~ ^http://127\.0\.0\.1:[0-9]{1,5}$ ]]; then
+    echo "错误：LINGOTRIP_SIMULATOR_BACKEND_URL 需要指定本机隔离后端的地址与端口。" >&2
+    exit 1
+  fi
+  curl --fail --silent --show-error --max-time 5 "$backend_url/health/ready" >/dev/null
+fi
 preview_tab="${2:-messages}"
 case "$preview_tab" in
-  messages|contacts|home|map|me|subscription|learning|learning-test|role-learning|unit-challenge|practice-preview|achievement-preview|promotion-preview) ;;
+  messages|contacts|home|map|me|settings|subscription|learning|learning-test|role-learning|unit-challenge|practice-preview|achievement-preview|promotion-preview|places-preview|world-preview|scenes-preview|appointments-preview) ;;
   *) echo "错误：不支持的页面：$preview_tab" >&2; exit 1 ;;
 esac
 udid="$(lingotrip_simulator_udid)"
@@ -54,6 +63,12 @@ fi
 bundle_id="$(plutil -extract CFBundleIdentifier raw -o - "$app_path/Info.plist")"
 lingotrip_boot_simulator "$udid"
 xcrun simctl install "$udid" "$app_path"
+if [[ "$mode" == connected ]]; then
+  SIMCTL_CHILD_LINGOTRIP_BACKEND_URL="$backend_url" \
+    xcrun simctl launch --terminate-running-process "$udid" "$bundle_id"
+  echo "已连接本机隔离后端。请在 Device Hub 选择设备 ${udid}。"
+  exit 0
+fi
 if [[ "$preview_tab" == learning-test ]]; then
   SIMCTL_CHILD_UI_TEST_REQUIRE_AUTHENTICATION=1 \
   SIMCTL_CHILD_UI_TEST_SKIP_ONBOARDING=1 \

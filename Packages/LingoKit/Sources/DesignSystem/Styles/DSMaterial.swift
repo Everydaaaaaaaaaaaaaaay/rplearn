@@ -8,6 +8,8 @@ public enum DSSceneGlassLegibility: Sendable, Equatable {
     case enhanced
     /// Uses a thicker neutral glass for large cards placed over detailed photography.
     case shielded
+    /// Provides a dense frosted surface for text and account data over photography.
+    case frosted
 }
 
 /// 将系统版本判断收敛到一处。调试构建可强制走旧系统分支，便于在只有
@@ -121,7 +123,7 @@ private struct DSSceneGlassModifier: ViewModifier {
                 shape: shape
             )
         } else if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
-            let glass: Glass = legibility == .ambient ? .regular : .clear
+            let glass: Glass = (legibility == .ambient || legibility == .frosted) ? .regular : .clear
             decorated(
                 legibilityBackground(content, in: shape)
                     .glassEffect(
@@ -182,10 +184,14 @@ private struct DSSceneGlassModifier: ViewModifier {
     }
 
     private var legibilitySurface: Color {
-        legibility == .shielded ? .dsSurfaceMuted : .dsSurface
+        (legibility == .shielded || legibility == .frosted) ? .dsSurfaceMuted : .dsSurface
     }
 
     private var legibilitySurfaceOpacity: Double {
+        if legibility == .frosted {
+            if colorSchemeContrast == .increased { return 0.96 }
+            return colorScheme == .dark ? 0.86 : 0.84
+        }
         if colorSchemeContrast == .increased { return 0.88 }
         if legibility == .shielded {
             return colorScheme == .dark ? 0.54 : 0.44

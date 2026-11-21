@@ -44,6 +44,8 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
     public var lastEvaluatedOrderIndex: Int
     /// 近期已经结算的消息 ID。允许不同消息乱序完成，同时阻止任何一条重复结算。
     public var recentEvaluatedMessageIDs: [UUID]?
+    /// Permanent receipts for completed appointments; independent of the bounded recent message window.
+    public var settledAppointmentIDs: [UUID]?
     /// 乐观并发版本，避免多个后台点评互相覆盖。
     public var revision: Int
     /// 仅保留少量最近变化，用于解释分数而不是制造永久评判档案。
@@ -75,6 +77,7 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
         lastEvaluatedMessageAt: Date? = nil,
         lastEvaluatedOrderIndex: Int = -1,
         recentEvaluatedMessageIDs: [UUID]? = [],
+        settledAppointmentIDs: [UUID]? = [],
         revision: Int = 0,
         recentEvents: [RelationshipEventRecord] = []
     ) {
@@ -104,6 +107,7 @@ public struct RelationshipSnapshot: Sendable, Codable, Equatable {
         self.lastEvaluatedMessageAt = lastEvaluatedMessageAt
         self.lastEvaluatedOrderIndex = lastEvaluatedOrderIndex
         self.recentEvaluatedMessageIDs = recentEvaluatedMessageIDs
+        self.settledAppointmentIDs = settledAppointmentIDs
         self.revision = revision
         self.recentEvents = recentEvents
     }
@@ -179,6 +183,7 @@ public struct RelationshipEventRecord: Sendable, Codable, Equatable, Identifiabl
         case voiceChat
         case sharedActivity
         case story
+        case appointment
     }
 
     public var id: UUID

@@ -13,18 +13,20 @@ enum ChatTimelinePolicy {
     enum DeliveryReceipt: Equatable {
         case delivered
         case read
+        case listened
 
         var label: String {
             switch self {
             case .delivered: "已送达"
             case .read: "已读"
+            case .listened: "已听"
             }
         }
 
         var systemImage: String {
             switch self {
             case .delivered: "checkmark"
-            case .read: "checkmark.circle.fill"
+            case .read, .listened: "checkmark.circle.fill"
             }
         }
     }
@@ -97,13 +99,15 @@ enum ChatTimelinePolicy {
     static func deliveryReceipt(
         in messages: [MessageDTO],
         at index: Int,
-        isReplying: Bool
+        isReplying: Bool,
+        hasBeenRead: Bool = false
     ) -> DeliveryReceipt? {
         guard messages.indices.contains(index), messages[index].role == .user else { return nil }
         guard messages.lastIndex(where: { $0.role == .user }) == index else { return nil }
 
         let hasLaterReply = messages[(index + 1)...].contains { $0.role == .assistant }
-        return hasLaterReply || isReplying ? .read : .delivered
+        guard hasLaterReply || isReplying || hasBeenRead else { return .delivered }
+        return messages[index].kind == .voice ? .listened : .read
     }
 
     static func timeMarkerText(

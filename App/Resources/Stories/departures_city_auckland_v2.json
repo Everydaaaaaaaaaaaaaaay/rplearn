@@ -1,0 +1,946 @@
+{
+  "id": "departures_city_auckland_v2",
+  "version": 2,
+  "title": "工具箱回到桌上",
+  "start": "AK00_01",
+  "maxDialogueCharacters": 65,
+  "acts": [
+    "奥克兰 · 海港旁的维修桌",
+    "十分钟能做什么",
+    "把自己的东西带回家"
+  ],
+  "shots": {
+    "workshop": {
+      "background": "dp_auckland_repair",
+      "actors": []
+    },
+    "hana": {
+      "background": "dp_auckland_repair",
+      "actors": [
+        {
+          "id": "Hana",
+          "asset": "dp_hana_explain",
+          "x": 0.5,
+          "scale": 1
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "AK00_01",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "A ferry horn drifts in from the harbour.",
+      "translation": "海港那边传来一声渡轮汽笛。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK00_02"
+    },
+    {
+      "id": "AK00_02",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "Hana is checking a small shelf at the workbench.",
+      "translation": "Hana 正在工作台边检查一个小架子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK00_03"
+    },
+    {
+      "id": "AK00_03",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "One shelf. Somehow it has eaten my whole morning.",
+      "translation": "一个架子，不知怎么就吃掉了我整个早上。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK00_04"
+    },
+    {
+      "id": "AK00_04",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "Peter arrives with a toolbox and his own drawer.",
+      "translation": "Peter 带着工具箱和自己的抽屉来了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK00_05"
+    },
+    {
+      "id": "AK00_05",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "Your tools. Thanks for lending them last week.",
+      "translation": "你的工具，谢谢你上周借给我。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK00_06"
+    },
+    {
+      "id": "AK00_06",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "He puts the box by Hana. She checks it and closes it.",
+      "translation": "他把箱子放到 Hana 身边，她检查后盖好。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK00_07"
+    },
+    {
+      "id": "AK00_07",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "Could I leave this drawer with you?",
+      "translation": "这个抽屉能放你这里吗？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK00_08"
+    },
+    {
+      "id": "AK00_08",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Not today. I need to finish this shelf.",
+      "translation": "今天不行，我得做完这个架子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK00_09"
+    },
+    {
+      "id": "AK00_09",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "I've booked this bench until lunch. Then it's their turn.",
+      "translation": "这张工作台我只约到午饭，之后轮到别人。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK00_10"
+    },
+    {
+      "id": "AK00_10",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "I have ten minutes to look at it with you.",
+      "translation": "我有十分钟能和你一起看看。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK00_11"
+    },
+    {
+      "id": "AK00_11",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "I'll take it home after. Ten minutes helps.",
+      "translation": "之后我带回去，十分钟也好。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "AK00_choice"
+    },
+    {
+      "id": "AK00_choice",
+      "act": 0,
+      "location": "奥克兰 · 海港旁的维修桌",
+      "shot": "workshop",
+      "speaker": "你的选择",
+      "text": "What would you like to do while you're here?",
+      "translation": "在这里，你想做点什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I can help write things down.",
+          "translation": "我可以帮着记下来。",
+          "next": "AK10_01",
+          "flags": {
+            "AK00": true
+          },
+          "review": {
+            "context": "先放回桌上的工具箱",
+            "outcome": "你愿意帮 Peter 记下抽屉的情况。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll stay here by the shelf.",
+          "translation": "我就在架子这边待着。",
+          "next": "AK20_01",
+          "flags": {
+            "AK00": false
+          },
+          "review": {
+            "context": "先放回桌上的工具箱",
+            "outcome": "你留在架子这一边，不承担 Peter 的维修。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "AK10_01",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "Blank cards are beside the pencils.",
+      "translation": "铅笔旁边有空白卡片。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK10_02"
+    },
+    {
+      "id": "AK10_02",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "Peter places his drawer on a clear part of the table.",
+      "translation": "Peter 把抽屉放在桌上一块空位上。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK10_03"
+    },
+    {
+      "id": "AK10_03",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "When did it start sticking?",
+      "translation": "从什么时候开始卡住的？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK10_04"
+    },
+    {
+      "id": "AK10_04",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "Peter",
+      "text": "After I moved. It used to open fine.",
+      "translation": "搬家之后，以前都能正常打开。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK10_05"
+    },
+    {
+      "id": "AK10_05",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "You write down what he says. Hana looks at the drawer.",
+      "translation": "你记下他说的情况，Hana 看着抽屉。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK10_06"
+    },
+    {
+      "id": "AK10_06",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "I need more time to check it properly.",
+      "translation": "要仔细检查，我还需要些时间。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK10_07"
+    },
+    {
+      "id": "AK10_07",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "We can mark the tight spot or note when it sticks.",
+      "translation": "可以标一下卡住的地方，或记下什么时候卡。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "AK10_choice"
+    },
+    {
+      "id": "AK10_choice",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "你的选择",
+      "text": "What would help Peter next time?",
+      "translation": "想帮 Peter 为下次留下什么？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Peter, can you show us where it sticks?",
+          "translation": "Peter，能指给我们看哪里卡吗？",
+          "next": "AK11_01",
+          "flags": {
+            "AK10": true
+          },
+          "review": {
+            "context": "记录也是一件小事",
+            "outcome": "Hana 标记位置，Peter 带抽屉和记录回家。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "Let's keep a note for the next visit.",
+          "translation": "留张记录，下次来时用吧。",
+          "next": "AK12_01",
+          "flags": {
+            "AK10": false
+          },
+          "review": {
+            "context": "记录也是一件小事",
+            "outcome": "Peter 带问题记录与抽屉回家，尚未修理。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "AK11_01",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "Peter points to the place. Hana adds a paper label.",
+      "translation": "Peter 指出位置，Hana 贴上一张纸标签。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK11_02"
+    },
+    {
+      "id": "AK11_02",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Just a marker. We haven't fixed it yet.",
+      "translation": "只是做个记号，还没修好。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK11_03"
+    },
+    {
+      "id": "AK11_03",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "Now I can find the right bit next time.",
+      "translation": "下次就能找到要看的地方了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK11_04"
+    },
+    {
+      "id": "AK11_04",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "You hand him the note. He puts it with his drawer.",
+      "translation": "你把记录交给他，他和抽屉放在一起。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK11_05"
+    },
+    {
+      "id": "AK11_05",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "I'll bring both when you're here again.",
+      "translation": "下次你在时，我把这两样都带来。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK11_06"
+    },
+    {
+      "id": "AK11_06",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "We'll find a time. The tools can stay here now.",
+      "translation": "我们再找时间，工具这次就留在这里。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK11_07"
+    },
+    {
+      "id": "AK11_07",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "He leaves with the drawer. Hana opens her toolbox.",
+      "translation": "他带着抽屉离开，Hana 打开自己的工具箱。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "AK11"
+    },
+    {
+      "id": "AK12_01",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "You add 'after moving' at the top of the card.",
+      "translation": "你在卡片顶上添了“搬家之后”。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK12_02"
+    },
+    {
+      "id": "AK12_02",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "I'll note whether it happens every time.",
+      "translation": "我会记一下是不是每次都卡。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK12_03"
+    },
+    {
+      "id": "AK12_03",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Bring that too. Don't force it for our benefit.",
+      "translation": "那个也带来，不用为了让我们看见硬拉。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK12_04"
+    },
+    {
+      "id": "AK12_04",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "Peter puts the card in his pocket and lifts the drawer.",
+      "translation": "Peter 把卡片放进口袋，抱起抽屉。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK12_05"
+    },
+    {
+      "id": "AK12_05",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Peter",
+      "text": "Thanks. Nothing left for you to store.",
+      "translation": "谢谢，不留东西让你替我保管了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK12_06"
+    },
+    {
+      "id": "AK12_06",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Good. I need the table to find my own shelf.",
+      "translation": "好，我还得腾出桌面找自己的架子呢。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK12_07"
+    },
+    {
+      "id": "AK12_07",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "The toolbox stays beside Hana as he leaves.",
+      "translation": "他离开时，工具箱留在 Hana 身边。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "AK12"
+    },
+    {
+      "id": "AK20_01",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "That's fine. Let me give Peter a card first.",
+      "translation": "好，我先给 Peter 一张卡片。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK20_02"
+    },
+    {
+      "id": "AK20_02",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "She notes the problem and gives the card to Peter.",
+      "translation": "她记下问题，把卡片交给 Peter。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK20_03"
+    },
+    {
+      "id": "AK20_03",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "Bring the drawer and this note when we arrange it.",
+      "translation": "等约好时间，把抽屉和记录一起带来。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK20_04"
+    },
+    {
+      "id": "AK20_04",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "旁白",
+      "text": "He takes his drawer home. The toolbox stays here.",
+      "translation": "他带自己的抽屉回家，工具箱留在这里。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK20_05"
+    },
+    {
+      "id": "AK20_05",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "Right. Back to this shelf.",
+      "translation": "好，回来管这个架子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.35
+      },
+      "next": "AK20_06"
+    },
+    {
+      "id": "AK20_06",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "Hana",
+      "text": "Want to hold it while I check, or take the chair?",
+      "translation": "愿意扶着让我看看，还是坐那张椅子？",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 1.0,
+        "before": 0,
+        "after": 0.7
+      },
+      "next": "AK20_choice"
+    },
+    {
+      "id": "AK20_choice",
+      "act": 1,
+      "location": "十分钟能做什么",
+      "shot": "hana",
+      "speaker": "你的选择",
+      "text": "Would you like to help, or sit with her?",
+      "translation": "你想搭把手，还是坐着陪她？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "I can hold it for a moment.",
+          "translation": "我可以扶一会儿。",
+          "next": "AK21_01",
+          "flags": {
+            "AK20": true
+          },
+          "review": {
+            "context": "留在架子这一边",
+            "outcome": "你短暂扶住架子，由 Hana 自己检查。"
+          }
+        },
+        {
+          "id": "b",
+          "text": "I'll take the chair.",
+          "translation": "我坐着就好。",
+          "next": "AK22_01",
+          "flags": {
+            "AK20": false
+          },
+          "review": {
+            "context": "留在架子这一边",
+            "outcome": "你坐下来聊天，没有参与维修。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "AK21_01",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "Hana shows you where to hold the shelf still.",
+      "translation": "Hana 指给你看，扶哪里能让架子稳住。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK21_02"
+    },
+    {
+      "id": "AK21_02",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Thanks. Just while I have a look.",
+      "translation": "谢谢，就扶着让我看一下。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK21_03"
+    },
+    {
+      "id": "AK21_03",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "She checks it herself, then takes the weight back.",
+      "translation": "她自己检查完，重新接过架子。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK21_04"
+    },
+    {
+      "id": "AK21_04",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Got it. You can let go now.",
+      "translation": "接好了，可以松手了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK21_05"
+    },
+    {
+      "id": "AK21_05",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "You step away. She sets it on the workbench.",
+      "translation": "你退开，她把架子放上工作台。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK21_06"
+    },
+    {
+      "id": "AK21_06",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Tea first. I've been arguing with wood all morning.",
+      "translation": "先喝茶，我跟木头吵了一早上了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "AK21"
+    },
+    {
+      "id": "AK22_01",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Good choice. That chair is the finished project.",
+      "translation": "选得好，那张椅子是完工项目。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK22_02"
+    },
+    {
+      "id": "AK22_02",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "You sit down. She turns the shelf to face you.",
+      "translation": "你坐下来，她把架子转过来。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK22_03"
+    },
+    {
+      "id": "AK22_03",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "It's for my kitchen. Tea up here, spices below.",
+      "translation": "放我厨房里，上面放茶，下面放香料。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK22_04"
+    },
+    {
+      "id": "AK22_04",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "She pauses, looking at the two narrow shelves.",
+      "translation": "她停下来，看着两层窄窄的搁板。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK22_05"
+    },
+    {
+      "id": "AK22_05",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "Hana",
+      "text": "Or all tea. I may have planned this badly.",
+      "translation": "也可能全放茶，我可能规划失误了。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.6
+      },
+      "next": "AK22_06"
+    },
+    {
+      "id": "AK22_06",
+      "act": 2,
+      "location": "把自己的东西带回家",
+      "shot": "workshop",
+      "speaker": "旁白",
+      "text": "She finds another chair before putting the kettle on.",
+      "translation": "她又找了张椅子，再去烧水。",
+      "speech": {
+        "intention": "按本场处境接话，保留停顿和人物自己的想法",
+        "speed": 0.98,
+        "before": 0,
+        "after": 0.7
+      },
+      "ending": true,
+      "experienceID": "AK22"
+    }
+  ]
+}

@@ -44,6 +44,9 @@ struct TabSceneTransitionInstaller: UIViewControllerRepresentable {
                 installedController = controller
             }
             guard controller.delegate !== proxy else { return }
+            // A presented root can briefly discover the presenting tab controller.
+            // Never chain installer proxies: competing layout passes can form a cycle.
+            guard !(controller.delegate is TabSceneTransitionDelegate) else { return }
             proxy.original = controller.delegate
             controller.delegate = proxy
         }
@@ -116,8 +119,7 @@ final class TabSceneDissolveAnimator: NSObject, UIViewControllerAnimatedTransiti
         UIView.animate(
             withDuration: transitionDuration(using: context),
             delay: 0,
-            options: [.allowUserInteraction, .beginFromCurrentState,
-                      reduceMotion ? .curveEaseOut : .curveEaseInOut]
+            options: [.allowUserInteraction, .beginFromCurrentState, .curveEaseOut]
         ) {
             incoming.alpha = originalAlpha
         } completion: { _ in

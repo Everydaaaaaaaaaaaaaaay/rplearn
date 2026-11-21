@@ -12,7 +12,12 @@ enum DSAvatarAssets {
         case "avatar_marcus": "avatar_p3r_marcus"
         default: name
         }
-        return UIImage(named: portraitName) ?? UIImage(named: name)
+        if let image = UIImage(named: portraitName) { return image }
+        if portraitName.hasSuffix(".webp"),
+           let url = Bundle.main.url(forResource: String(portraitName.dropLast(5)), withExtension: "webp") {
+            return UIImage(contentsOfFile: url.path)
+        }
+        return UIImage(named: name)
     }
 
     static func presentation(named name: String?) -> (alignment: Alignment, scale: CGFloat, yOffset: CGFloat) {

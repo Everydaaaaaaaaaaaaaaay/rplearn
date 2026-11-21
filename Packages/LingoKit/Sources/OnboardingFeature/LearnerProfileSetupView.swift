@@ -3,36 +3,39 @@ import DomainKit
 import PersistenceKit
 import SwiftUI
 
-/// 面向用户的粗粒度自评档位。它描述“能做什么”，避免要求新用户理解考试分数。
+/// 按当前能力自评的英语起点；学段和考试名仅帮助识别语言难度，不代表学历或证书。
 public enum SelfAssessedEnglishLevel: String, CaseIterable, Identifiable, Sendable {
     case starting
     case foundation
     case everyday
     case independent
     case confident
+    case proficient
     case advanced
 
     public var id: String { rawValue }
 
     public var title: String {
         switch self {
-        case .starting: "刚刚开始"
-        case .foundation: "有一些基础"
-        case .everyday: "能简单交流"
-        case .independent: "能独立表达"
-        case .confident: "能流畅讨论"
-        case .advanced: "接近专业使用"
+        case .starting: "入门起步"
+        case .foundation: "小学英语水平"
+        case .everyday: "初中英语水平"
+        case .independent: "高中英语水平"
+        case .confident: "英语四级水平"
+        case .proficient: "英语六级水平"
+        case .advanced: "雅思进阶水平"
         }
     }
 
     public var description: String {
         switch self {
         case .starting: "认识少量单词，需要从短句开始"
-        case .foundation: "能理解常见句子，表达还需要提示"
-        case .everyday: "能处理熟悉话题，偶尔会停顿或出错"
-        case .independent: "能讲经历和观点，也能读一般文章"
-        case .confident: "多数场景交流自然，能讨论复杂话题"
-        case .advanced: "表达准确灵活，能理解含蓄和细微差别"
+        case .foundation: "能理解常见短句，表达还需要提示"
+        case .everyday: "能进行简单日常交流，读懂基础短文"
+        case .independent: "能读懂一般文章，表达经历和简单观点"
+        case .confident: "能应对多数日常话题，理解较长的英语文章"
+        case .proficient: "能理解较复杂文章，较清楚地讨论观点和细节"
+        case .advanced: "能理解长篇材料，较自如地讨论复杂话题"
         }
     }
 
@@ -43,6 +46,7 @@ public enum SelfAssessedEnglishLevel: String, CaseIterable, Identifiable, Sendab
         case .everyday: .junior3
         case .independent: .senior3
         case .confident: .undergraduate
+        case .proficient: .postgraduate
         case .advanced: .advanced
         }
     }
@@ -59,35 +63,34 @@ public enum SelfAssessedEnglishLevel: String, CaseIterable, Identifiable, Sendab
             .independent
         case .undergraduate:
             .confident
-        case .postgraduate, .advanced:
+        case .postgraduate:
+            .proficient
+        case .advanced:
             .advanced
         }
     }
 }
 
-/// 剧情开始前的轻量学习档案。前三项必填，学段可跳过。
+/// 剧情开始前的轻量学习档案：昵称、使用目标与当前英语水平。
 struct LearnerProfileSetupView: View {
     private enum Step: Int, CaseIterable {
         case nickname
         case goal
         case level
-        case stage
 
         var title: String {
             switch self {
             case .nickname: "先认识一下你"
             case .goal: "你最想用英语做什么？"
-            case .level: "现在使用英语是什么感觉？"
-            case .stage: "最后一项，可选"
+            case .level: "当前英语水平"
             }
         }
 
         var subtitle: String {
             switch self {
             case .nickname: "角色会用这个名字称呼你"
-            case .goal: "我们会优先安排相关话题和表达"
-            case .level: "选最接近的一项就好，之后还可以测一测"
-            case .stage: "学段只帮助我们选择更贴近你的情境"
+            case .goal: "可多选，我们会优先安排相关话题和表达"
+            case .level: "按你现在的英语能力选择，之后可以测评调整"
             }
         }
     }
@@ -98,9 +101,8 @@ struct LearnerProfileSetupView: View {
 
     @State private var step: Step = .nickname
     @State private var nickname: String
-    @State private var goal: LearningGoal?
+    @State private var goals: [LearningGoal]
     @State private var level: SelfAssessedEnglishLevel?
-    @State private var stage: StudyStage?
     @State private var isSaving = false
     @State private var errorMessage: String?
     @FocusState private var nicknameIsFocused: Bool
@@ -119,9 +121,9 @@ struct LearnerProfileSetupView: View {
             initialValue: placeholderNames.contains(initialProfile.displayName)
                 ? "" : initialProfile.displayName
         )
-        _goal = State(initialValue: nil)
-        _level = State(initialValue: nil)
-        _stage = State(initialValue: initialProfile.studyStage)
+        _goals = State(initialValue: initialProfile.hasCompletedProfileSetup ? initialProfile.learningGoals : [])
+        _level = State(initialValue: initialProfile.hasCompletedProfileSetup
+            ? SelfAssessedEnglishLevel.closest(to: initialProfile.difficultyLevel) : nil)
     }
 
     var body: some View {
@@ -206,8 +208,6 @@ struct LearnerProfileSetupView: View {
                 goalStep
             case .level:
                 levelStep
-            case .stage:
-                stageStep
             }
         }
         .id(step)
@@ -270,9 +270,14 @@ struct LearnerProfileSetupView: View {
                 selectionTile(
                     title: item.displayName,
                     systemImage: goalIcon(item),
-                    isSelected: goal == item
+                    isSelected: goals.contains(item),
+                    allowsMultipleSelection: true
                 ) {
-                    goal = item
+                    if goals.contains(item) {
+                        goals.removeAll { $0 == item }
+                    } else {
+                        goals.append(item)
+                    }
                 }
             }
         }
@@ -310,51 +315,12 @@ struct LearnerProfileSetupView: View {
                     }
                 }
                 .buttonStyle(.plain)
-                .accessibilityAddTraits(level == item ? .isSelected : [])
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("\(item.title)，\(item.description)")
+                .accessibilityValue(level == item ? "已选择" : "未选择")
+                .accessibilityAddTraits(level == item ? [.isButton, .isSelected] : .isButton)
+                .accessibilityRemoveTraits(level == item ? [] : .isSelected)
             }
-        }
-    }
-
-    private var stageStep: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.md) {
-            LazyVGrid(
-                columns: [GridItem(.flexible()), GridItem(.flexible())],
-                spacing: DSSpacing.sm
-            ) {
-                ForEach(StudyStage.allCases, id: \.rawValue) { item in
-                    selectionTile(
-                        title: item.displayName,
-                        systemImage: stageIcon(item),
-                        isSelected: stage == item
-                    ) {
-                        stage = item
-                    }
-                }
-            }
-
-            Button {
-                stage = nil
-            } label: {
-                HStack {
-                    Text("暂不填写")
-                    Spacer()
-                    selectionIndicator(isSelected: stage == nil)
-                }
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .padding(DSSpacing.md)
-                .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: DSRadius.inline))
-                .overlay {
-                    RoundedRectangle(cornerRadius: DSRadius.inline)
-                        .stroke(stage == nil ? Color.dsSky : Color.dsBorder, lineWidth: 1)
-                }
-            }
-            .buttonStyle(.plain)
-
-            Label("以后可在“我的”里修改；英语水平也可以随时重新校准。", systemImage: "checkmark.shield")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
         }
     }
 
@@ -377,7 +343,7 @@ struct LearnerProfileSetupView: View {
                 }
 
                 Button {
-                    if step == .stage {
+                    if step == .level {
                         save()
                     } else {
                         advance()
@@ -387,7 +353,7 @@ struct LearnerProfileSetupView: View {
                         ProgressView()
                             .tint(.white)
                     } else {
-                        Text(step == .stage ? "保存并认识咕咕" : "继续")
+                        Text(step == .level ? "保存并开始测评" : "继续")
                     }
                 }
                 .buttonStyle(.dsActionPrimary)
@@ -407,11 +373,9 @@ struct LearnerProfileSetupView: View {
         case .nickname:
             !nickname.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         case .goal:
-            goal != nil
+            !goals.isEmpty
         case .level:
             level != nil
-        case .stage:
-            true
         }
     }
 
@@ -419,6 +383,7 @@ struct LearnerProfileSetupView: View {
         title: String,
         systemImage: String,
         isSelected: Bool,
+        allowsMultipleSelection: Bool = false,
         action: @escaping () -> Void
     ) -> some View {
         Button(action: action) {
@@ -428,7 +393,7 @@ struct LearnerProfileSetupView: View {
                         .font(.body.weight(.semibold))
                         .foregroundStyle(isSelected ? Color.dsSkyDeep : .secondary)
                     Spacer()
-                    selectionIndicator(isSelected: isSelected)
+                    selectionIndicator(isSelected: isSelected, allowsMultipleSelection: allowsMultipleSelection)
                 }
                 Text(title)
                     .font(.subheadline.weight(.semibold))
@@ -447,11 +412,17 @@ struct LearnerProfileSetupView: View {
             }
         }
         .buttonStyle(.plain)
-        .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(title)
+        .accessibilityValue(isSelected ? "已选择" : "未选择")
+        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+        .accessibilityRemoveTraits(isSelected ? [] : .isSelected)
     }
 
-    private func selectionIndicator(isSelected: Bool) -> some View {
-        Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+    private func selectionIndicator(isSelected: Bool, allowsMultipleSelection: Bool = false) -> some View {
+        Image(systemName: allowsMultipleSelection
+            ? (isSelected ? "checkmark.square.fill" : "square")
+            : (isSelected ? "checkmark.circle.fill" : "circle"))
             .font(.body)
             .foregroundStyle(isSelected ? Color.dsSky : Color.dsBorder)
     }
@@ -476,9 +447,9 @@ struct LearnerProfileSetupView: View {
     }
 
     private func save() {
-        guard let goal, let level else { return }
+        guard !goals.isEmpty, let level else { return }
+        let selectedGoals = goals
         let normalizedNickname = nickname.trimmingCharacters(in: .whitespacesAndNewlines)
-        let selectedStage = stage
         isSaving = true
         errorMessage = nil
         Task {
@@ -486,8 +457,7 @@ struct LearnerProfileSetupView: View {
                 let updated = try await profileCommands.updateProfile { profile in
                     profile.displayName = normalizedNickname
                     profile.difficultyLevel = level.difficultyLevel
-                    profile.learningGoal = goal
-                    profile.studyStage = selectedStage
+                    profile.learningGoals = selectedGoals
                     profile.proficiencySource = .selfReported
                     profile.placementScore = nil
                     profile.placementCompletedAt = nil
@@ -511,16 +481,6 @@ struct LearnerProfileSetupView: View {
         case .studyAbroad: "graduationcap"
         case .work: "briefcase"
         case .culture: "person.2"
-        }
-    }
-
-    private func stageIcon(_ stage: StudyStage) -> String {
-        switch stage {
-        case .primary: "pencil"
-        case .juniorHigh, .seniorHigh: "backpack"
-        case .university, .postgraduate: "graduationcap"
-        case .working: "briefcase"
-        case .other: "person"
         }
     }
 }
