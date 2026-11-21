@@ -16,6 +16,7 @@ final class SignedInCityOutingTests: XCTestCase {
             "LINGOTRIP_BACKEND_URL": url,
             "UI_TEST_REQUIRE_AUTHENTICATION": "1",
             "UI_TEST_SKIP_ONBOARDING": "1",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
             "UI_TEST_OUTING_AUDIO": "0",
         ]
         app.launch()
@@ -45,6 +46,10 @@ final class SignedInCityOutingTests: XCTestCase {
 
         let activities = app.tabBars.buttons["活动"]
         XCTAssertTrue(activities.waitForExistence(timeout: 30))
+        let savePasswordLater = app.buttons.matching(
+            NSPredicate(format: "label IN %@", ["以后", "Not Now"])
+        ).firstMatch
+        if savePasswordLater.waitForExistence(timeout: 3) { savePasswordLater.tap() }
         activities.tap()
         if !activities.wait(for: \.isSelected, toEqual: true, timeout: 3) { activities.tap() }
         let open = app.buttons["home.activities"]

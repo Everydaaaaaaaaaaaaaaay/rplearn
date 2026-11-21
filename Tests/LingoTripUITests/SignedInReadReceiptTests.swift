@@ -34,7 +34,7 @@ final class SignedInReadReceiptTests: XCTestCase {
 
         let row = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Audit Read Friend")).firstMatch
         let emailDisclosure = app.buttons["使用邮箱登录或注册"]
-        if !emailDisclosure.waitForExistence(timeout: 5), row.exists {
+        if !emailDisclosure.waitForExistence(timeout: 5), app.tabBars.buttons["我的"].exists {
             signOutAuditAccount(in: app)
             XCTAssertTrue(emailDisclosure.waitForExistence(timeout: 10))
             app.terminate()
