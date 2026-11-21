@@ -130,20 +130,33 @@ public struct MessageBubble<Content: View>: View {
             .background(background)
             .clipShape(bubbleShape)
             .overlay {
-                // iOS 26 原生渲染下气泡边缘已经清楚，维持已验收效果；
-                // iOS 18 只为浅色收到气泡补一条克制的可读性边界。
-                if DSPlatformVisualPolicy.requiresIOS18RenderingCompensation,
-                   case .incoming = side {
-                    bubbleShape.stroke(Color.dsBrandInk.opacity(0.18), lineWidth: 0.9)
+                if case .incoming = side {
+                    bubbleShape.strokeBorder(Puff.Palette.line, lineWidth: 1.2)
                 }
             }
+            // 蓬蓬厚卡片的唇边：气泡像一颗可以按下去的软糖。
+            .background {
+                bubbleShape
+                    .fill(lip)
+                    .offset(y: Self.lipHeight)
+            }
+            .padding(.bottom, Self.lipHeight)
             .tutorialFocus("chat.bubble", active: tutorialFocused, shape: bubbleShape)
             .contentShape(.interaction, bubbleShape)
             .contentShape(.contextMenuPreview, bubbleShape)
     }
 
+    private static var lipHeight: CGFloat { 2.5 }
+
+    private var lip: Color {
+        switch side {
+        case .incoming: Puff.Palette.lip
+        case .outgoing: PuffCandy.sky.lip
+        }
+    }
+
     private var bubbleShape: UnevenRoundedRectangle {
-        let full = DSRadius.bubble
+        let full: CGFloat = 20
         let joined: CGFloat = 7
 
         return switch (side, groupPosition) {
@@ -210,9 +223,9 @@ public struct MessageBubble<Content: View>: View {
     private var background: some View {
         switch side {
         case .incoming:
-            Color.dsBubbleIncoming
+            Puff.Palette.card
         case .outgoing:
-            Color.dsSky
+            PuffCandy.sky.base
         }
     }
 
@@ -265,11 +278,13 @@ public struct TypingIndicator: View {
         HStack(spacing: 5) {
             ForEach(0..<3, id: \.self) { index in
                 Circle()
-                    .fill(.secondary)
-                    .frame(width: 7, height: 7)
-                    .opacity(activeIndex == nil || activeIndex == index ? 1 : 0.35)
+                    .fill([PuffCandy.sky, .bubblegum, .sunny][index].base)
+                    .frame(width: 8, height: 8)
+                    .offset(y: activeIndex == index ? -3 : 0)
+                    .opacity(activeIndex == nil || activeIndex == index ? 1 : 0.55)
             }
         }
+        .padding(.vertical, 3)
     }
 }
 

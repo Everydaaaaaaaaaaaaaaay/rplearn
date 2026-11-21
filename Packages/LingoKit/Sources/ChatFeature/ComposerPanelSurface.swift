@@ -1,41 +1,25 @@
+import DesignSystem
 import SwiftUI
 
-/// Quiet, static mascot palettes. The composer owns its layout and transition.
+/// 蓬蓬输入面板：白色圆顶卡片，打开翻译器时染上淡淡的葡萄紫。
 struct ComposerPanelSurface: View {
     let expanded: Bool
-    @Environment(\.colorScheme) private var scheme
-    private var accent: Color {
-        expanded ? Color(red: 0.58, green: 0.45, blue: 0.87)
-                 : Color(red: 0.24, green: 0.65, blue: 0.90)
-    }
-    private let shape = UnevenRoundedRectangle(topLeadingRadius: 25, topTrailingRadius: 25)
+    private let shape = UnevenRoundedRectangle(topLeadingRadius: 28, topTrailingRadius: 28, style: .continuous)
 
     var body: some View {
         ZStack {
-            (scheme == .dark ? Color(red: 0.10, green: 0.11, blue: 0.14) : Color.white)
-            // Gugu: airy sky blue. Gaga: soft lilac. No waterline or moving texture.
-            LinearGradient(colors: [accent.opacity(scheme == .dark ? 0.15 : 0.06),
-                                    accent.opacity(scheme == .dark ? 0.10 : 0.13)],
-                           startPoint: .topLeading, endPoint: .bottomTrailing)
+            Puff.Palette.card
+            if expanded { PuffCandy.grape.wash.opacity(0.7) }
         }
         .clipShape(shape)
         .overlay {
-            ZStack {
-                shape.strokeBorder(accent.opacity(scheme == .dark ? 0.30 : 0.22), lineWidth: 1)
-                shape.inset(by: 2).strokeBorder(
-                    LinearGradient(colors: [.white.opacity(scheme == .dark ? 0.13 : 0.90), .clear],
-                                   startPoint: .top, endPoint: .bottom), lineWidth: 3)
-                shape.inset(by: 5).strokeBorder(accent.opacity(0.07), lineWidth: 0.5)
-            }
-            .mask(alignment: .top) {
-                VStack(spacing: 0) {
+            shape.strokeBorder(expanded ? PuffCandy.grape.base.opacity(0.35) : Puff.Palette.line, lineWidth: 1.5)
+                .mask(alignment: .top) {
                     LinearGradient(colors: [.white, .white, .clear], startPoint: .top, endPoint: .bottom)
-                        .frame(height: 32)
-                    Spacer(minLength: 0)
+                        .frame(height: 40)
                 }
-            }
         }
-        .shadow(color: accent.opacity(scheme == .dark ? 0.05 : 0.08), radius: 8, y: -3)
+        .shadow(color: Color.black.opacity(0.04), radius: 10, y: -4)
         .allowsHitTesting(false)
         .accessibilityHidden(true)
     }
@@ -51,22 +35,21 @@ struct ComposerModeSwitch: View {
                 Button {
                     withAnimation(reduceMotion ? nil : .spring(response: 0.3, dampingFraction: 0.95)) { mode = item }
                 } label: {
-                    Text(item.rawValue).font(.subheadline.weight(.semibold))
-                        .foregroundStyle(mode == item ? Color.white : Color.secondary)
+                    Text(item.rawValue).font(.puff(.subheadline, .heavy))
+                        .foregroundStyle(mode == item ? Color.white : Puff.Palette.inkSoft)
                         .frame(maxWidth: .infinity).frame(height: 30)
                         .background {
                             if mode == item {
-                                Capsule().fill(Color(red: 0.53, green: 0.40, blue: 0.94))
+                                Capsule().fill(PuffCandy.grape.base)
                                     .matchedGeometryEffect(id: "selection", in: selection)
                             }
                         }
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(.puffSquish)
                 .accessibilityAddTraits(mode == item ? .isSelected : [])
             }
         }
         .padding(3).frame(width: 170)
-        .background(.thinMaterial, in: Capsule())
-        .overlay(Capsule().strokeBorder(Color.purple.opacity(0.12), lineWidth: 1))
+        .background(Puff.Palette.cloud, in: Capsule())
     }
 }

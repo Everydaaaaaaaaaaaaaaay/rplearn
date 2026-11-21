@@ -49,25 +49,25 @@ struct VoiceInputBar: View {
 
     private func barLabel(_ text: String) -> some View {
         Text(text)
-            .font(.body.weight(.medium))
+            .font(.puff(.body, .heavy))
             .frame(maxWidth: .infinity)
             .padding(.vertical, 10)
             .background(
                 isRecording
-                    ? (inCancelZone ? Color.dsDanger.opacity(0.9) : Color.dsSky.opacity(0.9))
-                    : Color.dsBubbleIncoming,
-                in: RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous)
+                    ? (inCancelZone ? Puff.Palette.cherry : PuffCandy.sky.base)
+                    : Puff.Palette.cloud,
+                in: RoundedRectangle(cornerRadius: 20, style: .continuous)
             )
-            .foregroundStyle(isRecording ? .white : .primary)
-            .contentShape(RoundedRectangle(cornerRadius: DSRadius.bubble, style: .continuous))
+            .foregroundStyle(isRecording ? .white : Puff.Palette.ink)
+            .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .overlay(alignment: .top) {
                 if isRecording {
                     recordingHUD
                         .offset(y: -120)
                 }
             }
-            .scaleEffect(isRecording ? 0.985 : 1)
-            .animation(DSAnimation.feedback, value: isRecording)
+            .scaleEffect(isRecording ? 0.97 : 1)
+            .animation(isRecording ? Puff.Motion.press : Puff.Motion.release, value: isRecording)
             .animation(DSAnimation.feedback, value: inCancelZone)
     }
 
@@ -127,7 +127,7 @@ struct VoiceInputBar: View {
         }
         .padding(16)
         .background(
-            (inCancelZone ? Color.dsDanger : Color.black).opacity(0.78),
+            (inCancelZone ? Puff.Palette.cherry : Color.black).opacity(0.8),
             in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
         )
     }

@@ -60,15 +60,15 @@ extension ChatTranscriptView {
             }
         } label: {
             Image(systemName: isExpanded ? "text.bubble.fill" : "text.bubble")
-                .font(.system(size: 18, weight: .medium))
-                .foregroundStyle(Color.dsSky)
+                .font(.system(size: 16, weight: .heavy))
+                .foregroundStyle(isExpanded ? .white : PuffCandy.tangerine.deep)
                 .frame(width: 32, height: 32)
-                .background(Color.dsSky.opacity(isExpanded ? 0.16 : 0.08), in: Circle())
+                .background(isExpanded ? PuffCandy.tangerine.base : PuffCandy.tangerine.wash, in: Circle())
                 .frame(width: 44, height: 44)
                 .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                 .animation(DSAnimation.snappy, value: isExpanded)
         }
-        .buttonStyle(.pressableCard)
+        .buttonStyle(.puffSquish)
         .accessibilityLabel(isExpanded ? "收起\(persona.title)" : "查看\(persona.title)")
         .accessibilityAddTraits(isExpanded ? .isSelected : [])
     }
@@ -92,7 +92,8 @@ extension ChatTranscriptView {
                                     .font(.caption2)
                                     .foregroundStyle(.secondary)
                                 Text(issue.correction)
-                                    .foregroundStyle(Color.dsSuccess)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(PuffCandy.mint.deep)
                             }
                             .font(.subheadline)
                             TappableGrammarTermText(
@@ -120,8 +121,8 @@ extension ChatTranscriptView {
                 .controlSize(.small)
         } else if let translation = message.translationZh {
             Text(translation)
-                .font(.footnote)
-                .foregroundStyle(.secondary)
+                .font(.puff(.footnote, .medium))
+                .foregroundStyle(Puff.Palette.inkSoft)
                 .frame(maxWidth: .infinity, alignment: alignment == .trailing ? .trailing : .leading)
                 .padding(alignment == .trailing ? .leading : .trailing, 48)
                 .transition(.opacity)

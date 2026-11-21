@@ -59,10 +59,14 @@ struct ChatComposerView: View {
                         recorder.resetFailure()
                     }
                 } label: {
-                    Image(systemName: composerTranslation.isOpen ? (isChineseRecording ? "stop.fill" : "mic") : (isVoiceMode ? "keyboard" : "mic"))
-                        .font(.system(size: 22))
-                        .frame(width: 32, height: 32)
+                    Image(systemName: composerTranslation.isOpen ? (isChineseRecording ? "stop.fill" : "mic.fill") : (isVoiceMode ? "keyboard" : "mic.fill"))
+                        .font(.system(size: 18, weight: .heavy, design: .rounded))
+                        .foregroundStyle(composerTint)
+                        .frame(width: 38, height: 38)
+                        .background(composerWash, in: Circle())
+                        .contentTransition(.symbolEffect(.replace))
                 }
+                .buttonStyle(.puffSquish)
                 .accessibilityLabel(isVoiceMode ? "切换到键盘" : "切换到语音")
 
                 if isVoiceMode && !composerTranslation.isOpen {
@@ -106,16 +110,19 @@ struct ChatComposerView: View {
                         .autocorrectionDisabled(true)
                         .submitLabel(.send)
                         .textFieldStyle(.plain)
-                        .foregroundStyle(Color.primary)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
+                        .font(.puff(.body, .medium))
+                        .foregroundStyle(Puff.Palette.ink)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 9)
                         .background(
-                            Color.dsBubbleIncoming,
-                            in: RoundedRectangle(
-                                cornerRadius: DSRadius.bubble,
-                                style: .continuous
-                            )
+                            Puff.Palette.cloud,
+                            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
                         )
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .strokeBorder(composerFocus == .english ? composerTint : .clear, lineWidth: 2)
+                        }
+                        .animation(Puff.Motion.press, value: composerFocus == .english)
                         .onSubmit {
                             Task { await sendComposerDraft() }
                         }
@@ -174,16 +181,16 @@ struct ChatComposerView: View {
                 }
             }
         } label: {
-            Image(systemName: sends ? "arrow.up" : "line.3.horizontal")
-                .font(.system(size: sends ? 19 : 22, weight: sends ? .semibold : .medium))
-                .foregroundStyle(sends ? Color.white : Color.primary)
-                .frame(width: 32, height: 32)
-                .background(sends ? composerTint : Color.clear, in: Circle())
-                .contentTransition(.identity)
+            Image(systemName: sends ? "arrow.up" : (showsChatFunctions ? "keyboard" : "plus"))
+                .font(.system(size: 18, weight: .heavy, design: .rounded))
+                .foregroundStyle(sends ? Color.white : composerTint)
+                .frame(width: 38, height: 38)
+                .background(sends ? composerTint : composerWash, in: Circle())
+                .contentTransition(.symbolEffect(.replace))
                 .frame(width: 44, height: 44)
                 .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.puffSquish)
         .disabled(sends && viewModel.draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
         .accessibilityLabel(sends ? "发送消息" : (showsChatFunctions ? "切换到键盘" : "聊天功能"))
         .accessibilityIdentifier(sends ? "chat.send" : "chat.functions")
@@ -196,57 +203,54 @@ struct ChatComposerView: View {
                 dismissChatInput()
                 voicePlayer.stop()
                 showsRealtimeConversation = true
-            } label: { chatFunctionLabel("打电话", symbol: "phone") }
+            } label: { chatFunctionLabel("打电话", symbol: "phone.fill", candy: .mint) }
             .accessibilityIdentifier("chat.call")
 
             if deps.learningPage != nil {
                 Button {
                     dismissChatInput()
                     learningSelected = true
-                } label: { chatFunctionLabel("学习模式", symbol: "book.closed") }
+                } label: { chatFunctionLabel("学习模式", symbol: "book.closed.fill", candy: .grape) }
                 .accessibilityIdentifier("chat.learningMode")
             }
 
             Button {
                 dismissChatInput()
                 toggleComposerTranslator()
-            } label: { chatFunctionLabel("翻译器", symbol: "character.bubble") }
+            } label: { chatFunctionLabel("翻译器", symbol: "character.bubble.fill", candy: .tangerine) }
             .accessibilityIdentifier("chat.translationMode")
         }
-        .buttonStyle(.plain)
-        .padding(.horizontal, 16).padding(.top, 12).padding(.bottom, 16)
+        .buttonStyle(.puffSquish)
+        .padding(.horizontal, 16).padding(.top, 14).padding(.bottom, 16)
         .accessibilityIdentifier("chat.functions.panel")
     }
 
-    private func chatFunctionLabel(_ title: String, symbol: String) -> some View {
+    private func chatFunctionLabel(_ title: String, symbol: String, candy: PuffCandy) -> some View {
         VStack(spacing: 7) {
-            Image(systemName: symbol).font(.system(size: 23))
-                .frame(width: 48, height: 48)
-                .background(composerTint.opacity(0.1), in: RoundedRectangle(cornerRadius: 14))
-            Text(title).font(.caption).foregroundStyle(.primary)
+            PuffIconBubble(symbol, candy: candy, size: 56)
+            Text(title)
+                .font(.puff(.caption, .heavy))
+                .foregroundStyle(Puff.Palette.ink)
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity, minHeight: 76)
         .contentShape(Rectangle())
     }
 
-    private var composerTint: Color { composerTranslation.isOpen ? Color(red: 0.49, green: 0.35, blue: 0.91) : .dsSky }
+    private var composerTint: Color { composerTranslation.isOpen ? PuffCandy.grape.base : PuffCandy.sky.base }
+    private var composerWash: Color { composerTranslation.isOpen ? PuffCandy.grape.wash : PuffCandy.sky.wash }
 
     private var translatorToggle: some View {
         Button(action: toggleComposerTranslator) {
-            ZStack {
-                Circle().fill(composerTint.opacity(0.12))
-                BrandMascotView(pose: composerTranslation.isOpen ? .achievement : .greeting, size: 49)
-                    .offset(y: 9)
-            }
-            .frame(width: 30, height: 30)
-            .clipShape(Circle())
-            .overlay(Circle().strokeBorder(composerTint.opacity(0.45), lineWidth: 2))
-            .overlay(Circle().inset(by: 2).strokeBorder(.white.opacity(0.75), lineWidth: 1))
-            .frame(width: 36, height: 44)
-            .contentShape(Rectangle())
+            Image(systemName: "character.bubble.fill")
+                .font(.system(size: 15, weight: .heavy, design: .rounded))
+                .foregroundStyle(composerTranslation.isOpen ? .white : PuffCandy.tangerine.deep)
+                .frame(width: 34, height: 34)
+                .background(composerTranslation.isOpen ? PuffCandy.grape.base : PuffCandy.tangerine.wash, in: Circle())
+                .frame(width: 36, height: 44)
+                .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.puffSquish)
         .accessibilityLabel(composerTranslation.isOpen ? "收起翻译器" : "打开翻译器")
         .accessibilityIdentifier("chat.translator.toggle")
     }
@@ -287,14 +291,15 @@ struct ChatComposerView: View {
                             MessageDTO(id: UUID(), role: .user, kind: .text, text: text, orderIndex: 0)))
                     }
                 } label: {
-                    Image(systemName: "speaker.wave.2")
-                        .font(.system(size: 22)).frame(width: 32, height: 44)
+                    Image(systemName: "speaker.wave.2.fill")
+                        .font(.system(size: 18, weight: .heavy)).foregroundStyle(composerTint)
+                        .frame(width: 32, height: 44)
                 }
                 .disabled(viewModel.draft.isEmpty)
                 .accessibilityLabel("朗读英文草稿")
                 TextField(isChineseRecording ? "正在听，请说中文…" : "输入中文，或者说中文…",
                           text: $composerTranslation.source, axis: .vertical)
-                    .font(.body).foregroundStyle(Color.primary)
+                    .font(.puff(.body, .medium)).foregroundStyle(Puff.Palette.ink)
                     .focused($composerFocus, equals: .chinese)
                     .submitLabel(.done)
                     .onSubmit { isChineseInputFocused = false }
@@ -304,9 +309,11 @@ struct ChatComposerView: View {
                     ProgressView().controlSize(.small).accessibilityLabel("正在翻译")
                 } else if composerTranslation.mode == .ai {
                     Button("翻译") { translateComposer() }
-                        .font(.subheadline.weight(.semibold))
-                        .padding(.horizontal, 12).padding(.vertical, 8)
-                        .background(composerTint.opacity(0.10), in: Capsule())
+                        .font(.puff(.subheadline, .heavy))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 14).padding(.vertical, 8)
+                        .background(composerTint, in: Capsule())
+                        .buttonStyle(.puffSquish)
                         .disabled(composerTranslation.source.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }

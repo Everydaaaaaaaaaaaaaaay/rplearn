@@ -81,9 +81,9 @@ struct ChatTranscriptView: View {
                             .padding(.top, messageTopSpacing(at: index))
                             .background(
                                 highlightedMessageID == message.id
-                                    ? Color.dsSky.opacity(0.14)
+                                    ? PuffCandy.sky.wash
                                     : Color.clear,
-                                in: RoundedRectangle(cornerRadius: DSRadius.card)
+                                in: RoundedRectangle(cornerRadius: Puff.Radius.medium, style: .continuous)
                             )
                             .animation(
                                 reduceMotion ? nil : .easeInOut(duration: 0.2),
@@ -123,15 +123,16 @@ struct ChatTranscriptView: View {
                     if let error = viewModel.errorMessage {
                         if error.contains("额度") || error.contains("登录") || error.contains("语音体验") {
                             Button("查看会员订阅", action: deps.onShowAccess)
-                                .font(.footnote.weight(.semibold))
+                                .font(.puff(.footnote, .heavy))
+                                .foregroundStyle(PuffCandy.sky.deep)
                                 .padding(.horizontal, chatMessageInset)
                         }
                         Label(error, systemImage: "exclamationmark.triangle.fill")
-                            .font(.footnote)
-                            .foregroundStyle(Color.dsDanger)
+                            .font(.puff(.footnote, .bold))
+                            .foregroundStyle(Puff.Palette.cherry)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 8)
-                            .background(.regularMaterial, in: Capsule())
+                            .background(PuffCandy.bubblegum.wash, in: Capsule())
                             .padding(.top, 8)
                             .padding(.horizontal, chatMessageInset)
                     }
@@ -139,7 +140,8 @@ struct ChatTranscriptView: View {
                         Button("重试回复", systemImage: "arrow.clockwise") {
                             viewModel.retryUnansweredReply()
                         }
-                        .font(.footnote.weight(.semibold))
+                        .font(.puff(.footnote, .heavy))
+                        .foregroundStyle(PuffCandy.sky.deep)
                         .padding(.vertical, 8)
                         .padding(.horizontal, chatMessageInset)
                     }
@@ -164,7 +166,7 @@ struct ChatTranscriptView: View {
             // Blank taps and downward drags share one dismissal transition.
             .scrollDismissesKeyboard(.never)
             .simultaneousGesture(messageListKeyboardDismissGesture)
-            .background(Color.dsBackground)
+            .background(Puff.Palette.page)
             .overlayPreferenceValue(ChatTranscriptBoundsKey.self, alignment: .top) { bounds in
                 if composerFocus != nil || showsChatFunctions {
                     // A bottom-aligned short transcript leaves blank space outside its content.
@@ -252,15 +254,13 @@ struct ChatTranscriptView: View {
                             : "回到底部",
                         systemImage: "arrow.down"
                     )
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(Color.dsSkyDeep)
-                    .padding(.horizontal, 12)
-                    .frame(minHeight: 36)
-                    .background(.regularMaterial, in: Capsule())
-                    .overlay { Capsule().stroke(Color.dsBorder, lineWidth: 0.5) }
-                    .shadow(color: .black.opacity(0.1), radius: 8, y: 3)
+                    .font(.puff(.footnote, .heavy))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 14)
+                    .frame(minHeight: 38)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(PuffCardButtonStyle(radius: 19, face: PuffCandy.sky.base, border: .clear, lip: PuffCandy.sky.lip, lipHeight: 3))
+                .transition(.puffPop)
                 .padding(.trailing, 12)
                 .padding(.bottom, 12)
                 .accessibilityHint("跳转到会话中的最新消息")
@@ -271,7 +271,7 @@ struct ChatTranscriptView: View {
 
     /// Background-only hit target: word taps and bubble menus remain in the foreground.
     private var keyboardDismissBackdrop: some View {
-        Color.dsBackground
+        Puff.Palette.page
             .contentShape(Rectangle())
             .onTapGesture { dismissChatInput() }
             .accessibilityHidden(true)
@@ -363,12 +363,12 @@ struct ChatTranscriptView: View {
             // storyLine：剧情/系统通知（居中提示）；纯教练消息不占位
             if message.kind == .storyLine {
                 Label(message.text, systemImage: "sparkles")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
+                    .font(.puff(.footnote, .semibold))
+                    .foregroundStyle(PuffCandy.grape.deep)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 7)
-                    .background(.thinMaterial, in: Capsule())
+                    .background(PuffCandy.grape.wash, in: Capsule())
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 4)
                     .accessibilityHint("系统消息，\(ChatTimelinePolicy.exactTimeText(for: message.createdAt))")
@@ -397,12 +397,12 @@ struct ChatTranscriptView: View {
 
     private func timeMarker(for date: Date) -> some View {
         Text(ChatTimelinePolicy.timeMarkerText(for: date))
-            .font(.caption2.weight(.semibold))
-            .foregroundStyle(.secondary)
+            .font(.puff(.caption2, .heavy))
+            .foregroundStyle(Puff.Palette.inkFaint)
             .monospacedDigit()
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
-            .background(Color.secondary.opacity(0.08), in: Capsule())
+            .background(Puff.Palette.cloud, in: Capsule())
             .frame(maxWidth: .infinity)
             .accessibilityLabel("会话时间，\(ChatTimelinePolicy.exactTimeText(for: date))")
     }
@@ -410,12 +410,11 @@ struct ChatTranscriptView: View {
     @ViewBuilder
     private func incomingAvatar(isVisible: Bool) -> some View {
         if isVisible {
-            AvatarBadge(
+            PuffAvatar(
                 name: viewModel.character.displayName,
                 size: 30,
                 imageName: viewModel.character.card.avatarAssetName,
-                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                usesPendingPlaceholder: true
+                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:))
             )
         } else {
             Color.clear
@@ -445,7 +444,7 @@ struct ChatTranscriptView: View {
         ) {
             Label(receipt.label, systemImage: receipt.systemImage)
                 .font(.caption2.weight(.medium))
-                .foregroundStyle(receipt == .delivered ? Color.secondary : Color.dsSkyDeep)
+                .foregroundStyle(receipt == .delivered ? Puff.Palette.inkFaint : PuffCandy.sky.deep)
                 .padding(.trailing, 4)
                 .transition(.opacity)
                 .accessibilityLabel("消息\(receipt.label)")

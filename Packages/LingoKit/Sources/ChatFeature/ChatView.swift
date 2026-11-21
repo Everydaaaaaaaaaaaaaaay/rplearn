@@ -246,7 +246,7 @@ public struct ChatView: View {
         #endif
         .toolbarBackground(learningSelected ? .hidden : .automatic, for: .navigationBar)
         .toolbarColorScheme(learningSelected ? .dark : nil, for: .navigationBar)
-        .tint(learningSelected ? .white : .accentColor)
+        .tint(learningSelected ? .white : PuffCandy.sky.deep)
         .toolbarRole(.editor)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -445,22 +445,20 @@ public struct ChatView: View {
             let localTime = ChatHeaderStatus.localTime(at: context.date, timeZoneIdentifier: presence.timeZoneIdentifier)
             Button(action: openChatSettings) {
                 HStack(spacing: 9) {
-                    AvatarBadge(name: viewModel.character.displayName, size: 34,
+                    PuffAvatar(name: viewModel.character.displayName, size: 36,
                         imageName: viewModel.character.card.avatarAssetName,
                         remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                        usesPendingPlaceholder: true)
+                        presence: puffPresence(presence))
                     VStack(alignment: .leading, spacing: 1) {
-                        Text(viewModel.character.displayName).font(.subheadline.bold())
+                        Text(viewModel.character.displayName).font(.puff(.subheadline, .heavy))
+                            .foregroundStyle(Puff.Palette.ink)
                             .lineLimit(1).minimumScaleFactor(0.75)
-                        HStack(spacing: 5) {
-                            Circle().fill(presenceColor(presence)).frame(width: 7, height: 7)
-                            ViewThatFits(in: .horizontal) {
-                                Text("\(status) · \(city) \(localTime)").fixedSize()
-                                Text("\(shortStatus) · \(city) \(localTime)").fixedSize()
-                                Text("\(shortStatus) · \(localTime)")
-                            }
+                        ViewThatFits(in: .horizontal) {
+                            Text("\(status) · \(city) \(localTime)").fixedSize()
+                            Text("\(shortStatus) · \(city) \(localTime)").fixedSize()
+                            Text("\(shortStatus) · \(localTime)")
                         }
-                        .font(.caption2).foregroundStyle(.secondary)
+                        .font(.puff(.caption2, .bold)).foregroundStyle(Puff.Palette.inkSoft)
                         .monospacedDigit()
                         .lineLimit(1).allowsTightening(true).minimumScaleFactor(0.7)
                     }
@@ -554,11 +552,11 @@ public struct ChatView: View {
         )
     }
 
-    private func presenceColor(_ presence: NPCPresenceSnapshot) -> Color {
+    private func puffPresence(_ presence: NPCPresenceSnapshot) -> PuffPresence {
         switch presence.state {
-        case .online: Color.dsSuccess
-        case .recentlyActive: Color.dsSunset
-        case .offline: Color.secondary.opacity(0.55)
+        case .online: .online
+        case .recentlyActive: .recentlyActive
+        case .offline: .offline
         }
     }
 
