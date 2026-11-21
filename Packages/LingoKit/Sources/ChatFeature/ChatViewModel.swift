@@ -613,8 +613,8 @@ public final class ChatViewModel {
         }
     }
 
-    public func refreshMessages() async {
-        if usesSharedChat { startSharedObservation() }
+    public func refreshMessages(resumeSharedObservation: Bool = true) async {
+        if usesSharedChat, resumeSharedObservation { startSharedObservation() }
         await reloadMessages()
         if latestDialogueMessage?.role == .assistant, errorMessage == "上次回复未完成，点重试继续。" {
             errorMessage = nil
@@ -1472,8 +1472,9 @@ public final class ChatViewModel {
         guard let canonical = try await deps.chatStore.conversation(id: state.conversationID) else {
             throw AppError.storage("会话尚未同步")
         }
-        conversation = canonical
-        await reloadMessages()
+        let conversationChanged = conversation != canonical
+        if conversationChanged { conversation = canonical }
+        let messagesChanged = await reloadMessages()
         let status = state.generation?.status
         let active = status == "queued" || status == "dispatched"
         if status == "dispatched", let ids = state.generation?.inputMessageIDs {
@@ -1521,7 +1522,9 @@ public final class ChatViewModel {
                     characterRegionID: character.card.regionID)
             }
         }
-        notifyConversationChanged()
+        if conversationChanged || messagesChanged || !reviewed.isEmpty {
+            notifyConversationChanged()
+        }
         if !sharedPageVisible && (sharedReviewMessages.isEmpty || sharedReplyError) {
             stopSharedObservation()
         }
@@ -1577,11 +1580,14 @@ public final class ChatViewModel {
         }
     }
 
-    func reloadMessages() async {
-        guard let conversation else { return }
-        guard let stored = try? await deps.chatStore.messages(conversationID: conversation.id) else { return }
+    @discardableResult
+    func reloadMessages() async -> Bool {
+        guard let conversation,
+              let stored = try? await deps.chatStore.messages(conversationID: conversation.id) else { return false }
         let refreshed = Self.visibleMessages(stored)
-        if refreshed != messages { messages = refreshed }
+        guard refreshed != messages else { return false }
+        messages = refreshed
+        return true
     }
 
     private static func visibleMessages(_ messages: [MessageDTO]) -> [MessageDTO] {

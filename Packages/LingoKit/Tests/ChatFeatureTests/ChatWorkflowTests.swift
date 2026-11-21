@@ -7,6 +7,7 @@ import LLMKit
 import MediaKit
 import PersistenceKit
 import SpeechKit
+import Synchronization
 import Testing
 import SwiftUI
 import UIKit
@@ -142,6 +143,7 @@ struct ChatWorkflowTests {
         var generation: SharedChatSnapshot.Generation?
         let defersReply: Bool
         private(set) var composerEvents: [SharedComposerActivity] = []
+        private(set) var refreshCount = 0
         init(store: ChatStore, characterID: UUID, defersReply: Bool = false) {
             self.defersReply = defersReply
             self.store = store
@@ -151,7 +153,8 @@ struct ChatWorkflowTests {
             try await snapshot()
         }
         func refreshSharedConversation(conversationID: UUID) async throws -> SharedChatSnapshot {
-            try await snapshot()
+            refreshCount += 1
+            return try await snapshot()
         }
         func sharedReply(conversationID: UUID, userMessageID: UUID) async throws -> SharedChatSnapshot {
             try await snapshot()
@@ -201,6 +204,44 @@ struct ChatWorkflowTests {
                 conversationID: conversation.id, lastSequence: messages.count, generation: generation,
                 coveredMessageIDs: covered)
         }
+    }
+
+    @Test("共享聊天空轮询不发布刷新，新回复只发布一次")
+    func sharedPollingOnlyPublishesChanges() async throws {
+        let f = try await fixture(Provider())
+        let characterID = f.model.character.id
+        let gateway = SharedGatewayFixture(store: f.deps.chatStore, characterID: characterID)
+        var dependencies = f.deps
+        dependencies.sharedChat = gateway
+        let model = ChatViewModel(character: f.model.character, deps: dependencies)
+        let notifications = Mutex(0)
+        let observer = NotificationCenter.default.addObserver(
+            forName: .roleplayConversationDidChange, object: nil, queue: nil
+        ) { note in
+            guard note.object as? UUID == characterID else { return }
+            notifications.withLock { $0 += 1 }
+        }
+        defer {
+            model.stopSharedObservation()
+            NotificationCenter.default.removeObserver(observer)
+        }
+        await model.load()
+        try await Task.sleep(for: .milliseconds(1_800))
+        #expect(await gateway.refreshCount >= 2)
+        #expect(notifications.withLock { $0 } == 0)
+
+        let conversationID = try #require(model.conversation?.id)
+        let reply = try await f.deps.chatStore.appendMessage(
+            conversationID: conversationID, role: .assistant, text: "A new reply from another device.")
+        try await Task.sleep(for: .milliseconds(1_800))
+        #expect(model.messages.last?.id == reply.id)
+        #expect(notifications.withLock { $0 } == 1)
+
+        model.stopSharedObservation()
+        let refreshesAtClose = await gateway.refreshCount
+        await model.refreshMessages(resumeSharedObservation: false)
+        try await Task.sleep(for: .milliseconds(900))
+        #expect(await gateway.refreshCount == refreshesAtClose)
     }
 
     @Test("共享会话只观察服务端回复，关闭及重开不会启动本地模型")

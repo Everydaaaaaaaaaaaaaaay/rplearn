@@ -233,7 +233,7 @@ public struct ChatView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
-            Task { await viewModel.refreshMessages() }
+            Task { await viewModel.refreshMessages(resumeSharedObservation: false) }
         }
         .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
