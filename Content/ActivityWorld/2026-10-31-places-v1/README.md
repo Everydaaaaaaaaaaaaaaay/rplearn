@@ -69,3 +69,13 @@ pnpm exec tsx src/cli/activity-world.ts release-check ../Content/ActivityWorld/2
 pnpm exec tsx src/cli/compile-activity-world.ts ../Content/ActivityWorld/2026-10-31-places-v1/world.json ../Content/ActivityWorld/2026-10-31-places-v1/release-review-20261115.json ../App/Resources/ActivityPlacesGallery config/activity-world/2026-10-31-places-v1.json ../App/Resources/activity-world-release.json
 pnpm exec tsx src/cli/activity-world.ts release-check config/activity-world/2026-10-31-places-v1.json ../App/Resources/npc-library-v3.json
 ```
+
+## 网页版 AI 改写资料
+
+[创作说明与交稿接口](authoring/README.md) 对应当前城市相遇运行规则。在仓库根目录运行以下命令，可从发布包导出角色总表、逐城完整角色卡、地点事实和独立的 JSON 交稿模板。
+
+```sh
+node Tools/ContentPipeline/export-encounter-authoring.mjs
+```
+
+输出位于 `build/encounter-authoring`。导出器逐人比对后端发布包和 App 随包资料。
