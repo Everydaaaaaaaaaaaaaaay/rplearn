@@ -9,7 +9,6 @@ struct SubscriptionView: View {
     @State private var selectedProductID: String?
     @State private var managementError: String?
     @Environment(\.openURL) private var openURL
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     private var products: [PurchasableProduct] {
         #if DEBUG
@@ -41,164 +40,180 @@ struct SubscriptionView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: Puff.Space.m) {
                 introduction
                 benefits
                 plans
                 if let error = billing.lastError {
-                    Text(error).font(.footnote).foregroundStyle(.red)
+                    Text(error)
+                        .font(.puff(.footnote, .bold))
+                        .foregroundStyle(Puff.Palette.cherry)
                         .accessibilityIdentifier("subscription.error")
                 }
                 if let message = billing.message {
-                    Text(message).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
+                    Text(message)
+                        .font(.puff(.footnote, .semibold))
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
-                HStack(spacing: 24) {
+                HStack(spacing: Puff.Space.l) {
                     Button("恢复购买") { Task { await billing.restorePurchases() } }
                         .disabled(busy)
                         .accessibilityIdentifier("subscription.restore")
                     Button("管理订阅", action: manageSubscription)
                 }
-                .font(.footnote)
+                .font(.puff(.footnote, .heavy))
+                .foregroundStyle(PuffCandy.sky.deep)
+                .buttonStyle(.puffSquish)
                 .frame(maxWidth: .infinity)
             }
             .frame(maxWidth: 560)
-            .padding(.horizontal, 24)
-            .padding(.top, 12)
-            .padding(.bottom, 16)
+            .padding(.horizontal, Puff.Space.m)
+            .padding(.top, Puff.Space.xs)
+            .padding(.bottom, Puff.Space.m)
             .frame(maxWidth: .infinity)
         }
         .accessibilityIdentifier("subscription.content")
-        .foregroundStyle(Color.dsPaperInk)
-        .tint(.dsTravelNavy)
+        .foregroundStyle(Puff.Palette.ink)
+        .tint(PuffCandy.sunny.deep)
         .safeAreaInset(edge: .bottom, spacing: 0) { purchaseDock }
-        .background {
-            DSWorkbenchBackdrop(focus: .subscription)
-            LinearGradient(
-                stops: [
-                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.94), location: 0),
-                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.88), location: 0.26),
-                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.18), location: 0.48),
-                    .init(color: paperTone.opacity(reduceTransparency ? 1 : 0.12), location: 1)
-                ],
-                startPoint: .top, endPoint: .bottom
-            )
-            .ignoresSafeArea()
-            .allowsHitTesting(false)
-        }
+        .background(Puff.Palette.page.ignoresSafeArea())
         .task { await billing.synchronize(showLoading: true) }
         .alert("无法打开订阅管理", isPresented: Binding(
             get: { managementError != nil }, set: { if !$0 { managementError = nil } }
         )) { Button("好", role: .cancel) {} } message: { Text(managementError ?? "") }
     }
 
-    private var paperTone: Color { Color(red: 0.985, green: 0.970, blue: 0.925) }
-
     private var introduction: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("咕游记会员")
-                .font(.title2.bold())
-            Text("认识更多朋友，让每次交流更进一步。")
-                .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
-                .fixedSize(horizontal: false, vertical: true)
-            if billing.tier != .free {
-                Text("当前会员：\(billing.tier.displayName)")
-                    .font(.subheadline.weight(.medium))
-                if let validity = billing.currentValidityDescription {
-                    Text(validity).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
+        HStack(spacing: Puff.Space.m) {
+            PuffIconBubble("crown.fill", candy: .sunny, size: 60)
+            VStack(alignment: .leading, spacing: 6) {
+                Text("咕游记会员")
+                    .font(.puff(.title2, .heavy))
+                    .foregroundStyle(Puff.Palette.ink)
+                if billing.tier != .free {
+                    PuffTag("当前：\(billing.tier.displayName)", systemImage: "checkmark.seal.fill", candy: .sunny)
+                    if let validity = billing.currentValidityDescription {
+                        Text(validity)
+                            .font(.puff(.footnote, .semibold))
+                            .foregroundStyle(Puff.Palette.inkSoft)
+                    }
                 }
             }
+            Spacer(minLength: 0)
         }
+        .padding(Puff.Space.m)
+        .puffCard(radius: Puff.Radius.huge, face: PuffCandy.sunny.wash, border: PuffCandy.sunny.base.opacity(0.35), lip: PuffCandy.sunny.base.opacity(0.4))
     }
 
     private var benefits: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            benefit("person.2", "更多旅途朋友")
-            benefit("text.bubble", "更连贯的对话")
-            benefit("heart.text.clipboard", "更长久的记忆")
+        HStack(alignment: .top, spacing: Puff.Space.xs) {
+            benefit("person.2.fill", "更多旅途朋友", .sky)
+            benefit("text.bubble.fill", "更连贯的对话", .mint)
+            benefit("heart.fill", "更长久的记忆", .bubblegum)
         }
     }
 
-    private func benefit(_ symbol: String, _ title: String) -> some View {
-        Label {
-            Text(title).font(.subheadline)
-        } icon: {
-            Image(systemName: symbol)
-                .foregroundStyle(Color.dsTravelNavy)
-                .frame(width: 24)
+    private func benefit(_ symbol: String, _ title: String, _ candy: PuffCandy) -> some View {
+        VStack(spacing: 8) {
+            PuffIconBubble(symbol, candy: candy, size: 44)
+            Text(title)
+                .font(.puff(.caption, .heavy))
+                .foregroundStyle(Puff.Palette.ink)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
         }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, Puff.Space.s)
+        .puffCard(radius: Puff.Radius.large)
+        .accessibilityElement(children: .combine)
     }
 
     private var plans: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("选择会员方案").font(.headline).padding(.bottom, 10)
+        VStack(alignment: .leading, spacing: Puff.Space.s) {
+            Text("选择会员方案")
+                .font(.puff(.headline, .heavy))
+                .foregroundStyle(Puff.Palette.ink)
+                .accessibilityAddTraits(.isHeader)
             if products.isEmpty {
                 if billing.operation == .loading {
                     HStack(spacing: 10) {
-                        ProgressView()
-                        Text("正在获取 App Store 价格…")
+                        PuffLoadingDots().scaleEffect(0.7).frame(width: 46, height: 20)
+                        Text("正在获取 App Store 价格")
                     }
-                    .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
+                    .font(.puff(.subheadline, .semibold))
+                    .foregroundStyle(Puff.Palette.inkSoft)
                 } else {
                     Text(billing.catalogState == .available
                         ? "App Store 尚未提供会员订阅方案，请稍后重新加载。"
                         : billing.catalogStatusMessage)
-                        .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
+                        .font(.puff(.subheadline, .semibold))
+                        .foregroundStyle(Puff.Palette.inkSoft)
                         .accessibilityIdentifier("subscription.catalogStatus")
                     if billing.catalogState != .unavailable {
                         Button("重新加载") { Task { await billing.synchronize(showLoading: true) } }
-                            .font(.subheadline.weight(.medium))
-                            .padding(.top, 12)
+                            .buttonStyle(PuffCandyButtonStyle(.sky))
                             .accessibilityIdentifier("subscription.reload")
                     }
                 }
             } else {
-                Divider()
                 ForEach(products) { product in
                     plan(product)
-                    Divider()
                 }
             }
         }
     }
 
     private func plan(_ product: PurchasableProduct) -> some View {
-        Button {
+        let isSelected = selectedProduct?.id == product.id
+        let candy: PuffCandy = product.tier == .pro ? .grape : .sunny
+        return Button {
+            Haptics.selection()
             selectedProductID = product.id
         } label: {
-            HStack(alignment: .top, spacing: 12) {
-                Image(systemName: selectedProduct?.id == product.id ? "checkmark.circle.fill" : "circle")
-                    .font(.title3)
-                    .foregroundStyle(selectedProduct?.id == product.id ? Color.dsTravelNavy : Color.dsPaperInkSecondary)
-                    .padding(.top, 2)
-                VStack(alignment: .leading, spacing: 6) {
+            HStack(alignment: .center, spacing: Puff.Space.s) {
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .font(.system(size: 24, weight: .heavy))
+                    .foregroundStyle(isSelected ? candy.base : Puff.Palette.inkFaint)
+                    .contentTransition(.symbolEffect(.replace))
+                VStack(alignment: .leading, spacing: 5) {
                     HStack(alignment: .firstTextBaseline) {
-                        Text(product.tier.displayName).font(.title3.bold())
+                        Text(product.tier.displayName)
+                            .font(.puff(.title3, .heavy))
+                            .foregroundStyle(Puff.Palette.ink)
                         Spacer(minLength: 8)
-                        Text(product.checkoutDisplayPrice).font(.headline.monospacedDigit())
+                        Text(product.checkoutDisplayPrice)
+                            .font(.puff(.headline, .heavy))
+                            .monospacedDigit()
+                            .foregroundStyle(candy.deep)
                     }
-                    Text(product.tier == .pro ? "更深入的陪伴，适合高频交流" : "开启更多交流，适合日常练习")
-                        .font(.subheadline).foregroundStyle(Color.dsPaperInkSecondary)
                     if product.ticketCount > 0 {
-                        Text("每个付费周期含 \(product.ticketCount) 张通用机票")
-                            .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
+                        PuffTag("每期 \(product.ticketCount) 张通用机票", systemImage: "ticket.fill", candy: candy)
                     }
                     if let detail = product.checkoutPriceDetail {
-                        Text(detail).font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
+                        Text(detail)
+                            .font(.puff(.footnote, .semibold))
+                            .foregroundStyle(Puff.Palette.inkSoft)
                     }
                 }
                 .fixedSize(horizontal: false, vertical: true)
             }
-            .padding(.vertical, 12)
+            .padding(Puff.Space.m)
             .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PuffCardButtonStyle(
+            radius: Puff.Radius.large,
+            face: isSelected ? candy.wash : Puff.Palette.card,
+            border: isSelected ? candy.base : Puff.Palette.line,
+            lip: isSelected ? candy.lip.opacity(0.6) : Puff.Palette.lip
+        ))
+        .animation(Puff.Motion.pop, value: isSelected)
         .disabled(busy)
-        .accessibilityAddTraits(selectedProduct?.id == product.id ? .isSelected : [])
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
         .accessibilityIdentifier("subscription.plan.\(product.tier.rawValue)")
     }
 
     private var purchaseDock: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: Puff.Space.xs) {
             Button {
                 if isCurrentPlan {
                     manageSubscription()
@@ -207,35 +222,38 @@ struct SubscriptionView: View {
                 }
             } label: {
                 HStack(spacing: 10) {
-                    if busy { ProgressView().tint(.white) }
+                    if busy { PuffLoadingDots().scaleEffect(0.6).frame(width: 40, height: 20) }
                     Text(isCurrentPlan ? "管理当前订阅" : selectedProduct.map { "订阅 \($0.tier.displayName)" } ?? "订阅会员")
-                        .font(.headline)
                 }
                 .frame(maxWidth: .infinity, minHeight: 50)
             }
-            .buttonStyle(.dsWorkbenchAction)
+            .buttonStyle(PuffCandyButtonStyle(.sunny))
             .disabled(usesPreviewPrices || busy || selectedProduct == nil || (!isCurrentPlan && !billing.purchasesEnabled))
-            .opacity(busy || selectedProduct == nil || (!isCurrentPlan && !billing.purchasesEnabled) ? 0.5 : 1)
             .accessibilityIdentifier("subscription.purchase")
             if let product = selectedProduct {
                 Text(product.checkoutPriceDetail.map { "\(product.checkoutDisplayPrice) · \($0)" } ?? product.checkoutDisplayPrice)
-                    .font(.footnote).foregroundStyle(Color.dsPaperInkSecondary)
+                    .font(.puff(.footnote, .bold))
+                    .foregroundStyle(Puff.Palette.inkSoft)
                     .multilineTextAlignment(.center)
             }
             if usesPreviewPrices {
-                Text("界面预览 · 示例价格，不可购买").font(.caption).foregroundStyle(Color.dsPaperInkSecondary)
+                Text("界面预览 · 示例价格，不可购买")
+                    .font(.puff(.caption, .semibold))
+                    .foregroundStyle(Puff.Palette.inkSoft)
             }
+            // App Store 要求展示自动续费条款。
             Text("通过 Apple 账户付款，自动续费，可随时在 App Store 管理或取消。")
-                .font(.caption).foregroundStyle(Color.dsPaperInkSecondary)
+                .font(.puff(.caption, .medium))
+                .foregroundStyle(Puff.Palette.inkFaint)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: 560)
-        .padding(.horizontal, 24)
-        .padding(.vertical, 16)
+        .padding(.horizontal, Puff.Space.l)
+        .padding(.vertical, Puff.Space.m)
         .frame(maxWidth: .infinity)
-        .background(paperTone.opacity(reduceTransparency ? 1 : 0.84))
-        .overlay(alignment: .top) { Divider() }
+        .background(Puff.Palette.card.ignoresSafeArea(edges: .bottom))
+        .overlay(alignment: .top) { Rectangle().fill(Puff.Palette.line).frame(height: 1) }
     }
 
     private func manageSubscription() {

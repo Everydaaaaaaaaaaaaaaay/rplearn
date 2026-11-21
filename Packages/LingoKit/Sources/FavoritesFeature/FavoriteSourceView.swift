@@ -22,23 +22,23 @@ struct FavoriteSourceView: View {
                 } else if let source {
                     Text(source.speaker)
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(Color.dsSkyDeep)
+                        .foregroundStyle(PuffCandy.sky.deep)
                     Text(source.text)
                         .font(.subheadline)
-                        .foregroundStyle(Color.dsPaperInk)
+                        .foregroundStyle(Puff.Palette.ink)
                         .lineSpacing(4)
                         .fixedSize(horizontal: false, vertical: true)
                         .textSelection(.enabled)
                     if let translation = source.translationZh, !translation.isEmpty {
                         Text(translation)
                             .font(.footnote)
-                            .foregroundStyle(Color.dsPaperInkSecondary)
+                            .foregroundStyle(Puff.Palette.inkSoft)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                 } else {
                     Text("原消息暂不可用，单词收藏仍会保留。")
                         .font(.footnote)
-                        .foregroundStyle(Color.dsPaperInkSecondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
             }
             .padding(.top, 6)
@@ -46,10 +46,10 @@ struct FavoriteSourceView: View {
         } label: {
             Label("当时的原句", systemImage: "text.bubble")
                 .font(.footnote.weight(.medium))
-                .foregroundStyle(Color.dsSkyDeep)
+                .foregroundStyle(PuffCandy.sky.deep)
                 .padding(.vertical, 5)
         }
-        .tint(Color.dsSkyDeep)
+        .tint(PuffCandy.sky.deep)
         .task(id: expanded) {
             if expanded { await load() }
         }

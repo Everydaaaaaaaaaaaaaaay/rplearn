@@ -82,91 +82,27 @@ public struct SettingsView: View {
     }
 
     public var body: some View {
-        ZStack {
-            DSWorkbenchBackdrop(focus: .settings)
-
-            ScrollView {
-                DSWorkbenchPaperSheet(radius: 28, padding: 0) {
-                    VStack(spacing: 0) {
-                        journeySummary
-                        paperSectionDivider
-                        learningAndReminderPanel
-                        paperSectionDivider
-                        offlineVoicePanel
-                        paperSectionDivider
-                        systemVoicePanel
-                        paperSectionDivider
-                        servicePanel
-                        paperSectionDivider
-                        if let onOpenLearningTrial {
-                            Button(action: onOpenLearningTrial) {
-                                settingsLinkLabel("学习实测 · 切换档位做题", systemImage: "book.pages")
-                            }
-                            .buttonStyle(.plain)
-                            .padding(.horizontal, DSSpacing.lg)
-                            .accessibilityIdentifier("me.learning-trial")
-                            paperSectionDivider
-                        }
-                        if let onTestInitialPlacement {
-                            Button(action: onTestInitialPlacement) {
-                                settingsLinkLabel("测试初次水平测评", systemImage: "checklist")
-                            }
-                            .buttonStyle(.plain)
-                            .padding(.horizontal, DSSpacing.lg)
-                            .accessibilityIdentifier("settings.test-initial-placement")
-                            paperSectionDivider
-                        }
-                        if let onTestFirstLoginFlow {
-                            Button(action: onTestFirstLoginFlow) {
-                                settingsLinkLabel("测试首次登录完整流程", systemImage: "point.topleft.down.to.point.bottomright.curvepath")
-                            }
-                            .buttonStyle(.plain)
-                            .padding(.horizontal, DSSpacing.lg)
-                            .accessibilityIdentifier("settings.test-first-login")
-                            paperSectionDivider
-                        }
-                        if let onTestAppointments {
-                            Button(action: onTestAppointments) {
-                                settingsLinkLabel("测试原生赴约", systemImage: "calendar.badge.checkmark")
-                            }
-                            .buttonStyle(.plain)
-                            .padding(.horizontal, DSSpacing.lg)
-                            .accessibilityIdentifier("settings.test-appointments")
-                            paperSectionDivider
-                        }
-                        if let onOpenTutorial {
-                            Button(action: onOpenTutorial) {
-                                settingsLinkLabel("上手练习", systemImage: "hand.tap")
-                            }
-                            .buttonStyle(.plain)
-                            .padding(.horizontal, DSSpacing.lg)
-                            .accessibilityIdentifier("settings.tutorial")
-                            paperSectionDivider
-                        }
-                        if let onOpenIntroduction {
-                            Button(action: onOpenIntroduction) {
-                                settingsLinkLabel("重看旅程介绍", systemImage: "book.pages")
-                            }
-                            .buttonStyle(.plain)
-                            .padding(.horizontal, DSSpacing.lg)
-                            .accessibilityIdentifier("settings.introduction")
-                            paperSectionDivider
-                        }
-                        creditsPanel
-                    }
-                }
-                .frame(maxWidth: 620)
-                .padding(.horizontal, DSSpacing.lg)
-                .padding(.top, DSSpacing.sm)
-                .padding(.bottom, 48)
-                .frame(maxWidth: .infinity)
+        ScrollView {
+            VStack(spacing: Puff.Space.m) {
+                journeySummary
+                learningAndReminderPanel
+                offlineVoicePanel
+                systemVoicePanel
+                servicePanel
+                extraLinksPanel
             }
-            .scrollIndicators(.hidden)
+            .frame(maxWidth: 620)
+            .padding(.horizontal, Puff.Space.m)
+            .padding(.top, Puff.Space.xs)
+            .padding(.bottom, 48)
+            .frame(maxWidth: .infinity)
         }
+        .scrollIndicators(.hidden)
+        .background(Puff.Palette.page.ignoresSafeArea())
         .navigationTitle("设置")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(.hidden, for: .navigationBar)
-        .animation(DSAnimation.snappy, value: testState)
+        .tint(PuffCandy.sky.base)
+        .animation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: false), value: testState)
         .task {
             await reloadProfile()
         }
@@ -189,23 +125,20 @@ public struct SettingsView: View {
     }
 
     private var journeySummary: some View {
-        HStack(spacing: DSSpacing.lg) {
-            DSObsidianMedallion(systemImage: "bell", size: 72, isRaised: false)
-
-            VStack(alignment: .leading, spacing: 7) {
+        HStack(spacing: Puff.Space.m) {
+            PuffIconBubble("slider.horizontal.3", candy: .sky, size: 56)
+            VStack(alignment: .leading, spacing: 6) {
                 Text("旅程设置")
-                    .font(.system(.title2, design: .rounded, weight: .bold))
-                    .foregroundStyle(Color.dsPaperInk)
-                Label(reminderSummary, systemImage: reminderSummaryIcon)
-                Label("Supertonic-3 · \(offlineVoicePhaseLabel)", systemImage: "waveform.circle.fill")
+                    .font(.puff(.title2, .heavy))
+                    .foregroundStyle(Puff.Palette.ink)
+                PuffTag(reminderSummary, systemImage: reminderSummaryIcon,
+                        candy: proactiveMessagesEnabled ? .mint : .grape)
+                PuffTag("Supertonic-3 · \(offlineVoicePhaseLabel)", systemImage: "waveform", candy: .sky)
             }
-            .font(.subheadline.weight(.medium))
-            .foregroundStyle(Color.dsPaperInkSecondary)
-
             Spacer(minLength: 0)
         }
-        .padding(.horizontal, DSSpacing.lg)
-        .padding(.vertical, 26)
+        .padding(Puff.Space.m)
+        .puffCard(radius: Puff.Radius.huge)
     }
 
     private var reminderSummary: String {
@@ -217,14 +150,10 @@ public struct SettingsView: View {
     }
 
     private var learningAndReminderPanel: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            panelTitle("消息提醒", systemImage: "bell.and.waves.left.and.right")
+        settingsCard {
+            panelTitle("消息提醒", systemImage: "bell.fill", candy: .bubblegum)
 
-            settingsToggle(
-                "角色主动联系",
-                detail: "好友只会在白天偶尔发起适合练习的话题",
-                isOn: $proactiveMessagesEnabled
-            )
+            settingsToggle("角色主动联系", isOn: $proactiveMessagesEnabled)
 
             panelDivider
 
@@ -233,12 +162,10 @@ public struct SettingsView: View {
                     openURL(url)
                 }
             } label: {
-                settingsLinkLabel("系统通知设置", systemImage: "bell.badge")
+                settingsLinkLabel("系统通知设置", systemImage: "bell.badge.fill", external: true)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.puffRow)
         }
-        .padding(.horizontal, DSSpacing.lg)
-        .padding(.top, DSSpacing.lg)
     }
 
     // MARK: - 语音引擎
@@ -246,12 +173,17 @@ public struct SettingsView: View {
     @ViewBuilder
     private var offlineVoicePanel: some View {
         if let manager = speech as? any SpeechSynthesisEngineManaging {
-            VStack(alignment: .leading, spacing: 0) {
-                    panelTitle("语音工作室", systemImage: "waveform")
+            settingsCard {
+                panelTitle("语音工作室", systemImage: "waveform", candy: .grape)
 
-                    settingsValueRow("语音识别", value: "Apple 系统识别")
-                    panelDivider
+                settingsValueRow("语音识别", value: "Apple 系统识别")
+                panelDivider
 
+                HStack {
+                    Text("语音合成")
+                        .font(.puff(.body, .bold))
+                        .foregroundStyle(Puff.Palette.ink)
+                    Spacer()
                     Picker(
                         "语音合成",
                         selection: Binding(
@@ -266,132 +198,128 @@ public struct SettingsView: View {
                         }
                     }
                     .pickerStyle(.menu)
-                    .tint(Color.dsSkyDeep)
-                    .frame(minHeight: 52)
-                    .disabled(
-                        synthesisEngineStatus.isBusy
-                            || !synthesisEngineStatus.isBundledModelAvailable
-                    )
+                    .tint(PuffCandy.grape.deep)
+                    .labelsHidden()
+                }
+                .frame(minHeight: 52)
+                .disabled(
+                    synthesisEngineStatus.isBusy
+                        || !synthesisEngineStatus.isBundledModelAvailable
+                )
 
-                    panelDivider
+                panelDivider
 
-                    HStack(alignment: .firstTextBaseline, spacing: DSSpacing.sm) {
-                        Text("内置 TTS")
-                            .font(.body.weight(.medium))
-                        Spacer()
-                        VStack(alignment: .trailing, spacing: 2) {
-                            Text("Supertonic-3 · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
-                                .font(.subheadline)
-                                .foregroundStyle(Color.dsPaperInkSecondary)
-                            Text(offlineVoicePhaseLabel)
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(offlineVoicePhaseTint)
-                        }
+                HStack(alignment: .center, spacing: Puff.Space.s) {
+                    Text("内置 TTS")
+                        .font(.puff(.body, .bold))
+                        .foregroundStyle(Puff.Palette.ink)
+                    Spacer()
+                    VStack(alignment: .trailing, spacing: 3) {
+                        Text("Supertonic-3 · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
+                            .font(.puff(.subheadline, .semibold))
+                            .foregroundStyle(Puff.Palette.inkSoft)
+                        Text(offlineVoicePhaseLabel)
+                            .font(.puff(.caption, .heavy))
+                            .foregroundStyle(offlineVoicePhaseTint)
                     }
-                    .frame(minHeight: 52)
+                }
+                .frame(minHeight: 52)
 
-                    if synthesisEngineStatus.phase == .loading {
-                        Label("正在预热离线语音模型…", systemImage: "hourglass")
-                            .font(.footnote)
-                            .foregroundStyle(Color.dsPaperInkSecondary)
-                            .padding(.bottom, DSSpacing.sm)
-                    }
+                if synthesisEngineStatus.phase == .loading {
+                    PuffTag("正在预热离线语音模型", systemImage: "hourglass", candy: .sunny)
+                        .padding(.bottom, Puff.Space.s)
+                }
 
-                    if let message = synthesisEngineStatus.errorMessage {
-                        Label(message, systemImage: "exclamationmark.triangle.fill")
-                            .font(.footnote)
-                            .foregroundStyle(Color.dsWarning)
-                            .padding(.bottom, DSSpacing.sm)
-                    }
+                if let message = synthesisEngineStatus.errorMessage {
+                    Label(message, systemImage: "exclamationmark.triangle.fill")
+                        .font(.puff(.footnote, .bold))
+                        .foregroundStyle(PuffCandy.tangerine.deep)
+                        .padding(.bottom, Puff.Space.s)
+                }
 
-                    panelDivider
+                panelDivider
 
-                    VStack(spacing: 0) {
-                        voicePreviewButton("试听系统语音", systemImage: "waveform") {
-                            Task {
-                                await speech.speak(
-                                    SpeechRequest(
-                                        text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
-                                        language: "en-GB",
-                                        purpose: .characterDialogue,
-                                        voiceHint: previewVoiceHint,
-                                        engine: .system
-                                    )
-                                )
-                            }
-                        }
-
-                        panelDivider
-
-                        voicePreviewButton("试听 Supertonic-3 整句", systemImage: "waveform") {
-                            Task {
-                                await speech.speak(
-                                    SpeechRequest(
-                                        text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
-                                        language: "en-US",
-                                        purpose: .characterDialogue,
-                                        voiceHint: previewVoiceHint,
-                                        engine: .supertonic3
-                                    )
-                                )
-                            }
-                        }
-                        .disabled(
-                            !synthesisEngineStatus.isBundledModelAvailable
-                                || synthesisEngineStatus.isBusy
-                        )
-
-                        panelDivider
-
-                        voicePreviewButton("试听 Supertonic-3 单词", systemImage: "textformat.abc") {
-                            Task {
-                                await speech.speak(
-                                    SpeechRequest(
-                                        text: "extraordinary",
-                                        language: "en-US",
-                                        purpose: .pronunciation,
-                                        engine: .supertonic3
-                                    )
-                                )
-                            }
-                        }
-                        .disabled(
-                            !synthesisEngineStatus.isBundledModelAvailable
-                                || synthesisEngineStatus.isBusy
-                        )
-                    }
-
-                    panelDivider
-
-                    DisclosureGroup {
-                        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-                            Text("Supertonic-3 完全离线，生成内容属于机器合成语音；实时识别仍使用 Apple 系统能力，当前语言模型不可用时可能使用网络。")
-                                .font(.footnote)
-                                .foregroundStyle(Color.dsPaperInkSecondary)
-                                .fixedSize(horizontal: false, vertical: true)
-                            Link(
-                                "Supertonic-3 模型与 OpenRAIL-M 许可",
-                                destination: URL(string: "https://huggingface.co/Supertone/supertonic-3")!
+                voicePreviewButton("试听系统语音", systemImage: "waveform") {
+                    Task {
+                        await speech.speak(
+                            SpeechRequest(
+                                text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
+                                language: "en-GB",
+                                purpose: .characterDialogue,
+                                voiceHint: previewVoiceHint,
+                                engine: .system
                             )
-                            .font(.subheadline.weight(.semibold))
-                        }
-                        .padding(.top, DSSpacing.sm)
-                    } label: {
-                        settingsDisclosureLabel(
-                            "语音隐私与许可",
-                            systemImage: "lock.shield"
                         )
                     }
-                    .tint(Color.dsSkyDeep)
+                }
+
+                panelDivider
+
+                voicePreviewButton("试听 Supertonic-3 整句", systemImage: "waveform") {
+                    Task {
+                        await speech.speak(
+                            SpeechRequest(
+                                text: "Hey! It's lovely to meet you. Fancy exploring the city together?",
+                                language: "en-US",
+                                purpose: .characterDialogue,
+                                voiceHint: previewVoiceHint,
+                                engine: .supertonic3
+                            )
+                        )
+                    }
+                }
+                .disabled(
+                    !synthesisEngineStatus.isBundledModelAvailable
+                        || synthesisEngineStatus.isBusy
+                )
+
+                panelDivider
+
+                voicePreviewButton("试听 Supertonic-3 单词", systemImage: "textformat.abc") {
+                    Task {
+                        await speech.speak(
+                            SpeechRequest(
+                                text: "extraordinary",
+                                language: "en-US",
+                                purpose: .pronunciation,
+                                engine: .supertonic3
+                            )
+                        )
+                    }
+                }
+                .disabled(
+                    !synthesisEngineStatus.isBundledModelAvailable
+                        || synthesisEngineStatus.isBusy
+                )
+
+                panelDivider
+
+                DisclosureGroup {
+                    VStack(alignment: .leading, spacing: Puff.Space.s) {
+                        Text("Supertonic-3 完全离线，生成内容属于机器合成语音；实时识别仍使用 Apple 系统能力，当前语言模型不可用时可能使用网络。")
+                            .font(.puff(.footnote, .medium))
+                            .foregroundStyle(Puff.Palette.inkSoft)
+                            .fixedSize(horizontal: false, vertical: true)
+                        Link(
+                            "Supertonic-3 模型与 OpenRAIL-M 许可",
+                            destination: URL(string: "https://huggingface.co/Supertone/supertonic-3")!
+                        )
+                        .font(.puff(.subheadline, .heavy))
+                        .foregroundStyle(PuffCandy.sky.deep)
+                    }
+                    .padding(.top, Puff.Space.xs)
+                    .padding(.bottom, Puff.Space.s)
+                } label: {
+                    settingsDisclosureLabel("语音隐私与许可", systemImage: "lock.shield.fill")
+                }
+                .tint(Puff.Palette.inkSoft)
             }
-            .foregroundStyle(Color.dsPaperInk)
-            .padding(.horizontal, DSSpacing.lg)
-            .padding(.top, DSSpacing.lg)
         }
     }
 
     private var systemVoicePanel: some View {
-        DisclosureGroup {
+        settingsCard {
+            DisclosureGroup {
                 VStack(alignment: .leading, spacing: 0) {
                     settingsValueRow("当前英语语音", value: voiceQuality.label)
                     panelDivider
@@ -416,9 +344,9 @@ public struct SettingsView: View {
                             )
                         }
                     } label: {
-                        settingsLinkLabel("试听当前语音", systemImage: "play.circle")
+                        settingsLinkLabel("试听当前语音", systemImage: "play.circle.fill")
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(.puffRow)
 
                     if !voiceQuality.isNatural {
                         panelDivider
@@ -427,75 +355,118 @@ public struct SettingsView: View {
                                 openURL(url)
                             }
                         } label: {
-                            settingsLinkLabel("下载更自然的系统语音", systemImage: "arrow.down.circle")
+                            settingsLinkLabel("下载更自然的系统语音", systemImage: "arrow.down.circle.fill", external: true)
                         }
-                        .buttonStyle(.plain)
+                        .buttonStyle(.puffRow)
                     }
-
-                    Text(
-                        voiceQuality.isNatural
-                            ? "已启用增强或高级音质。"
-                            : "可在系统设置的辅助功能中下载增强或高级英语语音。"
-                    )
-                    .font(.footnote)
-                    .foregroundStyle(Color.dsPaperInkSecondary)
-                    .padding(.top, DSSpacing.sm)
                 }
-                .padding(.top, DSSpacing.sm)
+                .padding(.top, Puff.Space.xs)
             } label: {
-                settingsDisclosureLabel(
-                    "Apple 系统语音详情",
-                    systemImage: "slider.horizontal.3",
-                    emphasized: true
-                )
+                panelTitle("Apple 系统语音", systemImage: "slider.horizontal.3", candy: .tangerine)
+                    .padding(.bottom, -Puff.Space.s)
             }
-            .tint(Color.dsSkyDeep)
-            .foregroundStyle(Color.dsPaperInk)
-            .padding(.horizontal, DSSpacing.lg)
+            .tint(Puff.Palette.inkSoft)
+        }
     }
 
     private var servicePanel: some View {
-        VStack(alignment: .leading, spacing: 0) {
-                panelTitle("AI 服务", systemImage: "network")
-                settingsValueRow("连接方式", value: "安全后端中转")
-                panelDivider
-                settingsValueRow("模型策略", value: "服务端按任务配置")
-                panelDivider
+        settingsCard {
+            panelTitle("AI 服务", systemImage: "network", candy: .mint)
+            settingsValueRow("连接方式", value: "安全后端中转")
+            panelDivider
+            settingsValueRow("模型策略", value: "服务端按任务配置")
+            panelDivider
 
-                Button {
-                    runConnectionTest()
-                } label: {
-                    HStack {
-                        Label("测试 AI 服务", systemImage: "bolt.horizontal.circle")
-                        Spacer()
-                        if testState == .testing { ProgressView() }
+            Button {
+                runConnectionTest()
+            } label: {
+                HStack {
+                    Label("测试 AI 服务", systemImage: "bolt.horizontal.circle.fill")
+                    Spacer()
+                    if testState == .testing {
+                        PuffLoadingDots().scaleEffect(0.6).frame(width: 40, height: 20)
                     }
-                    .frame(minHeight: 52)
-                    .foregroundStyle(Color.dsSkyDeep)
                 }
-                .buttonStyle(.plain)
-                .disabled(testState == .testing)
+                .font(.puff(.body, .heavy))
+                .foregroundStyle(PuffCandy.sky.deep)
+                .frame(minHeight: 52)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.puffRow)
+            .disabled(testState == .testing)
 
-                switch testState {
-                case .idle, .testing:
-                    EmptyView()
-                case .success(let reply):
-                    Label("服务可用：\(reply)", systemImage: "checkmark.circle.fill")
-                        .font(.footnote)
-                        .foregroundStyle(Color.dsSuccess)
-                case .failure(let message):
-                    Label(message, systemImage: "xmark.octagon.fill")
-                        .font(.footnote)
-                        .foregroundStyle(Color.dsDanger)
-                }
-
-                Text("供应商密钥、模型和配额只保存在服务端，不会下发到设备。")
-                    .font(.footnote)
-                    .foregroundStyle(Color.dsPaperInkSecondary)
-                    .padding(.top, DSSpacing.sm)
+            switch testState {
+            case .idle, .testing:
+                EmptyView()
+            case .success(let reply):
+                Label("服务可用：\(reply)", systemImage: "checkmark.circle.fill")
+                    .font(.puff(.footnote, .bold))
+                    .foregroundStyle(PuffCandy.mint.deep)
+                    .padding(.bottom, Puff.Space.s)
+                    .transition(.puffPop)
+            case .failure(let message):
+                Label(message, systemImage: "xmark.octagon.fill")
+                    .font(.puff(.footnote, .bold))
+                    .foregroundStyle(Puff.Palette.cherry)
+                    .padding(.bottom, Puff.Space.s)
+                    .transition(.puffPop)
+            }
         }
-        .foregroundStyle(Color.dsPaperInk)
-        .padding(DSSpacing.lg)
+    }
+
+    /// 调试入口、教程与许可。
+    private var extraLinksPanel: some View {
+        settingsCard {
+            if let onOpenLearningTrial {
+                Button(action: onOpenLearningTrial) {
+                    settingsLinkLabel("学习实测 · 切换档位做题", systemImage: "book.pages.fill")
+                }
+                .buttonStyle(.puffRow)
+                .accessibilityIdentifier("me.learning-trial")
+                panelDivider
+            }
+            if let onTestInitialPlacement {
+                Button(action: onTestInitialPlacement) {
+                    settingsLinkLabel("测试初次水平测评", systemImage: "checklist")
+                }
+                .buttonStyle(.puffRow)
+                .accessibilityIdentifier("settings.test-initial-placement")
+                panelDivider
+            }
+            if let onTestFirstLoginFlow {
+                Button(action: onTestFirstLoginFlow) {
+                    settingsLinkLabel("测试首次登录完整流程", systemImage: "point.topleft.down.to.point.bottomright.curvepath")
+                }
+                .buttonStyle(.puffRow)
+                .accessibilityIdentifier("settings.test-first-login")
+                panelDivider
+            }
+            if let onTestAppointments {
+                Button(action: onTestAppointments) {
+                    settingsLinkLabel("测试原生赴约", systemImage: "calendar.badge.checkmark")
+                }
+                .buttonStyle(.puffRow)
+                .accessibilityIdentifier("settings.test-appointments")
+                panelDivider
+            }
+            if let onOpenTutorial {
+                Button(action: onOpenTutorial) {
+                    settingsLinkLabel("上手练习", systemImage: "hand.tap.fill")
+                }
+                .buttonStyle(.puffRow)
+                .accessibilityIdentifier("settings.tutorial")
+                panelDivider
+            }
+            if let onOpenIntroduction {
+                Button(action: onOpenIntroduction) {
+                    settingsLinkLabel("重看旅程介绍", systemImage: "book.fill")
+                }
+                .buttonStyle(.puffRow)
+                .accessibilityIdentifier("settings.introduction")
+                panelDivider
+            }
+            creditsPanel
+        }
     }
 
     @ViewBuilder
@@ -504,94 +475,85 @@ public struct SettingsView: View {
             Button(action: onOpenPhotoCredits) {
                 settingsLinkLabel("背景照片与开源许可", systemImage: "photo.on.rectangle.angled")
             }
-            .buttonStyle(.plain)
-            .padding(.horizontal, DSSpacing.lg)
+            .buttonStyle(.puffRow)
         } else {
             NavigationLink {
                 CityScenePhotoCreditsView()
             } label: {
                 settingsLinkLabel("背景照片与开源许可", systemImage: "photo.on.rectangle.angled")
             }
-            .buttonStyle(.plain)
-            .padding(.horizontal, DSSpacing.lg)
+            .buttonStyle(.puffRow)
         }
     }
 
-    private func panelTitle(_ title: String, systemImage: String) -> some View {
-        Label(title, systemImage: systemImage)
-            .font(.system(.headline, design: .rounded, weight: .bold))
-            .foregroundStyle(Color.dsPaperInk)
-            .padding(.bottom, DSSpacing.sm)
+    private func settingsCard<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            content()
+        }
+        .padding(.horizontal, Puff.Space.m)
+        .padding(.vertical, Puff.Space.s)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .puffCard(radius: Puff.Radius.huge)
+    }
+
+    private func panelTitle(_ title: String, systemImage: String, candy: PuffCandy) -> some View {
+        HStack(spacing: 10) {
+            PuffIconBubble(systemImage, candy: candy, size: 34)
+            Text(title)
+                .font(.puff(.headline, .heavy))
+                .foregroundStyle(Puff.Palette.ink)
+        }
+        .padding(.vertical, Puff.Space.xs)
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isHeader)
     }
 
     private var panelDivider: some View {
-        Divider().overlay(Color.dsPaperInk.opacity(0.12))
+        Rectangle().fill(Puff.Palette.line).frame(height: 1)
     }
 
-    private var paperSectionDivider: some View {
-        Divider()
-            .overlay(Color.dsPaperInk.opacity(0.16))
-            .padding(.horizontal, DSSpacing.lg)
-    }
-
-    private func settingsToggle(
-        _ title: String,
-        detail: String,
-        isOn: Binding<Bool>
-    ) -> some View {
+    private func settingsToggle(_ title: String, isOn: Binding<Bool>) -> some View {
         Toggle(isOn: isOn) {
-            VStack(alignment: .leading, spacing: 3) {
-                Text(title)
-                    .font(.body.weight(.medium))
-                    .foregroundStyle(Color.dsPaperInk)
-                Text(detail)
-                    .font(.caption)
-                    .foregroundStyle(Color.dsPaperInkSecondary)
-            }
+            Text(title)
+                .font(.puff(.body, .bold))
+                .foregroundStyle(Puff.Palette.ink)
         }
-        .tint(Color.dsSkyDeep)
-        .frame(minHeight: 64)
+        .tint(PuffCandy.mint.base)
+        .frame(minHeight: 56)
     }
 
     private func settingsValueRow(_ title: String, value: String) -> some View {
-        HStack(alignment: .firstTextBaseline, spacing: DSSpacing.sm) {
+        HStack(alignment: .firstTextBaseline, spacing: Puff.Space.s) {
             Text(title)
-                .font(.body.weight(.medium))
-                .foregroundStyle(Color.dsPaperInk)
+                .font(.puff(.body, .bold))
+                .foregroundStyle(Puff.Palette.ink)
             Spacer()
             Text(value)
-                .font(.subheadline)
-                .foregroundStyle(Color.dsPaperInkSecondary)
+                .font(.puff(.subheadline, .semibold))
+                .foregroundStyle(Puff.Palette.inkSoft)
                 .multilineTextAlignment(.trailing)
         }
         .frame(minHeight: 52)
     }
 
-    private func settingsLinkLabel(_ title: String, systemImage: String) -> some View {
-        HStack(spacing: DSSpacing.sm) {
+    private func settingsLinkLabel(_ title: String, systemImage: String, external: Bool = false) -> some View {
+        HStack(spacing: Puff.Space.s) {
             Label(title, systemImage: systemImage)
             Spacer()
-            Image(systemName: "chevron.right")
-                .font(.caption.weight(.bold))
+            Image(systemName: external ? "arrow.up.right" : "chevron.right")
+                .font(.system(size: 13, weight: .heavy, design: .rounded))
+                .foregroundStyle(Puff.Palette.inkFaint)
         }
-        .font(.body.weight(.medium))
-        .foregroundStyle(Color.dsSkyDeep)
+        .font(.puff(.body, .heavy))
+        .foregroundStyle(PuffCandy.sky.deep)
         .frame(minHeight: 52)
         .contentShape(Rectangle())
     }
 
-    private func settingsDisclosureLabel(
-        _ title: String,
-        systemImage: String,
-        emphasized: Bool = false
-    ) -> some View {
-        let font: Font = emphasized
-            ? .system(.headline, design: .rounded, weight: .bold)
-            : .body.weight(.medium)
-
-        return Label(title, systemImage: systemImage)
-            .font(font)
-            .foregroundStyle(emphasized ? Color.dsPaperInk : Color.dsSkyDeep)
+    private func settingsDisclosureLabel(_ title: String, systemImage: String) -> some View {
+        Label(title, systemImage: systemImage)
+            .font(.puff(.body, .heavy))
+            .foregroundStyle(PuffCandy.sky.deep)
             .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
             .contentShape(Rectangle())
     }
@@ -602,18 +564,21 @@ public struct SettingsView: View {
         action: @escaping () -> Void
     ) -> some View {
         Button(action: action) {
-            HStack(spacing: DSSpacing.sm) {
+            HStack(spacing: Puff.Space.s) {
                 Label(title, systemImage: systemImage)
+                    .foregroundStyle(Puff.Palette.ink)
                 Spacer()
-                Image(systemName: "play.circle")
-                    .font(.title3)
+                Image(systemName: "play.fill")
+                    .font(.system(size: 12, weight: .heavy))
+                    .foregroundStyle(.white)
+                    .frame(width: 30, height: 30)
+                    .background(PuffCandy.grape.base, in: Circle())
             }
-            .font(.subheadline.weight(.semibold))
-            .foregroundStyle(Color.dsTravelNavy)
+            .font(.puff(.subheadline, .heavy))
             .frame(maxWidth: .infinity, minHeight: 52)
             .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.puffRow)
     }
 
     private func reloadVoiceInfo() async {
@@ -656,9 +621,9 @@ public struct SettingsView: View {
 
     private var offlineVoicePhaseTint: Color {
         switch synthesisEngineStatus.phase {
-        case .ready: .green
-        case .failed: .orange
-        default: .secondary
+        case .ready: PuffCandy.mint.deep
+        case .failed: PuffCandy.tangerine.deep
+        default: Puff.Palette.inkSoft
         }
     }
 

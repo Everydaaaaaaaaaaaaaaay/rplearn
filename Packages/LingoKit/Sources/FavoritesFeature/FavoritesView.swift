@@ -58,77 +58,71 @@ public struct FavoritesView: View {
     }
 
     public var body: some View {
-        ZStack {
-            DSWorkbenchBackdrop(focus: .favorites)
+        VStack(spacing: 0) {
+            compactControls
+                .padding(.top, 6)
+                .padding(.bottom, Puff.Space.xs)
 
-            VStack(spacing: 0) {
-                compactControls
-                    .padding(.horizontal, DSSpacing.lg)
-                    .padding(.top, 6)
-                    .padding(.bottom, DSSpacing.xs)
-
-                if isLoading {
-                    Spacer()
-                    ProgressView()
-                        .tint(Color.dsTravelNavy)
-                    Spacer()
-                } else if favorites.isEmpty {
-                    emptyNotebook
-                } else if filteredFavorites.isEmpty {
-                    noResultsPanel
-                } else {
-                    List {
-                        if !wordFavorites.isEmpty {
-                            Section {
-                                ForEach(wordFavorites) { favorite in
-                                    favoritePanel { wordRow(favorite) }
-                                }
-                                .onDelete { indexSet in
-                                    Task { await remove(at: indexSet, from: wordFavorites) }
-                                }
-                            } header: {
-                                sectionHeader("单词", count: wordFavorites.count)
+            if isLoading {
+                Spacer()
+                PuffLoadingDots()
+                Spacer()
+            } else if favorites.isEmpty {
+                emptyNotebook
+            } else if filteredFavorites.isEmpty {
+                noResultsPanel
+            } else {
+                List {
+                    if !wordFavorites.isEmpty {
+                        Section {
+                            ForEach(wordFavorites) { favorite in
+                                favoritePanel { wordRow(favorite) }
                             }
-                        }
-
-                        if !grammarFavorites.isEmpty {
-                            Section {
-                                ForEach(grammarFavorites) { favorite in
-                                    favoritePanel { grammarRow(favorite) }
-                                }
-                                .onDelete { indexSet in
-                                    Task { await remove(at: indexSet, from: grammarFavorites) }
-                                }
-                            } header: {
-                                sectionHeader("语法", count: grammarFavorites.count)
+                            .onDelete { indexSet in
+                                Task { await remove(at: indexSet, from: wordFavorites) }
                             }
-                        }
-
-                        if !sentenceFavorites.isEmpty {
-                            Section {
-                                ForEach(sentenceFavorites) { favorite in
-                                    favoritePanel { sentenceRow(favorite) }
-                                }
-                                .onDelete { indexSet in
-                                    Task { await remove(at: indexSet, from: sentenceFavorites) }
-                                }
-                            } header: {
-                                sectionHeader("句子", count: sentenceFavorites.count)
-                            }
+                        } header: {
+                            sectionHeader("单词", count: wordFavorites.count)
                         }
                     }
-                    .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
-                    .listSectionSpacing(DSSpacing.sm)
-                    .scrollIndicators(.hidden)
+
+                    if !grammarFavorites.isEmpty {
+                        Section {
+                            ForEach(grammarFavorites) { favorite in
+                                favoritePanel { grammarRow(favorite) }
+                            }
+                            .onDelete { indexSet in
+                                Task { await remove(at: indexSet, from: grammarFavorites) }
+                            }
+                        } header: {
+                            sectionHeader("语法", count: grammarFavorites.count)
+                        }
+                    }
+
+                    if !sentenceFavorites.isEmpty {
+                        Section {
+                            ForEach(sentenceFavorites) { favorite in
+                                favoritePanel { sentenceRow(favorite) }
+                            }
+                            .onDelete { indexSet in
+                                Task { await remove(at: indexSet, from: sentenceFavorites) }
+                            }
+                        } header: {
+                            sectionHeader("句子", count: sentenceFavorites.count)
+                        }
+                    }
                 }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .listSectionSpacing(Puff.Space.s)
+                .scrollIndicators(.hidden)
             }
         }
+        .background(Puff.Palette.page.ignoresSafeArea())
         .modifier(IOS18FavoritesKeyboardStabilityModifier())
         .navigationTitle("收藏夹")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(.hidden, for: .navigationBar)
-        .animation(reduceMotion ? nil : .spring(response: 0.42, dampingFraction: 0.86), value: isSearchExpanded)
+        .animation(reduceMotion ? nil : Puff.Motion.bouncy, value: isSearchExpanded)
         .wordLookupOverlay(
             selection: $wordSelection,
             dictionary: deps.dictionary,
@@ -157,109 +151,69 @@ public struct FavoritesView: View {
         if isSearchExpanded {
             HStack(spacing: 10) {
                 Image(systemName: "magnifyingglass")
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(Color.dsTravelNavy.opacity(0.78))
+                    .font(.system(size: 17, weight: .heavy, design: .rounded))
+                    .foregroundStyle(PuffCandy.sky.deep)
 
-                TextField(
-                    "",
-                    text: $searchText,
-                    prompt: Text("搜索收藏").foregroundStyle(Color.dsPaperInkSecondary)
-                )
-                .focused($isSearchFieldFocused)
-                .submitLabel(.search)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
-                .foregroundStyle(Color.dsPaperInk)
+                TextField("搜索收藏", text: $searchText)
+                    .focused($isSearchFieldFocused)
+                    .submitLabel(.search)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .font(.puff(.body, .semibold))
+                    .foregroundStyle(Puff.Palette.ink)
 
                 Button(action: collapseSearch) {
                     Image(systemName: "xmark")
-                        .font(.subheadline.weight(.bold))
-                        .foregroundStyle(Color.dsTravelNavy)
+                        .font(.system(size: 14, weight: .heavy, design: .rounded))
+                        .foregroundStyle(Puff.Palette.inkSoft)
                         .frame(width: 32, height: 32)
+                        .background(Puff.Palette.card, in: Circle())
                         .contentShape(Circle())
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(.puffSquish)
                 .accessibilityLabel("取消搜索")
             }
-            .padding(.horizontal, 14)
-            .frame(height: 48)
-            .dsSceneGlass(
-                radius: 24,
-                tint: Color.dsBrandCream.opacity(0.08),
-                interactive: true,
-                legibility: .ambient
-            )
-            .transition(
-                reduceMotion
-                    ? .opacity
-                    : .scale(scale: 0.86, anchor: .trailing).combined(with: .opacity)
-            )
+            .padding(.leading, 14)
+            .padding(.trailing, 7)
+            .frame(height: 46)
+            .background(PuffCandy.sky.wash, in: RoundedRectangle(cornerRadius: 23, style: .continuous))
+            .padding(.horizontal, Puff.Space.m)
+            .transition(reduceMotion ? .opacity : .scale(scale: 0.86, anchor: .trailing).combined(with: .opacity))
         } else {
-            HStack(spacing: 9) {
-                filterCapsule
+            HStack(spacing: 0) {
+                PuffFilterBar(selection: $filter, options: Filter.allCases.map {
+                    .init($0, title: $0.rawValue, count: $0 == .all ? nil : count(of: $0))
+                }, candy: .bubblegum)
 
                 Button(action: expandSearch) {
                     Image(systemName: "magnifyingglass")
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(Color.dsTravelNavy)
-                        .frame(width: 48, height: 48)
+                        .font(.system(size: 18, weight: .heavy, design: .rounded))
+                        .foregroundStyle(PuffCandy.sky.deep)
+                        .frame(width: 44, height: 44)
+                        .background(PuffCandy.sky.wash, in: Circle())
                         .contentShape(Circle())
                 }
-                .buttonStyle(.plain)
-                .dsSceneGlass(
-                    radius: 24,
-                    tint: Color.dsBrandCream.opacity(0.08),
-                    interactive: true,
-                    legibility: .ambient
-                )
+                .buttonStyle(.puffSquish)
+                .padding(.trailing, Puff.Space.m)
                 .accessibilityLabel("搜索收藏")
             }
-            .transition(
-                reduceMotion
-                    ? .opacity
-                    : .scale(scale: 0.96, anchor: .leading).combined(with: .opacity)
-            )
+            .transition(reduceMotion ? .opacity : .scale(scale: 0.96, anchor: .leading).combined(with: .opacity))
         }
     }
 
-    private var filterCapsule: some View {
-        HStack(spacing: 2) {
-            ForEach(Filter.allCases) { option in
-                Button {
-                    filter = option
-                } label: {
-                    Text(option.rawValue)
-                        .font(.footnote.weight(filter == option ? .bold : .medium))
-                        .foregroundStyle(Color.dsPaperInk)
-                        .frame(maxWidth: .infinity, minHeight: 38)
-                        .background {
-                            if filter == option {
-                                Capsule()
-                                    .fill(Color.dsBrandCream.opacity(0.92))
-                                    .overlay {
-                                        Capsule().stroke(Color.white.opacity(0.78), lineWidth: 0.8)
-                                    }
-                                    .shadow(color: Color.dsTravelNavy.opacity(0.14), radius: 5, y: 2)
-                            }
-                        }
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("\(option.rawValue)筛选")
-                .accessibilityAddTraits(filter == option ? .isSelected : [])
+    private func count(of filter: Filter) -> Int {
+        favorites.filter { favorite in
+            switch filter {
+            case .all: true
+            case .word: favorite.kind == .word
+            case .grammar: favorite.kind == .grammarPoint
+            case .sentence: favorite.kind == .sentence
             }
-        }
-        .padding(4)
-        .frame(maxWidth: .infinity, minHeight: 48)
-        .dsSceneGlass(
-            radius: 24,
-            tint: Color.dsBrandCream.opacity(0.06),
-            interactive: true,
-            legibility: .ambient
-        )
+        }.count
     }
 
     private func expandSearch() {
-        withAnimation(reduceMotion ? nil : .spring(response: 0.42, dampingFraction: 0.86)) {
+        withAnimation(reduceMotion ? nil : Puff.Motion.bouncy) {
             isSearchExpanded = true
         }
         Task { @MainActor in
@@ -271,147 +225,59 @@ public struct FavoritesView: View {
     private func collapseSearch() {
         isSearchFieldFocused = false
         searchText = ""
-        withAnimation(reduceMotion ? nil : .spring(response: 0.38, dampingFraction: 0.88)) {
+        withAnimation(reduceMotion ? nil : Puff.Motion.bouncy) {
             isSearchExpanded = false
         }
     }
 
     private var emptyNotebook: some View {
-        GeometryReader { proxy in
-            journalPlane {
-                VStack(spacing: 26) {
-                    VStack(spacing: 10) {
-                        DSHologramBookmarkIcon(
-                            size: 68,
-                            tint: journalInk,
-                            glowColor: .clear,
-                            isElevated: false,
-                            strokeWidth: 1.3
-                        )
-
-                        Text("还没有收藏")
-                            .font(.system(size: 22, weight: .semibold))
-                            .foregroundStyle(journalInk)
-
-                        Text("在对话中收藏单词、语法或句子\n它们会整理在这里。")
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundStyle(journalInk)
-                            .multilineTextAlignment(.center)
-                            .lineSpacing(3)
-                            .fixedSize(horizontal: true, vertical: false)
-                    }
-
-                    Button(action: onBrowseConversations) {
-                        HStack(spacing: 6) {
-                            Text("去对话看看")
-                            Image(systemName: "chevron.right")
-                        }
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(Color.dsTravelNavy)
-                        .padding(.horizontal, 20)
-                        .frame(minHeight: 42)
-                        .overlay {
-                            Capsule()
-                                .stroke(Color.dsTravelNavy.opacity(0.88), lineWidth: 1.3)
-                                .overlay {
-                                    Capsule()
-                                        .stroke(
-                                            Color.dsSkyDeep.opacity(0.36),
-                                            style: StrokeStyle(lineWidth: 0.75, dash: [1.2, 2.4])
-                                        )
-                                        .offset(x: -0.45, y: 0.35)
-                                }
-                        }
-                    }
-                    .buttonStyle(.plain)
+        ScrollView {
+            PuffEmptyState("还没有收藏", mood: .happy) {
+                Button(action: onBrowseConversations) {
+                    Label("去对话看看", systemImage: "bubble.left.and.bubble.right.fill")
                 }
-                .frame(width: min(280, proxy.size.width * 0.72))
+                .buttonStyle(PuffCandyButtonStyle(.bubblegum))
             }
-            .position(
-                x: proxy.size.width * 0.545 + journalPlaneAnchorOffset.width,
-                y: proxy.size.height * 0.365 + journalPlaneAnchorOffset.height
-            )
+            .frame(maxWidth: .infinity)
+            .padding(.top, 80)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var noResultsPanel: some View {
-        GeometryReader { proxy in
-            journalPlane {
-                VStack(spacing: DSSpacing.sm) {
-                    Image(systemName: "text.magnifyingglass")
-                        .font(.system(size: 35, weight: .regular))
-                        .foregroundStyle(journalInk)
-                    Text("没有找到相关收藏")
-                        .font(.system(size: 19, weight: .semibold))
-                        .foregroundStyle(journalInk)
-                    Text("试试其他关键词或收藏类型")
-                        .font(.system(size: 14, weight: .regular))
-                        .foregroundStyle(journalInk)
-                }
-                .frame(width: min(280, proxy.size.width * 0.72))
-            }
-            .position(
-                x: proxy.size.width * 0.545 + journalPlaneAnchorOffset.width,
-                y: proxy.size.height * 0.35
-            )
+        ScrollView {
+            PuffEmptyState("没有找到相关收藏", mood: .curious)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 60)
         }
-    }
-
-    private var journalRotation: Double { -9.25 }
-
-    // The photographed page has non-orthogonal projected axes. This anchor
-    // keeps the approved action position fixed after applying that projection.
-    private var journalPlaneAnchorOffset: CGSize {
-        CGSize(width: -39.5, height: 24)
-    }
-
-    private var journalInk: Color {
-        Color.dsTravelNavy
-    }
-
-    private var journalPageProjection: ProjectionTransform {
-        let horizontalSlope = CGFloat(tan(journalRotation * .pi / 180))
-        let verticalSlope = CGFloat(tan(11.75 * .pi / 180))
-        return ProjectionTransform(
-            CGAffineTransform(
-                a: 1,
-                b: horizontalSlope,
-                c: verticalSlope,
-                d: 0.99,
-                tx: 0,
-                ty: 0
-            )
-        )
-    }
-
-    private func journalPlane<Content: View>(
-        @ViewBuilder content: () -> Content
-    ) -> some View {
-        content()
-            .projectionEffect(journalPageProjection)
     }
 
     private func favoritePanel<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-        DSWorkbenchPaperSheet(radius: DSRadius.card, padding: DSSpacing.md) {
-            content()
-        }
-        .listRowInsets(
-            EdgeInsets(top: 5, leading: DSSpacing.lg, bottom: 5, trailing: DSSpacing.lg)
-        )
-        .listRowBackground(Color.clear)
-        .listRowSeparator(.hidden)
+        content()
+            .padding(.horizontal, Puff.Space.m)
+            .padding(.vertical, Puff.Space.xs)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .puffCard(radius: Puff.Radius.large)
+            .listRowInsets(
+                EdgeInsets(top: 5, leading: Puff.Space.m, bottom: 5, trailing: Puff.Space.m)
+            )
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
     }
 
     private func sectionHeader(_ title: String, count: Int) -> some View {
-        HStack {
+        HStack(spacing: 6) {
             Text(title)
-            Spacer()
+                .font(.puff(.headline, .heavy))
+                .foregroundStyle(Puff.Palette.ink)
             Text("\(count)")
+                .font(.puff(.caption, .heavy))
                 .monospacedDigit()
+                .foregroundStyle(PuffCandy.bubblegum.deep)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 2)
+                .background(PuffCandy.bubblegum.wash, in: Capsule())
+            Spacer()
         }
-        .font(.subheadline.weight(.bold))
-        .foregroundStyle(Color.dsPaperInk)
         .textCase(nil)
         .padding(.horizontal, 4)
     }
@@ -460,12 +326,12 @@ public struct FavoritesView: View {
                         selection: wordSelection,
                         onSelect: { wordSelection = $0 }
                     )
-                    .font(.title3.weight(.semibold))
+                    .font(.puff(.title3, .heavy))
 
                     if let phonetic = wordEntries[favorite.id]?.phonetic {
                         Text("/\(phonetic)/")
                             .font(.footnote)
-                            .foregroundStyle(Color.dsPaperInkSecondary)
+                            .foregroundStyle(Puff.Palette.inkSoft)
                     }
                 }
 
@@ -474,14 +340,14 @@ public struct FavoritesView: View {
                     if groups.isEmpty {
                         Text("暂无中文释义")
                             .font(.subheadline)
-                            .foregroundStyle(Color.dsPaperInkSecondary)
+                            .foregroundStyle(Puff.Palette.inkSoft)
                     } else {
                         ForEach(groups) { group in
                             HStack(alignment: .firstTextBaseline, spacing: 8) {
                                 partOfSpeechLabel(group)
                                 Text(group.meaning)
                                     .font(.subheadline)
-                                    .foregroundStyle(Color.dsPaperInk)
+                                    .foregroundStyle(Puff.Palette.ink)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
                         }
@@ -505,12 +371,12 @@ public struct FavoritesView: View {
         HStack(alignment: .firstTextBaseline, spacing: 3) {
             Text(group.partOfSpeech ?? "释义")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(Color.dsSkyDeep)
+                .foregroundStyle(PuffCandy.sky.deep)
 
             if let abbreviation = group.partOfSpeechAbbreviation {
                 Text(abbreviation)
                     .font(.caption2.weight(.medium))
-                    .foregroundStyle(Color.dsPaperInkSecondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
             }
         }
         .lineLimit(1)
@@ -525,9 +391,9 @@ public struct FavoritesView: View {
             HStack(alignment: .firstTextBaseline, spacing: 8) {
                 Image(systemName: "text.book.closed.fill")
                     .font(.subheadline)
-                    .foregroundStyle(Color.dsSkyDeep)
+                    .foregroundStyle(PuffCandy.sky.deep)
                 Text(point?.title ?? favorite.sentence)
-                    .font(.headline)
+                    .font(.puff(.headline, .heavy))
                 Spacer(minLength: 8)
                 favoriteDate(favorite.createdAt)
             }
@@ -536,7 +402,7 @@ public struct FavoritesView: View {
                !explanation.isEmpty {
                 Text(explanation)
                     .font(.subheadline)
-                    .foregroundStyle(Color.dsPaperInkSecondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)
             }
 
@@ -546,7 +412,7 @@ public struct FavoritesView: View {
                         .font(.footnote.weight(.medium))
                     Text(example.zh)
                         .font(.caption)
-                        .foregroundStyle(Color.dsPaperInkSecondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
                 .padding(.leading, 25)
             }
@@ -571,7 +437,7 @@ public struct FavoritesView: View {
                 if let translation = favorite.translationZh {
                     Text(translation)
                         .font(.footnote)
-                        .foregroundStyle(Color.dsPaperInkSecondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
 
                 HStack(spacing: 5) {
@@ -580,7 +446,7 @@ public struct FavoritesView: View {
                     favoriteDate(favorite.createdAt)
                 }
                 .font(.caption)
-                .foregroundStyle(Color.dsPaperInkSecondary)
+                .foregroundStyle(Puff.Palette.inkSoft)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -602,7 +468,7 @@ public struct FavoritesView: View {
     private func favoriteDate(_ date: Date) -> some View {
         Text(date, style: .date)
             .font(.caption)
-            .foregroundStyle(Color.dsPaperInkSecondary)
+            .foregroundStyle(Puff.Palette.inkSoft)
     }
 
     private func speechButton(text: String, label: String) -> some View {
@@ -611,13 +477,13 @@ public struct FavoritesView: View {
             Task { await speech.speak(text, language: "en-US") }
         } label: {
             Image(systemName: "speaker.wave.2.fill")
-                .font(.body.weight(.semibold))
-                .foregroundStyle(Color.dsSky)
-                .frame(width: 44, height: 44)
-                .background(Color.dsSky.opacity(0.12), in: Circle())
+                .font(.system(size: 16, weight: .heavy))
+                .foregroundStyle(.white)
+                .frame(width: 42, height: 42)
+                .background(PuffCandy.sky.base, in: Circle())
                 .contentShape(Circle())
         }
-        .buttonStyle(.borderless)
+        .buttonStyle(.puffSquish)
         .accessibilityLabel(label)
     }
 
