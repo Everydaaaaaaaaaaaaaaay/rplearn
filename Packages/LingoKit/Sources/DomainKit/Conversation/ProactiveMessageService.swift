@@ -63,7 +63,7 @@ public struct ProactiveMessageService: Sendable {
             do {
                 output = try await llm.complete(request)
             } catch {
-                // LLMRouter 已经对网络和限流错误重试；此处不再重复轰炸服务端。
+                // 网络和限流错误交给编排层稍后重试。
                 Log.llm.warning("主动消息生成失败，本轮不写入并保留稍后重试机会：\(error)")
                 return nil
             }
