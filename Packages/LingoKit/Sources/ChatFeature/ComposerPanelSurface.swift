@@ -35,7 +35,7 @@ struct ComposerModeSwitch: View {
                 Button {
                     withAnimation(reduceMotion ? nil : .spring(response: 0.3, dampingFraction: 0.95)) { mode = item }
                 } label: {
-                    Text(item.rawValue).font(.puff(.subheadline, .heavy))
+                    Text(item.rawValue).font(.puff(.subheadline, Puff.Weight.emphasis))
                         .foregroundStyle(mode == item ? Color.white : Puff.Palette.inkSoft)
                         .frame(maxWidth: .infinity).frame(height: 30)
                         .background {

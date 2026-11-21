@@ -15,6 +15,8 @@
   `base` 填充、`deep` 白底上的图标与强调字、`wash` 浅底、`lip` 实心按钮唇边。正文始终用 `Puff.Palette.ink`。
   同一位朋友的颜色由名字稳定决定（`PuffCandy.stable(for:)`）。
 - **圆润**：全部使用圆体 `Font.puff(_:_:)`，跟随动态字体；圆角 12 / 18 / 24 / 30。
+- **字重偏轻**：圆体本身显粗，字重统一取 `Puff.Weight`——页面大标题 bold，卡片标题与名字 semibold，
+  按钮与强调 semibold，标签与辅助文字 medium，正文 regular，图标 semibold。不直接写 heavy / black。
 - **厚卡片**：白色正面 + 细描边 + 底部 4pt 唇边（`puffCard`、`PuffCardButtonStyle`），按下时正面陷进唇边，
   松手轻弹回来。小按钮用 `PuffSquishButtonStyle`，分组内的行用 `PuffRowButtonStyle`。
 - **灵动但可打断**：`Puff.Motion` 全部是弹簧。首屏用 `puffEntrance(index:isShown:)` 逐行错峰弹入，只播放一次；

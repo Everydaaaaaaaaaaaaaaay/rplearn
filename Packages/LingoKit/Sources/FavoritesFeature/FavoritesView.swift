@@ -151,7 +151,7 @@ public struct FavoritesView: View {
         if isSearchExpanded {
             HStack(spacing: 10) {
                 Image(systemName: "magnifyingglass")
-                    .font(.system(size: 17, weight: .heavy, design: .rounded))
+                    .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
                     .foregroundStyle(PuffCandy.sky.deep)
 
                 TextField("搜索收藏", text: $searchText)
@@ -159,12 +159,12 @@ public struct FavoritesView: View {
                     .submitLabel(.search)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
-                    .font(.puff(.body, .semibold))
+                    .font(.puff(.body, Puff.Weight.label))
                     .foregroundStyle(Puff.Palette.ink)
 
                 Button(action: collapseSearch) {
                     Image(systemName: "xmark")
-                        .font(.system(size: 14, weight: .heavy, design: .rounded))
+                        .font(.system(size: 14, weight: Puff.Weight.icon, design: .rounded))
                         .foregroundStyle(Puff.Palette.inkSoft)
                         .frame(width: 32, height: 32)
                         .background(Puff.Palette.card, in: Circle())
@@ -187,7 +187,7 @@ public struct FavoritesView: View {
 
                 Button(action: expandSearch) {
                     Image(systemName: "magnifyingglass")
-                        .font(.system(size: 18, weight: .heavy, design: .rounded))
+                        .font(.system(size: 18, weight: Puff.Weight.icon, design: .rounded))
                         .foregroundStyle(PuffCandy.sky.deep)
                         .frame(width: 44, height: 44)
                         .background(PuffCandy.sky.wash, in: Circle())
@@ -267,10 +267,10 @@ public struct FavoritesView: View {
     private func sectionHeader(_ title: String, count: Int) -> some View {
         HStack(spacing: 6) {
             Text(title)
-                .font(.puff(.headline, .heavy))
+                .font(.puff(.headline, Puff.Weight.title))
                 .foregroundStyle(Puff.Palette.ink)
             Text("\(count)")
-                .font(.puff(.caption, .heavy))
+                .font(.puff(.caption, Puff.Weight.emphasis))
                 .monospacedDigit()
                 .foregroundStyle(PuffCandy.bubblegum.deep)
                 .padding(.horizontal, 8)
@@ -326,7 +326,7 @@ public struct FavoritesView: View {
                         selection: wordSelection,
                         onSelect: { wordSelection = $0 }
                     )
-                    .font(.puff(.title3, .heavy))
+                    .font(.puff(.title3, Puff.Weight.title))
 
                     if let phonetic = wordEntries[favorite.id]?.phonetic {
                         Text("/\(phonetic)/")
@@ -393,7 +393,7 @@ public struct FavoritesView: View {
                     .font(.subheadline)
                     .foregroundStyle(PuffCandy.sky.deep)
                 Text(point?.title ?? favorite.sentence)
-                    .font(.puff(.headline, .heavy))
+                    .font(.puff(.headline, Puff.Weight.title))
                 Spacer(minLength: 8)
                 favoriteDate(favorite.createdAt)
             }
@@ -477,7 +477,7 @@ public struct FavoritesView: View {
             Task { await speech.speak(text, language: "en-US") }
         } label: {
             Image(systemName: "speaker.wave.2.fill")
-                .font(.system(size: 16, weight: .heavy))
+                .font(.system(size: 16, weight: Puff.Weight.icon))
                 .foregroundStyle(.white)
                 .frame(width: 42, height: 42)
                 .background(PuffCandy.sky.base, in: Circle())

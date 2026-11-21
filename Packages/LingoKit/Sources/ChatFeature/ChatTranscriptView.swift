@@ -123,12 +123,12 @@ struct ChatTranscriptView: View {
                     if let error = viewModel.errorMessage {
                         if error.contains("额度") || error.contains("登录") || error.contains("语音体验") {
                             Button("查看会员订阅", action: deps.onShowAccess)
-                                .font(.puff(.footnote, .heavy))
+                                .font(.puff(.footnote, Puff.Weight.emphasis))
                                 .foregroundStyle(PuffCandy.sky.deep)
                                 .padding(.horizontal, chatMessageInset)
                         }
                         Label(error, systemImage: "exclamationmark.triangle.fill")
-                            .font(.puff(.footnote, .bold))
+                            .font(.puff(.footnote, Puff.Weight.label))
                             .foregroundStyle(Puff.Palette.cherry)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 8)
@@ -140,7 +140,7 @@ struct ChatTranscriptView: View {
                         Button("重试回复", systemImage: "arrow.clockwise") {
                             viewModel.retryUnansweredReply()
                         }
-                        .font(.puff(.footnote, .heavy))
+                        .font(.puff(.footnote, Puff.Weight.emphasis))
                         .foregroundStyle(PuffCandy.sky.deep)
                         .padding(.vertical, 8)
                         .padding(.horizontal, chatMessageInset)
@@ -254,7 +254,7 @@ struct ChatTranscriptView: View {
                             : "回到底部",
                         systemImage: "arrow.down"
                     )
-                    .font(.puff(.footnote, .heavy))
+                    .font(.puff(.footnote, Puff.Weight.emphasis))
                     .foregroundStyle(.white)
                     .padding(.horizontal, 14)
                     .frame(minHeight: 38)
@@ -363,7 +363,7 @@ struct ChatTranscriptView: View {
             // storyLine：剧情/系统通知（居中提示）；纯教练消息不占位
             if message.kind == .storyLine {
                 Label(message.text, systemImage: "sparkles")
-                    .font(.puff(.footnote, .semibold))
+                    .font(.puff(.footnote, Puff.Weight.label))
                     .foregroundStyle(PuffCandy.grape.deep)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 12)
@@ -397,7 +397,7 @@ struct ChatTranscriptView: View {
 
     private func timeMarker(for date: Date) -> some View {
         Text(ChatTimelinePolicy.timeMarkerText(for: date))
-            .font(.puff(.caption2, .heavy))
+            .font(.puff(.caption2, Puff.Weight.emphasis))
             .foregroundStyle(Puff.Palette.inkFaint)
             .monospacedDigit()
             .padding(.horizontal, 10)

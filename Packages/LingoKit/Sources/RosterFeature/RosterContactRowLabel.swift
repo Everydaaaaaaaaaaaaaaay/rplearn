@@ -36,7 +36,7 @@ struct RosterContactRowLabel: View {
             VStack(alignment: .leading, spacing: 3) {
                 HStack(spacing: 6) {
                     Text(character.displayName)
-                        .font(.puff(.headline, .heavy))
+                        .font(.puff(.headline, Puff.Weight.title))
                         .foregroundStyle(Puff.Palette.ink)
                         .lineLimit(1)
                         .layoutPriority(1)
@@ -51,7 +51,7 @@ struct RosterContactRowLabel: View {
                     }
                 }
                 Text(profileLine)
-                    .font(.puff(.footnote, .medium))
+                    .font(.puff(.footnote, Puff.Weight.body))
                     .foregroundStyle(Puff.Palette.inkSoft)
                     .lineLimit(1)
                     .truncationMode(.tail)
@@ -60,7 +60,7 @@ struct RosterContactRowLabel: View {
             Spacer(minLength: 0)
 
             Image(systemName: "chevron.right")
-                .font(.system(size: 13, weight: .heavy, design: .rounded))
+                .font(.system(size: 13, weight: Puff.Weight.icon, design: .rounded))
                 .foregroundStyle(Puff.Palette.inkFaint)
         }
         .padding(.horizontal, Puff.Space.m)

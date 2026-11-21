@@ -60,7 +60,7 @@ extension ChatTranscriptView {
             }
         } label: {
             Image(systemName: isExpanded ? "text.bubble.fill" : "text.bubble")
-                .font(.system(size: 16, weight: .heavy))
+                .font(.system(size: 16, weight: Puff.Weight.icon))
                 .foregroundStyle(isExpanded ? .white : PuffCandy.tangerine.deep)
                 .frame(width: 32, height: 32)
                 .background(isExpanded ? PuffCandy.tangerine.base : PuffCandy.tangerine.wash, in: Circle())
@@ -121,7 +121,7 @@ extension ChatTranscriptView {
                 .controlSize(.small)
         } else if let translation = message.translationZh {
             Text(translation)
-                .font(.puff(.footnote, .medium))
+                .font(.puff(.footnote, Puff.Weight.body))
                 .foregroundStyle(Puff.Palette.inkSoft)
                 .frame(maxWidth: .infinity, alignment: alignment == .trailing ? .trailing : .leading)
                 .padding(alignment == .trailing ? .leading : .trailing, 48)

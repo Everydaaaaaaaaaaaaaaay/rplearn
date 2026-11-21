@@ -23,7 +23,7 @@ struct MapStatusHUD: View {
     private func locationLine(showsContext: Bool) -> some View {
         HStack(spacing: 4) {
             Image(systemName: "location.north.fill")
-                .font(.system(size: 12, weight: .heavy))
+                .font(.system(size: 12, weight: Puff.Weight.icon))
                 .foregroundStyle(PuffCandy.sky.base)
 
             if showsContext {
@@ -39,7 +39,7 @@ struct MapStatusHUD: View {
                     .fixedSize()
 
                 Text(currentRegion.nameZh)
-                    .font(.system(size: 16, weight: .heavy, design: .rounded))
+                    .font(.system(size: 16, weight: Puff.Weight.icon, design: .rounded))
                     .foregroundStyle(Puff.Palette.ink)
                     .lineLimit(1)
                     .minimumScaleFactor(0.78)
@@ -90,7 +90,7 @@ struct MapResourceHUD: View {
                 .foregroundStyle(tint)
 
             Text(value)
-                .font(.system(size: 13, weight: .heavy, design: .rounded))
+                .font(.system(size: 13, weight: Puff.Weight.icon, design: .rounded))
                 .monospacedDigit()
                 .foregroundStyle(Puff.Palette.ink)
                 .lineLimit(1)

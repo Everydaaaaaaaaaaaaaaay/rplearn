@@ -206,7 +206,7 @@ public struct RosterView: View {
                         candy: .grape
                     )
                     Text("\(friends.count) 位旅伴")
-                        .font(.puff(.title2, .heavy))
+                        .font(.puff(.title2, Puff.Weight.display))
                         .foregroundStyle(Puff.Palette.ink)
                         .contentTransition(.numericText(value: Double(friends.count)))
                 }
@@ -224,7 +224,7 @@ public struct RosterView: View {
         let candy: PuffCandy = nearLimit ? .tangerine : .sky
         return VStack(alignment: .trailing, spacing: 6) {
             Text("好友位")
-                .font(.puff(.caption, .heavy))
+                .font(.puff(.caption, Puff.Weight.emphasis))
                 .foregroundStyle(Puff.Palette.inkSoft)
             if slotLimit <= 6 {
                 HStack(spacing: 5) {
@@ -252,7 +252,7 @@ public struct RosterView: View {
                     .animation(motion, value: occupiedSlots)
             }
             Text("\(occupiedSlots)/\(slotLimit)")
-                .font(.puff(.subheadline, .heavy))
+                .font(.puff(.subheadline, Puff.Weight.emphasis))
                 .monospacedDigit()
                 .foregroundStyle(candy.deep)
                 .contentTransition(.numericText(value: Double(occupiedSlots)))
@@ -369,12 +369,12 @@ public struct RosterView: View {
                 .symbolEffect(.bounce, value: isExpanded)
 
             Text(title)
-                .font(.puff(.title3, .heavy))
+                .font(.puff(.title3, Puff.Weight.title))
                 .foregroundStyle(Puff.Palette.ink)
                 .lineLimit(1)
 
             Text("\(peopleCount)")
-                .font(.puff(.subheadline, .heavy))
+                .font(.puff(.subheadline, Puff.Weight.emphasis))
                 .monospacedDigit()
                 .foregroundStyle(candy.deep)
                 .contentTransition(.numericText(value: Double(peopleCount)))
@@ -386,7 +386,7 @@ public struct RosterView: View {
 
             if showsDisclosure {
                 Image(systemName: "chevron.down")
-                    .font(.system(size: 13, weight: .heavy, design: .rounded))
+                    .font(.system(size: 13, weight: Puff.Weight.icon, design: .rounded))
                     .foregroundStyle(Puff.Palette.inkSoft)
                     .frame(width: 30, height: 30)
                     .background(Puff.Palette.cloud, in: Circle())

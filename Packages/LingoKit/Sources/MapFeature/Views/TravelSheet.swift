@@ -39,10 +39,10 @@ struct TravelSheet: View {
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(region.nameZh)
-                    .font(.puff(.title, .heavy))
+                    .font(.puff(.title, Puff.Weight.display))
                     .foregroundStyle(Puff.Palette.ink)
                 Text(region.countryNameZh)
-                    .font(.puff(.subheadline, .bold))
+                    .font(.puff(.subheadline, Puff.Weight.label))
                     .foregroundStyle(Puff.Palette.inkSoft)
             }
 

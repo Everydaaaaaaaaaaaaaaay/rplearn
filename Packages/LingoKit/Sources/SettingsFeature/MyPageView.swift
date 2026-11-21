@@ -162,7 +162,7 @@ public struct MyPageView: View {
     private func hubGroup<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: Puff.Space.xs) {
             Text(title)
-                .font(.puff(.subheadline, .heavy))
+                .font(.puff(.subheadline, Puff.Weight.emphasis))
                 .foregroundStyle(Puff.Palette.inkSoft)
                 .padding(.horizontal, Puff.Space.xs)
                 .accessibilityAddTraits(.isHeader)
@@ -185,7 +185,7 @@ public struct MyPageView: View {
                         .offset(y: -6)
                     VStack(alignment: .leading, spacing: 5) {
                         Text(presentation.displayName)
-                            .font(.puff(.title2, .heavy))
+                            .font(.puff(.title2, Puff.Weight.display))
                             .foregroundStyle(Puff.Palette.ink)
                             .fixedSize(horizontal: false, vertical: true)
                         HStack(spacing: 6) {
@@ -198,7 +198,7 @@ public struct MyPageView: View {
                     .padding(.bottom, Puff.Space.m)
                     Spacer(minLength: Puff.Space.xs)
                     Image(systemName: "chevron.right")
-                        .font(.system(size: 13, weight: .heavy, design: .rounded))
+                        .font(.system(size: 13, weight: Puff.Weight.icon, design: .rounded))
                         .foregroundStyle(Puff.Palette.inkFaint)
                         .padding(.bottom, Puff.Space.l)
                 }
@@ -219,11 +219,11 @@ public struct MyPageView: View {
                 PuffIconBubble("book.pages.fill", candy: .grape, size: 44)
                 VStack(alignment: .leading, spacing: 4) {
                     Text(profile?.difficultyLevel.displayName ?? "英语旅程")
-                        .font(.puff(.headline, .heavy))
+                        .font(.puff(.headline, Puff.Weight.title))
                         .foregroundStyle(Puff.Palette.ink)
                     if let profile {
                         Text(profile.learningGoalsDisplayName)
-                            .font(.puff(.subheadline, .semibold))
+                            .font(.puff(.subheadline, Puff.Weight.label))
                             .foregroundStyle(Puff.Palette.inkSoft)
                             .fixedSize(horizontal: false, vertical: true)
                     }
@@ -247,15 +247,15 @@ public struct MyPageView: View {
                     PuffIconBubble("crown.fill", candy: .sunny, size: 44)
                     VStack(alignment: .leading, spacing: 3) {
                         Text(presentation.accountBadgeTitle)
-                            .font(.puff(.headline, .heavy))
+                            .font(.puff(.headline, Puff.Weight.title))
                             .foregroundStyle(Puff.Palette.ink)
                         Text("会员订阅")
-                            .font(.puff(.caption, .bold))
+                            .font(.puff(.caption, Puff.Weight.label))
                             .foregroundStyle(Puff.Palette.inkSoft)
                     }
                     Spacer(minLength: Puff.Space.xs)
                     Text("管理")
-                        .font(.puff(.subheadline, .heavy))
+                        .font(.puff(.subheadline, Puff.Weight.emphasis))
                         .foregroundStyle(PuffCandy.sunny.deep)
                         .padding(.horizontal, 14).padding(.vertical, 7)
                         .background(PuffCandy.sunny.wash, in: Capsule())
@@ -292,7 +292,7 @@ public struct MyPageView: View {
         HStack(spacing: Puff.Space.s) {
             PuffIconBubble(symbol, candy: candy, size: 40)
             Text(title)
-                .font(.puff(.headline, .heavy))
+                .font(.puff(.headline, Puff.Weight.title))
                 .foregroundStyle(Puff.Palette.ink)
                 .fixedSize(horizontal: false, vertical: true)
             Spacer(minLength: Puff.Space.xs)
@@ -304,7 +304,7 @@ public struct MyPageView: View {
 
     private var hubChevron: some View {
         Image(systemName: "chevron.right")
-            .font(.system(size: 13, weight: .heavy, design: .rounded))
+            .font(.system(size: 13, weight: Puff.Weight.icon, design: .rounded))
             .foregroundStyle(Puff.Palette.inkFaint)
     }
 
@@ -320,7 +320,7 @@ public struct MyPageView: View {
             avatar
                 .overlay(alignment: .bottomTrailing) {
                     Image(systemName: "camera.fill")
-                        .font(.system(size: 12, weight: .heavy))
+                        .font(.system(size: 12, weight: Puff.Weight.icon))
                         .foregroundStyle(.white)
                         .padding(7)
                         .background(PuffCandy.sky.base, in: Circle())
@@ -351,12 +351,12 @@ extension MyPageView {
                         avatarPicker(size: 76)
                         VStack(alignment: .leading, spacing: 6) {
                             Text(presentation.displayName)
-                                .font(.puff(.title2, .heavy))
+                                .font(.puff(.title2, Puff.Weight.display))
                                 .foregroundStyle(Puff.Palette.ink)
                                 .fixedSize(horizontal: false, vertical: true)
                             PuffTag(presentation.accountBadgeTitle, systemImage: "crown.fill", candy: .sunny)
                             Text("已认识 \(occupiedFriendSlots) 位旅途朋友")
-                                .font(.puff(.footnote, .semibold))
+                                .font(.puff(.footnote, Puff.Weight.label))
                                 .foregroundStyle(Puff.Palette.inkSoft)
                         }
                         Spacer(minLength: 0)
@@ -386,7 +386,7 @@ extension MyPageView {
                         Task { await authSession.logout() }
                     } label: {
                         Label("退出登录", systemImage: "rectangle.portrait.and.arrow.right")
-                            .font(.puff(.headline, .heavy))
+                            .font(.puff(.headline, Puff.Weight.title))
                             .foregroundStyle(Puff.Palette.cherry)
                             .frame(maxWidth: .infinity, minHeight: 52)
                     }
@@ -410,18 +410,18 @@ extension MyPageView {
             PuffIconBubble(symbol, candy: candy, size: 40)
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
-                    .font(.puff(.headline, .heavy))
+                    .font(.puff(.headline, Puff.Weight.title))
                     .foregroundStyle(Puff.Palette.ink)
                 if let detail {
                     Text(detail)
-                        .font(.puff(.footnote, .semibold))
+                        .font(.puff(.footnote, Puff.Weight.label))
                         .foregroundStyle(Puff.Palette.inkSoft)
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
             Spacer(minLength: 0)
             Image(systemName: external ? "arrow.up.right" : "chevron.right")
-                .font(.system(size: 13, weight: .heavy, design: .rounded))
+                .font(.system(size: 13, weight: Puff.Weight.icon, design: .rounded))
                 .foregroundStyle(Puff.Palette.inkFaint)
         }
         .padding(.horizontal, Puff.Space.m).padding(.vertical, 10).frame(minHeight: 64)

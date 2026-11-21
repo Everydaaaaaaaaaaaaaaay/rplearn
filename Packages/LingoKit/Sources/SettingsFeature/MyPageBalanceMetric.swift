@@ -49,20 +49,20 @@ struct MyPageBalanceMetric: View {
     var body: some View {
         HStack(spacing: 10) {
             Image(systemName: symbol)
-                .font(.system(size: 16, weight: .heavy))
+                .font(.system(size: 16, weight: Puff.Weight.icon))
                 .foregroundStyle(candy.deep)
                 .frame(width: 34, height: 34)
                 .background(Puff.Palette.card, in: Circle())
             VStack(alignment: .leading, spacing: 1) {
                 Text(value)
-                    .font(isLoaded ? .puff(.title3, .heavy) : .puff(.subheadline, .bold))
+                    .font(isLoaded ? .puff(.title3, Puff.Weight.title) : .puff(.subheadline, Puff.Weight.label))
                     .foregroundStyle(isLoaded ? Puff.Palette.ink : Puff.Palette.inkSoft)
                     .monospacedDigit()
                     .contentTransition(.numericText())
                     .lineLimit(1).minimumScaleFactor(0.75)
                     .frame(minHeight: hubBalanceHeight, alignment: .leading)
                 Text(title)
-                    .font(.puff(.caption, .bold))
+                    .font(.puff(.caption, Puff.Weight.label))
                     .foregroundStyle(Puff.Palette.inkSoft)
             }
         }

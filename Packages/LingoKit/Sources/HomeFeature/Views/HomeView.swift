@@ -146,7 +146,7 @@ public struct HomeView: View {
             layout {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(region.nameZh)
-                        .font(.puff(.largeTitle, .heavy))
+                        .font(.puff(.largeTitle, Puff.Weight.display))
                         .foregroundStyle(Puff.Palette.ink)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
@@ -202,14 +202,14 @@ public struct HomeView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(spacing: 6) {
                         Image(systemName: "book.fill")
-                            .font(.system(size: 14, weight: .heavy))
+                            .font(.system(size: 14, weight: Puff.Weight.icon))
                             .foregroundStyle(PuffCandy.grape.deep)
                         Text("剧情")
-                            .font(.puff(.headline, .heavy))
+                            .font(.puff(.headline, Puff.Weight.title))
                             .foregroundStyle(Puff.Palette.ink)
                     }
                     Text(storySubtitle)
-                        .font(.puff(.caption, .bold))
+                        .font(.puff(.caption, Puff.Weight.label))
                         .foregroundStyle(Puff.Palette.inkSoft)
                         .lineLimit(2)
                         .fixedSize(horizontal: false, vertical: true)
@@ -240,10 +240,10 @@ public struct HomeView: View {
                 .padding([.horizontal, .top], 6)
                 HStack(spacing: 6) {
                     Image(systemName: "map.fill")
-                        .font(.system(size: 14, weight: .heavy))
+                        .font(.system(size: 14, weight: Puff.Weight.icon))
                         .foregroundStyle(PuffCandy.sky.deep)
                     Text("世界地图")
-                        .font(.puff(.headline, .heavy))
+                        .font(.puff(.headline, Puff.Weight.title))
                         .foregroundStyle(Puff.Palette.ink)
                         .lineLimit(1)
                         .minimumScaleFactor(0.8)

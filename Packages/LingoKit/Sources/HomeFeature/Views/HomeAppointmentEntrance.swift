@@ -54,27 +54,27 @@ struct HomeAppointmentEntrance: View {
                         PuffTag(appointment.status == "in_progress" ? "继续赴约" : "赴约",
                                 systemImage: "heart.fill", candy: .bubblegum)
                         Text(appointment.displayTitle(companionName: companion?.displayName ?? "旅伴"))
-                            .font(.puff(.headline, .heavy))
+                            .font(.puff(.headline, Puff.Weight.title))
                             .foregroundStyle(Puff.Palette.ink)
                             .fixedSize(horizontal: false, vertical: true)
                         Text("\(date) \(zoneLabel) · \(appointment.displayCityName) \(appointment.placeName)")
-                            .font(.puff(.caption, .semibold))
+                            .font(.puff(.caption, Puff.Weight.label))
                             .foregroundStyle(Puff.Palette.inkSoft)
                             .fixedSize(horizontal: false, vertical: true)
                     } else {
                         Text("赴约")
-                            .font(.puff(.headline, .heavy))
+                            .font(.puff(.headline, Puff.Weight.title))
                             .foregroundStyle(Puff.Palette.ink)
                     }
                     if model.appointmentError {
                         Text("约定暂未更新")
-                            .font(.puff(.caption, .bold))
+                            .font(.puff(.caption, Puff.Weight.label))
                             .foregroundStyle(Puff.Palette.cherry)
                     }
                 }
                 Spacer(minLength: 0)
                 Image(systemName: "chevron.right")
-                    .font(.system(size: 13, weight: .heavy, design: .rounded))
+                    .font(.system(size: 13, weight: Puff.Weight.icon, design: .rounded))
                     .foregroundStyle(Puff.Palette.inkFaint)
             }
             .padding(Puff.Space.m)

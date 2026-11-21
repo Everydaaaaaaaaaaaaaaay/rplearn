@@ -46,13 +46,13 @@ struct SubscriptionView: View {
                 plans
                 if let error = billing.lastError {
                     Text(error)
-                        .font(.puff(.footnote, .bold))
+                        .font(.puff(.footnote, Puff.Weight.label))
                         .foregroundStyle(Puff.Palette.cherry)
                         .accessibilityIdentifier("subscription.error")
                 }
                 if let message = billing.message {
                     Text(message)
-                        .font(.puff(.footnote, .semibold))
+                        .font(.puff(.footnote, Puff.Weight.label))
                         .foregroundStyle(Puff.Palette.inkSoft)
                 }
                 HStack(spacing: Puff.Space.l) {
@@ -61,7 +61,7 @@ struct SubscriptionView: View {
                         .accessibilityIdentifier("subscription.restore")
                     Button("管理订阅", action: manageSubscription)
                 }
-                .font(.puff(.footnote, .heavy))
+                .font(.puff(.footnote, Puff.Weight.emphasis))
                 .foregroundStyle(PuffCandy.sky.deep)
                 .buttonStyle(.puffSquish)
                 .frame(maxWidth: .infinity)
@@ -88,13 +88,13 @@ struct SubscriptionView: View {
             PuffIconBubble("crown.fill", candy: .sunny, size: 60)
             VStack(alignment: .leading, spacing: 6) {
                 Text("咕游记会员")
-                    .font(.puff(.title2, .heavy))
+                    .font(.puff(.title2, Puff.Weight.display))
                     .foregroundStyle(Puff.Palette.ink)
                 if billing.tier != .free {
                     PuffTag("当前：\(billing.tier.displayName)", systemImage: "checkmark.seal.fill", candy: .sunny)
                     if let validity = billing.currentValidityDescription {
                         Text(validity)
-                            .font(.puff(.footnote, .semibold))
+                            .font(.puff(.footnote, Puff.Weight.label))
                             .foregroundStyle(Puff.Palette.inkSoft)
                     }
                 }
@@ -117,7 +117,7 @@ struct SubscriptionView: View {
         VStack(spacing: 8) {
             PuffIconBubble(symbol, candy: candy, size: 44)
             Text(title)
-                .font(.puff(.caption, .heavy))
+                .font(.puff(.caption, Puff.Weight.emphasis))
                 .foregroundStyle(Puff.Palette.ink)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
@@ -131,7 +131,7 @@ struct SubscriptionView: View {
     private var plans: some View {
         VStack(alignment: .leading, spacing: Puff.Space.s) {
             Text("选择会员方案")
-                .font(.puff(.headline, .heavy))
+                .font(.puff(.headline, Puff.Weight.title))
                 .foregroundStyle(Puff.Palette.ink)
                 .accessibilityAddTraits(.isHeader)
             if products.isEmpty {
@@ -140,13 +140,13 @@ struct SubscriptionView: View {
                         PuffLoadingDots().scaleEffect(0.7).frame(width: 46, height: 20)
                         Text("正在获取 App Store 价格")
                     }
-                    .font(.puff(.subheadline, .semibold))
+                    .font(.puff(.subheadline, Puff.Weight.label))
                     .foregroundStyle(Puff.Palette.inkSoft)
                 } else {
                     Text(billing.catalogState == .available
                         ? "App Store 尚未提供会员订阅方案，请稍后重新加载。"
                         : billing.catalogStatusMessage)
-                        .font(.puff(.subheadline, .semibold))
+                        .font(.puff(.subheadline, Puff.Weight.label))
                         .foregroundStyle(Puff.Palette.inkSoft)
                         .accessibilityIdentifier("subscription.catalogStatus")
                     if billing.catalogState != .unavailable {
@@ -172,17 +172,17 @@ struct SubscriptionView: View {
         } label: {
             HStack(alignment: .center, spacing: Puff.Space.s) {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                    .font(.system(size: 24, weight: .heavy))
+                    .font(.system(size: 24, weight: Puff.Weight.icon))
                     .foregroundStyle(isSelected ? candy.base : Puff.Palette.inkFaint)
                     .contentTransition(.symbolEffect(.replace))
                 VStack(alignment: .leading, spacing: 5) {
                     HStack(alignment: .firstTextBaseline) {
                         Text(product.tier.displayName)
-                            .font(.puff(.title3, .heavy))
+                            .font(.puff(.title3, Puff.Weight.title))
                             .foregroundStyle(Puff.Palette.ink)
                         Spacer(minLength: 8)
                         Text(product.checkoutDisplayPrice)
-                            .font(.puff(.headline, .heavy))
+                            .font(.puff(.headline, Puff.Weight.title))
                             .monospacedDigit()
                             .foregroundStyle(candy.deep)
                     }
@@ -191,7 +191,7 @@ struct SubscriptionView: View {
                     }
                     if let detail = product.checkoutPriceDetail {
                         Text(detail)
-                            .font(.puff(.footnote, .semibold))
+                            .font(.puff(.footnote, Puff.Weight.label))
                             .foregroundStyle(Puff.Palette.inkSoft)
                     }
                 }
@@ -232,18 +232,18 @@ struct SubscriptionView: View {
             .accessibilityIdentifier("subscription.purchase")
             if let product = selectedProduct {
                 Text(product.checkoutPriceDetail.map { "\(product.checkoutDisplayPrice) · \($0)" } ?? product.checkoutDisplayPrice)
-                    .font(.puff(.footnote, .bold))
+                    .font(.puff(.footnote, Puff.Weight.label))
                     .foregroundStyle(Puff.Palette.inkSoft)
                     .multilineTextAlignment(.center)
             }
             if usesPreviewPrices {
                 Text("界面预览 · 示例价格，不可购买")
-                    .font(.puff(.caption, .semibold))
+                    .font(.puff(.caption, Puff.Weight.label))
                     .foregroundStyle(Puff.Palette.inkSoft)
             }
             // App Store 要求展示自动续费条款。
             Text("通过 Apple 账户付款，自动续费，可随时在 App Store 管理或取消。")
-                .font(.puff(.caption, .medium))
+                .font(.puff(.caption, Puff.Weight.body))
                 .foregroundStyle(Puff.Palette.inkFaint)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)

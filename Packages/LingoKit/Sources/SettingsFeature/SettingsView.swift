@@ -129,7 +129,7 @@ public struct SettingsView: View {
             PuffIconBubble("slider.horizontal.3", candy: .sky, size: 56)
             VStack(alignment: .leading, spacing: 6) {
                 Text("旅程设置")
-                    .font(.puff(.title2, .heavy))
+                    .font(.puff(.title2, Puff.Weight.display))
                     .foregroundStyle(Puff.Palette.ink)
                 PuffTag(reminderSummary, systemImage: reminderSummaryIcon,
                         candy: proactiveMessagesEnabled ? .mint : .grape)
@@ -181,7 +181,7 @@ public struct SettingsView: View {
 
                 HStack {
                     Text("语音合成")
-                        .font(.puff(.body, .bold))
+                        .font(.puff(.body, Puff.Weight.label))
                         .foregroundStyle(Puff.Palette.ink)
                     Spacer()
                     Picker(
@@ -211,15 +211,15 @@ public struct SettingsView: View {
 
                 HStack(alignment: .center, spacing: Puff.Space.s) {
                     Text("内置 TTS")
-                        .font(.puff(.body, .bold))
+                        .font(.puff(.body, Puff.Weight.label))
                         .foregroundStyle(Puff.Palette.ink)
                     Spacer()
                     VStack(alignment: .trailing, spacing: 3) {
                         Text("Supertonic-3 · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
-                            .font(.puff(.subheadline, .semibold))
+                            .font(.puff(.subheadline, Puff.Weight.label))
                             .foregroundStyle(Puff.Palette.inkSoft)
                         Text(offlineVoicePhaseLabel)
-                            .font(.puff(.caption, .heavy))
+                            .font(.puff(.caption, Puff.Weight.emphasis))
                             .foregroundStyle(offlineVoicePhaseTint)
                     }
                 }
@@ -232,7 +232,7 @@ public struct SettingsView: View {
 
                 if let message = synthesisEngineStatus.errorMessage {
                     Label(message, systemImage: "exclamationmark.triangle.fill")
-                        .font(.puff(.footnote, .bold))
+                        .font(.puff(.footnote, Puff.Weight.label))
                         .foregroundStyle(PuffCandy.tangerine.deep)
                         .padding(.bottom, Puff.Space.s)
                 }
@@ -297,14 +297,14 @@ public struct SettingsView: View {
                 DisclosureGroup {
                     VStack(alignment: .leading, spacing: Puff.Space.s) {
                         Text("Supertonic-3 完全离线，生成内容属于机器合成语音；实时识别仍使用 Apple 系统能力，当前语言模型不可用时可能使用网络。")
-                            .font(.puff(.footnote, .medium))
+                            .font(.puff(.footnote, Puff.Weight.body))
                             .foregroundStyle(Puff.Palette.inkSoft)
                             .fixedSize(horizontal: false, vertical: true)
                         Link(
                             "Supertonic-3 模型与 OpenRAIL-M 许可",
                             destination: URL(string: "https://huggingface.co/Supertone/supertonic-3")!
                         )
-                        .font(.puff(.subheadline, .heavy))
+                        .font(.puff(.subheadline, Puff.Weight.emphasis))
                         .foregroundStyle(PuffCandy.sky.deep)
                     }
                     .padding(.top, Puff.Space.xs)
@@ -387,7 +387,7 @@ public struct SettingsView: View {
                         PuffLoadingDots().scaleEffect(0.6).frame(width: 40, height: 20)
                     }
                 }
-                .font(.puff(.body, .heavy))
+                .font(.puff(.body, Puff.Weight.emphasis))
                 .foregroundStyle(PuffCandy.sky.deep)
                 .frame(minHeight: 52)
                 .contentShape(Rectangle())
@@ -400,13 +400,13 @@ public struct SettingsView: View {
                 EmptyView()
             case .success(let reply):
                 Label("服务可用：\(reply)", systemImage: "checkmark.circle.fill")
-                    .font(.puff(.footnote, .bold))
+                    .font(.puff(.footnote, Puff.Weight.label))
                     .foregroundStyle(PuffCandy.mint.deep)
                     .padding(.bottom, Puff.Space.s)
                     .transition(.puffPop)
             case .failure(let message):
                 Label(message, systemImage: "xmark.octagon.fill")
-                    .font(.puff(.footnote, .bold))
+                    .font(.puff(.footnote, Puff.Weight.label))
                     .foregroundStyle(Puff.Palette.cherry)
                     .padding(.bottom, Puff.Space.s)
                     .transition(.puffPop)
@@ -500,7 +500,7 @@ public struct SettingsView: View {
         HStack(spacing: 10) {
             PuffIconBubble(systemImage, candy: candy, size: 34)
             Text(title)
-                .font(.puff(.headline, .heavy))
+                .font(.puff(.headline, Puff.Weight.title))
                 .foregroundStyle(Puff.Palette.ink)
         }
         .padding(.vertical, Puff.Space.xs)
@@ -515,7 +515,7 @@ public struct SettingsView: View {
     private func settingsToggle(_ title: String, isOn: Binding<Bool>) -> some View {
         Toggle(isOn: isOn) {
             Text(title)
-                .font(.puff(.body, .bold))
+                .font(.puff(.body, Puff.Weight.label))
                 .foregroundStyle(Puff.Palette.ink)
         }
         .tint(PuffCandy.mint.base)
@@ -525,11 +525,11 @@ public struct SettingsView: View {
     private func settingsValueRow(_ title: String, value: String) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: Puff.Space.s) {
             Text(title)
-                .font(.puff(.body, .bold))
+                .font(.puff(.body, Puff.Weight.label))
                 .foregroundStyle(Puff.Palette.ink)
             Spacer()
             Text(value)
-                .font(.puff(.subheadline, .semibold))
+                .font(.puff(.subheadline, Puff.Weight.label))
                 .foregroundStyle(Puff.Palette.inkSoft)
                 .multilineTextAlignment(.trailing)
         }
@@ -541,10 +541,10 @@ public struct SettingsView: View {
             Label(title, systemImage: systemImage)
             Spacer()
             Image(systemName: external ? "arrow.up.right" : "chevron.right")
-                .font(.system(size: 13, weight: .heavy, design: .rounded))
+                .font(.system(size: 13, weight: Puff.Weight.icon, design: .rounded))
                 .foregroundStyle(Puff.Palette.inkFaint)
         }
-        .font(.puff(.body, .heavy))
+        .font(.puff(.body, Puff.Weight.emphasis))
         .foregroundStyle(PuffCandy.sky.deep)
         .frame(minHeight: 52)
         .contentShape(Rectangle())
@@ -552,7 +552,7 @@ public struct SettingsView: View {
 
     private func settingsDisclosureLabel(_ title: String, systemImage: String) -> some View {
         Label(title, systemImage: systemImage)
-            .font(.puff(.body, .heavy))
+            .font(.puff(.body, Puff.Weight.emphasis))
             .foregroundStyle(PuffCandy.sky.deep)
             .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
             .contentShape(Rectangle())
@@ -569,12 +569,12 @@ public struct SettingsView: View {
                     .foregroundStyle(Puff.Palette.ink)
                 Spacer()
                 Image(systemName: "play.fill")
-                    .font(.system(size: 12, weight: .heavy))
+                    .font(.system(size: 12, weight: Puff.Weight.icon))
                     .foregroundStyle(.white)
                     .frame(width: 30, height: 30)
                     .background(PuffCandy.grape.base, in: Circle())
             }
-            .font(.puff(.subheadline, .heavy))
+            .font(.puff(.subheadline, Puff.Weight.emphasis))
             .frame(maxWidth: .infinity, minHeight: 52)
             .contentShape(Rectangle())
         }

@@ -450,7 +450,7 @@ public struct ChatView: View {
                         remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
                         presence: puffPresence(presence))
                     VStack(alignment: .leading, spacing: 1) {
-                        Text(viewModel.character.displayName).font(.puff(.subheadline, .heavy))
+                        Text(viewModel.character.displayName).font(.puff(.subheadline, Puff.Weight.emphasis))
                             .foregroundStyle(Puff.Palette.ink)
                             .lineLimit(1).minimumScaleFactor(0.75)
                         ViewThatFits(in: .horizontal) {
@@ -458,7 +458,7 @@ public struct ChatView: View {
                             Text("\(shortStatus) · \(city) \(localTime)").fixedSize()
                             Text("\(shortStatus) · \(localTime)")
                         }
-                        .font(.puff(.caption2, .bold)).foregroundStyle(Puff.Palette.inkSoft)
+                        .font(.puff(.caption2, Puff.Weight.label)).foregroundStyle(Puff.Palette.inkSoft)
                         .monospacedDigit()
                         .lineLimit(1).allowsTightening(true).minimumScaleFactor(0.7)
                     }

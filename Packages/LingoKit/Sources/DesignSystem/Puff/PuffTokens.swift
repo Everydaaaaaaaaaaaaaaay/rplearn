@@ -150,6 +150,20 @@ public extension Puff {
 
 // MARK: - 字体
 
+public extension Puff {
+    /// 字重层级。圆体字形本身显粗，整体比常规界面低一档：
+    /// 页面大标题 bold，卡片标题与名字 semibold，按钮与强调 semibold，标签与辅助文字 medium，正文 regular。
+    enum Weight {
+        public static let display: Font.Weight = .bold
+        public static let title: Font.Weight = .semibold
+        public static let emphasis: Font.Weight = .semibold
+        public static let label: Font.Weight = .medium
+        public static let body: Font.Weight = .regular
+        /// 图标线条与文字协调，比文字略粗一点即可。
+        public static let icon: Font.Weight = .semibold
+    }
+}
+
 public extension Font {
     /// 圆体字形，跟随动态字体。
     static func puff(_ style: Font.TextStyle, _ weight: Font.Weight = .regular) -> Font {

@@ -83,7 +83,7 @@ public struct PuffCountBadge: View {
 
     public var body: some View {
         Text(count > 99 ? "99+" : "\(count)")
-            .font(.puff(.caption, .heavy))
+            .font(.puff(.caption, Puff.Weight.emphasis))
             .monospacedDigit()
             .foregroundStyle(.white)
             .contentTransition(.numericText(value: Double(count)))
@@ -111,12 +111,12 @@ public struct PuffTag: View {
         HStack(spacing: 3) {
             if let systemImage {
                 Image(systemName: systemImage)
-                    .font(.system(size: 9, weight: .heavy))
+                    .font(.system(size: 9, weight: Puff.Weight.icon))
             }
             Text(title)
                 .lineLimit(1)
         }
-        .font(.puff(.caption2, .heavy))
+        .font(.puff(.caption2, Puff.Weight.emphasis))
         .foregroundStyle(candy.deep)
         .padding(.horizontal, 8)
         .padding(.vertical, 3)
@@ -139,7 +139,7 @@ public struct PuffIconBubble: View {
 
     public var body: some View {
         Image(systemName: systemImage)
-            .font(.system(size: size * 0.46, weight: .heavy, design: .rounded))
+            .font(.system(size: size * 0.46, weight: Puff.Weight.icon, design: .rounded))
             .foregroundStyle(candy.deep)
             .frame(width: size, height: size)
             .background(candy.wash, in: RoundedRectangle(cornerRadius: size * 0.34, style: .continuous))
@@ -203,7 +203,7 @@ public struct PuffFilterBar<Value: Hashable>: View {
             HStack(spacing: 5) {
                 if let systemImage = option.systemImage {
                     Image(systemName: systemImage)
-                        .font(.system(size: 12, weight: .heavy))
+                        .font(.system(size: 12, weight: Puff.Weight.icon))
                 }
                 Text(option.title)
                 if let count = option.count, count > 0 {
@@ -215,7 +215,7 @@ public struct PuffFilterBar<Value: Hashable>: View {
                         .background(isSelected ? Color.white.opacity(0.28) : candy.wash, in: Capsule())
                 }
             }
-            .font(.puff(.subheadline, .heavy))
+            .font(.puff(.subheadline, Puff.Weight.emphasis))
             .foregroundStyle(isSelected ? .white : Puff.Palette.inkSoft)
             .padding(.horizontal, 14)
             .frame(minHeight: 38)
@@ -328,7 +328,7 @@ public struct PuffCloudBuddy: View {
             context.stroke(mouth, with: .color(ink), style: StrokeStyle(lineWidth: 2, lineCap: .round))
             let float = CGFloat((time * 0.8).truncatingRemainder(dividingBy: 1))
             context.draw(
-                Text("z").font(.system(size: 9 + float * 5, weight: .heavy, design: .rounded)).foregroundColor(Color(red: 0.55, green: 0.62, blue: 0.85).opacity(1 - Double(float))),
+                Text("z").font(.system(size: 9 + float * 5, weight: Puff.Weight.icon, design: .rounded)).foregroundColor(Color(red: 0.55, green: 0.62, blue: 0.85).opacity(1 - Double(float))),
                 at: CGPoint(x: 30 + float * 8, y: -30 - float * 14)
             )
         }
@@ -359,11 +359,11 @@ public struct PuffEmptyState<Actions: View>: View {
             PuffCloudBuddy(mood, size: 120)
             VStack(spacing: 6) {
                 Text(title)
-                    .font(.puff(.title3, .heavy))
+                    .font(.puff(.title3, Puff.Weight.title))
                     .foregroundStyle(Puff.Palette.ink)
                 if let message {
                     Text(message)
-                        .font(.puff(.subheadline, .medium))
+                        .font(.puff(.subheadline, Puff.Weight.body))
                         .foregroundStyle(Puff.Palette.inkSoft)
                 }
             }

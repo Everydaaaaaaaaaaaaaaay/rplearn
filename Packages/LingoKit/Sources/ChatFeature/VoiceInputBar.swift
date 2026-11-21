@@ -49,7 +49,7 @@ struct VoiceInputBar: View {
 
     private func barLabel(_ text: String) -> some View {
         Text(text)
-            .font(.puff(.body, .heavy))
+            .font(.puff(.body, Puff.Weight.emphasis))
             .frame(maxWidth: .infinity)
             .padding(.vertical, 10)
             .background(

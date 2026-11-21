@@ -208,7 +208,7 @@ public struct ConversationListView: View {
                             candy: .sky
                         )
                         Text("\(PuffCity.greeting(for: currentRegionID, at: context.date))！")
-                            .font(.puff(.title2, .heavy))
+                            .font(.puff(.title2, Puff.Weight.display))
                             .foregroundStyle(Puff.Palette.ink)
                     }
                     Spacer(minLength: 0)
@@ -224,7 +224,7 @@ public struct ConversationListView: View {
         let hasUnread = totalUnreadCount > 0
         let candy: PuffCandy = hasUnread ? .bubblegum : .mint
         return Image(systemName: hasUnread ? "envelope.fill" : "checkmark")
-            .font(.system(size: 24, weight: .heavy, design: .rounded))
+            .font(.system(size: 24, weight: Puff.Weight.icon, design: .rounded))
             .foregroundStyle(candy.deep)
             .contentTransition(.symbolEffect(.replace))
             .symbolEffect(.bounce, value: totalUnreadCount)
@@ -314,13 +314,13 @@ public struct ConversationListView: View {
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
                     Text(row.character.displayName)
-                        .font(.puff(.headline, .heavy))
+                        .font(.puff(.headline, Puff.Weight.title))
                         .foregroundStyle(Puff.Palette.ink)
                         .lineLimit(1)
 
                     if row.character.isFavorite {
                         Image(systemName: "star.fill")
-                            .font(.system(size: 12, weight: .heavy))
+                            .font(.system(size: 12, weight: Puff.Weight.icon))
                             .foregroundStyle(PuffCandy.sunny.base)
                             .transition(.puffPop)
                             .accessibilityLabel("特别关心")
@@ -335,7 +335,7 @@ public struct ConversationListView: View {
 
                     if let summary = row.summary {
                         Text(smartTime(summary.lastMessageAt))
-                            .font(.puff(.caption, .bold))
+                            .font(.puff(.caption, Puff.Weight.label))
                             .monospacedDigit()
                             .foregroundStyle(unread ? PuffCandy.sky.deep : Puff.Palette.inkFaint)
                     }
@@ -361,7 +361,7 @@ public struct ConversationListView: View {
 
     @ViewBuilder
     private func previewText(_ row: ConversationListRow, unread: Bool) -> some View {
-        let style: Font = unread ? .puff(.subheadline, .bold) : .puff(.subheadline, .medium)
+        let style: Font = unread ? .puff(.subheadline, Puff.Weight.label) : .puff(.subheadline, Puff.Weight.body)
         let color: Color = unread ? Puff.Palette.ink : Puff.Palette.inkSoft
         if row.summary?.lastMessageKind == .voice {
             Label("语音消息", systemImage: "waveform")

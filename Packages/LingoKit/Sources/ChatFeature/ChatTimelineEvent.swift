@@ -62,7 +62,7 @@ struct ChatTimelineEvent: View {
                     .accessibilityHidden(true)
             }
         }
-        .font(.puff(.footnote, .bold))
+        .font(.puff(.footnote, Puff.Weight.label))
         .foregroundStyle(kind.candy.deep)
         .multilineTextAlignment(.center)
         .padding(.horizontal, 12)

@@ -91,7 +91,7 @@ public struct PuffCandyButtonStyle: ButtonStyle {
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.puff(.headline, .heavy))
+            .font(.puff(.headline, Puff.Weight.title))
             .foregroundStyle(.white)
             .padding(.horizontal, Puff.Space.l)
             .frame(minHeight: 48)

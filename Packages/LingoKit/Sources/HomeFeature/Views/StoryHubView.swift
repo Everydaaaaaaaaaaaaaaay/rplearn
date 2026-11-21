@@ -129,10 +129,10 @@ public struct StoryHubView: View {
                 PuffIconBubble(icon, candy: candy, size: 40)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title)
-                        .font(.puff(.title3, .heavy))
+                        .font(.puff(.title3, Puff.Weight.title))
                         .foregroundStyle(Puff.Palette.ink)
                     Text(eyebrow)
-                        .font(.puff(.caption, .bold))
+                        .font(.puff(.caption, Puff.Weight.label))
                         .foregroundStyle(Puff.Palette.inkSoft)
                 }
                 Spacer(minLength: Puff.Space.xs)
@@ -143,7 +143,7 @@ public struct StoryHubView: View {
             HStack(spacing: Puff.Space.s) {
                 progressMeter(completed: completed, total: total, candy: candy)
                 Text("\(completed) / \(total) \(unit)")
-                    .font(.puff(.subheadline, .heavy))
+                    .font(.puff(.subheadline, Puff.Weight.emphasis))
                     .monospacedDigit()
                     .foregroundStyle(candy.deep)
                     .fixedSize()

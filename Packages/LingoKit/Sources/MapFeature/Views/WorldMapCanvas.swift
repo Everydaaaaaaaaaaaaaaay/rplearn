@@ -394,7 +394,7 @@ private final class RegionAnnotationView: MKAnnotationView {
         badgeView.layer.borderColor = UIColor.systemBackground.cgColor
         addSubview(badgeView)
 
-        titleLabel.font = Self.roundedFont(size: 11, weight: .heavy)
+        titleLabel.font = Self.roundedFont(size: 11, weight: .semibold)
         titleLabel.textAlignment = .center
         titleLabel.textColor = UIColor(Puff.Palette.ink)
         titleLabel.isAccessibilityElement = false
@@ -480,7 +480,7 @@ private final class RegionAnnotationView: MKAnnotationView {
         configuration.baseForegroundColor = foreground
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer {
             var attributes = $0
-            attributes.font = Self.roundedFont(size: 11, weight: .heavy)
+            attributes.font = Self.roundedFont(size: 11, weight: .semibold)
             return attributes
         }
         actionButton.configuration = configuration

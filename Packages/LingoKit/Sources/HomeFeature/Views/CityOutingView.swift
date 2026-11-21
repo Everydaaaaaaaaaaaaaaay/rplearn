@@ -35,7 +35,7 @@ struct CityOutingView: View {
                             VStack(spacing: Puff.Space.s) {
                                 PuffLoadingDots()
                                 Text("正在走进\(model.archive.place.titleZh)")
-                                    .font(.puff(.subheadline, .bold))
+                                    .font(.puff(.subheadline, Puff.Weight.label))
                                     .foregroundStyle(Puff.Palette.inkSoft)
                             }
                             .frame(maxWidth: .infinity).padding(.vertical, 30)
@@ -130,7 +130,7 @@ struct CityOutingView: View {
                         .disabled(model.snapshot == nil || model.conflict)
                 } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }.accessibilityLabel("外出选项")
             }
-        }.font(.system(size: 17, weight: .heavy, design: .rounded))
+        }.font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
             .buttonStyle(.puffSquish)
         if dynamicTypeSize.isAccessibilitySize { placeHeading.padding(.horizontal, 8) }
         }.padding(.leading, Puff.Space.s).padding(.trailing, 8).padding(.vertical, 6)
@@ -139,8 +139,8 @@ struct CityOutingView: View {
     }
     private var placeHeading: some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(model.region.nameZh).font(.puff(.caption, .bold)).foregroundStyle(Puff.Palette.inkSoft)
-            Text(model.archive.place.titleZh).font(.puff(.subheadline, .heavy))
+            Text(model.region.nameZh).font(.puff(.caption, Puff.Weight.label)).foregroundStyle(Puff.Palette.inkSoft)
+            Text(model.archive.place.titleZh).font(.puff(.subheadline, Puff.Weight.emphasis))
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
@@ -153,8 +153,8 @@ struct CityOutingView: View {
                     remoteURL: npc.avatar?.url)
                     .accessibilityIdentifier("activities.encounter.avatar")
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(model.character?.displayName ?? npc.card.name).font(.puff(.headline, .heavy))
-                    Text(npc.card.occupation).font(.puff(.caption, .semibold)).foregroundStyle(Puff.Palette.inkSoft)
+                    Text(model.character?.displayName ?? npc.card.name).font(.puff(.headline, Puff.Weight.title))
+                    Text(npc.card.occupation).font(.puff(.caption, Puff.Weight.label)).foregroundStyle(Puff.Palette.inkSoft)
                 }
             }
         }
@@ -163,7 +163,7 @@ struct CityOutingView: View {
             if translation { Text(snapshot.solitude.chinese).foregroundStyle(ink.opacity(0.65)) }
         } else {
             Text(snapshot.mode == .reunion ? snapshot.story?.reunion.titleZh ?? "又见面了" : snapshot.story?.titleZh ?? "一次相遇")
-                .font(.puff(.title, .heavy))
+                .font(.puff(.title, Puff.Weight.display))
             ForEach(Array(model.chapters.enumerated()), id: \.offset) { stage, chapter in
                 ForEach(Array(chapter.beats.enumerated()), id: \.offset) { index, beat in
                     if stage < model.chapters.count - 1 || index <= snapshot.beatIndex {
@@ -192,8 +192,8 @@ struct CityOutingView: View {
             ForEach(Array(model.choices.enumerated()), id: \.offset) { index, choice in
                 Button { model.choose(index) } label: {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(choice.english).font(.puff(.body, .heavy)).foregroundStyle(ink)
-                        if translation { Text(choice.chinese).font(.puff(.subheadline, .medium)).foregroundStyle(Puff.Palette.inkSoft) }
+                        Text(choice.english).font(.puff(.body, Puff.Weight.emphasis)).foregroundStyle(ink)
+                        if translation { Text(choice.chinese).font(.puff(.subheadline, Puff.Weight.body)).foregroundStyle(Puff.Palette.inkSoft) }
                     }.frame(maxWidth: .infinity, alignment: .leading).padding(18)
                 }.buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.large, face: PuffCandy.sky.wash,
                                                   border: PuffCandy.sky.base.opacity(0.35), lip: PuffCandy.sky.base.opacity(0.35)))
@@ -246,7 +246,7 @@ struct CityOutingView: View {
             ProgressView("正在保存外出结局")
         } else {
             Button("回到城市地点", action: onFinish).frame(minHeight: 44)
-                .font(.puff(.body, .heavy)).foregroundStyle(PuffCandy.sky.deep)
+                .font(.puff(.body, Puff.Weight.emphasis)).foregroundStyle(PuffCandy.sky.deep)
                 .accessibilityIdentifier("activities.action.finish")
                 .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
                     showsTutorialGuidance ? ["activity.controls.finish": anchor] : [:]

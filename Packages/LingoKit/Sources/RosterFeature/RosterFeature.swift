@@ -217,13 +217,13 @@ public struct CharacterProfileView: View {
 
             VStack(spacing: 6) {
                 Text(character.displayName)
-                    .font(.puff(.title, .heavy))
+                    .font(.puff(.title, Puff.Weight.display))
                     .foregroundStyle(Puff.Palette.ink)
                     .multilineTextAlignment(.center)
                 PuffTag("AI 旅伴 · 虚构角色", systemImage: "sparkles", candy: .grape)
                 if let signature = card.signature, !signature.isEmpty {
                     Text("“\(signature)”")
-                        .font(.puff(.body, .semibold))
+                        .font(.puff(.body, Puff.Weight.label))
                         .foregroundStyle(Puff.Palette.ink)
                         .multilineTextAlignment(.center)
                         .padding(.top, 2)
@@ -235,11 +235,11 @@ public struct CharacterProfileView: View {
                         regionName,
                     ].joined(separator: " · ")
                 )
-                .font(.puff(.subheadline, .semibold))
+                .font(.puff(.subheadline, Puff.Weight.label))
                 .foregroundStyle(Puff.Palette.inkSoft)
                 .multilineTextAlignment(.center)
                 Text("\(card.nationality) · \(card.age) 岁")
-                    .font(.puff(.footnote, .medium))
+                    .font(.puff(.footnote, Puff.Weight.body))
                     .foregroundStyle(Puff.Palette.inkFaint)
             }
             .padding(.horizontal, Puff.Space.l)
@@ -332,7 +332,7 @@ public struct CharacterProfileView: View {
         HStack(spacing: 10) {
             PuffIconBubble(icon, candy: candy, size: 32)
             Text(title)
-                .font(.puff(.headline, .heavy))
+                .font(.puff(.headline, Puff.Weight.title))
                 .foregroundStyle(Puff.Palette.ink)
         }
         .accessibilityElement(children: .combine)
@@ -344,11 +344,11 @@ public struct CharacterProfileView: View {
         if let value, !value.isEmpty {
             HStack(alignment: .firstTextBaseline) {
                 Text(title)
-                    .font(.puff(.subheadline, .bold))
+                    .font(.puff(.subheadline, Puff.Weight.label))
                     .foregroundStyle(Puff.Palette.inkSoft)
                 Spacer(minLength: Puff.Space.s)
                 Text(value)
-                    .font(.puff(.subheadline, .semibold))
+                    .font(.puff(.subheadline, Puff.Weight.label))
                     .foregroundStyle(Puff.Palette.ink)
                     .multilineTextAlignment(.trailing)
                     .textSelection(.enabled)
@@ -371,9 +371,9 @@ public struct CharacterProfileView: View {
     private func contactActionLabel(_ title: String, systemImage: String) -> some View {
         VStack(spacing: 5) {
             Image(systemName: systemImage)
-                .font(.system(size: 20, weight: .heavy, design: .rounded))
+                .font(.system(size: 20, weight: Puff.Weight.icon, design: .rounded))
             Text(title)
-                .font(.puff(.caption, .heavy))
+                .font(.puff(.caption, Puff.Weight.emphasis))
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
         }
@@ -386,7 +386,7 @@ public struct CharacterProfileView: View {
                 cardTitle("你们的关系", icon: "heart.fill", candy: .bubblegum)
                 Spacer(minLength: Puff.Space.s)
                 Text("共同互动 \(relationship.meaningfulInteractionCount) 次")
-                    .font(.puff(.caption, .heavy))
+                    .font(.puff(.caption, Puff.Weight.emphasis))
                     .monospacedDigit()
                     .foregroundStyle(PuffCandy.bubblegum.deep)
                     .contentTransition(.numericText())
@@ -398,10 +398,10 @@ public struct CharacterProfileView: View {
             if let event = relationship.latestEvent {
                 HStack(alignment: .top, spacing: Puff.Space.xs) {
                     Image(systemName: "clock.arrow.circlepath")
-                        .font(.system(size: 13, weight: .heavy))
+                        .font(.system(size: 13, weight: Puff.Weight.icon))
                         .foregroundStyle(PuffCandy.bubblegum.deep)
                     Text(event.reasonZh)
-                        .font(.puff(.footnote, .semibold))
+                        .font(.puff(.footnote, Puff.Weight.label))
                         .foregroundStyle(Puff.Palette.ink)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -480,7 +480,7 @@ public struct CharacterProfileView: View {
                 ForEach(Array(card.localizedHobbies.enumerated()), id: \.offset) { index, hobby in
                     let candy = PuffCandy.all[index % PuffCandy.all.count]
                     Text(hobby)
-                        .font(.puff(.subheadline, .bold))
+                        .font(.puff(.subheadline, Puff.Weight.label))
                         .foregroundStyle(candy.deep)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
@@ -501,20 +501,20 @@ public struct CharacterProfileView: View {
 
             if arcs.isEmpty {
                 Text("还没有明显变化")
-                    .font(.puff(.subheadline, .medium))
+                    .font(.puff(.subheadline, Puff.Weight.body))
                     .foregroundStyle(Puff.Palette.inkSoft)
             } else {
                 ForEach(arcs) { arc in
                     VStack(alignment: .leading, spacing: 6) {
                         HStack {
                             Text(growthTitle(arc))
-                                .font(.puff(.subheadline, .heavy))
+                                .font(.puff(.subheadline, Puff.Weight.emphasis))
                                 .foregroundStyle(Puff.Palette.ink)
                             Spacer()
                             PuffTag(arc.stage.titleZh, candy: .mint)
                         }
                         Text(arc.reasonZh)
-                            .font(.puff(.footnote, .medium))
+                            .font(.puff(.footnote, Puff.Weight.body))
                             .foregroundStyle(Puff.Palette.inkSoft)
                         GeometryReader { proxy in
                             Capsule()
@@ -551,7 +551,7 @@ public struct CharacterProfileView: View {
         VStack(alignment: .leading, spacing: Puff.Space.s) {
             cardTitle(title, icon: icon, candy: candy)
             Text(text)
-                .font(.puff(.subheadline, .medium))
+                .font(.puff(.subheadline, Puff.Weight.body))
                 .foregroundStyle(Puff.Palette.inkSoft)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -571,16 +571,16 @@ private struct SaveErrorBanner: View {
                 .foregroundStyle(Puff.Palette.cherry)
                 .accessibilityHidden(true)
             Text(message)
-                .font(.puff(.footnote, .heavy))
+                .font(.puff(.footnote, Puff.Weight.emphasis))
                 .foregroundStyle(Puff.Palette.ink)
             Spacer(minLength: 0)
             Button("重试", action: retry)
-                .font(.puff(.footnote, .heavy))
+                .font(.puff(.footnote, Puff.Weight.emphasis))
                 .foregroundStyle(PuffCandy.sky.deep)
                 .buttonStyle(.puffSquish)
             Button(action: dismiss) {
                 Image(systemName: "xmark")
-                    .font(.system(size: 13, weight: .heavy))
+                    .font(.system(size: 13, weight: Puff.Weight.icon))
                     .foregroundStyle(Puff.Palette.inkSoft)
                     .frame(width: 32, height: 32)
                     .background(Puff.Palette.cloud, in: Circle())

@@ -101,7 +101,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
                         isFocused = false
                     } label: {
                         Label("收起键盘", systemImage: "keyboard.chevron.compact.down")
-                            .font(.puff(.subheadline, .heavy))
+                            .font(.puff(.subheadline, Puff.Weight.emphasis))
                             .foregroundStyle(Puff.Palette.ink)
                             .padding(.horizontal, Puff.Space.m)
                             .frame(minHeight: 44)
@@ -153,14 +153,14 @@ private struct PuffPageHeaderModifier: ViewModifier {
     private var titleBlock: some View {
         VStack(alignment: .leading, spacing: 1) {
             Text(title)
-                .font(.puff(.largeTitle, .heavy))
+                .font(.puff(.largeTitle, Puff.Weight.display))
                 .foregroundStyle(Puff.Palette.ink)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
                 .accessibilityAddTraits(.isHeader)
             if let subtitle {
                 Text(subtitle)
-                    .font(.puff(.subheadline, .bold))
+                    .font(.puff(.subheadline, Puff.Weight.label))
                     .foregroundStyle(Puff.Palette.inkSoft)
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
@@ -179,7 +179,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
             withAnimation(animation) { isSearching = true }
         } label: {
             Image(systemName: "magnifyingglass")
-                .font(.system(size: 19, weight: .heavy, design: .rounded))
+                .font(.system(size: 19, weight: Puff.Weight.icon, design: .rounded))
                 .foregroundStyle(PuffCandy.sky.deep)
                 .frame(width: 46, height: 46)
                 .background {
@@ -197,7 +197,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
     private func trailingButton(_ trailing: PuffHeaderAction) -> some View {
         Button(action: trailing.action) {
             Image(systemName: trailing.systemImage)
-                .font(.system(size: 18, weight: .heavy, design: .rounded))
+                .font(.system(size: 18, weight: Puff.Weight.icon, design: .rounded))
                 .foregroundStyle(Puff.Palette.inkSoft)
                 .frame(width: 46, height: 46)
                 .background(Puff.Palette.cloud, in: Circle())
@@ -215,7 +215,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
             withAnimation(animation) { isSearching = false }
         } label: {
             Image(systemName: "xmark")
-                .font(.system(size: 16, weight: .heavy, design: .rounded))
+                .font(.system(size: 16, weight: Puff.Weight.icon, design: .rounded))
                 .foregroundStyle(Puff.Palette.inkSoft)
                 .frame(width: 46, height: 46)
                 .background(Puff.Palette.cloud, in: Circle())
@@ -229,10 +229,10 @@ private struct PuffPageHeaderModifier: ViewModifier {
     private var searchField: some View {
         HStack(spacing: 8) {
             Image(systemName: "magnifyingglass")
-                .font(.system(size: 17, weight: .heavy, design: .rounded))
+                .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
                 .foregroundStyle(PuffCandy.sky.deep)
             TextField(prompt, text: text ?? .constant(""))
-                .font(.puff(.body, .semibold))
+                .font(.puff(.body, Puff.Weight.label))
                 .foregroundStyle(Puff.Palette.ink)
                 .tint(PuffCandy.sky.base)
                 .focused($isFocused)

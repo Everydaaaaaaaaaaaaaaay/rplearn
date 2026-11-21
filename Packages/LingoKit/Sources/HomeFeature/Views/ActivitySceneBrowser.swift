@@ -110,7 +110,7 @@ public struct ActivitySceneBrowser: View {
                 .accessibilityHidden(true)
             }
             Text(place.titleZh)
-                .font(.puff(.title, .heavy))
+                .font(.puff(.title, Puff.Weight.display))
                 .foregroundStyle(Puff.Palette.ink)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
@@ -150,7 +150,7 @@ public struct ActivitySceneBrowser: View {
         HStack {
             Button(action: onBack) {
                 Image(systemName: "chevron.left")
-                    .font(.system(size: 17, weight: .heavy, design: .rounded))
+                    .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
                     .foregroundStyle(Puff.Palette.ink)
                     .frame(width: 44, height: 44)
             }
@@ -162,7 +162,7 @@ public struct ActivitySceneBrowser: View {
                     Button(action: onChooseCity) {
                         HStack(spacing: 6) {
                             Text(cityName)
-                            Image(systemName: "chevron.down").font(.system(size: 11, weight: .heavy))
+                            Image(systemName: "chevron.down").font(.system(size: 11, weight: Puff.Weight.icon))
                         }
                         .padding(.horizontal, Puff.Space.m)
                         .frame(minHeight: 44)
@@ -176,7 +176,7 @@ public struct ActivitySceneBrowser: View {
                         .puffCard(radius: 22, lipHeight: 3)
                 }
             }
-            .font(.puff(.subheadline, .heavy))
+            .font(.puff(.subheadline, Puff.Weight.emphasis))
             .foregroundStyle(Puff.Palette.ink)
             Spacer(minLength: 8)
             if let onJournal {
@@ -184,7 +184,7 @@ public struct ActivitySceneBrowser: View {
                     Button("足迹", systemImage: "book.closed", action: onJournal)
                 } label: {
                     Image(systemName: "ellipsis")
-                        .font(.system(size: 17, weight: .heavy, design: .rounded))
+                        .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
                         .foregroundStyle(Puff.Palette.ink)
                         .frame(width: 44, height: 44)
                         .puffCard(radius: 22, lipHeight: 3)
@@ -201,7 +201,7 @@ public struct ActivitySceneBrowser: View {
         let enabled = forward ? selection < places.count - 1 : selection > 0
         return Button { move(forward: forward) } label: {
             Image(systemName: forward ? "chevron.right" : "chevron.left")
-                .font(.system(size: 17, weight: .heavy, design: .rounded))
+                .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
                 .foregroundStyle(enabled ? PuffCandy.sky.deep : Puff.Palette.inkFaint)
                 .frame(width: 44, height: 44)
         }

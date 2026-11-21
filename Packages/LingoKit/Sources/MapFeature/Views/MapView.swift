@@ -158,7 +158,7 @@ public struct MapView: View {
             if let onBack {
                 Button(action: onBack) {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 17, weight: .heavy, design: .rounded))
+                        .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
                         .foregroundStyle(Puff.Palette.ink)
                         .frame(width: 44, height: 44)
                         .contentShape(Rectangle())
@@ -187,10 +187,10 @@ public struct MapView: View {
             NavigationLink(value: MapDestination.ticketStubs) {
                 HStack(spacing: 4) {
                     Image(systemName: "ticket.fill")
-                        .font(.system(size: 14, weight: .heavy))
+                        .font(.system(size: 14, weight: Puff.Weight.icon))
                         .foregroundStyle(PuffCandy.bubblegum.base)
                     Text("票根夹")
-                        .font(.system(size: 12, weight: .heavy, design: .rounded))
+                        .font(.system(size: 12, weight: Puff.Weight.icon, design: .rounded))
                 }
                 .foregroundStyle(Puff.Palette.ink)
                 .lineLimit(1)

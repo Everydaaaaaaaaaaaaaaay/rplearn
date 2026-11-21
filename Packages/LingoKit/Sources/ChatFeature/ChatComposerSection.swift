@@ -60,7 +60,7 @@ struct ChatComposerView: View {
                     }
                 } label: {
                     Image(systemName: composerTranslation.isOpen ? (isChineseRecording ? "stop.fill" : "mic.fill") : (isVoiceMode ? "keyboard" : "mic.fill"))
-                        .font(.system(size: 18, weight: .heavy, design: .rounded))
+                        .font(.system(size: 18, weight: Puff.Weight.icon, design: .rounded))
                         .foregroundStyle(composerTint)
                         .frame(width: 38, height: 38)
                         .background(composerWash, in: Circle())
@@ -110,7 +110,7 @@ struct ChatComposerView: View {
                         .autocorrectionDisabled(true)
                         .submitLabel(.send)
                         .textFieldStyle(.plain)
-                        .font(.puff(.body, .medium))
+                        .font(.puff(.body, Puff.Weight.body))
                         .foregroundStyle(Puff.Palette.ink)
                         .padding(.horizontal, 14)
                         .padding(.vertical, 9)
@@ -182,7 +182,7 @@ struct ChatComposerView: View {
             }
         } label: {
             Image(systemName: sends ? "arrow.up" : (showsChatFunctions ? "keyboard" : "plus"))
-                .font(.system(size: 18, weight: .heavy, design: .rounded))
+                .font(.system(size: 18, weight: Puff.Weight.icon, design: .rounded))
                 .foregroundStyle(sends ? Color.white : composerTint)
                 .frame(width: 38, height: 38)
                 .background(sends ? composerTint : composerWash, in: Circle())
@@ -229,7 +229,7 @@ struct ChatComposerView: View {
         VStack(spacing: 7) {
             PuffIconBubble(symbol, candy: candy, size: 56)
             Text(title)
-                .font(.puff(.caption, .heavy))
+                .font(.puff(.caption, Puff.Weight.emphasis))
                 .foregroundStyle(Puff.Palette.ink)
                 .multilineTextAlignment(.center)
         }
@@ -243,7 +243,7 @@ struct ChatComposerView: View {
     private var translatorToggle: some View {
         Button(action: toggleComposerTranslator) {
             Image(systemName: "character.bubble.fill")
-                .font(.system(size: 15, weight: .heavy, design: .rounded))
+                .font(.system(size: 15, weight: Puff.Weight.icon, design: .rounded))
                 .foregroundStyle(composerTranslation.isOpen ? .white : PuffCandy.tangerine.deep)
                 .frame(width: 34, height: 34)
                 .background(composerTranslation.isOpen ? PuffCandy.grape.base : PuffCandy.tangerine.wash, in: Circle())
@@ -292,14 +292,14 @@ struct ChatComposerView: View {
                     }
                 } label: {
                     Image(systemName: "speaker.wave.2.fill")
-                        .font(.system(size: 18, weight: .heavy)).foregroundStyle(composerTint)
+                        .font(.system(size: 18, weight: Puff.Weight.icon)).foregroundStyle(composerTint)
                         .frame(width: 32, height: 44)
                 }
                 .disabled(viewModel.draft.isEmpty)
                 .accessibilityLabel("朗读英文草稿")
                 TextField(isChineseRecording ? "正在听，请说中文…" : "输入中文，或者说中文…",
                           text: $composerTranslation.source, axis: .vertical)
-                    .font(.puff(.body, .medium)).foregroundStyle(Puff.Palette.ink)
+                    .font(.puff(.body, Puff.Weight.body)).foregroundStyle(Puff.Palette.ink)
                     .focused($composerFocus, equals: .chinese)
                     .submitLabel(.done)
                     .onSubmit { isChineseInputFocused = false }
@@ -309,7 +309,7 @@ struct ChatComposerView: View {
                     ProgressView().controlSize(.small).accessibilityLabel("正在翻译")
                 } else if composerTranslation.mode == .ai {
                     Button("翻译") { translateComposer() }
-                        .font(.puff(.subheadline, .heavy))
+                        .font(.puff(.subheadline, Puff.Weight.emphasis))
                         .foregroundStyle(.white)
                         .padding(.horizontal, 14).padding(.vertical, 8)
                         .background(composerTint, in: Capsule())
