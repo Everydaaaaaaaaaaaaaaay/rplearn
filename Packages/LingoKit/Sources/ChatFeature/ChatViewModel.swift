@@ -210,7 +210,7 @@ public final class ChatViewModel {
         do {
             let conversation = try await deps.chatStore.openConversation(characterID: character.id)
             self.conversation = conversation
-            self.messages = try await deps.chatStore.messages(conversationID: conversation.id)
+            self.messages = Self.visibleMessages(try await deps.chatStore.messages(conversationID: conversation.id))
             if let gateway = deps.sharedChat {
                 do {
                     let state = try await gateway.openSharedConversation(characterID: character.id)
@@ -1425,12 +1425,7 @@ public final class ChatViewModel {
         guard (try? await deps.itemStore.hasTicket(source: .quest)) == false else { return }
         do {
             guard try await deps.progression.claimStarterTicket() else { return }
-            _ = try await deps.chatStore.appendMessage(
-                conversationID: conversationID,
-                role: .coach,
-                kind: .storyLine,
-                text: "🎫 主办方送来一张通用机票！之后可以在地图里用它解锁新的城市。"
-            )
+            try await deps.chatStore.appendStarterTicketNoticeIfNeeded(conversationID: conversationID)
         } catch {
             Log.app.warning("主线机票发放失败：\(error)")
         }
@@ -1584,9 +1579,18 @@ public final class ChatViewModel {
 
     func reloadMessages() async {
         guard let conversation else { return }
-        if let refreshed = try? await deps.chatStore.messages(conversationID: conversation.id), refreshed != messages {
-            messages = refreshed
-        }
+        guard let stored = try? await deps.chatStore.messages(conversationID: conversation.id) else { return }
+        let refreshed = Self.visibleMessages(stored)
+        if refreshed != messages { messages = refreshed }
     }
 
+    private static func visibleMessages(_ messages: [MessageDTO]) -> [MessageDTO] {
+        var hasStarterTicketNotice = false
+        return messages.filter { message in
+            guard message.role == .coach, message.kind == .storyLine,
+                  message.text == ChatStore.starterTicketNotice else { return true }
+            defer { hasStarterTicketNotice = true }
+            return !hasStarterTicketNotice
+        }
+    }
 }

@@ -690,8 +690,7 @@ final class AccountWorkspace {
                    let conversation = try await chatStore.conversation(id: conversationID), conversation.turnCount >= 3,
                    try await itemStore.hasTicket(source: .quest) == false,
                    try await userState.claimStarterTicket() {
-                    _ = try await chatStore.appendMessage(conversationID: conversationID, role: .coach, kind: .storyLine,
-                        text: "🎫 主办方送来一张通用机票！之后可以在地图里用它解锁新的城市。")
+                    try await chatStore.appendStarterTicketNoticeIfNeeded(conversationID: conversationID)
                 }
                 let messages = try await chatStore.messages(conversationID: conversationID)
                 let text = messages.suffix(12).map(\.text).joined(separator: " ").lowercased()

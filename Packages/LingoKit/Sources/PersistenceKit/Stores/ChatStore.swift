@@ -289,6 +289,19 @@ public actor ChatStore {
         return dto(from: message)
     }
 
+    public static let starterTicketNotice = "🎫 主办方送来一张通用机票！之后可以在地图里用它解锁新的城市。"
+
+    public func appendStarterTicketNoticeIfNeeded(conversationID: UUID) throws {
+        let role = MessageRole.coach.rawValue
+        let kind = MessageKind.storyLine.rawValue
+        let text = Self.starterTicketNotice
+        let existing = try modelContext.fetchCount(FetchDescriptor<MessageEntity>(predicate: #Predicate {
+            $0.roleRaw == role && $0.kindRaw == kind && $0.text == text
+        }))
+        guard existing == 0 else { return }
+        try appendMessage(conversationID: conversationID, role: .coach, kind: .storyLine, text: text)
+    }
+
     /// 追加一条消息，返回落库后的 DTO（orderIndex 自动递增）。
     @discardableResult
     public func appendMessage(

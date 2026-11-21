@@ -68,6 +68,7 @@ public actor BackendUserStateCoordinator:
     private var currentUserID: UUID?
     private var snapshot: BackendSyncSnapshot?
     private var isImportingGuest = false
+    private var starterTicketClaim: Task<Bool, Error>?
 
     public init(
         backend: BackendClient,
@@ -340,6 +341,19 @@ public actor BackendUserStateCoordinator:
     }
 
     public func claimStarterTicket() async throws -> Bool {
+        // The foreground reply and its durable follow-up can reach this actor
+        // while the same idempotent command is awaiting the server.
+        if let starterTicketClaim {
+            _ = try await starterTicketClaim.value
+            return false
+        }
+        let claim = Task { try await performStarterTicketClaim() }
+        starterTicketClaim = claim
+        defer { starterTicketClaim = nil }
+        return try await claim.value
+    }
+
+    private func performStarterTicketClaim() async throws -> Bool {
         let intent = "progression:starter-ticket-v1"
         let commandID = pendingCommandID(for: intent)
         do {

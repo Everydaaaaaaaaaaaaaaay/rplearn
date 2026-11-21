@@ -171,6 +171,7 @@ struct BackendUserStateCoordinatorTests {
                 )
             case ("POST", "/v1/progression/starter-ticket"):
                 mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
+                try await Task.sleep(for: .milliseconds(25))
                 let ticket = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456793")!
                 tickets = [ticket]
                 ticketSource = "quest"
@@ -339,7 +340,10 @@ struct BackendUserStateCoordinatorTests {
         }
         #expect(updated.hasCompletedOnboarding)
 
-        #expect(try await coordinator.claimStarterTicket())
+        async let foregroundClaim = coordinator.claimStarterTicket()
+        async let followupClaim = coordinator.claimStarterTicket()
+        let claims = try await [foregroundClaim, followupClaim]
+        #expect(claims.filter { $0 }.count == 1)
         #expect(try await items.unconsumedTickets().first?.source == .quest)
         #expect(try await coordinator.completeStory("mainline_london"))
         #expect(try await economy.profile().coins == 100)
