@@ -49,8 +49,12 @@ struct ChatLearningPager<Chat: View, Learning: View>: View {
         }
     }
     private func accepts(_ value: DragGesture.Value, size: CGSize) -> Bool {
-        enabled && value.startLocation.x > 28 && value.startLocation.y < size.height - 90 &&
-        abs(value.translation.width) > abs(value.translation.height) * 1.5
+        guard enabled, value.startLocation.x > 28, value.startLocation.y < size.height - 90,
+              abs(value.translation.width) > abs(value.translation.height) * 1.5 else { return false }
+        if #available(iOS 26.0, *), !learningSelected, value.translation.width > 0 {
+            return false
+        }
+        return true
     }
 }
 

@@ -390,6 +390,8 @@ public struct ChatView: View {
             Task { await chineseRecorder.cancelRecording() }
             markVisibleConversationRead()
         }
+        .dsInteractiveContentPopGesture(enabled: !learningSelected && bubbleMenuMessage == nil
+            && recorder.state == .idle && chineseRecorder.state == .idle)
         .dsTabBarHidden()
     }
 
