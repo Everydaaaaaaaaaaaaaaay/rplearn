@@ -276,7 +276,7 @@ public struct HomeView: View {
         do {
             if !activityNamespace.isEmpty,
                let archive = try CityOutingArchive.load(namespace: activityNamespace), archive.needsContinuation {
-                resumableTitle = archive.place.titleZh
+                resumableTitle = archive.hasEnded ? nil : archive.place.titleZh
                 return
             }
             let active = try await deps.outingGateway?.activeOuting()

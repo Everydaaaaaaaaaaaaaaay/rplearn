@@ -31,7 +31,9 @@ final class CityOutingModel: ObservableObject {
     private var autoRead = true
 
     var isPreparing: Bool { archive.cancelled != true && snapshot == nil && busy }
-    var isRunning: Bool { archive.cancelled != true && (pendingCount > 0 || (snapshot.map { ![.completed, .abandoned].contains($0.status) } ?? true)) }
+    var isRunning: Bool { archive.needsContinuation }
+    var isSavingEnding: Bool { archive.hasEnded && pendingCount > 0 }
+    var canCloseAbandonedOuting: Bool { snapshot?.status == .abandoned && pendingCount == 0 }
     var chapters: [EncounterChapter] { snapshot.map(PlaceOutingProgress.chapters) ?? [] }
     var currentBeats: [BackendOutingBeat] { snapshot.map(PlaceOutingProgress.beats) ?? [] }
     var choices: [BackendOutingStory.Node.Choice] {
@@ -58,7 +60,7 @@ final class CityOutingModel: ObservableObject {
         if snapshot != nil {
             flush(); recordCompletionIfNeeded()
             if snapshot?.status != .reserved { Task { await prepareLocalCharacter() } }
-            if snapshot?.beatIndex == -1, snapshot?.mode != .solitude { enqueue(.read, beatIndex: 0) }
+            if !archive.hasEnded, snapshot?.beatIndex == -1, snapshot?.mode != .solitude { enqueue(.read, beatIndex: 0) }
             return
         }
         do { try archive.save(namespace: namespace, defaults: storage) }
@@ -127,7 +129,7 @@ final class CityOutingModel: ObservableObject {
         if self.snapshot?.beatIndex == -1 { enqueue(.read, beatIndex: 0) }
     }
     func abandon() {
-        guard !hasRecoverableOuting else { return }
+        guard !hasRecoverableOuting, !conflict, !archive.hasEnded else { return }
         if snapshot != nil { enqueue(.abandon); recordCompletionIfNeeded(); return }
         requestTask?.cancel()
         archive.cancelled = true
@@ -202,7 +204,7 @@ final class CityOutingModel: ObservableObject {
                 try next.save(namespace: namespace, defaults: storage)
                 archive = next; snapshot = result; pendingCount = 0; conflict = false
                 synchronizationMessage = nil; error = nil
-                if result.mode != .solitude && result.beatIndex == -1 { enqueue(.read, beatIndex: 0) }
+                if !archive.hasEnded, result.mode != .solitude, result.beatIndex == -1 { enqueue(.read, beatIndex: 0) }
                 recordCompletionIfNeeded()
             } catch { self.error = error.localizedDescription }
         }

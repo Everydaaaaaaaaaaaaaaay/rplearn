@@ -74,14 +74,22 @@ public struct ActivitiesView: View {
                               let gateway = deps.outingGateway else { return }
                         journey.preparePlace(archive: .init(place: place, releaseID: placeCatalog.releaseId),
                             region: region, deps: deps, namespace: storageNamespace, gateway: gateway, storage: storage)
-                    }, resumeTitle: resumableOuting.map { "继续上次在\($0.place.titleZh)的外出" },
+                    }, resumeTitle: resumableOuting.map {
+                        $0.hasEnded ? "同步上次外出" : "继续上次在\($0.place.titleZh)的外出"
+                    },
                     onResume: { if let archive = resumableOuting { openPlaceArchive(archive) } })
                     .allowsHitTesting(!journey.hasOpenOuting).accessibilityHidden(journey.hasOpenOuting)
             }
             if let outing = journey.cityOuting {
                 CityOutingView(model: outing, isVisible: isVisible, showsTutorialGuidance: onCompleteOuting != nil,
-                    onBack: { journey.reset() }, onChat: onChat, onFinish: {
+                    onBack: {
+                        if outing.archive.hasEnded {
+                            resumableOuting = outing.archive.needsContinuation ? outing.archive : nil
+                        }
+                        journey.reset()
+                    }, onChat: onChat, onFinish: {
                         let completed = outing.snapshot?.status == .completed
+                        resumableOuting = outing.archive.needsContinuation ? outing.archive : nil
                         journey.reset()
                         if completed { onCompleteOuting?() }
                     })

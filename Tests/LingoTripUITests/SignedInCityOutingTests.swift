@@ -92,7 +92,32 @@ final class SignedInCityOutingTests: XCTestCase {
         add(restored)
 
         app.buttons["activities.action.back"].tap()
+        XCTAssertTrue(resume.waitForExistence(timeout: 8))
+        resume.tap()
+        let menu = app.buttons["外出选项"]
+        XCTAssertTrue(menu.waitForExistence(timeout: 10))
+        menu.tap()
+        let endAction = app.buttons.matching(NSPredicate(
+            format: "label == %@ AND identifier != %@", "结束这次外出", "activities.action.next"
+        )).firstMatch
+        XCTAssertTrue(endAction.waitForExistence(timeout: 5))
+        endAction.tap()
+        let confirmation = app.buttons.matching(identifier: "activities.abandon.confirm").firstMatch
+        if confirmation.waitForExistence(timeout: 3) {
+            confirmation.tap()
+        } else {
+            endAction.tap()
+        }
         let home = app.buttons["activities.back"]
+        XCTAssertTrue(home.waitForExistence(timeout: 15))
+        XCTAssertFalse(resume.exists, "The ended outing must not reappear as resumable")
+        let afterEnding = try await request("/v2/outings/active", at: baseURL, token: token)
+        XCTAssertTrue(afterEnding["outing"] is NSNull, "The server must acknowledge the end before returning")
+        home.tap()
+        XCTAssertTrue(open.waitForExistence(timeout: 8))
+        open.tap()
+        XCTAssertTrue(riverside.waitForExistence(timeout: 10))
+        XCTAssertFalse(resume.exists)
         XCTAssertTrue(home.waitForExistence(timeout: 5))
         home.tap()
         signOut(app)

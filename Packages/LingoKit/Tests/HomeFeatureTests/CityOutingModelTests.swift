@@ -47,6 +47,7 @@ struct CityOutingModelTests {
             self.saved = saved; self.offline = offline; self.loseFirstReceipt = loseFirstReceipt
         }
         func connect() { offline = false }
+        func loseNextReceipt() { loseFirstReceipt = true }
         func advanceOnAnotherDevice() throws {
             saved = try PlaceOutingProgress.apply(.init(expectedRevision: saved.revision, type: .read, beatIndex: 0), to: saved)
         }
@@ -225,5 +226,30 @@ struct CityOutingModelTests {
         #expect(record.chapters?.first?.beats.count == 1)
         #expect(record.choices.isEmpty)
         value.pause()
+    }
+
+    @Test func abandoningWaitsForConfirmationAndRetriesTheOriginalOperation() async throws {
+        let source = try makePlaceOutingFixture(), namespace = "place-ending-confirmation-\(UUID())"
+        defer { clean(namespace) }
+        let gateway = Gateway(saved: source)
+        let value = try model(.init(restoring: source), deps: try await dependencies(), namespace: namespace, gateway: gateway)
+        value.start()
+        try await settle { value.pendingCount == 0 }
+        let earlierRequests = await gateway.operations.count
+        await gateway.loseNextReceipt()
+
+        value.abandon()
+        value.abandon()
+        #expect(value.isSavingEnding)
+        #expect(!value.canCloseAbandonedOuting)
+        try await settle { value.synchronizationMessage != nil }
+        let operation = try #require(value.archive.pending.first)
+        #expect(operation.type == .abandon)
+
+        value.retrySynchronization()
+        try await settle { value.canCloseAbandonedOuting }
+        #expect(!value.archive.needsContinuation)
+        let endingRequests = await gateway.operations.dropFirst(earlierRequests)
+        #expect(Array(endingRequests) == [operation.id, operation.id])
     }
 }

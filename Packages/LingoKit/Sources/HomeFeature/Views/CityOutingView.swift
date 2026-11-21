@@ -89,9 +89,13 @@ struct CityOutingView: View {
         }
         .onDisappear { model.updateAutoReading(enabled: false) }
         .onChange(of: shouldRead) { _, enabled in model.updateAutoReading(enabled: enabled) }
+        .onChange(of: model.canCloseAbandonedOuting, initial: true) { _, canClose in
+            if canClose { onBack() }
+        }
         .sheet(item: $credits) { ActivityPhotoCredits(photo: $0) }
         .confirmationDialog("结束这次外出？已发生的进度仍会保留。", isPresented: $confirmsEnding, titleVisibility: .visible) {
-            Button("结束这次外出", role: .destructive) { model.abandon(); onBack() }
+            Button("结束这次外出", role: .destructive) { model.abandon() }
+                .accessibilityIdentifier("activities.abandon.confirm")
             Button("继续这次外出", role: .cancel) {}
         }
         .wordLookupOverlay(selection: $word, dictionary: model.deps.dictionary, grammar: model.deps.grammarPoints,
@@ -108,16 +112,18 @@ struct CityOutingView: View {
         HStack(spacing: 6) {
             Button(action: onBack) { Image(systemName: "chevron.left").frame(width: 44, height: 44).contentShape(Rectangle()) }
                 .accessibilityLabel("暂停并返回地点").accessibilityIdentifier("activities.action.back")
+                .disabled(model.isSavingEnding && model.synchronizationMessage == nil)
             if !dynamicTypeSize.isAccessibilitySize { placeHeading }
             Spacer(minLength: 0)
             Button { translation.toggle() } label: { Image(systemName: "character.bubble").frame(width: 44, height: 44) }
                 .accessibilityLabel(translation ? "隐藏中文对照" : "显示中文对照")
             Button { autoRead.toggle() } label: { Image(systemName: autoRead ? "speaker.wave.2" : "speaker.slash").frame(width: 44, height: 44) }
                 .accessibilityLabel(autoRead ? "关闭自动朗读" : "开启自动朗读")
-            if !model.hasRecoverableOuting {
+            if !model.hasRecoverableOuting && !model.archive.hasEnded {
                 Menu {
                     Button("先离开，稍后继续", action: onBack)
                     Button("结束这次外出", role: .destructive) { confirmsEnding = true }
+                        .disabled(model.snapshot == nil || model.conflict)
                 } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }.accessibilityLabel("外出选项")
             }
         }.font(.system(size: 18, weight: .medium))
@@ -228,9 +234,13 @@ struct CityOutingView: View {
             }
         }
         if let message = model.contactMessage { Text(message).font(.caption) }
-        Button("回到城市地点", action: onFinish).frame(minHeight: 44).accessibilityIdentifier("activities.action.finish")
-            .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
-                showsTutorialGuidance ? ["activity.controls.finish": anchor] : [:]
-            }
+        if model.isSavingEnding && model.synchronizationMessage == nil {
+            ProgressView("正在保存外出结局")
+        } else {
+            Button("回到城市地点", action: onFinish).frame(minHeight: 44).accessibilityIdentifier("activities.action.finish")
+                .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
+                    showsTutorialGuidance ? ["activity.controls.finish": anchor] : [:]
+                }
+        }
     }
 }

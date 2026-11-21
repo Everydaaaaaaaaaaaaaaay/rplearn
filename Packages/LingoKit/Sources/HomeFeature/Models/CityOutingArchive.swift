@@ -58,6 +58,10 @@ struct CityOutingArchive: Codable, Sendable {
     }
 
     var needsContinuation: Bool {
-        cancelled != true && (snapshot.map { ![.completed, .abandoned].contains($0.status) || !pending.isEmpty } ?? true)
+        cancelled != true && (!hasEnded || !pending.isEmpty)
+    }
+
+    var hasEnded: Bool {
+        snapshot.map { [.completed, .abandoned].contains($0.status) } ?? false
     }
 }
