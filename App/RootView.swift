@@ -680,11 +680,11 @@ struct RootView: View {
                 catch { return }
                 guard !Task.isCancelled, environment.workspace === account else { return }
                 if let regionID = account.journeyPresentation.profile?.currentRegionID {
+                    // 信息与联系人改用程序化卡通城市，只预热仍使用城市照片的页面。
                     let inactiveRoles: [DSCitySceneRole] = switch selectedTab {
-                    case .messages: [.contacts, .activities, .profile]
-                    case .contacts: [.messages, .activities, .profile]
-                    case .home: [.messages, .contacts, .profile]
-                    case .me: [.messages, .contacts, .activities]
+                    case .messages, .contacts: [.activities, .profile]
+                    case .home: [.profile]
+                    case .me: [.activities]
                     }
                     let backdrops = inactiveRoles.map { DSCitySceneAssets.imageName(for: $0, regionID: regionID) }
                     let bgWarmup = Task.detached(priority: .utility) {

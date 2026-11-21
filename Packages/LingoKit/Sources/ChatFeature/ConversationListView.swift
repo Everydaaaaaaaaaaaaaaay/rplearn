@@ -5,8 +5,15 @@ import Foundation
 import PersistenceKit
 import SwiftUI
 
-/// 旅途通讯列表：保留原生搜索、导航与侧滑操作，突出伙伴关系和会话状态。
+/// 信息页：白色主基调、城市卡通明信片、糖果色厚卡片会话行。
+/// 保留置顶/已读侧滑、长按菜单、搜索与未读总数发布。
 public struct ConversationListView: View {
+    private enum Filter: Hashable {
+        case all
+        case unread
+        case favorites
+    }
+
     private let deps: ChatDependencies
     private let reloadToken: Int
     private let resetToken: Int
@@ -19,13 +26,16 @@ public struct ConversationListView: View {
     @State private var rows: [ConversationListRow] = []
     @State private var isLoading = true
     @State private var isVisible = false
+    @State private var hasEntered = false
     @State private var reloadGeneration = UUID()
     @State private var notificationRevision = 0
     @State private var searchText = ""
+    @State private var filter: Filter = .all
     @State private var currentRegionID = "london"
     @State private var selectedConversationID: UUID?
     @State private var hasPublishedUnreadCount = false
     @AppStorage private var persistedUnreadCount: Int
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(accountID: UUID, deps: ChatDependencies, reloadToken: Int = 0, resetToken: Int = 0) {
         _persistedUnreadCount = AppStorage(
@@ -37,21 +47,50 @@ public struct ConversationListView: View {
         self.resetToken = resetToken
     }
 
+    private var normalizedSearchText: String {
+        searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private var isSearching: Bool { !normalizedSearchText.isEmpty }
+
     private var visibleRows: [ConversationListRow] {
-        searchText.isEmpty
-            ? rows
-            : rows.filter { $0.character.card.name.localizedCaseInsensitiveContains(searchText) }
+        if isSearching {
+            return rows.filter { $0.character.card.name.localizedCaseInsensitiveContains(normalizedSearchText)
+                || $0.character.displayName.localizedCaseInsensitiveContains(normalizedSearchText) }
+        }
+        switch filter {
+        case .all: return rows
+        case .unread: return rows.filter { unreadCount($0) > 0 }
+        case .favorites: return rows.filter(\.character.isFavorite)
+        }
+    }
+
+    private var unreadConversationCount: Int {
+        rows.reduce(0) { $0 + (unreadCount($1) > 0 ? 1 : 0) }
+    }
+
+    private var totalUnreadCount: Int {
+        rows.reduce(0) { $0 + unreadCount($1) }
+    }
+
+    private var motion: Animation {
+        Puff.Motion.resolve(Puff.Motion.bouncy, reduceMotion: reduceMotion)
     }
 
     public var body: some View {
-        searchAdaptedContent
+        pageContent
+            .puffPageHeader(
+                title: "信息",
+                subtitle: totalUnreadCount > 0 ? "\(totalUnreadCount) 条新消息" : nil,
+                searchText: $searchText,
+                searchPrompt: "搜索信息",
+                resetToken: resetToken
+            )
             .navigationTitle("信息")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(item: $selectedConversationID) { characterID in
                 conversationDestination(characterID: characterID)
             }
-            .toolbarBackground(.hidden, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
             // task 会在列表真正重新出现时自动重启；不要从根视图跨页面改变 reloadToken，
             // 否则隐藏在聊天页下方的动态行可能改写 NavigationLink 的来源。
             .onAppear { isVisible = true }
@@ -62,6 +101,7 @@ public struct ConversationListView: View {
             .onChange(of: resetToken) {
                 selectedConversationID = nil
                 searchText = ""
+                filter = .all
             }
             .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { _ in
                 guard isVisible else { return }
@@ -71,7 +111,6 @@ public struct ConversationListView: View {
                 guard isVisible else { return }
                 notificationRevision += 1
             }
-            .refreshable { await reload() }
             .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { _ in
                 guard isVisible else { return }
                 notificationRevision += 1
@@ -87,120 +126,194 @@ public struct ConversationListView: View {
                       let isFavorite = notification.userInfo?["isFavorite"] as? Bool else { return }
                 applyFavoriteChange(characterID: characterID, isFavorite: isFavorite)
             }
-            .overlay {
-                if isLoading {
-                    ProgressView()
-                        .tint(Color.dsSceneTextPrimary)
-                        .padding(DSSpacing.lg)
-                        .dsSceneGlass(
-                            radius: DSRadius.card,
-                            tint: Color.white.opacity(0.06),
-                            legibility: .enhanced
-                        )
-                }
-            }
     }
 
     @ViewBuilder
-    private var searchAdaptedContent: some View {
-        if #available(iOS 26.0, *), DSPlatformVisualPolicy.usesLiquidGlass {
-            sceneContent
-                .dsSceneSearch(text: $searchText, title: "信息", prompt: "搜索信息", resetToken: resetToken)
-        } else {
-            sceneContent
-                .safeAreaInset(edge: .top, spacing: 0) {
-                    DSLegacySceneSearchField(text: $searchText, prompt: "搜索信息")
-                        .padding(.horizontal, DSSpacing.md)
-                        .padding(.top, 4)
-                        .padding(.bottom, DSSpacing.sm)
+    private var pageContent: some View {
+        ZStack {
+            Puff.Palette.page.ignoresSafeArea()
+
+            if rows.isEmpty && isLoading {
+                PuffLoadingDots()
+                    .transition(.opacity)
+            } else if rows.isEmpty {
+                ScrollView {
+                    PuffEmptyState(
+                        "还没有消息哦",
+                        message: "完成开场剧情后，认识的朋友会在这里给你发消息",
+                        mood: .sleepy
+                    )
+                    .padding(.top, 80)
+                    .frame(maxWidth: .infinity)
+                    .puffEntrance(index: 0, isShown: hasEntered)
                 }
+                .refreshable { await reload() }
+            } else {
+                conversationList
+            }
+        }
+        .animation(Puff.Motion.resolve(Puff.Motion.gentle, reduceMotion: reduceMotion), value: rows.isEmpty)
+    }
+
+    private var conversationList: some View {
+        List {
+            if !isSearching {
+                postcard
+                    .puffEntrance(index: 0, isShown: hasEntered)
+                    .listRowInsets(EdgeInsets(top: 2, leading: Puff.Space.m, bottom: Puff.Space.xs, trailing: Puff.Space.m))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .transition(.puffDrop)
+
+                PuffFilterBar(selection: $filter, options: [
+                    .init(.all, title: "全部"),
+                    .init(.unread, title: "未读", systemImage: "envelope.fill", count: unreadConversationCount),
+                    .init(.favorites, title: "特别关心", systemImage: "star.fill"),
+                ])
+                .puffEntrance(index: 1, isShown: hasEntered)
+                .listRowInsets(EdgeInsets(top: Puff.Space.xxs, leading: 0, bottom: Puff.Space.xxs, trailing: 0))
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
+            }
+
+            if visibleRows.isEmpty {
+                filteredEmptyState
+                    .frame(maxWidth: .infinity)
+                    .listRowInsets(EdgeInsets(top: Puff.Space.l, leading: 0, bottom: 0, trailing: 0))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .transition(.puffDrop)
+            } else {
+                ForEach(Array(visibleRows.enumerated()), id: \.element.id) { index, row in
+                    conversationRow(row)
+                        .puffEntrance(index: index + 2, isShown: hasEntered)
+                        .listRowInsets(EdgeInsets(top: 5, leading: Puff.Space.m, bottom: 5, trailing: Puff.Space.m))
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                }
+            }
+        }
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
+        .environment(\.defaultMinListRowHeight, 0)
+        .contentMargins(.bottom, Puff.Space.l, for: .scrollContent)
+        .refreshable { await reload() }
+    }
+
+    // MARK: - 明信片
+
+    private var postcard: some View {
+        PuffSceneCard(regionID: currentRegionID, viewport: .west, sceneHeight: 150, isActive: isVisible) {
+            TimelineView(.everyMinute) { context in
+                HStack(spacing: Puff.Space.s) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        PuffTag(
+                            "\(PuffCity.nameZh(for: currentRegionID)) · \(PuffCity.localTime(for: currentRegionID, at: context.date))",
+                            systemImage: "location.fill",
+                            candy: .sky
+                        )
+                        Text("\(PuffCity.greeting(for: currentRegionID, at: context.date))！")
+                            .font(.puff(.title2, .heavy))
+                            .foregroundStyle(Puff.Palette.ink)
+                        Text(postcardMessage)
+                            .font(.puff(.subheadline, .semibold))
+                            .foregroundStyle(Puff.Palette.inkSoft)
+                            .contentTransition(.numericText())
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer(minLength: 0)
+                    mailbox
+                }
+                .accessibilityElement(children: .combine)
+            }
         }
     }
 
-    private var sceneContent: some View {
-        ZStack {
-            DSSceneBackdrop(
-                imageName: DSCitySceneAssets.imageName(
-                    for: .messages,
-                    regionID: currentRegionID
-                ),
-                tone: .cool
-            )
+    private var postcardMessage: String {
+        if unreadConversationCount > 0 {
+            return "有 \(unreadConversationCount) 位朋友在等你回复"
+        }
+        if rows.allSatisfy({ $0.summary == nil }) {
+            return "挑一位朋友，打个招呼吧"
+        }
+        return "消息都看完啦，去和朋友聊聊吧"
+    }
 
-            if rows.isEmpty && !isLoading {
-                emptyState
-            } else {
-                List {
-                    if visibleRows.isEmpty {
-                        ContentUnavailableView.search(text: searchText)
-                            .padding(DSSpacing.xl)
-                            .foregroundStyle(Color.dsSceneTextPrimary)
-                            .dsSceneGlass(
-                                tint: Color.white.opacity(0.06),
-                                legibility: .enhanced
-                            )
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
-                    } else {
-                        ForEach(visibleRows) { row in
-                            Button {
-                                if let summary = row.summary {
-                                    markRead(summary)
-                                }
-                                selectedConversationID = row.id
-                            } label: {
-                                rowLabel(row)
-                                    .padding(.horizontal, DSSpacing.md)
-                                    .padding(.vertical, DSSpacing.sm)
-                                    .dsSceneGlass(
-                                        tint: Color.white.opacity(0.06),
-                                        interactive: true,
-                                        legibility: .enhanced
-                                    )
-                            }
-                            .buttonStyle(.plain)
-                            .listRowInsets(
-                                EdgeInsets(
-                                    top: DSSpacing.xs / 2,
-                                    leading: DSSpacing.md,
-                                    bottom: DSSpacing.xs / 2,
-                                    trailing: DSSpacing.md
-                                )
-                            )
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
-                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                if let conversationID = row.summary?.conversationID {
-                                    Button {
-                                        togglePinned(conversationID)
-                                    } label: {
-                                        Label(
-                                            row.summary?.isPinned == true
-                                                ? "取消置顶"
-                                                : "置顶",
-                                            systemImage: "pin.fill"
-                                        )
-                                    }
-                                    .tint(.dsSky)
-                                }
-                            }
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                if let summary = row.summary {
-                                    Button {
-                                        markRead(summary)
-                                    } label: {
-                                        Label("标记已读", systemImage: "envelope.open.fill")
-                                    }
-                                    .tint(.dsCyan)
-                                }
-                            }
-                        }
+    /// 有未读时是一只会跳的粉色信封，全部读完变成绿色对勾。
+    private var mailbox: some View {
+        let hasUnread = totalUnreadCount > 0
+        let candy: PuffCandy = hasUnread ? .bubblegum : .mint
+        return Image(systemName: hasUnread ? "envelope.fill" : "checkmark")
+            .font(.system(size: 24, weight: .heavy, design: .rounded))
+            .foregroundStyle(candy.deep)
+            .contentTransition(.symbolEffect(.replace))
+            .symbolEffect(.bounce, value: totalUnreadCount)
+            .frame(width: 58, height: 58)
+            .background(candy.wash, in: Circle())
+            .overlay(alignment: .topTrailing) {
+                if hasUnread {
+                    PuffCountBadge(totalUnreadCount)
+                        .offset(x: 6, y: -4)
+                        .transition(.puffPop)
+                }
+            }
+            .animation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: reduceMotion), value: hasUnread)
+            .accessibilityHidden(true)
+    }
+
+    // MARK: - 会话行
+
+    private func conversationRow(_ row: ConversationListRow) -> some View {
+        let unread = unreadCount(row) > 0
+        let pinned = row.summary?.isPinned ?? false
+        return Button {
+            if let summary = row.summary {
+                markRead(summary)
+            }
+            selectedConversationID = row.id
+        } label: {
+            rowLabel(row)
+        }
+        .buttonStyle(PuffCardButtonStyle(
+            radius: Puff.Radius.large,
+            border: unread ? PuffCandy.sky.base.opacity(0.45) : Puff.Palette.line,
+            lip: unread ? PuffCandy.sky.base.opacity(0.32) : Puff.Palette.lip
+        ))
+        .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: Puff.Radius.large, style: .continuous))
+        .contextMenu {
+            if let summary = row.summary {
+                Button {
+                    togglePinned(summary.conversationID)
+                } label: {
+                    Label(pinned ? "取消置顶" : "置顶", systemImage: pinned ? "pin.slash" : "pin")
+                }
+                if unread {
+                    Button {
+                        markRead(summary)
+                    } label: {
+                        Label("标记已读", systemImage: "envelope.open")
                     }
                 }
-                .listStyle(.plain)
-                .listSectionSpacing(DSSpacing.xs)
-                .scrollContentBackground(.hidden)
-                .background(Color.clear)
+            }
+        }
+        .swipeActions(edge: .leading, allowsFullSwipe: true) {
+            if let conversationID = row.summary?.conversationID {
+                Button {
+                    togglePinned(conversationID)
+                } label: {
+                    Label(pinned ? "取消置顶" : "置顶", systemImage: "pin.fill")
+                }
+                .tint(PuffCandy.grape.base)
+            }
+        }
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+            if let summary = row.summary {
+                Button {
+                    markRead(summary)
+                } label: {
+                    Label("标记已读", systemImage: "envelope.open.fill")
+                }
+                .tint(PuffCandy.sky.base)
             }
         }
     }
@@ -210,66 +323,90 @@ public struct ConversationListView: View {
         let unread = unreadCount > 0
         let pinned = row.summary?.isPinned ?? false
 
-        return HStack(spacing: DSSpacing.sm) {
-            ZStack(alignment: .topTrailing) {
-                AvatarBadge(
-                    name: row.character.displayName,
-                    size: 54,
-                    imageName: row.character.card.avatarAssetName,
-                    remoteURL: row.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                    usesPendingPlaceholder: true
-                )
-                    .accessibilityHidden(true)
-                if unread {
-                    Text(unreadCount > 99 ? "99+" : "\(unreadCount)")
-                        .font(.caption2.weight(.black))
-                        .foregroundStyle(.white)
-                        .monospacedDigit()
-                        .padding(.horizontal, 5)
-                        .frame(minWidth: 19, minHeight: 19)
-                        .background(Color.dsDanger, in: Capsule())
-                        .overlay { Capsule().stroke(Color.dsSurface, lineWidth: 2) }
-                        .offset(x: 5, y: -4)
-                        .accessibilityLabel("\(unreadCount) 条未读")
-                }
-            }
+        return HStack(spacing: Puff.Space.s) {
+            PuffAvatar(
+                name: row.character.displayName,
+                size: 58,
+                imageName: row.character.card.avatarAssetName,
+                remoteURL: row.character.card.avatarRemoteURL.flatMap(URL.init(string:))
+            )
 
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
                     Text(row.character.displayName)
-                        .font(.headline.weight(.bold))
-                        .foregroundStyle(Color.dsSceneTextPrimary)
+                        .font(.puff(.headline, .heavy))
+                        .foregroundStyle(Puff.Palette.ink)
                         .lineLimit(1)
 
                     if row.character.isFavorite {
                         Image(systemName: "star.fill")
-                            .font(.caption2.weight(.bold))
-                            .foregroundStyle(Color.dsSunset)
+                            .font(.system(size: 12, weight: .heavy))
+                            .foregroundStyle(PuffCandy.sunny.base)
+                            .transition(.puffPop)
                             .accessibilityLabel("特别关心")
                     }
 
                     if pinned {
-                        Image(systemName: "pin.fill")
-                            .font(.caption2.weight(.bold))
-                            .foregroundStyle(Color.dsSkyDeep)
-                            .accessibilityLabel("已置顶")
+                        PuffTag("置顶", systemImage: "pin.fill", candy: .grape)
+                            .transition(.puffPop)
                     }
 
-                    Spacer()
+                    Spacer(minLength: Puff.Space.xxs)
 
                     if let summary = row.summary {
                         Text(smartTime(summary.lastMessageAt))
-                            .font(.caption.monospacedDigit())
-                            .foregroundStyle(Color.dsSceneTextTertiary)
+                            .font(.puff(.caption, .bold))
+                            .monospacedDigit()
+                            .foregroundStyle(unread ? PuffCandy.sky.deep : Puff.Palette.inkFaint)
                     }
                 }
 
-                Text(row.summary.map(summaryText) ?? "打个招呼吧 👋")
-                    .font(.callout.weight(.regular))
-                    .foregroundStyle(Color.dsSceneTextTertiary)
-                    .lineLimit(1)
-                    .truncationMode(.tail)
+                HStack(spacing: Puff.Space.xs) {
+                    previewText(row, unread: unread)
+                    Spacer(minLength: Puff.Space.xxs)
+                    if unread {
+                        PuffCountBadge(unreadCount)
+                            .transition(.puffPop)
+                    } else if row.summary == nil {
+                        PuffTag("新朋友", systemImage: "sparkles", candy: .mint)
+                    }
+                }
             }
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, Puff.Space.s)
+        .animation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: reduceMotion), value: unreadCount)
+        .animation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: reduceMotion), value: pinned)
+        .animation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: reduceMotion), value: row.character.isFavorite)
+        .accessibilityElement(children: .combine)
+    }
+
+    @ViewBuilder
+    private func previewText(_ row: ConversationListRow, unread: Bool) -> some View {
+        let style: Font = unread ? .puff(.subheadline, .bold) : .puff(.subheadline, .medium)
+        let color: Color = unread ? Puff.Palette.ink : Puff.Palette.inkSoft
+        if row.summary?.lastMessageKind == .voice {
+            Label("语音消息", systemImage: "waveform")
+                .font(style)
+                .foregroundStyle(color)
+                .lineLimit(1)
+        } else {
+            Text(row.summary.map(summaryText) ?? "打个招呼吧 👋")
+                .font(style)
+                .foregroundStyle(color)
+                .lineLimit(1)
+                .truncationMode(.tail)
+        }
+    }
+
+    @ViewBuilder
+    private var filteredEmptyState: some View {
+        if isSearching {
+            PuffEmptyState("没有找到“\(normalizedSearchText)”", message: "换个名字试试看", mood: .curious)
+        } else if filter == .unread {
+            PuffEmptyState("没有未读消息", message: "所有消息都看完啦，真棒！", mood: .happy)
+        } else {
+            PuffEmptyState("还没有特别关心", message: "在朋友的资料页点亮 ⭐，重要的人会出现在这里", mood: .curious)
         }
     }
 
@@ -285,47 +422,12 @@ public struct ConversationListView: View {
         }
     }
 
-    private var emptyState: some View {
-        VStack(spacing: DSSpacing.lg) {
-            ZStack {
-                Circle()
-                    .fill(Color.dsSky.opacity(0.1))
-                    .frame(width: 116, height: 116)
-                Image(systemName: "paperplane.fill")
-                    .font(.system(size: 42, weight: .black))
-                    .foregroundStyle(Color.dsSky.gradient)
-                    .rotationEffect(.degrees(-8))
-            }
-
-            VStack(spacing: DSSpacing.xs) {
-                Text("通讯录还在等第一位旅伴")
-                    .font(.system(.title3, design: .rounded, weight: .bold))
-                    .foregroundStyle(Color.dsSceneTextPrimary)
-                Text("完成开场剧情后，你认识的伙伴和消息会出现在这里")
-                    .font(.subheadline)
-                    .foregroundStyle(Color.dsSceneTextSecondary)
-                    .multilineTextAlignment(.center)
-            }
-        }
-        .padding(DSSpacing.xl)
-        .frame(maxWidth: 340)
-        .dsSceneGlass(
-            tint: Color.white.opacity(0.06),
-            legibility: .enhanced
-        )
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(DSSpacing.xl)
-    }
-
     private func unreadCount(_ row: ConversationListRow) -> Int {
         row.summary?.unreadCount ?? 0
     }
 
     private func summaryText(_ summary: ConversationSummaryDTO) -> String {
-        switch summary.lastMessageKind {
-        case .voice: "[语音]"
-        default: summary.lastMessageText.isEmpty ? "打个招呼吧 👋" : summary.lastMessageText
-        }
+        summary.lastMessageText.isEmpty ? "打个招呼吧 👋" : summary.lastMessageText
     }
 
     private func applyFavoriteChange(characterID: UUID, isFavorite: Bool) {
@@ -349,7 +451,14 @@ public struct ConversationListView: View {
     private func reload() async {
         let generation = UUID()
         reloadGeneration = generation
-        defer { if reloadGeneration == generation { isLoading = false } }
+        defer {
+            if reloadGeneration == generation {
+                withAnimation(Puff.Motion.resolve(Puff.Motion.gentle, reduceMotion: reduceMotion)) {
+                    isLoading = false
+                }
+                startEntranceIfNeeded()
+            }
+        }
         async let loadedProfile = try? deps.economyStore.profile()
         async let loadedFriends = deps.rosterStore.friends()
         async let loadedSummaries = deps.chatStore.conversationSummaries()
@@ -359,10 +468,21 @@ public struct ConversationListView: View {
             guard !Task.isCancelled, reloadGeneration == generation else { return }
             if let profile { currentRegionID = profile.currentRegionID }
             let loadedRows = ConversationListProjection.rows(friends: friends, summaries: summaries)
-            if rows != loadedRows { rows = loadedRows }
+            if rows != loadedRows {
+                withAnimation(hasEntered ? motion : nil) { rows = loadedRows }
+            }
             updateUnreadCount()
         } catch {
             // 下拉刷新可重试；不以错误页打断导航。
+        }
+    }
+
+    /// 先以隐藏状态渲染首屏，再在下一帧触发逐行弹入。
+    private func startEntranceIfNeeded() {
+        guard !hasEntered else { return }
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(40))
+            hasEntered = true
         }
     }
 
@@ -397,6 +517,7 @@ public struct ConversationListView: View {
             $0.conversationID == conversationID
         }) else { return }
         let next = !current.isPinned
+        Haptics.impact(.light)
         updateSummary(conversationID) { $0.isPinned = next }
         Task {
             try? await deps.chatStore.setPinned(conversationID: conversationID, isPinned: next)
@@ -413,12 +534,15 @@ public struct ConversationListView: View {
         }), var summary = rows[index].summary else { return }
         mutate(&summary)
         let row = rows[index]
-        rows[index] = ConversationListRow(
+        var updated = rows
+        updated[index] = ConversationListRow(
             character: row.character,
             friendOrder: row.friendOrder,
             summary: summary
         )
-        rows = ConversationListProjection.sorted(rows)
+        withAnimation(motion) {
+            rows = ConversationListProjection.sorted(updated)
+        }
     }
 }
 

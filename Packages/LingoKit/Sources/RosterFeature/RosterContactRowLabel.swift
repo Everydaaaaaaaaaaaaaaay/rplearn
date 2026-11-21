@@ -3,15 +3,13 @@ import DomainKit
 import PersistenceKit
 import SwiftUI
 
-/// Presence clocks belong to contact labels, outside list grouping and search.
+/// 联系人行：头像带在线小圆点，名字旁是状态标签。在线时钟只属于行本身，不参与分组与搜索。
 struct RosterContactRowLabel: View {
     let character: CharacterDTO
     let lastAssistantMessageAt: Date?
     let pendingReplyPlan: NPCReplyPlan?
     @State private var isVisible = false
     @Environment(\.scenePhase) private var scenePhase
-    private var scenePrimaryText: Color { .dsSceneTextPrimary }
-    private var sceneSecondaryText: Color { .dsSceneTextSecondary }
 
     var body: some View {
         TimelineView(.animation(minimumInterval: 15,
@@ -23,44 +21,75 @@ struct RosterContactRowLabel: View {
     }
 
     private func content(at date: Date) -> some View {
-        HStack(spacing: DSSpacing.sm) {
-            AvatarBadge(
+        let isRemoved = character.contactStatus == .removed
+        let presence = contactPresence(character, at: date)
+        return HStack(spacing: Puff.Space.s) {
+            PuffAvatar(
                 name: character.displayName,
-                size: 56,
+                size: 52,
                 imageName: character.card.avatarAssetName,
                 remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                usesPendingPlaceholder: true
+                presence: isRemoved ? nil : puffPresence(presence)
             )
-                .accessibilityHidden(true)
+            .saturation(isRemoved ? 0.4 : 1)
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(character.displayName)
-                    .font(.system(.title2, design: .rounded, weight: .bold))
-                    .foregroundStyle(scenePrimaryText)
-                    .lineLimit(1)
-                    .layoutPriority(1)
-                HStack(spacing: 5) {
-                    if character.contactStatus != .removed {
-                        Circle()
-                            .fill(presenceDotColor(character, at: date))
-                            .frame(width: 6, height: 6)
-                            .accessibilityHidden(true)
-                    }
-                    Text(friendStatus(character, at: date))
-                        .font(.footnote.weight(.medium))
-                        .foregroundStyle(sceneSecondaryText)
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(spacing: 6) {
+                    Text(character.displayName)
+                        .font(.puff(.headline, .heavy))
+                        .foregroundStyle(Puff.Palette.ink)
                         .lineLimit(1)
-                        .truncationMode(.tail)
+                        .layoutPriority(1)
+                    if isRemoved {
+                        PuffTag("可重新添加", systemImage: "arrow.uturn.left", candy: .grape)
+                    } else {
+                        switch presence {
+                        case .online: PuffTag("在线", candy: .mint)
+                        case .recentlyActive: PuffTag("刚刚在线", candy: .sunny)
+                        case .offline: EmptyView()
+                        }
+                    }
                 }
+                Text(profileLine)
+                    .font(.puff(.footnote, .medium))
+                    .foregroundStyle(Puff.Palette.inkSoft)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
             }
 
             Spacer(minLength: 0)
+
+            Image(systemName: "chevron.right")
+                .font(.system(size: 13, weight: .heavy, design: .rounded))
+                .foregroundStyle(Puff.Palette.inkFaint)
         }
-        .padding(.horizontal, DSSpacing.md)
-        .padding(.vertical, DSSpacing.sm)
+        .padding(.horizontal, Puff.Space.m)
+        .padding(.vertical, 10)
         .contentShape(Rectangle())
+        .animation(Puff.Motion.pop, value: presence)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(character.card.name)，\(friendStatus(character, at: date))")
+    }
+
+    private func puffPresence(_ state: NPCPresenceState) -> PuffPresence {
+        switch state {
+        case .online: .online
+        case .recentlyActive: .recentlyActive
+        case .offline: .offline
+        }
+    }
+
+    private var occupation: String {
+        switch character.isMainCharacter ? character.card.avatarAssetName : nil {
+        case "avatar_oliver": "Bookshop assistant & aspiring novelist"
+        case "avatar_ruby": "Barista, marine biology student & surf instructor"
+        case "avatar_marcus": "Street photographer & record shop assistant"
+        default: character.card.occupation
+        }
+    }
+
+    private var profileLine: String {
+        "\(character.card.nationality) · \(occupation)"
     }
 
     private func contactPresence(_ character: CharacterDTO, at date: Date) -> NPCPresenceState {
@@ -69,14 +98,6 @@ struct RosterContactRowLabel: View {
             lastAssistantMessageAt: lastAssistantMessageAt,
             pendingReplyPlan: pendingReplyPlan
         ).state
-    }
-
-    private func presenceDotColor(_ character: CharacterDTO, at date: Date) -> Color {
-        switch contactPresence(character, at: date) {
-        case .online: Color(red: 0.55, green: 0.90, blue: 0.65)
-        case .recentlyActive: Color(red: 0.96, green: 0.77, blue: 0.40)
-        case .offline: Color(white: 0.66)
-        }
     }
 
     private func friendStatus(_ character: CharacterDTO, at date: Date) -> String {
@@ -89,14 +110,7 @@ struct RosterContactRowLabel: View {
         case .recentlyActive: "近期在线"
         case .offline: "离线"
         }
-        let occupation: String
-        switch character.isMainCharacter ? character.card.avatarAssetName : nil {
-        case "avatar_oliver": occupation = "Bookshop assistant & aspiring novelist"
-        case "avatar_ruby": occupation = "Barista, marine biology student & surf instructor"
-        case "avatar_marcus": occupation = "Street photographer & record shop assistant"
-        default: occupation = character.card.occupation
-        }
-        return "\(status) | \(character.card.nationality) · \(occupation)"
+        return "\(status) | \(profileLine)"
     }
 
 }

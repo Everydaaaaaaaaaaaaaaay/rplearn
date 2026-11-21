@@ -93,6 +93,7 @@ public struct CharacterProfileView: View {
     @State private var isRestoringContact = false
     @State private var failedFavoriteTarget: Bool?
     @State private var restoreFailed = false
+    @State private var hasEntered = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.dismiss) private var dismiss
@@ -123,30 +124,40 @@ public struct CharacterProfileView: View {
 
     public var body: some View {
         ScrollView {
-            VStack(spacing: DSSpacing.md) {
+            VStack(spacing: Puff.Space.m) {
                 profileHero
+                    .puffEntrance(index: 0, isShown: hasEntered)
                 contactActions
+                    .puffEntrance(index: 1, isShown: hasEntered)
                 identityCard
-                infoCard("性格", text: card.personality, icon: "sparkles")
+                    .puffEntrance(index: 2, isShown: hasEntered)
+                infoCard("性格", text: card.personality, icon: "sparkles", candy: .grape)
+                    .puffEntrance(index: 3, isShown: hasEntered)
                 hobbiesCard
+                    .puffEntrance(index: 4, isShown: hasEntered)
                 growthCard
+                    .puffEntrance(index: 5, isShown: hasEntered)
                 relationshipCard
-                infoCard("外貌", text: card.appearance, icon: "person.crop.rectangle")
+                    .puffEntrance(index: 6, isShown: hasEntered)
+                infoCard("外貌", text: card.appearance, icon: "person.crop.rectangle", candy: .sky)
                 if let speechStyle = card.speechStyle {
-                    infoCard("说话风格", text: speechStyle, icon: "quote.bubble")
+                    infoCard("说话风格", text: speechStyle, icon: "quote.bubble.fill", candy: .tangerine)
                 }
                 if let background = card.background {
-                    infoCard("背景故事", text: background, icon: "book.closed")
+                    infoCard("背景故事", text: background, icon: "book.closed.fill", candy: .mint)
                 }
                 infoCard(
                     "相识于",
                     text: character.metAt.formatted(date: .abbreviated, time: .omitted),
-                    icon: "mappin.and.ellipse"
+                    icon: "mappin.and.ellipse",
+                    candy: .bubblegum
                 )
             }
-            .padding(DSSpacing.md)
+            .padding(.horizontal, Puff.Space.m)
+            .padding(.top, Puff.Space.xs)
+            .padding(.bottom, Puff.Space.xl)
         }
-        .background(Color.dsBackground)
+        .background(Puff.Palette.page.ignoresSafeArea())
         .navigationTitle(card.name)
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom, spacing: 0) {
@@ -166,8 +177,13 @@ public struct CharacterProfileView: View {
                 .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
             }
         }
-        .animation(reduceMotion ? nil : DSAnimation.snappy, value: failedFavoriteTarget)
+        .animation(Puff.Motion.resolve(Puff.Motion.bouncy, reduceMotion: reduceMotion), value: failedFavoriteTarget)
+        .animation(Puff.Motion.resolve(Puff.Motion.bouncy, reduceMotion: reduceMotion), value: restoreFailed)
         .task {
+            if !hasEntered {
+                try? await Task.sleep(for: .milliseconds(40))
+                hasEntered = true
+            }
             await reloadRelationship()
         }
         .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { note in
@@ -180,50 +196,65 @@ public struct CharacterProfileView: View {
         }
     }
 
+    /// 角色所在城市的卡通街景上，探出一个大头像。
     private var profileHero: some View {
-        VStack(spacing: DSSpacing.sm) {
-            AvatarBadge(
+        VStack(spacing: 0) {
+            PuffCityScene(regionID: card.regionID, viewport: .west)
+                .frame(height: 118)
+                .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.large, style: .continuous))
+                .padding([.horizontal, .top], 6)
+
+            PuffAvatar(
                 name: character.displayName,
-                size: 96,
+                size: 104,
                 imageName: card.avatarAssetName,
-                remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:)),
-                usesPendingPlaceholder: true
+                remoteURL: card.avatarRemoteURL.flatMap(URL.init(string:))
             )
-            Text(character.displayName)
-                .font(.title2.bold())
-                .multilineTextAlignment(.center)
-            Label("AI 旅伴 · 虚构角色", systemImage: "sparkles")
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(Color.dsSkyDeep)
-            if let signature = card.signature, !signature.isEmpty {
-                Text(signature)
-                    .font(.body)
-                    .foregroundStyle(.secondary)
+            .padding(6)
+            .background(Puff.Palette.card, in: Circle())
+            .offset(y: -50)
+            .padding(.bottom, -50)
+
+            VStack(spacing: 6) {
+                Text(character.displayName)
+                    .font(.puff(.title, .heavy))
+                    .foregroundStyle(Puff.Palette.ink)
                     .multilineTextAlignment(.center)
+                PuffTag("AI 旅伴 · 虚构角色", systemImage: "sparkles", candy: .grape)
+                if let signature = card.signature, !signature.isEmpty {
+                    Text("“\(signature)”")
+                        .font(.puff(.body, .semibold))
+                        .foregroundStyle(Puff.Palette.ink)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 2)
+                }
+                Text(
+                    [
+                        character.isMainCharacter ? "剧情旅伴" : "旅行朋友",
+                        card.occupation,
+                        regionName,
+                    ].joined(separator: " · ")
+                )
+                .font(.puff(.subheadline, .semibold))
+                .foregroundStyle(Puff.Palette.inkSoft)
+                .multilineTextAlignment(.center)
+                Text("\(card.nationality) · \(card.age) 岁")
+                    .font(.puff(.footnote, .medium))
+                    .foregroundStyle(Puff.Palette.inkFaint)
             }
-            Text(
-                [
-                    character.isMainCharacter ? "剧情旅伴" : "旅行朋友",
-                    card.occupation,
-                    regionName,
-                ].joined(separator: " · ")
-            )
-            .font(.subheadline)
-            .foregroundStyle(.secondary)
-            .multilineTextAlignment(.center)
-            Text("\(card.nationality) · \(card.age) 岁")
-                .font(.footnote)
-                .foregroundStyle(.tertiary)
+            .padding(.horizontal, Puff.Space.l)
+            .padding(.top, Puff.Space.xs)
+            .padding(.bottom, Puff.Space.l)
         }
         .frame(maxWidth: .infinity)
-        .dsSurface(.grouped)
+        .puffCard(radius: Puff.Radius.huge)
         .accessibilityElement(children: .combine)
     }
 
     private var contactActions: some View {
         let layout = dynamicTypeSize.isAccessibilitySize
-            ? AnyLayout(VStackLayout(spacing: DSSpacing.sm))
-            : AnyLayout(HStackLayout(spacing: DSSpacing.sm))
+            ? AnyLayout(VStackLayout(spacing: Puff.Space.s))
+            : AnyLayout(HStackLayout(spacing: Puff.Space.s))
 
         return layout {
             if !character.isFriend {
@@ -234,27 +265,27 @@ public struct CharacterProfileView: View {
                         character.contactStatus == .removed ? "重新添加" : "添加好友",
                         systemImage: "person.badge.plus"
                     )
+                    .foregroundStyle(.white)
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(Color.dsSky)
+                .buttonStyle(actionStyle(.sky))
                 .disabled(isRestoringContact)
             } else {
                 NavigationLink {
                     chatBuilder(character)
                 } label: {
                     contactActionLabel("发消息", systemImage: "bubble.left.fill")
+                        .foregroundStyle(.white)
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(Color.dsSky)
+                .buttonStyle(actionStyle(.sky))
 
                 if let callBuilder {
                     NavigationLink {
                         callBuilder(character)
                     } label: {
                         contactActionLabel("打电话", systemImage: "phone.fill")
+                            .foregroundStyle(.white)
                     }
-                    .buttonStyle(.bordered)
-                    .tint(Color.dsSkyDeep)
+                    .buttonStyle(actionStyle(.mint))
                 }
 
                 Button {
@@ -264,10 +295,11 @@ public struct CharacterProfileView: View {
                         isFavorite ? "已特别关心" : "特别关心",
                         systemImage: isFavorite ? "star.fill" : "star"
                     )
+                    .foregroundStyle(isFavorite ? .white : PuffCandy.sunny.deep)
+                    .symbolEffect(.bounce, value: isFavorite)
                     .contentTransition(reduceMotion ? .opacity : .symbolEffect(.replace))
                 }
-                .buttonStyle(.bordered)
-                .tint(isFavorite ? Color.dsSunset : Color.dsSkyDeep)
+                .buttonStyle(isFavorite ? actionStyle(.sunny) : PuffCardButtonStyle(radius: Puff.Radius.medium))
                 .disabled(isUpdatingFavorite)
                 .accessibilityValue(isFavorite ? "已开启" : "未开启")
                 .accessibilityHint(isFavorite ? "双击取消特别关心" : "双击设为特别关心")
@@ -275,31 +307,56 @@ public struct CharacterProfileView: View {
         }
     }
 
+    /// 实心糖果色的厚按钮。
+    private func actionStyle(_ candy: PuffCandy) -> PuffCardButtonStyle {
+        PuffCardButtonStyle(radius: Puff.Radius.medium, face: candy.base, border: .clear, lip: candy.lip)
+    }
+
     private var identityCard: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            Label("旅伴资料", systemImage: "person.text.rectangle")
-                .font(.headline)
-                .foregroundStyle(Color.dsSky)
-            profileValue("旅伴号", value: character.travelerID)
-            profileValue("性别", value: genderName)
-            profileValue("生日", value: card.birthday)
-            profileValue("家乡", value: card.hometown)
-            profileValue("语言", value: card.languages?.joined(separator: "、"))
+        VStack(alignment: .leading, spacing: Puff.Space.s) {
+            cardTitle("旅伴资料", icon: "person.text.rectangle.fill", candy: .sky)
+            VStack(spacing: Puff.Space.xs) {
+                profileValue("旅伴号", value: character.travelerID)
+                profileValue("性别", value: genderName)
+                profileValue("生日", value: card.birthday)
+                profileValue("家乡", value: card.hometown)
+                profileValue("语言", value: card.languages?.joined(separator: "、"))
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .dsSurface(.grouped)
+        .padding(Puff.Space.m)
+        .puffCard()
+    }
+
+    private func cardTitle(_ title: String, icon: String, candy: PuffCandy) -> some View {
+        HStack(spacing: 10) {
+            PuffIconBubble(icon, candy: candy, size: 32)
+            Text(title)
+                .font(.puff(.headline, .heavy))
+                .foregroundStyle(Puff.Palette.ink)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isHeader)
     }
 
     @ViewBuilder
     private func profileValue(_ title: String, value: String?) -> some View {
         if let value, !value.isEmpty {
-            LabeledContent(title) {
+            HStack(alignment: .firstTextBaseline) {
+                Text(title)
+                    .font(.puff(.subheadline, .bold))
+                    .foregroundStyle(Puff.Palette.inkSoft)
+                Spacer(minLength: Puff.Space.s)
                 Text(value)
-                    .foregroundStyle(.secondary)
+                    .font(.puff(.subheadline, .semibold))
+                    .foregroundStyle(Puff.Palette.ink)
                     .multilineTextAlignment(.trailing)
                     .textSelection(.enabled)
             }
-            .font(.subheadline)
+            .padding(.horizontal, Puff.Space.s)
+            .padding(.vertical, 10)
+            .background(Puff.Palette.cloud, in: RoundedRectangle(cornerRadius: Puff.Radius.small, style: .continuous))
+            .accessibilityElement(children: .combine)
         }
     }
 
@@ -314,48 +371,54 @@ public struct CharacterProfileView: View {
     private func contactActionLabel(_ title: String, systemImage: String) -> some View {
         VStack(spacing: 5) {
             Image(systemName: systemImage)
-                .font(.title3)
+                .font(.system(size: 20, weight: .heavy, design: .rounded))
             Text(title)
-                .font(.caption.weight(.semibold))
+                .font(.puff(.caption, .heavy))
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
         }
-        .frame(maxWidth: .infinity, minHeight: 58)
+        .frame(maxWidth: .infinity, minHeight: 62)
     }
 
     private var relationshipCard: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            HStack(alignment: .firstTextBaseline) {
-                Label("你们的关系", systemImage: "heart.text.square")
-                    .font(.headline)
-                    .foregroundStyle(Color.dsSunset)
-                Spacer(minLength: DSSpacing.sm)
+        VStack(alignment: .leading, spacing: Puff.Space.s) {
+            HStack(alignment: .center) {
+                cardTitle("你们的关系", icon: "heart.fill", candy: .bubblegum)
+                Spacer(minLength: Puff.Space.s)
                 Text("共同互动 \(relationship.meaningfulInteractionCount) 次")
-                    .font(.caption.monospacedDigit())
-                    .foregroundStyle(.secondary)
+                    .font(.puff(.caption, .heavy))
+                    .monospacedDigit()
+                    .foregroundStyle(PuffCandy.bubblegum.deep)
                     .contentTransition(.numericText())
+                    .padding(.horizontal, 9)
+                    .padding(.vertical, 4)
+                    .background(PuffCandy.bubblegum.wash, in: Capsule())
             }
 
             Text("了解、信任和默契来自你们实际发生过的对话与经历，不由英语水平决定。")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
+                .font(.puff(.footnote, .medium))
+                .foregroundStyle(Puff.Palette.inkSoft)
                 .fixedSize(horizontal: false, vertical: true)
 
             if let event = relationship.latestEvent {
-                HStack(alignment: .top, spacing: DSSpacing.xs) {
+                HStack(alignment: .top, spacing: Puff.Space.xs) {
                     Image(systemName: "clock.arrow.circlepath")
-                        .foregroundStyle(Color.dsSky)
+                        .font(.system(size: 13, weight: .heavy))
+                        .foregroundStyle(PuffCandy.bubblegum.deep)
                     Text(event.reasonZh)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .font(.puff(.footnote, .semibold))
+                        .foregroundStyle(Puff.Palette.ink)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .padding(Puff.Space.s)
+                .background(PuffCandy.bubblegum.wash.opacity(0.7), in: RoundedRectangle(cornerRadius: Puff.Radius.small, style: .continuous))
                 .accessibilityElement(children: .combine)
                 .accessibilityLabel("最近的关系变化，\(event.reasonZh)")
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .dsSurface(.grouped)
+        .padding(Puff.Space.m)
+        .puffCard()
     }
 
     @MainActor
@@ -372,7 +435,7 @@ public struct CharacterProfileView: View {
         let previousValue = isFavorite
         failedFavoriteTarget = nil
         isUpdatingFavorite = true
-        withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+        withAnimation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: reduceMotion)) {
             isFavorite = newValue
         }
         onFavoriteChanged(newValue)
@@ -385,7 +448,7 @@ public struct CharacterProfileView: View {
                 )
                 Haptics.selection()
             } catch {
-                withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                withAnimation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: reduceMotion)) {
                     isFavorite = previousValue
                 }
                 onFavoriteChanged(previousValue)
@@ -416,54 +479,70 @@ public struct CharacterProfileView: View {
     }
 
     private var hobbiesCard: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            Label("爱好", systemImage: "heart.fill")
-                .font(.headline)
-                .foregroundStyle(Color.dsSunset)
+        VStack(alignment: .leading, spacing: Puff.Space.s) {
+            cardTitle("爱好", icon: "heart.text.square.fill", candy: .tangerine)
             FlowLayout(spacing: 6, lineSpacing: 7) {
-                ForEach(card.localizedHobbies, id: \.self) { DSChip($0, tint: .dsSky) }
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .dsSurface(.grouped)
-    }
-
-    @ViewBuilder
-    private var growthCard: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            Label("与你相处后的成长", systemImage: "leaf.fill")
-                .font(.headline)
-                .foregroundStyle(Color.dsSuccess)
-
-            if character.growth.arcs.isEmpty {
-                Text("还没有形成稳定变化。一次建议只会种下想法，持续的经历与行动才会慢慢留下改变。")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            } else {
-                ForEach(character.growth.arcs.sorted { $0.updatedAt > $1.updatedAt }) { arc in
-                    VStack(alignment: .leading, spacing: 5) {
-                        HStack {
-                            Text(growthTitle(arc))
-                                .font(.subheadline.weight(.semibold))
-                            Spacer()
-                            Text(arc.stage.titleZh)
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(Color.dsSkyDeep)
-                        }
-                        Text(arc.reasonZh)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                        ProgressView(value: min(max(arc.progress, 0), 1))
-                            .tint(Color.dsSuccess)
-                    }
-                    if arc.id != character.growth.arcs.sorted(by: { $0.updatedAt > $1.updatedAt }).last?.id {
-                        Divider()
-                    }
+                ForEach(Array(card.localizedHobbies.enumerated()), id: \.offset) { index, hobby in
+                    let candy = PuffCandy.all[index % PuffCandy.all.count]
+                    Text(hobby)
+                        .font(.puff(.subheadline, .bold))
+                        .foregroundStyle(candy.deep)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(candy.wash, in: Capsule())
                 }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .dsSurface(.grouped)
+        .padding(Puff.Space.m)
+        .puffCard()
+    }
+
+    @ViewBuilder
+    private var growthCard: some View {
+        let arcs = character.growth.arcs.sorted { $0.updatedAt > $1.updatedAt }
+        VStack(alignment: .leading, spacing: Puff.Space.s) {
+            cardTitle("与你相处后的成长", icon: "leaf.fill", candy: .mint)
+
+            if arcs.isEmpty {
+                Text("还没有形成稳定变化。一次建议只会种下想法，持续的经历与行动才会慢慢留下改变。")
+                    .font(.puff(.subheadline, .medium))
+                    .foregroundStyle(Puff.Palette.inkSoft)
+            } else {
+                ForEach(arcs) { arc in
+                    VStack(alignment: .leading, spacing: 6) {
+                        HStack {
+                            Text(growthTitle(arc))
+                                .font(.puff(.subheadline, .heavy))
+                                .foregroundStyle(Puff.Palette.ink)
+                            Spacer()
+                            PuffTag(arc.stage.titleZh, candy: .mint)
+                        }
+                        Text(arc.reasonZh)
+                            .font(.puff(.footnote, .medium))
+                            .foregroundStyle(Puff.Palette.inkSoft)
+                        GeometryReader { proxy in
+                            Capsule()
+                                .fill(Puff.Palette.cloud)
+                                .overlay(alignment: .leading) {
+                                    Capsule()
+                                        .fill(PuffCandy.mint.base)
+                                        .frame(width: max(proxy.size.width * min(max(arc.progress, 0), 1), 10))
+                                }
+                        }
+                        .frame(height: 10)
+                        .accessibilityElement()
+                        .accessibilityLabel("进度")
+                        .accessibilityValue("\(Int(min(max(arc.progress, 0), 1) * 100))%")
+                    }
+                    .padding(Puff.Space.s)
+                    .background(Puff.Palette.cloud.opacity(0.6), in: RoundedRectangle(cornerRadius: Puff.Radius.medium, style: .continuous))
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(Puff.Space.m)
+        .puffCard()
     }
 
     private func growthTitle(_ arc: CharacterGrowthArc) -> String {
@@ -473,17 +552,16 @@ public struct CharacterProfileView: View {
         }
     }
 
-    private func infoCard(_ title: String, text: String, icon: String) -> some View {
-        VStack(alignment: .leading, spacing: DSSpacing.xs) {
-            Label(title, systemImage: icon)
-                .font(.headline)
-                .foregroundStyle(Color.dsSky)
+    private func infoCard(_ title: String, text: String, icon: String, candy: PuffCandy) -> some View {
+        VStack(alignment: .leading, spacing: Puff.Space.s) {
+            cardTitle(title, icon: icon, candy: candy)
             Text(text)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .font(.puff(.subheadline, .medium))
+                .foregroundStyle(Puff.Palette.inkSoft)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .dsSurface(.grouped)
+        .padding(Puff.Space.m)
+        .puffCard()
     }
 }
 
@@ -493,29 +571,33 @@ private struct SaveErrorBanner: View {
     let dismiss: () -> Void
 
     var body: some View {
-        HStack(spacing: DSSpacing.sm) {
+        HStack(spacing: Puff.Space.s) {
             Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundStyle(Color.dsDanger)
+                .foregroundStyle(Puff.Palette.cherry)
                 .accessibilityHidden(true)
             Text(message)
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(.primary)
+                .font(.puff(.footnote, .heavy))
+                .foregroundStyle(Puff.Palette.ink)
             Spacer(minLength: 0)
             Button("重试", action: retry)
-                .font(.footnote.weight(.semibold))
+                .font(.puff(.footnote, .heavy))
+                .foregroundStyle(PuffCandy.sky.deep)
+                .buttonStyle(.puffSquish)
             Button(action: dismiss) {
                 Image(systemName: "xmark")
-                    .frame(width: 30, height: 30)
+                    .font(.system(size: 13, weight: .heavy))
+                    .foregroundStyle(Puff.Palette.inkSoft)
+                    .frame(width: 32, height: 32)
+                    .background(Puff.Palette.cloud, in: Circle())
             }
+            .buttonStyle(.puffSquish)
             .accessibilityLabel("关闭错误提示")
         }
-        .padding(.leading, DSSpacing.md)
-        .padding(.trailing, DSSpacing.xs)
-        .padding(.vertical, DSSpacing.xs)
-        .background(.thickMaterial, in: Capsule())
-        .overlay { Capsule().stroke(Color.dsBorder, lineWidth: 1) }
-        .padding(.horizontal, DSSpacing.md)
-        .padding(.bottom, DSSpacing.xs)
-        .shadow(color: .black.opacity(0.12), radius: 10, y: 4)
+        .padding(.leading, Puff.Space.m)
+        .padding(.trailing, Puff.Space.xs)
+        .padding(.vertical, Puff.Space.xs)
+        .puffCard(radius: Puff.Radius.large)
+        .padding(.horizontal, Puff.Space.m)
+        .padding(.bottom, Puff.Space.xs)
     }
 }
