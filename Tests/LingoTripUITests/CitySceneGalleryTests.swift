@@ -47,7 +47,6 @@ final class CitySceneGalleryTests: XCTestCase {
     private func assertScene(_ id: String) {
         let title = app.descendants(matching: .any)["activities.scene.title.\(id)"]
         XCTAssertTrue(title.waitForExistence(timeout: 5))
-        XCTAssertTrue(app.images["activities.photo.loaded.\(id)"].waitForExistence(timeout: 5))
         let visit = app.buttons["activities.place.\(id)"]
         XCTAssertTrue(visit.isHittable)
         XCTAssertEqual(visit.label, "去这里逛逛")
@@ -60,7 +59,7 @@ final class CitySceneGalleryTests: XCTestCase {
         let end = app.coordinate(withNormalizedOffset: CGVector(dx: left ? 0.2 : 0.8, dy: 0.4))
         start.press(forDuration: 0.05, thenDragTo: end)
     }
-    func testAllCitiesLoadTheirOwnPhotographs() {
+    func testAllCitiesShowTheirOwnPlaces() {
         app.launch()
         XCTAssertTrue(app.buttons["sceneGallery.cities"].waitForExistence(timeout: 30))
         for (city, places) in placesByCity {
@@ -95,7 +94,7 @@ final class CitySceneGalleryTests: XCTestCase {
         app.alerts.buttons["知道了"].tap()
         assertScene("london-southbank")
     }
-    func testHomeActivityEntryUsesCurrentCityPhotographs() {
+    func testHomeActivityEntryUsesCurrentCityPlaces() {
         app.launchEnvironment["UI_TEST_TAB"] = "home"
         app.launchEnvironment["UI_TEST_WORLD_GATEWAY"] = "1"
         app.launchEnvironment["UI_TEST_SCENE_CITY"] = "newyork"
@@ -138,7 +137,7 @@ final class CitySceneGalleryTests: XCTestCase {
         XCTAssertFalse(retry.exists)
     }
 
-    func testNonStarterCityLoadsActivityPhotos() {
+    func testNonStarterCityShowsItsPlaces() {
         app.launchEnvironment["UI_TEST_TAB"] = "home"
         app.launchEnvironment["UI_TEST_WORLD_GATEWAY"] = "1"
         app.launchEnvironment["UI_TEST_SCENE_CITY"] = "capetown"
@@ -150,18 +149,11 @@ final class CitySceneGalleryTests: XCTestCase {
         XCTAssertTrue(entrance.waitForExistence(timeout: 20))
         entrance.tap()
         assertScene("capetown-bo-kaap")
-        app.buttons["activities.scene.more"].tap()
-        app.buttons["查看全图"].tap()
-        let closeOriginal = app.buttons["sceneGallery.original.close"]
-        XCTAssertTrue(closeOriginal.waitForExistence(timeout: 8))
-        XCTAssertTrue(app.images["activities.photo.loaded.capetown-bo-kaap"].firstMatch.waitForExistence(timeout: 8))
-        capture("downloaded-capetown-full-photo")
-        closeOriginal.tap()
         app.buttons["activities.scene.next"].tap()
         assertScene("capetown-sea-point")
         capture("downloaded-capetown")
     }
-    func testLargeTextCreditsOriginalAndFifthPlace() {
+    func testLargeTextFifthPlaceAndLongTitle() {
         app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
         XCTAssertTrue(app.buttons["sceneGallery.cities"].waitForExistence(timeout: 30))
@@ -170,17 +162,6 @@ final class CitySceneGalleryTests: XCTestCase {
         app.buttons["sceneGallery.cities"].tap()
         capture("city-picker-large")
         app.buttons["取消"].tap()
-        app.buttons["activities.scene.more"].tap()
-        app.buttons["照片信息"].tap()
-        XCTAssertTrue(app.navigationBars["照片信息"].waitForExistence(timeout: 5))
-        capture("fullscreen-credits-large")
-        app.navigationBars["照片信息"].buttons["完成"].tap()
-        app.buttons["activities.scene.more"].tap()
-        app.buttons["查看全图"].tap()
-        XCTAssertTrue(app.buttons["sceneGallery.original.close"].waitForExistence(timeout: 5))
-        capture("fullscreen-original-large")
-        app.buttons["sceneGallery.original.close"].tap()
-        XCTAssertTrue(app.buttons["sceneGallery.original.close"].waitForNonExistence(timeout: 5))
         for _ in 0..<4 { app.buttons["activities.scene.next"].tap() }
         assertScene("london-primrose-hill")
         capture("fullscreen-fifth-large")

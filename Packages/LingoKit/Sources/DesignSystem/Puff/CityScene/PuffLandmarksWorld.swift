@@ -25,7 +25,7 @@ extension PuffScenePainter {
         default:
             topRounded(left, topY, width, height, c(color), r: 2)
         }
-        rect(left + width * 0.72, topY + (top == .round ? width / 2 : 4), width * 0.28, height - (top == .round ? width / 2 : 4), SceneInk(color).mixed(with: SceneInk(0x24305E), 0.12).color.opacity(mood == .night ? 0 : 0.55))
+        rect(left + width * 0.72, topY + (top == .round ? width / 2 : 4), width * 0.28, height - (top == .round ? width / 2 : 4), tone(SceneInk(color).mixed(with: SceneInk(0x24305E), 0.12)).opacity(mood == .night ? 0 : 0.55))
         let columns = max(Int((width - 6) / 6), 1)
         let rows = max(Int((height - 16) / 9), 1)
         let gap = (width - 6 - CGFloat(columns) * 3) / CGFloat(max(columns - 1, 1))
@@ -133,11 +133,11 @@ extension PuffScenePainter {
         rect(x - span / 2, deckY, span, 5, c(0x9AA8C8), r: 1.5)
         for tower in towers {
             topRounded(tower - 11, ground - 74, 22, 74, c(stone), r: 3)
-            rect(tower + 5, ground - 74, 6, 74, SceneInk(stone).mixed(with: SceneInk(0x5A4A3A), 0.12).color)
+            rect(tower + 5, ground - 74, 6, 74, tone(SceneInk(stone).mixed(with: SceneInk(0x5A4A3A), 0.12)))
             for side in [-4.5, 4.5] as [CGFloat] {
                 topRounded(tower + side - 2.6, ground - 62, 5.2, 18, atmosphere.skyBottom.color, r: 2.6)
             }
-            rect(tower - 12, ground - 76, 24, 3, SceneInk(stone).mixed(with: SceneInk(0x5A4A3A), 0.2).color, r: 1)
+            rect(tower - 12, ground - 76, 24, 3, tone(SceneInk(stone).mixed(with: SceneInk(0x5A4A3A), 0.2)), r: 1)
         }
         if isNight {
             for index in 0..<14 {
@@ -152,7 +152,7 @@ extension PuffScenePainter {
         let topY = ground - height
         let podY = ground - height * podRatio
         poly([CGPoint(x: x - 7, y: ground), CGPoint(x: x + 7, y: ground), CGPoint(x: x + 2.4, y: podY), CGPoint(x: x - 2.4, y: podY)], c(color))
-        poly([CGPoint(x: x + 2, y: ground), CGPoint(x: x + 7, y: ground), CGPoint(x: x + 2.4, y: podY)], SceneInk(color).mixed(with: SceneInk(0x24305E), 0.1).color)
+        poly([CGPoint(x: x + 2, y: ground), CGPoint(x: x + 7, y: ground), CGPoint(x: x + 2.4, y: podY)], tone(SceneInk(color).mixed(with: SceneInk(0x24305E), 0.1)))
         rect(x - podWidth / 2, podY - 6, podWidth, 9, c(podColor), r: 4.5)
         rect(x - podWidth / 2 + 2, podY - 3.4, podWidth - 4, 2.6, window(0x9FC4F0), r: 1.3)
         rect(x - podWidth * 0.3, podY - 12, podWidth * 0.6, 6, c(color), r: 3)
@@ -331,7 +331,7 @@ extension PuffScenePainter {
     func domedHall(_ x: CGFloat, width: CGFloat, height: CGFloat = 26, wall: UInt32, dome domeColor: UInt32, clock: Bool = false) {
         let ground = Self.horizon
         rect(x - width / 2, ground - height, width, height, c(wall), r: 2)
-        rect(x - width / 2, ground - height, width, 3, SceneInk(wall).mixed(with: SceneInk(0x5A4A3A), 0.15).color, r: 1)
+        rect(x - width / 2, ground - height, width, 3, tone(SceneInk(wall).mixed(with: SceneInk(0x5A4A3A), 0.15)), r: 1)
         windowGrid(x: x - width / 2 + 5, y: ground - height + 7, columns: Int((width - 8) / 7), rows: 2, w: 3, h: 5, gapX: 4, gapY: 4, color: 0xFFF8EA)
         rect(x - 12, ground - height - 12, 24, 12, c(wall), r: 1)
         dome(x, ground - height - 12, 13, 17, c(domeColor))
@@ -468,7 +468,7 @@ extension PuffScenePainter {
     func gothicClockTower(_ x: CGFloat, height: CGFloat = 96, stone: UInt32 = 0xE3C79E, roof: UInt32 = 0x5E6E9F) {
         let ground = Self.horizon
         rect(x - 9, ground - height, 18, height, c(stone))
-        rect(x + 3, ground - height, 6, height, SceneInk(stone).mixed(with: SceneInk(0x5A4A3A), 0.12).color)
+        rect(x + 3, ground - height, 6, height, tone(SceneInk(stone).mixed(with: SceneInk(0x5A4A3A), 0.12)))
         circle(x, ground - height + 12, 6, c(0xFFFDF4))
         line(CGPoint(x: x, y: ground - height + 12), CGPoint(x: x + 2.4, y: ground - height + 9), c(0x3B4470), width: 0.9)
         line(CGPoint(x: x, y: ground - height + 12), CGPoint(x: x, y: ground - height + 7.6), c(0x3B4470), width: 0.7)

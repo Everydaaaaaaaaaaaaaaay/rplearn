@@ -20,25 +20,25 @@ struct CityOutingView: View {
     @State private var translation = false
     @State private var autoRead = true
     @State private var word: TokenSelection?
-    @State private var credits: BackendActivityPhoto?
     @State private var confirmsEnding = false
     @State private var revealsSheet = false
-    private let ink = Color.dsTravelNavy
+    private let ink = Puff.Palette.ink
 
     var body: some View {
         ScrollViewReader { reader in
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     Color.clear.frame(height: 270)
-                        .overlay(alignment: .bottomTrailing) {
-                            Button { credits = model.snapshot?.photo ?? model.archive.place.photo } label: {
-                                Image(systemName: "info.circle").frame(width: 44, height: 44).background(.regularMaterial, in: Circle())
-                            }.accessibilityLabel("照片信息").padding(10)
-                        }
                     VStack(alignment: .leading, spacing: 24) {
                         if let snapshot = model.snapshot { story(snapshot) }
                         else if model.error == nil {
-                            ProgressView("正在走进\(model.archive.place.titleZh)…").frame(maxWidth: .infinity).padding(.vertical, 30)
+                            VStack(spacing: Puff.Space.s) {
+                                PuffLoadingDots()
+                                Text("正在走进\(model.archive.place.titleZh)")
+                                    .font(.puff(.subheadline, .bold))
+                                    .foregroundStyle(Puff.Palette.inkSoft)
+                            }
+                            .frame(maxWidth: .infinity).padding(.vertical, 30)
                         }
                         if let message = model.synchronizationMessage {
                             VStack(alignment: .leading, spacing: 10) {
@@ -58,7 +58,7 @@ struct CityOutingView: View {
                         Color.clear.frame(height: 1).id("outing-bottom")
                     }.padding(24)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(CityPlacesView.paper.opacity(0.97), in: RoundedRectangle(cornerRadius: 28))
+                        .puffCard(radius: Puff.Radius.huge)
                         .offset(y: (revealsSheet || reduceMotion) ? 0 : 28)
                         .opacity((revealsSheet || reduceMotion) ? 1 : 0)
                 }.padding(.horizontal, 16).padding(.bottom, 24)
@@ -72,8 +72,13 @@ struct CityOutingView: View {
         .safeAreaInset(edge: .top, spacing: 0) { toolbar }
         .foregroundStyle(ink).tint(ink)
         .background {
-            ActivityPlacePhoto(photo: model.snapshot?.photo ?? model.archive.place.photo)
-                .ignoresSafeArea().accessibilityHidden(true)
+            PuffPlaceScene(
+                regionID: model.region.id,
+                kind: PuffPlaceScene.Kind(category: model.archive.place.category),
+                placeID: model.archive.place.id,
+                isActive: isVisible
+            )
+            .ignoresSafeArea()
         }
         .onAppear {
             guard !revealsSheet else { return }
@@ -92,7 +97,6 @@ struct CityOutingView: View {
         .onChange(of: model.canCloseAbandonedOuting, initial: true) { _, canClose in
             if canClose { onBack() }
         }
-        .sheet(item: $credits) { ActivityPhotoCredits(photo: $0) }
         .confirmationDialog("结束这次外出？已发生的进度仍会保留。", isPresented: $confirmsEnding, titleVisibility: .visible) {
             Button("结束这次外出", role: .destructive) { model.abandon() }
                 .accessibilityIdentifier("activities.abandon.confirm")
@@ -126,14 +130,17 @@ struct CityOutingView: View {
                         .disabled(model.snapshot == nil || model.conflict)
                 } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }.accessibilityLabel("外出选项")
             }
-        }.font(.system(size: 18, weight: .medium))
+        }.font(.system(size: 17, weight: .heavy, design: .rounded))
+            .buttonStyle(.puffSquish)
         if dynamicTypeSize.isAccessibilitySize { placeHeading.padding(.horizontal, 8) }
-        }.padding(.leading, 28).padding(.trailing, 8).padding(.vertical, 6).background(CityPlacesView.paper)
+        }.padding(.leading, Puff.Space.s).padding(.trailing, 8).padding(.vertical, 6)
+            .background(Puff.Palette.card.ignoresSafeArea(edges: .top))
+            .overlay(alignment: .bottom) { Rectangle().fill(Puff.Palette.line).frame(height: 1) }
     }
     private var placeHeading: some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(model.region.nameZh).font(.caption).foregroundStyle(ink.opacity(0.6))
-            Text(model.archive.place.titleZh).font(.subheadline.weight(.medium))
+            Text(model.region.nameZh).font(.puff(.caption, .bold)).foregroundStyle(Puff.Palette.inkSoft)
+            Text(model.archive.place.titleZh).font(.puff(.subheadline, .heavy))
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
@@ -141,13 +148,13 @@ struct CityOutingView: View {
     @ViewBuilder private func story(_ snapshot: BackendOuting) -> some View {
         if let npc = snapshot.npc {
             HStack(spacing: 12) {
-                AvatarBadge(name: npc.card.name, size: 44,
+                PuffAvatar(name: npc.card.name, size: 50,
                     imageName: model.bundledAvatarName(for: npc.id),
-                    remoteURL: npc.avatar?.url, usesPendingPlaceholder: true)
+                    remoteURL: npc.avatar?.url)
                     .accessibilityIdentifier("activities.encounter.avatar")
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(model.character?.displayName ?? npc.card.name).font(.headline)
-                    Text(npc.card.occupation).font(.caption).foregroundStyle(ink.opacity(0.6))
+                    Text(model.character?.displayName ?? npc.card.name).font(.puff(.headline, .heavy))
+                    Text(npc.card.occupation).font(.puff(.caption, .semibold)).foregroundStyle(Puff.Palette.inkSoft)
                 }
             }
         }
@@ -156,7 +163,7 @@ struct CityOutingView: View {
             if translation { Text(snapshot.solitude.chinese).foregroundStyle(ink.opacity(0.65)) }
         } else {
             Text(snapshot.mode == .reunion ? snapshot.story?.reunion.titleZh ?? "又见面了" : snapshot.story?.titleZh ?? "一次相遇")
-                .font(.system(.title, design: .serif, weight: .medium))
+                .font(.puff(.title, .heavy))
             ForEach(Array(model.chapters.enumerated()), id: \.offset) { stage, chapter in
                 ForEach(Array(chapter.beats.enumerated()), id: \.offset) { index, beat in
                     if stage < model.chapters.count - 1 || index <= snapshot.beatIndex {
@@ -185,11 +192,12 @@ struct CityOutingView: View {
             ForEach(Array(model.choices.enumerated()), id: \.offset) { index, choice in
                 Button { model.choose(index) } label: {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(choice.english).font(.body.weight(.medium))
-                        if translation { Text(choice.chinese).font(.subheadline) }
+                        Text(choice.english).font(.puff(.body, .heavy)).foregroundStyle(ink)
+                        if translation { Text(choice.chinese).font(.puff(.subheadline, .medium)).foregroundStyle(Puff.Palette.inkSoft) }
                     }.frame(maxWidth: .infinity, alignment: .leading).padding(18)
-                        .background(.white, in: RoundedRectangle(cornerRadius: 18))
-                }.buttonStyle(DSSceneEntranceButtonStyle()).disabled(model.conflict)
+                }.buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.large, face: PuffCandy.sky.wash,
+                                                  border: PuffCandy.sky.base.opacity(0.35), lip: PuffCandy.sky.base.opacity(0.35)))
+                    .disabled(model.conflict)
                     .accessibilityIdentifier("activities.choice.\(index)")
                     .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
                         showsTutorialGuidance ? ["activity.controls.\(index)": anchor] : [:]
@@ -197,9 +205,9 @@ struct CityOutingView: View {
             }
         } else {
             Button { model.advance() } label: {
-                Text(model.isAtEnding ? "结束这次外出" : "继续").foregroundStyle(.white)
+                Text(model.isAtEnding ? "结束这次外出" : "继续").frame(maxWidth: .infinity)
             }
-                .buttonStyle(.borderedProminent).controlSize(.large)
+                .buttonStyle(PuffCandyButtonStyle(.sky))
                 .disabled(model.conflict || (snapshot.status == .reserved && snapshot.beatIndex == model.currentBeats.count - 1))
                 .accessibilityIdentifier("activities.action.next")
                 .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
@@ -216,16 +224,16 @@ struct CityOutingView: View {
     @ViewBuilder private func ending(_ snapshot: BackendOuting) -> some View {
         if snapshot.mode != .solitude && snapshot.status == .completed {
             if let character = model.character, character.isFriend {
-                Button { onChat(character) } label: { Text("继续聊天").foregroundStyle(.white) }
-                    .buttonStyle(.borderedProminent).controlSize(.large)
+                Button { onChat(character) } label: { Text("继续聊天").frame(maxWidth: .infinity) }
+                    .buttonStyle(PuffCandyButtonStyle(.mint))
                     .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
                         showsTutorialGuidance ? ["activity.controls.contact": anchor] : [:]
                     }
             } else {
                 Button { model.addFriend() } label: {
-                    Text(model.pendingCount > 0 ? "同步完成后可添加好友" : "加为好友").foregroundStyle(.white)
+                    Text(model.pendingCount > 0 ? "同步完成后可添加好友" : "加为好友").frame(maxWidth: .infinity)
                 }
-                    .buttonStyle(.borderedProminent).controlSize(.large)
+                    .buttonStyle(PuffCandyButtonStyle(.bubblegum))
                     .disabled(model.pendingCount > 0 || model.contactBusy)
                     .accessibilityIdentifier("activities.encounter.addFriend")
                     .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
@@ -237,7 +245,9 @@ struct CityOutingView: View {
         if model.isSavingEnding && model.synchronizationMessage == nil {
             ProgressView("正在保存外出结局")
         } else {
-            Button("回到城市地点", action: onFinish).frame(minHeight: 44).accessibilityIdentifier("activities.action.finish")
+            Button("回到城市地点", action: onFinish).frame(minHeight: 44)
+                .font(.puff(.body, .heavy)).foregroundStyle(PuffCandy.sky.deep)
+                .accessibilityIdentifier("activities.action.finish")
                 .anchorPreference(key: TutorialTargetPreference.self, value: .bounds) { anchor in
                     showsTutorialGuidance ? ["activity.controls.finish": anchor] : [:]
                 }

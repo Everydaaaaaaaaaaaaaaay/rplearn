@@ -69,7 +69,7 @@ extension PuffScenePainter {
         let base = Self.roadBase
         let top = base - 22 + bob
         rect(x - 24, top, 48, 18, c(color), r: 5)
-        rect(x - 24, top + 13, 48, 2.6, SceneInk(color).mixed(with: SceneInk(0x000000), 0.15).color)
+        rect(x - 24, top + 13, 48, 2.6, tone(SceneInk(color).mixed(with: SceneInk(0x000000), 0.15)))
         for column in 0..<4 {
             rect(x - 20 + CGFloat(column) * 9.4, top + 3, 7.4, 7.4, window(0xF2F8FF), r: 2)
         }

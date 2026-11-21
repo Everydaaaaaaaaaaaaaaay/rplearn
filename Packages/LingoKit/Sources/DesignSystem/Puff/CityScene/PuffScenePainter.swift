@@ -129,13 +129,19 @@ struct PuffScenePainter {
 
     /// 把白天设计色换算到当前时段。
     func ink(_ hex: UInt32) -> SceneInk {
-        let base = SceneInk(hex)
+        toned(SceneInk(hex))
+    }
+
+    func toned(_ base: SceneInk) -> SceneInk {
         switch mood {
         case .day: return base
         case .dusk: return base.mixed(with: Self.duskTint, 0.14).mixed(with: Self.duskShade, 0.1)
         case .night: return base.mixed(with: Self.nightTint, 0.62)
         }
     }
+
+    /// 任意混合色同样按时段换算。
+    func tone(_ base: SceneInk) -> Color { toned(base).color }
 
     func c(_ hex: UInt32) -> Color { ink(hex).color }
 

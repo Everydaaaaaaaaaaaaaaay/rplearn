@@ -19,6 +19,12 @@ final class CityPlaceOutingTests: XCTestCase {
         let capture = XCTAttachment(screenshot: app.screenshot())
         capture.name = name; capture.lifetime = .keepAlways; add(capture)
     }
+    /// 账号激活会把活动导航重置到首页，预览启动后从“出去走走”进入地点页。
+    private func openPlaces() {
+        let entrance = app.buttons["home.activities"]
+        XCTAssertTrue(entrance.waitForExistence(timeout: 20))
+        entrance.tap()
+    }
     private func reveal(_ id: String) {
         for _ in 0..<10 {
             if app.buttons[id].exists { return }
@@ -31,6 +37,7 @@ final class CityPlaceOutingTests: XCTestCase {
     }
     func testActualBranchSurvivesPauseRelaunchAndAppearsInJournal() {
         app.launch()
+        openPlaces()
         let cafe = app.buttons["activities.place.london-bloomsbury-cafe"]
         XCTAssertTrue(cafe.waitForExistence(timeout: 20))
         screenshot("places-list-standard")
@@ -49,6 +56,7 @@ final class CityPlaceOutingTests: XCTestCase {
         resume.tap()
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 5))
         app.terminate(); app.launch()
+        openPlaces()
         XCTAssertTrue(app.buttons["activities.action.next"].waitForExistence(timeout: 20))
         reveal("activities.choice.1")
         app.buttons["activities.choice.1"].tap()
@@ -63,18 +71,11 @@ final class CityPlaceOutingTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["与 Alex Rowan 的这次交流"].exists)
         screenshot("places-journal")
     }
-    func testLargeTextFindsThirdPlaceCreditsAndSolitudeEnding() {
+    func testLargeTextFindsThirdPlaceAndSolitudeEnding() {
         app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
+        openPlaces()
         XCTAssertTrue(app.buttons["activities.place.london-bloomsbury-cafe"].waitForExistence(timeout: 20))
-        app.buttons["activities.scene.more"].tap()
-        app.buttons["照片信息"].tap()
-        XCTAssertTrue(app.navigationBars["照片信息"].waitForExistence(timeout: 4))
-        let license = app.descendants(matching: .any)["activities.photo.license"]
-        for _ in 0..<5 where !license.exists { app.swipeUp() }
-        XCTAssertTrue(license.exists)
-        screenshot("places-photo-credit-large")
-        app.buttons["完成"].tap()
         let park = app.buttons["activities.place.london-primrose-hill"]
         for _ in 0..<2 { app.buttons["activities.scene.next"].tap() }
         XCTAssertTrue(park.isHittable)

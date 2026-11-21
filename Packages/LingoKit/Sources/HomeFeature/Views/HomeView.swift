@@ -50,7 +50,6 @@ public struct HomeView: View {
         return profile.flatMap { deps.regionCatalog.region(id: $0.currentRegionID) }
     }
     private var reloadKey: String { "\(reloadToken)-\(isVisible)" }
-    private var places: [BackendActivityPlace] { CityActivityRelease.bundled()?.places(in: currentRegion?.id ?? "") ?? [] }
     private var nextStoryRegionID: String? {
         MainlineCatalog.journey(starterRegionID: profile?.starterRegionID).stops
             .first(where: { !completedStories.contains($0.chapter.storyID) })?.regionID
@@ -100,10 +99,6 @@ public struct HomeView: View {
             // Wait for the hub's first frame to settle before starting speculative background work.
             do { try await Task.sleep(for: .milliseconds(350)) } catch { return }
             guard !Task.isCancelled else { return }
-            let windowSize = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
-                .flatMap(\.windows).first(where: \.isKeyWindow)
-                .map { ($0.bounds.size, $0.screen.scale) }
-            let placePhotos = places.map(\.photo)
             let main = MainlineCatalog.journey(starterRegionID: profile?.starterRegionID).stops.prefix(2)
                 .map { DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID) }
             let cities = CityStoryCatalog.chapters.prefix(2)
@@ -114,10 +109,6 @@ public struct HomeView: View {
                 DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
             }
             let bgTask = Task.detached(priority: .utility) {
-                if let (size, scale) = windowSize {
-                    await ActivityPlacePhoto.preload(placePhotos, size: size, scale: scale, limit: 2)
-                }
-                guard !Task.isCancelled else { return }
                 await DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 200)
                 guard !Task.isCancelled else { return }
                 await DSSceneImageCache.preloadThumbnails(main + cities, maxPixelSize: 720)
