@@ -6,6 +6,7 @@ import type { OutingSnapshot } from "../modules/npc/outing-types.js";
 import {
   activityWorldSchema,
   contentHash,
+  placeEncounterStorySchema,
   requirePublishedWorld,
 } from "../modules/npc/activity-world-content.js";
 
@@ -19,13 +20,47 @@ const approvalSchema = z.object({
   media: z.array(z.object({ id: z.string(), sha256: fingerprint })).min(45),
 });
 
+const storyRevisionSchema = z
+  .object({
+    baseReleaseId: z.string(),
+    releaseId: z.string(),
+    stories: z.array(placeEncounterStorySchema).min(1),
+  })
+  .strict();
+
 async function main() {
-  const [source, reviewFile, assets, output, appOutput] = process.argv.slice(2);
+  const [source, reviewFile, assets, output, appOutput, storyRevisionFile] =
+    process.argv.slice(2);
   if (!source || !reviewFile || !assets || !output || !appOutput)
     throw new Error(
-      "Usage: compile-activity-world WORLD REVIEW ASSET_DIRECTORY RELEASE APP_RELEASE",
+      "Usage: compile-activity-world WORLD REVIEW ASSET_DIRECTORY RELEASE APP_RELEASE [STORY_REVISION]",
     );
-  const world = activityWorldSchema.parse(JSON.parse(await readFile(source, "utf8")));
+  const base = activityWorldSchema.parse(JSON.parse(await readFile(source, "utf8")));
+  let world = base;
+  if (storyRevisionFile) {
+    const revision = storyRevisionSchema.parse(
+      JSON.parse(await readFile(storyRevisionFile, "utf8")),
+    );
+    if (
+      revision.baseReleaseId !== base.releaseId ||
+      revision.releaseId === base.releaseId
+    )
+      throw new Error("Story revision must name the existing base and a new release");
+    const originals = new Map(base.stories.map((story) => [story.id, story]));
+    const replacements = new Map(revision.stories.map((story) => [story.id, story]));
+    if (replacements.size !== revision.stories.length)
+      throw new Error("Story revision contains duplicate IDs");
+    for (const story of revision.stories) {
+      const original = originals.get(story.id);
+      if (original?.npcId !== story.npcId || original.placeId !== story.placeId)
+        throw new Error(`Story revision changes the binding: ${story.id}`);
+    }
+    world = activityWorldSchema.parse({
+      ...base,
+      releaseId: revision.releaseId,
+      stories: base.stories.map((story) => replacements.get(story.id) ?? story),
+    });
+  }
   const review = approvalSchema.parse(JSON.parse(await readFile(reviewFile, "utf8")));
   if (
     world.status !== "draft" ||
