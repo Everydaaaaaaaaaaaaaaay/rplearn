@@ -81,7 +81,6 @@ public struct ConversationListView: View {
         pageContent
             .puffPageHeader(
                 title: "信息",
-                subtitle: totalUnreadCount > 0 ? "\(totalUnreadCount) 条新消息" : nil,
                 searchText: $searchText,
                 searchPrompt: "搜索信息",
                 resetToken: resetToken
@@ -138,11 +137,7 @@ public struct ConversationListView: View {
                     .transition(.opacity)
             } else if rows.isEmpty {
                 ScrollView {
-                    PuffEmptyState(
-                        "还没有消息哦",
-                        message: "完成开场剧情后，认识的朋友会在这里给你发消息",
-                        mood: .sleepy
-                    )
+                    PuffEmptyState("还没有消息", mood: .sleepy)
                     .padding(.top, 80)
                     .frame(maxWidth: .infinity)
                     .puffEntrance(index: 0, isShown: hasEntered)
@@ -215,11 +210,6 @@ public struct ConversationListView: View {
                         Text("\(PuffCity.greeting(for: currentRegionID, at: context.date))！")
                             .font(.puff(.title2, .heavy))
                             .foregroundStyle(Puff.Palette.ink)
-                        Text(postcardMessage)
-                            .font(.puff(.subheadline, .semibold))
-                            .foregroundStyle(Puff.Palette.inkSoft)
-                            .contentTransition(.numericText())
-                            .fixedSize(horizontal: false, vertical: true)
                     }
                     Spacer(minLength: 0)
                     mailbox
@@ -227,16 +217,6 @@ public struct ConversationListView: View {
                 .accessibilityElement(children: .combine)
             }
         }
-    }
-
-    private var postcardMessage: String {
-        if unreadConversationCount > 0 {
-            return "有 \(unreadConversationCount) 位朋友在等你回复"
-        }
-        if rows.allSatisfy({ $0.summary == nil }) {
-            return "挑一位朋友，打个招呼吧"
-        }
-        return "消息都看完啦，去和朋友聊聊吧"
     }
 
     /// 有未读时是一只会跳的粉色信封，全部读完变成绿色对勾。
@@ -367,8 +347,6 @@ public struct ConversationListView: View {
                     if unread {
                         PuffCountBadge(unreadCount)
                             .transition(.puffPop)
-                    } else if row.summary == nil {
-                        PuffTag("新朋友", systemImage: "sparkles", candy: .mint)
                     }
                 }
             }
@@ -402,11 +380,11 @@ public struct ConversationListView: View {
     @ViewBuilder
     private var filteredEmptyState: some View {
         if isSearching {
-            PuffEmptyState("没有找到“\(normalizedSearchText)”", message: "换个名字试试看", mood: .curious)
+            PuffEmptyState("没有找到“\(normalizedSearchText)”", mood: .curious)
         } else if filter == .unread {
-            PuffEmptyState("没有未读消息", message: "所有消息都看完啦，真棒！", mood: .happy)
+            PuffEmptyState("没有未读消息", mood: .happy)
         } else {
-            PuffEmptyState("还没有特别关心", message: "在朋友的资料页点亮 ⭐，重要的人会出现在这里", mood: .curious)
+            PuffEmptyState("还没有特别关心", mood: .curious)
         }
     }
 

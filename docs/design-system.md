@@ -8,6 +8,8 @@
 
 ### 原则
 
+- **少说明**：界面只放标题、状态、数字和必要的错误提示，不加解释功能或规则的副文案；
+  需要的补充信息放进 VoiceOver 标签。
 - **白色为主基调**：页面纯白，深色模式为柔和夜空蓝 `#161A2E`，不用纯黑。
 - **糖果色只做点缀**：`PuffCandy` 六色（sky、bubblegum、sunny、mint、grape、tangerine），每色含
   `base` 填充、`deep` 白底上的图标与强调字、`wash` 浅底、`lip` 实心按钮唇边。正文始终用 `Puff.Palette.ink`。

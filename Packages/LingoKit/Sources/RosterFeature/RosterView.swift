@@ -156,8 +156,7 @@ public struct RosterView: View {
                                 title: "特别关心",
                                 icon: "star.fill",
                                 candy: .sunny,
-                                people: favoriteContacts,
-                                emptyHint: "在朋友的资料页点亮 ⭐，就能把 Ta 放在这里"
+                                people: favoriteContacts
                             )
                             .puffEntrance(index: 1, isShown: hasEntered)
                             contactSection(
@@ -165,8 +164,7 @@ public struct RosterView: View {
                                 title: "朋友",
                                 icon: "person.2.fill",
                                 candy: .sky,
-                                people: otherContacts,
-                                emptyHint: "继续旅行，会遇到更多新朋友"
+                                people: otherContacts
                             )
                             .puffEntrance(index: 2, isShown: hasEntered)
                             if !formerContacts.isEmpty {
@@ -203,24 +201,21 @@ public struct RosterView: View {
             HStack(alignment: .center, spacing: Puff.Space.s) {
                 VStack(alignment: .leading, spacing: 4) {
                     PuffTag(
-                        "\(PuffCity.nameZh(for: profile?.currentRegionID)) · 旅伴通讯录",
-                        systemImage: "book.closed.fill",
+                        PuffCity.nameZh(for: profile?.currentRegionID),
+                        systemImage: "location.fill",
                         candy: .grape
                     )
                     Text("\(friends.count) 位旅伴")
                         .font(.puff(.title2, .heavy))
                         .foregroundStyle(Puff.Palette.ink)
                         .contentTransition(.numericText(value: Double(friends.count)))
-                    Text("剧情旅伴不占好友位")
-                        .font(.puff(.footnote, .semibold))
-                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
                 Spacer(minLength: 0)
                 slotMeter
             }
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(friends.count) 位旅伴。好友位已使用 \(occupiedSlots) 个，共 \(slotLimit) 个。剧情旅伴不占好友位")
+        .accessibilityLabel("\(friends.count) 位旅伴。好友位已使用 \(occupiedSlots) 个，共 \(slotLimit) 个")
     }
 
     /// 好友位：名额少时一颗颗圆点，多时是一根进度条。
@@ -271,9 +266,6 @@ public struct RosterView: View {
         if searchResults.isEmpty {
             PuffEmptyState(
                 isTravelerIDQuery && didFinishTravelerLookup ? "没有找到这个旅伴" : "没有找到联系人",
-                message: isTravelerIDQuery && didFinishTravelerLookup
-                    ? "请检查旅伴号是否正确，或稍后在网络恢复后重试。"
-                    : "试试姓名、备注、职业或旅伴号",
                 mood: .curious
             )
             .frame(maxWidth: .infinity)
@@ -294,8 +286,7 @@ public struct RosterView: View {
         title: String,
         icon: String,
         candy: PuffCandy,
-        people: [CharacterDTO],
-        emptyHint: String? = nil
+        people: [CharacterDTO]
     ) -> some View {
         let isExpanded = expandedSections.contains(section) || section == .search
 
@@ -309,17 +300,7 @@ public struct RosterView: View {
                 isExpanded: isExpanded
             )
 
-            if people.isEmpty, let emptyHint {
-                Text(emptyHint)
-                    .font(.puff(.footnote, .semibold))
-                    .foregroundStyle(Puff.Palette.inkSoft)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, Puff.Space.m)
-                    .padding(.vertical, Puff.Space.s)
-                    .background(candy.wash.opacity(0.6), in: RoundedRectangle(cornerRadius: Puff.Radius.medium, style: .continuous))
-                    .padding(.horizontal, Puff.Space.s)
-                    .padding(.bottom, Puff.Space.xs)
-            } else if isExpanded {
+            if isExpanded, !people.isEmpty {
                 VStack(spacing: 0) {
                     ForEach(Array(people.enumerated()), id: \.element.id) { index, character in
                         friendLink(character)
@@ -336,7 +317,8 @@ public struct RosterView: View {
                 .transition(.puffDrop)
             }
         }
-        .padding(.top, 4)
+        .padding(.vertical, people.isEmpty ? 4 : 0)
+        .padding(.top, people.isEmpty ? 0 : 4)
         .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.huge, style: .continuous))
         .puffCard(radius: Puff.Radius.huge)
     }
@@ -470,15 +452,9 @@ public struct RosterView: View {
     }
 
     private var emptyState: some View {
-        PuffEmptyState(
-            "还没有好友",
-            message: "继续旅行，认识的伙伴会出现在这里",
-            mood: .happy
-        )
-        .frame(maxWidth: .infinity)
-        .padding(.top, 60)
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel("还没有好友。继续旅行，认识的伙伴会出现在这里")
+        PuffEmptyState("还没有好友", mood: .happy)
+            .frame(maxWidth: .infinity)
+            .padding(.top, 60)
     }
 
     private func reload() async {

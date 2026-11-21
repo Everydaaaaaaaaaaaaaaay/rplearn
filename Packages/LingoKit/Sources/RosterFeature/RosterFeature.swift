@@ -395,11 +395,6 @@ public struct CharacterProfileView: View {
                     .background(PuffCandy.bubblegum.wash, in: Capsule())
             }
 
-            Text("了解、信任和默契来自你们实际发生过的对话与经历，不由英语水平决定。")
-                .font(.puff(.footnote, .medium))
-                .foregroundStyle(Puff.Palette.inkSoft)
-                .fixedSize(horizontal: false, vertical: true)
-
             if let event = relationship.latestEvent {
                 HStack(alignment: .top, spacing: Puff.Space.xs) {
                     Image(systemName: "clock.arrow.circlepath")
@@ -505,7 +500,7 @@ public struct CharacterProfileView: View {
             cardTitle("与你相处后的成长", icon: "leaf.fill", candy: .mint)
 
             if arcs.isEmpty {
-                Text("还没有形成稳定变化。一次建议只会种下想法，持续的经历与行动才会慢慢留下改变。")
+                Text("还没有明显变化")
                     .font(.puff(.subheadline, .medium))
                     .foregroundStyle(Puff.Palette.inkSoft)
             } else {
