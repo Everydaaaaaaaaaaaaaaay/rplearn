@@ -40,135 +40,148 @@ public struct StoryHubView: View {
         cityUnlockProgress.unlockedChapterCount
     }
 
+    /// 主线下一站；全部读完时回到旅程起点。
+    private var nextMainlineRegionID: String? {
+        (journey.stops.first { !completed.contains($0.chapter.storyID) } ?? journey.stops.first)?.regionID
+    }
+
+    /// 第一篇已开放且未读的城市故事。
+    private var nextCityRegionID: String? {
+        let open = CityStoryCatalog.chapters.prefix(max(unlockedCityCount, 1))
+        return (open.first { !completed.contains($0.storyID) } ?? CityStoryCatalog.chapters.first)?.regionID
+    }
+
+    @State private var hasEntered = false
+
     public var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: DSSpacing.lg) {
+            VStack(alignment: .leading, spacing: Puff.Space.m) {
                 NavigationLink(value: HomeDestination.mainline) {
                     categoryCard(
                         eyebrow: "五城长篇",
                         title: "主线剧情",
-                        detail: "五座城市串起同一段旅程。所有章节都能直接开始，按自己的节奏走到终章。",
-                        progressText: "\(completedMainlineCount) / \(journey.stops.count) 章 · 全部开放",
-                        progress: Double(completedMainlineCount) / Double(journey.stops.count),
-                        artworkNames: MainlineCatalog.chapters.map {
-                            DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID)
-                        },
-                        tint: .dsSky
+                        icon: "map.fill",
+                        candy: .sky,
+                        regionID: nextMainlineRegionID,
+                        viewport: .west,
+                        completed: completedMainlineCount,
+                        total: journey.stops.count,
+                        unit: "章",
+                        badge: "全部开放"
                     )
                 }
-                .buttonStyle(.pressableCard)
+                .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.huge))
                 .accessibilityIdentifier("story.mainline")
-                .frame(maxWidth: .infinity)
+                .puffEntrance(index: 0, isShown: hasEntered)
 
                 NavigationLink(value: HomeDestination.cityStories) {
                     categoryCard(
                         eyebrow: "十五城短篇",
                         title: "城市剧情",
-                        detail: "六篇生活故事即刻可读；每累计一张机票再开放三篇，三张即可读遍十五座城市。",
-                        progressText: "\(completedCityCount) / \(CityStoryCatalog.chapters.count) 篇 · 已开放 \(unlockedCityCount) 篇",
-                        progress: Double(completedCityCount) / Double(CityStoryCatalog.chapters.count),
-                        artworkNames: CityStoryCatalog.chapters.map {
-                            DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
-                        },
-                        tint: .dsSunset
+                        icon: "building.2.fill",
+                        candy: .tangerine,
+                        regionID: nextCityRegionID,
+                        viewport: .east,
+                        completed: completedCityCount,
+                        total: CityStoryCatalog.chapters.count,
+                        unit: "篇",
+                        badge: "已开放 \(unlockedCityCount) 篇"
                     )
                 }
-                .buttonStyle(.pressableCard)
+                .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.huge))
                 .accessibilityIdentifier("story.cities")
-                .frame(maxWidth: .infinity)
+                .puffEntrance(index: 1, isShown: hasEntered)
             }
-            .padding(.horizontal, DSSpacing.md)
-            .padding(.vertical, DSSpacing.sm)
+            .padding(.horizontal, Puff.Space.m)
+            .padding(.top, Puff.Space.xs)
+            .padding(.bottom, Puff.Space.xl)
         }
-        .background(Color.dsBackground)
+        .background(Puff.Palette.page.ignoresSafeArea())
         .navigationTitle("剧情")
-        .task { await reload() }
+        .task {
+            if !hasEntered {
+                try? await Task.sleep(for: .milliseconds(40))
+                hasEntered = true
+            }
+            await reload()
+        }
     }
 
     private func categoryCard(
         eyebrow: String,
         title: String,
-        detail: String,
-        progressText: String,
-        progress: Double,
-        artworkNames: [String],
-        tint: Color
+        icon: String,
+        candy: PuffCandy,
+        regionID: String?,
+        viewport: PuffCityScene.Viewport,
+        completed: Int,
+        total: Int,
+        unit: String,
+        badge: String
     ) -> some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            GeometryReader { proxy in
-                ZStack(alignment: .bottomLeading) {
-                    artworkStrips(artworkNames, width: proxy.size.width)
+        VStack(alignment: .leading, spacing: Puff.Space.s) {
+            PuffCityScene(regionID: regionID, viewport: viewport)
+                .frame(height: 136)
+                .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.huge - 6, style: .continuous))
+                .padding([.horizontal, .top], 6)
 
-                    LinearGradient(
-                        colors: [.clear, .black.opacity(0.72)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(eyebrow.uppercased())
-                            .font(.caption2.weight(.black))
-                            .tracking(1)
-                            .opacity(0.82)
-                        Text(title)
-                            .font(.system(.title2, design: .rounded, weight: .bold))
-                    }
-                    .foregroundStyle(.white)
-                    .padding(DSSpacing.md)
+            HStack(spacing: Puff.Space.s) {
+                PuffIconBubble(icon, candy: candy, size: 40)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .font(.puff(.title3, .heavy))
+                        .foregroundStyle(Puff.Palette.ink)
+                    Text(eyebrow)
+                        .font(.puff(.caption, .bold))
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
-                .frame(width: proxy.size.width, height: 154)
+                Spacer(minLength: Puff.Space.xs)
+                PuffTag(badge, candy: candy)
             }
-            .frame(height: 154)
-            .clipped()
+            .padding(.horizontal, Puff.Space.m)
 
-            Text(detail)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.horizontal, DSSpacing.md)
-
-            HStack {
-                Text(progressText)
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(tint)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.78)
-                Spacer()
-                Image(systemName: "arrow.right")
-                    .font(.caption.bold())
-                    .foregroundStyle(tint)
+            HStack(spacing: Puff.Space.s) {
+                progressMeter(completed: completed, total: total, candy: candy)
+                Text("\(completed) / \(total) \(unit)")
+                    .font(.puff(.subheadline, .heavy))
+                    .monospacedDigit()
+                    .foregroundStyle(candy.deep)
+                    .fixedSize()
             }
-            .padding(.horizontal, DSSpacing.md)
-
-            ProgressView(value: progress)
-                .tint(tint)
-                .padding(.horizontal, DSSpacing.md)
+            .padding(.horizontal, Puff.Space.m)
+            .padding(.bottom, Puff.Space.m)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.bottom, DSSpacing.md)
-        .background(Color.dsSurface)
-        .clipShape(RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-                .stroke(Color.dsBorder, lineWidth: 1)
-        }
-        .contentShape(RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous))
+        .accessibilityElement(children: .combine)
     }
 
-    private func artworkStrips(_ artworkNames: [String], width: CGFloat) -> some View {
-        HStack(spacing: 0) {
-            ForEach(Array(artworkNames.enumerated()), id: \.offset) { _, artworkName in
-                DSSceneThumbnailImage(name: artworkName, maxPixelSize: 200)
-                    .frame(
-                        width: width / CGFloat(max(artworkNames.count, 1)),
-                        height: 154
-                    )
-                    .clipped()
+    /// 章节少时用一排圆点，多时用进度条。
+    @ViewBuilder
+    private func progressMeter(completed: Int, total: Int, candy: PuffCandy) -> some View {
+        if total <= 8 {
+            HStack(spacing: 6) {
+                ForEach(0..<total, id: \.self) { index in
+                    Circle()
+                        .fill(index < completed ? candy.base : Puff.Palette.cloud)
+                        .overlay { Circle().strokeBorder(index < completed ? candy.lip : Puff.Palette.line, lineWidth: 1.5) }
+                        .frame(width: 16, height: 16)
+                }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .accessibilityHidden(true)
+        } else {
+            GeometryReader { proxy in
+                Capsule()
+                    .fill(Puff.Palette.cloud)
+                    .overlay(alignment: .leading) {
+                        Capsule()
+                            .fill(candy.base)
+                            .frame(width: max(proxy.size.width * CGFloat(completed) / CGFloat(max(total, 1)), completed > 0 ? 12 : 0))
+                    }
+            }
+            .frame(height: 12)
+            .accessibilityHidden(true)
         }
-        .frame(width: width, height: 154)
-        .clipped()
-        .accessibilityHidden(true)
     }
 
     private func reload() async {

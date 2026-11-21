@@ -32,6 +32,8 @@ struct PuffCityRecipe: Sendable {
     let foreground: Drawing
     /// 逐帧运动的元素：摩天轮、车、船、钟表指针。
     let movers: Drawing
+    /// 做小图标时的取景中心：城市最有辨识度的地标。
+    var iconX: CGFloat = 190
 
     func clock(at date: Date) -> DateComponents {
         var calendar = Calendar(identifier: .gregorian)

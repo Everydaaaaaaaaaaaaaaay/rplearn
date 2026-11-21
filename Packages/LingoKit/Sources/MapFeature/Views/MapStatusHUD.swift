@@ -23,13 +23,13 @@ struct MapStatusHUD: View {
     private func locationLine(showsContext: Bool) -> some View {
         HStack(spacing: 4) {
             Image(systemName: "location.north.fill")
-                .font(.system(size: 12, weight: .semibold))
-                .foregroundStyle(Color.dsSky)
+                .font(.system(size: 12, weight: .heavy))
+                .foregroundStyle(PuffCandy.sky.base)
 
             if showsContext {
                 Text("当前位置")
-                    .font(.system(size: 11, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.68))
+                    .font(.system(size: 11, weight: .bold, design: .rounded))
+                    .foregroundStyle(Puff.Palette.inkSoft)
                     .fixedSize()
             }
 
@@ -39,14 +39,14 @@ struct MapStatusHUD: View {
                     .fixedSize()
 
                 Text(currentRegion.nameZh)
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.96))
+                    .font(.system(size: 16, weight: .heavy, design: .rounded))
+                    .foregroundStyle(Puff.Palette.ink)
                     .lineLimit(1)
                     .minimumScaleFactor(0.78)
             } else {
                 Text("正在载入")
-                    .font(.system(size: 13, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.84))
+                    .font(.system(size: 13, weight: .bold, design: .rounded))
+                    .foregroundStyle(Puff.Palette.inkSoft)
                     .lineLimit(1)
             }
         }
@@ -64,13 +64,13 @@ struct MapResourceHUD: View {
             resource(
                 title: "机票",
                 value: ticketCount.formatted(),
-                tint: .dsSky,
+                tint: PuffCandy.sky.base,
                 icon: .ticket
             )
             resource(
                 title: "金币",
                 value: coins?.formatted() ?? "—",
-                tint: .dsSunset,
+                tint: PuffCandy.sunny.deep,
                 icon: .coin
             )
         }
@@ -90,9 +90,9 @@ struct MapResourceHUD: View {
                 .foregroundStyle(tint)
 
             Text(value)
-                .font(.system(size: 13, weight: .semibold, design: .rounded))
+                .font(.system(size: 13, weight: .heavy, design: .rounded))
                 .monospacedDigit()
-                .foregroundStyle(.white.opacity(0.94))
+                .foregroundStyle(Puff.Palette.ink)
                 .lineLimit(1)
                 .minimumScaleFactor(0.76)
         }

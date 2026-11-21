@@ -30,7 +30,8 @@ extension PuffCityCatalog {
         movers: { p in
             p.sail(.narrowboat, range: 120...420, period: 60)
             p.drive(.tram(0xFFC93C), period: 30)
-        }
+        },
+        iconX: 255
     )
 
     static let edinburgh = PuffCityRecipe(
@@ -57,7 +58,8 @@ extension PuffCityCatalog {
         },
         movers: { p in
             p.drive(.bus(0xB4405A), period: 27)
-        }
+        },
+        iconX: 150
     )
 
     static let dublin = PuffCityRecipe(
@@ -84,7 +86,8 @@ extension PuffCityCatalog {
         movers: { p in
             p.sail(.sailboat(0x3FC48C), range: 380...520, period: 52)
             p.drive(.bus(0xFFC93C), period: 26)
-        }
+        },
+        iconX: 365
     )
 
     static let newYork = PuffCityRecipe(
@@ -113,7 +116,8 @@ extension PuffCityCatalog {
             p.sail(.ferry(0xFF9A3D), range: 80...330, period: 58)
             p.drive(.taxi, period: 18)
             p.drive(.taxi, period: 18, phase: 9)
-        }
+        },
+        iconX: 262
     )
 
     static let newOrleans = PuffCityRecipe(
@@ -137,7 +141,8 @@ extension PuffCityCatalog {
         movers: { p in
             p.sail(.paddleSteamer, range: 200...520, period: 70)
             p.drive(.tram(0x3FAF7A), period: 32)
-        }
+        },
+        iconX: 140
     )
 
     static let toronto = PuffCityRecipe(
@@ -163,7 +168,8 @@ extension PuffCityCatalog {
             p.sail(.sailboat(0xFF6B7A), range: 60...240, period: 50)
             p.sail(.sailboat(0x4DA8FF), range: 400...600, period: 64, phase: 20)
             p.drive(.tram(0xE5484D), period: 30)
-        }
+        },
+        iconX: 250
     )
 
     static let vancouver = PuffCityRecipe(
@@ -192,7 +198,8 @@ extension PuffCityCatalog {
             p.sail(.ferry(0x3C8DDE), range: 200...360, period: 60)
             p.sail(.sailboat(0xFFC93C), range: 470...640, period: 48, phase: 12)
             p.drive(.bus(0x2E7FD6), period: 26)
-        }
+        },
+        iconX: 415
     )
 
     static let sydney = PuffCityRecipe(
@@ -215,7 +222,8 @@ extension PuffCityCatalog {
             p.sail(.ferry(0x2FA866), range: 240...420, period: 50)
             p.sail(.sailboat(0xFF6B7A), range: 600...700, period: 40, phase: 8)
             p.drive(.bus(0x2E7FD6), period: 26)
-        }
+        },
+        iconX: 150
     )
 
     static let melbourne = PuffCityRecipe(
@@ -240,7 +248,8 @@ extension PuffCityCatalog {
             p.ferrisWheel(655, centerY: 92, radius: 40)
             p.sail(.sailboat(0xFFC93C), range: 260...460, period: 54)
             p.drive(.tram(0x4CB37A), period: 32)
-        }
+        },
+        iconX: 175
     )
 
     static let auckland = PuffCityRecipe(
@@ -266,7 +275,8 @@ extension PuffCityCatalog {
             p.sail(.sailboat(0x4DA8FF), range: 480...640, period: 52, phase: 14)
             p.sail(.sailboat(0xFFC93C), range: 560...700, period: 38, phase: 6)
             p.drive(.bus(0x3FAF7A), period: 26)
-        }
+        },
+        iconX: 232
     )
 
     static let singapore = PuffCityRecipe(
@@ -292,7 +302,8 @@ extension PuffCityCatalog {
             p.ferrisWheel(640, centerY: 90, radius: 42)
             p.sail(.ferry(0xFF9A3D), range: 160...440, period: 56)
             p.drive(.bus(0x8A62E8), period: 26)
-        }
+        },
+        iconX: 400
     )
 
     static let capeTown = PuffCityRecipe(
@@ -317,7 +328,8 @@ extension PuffCityCatalog {
             p.sail(.sailboat(0xFF6B7A), range: 260...440, period: 46)
             p.sail(.ferry(0x37A0D8), range: 460...560, period: 40, phase: 10)
             p.drive(.bus(0x37A0D8), period: 26)
-        }
+        },
+        iconX: 300
     )
 
     static let nairobi = PuffCityRecipe(
@@ -341,7 +353,8 @@ extension PuffCityCatalog {
         },
         movers: { p in
             p.drive(.bus(0xFF7A3D), period: 26)
-        }
+        },
+        iconX: 150
     )
 
     static let kingston = PuffCityRecipe(
@@ -367,6 +380,7 @@ extension PuffCityCatalog {
             p.sail(.sailboat(0xFFC93C), range: 300...500, period: 46)
             p.sail(.ferry(0x3FC48C), range: 480...580, period: 40, phase: 10)
             p.drive(.bus(0xFFC93C), period: 26)
-        }
+        },
+        iconX: 200
     )
 }

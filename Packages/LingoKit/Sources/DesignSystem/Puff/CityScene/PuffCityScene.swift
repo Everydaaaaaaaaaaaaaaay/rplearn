@@ -10,6 +10,8 @@ public struct PuffCityScene: View {
         case center
         case east
         case full
+        /// 以全景中某个横坐标为中心、宽 360 单位的取景。
+        case focus(CGFloat)
 
         var range: ClosedRange<CGFloat> {
             switch self {
@@ -17,6 +19,7 @@ public struct PuffCityScene: View {
             case .center: 150...510
             case .east: 360...720
             case .full: 0...720
+            case .focus(let x): (x - 180)...(x + 180)
             }
         }
     }
@@ -117,6 +120,10 @@ struct PuffCitySceneCanvas: View {
         let scale = min(size.width / rangeWidth, size.height / requiredHeight)
         let visibleWidth = size.width / scale
         let center = (range.lowerBound + range.upperBound) / 2
+        if case .focus = viewport {
+            // 指定中心的取景不贴边，天空和地面本身向两侧多画了一截。
+            return (center - visibleWidth / 2, scale)
+        }
         let maxStart = max(PuffScenePainter.width - visibleWidth, 0)
         let start = min(max(center - visibleWidth / 2, 0), maxStart)
         return (start, scale)

@@ -22,89 +22,83 @@ struct TravelSheet: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.lg) {
-            HStack(spacing: DSSpacing.sm) {
+        VStack(alignment: .leading, spacing: Puff.Space.m) {
+            ZStack(alignment: .bottomLeading) {
+                PuffCityScene(regionID: region.id, viewport: .west)
+                    .frame(height: 118)
+                    .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.large, style: .continuous))
                 Text(region.flagEmoji)
-                    .font(.system(size: 32))
-                    .frame(width: 56, height: 56)
-                    .background(Color.dsBackground, in: Circle())
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("确认目的地")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    Text(region.nameZh)
-                        .font(.system(.title2, design: .rounded, weight: .bold))
-                    Text(region.countryNameZh)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
+                    .font(.system(size: 28))
+                    .frame(width: 52, height: 52)
+                    .background(Puff.Palette.card, in: Circle())
+                    .overlay { Circle().strokeBorder(Puff.Palette.line, lineWidth: 1.5) }
+                    .offset(x: Puff.Space.m, y: 26)
+                    .accessibilityHidden(true)
+            }
+            .padding(.bottom, 20)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(region.nameZh)
+                    .font(.puff(.title, .heavy))
+                    .foregroundStyle(Puff.Palette.ink)
+                Text(region.countryNameZh)
+                    .font(.puff(.subheadline, .bold))
+                    .foregroundStyle(Puff.Palette.inkSoft)
             }
 
             if deps.access.isGuest {
-                Text("登录后即可飞往其他城市。现有机票和旅行成果会保留。")
-                    .font(.subheadline)
                 Button("登录并继续旅程") {
                     deps.access.requestSignIn("登录后即可飞往其他城市。")
                 }
-                .buttonStyle(.dsActionPrimary)
+                .buttonStyle(PuffCandyButtonStyle(.sky))
+                .frame(maxWidth: .infinity)
             } else if !requiresTicket {
-                Label("已经去过，可直接前往", systemImage: "checkmark.seal.fill")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Color.dsSuccess)
+                PuffTag("已经去过", systemImage: "checkmark.seal.fill", candy: .mint)
 
                 Button {
                     travel()
                 } label: {
                     workingLabel("直接出发")
                 }
-                .buttonStyle(.dsActionPrimary)
+                .buttonStyle(PuffCandyButtonStyle(.sky))
                 .disabled(isWorking)
             } else if let ticket = usable.first {
-                Label(
+                PuffTag(
                     ticket.type == .ticketUniversal
-                        ? "使用通用机票解锁"
-                        : "使用 \(ticket.countryCode ?? "") 国家机票解锁",
-                    systemImage: "ticket.fill"
+                        ? "通用机票"
+                        : "\(ticket.countryCode ?? "") 国家机票",
+                    systemImage: "ticket.fill",
+                    candy: .tangerine
                 )
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(Color.dsSunset)
 
                 Button {
                     travel(with: ticket)
                 } label: {
                     workingLabel("使用机票并出发")
                 }
-                .buttonStyle(.dsActionPrimary)
+                .buttonStyle(PuffCandyButtonStyle(.tangerine))
                 .disabled(isWorking)
             } else {
-                Label("首次前往需要一张可用机票", systemImage: "lock.fill")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                PuffTag("需要一张机票", systemImage: "lock.fill", candy: .grape)
 
                 Button {
                     buyAndTravel()
                 } label: {
                     workingLabel("花 \(EconomyService.Price.universalTicket) 金币购票并解锁")
                 }
-                .buttonStyle(.dsActionPrimary)
+                .buttonStyle(PuffCandyButtonStyle(.sunny))
                 .disabled(isWorking)
             }
-
-            Text(
-                requiresTicket
-                    ? "首次解锁会收藏一张唯一的城市纪念票根；以后可以自由往返。"
-                    : "这次旅行不会消耗机票，也不会重复生成票根。"
-            )
-                .font(.caption)
-                .foregroundStyle(.tertiary)
         }
-        .padding(.horizontal, DSSpacing.lg)
-        .padding(.top, DSSpacing.md)
+        .padding(.horizontal, Puff.Space.l)
+        .padding(.top, Puff.Space.l)
+        .frame(maxHeight: .infinity, alignment: .top)
+        .background(Puff.Palette.page.ignoresSafeArea())
     }
 
     private func workingLabel(_ title: String) -> some View {
         HStack {
-            if isWorking { ProgressView().tint(.white) }
+            if isWorking { PuffLoadingDots().scaleEffect(0.6).frame(width: 34, height: 20) }
             Text(title).frame(maxWidth: .infinity)
         }
     }

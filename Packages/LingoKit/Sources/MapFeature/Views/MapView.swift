@@ -45,7 +45,7 @@ public struct MapView: View {
 
     public var body: some View {
         ZStack {
-            Color.dsBackground.ignoresSafeArea()
+            Puff.Palette.page.ignoresSafeArea()
             interactiveMap
         }
         .overlay(alignment: .top) {
@@ -53,12 +53,13 @@ public struct MapView: View {
         }
         .overlay(alignment: .bottomTrailing) {
             Button { resetOverview() } label: {
-                Image(systemName: "globe")
-                    .font(.system(size: 21, weight: .medium))
-                    .frame(width: 48, height: 48)
-                    .background(.regularMaterial, in: Circle())
+                Image(systemName: "globe.europe.africa.fill")
+                    .font(.system(size: 22, weight: .regular))
+                    .foregroundStyle(PuffCandy.sky.base, PuffCandy.mint.base)
+                    .symbolRenderingMode(.palette)
+                    .frame(width: 52, height: 52)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(PuffCardButtonStyle(radius: 26, lipHeight: 3))
             .accessibilityLabel("回到地球全景")
             .padding(.trailing, 18)
             .padding(.bottom, 18)
@@ -157,12 +158,12 @@ public struct MapView: View {
             if let onBack {
                 Button(action: onBack) {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 17, weight: .semibold))
-                        .foregroundStyle(.white.opacity(0.96))
+                        .font(.system(size: 17, weight: .heavy, design: .rounded))
+                        .foregroundStyle(Puff.Palette.ink)
                         .frame(width: 44, height: 44)
                         .contentShape(Rectangle())
                 }
-                .buttonStyle(.pressableCard)
+                .buttonStyle(.puffSquish)
                 .accessibilityLabel("返回首页")
 
                 mapHUDDivider
@@ -186,30 +187,23 @@ public struct MapView: View {
             NavigationLink(value: MapDestination.ticketStubs) {
                 HStack(spacing: 4) {
                     Image(systemName: "ticket.fill")
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: 14, weight: .heavy))
+                        .foregroundStyle(PuffCandy.bubblegum.base)
                     Text("票根夹")
-                        .font(.system(size: 12, weight: .semibold, design: .rounded))
+                        .font(.system(size: 12, weight: .heavy, design: .rounded))
                 }
-                .foregroundStyle(.white.opacity(0.94))
+                .foregroundStyle(Puff.Palette.ink)
                 .lineLimit(1)
                 .frame(minHeight: 44)
                 .padding(.horizontal, 7)
                 .contentShape(Rectangle())
             }
-            .buttonStyle(.pressableCard)
+            .buttonStyle(.puffSquish)
             .accessibilityLabel("票根夹")
         }
         .frame(height: 54)
         .padding(.horizontal, 4)
-        .background(
-            Color.dsTravelNavy.opacity(0.34),
-            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
-        )
-        .dsSceneGlass(
-            radius: 18,
-            tint: .dsTravelNavy,
-            legibility: .enhanced
-        )
+        .puffCard(radius: 27, lipHeight: 3)
         .dynamicTypeSize(...DynamicTypeSize.large)
         .padding(.horizontal, 14)
         .padding(.top, 8)
@@ -217,8 +211,8 @@ public struct MapView: View {
         .background(alignment: .top) {
             LinearGradient(
                 colors: [
-                    Color.dsBackground.opacity(0.44),
-                    Color.dsBackground.opacity(0.1),
+                    Puff.Palette.page.opacity(0.6),
+                    Puff.Palette.page.opacity(0.1),
                     .clear,
                 ],
                 startPoint: .top,
@@ -232,7 +226,7 @@ public struct MapView: View {
 
     private var mapHUDDivider: some View {
         Rectangle()
-            .fill(.white.opacity(0.16))
+            .fill(Puff.Palette.line)
             .frame(width: 0.5, height: 22)
             .accessibilityHidden(true)
     }

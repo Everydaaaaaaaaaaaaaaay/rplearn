@@ -58,7 +58,8 @@ struct WorldMapCanvas: UIViewRepresentable {
         mapView.showsUserLocation = false
         mapView.pointOfInterestFilter = .excludingAll
 
-        let configuration = MKHybridMapConfiguration(elevationStyle: .realistic)
+        // 柔和的标准地图代替卫星实景，与卡通城市图钉同一视觉语言。
+        let configuration = MKStandardMapConfiguration(elevationStyle: .realistic, emphasisStyle: .muted)
         configuration.pointOfInterestFilter = .excludingAll
         configuration.showsTraffic = false
         // Realistic elevation lets MapKit transition into its globe renderer at world scale.
@@ -104,7 +105,11 @@ struct WorldMapCanvas: UIViewRepresentable {
         func installAnnotations(in mapView: MKMapView) {
             let expectedIDs = Set(parent.regions.map(\.id))
             let existing = mapView.annotations.compactMap { $0 as? RegionAnnotation }
-            if existing.count == expectedIDs.count && Set(existing.map(\.region.id)) == expectedIDs {
+            // 预热时地图还没有 delegate，MapKit 会先生成系统默认图钉；这些视图不能复用。
+            let hasDefaultViews = existing.contains { annotation in
+                mapView.view(for: annotation).map { !($0 is RegionAnnotationView) } ?? false
+            }
+            if !hasDefaultViews, existing.count == expectedIDs.count && Set(existing.map(\.region.id)) == expectedIDs {
                 annotationsByID = Dictionary(uniqueKeysWithValues: existing.map { ($0.region.id, $0) })
                 return
             }
@@ -342,8 +347,7 @@ private final class RegionAnnotationView: MKAnnotationView {
         self.presentation = presentation
         renderedSelection = nil
 
-        let pinName = "city_pin_\(region.id)"
-        photoView.image = DSSceneImageCache.cachedUIImage(named: pinName) ?? UIImage(named: pinName)
+        photoView.image = PuffCitySnapshot.icon(regionID: region.id, size: Self.photoFrame.size)
         flagLabel.text = region.flagEmoji
         titleLabel.text = region.nameZh
         lockedOverlay.isHidden = presentation.state != .locked
@@ -368,7 +372,7 @@ private final class RegionAnnotationView: MKAnnotationView {
         photoView.layer.cornerRadius = 24
         photoShadowView.addSubview(photoView)
 
-        lockedOverlay.backgroundColor = UIColor.black.withAlphaComponent(0.14)
+        lockedOverlay.backgroundColor = UIColor.white.withAlphaComponent(0.45)
         lockedOverlay.layer.cornerRadius = 24
         lockedOverlay.isUserInteractionEnabled = false
         photoView.addSubview(lockedOverlay)
@@ -376,7 +380,7 @@ private final class RegionAnnotationView: MKAnnotationView {
         flagLabel.font = .systemFont(ofSize: 10)
         flagLabel.textAlignment = .center
         flagLabel.isAccessibilityElement = false
-        flagLabel.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.96)
+        flagLabel.backgroundColor = UIColor(Puff.Palette.card)
         flagLabel.layer.cornerRadius = 9
         flagLabel.clipsToBounds = true
         addSubview(flagLabel)
@@ -390,12 +394,12 @@ private final class RegionAnnotationView: MKAnnotationView {
         badgeView.layer.borderColor = UIColor.systemBackground.cgColor
         addSubview(badgeView)
 
-        titleLabel.font = .systemFont(ofSize: 11, weight: .heavy)
+        titleLabel.font = Self.roundedFont(size: 11, weight: .heavy)
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .label
+        titleLabel.textColor = UIColor(Puff.Palette.ink)
         titleLabel.isAccessibilityElement = false
-        titleLabel.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.86)
-        titleLabel.layer.cornerRadius = 5
+        titleLabel.backgroundColor = UIColor(Puff.Palette.card)
+        titleLabel.layer.cornerRadius = 11
         titleLabel.clipsToBounds = true
         addSubview(titleLabel)
 
@@ -404,8 +408,7 @@ private final class RegionAnnotationView: MKAnnotationView {
         addSubview(markerAccessibilityView)
 
         actionButton.configuration = .filled()
-        actionButton.configuration?.cornerStyle = .fixed
-        actionButton.configuration?.background.cornerRadius = 6
+        actionButton.configuration?.cornerStyle = .capsule
         actionButton.configuration?.imagePadding = 5
         actionButton.configuration?.contentInsets = NSDirectionalEdgeInsets(
             top: 0,
@@ -430,13 +433,13 @@ private final class RegionAnnotationView: MKAnnotationView {
         switch presentation.state {
         case .current:
             symbolName = "location.fill"
-            backgroundColor = UIColor(Color.dsSuccess)
+            backgroundColor = UIColor(PuffCandy.mint.base)
         case .unlocked:
             symbolName = "checkmark"
-            backgroundColor = UIColor(Color.dsSky)
+            backgroundColor = UIColor(PuffCandy.sky.base)
         case .locked:
             symbolName = "lock.fill"
-            backgroundColor = .systemGray
+            backgroundColor = UIColor(Puff.Palette.inkFaint)
         }
 
         let configuration = UIImage.SymbolConfiguration(pointSize: 8, weight: .bold)
@@ -453,17 +456,17 @@ private final class RegionAnnotationView: MKAnnotationView {
         case .current:
             title = "已在这里"
             symbol = "location.fill"
-            background = UIColor.secondarySystemBackground.withAlphaComponent(0.96)
-            foreground = .secondaryLabel
+            background = UIColor(PuffCandy.mint.wash)
+            foreground = UIColor(PuffCandy.mint.deep)
         case .unlocked:
             title = "前往"
             symbol = "airplane"
-            background = UIColor(Color.dsSky)
+            background = UIColor(PuffCandy.sky.base)
             foreground = .white
         case .locked:
             title = presentation.hasUsableTicket ? "使用机票" : "购买机票"
             symbol = "ticket.fill"
-            background = UIColor(Color.dsSunset)
+            background = UIColor(PuffCandy.tangerine.base)
             foreground = .white
         }
 
@@ -477,7 +480,7 @@ private final class RegionAnnotationView: MKAnnotationView {
         configuration.baseForegroundColor = foreground
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer {
             var attributes = $0
-            attributes.font = .systemFont(ofSize: 10, weight: .black)
+            attributes.font = Self.roundedFont(size: 11, weight: .heavy)
             return attributes
         }
         actionButton.configuration = configuration
@@ -499,21 +502,34 @@ private final class RegionAnnotationView: MKAnnotationView {
 
         let ringColor: UIColor
         if selected {
-            ringColor = UIColor(Color.dsSky)
+            ringColor = UIColor(PuffCandy.sky.base)
         } else {
             switch presentation.state {
-            case .current: ringColor = UIColor(Color.dsSuccess)
-            case .unlocked: ringColor = UIColor.white.withAlphaComponent(0.92)
-            case .locked: ringColor = .separator
+            case .current: ringColor = UIColor(PuffCandy.mint.base)
+            case .unlocked: ringColor = .white
+            case .locked: ringColor = UIColor(Puff.Palette.line)
             }
         }
         photoView.layer.borderColor = ringColor.cgColor
-        photoView.layer.borderWidth = selected ? 3 : (presentation.state == .current ? 2 : 1)
+        photoView.layer.borderWidth = selected ? 3.5 : (presentation.state == .current ? 3 : 2.5)
+        if selected, !UIAccessibility.isReduceMotionEnabled {
+            // 选中时图钉轻轻弹一下。
+            photoShadowView.transform = CGAffineTransform(scaleX: 0.86, y: 0.86)
+            UIView.animate(withDuration: 0.42, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8) {
+                self.photoShadowView.transform = .identity
+            }
+        }
         photoShadowView.layer.shadowOpacity = selected ? 0.2 : 0.08
         photoShadowView.layer.shadowRadius = selected ? 6 : 3
         titleLabel.layer.borderColor = UIColor.clear.cgColor
         titleLabel.layer.borderWidth = 0
         setNeedsLayout()
+    }
+
+    private static func roundedFont(size: CGFloat, weight: UIFont.Weight) -> UIFont {
+        let base = UIFont.systemFont(ofSize: size, weight: weight)
+        guard let descriptor = base.fontDescriptor.withDesign(.rounded) else { return base }
+        return UIFont(descriptor: descriptor, size: size)
     }
 
     private var actionAccessibilityHint: String {
