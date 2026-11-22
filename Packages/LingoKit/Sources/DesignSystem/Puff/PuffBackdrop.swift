@@ -2,16 +2,29 @@ import SwiftUI
 
 // MARK: - 页面氛围
 
+/// 在页头标题右侧客串的吉祥物（页头右侧没有按钮时才出现）。
+public struct PuffPageCameo: Sendable, Equatable {
+    public let bird: PuffMascot.Bird
+    public let pose: PuffMascot.Pose
+
+    public init(_ bird: PuffMascot.Bird, pose: PuffMascot.Pose = .wave) {
+        self.bird = bird
+        self.pose = pose
+    }
+}
+
 public extension EnvironmentValues {
     /// 页面的糖果色调：设置后页头与页面背景画出同色的天空带。
     @Entry var puffPageTint: PuffCandy?
+    @Entry var puffPageCameo: PuffPageCameo?
 }
 
 public extension View {
     /// 给整页设一个糖果色调：顶部天空带（页头里飘着云），往下渐变回白底，白底上铺很淡的旅行涂鸦。
-    /// 放在 `puffPageHeader` 之后，页面内容的底色用 `PuffPageBackdrop()`。
-    func puffPageTint(_ candy: PuffCandy) -> some View {
+    /// 放在 `puffPageHeader` 之后，页面内容的底色用 `PuffPageBackdrop()`。`cameo` 让吉祥物坐在页头标题右侧。
+    func puffPageTint(_ candy: PuffCandy, cameo: PuffPageCameo? = nil) -> some View {
         environment(\.puffPageTint, candy)
+            .environment(\.puffPageCameo, cameo)
     }
 }
 
@@ -28,7 +41,7 @@ public struct PuffPageBackdrop: View {
             if let tint {
                 PuffSkyBand(candy: tint, showsClouds: false)
                     .frame(maxHeight: .infinity, alignment: .top)
-                if !reduceTransparency && PuffBackdropPreview.showsDoodles {
+                if !reduceTransparency {
                     PuffDoodleWallpaper(candy: tint)
                         .mask {
                             LinearGradient(
@@ -216,22 +229,7 @@ public struct PuffMascotCameo: View {
     }
 
     public var body: some View {
-        if PuffBackdropPreview.showsCameo {
-            PuffMascot(bird, pose: pose, size: size, showsShadow: false, reactsToTap: true)
-                .accessibilityHidden(true)
-        }
+        PuffMascot(bird, pose: pose, size: size, showsShadow: false, reactsToTap: true)
+            .accessibilityHidden(true)
     }
-}
-
-/// 样板对比用：Debug 下用 `UI_TEST_BACKDROP=band|doodle|full` 切换三种效果，正式版全部开启。
-enum PuffBackdropPreview {
-    static var variant: String {
-        #if DEBUG
-        ProcessInfo.processInfo.environment["UI_TEST_BACKDROP"] ?? "full"
-        #else
-        "full"
-        #endif
-    }
-    static var showsDoodles: Bool { variant != "band" }
-    static var showsCameo: Bool { variant == "full" }
 }

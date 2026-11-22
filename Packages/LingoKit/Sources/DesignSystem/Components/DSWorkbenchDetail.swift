@@ -20,10 +20,8 @@ public struct DSWorkbenchBackdrop: View {
     }
 
     public var body: some View {
-        Puff.Palette.page
-            .ignoresSafeArea()
-            .accessibilityHidden(true)
-            .allowsHitTesting(false)
+        PuffPageBackdrop()
+            .environment(\.puffPageTint, .sky)
     }
 }
 

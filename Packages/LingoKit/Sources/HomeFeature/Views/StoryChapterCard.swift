@@ -66,7 +66,7 @@ struct StoryCoverFlow: View {
             }
             .frame(width: proxy.size.width, height: proxy.size.height)
         }
-        .background(Puff.Palette.page.ignoresSafeArea())
+        .background { PuffPageBackdrop() }
         .task(id: selectedItem?.isEnabled == true ? selectedItem?.id : nil, priority: .utility) {
             guard let item = selectedItem, item.isEnabled else { return }
             do { try await Task.sleep(for: .milliseconds(250)) } catch { return }

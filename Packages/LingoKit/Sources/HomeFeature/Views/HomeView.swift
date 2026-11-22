@@ -87,8 +87,9 @@ public struct HomeView: View {
         }
         .scrollBounceBehavior(.basedOnSize)
         .refreshable { await reloadProfile(); await reloadOuting(); await appointments.reload(using: deps) }
-        .background(Puff.Palette.page.ignoresSafeArea())
+        .background { PuffPageBackdrop() }
         .puffPageHeader(title: "活动")
+        .puffPageTint(.mint, cameo: PuffPageCameo(.gugu, pose: .point))
         .onChange(of: currentRegion?.id) { startEntranceIfNeeded() }
         .onAppear { if currentRegion != nil { startEntranceIfNeeded() } }
         .task(id: reloadKey) { if isVisible { await reloadProfile() } }

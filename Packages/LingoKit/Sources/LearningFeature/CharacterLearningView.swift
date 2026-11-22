@@ -84,7 +84,7 @@ public struct CharacterLearningView: View {
         }
         .background {
             // 聊天里由聊天页提供同色底，城市只出现在卡片顶部的卡通场景里。
-            if !backdropProvided { Puff.Palette.page.ignoresSafeArea() }
+            if !backdropProvided { PuffPageBackdrop().environment(\.puffPageTint, theme.candy) }
         }
         .fontDesign(.rounded)
         .tint(theme.tint)

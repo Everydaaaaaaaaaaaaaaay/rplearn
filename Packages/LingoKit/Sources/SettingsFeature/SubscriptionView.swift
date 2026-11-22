@@ -76,7 +76,8 @@ struct SubscriptionView: View {
         .foregroundStyle(Puff.Palette.ink)
         .tint(PuffCandy.sunny.deep)
         .safeAreaInset(edge: .bottom, spacing: 0) { purchaseDock }
-        .background(Puff.Palette.page.ignoresSafeArea())
+        .background { PuffPageBackdrop() }
+        .puffPageTint(.grape)
         .task { await billing.synchronize(showLoading: true) }
         .alert("无法打开订阅管理", isPresented: Binding(
             get: { managementError != nil }, set: { if !$0 { managementError = nil } }

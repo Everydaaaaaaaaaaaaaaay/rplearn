@@ -98,7 +98,8 @@ public struct StoryHubView: View {
             .padding(.top, Puff.Space.xs)
             .padding(.bottom, Puff.Space.xl)
         }
-        .background(Puff.Palette.page.ignoresSafeArea())
+        .background { PuffPageBackdrop() }
+        .puffPageTint(.mint)
         .navigationTitle("剧情")
         .task {
             if !hasEntered {

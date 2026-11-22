@@ -67,6 +67,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
     @Namespace private var namespace
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.puffPageTint) private var tint
+    @Environment(\.puffPageCameo) private var cameo
 
     func body(content: Content) -> some View {
         // 把 inset 放在单一容器上，避免 ZStack 里的滚动视图盖住页头的点击区域。
@@ -162,6 +163,10 @@ private struct PuffPageHeaderModifier: ViewModifier {
                 }
                 if text != nil {
                     openButton
+                } else if trailing == nil, let cameo {
+                    // 页头右侧空着时，吉祥物坐在标题旁边。
+                    PuffMascotCameo(cameo.bird, pose: cameo.pose, size: 52)
+                        .padding(.vertical, -6)
                 }
             }
         }

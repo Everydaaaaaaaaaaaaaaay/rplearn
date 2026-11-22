@@ -47,7 +47,8 @@ public struct CityStoryListView: View {
                     .accessibilityLabel("正在载入")
             }
         }
-        .background(Puff.Palette.page.ignoresSafeArea())
+        .background { PuffPageBackdrop() }
+        .puffPageTint(.mint)
         .navigationTitle("城市剧情")
         .navigationBarTitleDisplayMode(.inline)
         .tint(PuffCandy.sky.deep)

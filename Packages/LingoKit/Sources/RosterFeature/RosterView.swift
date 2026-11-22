@@ -97,6 +97,7 @@ public struct RosterView: View {
                 searchPrompt: "搜索联系人",
                 resetToken: resetToken
             )
+            .puffPageTint(.bubblegum)
             .navigationTitle("联系人")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(isPresented: Binding(
@@ -134,7 +135,7 @@ public struct RosterView: View {
 
     private var pageContent: some View {
         ZStack {
-            Puff.Palette.page.ignoresSafeArea()
+            PuffPageBackdrop()
 
             if isLoading && friends.isEmpty && formerContacts.isEmpty {
                 PuffLoadingDots()
@@ -159,6 +160,12 @@ public struct RosterView: View {
                                 candy: .sunny,
                                 people: favoriteContacts
                             )
+                            // “特别关心”标题行右边的空白处，咕咕在这里客串。
+                            .overlay(alignment: .topTrailing) {
+                                PuffMascotCameo(.gugu, pose: .happy, size: 48)
+                                    .padding(.top, 8)
+                                    .padding(.trailing, 66)
+                            }
                             .puffEntrance(index: 1, isShown: hasEntered)
                             contactSection(
                                 section: .friends,

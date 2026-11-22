@@ -118,7 +118,8 @@ public struct FavoritesView: View {
                 .scrollIndicators(.hidden)
             }
         }
-        .background(Puff.Palette.page.ignoresSafeArea())
+        .background { PuffPageBackdrop() }
+        .puffPageTint(.grape)
         .modifier(IOS18FavoritesKeyboardStabilityModifier())
         .navigationTitle("收藏夹")
         .navigationBarTitleDisplayMode(.inline)

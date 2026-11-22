@@ -98,7 +98,8 @@ public struct SettingsView: View {
             .frame(maxWidth: .infinity)
         }
         .scrollIndicators(.hidden)
-        .background(Puff.Palette.page.ignoresSafeArea())
+        .background { PuffPageBackdrop() }
+        .puffPageTint(.grape)
         .navigationTitle("设置")
         .navigationBarTitleDisplayMode(.inline)
         .tint(PuffCandy.sky.base)

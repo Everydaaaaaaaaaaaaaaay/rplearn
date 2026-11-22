@@ -94,7 +94,8 @@ struct TravelSheet: View {
         .padding(.horizontal, Puff.Space.l)
         .padding(.top, Puff.Space.l)
         .frame(maxHeight: .infinity, alignment: .top)
-        .background(Puff.Palette.page.ignoresSafeArea())
+        .background { PuffPageBackdrop() }
+        .puffPageTint(.mint)
     }
 
     private func workingLabel(_ title: String) -> some View {

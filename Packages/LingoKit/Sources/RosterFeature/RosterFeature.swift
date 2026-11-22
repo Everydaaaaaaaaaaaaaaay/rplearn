@@ -157,7 +157,8 @@ public struct CharacterProfileView: View {
             .padding(.top, Puff.Space.xs)
             .padding(.bottom, Puff.Space.xl)
         }
-        .background(Puff.Palette.page.ignoresSafeArea())
+        .background { PuffPageBackdrop() }
+        .puffPageTint(.bubblegum)
         .navigationTitle(card.name)
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom, spacing: 0) {

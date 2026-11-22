@@ -90,7 +90,8 @@ public struct MyPageView: View {
                 hubContent
             }
         }
-        .background(Puff.Palette.page.ignoresSafeArea())
+        .background { PuffPageBackdrop() }
+        .puffPageTint(.grape, cameo: PuffPageCameo(.gaga, pose: .happy))
         .task(id: "\(reloadToken)-\(isVisible)") {
             guard isVisible else { return }
             await reload()

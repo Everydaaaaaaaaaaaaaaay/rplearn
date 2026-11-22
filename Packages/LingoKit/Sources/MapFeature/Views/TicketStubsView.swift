@@ -18,7 +18,7 @@ public struct TicketStubsView: View {
 
     public var body: some View {
         ZStack {
-            Puff.Palette.page.ignoresSafeArea()
+            PuffPageBackdrop()
 
             if stubs.isEmpty && !isLoading {
                 PuffEmptyState("还没有纪念票根", bird: .gugu, pose: .point)
@@ -40,6 +40,7 @@ public struct TicketStubsView: View {
             }
         }
         .fontDesign(.rounded)
+        .puffPageTint(.mint)
         .navigationTitle("票根夹")
         .task {
             stubs = (try? await stubStore.all()) ?? []
