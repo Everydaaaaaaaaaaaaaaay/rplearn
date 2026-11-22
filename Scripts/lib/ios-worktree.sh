@@ -235,6 +235,25 @@ lingotrip_purge_model_cache() {
   rm -rf "$container/Library/Caches/$bundle_id/com.apple.e5rt.e5bundlecache"
 }
 
+# 底层共享模块（DesignSystem、CoreKit、DomainKit）改动后，Xcode 增量构建有时不重编依赖它们的功能模块，
+# 旧目标文件被继续链接进 App：页面沿用旧样式（例如页头丢了色带和吉祥物），公开类型布局变化时甚至崩溃。
+# 这些模块的源码比上次构建新时，先清掉包与 App 的中间产物再整包重编（约 1 分钟）。
+lingotrip_clear_stale_foundation_build() {
+  local stamp="$LINGOTRIP_DERIVED_DATA_PATH/.foundation-sources.stamp"
+  local intermediates="$LINGOTRIP_DERIVED_DATA_PATH/Build/Intermediates.noindex"
+  local sources="$LINGOTRIP_REPO_ROOT/Packages/LingoKit/Sources"
+  if [[ -f "$stamp" ]]; then
+    local changed
+    changed="$(find "$sources/DesignSystem" "$sources/CoreKit" "$sources/DomainKit" -type f -newer "$stamp" -print -quit 2>/dev/null || true)"
+    if [[ -n "$changed" ]]; then
+      echo "底层模块有改动（${changed#"$sources"/} 等），清理增量构建中间产物，避免功能模块沿用旧代码"
+      rm -rf "${intermediates:?}/LingoKit.build" "${intermediates:?}/LingoTrip.build"
+    fi
+  fi
+  mkdir -p "$LINGOTRIP_DERIVED_DATA_PATH"
+  touch "$stamp"
+}
+
 lingotrip_xcodebuild() {
   local scheme="$1"
   local udid="$2"
@@ -287,6 +306,7 @@ lingotrip_xcodebuild() {
     # 测试会重新安装测试宿主 App。
     lingotrip_purge_model_cache "$udid"
   fi
+  lingotrip_clear_stale_foundation_build
   xcodebuild "${xcodebuild_arguments[@]}" "$@"
   if [[ "$is_test" == "1" ]]; then
     # Xcode can exit successfully when -only-testing matches nothing.

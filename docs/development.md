@@ -22,6 +22,8 @@ Scripts/preview.sh status          # 查看 Xcode、设备与产物
 说明：
 
 - `build` 会先按 `project.yml` 重新生成工程，新增 Swift 文件会自动加入编译。生成的工程文件不提交。
+- `DesignSystem`、`CoreKit`、`DomainKit` 有改动时，构建和测试脚本会先清掉增量中间产物再整包重编（约 1 分钟），
+  避免功能模块沿用旧代码（页面显示旧样式或布局错位崩溃）。
 - 产物固定在 `build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app`，可用 `LINGOTRIP_DERIVED_DATA_PATH` 覆盖。
 - 设备优先使用工作树绑定的；未绑定时选最新 iOS 运行时里的 iPhone，同一运行时优先复用已启动的设备。
   可用 `LINGOTRIP_SIMULATOR_UDID` 指定。脚本不创建克隆，不关闭其他项目的设备，也会自动选择完整 Xcode，不需要改 `xcode-select`。
