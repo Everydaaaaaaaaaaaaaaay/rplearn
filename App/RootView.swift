@@ -824,6 +824,7 @@ struct RootView: View {
         .tint(PuffCandy.sky.base)
         .sensoryFeedback(.selection, trigger: selectedTab)
         .background {
+            NavigationTouchShieldInstaller()
             if #available(iOS 27.0, *) {
                 TabSceneTransitionInstaller()
             }

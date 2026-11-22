@@ -46,6 +46,12 @@ public extension View {
 /// 滚动区域里的快速轻点，系统要等手指抬起才显示按下效果，动作又在同一刻触发，页面一切走反馈就看不见了。
 /// 这里外层仍是原生按钮（手势、滚动取消、无障碍保持系统行为），轻点后让按下的样子停留 `Puff.Motion.tapHold`
 /// 再触发动作，下压与回弹因此看得见。VoiceOver 或减弱动态效果时立即触发。
+/// 同一时刻只允许一个按钮处在停留中，快速连点两个入口不会连续推入两页。
+@MainActor
+private enum PuffTapGate {
+    static var isHolding = false
+}
+
 private struct PuffHeldButton<Face: ButtonStyle>: View {
     let configuration: PrimitiveButtonStyleConfiguration
     let face: (_ isHeld: Bool) -> Face
@@ -55,15 +61,17 @@ private struct PuffHeldButton<Face: ButtonStyle>: View {
 
     var body: some View {
         Button(role: configuration.role) {
-            guard !isHeld else { return }
+            guard !isHeld, !PuffTapGate.isHolding else { return }
             guard !reduceMotion, !voiceOver else {
                 configuration.trigger()
                 return
             }
             isHeld = true
+            PuffTapGate.isHolding = true
             Task { @MainActor in
                 try? await Task.sleep(for: Puff.Motion.tapHold)
                 isHeld = false
+                PuffTapGate.isHolding = false
                 configuration.trigger()
             }
         } label: {
