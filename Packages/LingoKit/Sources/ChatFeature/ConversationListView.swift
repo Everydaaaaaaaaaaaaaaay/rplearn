@@ -85,6 +85,7 @@ public struct ConversationListView: View {
                 searchPrompt: "搜索信息",
                 resetToken: resetToken
             )
+            .puffPageTint(.sky)
             .navigationTitle("信息")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(item: $selectedConversationID) { characterID in
@@ -130,7 +131,7 @@ public struct ConversationListView: View {
     @ViewBuilder
     private var pageContent: some View {
         ZStack {
-            Puff.Palette.page.ignoresSafeArea()
+            PuffPageBackdrop()
 
             if rows.isEmpty && isLoading {
                 PuffLoadingDots()
@@ -165,6 +166,12 @@ public struct ConversationListView: View {
                     .init(.unread, title: "未读", systemImage: "envelope.fill", count: unreadConversationCount),
                     .init(.favorites, title: "特别关心", systemImage: "star.fill"),
                 ])
+                // 筛选标签右边的空白处，嘎嘎坐着挥手。
+                .overlay(alignment: .trailing) {
+                    PuffMascotCameo(.gaga, pose: .wave)
+                        .padding(.trailing, Puff.Space.m)
+                        .offset(y: -4)
+                }
                 .puffEntrance(index: 1, isShown: hasEntered)
                 .listRowInsets(EdgeInsets(top: Puff.Space.xxs, leading: 0, bottom: Puff.Space.xxs, trailing: 0))
                 .listRowBackground(Color.clear)

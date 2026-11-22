@@ -66,6 +66,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
     @FocusState private var isFocused: Bool
     @Namespace private var namespace
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.puffPageTint) private var tint
 
     func body(content: Content) -> some View {
         // 把 inset 放在单一容器上，避免 ZStack 里的滚动视图盖住页头的点击区域。
@@ -79,18 +80,10 @@ private struct PuffPageHeaderModifier: ViewModifier {
                 .padding(.top, 6)
                 .padding(.bottom, Puff.Space.s)
                 .background(alignment: .top) {
-                    LinearGradient(
-                        stops: [
-                            .init(color: Puff.Palette.page, location: 0),
-                            .init(color: Puff.Palette.page, location: 0.82),
-                            .init(color: Puff.Palette.page.opacity(0), location: 1),
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                    .padding(.bottom, -10)
-                    .ignoresSafeArea(edges: .top)
-                    .allowsHitTesting(false)
+                    headerBackground
+                        .padding(.bottom, -10)
+                        .ignoresSafeArea(edges: .top)
+                        .allowsHitTesting(false)
                 }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
@@ -119,6 +112,31 @@ private struct PuffPageHeaderModifier: ViewModifier {
             isFocused = false
             isSearching = false
             text?.wrappedValue = ""
+        }
+    }
+
+    /// 页头底：有页面色调时是与页面背景对齐的天空带（带飘云），底边淡出；否则是白色渐隐。
+    @ViewBuilder
+    private var headerBackground: some View {
+        let fade = LinearGradient(
+            stops: [
+                .init(color: .black, location: 0),
+                .init(color: .black, location: 0.82),
+                .init(color: .clear, location: 1),
+            ],
+            startPoint: .top,
+            endPoint: .bottom
+        )
+        if let tint {
+            // 只取页头这一截：天空带比页头高，按页头实际大小裁切，底边淡出接上页面背景里的同一条天空带。
+            GeometryReader { proxy in
+                PuffSkyBand(candy: tint, showsClouds: true)
+                    .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
+                    .clipped()
+            }
+            .mask(fade)
+        } else {
+            Puff.Palette.page.mask(fade)
         }
     }
 
