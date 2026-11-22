@@ -140,6 +140,8 @@ public extension Puff {
         public static let jelly = Animation.spring(response: 0.42, dampingFraction: 0.42)
         /// 新消息、新卡片从锚点弹出来。
         public static let arrival = Animation.spring(response: 0.38, dampingFraction: 0.62)
+        /// 轻点后按下的样子至少停留这么久，导航等动作随后触发，快速轻点也看得见下压与回弹。
+        public static let tapHold: Duration = .milliseconds(120)
 
         /// 列表首次出现时逐行错峰进入。
         public static func entrance(_ index: Int) -> Animation {

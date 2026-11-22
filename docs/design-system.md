@@ -21,12 +21,16 @@
   松手轻弹回来。小按钮用 `PuffSquishButtonStyle`，分组内的行用 `PuffRowButtonStyle`。
 - **灵动但可打断**：`Puff.Motion` 全部是弹簧。首屏用 `puffEntrance(index:isShown:)` 逐行错峰弹入，只播放一次；
   角标、星星用 `.puffPop`；展开内容用 `.puffDrop`。“减弱动态效果”时统一降级为短淡入淡出，逐帧动画暂停。
-- **点击手感**：三种按压样式自带软触感。厚卡片按下陷进唇边并缩到 98.5%；实心糖果按钮按下压扁、
-  松手按 `Puff.Motion.jelly` 晃两下；小按钮松手时里面的 SF Symbol 蹦一下（动作自己给触感时传
-  `PuffSquishButtonStyle(haptic: false)`）。未读角标数字变多时蹦一下。
+- **点击手感**：四种按压样式外层都是原生按钮（手势、滚动取消、无障碍不变），自带软触感。滚动区里的快速轻点，
+  系统要等抬手才显示按下效果，所以轻点后按下的样子停留 `Puff.Motion.tapHold`（0.12 秒）：厚卡片、糖果按钮、
+  分组行停留后再触发动作，下压与回弹在页面切走前看得见；小按钮动作立即执行，只延长按下的样子。
+  VoiceOver 或减弱动态效果时立即触发。厚卡片按下陷进唇边并缩到 97%；糖果按钮压扁、松手按 `Puff.Motion.jelly`
+  晃两下；小按钮松手时 SF Symbol 蹦一下（动作自己给触感时传 `PuffSquishButtonStyle(haptic: false)`）。
+  未读角标数字变多时蹦一下。菜单（`Menu`）不套蓬蓬按钮样式，保持系统弹出行为。
 - **过渡**：标签切换在淡入的同时让新页面从下方 14pt 轻轻升起、弹簧回位；卡片进入详情用 iOS 18 缩放转场
   （`puffZoomSource(id:in:)` 标记起点，目标页 `.navigationTransition(.zoom(...))`，活动页导航栈通过
-  `puffZoomNamespace` 环境值共享命名空间）。聊天、设置这类工作页保持标准推入，避免下拉关闭和滚动冲突。
+  `puffZoomNamespace` 环境值共享命名空间）。聊天、设置这类工作页保持标准推入，避免下拉关闭和滚动冲突；
+  推入页的主栈用 `PuffStaggeredStack` 代替 `VStack`，推入的同时各块内容错峰浮现，只在首次出现时播放。
   打开会话后新产生的消息用 `puffArrival(isNew:anchor:)` 从发送方一侧弹出，历史消息原样显示。
 - **小惊喜**：城市明信片可开 `tapBurst`，点画面迸出糖果色星星和爱心（`puffTapBurst()`，不拦截原有点击）；
   空状态等独立展示位置的咕咕、嘎嘎可开 `reactsToTap`，点一下蹲下、起跳、落地压扁并换个开心姿势。

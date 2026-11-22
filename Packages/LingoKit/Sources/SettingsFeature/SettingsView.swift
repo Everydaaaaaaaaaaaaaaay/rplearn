@@ -83,7 +83,7 @@ public struct SettingsView: View {
 
     public var body: some View {
         ScrollView {
-            VStack(spacing: Puff.Space.m) {
+            PuffStaggeredStack(spacing: Puff.Space.m) {
                 journeySummary
                 learningAndReminderPanel
                 offlineVoicePanel

@@ -128,7 +128,10 @@ struct CityOutingView: View {
                     Button("先离开，稍后继续", action: onBack)
                     Button("结束这次外出", role: .destructive) { confirmsEnding = true }
                         .disabled(model.snapshot == nil || model.conflict)
-                } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }.accessibilityLabel("外出选项")
+                } label: { Image(systemName: "ellipsis").frame(width: 44, height: 44) }
+                    // 菜单保持系统弹出行为，不套蓬蓬按钮样式。
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("外出选项")
             }
         }.font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
             .buttonStyle(.puffSquish)

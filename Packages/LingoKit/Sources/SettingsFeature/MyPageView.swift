@@ -345,7 +345,7 @@ public struct MyPageView: View {
 extension MyPageView {
     private func detailPage(_ section: MyPageSection) -> some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: Puff.Space.m) {
+            PuffStaggeredStack(alignment: .leading, spacing: Puff.Space.m) {
                 if section == .account {
                     HStack(spacing: Puff.Space.m) {
                         avatarPicker(size: 76)

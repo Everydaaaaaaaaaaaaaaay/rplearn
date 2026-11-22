@@ -41,14 +41,45 @@ public extension View {
     }
 }
 
-/// 整张卡片都是按钮：按下时正面陷进唇边、整体轻轻一缩并给一下软触感，松手时弹回。
-public struct PuffCardButtonStyle: ButtonStyle {
+// MARK: - 轻点反馈
+
+/// 滚动区域里的快速轻点，系统要等手指抬起才显示按下效果，动作又在同一刻触发，页面一切走反馈就看不见了。
+/// 这里外层仍是原生按钮（手势、滚动取消、无障碍保持系统行为），轻点后让按下的样子停留 `Puff.Motion.tapHold`
+/// 再触发动作，下压与回弹因此看得见。VoiceOver 或减弱动态效果时立即触发。
+private struct PuffHeldButton<Face: ButtonStyle>: View {
+    let configuration: PrimitiveButtonStyleConfiguration
+    let face: (_ isHeld: Bool) -> Face
+    @State private var isHeld = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
+
+    var body: some View {
+        Button(role: configuration.role) {
+            guard !isHeld else { return }
+            guard !reduceMotion, !voiceOver else {
+                configuration.trigger()
+                return
+            }
+            isHeld = true
+            Task { @MainActor in
+                try? await Task.sleep(for: Puff.Motion.tapHold)
+                isHeld = false
+                configuration.trigger()
+            }
+        } label: {
+            configuration.label
+        }
+        .buttonStyle(face(isHeld))
+    }
+}
+
+/// 整张卡片都是按钮：按下时正面陷进唇边、整体缩一点并给一下软触感，松手时弹回。
+public struct PuffCardButtonStyle: PrimitiveButtonStyle {
     private let radius: CGFloat
     private let face: Color
     private let border: Color
     private let lip: Color
     private let lipHeight: CGFloat
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
         radius: CGFloat = Puff.Radius.large,
@@ -65,26 +96,38 @@ public struct PuffCardButtonStyle: ButtonStyle {
     }
 
     public func makeBody(configuration: Configuration) -> some View {
-        configuration.label
+        PuffHeldButton(configuration: configuration) { isHeld in
+            PuffCardFace(radius: radius, face: face, border: border, lip: lip, lipHeight: lipHeight, isHeld: isHeld)
+        }
+    }
+}
+
+private struct PuffCardFace: ButtonStyle {
+    let radius: CGFloat
+    let face: Color
+    let border: Color
+    let lip: Color
+    let lipHeight: CGFloat
+    let isHeld: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func makeBody(configuration: Configuration) -> some View {
+        let pressed = configuration.isPressed || isHeld
+        return configuration.label
             .modifier(PuffChunkyBackground(
                 radius: radius, face: face, border: border, lip: lip,
-                lipHeight: lipHeight, pressed: configuration.isPressed
+                lipHeight: lipHeight, pressed: pressed
             ))
-            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.985 : 1)
-            .animation(
-                reduceMotion ? nil : (configuration.isPressed ? Puff.Motion.press : Puff.Motion.release),
-                value: configuration.isPressed
-            )
-            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.5), trigger: configuration.isPressed) { _, pressed in pressed }
+            .scaleEffect(pressed && !reduceMotion ? 0.97 : 1)
+            .animation(reduceMotion ? nil : (pressed ? Puff.Motion.press : Puff.Motion.release), value: pressed)
+            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.5), trigger: pressed) { _, now in now }
     }
 }
 
 /// 实心糖果按钮：白字、彩色正面、深色唇边。按下时压扁陷进唇边，松手像果冻一样晃回来。
-public struct PuffCandyButtonStyle: ButtonStyle {
+public struct PuffCandyButtonStyle: PrimitiveButtonStyle {
     private let candy: PuffCandy
     private let radius: CGFloat
-    @Environment(\.isEnabled) private var isEnabled
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(_ candy: PuffCandy = .sky, radius: CGFloat = Puff.Radius.medium) {
         self.candy = candy
@@ -92,7 +135,22 @@ public struct PuffCandyButtonStyle: ButtonStyle {
     }
 
     public func makeBody(configuration: Configuration) -> some View {
-        let squashed = configuration.isPressed && !reduceMotion
+        PuffHeldButton(configuration: configuration) { isHeld in
+            PuffCandyFace(candy: candy, radius: radius, isHeld: isHeld)
+        }
+    }
+}
+
+private struct PuffCandyFace: ButtonStyle {
+    let candy: PuffCandy
+    let radius: CGFloat
+    let isHeld: Bool
+    @Environment(\.isEnabled) private var isEnabled
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func makeBody(configuration: Configuration) -> some View {
+        let pressed = configuration.isPressed || isHeld
+        let squashed = pressed && !reduceMotion
         return configuration.label
             .font(.puff(.headline, Puff.Weight.title))
             .foregroundStyle(.white)
@@ -100,20 +158,18 @@ public struct PuffCandyButtonStyle: ButtonStyle {
             .frame(minHeight: 48)
             .modifier(PuffChunkyBackground(
                 radius: radius, face: candy.base, border: .clear, lip: candy.lip,
-                lipHeight: Puff.Lip.button, pressed: configuration.isPressed
+                lipHeight: Puff.Lip.button, pressed: pressed
             ))
-            .scaleEffect(x: squashed ? 1.03 : 1, y: squashed ? 0.95 : 1, anchor: .bottom)
+            .scaleEffect(x: squashed ? 1.04 : 1, y: squashed ? 0.93 : 1, anchor: .bottom)
             .opacity(isEnabled ? 1 : 0.5)
-            .animation(
-                reduceMotion ? nil : (configuration.isPressed ? Puff.Motion.press : Puff.Motion.jelly),
-                value: configuration.isPressed
-            )
-            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.7), trigger: configuration.isPressed) { _, pressed in pressed }
+            .animation(reduceMotion ? nil : (pressed ? Puff.Motion.press : Puff.Motion.jelly), value: pressed)
+            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.7), trigger: pressed) { _, now in now }
     }
 }
 
 /// 图标、小胶囊等小按钮：按下时软软地缩一下，松手回弹，里面的图标顺势蹦一下。
-public struct PuffSquishButtonStyle: ButtonStyle {
+/// 动作立即执行，不等反馈；轻点时按下的样子同样停留 `Puff.Motion.tapHold`。
+public struct PuffSquishButtonStyle: PrimitiveButtonStyle {
     private let scale: CGFloat
     private let haptic: Bool
 
@@ -124,7 +180,34 @@ public struct PuffSquishButtonStyle: ButtonStyle {
     }
 
     public func makeBody(configuration: Configuration) -> some View {
-        PuffSquishBody(configuration: configuration, scale: scale, haptic: haptic)
+        PuffSquishButton(configuration: configuration, scale: scale, haptic: haptic)
+    }
+}
+
+private struct PuffSquishButton: View {
+    let configuration: PrimitiveButtonStyleConfiguration
+    let scale: CGFloat
+    let haptic: Bool
+    @State private var taps = 0
+
+    var body: some View {
+        Button(role: configuration.role) {
+            configuration.trigger()
+            taps += 1
+        } label: {
+            configuration.label
+        }
+        .buttonStyle(PuffSquishFace(scale: scale, haptic: haptic, taps: taps))
+    }
+}
+
+private struct PuffSquishFace: ButtonStyle {
+    let scale: CGFloat
+    let haptic: Bool
+    let taps: Int
+
+    func makeBody(configuration: Configuration) -> some View {
+        PuffSquishBody(configuration: configuration, scale: scale, haptic: haptic, taps: taps)
     }
 }
 
@@ -132,53 +215,102 @@ private struct PuffSquishBody: View {
     let configuration: ButtonStyleConfiguration
     let scale: CGFloat
     let haptic: Bool
+    let taps: Int
+    @State private var isHeld = false
     @State private var releases = 0
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
+        let pressed = configuration.isPressed || isHeld
         configuration.label
             .symbolEffect(.bounce.up, options: .nonRepeating, value: releases)
-            .scaleEffect(configuration.isPressed && !reduceMotion ? scale : 1)
-            .opacity(configuration.isPressed && reduceMotion ? 0.7 : 1)
-            .animation(configuration.isPressed ? Puff.Motion.press : Puff.Motion.release, value: configuration.isPressed)
-            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.4), trigger: configuration.isPressed) { _, pressed in
-                haptic && pressed
+            .scaleEffect(pressed && !reduceMotion ? scale : 1)
+            .opacity(pressed && reduceMotion ? 0.7 : 1)
+            .animation(pressed ? Puff.Motion.press : Puff.Motion.release, value: pressed)
+            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.4), trigger: pressed) { _, now in
+                haptic && now
             }
-            .onChange(of: configuration.isPressed) { _, pressed in
-                if !pressed && !reduceMotion { releases += 1 }
+            .task(id: taps) {
+                guard taps > 0 else { return }
+                isHeld = true
+                do { try await Task.sleep(for: Puff.Motion.tapHold) } catch { return }
+                isHeld = false
+                if !reduceMotion { releases += 1 }
             }
     }
 }
 
-/// 分组卡片内的行：按下时出现一块圆角浅底并轻微缩小。
-public struct PuffRowButtonStyle: ButtonStyle {
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-
+/// 分组卡片内的行：按下时出现一块圆角浅底并轻微缩小，停留片刻再进入下一页，像原生列表的选中高亮。
+public struct PuffRowButtonStyle: PrimitiveButtonStyle {
     public init() {}
 
     public func makeBody(configuration: Configuration) -> some View {
-        configuration.label
+        PuffHeldButton(configuration: configuration) { isHeld in
+            PuffRowFace(isHeld: isHeld)
+        }
+    }
+}
+
+private struct PuffRowFace: ButtonStyle {
+    let isHeld: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func makeBody(configuration: Configuration) -> some View {
+        let pressed = configuration.isPressed || isHeld
+        return configuration.label
             .background {
                 RoundedRectangle(cornerRadius: Puff.Radius.medium, style: .continuous)
                     .fill(Puff.Palette.cloud)
                     .padding(.horizontal, 6)
-                    .opacity(configuration.isPressed ? 1 : 0)
+                    .opacity(pressed ? 1 : 0)
             }
-            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.98 : 1)
-            .animation(configuration.isPressed ? Puff.Motion.press : Puff.Motion.release, value: configuration.isPressed)
+            .scaleEffect(pressed && !reduceMotion ? 0.98 : 1)
+            .animation(pressed ? Puff.Motion.press : Puff.Motion.release, value: pressed)
     }
 }
 
-public extension ButtonStyle where Self == PuffSquishButtonStyle {
+public extension PrimitiveButtonStyle where Self == PuffSquishButtonStyle {
     static var puffSquish: PuffSquishButtonStyle { PuffSquishButtonStyle() }
 }
 
-public extension ButtonStyle where Self == PuffRowButtonStyle {
+public extension PrimitiveButtonStyle where Self == PuffRowButtonStyle {
     static var puffRow: PuffRowButtonStyle { PuffRowButtonStyle() }
 }
 
-public extension ButtonStyle where Self == PuffCardButtonStyle {
+public extension PrimitiveButtonStyle where Self == PuffCardButtonStyle {
     static var puffCard: PuffCardButtonStyle { PuffCardButtonStyle() }
+}
+
+// MARK: - 推入页面的内容进场
+
+/// 推入页面的主栈，用法同 `VStack`。系统推入、导航栏和左缘返回保持原样，
+/// 页面里的各块内容在推入的同时自下而上错峰浮现；只在页面首次出现时播放，返回到这一页不重播。
+public struct PuffStaggeredStack<Content: View>: View {
+    private let alignment: HorizontalAlignment
+    private let spacing: CGFloat?
+    private let content: Content
+    @State private var isShown = false
+
+    public init(
+        alignment: HorizontalAlignment = .center,
+        spacing: CGFloat? = nil,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.alignment = alignment
+        self.spacing = spacing
+        self.content = content()
+    }
+
+    public var body: some View {
+        VStack(alignment: alignment, spacing: spacing) {
+            Group(subviews: content) { subviews in
+                ForEach(Array(subviews.enumerated()), id: \.element.id) { index, subview in
+                    subview.puffEntrance(index: index, isShown: isShown)
+                }
+            }
+        }
+        .onAppear { isShown = true }
+    }
 }
 
 // MARK: - 进场与弹出

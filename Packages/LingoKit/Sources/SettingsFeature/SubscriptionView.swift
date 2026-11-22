@@ -40,7 +40,7 @@ struct SubscriptionView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: Puff.Space.m) {
+            PuffStaggeredStack(alignment: .leading, spacing: Puff.Space.m) {
                 introduction
                 benefits
                 plans
