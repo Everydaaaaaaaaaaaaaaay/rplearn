@@ -229,7 +229,8 @@ public struct ChatView: View {
         .dsQuickNotice($viewModel.quickNotice)
         .background {
             ChatLearningBackdrop(regionID: learningRegionID, learningSelected: learningSelected,
-                translation: $learningTranslation)
+                translation: $learningTranslation,
+                candy: PuffCandy.stable(for: viewModel.character.displayName))
         }
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }

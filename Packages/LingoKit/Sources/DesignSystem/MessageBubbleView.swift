@@ -125,6 +125,7 @@ public struct MessageBubble<Content: View>: View {
 
     private var bubbleSurface: some View {
         content
+            .font(.puff(.body, Puff.Weight.body))
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
             .background(background)

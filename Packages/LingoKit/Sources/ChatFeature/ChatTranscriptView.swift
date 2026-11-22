@@ -204,7 +204,6 @@ struct ChatTranscriptView: View {
             // Blank taps and downward drags share one dismissal transition.
             .scrollDismissesKeyboard(.never)
             .simultaneousGesture(messageListKeyboardDismissGesture)
-            .background(Puff.Palette.page)
             .overlayPreferenceValue(ChatTranscriptBoundsKey.self, alignment: .top) { bounds in
                 if composerFocus != nil || showsChatFunctions {
                     // A bottom-aligned short transcript leaves blank space outside its content.
@@ -309,7 +308,8 @@ struct ChatTranscriptView: View {
 
     /// Background-only hit target: word taps and bubble menus remain in the foreground.
     private var keyboardDismissBackdrop: some View {
-        Puff.Palette.page
+        // 透明：露出聊天壁纸，只负责接住空白处的点按。
+        Color.clear
             .contentShape(Rectangle())
             .onTapGesture { dismissChatInput() }
             .accessibilityHidden(true)
@@ -440,7 +440,8 @@ struct ChatTranscriptView: View {
             .monospacedDigit()
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
-            .background(Puff.Palette.cloud, in: Capsule())
+            .background(Puff.Palette.card, in: Capsule())
+            .overlay { Capsule().strokeBorder(Puff.Palette.line, lineWidth: 1) }
             .frame(maxWidth: .infinity)
             .accessibilityLabel("会话时间，\(ChatTimelinePolicy.exactTimeText(for: date))")
     }

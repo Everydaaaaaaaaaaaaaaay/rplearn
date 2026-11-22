@@ -59,9 +59,12 @@ struct ChatLearningBackdrop: View {
     let regionID: String?
     let learningSelected: Bool
     let translation: GestureState<CGFloat>
+    /// 这位旅伴的糖果色（与头像外圈、学习页一致）。
+    let candy: PuffCandy
 
     var body: some View {
-        // 学习页不再铺实景照片：城市以卡通街景出现在学习卡片顶部，背景与聊天页同为白底。
-        Puff.Palette.page.ignoresSafeArea()
+        // 聊天页与学习页共用一张“聊天壁纸”：旅伴色的天空带 + 很淡的旅行涂鸦，左右滑动时背景不变。
+        PuffPageBackdrop()
+            .environment(\.puffPageTint, candy)
     }
 }

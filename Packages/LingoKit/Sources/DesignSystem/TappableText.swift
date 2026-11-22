@@ -97,7 +97,7 @@ public struct TappableText: View {
             }
         } else {
             Text(token.display)
-                .foregroundStyle(textColor ?? .primary)
+                .foregroundStyle(textColor ?? Puff.Palette.ink)
         }
     }
 
@@ -150,10 +150,10 @@ public struct TappableText: View {
     ) -> some View {
         Text(token.display)
             .underline(isKeyword, pattern: .dot)
-            .foregroundStyle(textColor ?? .primary)
+            .foregroundStyle(textColor ?? Puff.Palette.ink)
             .background(
                 isSelected
-                    ? Color.yellow.opacity(0.35)
+                    ? PuffCandy.sunny.base.opacity(0.45)
                     : .clear,
                 in: RoundedRectangle(cornerRadius: 4)
             )
