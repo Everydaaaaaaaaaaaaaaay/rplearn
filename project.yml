@@ -9,6 +9,8 @@ schemes:
         LingoTrip: all
     run:
       config: Debug
+      # Xcode 运行时不附加 LLDB：启动更快，不会被断点或调试器暂停；需要调试时临时在 Scheme 里勾选 Debug executable。
+      debugEnabled: false
     test:
       config: Debug
       gatherCoverageData: false
