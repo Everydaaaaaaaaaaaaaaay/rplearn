@@ -80,6 +80,7 @@ struct RootView: View {
     #if DEBUG
     @State private var captureCharacter: CharacterDTO?
     @State private var showsCitySceneGallery = false
+    @State private var showsMascotGallery = false
     @State private var showsAppointmentTestScenarios = false
     #endif
     @State private var onboardingPreviewMode: OnboardingPreviewMode?
@@ -198,6 +199,9 @@ struct RootView: View {
                 if ready && bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "scenes-preview" {
                     showsCitySceneGallery = true
                 }
+                if ready && bypassesAuthenticationForUITesting && ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "mascots-preview" {
+                    showsMascotGallery = true
+                }
                 #endif
             }
             .onChange(of: activeUserID) { _, _ in
@@ -216,6 +220,7 @@ struct RootView: View {
             .overlay(alignment: .topTrailing) { onboardingPreviewExit }
             #if DEBUG
             .fullScreenCover(isPresented: $showsCitySceneGallery) { DebugCitySceneGallery() }
+            .fullScreenCover(isPresented: $showsMascotGallery) { DebugMascotGallery() }
             .preferredColorScheme(ProcessInfo.processInfo.environment["UI_TEST_CAPTURE_APPEARANCE"].map { $0 == "dark" ? .dark : .light })
             .fullScreenCover(item: $captureCharacter) { character in
                 NavigationStack {

@@ -17,6 +17,7 @@ Scripts/preview.sh status          # 查看 Xcode、设备与产物
 - 常用：`messages`（默认）、`contacts`、`home`（活动首页）、`map`、`me`、`settings`、`subscription`
 - 活动与赴约：`places-preview`、`world-preview`、`scenes-preview`、`appointments-preview`
 - 学习：`learning`、`learning-test`、`role-learning`、`unit-challenge`、`practice-preview`、`achievement-preview`、`promotion-preview`
+- 设计：`mascots-preview`（咕咕、嘎嘎全部姿势与小尺寸；前面加 `SIMCTL_CHILD_UI_TEST_MASCOT_ZOOM=gugu` 或 `=gaga` 放大单只）
 
 说明：
 
