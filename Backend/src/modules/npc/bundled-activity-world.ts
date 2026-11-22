@@ -4,7 +4,7 @@ import { importActivityWorld } from "./outing-repository.js";
 
 const baseReleaseId = "2026-10-31-places-v1";
 export const bundledActivityWorld = new URL(
-  "../../../config/activity-world/2026-11-22-encounters-v2.json",
+  "../../../config/activity-world/2026-11-22-encounters-v3.json",
   import.meta.url,
 );
 

@@ -84,6 +84,18 @@ pnpm exec tsx src/cli/activity-world.ts release-check config/activity-world/2026
 
 整包发布时，数据库迁移入口在既有世界已启用的前提下登记新版。首次初始化数据库仍需按既有流程导入身份库和基版，再登记新版。
 
+## 中文口语修订
+
+[中文修订源](encounter-chinese-review-20261122.json)沿用上面的 101 位角色，复审中文旁白、台词、选项和重逢。英文、故事节点、地点与角色绑定沿用 v2。后端登记 v3 后，已经启用的 v1 与 v2 继续服务旧客户端和既有外出。
+
+从 `Backend` 生成当前发布包。
+
+```sh
+source_dir=../Content/ActivityWorld/2026-10-31-places-v1
+pnpm exec tsx src/cli/compile-activity-world.ts "$source_dir/world.json" "$source_dir/release-review-20261122-zh.json" ../App/Resources/ActivityPlacesGallery config/activity-world/2026-11-22-encounters-v3.json ../App/Resources/activity-world-release.json "$source_dir/encounter-chinese-review-20261122.json"
+pnpm exec tsx src/cli/activity-world.ts release-check config/activity-world/2026-11-22-encounters-v3.json ../App/Resources/npc-library-v3.json
+```
+
 ## 网页版 AI 改写资料
 
 [创作说明与交稿接口](authoring/README.md) 对应当前城市相遇运行规则。在仓库根目录运行以下命令，可从发布包导出角色总表、逐城完整角色卡、地点事实和独立的 JSON 交稿模板。

@@ -22,10 +22,18 @@ import { NpcRepository } from "../../src/modules/npc/repository.js";
 import { advanceOuting, outingBeats } from "../../src/modules/npc/outing-state.js";
 import type { OutingSnapshot } from "../../src/modules/npc/outing-types.js";
 
-const previousWorld = requirePublishedWorld(
+const baseWorld = requirePublishedWorld(
   JSON.parse(
     readFileSync(
       new URL("../../config/activity-world/2026-10-31-places-v1.json", import.meta.url),
+      "utf8",
+    ),
+  ),
+);
+const previousWorld = requirePublishedWorld(
+  JSON.parse(
+    readFileSync(
+      new URL("../../config/activity-world/2026-11-22-encounters-v2.json", import.meta.url),
       "utf8",
     ),
   ),
@@ -92,14 +100,15 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (!database) return;
       await database.sql`delete from app.users where id=any(${[...viewers.values(), existingViewer]}::uuid[])`;
-      await database.sql`delete from app.npc_activity_worlds where release_id in (${world.releaseId},${previousWorld.releaseId})`;
+      await database.sql`delete from app.npc_activity_worlds where release_id in (${world.releaseId},${previousWorld.releaseId},${baseWorld.releaseId})`;
       await database.sql`delete from app.public_npcs where id=any(${world.characters.map((person) => person.id)}::uuid[])`;
       await database.sql`delete from app.npc_avatars where id=any(${world.characters.map((person) => person.avatarId)}::uuid[])`;
       await database.close();
     });
 
-    it("publishes the bundled revision and serves both versions without resetting an active outing", async () => {
+    it("publishes revised dialogue while older catalogs and active outings remain available", async () => {
       expect(await publishBundledActivityWorld(database)).toBeNull();
+      await importActivityWorld(database, baseWorld, true);
       await importActivityWorld(database, previousWorld, true);
       const config = integrationConfig();
       const auth = await createAuthService(config, database);
@@ -155,7 +164,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           manifestHash: contentHash(world),
           enabled: true,
         });
-        for (const releaseId of [previousWorld.releaseId, world.releaseId]) {
+        for (const releaseId of [baseWorld.releaseId, previousWorld.releaseId, world.releaseId]) {
           const response = await app.inject({
             url: `/v2/activity-world?releaseId=${releaseId}`,
             headers,
@@ -173,7 +182,13 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
 
         const startOfNew = await start(world.releaseId);
         expect(startOfNew.npc?.id).toBe(old.npc?.id);
-        expect(startOfNew.story?.titleZh).not.toBe(old.story?.titleZh);
+        expect(startOfNew.story?.id).toBe(old.story?.id);
+        expect(outingBeats(startOfNew).map((beat) => beat.english)).toEqual(
+          outingBeats(old).map((beat) => beat.english),
+        );
+        expect(outingBeats(startOfNew).map((beat) => beat.chinese)).not.toEqual(
+          outingBeats(old).map((beat) => beat.chinese),
+        );
         let current = startOfNew;
         for (const [index, choice] of ["start:1", "b:0", null].entries()) {
           for (
