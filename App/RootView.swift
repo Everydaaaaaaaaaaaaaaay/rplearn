@@ -132,23 +132,7 @@ struct RootView: View {
         if requested == "subscription" {
             _mePath = State(initialValue: [.subscription])
         }
-        if requested == "map" {
-            var path = NavigationPath()
-            path.append(HomeRootRoute(destination: .map))
-            _homePath = State(initialValue: path)
-        } else if ["places-preview", "world-preview"].contains(requested ?? "") || ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "activities" {
-            var path = NavigationPath()
-            path.append(HomeRootRoute(destination: .activities))
-            _homePath = State(initialValue: path)
-        } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "mainline" {
-            var path = NavigationPath()
-            path.append(HomeRootRoute(destination: .stories))
-            path.append(HomeDestination.mainline)
-            _homePath = State(initialValue: path)
-        } else if ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == "cityStories" {
-            var path = NavigationPath()
-            path.append(HomeRootRoute(destination: .stories))
-            path.append(HomeDestination.cityStories)
+        if let path = Self.uiTestHomePath() {
             _homePath = State(initialValue: path)
         }
         #endif
@@ -450,6 +434,11 @@ struct RootView: View {
             .onChange(of: activeUserID) { _, _ in
                 activityJourney.reset()
                 homePath = NavigationPath()
+                #if DEBUG
+                // 免登录预览在工作区激活时会切换账号；重新进入预览要求的活动页子页面。
+                // 地点预览的测试自行从“出去走走”进入，不在这里恢复。
+                if bypassesAuthenticationForUITesting, let path = Self.uiTestHomePath(includingActivities: false) { homePath = path }
+                #endif
                 allowsWorldMapWarmup = false
             }
             .onReceive(NotificationCenter.default.publisher(for: .memoryKnowledgeDidChange)) { _ in
@@ -823,6 +812,30 @@ struct RootView: View {
             Color.clear
         }
     }
+
+    #if DEBUG
+    /// 预览与界面测试要求直接打开的活动页子页面。
+    private static func uiTestHomePath(includingActivities: Bool = true) -> NavigationPath? {
+        let environment = ProcessInfo.processInfo.environment
+        let requested = environment["UI_TEST_TAB"]
+        var path = NavigationPath()
+        if requested == "map" {
+            path.append(HomeRootRoute(destination: .map))
+        } else if ["places-preview", "world-preview"].contains(requested ?? "") || environment["UI_TEST_HOME_DESTINATION"] == "activities" {
+            guard includingActivities else { return nil }
+            path.append(HomeRootRoute(destination: .activities))
+        } else if environment["UI_TEST_HOME_DESTINATION"] == "mainline" {
+            path.append(HomeRootRoute(destination: .stories))
+            path.append(HomeDestination.mainline)
+        } else if environment["UI_TEST_HOME_DESTINATION"] == "cityStories" {
+            path.append(HomeRootRoute(destination: .stories))
+            path.append(HomeDestination.cityStories)
+        } else {
+            return nil
+        }
+        return path
+    }
+    #endif
 
     /// 点击事件独立于 selectedTab 的变化，因此重复点击当前标签也会返回入口。
     private func returnTabToRoot(_ tab: AppTab) {

@@ -39,58 +39,47 @@ struct FlightTransitionOverlay: View {
     @ViewBuilder
     private var arrivalContent: some View {
         if let stub = presentation.ticketStub {
-            VStack(spacing: DSSpacing.md) {
+            VStack(spacing: Puff.Space.m) {
                 Spacer()
 
-                BrandMascotView(pose: .celebrate, size: 76)
+                BrandMascotView(pose: .celebrate, size: 84, reactsToTap: true)
 
-                VStack(spacing: 3) {
+                VStack(spacing: 4) {
                     Text("城市收藏 +1")
-                        .font(.system(.caption, design: .rounded, weight: .black))
-                        .tracking(1.4)
-                        .foregroundStyle(.white.opacity(0.78))
+                        .font(.puff(.caption, Puff.Weight.emphasis))
+                        .foregroundStyle(PuffCandy.sunny.deep)
+                        .padding(.horizontal, 10).padding(.vertical, 4)
+                        .background(PuffCandy.sunny.wash, in: Capsule())
                     Text("首次抵达 \(presentation.toName)")
-                        .font(.system(.largeTitle, design: .rounded, weight: .black))
+                        .font(.puff(.largeTitle, Puff.Weight.display))
+                        .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
                 }
-                .foregroundStyle(.white)
 
                 TicketStubCard(
                     stub: stub,
                     regionCatalog: regionCatalog,
                     mode: .arrival
                 )
-                .padding(.horizontal, DSSpacing.lg)
-
-                Label("唯一票根已收入票根夹", systemImage: "checkmark.seal.fill")
-                    .font(.headline)
-                    .foregroundStyle(.white)
+                .padding(.horizontal, Puff.Space.l)
 
                 Button(action: onComplete) {
-                    Text("收下票根")
-                        .font(.system(.headline, design: .rounded, weight: .black))
+                    Label("收下票根", systemImage: "checkmark.seal.fill")
                         .frame(maxWidth: .infinity)
-                        .frame(height: 52)
                 }
-                .buttonStyle(.plain)
-                .foregroundStyle(Color.dsSkyDeep)
-                .background(.white, in: Capsule())
-                .padding(.horizontal, DSSpacing.xl)
+                .buttonStyle(PuffCandyButtonStyle(.sunny))
+                .padding(.horizontal, Puff.Space.xl)
                 .accessibilityHint("关闭抵达仪式并返回地图")
 
                 Spacer()
             }
         } else {
-            VStack(spacing: DSSpacing.md) {
+            VStack(spacing: Puff.Space.m) {
                 Spacer()
-                BrandMascotView(pose: .celebrate, size: 92)
+                BrandMascotView(pose: .celebrate, size: 92, reactsToTap: true)
                 Text("欢迎回到 \(presentation.toName)")
-                    .font(.system(.largeTitle, design: .rounded, weight: .black))
+                    .font(.puff(.largeTitle, Puff.Weight.display))
                     .multilineTextAlignment(.center)
-                Text("已解锁城市可以自由往返\n这次不会重复生成票根")
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.white.opacity(0.8))
                 Spacer()
             }
             .foregroundStyle(.white)

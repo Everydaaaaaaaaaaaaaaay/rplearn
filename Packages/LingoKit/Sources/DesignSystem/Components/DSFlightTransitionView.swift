@@ -96,11 +96,11 @@ public struct DSFlightTransitionView<ArrivalContent: View>: View {
         HStack(spacing: DSSpacing.sm) {
             HStack(spacing: DSSpacing.xs) {
                 Image(systemName: "location.north.fill")
-                    .font(.system(size: 13, weight: .black))
-                    .foregroundStyle(Color.dsBrandCoral)
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundStyle(PuffCandy.tangerine.base)
 
                 Text("\(AppBrand.mascotName)领航")
-                    .font(.system(.subheadline, design: .rounded, weight: .black))
+                    .font(.system(.subheadline, design: .rounded, weight: .bold))
             }
             .padding(.horizontal, DSSpacing.sm)
             .frame(minHeight: 40)
@@ -255,7 +255,7 @@ private struct DSFlightRouteCard: View {
                 Spacer(minLength: DSSpacing.xs)
 
                 Image(systemName: "arrow.right")
-                    .font(.system(.caption, design: .rounded, weight: .black))
+                    .font(.system(.caption, design: .rounded, weight: .bold))
                     .foregroundStyle(.white.opacity(0.5))
                     .padding(.top, DSSpacing.md)
                     .accessibilityHidden(true)
@@ -276,7 +276,7 @@ private struct DSFlightRouteCard: View {
 
             VStack(spacing: DSSpacing.xs) {
                 Label(stage.title, systemImage: stage.icon)
-                    .font(.system(.headline, design: .rounded, weight: .black))
+                    .font(.system(.headline, design: .rounded, weight: .bold))
 
                 Label(statusText, systemImage: statusIcon)
                     .font(.system(.caption, design: .rounded, weight: .semibold))
@@ -292,7 +292,7 @@ private struct DSFlightRouteCard: View {
             RoundedRectangle(cornerRadius: DSRadius.hero)
                 .stroke(.white.opacity(0.18), lineWidth: 1)
         }
-        .shadow(color: Color.dsBrandInk.opacity(0.16), radius: 24, y: 14)
+        .shadow(color: Puff.Palette.ink.opacity(0.16), radius: 24, y: 14)
     }
 
     private func cityLabel(
@@ -308,7 +308,7 @@ private struct DSFlightRouteCard: View {
                 .foregroundStyle(.white.opacity(0.68))
 
             Text(name)
-                .font(.system(.title3, design: .rounded, weight: .black))
+                .font(.system(.title3, design: .rounded, weight: .bold))
                 .lineLimit(1)
                 .minimumScaleFactor(0.72)
         }
@@ -397,10 +397,10 @@ private struct DSFlightCrew: View {
             BrandMascotView(pose: .guide, size: 58)
 
             Image(systemName: "airplane")
-                .font(.system(size: 34, weight: .black))
+                .font(.system(size: 34, weight: .bold))
                 .foregroundStyle(.white)
                 .rotationEffect(planeAngle)
-                .shadow(color: Color.dsBrandInk.opacity(0.24), radius: 7, y: 4)
+                .shadow(color: Puff.Palette.ink.opacity(0.24), radius: 7, y: 4)
         }
         .frame(width: 94, height: 70)
     }
@@ -424,8 +424,8 @@ private struct DSFlightEndpoint: View {
                 .frame(width: 28, height: 28)
 
             Image(systemName: icon)
-                .font(.system(size: 11, weight: .black))
-                .foregroundStyle(isActive ? Color.dsBrandCoral : .white.opacity(0.8))
+                .font(.system(size: 11, weight: .bold))
+                .foregroundStyle(isActive ? PuffCandy.tangerine.base : .white.opacity(0.8))
         }
         .animation(DSAnimation.scene, value: isActive)
         .accessibilityHidden(true)
@@ -438,7 +438,7 @@ private struct DSFlightBackdrop: View {
     var body: some View {
         ZStack {
             LinearGradient(
-                colors: [Color.dsSkyDeep, Color.dsSky, Color.dsCyan],
+                colors: [PuffCandy.sky.deep, PuffCandy.sky.base, PuffCandy.mint.base],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
@@ -451,7 +451,7 @@ private struct DSFlightBackdrop: View {
             )
 
             Circle()
-                .fill(Color.dsBrandCoral.opacity(0.12))
+                .fill(PuffCandy.tangerine.base.opacity(0.12))
                 .frame(width: 280, height: 280)
                 .blur(radius: 70)
                 .offset(x: -170, y: 300)

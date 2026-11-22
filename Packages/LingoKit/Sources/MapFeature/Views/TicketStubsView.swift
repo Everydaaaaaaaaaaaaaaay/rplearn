@@ -9,6 +9,7 @@ public struct TicketStubsView: View {
     private let regionCatalog: RegionCatalog
     @State private var stubs: [TicketStubDTO] = []
     @State private var isLoading = true
+    @State private var hasEntered = false
 
     public init(stubStore: TicketStubStore, regionCatalog: RegionCatalog) {
         self.stubStore = stubStore
@@ -17,86 +18,77 @@ public struct TicketStubsView: View {
 
     public var body: some View {
         ZStack {
-            Color.dsBackground.ignoresSafeArea()
+            Puff.Palette.page.ignoresSafeArea()
 
             if stubs.isEmpty && !isLoading {
-                VStack(spacing: DSSpacing.sm) {
-                    BrandMascotView(pose: .guide, size: 152, showsShadow: false, reactsToTap: true)
-                        .accessibilityHidden(true)
-                    Text("还没有纪念票根")
-                        .font(.title3.bold())
-                    Text("首次解锁一座城市后，它的唯一票根会收藏在这里")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                }
-                .padding(DSSpacing.xl)
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel("还没有纪念票根。首次解锁一座城市后，它的唯一票根会收藏在这里")
+                PuffEmptyState("还没有纪念票根", bird: .gugu, pose: .point)
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("还没有纪念票根。首次解锁一座城市后，它的唯一票根会收藏在这里")
             } else {
                 ScrollView {
-                    LazyVStack(spacing: DSSpacing.md) {
+                    LazyVStack(spacing: Puff.Space.m) {
                         collectionHeader
-                        ForEach(stubs) { stub in
+                            .puffEntrance(index: 0, isShown: hasEntered)
+                        ForEach(Array(stubs.enumerated()), id: \.element.id) { index, stub in
                             TicketStubCard(stub: stub, regionCatalog: regionCatalog)
+                                .puffEntrance(index: index + 1, isShown: hasEntered)
                         }
                     }
-                    .padding(DSSpacing.md)
+                    .padding(Puff.Space.m)
+                    .frame(maxWidth: 620).frame(maxWidth: .infinity)
                 }
             }
         }
+        .fontDesign(.rounded)
         .navigationTitle("票根夹")
         .task {
             stubs = (try? await stubStore.all()) ?? []
             isLoading = false
+            hasEntered = true
         }
     }
 
     private var collectionHeader: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.sm) {
-            HStack(spacing: DSSpacing.sm) {
-                Image(systemName: "rosette")
-                    .font(.title2.weight(.bold))
-                    .foregroundStyle(.white)
-                    .frame(width: 46, height: 46)
-                    .background(Color.dsSunset.gradient, in: Circle())
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("首次抵达纪念")
-                        .font(.headline)
-                    Text("每座城市只签发一张")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
+        let total = regionCatalog.regions.count
+        let fraction = total == 0 ? 0 : Double(stubs.count) / Double(total)
+        return VStack(alignment: .leading, spacing: Puff.Space.s) {
+            HStack(spacing: Puff.Space.s) {
+                PuffIconBubble("rosette", candy: .tangerine, size: 44)
+                Text("首次抵达纪念")
+                    .font(.puff(.headline, Puff.Weight.title))
+                    .foregroundStyle(Puff.Palette.ink)
                 Spacer()
-                Text("\(stubs.count) / \(regionCatalog.regions.count)")
-                    .font(.system(.headline, design: .rounded, weight: .black))
+                Text("\(stubs.count) / \(total)")
+                    .font(.puff(.title3, Puff.Weight.display))
                     .monospacedDigit()
-                    .foregroundStyle(Color.dsSky)
+                    .foregroundStyle(PuffCandy.tangerine.deep)
             }
-
-            ProgressView(
-                value: regionCatalog.regions.isEmpty
-                    ? 0
-                    : Double(stubs.count) / Double(regionCatalog.regions.count)
-            )
-            .tint(.dsSunset)
+            GeometryReader { geometry in
+                Capsule().fill(Puff.Palette.cloud)
+                    .overlay(alignment: .leading) {
+                        Capsule().fill(PuffCandy.tangerine.base)
+                            .frame(width: max(fraction > 0 ? 12 : 0, geometry.size.width * fraction))
+                    }
+            }
+            .frame(height: 12)
         }
-        .dsSurface(.elevated)
+        .padding(Puff.Space.l)
+        .puffCard(radius: Puff.Radius.huge)
         .accessibilityElement(children: .combine)
+        .accessibilityLabel("首次抵达纪念，已收藏 \(stubs.count) 张，共 \(total) 座城市")
     }
 }
 
-/// 收藏级城市票根：目的地场景、首次抵达印章和唯一编号共同构成纪念物。
+/// 收藏级城市票根：上半是目的地的卡通街景，下半是白色票根，中间一道齿孔撕线。
 struct TicketStubCard: View {
     enum Mode {
         case collection
         case arrival
 
-        var height: CGFloat {
+        var sceneHeight: CGFloat {
             switch self {
-            case .collection: 236
-            case .arrival: 220
+            case .collection: 132
+            case .arrival: 118
             }
         }
     }
@@ -123,9 +115,7 @@ struct TicketStubCard: View {
         "kingston": "KIN",
     ]
 
-    private var palette: [Color] {
-        DSScenePalette.ticket(stub.artSeed)
-    }
+    private var candy: PuffCandy { PuffCandy.stable(for: stub.toRegionID) }
 
     private var destination: Region? {
         regionCatalog.region(id: stub.toRegionID)
@@ -140,113 +130,91 @@ struct TicketStubCard: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                LinearGradient(
-                    colors: palette,
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-
-                Image("city_backdrop_\(stub.toRegionID)")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .clipped()
-
-                LinearGradient(
-                    colors: [
-                        .black.opacity(0.08),
-                        .black.opacity(0.24),
-                        .black.opacity(0.86),
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-
-                VStack(alignment: .leading, spacing: 0) {
+        VStack(spacing: 0) {
+            PuffCityScene(regionID: stub.toRegionID, viewport: .east)
+                .frame(height: mode.sceneHeight)
+                .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.huge - 6, style: .continuous))
+                .overlay(alignment: .top) {
                     HStack {
-                        Label("FIRST ARRIVAL", systemImage: "rosette")
-                            .font(.system(size: 9, weight: .black, design: .rounded))
-                            .tracking(1)
-                            .padding(.horizontal, 10)
-                            .frame(height: 28)
-                            .background(.ultraThinMaterial, in: Capsule())
-
+                        Label("首次抵达", systemImage: "rosette")
+                            .font(.puff(.caption, Puff.Weight.emphasis))
+                            .foregroundStyle(candy.deep)
+                            .padding(.horizontal, 10).frame(height: 28)
+                            .background(Puff.Palette.card, in: Capsule())
                         Spacer()
-
                         Text(stub.serialNumber)
-                            .font(.system(size: 9, weight: .bold, design: .monospaced))
-                            .padding(.horizontal, 9)
-                            .frame(height: 28)
-                            .background(.black.opacity(0.24), in: Capsule())
+                            .font(.system(size: 10, weight: .semibold, design: .monospaced))
+                            .foregroundStyle(Puff.Palette.inkSoft)
+                            .padding(.horizontal, 9).frame(height: 28)
+                            .background(Puff.Palette.card, in: Capsule())
                     }
-
-                    Spacer()
-
-                    HStack(alignment: .bottom, spacing: DSSpacing.sm) {
-                        VStack(alignment: .leading, spacing: 1) {
-                            Text(destination?.flagEmoji ?? "🌍")
-                                .font(.title2)
-                            Text(destination?.nameZh ?? stub.toRegionID)
-                                .font(.system(.title, design: .rounded, weight: .black))
-                                .lineLimit(1)
-                            Text("首次抵达 · \(destination?.countryNameZh ?? "")")
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(.white.opacity(0.82))
-                        }
-                        Spacer()
-                        Text(code(stub.toRegionID))
-                            .font(.system(size: 42, weight: .black, design: .rounded))
-                            .minimumScaleFactor(0.8)
-                    }
-
-                    perforation
-                        .padding(.vertical, 9)
-
-                    HStack(spacing: DSSpacing.sm) {
-                        Label(
-                            "\(code(stub.fromRegionID)) → \(code(stub.toRegionID))",
-                            systemImage: "airplane"
-                        )
-                        .font(.caption.weight(.bold))
-
-                        Spacer()
-
-                        VStack(alignment: .trailing, spacing: 1) {
-                            Text("ISSUED")
-                                .font(.system(size: 7, weight: .black))
-                                .tracking(1)
-                                .foregroundStyle(.white.opacity(0.66))
-                            Text(stub.usedAt, style: .date)
-                                .font(.caption2.weight(.semibold))
-                        }
-                    }
+                    .padding(10)
                 }
-                .padding(DSSpacing.md)
+                .padding([.horizontal, .top], 6)
+
+            HStack(alignment: .bottom, spacing: Puff.Space.s) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("\(destination?.flagEmoji ?? "🌍") \(destination?.nameZh ?? stub.toRegionID)")
+                        .font(.puff(.title2, Puff.Weight.display))
+                        .foregroundStyle(Puff.Palette.ink)
+                        .lineLimit(1)
+                    Text(destination?.countryNameZh ?? "")
+                        .font(.puff(.caption, Puff.Weight.label))
+                        .foregroundStyle(Puff.Palette.inkSoft)
+                }
+                Spacer()
+                Text(code(stub.toRegionID))
+                    .font(.system(size: 38, weight: .bold, design: .rounded))
+                    .foregroundStyle(candy.deep)
+                    .minimumScaleFactor(0.8)
             }
+            .padding(.horizontal, Puff.Space.l).padding(.top, Puff.Space.s)
+
+            perforation
+                .padding(.vertical, 10)
+
+            HStack(spacing: Puff.Space.s) {
+                Label("\(code(stub.fromRegionID)) → \(code(stub.toRegionID))", systemImage: "airplane")
+                    .font(.puff(.caption, Puff.Weight.emphasis))
+                    .foregroundStyle(Puff.Palette.ink)
+                Spacer()
+                Text(stub.usedAt, style: .date)
+                    .font(.puff(.caption, Puff.Weight.label))
+                    .foregroundStyle(Puff.Palette.inkSoft)
+            }
+            .padding(.horizontal, Puff.Space.l).padding(.bottom, Puff.Space.m)
         }
-        .frame(height: mode.height)
-        .foregroundStyle(.white)
-        .clipShape(RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.hero, style: .continuous)
-                .stroke(.white.opacity(0.55), lineWidth: 1)
-        }
-        .shadow(color: .black.opacity(0.16), radius: 12, y: 5)
+        .puffCard(radius: Puff.Radius.huge)
+        // 撕线两端的半圆缺口真正挖空卡片，放在任何底色上都像票根。
+        .compositingGroup()
         .accessibilityElement(children: .combine)
         .accessibilityLabel(
             "\(name(stub.fromRegionID))前往\(name(stub.toRegionID))的首次抵达纪念票根，编号\(stub.serialNumber)"
         )
     }
 
+    /// 票根撕线：两端半圆缺口 + 中间虚线。
     private var perforation: some View {
-        HStack(spacing: 5) {
-            ForEach(0..<26, id: \.self) { _ in
-                Capsule()
-                    .fill(.white.opacity(0.52))
-                    .frame(width: 5, height: 1.5)
-            }
+        HStack(spacing: 0) {
+            notch.offset(x: -7)
+            Line()
+                .stroke(Puff.Palette.line, style: StrokeStyle(lineWidth: 2, lineCap: .round, dash: [5, 6]))
+                .frame(height: 2)
+            notch.offset(x: 7)
+        }
+        .accessibilityHidden(true)
+    }
+
+    private var notch: some View {
+        Circle().fill(.black).frame(width: 16, height: 16).blendMode(.destinationOut)
+    }
+
+    private struct Line: Shape {
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            path.move(to: CGPoint(x: rect.minX, y: rect.midY))
+            path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+            return path
         }
     }
 }
