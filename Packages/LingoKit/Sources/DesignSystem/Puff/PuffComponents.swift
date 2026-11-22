@@ -17,7 +17,7 @@ public enum PuffPresence: Sendable, Equatable {
     }
 }
 
-/// 糖果色外圈 + 白色间隙 + 头像。颜色由名字稳定决定。
+/// 细糖果色外圈 + 细白缝 + 头像。颜色由名字稳定决定。
 public struct PuffAvatar: View {
     private let name: String
     private let size: CGFloat
@@ -43,17 +43,19 @@ public struct PuffAvatar: View {
     }
 
     public var body: some View {
-        let ring = max(2.5, size * 0.05)
+        let ring = max(1.5, size * 0.036)
+        let gap = max(1.25, size * 0.03)
         ZStack {
             Circle().fill(candy.base)
             Circle().fill(Puff.Palette.card).padding(ring)
             AvatarBadge(
                 name: name,
                 tint: candy.base,
-                size: size - ring * 4,
+                size: size - (ring + gap) * 2,
                 imageName: imageName,
                 remoteURL: remoteURL,
-                usesPendingPlaceholder: true
+                usesPendingPlaceholder: true,
+                isFramed: false
             )
         }
         .frame(width: size, height: size)

@@ -12,6 +12,7 @@ public struct AvatarBadge: View {
     private let size: CGFloat
     private let remoteURL: URL?
     private let usesPendingPlaceholder: Bool
+    private let isFramed: Bool
     private let localImage: UIImage?
     private let localImageAlignment: Alignment
     private let localImageScale: CGFloat
@@ -28,13 +29,15 @@ public struct AvatarBadge: View {
         size: CGFloat = 46,
         imageName: String? = nil,
         remoteURL: URL? = nil,
-        usesPendingPlaceholder: Bool = false
+        usesPendingPlaceholder: Bool = false,
+        isFramed: Bool = true
     ) {
         self.name = name
         self.tint = tint
         self.size = size
         self.remoteURL = remoteURL
         self.usesPendingPlaceholder = usesPendingPlaceholder
+        self.isFramed = isFramed
         self.localImage = DSAvatarAssets.image(named: imageName)
         let presentation = DSAvatarAssets.presentation(named: imageName)
         self.localImageAlignment = presentation.alignment
@@ -60,12 +63,14 @@ public struct AvatarBadge: View {
     public var body: some View {
         ZStack {
             avatarContent
-            Circle()
-                .stroke(.white.opacity(0.72), lineWidth: max(1, size / 34))
+            if isFramed {
+                Circle()
+                    .stroke(.white.opacity(0.72), lineWidth: max(1, size / 34))
+            }
         }
         .frame(width: size, height: size)
         .clipShape(Circle())
-        .shadow(color: stableTint.opacity(0.13), radius: size * 0.12, y: size * 0.045)
+        .shadow(color: stableTint.opacity(isFramed ? 0.13 : 0), radius: size * 0.12, y: size * 0.045)
         .accessibilityLabel(usesPendingPlaceholder && remoteURL == nil && localImage == nil ? "\(name)，头像待定" : name)
         .task(id: remoteURL) {
             guard let remoteURL else {
