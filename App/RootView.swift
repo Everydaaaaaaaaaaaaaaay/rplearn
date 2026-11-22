@@ -899,6 +899,7 @@ struct RootView: View {
                         .navigationBarTitleDisplayMode(.inline)
                         .toolbar(route.destination == .stories ? .visible : .hidden, for: .navigationBar)
                         .navigationTransition(.zoom(sourceID: route.destination, in: homeTransitionNamespace))
+                        .dsKeepsNavigationBarVisible(route.destination == .stories)
                 }
                 .navigationDestination(for: HomeDestination.self) { destination in
                     Group {
@@ -920,6 +921,7 @@ struct RootView: View {
                         }
                     }
                     .navigationTransition(.zoom(sourceID: destination, in: homeTransitionNamespace))
+                    .dsKeepsNavigationBarVisible(destination == .mainline || destination == .cityStories)
                 }
                 .navigationDestination(for: MainlineChapter.self) { chapter in
                     storyView(storyID: chapter.storyID)

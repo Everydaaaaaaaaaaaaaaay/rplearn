@@ -461,6 +461,7 @@ public struct RosterView: View {
             callBuilder: callBuilder
         )
         .navigationTransition(.zoom(sourceID: character.id, in: profileZoom))
+        .dsKeepsNavigationBarVisible()
     }
 
     private var emptyState: some View {
