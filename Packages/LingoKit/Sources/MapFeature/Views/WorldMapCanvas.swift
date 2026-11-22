@@ -79,6 +79,13 @@ struct WorldMapCanvas: UIViewRepresentable {
             RegionAnnotationView.self,
             forAnnotationViewWithReuseIdentifier: RegionAnnotationView.reuseIdentifier
         )
+        // 切换深浅色时换一层对应颜色的底图滤镜（渲染器颜色在创建时确定）。
+        mapView.registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (mapView: MKMapView, _: UITraitCollection) in
+            let washes = mapView.overlays.filter { $0 is PuffPastelWash }
+            guard !washes.isEmpty else { return }
+            mapView.removeOverlays(washes)
+            mapView.addOverlay(PuffPastelWash.world(), level: .aboveRoads)
+        }
         return mapView
     }
 
@@ -112,7 +119,11 @@ struct WorldMapCanvas: UIViewRepresentable {
         func mapView(_ mapView: MKMapView, rendererFor overlay: any MKOverlay) -> MKOverlayRenderer {
             guard let wash = overlay as? PuffPastelWash else { return MKOverlayRenderer(overlay: overlay) }
             let renderer = MKPolygonRenderer(polygon: wash)
-            renderer.fillColor = UIColor.white.withAlphaComponent(0.34)
+            // 浅色用白、深色用蓬蓬深色页面底色，深色地图不会被一层白雾盖成灰色。
+            let isDark = mapView.traitCollection.userInterfaceStyle == .dark
+            renderer.fillColor = UIColor(Puff.Palette.page)
+                .resolvedColor(with: mapView.traitCollection)
+                .withAlphaComponent(isDark ? 0.3 : 0.34)
             renderer.strokeColor = nil
             return renderer
         }
