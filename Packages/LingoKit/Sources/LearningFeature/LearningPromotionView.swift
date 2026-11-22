@@ -57,7 +57,7 @@ public struct LearningPromotionView: View {
                         Text("进阶课程已更新").font(.title2.bold())
                         Text("这段剧情已被新版课程替代。返回学习页后，可按最新课程继续进阶。")
                             .foregroundStyle(.secondary)
-                        LearningPrimaryButton(title: "返回学习页", tint: LearningAchievementGold.main) { dismiss() }
+                        LearningPrimaryButton(title: "返回学习页", candy: .sunny) { dismiss() }
                     }.modifier(LearningPaper(opacity: 0.8))
                 } else if let beat = promotion.currentBeat {
                     VStack(alignment: .leading, spacing: 18) {
@@ -68,7 +68,7 @@ public struct LearningPromotionView: View {
                         if showsTranslation { Text(beat.translation).foregroundStyle(.secondary).lineSpacing(5) }
                     }.frame(maxWidth: .infinity, minHeight: 170, alignment: .leading)
                         .modifier(LearningPaper(opacity: 0.8)).id(beat.id)
-                    LearningPrimaryButton(title: "继续", tint: LearningAchievementGold.main, busy: busy) {
+                    LearningPrimaryButton(title: "继续", candy: .sunny, busy: busy) {
                         Task { await advance() }
                     }.accessibilityIdentifier("learning.promotion.continue")
                 } else {
@@ -76,7 +76,7 @@ public struct LearningPromotionView: View {
                         Text("准备翻开下一页？").font(.title2.bold())
                         Text("确认后进入\(learningLevelName(promotion.toLevel))。新的聊天与挑战将采用这一难度，原档进度会保留。")
                             .foregroundStyle(.secondary).multilineTextAlignment(.center)
-                        LearningPrimaryButton(title: "确认晋升", tint: LearningAchievementGold.main, busy: busy) { showConfirmation = true }
+                        LearningPrimaryButton(title: "确认晋升", candy: .sunny, busy: busy) { showConfirmation = true }
                             .accessibilityIdentifier("learning.promotion.confirm")
                     }.modifier(LearningPaper(opacity: 0.8))
                 }

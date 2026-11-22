@@ -43,7 +43,7 @@ public struct LearningChallengeView: View {
             LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession, speech: listeningSpeech), beforePlayback: beforePlayback, cache: cache)
         })
     }
-    private var theme: LearningTheme { LearningTheme(role: model.attempt.unit.roleKey) }
+    private var theme: LearningTheme { LearningTheme(name: character.displayName) }
     public var body: some View {
         Group {
             if let practice {
@@ -628,7 +628,7 @@ public struct LearningChallengeView: View {
         }.buttonStyle(.plain).accessibilityLabel("直接开始题目")
     }
     private func primary(_ title: String, disabled: Bool = false, action: @escaping () -> Void) -> some View {
-        LearningPrimaryButton(title: title, tint: theme.tint, busy: model.isBusy, disabled: disabled, action: action)
+        LearningPrimaryButton(title: title, candy: theme.candy, busy: model.isBusy, disabled: disabled, action: action)
     }
     private func solutionText(_ answer: LearningAnswer, question: LearningQuestion) -> String {
         switch answer.kind {

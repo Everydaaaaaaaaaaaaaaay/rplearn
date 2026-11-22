@@ -46,12 +46,12 @@ public struct CharacterLearningView: View {
         _model = State(initialValue: previewModel)
     }
     #endif
-    private var theme: LearningTheme { LearningTheme(role: model.state?.roleKey ?? character.card.name.components(separatedBy: " ").first?.lowercased() ?? "") }
+    private var theme: LearningTheme { LearningTheme(name: character.displayName) }
     public var body: some View {
         GeometryReader { viewport in
             ScrollViewReader { reader in
             ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: Puff.Space.m) {
                     if let error = model.error ?? model.directionError {
                         LearningPageError(message: error) {
                             Task {
@@ -62,14 +62,14 @@ public struct CharacterLearningView: View {
                     }
                     if let state = model.state {
                         challengeCard(state, compact: viewport.size.height < 650)
-                        historySection.modifier(LearningPaper(opacity: 0.96))
+                        historySection.modifier(LearningPaper())
                     } else if model.isBusy {
-                        ProgressView("正在载入…")
-                            .font(.subheadline).frame(maxWidth: .infinity).padding(.vertical, 32)
-                            .modifier(LearningPaper(opacity: 0.96))
+                        PuffLoadingDots()
+                            .frame(maxWidth: .infinity).padding(.vertical, 40)
+                            .accessibilityLabel("正在载入")
                     }
                 }
-                .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 16)
+                .padding(.horizontal, Puff.Space.m).padding(.top, Puff.Space.xs).padding(.bottom, Puff.Space.m)
                 .frame(maxWidth: 600).frame(maxWidth: .infinity)
             }
             .task(id: isVisible ? model.starAward?.id : nil) {
@@ -83,8 +83,10 @@ public struct CharacterLearningView: View {
             }
         }
         .background {
-            if !backdropProvided { DSLearningSceneBackdrop(regionID: sceneRegionID) }
+            // 聊天里由聊天页提供同色底，城市只出现在卡片顶部的卡通场景里。
+            if !backdropProvided { Puff.Palette.page.ignoresSafeArea() }
         }
+        .fontDesign(.rounded)
         .tint(theme.tint)
         .refreshable { await reloadPage() }
         .task(id: isVisible) { if isVisible { await reloadPage() } }
@@ -117,62 +119,79 @@ public struct CharacterLearningView: View {
     }
     private func reloadPage() async {
         async let load: Void = model.load()
-        if !backdropProvided, let regionID = await currentRegionID(), !Task.isCancelled { sceneRegionID = regionID }
+        if let regionID = await currentRegionID(), !Task.isCancelled { sceneRegionID = regionID }
         await load
     }
     private func challengeCard(_ state: BackendLearningCharacter, compact: Bool) -> some View {
         let unlocked = state.activeAttemptId != nil || state.characters >= state.threshold
         let percentage = learningChatPercentage(characters: state.characters, threshold: state.threshold)
-        return VStack(spacing: compact ? 24 : 34) {
-            VStack(spacing: compact ? 10 : 14) {
-                if let onOpenChatSettings {
-                    Button(action: onOpenChatSettings) {
-                        learningAvatar(compact: compact)
+        let avatarSize: CGFloat = compact ? 72 : 88
+        return VStack(spacing: 0) {
+            // 卡片顶部是旅伴所在城市的卡通街景，头像压在街景下沿。
+            PuffCityScene(regionID: sceneRegionID, viewport: .east, isActive: isVisible)
+                .frame(height: compact ? 104 : 128)
+                .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.huge - 6, style: .continuous))
+                .padding([.horizontal, .top], 6)
+            VStack(spacing: compact ? 18 : 24) {
+                VStack(spacing: compact ? 8 : 10) {
+                    if let onOpenChatSettings {
+                        Button(action: onOpenChatSettings) {
+                            learningAvatar(size: avatarSize)
+                        }
+                        .buttonStyle(.puffSquish)
+                        .accessibilityLabel("\(character.displayName)的聊天设置")
+                        .accessibilityHint("打开聊天设置")
+                        .accessibilityIdentifier("learning.character.settings")
+                    } else {
+                        learningAvatar(size: avatarSize)
+                            .accessibilityHidden(true)
                     }
-                    .buttonStyle(LearningPressStyle())
-                    .accessibilityLabel("\(character.displayName)的聊天设置")
-                    .accessibilityHint("打开聊天设置")
-                    .accessibilityIdentifier("learning.character.settings")
-                } else {
-                    learningAvatar(compact: compact)
-                        .accessibilityHidden(true)
+                    Text(character.displayName)
+                        .font(.puff(.title2, Puff.Weight.title))
+                        .foregroundStyle(Puff.Palette.ink)
+                        .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
                 }
-                Text(character.displayName).font(.title2.weight(.semibold))
-                    .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
-            }
-            .frame(maxWidth: .infinity)
-            .accessibilityElement(children: .contain)
-            .accessibilityIdentifier("learning.character.identity")
+                .padding(.top, -avatarSize / 2)
+                .frame(maxWidth: .infinity)
+                .accessibilityElement(children: .contain)
+                .accessibilityIdentifier("learning.character.identity")
 
-            VStack(spacing: 10) {
-                LearningMeter(value: state.characters, total: state.threshold, tint: theme.tint)
-                    .frame(maxWidth: 260)
-                Text("\(percentage)% 聊天进度")
-                    .font(.caption).monospacedDigit().foregroundStyle(.secondary)
-            }
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel("练习解锁进度")
-            .accessibilityValue("\(percentage)% 聊天进度")
-            .accessibilityIdentifier("learning.unlock.progress")
+                VStack(spacing: 8) {
+                    LearningMeter(value: state.characters, total: state.threshold, candy: theme.candy)
+                        .frame(maxWidth: 260)
+                    Text("\(percentage)% 聊天进度")
+                        .font(.puff(.caption, Puff.Weight.label)).monospacedDigit()
+                        .foregroundStyle(Puff.Palette.inkSoft)
+                }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("练习解锁进度")
+                .accessibilityValue("\(percentage)% 聊天进度")
+                .accessibilityIdentifier("learning.unlock.progress")
 
-            VStack(spacing: compact ? 12 : 16) {
-                if let journey = model.journey { levelProgress(journey) }
-                Text(challengeStatus(state)).font(.subheadline).foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
-                if unlocked { challengeAction(state) }
+                VStack(spacing: compact ? 12 : 16) {
+                    if let journey = model.journey { levelProgress(journey) }
+                    Text(challengeStatus(state))
+                        .font(.puff(.subheadline, Puff.Weight.label))
+                        .foregroundStyle(unlocked ? theme.candy.deep : Puff.Palette.inkSoft)
+                        .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+                    if unlocked { challengeAction(state) }
+                }
             }
+            .padding(.horizontal, Puff.Space.l)
+            .padding(.bottom, Puff.Space.l)
         }
-        .padding(.vertical, compact ? 0 : 8)
-        .frame(maxWidth: .infinity, minHeight: compact ? 0 : 436)
-        .modifier(LearningPaper(opacity: 0.96))
+        .frame(maxWidth: .infinity)
+        .puffCard(radius: Puff.Radius.huge)
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("learning.challenge.card")
     }
-    private func learningAvatar(compact: Bool) -> some View {
-        AvatarBadge(name: character.displayName, size: compact ? 64 : 88,
-                    imageName: character.card.avatarAssetName,
-                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                    usesPendingPlaceholder: true)
+    private func learningAvatar(size: CGFloat) -> some View {
+        PuffAvatar(name: character.displayName, size: size,
+                   imageName: character.card.avatarAssetName,
+                   remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                   candy: theme.candy)
+            .padding(5)
+            .background(Puff.Palette.card, in: Circle())
     }
 
     private func challengeAction(_ state: BackendLearningCharacter) -> some View {
@@ -180,18 +199,15 @@ public struct CharacterLearningView: View {
         let unavailable = state.activeAttemptId == nil && !model.canStartNewChallenge
         return Button { Task { await model.open() } } label: {
             HStack(spacing: 10) {
-                if model.isBusy { ProgressView().controlSize(.small) }
+                if model.isBusy { ProgressView().controlSize(.small).tint(.white) }
                 Text(state.activeAttemptId != nil ? "继续挑战" : unavailable ? "题目准备中" : preparing ? "刷新状态" : "开启单元挑战")
-                    .font(.body.weight(.semibold))
                 if !model.isBusy && !unavailable && !preparing {
-                    Image(systemName: "arrow.right").font(.subheadline.weight(.medium)).accessibilityHidden(true)
+                    Image(systemName: "arrow.right").font(.subheadline.weight(Puff.Weight.icon)).accessibilityHidden(true)
                 }
             }
-            .frame(maxWidth: .infinity, minHeight: 54).padding(.horizontal, 16)
-            .foregroundStyle(unavailable ? Color.secondary : Color.dsSurface)
-            .background(unavailable ? Color.secondary.opacity(0.10) : theme.tint, in: RoundedRectangle(cornerRadius: 18))
+            .frame(maxWidth: .infinity)
         }
-        .buttonStyle(LearningPressStyle())
+        .buttonStyle(PuffCandyButtonStyle(unavailable ? PuffCandy.sky : theme.candy))
         .disabled(model.isBusy || model.isChangingDirection || unavailable)
         .accessibilityLabel(state.activeAttemptId != nil ? "继续挑战" : unavailable ? "暂不可开启新挑战" : preparing ? "刷新状态" : "开启单元挑战")
         .accessibilityIdentifier("learning.start")
@@ -203,14 +219,15 @@ public struct CharacterLearningView: View {
         // Keep the completed level visible until its ninth star has landed.
         let progress = journey.levels.first { $0.level == (model.starAward?.level ?? journey.currentLevel) }
         return VStack(spacing: 12) {
-            Text(learningLevelName(progress?.level ?? journey.currentLevel)).font(.headline)
+            Text(learningLevelName(progress?.level ?? journey.currentLevel))
+                .font(.puff(.headline, Puff.Weight.title))
                 .fixedSize(horizontal: false, vertical: true)
             journeyStars(journey)
             nextStar(progress)
         }
         .multilineTextAlignment(.center)
         .frame(maxWidth: .infinity, minHeight: 44)
-        .foregroundStyle(.primary)
+        .foregroundStyle(Puff.Palette.ink)
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("learning.level.progress")
         .id("learning.star.destination")
@@ -224,8 +241,8 @@ public struct CharacterLearningView: View {
         let points = complete ? total : min(total, max(0, current?.currentStarPoints ?? 0))
         let label = complete ? "9 星已达成" : "下一星 \(points)/\(total)分"
         return HStack(spacing: 8) {
-            Text(label).font(.caption2).monospacedDigit().foregroundStyle(.secondary)
-            LearningMeter(value: points, total: total, tint: theme.tint.opacity(0.72), height: 5)
+            Text(label).font(.puff(.caption2, Puff.Weight.label)).monospacedDigit().foregroundStyle(Puff.Palette.inkSoft)
+            LearningMeter(value: points, total: total, candy: .sunny, height: 6)
                 .frame(width: 136)
         }
         .accessibilityElement(children: .ignore)
@@ -243,20 +260,23 @@ public struct CharacterLearningView: View {
                 Button {
                     historyExpanded.toggle()
                 } label: {
-                    HStack(spacing: 10) {
-                        Text("挑战记录").font(.headline)
+                    HStack(spacing: Puff.Space.s) {
+                        PuffIconBubble("list.star", candy: theme.candy)
+                        Text("挑战记录")
+                            .font(.puff(.headline, Puff.Weight.title))
+                            .foregroundStyle(Puff.Palette.ink)
                         Image(systemName: historyExpanded ? "chevron.up" : "chevron.down")
-                            .font(.caption.weight(.semibold)).foregroundStyle(.secondary)
+                            .font(.caption.weight(Puff.Weight.icon)).foregroundStyle(Puff.Palette.inkFaint)
                     }
                     .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
                     .contentShape(Rectangle())
                 }
-                .buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
+                .buttonStyle(.puffSquish)
                 .accessibilityValue(historyExpanded ? "已展开" : "已折叠")
                 .accessibilityHint(historyExpanded ? "收起挑战记录" : "展开挑战记录")
                 .accessibilityIdentifier("learning.history.toggle")
                 Spacer()
-                if model.isBusy { ProgressView().controlSize(.small) }
+                if model.isBusy { ProgressView().controlSize(.small).tint(theme.tint) }
                 if historyExpanded && !model.history.isEmpty {
                     historyFilterMenu
                 }
@@ -272,22 +292,25 @@ public struct CharacterLearningView: View {
                         Text(historyFilter.isActive
                              ? (model.nextCursor == nil ? "暂无符合筛选的记录" : "已载入的记录中暂无匹配项，可载入更多记录。")
                              : "完成挑战后，在这里回顾。")
-                            .font(.subheadline).foregroundStyle(.secondary)
+                            .font(.puff(.subheadline, Puff.Weight.body)).foregroundStyle(Puff.Palette.inkSoft)
                             .frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 20)
                     }
                 } else {
                     LazyVStack(spacing: 0) {
                         ForEach(items) { item in
-                            Divider()
+                            Rectangle().fill(Puff.Palette.line).frame(height: 1)
                             historyRow(item)
                         }
                     }
                 }
                 if model.nextCursor != nil {
                     Button { Task { await model.loadMore() } } label: {
-                        Label("更多记录", systemImage: "chevron.down").font(.subheadline.weight(.medium))
+                        Label("更多记录", systemImage: "chevron.down")
+                            .font(.puff(.subheadline, Puff.Weight.emphasis))
+                            .foregroundStyle(theme.tint)
                             .frame(maxWidth: .infinity, minHeight: 44)
                     }
+                    .buttonStyle(.puffSquish)
                     .accessibilityLabel("载入更多记录").disabled(model.isBusy)
                 }
             }
@@ -313,10 +336,10 @@ public struct CharacterLearningView: View {
                     Text(historyFilter.summary).fixedSize(horizontal: false, vertical: true)
                 }
             }
-            .font(.caption.weight(.medium))
+            .font(.puff(.caption, Puff.Weight.label))
             .padding(.leading, 8).frame(minWidth: 44, minHeight: 44)
         }
-        .foregroundStyle(historyFilter.isActive ? theme.tint : Color.secondary)
+        .foregroundStyle(historyFilter.isActive ? theme.tint : Puff.Palette.inkSoft)
         .accessibilityLabel("筛选挑战记录")
         .accessibilityValue(historyFilter.isActive ? historyFilter.summary : "未筛选")
         .accessibilityIdentifier("learning.history.filter")
@@ -325,11 +348,12 @@ public struct CharacterLearningView: View {
         let complete = item.firstCompletedAt != nil && item.correctCount == item.questionCount
         return Button { Task { await model.open(item.id) } } label: {
             VStack(alignment: .leading, spacing: 9) {
-                Text(item.title).font(.subheadline.weight(.semibold))
+                Text(item.title).font(.puff(.subheadline, Puff.Weight.title))
+                    .foregroundStyle(Puff.Palette.ink)
                     .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 2)
                     .multilineTextAlignment(.leading).fixedSize(horizontal: false, vertical: true)
                 Text("\(historyDate(item)) · \(learningLevelName(item.level))")
-                    .font(.caption).foregroundStyle(.secondary)
+                    .font(.puff(.caption, Puff.Weight.label)).foregroundStyle(Puff.Palette.inkSoft)
                 HStack(alignment: .firstTextBaseline, spacing: 12) {
                     if dynamicTypeSize.isAccessibilitySize {
                         VStack(alignment: .leading, spacing: 5) {
@@ -341,14 +365,14 @@ public struct CharacterLearningView: View {
                         Spacer(minLength: 0)
                         historyPoints(item)
                     }
-                    Image(systemName: "chevron.right").font(.caption2.weight(.semibold))
-                        .foregroundStyle(.tertiary).accessibilityHidden(true)
+                    Image(systemName: "chevron.right").font(.caption2.weight(Puff.Weight.icon))
+                        .foregroundStyle(Puff.Palette.inkFaint).accessibilityHidden(true)
                 }
             }
-            .padding(.vertical, 17).frame(maxWidth: .infinity, minHeight: 78, alignment: .leading)
+            .padding(.vertical, 17).padding(.horizontal, 6).frame(maxWidth: .infinity, minHeight: 78, alignment: .leading)
             .contentShape(Rectangle())
         }
-        .buttonStyle(LearningPressStyle()).foregroundStyle(.primary).disabled(model.isBusy)
+        .buttonStyle(.puffRow).disabled(model.isBusy)
         .accessibilityLabel("\(item.title)，\(historyDate(item))，\(learningLevelName(item.level))，答对 \(item.correctCount)/\(item.questionCount)，\(historyPointsText(item))，\(historyActionLabel(item))")
         .accessibilityHint(complete ? "查看挑战" : item.firstCompletedAt == nil ? "继续挑战" : "补答剩余题目")
         .accessibilityIdentifier("learning.history.\(item.id.uuidString)")
@@ -356,12 +380,12 @@ public struct CharacterLearningView: View {
     private func historyMetadata(_ item: LearningHistory.Item) -> some View {
         (Text("答对 \(item.correctCount)/\(item.questionCount)")
             .foregroundColor(LearningAccuracyBand(correct: item.correctCount, total: item.questionCount).tint)
-         + Text(" · \(historyActionLabel(item))").foregroundColor(.secondary))
-            .font(.caption).monospacedDigit()
+         + Text(" · \(historyActionLabel(item))").foregroundColor(Puff.Palette.inkSoft))
+            .font(.puff(.caption, Puff.Weight.label)).monospacedDigit()
     }
     private func historyPoints(_ item: LearningHistory.Item) -> some View {
-        Text(historyPointsText(item)).font(.subheadline.weight(.semibold)).monospacedDigit()
-            .foregroundStyle((item.earnedPoints ?? 0) > 0 ? LearningTheme.rewardTint : Color.secondary)
+        Text(historyPointsText(item)).font(.puff(.subheadline, Puff.Weight.emphasis)).monospacedDigit()
+            .foregroundStyle((item.earnedPoints ?? 0) > 0 ? LearningTheme.rewardTint : Puff.Palette.inkSoft)
     }
     private func historyPointsText(_ item: LearningHistory.Item) -> String {
         item.earnedPoints.map { "获得 \($0) 积分" } ?? "积分待同步"
@@ -378,17 +402,19 @@ public struct CharacterLearningView: View {
 
 }
 
+/// 糖果色进度条：浅灰底槽 + 彩色填充，填充端是圆头。
 private struct LearningMeter: View {
     let value: Int
     let total: Int
-    let tint: Color
-    var height: CGFloat = 16
+    let candy: PuffCandy
+    var height: CGFloat = 14
     var body: some View {
         GeometryReader { geometry in
-            Capsule().fill(tint.opacity(0.10))
+            let fraction = min(1, max(0, Double(value) / Double(max(1, total))))
+            Capsule().fill(Puff.Palette.cloud)
                 .overlay(alignment: .leading) {
-                    Capsule().fill(tint)
-                        .frame(width: geometry.size.width * min(1, max(0, Double(value) / Double(max(1, total)))))
+                    Capsule().fill(candy.base)
+                        .frame(width: max(fraction > 0 ? height : 0, geometry.size.width * fraction))
                 }
         }.frame(height: height)
     }
@@ -399,13 +425,19 @@ struct LearningPageError: View {
     let retry: () -> Void
     var body: some View {
         HStack(spacing: 12) {
-            Image(systemName: "exclamationmark.circle").foregroundStyle(.secondary).accessibilityHidden(true)
-            Text(message).font(.subheadline).frame(maxWidth: .infinity, alignment: .leading)
+            Image(systemName: "exclamationmark.circle.fill")
+                .foregroundStyle(PuffCandy.tangerine.deep).accessibilityHidden(true)
+            Text(message).font(.puff(.subheadline, Puff.Weight.label))
+                .foregroundStyle(Puff.Palette.ink)
+                .frame(maxWidth: .infinity, alignment: .leading)
             Button(action: retry) {
-                Image(systemName: "arrow.clockwise").font(.body.weight(.medium)).frame(width: 44, height: 44)
-            }.accessibilityLabel("重新载入")
+                Image(systemName: "arrow.clockwise").font(.body.weight(Puff.Weight.icon)).frame(width: 44, height: 44)
+            }
+            .buttonStyle(.puffSquish)
+            .foregroundStyle(PuffCandy.tangerine.deep)
+            .accessibilityLabel("重新载入")
         }
         .padding(.leading, 16).padding(.trailing, 4).padding(.vertical, 8)
-        .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: 16))
+        .background(PuffCandy.tangerine.wash, in: RoundedRectangle(cornerRadius: Puff.Radius.large, style: .continuous))
     }
 }

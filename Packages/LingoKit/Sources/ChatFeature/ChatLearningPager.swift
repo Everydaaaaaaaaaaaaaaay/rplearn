@@ -59,18 +59,9 @@ struct ChatLearningBackdrop: View {
     let regionID: String?
     let learningSelected: Bool
     let translation: GestureState<CGFloat>
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        GeometryReader { viewport in
-            let reveal = (learningSelected ? 1 : 0) - translation.wrappedValue / max(viewport.size.width, 1)
-            ZStack {
-                Color.dsBackground
-                DSLearningSceneBackdrop(regionID: regionID)
-                    .opacity(min(1, max(0, reveal)))
-            }
-        }
-        .transaction { if reduceMotion { $0.animation = nil } }
-        .animation(reduceMotion ? nil : .interactiveSpring(duration: 0.28, extraBounce: 0), value: learningSelected)
+        // 学习页不再铺实景照片：城市以卡通街景出现在学习卡片顶部，背景与聊天页同为白底。
+        Puff.Palette.page.ignoresSafeArea()
     }
 }
