@@ -20,7 +20,7 @@ public enum AppointmentDisplayTime {
 
     public static func scheduled(_ value: String, zone: TimeZone) -> String {
         guard let instant = date(value) else { return value }
-        return formatted(instant, zone: zone, format: "EEE, d MMM yyyy · HH:mm")
+        return formatted(instant, zone: zone, format: "M月d日 EEE · HH:mm")
     }
 
     public static func timeline(_ value: String, zone: TimeZone) -> String? {
@@ -32,11 +32,12 @@ public enum AppointmentDisplayTime {
         guard let start = date(opens), let end = date(closes) else { return "\(opens)–\(closes)" }
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = zone
-        let endFormat = calendar.isDate(start, inSameDayAs: end) ? "HH:mm" : "d MMM yyyy HH:mm"
+        let endFormat = calendar.isDate(start, inSameDayAs: end) ? "HH:mm" : "M月d日 HH:mm"
         return "\(scheduled(opens, zone: zone))–\(formatted(end, zone: zone, format: endFormat))"
     }
 
-    private static func formatted(_ date: Date, zone: TimeZone, format: String, locale: String = "en_GB") -> String {
+    /// 界面是中文，约定时间也用中文日期（与 `timeline` 一致）。
+    private static func formatted(_ date: Date, zone: TimeZone, format: String, locale: String = "zh_CN") -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: locale)
         formatter.timeZone = zone
