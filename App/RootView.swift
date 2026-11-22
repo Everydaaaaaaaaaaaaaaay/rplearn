@@ -620,8 +620,7 @@ struct RootView: View {
     private var launchLoading: some View {
         ZStack {
             Color("BrandLaunchBackground").ignoresSafeArea()
-            ProgressView()
-                .tint(.dsSky)
+            PuffLoadingDots()
                 .accessibilityLabel("正在载入旅程")
         }
     }
@@ -823,6 +822,7 @@ struct RootView: View {
             visitedTabs.formUnion([previous, current])
         }
         .tint(PuffCandy.sky.base)
+        .sensoryFeedback(.selection, trigger: selectedTab)
         .background {
             if #available(iOS 27.0, *) {
                 TabSceneTransitionInstaller()
@@ -902,22 +902,25 @@ struct RootView: View {
                         .navigationTransition(.zoom(sourceID: route.destination, in: homeTransitionNamespace))
                 }
                 .navigationDestination(for: HomeDestination.self) { destination in
-                    switch destination {
-                    case .mainline:
-                        MainlineListView(deps: homeDeps) { chapter in
-                            homePath.append(chapter)
+                    Group {
+                        switch destination {
+                        case .mainline:
+                            MainlineListView(deps: homeDeps) { chapter in
+                                homePath.append(chapter)
+                            }
+                            .navigationBarTitleDisplayMode(.inline)
+                            .toolbar(.visible, for: .navigationBar)
+                        case .cityStories:
+                            CityStoryListView(deps: homeDeps) { chapter in
+                                homePath.append(chapter)
+                            }
+                            .navigationBarTitleDisplayMode(.inline)
+                            .toolbar(.visible, for: .navigationBar)
+                        case .map, .stories, .activities, .appointments:
+                            EmptyView()
                         }
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar(.visible, for: .navigationBar)
-                    case .cityStories:
-                        CityStoryListView(deps: homeDeps) { chapter in
-                            homePath.append(chapter)
-                        }
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar(.visible, for: .navigationBar)
-                    case .map, .stories, .activities, .appointments:
-                        EmptyView()
                     }
+                    .navigationTransition(.zoom(sourceID: destination, in: homeTransitionNamespace))
                 }
                 .navigationDestination(for: MainlineChapter.self) { chapter in
                     storyView(storyID: chapter.storyID)
@@ -929,6 +932,7 @@ struct RootView: View {
                     ChatView(character: route.character, deps: chatDeps)
                 }
         }
+        .environment(\.puffZoomNamespace, homeTransitionNamespace)
         .onChange(of: homePath.isEmpty) { _, isEmpty in
             if isEmpty, activityJourney.hasOpenOuting, !activityJourney.isPreparing {
                 activityJourney.reset()

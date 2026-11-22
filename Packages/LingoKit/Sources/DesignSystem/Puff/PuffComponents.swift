@@ -73,9 +73,11 @@ public struct PuffAvatar: View {
 
 // MARK: - 角标与标签
 
-/// 未读数胶囊，数字变化时滚动切换。
+/// 未读数胶囊，数字变化时滚动切换，数字变多时蹦一下。
 public struct PuffCountBadge: View {
     private let count: Int
+    @State private var bumps = 0
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(_ count: Int) {
         self.count = count
@@ -91,6 +93,15 @@ public struct PuffCountBadge: View {
             .frame(minWidth: 24, minHeight: 24)
             .background(Puff.Palette.cherry, in: Capsule())
             .overlay { Capsule().strokeBorder(.white.opacity(0.35), lineWidth: 1) }
+            .keyframeAnimator(initialValue: CGFloat(1), trigger: bumps) { badge, scale in
+                badge.scaleEffect(scale)
+            } keyframes: { _ in
+                SpringKeyframe(1.3, duration: 0.14, spring: .snappy)
+                SpringKeyframe(1, duration: 0.4, spring: .bouncy(extraBounce: 0.2))
+            }
+            .onChange(of: count) { old, new in
+                if new > old && !reduceMotion { bumps += 1 }
+            }
             .accessibilityLabel("\(count) 条未读")
     }
 }
@@ -233,7 +244,7 @@ public struct PuffFilterBar<Value: Hashable>: View {
             }
             .padding(.bottom, Puff.Lip.chip)
         }
-        .buttonStyle(.puffSquish)
+        .buttonStyle(PuffSquishButtonStyle(haptic: false))
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
@@ -247,6 +258,8 @@ public struct PuffEmptyState<Actions: View>: View {
     private let title: String
     private let message: String?
     private let actions: Actions
+    @State private var hasAppeared = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
         _ title: String,
@@ -264,7 +277,10 @@ public struct PuffEmptyState<Actions: View>: View {
 
     public var body: some View {
         VStack(spacing: Puff.Space.s) {
-            PuffMascot(bird, pose: pose, size: 124)
+            PuffMascot(bird, pose: pose, size: 124, reactsToTap: true)
+                .scaleEffect(hasAppeared || reduceMotion ? 1 : 0.4, anchor: .bottom)
+                .opacity(hasAppeared ? 1 : 0)
+                .animation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: reduceMotion), value: hasAppeared)
             VStack(spacing: 6) {
                 Text(title)
                     .font(.puff(.title3, Puff.Weight.title))
@@ -277,9 +293,12 @@ public struct PuffEmptyState<Actions: View>: View {
             }
             .multilineTextAlignment(.center)
             .accessibilityElement(children: .combine)
+            .puffEntrance(index: 2, isShown: hasAppeared)
             actions
                 .padding(.top, Puff.Space.xs)
+                .puffEntrance(index: 4, isShown: hasAppeared)
         }
+        .onAppear { hasAppeared = true }
         .padding(.horizontal, Puff.Space.xl)
         .padding(.vertical, Puff.Space.l)
         .frame(maxWidth: 360)
@@ -353,19 +372,23 @@ public struct PuffSceneCard<Caption: View>: View {
     private let viewport: PuffCityScene.Viewport
     private let sceneHeight: CGFloat
     private let isActive: Bool
+    private let tapBurst: Bool
     private let caption: Caption
 
+    /// - Parameter tapBurst: 点城市画面会迸出小星星。卡片本身是按钮时保持关闭。
     public init(
         regionID: String?,
         viewport: PuffCityScene.Viewport = .west,
         sceneHeight: CGFloat = 150,
         isActive: Bool = true,
+        tapBurst: Bool = false,
         @ViewBuilder caption: () -> Caption
     ) {
         self.regionID = regionID
         self.viewport = viewport
         self.sceneHeight = sceneHeight
         self.isActive = isActive
+        self.tapBurst = tapBurst
         self.caption = caption()
     }
 
@@ -374,6 +397,7 @@ public struct PuffSceneCard<Caption: View>: View {
             PuffCityScene(regionID: regionID, viewport: viewport, isActive: isActive)
                 .frame(height: sceneHeight)
                 .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.huge - 6, style: .continuous))
+                .puffTapBurst(isEnabled: tapBurst)
                 .padding([.horizontal, .top], 6)
             caption
                 .frame(maxWidth: .infinity, alignment: .leading)

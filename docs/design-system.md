@@ -21,6 +21,16 @@
   松手轻弹回来。小按钮用 `PuffSquishButtonStyle`，分组内的行用 `PuffRowButtonStyle`。
 - **灵动但可打断**：`Puff.Motion` 全部是弹簧。首屏用 `puffEntrance(index:isShown:)` 逐行错峰弹入，只播放一次；
   角标、星星用 `.puffPop`；展开内容用 `.puffDrop`。“减弱动态效果”时统一降级为短淡入淡出，逐帧动画暂停。
+- **点击手感**：三种按压样式自带软触感。厚卡片按下陷进唇边并缩到 98.5%；实心糖果按钮按下压扁、
+  松手按 `Puff.Motion.jelly` 晃两下；小按钮松手时里面的 SF Symbol 蹦一下（动作自己给触感时传
+  `PuffSquishButtonStyle(haptic: false)`）。未读角标数字变多时蹦一下。
+- **过渡**：标签切换在淡入的同时让新页面从下方 14pt 轻轻升起、弹簧回位；卡片进入详情用 iOS 18 缩放转场
+  （`puffZoomSource(id:in:)` 标记起点，目标页 `.navigationTransition(.zoom(...))`，活动页导航栈通过
+  `puffZoomNamespace` 环境值共享命名空间）。聊天、设置这类工作页保持标准推入，避免下拉关闭和滚动冲突。
+  打开会话后新产生的消息用 `puffArrival(isNew:anchor:)` 从发送方一侧弹出，历史消息原样显示。
+- **小惊喜**：城市明信片可开 `tapBurst`，点画面迸出糖果色星星和爱心（`puffTapBurst()`，不拦截原有点击）；
+  空状态等独立展示位置的咕咕、嘎嘎可开 `reactsToTap`，点一下蹲下、起跳、落地压扁并换个开心姿势。
+  按钮内部的吉祥物和画面不开，避免和导航抢手势。
 - **卡通代替实拍**：`PuffCityScene` 用 Canvas 程序化绘制 15 座城市的卡通全景（地标、河海、树、车船），
   按城市当地时间切换白天 / 黄昏 / 夜晚，大本钟指针显示当地时间。全景宽 720 单位，`viewport`
   取西、中、东段，让不同页面看到同一座城市的不同角度。卡片较矮时按高度缩放并向两侧多露全景，不裁掉尖顶。
@@ -44,7 +54,8 @@
 | `PuffAvatar` | 糖果色外圈头像，可带在线圆点 |
 | `PuffCountBadge` / `PuffTag` / `PuffIconBubble` | 未读数、状态标签、分组图标 |
 | `PuffFilterBar` | 横向胶囊筛选，选中态滑动切换 |
-| `PuffMascot` | 咕咕、嘎嘎吉祥物 |
+| `PuffMascot` | 咕咕、嘎嘎吉祥物，可选点击反应 |
+| `puffArrival` / `puffTapBurst` / `puffZoomSource` | 新内容弹出、点击迸发、缩放转场起点 |
 | `PuffEmptyState` / `PuffLoadingDots` | 空状态（配吉祥物）与加载 |
 | `PuffCity` | 城市中文名、当地时间与问候语 |
 

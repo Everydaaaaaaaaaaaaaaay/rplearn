@@ -21,7 +21,7 @@ public struct TicketStubsView: View {
 
             if stubs.isEmpty && !isLoading {
                 VStack(spacing: DSSpacing.sm) {
-                    BrandMascotView(pose: .guide, size: 152, showsShadow: false)
+                    BrandMascotView(pose: .guide, size: 152, showsShadow: false, reactsToTap: true)
                         .accessibilityHidden(true)
                     Text("还没有纪念票根")
                         .font(.title3.bold())

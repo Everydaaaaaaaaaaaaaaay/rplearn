@@ -124,9 +124,26 @@ final class TabSceneDissolveAnimator: NSObject, UIViewControllerAnimatedTransiti
             incoming.alpha = originalAlpha
         } completion: { _ in
             let completed = !context.transitionWasCancelled
-            if !completed { incoming.removeFromSuperview() }
+            if !completed {
+                incoming.removeFromSuperview()
+                incoming.transform = .identity
+            }
             incoming.alpha = originalAlpha
             context.completeTransition(completed)
+        }
+        guard !reduceMotion else { return }
+        // The incoming page also rises a few points and settles with a soft spring.
+        // The spring outlives the short dissolve on purpose: the transition completes
+        // with the dissolve, so tab selection stays as responsive as before.
+        incoming.transform = CGAffineTransform(translationX: 0, y: 14).scaledBy(x: 0.985, y: 0.985)
+        UIView.animate(
+            springDuration: 0.42,
+            bounce: 0.22,
+            initialSpringVelocity: 0,
+            delay: 0,
+            options: [.allowUserInteraction, .beginFromCurrentState]
+        ) {
+            incoming.transform = .identity
         }
     }
 }

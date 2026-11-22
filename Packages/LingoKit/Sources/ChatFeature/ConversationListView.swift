@@ -198,7 +198,7 @@ public struct ConversationListView: View {
     // MARK: - 明信片
 
     private var postcard: some View {
-        PuffSceneCard(regionID: currentRegionID, viewport: .west, sceneHeight: 150, isActive: isVisible) {
+        PuffSceneCard(regionID: currentRegionID, viewport: .west, sceneHeight: 150, isActive: isVisible, tapBurst: true) {
             TimelineView(.everyMinute) { context in
                 HStack(spacing: Puff.Space.s) {
                     VStack(alignment: .leading, spacing: 4) {

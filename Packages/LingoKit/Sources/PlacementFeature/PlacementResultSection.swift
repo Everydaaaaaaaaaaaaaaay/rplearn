@@ -11,7 +11,7 @@ extension PlacementTestView {
         if let result {
             ScrollView {
                 VStack(spacing: DSSpacing.lg) {
-                    BrandMascotView(pose: .celebrate, size: 104, showsShadow: true)
+                    BrandMascotView(pose: .celebrate, size: 104, showsShadow: true, reactsToTap: true)
                     VStack(spacing: 8) {
                         Text("测评完成").font(.subheadline.weight(.semibold)).foregroundStyle(Color.dsSkyDeep)
                         Text(result.hasSufficientEvidence ? result.difficultyLevel.displayName : "还需要一些作答信息")

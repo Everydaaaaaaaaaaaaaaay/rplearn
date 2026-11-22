@@ -46,25 +46,83 @@ public struct PuffMascot: View {
     private let pose: Pose
     private let size: CGFloat
     private let showsShadow: Bool
+    private let reactsToTap: Bool
+    @State private var reaction: Reaction?
+    @State private var bursts = PuffBurstQueue()
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    public init(_ bird: Bird, pose: Pose = .happy, size: CGFloat = 120, showsShadow: Bool = true) {
+    /// - Parameter reactsToTap: 点一下会蹲下、跳起、落地压扁，换个开心的姿势并迸出小星星。
+    ///   只在不处于按钮内部的独立展示位置开启。
+    public init(_ bird: Bird, pose: Pose = .happy, size: CGFloat = 120, showsShadow: Bool = true, reactsToTap: Bool = false) {
         self.bird = bird
         self.pose = pose
         self.size = size
         self.showsShadow = showsShadow
+        self.reactsToTap = reactsToTap
+    }
+
+    private struct Reaction: Equatable {
+        let start: Date
+        let pose: Pose
+        let count: Int
     }
 
     public var body: some View {
         TimelineView(.animation(minimumInterval: 1.0 / 30, paused: reduceMotion)) { timeline in
             let time = reduceMotion ? 1.2 : timeline.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 3_600)
+            let motion = reduceMotion ? (hop: CGFloat(0), squash: CGFloat(0))
+                : Self.hopMotion(elapsed: reaction.map { timeline.date.timeIntervalSince($0.start) } ?? -1)
             Canvas { context, canvasSize in
-                PuffMascotPainter(bird: bird, pose: pose, time: time, showsShadow: showsShadow)
-                    .draw(in: context, size: canvasSize)
+                PuffMascotPainter(
+                    bird: bird, pose: reaction?.pose ?? pose, time: time, showsShadow: showsShadow,
+                    hop: motion.hop, squash: motion.squash
+                )
+                .draw(in: context, size: canvasSize)
             }
         }
         .frame(width: size, height: size)
+        .overlay {
+            if !bursts.bursts.isEmpty {
+                PuffBurstLayer(bursts: bursts.bursts)
+            }
+        }
+        .contentShape(Rectangle())
+        .gesture(TapGesture().onEnded { react() }, including: reactsToTap ? .all : .subviews)
+        .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.7), trigger: reaction?.count ?? 0) { _, count in count > 0 }
+        .task(id: reaction?.count ?? 0) {
+            guard let current = reaction else { return }
+            try? await Task.sleep(for: .seconds(1.5))
+            bursts.pruneExpired()
+            if reaction == current { reaction = nil }
+        }
         .accessibilityHidden(true)
+    }
+
+    private func react() {
+        let count = (reaction?.count ?? 0) + 1
+        let choices: [Pose] = bird == .gugu ? [.celebrate, .wave, .proud] : [.celebrate, .care, .curious]
+        reaction = Reaction(start: .now, pose: choices[(count - 1) % choices.count], count: count)
+        if !reduceMotion {
+            bursts.add(at: CGPoint(x: size / 2, y: size * 0.24))
+        }
+    }
+
+    /// 蹲下蓄力 → 起跳拉长 → 落地压扁 → 站稳。`hop` 是离地高度（100 单位制），`squash` 正值压扁、负值拉长。
+    static func hopMotion(elapsed t: TimeInterval) -> (hop: CGFloat, squash: CGFloat) {
+        switch t {
+        case ..<0:
+            return (0, 0)
+        case ..<0.09:
+            return (0, CGFloat(t / 0.09) * 0.6)
+        case ..<0.47:
+            let phase = sin(.pi * (t - 0.09) / 0.38)
+            return (CGFloat(phase) * 11, CGFloat(-0.4 * phase))
+        case ..<0.72:
+            let phase = sin(.pi * (t - 0.47) / 0.25)
+            return (0, CGFloat(phase) * 0.75)
+        default:
+            return (0, 0)
+        }
     }
 }
 
@@ -74,6 +132,10 @@ struct PuffMascotPainter {
     let pose: PuffMascot.Pose
     let time: TimeInterval
     var showsShadow = true
+    /// 跳起的高度，单位与画布的 100 单位制相同。
+    var hop: CGFloat = 0
+    /// 正值压扁、负值拉长，以脚底为支点。
+    var squash: CGFloat = 0
 
     private struct Palette {
         let body: Color
@@ -142,13 +204,14 @@ struct PuffMascotPainter {
 
         // 地面影子随浮动变化。
         if showsShadow {
-            let shadowWidth = 24 - bob * 0.6
+            let shadowWidth = (24 - bob * 0.6) * (1 - hop / 30)
             context.fill(Path(ellipseIn: CGRect(x: 50 - shadowWidth, y: 92.5, width: shadowWidth * 2, height: 5)),
                          with: .color(palette.ink.opacity(0.1)))
         }
 
         var bodyContext = context
-        bodyContext.translateBy(x: 50, y: 92 + bob)
+        bodyContext.translateBy(x: 50, y: 92 + bob - hop)
+        bodyContext.scaleBy(x: 1 + squash * 0.14, y: 1 - squash * 0.14)
         bodyContext.rotate(by: .degrees(tilt))
         bodyContext.translateBy(x: -50, y: -92)
 

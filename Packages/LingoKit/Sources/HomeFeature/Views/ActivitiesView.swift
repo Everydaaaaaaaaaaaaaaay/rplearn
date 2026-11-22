@@ -93,7 +93,9 @@ public struct ActivitiesView: View {
                         journey.reset()
                         if completed { onCompleteOuting?() }
                     })
-                    .id(outing.archive.runID).transition(.opacity)
+                    .id(outing.archive.runID)
+                    // 像走进画面：外出页从略大的尺寸收拢淡入，返回时再轻轻放大淡出。
+                    .transition(reduceMotion ? .opacity : .opacity.combined(with: .scale(scale: 1.06)))
             } else if cityID == nil || contextError != nil {
                 VStack(spacing: 16) {
                     if let contextError {
@@ -106,7 +108,7 @@ public struct ActivitiesView: View {
                 .padding(28).background(.regularMaterial, in: RoundedRectangle(cornerRadius: 24))
             }
         }
-        .animation(DSSceneTransition.animation(reduceMotion: reduceMotion), value: journey.hasOpenOuting)
+        .animation(Puff.Motion.resolve(Puff.Motion.gentle, reduceMotion: reduceMotion), value: journey.hasOpenOuting)
         .onAppear { journey.setViewing(isVisible) }
         .onDisappear { journey.setViewing(false) }
         .onChange(of: isVisible) { _, visible in journey.setViewing(visible) }

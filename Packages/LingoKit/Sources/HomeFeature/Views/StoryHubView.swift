@@ -71,6 +71,7 @@ public struct StoryHubView: View {
                     )
                 }
                 .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.huge))
+                .puffZoomSource(id: HomeDestination.mainline, cornerRadius: Puff.Radius.huge)
                 .accessibilityIdentifier("story.mainline")
                 .puffEntrance(index: 0, isShown: hasEntered)
 
@@ -89,6 +90,7 @@ public struct StoryHubView: View {
                     )
                 }
                 .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.huge))
+                .puffZoomSource(id: HomeDestination.cityStories, cornerRadius: Puff.Radius.huge)
                 .accessibilityIdentifier("story.cities")
                 .puffEntrance(index: 1, isShown: hasEntered)
             }

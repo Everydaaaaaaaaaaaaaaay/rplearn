@@ -27,6 +27,7 @@ struct TravelSheet: View {
                 PuffCityScene(regionID: region.id, viewport: .west)
                     .frame(height: 118)
                     .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.large, style: .continuous))
+                    .puffTapBurst()
                 Text(region.flagEmoji)
                     .font(.system(size: 28))
                     .frame(width: 52, height: 52)

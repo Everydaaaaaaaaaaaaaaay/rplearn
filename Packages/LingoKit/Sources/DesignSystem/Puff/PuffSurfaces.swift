@@ -41,7 +41,7 @@ public extension View {
     }
 }
 
-/// 整张卡片都是按钮：按下时正面陷进唇边，松手时轻轻弹回。
+/// 整张卡片都是按钮：按下时正面陷进唇边、整体轻轻一缩并给一下软触感，松手时弹回。
 public struct PuffCardButtonStyle: ButtonStyle {
     private let radius: CGFloat
     private let face: Color
@@ -70,14 +70,16 @@ public struct PuffCardButtonStyle: ButtonStyle {
                 radius: radius, face: face, border: border, lip: lip,
                 lipHeight: lipHeight, pressed: configuration.isPressed
             ))
+            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.985 : 1)
             .animation(
                 reduceMotion ? nil : (configuration.isPressed ? Puff.Motion.press : Puff.Motion.release),
                 value: configuration.isPressed
             )
+            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.5), trigger: configuration.isPressed) { _, pressed in pressed }
     }
 }
 
-/// 实心糖果按钮：白字、彩色正面、深色唇边。
+/// 实心糖果按钮：白字、彩色正面、深色唇边。按下时压扁陷进唇边，松手像果冻一样晃回来。
 public struct PuffCandyButtonStyle: ButtonStyle {
     private let candy: PuffCandy
     private let radius: CGFloat
@@ -90,7 +92,8 @@ public struct PuffCandyButtonStyle: ButtonStyle {
     }
 
     public func makeBody(configuration: Configuration) -> some View {
-        configuration.label
+        let squashed = configuration.isPressed && !reduceMotion
+        return configuration.label
             .font(.puff(.headline, Puff.Weight.title))
             .foregroundStyle(.white)
             .padding(.horizontal, Puff.Space.l)
@@ -99,28 +102,51 @@ public struct PuffCandyButtonStyle: ButtonStyle {
                 radius: radius, face: candy.base, border: .clear, lip: candy.lip,
                 lipHeight: Puff.Lip.button, pressed: configuration.isPressed
             ))
+            .scaleEffect(x: squashed ? 1.03 : 1, y: squashed ? 0.95 : 1, anchor: .bottom)
             .opacity(isEnabled ? 1 : 0.5)
             .animation(
-                reduceMotion ? nil : (configuration.isPressed ? Puff.Motion.press : Puff.Motion.release),
+                reduceMotion ? nil : (configuration.isPressed ? Puff.Motion.press : Puff.Motion.jelly),
                 value: configuration.isPressed
             )
+            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.7), trigger: configuration.isPressed) { _, pressed in pressed }
     }
 }
 
-/// 图标、小胶囊等小按钮：按下时软软地缩一下，松手回弹。
+/// 图标、小胶囊等小按钮：按下时软软地缩一下，松手回弹，里面的图标顺势蹦一下。
 public struct PuffSquishButtonStyle: ButtonStyle {
     private let scale: CGFloat
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    private let haptic: Bool
 
-    public init(scale: CGFloat = 0.88) {
+    /// - Parameter haptic: 按钮动作自己会给触感（如筛选切换）时传 false，避免叠两次。
+    public init(scale: CGFloat = 0.88, haptic: Bool = true) {
         self.scale = scale
+        self.haptic = haptic
     }
 
     public func makeBody(configuration: Configuration) -> some View {
+        PuffSquishBody(configuration: configuration, scale: scale, haptic: haptic)
+    }
+}
+
+private struct PuffSquishBody: View {
+    let configuration: ButtonStyleConfiguration
+    let scale: CGFloat
+    let haptic: Bool
+    @State private var releases = 0
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
         configuration.label
+            .symbolEffect(.bounce.up, options: .nonRepeating, value: releases)
             .scaleEffect(configuration.isPressed && !reduceMotion ? scale : 1)
             .opacity(configuration.isPressed && reduceMotion ? 0.7 : 1)
             .animation(configuration.isPressed ? Puff.Motion.press : Puff.Motion.release, value: configuration.isPressed)
+            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.4), trigger: configuration.isPressed) { _, pressed in
+                haptic && pressed
+            }
+            .onChange(of: configuration.isPressed) { _, pressed in
+                if !pressed && !reduceMotion { releases += 1 }
+            }
     }
 }
 
@@ -191,5 +217,74 @@ public extension AnyTransition {
             insertion: .opacity.combined(with: .offset(y: -10)).combined(with: .scale(scale: 0.97, anchor: .top)),
             removal: .opacity.combined(with: .scale(scale: 0.98, anchor: .top))
         )
+    }
+}
+
+// MARK: - 新内容弹出
+
+private struct PuffArrivalModifier: ViewModifier {
+    let anchor: UnitPoint
+    let onArrive: () -> Void
+    @State private var isShown: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    init(isNew: Bool, anchor: UnitPoint, onArrive: @escaping () -> Void) {
+        self.anchor = anchor
+        self.onArrive = onArrive
+        _isShown = State(initialValue: !isNew)
+    }
+
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(isShown || reduceMotion ? 1 : 0.5, anchor: anchor)
+            .offset(y: isShown || reduceMotion ? 0 : 12)
+            .opacity(isShown ? 1 : 0)
+            .onAppear {
+                guard !isShown else { return }
+                onArrive()
+                withAnimation(Puff.Motion.resolve(Puff.Motion.arrival, reduceMotion: reduceMotion)) {
+                    isShown = true
+                }
+            }
+    }
+}
+
+public extension View {
+    /// 刚产生的内容（新消息、新卡片）从 `anchor` 处弹出来；历史内容原样显示。
+    /// 只改变绘制，不改变布局，因此不会扰动滚动位置。`onArrive` 在弹出开始时调用一次，
+    /// 供列表记住“已经播过”，避免懒加载行重新出现时重复播放。
+    func puffArrival(isNew: Bool, anchor: UnitPoint = .bottom, onArrive: @escaping () -> Void = {}) -> some View {
+        modifier(PuffArrivalModifier(isNew: isNew, anchor: anchor, onArrive: onArrive))
+    }
+}
+
+// MARK: - 缩放转场
+
+public extension EnvironmentValues {
+    /// 导航栈提供的缩放转场命名空间。页面用 `puffZoomSource` 标记起点，导航目标用同一个 id 缩放展开。
+    @Entry var puffZoomNamespace: Namespace.ID? = nil
+}
+
+private struct PuffZoomSourceModifier<ID: Hashable>: ViewModifier {
+    let id: ID
+    let namespace: Namespace.ID?
+    let cornerRadius: CGFloat
+    @Environment(\.puffZoomNamespace) private var environmentNamespace
+
+    func body(content: Content) -> some View {
+        if let namespace = namespace ?? environmentNamespace {
+            content.matchedTransitionSource(id: id, in: namespace) { source in
+                source.clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            }
+        } else {
+            content
+        }
+    }
+}
+
+public extension View {
+    /// 标记缩放转场的起点。未提供命名空间时读取导航栈注入的 `puffZoomNamespace`，都没有时不做任何事。
+    func puffZoomSource(id: some Hashable, in namespace: Namespace.ID? = nil, cornerRadius: CGFloat = Puff.Radius.large) -> some View {
+        modifier(PuffZoomSourceModifier(id: id, namespace: namespace, cornerRadius: cornerRadius))
     }
 }

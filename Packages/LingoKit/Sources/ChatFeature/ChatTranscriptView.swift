@@ -20,6 +20,15 @@ private struct ChatTranscriptBoundsKey: PreferenceKey {
 
 private let chatMessageInset: CGFloat = 12
 
+/// 记住已经播过弹出动画的消息，懒加载行滚回视野时不再重播。只在主线程读写，不触发界面刷新。
+@MainActor
+private final class ChatArrivalLedger {
+    private var ids: Set<UUID> = []
+
+    func contains(_ id: UUID) -> Bool { ids.contains(id) }
+    func insert(_ id: UUID) { ids.insert(id) }
+}
+
 /// Owns conversation scrolling and bubble interaction independently of draft editing.
 struct ChatTranscriptView: View {
     let viewModel: ChatViewModel
@@ -40,6 +49,9 @@ struct ChatTranscriptView: View {
     @State private var followsConversationBottom = true
     @State private var unseenIncomingMessageCount = 0
     @State private var knownLatestMessageID: UUID?
+    /// 打开会话之后才产生的消息会从发送方一侧弹出来；历史消息原样显示。
+    @State private var openedAt = Date.now
+    @State private var arrivals = ChatArrivalLedger()
     @State var transcriptVisibleMessageIDs: Set<UUID> = []
     @State var bubbleMenuFrame: CGRect = .zero
     @State var bubbleMenuSize = CGSize(width: 224, height: 200)
@@ -75,6 +87,11 @@ struct ChatTranscriptView: View {
                                 .padding(.horizontal, chatMessageInset)
                         }
                         messageRow(message, at: index)
+                            .puffArrival(
+                                isNew: message.createdAt > openedAt && !arrivals.contains(message.id),
+                                anchor: message.role == .user ? .bottomTrailing : .bottomLeading,
+                                onArrive: { arrivals.insert(message.id) }
+                            )
                             .id(message.id)
                             .accessibilityElement(children: .contain)
                             .accessibilityIdentifier(message.id == viewModel.messages.last?.id ? "chat.message.latest" : "chat.message.\(message.id)")
@@ -115,6 +132,7 @@ struct ChatTranscriptView: View {
                         ) {
                             TypingIndicator()
                         }
+                        .puffArrival(isNew: true, anchor: .bottomLeading)
                         .id("streaming")
                         .padding(.top, streamingTopSpacing)
                         .padding(.horizontal, chatMessageInset)

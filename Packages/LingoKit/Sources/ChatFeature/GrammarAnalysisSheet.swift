@@ -205,7 +205,7 @@ struct GrammarAnalysisSheet: View {
             }
         } else if model.isLoading {
             VStack(spacing: 12) {
-                BrandMascotView(pose: .coach, size: 104, showsShadow: false)
+                BrandMascotView(pose: .coach, size: 104, showsShadow: false, reactsToTap: true)
                 ProgressView("嘎嘎正在分析句子…")
                     .font(.subheadline)
                 Text("正在调用 AI 对整句进行独立解析")

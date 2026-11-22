@@ -136,6 +136,10 @@ public extension Puff {
         public static let bouncy = Animation.spring(response: 0.46, dampingFraction: 0.72)
         /// 大块内容的平稳过渡。
         public static let gentle = Animation.spring(response: 0.5, dampingFraction: 0.9)
+        /// 实心按钮松手后像果冻一样晃两下。
+        public static let jelly = Animation.spring(response: 0.42, dampingFraction: 0.42)
+        /// 新消息、新卡片从锚点弹出来。
+        public static let arrival = Animation.spring(response: 0.38, dampingFraction: 0.62)
 
         /// 列表首次出现时逐行错峰进入。
         public static func entrance(_ index: Int) -> Animation {

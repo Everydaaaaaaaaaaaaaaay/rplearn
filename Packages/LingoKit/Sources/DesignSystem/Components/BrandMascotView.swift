@@ -92,19 +92,22 @@ public struct BrandMascotView: View {
     private let pose: BrandMascotPose
     private let size: CGFloat
     private let showsShadow: Bool
+    private let reactsToTap: Bool
 
     public init(
         pose: BrandMascotPose,
         size: CGFloat,
-        showsShadow: Bool = true
+        showsShadow: Bool = true,
+        reactsToTap: Bool = false
     ) {
         self.pose = pose
         self.size = size
         self.showsShadow = showsShadow
+        self.reactsToTap = reactsToTap
     }
 
     public var body: some View {
-        PuffMascot(pose.puffBird, pose: pose.puffPose, size: size, showsShadow: showsShadow)
+        PuffMascot(pose.puffBird, pose: pose.puffPose, size: size, showsShadow: showsShadow, reactsToTap: reactsToTap)
             .accessibilityElement()
             .accessibilityLabel(pose.accessibilityLabel)
             .accessibilityAddTraits(.isImage)

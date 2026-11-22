@@ -20,6 +20,7 @@ public struct MapView: View {
     @State private var showsTicketStubsPreview = false
     @State private var viewportRevision = 0
     @State private var viewportRequest: MapViewportRequest?
+    @Namespace private var zoomNamespace
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
@@ -70,6 +71,7 @@ public struct MapView: View {
             case .ticketStubs:
                 TicketStubsView(stubStore: deps.stubStore, regionCatalog: deps.regionCatalog)
                     .dsTabBarHidden()
+                    .navigationTransition(.zoom(sourceID: MapDestination.ticketStubs, in: zoomNamespace))
             }
         }
         .navigationDestination(isPresented: $showsTicketStubsPreview) {
@@ -199,6 +201,7 @@ public struct MapView: View {
                 .contentShape(Rectangle())
             }
             .buttonStyle(.puffSquish)
+            .puffZoomSource(id: MapDestination.ticketStubs, in: zoomNamespace, cornerRadius: 22)
             .accessibilityLabel("票根夹")
         }
         .frame(height: 54)

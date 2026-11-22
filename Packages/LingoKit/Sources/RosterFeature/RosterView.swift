@@ -39,6 +39,7 @@ public struct RosterView: View {
     @State private var didFinishTravelerLookup = false
     @State private var expandedSections = Set(ContactSection.allCases)
     @State private var selectedContact: CharacterDTO?
+    @Namespace private var profileZoom
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
@@ -196,7 +197,8 @@ public struct RosterView: View {
             regionID: profile?.currentRegionID,
             viewport: .east,
             sceneHeight: 140,
-            isActive: isVisible
+            isActive: isVisible,
+            tapBurst: true
         ) {
             HStack(alignment: .center, spacing: Puff.Space.s) {
                 VStack(alignment: .leading, spacing: 4) {
@@ -432,6 +434,7 @@ public struct RosterView: View {
             )
         }
         .buttonStyle(.puffRow)
+        .puffZoomSource(id: character.id, in: profileZoom, cornerRadius: Puff.Radius.medium)
         .accessibilityHint("打开联系人详情")
     }
 
@@ -450,6 +453,7 @@ public struct RosterView: View {
             chatBuilder: chatBuilder,
             callBuilder: callBuilder
         )
+        .navigationTransition(.zoom(sourceID: character.id, in: profileZoom))
     }
 
     private var emptyState: some View {
