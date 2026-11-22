@@ -1,3 +1,4 @@
+import DesignSystem
 import BackendKit
 import SwiftUI
 
@@ -59,7 +60,7 @@ struct LearningAudioMatchingControls: View {
                 }.frame(minHeight: 28).foregroundStyle(result.map { $0.correct ? Color.green : Color.red } ?? tint)
             }.frame(maxWidth: .infinity).padding(12)
                 .background(selected ? tint.opacity(0.08) : Color.clear)
-                .overlay(Rectangle().strokeBorder(selected ? tint : Color.secondary.opacity(0.25), lineWidth: selected ? 2 : 1))
+                .overlay(Rectangle().strokeBorder(selected ? tint : Puff.Palette.line, lineWidth: selected ? 2 : 1))
                 .contentShape(Rectangle())
         }.buttonStyle(.plain).disabled(feedback != nil)
             .accessibilityLabel([option.text, option.caption].compactMap { $0 }.joined(separator: "，"))

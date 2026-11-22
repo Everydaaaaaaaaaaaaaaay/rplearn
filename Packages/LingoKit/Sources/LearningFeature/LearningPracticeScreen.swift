@@ -42,6 +42,7 @@ struct LearningPracticeScreen: View {
             }
         }
         .background(PracticePaper.canvas.ignoresSafeArea())
+        .fontDesign(.rounded)
         .tint(PracticePaper.accent)
         .toolbar(.hidden, for: .navigationBar)
         .onChange(of: scenePhase) { _, phase in if phase != .active { model.save() } }
@@ -173,7 +174,7 @@ struct LearningPracticeScreen: View {
         .background(PracticePaper.sheet, in: UnevenRoundedRectangle(topLeadingRadius: 24, topTrailingRadius: 24))
         .overlay(alignment: .top) {
             UnevenRoundedRectangle(topLeadingRadius: 24, topTrailingRadius: 24)
-                .strokeBorder(Color.primary.opacity(0.07)).allowsHitTesting(false)
+                .strokeBorder(Puff.Palette.line).allowsHitTesting(false)
         }
         .clipped()
     }
@@ -247,7 +248,7 @@ struct LearningPracticeScreen: View {
                 if selected { Image(systemName: "checkmark").font(.caption.weight(.semibold)).foregroundStyle(PracticePaper.accent) }
             }.padding(.horizontal, 14).padding(.vertical, 10).frame(maxWidth: .infinity, minHeight: 48, alignment: .leading)
                 .background(selected ? PracticePaper.accent.opacity(0.09) : Color.clear, in: RoundedRectangle(cornerRadius: 14))
-                .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(selected ? PracticePaper.accent.opacity(0.5) : Color.primary.opacity(0.10)))
+                .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(selected ? PracticePaper.accent.opacity(0.5) : Puff.Palette.line))
                 .contentShape(RoundedRectangle(cornerRadius: 14))
         }.buttonStyle(.plain).accessibilityAddTraits(selected ? .isSelected : [])
             .disabled(model.isBusy || model.hasUnconfirmedAnswer || model.isLocked(model.question) || (previous.map { model.isLocked(model.section.questions[$0]) } ?? false))

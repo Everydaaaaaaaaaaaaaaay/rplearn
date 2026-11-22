@@ -72,7 +72,7 @@ struct LearningReadingPane: View {
         }
         .padding(.horizontal, 24)
         .frame(maxWidth: 728).frame(maxWidth: .infinity)
-        .background(Color.dsSurface)
+        .background(Puff.Palette.card)
         .onChange(of: question.id, initial: true) { _, _ in
             // Explicit article ownership advances the reader. Cross-text questions
             // retain the article the learner chose, without guessing an answer.
@@ -98,7 +98,7 @@ struct LearningReadingPane: View {
                         }.padding(24).frame(maxWidth: 728).frame(maxWidth: .infinity)
                     }.id(showsOriginal ? "original" : selectionKey)
                 }
-                .background(Color.dsBackground)
+                .background(Puff.Palette.page)
                 .navigationTitle(showsOriginal ? "完整材料" : title)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -123,7 +123,7 @@ struct LearningReadingPane: View {
                         Button { selectedID = item.id } label: {
                             Text(item.id == "whole" ? "正文" : (item.id.hasPrefix("candidate.") ? item.title : item.id)).font(.subheadline.weight(.semibold))
                                 .padding(.horizontal, 16).frame(minHeight: 44)
-                                .background(!showsImages && section?.id == item.id ? Color.accentColor.opacity(0.12) : Color.clear,
+                                .background(!showsImages && section?.id == item.id ? PuffCandy.sky.wash : Color.clear,
                                             in: RoundedRectangle(cornerRadius: 12))
                         }.accessibilityLabel(item.title)
                             .accessibilityAddTraits(!showsImages && section?.id == item.id ? [.isSelected] : [])
@@ -133,7 +133,7 @@ struct LearningReadingPane: View {
                         Button { selectedID = "images" } label: {
                             Label("图片 · \(assets.count)", systemImage: "photo")
                                 .font(.subheadline.weight(.semibold)).padding(.horizontal, 14).frame(minHeight: 44)
-                                .background(showsImages ? Color.accentColor.opacity(0.12) : Color.clear,
+                                .background(showsImages ? PuffCandy.sky.wash : Color.clear,
                                             in: RoundedRectangle(cornerRadius: 12))
                         }.accessibilityLabel("查看题目图片，共 \(assets.count) 张")
                             .accessibilityAddTraits(showsImages ? [.isSelected] : [])

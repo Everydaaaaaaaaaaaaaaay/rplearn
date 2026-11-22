@@ -3,12 +3,13 @@ import PersistenceKit
 import SwiftUI
 
 // Shared by whole-passage practice and the remaining listening / short-question flows.
+/// 任务式练习的配色：与蓬蓬设计一致的白底、卡片和薄荷色强调。
 enum PracticePaper {
-    static let canvas = Color(uiColor: UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.10, green: 0.12, blue: 0.11, alpha: 1) : UIColor(red: 0.96, green: 0.95, blue: 0.92, alpha: 1) })
-    static let sheet = Color(uiColor: UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.14, green: 0.16, blue: 0.15, alpha: 1) : UIColor(red: 1, green: 0.995, blue: 0.98, alpha: 1) })
-    static let accent = Color(uiColor: UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.65, green: 0.79, blue: 0.70, alpha: 1) : UIColor(red: 0.25, green: 0.39, blue: 0.32, alpha: 1) })
-    static let incorrect = Color(uiColor: UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 1, green: 0.48, blue: 0.48, alpha: 1) : UIColor(red: 0.72, green: 0.15, blue: 0.20, alpha: 1) })
-    static let correct = Color(uiColor: UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.48, green: 0.81, blue: 0.59, alpha: 1) : UIColor(red: 0.16, green: 0.43, blue: 0.27, alpha: 1) })
+    static let canvas = Puff.Palette.page
+    static let sheet = Puff.Palette.card
+    static let accent = PuffCandy.mint.deep
+    static let incorrect = PuffCandy.bubblegum.deep
+    static let correct = PuffCandy.mint.deep
 }
 
 struct PracticeCompanionHeader: View {
@@ -80,6 +81,7 @@ struct PracticeCoverPage<Accessory: View>: View {
                 }.scrollIndicators(.hidden)
             }
         }.background(PracticePaper.canvas.ignoresSafeArea())
+        .fontDesign(.rounded)
     }
 }
 
@@ -148,6 +150,7 @@ struct PracticeSummaryPage: View {
                 .accessibilityIdentifier("practice.finish")
                 .padding(.horizontal, 28).padding(.top, 12).padding(.bottom, 16).frame(maxWidth: 600)
         }.background(PracticePaper.canvas.ignoresSafeArea())
+        .fontDesign(.rounded)
     }
 
     private func reviewCard(_ item: PracticeReviewItem, opensDetail: Bool) -> some View {
@@ -183,7 +186,7 @@ private struct PracticeBookendClose: View {
         HStack {
             Button(action: action) {
                 Image(systemName: "xmark").font(.system(size: 14, weight: .medium)).frame(width: 44, height: 44)
-                    .background(Color.primary.opacity(0.045), in: Circle())
+                    .background(Puff.Palette.cloud, in: Circle())
             }.buttonStyle(.plain).accessibilityLabel("关闭练习")
             Spacer()
         }.padding(.horizontal, 22).padding(.top, 8)

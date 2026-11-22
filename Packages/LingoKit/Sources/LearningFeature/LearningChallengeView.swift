@@ -100,7 +100,7 @@ public struct LearningChallengeView: View {
         }
         .safeAreaInset(edge: .top, spacing: 0) {
             VStack(spacing: 0) {
-                topBar.background(.regularMaterial)
+                topBar.background(Puff.Palette.page)
                 if let question = model.question, readingPlan(question).usesPane {
                     LearningReadingPane(plan: readingPlan(question), question: question, pictures: pictures,
                         height: materialHeight, keyboardFocused: inputFocused, dismissKeyboard: { inputFocused = false })
@@ -108,7 +108,8 @@ public struct LearningChallengeView: View {
             }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) { bottomBar }
-        .background(Color.dsBackground).tint(theme.tint)
+        .background(Puff.Palette.page).tint(theme.tint)
+        .fontDesign(.rounded)
         .interactiveDismissDisabled()
         .confirmationDialog("离开本次挑战？", isPresented: $showsExit, titleVisibility: .visible) {
             Button("保存进度，稍后继续") { dismiss() }
@@ -367,7 +368,7 @@ public struct LearningChallengeView: View {
             TextField("在这里输入英文", text: $model.text, axis: .vertical)
                 .font(.title3).lineLimit(2...5).textInputAutocapitalization(.never).autocorrectionDisabled()
                 .keyboardType(.asciiCapable).focused($inputFocused).padding(20)
-                .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: 18))
+                .background(Puff.Palette.card, in: RoundedRectangle(cornerRadius: 18))
                 .overlay { RoundedRectangle(cornerRadius: 18).stroke(theme.tint.opacity(0.35)) }
                 .accessibilityLabel("填写答案")
         case .listeningCompletion:
@@ -444,7 +445,7 @@ public struct LearningChallengeView: View {
                                 .foregroundStyle(isCurrent ? Color.white : theme.tint)
                                 .background(isCurrent ? theme.tint : theme.tint.opacity(paired ? 0.14 : 0.04), in: Circle())
                                 .overlay(alignment: .bottomTrailing) {
-                                    if paired { Image(systemName: "link.circle.fill").font(.system(size: 12)).symbolRenderingMode(.palette).foregroundStyle(theme.tint, Color.dsBackground) }
+                                    if paired { Image(systemName: "link.circle.fill").font(.system(size: 12)).symbolRenderingMode(.palette).foregroundStyle(theme.tint, Puff.Palette.page) }
                                 }
                         }.buttonStyle(LearningPressStyle())
                             .accessibilityLabel("第 \(index + 1) 项")
@@ -489,7 +490,7 @@ public struct LearningChallengeView: View {
                                     .font(.system(size: 18)).foregroundStyle(selected ? theme.tint : Color.secondary)
                             }
                         }.padding(14).frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
-                            .background(selected ? theme.tint.opacity(0.08) : Color.dsSurface, in: RoundedRectangle(cornerRadius: 10))
+                            .background(selected ? theme.tint.opacity(0.08) : Puff.Palette.card, in: RoundedRectangle(cornerRadius: 10))
                             .overlay { RoundedRectangle(cornerRadius: 10).strokeBorder(selected ? theme.tint : Color.primary.opacity(0.1), lineWidth: selected ? 2 : 1) }
                     }.buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
                         .accessibilityLabel(option.text)
@@ -512,7 +513,7 @@ public struct LearningChallengeView: View {
                 }
             }.padding(16).frame(maxWidth: .infinity, minHeight: 58, alignment: .leading)
                 .foregroundStyle(model.choice == option.id ? theme.tint : Color.primary)
-                .background(model.choice == option.id ? theme.tint.opacity(0.09) : Color.dsSurface, in: RoundedRectangle(cornerRadius: 18))
+                .background(model.choice == option.id ? theme.tint.opacity(0.09) : Puff.Palette.card, in: RoundedRectangle(cornerRadius: 18))
                 .overlay { RoundedRectangle(cornerRadius: 18).stroke(model.choice == option.id ? theme.tint : Color.primary.opacity(0.08), lineWidth: model.choice == option.id ? 2 : 1) }
         }.buttonStyle(LearningPressStyle())
             .accessibilityLabel(displayOption(option))
@@ -539,8 +540,8 @@ public struct LearningChallengeView: View {
     private func tokenButton(_ text: String, selected: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) { Text(text).font(.body.weight(.medium)).padding(.horizontal, 15).padding(.vertical, 13)
                 .foregroundStyle(selected ? theme.tint : Color.primary)
-                .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: 12))
-                .overlay { RoundedRectangle(cornerRadius: 12).strokeBorder(selected ? theme.tint.opacity(0.5) : Color.primary.opacity(0.12)) }
+                .background(Puff.Palette.card, in: RoundedRectangle(cornerRadius: 12))
+                .overlay { RoundedRectangle(cornerRadius: 12).strokeBorder(selected ? theme.tint.opacity(0.5) : Puff.Palette.line) }
         }.buttonStyle(LearningPressStyle())
     }
     private func matchingButton(_ option: LearningOption, number: Int?, selected: Bool, paired: Bool, action: @escaping () -> Void) -> some View {
@@ -550,7 +551,7 @@ public struct LearningChallengeView: View {
                 if option.imageAssetId != nil { optionPicture(option).frame(height: 132) }
                 else { Text(option.text).font(.subheadline.weight(.medium)).multilineTextAlignment(.leading) }
             }.padding(15).frame(maxWidth: .infinity, minHeight: 78, alignment: .leading)
-                .background(paired ? theme.tint.opacity(0.09) : Color.dsSurface, in: RoundedRectangle(cornerRadius: 15))
+                .background(paired ? theme.tint.opacity(0.09) : Puff.Palette.card, in: RoundedRectangle(cornerRadius: 15))
                 .overlay { RoundedRectangle(cornerRadius: 15).strokeBorder(selected ? theme.tint : Color.primary.opacity(0.08), lineWidth: selected ? 2 : 1) }
         }.buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
             .accessibilityLabel(option.text)
@@ -614,7 +615,7 @@ public struct LearningChallengeView: View {
                 }
             }
         }.padding(.horizontal, 24).padding(.top, 16).padding(.bottom, 12).frame(maxWidth: 680).frame(maxWidth: .infinity)
-            .background(.regularMaterial)
+            .background(Puff.Palette.page.overlay(alignment: .top) { Rectangle().fill(Puff.Palette.line).frame(height: 1) })
     }
     private var skipQuestionButton: some View {
         Button { inputFocused = false; audio.stop(); audioOptions.stop(); Task { await model.submit(skip: true) } } label: {
@@ -716,7 +717,7 @@ struct LearningGroupMaterial: View {
                                         Text(rows[row][column]).font(.subheadline)
                                             .frame(minWidth: 90, maxWidth: 180, alignment: .leading)
                                             .padding(10)
-                                            .background(row.isMultiple(of: 2) ? Color.secondary.opacity(0.08) : Color.clear)
+                                            .background(row.isMultiple(of: 2) ? Puff.Palette.cloud : Color.clear)
                                     }
                                 }
                             }

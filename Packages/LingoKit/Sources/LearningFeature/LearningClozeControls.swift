@@ -67,8 +67,8 @@ struct LearningClozeControls: View {
                         Text(token.text).font(.body.weight(.medium))
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.horizontal, 16).padding(.vertical, 10).frame(minHeight: 44)
-                            .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: 8))
-                            .overlay { RoundedRectangle(cornerRadius: 8).strokeBorder(Color.primary.opacity(0.14)) }
+                            .background(Puff.Palette.card, in: RoundedRectangle(cornerRadius: 8))
+                            .overlay { RoundedRectangle(cornerRadius: 8).strokeBorder(Puff.Palette.line) }
                     }.buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
                         .disabled(used).opacity(used ? 0.25 : 1)
                         .accessibilityLabel(token.text)

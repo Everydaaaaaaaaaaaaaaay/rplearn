@@ -51,7 +51,7 @@ struct LearningDirectionPicker: View {
                     }
                 }.padding(.horizontal, 20).padding(.top, 8)
             }
-            .background(Color.dsBackground)
+            .background(Puff.Palette.page)
             .navigationTitle("练习方向").navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
