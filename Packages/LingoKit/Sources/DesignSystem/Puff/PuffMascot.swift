@@ -68,18 +68,9 @@ public struct PuffMascot: View {
     }
 
     public var body: some View {
-        TimelineView(.animation(minimumInterval: 1.0 / 30, paused: reduceMotion)) { timeline in
-            let time = reduceMotion ? 1.2 : timeline.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 3_600)
-            let motion = reduceMotion ? (hop: CGFloat(0), squash: CGFloat(0))
-                : Self.hopMotion(elapsed: reaction.map { timeline.date.timeIntervalSince($0.start) } ?? -1)
-            Canvas { context, canvasSize in
-                PuffMascotPainter(
-                    bird: bird, pose: reaction?.pose ?? pose, time: time, showsShadow: showsShadow,
-                    hop: motion.hop, squash: motion.squash
-                )
-                .draw(in: context, size: canvasSize)
-            }
-        }
+        PuffMascotCanvas(
+            bird: bird, pose: reaction?.pose ?? pose, showsShadow: showsShadow, reactionStart: reaction?.start
+        )
         .frame(width: size, height: size)
         .overlay {
             if !bursts.bursts.isEmpty {
@@ -123,6 +114,35 @@ public struct PuffMascot: View {
         default:
             return (0, 0)
         }
+    }
+}
+
+/// 吉祥物的逐帧绘制。页面不可见、App 不在前台或减弱动态效果时暂停；绘制在后台线程完成，
+/// 页面上的吉祥物不再每秒 30 次占用主线程。
+private struct PuffMascotCanvas: View {
+    let bird: PuffMascot.Bird
+    let pose: PuffMascot.Pose
+    let showsShadow: Bool
+    let reactionStart: Date?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var isOnScreen = false
+
+    var body: some View {
+        TimelineView(.animation(minimumInterval: 1.0 / 30, paused: reduceMotion || !isOnScreen || scenePhase != .active)) { timeline in
+            let time = reduceMotion ? 1.2 : timeline.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 3_600)
+            let motion = reduceMotion ? (hop: CGFloat(0), squash: CGFloat(0))
+                : PuffMascot.hopMotion(elapsed: reactionStart.map { timeline.date.timeIntervalSince($0) } ?? -1)
+            Canvas(rendersAsynchronously: true) { context, canvasSize in
+                PuffMascotPainter(
+                    bird: bird, pose: pose, time: time, showsShadow: showsShadow,
+                    hop: motion.hop, squash: motion.squash
+                )
+                .draw(in: context, size: canvasSize)
+            }
+        }
+        .onAppear { isOnScreen = true }
+        .onDisappear { isOnScreen = false }
     }
 }
 

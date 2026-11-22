@@ -68,10 +68,32 @@ struct PuffPlaceSceneCanvas: View {
 
     var body: some View {
         ZStack {
-            Canvas { context, size in draw(.back, context, size, time: fixedTime ?? 0) }
+            staticLayer(.back)
             animated(.backMotion)
-            Canvas { context, size in draw(.front, context, size, time: fixedTime ?? 0) }
+            staticLayer(.front)
             animated(.frontMotion)
+        }
+    }
+
+    private struct StaticKey: Equatable {
+        let recipeID: String
+        let kind: PuffPlaceScene.Kind
+        let seed: Int
+        let layer: Layer
+        let mood: PuffSceneMood
+        let clock: DateComponents
+    }
+
+    /// 静态层与暂停状态无关，只在地点、时段或当地时间变化时在后台重画，见 `PuffStaticCanvas`。
+    @ViewBuilder
+    private func staticLayer(_ layer: Layer) -> some View {
+        if let fixedTime {
+            Canvas { context, size in draw(layer, context, size, time: fixedTime) }
+        } else {
+            PuffStaticCanvas(key: StaticKey(recipeID: recipe.id, kind: kind, seed: seed, layer: layer, mood: mood, clock: clock)) { context, size in
+                draw(layer, context, size, time: 0)
+            }
+            .equatable()
         }
     }
 

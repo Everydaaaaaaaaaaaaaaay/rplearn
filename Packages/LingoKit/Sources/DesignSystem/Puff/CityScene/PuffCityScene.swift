@@ -80,10 +80,30 @@ struct PuffCitySceneCanvas: View {
 
     var body: some View {
         ZStack {
-            Canvas { context, size in draw(.back, context, size, time: fixedTime ?? 0) }
+            staticLayer(.back)
             animatedLayer(.backMotion)
-            Canvas { context, size in draw(.front, context, size, time: fixedTime ?? 0) }
+            staticLayer(.front)
             animatedLayer(.frontMotion)
+        }
+    }
+
+    private struct StaticKey: Equatable {
+        let recipeID: String
+        let layer: PuffCityRecipe.Layer
+        let mood: PuffSceneMood
+        let clock: DateComponents
+        let viewport: PuffCityScene.Viewport
+    }
+
+    @ViewBuilder
+    private func staticLayer(_ layer: PuffCityRecipe.Layer) -> some View {
+        if let fixedTime {
+            Canvas { context, size in draw(layer, context, size, time: fixedTime) }
+        } else {
+            PuffStaticCanvas(key: StaticKey(recipeID: recipe.id, layer: layer, mood: mood, clock: clock, viewport: viewport)) { context, size in
+                draw(layer, context, size, time: 0)
+            }
+            .equatable()
         }
     }
 
@@ -131,4 +151,25 @@ struct PuffCitySceneCanvas: View {
 
     /// 最高的地标顶到全景顶部约 4 个单位，保证尖顶完整。
     private static let requiredHeight: CGFloat = 176
+}
+
+/// 只在 `key` 变化时重画、并在后台线程绘制的静态画布。
+///
+/// 场景的暂停状态会在页面出现、离开、切到后台时变化，若静态层跟着重画，整幅全景就会在推入、返回、
+/// 切换标签的那一帧同步画在主线程上，让按钮反馈和转场掉帧。静态层只取决于 `key`，用 `.equatable()`
+/// 挡住无关更新；绘制放到后台线程，首次出现最多晚一帧。
+struct PuffStaticCanvas<Key: Equatable & Sendable>: View, Equatable {
+    let key: Key
+    let draw: (GraphicsContext, CGSize) -> Void
+
+    init(key: Key, draw: @escaping (GraphicsContext, CGSize) -> Void) {
+        self.key = key
+        self.draw = draw
+    }
+
+    nonisolated static func == (lhs: Self, rhs: Self) -> Bool { lhs.key == rhs.key }
+
+    var body: some View {
+        Canvas(rendersAsynchronously: true) { context, size in draw(context, size) }
+    }
 }
