@@ -21,71 +21,59 @@ public struct DSActionButtonStyle: ButtonStyle {
         self.compact = compact
     }
 
+    @Environment(\.isEnabled) private var isEnabled
+
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(compact ? .subheadline : .body, design: .rounded, weight: .bold))
+            .font(.puff(compact ? .subheadline : .headline, Puff.Weight.emphasis))
             .foregroundStyle(foreground)
             .padding(.horizontal, compact ? 14 : 18)
             .frame(maxWidth: fullWidth ? .infinity : nil)
             .frame(minHeight: compact ? 38 : 50)
-            .background {
-                RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
-                    .fill(fill)
-            }
-            .overlay {
-                RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
-                    .stroke(border, lineWidth: borderWidth)
-            }
-            .shadow(
-                color: shadow,
-                radius: configuration.isPressed ? 2 : 8,
-                y: configuration.isPressed ? 1 : 3
-            )
-            .scaleEffect(reduceMotion || !configuration.isPressed ? 1 : 0.985)
-            .opacity(configuration.isPressed ? 0.92 : 1)
-            .animation(reduceMotion ? nil : DSAnimation.feedback, value: configuration.isPressed)
+            .modifier(PuffChunkyBackground(
+                radius: compact ? Puff.Radius.small : Puff.Radius.medium,
+                face: face, border: border, lip: lip,
+                lipHeight: compact ? Puff.Lip.chip : Puff.Lip.button,
+                pressed: configuration.isPressed
+            ))
+            .opacity(isEnabled ? 1 : 0.5)
+            .animation(reduceMotion ? nil : (configuration.isPressed ? Puff.Motion.press : Puff.Motion.release),
+                       value: configuration.isPressed)
     }
 
-    private var fill: Color {
+    /// 蓬蓬配色：实心糖果按钮带深色唇边，次要按钮是带描边的白卡片。
+    private var face: Color {
         switch variant {
-        case .primary: .dsSky
+        case .primary: PuffCandy.sky.base
         case .tinted(let color): color
-        case .secondary: .dsSurfaceMuted
-        case .glass: .white.opacity(0.14)
-        case .destructive: .dsDanger
+        case .secondary: Puff.Palette.card
+        case .glass: .white.opacity(0.18)
+        case .destructive: Puff.Palette.cherry
+        }
+    }
+
+    private var lip: Color {
+        switch variant {
+        case .primary: PuffCandy.sky.lip
+        case .tinted(let color): color.mix(with: .black, by: 0.22)
+        case .secondary: Puff.Palette.lip
+        case .glass: .clear
+        case .destructive: Puff.Palette.cherry.mix(with: .black, by: 0.22)
         }
     }
 
     private var foreground: Color {
         switch variant {
-        case .primary, .tinted, .destructive: .white
-        case .secondary: .primary
-        case .glass: .white
+        case .primary, .tinted, .destructive, .glass: .white
+        case .secondary: Puff.Palette.ink
         }
     }
 
     private var border: Color {
         switch variant {
-        case .secondary: .dsBorder
+        case .secondary: Puff.Palette.line
         case .glass: .white.opacity(0.34)
-        default: .white.opacity(0.12)
-        }
-    }
-
-    private var borderWidth: CGFloat {
-        switch variant {
-        case .secondary, .glass: 1
-        default: 0.5
-        }
-    }
-
-    private var shadow: Color {
-        switch variant {
-        case .primary: Color.dsSky.opacity(0.2)
-        case .tinted(let color): color.opacity(0.18)
-        case .destructive: Color.dsDanger.opacity(0.18)
-        case .secondary: .black.opacity(0.035)
-        case .glass: .black.opacity(0.08)
+        default: .clear
         }
     }
 }

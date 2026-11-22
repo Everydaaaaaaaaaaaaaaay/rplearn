@@ -54,7 +54,7 @@ struct HomeStatusBar: View {
                 .minimumScaleFactor(0.75)
 
                 Text(region.nameZh)
-                    .font(.system(.title2, design: .rounded, weight: .heavy))
+                    .font(.system(.title2, design: .rounded, weight: .bold))
                     .foregroundStyle(primaryForeground)
                     .lineLimit(1)
                     .minimumScaleFactor(0.82)

@@ -247,11 +247,6 @@ public struct PlacementTestView: View {
                         .font(.system(.title2, design: .rounded, weight: .bold))
                         .foregroundStyle(Color.dsPaperInk)
                         .multilineTextAlignment(.center)
-                    Text("从基础开始测一测，找到适合现在的学习起点。")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.dsPaperInkSecondary)
-                        .multilineTextAlignment(.center)
-                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .placementPaperPanel()
 
@@ -269,14 +264,9 @@ public struct PlacementTestView: View {
                         VStack(alignment: .leading, spacing: DSSpacing.sm) {
                             HStack(spacing: DSSpacing.md) {
                                 DSObsidianMedallion(systemImage: "safari", size: 58)
-                                VStack(alignment: .leading, spacing: 3) {
-                                    Text("渐进式水平测评")
-                                        .font(.system(.title3, design: .rounded, weight: .bold))
-                                        .foregroundStyle(Color.dsPaperInk)
-                                    Text("完成后给出适合你的对话难度建议")
-                                        .font(.caption)
-                                        .foregroundStyle(Color.dsPaperInkSecondary)
-                                }
+                                Text("渐进式水平测评")
+                                    .font(.puff(.title3, Puff.Weight.title))
+                                    .foregroundStyle(Puff.Palette.ink)
                             }
 
                             informationRow(
@@ -306,13 +296,6 @@ public struct PlacementTestView: View {
                                 .buttonStyle(.dsWorkbenchAction)
                                 .disabled(engine == nil || isApplying)
 
-                            Label(
-                                "选好后点击确认；可返回上一题或跳过，跳过不计为答错。",
-                                systemImage: "lightbulb"
-                            )
-                            .font(.caption)
-                            .foregroundStyle(Color.dsPaperInkSecondary)
-                            .fixedSize(horizontal: false, vertical: true)
                         }
                         .padding(DSSpacing.md)
                     }

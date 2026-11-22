@@ -474,7 +474,7 @@ private final class RegionAnnotationView: MKAnnotationView {
         configuration.title = title
         configuration.image = UIImage(
             systemName: symbol,
-            withConfiguration: UIImage.SymbolConfiguration(pointSize: 10, weight: .black)
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)
         )
         configuration.baseBackgroundColor = background
         configuration.baseForegroundColor = foreground

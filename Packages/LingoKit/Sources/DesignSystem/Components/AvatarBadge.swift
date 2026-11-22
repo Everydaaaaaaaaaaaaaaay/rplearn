@@ -145,7 +145,7 @@ public struct AvatarBadge: View {
                     )
                 )
             Text(String(name.trimmingCharacters(in: .whitespacesAndNewlines).prefix(1)).uppercased())
-                .font(.system(size: size * 0.4, weight: .black, design: .rounded))
+                .font(.system(size: size * 0.4, weight: .bold, design: .rounded))
                 .foregroundStyle(stableTint)
         }
     }

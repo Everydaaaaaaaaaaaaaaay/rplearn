@@ -103,16 +103,15 @@ extension PlacementTestView {
                 .foregroundStyle(Color.dsSkyDeep)
                 .frame(width: 34, height: 34)
                 .background(Color.dsSky.opacity(0.1), in: RoundedRectangle(cornerRadius: 9))
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .font(.subheadline.weight(.semibold))
-                Text(detail)
-                    .font(.caption)
-                    .foregroundStyle(Color.dsPaperInkSecondary)
-            }
+            Text(title)
+                .font(.puff(.subheadline, Puff.Weight.emphasis))
+                .foregroundStyle(Puff.Palette.ink)
             Spacer()
         }
         .padding(DSSpacing.sm)
+        // 规则细节只给 VoiceOver，界面保持简洁。
+        .accessibilityElement(children: .combine)
+        .accessibilityHint(detail)
     }
 
     func levelSelectionButton(

@@ -448,7 +448,7 @@ struct CharacterSelectView: View {
                     BrandMascotView(pose: .guide, size: 88, showsShadow: false)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("选择你的第一位旅伴")
-                            .font(.system(.title2, design: .rounded, weight: .black))
+                            .font(.system(.title2, design: .rounded, weight: .bold))
                         Text("\(AppBrand.mascotName)会陪你一起出发")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)

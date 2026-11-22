@@ -34,7 +34,7 @@ public struct DSHUDStat: View {
     public var body: some View {
         HStack(spacing: 6) {
             Image(systemName: icon)
-                .font(.system(size: 11, weight: .black))
+                .font(.system(size: 11, weight: .bold))
                 .foregroundStyle(.white)
                 .frame(width: 26, height: 26)
                 .background(tint.gradient, in: Circle())
@@ -48,7 +48,7 @@ public struct DSHUDStat: View {
                         .system(
                             .caption,
                             design: usesMonospacedDigits ? .monospaced : .rounded,
-                            weight: .heavy
+                            weight: .bold
                         )
                     )
                     .foregroundStyle(foreground)

@@ -257,7 +257,7 @@ private struct WelcomePageShell<Demo: View>: View {
                         .tracking(0.8)
 
                     Text(title)
-                        .font(.system(.title, design: .rounded, weight: .black))
+                        .font(.system(.title, design: .rounded, weight: .bold))
                         .tracking(-0.45)
                         .lineSpacing(4)
                         .multilineTextAlignment(.center)
@@ -317,41 +317,19 @@ private struct WelcomeCityScreen: View {
 
                 GeometryReader { geometry in
                     ZStack(alignment: .bottom) {
-                        if let sceneURL = Bundle.main.url(forResource: "london_exterior", withExtension: "jpg"),
-                           let sceneImage = UIImage(contentsOfFile: sceneURL.path) {
-                            Image(uiImage: sceneImage)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                                .scaleEffect(reduceMotion || !isActive ? 1 : 1.035)
-                                .animation(reduceMotion ? nil : .easeOut(duration: 0.8), value: isActive)
-                                .accessibilityHidden(true)
-                        } else {
-                            LinearGradient(
-                                colors: [Color.dsSky.opacity(0.7), Color.dsTravelNavy],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
+                        // 与活动页一致的卡通伦敦全景。
+                        PuffCityScene(regionID: "london", viewport: .west, isActive: isActive)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                            .scaleEffect(reduceMotion || !isActive ? 1 : 1.035)
+                            .animation(reduceMotion ? nil : .easeOut(duration: 0.8), value: isActive)
                             .accessibilityHidden(true)
-                        }
-
-                        LinearGradient(
-                            colors: [.clear, Color.dsTravelNavy.opacity(0.58)],
-                            startPoint: .center,
-                            endPoint: .bottom
-                        )
-                        .accessibilityHidden(true)
 
                         HStack(alignment: .bottom, spacing: 10) {
-                            AvatarBadge(
-                                name: "Oliver Bennett",
-                                size: 58,
-                                imageName: "avatar_oliver"
-                            )
+                            PuffAvatar(name: "Oliver Bennett", size: 58, imageName: "avatar_oliver")
 
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("城市活动")
-                                    .font(.system(size: 13, weight: .bold, design: .rounded))
+                                    .font(.system(size: 13, weight: Puff.Weight.title, design: .rounded))
                                 Text("去街头走走，遇见新朋友")
                                     .font(.system(size: 10, weight: .medium))
                                     .foregroundStyle(.secondary)
@@ -362,7 +340,7 @@ private struct WelcomeCityScreen: View {
                             Spacer(minLength: 0)
                         }
                         .padding(11)
-                        .background(Color.dsSurface.opacity(0.94), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .puffCard(radius: Puff.Radius.medium, lipHeight: 3)
                         .padding(12)
                         .offset(y: reduceMotion || isActive ? 0 : 14)
                         .opacity(isActive ? 1 : 0.15)

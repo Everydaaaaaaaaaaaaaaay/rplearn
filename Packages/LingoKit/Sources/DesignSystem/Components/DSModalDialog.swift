@@ -191,11 +191,11 @@ private struct DSModalDialogView: View {
             .accessibilityHidden(true)
 
             Text(configuration.eyebrow)
-                .font(.caption.weight(.black))
+                .font(.caption.weight(.bold))
                 .foregroundStyle(tint)
 
             Text(configuration.title)
-                .font(.system(.title2, design: .rounded, weight: .heavy))
+                .font(.system(.title2, design: .rounded, weight: .bold))
                 .multilineTextAlignment(.center)
                 .accessibilityAddTraits(.isHeader)
 

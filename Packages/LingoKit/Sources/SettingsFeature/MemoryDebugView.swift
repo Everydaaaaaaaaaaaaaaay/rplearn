@@ -91,7 +91,7 @@ public struct MemoryDebugView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("记忆档案")
-                    .font(.headline.weight(.heavy))
+                    .font(.headline.weight(.bold))
                     .foregroundStyle(Color.dsHologramIvory)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)

@@ -10,8 +10,8 @@ public enum DSSurfaceLevel: Sendable, Equatable {
     case floating
 }
 
+/// 旧表面统一为蓬蓬厚卡片：分组与独立内容都用白色正面、细描边和底部唇边。
 private struct DSSurfaceModifier: ViewModifier {
-    @Environment(\.colorScheme) private var colorScheme
     let level: DSSurfaceLevel
     let padding: CGFloat
     let radius: CGFloat
@@ -19,48 +19,8 @@ private struct DSSurfaceModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(padding)
-            .background(
-                RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .fill(Color.dsSurface)
-                    .shadow(color: shadowColor, radius: shadowRadius, y: shadowY)
-            )
-            .overlay {
-                RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .stroke(borderColor, lineWidth: 1)
-            }
-    }
-
-    private var shadowColor: Color {
-        guard level != .grouped else { return .clear }
-        if colorScheme == .dark {
-            return .black.opacity(level == .floating ? 0.34 : 0.2)
-        }
-        return .black.opacity(level == .floating ? 0.13 : 0.055)
-    }
-
-    private var shadowRadius: CGFloat {
-        switch level {
-        case .grouped: 0
-        case .elevated: 10
-        case .floating: 18
-        }
-    }
-
-    private var shadowY: CGFloat {
-        switch level {
-        case .grouped: 0
-        case .elevated: 4
-        case .floating: 8
-        }
-    }
-
-    private var borderColor: Color {
-        switch level {
-        case .grouped, .elevated:
-            Color.dsBorder
-        case .floating:
-            colorScheme == .dark ? .white.opacity(0.14) : .white.opacity(0.82)
-        }
+            .puffCard(radius: min(max(radius, Puff.Radius.medium), Puff.Radius.huge),
+                      lipHeight: level == .grouped ? 0 : Puff.Lip.card)
     }
 }
 

@@ -142,7 +142,7 @@ public struct BrandLockup: View {
                             .system(
                                 compact ? .headline : .title2,
                                 design: .rounded,
-                                weight: .black
+                                weight: .bold
                             )
                         )
                         .foregroundStyle(Color.dsBrandInk)

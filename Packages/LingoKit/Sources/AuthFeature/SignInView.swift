@@ -63,11 +63,6 @@ public struct SignInView: View {
                 .foregroundStyle(Color.dsPaperInk)
                 .multilineTextAlignment(.center)
 
-            Text("城市、学习进度与订阅会安全同步到你的所有设备。")
-                .font(.subheadline)
-                .foregroundStyle(Color.dsPaperInkSecondary)
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
         }
         .shadow(
             color: Color(red: 0.985, green: 0.970, blue: 0.925).opacity(0.94),

@@ -3,7 +3,7 @@ import SwiftUI
 // MARK: - 厚卡片
 
 /// 白色正面 + 细描边 + 底部唇边。看起来像一块可以按下去的软糖。
-private struct PuffChunkyBackground: ViewModifier {
+struct PuffChunkyBackground: ViewModifier {
     let radius: CGFloat
     let face: Color
     let border: Color
