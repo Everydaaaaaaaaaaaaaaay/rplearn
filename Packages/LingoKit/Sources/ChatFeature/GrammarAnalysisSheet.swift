@@ -93,7 +93,8 @@ struct GrammarAnalysisSheet: View {
                 .padding(16)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .background(Color.dsBackground)
+            .background(Puff.Palette.page)
+            .fontDesign(.rounded)
             .navigationTitle("语法解析")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -134,8 +135,8 @@ struct GrammarAnalysisSheet: View {
     private var sentenceCard: some View {
         VStack(alignment: .leading, spacing: 6) {
             Label("原句", systemImage: "text.quote")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
+                .font(.puff(.caption, Puff.Weight.emphasis))
+                .foregroundStyle(Puff.Palette.inkSoft)
             lookupText(
                 request.sentence,
                 contextID: "grammar-\(request.id.uuidString)-sentence"
@@ -145,11 +146,7 @@ struct GrammarAnalysisSheet: View {
         }
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: DSRadius.inline))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.inline)
-                .stroke(Color.dsBorder, lineWidth: 1)
-        }
+        .puffCard(radius: Puff.Radius.large)
     }
 
     private var localContent: some View {
@@ -157,19 +154,16 @@ struct GrammarAnalysisSheet: View {
             if request.localItems.isEmpty {
                 sourceHeader(
                     title: "本地知识库未命中",
-                    detail: "离线解析 · 未调用网络",
+                    detail: "离线",
                     systemImage: "books.vertical",
-                    tint: .secondary
+                    tint: Puff.Palette.inkSoft
                 )
-                Text("这句话暂未匹配到已收录的语法知识点。你可以直接选择 AI 解析，获得针对整句的补充说明。")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
             } else {
                 sourceHeader(
                     title: "本地识别到 \(request.localItems.count) 个语法结构",
-                    detail: "离线解析",
+                    detail: "离线",
                     systemImage: "checkmark.seal.fill",
-                    tint: .dsSuccess
+                    tint: PuffCandy.mint.deep
                 )
                 ForEach(Array(request.localItems.enumerated()), id: \.element.id) { index, item in
                     localPointCard(item, number: index + 1)
@@ -181,7 +175,7 @@ struct GrammarAnalysisSheet: View {
             } label: {
                 Label("直接使用 AI 解析", systemImage: "sparkles")
             }
-            .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
+            .buttonStyle(GrammarActionButtonStyle())
             .accessibilityIdentifier("DirectAIGrammarAnalysisButton")
         }
     }
@@ -192,13 +186,13 @@ struct GrammarAnalysisSheet: View {
             VStack(alignment: .leading, spacing: 12) {
                 sourceHeader(
                     title: "AI 独立解析",
-                    detail: "需要联网 · 仅供学习参考",
+                    detail: "仅供参考",
                     systemImage: "sparkles",
-                    tint: .dsSky
+                    tint: PuffCandy.grape.deep
                 )
                 Text(aiAnalysis.summaryZh)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .font(.puff(.subheadline, Puff.Weight.body))
+                    .foregroundStyle(Puff.Palette.inkSoft)
                 ForEach(Array(aiAnalysis.points.enumerated()), id: \.offset) { index, point in
                     aiPointCard(point, number: index + 1)
                 }
@@ -206,47 +200,41 @@ struct GrammarAnalysisSheet: View {
         } else if model.isLoading {
             VStack(spacing: 12) {
                 BrandMascotView(pose: .coach, size: 104, showsShadow: false, reactsToTap: true)
-                ProgressView("嘎嘎正在分析句子…")
-                    .font(.subheadline)
-                Text("正在调用 AI 对整句进行独立解析")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                PuffLoadingDots()
+                    .accessibilityLabel("嘎嘎正在分析句子")
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 24)
         } else if let errorMessage = model.error {
             VStack(alignment: .leading, spacing: 12) {
                 Label(errorMessage, systemImage: "exclamationmark.triangle")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .font(.puff(.subheadline, Puff.Weight.label))
+                    .foregroundStyle(PuffCandy.tangerine.deep)
                 Button("重新解析") {
                     model.retryRevision += 1
                 }
-                .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
+                .buttonStyle(GrammarActionButtonStyle())
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         } else {
             VStack(alignment: .leading, spacing: 12) {
                 sourceHeader(
                     title: "AI 独立解析",
-                    detail: "需要联网 · 仅供学习参考",
+                    detail: "仅供参考",
                     systemImage: "sparkles",
-                    tint: .dsSky
+                    tint: PuffCandy.grape.deep
                 )
-                Text("AI 会直接分析这句话，不受本地知识库命中结果影响。")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
                 Button("开始 AI 解析") {
                     model.retryRevision += 1
                 }
-                .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
+                .buttonStyle(GrammarActionButtonStyle())
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 
     private func selectAIAnalysis() {
-        withAnimation(DSAnimation.snappy) {
+        withAnimation(Puff.Motion.bouncy) {
             model.source = .ai
         }
 
@@ -260,12 +248,12 @@ struct GrammarAnalysisSheet: View {
     ) -> some View {
         HStack(alignment: .firstTextBaseline) {
             Label(title, systemImage: systemImage)
-                .font(.subheadline.weight(.semibold))
+                .font(.puff(.subheadline, Puff.Weight.title))
                 .foregroundStyle(tint)
             Spacer(minLength: 8)
             Text(detail)
-                .font(.caption2)
-                .foregroundStyle(.secondary)
+                .font(.puff(.caption2, Puff.Weight.label))
+                .foregroundStyle(Puff.Palette.inkFaint)
         }
     }
 
@@ -294,7 +282,7 @@ struct GrammarAnalysisSheet: View {
                     .font(.footnote.weight(.medium))
                 Text(example.zh)
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
             }
         }
     }
@@ -318,12 +306,12 @@ struct GrammarAnalysisSheet: View {
                 contextID: "grammar-\(request.id.uuidString)-ai-\(number)-pattern"
             )
                 .font(.footnote.monospaced())
-                .foregroundStyle(Color.dsSkyDeep)
+                .foregroundStyle(PuffCandy.sky.deep)
             Text(point.explanationZh)
                 .font(.subheadline)
             Label(point.learnerTipZh, systemImage: "lightbulb.fill")
                 .font(.footnote)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Puff.Palette.inkSoft)
         }
     }
 
@@ -339,9 +327,9 @@ struct GrammarAnalysisSheet: View {
                     .font(.caption2.weight(.bold))
                     .foregroundStyle(.white)
                     .frame(width: 20, height: 20)
-                    .background(Color.dsSky, in: Circle())
+                    .background(PuffCandy.sky.base, in: Circle())
                 Text(title)
-                    .font(.headline)
+                    .font(.puff(.headline, Puff.Weight.title))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 grammarFavoriteButton(favorite)
             }
@@ -349,11 +337,7 @@ struct GrammarAnalysisSheet: View {
         }
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: DSRadius.inline))
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.inline)
-                .stroke(Color.dsSky.opacity(0.18), lineWidth: 1)
-        }
+        .puffCard(radius: Puff.Radius.large)
     }
 
     private func grammarFavoriteButton(_ favorite: GrammarFavoriteDescriptor) -> some View {
@@ -368,7 +352,7 @@ struct GrammarAnalysisSheet: View {
                 .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .foregroundStyle(isFavorite ? Color.dsSunset : Color.secondary)
+        .foregroundStyle(isFavorite ? PuffCandy.sunny.base : Puff.Palette.inkFaint)
         .disabled(isUpdating)
         .accessibilityLabel(isFavorite ? "取消收藏语法点" : "收藏语法点")
         .accessibilityAddTraits(isFavorite ? .isSelected : [])
@@ -377,10 +361,10 @@ struct GrammarAnalysisSheet: View {
     private func quote(_ text: String, contextID: String) -> some View {
         lookupText(text, contextID: contextID)
             .font(.footnote.weight(.medium))
-            .foregroundStyle(Color.dsSkyDeep)
+            .foregroundStyle(PuffCandy.sky.deep)
             .padding(.horizontal, 9)
             .padding(.vertical, 6)
-            .background(Color.dsSky.opacity(0.1), in: RoundedRectangle(cornerRadius: 8))
+            .background(PuffCandy.sky.wash, in: RoundedRectangle(cornerRadius: 8))
     }
 
     private func lookupText(_ text: String, contextID: String) -> some View {
@@ -456,5 +440,20 @@ enum GrammarAnalysisErrorPresentation {
             }
         }
         return "AI 解析暂时失败，请稍后重试"
+    }
+}
+
+/// 解析页的小操作按钮：浅色糖果胶囊，按下软软缩一下。
+private struct GrammarActionButtonStyle: ButtonStyle {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.puff(.subheadline, Puff.Weight.emphasis))
+            .foregroundStyle(PuffCandy.sky.deep)
+            .padding(.horizontal, 14).padding(.vertical, 9)
+            .background(PuffCandy.sky.wash, in: Capsule())
+            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.94 : 1)
+            .animation(configuration.isPressed ? Puff.Motion.press : Puff.Motion.release, value: configuration.isPressed)
     }
 }

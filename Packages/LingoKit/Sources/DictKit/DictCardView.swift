@@ -107,7 +107,6 @@ private struct ConfiguredDictCardView: View {
     @State private var isFetchingSharedExamples = false
     @State private var sharedExamplesUnavailable = false
     @State private var appleTranslator = DictExampleAppleTranslator()
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(
@@ -161,17 +160,10 @@ private struct ConfiguredDictCardView: View {
         .frame(width: DictCardLayout.width)
         .frame(maxHeight: maximumHeight)
         .fixedSize(horizontal: false, vertical: true)
-        .background(
-            reduceTransparency
-                ? AnyShapeStyle(Color.dsSurface)
-                : AnyShapeStyle(.regularMaterial),
-            in: RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-        )
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.card, style: .continuous)
-                .stroke(Color.dsBorder, lineWidth: 1)
-        }
-        .shadow(color: .black.opacity(0.14), radius: 14, y: 6)
+        // 查词卡是浮在内容上的白色厚卡片，正文用圆体。
+        .puffCard(radius: Puff.Radius.large)
+        .shadow(color: Puff.Palette.ink.opacity(0.10), radius: 16, y: 6)
+        .fontDesign(.rounded)
         .task(id: LoadID(path: path, retry: exampleRetry)) {
             await loadCurrentTarget()
         }
@@ -219,7 +211,7 @@ private struct ConfiguredDictCardView: View {
                 if let phonetic = entry?.phonetic {
                     Text("/\(phonetic)/")
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                         .lineLimit(1)
                 }
                 Spacer(minLength: 4)
@@ -236,7 +228,7 @@ private struct ConfiguredDictCardView: View {
                     .lineLimit(1)
                 Text("语法术语")
                     .font(.caption2.weight(.semibold))
-                    .foregroundStyle(Color.dsCoach)
+                    .foregroundStyle(PuffCandy.grape.deep)
                 Spacer(minLength: 4)
                 dismissButton
             case nil:
@@ -261,7 +253,7 @@ private struct ConfiguredDictCardView: View {
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
-                .foregroundStyle(Color.dsSky)
+                .foregroundStyle(PuffCandy.sky.deep)
                 .accessibilityLabel("播放读音")
             }
             if favoriteActions != nil {
@@ -274,7 +266,7 @@ private struct ConfiguredDictCardView: View {
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
-                .foregroundStyle(isFavorite ? Color.dsSunset : Color.secondary)
+                .foregroundStyle(isFavorite ? PuffCandy.sunny.base : Puff.Palette.inkFaint)
                 .disabled(isUpdatingFavorite)
                 .accessibilityLabel(isFavorite ? "取消收藏单词" : "收藏单词")
                 .accessibilityAddTraits(isFavorite ? .isSelected : [])
@@ -289,7 +281,7 @@ private struct ConfiguredDictCardView: View {
         if let onDismiss {
             Button(action: onDismiss) {
                 Image(systemName: "xmark.circle.fill")
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
                     .frame(width: 44, height: 44)
                     .contentShape(Rectangle())
             }
@@ -310,14 +302,14 @@ private struct ConfiguredDictCardView: View {
                 grammarContent(point)
             } else {
                 Text("未找到该语法点")
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
             }
         case .grammarTerm(let term):
             if let entry = GrammarTermCatalog.entry(for: term) {
                 grammarTermContent(entry)
             } else {
                 Text("未找到该语法术语")
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
             }
         case nil:
             EmptyView()
@@ -354,14 +346,14 @@ private struct ConfiguredDictCardView: View {
         } else {
             VStack(alignment: .leading, spacing: 10) {
                 Label("词典未收录该词", systemImage: "book.closed")
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
                     .font(.subheadline)
                 if let aiExplanation {
                     Text(aiExplanation)
                         .font(.subheadline)
                     Text("AI 生成，仅供参考（非词典权威）")
                         .font(.caption2)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 } else if aiFallback != nil {
                     Button {
                         requestAIExplanation(word)
@@ -372,7 +364,11 @@ private struct ConfiguredDictCardView: View {
                             Label("用 AI 简单解释", systemImage: "sparkles")
                         }
                     }
-                    .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
+                    .font(.puff(.subheadline, Puff.Weight.emphasis))
+                    .foregroundStyle(PuffCandy.sky.deep)
+                    .padding(.horizontal, 12).padding(.vertical, 8)
+                    .background(PuffCandy.sky.wash, in: Capsule())
+                    .buttonStyle(.puffSquish)
                     .disabled(isLoadingAI)
                 }
             }
@@ -389,7 +385,7 @@ private struct ConfiguredDictCardView: View {
         return HStack(alignment: .firstTextBaseline, spacing: DictCardLayout.definitionColumnSpacing) {
             Text("短语")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(Color.dsQuiz)
+                .foregroundStyle(PuffCandy.mint.deep)
                 .lineLimit(1)
                 .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
             VStack(alignment: .leading, spacing: 6) {
@@ -404,7 +400,7 @@ private struct ConfiguredDictCardView: View {
                             if let meaning = phrase.meaningGroups.first?.meaning {
                                 Text(meaning)
                                     .font(.subheadline)
-                                    .foregroundStyle(.secondary)
+                                    .foregroundStyle(Puff.Palette.inkSoft)
                                     .lineLimit(1)
                             }
                             Spacer(minLength: 0)
@@ -456,7 +452,7 @@ private struct ConfiguredDictCardView: View {
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .foregroundStyle(Color.dsSkyDeep)
+            .foregroundStyle(PuffCandy.sky.deep)
             .accessibilityValue(isEnglishExpanded ? "已展开" : "已折叠")
 
             if isEnglishExpanded {
@@ -484,7 +480,7 @@ private struct ConfiguredDictCardView: View {
                                     synonyms,
                                     contextID: "dict-\(entry.word)-synonyms-\(group.id)"
                                 )
-                                    .foregroundStyle(.tertiary)
+                                    .foregroundStyle(Puff.Palette.inkFaint)
                             }
                         }
                         .font(.subheadline)
@@ -560,7 +556,7 @@ private struct ConfiguredDictCardView: View {
     private func englishPartOfSpeechText(_ label: String) -> some View {
         Text(label)
             .font(.footnote.weight(.semibold))
-            .foregroundStyle(Color.dsSunset)
+            .foregroundStyle(PuffCandy.tangerine.deep)
             .lineLimit(1)
             .minimumScaleFactor(0.8)
             .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
@@ -609,7 +605,7 @@ private struct ConfiguredDictCardView: View {
                 Text("正在补充例句…")
             }
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Puff.Palette.inkSoft)
             .accessibilityIdentifier("dict.examples.generating")
         } else if sharedExamplesUnavailable {
             HStack {
@@ -618,7 +614,7 @@ private struct ConfiguredDictCardView: View {
                     .accessibilityIdentifier("dict.examples.retry")
             }
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Puff.Palette.inkSoft)
         }
     }
 
@@ -653,7 +649,7 @@ private struct ConfiguredDictCardView: View {
     private func partOfSpeechText(_ text: String) -> some View {
         Text(text)
             .font(.footnote.weight(.semibold))
-            .foregroundStyle(Color.dsSkyDeep)
+            .foregroundStyle(PuffCandy.sky.deep)
             .lineLimit(1)
             .minimumScaleFactor(0.85)
             .frame(width: DictCardLayout.partOfSpeechColumnWidth, alignment: .leading)
@@ -674,11 +670,11 @@ private struct ConfiguredDictCardView: View {
                                 .foregroundStyle(Color.primary.opacity(0.72))
                             Text(form.word)
                                 .font(.caption.weight(.semibold))
-                                .foregroundStyle(Color.dsSkyDeep)
+                                .foregroundStyle(PuffCandy.sky.deep)
                         }
                         .padding(.horizontal, 7)
                         .padding(.vertical, 3)
-                        .background(Color.dsSky.opacity(0.1), in: RoundedRectangle(cornerRadius: 7))
+                        .background(PuffCandy.sky.wash, in: RoundedRectangle(cornerRadius: 7))
                     }
                     .buttonStyle(.plain)
                 }
@@ -691,13 +687,13 @@ private struct ConfiguredDictCardView: View {
         VStack(alignment: .leading, spacing: 8) {
             Label("本地库暂无中文释义", systemImage: "character.book.closed")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Puff.Palette.inkSoft)
             if let aiExplanation {
                 Text(aiExplanation)
                     .font(.subheadline)
                 Text("AI 生成，仅供参考（非本地词典内容）")
                     .font(.caption2)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
             } else if aiFallback != nil {
                 Button {
                     requestAIExplanation(word)
@@ -708,7 +704,11 @@ private struct ConfiguredDictCardView: View {
                         Label("临时生成中文解释", systemImage: "sparkles")
                     }
                 }
-                .buttonStyle(.dsAction(.tinted(.dsSky), fullWidth: false, compact: true))
+                .font(.puff(.subheadline, Puff.Weight.emphasis))
+                    .foregroundStyle(PuffCandy.sky.deep)
+                    .padding(.horizontal, 12).padding(.vertical, 8)
+                    .background(PuffCandy.sky.wash, in: Capsule())
+                    .buttonStyle(.puffSquish)
                 .disabled(isLoadingAI)
             }
         }
@@ -717,7 +717,7 @@ private struct ConfiguredDictCardView: View {
     private func compactSectionTitle(_ title: String) -> some View {
         Text(title)
             .font(.caption2.weight(.semibold))
-            .foregroundStyle(.tertiary)
+            .foregroundStyle(Puff.Palette.inkFaint)
     }
 
     @ViewBuilder
@@ -734,7 +734,7 @@ private struct ConfiguredDictCardView: View {
     }
 
     private func chip(_ text: String) -> some View {
-        DSChip(text, tint: .dsSky)
+        PuffTag(text, candy: .sky)
     }
 
     @ViewBuilder
@@ -754,17 +754,17 @@ private struct ConfiguredDictCardView: View {
                 .font(.footnote)
                 Text(example.zh)
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
             }
             .padding(8)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.dsBubbleIncoming, in: RoundedRectangle(cornerRadius: DSRadius.inline))
+            .background(Puff.Palette.cloud, in: RoundedRectangle(cornerRadius: Puff.Radius.small))
         }
         if !point.related.isEmpty {
             HStack(spacing: 8) {
                 Text("相关：")
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
                 ForEach(point.related, id: \.self) { relatedID in
                     if let related = grammar.point(id: relatedID) {
                         Button(related.title) {
@@ -794,7 +794,7 @@ private struct ConfiguredDictCardView: View {
                                 .padding(.horizontal, 7)
                                 .padding(.vertical, 6)
                                 .background(
-                                    Color.dsSky.opacity(0.1),
+                                    PuffCandy.sky.wash,
                                     in: RoundedRectangle(cornerRadius: 7, style: .continuous)
                                 )
                         }
@@ -812,13 +812,13 @@ private struct ConfiguredDictCardView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Text(example.chinese)
                                 .font(.caption)
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(Puff.Palette.inkSoft)
                         }
                         .padding(8)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(
-                            Color.dsBubbleIncoming,
-                            in: RoundedRectangle(cornerRadius: DSRadius.inline, style: .continuous)
+                            Puff.Palette.cloud,
+                            in: RoundedRectangle(cornerRadius: Puff.Radius.small, style: .continuous)
                         )
                     }
                 }
@@ -856,7 +856,7 @@ private struct ConfiguredDictCardView: View {
             }
         }
         return Text(attributed)
-            .tint(Color.dsSkyDeep)
+            .tint(PuffCandy.sky.deep)
             .environment(\.openURL, OpenURLAction { url in
                 guard url.scheme == "lingotrip-grammar",
                       let term = URLComponents(url: url, resolvingAgainstBaseURL: false)?
@@ -874,9 +874,9 @@ private struct ConfiguredDictCardView: View {
         for highlight in example.highlights where !highlight.isEmpty {
             var searchRange = attributed.startIndex..<attributed.endIndex
             while let range = attributed[searchRange].range(of: highlight) {
-                attributed[range].foregroundColor = Color.dsCoach
+                attributed[range].foregroundColor = PuffCandy.grape.deep
                 attributed[range].font = .system(.subheadline, design: .rounded, weight: .bold)
-                attributed[range].backgroundColor = Color.dsCoach.opacity(0.14)
+                attributed[range].backgroundColor = PuffCandy.grape.wash
                 searchRange = range.upperBound..<attributed.endIndex
             }
         }
