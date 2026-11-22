@@ -4,44 +4,64 @@ import PersistenceKit
 import SwiftUI
 
 /// 票根夹：每座城市只收藏一张首次抵达纪念票根。
+///
+/// 页头画在页面里（不用系统导航栏）：地图也隐藏系统栏，缩放转场两端都不切换导航栏显隐，
+/// 交互返回中途取消时不会把顶栏和返回按钮弄丢。
 public struct TicketStubsView: View {
     private let stubStore: TicketStubStore
     private let regionCatalog: RegionCatalog
     @State private var stubs: [TicketStubDTO] = []
     @State private var isLoading = true
     @State private var hasEntered = false
+    private let slotColumns = [GridItem(.flexible(), spacing: Puff.Space.s), GridItem(.flexible(), spacing: Puff.Space.s)]
 
     public init(stubStore: TicketStubStore, regionCatalog: RegionCatalog) {
         self.stubStore = stubStore
         self.regionCatalog = regionCatalog
     }
 
-    public var body: some View {
-        ZStack {
-            PuffPageBackdrop()
+    private var total: Int { regionCatalog.regions.count }
 
-            if stubs.isEmpty && !isLoading {
-                PuffEmptyState("还没有纪念票根", bird: .gugu, pose: .point)
-                    .accessibilityElement(children: .ignore)
-                    .accessibilityLabel("还没有纪念票根。首次解锁一座城市后，它的唯一票根会收藏在这里")
-            } else {
-                ScrollView {
-                    LazyVStack(spacing: Puff.Space.m) {
-                        collectionHeader
-                            .puffEntrance(index: 0, isShown: hasEntered)
-                        ForEach(Array(stubs.enumerated()), id: \.element.id) { index, stub in
-                            TicketStubCard(stub: stub, regionCatalog: regionCatalog)
-                                .puffEntrance(index: index + 1, isShown: hasEntered)
+    /// 还没有票根的城市，按目录顺序。
+    private var remaining: [Region] {
+        let collected = Set(stubs.map(\.toRegionID))
+        return regionCatalog.regions.filter { !collected.contains($0.id) }
+    }
+
+    public var body: some View {
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: Puff.Space.m) {
+                if !isLoading {
+                    progressCard
+                        .puffEntrance(index: 0, isShown: hasEntered)
+                    ForEach(Array(stubs.enumerated()), id: \.element.id) { index, stub in
+                        TicketStubCard(stub: stub, regionCatalog: regionCatalog)
+                            .puffEntrance(index: index + 1, isShown: hasEntered)
+                    }
+                    if !remaining.isEmpty {
+                        Text("待收集")
+                            .font(.puff(.headline, Puff.Weight.title))
+                            .foregroundStyle(Puff.Palette.inkSoft)
+                            .padding(.top, stubs.isEmpty ? 0 : Puff.Space.s)
+                            .padding(.leading, 4)
+                            .accessibilityAddTraits(.isHeader)
+                        LazyVGrid(columns: slotColumns, spacing: Puff.Space.s) {
+                            ForEach(Array(remaining.enumerated()), id: \.element.id) { index, region in
+                                TicketSlot(region: region, code: TicketStubCard.code(for: region.id))
+                                    .puffEntrance(index: min(stubs.count + 2 + index / 2, 10), isShown: hasEntered)
+                            }
                         }
                     }
-                    .padding(Puff.Space.m)
-                    .frame(maxWidth: 620).frame(maxWidth: .infinity)
                 }
             }
+            .padding(.horizontal, Puff.Space.m)
+            .padding(.bottom, Puff.Space.xl)
+            .frame(maxWidth: 620).frame(maxWidth: .infinity)
         }
+        .background { PuffPageBackdrop() }
         .fontDesign(.rounded)
-        .puffPageTint(.mint)
-        .navigationTitle("票根夹")
+        .puffPageHeader(title: "票根夹", showsBack: true)
+        .puffPageTint(.mint, cameo: PuffPageCameo(.gugu, pose: stubs.isEmpty ? .point : .proud))
         .task {
             stubs = (try? await stubStore.all()) ?? []
             isLoading = false
@@ -49,8 +69,7 @@ public struct TicketStubsView: View {
         }
     }
 
-    private var collectionHeader: some View {
-        let total = regionCatalog.regions.count
+    private var progressCard: some View {
         let fraction = total == 0 ? 0 : Double(stubs.count) / Double(total)
         return VStack(alignment: .leading, spacing: Puff.Space.s) {
             HStack(spacing: Puff.Space.s) {
@@ -58,7 +77,7 @@ public struct TicketStubsView: View {
                 Text("首次抵达纪念")
                     .font(.puff(.headline, Puff.Weight.title))
                     .foregroundStyle(Puff.Palette.ink)
-                Spacer()
+                Spacer(minLength: 0)
                 Text("\(stubs.count) / \(total)")
                     .font(.puff(.title3, Puff.Weight.display))
                     .monospacedDigit()
@@ -75,8 +94,57 @@ public struct TicketStubsView: View {
         }
         .padding(Puff.Space.l)
         .puffCard(radius: Puff.Radius.huge)
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("首次抵达纪念，已收藏 \(stubs.count) 张，共 \(total) 座城市")
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("首次抵达纪念，已收藏 \(stubs.count) 张，共 \(total) 座城市。第一次飞到新城市时会收到那里的纪念票根")
+    }
+}
+
+/// 还没收集到的城市：虚线小票位，城市图标褪色带锁。
+struct TicketSlot: View {
+    let region: Region
+    let code: String
+
+    var body: some View {
+        HStack(spacing: 10) {
+            ZStack(alignment: .bottomTrailing) {
+                Group {
+                    if let icon = PuffCitySnapshot.icon(regionID: region.id, size: CGSize(width: 44, height: 44)) {
+                        Image(uiImage: icon).resizable().scaledToFill()
+                    } else {
+                        Puff.Palette.cloud
+                    }
+                }
+                .frame(width: 44, height: 44)
+                .clipShape(Circle())
+                .saturation(0.15)
+                .opacity(0.7)
+                Image(systemName: "lock.fill")
+                    .font(.system(size: 8, weight: .bold))
+                    .foregroundStyle(.white)
+                    .frame(width: 18, height: 18)
+                    .background(Puff.Palette.inkFaint, in: Circle())
+                    .overlay { Circle().strokeBorder(Puff.Palette.card, lineWidth: 2) }
+                    .offset(x: 3, y: 3)
+            }
+            VStack(alignment: .leading, spacing: 1) {
+                Text(region.nameZh)
+                    .font(.puff(.subheadline, Puff.Weight.emphasis))
+                    .foregroundStyle(Puff.Palette.inkSoft)
+                    .lineLimit(1).minimumScaleFactor(0.8)
+                Text(code)
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
+                    .foregroundStyle(Puff.Palette.inkFaint)
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(10)
+        .background(Puff.Palette.card.opacity(0.72), in: RoundedRectangle(cornerRadius: Puff.Radius.medium, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: Puff.Radius.medium, style: .continuous)
+                .strokeBorder(Puff.Palette.line, style: StrokeStyle(lineWidth: 1.5, dash: [5, 4]))
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("待收集：\(region.nameZh)")
     }
 }
 
@@ -122,9 +190,11 @@ struct TicketStubCard: View {
         regionCatalog.region(id: stub.toRegionID)
     }
 
-    private func code(_ regionID: String) -> String {
-        Self.airportCodes[regionID] ?? String(regionID.prefix(3)).uppercased()
+    static func code(for regionID: String) -> String {
+        airportCodes[regionID] ?? String(regionID.prefix(3)).uppercased()
     }
+
+    private func code(_ regionID: String) -> String { Self.code(for: regionID) }
 
     private func name(_ regionID: String) -> String {
         regionCatalog.region(id: regionID)?.nameZh ?? regionID

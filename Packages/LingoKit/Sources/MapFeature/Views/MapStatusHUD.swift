@@ -2,16 +2,27 @@ import DesignSystem
 import DomainKit
 import SwiftUI
 
-/// 统一旅行工具栏中的当前位置，以单行排版保留地图可视面积。
+/// 地图页头标题下的当前所在城市：定位图标 + 国旗 + 城市名。
 struct MapStatusHUD: View {
     let currentRegion: Region?
 
     var body: some View {
-        ViewThatFits(in: .horizontal) {
-            locationLine(showsContext: true)
-            locationLine(showsContext: false)
+        HStack(spacing: 4) {
+            Image(systemName: "location.fill")
+                .font(.system(size: 11, weight: Puff.Weight.icon))
+                .foregroundStyle(PuffCandy.mint.deep)
+            if let currentRegion {
+                Text("\(currentRegion.flagEmoji) \(currentRegion.nameZh)")
+                    .font(.puff(.subheadline, Puff.Weight.label))
+                    .foregroundStyle(Puff.Palette.inkSoft)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+            } else {
+                Text("正在载入")
+                    .font(.puff(.subheadline, Puff.Weight.label))
+                    .foregroundStyle(Puff.Palette.inkFaint)
+            }
         }
-        .frame(minHeight: 44)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(
             currentRegion.map {
@@ -19,83 +30,36 @@ struct MapStatusHUD: View {
             } ?? "正在载入当前位置"
         )
     }
-
-    private func locationLine(showsContext: Bool) -> some View {
-        HStack(spacing: 4) {
-            Image(systemName: "location.north.fill")
-                .font(.system(size: 12, weight: Puff.Weight.icon))
-                .foregroundStyle(PuffCandy.sky.base)
-
-            if showsContext {
-                Text("当前位置")
-                    .font(.system(size: 11, weight: .bold, design: .rounded))
-                    .foregroundStyle(Puff.Palette.inkSoft)
-                    .fixedSize()
-            }
-
-            if let currentRegion {
-                Text(currentRegion.flagEmoji)
-                    .font(.system(size: 16))
-                    .fixedSize()
-
-                Text(currentRegion.nameZh)
-                    .font(.system(size: 16, weight: Puff.Weight.icon, design: .rounded))
-                    .foregroundStyle(Puff.Palette.ink)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.78)
-            } else {
-                Text("正在载入")
-                    .font(.system(size: 13, weight: .bold, design: .rounded))
-                    .foregroundStyle(Puff.Palette.inkSoft)
-                    .lineLimit(1)
-            }
-        }
-        .fixedSize(horizontal: false, vertical: true)
-    }
 }
 
-/// 与当前位置同高的单行资源计数器。
+/// 机票与金币：两枚白色小胶囊。
 struct MapResourceHUD: View {
     let ticketCount: Int
     let coins: Int?
 
     var body: some View {
-        HStack(spacing: 10) {
-            resource(
-                title: "机票",
-                value: ticketCount.formatted(),
-                tint: PuffCandy.sky.base,
-                icon: .ticket
-            )
-            resource(
-                title: "金币",
-                value: coins?.formatted() ?? "—",
-                tint: PuffCandy.sunny.deep,
-                icon: .coin
-            )
+        HStack(spacing: 8) {
+            resource(title: "机票", value: ticketCount.formatted(), tint: PuffCandy.sky.base, icon: .ticket)
+            resource(title: "金币", value: coins?.formatted() ?? "—", tint: PuffCandy.sunny.deep, icon: .coin)
         }
-        .frame(minHeight: 44)
         .accessibilityElement(children: .contain)
     }
 
-    private func resource(
-        title: String,
-        value: String,
-        tint: Color,
-        icon: MapResourceIcon.Kind
-    ) -> some View {
-        HStack(spacing: 4) {
+    private func resource(title: String, value: String, tint: Color, icon: MapResourceIcon.Kind) -> some View {
+        HStack(spacing: 5) {
             MapResourceIcon(kind: icon)
                 .frame(width: 15, height: 15)
                 .foregroundStyle(tint)
-
             Text(value)
-                .font(.system(size: 13, weight: Puff.Weight.icon, design: .rounded))
+                .font(.puff(.subheadline, Puff.Weight.emphasis))
                 .monospacedDigit()
                 .foregroundStyle(Puff.Palette.ink)
                 .lineLimit(1)
-                .minimumScaleFactor(0.76)
         }
+        .padding(.horizontal, 12)
+        .frame(height: 32)
+        .background(Puff.Palette.card, in: Capsule())
+        .overlay { Capsule().strokeBorder(Puff.Palette.line, lineWidth: 1) }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(title)
         .accessibilityValue(value)

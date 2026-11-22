@@ -37,6 +37,7 @@ struct WorldMapCanvas: UIViewRepresentable {
         let mapView = cache?.acquire(region: initialRegion) ?? Self.preparedMapView()
         mapView.delegate = context.coordinator
         context.coordinator.installAnnotations(in: mapView)
+        context.coordinator.installPastelWash(in: mapView)
         return mapView
     }
 
@@ -58,11 +59,10 @@ struct WorldMapCanvas: UIViewRepresentable {
         mapView.showsUserLocation = false
         mapView.pointOfInterestFilter = .excludingAll
 
-        // 柔和的标准地图代替卫星实景，与卡通城市图钉同一视觉语言。
-        let configuration = MKStandardMapConfiguration(elevationStyle: .realistic, emphasisStyle: .muted)
+        // 平面、低饱和的标准地图：没有山体晕渲和海底起伏，像一张干净的卡通底图，衬托卡通城市图钉。
+        let configuration = MKStandardMapConfiguration(elevationStyle: .flat, emphasisStyle: .muted)
         configuration.pointOfInterestFilter = .excludingAll
         configuration.showsTraffic = false
-        // Realistic elevation lets MapKit transition into its globe renderer at world scale.
         mapView.preferredConfiguration = configuration
         let compass = MKCompassButton(mapView: mapView)
         compass.compassVisibility = .adaptive
@@ -70,7 +70,7 @@ struct WorldMapCanvas: UIViewRepresentable {
         mapView.addSubview(compass)
         NSLayoutConstraint.activate([
             compass.trailingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.trailingAnchor, constant: -18),
-            compass.topAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.topAnchor, constant: 78),
+            compass.topAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.topAnchor, constant: 124),
             compass.widthAnchor.constraint(equalToConstant: 44),
             compass.heightAnchor.constraint(equalToConstant: 44),
         ])
@@ -100,6 +100,21 @@ struct WorldMapCanvas: UIViewRepresentable {
 
         init(parent: WorldMapCanvas) {
             self.parent = parent
+        }
+
+        /// 底图上盖一层半透明白：在道路之上、地名与城市图钉之下，把海陆颜色和地形晕渲压成柔和的粉彩，
+        /// 地名和图钉仍然清楚。MapKit 没有自定义底图配色，这是代价最小的做法（一个多边形）。
+        func installPastelWash(in mapView: MKMapView) {
+            guard !mapView.overlays.contains(where: { $0 is PuffPastelWash }) else { return }
+            mapView.addOverlay(PuffPastelWash.world(), level: .aboveRoads)
+        }
+
+        func mapView(_ mapView: MKMapView, rendererFor overlay: any MKOverlay) -> MKOverlayRenderer {
+            guard let wash = overlay as? PuffPastelWash else { return MKOverlayRenderer(overlay: overlay) }
+            let renderer = MKPolygonRenderer(polygon: wash)
+            renderer.fillColor = UIColor.white.withAlphaComponent(0.34)
+            renderer.strokeColor = nil
+            return renderer
         }
 
         func installAnnotations(in mapView: MKMapView) {
@@ -227,6 +242,18 @@ struct WorldMapCanvas: UIViewRepresentable {
                 }
             )
         }
+    }
+}
+
+/// 覆盖整个世界的半透明白色底图滤镜，见 `installPastelWash`。
+final class PuffPastelWash: MKPolygon {
+    static func world() -> PuffPastelWash {
+        let world = MKMapRect.world
+        var points = [
+            MKMapPoint(x: world.minX, y: world.minY), MKMapPoint(x: world.maxX, y: world.minY),
+            MKMapPoint(x: world.maxX, y: world.maxY), MKMapPoint(x: world.minX, y: world.maxY),
+        ]
+        return PuffPastelWash(points: &points, count: points.count)
     }
 }
 

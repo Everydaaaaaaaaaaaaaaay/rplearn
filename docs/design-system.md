@@ -36,6 +36,11 @@
   `puffZoomNamespace` 环境值共享命名空间）。聊天、设置这类工作页保持标准推入，避免下拉关闭和滚动冲突；
   推入页的主栈用 `PuffStaggeredStack` 代替 `VStack`，推入的同时各块内容错峰浮现，只在首次出现时播放。
   打开会话后新产生的消息用 `puffArrival(isNew:anchor:)` 从发送方一侧弹出，历史消息原样显示。
+- **子页面顶栏**：蓬蓬根页隐藏系统导航栏。新的子页面优先用 `puffPageHeader(title:showsBack: true)`
+  把页头和返回按钮画在页面里（普通推入另加 `dsInteractivePopGesture()`），转场两端都不切换导航栏显隐。
+  仍用系统导航栏、又从隐藏系统栏的页面缩放进入的子页面，必须加 `dsKeepsNavigationBarVisible()`：
+  缩放转场的交互返回会把导航栏淡到透明，取消后不会恢复，顶栏和返回按钮会一起消失。
+  回归用例见 `NavigationBarRecoveryTests`、`HomeNavigationTests`。
 - **小惊喜**：城市明信片可开 `tapBurst`，点画面迸出糖果色星星和爱心（`puffTapBurst()`，不拦截原有点击）；
   空状态等独立展示位置的咕咕、嘎嘎可开 `reactsToTap`，点一下蹲下、起跳、落地压扁并换个开心姿势。
   按钮内部的吉祥物和画面不开，避免和导航抢手势。

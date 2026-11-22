@@ -144,7 +144,7 @@ public struct MapView: View {
             selectedRegionID: selectedRegionID,
             viewportRequest: viewportRequest,
             viewportInsets: UIEdgeInsets(
-                top: 92,
+                top: 140,
                 left: 30,
                 bottom: 104,
                 right: 30
@@ -155,83 +155,68 @@ public struct MapView: View {
         .ignoresSafeArea()
     }
 
+    /// 地图页头：返回、标题与当前所在城市、票根夹入口；下一行是机票和金币。浮在地图上方，底下一层白色渐隐保证可读。
     private var mapHUD: some View {
-        HStack(spacing: 0) {
-            if let onBack {
-                Button(action: onBack) {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: Puff.Space.s) {
+                if let onBack {
+                    PuffBackButton(label: "返回首页", action: onBack)
+                }
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("世界地图")
+                        .font(.puff(.title, Puff.Weight.display))
                         .foregroundStyle(Puff.Palette.ink)
-                        .frame(width: 44, height: 44)
-                        .contentShape(Rectangle())
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                        .accessibilityAddTraits(.isHeader)
+                    MapStatusHUD(currentRegion: currentRegion)
                 }
-                .buttonStyle(.puffSquish)
-                .accessibilityLabel("返回首页")
-
-                mapHUDDivider
+                Spacer(minLength: 0)
+                ticketStubsEntry
             }
-
-            MapStatusHUD(currentRegion: currentRegion)
-                .padding(.horizontal, 7)
-                .layoutPriority(2)
-
-            mapHUDDivider
-
-            MapResourceHUD(
-                ticketCount: tickets.count,
-                coins: profile?.coins
-            )
-            .padding(.horizontal, 7)
-            .layoutPriority(1)
-
-            mapHUDDivider
-
-            NavigationLink(value: MapDestination.ticketStubs) {
-                HStack(spacing: 4) {
-                    Image(systemName: "ticket.fill")
-                        .font(.system(size: 14, weight: Puff.Weight.icon))
-                        .foregroundStyle(PuffCandy.bubblegum.base)
-                    Text("票根夹")
-                        .font(.system(size: 12, weight: Puff.Weight.icon, design: .rounded))
-                }
-                .foregroundStyle(Puff.Palette.ink)
-                .lineLimit(1)
-                .frame(minHeight: 44)
-                .padding(.horizontal, 7)
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.puffSquish)
-            .puffZoomSource(id: MapDestination.ticketStubs, in: zoomNamespace, cornerRadius: 22)
-            .accessibilityLabel("票根夹")
+            MapResourceHUD(ticketCount: tickets.count, coins: profile?.coins)
         }
-        .frame(height: 54)
-        .padding(.horizontal, 4)
-        .puffCard(radius: 27, lipHeight: 3)
-        .dynamicTypeSize(...DynamicTypeSize.large)
-        .padding(.horizontal, 14)
-        .padding(.top, 8)
-        .frame(maxWidth: .infinity, alignment: .top)
+        .dynamicTypeSize(...DynamicTypeSize.xLarge)
+        .padding(.horizontal, Puff.Space.m)
+        .padding(.top, 6)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(alignment: .top) {
             LinearGradient(
-                colors: [
-                    Puff.Palette.page.opacity(0.6),
-                    Puff.Palette.page.opacity(0.1),
-                    .clear,
+                stops: [
+                    .init(color: Puff.Palette.page.opacity(0.94), location: 0),
+                    .init(color: Puff.Palette.page.opacity(0.7), location: 0.55),
+                    .init(color: Puff.Palette.page.opacity(0), location: 1),
                 ],
                 startPoint: .top,
                 endPoint: .bottom
             )
-            .frame(height: 84)
+            .padding(.bottom, -36)
             .ignoresSafeArea(edges: .top)
             .allowsHitTesting(false)
         }
     }
 
-    private var mapHUDDivider: some View {
-        Rectangle()
-            .fill(Puff.Palette.line)
-            .frame(width: 0.5, height: 22)
-            .accessibilityHidden(true)
+    private var ticketStubsEntry: some View {
+        NavigationLink(value: MapDestination.ticketStubs) {
+            HStack(spacing: 6) {
+                Image(systemName: "ticket.fill")
+                    .font(.system(size: 15, weight: Puff.Weight.icon))
+                    .foregroundStyle(PuffCandy.bubblegum.base)
+                Text("票根夹")
+                    .font(.puff(.subheadline, Puff.Weight.emphasis))
+                    .foregroundStyle(Puff.Palette.ink)
+                    .lineLimit(1)
+            }
+            .padding(.horizontal, 14)
+            .frame(height: 44)
+            .background(Puff.Palette.card, in: Capsule())
+            .overlay { Capsule().strokeBorder(Puff.Palette.line, lineWidth: 1) }
+            .shadow(color: Puff.Palette.ink.opacity(0.06), radius: 6, y: 2)
+            .contentShape(Capsule())
+        }
+        .buttonStyle(.puffSquish)
+        .puffZoomSource(id: MapDestination.ticketStubs, in: zoomNamespace, cornerRadius: 22)
+        .accessibilityLabel("票根夹")
     }
 
     private var mapRegionPresentations: [String: MapRegionPresentation] {

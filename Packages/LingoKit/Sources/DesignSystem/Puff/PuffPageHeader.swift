@@ -22,9 +22,14 @@ public extension View {
     }
 
     /// 没有搜索的页头，可放一个右侧圆形操作按钮。
+    ///
+    /// `showsBack` 用于推入的子页面：标题左侧放返回按钮，页面不再使用系统导航栏。
+    /// 子页面和来源页都隐藏系统栏，转场时不会切换导航栏显隐（切换会让返回途中的按钮漂移、取消返回后顶栏消失）。
+    /// 普通 push 进入的页面另加 `dsInteractivePopGesture()` 保留左缘返回；缩放转场自带交互返回，不用加。
     func puffPageHeader(
         title: String,
         subtitle: String? = nil,
+        showsBack: Bool = false,
         trailing: PuffHeaderAction? = nil
     ) -> some View {
         modifier(PuffPageHeaderModifier(
@@ -33,6 +38,7 @@ public extension View {
             text: nil,
             prompt: "",
             resetToken: 0,
+            showsBack: showsBack,
             trailing: trailing
         ))
     }
@@ -60,6 +66,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
     let text: Binding<String>?
     let prompt: String
     let resetToken: Int
+    var showsBack = false
     var trailing: PuffHeaderAction?
 
     @State private var isSearching = false
@@ -155,6 +162,9 @@ private struct PuffPageHeaderModifier: ViewModifier {
                 closeButton
                     .transition(.puffPop)
             } else {
+                if showsBack {
+                    PuffBackButton()
+                }
                 titleBlock
                     .transition(.opacity.combined(with: .offset(x: -12)))
                 Spacer(minLength: Puff.Space.xs)
@@ -176,7 +186,7 @@ private struct PuffPageHeaderModifier: ViewModifier {
     private var titleBlock: some View {
         VStack(alignment: .leading, spacing: 1) {
             Text(title)
-                .font(.puff(.largeTitle, Puff.Weight.display))
+                .font(.puff(showsBack ? .title : .largeTitle, Puff.Weight.display))
                 .foregroundStyle(Puff.Palette.ink)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -297,5 +307,32 @@ private struct PuffPageHeaderModifier: ViewModifier {
         }
         .animation(Puff.Motion.resolve(Puff.Motion.pop, reduceMotion: reduceMotion), value: searchText.isEmpty)
         .animation(Puff.Motion.resolve(Puff.Motion.press, reduceMotion: reduceMotion), value: isFocused)
+    }
+}
+
+/// 子页面的返回按钮：白色软圆片、墨色箭头，44pt。默认用环境里的 `dismiss` 返回上一页。
+public struct PuffBackButton: View {
+    @Environment(\.dismiss) private var dismiss
+    private let label: String
+    private let action: (@MainActor () -> Void)?
+
+    public init(label: String = "返回", action: (@MainActor () -> Void)? = nil) {
+        self.label = label
+        self.action = action
+    }
+
+    public var body: some View {
+        Button { if let action { action() } else { dismiss() } } label: {
+            Image(systemName: "chevron.left")
+                .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
+                .foregroundStyle(Puff.Palette.ink)
+                .frame(width: 44, height: 44)
+                .background(Puff.Palette.card, in: Circle())
+                .overlay { Circle().strokeBorder(Puff.Palette.line, lineWidth: 1) }
+                .shadow(color: Puff.Palette.ink.opacity(0.06), radius: 6, y: 2)
+                .contentShape(Circle())
+        }
+        .buttonStyle(.puffSquish)
+        .accessibilityLabel(label)
     }
 }
