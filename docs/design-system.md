@@ -63,6 +63,8 @@
 | `PuffMascot` | 咕咕、嘎嘎吉祥物，可选点击反应 |
 | `puffArrival` / `puffTapBurst` / `puffZoomSource` | 新内容弹出、点击迸发、缩放转场起点 |
 | `PuffEmptyState` / `PuffLoadingDots` | 空状态（配吉祥物）与加载 |
+| `puffFormStyle()` / `PuffBubbleLabelStyle` | 系统 `Form`/`List` 页的蓬蓬外观：浅云底、圆体、图标放进糖果色气泡，保留系统表单行为 |
+| `PuffStaggeredStack` | 推入页主栈，内容错峰浮现 |
 | `PuffCity` | 城市中文名、当地时间与问候语 |
 
 ### 性能

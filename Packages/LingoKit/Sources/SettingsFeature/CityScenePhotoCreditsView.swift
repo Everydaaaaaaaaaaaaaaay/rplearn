@@ -92,10 +92,10 @@ public struct CityScenePhotoCreditsView: View {
         List {
             Section("十五城 · 相遇影片") {
                 Text("各城真实摄影，经选段、竖屏裁切、缩放及无声编码。每城一秒；并非实时画面。")
-                    .font(.footnote).foregroundStyle(.secondary)
+                    .font(.footnote).foregroundStyle(Puff.Palette.inkSoft)
                 ForEach(Self.journeyCredits) { credit in
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(credit.city).font(.caption).foregroundStyle(.secondary)
+                        Text(credit.city).font(.caption).foregroundStyle(Puff.Palette.inkSoft)
                         creditRow(credit)
                     }
                 }
@@ -104,7 +104,7 @@ public struct CityScenePhotoCreditsView: View {
             }
             Section("城市活动 · 街角咖啡馆") {
                 Text("室内为 AI 情景美术，窗外为加工后的素材画面；并非当前城市实拍或实时影像。视频路人不代表可互动角色。")
-                    .font(.footnote).foregroundStyle(.secondary)
+                    .font(.footnote).foregroundStyle(Puff.Palette.inkSoft)
                 Link("窗外街景 · Davide Giordani / Pixabay（素材 27023）",
                      destination: URL(string: "https://pixabay.com/videos/london-building-people-walking-27023/")!)
                 Link("Pixabay Content License",
@@ -112,7 +112,7 @@ public struct CityScenePhotoCreditsView: View {
             }
             Section("城市活动 · 街边旧书摊 / 街角花摊") {
                 Text("摊位前景均为一次性 AI 情景美术，背景为经过稳定、裁切、柔焦和接缝处理的真实素材。不是当前城市的实拍或实时影像，真实路人不作为 NPC 身份。")
-                    .font(.footnote).foregroundStyle(.secondary)
+                    .font(.footnote).foregroundStyle(Puff.Palette.inkSoft)
                 Link("旧书摊街景 · BreakDownPictures / Pixabay（素材 67850，锡比乌）",
                      destination: URL(string: "https://pixabay.com/videos/building-houses-square-street-67850/")!)
                 Link("花摊街景 · Liemedia / Pixabay（素材 18027，旧金山）",
@@ -124,8 +124,8 @@ public struct CityScenePhotoCreditsView: View {
                 ForEach(DSHubScenePhotos.photos) { photo in
                     VStack(alignment: .leading, spacing: 5) {
                         Text("\(photo.cityName) · \(photo.placement)").font(.subheadline)
-                        Text(photo.title).font(.footnote).foregroundStyle(.secondary)
-                        Text("\(photo.author) · \(photo.license)").font(.footnote).foregroundStyle(.secondary)
+                        Text(photo.title).font(.footnote).foregroundStyle(Puff.Palette.inkSoft)
+                        Text("\(photo.author) · \(photo.license)").font(.footnote).foregroundStyle(Puff.Palette.inkSoft)
                         Link("查看照片来源", destination: photo.sourceURL)
                         Link("查看使用许可", destination: photo.licenseURL)
                     }
@@ -134,6 +134,7 @@ public struct CityScenePhotoCreditsView: View {
             citySections
             licenseSection
         }
+        .puffFormStyle()
         .navigationTitle("影像来源与许可")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -157,11 +158,11 @@ public struct CityScenePhotoCreditsView: View {
                         .foregroundStyle(.primary)
                     Text("\(credit.author) · \(credit.license)")
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
                 Spacer(minLength: 8)
                 Image(systemName: "arrow.up.right.square")
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
             }
         }
     }

@@ -77,7 +77,7 @@ struct ChatContactDetailsView: View {
                         .disabled(viewModel.checkingAppointments)
                         .accessibilityIdentifier("chat.detectAppointment")
                         if let notice = viewModel.appointmentNotice {
-                            Text(notice).font(.footnote).foregroundStyle(.secondary)
+                            Text(notice).font(.footnote).foregroundStyle(Puff.Palette.inkSoft)
                         }
                     }
                 }
@@ -96,7 +96,7 @@ struct ChatContactDetailsView: View {
                 } label: {
                     LabeledContent {
                         Text(muteStatus)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Puff.Palette.inkSoft)
                     } label: {
                         Label("消息免打扰", systemImage: "bell.slash.fill")
                             .foregroundStyle(.primary)
@@ -116,7 +116,7 @@ struct ChatContactDetailsView: View {
                 } label: {
                     LabeledContent("备注与私人笔记") {
                         Text(noteSummary)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Puff.Palette.inkSoft)
                             .lineLimit(1)
                     }
                 }
@@ -126,7 +126,7 @@ struct ChatContactDetailsView: View {
                 } label: {
                     LabeledContent {
                         Text(growthSummary)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Puff.Palette.inkSoft)
                     } label: {
                         Label("成长与记忆", systemImage: "leaf.fill")
                     }
@@ -154,10 +154,11 @@ struct ChatContactDetailsView: View {
             if let errorMessage {
                 Section {
                     Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
-                        .foregroundStyle(Color.dsDanger)
+                        .foregroundStyle(Puff.Palette.cherry)
                 }
             }
         }
+        .puffFormStyle()
         .dsQuickNotice($viewModel.quickNotice)
         .navigationTitle("聊天设置")
         .navigationBarTitleDisplayMode(.inline)
@@ -192,20 +193,19 @@ struct ChatContactDetailsView: View {
     }
 
     private var profileRow: some View {
-        HStack(spacing: DSSpacing.sm) {
-            AvatarBadge(
+        HStack(spacing: Puff.Space.s) {
+            PuffAvatar(
                 name: viewModel.character.displayName,
                 size: 58,
                 imageName: viewModel.character.card.avatarAssetName,
-                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                usesPendingPlaceholder: true
+                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:))
             )
             VStack(alignment: .leading, spacing: 3) {
                 Text(viewModel.character.displayName)
-                    .font(.headline)
+                    .font(.puff(.headline, Puff.Weight.title))
                 Text(viewModel.character.card.signature ?? "查看旅伴资料与成长故事")
                     .font(.footnote)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
                     .lineLimit(2)
             }
         }
@@ -355,10 +355,11 @@ private struct ContactNoteEditor: View {
             if let errorMessage {
                 Section {
                     Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
-                        .foregroundStyle(Color.dsDanger)
+                        .foregroundStyle(Puff.Palette.cherry)
                 }
             }
         }
+        .puffFormStyle()
         .navigationTitle("备注与笔记")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -402,21 +403,16 @@ private struct ChatHistorySearchView: View {
     var body: some View {
         Group {
             if query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                ContentUnavailableView(
-                    "查找聊天记录",
-                    systemImage: "text.magnifyingglass",
-                    description: Text("搜索你与\(characterName)说过的单词或句子")
-                )
+                PuffEmptyState("查找聊天记录", bird: .gaga, pose: .curious)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else if isSearching {
-                ProgressView("正在搜索…")
+                PuffLoadingDots().accessibilityLabel("正在搜索")
             } else if searchFailed {
-                ContentUnavailableView(
-                    "搜索暂时不可用",
-                    systemImage: "exclamationmark.magnifyingglass",
-                    description: Text("请稍后重试")
-                )
+                PuffEmptyState("搜索暂时不可用", bird: .gaga, pose: .pout)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else if didSearch, results.isEmpty {
-                ContentUnavailableView.search(text: query)
+                PuffEmptyState("没有找到“\(query)”", bird: .gaga, pose: .thinking)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 List(results) { result in
                     if result.conversationID == viewModel.conversation?.id {
@@ -432,8 +428,11 @@ private struct ChatHistorySearchView: View {
                         }
                     }
                 }
+                .puffFormStyle()
             }
         }
+        .background(Puff.Palette.cloud.ignoresSafeArea())
+        .fontDesign(.rounded)
         .navigationTitle("聊天记录")
         .navigationBarTitleDisplayMode(.inline)
         .searchable(text: $query, prompt: "搜索聊天内容")
@@ -446,11 +445,11 @@ private struct ChatHistorySearchView: View {
             HStack {
                 Text(message.role == .user ? "我" : characterName)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color.dsSkyDeep)
+                    .foregroundStyle(PuffCandy.sky.deep)
                 if result.isArchivedConversation {
                     Text("历史会话")
                         .font(.caption2.weight(.semibold))
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
                 Spacer()
                 Text(message.createdAt.formatted(date: .abbreviated, time: .shortened))
@@ -510,7 +509,7 @@ private struct ChatHistoryContextView: View {
                     HStack {
                         Text(message.role == .user ? "我" : viewModel.character.displayName)
                             .font(.caption.weight(.semibold))
-                            .foregroundStyle(Color.dsSkyDeep)
+                            .foregroundStyle(PuffCandy.sky.deep)
                         Spacer()
                         Text(message.createdAt.formatted(date: .abbreviated, time: .shortened))
                             .font(.caption2)
@@ -522,10 +521,11 @@ private struct ChatHistoryContextView: View {
                 }
                 .padding(.vertical, 4)
                 .listRowBackground(
-                    message.id == result.message.id ? Color.dsSky.opacity(0.14) : Color.clear
+                    message.id == result.message.id ? PuffCandy.sky.wash : Color.clear
                 )
                 .id(message.id)
             }
+            .puffFormStyle()
             .overlay {
                 if isLoading { ProgressView() }
             }
@@ -553,24 +553,23 @@ private struct ChatCharacterProfileView: View {
     var body: some View {
         List {
             Section {
-                VStack(spacing: DSSpacing.sm) {
-                    AvatarBadge(
+                VStack(spacing: Puff.Space.s) {
+                    PuffAvatar(
                         name: character.displayName,
                         size: 96,
                         imageName: character.card.avatarAssetName,
-                        remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                        usesPendingPlaceholder: true
+                        remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:))
                     )
                     Text(character.displayName)
-                        .font(.title2.bold())
+                        .font(.puff(.title2, Puff.Weight.title))
                     if character.displayName != character.card.name {
                         Text(character.card.name)
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Puff.Palette.inkSoft)
                     }
                     Label("AI 旅伴 · 虚构角色", systemImage: "sparkles")
                         .font(.footnote.weight(.semibold))
-                        .foregroundStyle(Color.dsSkyDeep)
+                        .foregroundStyle(PuffCandy.sky.deep)
                     if let signature = character.card.signature {
                         lookupText(signature, field: "signature", textColor: .secondary)
                             .font(.body)
@@ -578,7 +577,7 @@ private struct ChatCharacterProfileView: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, DSSpacing.sm)
+                .padding(.vertical, Puff.Space.s)
             }
 
             Section("身份资料") {
@@ -624,14 +623,11 @@ private struct ChatCharacterProfileView: View {
                 if character.growth.isPaused {
                     Label("未来成长已暂停", systemImage: "pause.circle.fill")
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
                 if character.growth.arcs.isEmpty {
-                    ContentUnavailableView(
-                        "还没有形成稳定变化",
-                        systemImage: "leaf",
-                        description: Text("一次建议只会种下想法；持续的经历与行动才会慢慢留下改变。")
-                    )
+                    PuffEmptyState("还没有形成稳定变化", bird: .gaga, pose: .curious)
+                        .frame(maxWidth: .infinity)
                 } else {
                     ForEach(character.growth.arcs.sorted { $0.updatedAt > $1.updatedAt }) { arc in
                         growthRow(arc)
@@ -656,7 +652,7 @@ private struct ChatCharacterProfileView: View {
                     ForEach(Array(history.enumerated()), id: \.offset) { _, revision in
                         DisclosureGroup("查看更新与原资料") {
                             Text(revision.explanationZh)
-                            Text(revision.appliedAt, style: .date).font(.caption).foregroundStyle(.secondary)
+                            Text(revision.appliedAt, style: .date).font(.caption).foregroundStyle(Puff.Palette.inkSoft)
                             if let previous = CharacterCard.decode(fromJSON: revision.previousCardJSON) {
                                 LabeledContent("原国籍", value: previous.nationality)
                                 LabeledContent("原所在城市", value: previous.regionID)
@@ -675,10 +671,11 @@ private struct ChatCharacterProfileView: View {
                 if let latest = character.relationship.latestEvent {
                     Text(latest.reasonZh)
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
             }
         }
+        .puffFormStyle()
         .navigationTitle("旅伴资料")
         .navigationBarTitleDisplayMode(.inline)
         .wordLookupOverlay(
@@ -730,13 +727,13 @@ private struct ChatCharacterProfileView: View {
                 Spacer()
                 Text(arc.stage.titleZh)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color.dsSkyDeep)
+                    .foregroundStyle(PuffCandy.sky.deep)
             }
             Text(arc.reasonZh)
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Puff.Palette.inkSoft)
             ProgressView(value: min(max(arc.progress, 0), 1))
-                .tint(Color.dsSky)
+                .tint(PuffCandy.sky.base)
             Text("依据 \(arc.evidenceMessageIDs.count) 条互动证据 · 更新于 \(arc.updatedAt.formatted(date: .abbreviated, time: .omitted))")
                 .font(.caption)
                 .foregroundStyle(.tertiary)

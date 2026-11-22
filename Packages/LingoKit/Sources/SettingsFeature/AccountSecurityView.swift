@@ -42,7 +42,7 @@ public struct AccountSecurityView: View {
             if let errorMessage {
                 Section {
                     Label(errorMessage, systemImage: "exclamationmark.circle.fill")
-                        .foregroundStyle(Color.dsDanger)
+                        .foregroundStyle(Puff.Palette.cherry)
                 }
             }
 
@@ -65,7 +65,7 @@ public struct AccountSecurityView: View {
                                 .font(.body.weight(.semibold))
                             Text(deviceSession.current ? "当前设备" : platformName(deviceSession.platform))
                                 .font(.caption)
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(Puff.Palette.inkSoft)
                         }
                         Spacer()
                         if !deviceSession.current {
@@ -78,6 +78,7 @@ public struct AccountSecurityView: View {
                 }
             }
         }
+        .puffFormStyle()
         .navigationTitle("账号与安全")
         .navigationBarTitleDisplayMode(.inline)
         .task { await reload() }
@@ -120,11 +121,11 @@ public struct AccountSecurityView: View {
                 if let displayName = identity.displayName {
                     Text(displayName)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 } else if let email = identity.email {
                     Text(email)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
             }
             Spacer()
@@ -137,7 +138,7 @@ public struct AccountSecurityView: View {
             } else {
                 Text("唯一方式")
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Puff.Palette.inkSoft)
             }
         }
     }

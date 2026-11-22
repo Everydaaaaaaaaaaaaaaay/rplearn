@@ -27,11 +27,8 @@ struct CharacterGrowthManagementView: View {
 
             Section {
                 if growth.arcs.isEmpty {
-                    ContentUnavailableView(
-                        "还没有形成成长",
-                        systemImage: "leaf",
-                        description: Text("持续且有意义的互动，才会让变化从一个想法慢慢形成习惯。")
-                    )
+                    PuffEmptyState("还没有形成成长", bird: .gaga, pose: .curious)
+                        .frame(maxWidth: .infinity)
                 } else {
                     ForEach(growth.arcs.sorted { $0.updatedAt > $1.updatedAt }) { arc in
                         growthRow(arc)
@@ -43,7 +40,7 @@ struct CharacterGrowthManagementView: View {
                     Spacer()
                     if growth.isPaused {
                         Label("已暂停", systemImage: "pause.circle.fill")
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Puff.Palette.inkSoft)
                     }
                 }
             } footer: {
@@ -63,10 +60,11 @@ struct CharacterGrowthManagementView: View {
             if let errorMessage {
                 Section {
                     Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
-                        .foregroundStyle(Color.dsDanger)
+                        .foregroundStyle(Puff.Palette.cherry)
                 }
             }
         }
+        .puffFormStyle()
         .navigationTitle("成长与记忆")
         .navigationBarTitleDisplayMode(.inline)
         .disabled(isWorking)
@@ -115,13 +113,13 @@ struct CharacterGrowthManagementView: View {
                 Spacer()
                 Text(arc.stage.titleZh)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color.dsSkyDeep)
+                    .foregroundStyle(PuffCandy.sky.deep)
             }
             Text(arc.reasonZh)
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Puff.Palette.inkSoft)
             ProgressView(value: min(max(arc.progress, 0), 1))
-                .tint(Color.dsSky)
+                .tint(PuffCandy.sky.base)
             HStack {
                 Label("\(arc.evidenceMessageIDs.count) 条互动证据", systemImage: "quote.bubble")
                 Spacer()
@@ -133,7 +131,7 @@ struct CharacterGrowthManagementView: View {
                 .buttonStyle(.borderless)
             }
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Puff.Palette.inkSoft)
         }
         .padding(.vertical, 3)
         .accessibilityElement(children: .contain)

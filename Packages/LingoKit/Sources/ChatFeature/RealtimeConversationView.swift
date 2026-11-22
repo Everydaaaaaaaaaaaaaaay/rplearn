@@ -227,6 +227,7 @@ struct RealtimeConversationView: View {
             translatedText = translated ?? ""
         }
         .preferredColorScheme(.dark)
+        .fontDesign(.rounded)
         .task { await coordinator.start() }
         .onReceive(NotificationCenter.default.publisher(for: .npcAvatarDidChange)) { note in
             guard note.object as? UUID == character.id else { return }
@@ -262,7 +263,7 @@ struct RealtimeConversationView: View {
 
     private var background: some View {
         ZStack {
-            Color(red: 0.025, green: 0.035, blue: 0.065)
+            Color(red: 0.086, green: 0.102, blue: 0.180)
             RadialGradient(
                 colors: [phaseTint.opacity(0.24), .clear],
                 center: .init(x: 0.5, y: 0.34),
@@ -270,12 +271,12 @@ struct RealtimeConversationView: View {
                 endRadius: 390
             )
             Circle()
-                .fill(Color.dsQuiz.opacity(0.11))
+                .fill(PuffCandy.grape.base.opacity(0.16))
                 .frame(width: 330, height: 330)
                 .blur(radius: 90)
                 .offset(x: 170, y: 350)
             Circle()
-                .fill(Color.dsCyan.opacity(0.09))
+                .fill(PuffCandy.mint.base.opacity(0.12))
                 .frame(width: 260, height: 260)
                 .blur(radius: 80)
                 .offset(x: -180, y: -360)
@@ -334,7 +335,7 @@ struct RealtimeConversationView: View {
                     .foregroundStyle(.white.opacity(0.58))
                     .multilineTextAlignment(.center)
             }
-            .animation(reduceMotion ? nil : DSAnimation.snappy, value: session.phase)
+            .animation(reduceMotion ? nil : Puff.Motion.bouncy, value: session.phase)
         }
     }
 
@@ -348,7 +349,7 @@ struct RealtimeConversationView: View {
                         speaker: "你",
                         text: displayedUserText,
                         alignment: .trailing,
-                        tint: .dsCyan
+                        tint: PuffCandy.mint.base
                     )
                 }
                 if !session.assistantTranscript.isEmpty {
@@ -419,7 +420,7 @@ struct RealtimeConversationView: View {
                     selected: captionsVisible
                 ) {
                     Haptics.selection()
-                    withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
+                    withAnimation(reduceMotion ? nil : Puff.Motion.bouncy) {
                         captionsVisible.toggle()
                     }
                 }
@@ -431,8 +432,8 @@ struct RealtimeConversationView: View {
                         .font(.title2.weight(.semibold))
                         .foregroundStyle(.white)
                         .frame(width: 70, height: 70)
-                        .background(Color.dsBrandCoral, in: Circle())
-                        .shadow(color: Color.dsBrandCoral.opacity(0.36), radius: 18, y: 7)
+                        .background(Puff.Palette.cherry, in: Circle())
+                        .shadow(color: Puff.Palette.cherry.opacity(0.36), radius: 18, y: 7)
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("结束实时语音")
@@ -478,7 +479,7 @@ struct RealtimeConversationView: View {
         VStack(spacing: 16) {
             Image(systemName: "waveform.badge.exclamationmark")
                 .font(.system(size: 30))
-                .foregroundStyle(Color.dsBrandCoral)
+                .foregroundStyle(PuffCandy.bubblegum.base)
             VStack(spacing: 6) {
                 Text("实时语音暂时不可用")
                     .font(.headline)
@@ -519,20 +520,20 @@ struct RealtimeConversationView: View {
 
     private var phaseTint: Color {
         switch session.phase {
-        case .userSpeaking: .dsCyan
-        case .thinking, .connecting, .reconnecting: .dsQuiz
-        case .speaking: .dsSky
-        case .failed: .dsBrandCoral
-        case .idle, .listening, .paused: .dsSkyDeep
+        case .userSpeaking: PuffCandy.mint.base
+        case .thinking, .connecting, .reconnecting: PuffCandy.grape.base
+        case .speaking: PuffCandy.sky.base
+        case .failed: PuffCandy.bubblegum.base
+        case .idle, .listening, .paused: PuffCandy.sky.base
         }
     }
 
     private var connectionTint: Color {
         switch session.phase {
-        case .failed: .dsDanger
-        case .connecting, .reconnecting: .dsWarning
+        case .failed: Puff.Palette.cherry
+        case .connecting, .reconnecting: PuffCandy.sunny.base
         case .idle, .paused: .white.opacity(0.35)
-        default: .dsSuccess
+        default: PuffCandy.mint.base
         }
     }
 
