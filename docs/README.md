@@ -8,7 +8,7 @@
 | 任务 | 入口 |
 | --- | --- |
 | 启动与仓库地图 | [项目 README](../README.md)、[后端 README](../Backend/README.md) |
-| 选择验证 | [开发速查](development.md)、[功能验证矩阵](system-verification.md) |
+| 预览、命令与验证 | [开发速查](development.md)、[功能验证矩阵](system-verification.md)、[学习功能开发入口](learning-program/dev-entries.md) |
 | 模块、账号与同步边界 | [架构](architecture.md) |
 | 登录入口、账号隔离与订阅 | [账号与定价策略](account-access-and-pricing-policy-2026-09-10.md)；商店价格配置不等于已生效 |
 | 城市与剧情 | [旅行设计](journey-design.md)、[出发之后](departures-collection.md)、[剧情美术验收](verification/departures-art.md) |

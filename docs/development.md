@@ -1,20 +1,85 @@
-# 按任务选择开发入口与验证
+# 开发速查
 
-这是按需速查表，不是每次修改前的必读清单。选择能证明本次行为正确的最小验证；已通过后，
-只有新修改、失败或未解决的风险才需要追加检查。历史校准记录和阶段验收不构成日常提交门禁。
+按需查命令和入口，不是开工清单。什么时候验证、验证到什么程度，以 [AGENTS.md](../AGENTS.md) 的“验证：够用即停”为准。
+学习、测评和挑战的专项入口见[学习功能开发入口](learning-program/dev-entries.md)，赴约测试见
+[赴约接入记录](appointments-implementation-2026-11-01.md#测试入口)。
 
-## 小任务快速路径
+## 预览构建
 
-按 2026-11-17 的速度优先要求，文案、字号、对齐、图标和简单入口调整采用以下流程。
+```bash
+Scripts/preview.sh build <页面>    # 源码改动后：重新生成工程、增量构建、安装并免登录启动
+Scripts/preview.sh preview <页面>  # 已有最新构建：只安装和启动（不检查源码新旧）
+Scripts/preview.sh status          # 查看 Xcode、设备与产物
+```
 
-1. 检查 Git 状态，只读取相关代码，直接修改。
-2. iOS 使用 `Scripts/preview.sh build <页面>` 一次完成增量构建、安装和启动。已有最新成功构建时使用 `preview`。
-3. 在当前模拟器简短查看受影响页面，入口变更直接点击确认。发现问题后修复并复查对应位置。
-4. 检查差异并创建聚焦提交，最终回复简述改动和验证。
+可选页面：
 
-UI 自动化、多设备、明暗模式、大字号、架构检查按具体改动风险选用。照片沿用时复用素材证据，
-小型 UI 改动的验证结果记在提交或最终回复中。新增或修改照片、视频等素材时保留对应版本记录。
-复用当前模拟器和构建缓存，重启设备用于解决实际环境污染或运行故障。
+- 常用：`messages`（默认）、`contacts`、`home`（活动首页）、`map`、`me`、`settings`、`subscription`
+- 活动与赴约：`places-preview`、`world-preview`、`scenes-preview`、`appointments-preview`
+- 学习：`learning`、`learning-test`、`role-learning`、`unit-challenge`、`practice-preview`、`achievement-preview`、`promotion-preview`
+
+说明：
+
+- `build` 会先按 `project.yml` 重新生成工程，新增 Swift 文件会自动加入编译。生成的工程文件不提交。
+- 产物固定在 `build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app`，可用 `LINGOTRIP_DERIVED_DATA_PATH` 覆盖。
+- 设备优先使用工作树绑定的；未绑定时选最新 iOS 运行时里的 iPhone，同一运行时优先复用已启动的设备。
+  可用 `LINGOTRIP_SIMULATOR_UDID` 指定。脚本不创建克隆，不关闭其他项目的设备，也会自动选择完整 Xcode，不需要改 `xcode-select`。
+- 模拟器窗口在 Device Hub：Xcode → Open Developer Tool → Device Hub，选择脚本输出的设备。
+
+### 查看页面
+
+优先用 Computer Use 点一遍受影响的页面。没有 Computer Use，或 Device Hub 连接超时（2026-09-14 实测出现过 `timeoutReached`），
+就截一张图确认首屏，交互留给用户看，不要反复换名称重试：
+
+```bash
+xcrun simctl io <设备UDID> screenshot <输出路径>.png
+```
+
+- 首屏是异步加载的，刚启动截到空背景时稍等再截，不要因此重建。
+- 点底部标签前先收起键盘，避免点到键盘区域。
+
+### 免登录预览
+
+`preview.sh` 在 Debug 下通过 `SIMCTL_CHILD_` 传入 `UI_TEST_SKIP_ONBOARDING=1`、`UI_TEST_REQUIRE_AUTHENTICATION=0`、
+`UI_TEST_DISABLE_BACKGROUND_REFRESH=1`，后端固定为 `http://127.0.0.1:9`。未登录时 `RootView` 调用
+`AppEnvironment.activateUITestWorkspace()`，使用内存数据和本地角色，重启后重置。
+
+- 已有真实登录态不会被替换；不要为了制造测试条件清空钥匙串或数据库。
+- 只能预览页面，不能验证真实登录、在线 AI 或同步。Release 不含这个入口。
+- 跨进程断点测试可设 `UI_TEST_PERSISTENCE_NAMESPACE=<新 UUID>`，使用独立的临时 SwiftData 存储，只有同一 UUID 的重启会复用。
+  `LondonEpisodeTests/testReadingRouteAndResume` 用这个入口，并等选择后的下一页出现、确认断点已保存后再终止进程。
+- 会员订阅页的完整价格排版：`SIMCTL_CHILD_UI_TEST_SUBSCRIPTION_PRICES=1 Scripts/preview.sh preview subscription`。
+  这个 Debug 夹具标明“示例价格，不可购买”，不改变 StoreKit 商品、生产价格或权益；正常预览缺少商店价格时显示重新加载并禁用购买。
+
+### 活动与城市预览
+
+- `places-preview`：伦敦三地点样板。咖啡馆有 Alex 的七节点四结尾故事，书店和公园是独处短篇，画面是程序化卡通地点。
+  只在免登录内存账号里注入本机外出服务，不调用正式分配或好友接口；外出记录存在 `debug.place-outing.preview.v1.manual`
+  命名空间，重启后继续。这是界面与状态机样板，不代表十五城内容已发布。正式入口由 `activity-world-release.json` 控制。
+  `CityPlaceOutingTests` 定向检查实际分支、暂停返回、杀进程恢复、足迹，以及最大辅助字号下的独处结尾。
+- `world-preview`：十五城完整离线游玩，用 `UI_TEST_SCENE_CITY` 指定城市。
+- `scenes-preview`：十五城地点浏览。点顶部城市名切换城市，左右滑动或点两侧箭头切换地点。
+- `appointments-preview`：赴约约定页，见[赴约测试入口](appointments-implementation-2026-11-01.md#测试入口)。
+
+### iOS 图片分包
+
+地图、城市活动和剧情共用静态图片目录，文件名包含内容 SHA256。首次读取时核对大小和指纹，同一文件的并发请求会合并，
+已下载的图片优先读本机。缓存上限 220 MiB，被系统清理后可重新下载。伦敦、墨尔本、纽约的图片和首个主线美术、离线词典、
+朗读模型、剧情文本和预制配音随包提供。
+
+```sh
+python3 Tools/ContentPipeline/ios-content-packs.py --output build/ios-content-public
+python3 -m http.server 18765 --bind 127.0.0.1 --directory build/ios-content-public
+LINGOTRIP_CONTENT_ASSET_BASE_URL=http://127.0.0.1:18765 Scripts/preview.sh build world-preview
+```
+
+- 选中地图城市时预取第一张活动图片和活动页背景；剧情目录预取当前可读章节的首幕，阅读时预取下一幕。
+  城市页面先显示同一地点的低分辨率预览，再加载全分辨率图。
+- 发布时把导出文件放到公开、不可变的 HTTPS 静态目录，用同一地址设置 `LINGOTRIP_CONTENT_ASSET_BASE_URL` 执行 `Scripts/archive.sh`。
+  内容更新只新增文件，保留已发布 App 仍在引用的旧文件。变量留空时构建全量资源版。
+- 修改城市摄影后，先用 Google `cwebp` 和 `python3 Tools/ContentPipeline/encode-city-display-images.py` 重新生成同分辨率显示文件，
+  再用 `python3 Tools/ContentPipeline/ios-content-packs.py --update` 更新指纹和预览图。逐图选档与像素对照见
+  [城市编码验收](verification/ios-city-webp-2026-11-20.md)。
 
 ## 查找入口
 
@@ -25,269 +90,50 @@ UI 自动化、多设备、明暗模式、大字号、架构检查按具体改�
 | 本地存储与同步 | `PersistenceKit/Schema`、对应 Store；跨端契约在 `SyncKit` 和后端 content/sync 模块 |
 | 语音 | `SpeechKit`、`RealtimeVoiceKit`；生命周期约束见 `realtime-voice.md` |
 | 城市和剧情 | `App/Resources/regions.json`、对应剧情 JSON；逻辑在 `DomainKit`、`StoryEngine` |
+| 界面组件 | `DesignSystem/Puff/`；规范见 [设计系统](design-system.md) |
 | 后端接口 | `Backend/src/modules/<module>/routes.ts` → service → repository，按需要往下读 |
 | 后端配置和数据库 | `Backend/src/config/env.ts`、模块 schema；共享身份在 `db/user-schema.ts` |
 | 图片和离线工具 | 对应资产清单、`Tools/README.md` 或工具目录 README |
 
-Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时用
-`Scripts/code-map.sh ChatFeature` 或 `Scripts/code-map.sh backend:auth`，不必先读全库。
+Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时用 `Scripts/code-map.sh ChatFeature` 或
+`Scripts/code-map.sh backend:auth`，不必先读全库。
 
-## 验证选择
+## 验证命令
 
-| 变化 | 通常足够的验证 |
+只在 AGENTS.md 规定需要时使用；每类选最相关的一条。
+
+| 对象 | 命令 |
 | --- | --- |
-| 文档、说明 | 检查差异、链接和命令准确性；不构建 App 或启动数据库 |
-| 纯视觉调整 | 相关页面构建与观察；无需新增复刻布局实现的单元测试 |
-| Swift 业务逻辑 | `Scripts/test.sh -only-testing:LingoTripTests/<Suite>` |
+| Swift 单测 | `Scripts/test.sh -only-testing:LingoTripTests/<Suite>`（已构建测试宿主，不必再跑 `Scripts/build.sh`） |
 | 对话纯逻辑 | `Scripts/test-conversation.sh`，可继续传 `-only-testing:...` |
-| 关系模型 | `Scripts/test-relationship.sh`，默认一轮；保留数值不变量和反例测试 |
-| Swift 依赖边界 | `Scripts/check-architecture.sh --ios`；目标/资源变化另做相关构建 |
+| 关系模型 | `Scripts/test-relationship.sh`，一轮即可 |
+| UI 路径 | `Scripts/test-ui.sh -only-testing:LingoTripUITests/<Suite>/<test>` |
+| Swift 依赖边界 | `Scripts/check-architecture.sh`（默认 `--ios`，不需要 Node；`--all` 两端都查） |
 | 后端局部逻辑 | 在 Backend 执行 `pnpm exec vitest run test/<相关文件>`；类型契约变化加 `pnpm typecheck` |
-| 后端模块依赖 | 在 Backend 执行 `pnpm architecture`，或根目录 `Scripts/check-architecture.sh --backend` |
-| 数据库、事务、同步协议 | 配置隔离测试服务，执行受影响集成用例；不要指向生产数据库 |
-| 跨模块重构、发布候选 | 按影响选择 `Scripts/test.sh` 或后端 `pnpm check`；发布再运行对应构建/部署检查 |
+| 后端模块依赖 | 在 Backend 执行 `pnpm architecture` |
+| 后端较大改动 | `pnpm check`（lint、typecheck、architecture、默认测试的组合，不必再逐项重跑） |
+| 数据库与 HTTP 流程 | `python3 Scripts/verify-backend-workflows.py`，自动创建独立的本地服务 |
 
-`Scripts/check-architecture.sh` 默认 `--ios`，不需要 Node/pnpm；`--all` 显式检查两端。
-源文件长度、临时命名风格和文档里的 Target 数字不再作为硬门禁；依赖边界和大小写路径冲突仍检查。
+- 源文件长度、命名风格和文档里的 Target 数量不是门禁；依赖边界和大小写路径冲突仍会检查。
+- UI 测试单条默认 300 秒超时，超时即判失败，避免模拟器异常时整批挂起；长流程用 `LINGOTRIP_UI_TEST_TIMEOUT=<秒>` 放宽。
+- UI 测试失败时先读 xcresult 里的实际断言位置；诊断收集阶段的 `simctl` 错误不等于根因。
+  隐藏的首页可能仍在辅助功能树里，判断是否回到首页要看入口可点击，或二级页面的返回按钮是否消失。
+- 关系压力测试的 10,000 个输入使用固定种子，排查时序不稳定才设 `RELATIONSHIP_TEST_PASSES=3`；重跑相同种子不增加覆盖。
+- 本地单测使用 mock 和内存夹具。集成、E2E 需要隔离的 PostgreSQL/Redis，部分媒体测试还需要 MinIO，相应 `RUN_*` 开关需显式开启。
+  Swift Live 套件默认跳过，跳过项不计入通过数。
+- 功能大检查和跨模块流程参考[验证矩阵](system-verification.md)；发布流程见[后端发布文档](backend/DEPLOYMENT.md#发布)。
+- 图库覆盖实验、Blender 拟合和词典审校只在对应资产任务里运行。已验收且哈希不变的资产复用原审核。
 
-后端 `pnpm check` 是 lint、typecheck、architecture、默认测试的组合，适合 CI/较大改动；
-不必再逐项重跑其子命令。`pnpm build` 验证产物，按发布需要使用。
-一次 `Scripts/test.sh` 已构建宿主，不必为同一模拟器再调用 `Scripts/build.sh`。
-需要安装/启动时用相应运行流程；真机或 Release 属于不同构建目标。
+## 常见问题
 
-功能大检查与跨模块流程参考 [验证矩阵](system-verification.md)。
-`python3 Scripts/verify-backend-workflows.py` 为数据库/HTTP 流程创建独立本地服务并记录结果，
-`Scripts/test-ui.sh -only-testing:LingoTripUITests/<Suite>/<test>` 运行指定 UI 路径。
-二者均按需执行，不追加到每次修改的默认门禁。
-
-赴约全路径可用 `Scripts/test-ui.sh -parallel-testing-enabled NO -only-testing:LingoTripUITests/AppointmentUITests/testCustomAppointmentFromChatThroughSummary`。
-将 `TEST_RUNNER_LINGOTRIP_APPOINTMENT_E2E_URL` 指向隔离后端，并通过
-`TEST_RUNNER_LINGOTRIP_APPOINTMENT_JOURNEY` 传入 JSON，其中 `email`、`password`、`companion` 和
-`invitation` 为字符串，`actions` 是非空字符串数组。可选的 `expectedPlacePattern` 支持匹配地点名称
-及其译法。测试账号需已建档并拥有指定联系人，
-邀约文本写明角色所在城市的地点、用户时区下的日期时间和活动，时间安排在当前可赴约窗口内。
-测试从邮箱登录后经联系人进入聊天，发送邀约，通过真实回复生成的约定进入赴约，
-依次填写自定义行动，再检查回顾结算和历史原文。用不同邀约和行动重复执行时使用新的测试账号及独立测试 App。
-
-手动真机赴约测试使用 Debug 包 `com.tiantian.lingotrip.appointmente2e`。构建时将
-`LINGOTRIP_APPOINTMENT_TEST_BACKEND` 指向可从真机访问的隔离 HTTPS 后端。将普通登录与设置页
-「真实赴约」的两个独立会话分别装入测试包容器的 `tmp/appointment-test-login.json` 和
-`tmp/appointment-test-session.json`。App 首次读取后将会话存入各自的钥匙串，并移除导入文件。
-「活动 → 赴约」可直接赴已确认的约，「信息」可从聊天发起新约。
-
-## 重测和专项
-
-- 关系压力测试的 10,000 个输入使用固定种子。一轮通过即可；排查时序不稳定才显式设置
-  `RELATIONSHIP_TEST_PASSES=3`，重跑相同种子不等于增加输入覆盖。
-- 关系持久化/同步/提示词同时变化时增加对应套件；只有影响广泛或发布验收时才跑全量，
-  不再把“专项后全量 + 后端 + Release”当固定序列。
-- 本地单元测试使用 mocks/内存夹具，可直接运行、修复与复测。集成/E2E 需要隔离的
-  PostgreSQL/Redis，部分媒体测试还需 MinIO；现有 `RUN_*` 开关仍需显式开启。
-- 功能验收、端到端测试和真实模型评测均使用本地或独立非生产环境。正式主机、API 和数据
-  不用于测试、构建或造数。真实模型评测需要对应任务授权。Swift Live 套件默认跳过，
-  跳过项不计入通过数量。
-- 发布产物在本地按生产目标平台交叉编译和打包。生产侧通过正式入口执行整包切换及其健康
-  检查与回滚。具体流程见[后端发布文档](backend/DEPLOYMENT.md#发布)。
-- 图库覆盖实验、Blender 拟合和词典审校只在对应资产任务运行。已验收且哈希不变的资产可复用
-  原审核；改图后复核新字节，发布保留完整性、许可、路径与永久身份约束。
-- iOS 脚本已有模型校验缓存和构建锁，轻量对话测试不读取语音模型。遇到源码接口存在但
-  编译器读取旧模块时，可换独立 `LINGOTRIP_DERIVED_DATA_PATH` 重试一次，不要每次都清空缓存。
-
-## Device Hub 与免登录预览
-
-设置页的“测试初次水平测评”直接打开正式测评第一题；“测试首次登录完整流程”从登录成功后的学习档案开始，依次经过测评、开场剧情、选旅伴、上手练习和主页面。两个入口均使用独立内存档案及隔离的偏好设置，不读取登录凭证，也不访问生产服务；右上角“结束测试”返回原设置页，再次进入从头开始。正式首次建档提交后同样直接进入测评，无需再点测评邀请或介绍页按钮。
-
-动效测试入口：“我的 → 设置 → 学习实测 → 动效预览 → 升星与晋升特效”。正式题库加载期间也可进入。预览直接使用正式角色学习页，显示当前城市的学习背景、所选旅伴、档位、聊天进度和挑战记录；不再使用独立深色舞台。顶部“播放升星”将星星飞入卡片里的实际星槽，设置菜单可选择 0 / 3 / 8 颗起始星或运行多星边界测试，学士帽按钮播放晋升揭晓。页面遵循系统明暗外观与减少动态效果设置。进度服务独立留在内存，播放使用正式回到学习页后的奖励展示路径，不写入账号。
-
-```bash
-Scripts/preview.sh build achievement-preview   # 构建、安装并打开动效控制页
-Scripts/preview.sh preview achievement-preview # 复用已构建产物
-Scripts/preview.sh preview promotion-preview   # 内存夹具：剧情、取消/确认、成功揭晓
-```
-
-实际升星仅在本次挑战获得正积分回执、关闭挑战后成功读取同档位星数增长时播放；普通刷新、历史查看和切换档位不触发。正式学习由服务端在九星满档时自动晋升，不需要专门晋升题或确认；真实学习页先播放原档位第九星，再展示晋升结果，关闭结果页只收起展示。`promotion-preview` 保留为历史手动课程的兼容预览，不是正式学习的晋升入口。
-
-参考 ClassMind 的 `run-classmind` 驱动：固定构建目录、复用模拟器、读取产物 Bundle ID、
-重启 App 使启动参数生效。LingoTrip 使用现有 Debug 内存账号，不复制 ClassMind 的 onboarding defaults。
-
-```bash
-Scripts/preview.sh status                 # 确认 Xcode、设备与产物
-Scripts/preview.sh build home             # 源码改变后：增量构建、安装、免登录启动
-Scripts/preview.sh preview home           # 已构建/测试后：只安装和启动
-```
-
-若新增 Swift 文件后在 Xcode 中出现 `Cannot find ... in scope`（例如 `seedMarketingCapture`），
-先确认定义文件存在，再运行 `Scripts/preview.sh build home`。该命令会先用 `project.yml`
-重新生成工程，补齐新增文件的编译成员，再构建安装。只更新源码而未重新生成 `.xcodeproj`
-会造成此类报错；不要删除调用或复制定义来绕过，生成的工程文件不提交。
-
-页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`、`subscription`（会员订阅）、`learning`（全局英语旅程；可进入水平选择与校准）、`role-learning`（角色学习页的离线预览）、`unit-challenge`（挑战控件的工程预览）、`practice-preview`（任务式练习交互预览）。产物固定取
-`build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app`，可通过既有
-`LINGOTRIP_DERIVED_DATA_PATH` 覆盖；`preview` 不检查源码新旧，尚未构建的修改应使用 `build`。
-脚本自动选择完整 Xcode，无需修改系统 `xcode-select`。设备优先使用工作树绑定；未绑定时选择最新可用 iOS 运行时中的 iPhone，同一运行时优先复用已启动设备，
-可用 `LINGOTRIP_SIMULATOR_UDID` 显式指定；不创建 Clone，不关闭其他项目的设备。
-
-角色学习页方向选择可用 `SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=ready SIMCTL_CHILD_UI_TEST_LEARNING_DIRECTION=ielts-academic Scripts/preview.sh preview role-learning` 检查准备中状态；`active` 场景检查既有挑战入口。方向切换仅保存于Debug内存，重启重置，不写后端。未构建最新代码时将 `preview` 换为 `build`。
-
-免登录参数通过 `SIMCTL_CHILD_` 传入：`UI_TEST_SKIP_ONBOARDING=1`、
-`UI_TEST_REQUIRE_AUTHENTICATION=0`、`UI_TEST_DISABLE_BACKGROUND_REFRESH=1`，后端固定
-`http://127.0.0.1:9`。在 Debug 且未登录时，`RootView` 调用
-`AppEnvironment.activateUITestWorkspace()`，使用内存数据和本地角色；重启后测试数据重置。
-若已有真实登录态，不会强行替换账号；不要清空钥匙串或数据库来制造测试条件。
-此方式只用于页面预览，不能验证真实登录、在线 AI 或同步。Release 不支持该入口。
-
-跨进程断点测试可额外设置 `UI_TEST_PERSISTENCE_NAMESPACE=<新 UUID>`，让免登录 Debug
-工作区使用独立临时 SwiftData 存储。仅同一 UUID 的重启复用这份测试数据，不读取账号数据库；
-普通预览仍使用内存。`LondonEpisodeTests/testReadingRouteAndResume` 使用此入口，并等待
-选择后的下一页出现，确认真实断点已保存后再终止进程。
-
-挑战长题面可使用 `SIMCTL_CHILD_UI_TEST_LEARNING_UNIT_JSON` 传入服务端 `publicUnit` 导出的公开单元 JSON，
-再以 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION_ID` 指定题目；不指定 ID 时沿用 `UI_TEST_LEARNING_QUESTION` 题型选择。
-同时设置 `SIMCTL_CHILD_UI_TEST_LEARNING_STORY=1` 可检查该公开单元的完整封面、开场故事及总题数；仍为免登录只读预览，不提交成绩。
-通过 `Scripts/preview.sh preview unit-challenge` 启动后直接展示该题的只读工程尝试。
-这个入口只在 Debug 免登录预览中生效，提交不会判分或写记录；不要传入答案、解析或真实账号数据。
-正式九年级四题型样本及来源哈希见 `Tests/LingoTripUITests/Fixtures/`，
-可用 `Scripts/test-ui.sh -only-testing:LingoTripUITests/JuniorChallengeLayoutUITests` 检查普通字号和辅助字号。
-
-Xcode 27 的模拟器窗口由 **Device Hub** 提供，应用标识 `com.apple.dt.Devices`；本机路径为
-`/Volumes/data/Applications/Xcode.app/Contents/Applications/DeviceHub.app`。
-从 Xcode → Open Developer Tool → Device Hub 打开并选择脚本输出的设备。
-[Apple 官方说明](https://developer.apple.com/documentation/xcode/device-hub)
-与[设备管理入口](https://developer.apple.com/documentation/xcode/pairing-your-devices-with-your-mac)。
-旧 `Contents/Developer/Applications/Simulator.app` 路径在此 Xcode 安装中不存在。
-
-完成 iOS 工作后，安装当前源码的最新构建并留在目标页面供用户查看。优先用 Computer Use
-短流程验证受影响交互；无需默认跑整套 UI 测试或反复构建。
-2026-09-14 实测：Computer Use 可读取 Xcode，但 Device Hub 连接返回 `timeoutReached`，
-从 Xcode 菜单打开后仍未解决；不能将此限制解释为 App 失败。遇到同样问题不要循环换名称重试，
-可用下列只读截图确认首屏，但应明确未完成 Computer Use 交互验证：
-
-```bash
-DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
-  xcrun simctl io <脚本输出的设备UDID> screenshot /tmp/lingotrip-preview.png
-```
-
-首屏是异步加载的；刚启动立即截图可能只有背景，应待页面加载后再截一次，不因此重建 App。
-点击底部 Tab 前先收起键盘，避免点击落在键盘区域。隐藏的首页仍可能存在于辅助功能树，
-使用入口可点击性或二级页面返回按钮消失判断是否返回首页。测试失败时先读 xcresult 的实际
-断言位置；诊断收集阶段的 `simctl` 错误不等于测试根因。
-
-会员订阅页的完整价格排版可用
-`SIMCTL_CHILD_UI_TEST_SUBSCRIPTION_PRICES=1 Scripts/preview.sh preview subscription` 查看。
-该 Debug 专用夹具明确显示“示例价格，不可购买”，不改变 StoreKit 商品、生产价格或权益。
-正常预览不设置该变量，缺少商店价格时显示重新加载入口并禁用购买。
-
-学习工程预览只在 Debug 内存账号启用，不连接后端、不产生奖励，也不导入公共题库。可用
-`SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=arrange Scripts/preview.sh preview unit-challenge`
-
-听后排序可用 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=audioArrange Scripts/preview.sh preview unit-challenge`。
-听力笔记短答可用 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=listeningCompletion Scripts/preview.sh preview unit-challenge`；工程预览检查两词限制、超限提示及音频未听完时的提交门槛，不属于正式教学题。
-共享词库多空题可用 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=cloze Scripts/preview.sh preview unit-challenge`。
-定向路径 `Scripts/test-ui.sh -only-testing:LingoTripUITests/ChallengeLayoutUITests/testClozeSelectReplaceUndoAndLargeText`
-检查普通与最大辅助字号的选空、替换和撤回；工程预览不提交成绩。
-沿用紧凑播放器，完整播放后才可检查；已选卡片可点回或用辅助功能动作调整顺序。
-此入口仍是只读工程夹具，不计学习进度，不代表正式听力材料已经审核发布。
-检查词块题；题型可选 `choice`、`arrange`、`matching`、`completion`。正式内容、听力和联网结算另行验收。
-
-### 十五城静态场景预览
-
-普通首页「城市活动」使用当前驻地的新版目录。已有同城目录可用于弱网浏览，目录无法读取时提供「重试」。Debug 的 `scenes-preview` 专用入口提供跨城照片检查。
-
-```sh
-LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build scenes-preview
-```
-
-顶部城市名打开十五城选择，每城 3–5 处全屏实景。左右滑动或点两侧箭头切换地点，底部为「去这里逛逛」胶囊按钮。右上角更多菜单可打开完整照片及摄影许可。预览按钮显示剧情接入进度，实际外出样板使用 `places-preview`。此入口使用 Debug 免登录工作区，内容来自本地已校验的图片包。场景清单、逐图来源及验收范围见[城市场景 v2](../Assets/Activities/CityPlaces-v2/README.md)。
-
-### iOS 图片分包
-
-地图、城市活动和剧情共用静态图片目录，文件名包含内容 SHA256。首次读取核对文件大小和指纹，同一文件并发请求合并，已下载图片优先从本机读取。图片缓存上限 220 MiB，iOS 清理或淘汰后可重新下载。伦敦、墨尔本、纽约的实景、页面背景和首个主线美术随包提供，离线词典、朗读模型、剧情文本和预制配音也随包提供。
-
-```sh
-python3 Tools/ContentPipeline/ios-content-packs.py --output build/ios-content-public
-python3 -m http.server 18765 --bind 127.0.0.1 --directory build/ios-content-public
-```
-
-本机预览可用 `LINGOTRIP_CONTENT_ASSET_BASE_URL=http://127.0.0.1:18765 Scripts/preview.sh build world-preview`。选中地图城市时先预取第一张活动实景和活动页背景，剧情目录预取当前可读章节的首幕，阅读期间预取下一幕。城市页面先显示同一地点的低分辨率背景预览，再加载全分辨率显示图。
-
-发布时将导出的文件放到公开、不可变的 HTTPS 静态目录，再用同一个目录地址设置 `LINGOTRIP_CONTENT_ASSET_BASE_URL` 执行 `Scripts/archive.sh`。文件名包含指纹，内容更新新增文件并保留仍由已发布 App 引用的旧文件。变量留空时构建全量资源版。
-
-城市摄影修改后，先用 Google `cwebp` 和 `python3 Tools/ContentPipeline/encode-city-display-images.py` 重新生成同分辨率显示文件，再用 `python3 Tools/ContentPipeline/ios-content-packs.py --update` 更新指纹和预览图。活动实景同时校验世界清单记录的原图指纹和显示文件自己的指纹。逐图选档与像素对照见[城市编码验收](verification/ios-city-webp-2026-11-20.md)。
-
-### 真实学习实测入口
-
-Debug App 的「我的 → 设置」中有「学习实测 · 切换档位做题」。也可以直接启动：
-
-```bash
-Scripts/preview.sh build learning-test   # 源码改变后构建、安装并进入真实登录流程
-Scripts/preview.sh preview learning-test # 已构建后复用产物
-```
-
-`learning-test` 与免登录工程预览使用不同启动分支：强制真实鉴权，默认连接正式后端，
-不调用 `activateUITestWorkspace` 或 `DebugLearningPreviewService`。如已有登录态，保留账号；
-否则在模拟器内自行登录，不把密码传给脚本或聊天。仅对隔离真实后端联调时可设置
-`LINGOTRIP_TRIAL_BACKEND_URL`，这个变量不用于注入题目或判分。
-
-入口可选小学一年级至高三、大学英语四级、大学英语六级、高级英语十五档，以及账号内的真实旅伴。
-数量来自服务端 `learningJourney`，开始时再核权威状态。切换档位与通用英语方向会真实同步到账号，
-只通过现有 Debug fill 接口略过聊天字数等待；之后复用 `LearningChallengeView` 和正式
-`LearningServing` 的媒体、答题、奖励、结束与补答流程。已有挑战保持原档位，跨档位时明确提示续做，
-不改旧快照；无题或供题耗尽显示真实不可用状态，不生成本地替代题。测试会写入真实学习记录和奖励。
-
-本轮研究已按用户要求停止。既有772组研究作者稿中，当前主范围634个完整原创组（15档、141个
-档位/题型格，每格至少3个完整组、5,090个作答点）接入正式供题目录，138组参考稿排除。真题用于提取结构、输入与判分
-规则，正式填库使用独立原创稿。入口支持题型和具体原创组选择，点击“刷新题库”读取已发布目录；
-可抽取数量仍以服务器和账号已有记录为准。这个入口仅在 Debug 构建中提供，没有发布 App Store 版本。
-完整组保留全部材料与子题，不进入固定6/18题抽取器；已核填空变体同等接受，未确认表达不直接记错。
-本轮发布与验收边界见[原创接入记录](verification/learning-originals-integration-20261019.json)及
-[接入说明](learning-program/original-groups-integration-2026-10-19.md)。
-入口流程定向验证为 `Scripts/test.sh -only-testing:LingoTripTests/LearningTrialTests`；
-原判分及组卷的隔离验证可按需运行 `Scripts/verify-backend-workflows.py --phase integration`
-并选择 `learning-bank.test.ts` 和 `learning-api.test.ts`。隔离测试与原生实测分开记录。2026-10-19 已通过真实登录后的 15 档供题数量读取，以及高三
-18 题挑战的听力播放门槛、两题服务器判分、各 +1 点反馈、保存续做与跨档保护。
-这次人工抽查未逐档完成整套题，也未覆盖结束与补答全部流程；具体证据及限制见
-[实测验收记录](verification/learning-trial-entry-20261019.json)。这份旧题库人工验收不替代本轮原创完整组验收。本轮另实测小学图片/听力、填空变体、高三十空保存续做及高级四篇跨文本匹配；完整记录见上方原创接入记录。
-
-## 启动速度与偶发慢启动
-
-测量口径、缓存启动策略和定向复测命令见 [启动性能记录](launch-performance.md)。
-
-### 学习图片工程预览
-
-`SIMCTL_CHILD_UI_TEST_LEARNING_IMAGES=1 SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=choice Scripts/preview.sh preview unit-challenge`
-显示两个本地工程图形；`matching` 检查图片配对，`UI_TEST_LEARNING_IMAGE_FAILURE=1` 每张图首次下载失败以验证重试。只在未登录 Debug 预览中有效，没有后端答题、奖励或正式题库写入。定向路径为 `Scripts/test-ui.sh -only-testing:LingoTripUITests/LearningImageUITests`。
-
-若预览题型与请求不一致，先以 `xcrun simctl getenv <本次设备> UI_TEST_LEARNING_QUESTION` 检查全局残留；本次发现残留值会覆盖应用启动环境。停止本次测试后重启专用模拟器可以清除，不能通过卸载 App、清空账号或修改题目逻辑掩盖环境污染。
-
-小一真实视听素材预览（Debug、未登录、离线）：在已有 `UI_TEST_LEARNING_UNIT_JSON` / `UI_TEST_LEARNING_QUESTION_ID` 公开题面上，设置 `UI_TEST_LEARNING_LOCAL_MEDIA=1` 和绝对路径 `UI_TEST_LEARNING_MEDIA_DIRECTORY=<工作树>/Backend/config/learning`。预览服务只读取题目实际引用的 `images/image.<sha256>.png` 或 `audio/audio.<sha256>.wav`，限制长度并核对摘要；不向服务器提交或写成绩。省略目录时读取应用文档目录的 `LearningPreviewMedia/`。不要传入供应商信息、答案或真实账号数据。Release 不包含这段代码。
-
-`Scripts/test-ui.sh -only-testing:LingoTripUITests/PrimaryChallengeMediaUITests` 在本机模拟器读取工作树中三个小一正式单元及素材，验证实际音频播放结束、三张图可选择、听完且选图后检查按钮解锁，以及最大辅助字号深色布局。它不是人耳音质评定，也不验证服务器计分；不用于连接真机的测试运行。
-
-任务式练习的离线设计夹具可用 `Scripts/preview.sh build practice-preview` 打开；此夹具不作为真实测试入口。
-包含两篇阅读、完整完形、七选五与语法填空的离线原创样例。题型分篇作答、整篇提交后回顾，
-答案、标记及阅读位置保存在独立的本机 `practice.preview.v1` 命名空间；不调用正式判分或奖励接口。
-答案夹具仅编译进 Debug。七选五选项移动到另一空时会清除原空；离线语法未收录表达显示待核对。
-
-真实测试入口 `learning-test` 和正式角色练习共用 `LearningChallengeView`。完整阅读、完形、选句填空、
-语法填空由共享的 `LearningPracticeScreen` 呈现，其余正式题型沿用同一入口内对应的正式控件。
-七选五同时呈现完整文章、全部空号及一套共用候选；填满本篇后统一提交，再显示服务端解析。
-正式模式从公开题面构建页面，不含客户端答案；保留原 questionId/optionId、revision 和幂等请求。
-草稿与待确认命令按角色、attemptId、roundId 隔离保存，网络中断或补答只提交当前轮尚未确认的题。
-完成本轮仍调用正式 finish 接口及原有周期刷新回调。此改动需要构建并重启最新版 App，单独更新后端不会改变原生界面。
-
-练习面板仅有展开/收起两种状态，居中上下楔形箭头通过点击切换，不响应拖动调整高度。
-常规展开高度固定为 320pt，收起为 44pt；键盘或小窗口下保留正文空间。作答按钮居中且略窄于选项。
-`LearningPracticePanelUITests` 使用正式高二公开题面检查深色布局、B1 编号去重、点击切换与拖动不改变状态。
-
-相同题面清洁规则作用于共用组件：文章编号和重复标题仅在呈现层处理；听力、配对、词块及短填空也复用精确文本去重，
-只合并相同的说明/设问/材料，不省略不同的题意、作答限制、媒体或评分信息。
-
-### 新版城市地点活动预览
-
-`Scripts/preview.sh build places-preview` 打开独立的伦敦三地点样板；已构建后使用 `preview places-preview`。
-仅在免登录 Debug 内存账号注入本机外出服务，不调用正式分配或好友接口。
-照片来自带署名与许可的伦敦实拍，来源见 `Assets/Activities/CityPlaces-v1/preview-photos.json`。
-咖啡馆提供 Alex 的七节点四结尾故事；书店与公园提供独处短篇。这是界面与状态机样板，不能代表十五城内容已发布。
-外出记录使用 `debug.place-outing.preview.v1.manual` 命名空间，重启继续；界面测试通过独立 UUID 隔离。
-`CityPlaceOutingTests` 定向检查实际分支、暂停返回、杀进程恢复、足迹、照片许可与最大辅助字号独处结尾。
-正式入口由配套 `activity-world-release.json` 控制。完整十五城离线游玩预览使用 `Scripts/preview.sh preview world-preview`，通过 `UI_TEST_SCENE_CITY` 指定城市。线上内容与原生迁移验证见活动系统施工进度记录。
+- **新增文件后报 `Cannot find ... in scope`**：先确认定义文件存在，再运行 `Scripts/preview.sh build <页面>` 重新生成工程。
+  不要删除调用或复制定义来绕过。
+- **改了公共类型后运行时崩溃**：给 DesignSystem 等底层模块的公共类型增删存储属性后，增量构建可能不重编依赖它的 Feature 模块，
+  运行时在 `initializeWithCopy` 一类位置 `EXC_BAD_ACCESS`。删除
+  `build/DerivedData/Build/Intermediates.noindex/LingoKit.build/Debug-iphonesimulator/` 下该模块和依赖它的 `<模块>-t.build`
+  目录后重新构建。若是编译期读到旧模块接口，可换独立的 `LINGOTRIP_DERIVED_DATA_PATH` 重试一次。不要每次都清空缓存。
+- **磁盘空间不足**：构建报 “out of space”，或应用一启动就因 `dyld: Library not loaded` 崩溃，先检查系统盘剩余空间，
+  清理自己产生的录屏、结果包等临时文件。
+- **预览题型或页面和请求不一致**：用 `xcrun simctl getenv <设备UDID> <变量名>` 检查全局残留的环境变量，残留值会覆盖启动环境。
+  停掉测试后重启该模拟器即可清除；不要靠卸载 App、清空账号或改业务逻辑掩盖。
+- **启动慢**：测量口径、缓存启动策略和复测命令见[启动性能记录](launch-performance.md)。

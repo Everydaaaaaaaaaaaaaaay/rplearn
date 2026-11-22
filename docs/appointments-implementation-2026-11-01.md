@@ -61,3 +61,18 @@ iOS 最终定向宿主测试 52 项通过、0 失败、0 跳过，结果为 `bui
 人工复读发现早一版对混合输入的“改画船”响应又退回折纸，现 v7 的真实审核已拒绝这个原样冻结样本，明确指出行为和中英文不一致；正式测试历史没有被重写。额外生成的未提交样章仍未通过有限修复后的审核，已丢弃，不能列为成功样章。这说明目前保护机制能阻止该已知坏样本，但不能宣称所有自由输入、长篇路径或恶意混合输入都能一次生成成功。B／D 编号只用于内部证据，新的总结正文优先不输出它们；若已知编号出现在正文，会转成可读的回应／片段序号。
 
 完整发布、失败修正、覆盖范围和未测项见[发布与验证记录](verification/appointment-backend-release-20261101.json)。本次部署后端并更新本地模拟器，不发布 iOS App Store 构建；其他城市实拍、真机和全部输入空间仍不在本次验收范围内。
+
+## 测试入口
+
+- 预览：`Scripts/preview.sh preview appointments-preview`；`UI_TEST_APPOINTMENT_SCENARIO` 可选场景，`summary-design` 打开总结设计预览。
+- 全路径 UI 测试：`Scripts/test-ui.sh -parallel-testing-enabled NO -only-testing:LingoTripUITests/AppointmentUITests/testCustomAppointmentFromChatThroughSummary`。
+  真实回复耗时较长，可设 `LINGOTRIP_UI_TEST_TIMEOUT=900` 放宽单条超时。
+  - 将 `TEST_RUNNER_LINGOTRIP_APPOINTMENT_E2E_URL` 指向隔离后端，并通过 `TEST_RUNNER_LINGOTRIP_APPOINTMENT_JOURNEY` 传入 JSON：
+    `email`、`password`、`companion`、`invitation` 为字符串，`actions` 为非空字符串数组；可选 `expectedPlacePattern` 匹配地点名称及其译法。
+  - 测试账号需已建档并拥有指定联系人。邀约文本写明角色所在城市的地点、用户时区下的日期时间和活动，时间在当前可赴约窗口内。
+  - 测试从邮箱登录，经联系人进入聊天发送邀约，通过真实回复生成的约定进入赴约，依次填写自定义行动，再检查回顾结算和历史原文。
+    换用不同邀约和行动重复执行时，使用新的测试账号和独立测试 App。
+- 手动真机赴约：使用 Debug 包 `com.tiantian.lingotrip.appointmente2e`，构建时将 `LINGOTRIP_APPOINTMENT_TEST_BACKEND`
+  指向真机可访问的隔离 HTTPS 后端。把普通登录与设置页“真实赴约”的两个独立会话分别放入测试包容器的
+  `tmp/appointment-test-login.json` 和 `tmp/appointment-test-session.json`；App 首次读取后存入各自的钥匙串并删除导入文件。
+  “活动 → 赴约”可直接赴已确认的约，“信息”可从聊天发起新约。
