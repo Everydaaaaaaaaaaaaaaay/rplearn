@@ -43,11 +43,11 @@ struct LearningClozeControls: View {
                         }
                     }
                 }
-            }.font(.title3)
-            Divider()
+            }.font(.puff(.title3, Puff.Weight.body)).foregroundStyle(Puff.Palette.ink)
+            Rectangle().fill(Puff.Palette.line).frame(height: 1)
             HStack {
                 Text("\(model.fills.count) / \(question.clozeSlotIDs.count)")
-                    .font(.caption.monospacedDigit()).foregroundStyle(.secondary)
+                    .font(.puff(.caption, Puff.Weight.label).monospacedDigit()).foregroundStyle(Puff.Palette.inkSoft)
                     .accessibilityLabel("已填 \(model.fills.count) 空，共 \(question.clozeSlotIDs.count) 空")
                 Spacer()
                 Button {
@@ -63,13 +63,13 @@ struct LearningClozeControls: View {
             LearningFlowLayout(spacing: 10) {
                 ForEach(question.tokens ?? []) { token in
                     let used = model.fills.contains { $0.tokenId == token.id }
+                    // 蓬蓬软糖词块：白底细边 + 唇边，按下会压下去。
                     Button { model.fillSlot(with: token.id) } label: {
-                        Text(token.text).font(.body.weight(.medium))
+                        Text(token.text).font(.puff(.body, Puff.Weight.emphasis))
+                            .foregroundStyle(Puff.Palette.ink)
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.horizontal, 16).padding(.vertical, 10).frame(minHeight: 44)
-                            .background(Puff.Palette.card, in: RoundedRectangle(cornerRadius: 8))
-                            .overlay { RoundedRectangle(cornerRadius: 8).strokeBorder(Puff.Palette.line) }
-                    }.buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
+                    }.buttonStyle(PuffCardButtonStyle(radius: 14, lipHeight: 3))
                         .disabled(used).opacity(used ? 0.25 : 1)
                         .accessibilityLabel(token.text)
                         .accessibilityHint(used ? "已填入句子" : "填入当前空位")
@@ -86,16 +86,17 @@ struct LearningClozeControls: View {
         let word = question.tokens?.first { $0.id == fill?.tokenId }?.text
         let selected = model.activeSlot == id
         let result = model.feedback?.slotResults?.first { $0.slotId == id }
-        let color = result.map { $0.correct ? tint : Color.red } ?? tint
+        let color = result.map { $0.correct ? tint : Puff.Palette.cherry } ?? tint
         return Button { model.selectSlot(id) } label: {
             HStack(spacing: 5) {
                 Text(word ?? "\(number)").fontWeight(word == nil ? .regular : .semibold)
                 if let result {
                     Image(systemName: result.correct ? "checkmark" : "xmark").font(.caption.bold())
                 }
-            }.foregroundStyle(word == nil && !selected ? Color.secondary : color)
+            }.foregroundStyle(word == nil && !selected ? Puff.Palette.inkFaint : color)
                 .padding(.horizontal, 10).frame(minWidth: 56, minHeight: 44)
-                .background(selected && model.feedback == nil ? tint.opacity(0.08) : .clear)
+                .background(selected && model.feedback == nil ? tint.opacity(0.1) : .clear,
+                            in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                 .overlay(alignment: .bottom) { Rectangle().fill(color.opacity(selected || result != nil ? 1 : 0.35)).frame(height: selected ? 2 : 1) }
                 .contentShape(Rectangle())
         }.buttonStyle(LearningPressStyle())

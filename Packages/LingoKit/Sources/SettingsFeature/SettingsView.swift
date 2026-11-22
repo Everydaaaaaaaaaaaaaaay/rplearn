@@ -201,6 +201,8 @@ public struct SettingsView: View {
                     .pickerStyle(.menu)
                     .tint(PuffCandy.grape.deep)
                     .labelsHidden()
+                    // 按理想宽度显示引擎名，大字号时不会断成“Supertonic-”和“3”两行。
+                    .fixedSize()
                 }
                 .frame(minHeight: 52)
                 .disabled(
@@ -219,6 +221,8 @@ public struct SettingsView: View {
                         Text("Supertonic-3 · \(formattedBytes(synthesisEngineStatus.bundledModelBytes))")
                             .font(.puff(.subheadline, Puff.Weight.label))
                             .foregroundStyle(Puff.Palette.inkSoft)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.75)
                         Text(offlineVoicePhaseLabel)
                             .font(.puff(.caption, Puff.Weight.emphasis))
                             .foregroundStyle(offlineVoicePhaseTint)

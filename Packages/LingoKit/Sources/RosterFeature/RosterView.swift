@@ -224,15 +224,16 @@ public struct RosterView: View {
             }
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(friends.count) 位旅伴。好友位已使用 \(occupiedSlots) 个，共 \(slotLimit) 个")
+        .accessibilityLabel("\(friends.count) 位旅伴。新朋友位已使用 \(occupiedSlots) 个，共 \(slotLimit) 个，剧情旅伴不占位")
     }
 
-    /// 好友位：名额少时一颗颗圆点，多时是一根进度条。
+    /// 新朋友位：名额少时一颗颗圆点，多时是一根进度条。剧情旅伴不占位，所以标成“新朋友位”，
+    /// 免得和左边的“N 位旅伴”放在一起像是矛盾（3 位旅伴却 0/10）。
     private var slotMeter: some View {
         let nearLimit = RosterPresentationPolicy.isCapacityNearLimit(occupied: occupiedSlots, limit: slotLimit)
         let candy: PuffCandy = nearLimit ? .tangerine : .sky
         return VStack(alignment: .trailing, spacing: 6) {
-            Text("好友位")
+            Text("新朋友位")
                 .font(.puff(.caption, Puff.Weight.emphasis))
                 .foregroundStyle(Puff.Palette.inkSoft)
             if slotLimit <= 6 {

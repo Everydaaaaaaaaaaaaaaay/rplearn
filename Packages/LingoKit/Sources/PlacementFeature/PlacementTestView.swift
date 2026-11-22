@@ -183,19 +183,17 @@ public struct PlacementTestView: View {
                     onCancel()
                 }
             } label: {
+                // 与其他蓬蓬子页面的返回按钮一致：白色软圆片、墨色线条。
                 Image(systemName: showsBackArrow ? "chevron.left" : "xmark")
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(Color.dsTravelNavy)
+                    .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
+                    .foregroundStyle(Puff.Palette.ink)
                     .frame(width: 44, height: 44)
+                    .background(Puff.Palette.card, in: Circle())
+                    .overlay { Circle().strokeBorder(Puff.Palette.line, lineWidth: 1) }
+                    .shadow(color: Puff.Palette.ink.opacity(0.06), radius: 6, y: 2)
                     .contentShape(Circle())
             }
-            .buttonStyle(.plain)
-            .dsSceneGlass(
-                radius: 22,
-                tint: Color.dsBrandCream.opacity(0.08),
-                interactive: true,
-                legibility: .ambient
-            )
+            .buttonStyle(.puffSquish)
             .disabled(isApplying)
             .accessibilityLabel(phase == .levelSelection ? "返回水平校准" : showsBackArrow ? "返回" : "退出水平校准")
             .accessibilityIdentifier("placement.back")

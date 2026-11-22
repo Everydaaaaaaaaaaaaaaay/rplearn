@@ -172,6 +172,9 @@ public struct MyPageView: View {
     }
 
     /// 个人卡片：所在城市的卡通画上探出头像。
+    /// 头像压在明信片上的高度。
+    private static let avatarOverlap: CGFloat = 34
+
     private var hubProfile: some View {
         Button(action: onOpenAccount) {
             VStack(spacing: 0) {
@@ -179,15 +182,17 @@ public struct MyPageView: View {
                     .frame(height: 96)
                     .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.huge - 6, style: .continuous))
                     .padding([.horizontal, .top], 6)
-                HStack(alignment: .bottom, spacing: Puff.Space.s) {
+                // 头像上移压住明信片下缘；名字一栏从明信片下沿之下开始，不会跟着头像压到画面上。
+                HStack(alignment: .top, spacing: Puff.Space.s) {
                     UserAvatar(name: presentation.displayName, size: 78)
                         .padding(5)
                         .background(Puff.Palette.card, in: Circle())
-                        .offset(y: -6)
                     VStack(alignment: .leading, spacing: 5) {
                         Text(presentation.displayName)
                             .font(.puff(.title2, Puff.Weight.display))
                             .foregroundStyle(Puff.Palette.ink)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.8)
                             .fixedSize(horizontal: false, vertical: true)
                         HStack(spacing: 6) {
                             if !cityName.isEmpty {
@@ -196,15 +201,16 @@ public struct MyPageView: View {
                             PuffTag(presentation.accountBadgeTitle, systemImage: "crown.fill", candy: .sunny)
                         }
                     }
-                    .padding(.bottom, Puff.Space.m)
+                    .padding(.top, Self.avatarOverlap + 8)
                     Spacer(minLength: Puff.Space.xs)
                     Image(systemName: "chevron.right")
                         .font(.system(size: 13, weight: Puff.Weight.icon, design: .rounded))
                         .foregroundStyle(Puff.Palette.inkFaint)
-                        .padding(.bottom, Puff.Space.l)
+                        .padding(.top, Self.avatarOverlap + 22)
                 }
                 .padding(.horizontal, Puff.Space.m)
-                .padding(.top, -34)
+                .padding(.top, -Self.avatarOverlap)
+                .padding(.bottom, Puff.Space.m)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }

@@ -32,19 +32,14 @@ struct PracticeCompanionHeader: View {
     }
 }
 
+/// 练习首尾页的主按钮：蓬蓬糖果按钮，默认用旅伴的主题色。
 struct PracticeBookendButton: View {
     let title: String
+    var candy: PuffCandy = .mint
     var busy = false
     let action: () -> Void
     var body: some View {
-        Button(action: action) {
-            Text(title).multilineTextAlignment(.center)
-                .font(.body.weight(.semibold))
-                .frame(maxWidth: .infinity, minHeight: 56).padding(.horizontal, 20)
-                .foregroundStyle(PracticePaper.sheet)
-                .background(PracticePaper.accent, in: RoundedRectangle(cornerRadius: 18))
-                .overlay { if busy { ProgressView().tint(PracticePaper.sheet).frame(maxWidth: .infinity, alignment: .trailing).padding(.trailing, 20) } }
-        }.buttonStyle(LearningPressStyle()).disabled(busy)
+        LearningPrimaryButton(title: title, candy: candy, busy: busy, action: action)
     }
 }
 
@@ -67,13 +62,14 @@ struct PracticeCoverPage<Accessory: View>: View {
                     VStack(spacing: 44) {
                         PracticeCompanionHeader(character: character, message: message)
                         VStack(spacing: 12) {
-                            Text(kind).font(.title2.weight(.semibold))
+                            Text(kind).font(.puff(.title2, Puff.Weight.title))
+                                .foregroundStyle(Puff.Palette.ink)
                                 .accessibilityIdentifier("practice.task.kind")
                             Text("预计\(PracticeTimeEstimate.label(minutes))分钟完成")
-                                .font(.subheadline).foregroundStyle(.secondary)
+                                .font(.puff(.subheadline, Puff.Weight.label)).foregroundStyle(Puff.Palette.inkSoft)
                                 .accessibilityIdentifier("practice.task.time")
                         }.multilineTextAlignment(.center).frame(maxWidth: .infinity)
-                        PracticeBookendButton(title: buttonTitle, action: start)
+                        PracticeBookendButton(title: buttonTitle, candy: LearningTheme(name: character.displayName).candy, action: start)
                             .accessibilityIdentifier("practice.start")
                     }
                     .padding(.horizontal, 28).padding(.top, max(40, min(96, geometry.size.height * 0.12)))
@@ -146,7 +142,7 @@ struct PracticeSummaryPage: View {
                     }
                 }.padding(.horizontal, 24).padding(.bottom, 32).frame(maxWidth: 600).frame(maxWidth: .infinity)
             }.scrollIndicators(.hidden)
-            PracticeBookendButton(title: "结束练习", busy: busy, action: finish)
+            PracticeBookendButton(title: "结束练习", candy: LearningTheme(name: character.displayName).candy, busy: busy, action: finish)
                 .accessibilityIdentifier("practice.finish")
                 .padding(.horizontal, 28).padding(.top, 12).padding(.bottom, 16).frame(maxWidth: 600)
         }.background(PracticePaper.canvas.ignoresSafeArea())

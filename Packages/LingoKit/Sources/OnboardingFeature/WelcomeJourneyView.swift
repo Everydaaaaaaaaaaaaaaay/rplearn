@@ -541,17 +541,14 @@ private struct WelcomeProductFrame<Content: View>: View {
 private struct WelcomeMiniTabBar: View {
     let selected: Int
 
+    /// 与真实标签栏一致的四个标签（调试版也不再多出“测试”）。
     private var tabs: [(String, String)] {
-        var items = [
-        ("信息", "bubble.left.and.bubble.right"),
-        ("联系人", "person.2"),
-        ("活动", "figure.walk"),
-        ("我的", "person"),
+        [
+            ("信息", "bubble.left.and.bubble.right"),
+            ("联系人", "person.2"),
+            ("活动", "figure.walk"),
+            ("我的", "person"),
         ]
-        #if DEBUG
-        items.append(("测试", "heart.text.square"))
-        #endif
-        return items
     }
 
     var body: some View {

@@ -70,7 +70,8 @@ public struct PuffCandy: Sendable, Equatable {
     )
     public static let sunny = PuffCandy(
         base: (0xFFC53D, 0xFFCB52), deep: (0xB97A00, 0xFFD877),
-        wash: (0xFFF6DC, 0x3A3224), lip: (0xE6A21F, 0xA67614)
+        // 深色浅底偏琥珀：原先的黄绿褐与黄色混合、再渐变到深蓝底时会发灰发橄榄色。
+        wash: (0xFFF6DC, 0x3E2A1A), lip: (0xE6A21F, 0xA67614)
     )
     public static let mint = PuffCandy(
         base: (0x3DD39A, 0x45D9A1), deep: (0x14935F, 0x7BE6BD),

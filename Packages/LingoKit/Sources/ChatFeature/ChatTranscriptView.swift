@@ -46,6 +46,10 @@ struct ChatTranscriptView: View {
     let dismissChatInput: () -> Void
     @State private var messageScrollPosition = ScrollPosition()
     @State private var isNearConversationBottom = true
+    /// 最新一条消息在视野里。懒加载列表对未渲染行用估算高度，大字号下内容总高常常估大，
+    /// 只看几何会在已经停在底部时误判“不在底部”，所以两者满足其一就算到底。
+    @State private var isLatestMessageVisible = false
+    private var isAtLatest: Bool { isNearConversationBottom || isLatestMessageVisible }
     @State private var followsConversationBottom = true
     @State private var unseenIncomingMessageCount = 0
     @State private var knownLatestMessageID: UUID?
@@ -240,8 +244,14 @@ struct ChatTranscriptView: View {
                     unseenIncomingMessageCount = 0
                 }
             }
+            .onScrollTargetVisibilityChange(idType: UUID.self, threshold: 0.6) { visibleIDs in
+                let visible = viewModel.messages.last.map { visibleIDs.contains($0.id) } ?? false
+                guard visible != isLatestMessageVisible else { return }
+                isLatestMessageVisible = visible
+                if visible { unseenIncomingMessageCount = 0 }
+            }
             .onChange(of: viewModel.streamingText) {
-                guard isNearConversationBottom else { return }
+                guard isAtLatest else { return }
                 withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                     messageScrollPosition.scrollTo(edge: .bottom)
                 }
@@ -259,7 +269,7 @@ struct ChatTranscriptView: View {
                     messageScrollPosition.scrollTo(edge: .bottom)
                     return
                 }
-                if isNearConversationBottom || last.role == .user {
+                if isAtLatest || last.role == .user {
                     followsConversationBottom = true
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
                         messageScrollPosition.scrollTo(edge: .bottom)
@@ -284,7 +294,7 @@ struct ChatTranscriptView: View {
                 }
             }
 
-            if viewModel.hasLoadedMessages && !isNearConversationBottom {
+            if viewModel.hasLoadedMessages && !isAtLatest {
                 Button {
                     followsConversationBottom = true
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {

@@ -250,7 +250,7 @@ struct RootView: View {
                             .toolbar(.visible, for: .navigationBar)
                             .toolbar {
                                 ToolbarItem(placement: .topBarLeading) {
-                                    Button { captureCharacter = nil } label: { Image(systemName: "chevron.left") }
+                                    Button { captureCharacter = nil } label: { Image(systemName: "chevron.left").foregroundStyle(Puff.Palette.ink) }
                                         .accessibilityLabel("返回消息")
                                 }
                             }
