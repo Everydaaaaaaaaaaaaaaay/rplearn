@@ -42,13 +42,13 @@ public struct LondonEpisodeView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    @Environment(\.colorSchemeContrast) private var contrast
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
-    private let ink = Color(red: 0.13, green: 0.19, blue: 0.18)
-    private let paper = Color(red: 0.98, green: 0.96, blue: 0.90)
-    private let gold = Color(red: 0.84, green: 0.68, blue: 0.40)
+    private let ink = Puff.Palette.ink
+    /// 盖在插画上的浅色字。
+    private let paper = Color.white
+    /// 说话人、选项箭头等点缀。
+    private let gold = PuffCandy.tangerine.deep
 
     public init(deps: StoryDependencies, storageNamespace: String = "guest", resourceName: String = "departures_london_v1") {
         self.deps = deps
@@ -83,17 +83,20 @@ public struct LondonEpisodeView: View {
                     .padding(.bottom, 12)
                     .padding(.horizontal, 18)
                 } else if loadError {
-                    ContentUnavailableView {
-                        Label("故事暂时无法载入", systemImage: "book.closed")
-                    } description: {
-                        Text("剧情或美术资源暂时未能读取。")
-                    } actions: {
-                        Button("重试") { Task { await load() } }
-                        Button("返回剧情") { dismiss() }
+                    PuffEmptyState("故事暂时无法载入", bird: .gaga, pose: .pout) {
+                        HStack(spacing: Puff.Space.s) {
+                            Button("返回剧情") { dismiss() }
+                                .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.medium))
+                            Button("重试") { Task { await load() } }
+                                .buttonStyle(PuffCandyButtonStyle(.sky))
+                        }
                     }
-                    .foregroundStyle(paper)
+                    .puffCard(radius: Puff.Radius.huge)
                 } else {
-                    ProgressView("正在打开这一页…").tint(paper).foregroundStyle(paper)
+                    PuffLoadingDots()
+                        .padding(Puff.Space.l)
+                        .background(Puff.Palette.card, in: Capsule())
+                        .accessibilityLabel("正在打开这一页")
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
@@ -105,7 +108,7 @@ public struct LondonEpisodeView: View {
                     if let session {
                         stage(session, size: backdrop.size)
                     } else {
-                        Color(red: 0.06, green: 0.10, blue: 0.10)
+                        Puff.Palette.cloud
                     }
                 }
                 .ignoresSafeArea()
@@ -117,18 +120,21 @@ public struct LondonEpisodeView: View {
                 dismiss()
             })
         }
-        .preferredColorScheme(.dark)
+        .fontDesign(.rounded)
         .task { await load() }
         .task(id: session?.nodeID, priority: .utility) { await preloadNextArtwork() }
         .task(id: autoplayIdentity) { await autoplay() }
         .onChange(of: audioIdentity, initial: true) { _, _ in updateAudio() }
         .overlay {
             if let earnedCoins {
-                Text("首次完成 +\(earnedCoins) 金币")
-                    .font(.subheadline.weight(.semibold))
+                Label("首次完成 +\(earnedCoins) 金币", systemImage: "star.circle.fill")
+                    .font(.puff(.subheadline, Puff.Weight.emphasis))
+                    .foregroundStyle(PuffCandy.sunny.deep)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 14)
-                    .background(.regularMaterial, in: Capsule())
+                    .background(PuffCandy.sunny.wash, in: Capsule())
+                    .overlay { Capsule().strokeBorder(PuffCandy.sunny.base, lineWidth: 2) }
+                    .transition(.puffPop)
                     .accessibilityIdentifier("story.rewardToast")
                     .allowsHitTesting(false)
             }
@@ -200,52 +206,78 @@ public struct LondonEpisodeView: View {
     }
 
     private func header(_ session: EpisodeSession) -> some View {
-        VStack(spacing: 12) {
-            HStack(alignment: .center) {
+        VStack(spacing: 10) {
+            HStack(alignment: .center, spacing: 8) {
                 Button { dismiss() } label: {
-                    Image(systemName: "chevron.left").font(.system(size: 20, weight: .medium))
-                        .frame(width: 44, height: 44)
+                    headerIcon("chevron.left")
                 }
                 .accessibilityLabel("返回剧情")
                 .accessibilityIdentifier("episode.close")
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("出发之后").font(.system(size: 10, weight: .medium)).tracking(2)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("出发之后").font(.puff(.caption2, Puff.Weight.label))
                         .foregroundStyle(gold)
-                    Text(session.episode.acts[session.current.act]).font(.subheadline.weight(.medium))
+                    Text(session.episode.acts[session.current.act])
+                        .font(.puff(.subheadline, Puff.Weight.emphasis))
+                        .foregroundStyle(ink)
+                        .lineLimit(1)
                 }
+                .padding(.horizontal, 14).padding(.vertical, 6)
+                .background(Puff.Palette.card, in: Capsule())
                 Spacer(minLength: 0)
                 Button {
                     soundEnabled.toggle()
                 } label: {
-                    Image(systemName: soundEnabled ? "speaker.wave.2" : "speaker.slash")
-                        .frame(width: 44, height: 44)
+                    headerIcon(soundEnabled ? "speaker.wave.2" : "speaker.slash")
                 }
                 .accessibilityLabel(soundEnabled ? "关闭剧情声音" : "开启剧情声音")
                 .accessibilityIdentifier("episode.sound")
                 .accessibilityValue(audioAccessibilityValue)
                 Button { showHistory = true } label: {
-                    Image(systemName: "text.book.closed").frame(width: 44, height: 44)
+                    headerIcon("text.book.closed")
                 }.accessibilityLabel("回看对话").accessibilityIdentifier("episode.history")
                 Button { automatic.toggle() } label: {
-                    Image(systemName: automatic ? "pause.fill" : "play.fill").frame(width: 44, height: 44)
+                    headerIcon(automatic ? "pause.fill" : "play.fill")
                 }.accessibilityLabel(automatic ? "暂停自动播放" : "自动播放").accessibilityIdentifier("episode.auto")
             }
             HStack(spacing: 5) {
                 ForEach(session.episode.acts.indices, id: \.self) { index in
-                    Rectangle().fill(index <= session.current.act ? gold : paper.opacity(0.22)).frame(height: 2)
+                    Capsule()
+                        .fill(index <= session.current.act ? PuffCandy.sunny.base : Color.white.opacity(0.55))
+                        .frame(height: 5)
                 }
-            }.padding(.horizontal, 9).accessibilityHidden(true)
+            }
+            .padding(.horizontal, 9)
+            .animation(reduceMotion ? nil : Puff.Motion.bouncy, value: session.current.act)
+            .accessibilityHidden(true)
         }
-        .foregroundStyle(paper)
-        .buttonStyle(EpisodePressStyle())
+        .buttonStyle(.puffSquish)
+    }
+
+    /// 盖在插画上的白色圆形按钮，任何画面上都看得清。
+    private func headerIcon(_ systemName: String) -> some View {
+        Image(systemName: systemName)
+            .font(.system(size: 16, weight: Puff.Weight.icon, design: .rounded))
+            .foregroundStyle(ink)
+            .frame(width: 38, height: 38)
+            .background(Puff.Palette.card, in: Circle())
+            .frame(width: 44, height: 44)
+            .contentShape(Rectangle())
     }
 
     private var openingTitle: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(resourceName == "departures_london_v1" ? "第一站 · 伦敦" : "一段新的经历").font(.caption.weight(.medium)).tracking(3).foregroundStyle(gold)
-            Text(resourceName == "departures_london_v1" ? "空着的\n那把椅子" : (session?.episode.title ?? "出发之后")).font(.system(size: 38, weight: .medium, design: .serif))
-                .foregroundStyle(paper).lineSpacing(5)
-            Text(resourceName == "departures_london_v1" ? "A PLACE FOR ONE PAGE" : "AFTER DEPARTURE").font(.system(size: 10)).tracking(3).foregroundStyle(paper.opacity(0.8))
+            Text(resourceName == "departures_london_v1" ? "第一站 · 伦敦" : "一段新的经历")
+                .font(.puff(.caption, Puff.Weight.emphasis))
+                .foregroundStyle(PuffCandy.sunny.deep)
+                .padding(.horizontal, 10).padding(.vertical, 4)
+                .background(PuffCandy.sunny.wash, in: Capsule())
+            Text(resourceName == "departures_london_v1" ? "空着的\n那把椅子" : (session?.episode.title ?? "出发之后"))
+                .font(.system(size: 36, weight: Puff.Weight.display, design: .rounded))
+                .foregroundStyle(paper).lineSpacing(4)
+                .shadow(color: .black.opacity(0.35), radius: 6, y: 2)
+            Text(resourceName == "departures_london_v1" ? "A PLACE FOR ONE PAGE" : "AFTER DEPARTURE")
+                .font(.puff(.caption2, Puff.Weight.label)).tracking(2).foregroundStyle(paper.opacity(0.9))
+                .shadow(color: .black.opacity(0.35), radius: 4, y: 1)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.leading, 10)
@@ -255,16 +287,22 @@ public struct LondonEpisodeView: View {
     private func readingPanel(_ session: EpisodeSession, maxHeight: CGFloat) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text(session.current.speaker).font(.subheadline.weight(.semibold))
+                Text(session.current.speaker).font(.puff(.subheadline, Puff.Weight.title))
+                    .foregroundStyle(gold)
                 Spacer()
                 Button { showTranslation.toggle() } label: {
-                    Text(showTranslation ? "中 / EN" : "EN").font(.caption.weight(.medium))
+                    Text(showTranslation ? "中 / EN" : "EN").font(.puff(.caption, Puff.Weight.emphasis))
+                        .foregroundStyle(PuffCandy.sky.deep)
+                        .padding(.horizontal, 10).padding(.vertical, 6)
+                        .background(PuffCandy.sky.wash, in: Capsule())
                         .frame(minWidth: 52, minHeight: 44)
-                }.accessibilityLabel(showTranslation ? "隐藏中文翻译" : "显示中文翻译")
-                    .accessibilityIdentifier("episode.translation")
+                }
+                .buttonStyle(.puffSquish)
+                .accessibilityLabel(showTranslation ? "隐藏中文翻译" : "显示中文翻译")
+                .accessibilityIdentifier("episode.translation")
             }
             .foregroundStyle(ink)
-            Rectangle().fill(gold.opacity(0.6)).frame(height: 1).padding(.bottom, 14)
+            Rectangle().fill(Puff.Palette.line).frame(height: 1).padding(.bottom, 14)
             ZStack(alignment: .topLeading) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 14) {
@@ -278,33 +316,31 @@ public struct LondonEpisodeView: View {
                                 wordSelection = selection
                             }
                         )
-                        .font(session.isFinished
-                              ? .custom("Baskerville-Italic", size: 32, relativeTo: .title2)
-                              : .system(.body, design: .serif))
-                        // The app-wide rounded design otherwise replaces the custom face.
-                        .fontDesign(session.isFinished ? nil : .rounded)
-                        .italic(session.isFinished)
+                        .font(session.isFinished ? .puff(.title2, Puff.Weight.title) : .puff(.body, Puff.Weight.body))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .accessibilityIdentifier("episode.line")
                         if showTranslation {
-                            Text(session.current.translation).font(.subheadline).lineSpacing(5)
-                                .foregroundStyle(ink.opacity(0.77)).fixedSize(horizontal: false, vertical: true)
+                            Text(session.current.translation).font(.puff(.subheadline, Puff.Weight.body)).lineSpacing(5)
+                                .foregroundStyle(Puff.Palette.inkSoft).fixedSize(horizontal: false, vertical: true)
                         }
                         if let choices = session.current.choices {
                             ForEach(choices) { choice in
                                 Button { choose(choice.id) } label: {
                                     HStack(alignment: .top, spacing: 12) {
-                                        Text("↗").foregroundStyle(gold)
+                                        Image(systemName: "arrow.up.right")
+                                            .font(.system(size: 13, weight: Puff.Weight.icon))
+                                            .foregroundStyle(PuffCandy.sky.deep)
                                         VStack(alignment: .leading, spacing: 6) {
-                                            Text(choice.text).font(.subheadline.weight(.medium))
-                                            if showTranslation { Text(choice.translation).font(.caption).opacity(0.75) }
+                                            Text(choice.text).font(.puff(.subheadline, Puff.Weight.emphasis))
+                                            if showTranslation {
+                                                Text(choice.translation).font(.puff(.caption, Puff.Weight.body))
+                                                    .foregroundStyle(Puff.Palette.inkSoft)
+                                            }
                                         }
                                         Spacer(minLength: 0)
                                     }
                                     .foregroundStyle(ink).padding(14).frame(maxWidth: .infinity, alignment: .leading)
-                                    .background(ink.opacity(0.045), in: RoundedRectangle(cornerRadius: 6))
-                                    .overlay(RoundedRectangle(cornerRadius: 6).stroke(gold.opacity(0.5), lineWidth: 1))
-                                }.buttonStyle(EpisodePressStyle())
+                                }.buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.large, lipHeight: 3))
                                     .accessibilityIdentifier("episode.choice.\(choice.id)")
                             }
                         }
@@ -326,62 +362,60 @@ public struct LondonEpisodeView: View {
             if session.isFinished {
                 Button { transitionTask = Task { await finish() } } label: {
                     Label(saving ? "正在保存…" : operationError != nil ? "重试完成" : "结束旅程", systemImage: "arrow.right")
-                        .font(.subheadline.weight(.semibold)).foregroundStyle(paper)
-                        .frame(maxWidth: .infinity, minHeight: 48)
-                        .background(ink, in: RoundedRectangle(cornerRadius: 10))
+                        .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(EpisodePressStyle())
+                .buttonStyle(PuffCandyButtonStyle(.mint))
                 .accessibilityIdentifier("episode.finish")
                 .padding(.top, 12)
             }
 
             if let operationError {
-                Text(operationError).font(.caption).foregroundStyle(.red)
+                Text(operationError).font(.puff(.caption, Puff.Weight.label)).foregroundStyle(Puff.Palette.cherry)
                     .accessibilityIdentifier("episode.saveError")
             }
             HStack {
                 Text(session.isFinished ? (completionSettled ? "本章已完成" : "结束后保存完成状态") : "轻点英文可查词")
-                    .font(.system(size: 10)).foregroundStyle(ink.opacity(0.55))
+                    .font(.puff(.caption2, Puff.Weight.label)).foregroundStyle(Puff.Palette.inkFaint)
                 Spacer(minLength: 4)
                 if session.current.choices == nil {
                     Button {
                         if session.isFinished { showRestart = true } else { advance() }
                     } label: {
                         HStack(spacing: 8) {
-                            Text(session.isFinished ? "重走这一站" : "继续").font(.subheadline.weight(.medium))
-                            Image(systemName: session.isFinished ? "arrow.counterclockwise" : "arrow.right").font(.caption)
-                        }.foregroundStyle(ink).frame(minWidth: 72, minHeight: 44)
-                    }.buttonStyle(EpisodePressStyle())
+                            Text(session.isFinished ? "重走这一站" : "继续").font(.puff(.subheadline, Puff.Weight.emphasis))
+                            Image(systemName: session.isFinished ? "arrow.counterclockwise" : "arrow.right")
+                                .font(.caption.weight(Puff.Weight.icon))
+                        }
+                        .foregroundStyle(session.isFinished ? PuffCandy.sky.deep : .white)
+                        .padding(.horizontal, 16).frame(minWidth: 72, minHeight: 40)
+                        .background(session.isFinished ? PuffCandy.sky.wash : PuffCandy.sky.base, in: Capsule())
+                        .frame(minHeight: 44)
+                    }.buttonStyle(.puffSquish)
                         .accessibilityIdentifier(session.isFinished ? "episode.restart" : "episode.next")
                 }
             }.padding(.top, 8)
         }
         .disabled(saving)
-        .padding(.horizontal, 20).padding(.top, 6).padding(.bottom, 8)
-        .background(paper.opacity(reduceTransparency || contrast == .increased ? 1 : 0.88),
-                    in: RoundedRectangle(cornerRadius: 12))
-        .overlay(RoundedRectangle(cornerRadius: 12)
-            .stroke(contrast == .increased ? ink.opacity(0.35) : .white.opacity(0.55), lineWidth: 1))
-        .shadow(color: .black.opacity(0.18), radius: 12, y: 5)
-        .environment(\.colorScheme, .light)
+        .padding(.horizontal, 20).padding(.top, 6).padding(.bottom, 10)
+        .puffCard(radius: Puff.Radius.huge)
     }
 
     private func endingSummary(_ session: EpisodeSession) -> some View {
         VStack(alignment: .leading, spacing: 18) {
-            Rectangle().fill(ink.opacity(0.14)).frame(height: 1)
+            Rectangle().fill(Puff.Palette.line).frame(height: 1)
                 .padding(.top, 8).accessibilityHidden(true)
             Text("这一站，你留下的选择")
-                .font(.headline.weight(.semibold))
+                .font(.puff(.headline, Puff.Weight.title))
                 .accessibilityAddTraits(.isHeader)
             VStack(alignment: .leading, spacing: 16) {
                 ForEach(session.decisionRecords) { record in
                     VStack(alignment: .leading, spacing: 5) {
-                        Text(record.context).font(.caption.weight(.semibold))
-                            .foregroundStyle(ink.opacity(0.65))
-                        Text(record.choice).font(.subheadline.weight(.medium))
+                        Text(record.context).font(.puff(.caption, Puff.Weight.emphasis))
+                            .foregroundStyle(gold)
+                        Text(record.choice).font(.puff(.subheadline, Puff.Weight.emphasis))
                         if let outcome = record.outcome {
-                            Text("本章影响：\(outcome)").font(.caption).lineSpacing(3)
-                                .foregroundStyle(ink.opacity(0.77))
+                            Text("本章影响：\(outcome)").font(.puff(.caption, Puff.Weight.body)).lineSpacing(3)
+                                .foregroundStyle(Puff.Palette.inkSoft)
                         }
                     }
                     .fixedSize(horizontal: false, vertical: true)
@@ -713,13 +747,3 @@ private struct EpisodeArtwork: @unchecked Sendable {
     let images: [String: UIImage]
 }
 
-private struct EpisodePressStyle: ButtonStyle {
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .contentShape(Rectangle())
-            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.97 : 1)
-            .opacity(configuration.isPressed ? 0.72 : 1)
-            .animation(.spring(response: 0.20, dampingFraction: 0.90), value: configuration.isPressed)
-    }
-}

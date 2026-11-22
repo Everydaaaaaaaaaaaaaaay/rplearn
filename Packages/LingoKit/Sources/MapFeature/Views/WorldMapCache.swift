@@ -10,7 +10,6 @@ public final class WorldMapCache {
     private weak var warmupHost: UIView?
     private var isInUse = false
     private var warmupTask: Task<Void, Never>?
-    private var pinPreloadTask: Task<Void, Never>?
     private var initialRegionID: String?
     private var hasBeenDisplayed = false
     var selectedRegionID: String?
@@ -31,12 +30,7 @@ public final class WorldMapCache {
 
     func warmUp(in host: UIView, region: Region?, regions: [Region] = []) {
         warmupHost = host
-        if !regions.isEmpty, pinPreloadTask == nil {
-            let pinNames = regions.map { "city_pin_\($0.id)" }
-            pinPreloadTask = Task.detached(priority: .utility) {
-                await DSSceneImageCache.preload(pinNames)
-            }
-        }
+        // 城市图钉改为程序化卡通小图（PuffCitySnapshot），不再预解码图钉照片。
         guard !isInUse else { return }
         guard map != nil else {
             guard warmupTask == nil else { return }

@@ -44,40 +44,69 @@ public extension View {
 // MARK: - 轻点反馈
 
 /// 滚动区域里的快速轻点，系统要等手指抬起才显示按下效果，动作又在同一刻触发，页面一切走反馈就看不见了。
-/// 这里外层仍是原生按钮（手势、滚动取消、无障碍保持系统行为），轻点后让按下的样子停留 `Puff.Motion.tapHold`
-/// 再触发动作，下压与回弹因此看得见。VoiceOver 或减弱动态效果时立即触发。
-/// 同一时刻只允许一个按钮处在停留中，快速连点两个入口不会连续推入两页。
+/// 轻点后让按下的样子停留 `Puff.Motion.tapHold` 再触发动作，下压与回弹因此看得见。
+///
+/// 看得见、读得到的是原按钮本身（`Button(configuration)`）：标签、值、提示、标识都原样保留，
+/// VoiceOver 激活立即执行。触摸交给盖在上面的透明原生按钮（对辅助功能隐藏），
+/// 滚动取消等手势仍是系统行为。同一时刻只允许一个按钮处在停留中，快速连点两个入口不会连续推入两页。
 @MainActor
 private enum PuffTapGate {
     static var isHolding = false
+}
+
+/// 只读出原生按钮的按下状态，供原按钮画出按下的样子。
+private struct PuffPressReader: ButtonStyle {
+    @Binding var isPressed: Bool
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .onChange(of: configuration.isPressed) { _, pressed in isPressed = pressed }
+    }
+}
+
+/// 盖在原按钮上的透明触摸层。
+private struct PuffTouchLayer: View {
+    @Binding var isPressed: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Color.clear.contentShape(Rectangle())
+        }
+        .buttonStyle(PuffPressReader(isPressed: $isPressed))
+        .accessibilityHidden(true)
+    }
 }
 
 private struct PuffHeldButton<Face: ButtonStyle>: View {
     let configuration: PrimitiveButtonStyleConfiguration
     let face: (_ isHeld: Bool) -> Face
     @State private var isHeld = false
+    @State private var isTouching = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
 
     var body: some View {
-        Button(role: configuration.role) {
-            guard !isHeld, !PuffTapGate.isHolding else { return }
-            guard !reduceMotion, !voiceOver else {
-                configuration.trigger()
-                return
+        Button(configuration)
+            .buttonStyle(face(isHeld || isTouching))
+            .allowsHitTesting(false)
+            .overlay {
+                PuffTouchLayer(isPressed: $isTouching) {
+                    guard !isHeld, !PuffTapGate.isHolding else { return }
+                    guard !reduceMotion, !voiceOver else {
+                        configuration.trigger()
+                        return
+                    }
+                    isHeld = true
+                    PuffTapGate.isHolding = true
+                    Task { @MainActor in
+                        try? await Task.sleep(for: Puff.Motion.tapHold)
+                        isHeld = false
+                        PuffTapGate.isHolding = false
+                        configuration.trigger()
+                    }
+                }
             }
-            isHeld = true
-            PuffTapGate.isHolding = true
-            Task { @MainActor in
-                try? await Task.sleep(for: Puff.Motion.tapHold)
-                isHeld = false
-                PuffTapGate.isHolding = false
-                configuration.trigger()
-            }
-        } label: {
-            configuration.label
-        }
-        .buttonStyle(face(isHeld))
     }
 }
 
@@ -197,15 +226,18 @@ private struct PuffSquishButton: View {
     let scale: CGFloat
     let haptic: Bool
     @State private var taps = 0
+    @State private var isTouching = false
 
     var body: some View {
-        Button(role: configuration.role) {
-            configuration.trigger()
-            taps += 1
-        } label: {
-            configuration.label
-        }
-        .buttonStyle(PuffSquishFace(scale: scale, haptic: haptic, taps: taps))
+        Button(configuration)
+            .buttonStyle(PuffSquishFace(scale: scale, haptic: haptic, taps: taps, isTouching: isTouching))
+            .allowsHitTesting(false)
+            .overlay {
+                PuffTouchLayer(isPressed: $isTouching) {
+                    configuration.trigger()
+                    taps += 1
+                }
+            }
     }
 }
 
@@ -213,9 +245,10 @@ private struct PuffSquishFace: ButtonStyle {
     let scale: CGFloat
     let haptic: Bool
     let taps: Int
+    let isTouching: Bool
 
     func makeBody(configuration: Configuration) -> some View {
-        PuffSquishBody(configuration: configuration, scale: scale, haptic: haptic, taps: taps)
+        PuffSquishBody(configuration: configuration, scale: scale, haptic: haptic, taps: taps, isTouching: isTouching)
     }
 }
 
@@ -224,12 +257,13 @@ private struct PuffSquishBody: View {
     let scale: CGFloat
     let haptic: Bool
     let taps: Int
+    let isTouching: Bool
     @State private var isHeld = false
     @State private var releases = 0
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        let pressed = configuration.isPressed || isHeld
+        let pressed = configuration.isPressed || isTouching || isHeld
         configuration.label
             .symbolEffect(.bounce.up, options: .nonRepeating, value: releases)
             .scaleEffect(pressed && !reduceMotion ? scale : 1)
