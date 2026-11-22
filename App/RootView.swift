@@ -678,28 +678,8 @@ struct RootView: View {
                 do { try await Task.sleep(for: .milliseconds(isHomeActive ? 600 : 1_400)) }
                 catch { return }
                 guard !Task.isCancelled, environment.workspace === account else { return }
-                if let regionID = account.journeyPresentation.profile?.currentRegionID {
-                    // 信息与联系人改用程序化卡通城市，只预热仍使用城市照片的页面。
-                    let inactiveRoles: [DSCitySceneRole] = switch selectedTab {
-                    case .messages, .contacts: [.activities, .profile]
-                    case .home: [.profile]
-                    case .me: [.activities]
-                    }
-                    let backdrops = inactiveRoles.map { DSCitySceneAssets.imageName(for: $0, regionID: regionID) }
-                    let bgWarmup = Task.detached(priority: .utility) {
-                        await DSSceneImageCache.preload(backdrops)
-                        guard !Task.isCancelled else { return }
-                        await AppointmentPhotoCache.preload(cityID: regionID, limit: 1)
-                    }
-                    if isHomeActive {
-                        allowsWorldMapWarmup = true
-                    }
-                    await withTaskCancellationHandler {
-                        await bgWarmup.value
-                    } onCancel: {
-                        bgWarmup.cancel()
-                    }
-                } else if isHomeActive {
+                // 信息、联系人、活动、我的与赴约都改为程序化卡通城市，不再预先解码城市照片。
+                if isHomeActive {
                     allowsWorldMapWarmup = true
                 }
             }

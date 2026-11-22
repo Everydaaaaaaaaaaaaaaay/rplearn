@@ -42,13 +42,14 @@ public struct AppointmentListView: View {
             AppointmentPage(cityID: currentCityID, cityName: BackendAppointment.cityDisplayName(id: currentCityID, fallback: currentCityID),
                             backLabel: backLabel, onBack: onClose) {
                 Group {
-                    if loading && appointments.isEmpty { ProgressView("正在查看约定…") }
-                    else if appointments.isEmpty {
-                        ContentUnavailableView("还没有约定", systemImage: "calendar", description: Text("在聊天里与旅伴约好时间地点，就会出现在这里。"))
+                    if loading && appointments.isEmpty {
+                        PuffLoadingDots().accessibilityLabel("正在查看约定")
+                    } else if appointments.isEmpty {
+                        PuffEmptyState("还没有约定", bird: .gugu, pose: .wave)
                     } else {
                         ScrollViewReader { proxy in
                             ScrollView {
-                                LazyVStack(spacing: 0) {
+                                LazyVStack(spacing: Puff.Space.m) {
                                     ForEach(appointments.sorted { $0.startsAt < $1.startsAt }) { item in
                                         AppointmentCardView(item: item, service: service, cache: cache,
                                                             currentCityID: currentCityID, settle: settle,
@@ -60,7 +61,8 @@ public struct AppointmentListView: View {
                                         .id(item.id)
                                     }
                                 }
-                                .padding(.horizontal, 24).padding(.bottom, 24).frame(maxWidth: 640).frame(maxWidth: .infinity)
+                                .padding(.horizontal, Puff.Space.m).padding(.top, Puff.Space.m).padding(.bottom, Puff.Space.xl)
+                                .frame(maxWidth: 640).frame(maxWidth: .infinity)
                             }
                             .scrollBounceBehavior(.basedOnSize)
                             .onChange(of: appointments.map(\.id), initial: true) { _, ids in
@@ -74,7 +76,19 @@ public struct AppointmentListView: View {
                 }
             }
             .safeAreaInset(edge: .bottom) {
-                if let message { VStack { Text(message).font(.footnote); Button("重新载入") { Task { await load() } } }.padding().frame(maxWidth: .infinity).background(AppointmentStyle.canvas) }
+                if let message {
+                    HStack(spacing: Puff.Space.s) {
+                        Text(message).font(.puff(.footnote, Puff.Weight.label)).foregroundStyle(Puff.Palette.ink)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Button("重新载入") { Task { await load() } }
+                            .font(.puff(.footnote, Puff.Weight.emphasis))
+                            .foregroundStyle(PuffCandy.tangerine.deep)
+                            .buttonStyle(.puffSquish)
+                    }
+                    .padding(Puff.Space.m)
+                    .background(PuffCandy.tangerine.wash, in: RoundedRectangle(cornerRadius: Puff.Radius.large, style: .continuous))
+                    .padding(.horizontal, Puff.Space.m).padding(.bottom, Puff.Space.xs)
+                }
             }
             .navigationDestination(for: AppointmentRoute.self) { route in
                 if let selectedModel {
@@ -96,8 +110,7 @@ public struct AppointmentListView: View {
             .task { await load() }
         }
         .environment(\.appointmentCharacterCards, characterCards)
-        .tint(AppointmentStyle.ink)
-        .preferredColorScheme(.light)
+        .tint(PuffCandy.sky.deep)
     }
 
     private func load() async {
@@ -121,7 +134,6 @@ private struct AppointmentCardView: View {
     let item: BackendAppointment
     @State private var model: AppointmentModel
     @State private var confirmCancel = false
-    @State private var photoCredits = false
     @Environment(\.scenePhase) private var scenePhase
     let currentCityID: String
     let characterName: (UUID) -> String
@@ -145,8 +157,7 @@ private struct AppointmentCardView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(spacing: 0) {
-                Text(AppointmentTime.status(appointment)).font(.caption)
-                    .foregroundStyle(AppointmentStyle.ink.opacity(0.6))
+                PuffTag(AppointmentTime.status(appointment), candy: statusCandy)
                 Spacer()
                 refreshButton
                 options
@@ -162,14 +173,11 @@ private struct AppointmentCardView: View {
             action.padding(.top, 4)
         }
         .multilineTextAlignment(.leading)
-        .padding(.vertical, 22).frame(maxWidth: .infinity, alignment: .leading)
-        .overlay(alignment: .bottom) { Rectangle().fill(AppointmentStyle.ink.opacity(0.09)).frame(height: 0.5) }
+        .padding(Puff.Space.l).frame(maxWidth: .infinity, alignment: .leading)
+        .puffCard(radius: Puff.Radius.huge)
         .task(id: item.revision) { await model.load() }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { Task { await model.refreshAfterConnectionFailure() } }
-        }
-        .sheet(isPresented: $photoCredits) {
-            AppointmentPhotoCreditsView(cityID: appointment.cityId, cityName: appointment.displayCityName)
         }
         .confirmationDialog("取消这次约定？", isPresented: $confirmCancel, titleVisibility: .visible) {
             Button("取消约定", role: .destructive) { Task { await model.submit(action: .cancel) } }
@@ -177,6 +185,14 @@ private struct AppointmentCardView: View {
         } message: { Text("取消不会扣好感，之后可以在聊天里重新约定。") }
     }
 
+    private var statusCandy: PuffCandy {
+        switch appointment.status {
+        case "in_progress": .tangerine
+        case "completed", "finishing": .mint
+        case "confirmed": .sky
+        default: .grape
+        }
+    }
     private var refreshButton: some View {
         Button {
             Task { await model.load(settleReview: false) }
@@ -185,13 +201,14 @@ private struct AppointmentCardView: View {
                 if model.loading {
                     ProgressView().controlSize(.small)
                 } else {
-                    Image(systemName: "arrow.clockwise").font(.system(size: 16, weight: .medium))
+                    Image(systemName: "arrow.clockwise").font(.system(size: 16, weight: Puff.Weight.icon))
+                        .foregroundStyle(Puff.Palette.inkSoft)
                 }
             }
             .frame(width: 44, height: 44)
             .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.puffSquish)
         .disabled(model.loading || model.submitting)
         .accessibilityLabel("刷新约定")
         .accessibilityIdentifier("appointment.details.refresh")
@@ -199,14 +216,14 @@ private struct AppointmentCardView: View {
 
     private var options: some View {
         Menu {
-            Button("照片来源", systemImage: "info.circle") { photoCredits = true }
             if appointment.status == "confirmed" {
                 Button("商量改期", systemImage: "bubble.left") { onChat(appointment.characterId) }
                 Button("取消约定", systemImage: "calendar.badge.minus", role: .destructive) { confirmCancel = true }
                     .disabled(model.detail == nil || model.offline || model.loading || model.submitting || model.pending != nil)
             }
         } label: {
-            Image(systemName: "ellipsis").font(.system(size: 18, weight: .medium))
+            Image(systemName: "ellipsis").font(.system(size: 18, weight: Puff.Weight.icon))
+                .foregroundStyle(Puff.Palette.inkSoft)
                 .frame(width: 44, height: 44).contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -260,7 +277,7 @@ private struct AppointmentCardView: View {
                 Text(appointment.cityId != currentCityID
                      ? "切换到\(appointment.cityName)后赴约"
                      : "可赴约时段（\(label)）\n\(window)")
-                    .font(.footnote).foregroundStyle(AppointmentStyle.ink.opacity(0.65))
+                    .font(.puff(.footnote, Puff.Weight.label)).foregroundStyle(Puff.Palette.inkSoft)
                     .accessibilityIdentifier("appointment.entryWindow")
             }
         } else {
@@ -276,8 +293,13 @@ struct AppointmentErrorView: View {
     let retry: () -> Void
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(message).font(.subheadline).fixedSize(horizontal: false, vertical: true)
-            Button(loading ? "正在重试…" : "重试") { retry() }.disabled(loading).frame(minHeight: 44).accessibilityIdentifier("appointment.retry")
+            Text(message).font(.puff(.subheadline, Puff.Weight.label)).foregroundStyle(Puff.Palette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+            Button(loading ? "正在重试…" : "重试") { retry() }
+                .font(.puff(.subheadline, Puff.Weight.emphasis))
+                .foregroundStyle(PuffCandy.tangerine.deep)
+                .buttonStyle(.puffSquish)
+                .disabled(loading).frame(minHeight: 44).accessibilityIdentifier("appointment.retry")
         }.accessibilityElement(children: .contain)
     }
 }

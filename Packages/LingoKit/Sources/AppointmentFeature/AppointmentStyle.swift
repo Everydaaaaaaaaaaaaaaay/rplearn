@@ -2,8 +2,22 @@ import DesignSystem
 import SwiftUI
 
 enum AppointmentStyle {
-    static let ink = Color.dsTravelNavy
-    static let canvas = Color(red: 0.985, green: 0.98, blue: 0.965)
+    static let ink = Puff.Palette.ink
+    static let canvas = Puff.Palette.page
+
+    /// 约会地点对应的卡通场景类型：按约定标题和地点名里的关键词判断，认不出时画街道。
+    static func placeKind(title: String, placeName: String) -> PuffPlaceScene.Kind {
+        let text = "\(title) \(placeName)".lowercased()
+        let rules: [(PuffPlaceScene.Kind, [String])] = [
+            (.cafe, ["cafe", "café", "coffee", "tea", "bakery", "咖啡", "茶", "甜品", "面包"]),
+            (.bookshop, ["book", "library", "书店", "图书", "书"]),
+            (.market, ["market", "bazaar", "food hall", "市集", "市场", "集市", "美食"]),
+            (.park, ["park", "garden", "hill", "lake", "river", "beach", "公园", "花园", "山", "湖", "河", "海滩", "散步"]),
+            (.transport, ["station", "pier", "airport", "terminal", "车站", "码头", "机场", "地铁"]),
+            (.community, ["community", "centre", "center", "gallery", "museum", "社区", "中心", "美术馆", "博物馆"])
+        ]
+        return rules.first { _, keywords in keywords.contains { text.contains($0) } }?.0 ?? .street
+    }
 }
 
 struct AppointmentPage<Content: View>: View {
@@ -16,35 +30,41 @@ struct AppointmentPage<Content: View>: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            AppointmentPhotoView(cityID: cityID, cityName: cityName, paused: true,
-                                 showsControls: false, showsPlaceholder: false)
-                .frame(height: 148).clipped()
+            // 顶部是所在城市的卡通街景，代替原来的实景照片条。
+            PuffCityScene(regionID: cityID, viewport: .west)
+                .frame(height: 148)
+                .clipped()
                 .overlay(alignment: .bottom) {
-                    HStack(spacing: 12) {
+                    HStack(spacing: 10) {
                         AppointmentBackButton(label: backLabel, onBack: onBack)
-                        if !title.isEmpty { Text(title).font(.subheadline.weight(.medium)) }
+                        if !title.isEmpty {
+                            Text(title)
+                                .font(.puff(.subheadline, Puff.Weight.emphasis))
+                                .padding(.horizontal, 12).padding(.vertical, 7)
+                                .background(Puff.Palette.card, in: Capsule())
+                        }
                         Spacer(minLength: 0)
                     }
-                    .foregroundStyle(.white)
-                    .shadow(color: .black.opacity(0.25), radius: 3, y: 1)
-                    .padding(.horizontal, 16).padding(.bottom, 8)
+                    .foregroundStyle(Puff.Palette.ink)
+                    .padding(.horizontal, Puff.Space.m).padding(.bottom, 10)
                     .frame(maxWidth: 640).frame(maxWidth: .infinity)
                 }
             content().frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .background(AppointmentStyle.canvas).foregroundStyle(AppointmentStyle.ink).tint(AppointmentStyle.ink)
+        .background(Puff.Palette.page).foregroundStyle(Puff.Palette.ink).tint(PuffCandy.sky.deep)
+        .fontDesign(.rounded)
         .ignoresSafeArea(edges: .top)
         .toolbar(.hidden, for: .navigationBar)
-        .preferredColorScheme(.light)
     }
 }
 
 struct AppointmentSectionDivider: View {
     var body: some View {
-        Rectangle().fill(AppointmentStyle.ink.opacity(0.09)).frame(height: 0.5).padding(.vertical, 22)
+        Rectangle().fill(Puff.Palette.line).frame(height: 1).padding(.vertical, 22)
     }
 }
 
+/// 圆形返回按钮：白色圆底，盖在卡通街景上也清楚。
 struct AppointmentBackButton: View {
     var label = "返回"
     var onBack: (() -> Void)?
@@ -54,27 +74,29 @@ struct AppointmentBackButton: View {
         Button {
             if let onBack { onBack() } else { dismiss() }
         } label: {
-            Image(systemName: "chevron.left").font(.system(size: 22, weight: .regular))
-                .frame(width: 44, height: 44).contentShape(Rectangle())
+            Image(systemName: "chevron.left")
+                .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))
+                .foregroundStyle(Puff.Palette.ink)
+                .frame(width: 40, height: 40)
+                .background(Puff.Palette.card, in: Circle())
+                .overlay { Circle().strokeBorder(Puff.Palette.line, lineWidth: 1) }
+                .frame(width: 44, height: 44)
+                .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.puffSquish)
         .accessibilityLabel(label)
         .accessibilityIdentifier("appointment.back")
     }
 }
 
-
-struct AppointmentPrimaryButtonStyle: ButtonStyle {
-    @Environment(\.isEnabled) private var isEnabled
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+/// 约定页的主按钮：铺满宽度的实心糖果按钮。
+struct AppointmentPrimaryButtonStyle: PrimitiveButtonStyle {
+    var candy: PuffCandy = .sky
 
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.headline)
-            .frame(maxWidth: .infinity, minHeight: 52)
-            .foregroundStyle(.white)
-            .background(AppointmentStyle.ink.opacity(isEnabled ? 1 : 0.35), in: Capsule())
-            .scaleEffect(configuration.isPressed ? 0.98 : 1)
-            .animation(reduceMotion ? nil : .easeOut(duration: 0.16), value: configuration.isPressed)
+        Button(role: configuration.role, action: configuration.trigger) {
+            configuration.label.frame(maxWidth: .infinity)
+        }
+        .buttonStyle(PuffCandyButtonStyle(candy))
     }
 }

@@ -1,3 +1,4 @@
+import DesignSystem
 import BackendKit
 import SwiftUI
 
@@ -14,8 +15,8 @@ struct AppointmentTimeView: View {
                 .accessibilityLabel("\(label)，\(date)")
                 .accessibilityIdentifier("appointment.userTime")
         }
-        .font(.footnote)
-        .foregroundStyle(AppointmentStyle.ink.opacity(0.7))
+        .font(.puff(.footnote, Puff.Weight.label))
+        .foregroundStyle(Puff.Palette.inkSoft)
         .fixedSize(horizontal: false, vertical: true)
     }
 }

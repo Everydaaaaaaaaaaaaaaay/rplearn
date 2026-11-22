@@ -44,15 +44,16 @@ struct AppointmentSummaryView: View {
                                 Text("回看完整经历")
                                 Spacer()
                                 Image(systemName: "chevron.right").font(.system(size: 12))
-                            }.font(.subheadline.weight(.medium)).frame(minHeight: 48)
-                        }.buttonStyle(.plain).padding(.top, 12)
+                            }.font(.puff(.subheadline, Puff.Weight.emphasis)).frame(minHeight: 48)
+                            .padding(.horizontal, 8)
+                        }.buttonStyle(.puffRow).padding(.top, 12)
                         Button { onChat(item.characterId) } label: { Text("返回聊天") }
                             .buttonStyle(AppointmentPrimaryButtonStyle()).padding(.top, 12)
                             .accessibilityIdentifier("appointment.backToChat")
                     }
                     .padding(.horizontal, 24).padding(.top, 22).padding(.bottom, 24)
                     .frame(maxWidth: 640).frame(maxWidth: .infinity)
-                } else { ProgressView("正在打开回顾…").padding(40) }
+                } else { PuffLoadingDots().padding(40).accessibilityLabel("正在打开回顾") }
             }.scrollBounceBehavior(.basedOnSize)
         }
         .dsInteractivePopGesture()
@@ -66,11 +67,10 @@ struct AppointmentSummaryView: View {
 
     private func relationship(_ summary: BackendAppointmentSummary) -> some View {
         HStack(alignment: .top, spacing: 14) {
-            let color = summary.affinity.delta.map { $0 < 0 } == true
-                ? Color(red: 0.59, green: 0.40, blue: 0.20) : Color(red: 0.65, green: 0.32, blue: 0.40)
+            let candy: PuffCandy = summary.affinity.delta.map { $0 < 0 } == true ? .tangerine : .bubblegum
             Image(systemName: "heart.fill")
-                .font(.system(size: 20)).foregroundStyle(color)
-                .frame(width: 38, height: 38).background(color.opacity(0.08), in: Circle())
+                .font(.system(size: 20, weight: Puff.Weight.icon)).foregroundStyle(candy.base)
+                .frame(width: 38, height: 38).background(candy.wash, in: Circle())
             VStack(alignment: .leading, spacing: 8) {
                 if summary.affinity.status == "settled", let before = summary.affinity.before,
                    let after = summary.affinity.after, let delta = summary.affinity.delta {

@@ -1,7 +1,7 @@
 import DesignSystem
 import SwiftUI
 
-/// Draft edits update this control without rebuilding the photo, story, or choices.
+/// Draft edits update this control without rebuilding the scene, story, or choices.
 struct AppointmentCustomActionInput: View {
     @Bindable var model: AppointmentModel
     @FocusState.Binding var inputFocused: Bool
@@ -17,8 +17,8 @@ struct AppointmentCustomActionInput: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .bottom, spacing: 8) {
                 TextField("", text: $model.draft,
-                          prompt: Text("自定义你的行动").foregroundStyle(ink.opacity(0.45)), axis: .vertical)
-                    .font(.body)
+                          prompt: Text("自定义你的行动").foregroundStyle(Puff.Palette.inkFaint), axis: .vertical)
+                    .font(.puff(.body, Puff.Weight.body))
                     .lineLimit(1...2)
                     .padding(.leading, 20).padding(.vertical, 16)
                     .focused($inputFocused)
@@ -29,27 +29,28 @@ struct AppointmentCustomActionInput: View {
                     .accessibilityIdentifier("appointment.input")
                 Button(action: submitCustomAction) {
                     Image(systemName: "arrow.up")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundStyle(canSubmitCustomAction ? .white : ink.opacity(0.35))
+                        .font(.system(size: 18, weight: Puff.Weight.icon, design: .rounded))
+                        .foregroundStyle(canSubmitCustomAction ? .white : Puff.Palette.inkFaint)
                         .frame(width: 44, height: 44)
-                        .background(canSubmitCustomAction ? ink : ink.opacity(0.08), in: Circle())
+                        .background(canSubmitCustomAction ? PuffCandy.sky.base : Puff.Palette.cloud, in: Circle())
                 }
-                .buttonStyle(DSSceneEntranceButtonStyle())
+                .buttonStyle(.puffSquish)
                 .disabled(!canSubmitCustomAction)
                 .accessibilityLabel("提交行动")
                 .accessibilityIdentifier("appointment.sendInput")
                 .padding(8)
             }
-            .background(.white.opacity(0.75), in: RoundedRectangle(cornerRadius: 24))
-            .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(ink.opacity(inputFocused ? 0.30 : 0.14)))
+            .background(Puff.Palette.cloud, in: RoundedRectangle(cornerRadius: Puff.Radius.large, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: Puff.Radius.large, style: .continuous)
+                .strokeBorder(inputFocused ? PuffCandy.sky.base : Puff.Palette.line, lineWidth: inputFocused ? 2 : 1))
             if model.draft.count > 450 {
                 Text("\(model.draft.count) / 500")
-                    .font(.caption).monospacedDigit()
-                    .foregroundStyle(model.draft.count > 500 ? Color.red : ink.opacity(0.6))
+                    .font(.puff(.caption, Puff.Weight.label)).monospacedDigit()
+                    .foregroundStyle(model.draft.count > 500 ? Puff.Palette.cherry : Puff.Palette.inkSoft)
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
             if model.offline {
-                Text("已保存草稿，联网后可提交。").font(.footnote).foregroundStyle(ink.opacity(0.65))
+                Text("已保存草稿，联网后可提交。").font(.puff(.footnote, Puff.Weight.label)).foregroundStyle(Puff.Palette.inkSoft)
             }
         }
         .onChange(of: model.draft) { _, _ in Task { await model.persistReading() } }

@@ -14,9 +14,8 @@ struct AppointmentAvatarView: View {
     @Environment(\.appointmentCharacterCards) private var cards
 
     var body: some View {
-        AvatarBadge(name: name, size: size, imageName: cards[characterID]?.avatarAssetName,
-                    remoteURL: cards[characterID]?.avatarRemoteURL.flatMap(URL.init(string:)),
-                    usesPendingPlaceholder: true)
+        PuffAvatar(name: name, size: size, imageName: cards[characterID]?.avatarAssetName,
+                   remoteURL: cards[characterID]?.avatarRemoteURL.flatMap(URL.init(string:)))
             .accessibilityIdentifier("appointment.avatar.\(characterID.uuidString.lowercased())")
     }
 }
@@ -28,13 +27,14 @@ struct AppointmentIdentityView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(spacing: 14) {
-                AppointmentAvatarView(characterID: appointment.characterId, name: name, size: 48)
+                AppointmentAvatarView(characterID: appointment.characterId, name: name, size: 52)
                 VStack(alignment: .leading, spacing: 6) {
                     Text(appointment.displayTitle(companionName: name))
-                        .font(.title2.weight(.semibold)).fixedSize(horizontal: false, vertical: true)
+                        .font(.puff(.title3, Puff.Weight.title)).foregroundStyle(Puff.Palette.ink)
+                        .fixedSize(horizontal: false, vertical: true)
                         .accessibilityIdentifier("appointment.title")
                     Label(appointment.placeName, systemImage: "mappin")
-                        .font(.footnote).foregroundStyle(AppointmentStyle.ink.opacity(0.6))
+                        .font(.puff(.footnote, Puff.Weight.label)).foregroundStyle(Puff.Palette.inkSoft)
                 }
             }
             AppointmentTimeView(appointment: appointment)
