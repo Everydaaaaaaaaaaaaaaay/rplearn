@@ -1008,16 +1008,12 @@ struct RootView: View {
             }
             .overlay {
                 if case .signedOut = environment.authSession.phase {
-                    ContentUnavailableView {
-                        Label("登录后保存约定", systemImage: "calendar.badge.clock")
-                    } description: {
-                        Text("约定、共同经历和关系变化会保存在你的账号里。")
-                    } actions: {
+                    PuffEmptyState("登录后保存约定", bird: .gugu, pose: .wave) {
                         Button("前往账号") {
                             appointmentPresentation = nil
                             selectedTab = .me
                             openMe(.account)
-                        }.buttonStyle(.borderedProminent)
+                        }.buttonStyle(PuffCandyButtonStyle(.sky))
                         Button("返回活动") { appointmentPresentation = nil }
                             .frame(minHeight: 44)
                             .accessibilityIdentifier("appointment.signIn.close")

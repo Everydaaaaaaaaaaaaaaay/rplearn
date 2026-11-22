@@ -4,8 +4,8 @@ import SwiftUI
 struct LearningAchievementBackdrop: View {
     var body: some View {
         ZStack {
-            Color(red: 0.035, green: 0.055, blue: 0.13)
-            RadialGradient(colors: [Color(red: 0.17, green: 0.20, blue: 0.35), .clear], center: .init(x: 0.5, y: 0.36), startRadius: 0, endRadius: 430)
+            Color(red: 0.086, green: 0.102, blue: 0.180)
+            RadialGradient(colors: [PuffCandy.grape.base.opacity(0.28), .clear], center: .init(x: 0.5, y: 0.36), startRadius: 0, endRadius: 430)
             GeometryReader { geometry in
                 ForEach(0..<28) { index in
                     Circle().fill(LearningAchievementGold.light.opacity(index.isMultiple(of: 3) ? 0.36 : 0.14))
@@ -23,7 +23,7 @@ struct LearningPromotionCrest: View {
     var body: some View {
         ZStack {
             Circle().fill(RadialGradient(colors: [LearningAchievementGold.main.opacity(0.15 * reveal), .clear], center: .center, startRadius: 10, endRadius: 135))
-            Circle().fill(Color(red: 0.075, green: 0.10, blue: 0.19)).padding(40)
+            Circle().fill(Color(red: 0.129, green: 0.149, blue: 0.247)).padding(40)
             Circle().trim(from: 0, to: reveal).stroke(LinearGradient(colors: [LearningAchievementGold.light, LearningAchievementGold.edge, LearningAchievementGold.main], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1.5).padding(40).rotationEffect(.degrees(-90))
             Circle().stroke(LearningAchievementGold.main.opacity(0.28), lineWidth: 0.5).padding(48)
             laurel

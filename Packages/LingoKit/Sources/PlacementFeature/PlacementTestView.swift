@@ -118,8 +118,8 @@ public struct PlacementTestView: View {
                     .disabled(isApplying)
                     .overlay(alignment: .top) {
                         if let errorMessage {
-                            Text(errorMessage).font(.footnote).foregroundStyle(.red)
-                                .padding().background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
+                            Text(errorMessage).font(.puff(.footnote, Puff.Weight.label)).foregroundStyle(Puff.Palette.cherry)
+                                .padding().background(PuffCandy.bubblegum.wash, in: RoundedRectangle(cornerRadius: Puff.Radius.small, style: .continuous))
                         }
                     }
                 case .question:

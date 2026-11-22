@@ -68,7 +68,7 @@ extension PlacementTestView {
                 .padding(.horizontal, DSSpacing.lg)
                 .padding(.vertical, DSSpacing.sm)
                 .frame(maxWidth: .infinity)
-                .background(.regularMaterial)
+                .background(Puff.Palette.page.overlay(alignment: .top) { Rectangle().fill(Puff.Palette.line).frame(height: 1) })
             }
         } else { loadingView }
     }

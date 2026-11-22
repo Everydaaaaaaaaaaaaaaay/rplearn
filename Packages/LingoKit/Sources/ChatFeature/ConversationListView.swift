@@ -396,7 +396,7 @@ public struct ConversationListView: View {
                     Task { await reload() }
                 }
         } else {
-            ContentUnavailableView("联系人不存在", systemImage: "person.crop.circle.badge.questionmark")
+            PuffEmptyState("联系人不存在", bird: .gaga, pose: .curious)
         }
     }
 

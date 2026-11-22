@@ -24,13 +24,12 @@ struct TutorialReplayView: View {
                     return true
                 }
             } else if unavailable {
-                ContentUnavailableView {
-                    Label("暂时无法打开练习", systemImage: "book.closed")
-                } actions: {
+                PuffEmptyState("暂时无法打开练习", bird: .gaga, pose: .pout) {
                     Button("返回") { dismiss() }
+                        .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.medium))
                 }
             } else {
-                ProgressView("正在准备练习")
+                PuffLoadingDots().accessibilityLabel("正在准备练习")
             }
         }
         .task {
@@ -93,9 +92,10 @@ struct ProductionTutorialView: View {
                         storage: workspace.activityStorage, onCompleteOuting: { step = .complete })
                 }
             } else if error != nil {
-                ContentUnavailableView("暂时无法打开练习", systemImage: "book.closed")
+                PuffEmptyState("暂时无法打开练习", bird: .gaga, pose: .pout)
             } else {
-                ProgressView("正在准备练习").frame(maxWidth: .infinity, maxHeight: .infinity)
+                PuffLoadingDots().frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .accessibilityLabel("正在准备练习")
             }
         }
         .overlayPreferenceValue(TutorialTargetPreference.self) { targets in
@@ -142,23 +142,25 @@ struct ProductionTutorialView: View {
             HStack(spacing: 8) {
                 BrandMascotView(pose: step == .complete ? .celebrate : .guide, size: 48, showsShadow: false)
                 Text(prompt)
-                    .font(.callout.weight(.medium)).lineSpacing(3)
+                    .font(.puff(.callout, Puff.Weight.label)).foregroundStyle(Puff.Palette.ink).lineSpacing(3)
                     .fixedSize(horizontal: false, vertical: true)
             }
             .padding(.vertical, 12).padding(.leading, 8).padding(.trailing, 14)
-            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 24))
-            .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(Color.dsSkyDeep.opacity(0.18)))
-            .shadow(color: .black.opacity(0.09), radius: 12, y: 5)
+            .puffCard(radius: Puff.Radius.large)
+            .shadow(color: Puff.Palette.ink.opacity(0.08), radius: 12, y: 5)
             .accessibilityElement(children: .combine)
             .accessibilityIdentifier("tutorial.guide")
             .allowsHitTesting(false)
 
             Button(action: finish) {
                 Image(systemName: step == .complete ? "checkmark" : "forward.end")
-                    .font(.system(size: 17, weight: .medium))
-                    .frame(width: 44, height: 44).background(.regularMaterial, in: Circle())
+                    .font(.system(size: 17, weight: Puff.Weight.icon))
+                    .foregroundStyle(Puff.Palette.ink)
+                    .frame(width: 44, height: 44)
+                    .background(Puff.Palette.card, in: Circle())
+                    .overlay { Circle().strokeBorder(Puff.Palette.line, lineWidth: 1) }
             }
-            .buttonStyle(.plain).disabled(saving)
+            .buttonStyle(.puffSquish).disabled(saving)
             .accessibilityLabel(step == .complete ? "完成教程" : "跳过教程")
             .accessibilityIdentifier(step == .complete ? "tutorial.finish" : "tutorial.skip")
         }

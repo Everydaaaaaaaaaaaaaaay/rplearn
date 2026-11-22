@@ -102,10 +102,10 @@ public struct ActivitiesView: View {
                         Text(contextError)
                         Button("重试") { loadRevision += 1 }
                             .accessibilityIdentifier("activities.catalog.retry")
-                    } else { ProgressView("正在打开场景") }
+                    } else { PuffLoadingDots().accessibilityLabel("正在打开场景") }
                     Button("返回首页", action: onClose)
                 }
-                .padding(28).background(.regularMaterial, in: RoundedRectangle(cornerRadius: 24))
+                .padding(28).puffCard(radius: Puff.Radius.huge)
             }
         }
         .animation(Puff.Motion.resolve(Puff.Motion.gentle, reduceMotion: reduceMotion), value: journey.hasOpenOuting)
@@ -147,8 +147,8 @@ public struct ActivitiesView: View {
                             Text(journalError)
                             Button("重新读取记录") { readRecords() }
                         } else if records.isEmpty {
-                            ContentUnavailableView("还没有行动记录", systemImage: "book.closed",
-                                description: Text("完成场景中的行动后，你的选择会留在这里。"))
+                            PuffEmptyState("还没有行动记录", bird: .gugu, pose: .curious)
+                                .frame(maxWidth: .infinity)
                         }
                         if !recoveries.isEmpty {
                             DisclosureGroup("合并与冲突前的本机记录") {

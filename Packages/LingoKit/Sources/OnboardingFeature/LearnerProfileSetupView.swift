@@ -187,8 +187,8 @@ struct LearnerProfileSetupView: View {
         }
         .padding(.horizontal, DSSpacing.lg)
         .padding(.vertical, DSSpacing.sm)
-        .background(.ultraThinMaterial)
-        .overlay(alignment: .bottom) { Divider() }
+        .background(Puff.Palette.page)
+        .overlay(alignment: .bottom) { Rectangle().fill(Puff.Palette.line).frame(height: 1) }
     }
 
     private var stepContent: some View {
@@ -364,8 +364,8 @@ struct LearnerProfileSetupView: View {
         .padding(.horizontal, DSSpacing.lg)
         .padding(.top, DSSpacing.sm)
         .padding(.bottom, DSSpacing.xs)
-        .background(.ultraThinMaterial)
-        .overlay(alignment: .top) { Divider() }
+        .background(Puff.Palette.page)
+        .overlay(alignment: .top) { Rectangle().fill(Puff.Palette.line).frame(height: 1) }
     }
 
     private var canContinue: Bool {

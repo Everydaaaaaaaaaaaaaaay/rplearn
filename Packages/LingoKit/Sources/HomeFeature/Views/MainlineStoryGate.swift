@@ -19,11 +19,12 @@ public struct MainlineStoryGate<Content: View>: View {
             if chapter?.canOpen == true { content() }
             else if isLoading { ProgressView("正在确认旅程进度…") }
             else {
-                ContentUnavailableView {
-                    Label(error == nil ? "故事在前方等你" : "暂时无法打开剧情", systemImage: error == nil ? "lock.open.rotation" : "wifi.exclamationmark")
-                } description: {
-                    Text(error ?? chapter?.statusText ?? "暂时无法确认这一章的状态。")
-                } actions: { Button("刷新进度") { Task { await load() } } }
+                PuffEmptyState(error == nil ? "故事在前方等你" : "暂时无法打开剧情",
+                               message: error ?? chapter?.statusText,
+                               bird: .gugu, pose: error == nil ? .point : .pout) {
+                    Button("刷新进度") { Task { await load() } }
+                        .buttonStyle(PuffCandyButtonStyle(.sky))
+                }
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.dsBackground)
             .task { await load() }

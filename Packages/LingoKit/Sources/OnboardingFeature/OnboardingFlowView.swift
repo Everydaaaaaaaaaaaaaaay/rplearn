@@ -586,9 +586,9 @@ public struct JourneyIntroductionView: View {
             } else if let player {
                 ChatStoryView(player: player, characters: characters, deps: deps) { dismiss() }
             } else if loadFailed {
-                ContentUnavailableView("暂时无法打开介绍", systemImage: "book.closed")
+                PuffEmptyState("暂时无法打开介绍", bird: .gaga, pose: .pout)
             } else {
-                ProgressView()
+                PuffLoadingDots()
             }
         }
         .overlay(alignment: .topTrailing) {
