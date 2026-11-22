@@ -62,6 +62,7 @@ if [[ ! -d "$app_path" ]]; then
 fi
 bundle_id="$(plutil -extract CFBundleIdentifier raw -o - "$app_path/Info.plist")"
 lingotrip_boot_simulator "$udid"
+lingotrip_purge_model_cache "$udid" "$bundle_id"
 xcrun simctl install "$udid" "$app_path"
 if [[ "$mode" == connected ]]; then
   SIMCTL_CHILD_LINGOTRIP_BACKEND_URL="$backend_url" \

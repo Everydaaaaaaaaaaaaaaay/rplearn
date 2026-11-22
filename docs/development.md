@@ -133,7 +133,9 @@ Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时
   `build/DerivedData/Build/Intermediates.noindex/LingoKit.build/Debug-iphonesimulator/` 下该模块和依赖它的 `<模块>-t.build`
   目录后重新构建。若是编译期读到旧模块接口，可换独立的 `LINGOTRIP_DERIVED_DATA_PATH` 重试一次。不要每次都清空缓存。
 - **磁盘空间不足**：构建报 “out of space”，或应用一启动就因 `dyld: Library not loaded` 崩溃，先检查系统盘剩余空间，
-  清理自己产生的录屏、结果包等临时文件。
+  清理自己产生的录屏、结果包等临时文件。模拟器每次安装都会为语音模型新编一份约 230 MB 的 Core ML 缓存，
+  `preview.sh` 和测试脚本会在安装前自动清掉旧的；绕过脚本直接安装时，旧缓存在 App 数据容器的
+  `Library/Caches/<Bundle ID>/com.apple.e5rt.e5bundlecache`。
 - **预览题型或页面和请求不一致**：用 `xcrun simctl getenv <设备UDID> <变量名>` 检查全局残留的环境变量，残留值会覆盖启动环境。
   停掉测试后重启该模拟器即可清除；不要靠卸载 App、清空账号或改业务逻辑掩盖。
 - **启动慢**：测量口径、缓存启动策略和复测命令见[启动性能记录](launch-performance.md)。

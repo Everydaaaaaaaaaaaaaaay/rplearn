@@ -227,6 +227,14 @@ PY
   )
 }
 
+# 模拟器每次安装都会把 App 放到新路径，Core ML 按路径为语音模型另编一份缓存（约 230 MB），
+# 旧的不会自动删除。安装前清掉它；下次加载模型时系统只为当前路径重新生成一份。
+lingotrip_purge_model_cache() {
+  local udid="$1" bundle_id="${2:-com.tiantian.lingotrip}" container
+  container="$(xcrun simctl get_app_container "$udid" "$bundle_id" data 2>/dev/null)" || return 0
+  rm -rf "$container/Library/Caches/$bundle_id/com.apple.e5rt.e5bundlecache"
+}
+
 lingotrip_xcodebuild() {
   local scheme="$1"
   local udid="$2"
@@ -275,6 +283,10 @@ lingotrip_xcodebuild() {
     xcodebuild_arguments+=(-resultBundlePath "$result_bundle")
   fi
 
+  if [[ "$is_test" == "1" ]]; then
+    # 测试会重新安装测试宿主 App。
+    lingotrip_purge_model_cache "$udid"
+  fi
   xcodebuild "${xcodebuild_arguments[@]}" "$@"
   if [[ "$is_test" == "1" ]]; then
     # Xcode can exit successfully when -only-testing matches nothing.
