@@ -457,6 +457,10 @@ public struct ConversationListView: View {
                 withAnimation(hasEntered ? motion : nil) { rows = loadedRows }
             }
             updateUnreadCount()
+            // 预取排在前面的几个会话，点进去第一帧就有消息。
+            let leading = loadedRows.prefix(4).compactMap(\.summary)
+            let store = deps.chatStore
+            Task(priority: .utility) { await ChatViewModel.prefetch(leading, store: store) }
         } catch {
             // 下拉刷新可重试；不以错误页打断导航。
         }

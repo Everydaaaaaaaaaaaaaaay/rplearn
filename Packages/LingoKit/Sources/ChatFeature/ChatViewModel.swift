@@ -24,10 +24,16 @@ public final class ChatViewModel {
     public internal(set) var messages: [MessageDTO] = [] {
         didSet {
             guard messages != oldValue else { return }
+            if !hasLoadedMessages { hasLoadedMessages = true }
             timelineEvents = ChatTimelineEventPolicy.ordinaryEvents(in: messages)
             rebuildAppointmentTimeline()
+            ChatTranscriptMemory.remember(messages, store: deps.chatStore, characterID: character.id)
         }
     }
+    /// 本地消息已经就绪（来自内存或数据库）；聊天区在这之前保持透明，避免空白后整屏跳出。
+    public private(set) var hasLoadedMessages = false
+    /// 与服务器同步暂时失败的提示。浮在聊天区顶部，不插进消息末尾，不改变消息排版。
+    public private(set) var syncNotice: String?
     private(set) var timelineEvents: [UUID: ChatMessageTimelineEvent] = [:]
     struct AppointmentTimelineRow: Identifiable, Equatable {
         let appointmentID: UUID
@@ -202,21 +208,40 @@ public final class ChatViewModel {
         self.character = character
         self.learnerDifficulty = character.difficultyLevel
         self.deps = deps
+        if let cached = ChatTranscriptMemory.messages(store: deps.chatStore, characterID: character.id) {
+            // 进入聊天的第一帧就显示上次的消息，随后照常从数据库刷新。
+            messages = cached
+            hasLoadedMessages = true
+        }
+    }
+
+    /// 信息列表出现后预取排在前面的几个会话，第一次点进去也不会先看到空白。
+    public static func prefetch(_ summaries: [ConversationSummaryDTO], store: ChatStore) async {
+        for summary in summaries {
+            let cached = ChatTranscriptMemory.messages(store: store, characterID: summary.characterID)
+            guard cached?.last.map({ $0.createdAt < summary.lastMessageAt }) ?? true,
+                  let loaded = try? await store.messages(conversationID: summary.conversationID),
+                  !Task.isCancelled else { continue }
+            ChatTranscriptMemory.remember(visibleMessages(loaded), store: store, characterID: summary.characterID)
+        }
     }
 
     public func load() async {
         sharedPageVisible = true
-        await refreshCharacter()
         do {
+            // 先读本地消息让聊天区尽快就绪，再刷新角色资料与同步。
             let conversation = try await deps.chatStore.openConversation(characterID: character.id)
             self.conversation = conversation
             self.messages = Self.visibleMessages(try await deps.chatStore.messages(conversationID: conversation.id))
+            hasLoadedMessages = true
+            await refreshCharacter()
             if let gateway = deps.sharedChat {
                 do {
                     let state = try await gateway.openSharedConversation(characterID: character.id)
                     try await acceptSharedState(state)
+                    syncNotice = nil
                 } catch {
-                    errorMessage = "会话暂未同步，恢复连接后会继续。"
+                    syncNotice = "会话暂未同步，恢复连接后会继续"
                 }
                 startSharedObservation()
             }
@@ -229,6 +254,7 @@ public final class ChatViewModel {
             resumePendingReplyIfNeeded()
             #endif
         } catch {
+            hasLoadedMessages = true
             errorMessage = "加载会话失败：\(error.localizedDescription)"
             Log.app.error("openConversation 失败：\(error)")
         }
@@ -1458,10 +1484,11 @@ public final class ChatViewModel {
                     try Task.checkCancellation()
                     try await self.acceptSharedState(state)
                     self.flushSharedComposer()
+                    if self.syncNotice != nil { self.syncNotice = nil }
                 } catch is CancellationError { return } catch BackendClientError.signedOut {
                     sharedObserver = nil
                     return
-                } catch { errorMessage = "会话连接暂时中断，正在重新同步。" }
+                } catch { syncNotice = "会话连接暂时中断，正在重新同步" }
                 do { try await Task.sleep(for: .milliseconds(800)) } catch { return }
             }
         }

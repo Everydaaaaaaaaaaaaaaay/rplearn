@@ -173,7 +173,27 @@ struct ChatTranscriptView: View {
                 .background { keyboardDismissBackdrop }
                 .anchorPreference(key: ChatTranscriptBoundsKey.self, value: .bounds) { $0 }
             }
+            // 消息就绪时重建滚动视图，让“初始停在底部”作用于真实内容；
+            // 否则初始锚点会耗在空列表上，消息到达后先停错位置再跳到底部。
+            .id(viewModel.hasLoadedMessages)
             .accessibilityIdentifier("chat.messages")
+            // 本地消息就绪前保持透明，就绪后轻轻淡入，不出现“空白 → 整屏消息跳出”。
+            .opacity(viewModel.hasLoadedMessages ? 1 : 0)
+            .animation(.easeOut(duration: reduceMotion ? 0.1 : 0.18), value: viewModel.hasLoadedMessages)
+            .overlay(alignment: .top) {
+                if let notice = viewModel.syncNotice {
+                    Label(notice, systemImage: "icloud.slash")
+                        .font(.puff(.caption, Puff.Weight.label))
+                        .foregroundStyle(Puff.Palette.inkSoft)
+                        .padding(.horizontal, 12).padding(.vertical, 7)
+                        .background(Puff.Palette.card, in: Capsule())
+                        .overlay { Capsule().strokeBorder(Puff.Palette.line, lineWidth: 1) }
+                        .padding(.top, 8)
+                        .transition(.puffDrop)
+                        .allowsHitTesting(false)
+                }
+            }
+            .animation(Puff.Motion.resolve(Puff.Motion.bouncy, reduceMotion: reduceMotion), value: viewModel.syncNotice)
             .modifier(ChatTimelineUpdates(viewModel: viewModel))
             .scrollPosition($messageScrollPosition)
             .defaultScrollAnchor(.bottom, for: .initialOffset)
@@ -257,7 +277,7 @@ struct ChatTranscriptView: View {
                 }
             }
 
-            if !isNearConversationBottom {
+            if viewModel.hasLoadedMessages && !isNearConversationBottom {
                 Button {
                     followsConversationBottom = true
                     withAnimation(reduceMotion ? nil : DSAnimation.snappy) {
