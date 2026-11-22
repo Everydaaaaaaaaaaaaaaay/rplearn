@@ -27,8 +27,8 @@ final class ChatKeyboardTests: XCTestCase {
         XCTAssertFalse(app.buttons["chat.inputMode"].exists)
         XCTAssertEqual(functions.frame.midY, field.frame.midY, accuracy: 2)
         XCTAssertGreaterThan(app.buttons["chat.settings"].frame.maxY, 0)
-        XCTAssertLessThan(app.buttons["chat.settings"].frame.maxY, app.navigationBars.firstMatch.frame.maxY + 2)
-        XCTAssertLessThan(app.buttons["chat.autoRead"].frame.maxY, app.navigationBars.firstMatch.frame.maxY + 2)
+        XCTAssertLessThan(app.buttons["chat.settings"].frame.maxY, chatHeaderBottom(in: app) + 2)
+        XCTAssertLessThan(app.buttons["chat.autoRead"].frame.maxY, chatHeaderBottom(in: app) + 2)
         let menuImage = XCTAttachment(screenshot: app.screenshot())
         menuImage.name = "Chat composer function panel"
         menuImage.lifetime = .keepAlways
@@ -156,9 +156,9 @@ final class ChatKeyboardTests: XCTestCase {
             XCTAssertEqual(latest.frame.minX, collapsedBubble.minX, accuracy: 1)
             XCTAssertEqual(latest.frame.width, collapsedBubble.width, accuracy: 1)
             if tapUpperBlankSpace {
-                let headerBottom = app.navigationBars.firstMatch.frame.maxY
+                let headerBottom = chatHeaderBottom(in: app)
                 let bubbleTop = latest.frame.minY
-                XCTAssertGreaterThan(bubbleTop - headerBottom, 20, "短会话应在导航栏和气泡之间留出空白")
+                XCTAssertGreaterThan(bubbleTop - headerBottom, 20, "短会话应在顶栏和气泡之间留出空白")
                 app.coordinate(withNormalizedOffset: .zero)
                     .withOffset(CGVector(dx: app.frame.width / 2, dy: (headerBottom + bubbleTop) / 2)).tap()
                 XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
@@ -243,7 +243,7 @@ final class ChatKeyboardTests: XCTestCase {
 
         functions.tap()
         XCTAssertTrue(app.buttons["chat.call"].isHittable)
-        let blankY = (app.navigationBars.firstMatch.frame.maxY + field.frame.minY) / 2
+        let blankY = (chatHeaderBottom(in: app) + field.frame.minY) / 2
         app.coordinate(withNormalizedOffset: .zero)
             .withOffset(CGVector(dx: app.frame.width - 2, dy: blankY)).tap()
         XCTAssertEqual(functions.value as? String, "收起")
@@ -409,9 +409,14 @@ final class ChatKeyboardTests: XCTestCase {
         XCTAssertEqual(field.value as? String, "what should we")
     }
 
+    /// 聊天页顶栏画在页面里（不用系统导航栏），以它的下沿作为顶部边界。
+    private func chatHeaderBottom(in app: XCUIApplication) -> CGFloat {
+        app.descendants(matching: .any)["chat.header"].firstMatch.frame.maxY
+    }
+
     private func dismissKeyboard(in app: XCUIApplication) {
         let field = app.descendants(matching: .any)["chat.composer"].firstMatch
-        let blankY = (app.navigationBars.firstMatch.frame.maxY + field.frame.minY) / 2
+        let blankY = (chatHeaderBottom(in: app) + field.frame.minY) / 2
         app.coordinate(withNormalizedOffset: .zero)
             .withOffset(CGVector(dx: app.frame.width - 3, dy: blankY)).tap()
         XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3),

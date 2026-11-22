@@ -120,7 +120,7 @@ final class ChatTimelineEventUITests: XCTestCase {
     }
 
     private func signOut(from app: XCUIApplication) {
-        app.navigationBars.firstMatch.buttons.firstMatch.tap()
+        app.buttons["chat.back"].tap()
         let home = app.tabBars.buttons["我的"]
         XCTAssertTrue(home.waitForExistence(timeout: 6))
         home.tap()

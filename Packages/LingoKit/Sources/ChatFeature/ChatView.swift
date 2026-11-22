@@ -245,36 +245,12 @@ public struct ChatView: View {
             Button("知道了", role: .cancel) { learningDebugError = nil }
         } message: { Text(learningDebugError ?? "") }
         #endif
-        .toolbarBackground(learningSelected ? .hidden : .automatic, for: .navigationBar)
-        .toolbarColorScheme(learningSelected ? .dark : nil, for: .navigationBar)
         .tint(learningSelected ? .white : PuffCandy.sky.deep)
-        .toolbarRole(.editor)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            chatIdentityToolbar
-            if learningSelected {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button { learningSelected = false } label: {
-                        Image(systemName: "bubble.left.and.bubble.right").frame(width: 44, height: 44)
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel("返回聊天")
-                }
-            } else {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button { autoReadEnabled.toggle() } label: {
-                        Image(systemName: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
-                            .frame(width: 44, height: 44)
-                            .contentShape(Rectangle())
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel(autoReadEnabled ? "关闭自动朗读" : "开启自动朗读")
-                    .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
-                    .accessibilityIdentifier("chat.autoRead")
-                }
-                ToolbarItem(placement: .topBarTrailing) { chatSettingsAction }
-            }
-        }
+        // 顶栏画在页面里，不用系统导航栏：信息列表等蓬蓬页隐藏了系统栏，聊天页若用系统栏，
+        // 左缘滑动返回时系统会边滑边隐藏导航栏，返回按钮和头像会脱离页面单独漂移。
+        .toolbar(.hidden, for: .navigationBar)
+        .chatTopBar { chatTopBar }
+        .dsInteractivePopGesture()
 
         .accessibilityAction(named: "聊天设置", openChatSettings)
         .wordLookupOverlay(
@@ -428,13 +404,44 @@ public struct ChatView: View {
         #endif
     }
 
-    @ToolbarContentBuilder
-    private var chatIdentityToolbar: some ToolbarContent {
-        if !learningSelected {
-            // The principal item is sized in the space between the native back
-            // button and trailing controls. A leading item shares the back group.
-            ToolbarItem(placement: .principal) { chatIdentity }
+    /// 聊天页顶栏：返回、旅伴身份、自动朗读与设置；学习页时换成“返回聊天”。随页面整体滑动。
+    private var chatTopBar: some View {
+        HStack(spacing: 10) {
+            ChatTopBarChip {
+                Button { dismiss() } label: { ChatTopBarIcon(systemImage: "chevron.left") }
+                    .buttonStyle(.puffSquish)
+                    .accessibilityLabel("返回")
+                    .accessibilityIdentifier("chat.back")
+            }
+            if learningSelected {
+                Spacer(minLength: 0)
+                ChatTopBarChip {
+                    Button { learningSelected = false } label: { ChatTopBarIcon(systemImage: "bubble.left.and.bubble.right") }
+                        .buttonStyle(.puffSquish)
+                        .accessibilityLabel("返回聊天")
+                }
+            } else {
+                chatIdentity
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                ChatTopBarChip {
+                    HStack(spacing: 0) {
+                        Button { autoReadEnabled.toggle() } label: {
+                            ChatTopBarIcon(systemImage: autoReadEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                        }
+                        .buttonStyle(.puffSquish)
+                        .accessibilityLabel(autoReadEnabled ? "关闭自动朗读" : "开启自动朗读")
+                        .accessibilityValue(autoReadEnabled ? "开启" : "关闭")
+                        .accessibilityIdentifier("chat.autoRead")
+                        chatSettingsAction
+                    }
+                }
+            }
         }
+        .padding(.horizontal, 12)
+        .padding(.top, 2)
+        .padding(.bottom, 6)
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("chat.header")
     }
 
     private var chatIdentity: some View {
@@ -476,11 +483,9 @@ public struct ChatView: View {
 
     private var chatSettingsButton: some View {
         Button(action: openChatSettings) {
-            Image(systemName: "slider.horizontal.3")
-                .frame(width: 44, height: 44)
-                .contentShape(Rectangle())
+            ChatTopBarIcon(systemImage: "slider.horizontal.3")
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.puffSquish)
         .accessibilityLabel("聊天设置")
         .accessibilityIdentifier("chat.settings")
     }

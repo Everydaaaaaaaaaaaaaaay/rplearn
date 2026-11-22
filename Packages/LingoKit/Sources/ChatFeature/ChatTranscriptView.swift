@@ -176,6 +176,14 @@ struct ChatTranscriptView: View {
             // 消息就绪时重建滚动视图，让“初始停在底部”作用于真实内容；
             // 否则初始锚点会耗在空列表上，消息到达后先停错位置再跳到底部。
             .id(viewModel.hasLoadedMessages)
+            // 顶栏下沿柔和淡出：聊天页外层分页会裁切内容，消息到不了顶栏下面，不淡出就是一刀切的硬边。
+            .mask {
+                VStack(spacing: 0) {
+                    LinearGradient(colors: [.clear, .black], startPoint: .top, endPoint: .bottom)
+                        .frame(height: 16)
+                    Color.black
+                }
+            }
             .accessibilityIdentifier("chat.messages")
             // 本地消息就绪前保持透明，就绪后轻轻淡入，不出现“空白 → 整屏消息跳出”。
             .opacity(viewModel.hasLoadedMessages ? 1 : 0)

@@ -66,7 +66,7 @@ final class SignedInReadReceiptTests: XCTestCase {
         row.tap()
         let latest = app.descendants(matching: .any)["chat.message.latest"].firstMatch
         XCTAssertTrue(latest.waitForExistence(timeout: 12))
-        app.navigationBars.firstMatch.buttons.firstMatch.tap()
+        app.buttons["chat.back"].tap()
         XCTAssertTrue(row.waitForExistence(timeout: 12))
         let contacts = app.tabBars.buttons["联系人"]
         let messages = app.tabBars.buttons["信息"]
