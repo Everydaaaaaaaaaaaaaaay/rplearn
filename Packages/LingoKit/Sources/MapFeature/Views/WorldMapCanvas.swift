@@ -79,6 +79,10 @@ struct WorldMapCanvas: UIViewRepresentable {
             RegionAnnotationView.self,
             forAnnotationViewWithReuseIdentifier: RegionAnnotationView.reuseIdentifier
         )
+        mapView.register(
+            CityClusterAnnotationView.self,
+            forAnnotationViewWithReuseIdentifier: CityClusterAnnotationView.reuseIdentifier
+        )
         // 切换深浅色时换一层对应颜色的底图滤镜（渲染器颜色在创建时确定）。
         mapView.registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (mapView: MKMapView, _: UITraitCollection) in
             let washes = mapView.overlays.filter { $0 is PuffPastelWash }
@@ -153,7 +157,19 @@ struct WorldMapCanvas: UIViewRepresentable {
             installAnnotations(in: mapView)
         }
 
+        /// 正在显示的聚合气泡。档案载入后“当前城市”才确定，需要回头更新气泡的图标和名字。
+        private let clusterViews = NSHashTable<CityClusterAnnotationView>.weakObjects()
+
+        private var currentRegionID: String? {
+            parent.presentations.first { $0.value.state == .current }?.key
+        }
+
         func refreshVisibleAnnotations(in mapView: MKMapView) {
+            for view in clusterViews.allObjects {
+                if let cluster = view.annotation as? MKClusterAnnotation {
+                    view.configure(cluster, currentRegionID: currentRegionID)
+                }
+            }
             for annotation in annotationsByID.values {
                 guard let view = mapView.view(for: annotation) as? RegionAnnotationView else { continue }
                 configure(view, for: annotation)
@@ -204,6 +220,15 @@ struct WorldMapCanvas: UIViewRepresentable {
             _ mapView: MKMapView,
             viewFor annotation: any MKAnnotation
         ) -> MKAnnotationView? {
+            if let cluster = annotation as? MKClusterAnnotation {
+                let view = mapView.dequeueReusableAnnotationView(
+                    withIdentifier: CityClusterAnnotationView.reuseIdentifier,
+                    for: cluster
+                ) as! CityClusterAnnotationView
+                view.configure(cluster, currentRegionID: currentRegionID)
+                clusterViews.add(view)
+                return view
+            }
             guard let annotation = annotation as? RegionAnnotation else { return nil }
             let view = mapView.dequeueReusableAnnotationView(
                 withIdentifier: RegionAnnotationView.reuseIdentifier,
@@ -218,6 +243,11 @@ struct WorldMapCanvas: UIViewRepresentable {
             didSelect view: MKAnnotationView
         ) {
             view.superview?.bringSubviewToFront(view)
+            if let cluster = view.annotation as? MKClusterAnnotation {
+                mapView.deselectAnnotation(cluster, animated: false)
+                mapView.showAnnotations(cluster.memberAnnotations, animated: !UIAccessibility.isReduceMotionEnabled)
+                return
+            }
             guard !isSynchronizingSelection,
                   let annotation = view.annotation as? RegionAnnotation
             else { return }
@@ -268,6 +298,106 @@ final class PuffPastelWash: MKPolygon {
     }
 }
 
+/// 挨得很近的几座城市合成的气泡：代表城市的卡通图标 + 右下角城市数，下方“伦敦 等 4 城”。
+/// 有当前城市时由它做代表并套上薄荷色圈。点一下放大到能分开它们。
+final class CityClusterAnnotationView: MKAnnotationView {
+    static let reuseIdentifier = "lingotrip.city.cluster"
+    static let clusteringIdentifier = "lingotrip.city"
+
+    private let bubble = UIView()
+    private let iconView = UIImageView()
+    private let countLabel = UILabel()
+    private let titleLabel = UILabel()
+
+    override init(annotation: (any MKAnnotation)?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        bounds = CGRect(x: 0, y: 0, width: 132, height: 84)
+        centerOffset = CGPoint(x: 0, y: 16)
+        backgroundColor = .clear
+        collisionMode = .rectangle
+        displayPriority = .required
+        canShowCallout = false
+
+        bubble.frame = CGRect(x: 40, y: 0, width: 52, height: 52)
+        bubble.backgroundColor = UIColor(Puff.Palette.card)
+        bubble.layer.cornerRadius = 26
+        bubble.layer.shadowColor = UIColor.black.cgColor
+        bubble.layer.shadowOpacity = 0.12
+        bubble.layer.shadowRadius = 4
+        bubble.layer.shadowOffset = CGSize(width: 0, height: 2)
+        addSubview(bubble)
+
+        iconView.frame = bubble.bounds.insetBy(dx: 3, dy: 3)
+        iconView.layer.cornerRadius = iconView.bounds.width / 2
+        iconView.clipsToBounds = true
+        iconView.contentMode = .scaleAspectFill
+        bubble.addSubview(iconView)
+
+        countLabel.frame = CGRect(x: 76, y: 32, width: 24, height: 24)
+        countLabel.textAlignment = .center
+        countLabel.textColor = .white
+        countLabel.backgroundColor = UIColor(PuffCandy.sky.base)
+        countLabel.layer.cornerRadius = 12
+        countLabel.layer.borderWidth = 2
+        countLabel.clipsToBounds = true
+        countLabel.font = Self.rounded(size: 12, weight: .bold)
+        addSubview(countLabel)
+
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = UIColor(Puff.Palette.ink)
+        titleLabel.backgroundColor = UIColor(Puff.Palette.card)
+        titleLabel.layer.cornerRadius = 11
+        titleLabel.clipsToBounds = true
+        titleLabel.font = Self.rounded(size: 11, weight: .semibold)
+        addSubview(titleLabel)
+
+        isAccessibilityElement = true
+        accessibilityTraits = .button
+        accessibilityHint = "轻点放大查看这些城市"
+        applyBorders()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private var ringColor = UIColor(Puff.Palette.line)
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        applyBorders()
+    }
+
+    private func applyBorders() {
+        bubble.layer.borderColor = ringColor.resolvedColor(with: traitCollection).cgColor
+        countLabel.layer.borderColor = UIColor(Puff.Palette.card).resolvedColor(with: traitCollection).cgColor
+    }
+
+    func configure(_ cluster: MKClusterAnnotation, currentRegionID: String?) {
+        let regions = cluster.memberAnnotations.compactMap { ($0 as? RegionAnnotation)?.region }
+        let lead = regions.first { $0.id == currentRegionID } ?? regions.first
+        let containsCurrent = lead?.id == currentRegionID && currentRegionID != nil
+        iconView.image = lead.flatMap { PuffCitySnapshot.icon(regionID: $0.id, size: iconView.bounds.size) }
+        countLabel.text = "\(regions.count)"
+        ringColor = containsCurrent ? UIColor(PuffCandy.mint.base) : UIColor(Puff.Palette.line)
+        bubble.layer.borderWidth = containsCurrent ? 3 : 1
+        applyBorders()
+        titleLabel.text = lead.map { "\($0.nameZh) 等 \(regions.count) 城" }
+        let width = min(124, max(56, titleLabel.intrinsicContentSize.width + 12))
+        titleLabel.frame = CGRect(x: (bounds.width - width) / 2, y: 58, width: width, height: 22)
+        let names = regions.map(\.nameZh).joined(separator: "、")
+        accessibilityLabel = containsCurrent
+            ? "当前所在\(lead?.nameZh ?? "")附近的城市：\(names)，共 \(regions.count) 座"
+            : "\(names)，共 \(regions.count) 座城市"
+    }
+
+    private static func rounded(size: CGFloat, weight: UIFont.Weight) -> UIFont {
+        let base = UIFont.systemFont(ofSize: size, weight: weight)
+        guard let descriptor = base.fontDescriptor.withDesign(.rounded) else { return base }
+        return UIFont(descriptor: descriptor, size: size)
+    }
+}
+
 final class RegionAnnotation: NSObject, MKAnnotation {
     let region: Region
     let coordinate: CLLocationCoordinate2D
@@ -308,6 +438,8 @@ private final class RegionAnnotationView: MKAnnotationView {
         canShowCallout = false
         collisionMode = .rectangle
         displayPriority = .required
+        // 世界视角下挨得很近的城市（如英伦四城）合成一个气泡，点一下放大分开。
+        clusteringIdentifier = CityClusterAnnotationView.clusteringIdentifier
         zPriority = .defaultUnselected
         selectedZPriority = .max
         isAccessibilityElement = false
@@ -531,6 +663,9 @@ private final class RegionAnnotationView: MKAnnotationView {
     private func applySelection(_ selected: Bool) {
         guard renderedSelection != selected else { return }
         renderedSelection = selected
+        // 选中的城市不参与聚合；其余城市（包括当前城市）挨得太近时合成一个气泡，
+        // 气泡里有当前城市时以它为代表，当前位置始终看得见。
+        clusteringIdentifier = selected ? nil : CityClusterAnnotationView.clusteringIdentifier
         actionButton.isHidden = !selected
         actionButton.accessibilityElementsHidden = !selected
         layer.zPosition = selected ? 10 : 0
