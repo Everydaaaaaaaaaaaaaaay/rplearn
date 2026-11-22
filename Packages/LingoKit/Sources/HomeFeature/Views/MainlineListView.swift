@@ -40,27 +40,26 @@ public struct MainlineListView: View {
                     open(stop, profile: profile)
                 }
             } else {
-                ZStack {
-                    StoryTheaterBackdrop(
-                        accent: .dsFoilGold,
-                        spotlightVisible: true,
-                        reduceTransparency: false
-                    )
-                    ProgressView()
-                        .tint(.white)
-                }
+                PuffLoadingDots()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .accessibilityLabel("正在载入")
             }
         }
-        .background(Color.black.ignoresSafeArea())
+        .background(Puff.Palette.page.ignoresSafeArea())
         .navigationTitle("主线剧情")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(.hidden, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .tint(.white)
+        .tint(PuffCandy.sky.deep)
         .overlay(alignment: .bottom) {
             if let progressError {
-                Button { Task { await reload() } } label: { Label(progressError, systemImage: "arrow.clockwise").font(.footnote).padding().background(.regularMaterial, in: Capsule()) }
-                    .padding().accessibilityLabel("旅程进度更新失败，点击重试")
+                Button { Task { await reload() } } label: {
+                    Label(progressError, systemImage: "arrow.clockwise")
+                        .font(.puff(.footnote, Puff.Weight.emphasis))
+                        .foregroundStyle(PuffCandy.tangerine.deep)
+                        .padding(.horizontal, Puff.Space.m).padding(.vertical, 10)
+                        .background(PuffCandy.tangerine.wash, in: Capsule())
+                }
+                .buttonStyle(.puffSquish)
+                .padding().accessibilityLabel("旅程进度更新失败，点击重试")
             }
         }
         .task { await reload() }
@@ -87,7 +86,6 @@ public struct MainlineListView: View {
         let gate = progress?.chapters.first { $0.regionId == stop.regionID }
         let isCompleted = gate?.state == "completed"
         let region = deps.regionCatalog.region(id: stop.regionID)
-        let accent = DSScenePalette.city(chapter.regionID).accent
         let canOpenForIdentity = deps.access.allowsStory(
             chapter.storyID,
             starterRegionID: profile.starterRegionID
@@ -95,14 +93,14 @@ public struct MainlineListView: View {
 
         return StoryCoverItem(
             id: chapter.storyID,
-            artworkName: DSCitySceneAssets.imageName(for: .messages, regionID: chapter.regionID),
+            regionID: chapter.regionID,
             sequenceText: stop.isFinale ? "终章" : "第 \(padded(index + 1)) 站",
             eyebrow: region?.nameZh ?? stop.regionID,
             title: stop.displayTitle,
             subtitle: chapter.subtitle,
             statusText: canOpenForIdentity ? (gate?.statusText ?? "联网确认旅程进度") : "登录后开展",
             statusIcon: isCompleted ? "checkmark.circle.fill" : gate?.canOpen == true ? "play.circle.fill" : "lock.fill",
-            accent: accent,
+            candy: PuffCandy.stable(for: chapter.regionID),
             isEnabled: canOpenForIdentity && gate?.canOpen == true,
             isCompleted: isCompleted,
             isDimmed: false

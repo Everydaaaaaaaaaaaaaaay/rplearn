@@ -3,23 +3,24 @@ import DesignSystem
 import DomainKit
 import SwiftUI
 
-/// 剧情目录共用的封面数据。业务页负责计算权限与进度，封面流只负责舞台呈现。
+/// 剧情目录共用的封面数据。业务页负责计算权限与进度，封面流只负责呈现。
 struct StoryCoverItem: Identifiable {
     let id: String
-    let artworkName: String
+    /// 封面上的卡通城市街景。
+    let regionID: String
     let sequenceText: String
     let eyebrow: String
     let title: String
     let subtitle: String
     let statusText: String
     let statusIcon: String
-    let accent: Color
+    let candy: PuffCandy
     let isEnabled: Bool
     let isCompleted: Bool
     let isDimmed: Bool
 }
 
-/// 横向封面流：让主线与城市短篇共享同一套舞台、手势与无障碍行为。
+/// 横向封面流：主线与城市短篇共用的白底卡片流，封面上半是章节城市的卡通街景。
 struct StoryCoverFlow: View {
     let items: [StoryCoverItem]
     let preferredItemID: String?
@@ -27,7 +28,6 @@ struct StoryCoverFlow: View {
     let onOpen: (String) -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @State private var selectedID: String?
     @State private var hasEntered = false
 
@@ -49,69 +49,24 @@ struct StoryCoverFlow: View {
 
     var body: some View {
         GeometryReader { proxy in
-            let coverWidth = min(max(proxy.size.width * 0.68, 238), 326)
-            let coverHeight = min(coverWidth * 1.43, max(260, proxy.size.height - 154))
+            let coverWidth = min(max(proxy.size.width * 0.7, 238), 330)
+            let coverHeight = min(coverWidth * 1.4, max(300, proxy.size.height - 120))
 
-            ZStack {
-                StoryTheaterBackdrop(
-                    accent: selectedItem?.accent ?? .dsFoilGold,
-                    spotlightVisible: hasEntered,
-                    reduceTransparency: reduceTransparency
+            VStack(spacing: 0) {
+                stageCounter
+                    .padding(.top, 10)
+                Spacer(minLength: 8)
+                coverScroll(
+                    width: coverWidth,
+                    height: coverHeight,
+                    containerWidth: proxy.size.width
                 )
-
-                VStack(spacing: 0) {
-                    stageCounter
-                        .padding(.top, 10)
-
-                    Spacer(minLength: 8)
-
-                    ZStack(alignment: .bottom) {
-                        Ellipse()
-                            .fill(
-                                RadialGradient(
-                                    colors: [
-                                        (selectedItem?.accent ?? .dsFoilGold).opacity(0.24),
-                                        .clear,
-                                    ],
-                                    center: .center,
-                                    startRadius: 0,
-                                    endRadius: coverWidth * 0.68
-                                )
-                            )
-                            .frame(width: coverWidth * 1.5, height: 44)
-                            .blur(radius: reduceTransparency ? 0 : 9)
-                            .offset(y: 18)
-                            .animation(reduceMotion ? nil : DSAnimation.scene, value: selectedID)
-                            .accessibilityHidden(true)
-
-                        coverScroll(
-                            width: coverWidth,
-                            height: coverHeight,
-                            containerWidth: proxy.size.width
-                        )
-                    }
-                    .frame(height: coverHeight + 64)
-
-                    Spacer(minLength: 18)
-
-                    stageStatus
-                        .padding(.bottom, 18)
-                }
+                .frame(height: coverHeight + 24)
+                Spacer(minLength: 18)
             }
             .frame(width: proxy.size.width, height: proxy.size.height)
         }
-        .background(Color.black)
-        .task(id: selectedID, priority: .utility) {
-            let nearby = items.dropFirst(max(0, selectedIndex - 1)).prefix(4).map(\.artworkName)
-            let preloadTask = Task.detached(priority: .utility) {
-                await DSSceneImageCache.preloadThumbnails(nearby, maxPixelSize: 720)
-            }
-            await withTaskCancellationHandler {
-                await preloadTask.value
-            } onCancel: {
-                preloadTask.cancel()
-            }
-        }
+        .background(Puff.Palette.page.ignoresSafeArea())
         .task(id: selectedItem?.isEnabled == true ? selectedItem?.id : nil, priority: .utility) {
             guard let item = selectedItem, item.isEnabled else { return }
             do { try await Task.sleep(for: .milliseconds(250)) } catch { return }
@@ -137,23 +92,16 @@ struct StoryCoverFlow: View {
     }
 
     private var stageCounter: some View {
-        VStack(spacing: 7) {
-            Capsule()
-                .fill(Color(red: 0.95, green: 0.83, blue: 0.59).opacity(0.86))
-                .frame(width: 42, height: 4)
-                .shadow(color: Color(red: 1, green: 0.84, blue: 0.57).opacity(0.7), radius: 8)
-                .accessibilityHidden(true)
-
-            Text("第 \(padded(selectedIndex + 1)) 场  ·  共 \(padded(items.count)) 场")
-                .font(.system(size: 10, weight: .semibold, design: .rounded))
-                .tracking(2.4)
-                .foregroundStyle(.white.opacity(0.58))
-                .monospacedDigit()
-                .contentTransition(.numericText())
-                .animation(reduceMotion ? nil : DSAnimation.snappy, value: selectedIndex)
-                .accessibilityLabel("第 \(selectedIndex + 1) 场，共 \(items.count) 场")
-        }
-        .opacity(hasEntered ? 1 : 0)
+        Text("第 \(padded(selectedIndex + 1)) 场 · 共 \(padded(items.count)) 场")
+            .font(.puff(.caption, Puff.Weight.label))
+            .foregroundStyle(Puff.Palette.inkSoft)
+            .monospacedDigit()
+            .padding(.horizontal, 12).padding(.vertical, 6)
+            .background(Puff.Palette.cloud, in: Capsule())
+            .contentTransition(.numericText())
+            .animation(reduceMotion ? nil : Puff.Motion.bouncy, value: selectedIndex)
+            .accessibilityLabel("第 \(selectedIndex + 1) 场，共 \(items.count) 场")
+            .opacity(hasEntered ? 1 : 0)
     }
 
     private func coverScroll(width: CGFloat, height: CGFloat, containerWidth: CGFloat) -> some View {
@@ -165,14 +113,10 @@ struct StoryCoverFlow: View {
                         .id(item.id)
                         .scrollTransition(.interactive, axis: .horizontal) { content, phase in
                             content
-                                .scaleEffect(shouldReduceMotion || phase.isIdentity ? 1 : 0.84)
-                                .rotation3DEffect(
-                                    .degrees(shouldReduceMotion ? 0 : Double(phase.value) * -10),
-                                    axis: (x: 0, y: 1, z: 0),
-                                    perspective: 0.62
-                                )
-                                .offset(y: shouldReduceMotion || phase.isIdentity ? 0 : 24)
-                                .opacity(shouldReduceMotion || phase.isIdentity ? 1 : 0.64)
+                                .scaleEffect(shouldReduceMotion || phase.isIdentity ? 1 : 0.88)
+                                .rotationEffect(.degrees(shouldReduceMotion ? 0 : Double(phase.value) * 4))
+                                .offset(y: shouldReduceMotion || phase.isIdentity ? 0 : 18)
+                                .opacity(shouldReduceMotion || phase.isIdentity ? 1 : 0.7)
                         }
                 }
             }
@@ -191,58 +135,24 @@ struct StoryCoverFlow: View {
 
     @ViewBuilder
     private func cover(_ item: StoryCoverItem, width: CGFloat, height: CGFloat) -> some View {
+        let isSelected = item.id == selectedID
         if item.isEnabled {
             Button {
                 onOpen(item.id)
             } label: {
-                StoryPoster(item: item, width: width, height: height)
+                StoryPoster(item: item, width: width, height: height, isSelected: isSelected)
             }
-            .buttonStyle(.pressableCard)
+            .buttonStyle(PuffCardButtonStyle(radius: Puff.Radius.huge))
             .accessibilityIdentifier("story.chapter.\(item.id)")
             .accessibilityLabel("\(item.eyebrow)，\(item.title)，\(item.statusText)")
             .accessibilityHint("开展这一场剧情")
         } else {
-            StoryPoster(item: item, width: width, height: height)
+            StoryPoster(item: item, width: width, height: height, isSelected: isSelected)
+                .puffCard(radius: Puff.Radius.huge)
                 .accessibilityElement(children: .ignore)
                 .accessibilityIdentifier("story.chapter.\(item.id)")
                 .accessibilityLabel("\(item.eyebrow)，\(item.title)，\(item.statusText)")
         }
-    }
-
-    private var stageStatus: some View {
-        HStack(spacing: 8) {
-            Rectangle()
-                .fill(
-                    LinearGradient(
-                        colors: [.clear, .white.opacity(0.2)],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-                .frame(width: 38, height: 0.5)
-
-            if let selectedItem {
-                Image(systemName: selectedItem.statusIcon)
-                    .font(.system(size: 10, weight: .semibold))
-                Text(selectedItem.statusText)
-                    .font(.system(size: 10, weight: .semibold, design: .rounded))
-                    .tracking(1.5)
-            }
-
-            Rectangle()
-                .fill(
-                    LinearGradient(
-                        colors: [.white.opacity(0.2), .clear],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-                .frame(width: 38, height: 0.5)
-        }
-        .foregroundStyle(.white.opacity(0.64))
-        .animation(reduceMotion ? nil : DSAnimation.snappy, value: selectedID)
-        .opacity(hasEntered ? 1 : 0)
-        .accessibilityHidden(true)
     }
 
     private func synchronizeSelection() {
@@ -259,224 +169,55 @@ struct StoryCoverFlow: View {
     }
 }
 
+/// 白色厚卡片封面：上半是章节城市的卡通街景，下半是城市、标题和状态。未解锁的章节街景褪色。
 private struct StoryPoster: View {
     let item: StoryCoverItem
     let width: CGFloat
     let height: CGFloat
-
-    @ScaledMetric(relativeTo: .title2) private var titleSize: CGFloat = 29
+    let isSelected: Bool
 
     var body: some View {
-        ZStack {
-            DSSceneThumbnailImage(name: item.artworkName, maxPixelSize: 720)
-                .frame(width: width, height: height)
-                .clipped()
-                .saturation(item.isDimmed ? 0.18 : 0.9)
-                .contrast(1.05)
-
-            LinearGradient(
-                stops: [
-                    .init(color: .black.opacity(0.26), location: 0),
-                    .init(color: .clear, location: 0.34),
-                    .init(color: .black.opacity(0.18), location: 0.55),
-                    .init(color: .black.opacity(0.94), location: 1),
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .frame(width: width, height: height)
-
-            if item.isDimmed {
-                Color.black.opacity(0.28)
-                    .frame(width: width, height: height)
-            }
-
-            VStack(alignment: .leading, spacing: 0) {
-                HStack(alignment: .top) {
+        VStack(alignment: .leading, spacing: 0) {
+            PuffCityScene(regionID: item.regionID, viewport: .west, isActive: isSelected && !item.isDimmed)
+                .frame(height: height * 0.5)
+                .saturation(item.isDimmed ? 0.12 : 1)
+                .clipShape(RoundedRectangle(cornerRadius: Puff.Radius.huge - 6, style: .continuous))
+                .overlay(alignment: .topLeading) {
                     Text(item.sequenceText)
-                        .font(.system(size: 11, weight: .bold, design: .rounded))
-                        .tracking(1.6)
+                        .font(.puff(.caption, Puff.Weight.emphasis))
                         .monospacedDigit()
-                        .foregroundStyle(.white.opacity(0.86))
-
-                    Spacer(minLength: 8)
-
-                    Image(systemName: item.statusIcon)
-                        .font(.system(size: 11, weight: .semibold))
-                        .foregroundStyle(item.isDimmed ? .white.opacity(0.68) : item.accent)
-                        .frame(width: 28, height: 28)
-                        .background(.black.opacity(0.34), in: Circle())
+                        .foregroundStyle(Puff.Palette.ink)
+                        .padding(.horizontal, 10).padding(.vertical, 5)
+                        .background(Puff.Palette.card, in: Capsule())
+                        .padding(10)
                 }
+                .padding([.horizontal, .top], 6)
 
-                Spacer(minLength: 20)
-
-                Rectangle()
-                    .fill(item.accent)
-                    .frame(width: 28, height: 2)
-                    .padding(.bottom, 11)
-
+            VStack(alignment: .leading, spacing: 6) {
                 Text(item.eyebrow)
-                    .font(.system(size: 10, weight: .semibold, design: .rounded))
-                    .tracking(2.2)
-                    .foregroundStyle(item.accent.opacity(item.isDimmed ? 0.66 : 1))
+                    .font(.puff(.subheadline, Puff.Weight.emphasis))
+                    .foregroundStyle(item.isDimmed ? Puff.Palette.inkFaint : item.candy.deep)
                     .lineLimit(1)
-
                 Text(item.title)
-                    .font(.system(size: titleSize, weight: .semibold, design: .serif))
-                    .tracking(-0.7)
-                    .foregroundStyle(.white)
-                    .lineLimit(3)
-                    .minimumScaleFactor(0.78)
-                    .padding(.top, 6)
-
-                Text(item.subtitle)
-                    .font(.system(.footnote, design: .serif, weight: .regular))
-                    .foregroundStyle(.white.opacity(0.68))
-                    .lineSpacing(3)
+                    .font(.puff(.title2, Puff.Weight.title))
+                    .foregroundStyle(Puff.Palette.ink)
                     .lineLimit(2)
-                    .padding(.top, 9)
+                    .minimumScaleFactor(0.78)
+                Text(item.subtitle)
+                    .font(.puff(.footnote, Puff.Weight.body))
+                    .foregroundStyle(Puff.Palette.inkSoft)
+                    .lineLimit(2)
+                Spacer(minLength: 0)
+                PuffTag(item.statusText, systemImage: item.statusIcon,
+                        candy: item.isDimmed ? .grape : item.isCompleted ? .mint : item.candy)
             }
-            .padding(20)
-            .frame(width: width, height: height)
+            .multilineTextAlignment(.leading)
+            .padding(Puff.Space.l)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
         .frame(width: width, height: height)
-        .clipped()
-        .background(Color(red: 0.035, green: 0.031, blue: 0.033))
-        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .stroke(
-                    LinearGradient(
-                        colors: [.white.opacity(0.32), item.accent.opacity(0.28), .white.opacity(0.08)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    lineWidth: 0.8
-                )
-        }
-        .shadow(color: .black.opacity(0.74), radius: 24, y: 16)
-        .shadow(color: item.accent.opacity(item.isDimmed ? 0 : 0.16), radius: 18, y: 8)
-        .opacity(item.isDimmed ? 0.72 : 1)
-        .contentShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .opacity(item.isDimmed ? 0.78 : 1)
+        .contentShape(RoundedRectangle(cornerRadius: Puff.Radius.huge, style: .continuous))
         .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-    }
-}
-
-struct StoryTheaterBackdrop: View {
-    let accent: Color
-    let spotlightVisible: Bool
-    let reduceTransparency: Bool
-
-    var body: some View {
-        GeometryReader { proxy in
-            ZStack {
-                Color(red: 0.006, green: 0.006, blue: 0.008)
-
-                Canvas { context, size in
-                    drawCurtain(in: &context, size: size, leading: true)
-                    drawCurtain(in: &context, size: size, leading: false)
-                }
-                .opacity(reduceTransparency ? 0.78 : 1)
-
-                StorySpotlightShape()
-                    .fill(
-                        LinearGradient(
-                            stops: [
-                                .init(color: Color(red: 1, green: 0.88, blue: 0.66).opacity(0.18), location: 0),
-                                .init(color: accent.opacity(0.055), location: 0.54),
-                                .init(color: .clear, location: 1),
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
-                    .frame(width: min(proxy.size.width * 1.18, 640), height: proxy.size.height * 0.84)
-                    .blur(radius: reduceTransparency ? 0 : 12)
-                    .offset(y: -34)
-                    .blendMode(.screen)
-                    .opacity(spotlightVisible ? 1 : 0)
-
-                RadialGradient(
-                    colors: [accent.opacity(0.11), .clear],
-                    center: UnitPoint(x: 0.5, y: 0.54),
-                    startRadius: 0,
-                    endRadius: min(proxy.size.width, proxy.size.height) * 0.48
-                )
-                .blendMode(.screen)
-                .opacity(spotlightVisible ? 1 : 0)
-
-                LinearGradient(
-                    colors: [.clear, .black.opacity(0.16), .black.opacity(0.74)],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-            }
-        }
-        .ignoresSafeArea()
-        .accessibilityHidden(true)
-    }
-
-    private func drawCurtain(in context: inout GraphicsContext, size: CGSize, leading: Bool) {
-        let width = size.width * 0.31
-        let outerX = leading ? 0.0 : size.width
-        let innerTopX = leading ? width : size.width - width
-        let innerBottomX = leading ? width * 0.72 : size.width - width * 0.72
-
-        var curtain = Path()
-        curtain.move(to: CGPoint(x: outerX, y: 0))
-        curtain.addLine(to: CGPoint(x: innerTopX, y: 0))
-        curtain.addCurve(
-            to: CGPoint(x: innerBottomX, y: size.height),
-            control1: CGPoint(x: leading ? width * 0.91 : size.width - width * 0.91, y: size.height * 0.3),
-            control2: CGPoint(x: leading ? width * 0.65 : size.width - width * 0.65, y: size.height * 0.72)
-        )
-        curtain.addLine(to: CGPoint(x: outerX, y: size.height))
-        curtain.closeSubpath()
-
-        let start = CGPoint(x: leading ? 0 : size.width, y: 0)
-        let end = CGPoint(x: leading ? width : size.width - width, y: 0)
-        context.fill(
-            curtain,
-            with: .linearGradient(
-                Gradient(colors: [
-                    Color(red: 0.025, green: 0.012, blue: 0.018),
-                    Color(red: 0.11, green: 0.025, blue: 0.047),
-                    Color(red: 0.028, green: 0.01, blue: 0.017),
-                ]),
-                startPoint: start,
-                endPoint: end
-            )
-        )
-
-        for fold in 1...5 {
-            let fraction = CGFloat(fold) / 6
-            let topX = leading ? width * fraction : size.width - width * fraction
-            let bottomInset = width * (0.1 + fraction * 0.54)
-            let bottomX = leading ? bottomInset : size.width - bottomInset
-            var foldPath = Path()
-            foldPath.move(to: CGPoint(x: topX, y: 0))
-            foldPath.addCurve(
-                to: CGPoint(x: bottomX, y: size.height),
-                control1: CGPoint(x: topX, y: size.height * 0.34),
-                control2: CGPoint(x: bottomX, y: size.height * 0.7)
-            )
-            context.stroke(
-                foldPath,
-                with: .color(.white.opacity(fold.isMultiple(of: 2) ? 0.035 : 0.018)),
-                lineWidth: 1
-            )
-        }
-    }
-}
-
-private struct StorySpotlightShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.midX - 16, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.midX + 16, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        path.closeSubpath()
-        return path
     }
 }

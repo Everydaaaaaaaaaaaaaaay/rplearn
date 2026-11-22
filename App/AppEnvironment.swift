@@ -383,6 +383,9 @@ final class AppEnvironment {
         if let regionID = ProcessInfo.processInfo.environment["UI_TEST_CITY_TAB_REGION"],
            regionCatalog.region(id: regionID) != nil {
             _ = try await account.economyStore.updateProfile { $0.currentRegionID = regionID }
+        } else if regionCatalog.region(id: try await account.economyStore.profile().currentRegionID) == nil {
+            // 真实账号建档后总有所在城市；预览与界面测试未指定时默认伦敦，活动页不会显示“旅程暂时无法读取”。
+            _ = try await account.economyStore.updateProfile { $0.currentRegionID = "london" }
         }
         let profile = try await account.economyStore.profile()
         try await account.rosterStore.configureMainCharacters(

@@ -166,8 +166,6 @@ final class LondonEpisodeTests: XCTestCase {
         XCTAssertTrue(app.buttons["story.mainline"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.staticTexts["选择一段旅程"].exists)
         XCTAssertFalse(app.staticTexts["主线决定旅程的方向，城市剧情记录你真正抵达过的地方。"].exists)
-        XCTAssertTrue(app.staticTexts["五座城市串起同一段旅程。所有章节都能直接开始，按自己的节奏走到终章。"].exists)
-        XCTAssertTrue(app.staticTexts["六篇生活故事即刻可读；每累计一张机票再开放三篇，三张即可读遍十五座城市。"].exists)
         screenshot("story-hub-photo-collages")
 
         app.buttons["story.cities"].tap()

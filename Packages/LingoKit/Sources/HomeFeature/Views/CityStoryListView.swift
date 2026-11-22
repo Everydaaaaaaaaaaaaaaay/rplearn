@@ -42,23 +42,15 @@ public struct CityStoryListView: View {
                     open(chapter)
                 }
             } else {
-                ZStack {
-                    StoryTheaterBackdrop(
-                        accent: .dsFoilGold,
-                        spotlightVisible: true,
-                        reduceTransparency: false
-                    )
-                    ProgressView()
-                        .tint(.white)
-                }
+                PuffLoadingDots()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .accessibilityLabel("正在载入")
             }
         }
-        .background(Color.black.ignoresSafeArea())
+        .background(Puff.Palette.page.ignoresSafeArea())
         .navigationTitle("城市剧情")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(.hidden, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .tint(.white)
+        .tint(PuffCandy.sky.deep)
         .task { await reload() }
     }
 
@@ -78,7 +70,6 @@ public struct CityStoryListView: View {
         let region = deps.regionCatalog.region(id: chapter.regionID)
         let isUnlocked = index < unlockProgress.unlockedChapterCount
         let isCompleted = completed.contains(chapter.storyID)
-        let accent = DSScenePalette.city(chapter.regionID).accent
         let canOpenForIdentity = profile.map {
             deps.access.allowsStory(chapter.storyID, starterRegionID: $0.starterRegionID)
         } ?? false
@@ -87,7 +78,7 @@ public struct CityStoryListView: View {
 
         return StoryCoverItem(
             id: chapter.storyID,
-            artworkName: DSCitySceneAssets.imageName(for: .contacts, regionID: chapter.regionID),
+            regionID: chapter.regionID,
             sequenceText: "短篇 \(padded(index + 1))",
             eyebrow: region?.nameZh ?? chapter.regionID,
             title: chapter.title,
@@ -100,7 +91,7 @@ public struct CityStoryListView: View {
                     ? (isCompleted ? "checkmark.circle.fill" : "play.circle.fill")
                     : "person.crop.circle.badge.plus")
                 : "ticket.fill",
-            accent: accent,
+            candy: PuffCandy.stable(for: chapter.regionID),
             isEnabled: isUnlocked && canOpenForIdentity,
             isCompleted: isCompleted,
             isDimmed: !isUnlocked

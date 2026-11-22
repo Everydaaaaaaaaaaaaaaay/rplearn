@@ -99,27 +99,9 @@ public struct HomeView: View {
             // Wait for the hub's first frame to settle before starting speculative background work.
             do { try await Task.sleep(for: .milliseconds(350)) } catch { return }
             guard !Task.isCancelled else { return }
-            let main = MainlineCatalog.journey(starterRegionID: profile?.starterRegionID).stops.prefix(2)
-                .map { DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID) }
-            let cities = CityStoryCatalog.chapters.prefix(2)
-                .map { DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID) }
-            let allStoryStrips = MainlineCatalog.chapters.map {
-                DSCitySceneAssets.imageName(for: .messages, regionID: $0.regionID)
-            } + CityStoryCatalog.chapters.map {
-                DSCitySceneAssets.imageName(for: .contacts, regionID: $0.regionID)
-            }
-            let bgTask = Task.detached(priority: .utility) {
-                await DSSceneImageCache.preloadThumbnails(allStoryStrips, maxPixelSize: 200)
-                guard !Task.isCancelled else { return }
-                await DSSceneImageCache.preloadThumbnails(main + cities, maxPixelSize: 720)
-            }
+            // 剧情目录与入口都画卡通城市，不再预解码剧情照片缩略图。
             if let cache = deps.presentationCache, let releaseID = deps.activityReleaseID, let gateway = deps.outingGateway {
                 _ = try? await cache.refreshCatalog(releaseID: releaseID, cityID: region.id, gateway: gateway)
-            }
-            await withTaskCancellationHandler {
-                await bgTask.value
-            } onCancel: {
-                bgTask.cancel()
             }
         }
     }
