@@ -17,6 +17,7 @@ public struct ActivitySceneBrowser: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
     @State private var selection = 0
+    @State private var credits: BackendActivityPhoto?
     private var place: BackendActivityPlace? {
         places.indices.contains(selection) ? places[selection] : places.first
     }
@@ -35,6 +36,11 @@ public struct ActivitySceneBrowser: View {
         self.onSelect = onSelect
         self.resumeTitle = resumeTitle
         self.onResume = onResume
+    }
+
+    /// 当前地点用的是风格化实拍，需要能查看摄影署名与许可。
+    private var hasPhoto: Bool {
+        place.map { PuffPlaceScene.hasPhoto(placeID: $0.id) } ?? false
     }
 
     /// 地点 ID 以城市 ID 开头，例如 `london-borough-market`。
@@ -93,6 +99,7 @@ public struct ActivitySceneBrowser: View {
         }
         .tint(PuffCandy.sky.base)
         .onChange(of: places.map(\.id)) { _, _ in selection = 0 }
+        .sheet(item: $credits) { ActivityPhotoCredits(photo: $0) }
     }
 
     /// 底部白色厚卡片：地点名、页码圆点和出发按钮。
@@ -179,9 +186,14 @@ public struct ActivitySceneBrowser: View {
             .font(.puff(.subheadline, Puff.Weight.emphasis))
             .foregroundStyle(Puff.Palette.ink)
             Spacer(minLength: 8)
-            if let onJournal {
+            if onJournal != nil || hasPhoto {
                 Menu {
-                    Button("足迹", systemImage: "book.closed", action: onJournal)
+                    if hasPhoto, let place {
+                        Button("照片信息", systemImage: "info.circle") { credits = place.photo }
+                    }
+                    if let onJournal {
+                        Button("足迹", systemImage: "book.closed", action: onJournal)
+                    }
                 } label: {
                     Image(systemName: "ellipsis")
                         .font(.system(size: 17, weight: Puff.Weight.icon, design: .rounded))

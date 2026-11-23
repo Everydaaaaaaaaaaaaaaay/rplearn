@@ -1,7 +1,9 @@
 import SwiftUI
 
-/// 城市活动地点的竖版卡通场景：远处是所在城市的卡通天际线，近处是地点本身。
-/// 用来代替地点实拍照片，按城市当地时间切换昼夜。
+/// 城市活动地点的竖版场景，按城市当地时间切换昼夜。
+///
+/// 有风格化实拍（`PuffPlacePhoto`）的地点显示活照片：手绘天空在后，树叶、水面会动，镜头缓慢漂移；
+/// 其余地点（如约会地点）画卡通场景：远处是所在城市的卡通天际线，近处是地点本身。
 public struct PuffPlaceScene: View {
     /// 地点类型，与活动目录的 category 一致；未知类型按街道绘制。
     public enum Kind: String, Sendable, CaseIterable {
@@ -14,6 +16,7 @@ public struct PuffPlaceScene: View {
 
     private let regionID: String?
     private let kind: Kind
+    private let placeID: String
     private let seed: Int
     private let moodOverride: PuffSceneMood?
     private let isActive: Bool
@@ -23,10 +26,11 @@ public struct PuffPlaceScene: View {
     @State private var isOnScreen = false
 
     /// - Parameters:
-    ///   - placeID: 决定配色等细节的稳定种子，同一地点每次画得一样。
+    ///   - placeID: 地点 ID：有风格化实拍时据此找照片；卡通场景用它做配色种子，同一地点每次画得一样。
     public init(regionID: String?, kind: Kind, placeID: String, mood: PuffSceneMood? = nil, isActive: Bool = true) {
         self.regionID = regionID
         self.kind = kind
+        self.placeID = placeID
         self.seed = placeID.unicodeScalars.reduce(7) { ($0 &* 31) &+ Int($1.value) }
         self.moodOverride = mood
         self.isActive = isActive
@@ -36,18 +40,24 @@ public struct PuffPlaceScene: View {
         let recipe = PuffCityCatalog.recipe(for: regionID)
         TimelineView(.everyMinute) { context in
             let clock = recipe.clock(at: context.date)
-            PuffPlaceSceneCanvas(
-                recipe: recipe,
-                kind: kind,
-                seed: seed,
-                mood: moodOverride ?? PuffSceneMood.at(hour: clock.hour ?? 12),
-                clock: clock,
-                isPaused: reduceMotion || !isActive || !isOnScreen || scenePhase != .active
-            )
+            let mood = moodOverride ?? PuffSceneMood.at(hour: clock.hour ?? 12)
+            let isPaused = reduceMotion || !isActive || !isOnScreen || scenePhase != .active
+            if Self.hasPhoto(placeID: placeID) {
+                PuffPlacePhotoScene(placeID: placeID, kind: kind, seed: seed, mood: mood, clock: clock, isPaused: isPaused)
+            } else {
+                PuffPlaceSceneCanvas(recipe: recipe, kind: kind, seed: seed, mood: mood, clock: clock, isPaused: isPaused)
+            }
         }
         .onAppear { isOnScreen = true }
         .onDisappear { isOnScreen = false }
         .accessibilityHidden(true)
+    }
+}
+
+public extension PuffPlaceScene {
+    /// 该地点有风格化实拍，页面可据此提供“照片信息”。
+    static func hasPhoto(placeID: String) -> Bool {
+        PuffPlacePhotoLibrary.url(for: placeID) != nil
     }
 }
 
