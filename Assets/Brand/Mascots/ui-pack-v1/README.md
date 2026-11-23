@@ -2,6 +2,7 @@
 
 包含 8 张可直接导入的透明 PNG，以及通过独立 Xcode 资源编译的 `GuyujiMascots.xcassets`。
 资源包已于 2026-09-08 通过 `project.yml` 接入 LingoTrip App target；不覆盖应用图标。
+2026-11-21 起曾改用程序化绘制和三维渲染，2026-11-23 按用户要求恢复本套，经由 `PuffMascot` 显示（姿态映射见 `PuffMascot.artName`）。
 
 ## 内容
 

@@ -12,7 +12,7 @@ public enum BrandMascotPose: CaseIterable, Equatable, Sendable {
     case encouragement
     case achievement
 
-    /// 由程序化绘制的咕咕、嘎嘎表现每个品牌姿态。
+    /// 每个品牌姿态对应 2D 动作资源包里的一张咕咕或嘎嘎插画。
     var puffBird: PuffMascot.Bird {
         switch self {
         case .greeting, .guide, .celebrate, .resting: .gugu
@@ -87,7 +87,7 @@ public enum DSCoachPersona: CaseIterable, Equatable, Sendable {
     }
 }
 
-/// 品牌吉祥物的统一渲染入口：程序化绘制的咕咕与嘎嘎（蓬蓬设计）。
+/// 品牌吉祥物的统一渲染入口：改版前 2D 动作资源包里的咕咕与嘎嘎（经由 `PuffMascot`）。
 public struct BrandMascotView: View {
     private let pose: BrandMascotPose
     private let size: CGFloat
