@@ -86,6 +86,26 @@ enum PuffPlacePhotoLibrary {
     }
 }
 
+/// 只在播放时前进的动画时钟。页面滑走、App 进后台时暂停，恢复后从停下的那一刻接着动；
+/// 若直接用系统时间，恢复的瞬间镜头漂移、树叶和云会一下跳到“现在”的位置。
+struct PuffMotionClock: Equatable, Sendable {
+    private var elapsed: TimeInterval = 0
+    private var resumedAt: Date?
+
+    func seconds(at date: Date) -> TimeInterval {
+        elapsed + (resumedAt.map { max(date.timeIntervalSince($0), 0) } ?? 0)
+    }
+
+    mutating func setPaused(_ paused: Bool, at date: Date = .now) {
+        if paused, resumedAt != nil {
+            elapsed = seconds(at: date)
+            resumedAt = nil
+        } else if !paused, resumedAt == nil {
+            resumedAt = date
+        }
+    }
+}
+
 /// 照片版地点场景：背后是按当地时间变化的手绘天空和慢慢飘的云，前面是风格化照片，
 /// 树叶随风轻摇、水面起波光，镜头缓慢漂移带出远近视差。
 struct PuffPlacePhotoScene: View {
@@ -96,24 +116,31 @@ struct PuffPlacePhotoScene: View {
     let clock: DateComponents
     let isPaused: Bool
     @State private var loaded: (id: String, photo: PuffPlacePhoto?)?
+    @State private var motion = PuffMotionClock()
+
+    /// 起点按地点错开，相邻地点的树叶、云不同步。
+    private var phase: TimeInterval { TimeInterval(seed.magnitude % 600) }
 
     var body: some View {
         let current = (loaded?.id == placeID ? loaded?.photo : nil) ?? PuffPlacePhotoLibrary.cached(placeID)
         GeometryReader { proxy in
             ZStack {
                 if current?.hasSky ?? true {
-                    PuffPlacePhotoSky(kind: kind, seed: seed, mood: mood, clock: clock, isPaused: isPaused)
+                    PuffPlacePhotoSky(kind: kind, seed: seed, mood: mood, clock: clock, isPaused: isPaused,
+                                      motion: motion, phase: phase)
                 } else {
                     Puff.Palette.page
                 }
                 if let current {
-                    PuffLivingPhotoLayer(photo: current, size: proxy.size, mood: mood, isPaused: isPaused)
+                    PuffLivingPhotoLayer(photo: current, size: proxy.size, mood: mood, isPaused: isPaused,
+                                         motion: motion, phase: phase)
                         .transition(.opacity)
                 }
             }
             .frame(width: proxy.size.width, height: proxy.size.height)
             .clipped()
         }
+        .onChange(of: isPaused, initial: true) { _, paused in motion.setPaused(paused) }
         .task(id: placeID) {
             guard loaded?.id != placeID else { return }
             let photo = await PuffPlacePhotoLibrary.load(placeID)
@@ -129,6 +156,8 @@ private struct PuffPlacePhotoSky: View {
     let mood: PuffSceneMood
     let clock: DateComponents
     let isPaused: Bool
+    let motion: PuffMotionClock
+    let phase: TimeInterval
 
     private struct Key: Equatable {
         let mood: PuffSceneMood
@@ -142,8 +171,8 @@ private struct PuffPlacePhotoSky: View {
             }
             .equatable()
             TimelineView(.animation(minimumInterval: 1.0 / 30, paused: isPaused)) { timeline in
-                // 云按完整时间平移，不取模，避免回绕时整片云跳位。
-                let time = timeline.date.timeIntervalSinceReferenceDate
+                // 云按动画时钟平移，不取模：暂停再恢复时接着飘，不会整片跳位。
+                let time = motion.seconds(at: timeline.date) + phase
                 Canvas(rendersAsynchronously: true) { context, size in
                     draw(context, size, time: time) { _, painter in
                         painter.stars()
@@ -174,6 +203,8 @@ private struct PuffLivingPhotoLayer: View {
     let size: CGSize
     let mood: PuffSceneMood
     let isPaused: Bool
+    let motion: PuffMotionClock
+    let phase: TimeInterval
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     /// 照片比画面略大，镜头漂移时边缘不露底。
@@ -200,8 +231,8 @@ private struct PuffLivingPhotoLayer: View {
             width: imageSize.width * fill, height: imageSize.height * fill
         )
         TimelineView(.animation(minimumInterval: 1.0 / 30, paused: isPaused || reduceMotion)) { timeline in
-            // 漂移和微尘用完整的双精度时间，不取模，永不回跳；着色器的时间对 600 取模（见 puffLivingPhoto）。
-            let seconds = reduceMotion ? 0 : timeline.date.timeIntervalSinceReferenceDate
+            // 漂移和微尘用不取模的动画时钟，永不回跳；着色器的时间对 600 取模（见 puffLivingPhoto）。
+            let seconds = reduceMotion ? 0 : motion.seconds(at: timeline.date) + phase
             let time = seconds.truncatingRemainder(dividingBy: 600)
             let drift = CGSize(width: sin(seconds * 2 * .pi / 17) * 5, height: sin(seconds * 2 * .pi / 23) * 1.6)
             ZStack {
