@@ -15,6 +15,7 @@ public struct ActivitySceneBrowser: View {
     let onResume: () -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.scenePhase) private var scenePhase
     @State private var selection = 0
     @State private var credits: BackendActivityPhoto?
@@ -80,11 +81,19 @@ public struct ActivitySceneBrowser: View {
 
                 VStack(spacing: 0) {
                     header
+                        .background(alignment: .top) {
+                            // 室内照片顶部常是细碎的天花板：垫一层与页面底色一致的淡渐变，状态栏和顶栏更清楚。
+                            LinearGradient(colors: [Puff.Palette.page.opacity(0.7), Puff.Palette.page.opacity(0)],
+                                           startPoint: .top, endPoint: .bottom)
+                                .padding(.bottom, -28)
+                                .ignoresSafeArea(edges: .top)
+                                .allowsHitTesting(false)
+                        }
                     Spacer(minLength: 24)
                     if let place {
                         placeCard(place)
                             .padding(.horizontal, Puff.Space.m)
-                            .padding(.bottom, Puff.Space.m)
+                            .padding(.bottom, Puff.Space.s)
                     } else {
                         PuffEmptyState("暂无可去的地点", pose: .point)
                             .puffCard(radius: Puff.Radius.huge)
@@ -102,24 +111,33 @@ public struct ActivitySceneBrowser: View {
         .sheet(item: $credits) { ActivityPhotoCredits(photo: $0) }
     }
 
-    /// 底部白色厚卡片：地点名、页码圆点和出发按钮。
+    /// 底部薄卡片：左边地点名和页码圆点，右边出发按钮，长名字在左栏内换行。
+    /// 继续上次外出（标签较长）或无障碍大字号时上下排列。
     private func placeCard(_ place: BackendActivityPlace) -> some View {
-        VStack(spacing: Puff.Space.s) {
-            if places.count > 1 {
-                HStack(spacing: 6) {
-                    ForEach(places.indices, id: \.self) { index in
-                        Capsule()
-                            .fill(index == selection ? PuffCandy.sky.base : Puff.Palette.line)
-                            .frame(width: index == selection ? 22 : 8, height: 8)
-                    }
-                }
-                .animation(Puff.Motion.resolve(Puff.Motion.bouncy, reduceMotion: reduceMotion), value: selection)
-                .accessibilityHidden(true)
-            }
+        let stacked = resumeTitle != nil || dynamicTypeSize.isAccessibilitySize
+        let layout = stacked
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: Puff.Space.s))
+            : AnyLayout(HStackLayout(spacing: Puff.Space.s))
+        return layout {
+            placeSummary(place)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            visitButton(place)
+                .frame(maxWidth: stacked ? .infinity : nil)
+        }
+        .padding(.leading, Puff.Space.m)
+        .padding(.trailing, Puff.Space.s)
+        .padding(.vertical, Puff.Space.s)
+        .frame(maxWidth: 560)
+        .puffCard(radius: Puff.Radius.large)
+        .frame(maxWidth: .infinity)
+    }
+
+    private func placeSummary(_ place: BackendActivityPlace) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
             Text(place.titleZh)
-                .font(.puff(.title, Puff.Weight.display))
+                .font(.puff(.title3, Puff.Weight.display))
                 .foregroundStyle(Puff.Palette.ink)
-                .multilineTextAlignment(.center)
+                .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
                 .contentTransition(.opacity)
                 .accessibilityIdentifier("activities.scene.title.\(place.id)")
@@ -133,24 +151,36 @@ public struct ActivitySceneBrowser: View {
                 }
             if let resumeTitle {
                 PuffTag(resumeTitle, systemImage: "clock.arrow.circlepath", candy: .tangerine)
+            } else if places.count > 1 {
+                HStack(spacing: 5) {
+                    ForEach(places.indices, id: \.self) { index in
+                        Capsule()
+                            .fill(index == selection ? PuffCandy.sky.base : Puff.Palette.line)
+                            .frame(width: index == selection ? 16 : 6, height: 6)
+                    }
+                }
+                .animation(Puff.Motion.resolve(Puff.Motion.bouncy, reduceMotion: reduceMotion), value: selection)
+                .accessibilityHidden(true)
             }
-            Button {
-                if resumeTitle != nil { onResume() }
-                else { onSelect(place) }
-            } label: {
-                Label(resumeTitle == nil ? "去这里逛逛" : "继续上次外出", systemImage: "figure.walk")
-                    .frame(minWidth: 200, minHeight: 50)
-            }
-            .buttonStyle(PuffCandyButtonStyle(resumeTitle == nil ? .sky : .tangerine))
-            .accessibilityLabel(resumeTitle == nil ? "去这里逛逛" : "继续上次外出")
-            .accessibilityIdentifier(resumeTitle == nil
-                ? "activities.place.\(place.id)" : "activities.resumePlaceOuting")
         }
-        .frame(maxWidth: 560)
-        .padding(.horizontal, Puff.Space.l)
-        .padding(.vertical, Puff.Space.m)
-        .frame(maxWidth: .infinity)
-        .puffCard(radius: Puff.Radius.huge)
+    }
+
+    private func visitButton(_ place: BackendActivityPlace) -> some View {
+        Button {
+            if resumeTitle != nil { onResume() }
+            else { onSelect(place) }
+        } label: {
+            Label(resumeTitle == nil ? "去逛逛" : "继续外出", systemImage: "figure.walk")
+                .font(.puff(.body, Puff.Weight.emphasis))
+                .lineLimit(1)
+                .padding(.horizontal, Puff.Space.m)
+                .frame(minHeight: 44)
+        }
+        .buttonStyle(PuffCandyButtonStyle(resumeTitle == nil ? .sky : .tangerine, radius: 22))
+        .fixedSize(horizontal: true, vertical: false)
+        .accessibilityLabel(resumeTitle == nil ? "去这里逛逛" : "继续上次外出")
+        .accessibilityIdentifier(resumeTitle == nil
+            ? "activities.place.\(place.id)" : "activities.resumePlaceOuting")
     }
 
     private var header: some View {
