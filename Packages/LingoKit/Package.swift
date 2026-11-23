@@ -12,7 +12,9 @@ let infraTargets: [Target] = [
     .target(name: "CoreKit"),
     .target(
         name: "DesignSystem",
-        dependencies: [module("CoreKit")]
+        dependencies: [module("CoreKit")],
+        // 咕咕、嘎嘎的三维渲染图，来源见 Tools/ArtPipeline/Blender/mascot3d.py。
+        resources: [.process("Resources/Mascot3D.xcassets")]
     ),
 ]
 

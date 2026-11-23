@@ -87,7 +87,7 @@ public enum DSCoachPersona: CaseIterable, Equatable, Sendable {
     }
 }
 
-/// 品牌吉祥物的统一渲染入口：程序化绘制的咕咕与嘎嘎（蓬蓬设计）。
+/// 品牌吉祥物的统一渲染入口：三维渲染的咕咕与嘎嘎，见 `PuffMascot`。
 public struct BrandMascotView: View {
     private let pose: BrandMascotPose
     private let size: CGFloat
