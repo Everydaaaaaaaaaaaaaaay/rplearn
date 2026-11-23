@@ -2,6 +2,46 @@ import XCTest
 
 @MainActor
 final class CharacterLearningPagerTests: XCTestCase {
+    func testChatCanPopFromContentAndLearningStillReturnsToChat() throws {
+        guard #available(iOS 26.0, *) else { throw XCTSkip("Full-content native pop requires iOS 26") }
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        let isolatedBackend = ProcessInfo.processInfo.environment["LINGOTRIP_GESTURE_BACKEND_URL"]
+        if let isolatedBackend, URL(string: isolatedBackend)?.host == "127.0.0.1" {
+            app.launchEnvironment = ["LINGOTRIP_BACKEND_URL": isolatedBackend]
+        } else {
+            app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+                "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9"]
+        }
+        app.launch()
+        defer { app.terminate() }
+
+        let conversation = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Oliver Bennett")).firstMatch
+        XCTAssertTrue(conversation.waitForExistence(timeout: 15))
+        conversation.tap()
+        let composer = app.descendants(matching: .any)["chat.composer"].firstMatch
+        XCTAssertTrue(composer.waitForExistence(timeout: 8))
+
+        let middle = app.coordinate(withNormalizedOffset: CGVector(dx: 0.42, dy: 0.40))
+        let right = app.coordinate(withNormalizedOffset: CGVector(dx: 0.96, dy: 0.40))
+        let short = app.coordinate(withNormalizedOffset: CGVector(dx: 0.54, dy: 0.40))
+        middle.press(forDuration: 0.05, thenDragTo: short, withVelocity: .slow, thenHoldForDuration: 0.25)
+        XCTAssertTrue(composer.isHittable, "A short horizontal drag must cancel the interactive pop")
+
+        let left = app.coordinate(withNormalizedOffset: CGVector(dx: 0.12, dy: 0.40))
+        right.press(forDuration: 0.05, thenDragTo: left)
+        let returnToChat = app.buttons["返回聊天"]
+        XCTAssertTrue(returnToChat.waitForExistence(timeout: 8))
+        left.press(forDuration: 0.05, thenDragTo: right)
+        XCTAssertTrue(composer.waitForExistence(timeout: 5), "The learning page should page back into the chat")
+        XCTAssertTrue(returnToChat.waitForNonExistence(timeout: 5))
+
+        let interior = app.coordinate(withNormalizedOffset: CGVector(dx: 0.25, dy: 0.40))
+        interior.press(forDuration: 0.05, thenDragTo: right, withVelocity: .fast, thenHoldForDuration: 0)
+        XCTAssertTrue(composer.waitForNonExistence(timeout: 5), "Beginning inside the screen should pop the conversation")
+        XCTAssertTrue(conversation.waitForExistence(timeout: 5))
+    }
+
     func testLearningBackgroundAcrossSafeAreasInDarkMode() {
         continueAfterFailure = false
         let app = XCUIApplication()

@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { buildApp } from "../../src/app.js";
 import { createDatabase, type DatabaseResource } from "../../src/db/client.js";
 import { runMigrations } from "../../src/db/migrate.js";
 import { integrationConfig } from "../helpers/integration.js";
@@ -8,20 +9,37 @@ import {
   requirePublishedWorld,
   contentHash,
 } from "../../src/modules/npc/activity-world-content.js";
+import { createAuthService } from "../../src/modules/auth/service.js";
+import {
+  bundledActivityWorld,
+  publishBundledActivityWorld,
+} from "../../src/modules/npc/bundled-activity-world.js";
 import { createDomainActivityContext } from "../../src/modules/domain/service.js";
+import { registerOutingRoutes } from "../../src/modules/npc/outing-routes.js";
 import { createOutingService } from "../../src/modules/npc/outing-service.js";
 import { importActivityWorld } from "../../src/modules/npc/outing-repository.js";
 import { NpcRepository } from "../../src/modules/npc/repository.js";
 import { advanceOuting, outingBeats } from "../../src/modules/npc/outing-state.js";
 import type { OutingSnapshot } from "../../src/modules/npc/outing-types.js";
 
-const world = requirePublishedWorld(
+const baseWorld = requirePublishedWorld(
   JSON.parse(
     readFileSync(
       new URL("../../config/activity-world/2026-10-31-places-v1.json", import.meta.url),
       "utf8",
     ),
   ),
+);
+const previousWorld = requirePublishedWorld(
+  JSON.parse(
+    readFileSync(
+      new URL("../../config/activity-world/2026-11-22-encounters-v2.json", import.meta.url),
+      "utf8",
+    ),
+  ),
+);
+const world = requirePublishedWorld(
+  JSON.parse(readFileSync(bundledActivityWorld, "utf8")),
 );
 
 function play(source: OutingSnapshot, first: number, second: number) {
@@ -57,6 +75,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
   () => {
     let database: DatabaseResource;
     const viewers = new Map(world.cities.map((city) => [city.id, randomUUID()]));
+    const existingViewer = randomUUID();
     beforeAll(async () => {
       database = createDatabase(integrationConfig());
       await runMigrations(database);
@@ -66,6 +85,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           await sql`insert into app.user_profiles(user_id,current_region_id,starter_region_id,has_completed_onboarding)
           values(${user},${city},${city},true)`;
         }
+        await sql`insert into app.users(id) values(${existingViewer})`;
+        await sql`insert into app.user_profiles(user_id,current_region_id,starter_region_id,has_completed_onboarding)
+          values(${existingViewer},'toronto','toronto',true)`;
         for (const person of world.characters) {
           await sql`insert into app.npc_avatars(id,image_url,tags) values(${person.avatarId},${`https://example.com/${person.avatarId}.jpg`},'[]')`;
           await sql`insert into app.public_npcs(id,traveler_id,avatar_id,card,card_hash)
@@ -77,11 +99,131 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       // This runner owns an isolated database and these exact fixture identities.
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (!database) return;
-      await database.sql`delete from app.users where id=any(${[...viewers.values()]}::uuid[])`;
-      await database.sql`delete from app.npc_activity_worlds where release_id=${world.releaseId}`;
+      await database.sql`delete from app.users where id=any(${[...viewers.values(), existingViewer]}::uuid[])`;
+      await database.sql`delete from app.npc_activity_worlds where release_id in (${world.releaseId},${previousWorld.releaseId},${baseWorld.releaseId})`;
       await database.sql`delete from app.public_npcs where id=any(${world.characters.map((person) => person.id)}::uuid[])`;
       await database.sql`delete from app.npc_avatars where id=any(${world.characters.map((person) => person.avatarId)}::uuid[])`;
       await database.close();
+    });
+
+    it("publishes revised dialogue while older catalogs and active outings remain available", async () => {
+      expect(await publishBundledActivityWorld(database)).toBeNull();
+      await importActivityWorld(database, baseWorld, true);
+      await importActivityWorld(database, previousWorld, true);
+      const config = integrationConfig();
+      const auth = await createAuthService(config, database);
+      const { accessToken } = await auth.loginFederated(
+        existingViewer,
+        0,
+        { deviceId: randomUUID(), platform: "ios" },
+        {},
+      );
+      const headers = { authorization: `Bearer ${accessToken}` };
+      const app = await buildApp(config, { logger: false });
+      registerOutingRoutes(
+        app,
+        auth,
+        createOutingService(database, createDomainActivityContext(database), () => 0),
+      );
+      try {
+        const placeId = "toronto-kensington";
+        const start = async (releaseId: string) => {
+          const response = await app.inject({
+            method: "POST",
+            url: "/v2/outings",
+            headers,
+            payload: { runId: randomUUID(), releaseId, placeId },
+          });
+          expect(response.statusCode, response.body).toBe(200);
+          return response.json<OutingSnapshot>();
+        };
+        const apply = async (
+          snapshot: OutingSnapshot,
+          path: string,
+          fields: object = {},
+        ) => {
+          const response = await app.inject({
+            method: "POST",
+            url: `/v2/outings/${snapshot.runId}/${path}`,
+            headers,
+            payload: {
+              ...fields,
+              operationId: randomUUID(),
+              expectedRevision: snapshot.revision,
+            },
+          });
+          expect(response.statusCode, response.body).toBe(200);
+          return response.json<OutingSnapshot>();
+        };
+
+        const old = await apply(await start(previousWorld.releaseId), "read", {
+          beatIndex: 0,
+        });
+        expect(await publishBundledActivityWorld(database)).toEqual({
+          releaseId: world.releaseId,
+          manifestHash: contentHash(world),
+          enabled: true,
+        });
+        for (const releaseId of [baseWorld.releaseId, previousWorld.releaseId, world.releaseId]) {
+          const response = await app.inject({
+            url: `/v2/activity-world?releaseId=${releaseId}`,
+            headers,
+          });
+          expect(response.statusCode).toBe(200);
+          expect(response.json()).toMatchObject({
+            catalog: { releaseId, cityId: "toronto" },
+          });
+        }
+        const resumed = await app.inject({ url: "/v2/outings/active", headers });
+        expect(resumed.statusCode).toBe(200);
+        expect(resumed.json()).toEqual({ outing: old });
+        const oldEnd = await apply(old, "abandon");
+        expect(oldEnd.story).toEqual(old.story);
+
+        const startOfNew = await start(world.releaseId);
+        expect(startOfNew.npc?.id).toBe(old.npc?.id);
+        expect(startOfNew.story?.id).toBe(old.story?.id);
+        expect(outingBeats(startOfNew).map((beat) => beat.english)).toEqual(
+          outingBeats(old).map((beat) => beat.english),
+        );
+        expect(outingBeats(startOfNew).map((beat) => beat.chinese)).not.toEqual(
+          outingBeats(old).map((beat) => beat.chinese),
+        );
+        let current = startOfNew;
+        for (const [index, choice] of ["start:1", "b:0", null].entries()) {
+          for (
+            let beatIndex = 0;
+            beatIndex < outingBeats(current).length;
+            beatIndex += 1
+          ) {
+            current = await apply(current, "read", { beatIndex });
+          }
+          if (index === 0) current = await apply(current, "presented");
+          if (choice) current = await apply(current, "choices", { choiceId: choice });
+        }
+        expect(await apply(current, "complete")).toMatchObject({
+          status: "completed",
+          nodeId: "ba",
+        });
+        const history = await app.inject({ url: "/v2/outings/history", headers });
+        expect(history.statusCode).toBe(200);
+        expect(history.json<{ outings: OutingSnapshot[] }>().outings).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              runId: old.runId,
+              releaseId: previousWorld.releaseId,
+              story: old.story,
+            }),
+            expect.objectContaining({
+              runId: current.runId,
+              releaseId: world.releaseId,
+              status: "completed",
+            }),
+          ]),
+        );
+      } finally {
+        await app.close();
+      }
     });
 
     it("admits all cities, reserves each of the 200 exact-place identities, plays 800 paths and selects reunions", async () => {

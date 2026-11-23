@@ -5,24 +5,42 @@ import SwiftUI
 
 /// 联系人行：头像带在线小圆点，名字旁是状态标签。在线时钟只属于行本身，不参与分组与搜索。
 struct RosterContactRowLabel: View {
+    private struct PresenceInputs: Equatable {
+        let character: CharacterDTO
+        let lastAssistantMessageAt: Date?
+        let pendingReplyPlan: NPCReplyPlan?
+        let isActive: Bool
+    }
+
     let character: CharacterDTO
     let lastAssistantMessageAt: Date?
     let pendingReplyPlan: NPCReplyPlan?
-    @State private var isVisible = false
+    @State private var presence: NPCPresenceState?
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
-        TimelineView(.animation(minimumInterval: 15,
-            paused: !isVisible || scenePhase != .active || character.contactStatus == .removed)) { timeline in
-            content(at: timeline.date)
-        }
-        .onAppear { isVisible = true }
-        .onDisappear { isVisible = false }
+        let isRemoved = character.contactStatus == .removed
+        let inputs = PresenceInputs(
+            character: character,
+            lastAssistantMessageAt: lastAssistantMessageAt,
+            pendingReplyPlan: pendingReplyPlan,
+            isActive: scenePhase == .active && !isRemoved
+        )
+        let state = isRemoved ? .offline : (presence ?? currentPresence())
+        content(presence: state)
+            .task(id: inputs) {
+                guard inputs.isActive else { return }
+                while !Task.isCancelled {
+                    let current = currentPresence()
+                    if current != presence { presence = current }
+                    do { try await Task.sleep(for: .seconds(15)) }
+                    catch { return }
+                }
+            }
     }
 
-    private func content(at date: Date) -> some View {
+    private func content(presence: NPCPresenceState) -> some View {
         let isRemoved = character.contactStatus == .removed
-        let presence = contactPresence(character, at: date)
         return HStack(spacing: Puff.Space.s) {
             PuffAvatar(
                 name: character.displayName,
@@ -68,7 +86,7 @@ struct RosterContactRowLabel: View {
         .contentShape(Rectangle())
         .animation(Puff.Motion.pop, value: presence)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(character.card.name)，\(friendStatus(character, at: date))")
+        .accessibilityLabel("\(character.card.name)，\(friendStatus(presence))")
     }
 
     private func puffPresence(_ state: NPCPresenceState) -> PuffPresence {
@@ -92,19 +110,18 @@ struct RosterContactRowLabel: View {
         "\(character.card.nationality) · \(occupation)"
     }
 
-    private func contactPresence(_ character: CharacterDTO, at date: Date) -> NPCPresenceState {
+    private func currentPresence() -> NPCPresenceState {
         NPCAttentionPolicy.standard.presence(
-            for: character, at: date,
+            for: character, at: .now,
             lastAssistantMessageAt: lastAssistantMessageAt,
             pendingReplyPlan: pendingReplyPlan
         ).state
     }
 
-    private func friendStatus(_ character: CharacterDTO, at date: Date) -> String {
+    private func friendStatus(_ state: NPCPresenceState) -> String {
         if character.contactStatus == .removed {
             return "过往联系人 · 可重新添加"
         }
-        let state = contactPresence(character, at: date)
         let status = switch state {
         case .online: "在线"
         case .recentlyActive: "近期在线"
