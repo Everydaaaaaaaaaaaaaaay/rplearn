@@ -6,37 +6,87 @@ extension PuffScenePainter {
 
     func sky(extendingAbove top: CGFloat) {
         let frame = CGRect(x: -40, y: top, width: Self.width + 80, height: Self.horizon + 20 - top)
+        let middle = atmosphere.skyTop.mixed(with: atmosphere.skyBottom, 0.55)
         ctx.fill(
             Path(frame),
             with: .linearGradient(
-                Gradient(colors: [atmosphere.skyTop.color, atmosphere.skyBottom.color]),
+                Gradient(stops: [
+                    .init(color: atmosphere.skyTop.color, location: 0),
+                    .init(color: middle.color, location: 0.55),
+                    .init(color: atmosphere.skyBottom.color, location: 1),
+                ]),
                 startPoint: CGPoint(x: 0, y: max(top, -20)),
                 endPoint: CGPoint(x: 0, y: Self.horizon)
             )
         )
+        // 地平线上一道暖光，黄昏更浓。
+        let glow: (UInt32, Double) = switch mood {
+        case .day: (0xFFF4DC, 0.45)
+        case .dusk: (0xFFC2A0, 0.6)
+        case .night: (0x5A63A8, 0.4)
+        }
+        ctx.fill(
+            Path(CGRect(x: -40, y: Self.horizon - 60, width: Self.width + 80, height: 62)),
+            with: .linearGradient(
+                Gradient(colors: [SceneInk(glow.0).color.opacity(0), SceneInk(glow.0).color.opacity(glow.1)]),
+                startPoint: CGPoint(x: 0, y: Self.horizon - 60), endPoint: CGPoint(x: 0, y: Self.horizon)
+            )
+        )
     }
 
-    /// 太阳、晚霞落日或月亮。`x` 为全景中的位置。
+    /// 太阳、晚霞落日或月亮。`x` 为全景中的位置。外围是一大圈柔和的光晕。
     func celestial(x: CGFloat) {
+        func halo(_ y: CGFloat, _ radius: CGFloat, _ hex: UInt32, _ opacity: Double) {
+            ctx.fill(
+                Path(ellipseIn: CGRect(x: x - radius, y: y - radius, width: radius * 2, height: radius * 2)),
+                with: .radialGradient(
+                    Gradient(colors: [SceneInk(hex).color.opacity(opacity), SceneInk(hex).color.opacity(0)]),
+                    center: CGPoint(x: x, y: y), startRadius: 0, endRadius: radius
+                )
+            )
+        }
         switch mood {
         case .day:
             let y: CGFloat = 40
-            circle(x, y, 34, SceneInk(0xFFF1B8).color.opacity(0.35))
-            circle(x, y, 25, SceneInk(0xFFE48A).color.opacity(0.5))
-            circle(x, y, 17, SceneInk(0xFFD25A).color)
-            circle(x - 5, y - 5, 5, SceneInk(0xFFE9A0).color)
+            halo(y, 95, 0xFFF3C4, 0.55)
+            halo(y, 36, 0xFFE9A0, 0.7)
+            ctx.fill(
+                Path(ellipseIn: CGRect(x: x - 17, y: y - 17, width: 34, height: 34)),
+                with: .radialGradient(
+                    Gradient(colors: [SceneInk(0xFFF0A8).color, SceneInk(0xFFCB4A).color]),
+                    center: CGPoint(x: x - 5, y: y - 5), startRadius: 0, endRadius: 22
+                )
+            )
         case .dusk:
             let y: CGFloat = 104
-            circle(x, y, 40, SceneInk(0xFFC2A0).color.opacity(0.35))
-            circle(x, y, 28, SceneInk(0xFFA987).color.opacity(0.5))
-            circle(x, y, 20, SceneInk(0xFF9466).color)
+            halo(y, 110, 0xFFB08A, 0.55)
+            halo(y, 42, 0xFFA987, 0.6)
+            ctx.fill(
+                Path(ellipseIn: CGRect(x: x - 20, y: y - 20, width: 40, height: 40)),
+                with: .radialGradient(
+                    Gradient(colors: [SceneInk(0xFFC08A).color, SceneInk(0xFF8A5C).color]),
+                    center: CGPoint(x: x - 4, y: y - 6), startRadius: 0, endRadius: 24
+                )
+            )
         case .night:
             let y: CGFloat = 36
-            circle(x, y, 24, SceneInk(0xFFF3C4).color.opacity(0.12))
+            halo(y, 60, 0xFFF3C4, 0.18)
             let moon = Path(ellipseIn: CGRect(x: x - 13, y: y - 13, width: 26, height: 26))
             let bite = Path(ellipseIn: CGRect(x: x - 6, y: y - 17, width: 24, height: 24))
             fill(moon.subtracting(bite), SceneInk(0xFFF1BE).color)
         }
+    }
+
+    /// 远景脚下的一层薄雾，把远处楼群推远，让前面的地标更立体。
+    func horizonHaze() {
+        let color = atmosphere.skyBottom.color
+        ctx.fill(
+            Path(CGRect(x: -40, y: Self.horizon - 34, width: Self.width + 80, height: 36)),
+            with: .linearGradient(
+                Gradient(colors: [color.opacity(0), color.opacity(isNight ? 0.25 : 0.55)]),
+                startPoint: CGPoint(x: 0, y: Self.horizon - 34), endPoint: CGPoint(x: 0, y: Self.horizon + 2)
+            )
+        )
     }
 
     /// 夜晚星星，带轻微闪烁。
@@ -85,8 +135,8 @@ extension PuffScenePainter {
         }
     }
 
+    /// 一朵云：几团圆鼓鼓的云絮，上面受光发亮，底部带一点天色阴影。
     func cloud(_ x: CGFloat, _ y: CGFloat, _ scale: CGFloat) {
-        let color = atmosphere.cloud.color.opacity(atmosphere.cloudOpacity)
         var path = Path()
         path.addRoundedRect(
             in: CGRect(x: x - 26 * scale, y: y - 2 * scale, width: 52 * scale, height: 14 * scale),
@@ -95,7 +145,21 @@ extension PuffScenePainter {
         path.addEllipse(in: CGRect(x: x - 20 * scale, y: y - 12 * scale, width: 20 * scale, height: 20 * scale))
         path.addEllipse(in: CGRect(x: x - 6 * scale, y: y - 19 * scale, width: 24 * scale, height: 24 * scale))
         path.addEllipse(in: CGRect(x: x + 10 * scale, y: y - 9 * scale, width: 16 * scale, height: 16 * scale))
-        fill(path, color)
+        let shadow = atmosphere.cloud.mixed(with: atmosphere.skyTop, 0.4).mixed(with: SceneInk(0x8E9BC8), 0.1)
+        var context = ctx
+        context.opacity = atmosphere.cloudOpacity
+        context.fill(path, with: .linearGradient(
+            Gradient(stops: [
+                .init(color: atmosphere.cloud.color, location: 0.35),
+                .init(color: shadow.color, location: 1),
+            ]),
+            startPoint: CGPoint(x: x, y: y - 19 * scale), endPoint: CGPoint(x: x, y: y + 12 * scale)
+        ))
+        // 受光面的高光。
+        context.fill(
+            Path(ellipseIn: CGRect(x: x - 3 * scale, y: y - 17 * scale, width: 12 * scale, height: 9 * scale)),
+            with: .color(SceneInk(0xFFFFFF).color.opacity(isNight ? 0.15 : 0.7))
+        )
     }
 
     /// 两三只扇着翅膀飞过的小鸟。
@@ -129,6 +193,18 @@ extension PuffScenePainter {
             if !skip.contains(where: { $0.contains(center) }) {
                 let shade = index % 3 == 0 ? atmosphere.farShade : atmosphere.far
                 topRounded(x, Self.horizon - height, width - 2, height, shade.color, r: 4)
+                if !isNight {
+                    // 白天远楼也有几列浅色窗带，个别楼顶立着天线。
+                    let columns = Int((width - 6) / 5)
+                    for column in 0..<max(columns, 0) where Self.noise(seed + index * 19 + column) > 0.35 {
+                        rect(x + 3 + CGFloat(column) * 5, Self.horizon - height + 6, 1.6, height - 9,
+                             atmosphere.skyBottom.color.opacity(0.45), r: 0.8)
+                    }
+                    if Self.noise(seed + index * 23) > 0.72 {
+                        line(CGPoint(x: x + width * 0.45, y: Self.horizon - height),
+                             CGPoint(x: x + width * 0.45, y: Self.horizon - height - 7), shade.color, width: 1)
+                    }
+                }
                 if isNight, Self.noise(seed + index * 17) > 0.35 {
                     let rows = Int(height / 9)
                     for row in 0..<max(rows - 1, 0) where Self.noise(seed + index * 31 + row) > 0.45 {
@@ -237,9 +313,20 @@ extension PuffScenePainter {
 
     /// 棒棒糖形状的圆树，底部落在 `baseY`。
     func roundTree(_ x: CGFloat, baseY: CGFloat = 161, size: CGFloat = 1) {
+        ellipse(x + 2 * size, baseY, 9 * size, 1.6 * size, atmosphere.grassShade.color.opacity(0.8))
         rect(x - 1.6 * size, baseY - 12 * size, 3.2 * size, 12 * size, c(0xC49A74), r: 1)
-        circle(x, baseY - 19 * size, 10 * size, c(0x6FCF98))
+        rect(x + 0.2 * size, baseY - 12 * size, 1.4 * size, 12 * size, c(0xA9805E), r: 0.7)
+        let crown = CGPoint(x: x, y: baseY - 19 * size)
+        circle(crown.x, crown.y, 10 * size, c(0x6FCF98))
+        // 背光一侧的暗面：用一个错开的圆挖出月牙。
+        var shade = ctx
+        shade.clip(to: Path(ellipseIn: CGRect(x: crown.x - 10 * size, y: crown.y - 10 * size, width: 20 * size, height: 20 * size)))
+        let dark = Path(ellipseIn: CGRect(x: crown.x - 10 * size, y: crown.y - 10 * size, width: 20 * size, height: 20 * size))
+            .subtracting(Path(ellipseIn: CGRect(x: crown.x - 13 * size, y: crown.y - 13 * size, width: 20 * size, height: 20 * size)))
+        shade.fill(dark, with: .color(c(0x54B783)))
         circle(x - 3 * size, baseY - 22 * size, 4 * size, c(0x9BE4B9))
+        circle(x + 3.5 * size, baseY - 16 * size, 1.1 * size, c(0x8EDDB0))
+        circle(x - 5.5 * size, baseY - 15.5 * size, 0.9 * size, c(0x8EDDB0))
     }
 
     /// 尖顶松树。

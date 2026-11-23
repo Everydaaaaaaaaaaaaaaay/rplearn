@@ -9,11 +9,22 @@ struct PuffCityRecipe: Sendable {
         case land
     }
 
+    /// 由远到近的图层；静态层只在时段变化时重画，Motion 层逐帧画。
     enum Layer: Sendable {
+        /// 天空、日月、远景与远景上的薄雾。
         case back
+        /// 星星、云、飞鸟。
         case backMotion
-        case front
-        case frontMotion
+        /// 水面（含地标倒影）或远处地面。
+        case terrain
+        /// 远岸地标，单独成层以便投下柔和的影子。
+        case landmarks
+        /// 水面亮片、船、摩天轮、钟针。
+        case farMotion
+        /// 近岸草边、道路、树和街道小物。
+        case near
+        /// 道路上的车。
+        case nearMotion
     }
 
     typealias Drawing = @Sendable (PuffScenePainter) -> Void
@@ -47,22 +58,57 @@ struct PuffCityRecipe: Sendable {
             painter.sky(extendingAbove: skyTop)
             painter.celestial(x: celestialX)
             backdrop(painter)
+            painter.horizonHaze()
         case .backMotion:
             painter.stars()
             painter.clouds(seed: id.unicodeScalars.reduce(0) { $0 &* 31 &+ Int($1.value) })
             painter.birds()
-        case .front:
+        case .terrain:
             switch terrain {
-            case .water: painter.water()
-            case .land: painter.farGround()
+            case .water:
+                painter.water()
+                reflection(painter)
+            case .land:
+                painter.farGround()
             }
+        case .landmarks:
             landmarks(painter)
+        case .farMotion:
+            if terrain == .water { painter.waterSparkles() }
+            var far = painter
+            far.moverPass = .far
+            movers(far)
+        case .near:
             painter.nearBank()
             foreground(painter)
-        case .frontMotion:
-            if terrain == .water { painter.waterSparkles() }
-            movers(painter)
+        case .nearMotion:
+            var near = painter
+            near.moverPass = .near
+            movers(near)
         }
+    }
+
+    /// 远岸与地标在水里的倒影：以岸线为轴翻转，越往近处越淡，交给涟漪着色器晃动。
+    private func reflection(_ painter: PuffScenePainter) {
+        let top = PuffScenePainter.horizon
+        let bottom: CGFloat = 157
+        var context = painter.ctx
+        context.clip(to: Path(CGRect(x: -40, y: top + 1.6, width: PuffScenePainter.width + 80, height: bottom - top)))
+        var mirrored = context
+        mirrored.translateBy(x: 0, y: top * 2 + 1)
+        mirrored.scaleBy(x: 1, y: -1)
+        mirrored.opacity = 0.34
+        let mirror = PuffScenePainter(ctx: mirrored, mood: painter.mood, time: 0, clock: painter.clock)
+        backdrop(mirror)
+        landmarks(mirror)
+        let water = painter.atmosphere.water.color
+        context.fill(
+            Path(CGRect(x: -40, y: top, width: PuffScenePainter.width + 80, height: bottom - top)),
+            with: .linearGradient(
+                Gradient(colors: [water.opacity(0.15), water.opacity(0.85)]),
+                startPoint: CGPoint(x: 0, y: top), endPoint: CGPoint(x: 0, y: bottom)
+            )
+        )
     }
 }
 

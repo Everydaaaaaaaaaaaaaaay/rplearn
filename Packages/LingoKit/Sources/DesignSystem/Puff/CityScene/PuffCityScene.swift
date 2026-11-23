@@ -68,7 +68,8 @@ public struct PuffCityScene: View {
     }
 }
 
-/// 分四层绘制：静态层只在尺寸或时段变化时重绘，逐帧层只画会动的元素。
+/// 由远到近分层绘制：静态层只在尺寸或时段变化时重绘，逐帧层只画会动的元素。
+/// 水面倒影交给涟漪着色器晃动，远岸地标投下柔和的影子，最上面罩一层日光。
 struct PuffCitySceneCanvas: View {
     let recipe: PuffCityRecipe
     let mood: PuffSceneMood
@@ -78,12 +79,78 @@ struct PuffCitySceneCanvas: View {
     /// 渲染工具与截图使用固定时间；为 nil 时跟随系统时钟。
     var fixedTime: TimeInterval?
 
+    private static let shaders = ShaderLibrary.bundle(.module)
+
     var body: some View {
-        ZStack {
-            staticLayer(.back)
-            animatedLayer(.backMotion)
-            staticLayer(.front)
-            animatedLayer(.frontMotion)
+        GeometryReader { proxy in
+            let unit = Self.visibleFrame(for: proxy.size, viewport: viewport).scale
+            ZStack {
+                staticLayer(.back)
+                animatedLayer(.backMotion)
+                if recipe.terrain == .water {
+                    rippling(unit: unit)
+                } else {
+                    staticLayer(.terrain)
+                }
+                staticLayer(.landmarks)
+                    .colorEffect(
+                        Self.shaders.puffLandmarkLight(
+                            .float(Float(PuffScenePainter.horizon * unit + proxy.size.height - PuffScenePainter.height * unit)),
+                            .float(Float(unit))
+                        ),
+                        isEnabled: fixedTime == nil
+                    )
+                    .shadow(color: landmarkShadow, radius: unit * 1.2, x: unit * 2, y: unit * 0.6)
+                animatedLayer(.farMotion)
+                staticLayer(.near)
+                animatedLayer(.nearMotion)
+                sunlight(size: proxy.size, unit: unit)
+            }
+        }
+    }
+
+    private var landmarkShadow: Color {
+        switch mood {
+        case .day: Color(red: 0.32, green: 0.38, blue: 0.6).opacity(0.34)
+        case .dusk: Color(red: 0.36, green: 0.27, blue: 0.5).opacity(0.38)
+        case .night: Color(red: 0.05, green: 0.07, blue: 0.2).opacity(0.4)
+        }
+    }
+
+    /// 倒影随水波左右轻晃。
+    @ViewBuilder
+    private func rippling(unit: CGFloat) -> some View {
+        if fixedTime != nil {
+            staticLayer(.terrain)
+        } else {
+            TimelineView(.animation(minimumInterval: 1.0 / 30, paused: isPaused)) { timeline in
+                // 着色器按 600 秒一圈无缝循环。
+                let time = timeline.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 600)
+                staticLayer(.terrain)
+                    .distortionEffect(
+                        Self.shaders.puffRipple(.float(Float(time)), .float(Float(unit))),
+                        maxSampleOffset: CGSize(width: unit * 2, height: 0)
+                    )
+            }
+        }
+    }
+
+    /// 太阳一侧的暖光：屏幕混合，越远越淡。夜里不加。
+    @ViewBuilder
+    private func sunlight(size: CGSize, unit: CGFloat) -> some View {
+        if mood != .night {
+            let frame = Self.visibleFrame(for: size, viewport: viewport)
+            let offsetY = size.height - PuffScenePainter.height * unit
+            let center = UnitPoint(
+                x: (recipe.celestialX - frame.minX) * unit / max(size.width, 1),
+                y: ((mood == .day ? 40 : 104) * unit + offsetY) / max(size.height, 1)
+            )
+            RadialGradient(
+                colors: [Color(red: 1, green: mood == .day ? 0.93 : 0.78, blue: mood == .day ? 0.74 : 0.6).opacity(0.32), .clear],
+                center: center, startRadius: 0, endRadius: 300 * unit
+            )
+            .blendMode(.screen)
+            .allowsHitTesting(false)
         }
     }
 

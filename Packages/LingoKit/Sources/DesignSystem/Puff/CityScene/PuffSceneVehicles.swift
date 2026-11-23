@@ -22,6 +22,7 @@ extension PuffScenePainter {
 
     /// 车辆从左到右循环驶过整幅全景；`period` 秒一圈，`phase` 错开多辆车。
     func drive(_ vehicle: Vehicle, period: Double = 26, phase: Double = 0) {
+        guard moverPass != .far else { return }
         let span = Self.width + 140
         let progress = ((time + phase).truncatingRemainder(dividingBy: period)) / period
         let x = -70 + CGFloat(progress) * span
@@ -122,11 +123,24 @@ extension PuffScenePainter {
 
     /// 船在 `range` 区间内来回漂。
     func sail(_ boat: Boat, range: ClosedRange<CGFloat>, y: CGFloat = 151, period: Double = 40, phase: Double = 0) {
+        guard moverPass != .near else { return }
         let t = (time + phase) / period * 2 * .pi
         let progress = (1 - cos(t)) / 2
         let x = range.lowerBound + CGFloat(progress) * (range.upperBound - range.lowerBound)
         let facingRight = sin(t) >= 0
         let rock = CGFloat(sin(time * 2.2 + phase)) * 0.8
+        // 船尾拖出两道渐淡的白色水纹，速度越快越长。
+        let speed = abs(CGFloat(sin(t)))
+        if speed > 0.08 {
+            let back: CGFloat = facingRight ? -1 : 1
+            for index in 0..<3 {
+                let length = (10 + CGFloat(index) * 7) * speed
+                let start = x + back * (12 + CGFloat(index) * 9)
+                let wobble = CGFloat(sin(time * 3 + Double(index))) * 0.4
+                rect(min(start, start + back * length), y + 2.5 + CGFloat(index) * 0.9 + wobble, length, 1.1,
+                     atmosphere.waterLight.color.opacity(0.75 - Double(index) * 0.2), r: 0.55)
+            }
+        }
         var context = ctx
         context.translateBy(x: x, y: y + rock)
         if !facingRight { context.scaleBy(x: -1, y: 1) }

@@ -110,6 +110,14 @@ struct PuffScenePainter {
     let time: TimeInterval
     /// 城市当地时间，用于钟面。
     let clock: DateComponents
+    /// 运动元素分两趟画：远处（船、摩天轮、钟针）在近岸之后，近处道路上的车在最前。
+    var moverPass: MoverPass = .all
+
+    enum MoverPass: Sendable {
+        case all
+        case far
+        case near
+    }
 
     init(ctx: GraphicsContext, mood: PuffSceneMood, time: TimeInterval, clock: DateComponents) {
         self.ctx = ctx

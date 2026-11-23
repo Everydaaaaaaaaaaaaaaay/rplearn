@@ -79,6 +79,7 @@ extension PuffScenePainter {
 
     /// 大本钟指针：显示城市当地时间。
     func bigBenHands(_ x: CGFloat) {
+        guard moverPass != .near else { return }
         let center = CGPoint(x: x, y: Self.horizon - 77)
         let hour = Double(clock.hour ?? 10).truncatingRemainder(dividingBy: 12)
         let minute = Double(clock.minute ?? 10)
@@ -92,6 +93,7 @@ extension PuffScenePainter {
 
     /// 摩天轮（伦敦眼、墨尔本之星、新加坡摩天观景轮）。缓慢旋转，座舱始终保持直立。
     func ferrisWheel(_ x: CGFloat, centerY: CGFloat, radius: CGFloat, legSpread: CGFloat? = nil) {
+        guard moverPass != .near else { return }
         let rotation = time * 2 * .pi / 90
         let rim = c(0xFFFFFF)
         let detail = c(0xD7E0F2)
