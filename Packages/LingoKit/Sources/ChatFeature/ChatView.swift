@@ -47,7 +47,10 @@ public struct ChatView: View {
     @State private var accessAfterVoice = false
     @State var showsContactDetails = false
     @State var highlightedMessageID: UUID?
-    @State var bubbleMenuMessage: MessageDTO?
+    /// 键盘已在屏幕上（贴底、占满宽度）。
+    @State private var keyboardShown = false
+    /// 键盘通知先于 SwiftUI 焦点更新到达时暂存的高度，焦点到位后再抬起输入栏。
+    @State private var pendingKeyboardHeight: CGFloat?
     enum ComposerFocus: Hashable { case english, chinese }
     @FocusState var composerFocus: ComposerFocus?
     var isTextInputFocused: Bool {
@@ -102,7 +105,7 @@ public struct ChatView: View {
                 autoReadQueue: autoReadQueue, wordSelection: $wordSelection,
                 grammarTermSelection: $grammarTermSelection, grammarAnalysis: $grammarAnalysis,
                 expandedCoachMessageIDs: $expandedCoachMessageIDs, highlightedMessageID: $highlightedMessageID,
-                bubbleMenuMessage: $bubbleMenuMessage, composerFocus: $composerFocus,
+                composerFocus: $composerFocus,
                 showsChatFunctions: showsChatFunctions, dismissChatInput: dismissChatInput)
             ChatComposerView(viewModel: viewModel, composerTranslation: composerTranslation,
                 deps: deps, bottomInset: bottomInset, autoReadQueue: autoReadQueue,
@@ -131,41 +134,73 @@ public struct ChatView: View {
     private func updateKeyboard(_ notification: Notification) {
         // The function panel owns the dock until it hands that space to the keyboard.
         guard !showsChatFunctions else { return }
-        let height: CGFloat
-        if notification.name == UIResponder.keyboardWillHideNotification {
-            height = 0
-        } else {
+        let animation = keyboardAnimation(notification)
+        var height: CGFloat = 0
+        var window: UIWindow?
+        if notification.name != UIResponder.keyboardWillHideNotification {
             guard let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
-                  let window = chatWindow else { return }
-            let localFrame = window.convert(frame, from: window.screen.coordinateSpace)
-            let overlap = localFrame.intersection(window.bounds)
+                  let chatWindow else { return }
+            let localFrame = chatWindow.convert(frame, from: chatWindow.screen.coordinateSpace)
+            let overlap = localFrame.intersection(chatWindow.bounds)
             // Floating and external keyboards do not reserve the bottom of the conversation.
-            height = !overlap.isEmpty && localFrame.maxY >= window.bounds.maxY - 1
-                && overlap.width >= window.bounds.width - 1 ? (overlap.height.rounded()) : 0
-            if height > 0 {
-                guard composerFocus != nil else { return }
-                if window.bounds.width > window.bounds.height {
-                    if landscapeKeyboardHeight != height { landscapeKeyboardHeight = height }
-                } else if portraitKeyboardHeight != height {
-                    portraitKeyboardHeight = height
-                }
-            }
+            height = !overlap.isEmpty && localFrame.maxY >= chatWindow.bounds.maxY - 1
+                && overlap.width >= chatWindow.bounds.width - 1 ? (overlap.height.rounded()) : 0
+            window = chatWindow
         }
-        guard height != inputDockHeight else { return }
+        keyboardShown = height > 0
+        guard height > 0 else {
+            pendingKeyboardHeight = nil
+            // 输入框仍持有焦点时键盘被临时收起（例如长按气泡弹出系统菜单）：输入栏留在原位，
+            // 菜单关闭、键盘回来时对话不跳动。焦点真正离开后再落下（见 composerFocus 的 onChange）。
+            guard composerFocus == nil else { return }
+            setInputDock(0, animation: animation)
+            return
+        }
+        guard composerFocus != nil else {
+            // 键盘通知有时先于焦点更新到达：先记下，焦点到位后再抬起输入栏。
+            pendingKeyboardHeight = height
+            return
+        }
+        if let window { rememberKeyboardHeight(height, in: window) }
+        setInputDock(height, animation: animation)
+    }
+
+    private func rememberKeyboardHeight(_ height: CGFloat, in window: UIWindow) {
+        if window.bounds.width > window.bounds.height {
+            if landscapeKeyboardHeight != height { landscapeKeyboardHeight = height }
+        } else if portraitKeyboardHeight != height {
+            portraitKeyboardHeight = height
+        }
+    }
+
+    private func keyboardAnimation(_ notification: Notification) -> Animation {
         let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.25
         let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int ?? 7
-        let animation: Animation
         switch curve {
-        case 0: animation = .easeInOut(duration: duration)
-        case 1: animation = .easeIn(duration: duration)
-        case 2: animation = .easeOut(duration: duration)
-        case 3: animation = .linear(duration: duration)
-        default: animation = .interpolatingSpring(duration: max(0.2, duration), bounce: 0)
+        case 0: return .easeInOut(duration: duration)
+        case 1: return .easeIn(duration: duration)
+        case 2: return .easeOut(duration: duration)
+        case 3: return .linear(duration: duration)
+        default: return .interpolatingSpring(duration: max(0.2, duration), bounce: 0)
         }
+    }
+
+    private func setInputDock(_ height: CGFloat, animation: Animation) {
+        guard height != inputDockHeight else { return }
         withAnimation(reduceMotion ? .easeOut(duration: 0.15) : animation) {
             inputDockHeight = height
         }
-        if height == 0 { bubbleMenuMessage = nil }
+    }
+
+    /// 焦点变化收尾键盘留下的状态：补上先到的键盘高度，或在焦点离开且键盘已收起后放下输入栏。
+    private func composerFocusChanged(to focus: ComposerFocus?) {
+        if focus != nil, let height = pendingKeyboardHeight {
+            pendingKeyboardHeight = nil
+            if let window = chatWindow { rememberKeyboardHeight(height, in: window) }
+            setInputDock(height, animation: inputDockAnimation)
+        } else if focus == nil, !keyboardShown, !showsChatFunctions {
+            setInputDock(0, animation: inputDockAnimation)
+        }
     }
 
     public var body: some View {
@@ -192,6 +227,7 @@ public struct ChatView: View {
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { notification in
                 updateKeyboard(notification)
             }
+            .onChange(of: composerFocus) { _, focus in composerFocusChanged(to: focus) }
         }
         .ignoresSafeArea(learningSelected ? [] : [.keyboard, .container], edges: .bottom)
         .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { _ in
@@ -208,7 +244,6 @@ public struct ChatView: View {
             if phase != .active { voicePlayer.stop() }
         }
         .onChange(of: learningSelected) { _, selected in
-            bubbleMenuMessage = nil
             dismissChatInput()
             if selected {
                 voicePlayer.stop()
@@ -367,7 +402,7 @@ public struct ChatView: View {
             Task { await chineseRecorder.cancelRecording() }
             markVisibleConversationRead()
         }
-        .dsInteractiveContentPopGesture(enabled: !learningSelected && bubbleMenuMessage == nil
+        .dsInteractiveContentPopGesture(enabled: !learningSelected
             && recorder.state == .idle && chineseRecorder.state == .idle)
         .dsTabBarHidden()
     }

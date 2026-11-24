@@ -102,12 +102,11 @@ struct ProductionTutorialView: View {
             GeometryReader { geometry in
                 if !guidanceObscured && encounterChat == nil {
                     let message = targets["chat.bubble"].map { geometry[$0] }
-                    let menu = targets["chat.bubbleMenu"].map { geometry[$0] }
                     let latestBeat = targets["activity.latestBeat"].map { geometry[$0] }
                     let controls = targets.filter { $0.key.hasPrefix("activity.controls.") }
                         .map { geometry[$0.value] }
                         .reduce(CGRect.null) { $0.union($1) }
-                    if let y = guideY(in: geometry.size, message: message, menu: menu, beat: latestBeat, controls: controls) {
+                    if let y = guideY(in: geometry.size, message: message, beat: latestBeat, controls: controls) {
                         guide(prompt: targets["activity.controls.finish"] != nil && step == .outing
                               ? "可以加为好友，也可以点「回到城市地点」结束练习咕。" : prompt)
                             .frame(width: min(340, max(0, geometry.size.width - 32)))
@@ -166,7 +165,7 @@ struct ProductionTutorialView: View {
         }
     }
 
-    private func guideY(in size: CGSize, message: CGRect?, menu: CGRect?, beat: CGRect?, controls: CGRect) -> CGFloat? {
+    private func guideY(in size: CGSize, message: CGRect?, beat: CGRect?, controls: CGRect) -> CGFloat? {
         let half = guideHeight / 2
         let viewport = CGRect(origin: .zero, size: size)
         let message = message.flatMap { $0.intersects(viewport) ? $0 : nil }
@@ -178,7 +177,7 @@ struct ProductionTutorialView: View {
         guard bottom >= top else { return nil }
         let preferred = message.map { $0.minY - clearance - 12 }
             ?? size.height * (reading ? 0.25 : 0.64)
-        let obstacles = [menu, message, beat, controls].compactMap { $0 }.filter { $0.intersects(viewport) }
+        let obstacles = [message, beat, controls].compactMap { $0 }.filter { $0.intersects(viewport) }
         let candidates = [preferred, top, bottom] + obstacles.flatMap { [$0.minY - clearance, $0.maxY + clearance] }
         return candidates.map { min(bottom, max(top, $0)) }
             .filter { y in obstacles.allSatisfy { y <= $0.minY - clearance || y >= $0.maxY + clearance } }

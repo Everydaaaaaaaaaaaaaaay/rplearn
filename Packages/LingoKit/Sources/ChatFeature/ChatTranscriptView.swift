@@ -40,7 +40,6 @@ struct ChatTranscriptView: View {
     @Binding var grammarAnalysis: GrammarAnalysisRequest?
     @Binding var expandedCoachMessageIDs: Set<UUID>
     @Binding var highlightedMessageID: UUID?
-    @Binding var bubbleMenuMessage: MessageDTO?
     @FocusState.Binding var composerFocus: ChatView.ComposerFocus?
     let showsChatFunctions: Bool
     let dismissChatInput: () -> Void
@@ -57,8 +56,6 @@ struct ChatTranscriptView: View {
     @State private var openedAt = Date.now
     @State private var arrivals = ChatArrivalLedger()
     @State var transcriptVisibleMessageIDs: Set<UUID> = []
-    @State var bubbleMenuFrame: CGRect = .zero
-    @State var bubbleMenuSize = CGSize(width: 224, height: 200)
     @Environment(\.accessibilityReduceMotion) var reduceMotion
 
     var isTextInputFocused: Bool {
@@ -321,10 +318,9 @@ struct ChatTranscriptView: View {
                 .accessibilityHint("跳转到会话中的最新消息")
             }
         }
-        .overlay { bubbleActionsOverlay }
     }
 
-    /// Background-only hit target: word taps and bubble menus remain in the foreground.
+    /// Background-only hit target: word taps and bubble long-presses remain in the foreground.
     private var keyboardDismissBackdrop: some View {
         // 透明：露出聊天壁纸，只负责接住空白处的点按。
         Color.clear
@@ -336,8 +332,7 @@ struct ChatTranscriptView: View {
     private var messageListKeyboardDismissGesture: some Gesture {
         DragGesture(minimumDistance: 20)
             .onChanged { value in
-                guard bubbleMenuMessage == nil,
-                      showsChatFunctions || isTextInputFocused || isChineseInputFocused,
+                guard showsChatFunctions || isTextInputFocused || isChineseInputFocused,
                       value.translation.height > 20,
                       value.translation.height > abs(value.translation.width) else { return }
                 dismissChatInput()
@@ -392,7 +387,6 @@ struct ChatTranscriptView: View {
                             )
                         )
                     },
-                    onMenuRequest: { presentBubbleMenu(message, frame: $0) },
                     contextMenu: {
                         bubbleMenu(message)
                     }
@@ -513,26 +507,22 @@ struct ChatTranscriptView: View {
     func bubbleMenu(_ message: MessageDTO) -> some View {
         if message.role == .assistant, !message.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             Button {
-                bubbleMenuMessage = nil
                 presentGrammarAnalysis(for: message)
             } label: {
                 Label("语法解析", systemImage: "text.book.closed")
             }
         }
         Button {
-            bubbleMenuMessage = nil
             UIPasteboard.general.string = message.text
         } label: {
             Label("复制", systemImage: "doc.on.doc")
         }
         Button {
-            bubbleMenuMessage = nil
             Task { await viewModel.translate(message: message) }
         } label: {
             Label("翻译", systemImage: "character.book.closed.zh")
         }
         Button {
-            bubbleMenuMessage = nil
             deps.tutorial?.onEvent("manualPlayback")
             if message.kind == .voice {
                 toggleVoicePlayback(message)
@@ -546,7 +536,6 @@ struct ChatTranscriptView: View {
         }
         if message.kind == .voice {
             Button {
-                bubbleMenuMessage = nil
                 if transcriptVisibleMessageIDs.contains(message.id) {
                     transcriptVisibleMessageIDs.remove(message.id)
                 } else {

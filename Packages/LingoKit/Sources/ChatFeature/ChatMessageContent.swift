@@ -28,7 +28,6 @@ extension ChatTranscriptView {
                 side: .outgoing,
                 groupPosition: groupPosition,
                 leadingAccessory: { coachButton(message) },
-                onMenuRequest: { presentBubbleMenu(message, frame: $0) },
                 contextMenu: { bubbleMenu(message) }
             ) {
                 tappableText(message, textColor: .white)
@@ -37,7 +36,6 @@ extension ChatTranscriptView {
             MessageBubble(
                 side: .outgoing,
                 groupPosition: groupPosition,
-                onMenuRequest: { presentBubbleMenu(message, frame: $0) },
                 contextMenu: { bubbleMenu(message) }
             ) {
                 tappableText(message, textColor: .white)

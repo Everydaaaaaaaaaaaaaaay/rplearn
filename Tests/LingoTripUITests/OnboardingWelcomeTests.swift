@@ -168,12 +168,10 @@ final class OnboardingWelcomeTests: XCTestCase {
         XCTAssertTrue(word.waitForExistence(timeout: 12))
         XCTAssertTrue(guide.waitForExistence(timeout: 5))
         word.press(forDuration: 1.0)
+        // 系统长按菜单浮在引导提示之上，菜单项始终可点。
         let translate = app.buttons["翻译"]
         XCTAssertTrue(translate.waitForExistence(timeout: 3))
-        let menu = app.scrollViews["chat.bubbleMenu"]
-        XCTAssertTrue(menu.exists)
-        XCTAssertTrue(guide.exists)
-        XCTAssertFalse(guide.frame.intersects(menu.frame), "教程提示不能盖住消息菜单")
+        XCTAssertTrue(translate.isHittable, "教程提示不能盖住消息菜单")
         captureScreen(named: "tutorial-bubble-menu-avoidance")
         translate.tap()
         XCTAssertTrue(app.staticTexts["听起来很棒，再跟我说说！"].waitForExistence(timeout: 5))
