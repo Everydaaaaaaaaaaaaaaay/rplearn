@@ -26,6 +26,7 @@ final class ComposerTranslationModel {
         automatic: Bool,
         readDraft: @escaping @MainActor () -> String,
         writeDraft: @escaping @MainActor (String) -> Void,
+        isComposing: @escaping @MainActor () -> Bool = { false },
         perform: @escaping @MainActor (String) async throws -> String
     ) {
         cancel()
@@ -34,10 +35,20 @@ final class ComposerTranslationModel {
         guard text.count <= 1500 else { error = "请把这句话缩短一些再翻译"; return }
         let token = revision
         let originalDraft = readDraft()
-        isWorking = true
+        // 正在打拼音时不显示“正在翻译”，避免每按一个字母转圈闪一下。
+        isWorking = !(automatic && isComposing())
         task = Task { [weak self] in
             do {
-                if automatic { try await Task.sleep(for: .milliseconds(650)) }
+                if automatic {
+                    try await Task.sleep(for: .milliseconds(650))
+                    // 输入法还有未确认的拼音时不翻译：选字确认会改动文本并重新触发；
+                    // 原样确认（文本不变）也在这里等到。等待期间不显示“正在翻译”。
+                    while isComposing() {
+                        if let self, self.revision == token { self.isWorking = false }
+                        try await Task.sleep(for: .milliseconds(250))
+                    }
+                    if let self, self.revision == token { self.isWorking = true }
+                }
                 try Task.checkCancellation()
                 let result = try await perform(text)
                 try Task.checkCancellation()

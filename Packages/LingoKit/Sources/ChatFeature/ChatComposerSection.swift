@@ -452,6 +452,7 @@ struct ChatComposerView: View {
         }
         composerTranslation.translate(automatic: mode == .instant,
             readDraft: { viewModel.draft }, writeDraft: { viewModel.draft = $0 },
+            isComposing: { composerFocus == .chinese && InputMethodComposition.isComposing },
             perform: { text in
                 if mode == .ai { return try await deps.translator.translateToEnglish(text) }
                 guard let result = await composerAppleTranslator.translate(text) else {
