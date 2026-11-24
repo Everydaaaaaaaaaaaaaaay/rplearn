@@ -361,12 +361,22 @@ final class ChatKeyboardTests: XCTestCase {
         dismissKeyboard(in: app)
         XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
 
-        // A deliberately hidden keyboard stays hidden when switching modes.
+        // Opening the translator puts the cursor in the Chinese source, above the keyboard,
+        // so learners know where to write; closing hands the keyboard back to English.
         toggle.tap()
         XCTAssertTrue(source.waitForExistence(timeout: 3))
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 3), "打开翻译器应直接聚焦中文输入框")
+        let sourceAboveKeyboard = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            source.frame.maxY <= app.keyboards.firstMatch.frame.minY + 2
+                && field.frame.maxY <= app.keyboards.firstMatch.frame.minY + 2
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [sourceAboveKeyboard], timeout: 3), .completed,
+                       "中文框和英文框都应位于键盘上方")
+        source.typeText("你好")
+        XCTAssertTrue(String(describing: source.value).contains("你好"))
         toggle.tap()
         XCTAssertEqual(toggle.label, "打开翻译器")
-        XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
+        XCTAssertTrue(app.keyboards.firstMatch.exists, "收起翻译器把键盘交回英文输入框")
         XCTAssertEqual(field.value as? String, "Keep this draft here")
     }
 

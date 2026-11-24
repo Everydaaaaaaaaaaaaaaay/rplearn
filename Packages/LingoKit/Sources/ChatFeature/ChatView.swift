@@ -242,6 +242,13 @@ public struct ChatView: View {
         }
         .onChange(of: scenePhase) { _, phase in
             if phase != .active { voicePlayer.stop() }
+            // 用户可能刚在系统设置里下载或删除了语言包。
+            if phase == .active {
+                Task {
+                    await appleTranslator.refreshAvailability()
+                    await composerAppleTranslator.refreshAvailability()
+                }
+            }
         }
         .onChange(of: learningSelected) { _, selected in
             dismissChatInput()
@@ -411,6 +418,10 @@ public struct ChatView: View {
         // 整句翻译优先云端 LLM；离线、额度或供应商失败时回退 Apple 端上翻译。
         viewModel.translationFallback = { [appleTranslator] text in
             return await appleTranslator.translate(text)
+        }
+        Task {
+            await appleTranslator.refreshAvailability()
+            await composerAppleTranslator.refreshAvailability()
         }
         await viewModel.load()
         guard !Task.isCancelled else { return }

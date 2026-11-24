@@ -1189,4 +1189,32 @@ struct AppleTranslatorQueueTests {
         translator.cancelAll()
         #expect(translator.configuration == nil)
     }
+
+    @Test("语言包没装时不建会话，翻译直接放弃，不会弹出下载窗口")
+    func uninstalledLanguagesNeverStartSession() async {
+        let translator = AppleTranslator()
+        translator.availability = .downloadable
+        #expect(await translator.translate("Hello.") == nil)
+        #expect(translator.configuration == nil)
+        translator.availability = .unsupported
+        #expect(await translator.translate("Hello.") == nil)
+        #expect(translator.configuration == nil)
+    }
+
+    @Test("只有点了下载才请求系统下载；下载中继续打字或切换模式不会打断")
+    func downloadOnlyOnRequestAndSurvivesCancellation() async {
+        let translator = AppleTranslator()
+        translator.availability = .downloadable
+        #expect(translator.takeDownloadRequest() == false)
+        translator.requestDownload()
+        #expect(translator.availability == .downloading)
+        #expect(translator.configuration != nil)
+        translator.cancelAll()
+        #expect(translator.configuration != nil)
+        #expect(translator.takeDownloadRequest() == true)
+        #expect(translator.takeDownloadRequest() == false)
+        await translator.downloadFinished()
+        #expect(translator.availability != .downloading)
+        translator.cancelAll()
+    }
 }
